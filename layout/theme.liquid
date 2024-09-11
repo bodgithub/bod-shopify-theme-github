@@ -128,63 +128,36 @@
 
   <!-- Custom Cursor JavaScript START --> 
 	<script>
-	  document.addEventListener('DOMContentLoaded', function() {
-	      const cursor = document.createElement('div');
-	      cursor.classList.add('custom-cursor');
-	      document.body.appendChild(cursor);
+  document.addEventListener('DOMContentLoaded', function() {
+      // Create the custom cursor element
+      const cursor = document.createElement('div');
+      cursor.classList.add('custom-cursor');
+      document.body.appendChild(cursor);
 
-	      // Handle mouse movement
-	      document.addEventListener('mousemove', function(e) {
-	          cursor.style.left = `${e.pageX - 40}px`; // Adjust position (width / 2)
-	          cursor.style.top = `${e.pageY - 40}px`;  // Adjust position (height / 2)
-	      });
+      // Handle mouse movement
+      document.addEventListener('mousemove', function(e) {
+          cursor.style.left = `${e.pageX - 40}px`; // Adjust position (width / 2)
+          cursor.style.top = `${e.pageY - 40}px`;  // Adjust position (height / 2)
+      });
 
-	      // Handle product card hover
-	      const productCards = document.querySelectorAll('.product-card'); // Assuming product cards have this class
-	      productCards.forEach(card => {
-	          card.addEventListener('mouseenter', function() {
-	              const price = this.querySelector('.product-price').textContent; // Assuming price has this class
-	              cursor.textContent = price;
-	              cursor.style.transform = 'scale(1)'; // Show cursor
-	          });
+      // Handle product card hover
+      const productCards = document.querySelectorAll('.product-card'); // Use class selector for product cards
+      productCards.forEach(card => {
+          card.addEventListener('mouseenter', function() {
+              const price = this.querySelector('.amount').textContent; // Target the price element with the class 'amount'
+              cursor.textContent = price;
+              cursor.style.transform = 'scale(1)'; // Show cursor
+          });
 
-	          card.addEventListener('mouseleave', function() {
-	              cursor.style.transform = 'scale(0)'; // Hide cursor
-	          });
-	      });
-	  });
-	</script>
+          card.addEventListener('mouseleave', function() {
+              cursor.style.transform = 'scale(0)'; // Hide cursor
+          });
+      });
+  });
+</script>
 
-	<style>
-	/* Base style for the custom cursor */
-	.custom-cursor {
-	    position: absolute;
-	    width: 80px; /* Adjust size of the cursor */
-	    height: 80px;
-	    border-radius: 50%;
-	    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-	    color: white;
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    font-weight: bold;
-	    pointer-events: none;
-	    z-index: 1000;
-	    font-size: 16px;
-	    transition: transform 0.15s ease;
-	    transform: scale(0); /* Initially hidden */
-	}
 
-	/* When hovering, make the cursor visible */
-	.product-card:hover ~ .custom-cursor {
-	    transform: scale(1);
-	}
 
-	/* Hide default cursor when hovering over product card */
-	.product-card {
-	    cursor: none;
-	}
-	</style>
 	<!-- Custom Cursor JavaScript END -->
   
 </body>
