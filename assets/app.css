@@ -4121,7 +4121,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     position: absolute;
     width: 130px;
     height: 130px;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: var(--color-body, #1b3def);
     color: white;
     display: flex;
@@ -4133,10 +4133,10 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     font-size: 1.3rem;
     transition: transform 0.15s ease;
     transform: scale(0); /* Initially hidden */
-  margin:auto;
-  padding:10px;
-  align-content:center;
-  justify-content: center;
+    text-align: center; /* Ensure the text is center-aligned */
+    padding: 10px; /* Add padding around the text */
+    box-sizing: border-box; /* Ensure padding is within the element's size */
+  
 }
 
 /* Hide the default cursor and show the custom one on hover */
