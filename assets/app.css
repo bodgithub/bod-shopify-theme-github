@@ -4131,6 +4131,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     pointer-events: none;
     z-index: 1000;
     font-size: 1.7rem;
+  fint-style:italic;
     transition: transform 0.15s ease;
     transform: scale(0); /* Initially hidden */
     text-align: center; /* Ensure the text is center-aligned */
