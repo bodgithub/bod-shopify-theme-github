@@ -4164,9 +4164,9 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 
 .custom-cursor2 {
     position: absolute;
-    width: auto; /* Adjust size of the cursor */
-    height: 100%;
-    border-radius: 100%;
+    min-width: 170px; /* Adjust size of the cursor */
+    height: 170px;
+    border-radius: 50%;
     background-color: white; /* White background */
     color: var(--color-body, #1b3def); /* Blue text */
     display: flex;
@@ -4174,7 +4174,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     justify-content: center;
     font-weight: bold;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 0;
     font-size: 16px;
     transition: transform 0.15s ease;
     transform: scale(0); /* Initially hidden */
@@ -4182,5 +4182,11 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     padding: 30px;
     box-sizing: border-box;
     border: 2px solid blue; /* Optional: a border for emphasis */
+}
+.custom-cursor2::before {
+    content: '';
+    display: block;
+    padding-top: 100%; /* Makes height match width to keep the circle shape */
+    width: 100%; /* Force width */
 }
 
