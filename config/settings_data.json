@@ -371,13 +371,9 @@
       ".button.white:hover {transform: scale(1.1) !important; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;}",
       ".logolink {transition: transform 0.4s ease-in-out !important;}",
       ".logolink:hover {transform: scale(1.1); transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;}",
-      ".slideshow__slide-heading {transform: scale(1.1) !important;}",
       ".animated-marker {font-family: georgia; font-weight: 100; font-style: italic; transform: scale(1.15) !important; padding-left: 12px; padding-right: 12px; --marker-color: white; padding-bottom: 15px !important;}",
       ".thb-secondary-area-item.thb-secondary-myaccount {display: none;}",
       ".thb-secondary-area-item {display: none;}",
-      ".h2,h3,h4 {font-weight: 400 !important;}",
-      ".h1 {font-weight: 600 !important; font-family: inter;}",
-      "h5 {font-size: 23px; line-height: 1.4em;}",
       ".product-grid-container {margin-top: -20px !important;}",
       ".breadcrumbs {display: none;}",
       "@media only screen and (min-width: 1068px) {.product-grid-container {grid-template-columns: minmax(55%, 900px) clamp(340px, 35%, 400px) !important; } .product-gallery-container .product-image-container .product-images {max-width: 100% !important; }}"
