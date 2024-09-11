@@ -344,7 +344,7 @@ h5, .h5,
 h6, .h6 {
   font-family: "tenon", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 !important;
   color: var(--color-heading, #1a1c1d);
   text-rendering: optimizeLegibility; }
 
