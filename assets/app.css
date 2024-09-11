@@ -2780,7 +2780,7 @@ h6,
 .text-button {
   display: inline-flex;
   align-items: center;
-  font-size: 1.15em;
+  font-size: 1.15em !important;
   line-height: 1;
   position: relative;
   font-weight: var(--font-body-medium-weight, 500);
