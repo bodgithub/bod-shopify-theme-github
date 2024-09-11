@@ -4143,7 +4143,6 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     padding: 30px; /* Add padding around the text */
     box-sizing: border-box; /* Ensure padding is within the element's size */
   cursor:none;
-  border: 2px solid white;
 }
 
 /* Hide the default cursor and show the custom one on hover */
