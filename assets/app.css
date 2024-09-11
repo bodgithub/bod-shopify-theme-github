@@ -2780,7 +2780,7 @@ h6,
 .text-button {
   display: inline-flex;
   align-items: center;
-  font-size: 1.15em !important;
+  font-size: 0.9375rem;
   line-height: 1;
   position: relative;
   font-weight: var(--font-body-medium-weight, 500);
@@ -2849,7 +2849,7 @@ input[type="submit"] {
   align-items: center;
   justify-content: center;
   height: 50px;
-  font-size: 0.9375rem;
+  font-size: 1.15em;
   font-weight: var(--font-body-medium-weight, 500);
   letter-spacing: var(--button-letter-spacing, 0.02em);
   background: var(--solid-button-background, var(--color-accent));
