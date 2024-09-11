@@ -195,25 +195,25 @@
           cursor2.style.top = `${e.pageY - 25}px`;  // Adjust position (height / 2)
       });
 
-      // Handle text selection (highlight)
-      document.addEventListener('mouseup', function() {
-          const selectedText = window.getSelection().toString(); // Get selected text
-          
-          if (selectedText.length > 0) {
-              // Set the tooltip text inside cursor2 and show it
-              cursor2.textContent = selectedText; // Display highlighted text
-              cursor2.style.transform = 'scale(1)'; // Show cursor2
-          } else {
-              cursor2.style.transform = 'scale(0)'; // Hide cursor2 when no text is selected
-          }
-      });
+      // Handle hover over elements with data-tooltip
+      const tooltipElements = document.querySelectorAll('[data-tooltip]'); // Select elements with the data-tooltip attribute
 
-      // Hide cursor2 when clicking elsewhere
-      document.addEventListener('mousedown', function() {
-          cursor2.style.transform = 'scale(0)'; // Hide cursor2 when starting to select new text
+      tooltipElements.forEach(element => {
+          element.addEventListener('mouseenter', function() {
+              const tooltipText = this.getAttribute('data-tooltip'); // Get the tooltip text from the data-tooltip attribute
+              if (tooltipText) {
+                  cursor2.textContent = tooltipText; // Set the tooltip text in cursor2
+                  cursor2.style.transform = 'scale(1)'; // Show cursor2 with tooltip
+              }
+          });
+
+          element.addEventListener('mouseleave', function() {
+              cursor2.style.transform = 'scale(0)'; // Hide cursor2 when not hovering
+          });
       });
   });
 </script>
+
 
   	<!-- Custom Cursor2 JavaScript END -->
 
