@@ -4122,7 +4122,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     width: 80px;
     height: 80px;
     border-radius: 100%;
-    background-color: var(--text-color);
+    background-color: var(--color-body, #2c2d2e);
     color: white;
     display: flex;
     align-items: center;
