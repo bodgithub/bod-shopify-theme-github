@@ -1,16 +1,12 @@
 {%- liquid
-	assign heading_font = settings.heading_font
-	assign body_font = settings.body_font
-	assign body_font_500 = body_font | font_modify: 'weight', '500'
+	assign tenon_font = 'tenon' | font_face: font_display: 'swap'
+   
+	assign body_font_500 = tenon_font | font_modify: 'weight', '500'
 
-	unless body_font_500
-		assign body_font_500 = body_font | font_modify: 'weight', '600'
-	endunless
+	
 
 	assign body_font_bold = body_font | font_modify: 'weight', '600'
-	unless body_font_bold
-		assign body_font_bold = body_font | font_modify: 'weight', '700'
-	endunless
+
 
 	assign body_font_italic = body_font | font_modify: 'style', 'italic'
 	assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
@@ -113,14 +109,14 @@
 	.customer-addresses .my-address .address-index {
 		font-style: normal;
 		font-weight: 500;
-		font-family: "tenon";
+		font-family: "tenon", sans-serif;
 	}
 	body,
 	.body-font,
 	.thb-product-detail .product-title {
 		font-style: normal;
 		font-weight: 300;
-		font-family: "tenon";
+		font-family: "tenon", sans-serif;
 	}
 	:root {
 
