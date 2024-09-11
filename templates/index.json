@@ -9,6 +9,45 @@
 */
 {
   "sections": {
+    "image_with_text_overlay_zjqnjJ": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_FGRE4D": {
+          "type": "heading",
+          "settings": {
+            "text": "Your hormones deserve better.",
+            "heading_size": "h1-xlarge"
+          }
+        },
+        "button_rBDtc7": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop Now",
+            "button_link": "",
+            "button_color": "accent"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FGRE4D",
+        "button_rBDtc7"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Screenshot_2024-08-25_at_20.08.22.png",
+        "image_parallax": false,
+        "desktop_height": "desktop-height-650",
+        "mobile_height": "mobile-height-500",
+        "full_width": false,
+        "content_width": "large",
+        "content_position": "bottom-center",
+        "text_alignment": "center",
+        "text_color": "#1b3def",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3": {
       "type": "slideshow",
       "blocks": {
@@ -1209,6 +1248,7 @@
     }
   },
   "order": [
+    "image_with_text_overlay_zjqnjJ",
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "image_with_text_r96Axa",
     "testimonials_ncYmHF",
