@@ -191,8 +191,9 @@
 
       // Handle mouse movement
       document.addEventListener('mousemove', function(e) {
-          cursor2.style.left = `${e.pageX - cursor2.offsetWidth / 2}px`; // Center horizontally
-          cursor2.style.top = `${e.pageY - cursor2.offsetHeight / 2}px`; // Center vertically
+          cursor2.style.left = `${e.pageX - 40}px`; // Center horizontally
+          cursor2.style.top = `${e.pageY - 40}px`; // Center vertically
+        
       });
 
       // Handle hover over elements with data-tooltip
