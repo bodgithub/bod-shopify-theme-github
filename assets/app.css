@@ -324,10 +324,7 @@ small {
 h1, .h1, .h1-large, .h1-xlarge,
 h2, .h2, blockquote p,
 blockquote span,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
+h3, .h3 {
   font-family: "tenon", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -4131,7 +4128,6 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     pointer-events: none;
     z-index: 1000;
     font-size: 1.7rem;
-  fint-style:italic;
     transition: transform 0.15s ease;
     transform: scale(0); /* Initially hidden */
     text-align: center; /* Ensure the text is center-aligned */
