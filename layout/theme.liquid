@@ -145,7 +145,7 @@
       productCards.forEach(card => {
           card.addEventListener('mouseenter', function() {
               const supply = this.getAttribute('data-supply'); // Get the custom supply metafield
-              cursor.textContent = supply ? supply : 'Shop Now'; // Show the supply value or fallback text
+              cursor.innerHTML = supply ? `<i>${supply}</i>` : '<i>No Supply Info</i>'; // Show italicized supply value or fallback
               cursor.style.transform = 'scale(1)'; // Show cursor
           });
 
@@ -155,6 +155,7 @@
       });
   });
 </script>
+
 
   <script>
   document.addEventListener('DOMContentLoaded', function() {
