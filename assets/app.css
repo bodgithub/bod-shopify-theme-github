@@ -314,7 +314,7 @@ i {
 
 strong,
 b {
-  font-weight: var(--font-body-bold-weight, 600);
+  font-weight: var(--font-body-bold-weight, 500);
   line-height: inherit; }
 
 small {
@@ -330,7 +330,7 @@ h5, .h5,
 h6, .h6 {
   font-family: "tenon", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-heading, #1a1c1d);
   text-rendering: optimizeLegibility; }
   h1 small, .h1 small, .h1-large small, .h1-xlarge small,
