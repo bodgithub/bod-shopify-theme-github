@@ -7,7 +7,7 @@
 	assign body_font_bold = tenon_font | font_modify: 'weight', '600'
 
     assign body_font_italic = plantin_font_italic | font_modify: 'style', 'italic'
-    assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    assign body_font_bold_italic = plantin_font_italic | font_modify: 'style', 'italic'
 
 	assign color_body_bg = settings.color_body_bg
 	assign color_body = settings.color_body
@@ -114,7 +114,7 @@
     font-family: "plantin", sans-serif;
     font-weight: 300;
     font-style: italic;
-    transform: scale(1.5);
+    transform: scale(1.5) !important;
   }
   
 	:root {
