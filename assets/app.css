@@ -4186,7 +4186,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     overflow: hidden; /* Ensure content doesn't overflow */
   border: 2px solid  #1b3def;
 }
-.custom-cursor3 {
+/*.custom-cursor2 {
     position: absolute;
     min-width: 80px; /* Minimum size of the circle */
     min-height: 80px; /* Minimum size of the circle */
@@ -4209,7 +4209,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     box-sizing: border-box;
     overflow: hidden; /* Ensure content doesn't overflow */
   border: 2px solid  #ffffff;
-}
+}*/
 .tooltip:hover {
     cursor: none;
 }
