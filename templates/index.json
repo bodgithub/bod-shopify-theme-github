@@ -15,16 +15,16 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Your hormones deserve better.",
+            "text": "Your hormones deserve better",
             "heading_size": "h1-xlarge"
           }
         },
         "button_rBDtc7": {
           "type": "button",
           "settings": {
-            "button_text": "Shop Now",
+            "button_text": "Start your Inositol journey",
             "button_link": "",
-            "button_color": "accent"
+            "button_color": "white"
           }
         }
       },
@@ -32,14 +32,18 @@
         "heading_FGRE4D",
         "button_rBDtc7"
       ],
+      "custom_css": [
+        "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
+        "@media only screen and (min-width: 768px) {}"
+      ],
       "settings": {
         "image": "shopify:\/\/shop_images\/Screenshot_2024-08-25_at_20.08.22.png",
         "image_parallax": false,
         "desktop_height": "desktop-height-650",
         "mobile_height": "mobile-height-500",
         "full_width": false,
-        "content_width": "large",
-        "content_position": "bottom-center",
+        "content_width": "medium",
+        "content_position": "middle-center",
         "text_alignment": "center",
         "text_color": "#1b3def",
         "overlay_color": "#000000",
@@ -90,6 +94,7 @@
       "block_order": [
         "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
         "@media only screen and (min-width: 768px) {.slideshow--full-width-true .slideshow__slide-inner .slideshow__slide-content {margin-top: -112px !important; }}"
