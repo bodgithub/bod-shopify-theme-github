@@ -141,11 +141,11 @@
       });
 
       // Handle product card hover
-      const productCards = document.querySelectorAll('.product-card'); // Use class selector for product cards
+      const productCards = document.querySelectorAll('.product-card'); // Select all product cards
       productCards.forEach(card => {
           card.addEventListener('mouseenter', function() {
-              const price = this.querySelector('.amount').textContent; // Target the price element with the class 'amount'
-              cursor.textContent = price;
+              const supply = this.getAttribute('data-supply'); // Get the custom supply metafield
+              cursor.textContent = supply ? supply : 'N/A'; // Show the supply value or 'N/A' if not available
               cursor.style.transform = 'scale(1)'; // Show cursor
           });
 
