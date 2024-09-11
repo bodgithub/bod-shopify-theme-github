@@ -7,7 +7,7 @@
 	assign body_font_bold = tenon_font | font_modify: 'weight', '600'
 
     assign body_font_italic = plantin_font_italic | font_modify: 'style', 'italic'
-    assign body_font_bold_italic = body_font_500 | font_modify: 'style', 'italic'
+    assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
 
 	assign color_body_bg = settings.color_body_bg
 	assign color_body = settings.color_body
@@ -109,12 +109,11 @@
 		font-family: "tenon", sans-serif;
 	}
 
-  /* Apply Plantin font to all italic text across the website */
+  /* Apply Plantin font in light weight to all italic text across the website */
   i, em, [style*="italic"], .italic {
     font-family: "plantin", sans-serif;
-    font-weight: 300;
+    font-weight: 300 !important;
     font-style: italic;
-    transform: scale(1.5) !important;
   }
   
 	:root {
