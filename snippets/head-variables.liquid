@@ -1,15 +1,13 @@
 {%- liquid
 	assign tenon_font = 'tenon' | font_face: font_display: 'swap'
+    assign plantin_font_italic = 'plantin' | font_face: font_display: 'swap'
+
    
 	assign body_font_500 = tenon_font | font_modify: 'weight', '500'
+	assign body_font_bold = tenon_font | font_modify: 'weight', '600'
 
-	
-
-	assign body_font_bold = body_font | font_modify: 'weight', '600'
-
-
-	assign body_font_italic = body_font | font_modify: 'style', 'italic'
-	assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+    assign body_font_italic = plantin_font_italic | font_modify: 'style', 'italic'
+    assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
 
 	assign color_body_bg = settings.color_body_bg
 	assign color_body = settings.color_body
@@ -71,31 +69,23 @@
 -%}
 
 {% style %}
-	{{ body_font | font_face: font_display: 'swap' }}
+	{{ tenon_font }}
+  {{ plantin_font_italic }}
 
 	{%- if body_font_500 -%}
-	  {{ body_font_500 | font_face: font_display: 'swap' }}
+	  {{ body_font_500 }}
 	{%- endif -%}
 
 	{%- if body_font_bold -%}
-	  {{ body_font_bold | font_face: font_display: 'swap' }}
+	  {{ body_font_bold }}
 	{%- endif -%}
 
 	{%- if body_font_italic -%}
-	  {{ body_font_italic | font_face: font_display: 'swap' }}
+	  {{ body_font_italic }}
 	{%- endif -%}
 
 	{%- if body_font_bold_italic -%}
-	  {{ body_font_bold_italic | font_face: font_display: 'swap' }}
-	{%- endif -%}
-
-	{% if body_font != heading_font %}
-		{{ heading_font | font_face: font_display: 'swap' }}
-		{%- assign heading_font_400 = heading_font | font_modify: 'weight', '400' -%}
-
-		{%- if heading_font_400 -%}
-		  {{ heading_font_400 | font_face: font_display: 'swap' }}
-		{%- endif -%}
+	  {{ body_font_bold_italic }}
 	{%- endif -%}
 
 	h1,h2,h3,h4,h5,h6,
@@ -118,6 +108,14 @@
 		font-weight: 300;
 		font-family: "tenon", sans-serif;
 	}
+
+  /* Apply Plantin font to all italic text across the website */
+  i, em, [style*="italic"], .italic {
+    font-family: "plantin", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
 	:root {
 
 		--font-body-scale: {{ settings.body_font_scale | divided_by: 100.0 }};
