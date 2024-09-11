@@ -15,7 +15,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Your hormones deserve better",
+            "text": "Your <i>hormones<\/i> deserve better",
             "heading_size": "h1-xlarge"
           }
         },
@@ -136,7 +136,7 @@
       ],
       "custom_css": [
         ".image-with-text h3 {top: 0px;}",
-        " .image-with-text--content {padding: 0px 130px 0px 35px;}",
+        ".image-with-text--content {padding: 0px 130px 0px 35px;}",
         ".image-with-text h6 {font-size: 18px; line-height: 1.4em;}"
       ],
       "settings": {
