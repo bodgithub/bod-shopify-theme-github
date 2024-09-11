@@ -179,6 +179,44 @@
 
 
 	<!-- Custom Cursor JavaScript END -->
+
+
+<!-- Custom Cursor2 JavaScript START -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Create the custom cursor2 element
+      const cursor2 = document.createElement('div');
+      cursor2.classList.add('custom-cursor2');
+      document.body.appendChild(cursor2);
+
+      // Handle mouse movement
+      document.addEventListener('mousemove', function(e) {
+          cursor2.style.left = `${e.pageX - 50}px`; // Adjust position (width / 2)
+          cursor2.style.top = `${e.pageY - 25}px`;  // Adjust position (height / 2)
+      });
+
+      // Handle text selection (highlight)
+      document.addEventListener('mouseup', function() {
+          const selectedText = window.getSelection().toString(); // Get selected text
+          
+          if (selectedText.length > 0) {
+              // Set the tooltip text inside cursor2 and show it
+              cursor2.textContent = selectedText; // Display highlighted text
+              cursor2.style.transform = 'scale(1)'; // Show cursor2
+          } else {
+              cursor2.style.transform = 'scale(0)'; // Hide cursor2 when no text is selected
+          }
+      });
+
+      // Hide cursor2 when clicking elsewhere
+      document.addEventListener('mousedown', function() {
+          cursor2.style.transform = 'scale(0)'; // Hide cursor2 when starting to select new text
+      });
+  });
+</script>
+
+  	<!-- Custom Cursor2 JavaScript END -->
+
   
 </body>
 </html>
