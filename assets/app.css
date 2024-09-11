@@ -4135,7 +4135,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     justify-content: center;
     font-weight: 400;
     pointer-events: none;
-    z-index: 1000;
+    z-index: 1;
     font-size: 1.7rem;
     transition: transform 0.15s ease;
     transform: scale(0); /* Initially hidden */
