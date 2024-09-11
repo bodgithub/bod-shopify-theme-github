@@ -4134,7 +4134,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     transition: transform 0.15s ease;
     transform: scale(0); /* Initially hidden */
     text-align: center; /* Ensure the text is center-aligned */
-    padding: 10px; /* Add padding around the text */
+    padding: 30px; /* Add padding around the text */
     box-sizing: border-box; /* Ensure padding is within the element's size */
   cursor:none;
 }
