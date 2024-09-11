@@ -339,6 +339,15 @@ h3, .h3 {
     line-height: 0;
     color: #cacaca; }
 
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: "tenon", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--color-heading, #1a1c1d);
+  text-rendering: optimizeLegibility; }
+
 h1, .h1, .h1-large, .h1-xlarge {
   font-size: 2.875rem;
   line-height: 1.45;
