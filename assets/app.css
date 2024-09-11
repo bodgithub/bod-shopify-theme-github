@@ -63,7 +63,7 @@ hr {
   overflow: visible; }
 
 pre {
-  font-family: monospace, monospace;
+  font-family: "tenon", monospace, monospace;
   font-size: 1em; }
 
 a {
@@ -80,7 +80,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: "tenon", monospace, monospace;
   font-size: 1em; }
 
 small {
@@ -107,7 +107,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit;
+  font-family: "tenon";
   font-size: 100%;
   line-height: 1.15;
   margin: 0; }
@@ -217,7 +217,7 @@ body {
   margin: 0;
   padding: 0;
   background: var(--bg-body, #f5f5f5);
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-family: "tenon", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   font-weight: normal;
   line-height: 1.6;
   color: var(--color-body, #2c2d2e);
@@ -269,7 +269,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; }
+  font-family: "tenon", inherit; }
 
 .is-visible {
   display: block !important; }
@@ -326,7 +326,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  font-family: "tenon", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   font-style: normal;
   font-weight: 700;
   color: var(--color-heading, #1a1c1d);
@@ -474,7 +474,7 @@ kbd {
   margin: 0;
   padding: 0.125rem 0.25rem 0;
   background-color: #e6e6e6;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-family: "tenon", Consolas, "Liberation Mono", Courier, monospace;
   color: #2c2d2e; }
 
 .subheader {
@@ -508,7 +508,7 @@ cite, .cite-block {
 code, .code-inline {
   border: 1px solid #cacaca;
   background-color: #e6e6e6;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-family: "tenon", Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
   color: #2c2d2e;
   display: inline;
@@ -519,7 +519,7 @@ code, .code-inline {
 .code-block {
   border: 1px solid #cacaca;
   background-color: #e6e6e6;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  font-family: "tenon", Consolas, "Liberation Mono", Courier, monospace;
   font-weight: normal;
   color: #2c2d2e;
   display: block;
