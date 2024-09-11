@@ -4081,10 +4081,10 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
   font-family: "plantin" !important;
   font-style: italic;
   font-weight: 100 !important;
-  transform: scale(1.15) !important;
-  padding-left: 12px;
-  padding-right: 12px;
-  margin-top:-5px;
+  transform: scale(1.13) !important;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+  top:-0.05em;
   --marker-color: none !important;}
 
   .animated-marker .svg-marker {
