@@ -4144,9 +4144,12 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     transform: scale(1);
   cursor:none;
 }
-.custom-cursor {
+/* Hide the default cursor for all links and buttons inside the product card */
+.product-card a:hover,
+.product-card button:hover {
     cursor: none;
 }
+
 
 .product-card {
     cursor: none;
