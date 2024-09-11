@@ -20,7 +20,7 @@
     .image-with-text.text_first {
       grid-template-areas: "content media"; } }
   .image-with-text--image {
-    width: 90%; }
+    width: 93%; }
     @media only screen and (min-width: 768px) {
       .image-with-text--image {
         grid-area: media;
