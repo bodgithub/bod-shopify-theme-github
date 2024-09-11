@@ -4119,10 +4119,10 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 /* Base style for the custom cursor */
 .custom-cursor {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 130px;
+    height: 130px;
     border-radius: 100%;
-    background-color: var(--color-body, #2c2d2e);
+    background-color: var(--color-body, #1b3def);
     color: white;
     display: flex;
     align-items: center;
@@ -4130,7 +4130,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     font-weight: bold;
     pointer-events: none;
     z-index: 1000;
-    font-size: 16px;
+    font-size: 26px;
     transition: transform 0.15s ease;
     transform: scale(0); /* Initially hidden */
 }
