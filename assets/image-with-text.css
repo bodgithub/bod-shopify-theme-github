@@ -23,7 +23,8 @@
     width: 100%; }
     @media only screen and (min-width: 768px) {
       .image-with-text--image {
-        grid-area: media; } }
+        grid-area: media;
+        justify-self:right; } }
     .image-with-text--image svg,
     .image-with-text--image img {
       position: absolute;
