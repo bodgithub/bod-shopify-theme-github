@@ -2850,7 +2850,7 @@ input[type="submit"] {
   align-items: center;
   justify-content: center;
   height: 50px;
-  font-size: 1.15em !important;
+  font-size: 1.15rem;
   font-weight: var(--font-body-medium-weight, 500);
   letter-spacing: var(--button-letter-spacing, 0.02em);
   background: var(--solid-button-background, var(--color-accent));
