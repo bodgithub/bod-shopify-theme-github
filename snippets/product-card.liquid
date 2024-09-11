@@ -44,7 +44,7 @@
 	endif
 -%}
 {%- if product_card_product and product_card_product != empty -%}
-<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-{{ info_spacing }} product-card--border-{{ product_card_border }} {{ product_card_shadow_class }}">
+<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-{{ info_spacing }} product-card--border-{{ product_card_border }} {{ product_card_shadow_class }} data-supply="{{ product_card_product.metafields.custom.supply }}">
   <figure class="product-featured-image {% if products_hover_images and product_card_product.images.size > 1 %}thb-hover{% endif %}">
     {% render 'product-card-badge', product_card_product: product_card_product %}
     <a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: ratio | times: 100 }}%;">
@@ -119,7 +119,7 @@
   </div>
 </product-card>
 {%- else -%}
-<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-{{ info_spacing }} product-card--border-{{ product_card_border }} {{ product_card_shadow_class }}">
+<product-card class="product-card text-{{ product_content_alignment }} product-card--content-spacing-{{ info_spacing }} product-card--border-{{ product_card_border }} {{ product_card_shadow_class }} data-supply="{{ product_card_product.metafields.custom.supply }}">
 	<figure class="product-featured-image {% if settings.products_hover_images %}thb-hover{% endif %}">
 		<a href="{{ product_card_product.url | within: collection }}" title="{{ product_card_product.title | escape }}" class="product-featured-image-link aspect-ratio aspect-ratio--{{ settings.product_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: 1 | times: 100 }}%;">
 			<div class="thb-placeholder">
