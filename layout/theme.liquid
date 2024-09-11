@@ -158,18 +158,24 @@
 
   <script>
   document.addEventListener('DOMContentLoaded', function() {
-      // Note: This script removes the title attribute from images within product cards to prevent
-      // the alt text from displaying as a tooltip when hovering over the product images.
-      
+      // Note: This script ensures that alt text and title tooltips are suppressed for product card images.
+
       // Select all images within product cards
       const productImages = document.querySelectorAll('.product-card img');
 
       productImages.forEach(img => {
           // Remove the title attribute to prevent tooltips from showing
           img.removeAttribute('title');
+
+          // Set a title attribute to an empty string to fully suppress any title tooltip
+          img.setAttribute('title', '');
+
+          // Optional: Set alt attribute to an empty string to stop browsers from showing alt tooltips on hover
+          img.setAttribute('alt', img.getAttribute('alt') || ''); // Ensures alt isn't removed for SEO, just overridden
       });
   });
 </script>
+
 
 	<!-- Custom Cursor JavaScript END -->
   
