@@ -145,7 +145,7 @@
       productCards.forEach(card => {
           card.addEventListener('mouseenter', function() {
               const supply = this.getAttribute('data-supply'); // Get the custom supply metafield
-              cursor.textContent = supply ? supply : 'No Supply Info'; // Show the supply value or fallback text
+              cursor.textContent = supply ? supply : 'Shop Now'; // Show the supply value or fallback text
               cursor.style.transform = 'scale(1)'; // Show cursor
           });
 
