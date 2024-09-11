@@ -4137,25 +4137,21 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     padding: 10px; /* Add padding around the text */
     box-sizing: border-box; /* Ensure padding is within the element's size */
   cursor:none;
-  pointer-events: none;
 }
 
 /* Hide the default cursor and show the custom one on hover */
 .product-card:hover ~ .custom-cursor {
     transform: scale(1);
   cursor:none;
-  pointer-events: none;
 }
 /* Hide the default cursor for all links and buttons inside the product card */
 .product-card a:hover,
 .product-card button:hover {
     cursor: none;
-  pointer-events: none;
 }
 
 .product-card {
     cursor: none;
-  pointer-events: none;
 }
 
 
