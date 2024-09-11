@@ -4140,11 +4140,15 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 }
 
 /* Hide the default cursor and show the custom one on hover */
-product-card:hover ~ .custom-cursor {
+.product-card:hover ~ .custom-cursor {
     transform: scale(1);
+  cursor:none;
+}
+.custom-cursor {
+    cursor: none;
 }
 
-product-card {
+.product-card {
     cursor: none;
 }
 
