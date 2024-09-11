@@ -4119,10 +4119,10 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 /* Base style for the custom cursor */
 .custom-cursor {
     position: absolute;
-    width: 80px; /* Adjust size of the cursor */
+    width: 80px;
     height: 80px;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
     display: flex;
     align-items: center;
@@ -4135,13 +4135,13 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     transform: scale(0); /* Initially hidden */
 }
 
-/* When hovering, make the cursor visible */
-.product-card:hover ~ .custom-cursor {
+/* Hide the default cursor and show the custom one on hover */
+product-card:hover ~ .custom-cursor {
     transform: scale(1);
 }
 
-/* Hide default cursor when hovering over product card */
-.product-card {
+product-card {
     cursor: none;
 }
+
 
