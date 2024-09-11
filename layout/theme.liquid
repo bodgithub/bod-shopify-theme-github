@@ -245,8 +245,73 @@
 </script>
 
 
-
   	<!-- Custom Cursor2 JavaScript END -->
+
+  <!-- Custom Cursor3 JavaScript START -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Create the custom cursor3 element
+      const cursor3 = document.createElement('div');
+      cursor3.classList.add('custom-cursor3');
+      document.body.appendChild(cursor3);
+
+      // Handle mouse movement
+      document.addEventListener('mousemove', function(e) {
+          cursor3.style.left = `${e.pageX - cursor3.offsetWidth / 2}px`; // Center horizontally
+          cursor3.style.top = `${e.pageY - cursor3.offsetHeight / 2}px`; // Center vertically
+      });
+
+      // Handle hover over elements with data-tooltip
+      const tooltipElements = document.querySelectorAll('[data-tooltip]'); // Select elements with the data-tooltip attribute
+
+      tooltipElements.forEach(element => {
+          element.addEventListener('mouseenter', function() {
+              const tooltipText = this.getAttribute('data-tooltip'); // Get the tooltip text from the data-tooltip attribute
+              if (tooltipText) {
+                  cursor3.textContent = tooltipText; // Set the tooltip text in cursor3
+                  adjustCursorSize(cursor3); // Adjust the size based on content
+                  cursor3.style.transform = 'scale(1)'; // Show cursor3 with tooltip
+              }
+          });
+
+          element.addEventListener('mouseleave', function() {
+              cursor3.style.transform = 'scale(0)'; // Hide cursor3 when not hovering
+          });
+      });
+
+      // Function to adjust the cursor size based on its content
+      function adjustCursorSize(cursor) {
+          const computedStyle = window.getComputedStyle(cursor);
+          const padding = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
+          
+          // Create a temporary element to measure content size
+          const tempDiv = document.createElement('div');
+          tempDiv.style.visibility = 'hidden';
+          tempDiv.style.position = 'absolute';
+          tempDiv.style.width = 'auto';
+          tempDiv.style.height = 'auto';
+          tempDiv.style.whiteSpace = 'nowrap';
+          tempDiv.textContent = cursor.textContent;
+
+          document.body.appendChild(tempDiv);
+          
+          const contentWidth = tempDiv.offsetWidth + padding;
+          const contentHeight = tempDiv.offsetHeight + padding;
+
+          // Calculate the size to keep 1:1 ratio
+          const newSize = Math.max(contentWidth, contentHeight);
+
+          // Set new size
+          cursor.style.width = `${newSize}px`;
+          cursor.style.height = `${newSize}px`;
+
+          document.body.removeChild(tempDiv); // Clean up
+      }
+  });
+</script>
+
+
+  	<!-- Custom Cursor3 JavaScript END -->
 
   
 </body>
