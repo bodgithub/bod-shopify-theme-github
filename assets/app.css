@@ -4136,7 +4136,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     text-align: center; /* Ensure the text is center-aligned */
     padding: 10px; /* Add padding around the text */
     box-sizing: border-box; /* Ensure padding is within the element's size */
-  
+  cursor:none;
 }
 
 /* Hide the default cursor and show the custom one on hover */
