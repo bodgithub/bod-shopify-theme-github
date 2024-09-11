@@ -3,8 +3,8 @@
     assign plantin_font_italic = 'plantin' | font_face: font_display: 'swap'
 
    
-	assign body_font_500 = tenon_font | font_modify: 'weight', '500'
-	assign body_font_bold = tenon_font | font_modify: 'weight', '600'
+	assign body_font_500 = tenon_font | font_modify: 'weight', '400'
+	assign body_font_bold = tenon_font | font_modify: 'weight', '500'
 
     assign body_font_italic = plantin_font_italic | font_modify: 'style', 'italic'
     assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
@@ -98,14 +98,14 @@
 	blockquote span,
 	.customer-addresses .my-address .address-index {
 		font-style: normal;
-		font-weight: 600;
+		font-weight: 500;
 		font-family: "tenon", sans-serif;
 	}
 	body,
 	.body-font,
 	.thb-product-detail .product-title {
 		font-style: normal;
-		font-weight: 300;
+		font-weight: 400;
 		font-family: "tenon", sans-serif;
 	}
 
@@ -126,8 +126,8 @@
 		--font-body-line-height-scale: {{ settings.body_font_line_height_scale | divided_by: 100.0 }};
 		--font-body-letter-spacing: {{ settings.body_font_letter_spacing | divided_by: 1000.0 }}em;
 		--font-announcement-scale: {{ settings.announcement_font_scale | divided_by: 100.0 }};
-		--font-body-medium-weight: {{ body_font_500.weight | default: '500' }};
-    --font-body-bold-weight: {{ body_font_bold.weight | default: '600' }};
+		--font-body-medium-weight: {{ body_font_500.weight | default: '400' }};
+    --font-body-bold-weight: {{ body_font_bold.weight | default: '500' }};
 		--font-heading-scale: {{ settings.heading_font_scale | divided_by: 100.0 }};
 		--font-heading-line-height-scale: {{ settings.heading_font_line_height_scale | divided_by: 100.0 }};
 		--font-heading-letter-spacing: {{ settings.heading_font_letter_spacing | divided_by: 1000.0 }}em;
