@@ -4182,4 +4182,6 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     padding: 10px;
     box-sizing: border-box;
 }
-
+.tooltip:hover {
+    cursor: none;
+}
