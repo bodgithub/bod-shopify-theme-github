@@ -109,11 +109,13 @@
 		font-family: "tenon", sans-serif;
 	}
 
-  /* Apply Plantin font in light weight to all italic text across the website */
+  /* Apply Plantin font in light weight to all italic text across the website and scales up slightly */
   strong i, strong em, em strong, em b, b i, b em, i, em, [style*="italic"], .italic {
     font-family: "plantin", sans-serif;
     font-weight: 300 !important;
     font-style: italic;
+    transform: scale(1.05); /* Scales italic text up by 5% */
+    display: inline-block; /* Necessary for transform to apply correctly to inline elements */
   }
   
 	:root {
