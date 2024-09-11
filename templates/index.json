@@ -126,7 +126,7 @@
         "text_eeg3Xh": {
           "type": "text",
           "settings": {
-            "text": "<p>Inositol is a <em>science-backed <\/em>micronutrient that works through metabolic pathways to support hormone and mood health, naturally.<\/p><h6><strong>It's the new way to <\/strong><em><strong>balance<\/strong><\/em>.<\/h6>"
+            "text": "<p>Inositol is a <em>science-backed <\/em>micronutrient that works through <em>metabolic<\/em> pathways to support hormone and mood health, <em>naturally<\/em>.<\/p><h6><strong>It's the new way to balance<\/strong>.<\/h6>"
           }
         }
       },
@@ -135,7 +135,7 @@
         "text_eeg3Xh"
       ],
       "custom_css": [
-        ".image-with-text h3 {top: 0px;}",
+        ".image-with-text h3 {top: 0px; font-weight: 600;}",
         ".image-with-text p {font-size: 26px; font-weight: 400 !important; line-height: 1.3em !important; letter-spacing: -0.5px;}",
         ".image-with-text--content {padding: 0px 130px 0px 35px;}",
         ".image-with-text h6 {font-size: 18px; line-height: 1.4em;}"
