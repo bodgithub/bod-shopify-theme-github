@@ -156,8 +156,20 @@
   });
 </script>
 
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Note: This script removes the title attribute from images within product cards to prevent
+      // the alt text from displaying as a tooltip when hovering over the product images.
+      
+      // Select all images within product cards
+      const productImages = document.querySelectorAll('.product-card img');
 
-
+      productImages.forEach(img => {
+          // Remove the title attribute to prevent tooltips from showing
+          img.removeAttribute('title');
+      });
+  });
+</script>
 
 	<!-- Custom Cursor JavaScript END -->
   
