@@ -291,56 +291,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "promotion_blocks_PN4ckn": {
-      "type": "promotion-blocks",
-      "blocks": {
-        "promotion_xakJNA": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-09-09_at_18.39.45.png",
-            "title": "Fertility",
-            "button_text": "Explore",
-            "button_link": ""
-          }
-        },
-        "promotion_Ezmefb": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-09-09_at_18.40.51.png",
-            "title": "Metabolism",
-            "button_text": "Explore",
-            "button_link": ""
-          }
-        },
-        "promotion_p4DVfe": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot2024-08-25at19.45.21.png",
-            "title": "Mood",
-            "button_text": "Explore",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "promotion_xakJNA",
-        "promotion_Ezmefb",
-        "promotion_p4DVfe"
-      ],
-      "custom_css": [
-        ".section-promotion-blocks {background-color: #1b3def !important;}"
-      ],
-      "settings": {
-        "mobile_swipe": true,
-        "image_ratio": "square",
-        "column_spacing": "medium",
-        "color_bg": "#ffffff",
-        "color_text": "#1b3def",
-        "color_link": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
     "rich_text_HpJCVc": {
       "type": "rich-text",
       "blocks": {
@@ -409,6 +359,56 @@
         "color_text": "#1b3def",
         "color_links": "#ffffff",
         "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "promotion_blocks_PN4ckn": {
+      "type": "promotion-blocks",
+      "blocks": {
+        "promotion_xakJNA": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-09-09_at_18.39.45.png",
+            "title": "Fertility",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        },
+        "promotion_Ezmefb": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot_2024-09-09_at_18.40.51.png",
+            "title": "Metabolism",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        },
+        "promotion_p4DVfe": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Screenshot2024-08-25at19.45.21.png",
+            "title": "Mood",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promotion_xakJNA",
+        "promotion_Ezmefb",
+        "promotion_p4DVfe"
+      ],
+      "custom_css": [
+        ".section-promotion-blocks {background-color: #1b3def !important;}"
+      ],
+      "settings": {
+        "mobile_swipe": true,
+        "image_ratio": "square",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_link": "#1b3def",
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
@@ -1303,9 +1303,9 @@
     "testimonials_ncYmHF",
     "featured_collection_mxheen",
     "multicolumn_PHpnpy",
-    "promotion_blocks_PN4ckn",
     "rich_text_HpJCVc",
     "rich_text_zTWM4w",
+    "promotion_blocks_PN4ckn",
     "scrolling_content_WUGfcA",
     "video_pdBgr8",
     "image_with_text_C9a98T",
