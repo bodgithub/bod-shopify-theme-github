@@ -52,6 +52,37 @@
         "disable_bottom_spacing": true
       }
     },
+    "rich_text_HpJCVc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_nJFhJ9": {
+          "type": "heading",
+          "settings": {
+            "text": "Did you know? Your metabolism affects your entire body|—not just your weight|",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nJFhJ9"
+      ],
+      "custom_css": [
+        ".rich-text__inner {max-width: 780px;}"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3": {
       "type": "slideshow",
       "blocks": {
@@ -288,38 +319,6 @@
         "color_text": "#ffffff",
         "color_links": "#ffffff",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "rich_text_HpJCVc": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_nJFhJ9": {
-          "type": "heading",
-          "settings": {
-            "text": "Did you know? Your metabolism affects your entire body—|not just your weight|",
-            "marker_style": "style1",
-            "size": "h2",
-            "marker_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading_nJFhJ9"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".rich-text__inner {max-width: 780px;}"
-      ],
-      "settings": {
-        "text_width": "medium",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_heading": "#1B3DEF",
-        "color_text": "#1b3def",
-        "color_links": "#ffffff",
-        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
@@ -1298,12 +1297,12 @@
   },
   "order": [
     "image_with_text_overlay_zjqnjJ",
+    "rich_text_HpJCVc",
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "image_with_text_r96Axa",
     "testimonials_ncYmHF",
     "featured_collection_mxheen",
     "multicolumn_PHpnpy",
-    "rich_text_HpJCVc",
     "rich_text_zTWM4w",
     "promotion_blocks_PN4ckn",
     "scrolling_content_WUGfcA",
