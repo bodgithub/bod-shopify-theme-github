@@ -156,6 +156,37 @@
         "disable_bottom_spacing": true
       }
     },
+    "rich_text_HpJCVc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_nJFhJ9": {
+          "type": "heading",
+          "settings": {
+            "text": "Did you know? Your metabolism affects your entire body|—not just your weight|",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nJFhJ9"
+      ],
+      "custom_css": [
+        ".rich-text__inner {max-width: 780px; background-color:#1b3def;}"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#1b3def",
+        "color_heading": "#ffffff",
+        "color_text": "#ffffff",
+        "color_links": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
     "multicolumn_PHpnpy": {
       "type": "multicolumn",
       "blocks": {
@@ -165,7 +196,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h1><strong>Did you know?<\/strong><\/h1>",
+            "text": "<h1><strong>Did you know? Your metabolism influences your entire body <\/strong><em><strong>not just your weight<\/strong><\/em><\/h1>",
             "link_label": "",
             "link": ""
           }
@@ -291,37 +322,6 @@
         "marker_color": "#fd6262",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
-      }
-    },
-    "rich_text_HpJCVc": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_nJFhJ9": {
-          "type": "heading",
-          "settings": {
-            "text": "Did you know? Your metabolism affects your entire body|—not just your weight|",
-            "marker_style": "style1",
-            "size": "h1",
-            "marker_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading_nJFhJ9"
-      ],
-      "custom_css": [
-        ".rich-text__inner {max-width: 780px;}"
-      ],
-      "settings": {
-        "text_width": "medium",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_heading": "#1B3DEF",
-        "color_text": "#1b3def",
-        "color_links": "#ffffff",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
       }
     },
     "rich_text_zTWM4w": {
@@ -1301,10 +1301,10 @@
     "image_with_text_overlay_zjqnjJ",
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "image_with_text_r96Axa",
+    "rich_text_HpJCVc",
     "multicolumn_PHpnpy",
     "testimonials_ncYmHF",
     "featured_collection_mxheen",
-    "rich_text_HpJCVc",
     "rich_text_zTWM4w",
     "promotion_blocks_PN4ckn",
     "scrolling_content_WUGfcA",
