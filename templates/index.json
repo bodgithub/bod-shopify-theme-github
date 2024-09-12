@@ -134,7 +134,6 @@
         "heading_rjkAPY",
         "text_eeg3Xh"
       ],
-      "disabled": true,
       "custom_css": [
         ".image-with-text--content {padding: 0px 130px 0px 35px;}"
       ],
@@ -153,57 +152,6 @@
         "color_text": "#1b3def",
         "color_border": "#1b3def",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "multicolumn_PHpnpy": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_WnDFcf": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h1><strong>Did you know? Your metabolism influences your entire body <\/strong><em><strong>not just your weight<\/strong><\/em><\/h1>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_4fnRDe": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "Over 50% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ<\/span>  It’s not ‘just a weight issue’.",
-            "text": "",
-            "link_label": "Learn more",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_WnDFcf",
-        "column_4fnRDe"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".multicolumn {background-color: #1b3def !important; padding: 100px 0 30px 0;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#ffffff",
-        "marker_color": "#ffffff",
-        "color_text": "#ffffff",
-        "color_links": "#ffffff",
-        "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
@@ -258,7 +206,6 @@
         "quote_QyYCE3",
         "quote_arHRAy"
       ],
-      "disabled": true,
       "custom_css": [
         ".testimonials--author {line-height: 1.4em;}"
       ],
@@ -292,6 +239,56 @@
         "marker_color": "#fd6262",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
+      }
+    },
+    "multicolumn_PHpnpy": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_WnDFcf": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h1><strong>Did you know?<\/strong><\/h1>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_4fnRDe": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "Over 50% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ<\/span>  It’s not ‘just a weight issue’.",
+            "text": "",
+            "link_label": "Learn more",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_WnDFcf",
+        "column_4fnRDe"
+      ],
+      "custom_css": [
+        ".multicolumn {background-color: #1b3def !important; padding: 100px 0 30px 0;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#ffffff",
+        "marker_color": "#ffffff",
+        "color_text": "#ffffff",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     },
     "rich_text_zTWM4w": {
@@ -349,6 +346,7 @@
       "block_order": [
         "heading_nJFhJ9"
       ],
+      "disabled": true,
       "custom_css": [
         ".rich-text__inner {max-width: 780px; background-color: #1b3def;}"
       ],
@@ -400,6 +398,7 @@
         "promotion_Ezmefb",
         "promotion_p4DVfe"
       ],
+      "disabled": true,
       "custom_css": [
         ".section-promotion-blocks {background-color: #1b3def !important;}"
       ],
@@ -1302,9 +1301,9 @@
     "image_with_text_overlay_zjqnjJ",
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "image_with_text_r96Axa",
-    "multicolumn_PHpnpy",
     "testimonials_ncYmHF",
     "featured_collection_mxheen",
+    "multicolumn_PHpnpy",
     "rich_text_zTWM4w",
     "rich_text_HpJCVc",
     "promotion_blocks_PN4ckn",
