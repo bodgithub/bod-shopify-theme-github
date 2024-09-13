@@ -4223,3 +4223,12 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 .fade-out {
     opacity: 0;
 }
+
+#animated-text {
+    transition: opacity 0.6s ease;
+}
+
+h2 {
+    visibility: visible;
+    opacity: 1;
+}
