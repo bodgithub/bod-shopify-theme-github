@@ -1160,7 +1160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // This script rotates the word 'hormones' in the heading to 'mood' and 'metabolism'
 document.addEventListener('DOMContentLoaded', function() {
-    var words = ['hormones', 'mood', 'metabolism'];
+    var words = ['hormonal health', 'mood', 'metabolism'];
     var i = 0;
     var textElement = document.getElementById('animated-text');
     var deservesElement = document.getElementById('deserves-text');
