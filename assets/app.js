@@ -1164,21 +1164,20 @@ document.addEventListener('DOMContentLoaded', function() {
     var i = 0;
     var textElement = document.getElementById('animated-text');
 
-    // GSAP Animation settings for the rising effect
+    // GSAP Animation settings for flashing off and gradually reappearing
     function animateText(newWord) {
-        // Animate text going up (rise effect) from a lower starting point
+        // Quick flash off (fade-out)
         gsap.to(textElement, { 
-            y: 50, // Moves text down further
             opacity: 0, 
-            duration: 0.3, // Faster fade out
+            duration: 0.2, // Quick fade-out for flash effect
             onComplete: function() {
                 // Change the text after fading out
                 textElement.innerText = newWord;
 
-                // Animate text rising up and fading in
+                // Gradually reappear from bottom up with increasing opacity
                 gsap.fromTo(textElement, 
-                    { y: 50, opacity: 0 }, // Start from lower position (y: 50)
-                    { y: 0, opacity: 1, duration: 0.3 } // Moves up and fades in faster
+                    { y: 30, opacity: 0 }, // Start from below and fully transparent
+                    { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' } // Gradually rise up and fade in
                 );
             }
         });
@@ -1196,6 +1195,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Change the word every 2 seconds (faster cycle)
     setInterval(changeWord, 2000);
 });
-
 // End of 'hormones' 'mood' and 'metabolism'
 
