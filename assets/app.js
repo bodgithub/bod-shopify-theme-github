@@ -1188,7 +1188,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function changeWord() {
         var currentWord = words[i];
-        var deservesText = currentWord === 'hormones' ? 'deserve' : 'deserves';
+        var deservesText = currentWord === 'hormonal health' ? 'deserve' : 'deserves';
 
         // Apply animation
         animateText(currentWord, deservesText);
