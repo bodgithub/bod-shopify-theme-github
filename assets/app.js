@@ -1158,30 +1158,41 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// This script rotates the word 'hormones' in the heading to 'mood' and 'metabolism'
 document.addEventListener('DOMContentLoaded', function() {
-    // Array containing the words to rotate
     var words = ['hormones', 'mood', 'metabolism'];
     var i = 0;
-    
-    // Get the HTML elements for the changing word and the static part of the sentence
     var textElement = document.getElementById('animated-text');
     var deservesElement = document.getElementById('deserves-text');
 
-    // Function to change the word and handle the correct form of "deserve"
+    // Function to change the word with animation
     function changeWord() {
-        var currentWord = words[i];
-        textElement.innerText = currentWord;
+        // Fade out the text first
+        textElement.classList.add('fade-out');
+        deservesElement.classList.add('fade-out');
 
-        // Change "deserves" to "deserve" if the word is "hormones"
-        if (currentWord === 'hormones') {
-            deservesElement.innerText = 'deserves';
-        } else {
-            deservesElement.innerText = 'deserve';
-        }
+        // After fading out, change the word and adjust "deserve/deserves"
+        setTimeout(function() {
+            var currentWord = words[i];
+            textElement.innerText = currentWord;
+            
+            // Handle "deserve" vs "deserves" based on the word
+            if (currentWord === 'hormones') {
+                deservesElement.innerText = 'deserve'; // Now "deserve" for "hormones"
+            } else {
+                deservesElement.innerText = 'deserves'; // "deserves" for "mood" and "metabolism"
+            }
 
-        i = (i + 1) % words.length; // Loop back to the first word after the last one
+            // Fade the text back in
+            textElement.classList.remove('fade-out');
+            deservesElement.classList.remove('fade-out');
+
+            i = (i + 1) % words.length;
+        }, 500); // 500ms timeout matches the fade-out animation duration
     }
 
     // Change the word every 3 seconds
     setInterval(changeWord, 3000);
 });
+// End of 'hormones' 'mood' and 'metabolism'
+
