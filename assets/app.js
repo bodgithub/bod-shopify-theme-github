@@ -1158,24 +1158,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// This script rotates the word 'hormones' in the heading to 'mood' and 'metabolism'
-// Wait for the page to fully load before running the script
 document.addEventListener('DOMContentLoaded', function() {
     // Array containing the words to rotate
     var words = ['hormones', 'mood', 'metabolism'];
     var i = 0;
     
-    // Get the HTML element where the text will change
+    // Get the HTML elements for the changing word and the static part of the sentence
     var textElement = document.getElementById('animated-text');
+    var deservesElement = document.getElementById('deserves-text');
 
-    // Function to change the word in the heading
+    // Function to change the word and handle the correct form of "deserve"
     function changeWord() {
-        textElement.innerText = words[i];
+        var currentWord = words[i];
+        textElement.innerText = currentWord;
+
+        // Change "deserve" to "deserves" if the word is "hormones"
+        if (currentWord === 'hormones') {
+            deservesElement.innerText = 'deserves';
+        } else {
+            deservesElement.innerText = 'deserve';
+        }
+
         i = (i + 1) % words.length; // Loop back to the first word after the last one
     }
 
-    // Change the word every 2 seconds
-    setInterval(changeWord, 2000);
+    // Change the word every 3 seconds
+    setInterval(changeWord, 3000);
 });
-// End of 'hormones' 'mood' and 'metabolism' script
-
