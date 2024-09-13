@@ -1165,34 +1165,32 @@ document.addEventListener('DOMContentLoaded', function() {
     var textElement = document.getElementById('animated-text');
     var deservesElement = document.getElementById('deserves-text');
 
-    // Function to change the word with animation
+    // GSAP Animation settings
+    function animateText(newWord, newDeserveText) {
+        // Fade out
+        gsap.to([textElement, deservesElement], {opacity: 0, duration: 0.5, onComplete: function() {
+            // Change the text after fading out
+            textElement.innerText = newWord;
+            deservesElement.innerText = newDeserveText;
+
+            // Fade back in
+            gsap.to([textElement, deservesElement], {opacity: 1, duration: 0.5});
+        }});
+    }
+
     function changeWord() {
-        // Fade out the text first
-        textElement.classList.add('fade-out');
-        deservesElement.classList.add('fade-out');
+        var currentWord = words[i];
+        var deservesText = currentWord === 'hormones' ? 'deserve' : 'deserves';
 
-        // After fading out, change the word and adjust "deserve/deserves"
-        setTimeout(function() {
-            var currentWord = words[i];
-            textElement.innerText = currentWord;
-            
-            // Handle "deserve" vs "deserves" based on the word
-            if (currentWord === 'hormones') {
-                deservesElement.innerText = 'deserve'; // Now "deserve" for "hormones"
-            } else {
-                deservesElement.innerText = 'deserves'; // "deserves" for "mood" and "metabolism"
-            }
+        // Apply animation
+        animateText(currentWord, deservesText);
 
-            // Fade the text back in
-            textElement.classList.remove('fade-out');
-            deservesElement.classList.remove('fade-out');
-
-            i = (i + 1) % words.length;
-        }, 500); // 500ms timeout matches the fade-out animation duration
+        i = (i + 1) % words.length; // Loop back to the first word after the last one
     }
 
     // Change the word every 3 seconds
     setInterval(changeWord, 3000);
 });
+
 // End of 'hormones' 'mood' and 'metabolism'
 
