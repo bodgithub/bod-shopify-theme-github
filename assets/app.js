@@ -1166,6 +1166,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // GSAP Animation settings for flashing off and gradually reappearing
     function animateText(newWord) {
+        // Ensure the element is visible before starting the animation
+        textElement.style.visibility = 'visible';
+
         // Quick flash off (fade-out)
         gsap.to(textElement, { 
             opacity: 0, 
