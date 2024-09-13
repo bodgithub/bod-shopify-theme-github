@@ -1156,3 +1156,17 @@ document.addEventListener('DOMContentLoaded', () => {
     new FooterMenuToggle();
   }
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var words = ['hormones', 'mood', 'metabolism'];
+    var i = 0;
+    var textElement = document.getElementById('animated-text');
+
+    function changeWord() {
+        textElement.innerText = words[i];
+        i = (i + 1) % words.length;
+    }
+
+    setInterval(changeWord, 2000); // Change word every 2 seconds
+});
