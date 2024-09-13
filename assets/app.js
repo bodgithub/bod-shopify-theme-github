@@ -1166,69 +1166,31 @@ document.addEventListener('DOMContentLoaded', function() {
     var textElement = document.getElementById('animated-text');
     var titleElement = document.querySelector('h2'); // Target the entire title
 
-    // GSAP animation to re-animate the entire title
+    // GSAP animation for the entire title (like page load)
     function animateTitle() {
-        // Prepare to run the same animation that runs when the page loads
+        // Re-animate the title the same way it animates on page load
         gsap.fromTo(titleElement, 
-            { y: 50, opacity: 0 }, // Start below and hidden
-            { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out' } // Rise up and fade in
+            { y: 50, opacity: 0 }, // Start with the title below and hidden
+            { y: 0, opacity: 1, duration: 1, ease: 'power2.out' } // Bring the title back with fade and rise effect
         );
     }
 
-    // Function to change the word and re-trigger the full title animation
+    // Function to change the word and re-trigger the title animation
     function changeWord() {
         var currentWord = words[i];
         
         // Change the word in the sentence
         textElement.innerText = currentWord;
         
-        // Re-animate the entire title (sentence) after the word change
+        // Re-trigger the entire title animation
         animateTitle();
 
-        i = (i + 1) % words.length; // Loop back to the first word after the last one
+        i = (i + 1) % words.length; // Loop through the words
     }
 
-    // Change the word every 3 seconds
+    // Change the word every 3 seconds and trigger the animation
     setInterval(changeWord, 3000);
 });
-document.addEventListener('DOMContentLoaded', function() {
-    var words = ['hormones', 'mood', 'metabolism'];
-    var i = 0;
-    var textElement = document.getElementById('animated-text');
 
-    // GSAP Animation settings for flashing off and gradually reappearing
-    function animateText(newWord) {
-        // Ensure the element is visible before starting the animation
-        textElement.style.visibility = 'visible';
-
-        // Quick flash off (fade-out)
-        gsap.to(textElement, { 
-            opacity: 0, 
-            duration: 0.2, // Quick fade-out for flash effect
-            onComplete: function() {
-                // Change the text after fading out
-                textElement.innerText = newWord;
-
-                // Gradually reappear from bottom up with increasing opacity
-                gsap.fromTo(textElement, 
-                    { y: 30, opacity: 0 }, // Start from below and fully transparent
-                    { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' } // Gradually rise up and fade in
-                );
-            }
-        });
-    }
-
-    function changeWord() {
-        var currentWord = words[i];
-
-        // Apply animation to the current word only
-        animateText(currentWord);
-
-        i = (i + 1) % words.length; // Loop back to the first word after the last one
-    }
-
-    // Change the word every 2 seconds (faster cycle)
-    setInterval(changeWord, 2000);
-});
 // End of 'hormones' 'mood' and 'metabolism'
 
