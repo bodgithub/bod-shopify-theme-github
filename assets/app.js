@@ -1163,24 +1163,22 @@ document.addEventListener('DOMContentLoaded', function() {
     var words = ['hormonal health', 'mood', 'metabolism'];
     var i = 0;
     var textElement = document.getElementById('animated-text');
-    var deservesElement = document.getElementById('deserves-text');
 
     // GSAP Animation settings for the rising effect
-    function animateText(newWord, newDeserveText) {
-        // Animate text going up (rise effect)
-        gsap.to([textElement, deservesElement], { 
-            y: 20, // Moves text down first (to create a starting point for the rise effect)
+    function animateText(newWord) {
+        // Animate text going up (rise effect) from a lower starting point
+        gsap.to(textElement, { 
+            y: 50, // Moves text down further
             opacity: 0, 
-            duration: 0.5, 
+            duration: 0.3, // Faster fade out
             onComplete: function() {
                 // Change the text after fading out
                 textElement.innerText = newWord;
-                deservesElement.innerText = newDeserveText;
 
                 // Animate text rising up and fading in
-                gsap.fromTo([textElement, deservesElement], 
-                    { y: 20, opacity: 0 }, // Starts below and hidden
-                    { y: 0, opacity: 1, duration: 0.5 } // Moves up and fades in
+                gsap.fromTo(textElement, 
+                    { y: 50, opacity: 0 }, // Start from lower position (y: 50)
+                    { y: 0, opacity: 1, duration: 0.3 } // Moves up and fades in faster
                 );
             }
         });
@@ -1188,16 +1186,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function changeWord() {
         var currentWord = words[i];
-        var deservesText = currentWord === 'hormonal health' ? 'deserve' : 'deserves';
 
-        // Apply animation
-        animateText(currentWord, deservesText);
+        // Apply animation to the current word only
+        animateText(currentWord);
 
         i = (i + 1) % words.length; // Loop back to the first word after the last one
     }
 
-    // Change the word every 3 seconds
-    setInterval(changeWord, 3000);
+    // Change the word every 2 seconds (faster cycle)
+    setInterval(changeWord, 2000);
 });
 
 // End of 'hormones' 'mood' and 'metabolism'
