@@ -1165,17 +1165,25 @@ document.addEventListener('DOMContentLoaded', function() {
     var textElement = document.getElementById('animated-text');
     var deservesElement = document.getElementById('deserves-text');
 
-    // GSAP Animation settings
+    // GSAP Animation settings for the rising effect
     function animateText(newWord, newDeserveText) {
-        // Fade out
-        gsap.to([textElement, deservesElement], {opacity: 0, duration: 0.5, onComplete: function() {
-            // Change the text after fading out
-            textElement.innerText = newWord;
-            deservesElement.innerText = newDeserveText;
+        // Animate text going up (rise effect)
+        gsap.to([textElement, deservesElement], { 
+            y: 20, // Moves text down first (to create a starting point for the rise effect)
+            opacity: 0, 
+            duration: 0.5, 
+            onComplete: function() {
+                // Change the text after fading out
+                textElement.innerText = newWord;
+                deservesElement.innerText = newDeserveText;
 
-            // Fade back in
-            gsap.to([textElement, deservesElement], {opacity: 1, duration: 0.5});
-        }});
+                // Animate text rising up and fading in
+                gsap.fromTo([textElement, deservesElement], 
+                    { y: 20, opacity: 0 }, // Starts below and hidden
+                    { y: 0, opacity: 1, duration: 0.5 } // Moves up and fades in
+                );
+            }
+        });
     }
 
     function changeWord() {
