@@ -1172,11 +1172,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var currentWord = words[i];
         textElement.innerText = currentWord;
 
-        // Change "deserve" to "deserves" if the word is "hormones"
+        // Change "deserves" to "deserve" if the word is "hormones"
         if (currentWord === 'hormones') {
-            deservesElement.innerText = 'deserves';
-        } else {
             deservesElement.innerText = 'deserve';
+        } else {
+            deservesElement.innerText = 'deserves';
         }
 
         i = (i + 1) % words.length; // Loop back to the first word after the last one
