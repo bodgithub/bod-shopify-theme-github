@@ -4213,3 +4213,8 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 .tooltip:hover {
     cursor: none;
 }
+
+#animated-text {
+    transition: opacity 0.5s ease-in-out;
+}
+
