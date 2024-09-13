@@ -4214,7 +4214,12 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     cursor: none;
 }
 
-#animated-text {
+#animated-text, #deserves-text {
+    display: inline-block;
     transition: opacity 0.5s ease-in-out;
+    opacity: 1;
 }
 
+.fade-out {
+    opacity: 0;
+}
