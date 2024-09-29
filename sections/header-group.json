@@ -116,8 +116,7 @@
         ".header.transparent--true:not(:hover):not(.is-sticky) .thb-full-menu > li > a {color: #ffffff00 !important;}",
         ".thb-secondary-area .thb-header-right {color: #ffffff00 !important;}",
         ".thb-secondary-area-item {margin-right: 20px;}",
-        "/* Hide the button on mobile, show only on desktop */.desktop-only {display: inline-block; /* Ensures the button shows on desktop */}",
-        "@media screen and (max-width: 767px) {.desktop-only {display: none; /* Hide the button on mobile screens */ }}"
+        " /* Hide the button on mobile */@media screen and (max-width: 767px) {.desktop-only {display: none; /* Hide the button on mobile screens */ }}"
       ],
       "settings": {
         "sticky_header": true,
