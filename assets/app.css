@@ -2416,8 +2416,8 @@ h6,
     width: 19px;
     height: 19px;
     border-radius: 50%;
-    background: var(--color-accent);
-    color: var(--color-header-bg, #fff);
+    background: /*var(--color-accent)*/ none;
+    color: /*var(--color-header-bg, #fff)*/ var(--color-accent);
     position: absolute;
     top: -8px;
     right: -12px; }
