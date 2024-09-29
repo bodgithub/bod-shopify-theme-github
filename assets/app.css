@@ -4229,12 +4229,7 @@ h2 {
     visibility: visible;
     opacity: 1;
 }
-.thb-secondary-area {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: nowrap; /* Prevent elements from wrapping */
-}
+
 
 .thb-secondary-area-item {
   margin-right: 20px;
