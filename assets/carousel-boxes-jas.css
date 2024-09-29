@@ -5,7 +5,6 @@
 .toggle-box {
   isolation: isolate;
   border-radius: var(--block-border-radius, 16px);
-  margin-left:100px;
 }
 
 .toggle-box {
@@ -19,8 +18,7 @@
   white-space: nowrap;
   padding: 0 15px; /* Padding added for alignment */
   max-width: 100%;
-  margin-left: 0px; /* Offset margin to allow boxes to touch the edge when scrolling */
-  margin-right: 0px;
+  margin-left: -100px; /* Offset margin to allow boxes to touch the edge when scrolling */
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Hide the scrollbar for all browsers */
 }
@@ -29,6 +27,10 @@
   display: none; /* Hide scrollbar for Webkit-based browsers */
 }
 
+/* Ensure first toggle-box has margin-left */
+.toggle-box:nth-child(1) {
+  margin-left: 100px;
+}
 
 .toggle-box {
   display: inline-block;
