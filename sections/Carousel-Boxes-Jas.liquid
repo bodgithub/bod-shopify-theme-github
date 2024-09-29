@@ -80,13 +80,13 @@
 
 
 <!-- Editable button text -->
-<button class="toggle-box--button">{{ block.settings.button_text | default: 'Toggle' }} {% if block.settings.link_label != blank %}
+<button class="toggle-box--button">{{ block.settings.Heading | default: 'Toggle' }} {% if block.settings.link_label != blank %}
     {%- if block.settings.use_text_button -%}
         {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
     {%- else -%}
         <a href="{{ block.settings.link }}" title="{{ block.settings.link_label | escape }}" role="link" class="text-button {{ class }} text-button--has-icon" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} {% if block %}{{ block.shopify_attributes }}{% endif %}>
             {{ block.settings.link_label }} 
-            <span>{% render 'svg-icons' with 'thb-caret-right' %}</span>
+            <span>{% render 'svg-icons' with 'thb-caret-right' %}</a>
         </a>
     {% endif %}
 {% endif %}</button>
