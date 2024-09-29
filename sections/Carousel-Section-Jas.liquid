@@ -40,15 +40,15 @@
 .carousel-item {
   flex: 0 0 auto;
   border-radius: 15px;
-  background-size: cover;
-  background-position: center;
+  background-size: cover; /* Ensures the image covers the full container */
+  background-position: center; /* Centers the background image */
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   position: relative;
+  overflow: hidden; /* Ensures no content overflows */
 }
-
 .carousel-content {
   width: 100%;
   text-align: center;
