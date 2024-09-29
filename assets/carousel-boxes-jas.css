@@ -7,12 +7,12 @@
   border-radius: var(--block-border-radius, 16px);
 }
 
-.toggle-box2 {
+.toggle-box {
   box-shadow: var(--block-shadows);
 }
 
 /* Padding added to allow for snapping space */
-.toggle-boxes2--inner {
+.toggle-boxes--inner {
   display: flex;
   align-items: flex-start;
   overflow-x: auto;
@@ -24,11 +24,11 @@
   scroll-padding-left: 83px; /* Add snapping space */
 }
 
-.toggle-boxes2--inner::-webkit-scrollbar {
+.toggle-boxes--inner::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Webkit-based browsers */
 }
 
-.toggle-box2 {
+.toggle-box {
   display: inline-block;
   flex: 0 0 auto; /* Ensure the boxes don't shrink and keep their width */
   width: calc(90vw - 30px); /* Adjust width for mobile view */
@@ -37,23 +37,23 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .toggle-box2 {
+  .toggle-box {
     width: calc(50vw - 30px); /* Adjust width for larger screens */
   }
 }
 
 @media only screen and (min-width: 1068px) {
-  .toggle-box2 {
+  .toggle-box {
     width: calc(33.33vw - 30px); /* Adjust width for desktop view */
   }
 }
 
 /* Mobile specific swipe functionality */
 @media only screen and (max-width: 767px) {
-  .toggle-boxes2--inner {
+  .toggle-boxes--inner {
     grid-gap: 10px;
   }
-  .toggle-boxes2--inner.swipe-on-mobile {
+  .toggle-boxes--inner.swipe-on-mobile {
     grid-auto-flow: column;
     grid-auto-columns: minmax(calc(90vw - 15px), 1fr);
     overflow-x: auto;
@@ -61,22 +61,22 @@
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
-  .toggle-boxes2--inner.swipe-on-mobile::-webkit-scrollbar {
+  .toggle-boxes--inner.swipe-on-mobile::-webkit-scrollbar {
     display: none;
   }
-  .toggle-boxes2--inner.swipe-on-mobile .toggle-box2 {
+  .toggle-boxes--inner.swipe-on-mobile .toggle-box {
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
 }
 
-.toggle-box2 {
+.toggle-box {
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
 
-.toggle-box2--content {
+.toggle-box--content {
   font-size: 0.9375rem;
   position: absolute;
   left: 0;
@@ -91,25 +91,25 @@
   transition: height 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
 }
 
-.toggle-box2--content a {
+.toggle-box--content a {
   color: var(--color-accent);
 }
 
-.toggle-box2--content-inner {
+.toggle-box--content-inner {
   height: calc(100% - 60px);
 }
 
-.toggle-box2--content-inner div {
+.toggle-box--content-inner div {
   height: 100%;
   padding: 30px;
   overflow-y: auto;
 }
 
-.toggle-box2--content-inner div > *:last-child {
+.toggle-box--content-inner div > *:last-child {
   margin-bottom: 0;
 }
 
-.toggle-box2--image > a {
+.toggle-box--image > a {
   display: block;
   position: absolute;
   left: 0;
@@ -118,15 +118,15 @@
   top: 0;
 }
 
-.toggle-box2[open] .toggle-box2--content {
+.toggle-box[open] .toggle-box--content {
   height: 97%;
 }
 
-.toggle-box2[open] button span {
+.toggle-box[open] button span {
   transform: translateY(-50%) rotate(135deg);
 }
 
-.toggle-box2 button {
+.toggle-box button {
   width: 100%;
   display: flex;
   align-items: center;
@@ -140,7 +140,7 @@
   z-index: 15;
 }
 
-.toggle-box2 button span {
+.toggle-box button span {
   width: 14px;
   height: 14px;
   position: absolute;
@@ -149,8 +149,8 @@
   transform: translateY(-50%);
 }
 
-.toggle-box2 button span:before,
-.toggle-box2 button span:after {
+.toggle-box button span:before,
+.toggle-box button span:after {
   content: "";
   background: var(--color-heading, #1a1c1d);
   position: absolute;
@@ -161,7 +161,7 @@
   border-radius: 1px;
 }
 
-.toggle-box2 button span:after {
+.toggle-box button span:after {
   top: 0;
   left: 6px;
   width: 2px;
