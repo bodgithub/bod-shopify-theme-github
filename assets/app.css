@@ -4231,8 +4231,14 @@ h2 {
     opacity: 1;
 }
 
-   thb-secondary-area-item thb-secondary-myaccount:hover {
-      animation: none !important; }
+a:hover .thb-item-count,
+a:focus .thb-item-count {
+  animation: none !important;   /* Disable any animation */
+  transition: none !important;  /* Disable any transition */
+  background-color: inherit !important;  /* Prevent background changes */
+  color: inherit !important;    /* Prevent text color changes */
+  text-decoration: none !important;  /* Prevent underline or any decoration */
+}
 
 
 
