@@ -51,8 +51,25 @@
     	</a>
   	{%- endif -%}
 
-  	<!-- Add the Button to the Right -->
-  	<a class="button" href="/your-button-link" role="button" title="Get inositol">
-    	<span>Call to Action</span>
-  	</a>
+  		<!-- Add the Button to the Right with custom styles -->
+<a class="button" href="{{ section.settings.button_url | default: '/your-button-link' }}" 
+    role="button" 
+    title="{{ section.settings.button_text | default: 'Get Inositol' }}"
+    style="
+        background-color: {{ section.settings.button_background_color | default: color_text }};
+        color: {{ section.settings.button_font_color | default: color_bg }};
+        border: {{ section.settings.button_border_width | default: '2px' }} solid {{ section.settings.button_border_color | default: color_text }};
+    ">
+  <span>{{ section.settings.button_text | default: 'Call to Action' }}</span>
+</a>
+
+
+    <style>
+        .button:hover {
+            background-color: {{ section.settings.button_hover_background_color | default: color_text | color_darken: 7 }};
+        }
+    </style>
 </div>
+
+
+
