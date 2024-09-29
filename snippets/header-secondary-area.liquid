@@ -40,7 +40,18 @@
     	</a>
   	{%- endif -%}
 
-  	<!-- Add the Button to the Right with custom styles, visible only on desktop -->
+  	<!-- Conditionally show Cart only when an item is added -->
+  	{%- if cart.item_count > 0 -%}
+    	<a class="thb-secondary-area-item thb-secondary-cart" href="{{ routes.cart_url }}" id="cart-drawer-toggle">
+      		cart
+      		{% comment %}
+      		Icon commented for future use:
+      		<div class="thb-secondary-item-icon">{% render 'svg-icons' with 'cart' %}</div>
+      		{% endcomment %}
+    	</a>
+  	{%- endif -%}
+
+  		<!-- Add the Button to the Right with custom styles, visible only on desktop -->
 <a class="button desktop-only" href="{{ section.settings.button_url | default: '/your-button-link' }}" 
    role="button" 
    title="{{ section.settings.button_text | default: 'Get Inositol' }}"
@@ -49,18 +60,6 @@
        color: {{ section.settings.button_font_color | default: color_bg }};
        border: {{ section.settings.button_border_width | default: '2px' }} solid {{ section.settings.button_border_color | default: color_text }};
    ">
-  <span>{{ section.settings.button_text | default: 'Call to Action' }}</span>
-</a>
-
-  		<!-- Add the Button to the Right with custom styles -->
-<a class="button" href="{{ section.settings.button_url | default: '/your-button-link' }}" 
-    role="button" 
-    title="{{ section.settings.button_text | default: 'Get Inositol' }}"
-    style="
-        background-color: {{ section.settings.button_background_color | default: color_text }};
-        color: {{ section.settings.button_font_color | default: color_bg }};
-        border: {{ section.settings.button_border_width | default: '2px' }} solid {{ section.settings.button_border_color | default: color_text }};
-    ">
   <span>{{ section.settings.button_text | default: 'Call to Action' }}</span>
 </a>
 
