@@ -133,14 +133,6 @@
   z-index: 15;
 }
 
-.toggle-box button span {
-  width: 14px;
-  height: 14px;
-  position: absolute;
-  right: 25px;
-  top: 50%;
-  transform: translateY(-50%);
-}
 
 .text-button {
   display: flex;
