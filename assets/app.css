@@ -4233,15 +4233,7 @@ h2 {
 
 .thb-secondary-area-item.thb-secondary-myaccount:hover,
 .thb-secondary-area-item.thb-secondary-myaccount:focus {
-  background: none !important;  /* Remove background changes */
-  color: inherit !important;     /* Keep the original text color */
-  border: none !important;       /* Remove any border changes */
-  text-decoration: none !important;  /* Remove underline or any text decoration */
-  box-shadow: none !important;   /* Remove shadow effects */
-  animation: none !important;    /* Disable any animations */
-  transition: none !important;   /* Disable any transitions */
-  outline: none !important;      /* Disable outline that appears on focus */
-}
+  display:none;}
 
 
 
