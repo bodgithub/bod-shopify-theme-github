@@ -166,3 +166,7 @@
   width: 2px;
   height: 100%;
 }
+
+.toggle-box:first-child {
+  margin-left: 100px; /* Add margin-left to the first toggle box */
+}
