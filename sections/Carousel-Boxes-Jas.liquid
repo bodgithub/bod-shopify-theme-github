@@ -86,7 +86,7 @@
     {%- else -%}
         <a href="{{ block.settings.link }}" title="{{ block.settings.link_label | escape }}" role="link" class="text-button {{ class }} text-button--has-icon" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} {% if block %}{{ block.shopify_attributes }}{% endif %}>
             {{ block.settings.link_label }} 
-            <span class="caret">{% render 'svg-icons' with 'thb-caret-right' %}</span>
+            <a>{% render 'svg-icons' with 'thb-caret-right' %}</a>
         </a>
     {% endif %}
 {% endif %}</button>
