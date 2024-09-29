@@ -33,273 +33,36 @@
           assign ratio = block.settings.image.aspect_ratio
         endif
       -%}
-      <div class="toggle-box-wrapper">
-        <toggle-box class="toggle-box" {{ block.shopify_attributes }}{% if block.settings.open %} open{%- endif -%}>
-          <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
-            {%- if block.settings.image_link != blank -%}
-            <a href="{{ block.settings.image_link }}">
-            {%- endif -%}
-            {%- if block.settings.image -%}
-              {%- liquid
-                assign sizes = '345x0,690x0'
-              -%}
-              {%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
-            {%- else -%}
-              <div class="thb-placeholder">
-                {{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
-              </div>
-            {%- endif -%}
-            {%- if block.settings.image_link != blank -%}
-            </a>
-            {%- endif -%}
-          </figure>
-          <div class="toggle-box--content rte text-{{ text_alignment }}">
-            <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
-              <div>
-                {% if block.settings.text != blank %}
-                  {{ block.settings.text | newline_to_br }}
-                {% endif %}
-              </div>
-            </scroll-shadow>
-          </div>
-          <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
-        </toggle-box>
+      <div class="toggle-box" {{ block.shopify_attributes }}{% if block.settings.open %} open{%- endif -%}>
+        <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+          {%- if block.settings.image_link != blank -%}
+          <a href="{{ block.settings.image_link }}">
+          {%- endif -%}
+          {%- if block.settings.image -%}
+            {%- liquid
+              assign sizes = '345x0,690x0'
+            -%}
+            {%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
+          {%- else -%}
+            <div class="thb-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.image_link != blank -%}
+          </a>
+          {%- endif -%}
+        </figure>
+        <div class="toggle-box--content rte text-{{ text_alignment }}">
+          <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
+            <div>
+              {% if block.settings.text != blank %}
+                {{ block.settings.text | newline_to_br }}
+              {% endif %}
+            </div>
+          </scroll-shadow>
+        </div>
+        <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
       </div>
     {%- endfor -%}
   </div>
 </div>
-
-{% schema %}
-{
-  "name": "Carousel Boxes Jas",
-  "class": "section-toggle-boxes",
-  "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Toggle boxes",
-      "info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
-    },
-    {
-      "type": "select",
-      "id": "marker_style",
-      "options": [
-        {
-          "value": "style1",
-          "label": "Basic"
-        },
-        {
-          "value": "style2",
-          "label": "Double"
-        },
-        {
-          "value": "style3",
-          "label": "Squiggle"
-        },
-        {
-          "value": "style4",
-          "label": "Zigzag"
-        }
-      ],
-      "default": "style1",
-      "label": "Marker"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Description",
-      "default": "<p>Add a short description for this section</p>"
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "default": 4,
-      "label": "Number of columns on desktop"
-    },
-    {
-      "type": "select",
-      "id": "column_spacing",
-      "options": [
-        {
-          "value": "small",
-          "label": "Small"
-        },
-        {
-          "value": "medium",
-          "label": "Medium"
-        },
-        {
-          "value": "large",
-          "label": "Large"
-        }
-      ],
-      "default": "medium",
-      "label": "Column spacing"
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "Adapt to image"
-        },
-        {
-          "value": "portrait",
-          "label": "Portrait"
-        },
-        {
-          "value": "landscape",
-          "label": "Landscape"
-        },
-        {
-          "value": "square",
-          "label": "Square"
-        }
-      ],
-      "default": "adapt",
-      "label": "Image ratio"
-    },
-    {
-      "type": "checkbox",
-      "id": "mobile_swipe",
-      "default": true,
-      "label": "Enable swipe on mobile"
-    },
-    {
-      "type": "select",
-      "id": "text_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "right",
-          "label": "Right"
-        }
-      ],
-      "default": "left",
-      "label": "Content alignment"
-    },
-    {
-      "type": "header",
-      "content": "Colors"
-    },
-    {
-      "type": "color",
-      "id": "color_bg",
-      "label": "Background",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "color_heading",
-      "label": "Heading",
-      "default": "#1a1c1d"
-    },
-    {
-      "type": "color",
-      "id": "marker_color",
-      "label": "Marker",
-      "default": "#FD6262"
-    },
-    {
-      "type": "color",
-      "id": "color_text",
-      "label": "Text",
-      "default": "#2c2d2e"
-    },
-    {
-      "type": "color",
-      "id": "color_link",
-      "label": "Link",
-      "default": "#3f72e5"
-    },
-    {
-      "type": "header",
-      "content": "Spacing"
-    },
-    {
-      "type": "checkbox",
-      "id": "disable_top_spacing",
-      "default": false,
-      "label": "Remove top spacing"
-    },
-    {
-      "type": "checkbox",
-      "id": "disable_bottom_spacing",
-      "default": false,
-      "label": "Remove bottom spacing"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "box",
-      "name": "Box",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image",
-          "info": "690 x 800 .jpg recommended. Depends on your block content size."
-        },
-        {
-          "id": "image_link",
-          "type": "url",
-          "label": "Image link"
-        },
-        {
-          "type": "header",
-          "content": "Content"
-        },
-        {
-          "type": "checkbox",
-          "id": "open",
-          "default": false,
-          "label": "Open by default"
-        },
-        {
-          "type": "textarea",
-          "id": "heading",
-          "label": "Heading",
-          "default": "Heading"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "default": "<p>Pair text with an image to focus on your chosen image</p>",
-          "label": "Description"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Carousel Boxes Jas",
-      "blocks": [
-        {
-          "type": "box"
-        },
-        {
-          "type": "box"
-        },
-        {
-          "type": "box"
-        },
-        {
-          "type": "box"
-        }
-      ]
-    }
-  ]
-}
-{% endschema %}
