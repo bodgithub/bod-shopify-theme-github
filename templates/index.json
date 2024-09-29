@@ -171,6 +171,60 @@
         "disable_bottom_spacing": false
       }
     },
+    "carousel_section_jas_f8PpX3": {
+      "type": "Carousel-Section-Jas",
+      "blocks": {
+        "carousel_item_7gQXPC": {
+          "type": "carousel_item",
+          "settings": {
+            "badge_label": "",
+            "tile_title": "Hormones",
+            "tile_description": "Balance hormones naturally.",
+            "learn_more_link": "shopify://products/myo-d-chiro-inositol-powder",
+            "learn_more_text": "Learn More",
+            "get_started_link": "shopify://products/myo-d-chiro-inositol-powder",
+            "get_started_text": "Get Started",
+            "image": "shopify://shop_images/Screenshot2024-08-27at11.22.31.png",
+            "image_alt": "Image description"
+          }
+        },
+        "carousel_item_JaW46Y": {
+          "type": "carousel_item",
+          "settings": {
+            "badge_label": "",
+            "tile_title": "Hormones",
+            "tile_description": "Balance hormones naturally.",
+            "learn_more_link": "shopify://products/myo-d-chiro-inositol-powder",
+            "learn_more_text": "Learn More",
+            "get_started_link": "shopify://products/myo-d-chiro-inositol-powder",
+            "get_started_text": "Get Started",
+            "image": "shopify://shop_images/Screenshot2024-08-27at11.22.31.png",
+            "image_alt": "Image description"
+          }
+        },
+        "carousel_item_dDnRfD": {
+          "type": "carousel_item",
+          "settings": {
+            "badge_label": "",
+            "tile_title": "Hormones",
+            "tile_description": "Balance hormones naturally.",
+            "learn_more_link": "shopify://products/myo-d-chiro-inositol-powder",
+            "learn_more_text": "Learn More",
+            "get_started_link": "shopify://products/myo-d-chiro-inositol-powder",
+            "get_started_text": "Get Started",
+            "image": "shopify://shop_images/Screenshot2024-08-27at11.22.31.png",
+            "image_alt": "Image description"
+          }
+        }
+      },
+      "block_order": [
+        "carousel_item_7gQXPC",
+        "carousel_item_JaW46Y",
+        "carousel_item_dDnRfD"
+      ],
+      "settings": {
+      }
+    },
     "multicolumn_PHpnpy": {
       "type": "multicolumn",
       "blocks": {
@@ -1234,29 +1288,6 @@
         "color_text": "#1b3def",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
-      }
-    },
-    "carousel_section_jas_f8PpX3": {
-      "type": "Carousel-Section-Jas",
-      "blocks": {
-        "carousel_item_7gQXPC": {
-          "type": "carousel_item",
-          "settings": {
-            "badge_label": "Hormones",
-            "tile_title": "Title",
-            "tile_description": "Description goes here.",
-            "learn_more_link": "/",
-            "learn_more_text": "Learn more",
-            "get_started_link": "/",
-            "get_started_text": "Get started",
-            "image_alt": "Image description"
-          }
-        }
-      },
-      "block_order": [
-        "carousel_item_7gQXPC"
-      ],
-      "settings": {
       }
     }
   },
