@@ -61,12 +61,19 @@
             </div>
           </scroll-shadow>
         </div>
-        <div class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <button>learn more</button></div>
+        <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+
+        	
+
+        
       </div>
     {%- endfor -%}
   </div>
 </div>
 
+
+
+      
 {% schema %}
 {
   "name": "Toggle boxes",
@@ -276,7 +283,31 @@
           "id": "text",
           "default": "<p>Pair text with an image to focus on your chosen image</p>",
           "label": "Description"
-        }
+        },
+        {
+            "id": "link_label",
+            "type": "text",
+            "label": "Button label",
+            "default": "Explore",
+						"info": "Leave the label blank to hide the button."
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Button link"
+          },
+					{
+						 "type": "checkbox",
+						 "id": "use_text_button",
+						 "label": "Use text button",
+						 "default": false
+					},
+					{
+            "id": "block_link",
+            "type": "url",
+            "label": "Image link",
+						"info": "This will allow you to set a link to whole image."
+          },
       ]
     }
   ],
