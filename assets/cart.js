@@ -44,14 +44,9 @@ class Cart {
   }
   getSectionsToRender() {
     return [{
-      id: 'Cart',
-      section: 'main-cart',
-      selector: '.thb-cart-form'
-    },
-    {
-      id: 'cart-drawer-toggle',
-      section: 'cart-bubble',
-      selector: 'sup'
+     id: 'cart-drawer-toggle',
+    section: 'cart-bubble',
+    selector: 'sup'
     }];
   }
   displayErrors(line, message) {
