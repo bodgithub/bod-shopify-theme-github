@@ -33,8 +33,8 @@
           assign ratio = block.settings.image.aspect_ratio
         endif
       -%}
-      <div class="toggle-box" {{ block.shopify_attributes }}{% if block.settings.open %} open{%- endif -%}>
-        <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+      <div class="toggle-box2" {{ block.shopify_attributes }}{% if block.settings.open %} open{%- endif -%}>
+        <figure class="toggle-box2--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
           {%- if block.settings.image_link != blank -%}
           <a href="{{ block.settings.image_link }}">
           {%- endif -%}
@@ -52,8 +52,8 @@
           </a>
           {%- endif -%}
         </figure>
-        <div class="toggle-box--content rte text-{{ text_alignment }}">
-          <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
+        <div class="toggle-box2--content rte text-{{ text_alignment }}">
+          <scroll-shadow class="toggle-box2--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
             <div>
               {% if block.settings.text != blank %}
                 {{ block.settings.text | newline_to_br }}
@@ -80,7 +80,7 @@
 
 
 <!-- Editable button text -->
-<button class="toggle-box">{{ block.settings.button_text | default: 'Toggle' }} {% if block.settings.link_label != blank %}
+<button class="toggle-box2--button">{{ block.settings.button_text | default: 'Toggle' }} {% if block.settings.link_label != blank %}
     {%- if block.settings.use_text_button -%}
         {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
     {%- else -%}
