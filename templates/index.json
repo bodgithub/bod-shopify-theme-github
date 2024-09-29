@@ -429,82 +429,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "scrolling_content_WUGfcA": {
-      "type": "scrolling-content",
-      "blocks": {
-        "section_jEKnWU": {
-          "type": "section",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-08-25_at_19.11.31_52501cfb-1496-48b8-b744-1e18b7e68cea.png",
-            "badge": "",
-            "subheading": "",
-            "heading": "|Hormones & Fertility|",
-            "marker_style": "style1",
-            "heading_size": "small",
-            "content": "<p>Your metabolism plays a crucial role in producing and regulating hormones. Imbalances can lead to issues like PCOS, irregular menstrual cycles and difficulty getting pregnant.</p>",
-            "description_size": "h4",
-            "button_text": "Learn more",
-            "button_link": "",
-            "marker_color": "#ffffff",
-            "color_bg_badge": "#ffffff",
-            "color_badge": "#ffffff"
-          }
-        },
-        "section_8eicDr": {
-          "type": "section",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-08-11_at_15.07.52.png",
-            "badge": "",
-            "subheading": "",
-            "heading": "|Mood & Anxiety|",
-            "marker_style": "style1",
-            "heading_size": "small",
-            "content": "<p>Energy metabolism supports the production of important neurotransmitters like serotonin and dopamine, crucial for mood regulation.</p>",
-            "description_size": "h3",
-            "button_text": "Learn more",
-            "button_link": "",
-            "marker_color": "#ffffff",
-            "color_bg_badge": "#3f72e5",
-            "color_badge": "#ffffff"
-          }
-        },
-        "section_kj4xgy": {
-          "type": "section",
-          "settings": {
-            "image": "shopify://shop_images/BODOLOGY_July_24_7321.png",
-            "badge": "",
-            "subheading": "",
-            "heading": "|Weight & Metabolism|",
-            "marker_style": "style1",
-            "heading_size": "small",
-            "content": "<p>Your metabolism affects how efficiently your body converts food into energy, influencing appetite and fat storage beyond simple calorie counting.</p>",
-            "description_size": "h3",
-            "button_text": "Shop Now",
-            "button_link": "",
-            "marker_color": "#ffffff",
-            "color_bg_badge": "#3f72e5",
-            "color_badge": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "section_jEKnWU",
-        "section_8eicDr",
-        "section_kj4xgy"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_layout": "text_first",
-        "mobile_swipe": true,
-        "dots": true,
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
     "video_pdBgr8": {
       "type": "video",
       "settings": {
@@ -1311,6 +1235,62 @@
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
+    },
+    "scrollable_columns_jas_g9HCPB": {
+      "type": "scrollable-columns-jas",
+      "blocks": {
+        "block_CiPEm3": {
+          "type": "block",
+          "settings": {
+            "title": "Hormones",
+            "subtitle": "Add a subtitle",
+            "link": "",
+            "button_label": "Learn more",
+            "block_image": "shopify://shop_images/4.jpg"
+          }
+        },
+        "block_wRp7xC": {
+          "type": "block",
+          "settings": {
+            "title": "Mood",
+            "subtitle": "Add a subtitle",
+            "link": "",
+            "button_label": "Learn more",
+            "block_image": "shopify://shop_images/3.png"
+          }
+        },
+        "block_7KTkiW": {
+          "type": "block",
+          "settings": {
+            "title": "Metabolism",
+            "subtitle": "Add a subtitle",
+            "link": "",
+            "button_label": "Learn more",
+            "block_image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png"
+          }
+        },
+        "block_HXiRCt": {
+          "type": "block",
+          "settings": {
+            "title": "Fertility",
+            "subtitle": "Add a subtitle",
+            "link": "",
+            "button_label": "Learn more",
+            "block_image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png"
+          }
+        }
+      },
+      "block_order": [
+        "block_CiPEm3",
+        "block_wRp7xC",
+        "block_7KTkiW",
+        "block_HXiRCt"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "font_color": "#000000",
+        "default_image": "shopify://shop_images/5.png"
+      }
     }
   },
   "order": [
@@ -1323,7 +1303,6 @@
     "rich_text_zTWM4w",
     "rich_text_HpJCVc",
     "promotion_blocks_PN4ckn",
-    "scrolling_content_WUGfcA",
     "video_pdBgr8",
     "image_with_text_C9a98T",
     "multicolumn_bQBAHG",
@@ -1336,6 +1315,7 @@
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "b41c8677-3d35-4893-895f-bca590f9e711",
     "multicolumn_8A3tT7",
-    "customer_reviews_dfQHK7"
+    "customer_reviews_dfQHK7",
+    "scrollable_columns_jas_g9HCPB"
   ]
 }
