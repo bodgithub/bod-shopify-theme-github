@@ -1,6 +1,125 @@
+<div class="carousel-container">
+  <div class="carousel">
+    {% for block in section.blocks %}
+    <div class="carousel-item">
+      <label class="carousel-badge">{{ block.settings.badge_label }}</label>
+      <div class="carousel-content">
+        <h2>{{ block.settings.tile_title }}</h2>
+        <p>{{ block.settings.tile_description }}</p>
+        <div class="carousel-buttons">
+          <a href="{{ block.settings.learn_more_link }}" class="btn btn-primary">
+            {{ block.settings.learn_more_text }}
+          </a>
+          <a href="{{ block.settings.get_started_link }}" class="btn btn-secondary">
+            {{ block.settings.get_started_text }}
+          </a>
+        </div>
+        <div class="carousel-image">
+          <img src="{{ block.settings.image | img_url: 'large' }}" alt="{{ block.settings.image_alt }}">
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.carousel-container {
+  display: flex;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 80%;
+  padding: 20px;
+}
+
+.carousel-buttons .btn {
+  display: inline-block;
+  margin: 5px;
+}
+
+.carousel-image img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Custom Carousel Jas",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "carousel_item",
+      "name": "Carousel Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "badge_label",
+          "label": "Badge Label",
+          "default": "Category"
+        },
+        {
+          "type": "text",
+          "id": "tile_title",
+          "label": "Tile Title",
+          "default": "Title"
+        },
+        {
+          "type": "text",
+          "id": "tile_description",
+          "label": "Tile Description",
+          "default": "Description goes here."
+        },
+        {
+          "type": "url",
+          "id": "learn_more_link",
+          "label": "Learn More Link",
+          "default": "/"
+        },
+        {
+          "type": "text",
+          "id": "learn_more_text",
+          "label": "Learn More Text",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "get_started_link",
+          "label": "Get Started Link",
+          "default": "/"
+        },
+        {
+          "type": "text",
+          "id": "get_started_text",
+          "label": "Get Started Text",
+          "default": "Get started"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text",
+          "default": "Image description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carousel Section Jas",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
+
