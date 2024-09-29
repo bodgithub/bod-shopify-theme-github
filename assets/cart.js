@@ -51,7 +51,7 @@ class Cart {
     {
       id: 'cart-drawer-toggle',
       section: 'cart-bubble',
-      selector: '.thb-item-count'
+      selector: 'sup'
     }];
   }
   displayErrors(line, message) {
