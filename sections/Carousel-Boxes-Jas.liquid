@@ -33,43 +33,45 @@
           assign ratio = block.settings.image.aspect_ratio
         endif
       -%}
-      <toggle-box class="toggle-box" {{ block.shopify_attributes }}{% if block.settings.open %} open{%- endif -%}>
-        <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
-          {%- if block.settings.image_link != blank -%}
-          <a href="{{ block.settings.image_link }}">
-          {%- endif -%}
-          {%- if block.settings.image -%}
-            {%- liquid
-              assign sizes = '345x0,690x0'
-            -%}
-            {%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
-          {%- else -%}
-            <div class="thb-placeholder">
-              {{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
-            </div>
-          {%- endif -%}
-          {%- if block.settings.image_link != blank -%}
-          </a>
-          {%- endif -%}
-        </figure>
-        <div class="toggle-box--content rte text-{{ text_alignment }}">
-          <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
-            <div>
-              {% if block.settings.text != blank %}
-                {{ block.settings.text | newline_to_br }}
-              {% endif %}
-            </div>
-          </scroll-shadow>
-        </div>
-        <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
-      </toggle-box>
+      <div class="toggle-box-wrapper">
+        <toggle-box class="toggle-box" {{ block.shopify_attributes }}{% if block.settings.open %} open{%- endif -%}>
+          <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+            {%- if block.settings.image_link != blank -%}
+            <a href="{{ block.settings.image_link }}">
+            {%- endif -%}
+            {%- if block.settings.image -%}
+              {%- liquid
+                assign sizes = '345x0,690x0'
+              -%}
+              {%- render 'responsive-image', image: block.settings.image, sizes: sizes -%}
+            {%- else -%}
+              <div class="thb-placeholder">
+                {{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.image_link != blank -%}
+            </a>
+            {%- endif -%}
+          </figure>
+          <div class="toggle-box--content rte text-{{ text_alignment }}">
+            <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
+              <div>
+                {% if block.settings.text != blank %}
+                  {{ block.settings.text | newline_to_br }}
+                {% endif %}
+              </div>
+            </scroll-shadow>
+          </div>
+          <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+        </toggle-box>
+      </div>
     {%- endfor -%}
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Toggle boxes",
+  "name": "Carousel Boxes Jas",
   "class": "section-toggle-boxes",
   "settings": [
     {
@@ -282,7 +284,7 @@
   ],
   "presets": [
     {
-      "name": "Toggle boxes",
+      "name": "Carousel Boxes Jas",
       "blocks": [
         {
           "type": "box"
