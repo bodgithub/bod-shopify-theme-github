@@ -137,11 +137,18 @@
           "settings": {
             "text": "<p>Inositol works through <em>metabolic</em> pathways to support hormone and mood health, <em>naturally</em>.</p>\n<h6>\n<strong>It's the new way to balance</strong>.</h6>"
           }
+        },
+        "image_gddwin": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Inositol_Supplement_List_1.png"
+          }
         }
       },
       "block_order": [
         "heading_rjkAPY",
-        "text_eeg3Xh"
+        "text_eeg3Xh",
+        "image_gddwin"
       ],
       "custom_css": [
         ".image-with-text--content {padding: 0px 130px 0px 35px;}"
