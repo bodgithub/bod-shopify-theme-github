@@ -32,7 +32,7 @@
 	{%- if shop.customer_accounts_enabled -%}
 		<!-- Replace Account Icon with Text -->
     	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}">
-      		account
+      		Account
       		{% comment %}
       		Icon commented for future use:
       		{%- render 'svg-icons' with 'myaccount' -%}
@@ -41,7 +41,7 @@
   	{%- endif -%}
 
   	<!-- Show cart as text -->
-  	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle" title="{{ 'general.cart_drawer.title' | t }}"><span>Cart</span><sup>{{ cart.item_count }}</sup>
+  	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle" title="{{ 'general.cart_drawer.title' | t }}">Cart <sup>{{ cart.item_count }}</sup>
 
 
 
