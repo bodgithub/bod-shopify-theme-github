@@ -61,162 +61,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "carousel_boxes_jas_baGN4Y": {
-      "type": "Carousel-Boxes-Jas",
-      "blocks": {
-        "box_7cXPTM": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
-            "image_link": "",
-            "open": false,
-            "heading": "Fertility",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_y7XhfB": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
-            "image_link": "",
-            "open": false,
-            "heading": "PCOS",
-            "text": "",
-            "link_label": "Explore",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_jWAhhq": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
-            "image_link": "",
-            "open": false,
-            "heading": "Hormones",
-            "text": "",
-            "link_label": "Explore",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_eVKh38": {
-          "type": "box",
-          "settings": {
-            "image_link": "",
-            "open": false,
-            "heading": "Anxiety",
-            "text": "",
-            "link_label": "Explore",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_NLhUR6": {
-          "type": "box",
-          "settings": {
-            "image_link": "",
-            "open": false,
-            "heading": "Weight",
-            "text": "",
-            "link_label": "Explore",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "box_7cXPTM",
-        "box_y7XhfB",
-        "box_jWAhhq",
-        "box_eVKh38",
-        "box_NLhUR6"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "columns_desktop": 4,
-        "column_spacing": "medium",
-        "image_ratio": "adapt",
-        "mobile_swipe": true,
-        "text_alignment": "left",
-        "color_bg": "#ffffff",
-        "color_heading": "#1a1c1d",
-        "marker_color": "#fd6262",
-        "color_text": "#1b3def",
-        "color_link": "#3f72e5",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3": {
-      "type": "slideshow",
-      "blocks": {
-        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-08-25_at_20.08.22.png",
-            "mobile_image": "shopify://shop_images/Bodology-Hormone-Banner.png",
-            "slide_link": "",
-            "video_background": false,
-            "badge_text": "",
-            "subheading": "",
-            "heading": "Your hormones deserve better",
-            "heading_size": "h1",
-            "content": "",
-            "description_size": "medium",
-            "content_position": "middle-center",
-            "text_alignment": "center",
-            "content_size": "medium",
-            "color_slidebg": "rgba(0,0,0,0)",
-            "color_slidebg_opacity": 0,
-            "color_slidebg_blur": 0,
-            "color_text": "#1b3def",
-            "color_badge_bg": "#ffffff",
-            "color_badge_text": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 100,
-            "overlay_gradient": "linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0) 100%)",
-            "button_1_text": "Start your Inositol journey",
-            "button_1_color": "white",
-            "button_1_link": "",
-            "use_text_button_1": false,
-            "button_2_text": "",
-            "button_2_color": "white",
-            "button_2_link": "",
-            "use_text_button_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
-        "@media only screen and (min-width: 768px) {.slideshow--full-width-true .slideshow__slide-inner .slideshow__slide-content {margin-top: -112px !important; }}"
-      ],
-      "settings": {
-        "desktop_height": "desktop-height-full",
-        "mobile_height": "mobile-height-500",
-        "full_width": true,
-        "autoplay": false,
-        "autoplay_length": 5,
-        "transition": "zoom",
-        "controls": "arrows",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
     "image_with_text_r96Axa": {
       "type": "image-with-text",
       "blocks": {
@@ -314,6 +158,165 @@
         "marker_color": "#ffffff",
         "color_text": "#ffffff",
         "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "carousel_boxes_jas_baGN4Y": {
+      "type": "Carousel-Boxes-Jas",
+      "blocks": {
+        "box_7cXPTM": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
+            "image_link": "",
+            "open": false,
+            "heading": "Fertility",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_y7XhfB": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
+            "image_link": "",
+            "open": false,
+            "heading": "PCOS",
+            "text": "",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_jWAhhq": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
+            "image_link": "",
+            "open": false,
+            "heading": "Hormones",
+            "text": "",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_eVKh38": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Anxiety",
+            "text": "",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_NLhUR6": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Weight",
+            "text": "",
+            "link_label": "Explore",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "box_7cXPTM",
+        "box_y7XhfB",
+        "box_jWAhhq",
+        "box_eVKh38",
+        "box_NLhUR6"
+      ],
+      "custom_css": [
+        ".section-toggle-boxes {background-color: #1b3def !important;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 4,
+        "column_spacing": "medium",
+        "image_ratio": "adapt",
+        "mobile_swipe": true,
+        "text_alignment": "left",
+        "color_bg": "#ffffff",
+        "color_heading": "#1a1c1d",
+        "marker_color": "#fd6262",
+        "color_text": "#1b3def",
+        "color_link": "#3f72e5",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3": {
+      "type": "slideshow",
+      "blocks": {
+        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-08-25_at_20.08.22.png",
+            "mobile_image": "shopify://shop_images/Bodology-Hormone-Banner.png",
+            "slide_link": "",
+            "video_background": false,
+            "badge_text": "",
+            "subheading": "",
+            "heading": "Your hormones deserve better",
+            "heading_size": "h1",
+            "content": "",
+            "description_size": "medium",
+            "content_position": "middle-center",
+            "text_alignment": "center",
+            "content_size": "medium",
+            "color_slidebg": "rgba(0,0,0,0)",
+            "color_slidebg_opacity": 0,
+            "color_slidebg_blur": 0,
+            "color_text": "#1b3def",
+            "color_badge_bg": "#ffffff",
+            "color_badge_text": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 100,
+            "overlay_gradient": "linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0) 100%)",
+            "button_1_text": "Start your Inositol journey",
+            "button_1_color": "white",
+            "button_1_link": "",
+            "use_text_button_1": false,
+            "button_2_text": "",
+            "button_2_color": "white",
+            "button_2_link": "",
+            "use_text_button_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
+        "@media only screen and (min-width: 768px) {.slideshow--full-width-true .slideshow__slide-inner .slideshow__slide-content {margin-top: -112px !important; }}"
+      ],
+      "settings": {
+        "desktop_height": "desktop-height-full",
+        "mobile_height": "mobile-height-500",
+        "full_width": true,
+        "autoplay": false,
+        "autoplay_length": 5,
+        "transition": "zoom",
+        "controls": "arrows",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -1152,10 +1155,10 @@
   },
   "order": [
     "image_with_text_overlay_zjqnjJ",
-    "carousel_boxes_jas_baGN4Y",
-    "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "image_with_text_r96Axa",
     "multicolumn_PHpnpy",
+    "carousel_boxes_jas_baGN4Y",
+    "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "testimonials_ncYmHF",
     "featured_collection_mxheen",
     "rich_text_zTWM4w",
