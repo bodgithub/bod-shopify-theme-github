@@ -383,7 +383,7 @@
       ".product-grid-container {margin-top: -20px !important;}",
       ".breadcrumbs {display: none;}",
       "@media only screen and (min-width: 1068px) {.product-grid-container {grid-template-columns: minmax(55%, 900px) clamp(340px, 35%, 400px) !important; } .product-gallery-container .product-image-container .product-images {max-width: 100% !important; }}",
-      "@media only screen and (min-width: 767px) {.button .desktop-only {display:none !important; }}"
+      "@media only screen and (min-width: 767px) {.button .desktop-only {display: none !important; }}"
     ]
   }
 }
