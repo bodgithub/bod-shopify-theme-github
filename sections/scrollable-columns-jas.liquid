@@ -1,6 +1,99 @@
+
+<section style="background-color: {{ section.settings.bg_color }};">
+  <div class="two-column-section" style="display: flex; height: 100vh;">
+    <!-- Left Column (Scrollable Content) -->
+    <div class="left-column" style="flex: 1; overflow-y: scroll; height: 100vh; padding: 20px;">
+      {% for block in section.blocks %}
+      <div class="scrollable-item" style="background-color: {{ section.settings.bg_color }}; border-radius: 12px; margin-bottom: 20px; padding: 20px; border: 1px solid #ddd;">
+        <h2 style="color: {{ section.settings.font_color }};">{{ block.settings.title }}</h2>
+        <p style="color: {{ section.settings.font_color }};">{{ block.settings.subtitle }}</p>
+        <a href="{{ block.settings.link }}" class="button" style="color: {{ section.settings.font_color }}; padding: 10px 15px; display: inline-block; background-color: #000; color: #fff; border-radius: 5px;">{{ block.settings.button_label }}</a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Right Column (Image Display) -->
+    <div class="right-column" style="flex: 1; padding: 20px;">
+      <img id="associated-image" src="{{ section.settings.default_image | img_url: 'large' }}" alt="Associated Image" style="max-width: 100%;">
+    </div>
+  </div>
+</section>
+
+<script>
+  // JavaScript to handle image change when scrolling through items
+  document.querySelectorAll('.scrollable-item').forEach(function(item, index) {
+    item.addEventListener('mouseover', function() {
+      const images = {{ section.blocks | map: 'settings.block_image' | json }};
+      const image = images[index];
+      document.getElementById('associated-image').src = image || '{{ section.settings.default_image | img_url: "large" }}';
+    });
+  });
+</script>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Scrollable Column Jas",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "font_color",
+      "label": "Font color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "id": "default_image",
+      "label": "Default Image",
+      "info": "Image to show initially on the right side"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Content Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Add a Title"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Add a subtitle"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Button link"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Learn More"
+        },
+        {
+          "type": "image_picker",
+          "id": "block_image",
+          "label": "Associated Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrollable Column Jas",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
