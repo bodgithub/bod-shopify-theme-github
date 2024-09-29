@@ -1,7 +1,7 @@
 <div class="carousel-container" style="padding: {{ section.settings.padding }};">
   <div class="carousel">
     {% for block in section.blocks %}
-    <div class="carousel-item" style="width: {{ section.settings.item_width }}; height: {{ section.settings.item_height }}; padding: {{ section.settings.item_padding }};">
+    <div class="carousel-item" style="width: {{ section.settings.item_width }}px; height: {{ section.settings.item_height }}px; padding: {{ section.settings.item_padding }};">
       <div class="carousel-image" style="background-image: url('{{ block.settings.image | img_url: 'large' }}');">
         <div class="carousel-content">
           <h2 style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }};">{{ block.settings.tile_title }}</h2>
