@@ -7,7 +7,7 @@
   border-radius: var(--block-border-radius, 16px);
 }
 
-.toggle-box {
+.toggle-box2 {
   box-shadow: var(--block-shadows);
 }
 
@@ -28,7 +28,7 @@
   display: none; /* Hide scrollbar for Webkit-based browsers */
 }
 
-.toggle-box {
+.toggle-box2 {
   display: inline-block;
   flex: 0 0 auto; /* Ensure the boxes don't shrink and keep their width */
   width: calc(90vw - 30px); /* Adjust width for mobile view */
@@ -37,13 +37,13 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .toggle-box {
+  .toggle-box2 {
     width: calc(50vw - 30px); /* Adjust width for larger screens */
   }
 }
 
 @media only screen and (min-width: 1068px) {
-  .toggle-box {
+  .toggle-box2 {
     width: calc(33.33vw - 30px); /* Adjust width for desktop view */
   }
 }
@@ -64,19 +64,19 @@
   .toggle-boxes--inner.swipe-on-mobile::-webkit-scrollbar {
     display: none;
   }
-  .toggle-boxes--inner.swipe-on-mobile .toggle-box {
+  .toggle-boxes--inner.swipe-on-mobile .toggle-box2 {
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
 }
 
-.toggle-box {
+.toggle-box2 {
   overflow: hidden;
   position: relative;
   margin-bottom: 10px;
 }
 
-.toggle-box--content {
+.toggle-box2--content {
   font-size: 0.9375rem;
   position: absolute;
   left: 0;
@@ -91,25 +91,25 @@
   transition: height 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
 }
 
-.toggle-box--content a {
+.toggle-box2--content a {
   color: var(--color-accent);
 }
 
-.toggle-box--content-inner {
+.toggle-box2--content-inner {
   height: calc(100% - 60px);
 }
 
-.toggle-box--content-inner div {
+.toggle-box2--content-inner div {
   height: 100%;
   padding: 30px;
   overflow-y: auto;
 }
 
-.toggle-box--content-inner div > *:last-child {
+.toggle-box2--content-inner div > *:last-child {
   margin-bottom: 0;
 }
 
-.toggle-box--image > a {
+.toggle-box2--image > a {
   display: block;
   position: absolute;
   left: 0;
@@ -118,15 +118,15 @@
   top: 0;
 }
 
-.toggle-box[open] .toggle-box--content {
+.toggle-box2[open] .toggle-box2--content {
   height: 97%;
 }
 
-.toggle-box[open] button span {
+.toggle-box2[open] button span {
   transform: translateY(-50%) rotate(135deg);
 }
 
-.toggle-box button {
+.toggle-box2 button {
   width: 100%;
   display: flex;
   align-items: center;
@@ -140,7 +140,7 @@
   z-index: 15;
 }
 
-.toggle-box button span {
+.toggle-box2 button span {
   width: 14px;
   height: 14px;
   position: absolute;
@@ -149,8 +149,8 @@
   transform: translateY(-50%);
 }
 
-.toggle-box button span:before,
-.toggle-box button span:after {
+.toggle-box2 button span:before,
+.toggle-box2 button span:after {
   content: "";
   background: var(--color-heading, #1a1c1d);
   position: absolute;
@@ -161,7 +161,7 @@
   border-radius: 1px;
 }
 
-.toggle-box button span:after {
+.toggle-box2 button span:after {
   top: 0;
   left: 6px;
   width: 2px;
