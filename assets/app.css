@@ -4233,14 +4233,7 @@ h2 {
 
 
 
-.button {
-  padding: 10px 20px;
-  background-color: var(--solid-button-background);
-  color: var(--solid-button-label);
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
+
 
 .button:hover {
   background-color: var(--solid-button-background-hover);

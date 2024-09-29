@@ -114,7 +114,8 @@
       ],
       "custom_css": [
         ".header.transparent--true:not(:hover):not(.is-sticky) .thb-full-menu > li > a {color: #ffffff00 !important;}",
-        ".thb-secondary-area .thb-header-right {color: #ffffff00 !important;}"
+        ".thb-secondary-area .thb-header-right {color: #ffffff00 !important;}",
+        ".thb-secondary-area-item {margin-right: 20px;}"
       ],
       "settings": {
         "sticky_header": true,
