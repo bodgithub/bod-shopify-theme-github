@@ -4229,3 +4229,34 @@ h2 {
     visibility: visible;
     opacity: 1;
 }
+
+.thb-secondary-area {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: var(--solid-button-background);
+  color: var(--solid-button-label);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: auto; /* Align the button to the right */
+}
+
+.button:hover {
+  background-color: var(--solid-button-background-hover);
+}
+
+.thb-secondary-area-item {
+  margin-right: 20px;
+}
+
+/* Hide icons but leave in comments for future use */
+.thb-secondary-myaccount img,
+.thb-secondary-cart img {
+  display: none;
+}
+
