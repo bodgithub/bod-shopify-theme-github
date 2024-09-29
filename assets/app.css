@@ -4243,18 +4243,20 @@ h2 {
 }
 
 .toggle-box {
-  flex: 0 0 auto;
-  width: calc(100vw / var(--toggle-columns)); /* Set width based on column settings */
+   /* flex: 0 0 auto;
+ width: calc(100vw / var(--toggle-columns));Set width based on column settings 
+  
+  
+  */
   scroll-snap-align: center;
-  box-sizing: border-box;
   position: relative;
-  padding: 20px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.toggle-box--image {
+/*.toggle-box--image {
   flex-grow: 1;
   background-size: cover;
   background-position: center;
@@ -4265,6 +4267,7 @@ h2 {
   background-color: var(--color-bg);
   padding: 15px;
 }
+
 
 .toggle-box--button {
   display: inline-block;
@@ -4277,6 +4280,10 @@ h2 {
   text-transform: uppercase;
   font-weight: bold;
 }
+*/
+
+
+
 
 .swipe-on-mobile {
   overflow-x: scroll;
