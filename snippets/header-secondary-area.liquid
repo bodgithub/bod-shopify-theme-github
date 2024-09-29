@@ -43,7 +43,7 @@
   	<!-- Show cart as text -->
 
 <a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle">
-  Cart<span class="thb-item-count">
+  Cart<span class="thb-secondary-myaccount thb-item-count">
       {%- if cart.item_count < 1 -%} {%- else -%}{{ cart.item_count }}{%- endif -%}</span></a>
 
 
