@@ -167,3 +167,13 @@
   width: 2px;
   height: 100%;
 }
+.text-button {
+  display: flex;
+  justify-content: flex-end; /* Aligns the button text and icon to the right */
+  align-items: center; /* Vertically aligns the text and icon */
+  width: 100%; /* Ensure the button takes the full width of its container */
+}
+
+.text-button span {
+  margin-left: 10px; /* Add some space between the text and the icon */
+}
