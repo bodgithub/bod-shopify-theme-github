@@ -29,9 +29,6 @@
   display: none; /* Hide scrollbar for Webkit-based browsers */
 }
 
-.toggle-box:first-child {
-  margin-left: 0px !important; /* Add margin-left to the first toggle box */
-}
 
 .toggle-box {
   display: inline-block;
