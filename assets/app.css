@@ -4245,24 +4245,21 @@ h2 {
 .toggle-box {
    /* flex: 0 0 auto;
  width: calc(100vw / var(--toggle-columns));Set width based on column settings 
-  
-  
   */
   scroll-snap-align: center;
   position: relative;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/*.toggle-box--image {
+.toggle-box--image {
   flex-grow: 1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
-
+/*
 .toggle-box--content {
   background-color: var(--color-bg);
   padding: 15px;
