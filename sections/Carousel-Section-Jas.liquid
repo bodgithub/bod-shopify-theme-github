@@ -1,30 +1,33 @@
-<div class="carousel-container" style="padding: {{ section.settings.padding }};">
-  <div class="carousel">
-    {% for block in section.blocks %}
-    <div class="carousel-item" style="width: {{ section.settings.item_width }}px; height: {{ section.settings.item_height }}px; padding: {{ section.settings.item_padding }};">
-      <div class="carousel-image" style="background-image: url('{{ block.settings.image | img_url: 'large' }}');">
-        <div class="carousel-content">
-          <h2 style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }};">{{ block.settings.tile_title }}</h2>
-          <p style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }};">{{ block.settings.tile_description }}</p>
-          <div class="carousel-buttons">
-            <a href="{{ block.settings.learn_more_link }}" class="btn btn-primary" style="color: {{ section.settings.button_text_color }};">
-              {{ block.settings.learn_more_text }}
-            </a>
-            <a href="{{ block.settings.get_started_link }}" class="btn btn-secondary" style="color: {{ section.settings.button_text_color }};">
-              {{ block.settings.get_started_text }}
-            </a>
+<div class="row">
+  <div class="small-12 columns">
+    <div class="carousel-container" style="padding: {{ section.settings.padding }};">
+      <div class="carousel">
+        {% for block in section.blocks %}
+        <div class="carousel-item" style="width: {{ section.settings.item_width }}px; height: {{ section.settings.item_height }}px; padding: {{ section.settings.item_padding }};">
+          <div class="carousel-image" style="background-image: url('{{ block.settings.image | img_url: 'large' }}');">
+            <div class="carousel-content rich-text__inner">
+              <span class="inline-badge" style="--badge-bg: {{ block.settings.color_bg }};--badge-text: {{ block.settings.color_text }}">{{ block.settings.tile_title }}</span>
+              <p class="subheading" style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }}px;">{{ block.settings.tile_description }}</p>
+              <div class="carousel-buttons">
+                <a href="{{ block.settings.learn_more_link }}" class="button" style="color: {{ section.settings.button_text_color }};">
+                  {{ block.settings.learn_more_text }}
+                </a>
+                <a href="{{ block.settings.get_started_link }}" class="button button--secondary" style="color: {{ section.settings.button_text_color }};">
+                  {{ block.settings.get_started_text }}
+                </a>
+              </div>
+            </div>
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
-    {% endfor %}
   </div>
 </div>
 
 <style>
 .carousel-container {
   overflow: hidden;
-  background-color: #f5f5f5;
 }
 
 .carousel {
@@ -60,52 +63,22 @@
   gap: 10px;
 }
 
-.carousel-buttons .btn {
+.carousel-buttons .button {
   padding: 10px 20px;
-  border-radius: 50px;
   font-weight: 600;
   text-transform: uppercase;
   cursor: pointer;
   border: none;
+  border-radius: 50px;
 }
 
-.btn-primary {
-  background-color: #fff;
-  border: 1px solid #8a3a34;
-}
-
-.btn-secondary {
+.button--secondary {
   background-color: transparent;
   border: 1px solid #333;
 }
+
 </style>
 
-
-
-<style>
-.carousel-container {
-  display: flex;
-  overflow: auto;
-  scroll-snap-type: x mandatory;
-}
-
-.carousel-item {
-  scroll-snap-align: start;
-  flex: 0 0 auto;
-  width: 80%;
-  padding: 20px;
-}
-
-.carousel-buttons .btn {
-  display: inline-block;
-  margin: 5px;
-}
-
-.carousel-image img {
-  max-width: 100%;
-  height: auto;
-}
-</style>
 
 
 {% schema %}
