@@ -1,7 +1,7 @@
 /**
  *  @class
  *  @function ToggleBoxes
- */
+
 if (!customElements.get('toggle-box')) {
   class ToggleBox extends HTMLElement {
 
@@ -19,3 +19,5 @@ if (!customElements.get('toggle-box')) {
   }
   customElements.define('toggle-box', ToggleBox);
 }
+
+ */
