@@ -4232,11 +4232,11 @@ h2 {
 
 
 
-
-
-
-.button:hover {
-  background-color: var(--solid-button-background-hover);
+@media (min-width:480px) {
+  .button .desktop-only {
+    display: none !important;
+  }
 }
+
 
 
