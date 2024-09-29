@@ -1,14 +1,26 @@
+.toggle-box button span {
+  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+}
+
+.toggle-box {
+  isolation: isolate;
+  border-radius: var(--block-border-radius, 16px);
+}
+
+.toggle-box {
+  box-shadow: var(--block-shadows);
+}
+
 .toggle-boxes--inner {
   display: flex;
   align-items: flex-start;
   overflow-x: auto;
   white-space: nowrap;
-  padding: 0 15px;
+  padding: 0 15px; /* Padding added for alignment */
   max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: -100px; /* Offset margin to allow boxes to touch the edge when scrolling */
   scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Hide scrollbar for all browsers */
+  scrollbar-width: none; /* Hide the scrollbar for all browsers */
 }
 
 .toggle-boxes--inner::-webkit-scrollbar {
@@ -23,7 +35,7 @@
   display: inline-block;
   flex: 0 0 auto; /* Ensure the boxes don't shrink and keep their width */
   width: calc(90vw - 30px); /* Adjust width for mobile view */
-  margin-right: 15px; /* Add space between the boxes */
+  margin-right: 15px; /* Space between the boxes */
   scroll-snap-align: start; /* Snap each box to the left when scrolling */
 }
 
