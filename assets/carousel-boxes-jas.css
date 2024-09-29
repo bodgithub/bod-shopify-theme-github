@@ -119,6 +119,28 @@
 }
 
 
+.toggle-box button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
+  height: 60px;
+  padding: 10px 30px;
+  background: var(--color-bg, #fff);
+  color: var(--color-heading, #1a1c1d);
+  font-weight: var(--font-body-medium-weight, 500);
+  position: relative;
+  z-index: 15;
+}
+
+.toggle-box button span {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
 .text-button {
   display: flex;
