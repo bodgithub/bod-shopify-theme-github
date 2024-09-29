@@ -35,7 +35,7 @@
     .toggle-boxes--inner {
       grid-gap: 10px; } }
   @media only screen and (max-width: 767px) {
-    .toggle-boxes--inner /*.swipe-on-mobile*/ {
+    .toggle-boxes--inner.swipe-on-mobile {
       grid-auto-flow: column;
       grid-auto-columns: minmax(calc(90vw - 15px), 1fr);
       overflow-x: auto;
