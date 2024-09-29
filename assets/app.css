@@ -4231,15 +4231,7 @@ h2 {
 }
 
 
-.desktop-only {
-  display: inline-block; /* Ensures the button shows on desktop */
-}
 
-@media screen and (max-width: 767px) {
-  .desktop-only {
-    display: none; /* Hide the button on mobile screens */
-  }
-}
 
 
 
