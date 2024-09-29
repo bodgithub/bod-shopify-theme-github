@@ -1238,6 +1238,24 @@
     },
     "carousel_section_jas_f8PpX3": {
       "type": "Carousel-Section-Jas",
+      "blocks": {
+        "carousel_item_7gQXPC": {
+          "type": "carousel_item",
+          "settings": {
+            "badge_label": "Hormones",
+            "tile_title": "Title",
+            "tile_description": "Description goes here.",
+            "learn_more_link": "/",
+            "learn_more_text": "Learn more",
+            "get_started_link": "/",
+            "get_started_text": "Get started",
+            "image_alt": "Image description"
+          }
+        }
+      },
+      "block_order": [
+        "carousel_item_7gQXPC"
+      ],
       "settings": {
       }
     }
@@ -1246,6 +1264,7 @@
     "image_with_text_overlay_zjqnjJ",
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "image_with_text_r96Axa",
+    "carousel_section_jas_f8PpX3",
     "multicolumn_PHpnpy",
     "testimonials_ncYmHF",
     "featured_collection_mxheen",
@@ -1264,7 +1283,6 @@
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "b41c8677-3d35-4893-895f-bca590f9e711",
     "multicolumn_8A3tT7",
-    "customer_reviews_dfQHK7",
-    "carousel_section_jas_f8PpX3"
+    "customer_reviews_dfQHK7"
   ]
 }
