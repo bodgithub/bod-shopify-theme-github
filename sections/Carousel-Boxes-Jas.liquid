@@ -61,9 +61,17 @@
             </div>
           </scroll-shadow>
         </div>
-        <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+       {% comment %} <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button> {% endcomment %}
 
-        	
+        	{% if block.settings.link_label != blank %}
+    {%- if block.settings.use_text_button -%}
+        {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'toggle-box--button white' -%}
+    {%- else -%}
+        <a class="button toggle-box--button white"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}</a>
+    {% endif %}
+{% else %}
+    <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+{% endif %}
 
         
       </div>
