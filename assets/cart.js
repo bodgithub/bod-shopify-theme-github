@@ -64,52 +64,51 @@ class Cart {
       .querySelector(selector).innerHTML;
   }
   updateQuantity(line, quantity) {
-
-    this.container.classList.add('cart-disabled');
-    if (line) {
-      this.container.querySelector(`#CartItem-${line}`).classList.add('loading');
-    }
-
-    const body = JSON.stringify({
-      line,
-      quantity,
-      sections: this.getSectionsToRender().map((section) => section.section),
-      sections_url: window.location.pathname
-    });
-    dispatchCustomEvent('line-item:change:start', {
-      quantity: quantity
-    });
-    fetch(`${theme.routes.cart_change_url}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': `application/json`
-      },
-      ...{
-        body
-      }
-    })
-      .then((response) => {
-        return response.text();
-      })
-      .then((state) => {
-        const parsedState = JSON.parse(state);
-
-        if (parsedState.errors) {
-          this.displayErrors(line, parsedState.errors);
-          this.container.classList.remove('cart-disabled');
-          return;
-        }
-        this.renderContents(parsedState, line, false);
-
-        this.container.classList.remove('cart-disabled');
-
-        dispatchCustomEvent('line-item:change:end', {
-          quantity: quantity,
-          cart: parsedState
-        });
-      });
+  this.container.classList.add('cart-disabled');
+  if (line) {
+    this.container.querySelector(`#CartItem-${line}`).classList.add('loading');
   }
+
+  const body = JSON.stringify({
+    line,
+    quantity,
+    sections: this.getSectionsToRender().map((section) => section.section),
+    sections_url: window.location.pathname
+  });
+  dispatchCustomEvent('line-item:change:start', {
+    quantity: quantity
+  });
+
+  fetch(`${theme.routes.cart_change_url}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': `application/json`
+    },
+    body
+  })
+    .then((response) => response.text())
+    .then((state) => {
+      const parsedState = JSON.parse(state);
+
+      console.log(parsedState); // <-- ADD THIS LINE HERE to log the parsedState and verify its contents.
+
+      if (parsedState.errors) {
+        this.displayErrors(line, parsedState.errors);
+        this.container.classList.remove('cart-disabled');
+        return;
+      }
+      
+      this.renderContents(parsedState, line, false);
+      this.container.classList.remove('cart-disabled');
+
+      dispatchCustomEvent('line-item:change:end', {
+        quantity: quantity,
+        cart: parsedState
+      });
+    });
+}
+
   refresh() {
     this.container.classList.add('cart-disabled');
 
