@@ -4238,15 +4238,14 @@ h2 {
   flex-wrap: nowrap;
   overflow-x: auto;
   scroll-behavior: smooth;
+  gap: 15px; /* Adjust the gap between the items */
 }
 
 .toggle-box {
-  flex: 0 0 calc(100% / var(--toggle-columns)); /* Make each box take a fraction of the row */
+  flex: 0 0 calc(100% / var(--toggle-columns)); /* Controls the size of each box */
 }
 
 .swipe-on-mobile {
-  -webkit-overflow-scrolling: touch; /* Better scrolling on mobile */
+  -webkit-overflow-scrolling: touch; /* Mobile touch support */
 }
-
-
 
