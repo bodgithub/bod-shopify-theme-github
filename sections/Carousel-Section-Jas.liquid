@@ -1,26 +1,85 @@
-<div class="carousel-container">
+<div class="carousel-container" style="padding: {{ section.settings.padding }};">
   <div class="carousel">
     {% for block in section.blocks %}
-    <div class="carousel-item">
-      <div class="carousel-image">
-        <img src="{{ block.settings.image | img_url: 'large' }}" alt="{{ block.settings.image_alt }}">
-      </div>
-      <div class="carousel-content">
-        <h2>{{ block.settings.tile_title }}</h2>
-        <p>{{ block.settings.tile_description }}</p>
-        <div class="carousel-buttons">
-          <a href="{{ block.settings.learn_more_link }}" class="btn btn-primary">
-            {{ block.settings.learn_more_text }}
-          </a>
-          <a href="{{ block.settings.get_started_link }}" class="btn btn-secondary">
-            {{ block.settings.get_started_text }}
-          </a>
+    <div class="carousel-item" style="width: {{ section.settings.item_width }}; height: {{ section.settings.item_height }}; padding: {{ section.settings.item_padding }};">
+      <div class="carousel-image" style="background-image: url('{{ block.settings.image | img_url: 'large' }}');">
+        <div class="carousel-content">
+          <h2 style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }};">{{ block.settings.tile_title }}</h2>
+          <p style="color: {{ block.settings.text_color }}; font-size: {{ block.settings.text_size }};">{{ block.settings.tile_description }}</p>
+          <div class="carousel-buttons">
+            <a href="{{ block.settings.learn_more_link }}" class="btn btn-primary" style="color: {{ section.settings.button_text_color }};">
+              {{ block.settings.learn_more_text }}
+            </a>
+            <a href="{{ block.settings.get_started_link }}" class="btn btn-secondary" style="color: {{ section.settings.button_text_color }};">
+              {{ block.settings.get_started_text }}
+            </a>
+          </div>
         </div>
       </div>
     </div>
     {% endfor %}
   </div>
 </div>
+
+<style>
+.carousel-container {
+  overflow: hidden;
+  background-color: #f5f5f5;
+}
+
+.carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+}
+
+.carousel-content {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+
+.carousel-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.carousel-buttons .btn {
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #fff;
+  border: 1px solid #8a3a34;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #333;
+}
+</style>
+
 
 
 <style>
@@ -51,19 +110,42 @@
 
 {% schema %}
 {
-  "name": "Custom Carousel Jas",
-  "settings": [],
+  "name": "Custom Carousel",
+  "settings": [
+    {
+      "type": "number",
+      "id": "item_height",
+      "label": "Item Height (px)",
+      "default": 675
+ 
+
+    },
+    {
+      "type": "number",
+      "id": "item_width",
+      "label": "Item Width (px)",
+      "default": 510
+  
+
+    },
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "Carousel Padding",
+      "default": "40px"
+    },
+    {
+      "type": "text",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    }
+  ],
   "blocks": [
     {
       "type": "carousel_item",
       "name": "Carousel Item",
       "settings": [
-        {
-          "type": "text",
-          "id": "badge_label",
-          "label": "Badge Label",
-          "default": "Category"
-        },
         {
           "type": "text",
           "id": "tile_title",
@@ -75,6 +157,32 @@
           "id": "tile_description",
           "label": "Tile Description",
           "default": "Description goes here."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image Alt Text",
+          "default": "Image description"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "text_size",
+          "label": "Text Size (px)",
+          "default": 16,
+          "min": 12,
+          "max": 36,
+          "unit": "px"
         },
         {
           "type": "url",
@@ -99,24 +207,13 @@
           "id": "get_started_text",
           "label": "Get Started Text",
           "default": "Get started"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "image_alt",
-          "label": "Image Alt Text",
-          "default": "Image description"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Carousel Section Jas",
+      "name": "Carousel Section",
       "category": "Custom"
     }
   ]
