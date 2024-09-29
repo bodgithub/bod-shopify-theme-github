@@ -2,7 +2,9 @@
   <div class="carousel">
     {% for block in section.blocks %}
     <div class="carousel-item">
-      <label class="carousel-badge">{{ block.settings.badge_label }}</label>
+      <div class="carousel-image">
+        <img src="{{ block.settings.image | img_url: 'large' }}" alt="{{ block.settings.image_alt }}">
+      </div>
       <div class="carousel-content">
         <h2>{{ block.settings.tile_title }}</h2>
         <p>{{ block.settings.tile_description }}</p>
@@ -14,14 +16,12 @@
             {{ block.settings.get_started_text }}
           </a>
         </div>
-        <div class="carousel-image">
-          <img src="{{ block.settings.image | img_url: 'large' }}" alt="{{ block.settings.image_alt }}">
-        </div>
       </div>
     </div>
     {% endfor %}
   </div>
 </div>
+
 
 <style>
 .carousel-container {
