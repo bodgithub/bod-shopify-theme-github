@@ -116,7 +116,7 @@
         ".header.transparent--true:not(:hover):not(.is-sticky) .thb-full-menu > li > a {color: #ffffff00 !important;}",
         ".thb-secondary-area .thb-header-right {color: #ffffff00 !important;}",
         ".thb-secondary-area-item {margin-right: 20px;}",
-        " /* Hide the button on mobile */@media screen and (max-width: 767px) {.button .desktop-only {display: none !important; }}"
+        " /* Hide the button on mobile */@media screen and (max-width: 800px) {.button .desktop-only {display: none !important; }}"
       ],
       "settings": {
         "sticky_header": true,
