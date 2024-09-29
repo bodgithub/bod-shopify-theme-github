@@ -5,7 +5,7 @@
 .toggle-box {
   isolation: isolate;
   border-radius: var(--block-border-radius, 16px);
-  left:100px;
+  padding-left:100px;
 }
 
 .toggle-box {
