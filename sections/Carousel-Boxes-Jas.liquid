@@ -81,11 +81,11 @@
     {%- if block.settings.use_text_button -%}
         {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
     {%- else -%}
-        <a class="button white"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}</a>
+        <a href="{{ block.settings.link }}" title="{{ block.settings.link_label | escape }}" role="link" class="text-button {{ class }} text-button--has-icon" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} {% if block %}{{ block.shopify_attributes }}{% endif %}>
+            {{ block.settings.link_label }} 
+            <span>{% render 'svg-icons' with 'thb-caret-right' %}</span>
+        </a>
     {% endif %}
-{% endif %}
-{% if block.settings.block_link != blank %}
-    <a href="{{ block.settings.block_link }}" class="gallery--item-content-link" target="_blank"></a>
 {% endif %}
 
 <!-- Editable button text -->
@@ -313,29 +313,29 @@
           "label": "Description"
         },
         {
-            "id": "link_label",
-            "type": "text",
-            "label": "Button label",
-            "default": "Explore",
-						"info": "Leave the label blank to hide the button."
-          },
-          {
-            "id": "link",
-            "type": "url",
-            "label": "Button link"
-          },
-					{
-						 "type": "checkbox",
-						 "id": "use_text_button",
-						 "label": "Use text button",
-						 "default": false
-					},
-					{
-            "id": "block_link",
-            "type": "url",
-            "label": "Image link",
-						"info": "This will allow you to set a link to whole image."
-          },
+          "id": "link_label",
+          "type": "text",
+          "label": "Button label",
+          "default": "Explore",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_text_button",
+          "label": "Use text button",
+          "default": false
+        },
+        {
+          "id": "block_link",
+          "type": "url",
+          "label": "Image link",
+          "info": "This will allow you to set a link to the whole image."
+        }
       ]
     }
   ],
@@ -360,4 +360,5 @@
   ]
 }
 {% endschema %}
+
 
