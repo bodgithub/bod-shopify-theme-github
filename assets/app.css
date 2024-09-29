@@ -4237,53 +4237,50 @@ h2 {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 0;
+  width: 100%; /* Full width */
 }
 
-.toggle-box {
-   /* flex: 0 0 auto;
- width: calc(100vw / var(--toggle-columns));Set width based on column settings 
-  */
-  scroll-snap-align: center;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.toggle-box-wrapper {
+  flex: 0 0 calc(100% / var(--toggle-columns)); /* Control the width based on column count */
+  scroll-snap-align: start;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
-
-/*.toggle-box--image {
-  flex-grow: 1;
+/*
+.toggle-box--image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+ width: 100%;
+  height: 300px;  Adjust height as necessary 
+}*/
+
+.toggle-box {
+  /*background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.toggle-box--content {
-  background-color: var(--color-bg);
-  padding: 15px;
+.toggle-box:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
-
-
+/*
 .toggle-box--button {
-  display: inline-block;
   padding: 10px 20px;
-  margin-top: 10px;
-  background-color: var(--color-heading);
-  color: var(--color-text);
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
-  border: none;
   text-transform: uppercase;
-  font-weight: bold;
-}
-*/
-
-
-
+  border: none;
+}*/
 
 .swipe-on-mobile {
-  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 
