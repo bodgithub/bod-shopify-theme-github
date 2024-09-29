@@ -70,7 +70,7 @@
             "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
             "image_link": "",
             "open": false,
-            "heading": "Heading",
+            "heading": "Fertility",
             "text": "<p>Pair text with an image to focus on your chosen image</p>"
           }
         },
@@ -80,7 +80,7 @@
             "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
             "image_link": "",
             "open": false,
-            "heading": "Heading",
+            "heading": "PCOS",
             "text": "<p>Pair text with an image to focus on your chosen image</p>"
           }
         },
@@ -89,7 +89,7 @@
           "settings": {
             "image_link": "",
             "open": false,
-            "heading": "Heading",
+            "heading": "Hormones",
             "text": "<p>Pair text with an image to focus on your chosen image</p>"
           }
         },
@@ -98,7 +98,7 @@
           "settings": {
             "image_link": "",
             "open": false,
-            "heading": "Heading",
+            "heading": "Mood",
             "text": "<p>Pair text with an image to focus on your chosen image</p>"
           }
         },
@@ -107,7 +107,7 @@
           "settings": {
             "image_link": "",
             "open": false,
-            "heading": "Heading",
+            "heading": "Weight",
             "text": "<p>Pair text with an image to focus on your chosen image</p>"
           }
         }
@@ -130,7 +130,7 @@
         "text_alignment": "left",
         "color_bg": "#ffffff",
         "color_heading": "#1a1c1d",
-        "marker_color": "#FD6262",
+        "marker_color": "#fd6262",
         "color_text": "#2c2d2e",
         "color_link": "#3f72e5",
         "disable_top_spacing": false,
@@ -812,72 +812,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "tabbed_content_HNUW73": {
-      "type": "tabbed-content",
-      "blocks": {
-        "tab_HqC6ym": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Hormones",
-            "icon": "none",
-            "text": "<p>Your metabolism plays a crucial role in producing and regulating hormones. Imbalances can lead to issues like PCOS, thyroid disorders, and irregular menstrual cycles.</p>",
-            "text_columns": "1",
-            "page": ""
-          }
-        },
-        "tab_pWDt9J": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Weight Loss",
-            "icon": "none",
-            "text": "<p>Your metabolism affects how efficiently your body converts food into energy, influencing appetite and fat storage beyond simple calorie counting.</p>",
-            "text_columns": "1",
-            "page": ""
-          }
-        },
-        "tab_JA4JV9": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Anxiety",
-            "icon": "none",
-            "text": "<p>Energy metabolism supports the production of important neurotransmitters like serotonin and dopamine, crucial for mood regulation.<br/></p>",
-            "text_columns": "1",
-            "page": ""
-          }
-        },
-        "tab_UmnCat": {
-          "type": "tab",
-          "settings": {
-            "tab_label": "Fertility",
-            "icon": "none",
-            "text": "<p>Poor metabolic function can interfere with ovulation, reduce egg quality and create poor environments for developing eggs.</p>",
-            "text_columns": "1",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "tab_HqC6ym",
-        "tab_pWDt9J",
-        "tab_JA4JV9",
-        "tab_UmnCat"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "text_size": "regular",
-        "tab_alignment": "center",
-        "text_alignment": "center",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_tabs": "#1b3def",
-        "color_text": "#1b3def",
-        "marker_color": "#fd6262",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
     "text_with_icons_R6Pm86": {
       "type": "text-with-icons",
       "blocks": {
@@ -1037,124 +971,6 @@
         "spacer_desktop": 55,
         "border_separator": false,
         "border_separator_full": false
-      }
-    },
-    "b41c8677-3d35-4893-895f-bca590f9e711": {
-      "type": "media-grid",
-      "blocks": {
-        "template--17918041129242__b41c8677-3d35-4893-895f-bca590f9e711-1676811591c8bdc557-0": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/Hormones.jpg",
-            "slide_link": "",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 2,
-            "row": 1,
-            "subheading": "",
-            "heading": "Hormones",
-            "heading_size": "h4",
-            "button_text": "Learn more",
-            "button_link": "",
-            "content_position": "bottom-left",
-            "text_alignment": "left",
-            "color_bg": "#69679c",
-            "color_bg_gradient": "",
-            "color_text": "#ffffff",
-            "color_link": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "media_7iXcqF": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot-2024-07-21-at-20.55.35.png",
-            "slide_link": "",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 2,
-            "row": 1,
-            "subheading": "",
-            "heading": "Mood",
-            "heading_size": "h4",
-            "button_text": "Learn more",
-            "button_link": "",
-            "content_position": "bottom-left",
-            "text_alignment": "left",
-            "color_bg": "#69679c",
-            "color_bg_gradient": "",
-            "color_text": "#ffffff",
-            "color_link": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "media_DDDGCJ": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-08-08_at_18.18.24.png",
-            "slide_link": "",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 2,
-            "row": 1,
-            "subheading": "",
-            "heading": "Fertility",
-            "heading_size": "h4",
-            "button_text": "Learn more",
-            "button_link": "",
-            "content_position": "bottom-left",
-            "text_alignment": "left",
-            "color_bg": "#69679c",
-            "color_bg_gradient": "",
-            "color_text": "#ffffff",
-            "color_link": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        },
-        "media_d4RKzV": {
-          "type": "media",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot-2024-07-21-at-14.24.56.jpg",
-            "slide_link": "",
-            "use_video": false,
-            "video_autoplay": true,
-            "column": 2,
-            "row": 1,
-            "subheading": "",
-            "heading": "Weight Loss",
-            "heading_size": "h4",
-            "button_text": "Learn more",
-            "button_link": "",
-            "content_position": "bottom-left",
-            "text_alignment": "left",
-            "color_bg": "#69679c",
-            "color_bg_gradient": "",
-            "color_text": "#ffffff",
-            "color_link": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
-          }
-        }
-      },
-      "block_order": [
-        "template--17918041129242__b41c8677-3d35-4893-895f-bca590f9e711-1676811591c8bdc557-0",
-        "media_7iXcqF",
-        "media_DDDGCJ",
-        "media_d4RKzV"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_height": 300,
-        "mobile_height": 250,
-        "column_spacing": "large",
-        "color_bg": "#1b3def",
-        "color_text": "#2c2d2e",
-        "color_link": "#3f72e5",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
       }
     },
     "multicolumn_8A3tT7": {
@@ -1329,12 +1145,10 @@
     "multicolumn_bQBAHG",
     "image_with_text_daMkAB",
     "bd5ac47b-89ee-4ca4-8b29-9399f29dcc4a",
-    "tabbed_content_HNUW73",
     "text_with_icons_R6Pm86",
     "16620983071df6eb29",
     "rich_text_HHiwAX",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
-    "b41c8677-3d35-4893-895f-bca590f9e711",
     "multicolumn_8A3tT7",
     "customer_reviews_dfQHK7"
   ]
