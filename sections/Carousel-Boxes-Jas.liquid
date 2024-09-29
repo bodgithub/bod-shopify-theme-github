@@ -63,15 +63,33 @@
         </div>
        {% comment %} <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button> {% endcomment %}
 
-        	{% if block.settings.link_label != blank %}
-    {%- if block.settings.use_text_button -%}
-        {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'toggle-box--button white' -%}
-    {%- else -%}
-        <a class="button toggle-box--button white"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}</a>
-    {% endif %}
-{% else %}
-    <button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+        	{% if block.settings.subheading != blank %}
+    <p class="subheading">{{ block.settings.subheading }}</p>
 {% endif %}
+{% if block.settings.title != blank %}
+    {%- liquid
+        assign marker_style = block.settings.marker_style
+        assign marker_color = block.settings.marker_color
+        assign text = block.settings.title | newline_to_br
+    -%}
+    <h4 class="{{ heading_size }}">{% render 'animated-marker-heading', heading: text, style: marker_style, color: marker_color %}</h4>
+{% endif %}
+{% if block.settings.text != blank %}
+    <div class="description-size--{{ description_size }}"><p>{{ block.settings.text }}</p></div>
+{% endif %}
+{% if block.settings.link_label != blank %}
+    {%- if block.settings.use_text_button -%}
+        {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
+    {%- else -%}
+        <a class="button white"{% if block.settings.link == blank %} role="link" aria-disabled="true"{% else %} href="{{ block.settings.link }}"{% endif %}>{{ block.settings.link_label }}</a>
+    {% endif %}
+{% endif %}
+{% if block.settings.block_link != blank %}
+    <a href="{{ block.settings.block_link }}" class="gallery--item-content-link" target="_blank"></a>
+{% endif %}
+
+<button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+
 
         
       </div>
