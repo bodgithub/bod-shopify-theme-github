@@ -19,7 +19,7 @@
   white-space: nowrap;
   padding: 0 15px; /* Padding added for alignment */
   max-width: 100%;
-  margin-left: -0px; /* Offset margin to allow boxes to touch the edge when scrolling */
+  margin-left: 0px; /* Offset margin to allow boxes to touch the edge when scrolling */
   margin-right: 0px;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Hide the scrollbar for all browsers */
@@ -30,7 +30,7 @@
 }
 
 .toggle-box:first-child {
-  margin-left: 200px !important; /* Add margin-left to the first toggle box */
+  margin-left: 0px !important; /* Add margin-left to the first toggle box */
 }
 
 .toggle-box {
