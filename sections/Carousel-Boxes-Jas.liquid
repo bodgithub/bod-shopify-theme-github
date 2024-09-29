@@ -88,7 +88,9 @@
     <a href="{{ block.settings.block_link }}" class="gallery--item-content-link" target="_blank"></a>
 {% endif %}
 
-<button class="toggle-box--button">{{ block.settings.heading | default: 'Toggle' }} <span></span></button>
+<!-- Editable button text -->
+<button class="toggle-box--button">{{ block.settings.button_text | default: 'Toggle' }} <span></span></button>
+
 
 
         
