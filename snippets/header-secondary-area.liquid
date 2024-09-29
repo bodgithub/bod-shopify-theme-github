@@ -42,12 +42,9 @@
 
   	<!-- Show cart as text -->
   	<a class="thb-secondary-area-item thb-secondary-cart" href="{{ routes.cart_url }}" id="cart-drawer-toggle">
-  cart
-  <span>
-    {%- if cart.item_count > 0 -%}
-      <sup>{{ cart.item_count }}</sup>
-    {%- endif -%}
-  </span>
+
+<span class="h6">{{ 'general.cart_drawer.title' | t }} <sup>{{ cart.item_count }}</sup></span>
+
   {% comment %}
   Icon commented for future use:
   <div class="thb-secondary-item-icon">{% render 'svg-icons' with 'cart' %}</div>
