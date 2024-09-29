@@ -1,16 +1,3 @@
-.toggle-box button span {
-  transition: all 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
-}
-
-.toggle-box {
-  isolation: isolate;
-  border-radius: var(--block-border-radius, 16px);
-}
-
-.toggle-box {
-  box-shadow: var(--block-shadows);
-}
-
 .toggle-boxes--inner {
   display: flex;
   align-items: flex-start;
@@ -26,6 +13,10 @@
 
 .toggle-boxes--inner::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Webkit-based browsers */
+}
+
+.toggle-box:first-child {
+  margin-left: 100px; /* Add margin-left to the first toggle box */
 }
 
 .toggle-box {
@@ -165,8 +156,4 @@
   left: 6px;
   width: 2px;
   height: 100%;
-}
-
-.toggle-box:first-child {
-  margin-left: 100px; /* Add margin-left to the first toggle box */
 }
