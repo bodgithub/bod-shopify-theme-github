@@ -15,8 +15,15 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Your <i>hormones<\/i> deserve better",
+            "text": "Your <i>hormones</i> deserve better",
             "heading_size": "h1-xlarge"
+          }
+        },
+        "text_fHEjjg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Address the &lt;i&gt;root&lt;/i&gt; cause of your symptoms and heal your &lt;i&gt;hormones&lt;/i&gt; and  &lt;i&gt;metabolism&lt;/i&gt; with inositol.</p>",
+            "description_size": "medium"
           }
         },
         "button_rBDtc7": {
@@ -30,6 +37,7 @@
       },
       "block_order": [
         "heading_FGRE4D",
+        "text_fHEjjg",
         "button_rBDtc7"
       ],
       "custom_css": [
@@ -37,7 +45,7 @@
         "@media only screen and (min-width: 768px) {}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/Screenshot_2024-08-25_at_20.08.22.png",
+        "image": "shopify://shop_images/Screenshot_2024-08-25_at_20.08.22.png",
         "image_parallax": true,
         "desktop_height": "desktop-height-650",
         "mobile_height": "mobile-height-500",
@@ -58,8 +66,8 @@
         "template--17993467625754__8ba47ba3-de7f-4f0a-b30d-6f2a540748c3-16787035832bb7b6a4-1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-25_at_20.08.22.png",
-            "mobile_image": "shopify:\/\/shop_images\/Bodology-Hormone-Banner.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-25_at_20.08.22.png",
+            "mobile_image": "shopify://shop_images/Bodology-Hormone-Banner.png",
             "slide_link": "",
             "video_background": false,
             "badge_text": "",
@@ -117,7 +125,7 @@
         "heading_rjkAPY": {
           "type": "heading",
           "settings": {
-            "text": "Unlock your <i>metabolic<\/i> health",
+            "text": "Meet your <i>hormones</i> new BFF",
             "marker_style": "style1",
             "heading_size": "h1",
             "marker_color": "#ffffff"
@@ -126,7 +134,7 @@
         "text_eeg3Xh": {
           "type": "text",
           "settings": {
-            "text": "<p>Inositol is a <em>science-backed <\/em>micronutrient that works through <em>metabolic<\/em> pathways to support hormone and mood health, <em>naturally<\/em>.<\/p>\n<h6>\n<strong>It's the new way to balance<\/strong>.<\/h6>"
+            "text": "<p>Inositol is a <em>science-backed </em>micronutrient that works through <em>metabolic</em> pathways to support hormone and mood health, <em>naturally</em>.</p>\n<h6>\n<strong>It's the new way to balance</strong>.</h6>"
           }
         }
       },
@@ -139,8 +147,8 @@
       ],
       "settings": {
         "use_video": true,
-        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "video_hosted": "shopify:\/\/files\/videos\/Video 1_V2_4K.mov",
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
         "video_autoplay": true,
         "height": "large",
         "desktop_image_width": "large",
@@ -250,7 +258,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h1><strong>Did you know?<\/strong><\/h1>",
+            "text": "<h1><strong>Did you know?</strong></h1>",
             "link_label": "",
             "link": ""
           }
@@ -260,7 +268,7 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "Over 50% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ<\/span>  It’s not ‘just a weight issue’.",
+            "title": "Over 50% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>  It’s not ‘just a weight issue’.",
             "text": "",
             "link_label": "Learn more",
             "link": ""
@@ -307,7 +315,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<p>Speak the language of your body<\/p>",
+            "text": "<p>Speak the language of your body</p>",
             "custom_liquid": "",
             "size": "text-size-large"
           }
@@ -368,7 +376,7 @@
         "promotion_xakJNA": {
           "type": "promotion",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-09-09_at_18.39.45.png",
+            "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
             "title": "Fertility",
             "button_text": "Explore",
             "button_link": ""
@@ -377,7 +385,7 @@
         "promotion_Ezmefb": {
           "type": "promotion",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-09-09_at_18.40.51.png",
+            "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.40.51.png",
             "title": "Metabolism",
             "button_text": "Explore",
             "button_link": ""
@@ -386,7 +394,7 @@
         "promotion_p4DVfe": {
           "type": "promotion",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot2024-08-25at19.45.21.png",
+            "image": "shopify://shop_images/Screenshot2024-08-25at19.45.21.png",
             "title": "Mood",
             "button_text": "Explore",
             "button_link": ""
@@ -419,13 +427,13 @@
         "section_jEKnWU": {
           "type": "section",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-25_at_19.11.31_52501cfb-1496-48b8-b744-1e18b7e68cea.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-25_at_19.11.31_52501cfb-1496-48b8-b744-1e18b7e68cea.png",
             "badge": "",
             "subheading": "",
             "heading": "|Hormones & Fertility|",
             "marker_style": "style1",
             "heading_size": "small",
-            "content": "<p>Your metabolism plays a crucial role in producing and regulating hormones. Imbalances can lead to issues like PCOS, irregular menstrual cycles and difficulty getting pregnant.<\/p>",
+            "content": "<p>Your metabolism plays a crucial role in producing and regulating hormones. Imbalances can lead to issues like PCOS, irregular menstrual cycles and difficulty getting pregnant.</p>",
             "description_size": "h4",
             "button_text": "Learn more",
             "button_link": "",
@@ -437,13 +445,13 @@
         "section_8eicDr": {
           "type": "section",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-11_at_15.07.52.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-11_at_15.07.52.png",
             "badge": "",
             "subheading": "",
             "heading": "|Mood & Anxiety|",
             "marker_style": "style1",
             "heading_size": "small",
-            "content": "<p>Energy metabolism supports the production of important neurotransmitters like serotonin and dopamine, crucial for mood regulation.<\/p>",
+            "content": "<p>Energy metabolism supports the production of important neurotransmitters like serotonin and dopamine, crucial for mood regulation.</p>",
             "description_size": "h3",
             "button_text": "Learn more",
             "button_link": "",
@@ -455,13 +463,13 @@
         "section_kj4xgy": {
           "type": "section",
           "settings": {
-            "image": "shopify:\/\/shop_images\/BODOLOGY_July_24_7321.png",
+            "image": "shopify://shop_images/BODOLOGY_July_24_7321.png",
             "badge": "",
             "subheading": "",
             "heading": "|Weight & Metabolism|",
             "marker_style": "style1",
             "heading_size": "small",
-            "content": "<p>Your metabolism affects how efficiently your body converts food into energy, influencing appetite and fat storage beyond simple calorie counting.<\/p>",
+            "content": "<p>Your metabolism affects how efficiently your body converts food into energy, influencing appetite and fat storage beyond simple calorie counting.</p>",
             "description_size": "h3",
             "button_text": "Shop Now",
             "button_link": "",
@@ -496,8 +504,8 @@
         "marker_style": "style1",
         "description": "",
         "full_width": true,
-        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
-        "video_hosted": "shopify:\/\/files\/videos\/Video 2_V2_Small.mov",
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Video 2_V2_Small.mov",
         "video_autoplay": true,
         "aspect_ratio": "square",
         "marker_color": "#ffffff",
@@ -511,7 +519,7 @@
         "heading_Cwqt3K": {
           "type": "heading",
           "settings": {
-            "text": "The <i>inositol<\/i> solution",
+            "text": "The <i>inositol</i> solution",
             "marker_style": "style1",
             "heading_size": "h1",
             "marker_color": "#ffffff"
@@ -520,7 +528,7 @@
         "text_yJ3AXx": {
           "type": "text",
           "settings": {
-            "text": "<p>Inositol plays a crucial role in supporting healthy insulin function <span data-tooltip=\"Insulin: a hormone that controls blood sugar levels, influencing fat storage and energy use.*\"> ⓘ<\/span>. It works through your body's <i>metabolic<\/i> pathways, helping to activate <span data-tooltip=\"GLUT4: a protein that lets sugar enter cells.*\">GLUT4 ⓘ<\/span>, supporting glucose metabolism and hormonal imbalances at their <i>root<\/i>.<\/p><h6><strong>Your body naturally produces inositol, but levels can decrease due to factors like diet and stress.<\/strong><\/h6>"
+            "text": "<p>Inositol plays a crucial role in supporting healthy insulin function <span data-tooltip=\"Insulin: a hormone that controls blood sugar levels, influencing fat storage and energy use.*\"> ⓘ</span>. It works through your body's <i>metabolic</i> pathways, helping to activate <span data-tooltip=\"GLUT4: a protein that lets sugar enter cells.*\">GLUT4 ⓘ</span>, supporting glucose metabolism and hormonal imbalances at their <i>root</i>.</p><h6><strong>Your body naturally produces inositol, but levels can decrease due to factors like diet and stress.</strong></h6>"
           }
         },
         "button_tYiWAy": {
@@ -540,9 +548,9 @@
         ".image-with-text--content {padding: 0px 90px 0px 55px;}"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/Bodology_Hero_Product_a632aff0-c1c0-4849-bc8a-331df375f792.jpg",
+        "image": "shopify://shop_images/Bodology_Hero_Product_a632aff0-c1c0-4849-bc8a-331df375f792.jpg",
         "use_video": false,
-        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
         "height": "large",
         "desktop_image_width": "large",
@@ -566,7 +574,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h6><strong>Optimal 40:1 Myo to D-Chiro Inositol ratio<\/strong><\/h6>",
+            "text": "<h6><strong>Optimal 40:1 Myo to D-Chiro Inositol ratio</strong></h6>",
             "link_label": "",
             "link": ""
           }
@@ -577,7 +585,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h6><strong>Backed by 100+ clinical studies<\/strong><\/h6>",
+            "text": "<h6><strong>Backed by 100+ clinical studies</strong></h6>",
             "link_label": "",
             "link": ""
           }
@@ -588,7 +596,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h6><strong>Optimized for maximum absorption<\/strong><\/h6>",
+            "text": "<h6><strong>Optimized for maximum absorption</strong></h6>",
             "link_label": "",
             "link": ""
           }
@@ -599,7 +607,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h6><strong>Third-party tested for purity and potency<\/strong><\/h6>",
+            "text": "<h6><strong>Third-party tested for purity and potency</strong></h6>",
             "link_label": "",
             "link": ""
           }
@@ -610,7 +618,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h6><strong>Endorsed by leading metabolic health experts<\/strong><\/h6>",
+            "text": "<h6><strong>Endorsed by leading metabolic health experts</strong></h6>",
             "link_label": "",
             "link": ""
           }
@@ -621,7 +629,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h6><strong>Versatile, unflavored powder without additives<\/strong><\/h6>",
+            "text": "<h6><strong>Versatile, unflavored powder without additives</strong></h6>",
             "link_label": "",
             "link": ""
           }
@@ -680,7 +688,7 @@
         "text_PYg4ry": {
           "type": "text",
           "settings": {
-            "text": "<p>Over 50% of adults have impaired metabolic function. It’s not ‘just a weight issue’.<\/p>"
+            "text": "<p>Over 50% of adults have impaired metabolic function. It’s not ‘just a weight issue’.</p>"
           }
         }
       },
@@ -691,9 +699,9 @@
       ],
       "disabled": true,
       "settings": {
-        "image": "shopify:\/\/shop_images\/Screenshot-2024-07-21-at-14.24.56_17ae7cc3-8a0f-413a-9269-3dd006732f98.jpg",
+        "image": "shopify://shop_images/Screenshot-2024-07-21-at-14.24.56_17ae7cc3-8a0f-413a-9269-3dd006732f98.jpg",
         "use_video": false,
-        "video": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
         "height": "adapt",
         "desktop_image_width": "medium",
@@ -722,13 +730,13 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<h4>Your metabolism influences your entire body—not just your weight<\/h4>"
+            "text": "<h4>Your metabolism influences your entire body—not just your weight</h4>"
           }
         },
         "deb1116b-786d-453d-921e-1a6dca696afc": {
           "type": "tab",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-26_at_23.14.02.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-26_at_23.14.02.png",
             "use_video": false,
             "heading_icon": "none",
             "heading": "Hormones",
@@ -739,7 +747,7 @@
         "5c68e7c6-17e9-4dd0-8ebe-002ab7f3955c": {
           "type": "tab",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-26_at_22.53.19.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-26_at_22.53.19.png",
             "use_video": false,
             "heading_icon": "none",
             "heading": "Weight Loss",
@@ -750,7 +758,7 @@
         "5a8f54e1-b110-495f-aa71-0d1f32872c4c": {
           "type": "tab",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-11_at_19.19.56.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-11_at_19.19.56.png",
             "use_video": false,
             "heading_icon": "none",
             "heading": "Mood",
@@ -761,7 +769,7 @@
         "tab_XaN4ht": {
           "type": "tab",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-08_at_18.18.24_ad93b2ff-6d5b-4a4f-9afa-b8538e2935e9.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-08_at_18.18.24_ad93b2ff-6d5b-4a4f-9afa-b8538e2935e9.png",
             "use_video": false,
             "heading_icon": "none",
             "heading": "Fertility",
@@ -804,7 +812,7 @@
           "settings": {
             "tab_label": "Hormones",
             "icon": "none",
-            "text": "<p>Your metabolism plays a crucial role in producing and regulating hormones. Imbalances can lead to issues like PCOS, thyroid disorders, and irregular menstrual cycles.<\/p>",
+            "text": "<p>Your metabolism plays a crucial role in producing and regulating hormones. Imbalances can lead to issues like PCOS, thyroid disorders, and irregular menstrual cycles.</p>",
             "text_columns": "1",
             "page": ""
           }
@@ -814,7 +822,7 @@
           "settings": {
             "tab_label": "Weight Loss",
             "icon": "none",
-            "text": "<p>Your metabolism affects how efficiently your body converts food into energy, influencing appetite and fat storage beyond simple calorie counting.<\/p>",
+            "text": "<p>Your metabolism affects how efficiently your body converts food into energy, influencing appetite and fat storage beyond simple calorie counting.</p>",
             "text_columns": "1",
             "page": ""
           }
@@ -824,7 +832,7 @@
           "settings": {
             "tab_label": "Anxiety",
             "icon": "none",
-            "text": "<p>Energy metabolism supports the production of important neurotransmitters like serotonin and dopamine, crucial for mood regulation.<br\/><\/p>",
+            "text": "<p>Energy metabolism supports the production of important neurotransmitters like serotonin and dopamine, crucial for mood regulation.<br/></p>",
             "text_columns": "1",
             "page": ""
           }
@@ -834,7 +842,7 @@
           "settings": {
             "tab_label": "Fertility",
             "icon": "none",
-            "text": "<p>Poor metabolic function can interfere with ovulation, reduce egg quality and create poor environments for developing eggs.<\/p>",
+            "text": "<p>Poor metabolic function can interfere with ovulation, reduce egg quality and create poor environments for developing eggs.</p>",
             "text_columns": "1",
             "page": ""
           }
@@ -869,27 +877,27 @@
           "type": "icon",
           "settings": {
             "icon": "washing",
-            "image": "shopify:\/\/shop_images\/scales.png",
+            "image": "shopify://shop_images/scales.png",
             "heading": "",
-            "text": "<h5><strong>Smarter 40:1 Myo to D-Chiro Inositol ratio<\/strong><\/h5>"
+            "text": "<h5><strong>Smarter 40:1 Myo to D-Chiro Inositol ratio</strong></h5>"
           }
         },
         "icon_M9FPbK": {
           "type": "icon",
           "settings": {
             "icon": "ruler",
-            "image": "shopify:\/\/shop_images\/certificate.png",
+            "image": "shopify://shop_images/certificate.png",
             "heading": "",
-            "text": "<h5><strong>Backed by 100+ Clinical Studies<\/strong><\/h5>"
+            "text": "<h5><strong>Backed by 100+ Clinical Studies</strong></h5>"
           }
         },
         "icon_jht6J7": {
           "type": "icon",
           "settings": {
             "icon": "bottle",
-            "image": "shopify:\/\/shop_images\/puzzle-piece.png",
+            "image": "shopify://shop_images/puzzle-piece.png",
             "heading": "",
-            "text": "<h5><strong>Optimized for max absorption<\/strong><\/h5>"
+            "text": "<h5><strong>Optimized for max absorption</strong></h5>"
           }
         }
       },
@@ -918,27 +926,27 @@
           "type": "icon",
           "settings": {
             "icon": "washing",
-            "image": "shopify:\/\/shop_images\/scales.png",
+            "image": "shopify://shop_images/scales.png",
             "heading": "",
-            "text": "<h5><strong>Third-party tested for purity and potency<\/strong><\/h5>"
+            "text": "<h5><strong>Third-party tested for purity and potency</strong></h5>"
           }
         },
         "2c4a636c-cb89-4faf-82e6-13a0e7241006": {
           "type": "icon",
           "settings": {
             "icon": "ruler",
-            "image": "shopify:\/\/shop_images\/certificate.png",
+            "image": "shopify://shop_images/certificate.png",
             "heading": "",
-            "text": "<h5><strong>Endorsed by leading metabolic health experts<\/strong><\/h5>"
+            "text": "<h5><strong>Endorsed by leading metabolic health experts</strong></h5>"
           }
         },
         "1662098307788ca717-1": {
           "type": "icon",
           "settings": {
             "icon": "bottle",
-            "image": "shopify:\/\/shop_images\/puzzle-piece.png",
+            "image": "shopify://shop_images/puzzle-piece.png",
             "heading": "",
-            "text": "<h5><strong>Versatile, unflavored powder without additives<\/strong><\/h5>"
+            "text": "<h5><strong>Versatile, unflavored powder without additives</strong></h5>"
           }
         },
         "1662098307788ca717-2": {
@@ -946,7 +954,7 @@
           "disabled": true,
           "settings": {
             "icon": "leaf",
-            "image": "shopify:\/\/shop_images\/plant.png",
+            "image": "shopify://shop_images/plant.png",
             "heading": "Plant Powered",
             "text": ""
           }
@@ -990,7 +998,7 @@
         "text_NbrzJY": {
           "type": "text",
           "settings": {
-            "text": "<p>Choose your concern:<\/p>",
+            "text": "<p>Choose your concern:</p>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
@@ -1029,7 +1037,7 @@
         "template--17918041129242__b41c8677-3d35-4893-895f-bca590f9e711-1676811591c8bdc557-0": {
           "type": "media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Hormones.jpg",
+            "image": "shopify://shop_images/Hormones.jpg",
             "slide_link": "",
             "use_video": false,
             "video_autoplay": true,
@@ -1053,7 +1061,7 @@
         "media_7iXcqF": {
           "type": "media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot-2024-07-21-at-20.55.35.png",
+            "image": "shopify://shop_images/Screenshot-2024-07-21-at-20.55.35.png",
             "slide_link": "",
             "use_video": false,
             "video_autoplay": true,
@@ -1077,7 +1085,7 @@
         "media_DDDGCJ": {
           "type": "media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot_2024-08-08_at_18.18.24.png",
+            "image": "shopify://shop_images/Screenshot_2024-08-08_at_18.18.24.png",
             "slide_link": "",
             "use_video": false,
             "video_autoplay": true,
@@ -1101,7 +1109,7 @@
         "media_d4RKzV": {
           "type": "media",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Screenshot-2024-07-21-at-14.24.56.jpg",
+            "image": "shopify://shop_images/Screenshot-2024-07-21-at-14.24.56.jpg",
             "slide_link": "",
             "use_video": false,
             "video_autoplay": true,
@@ -1147,11 +1155,11 @@
         "column_hWUTxD": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/3.png",
+            "image": "shopify://shop_images/3.png",
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>Tina Kozman, MEd, CNP <\/strong><\/h5><p>Metabolic Health Expert & Certified Nutritional Practitioner<\/p>",
+            "text": "<h5><strong>Tina Kozman, MEd, CNP </strong></h5><p>Metabolic Health Expert & Certified Nutritional Practitioner</p>",
             "link_label": "",
             "link": ""
           }
@@ -1159,11 +1167,11 @@
         "column_kekGbR": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/4.png",
+            "image": "shopify://shop_images/4.png",
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>Hillary Wright, MEd, RD <\/strong><\/h5><p>Director of Nutrition, Boston IVF  Wellness Center<\/p>",
+            "text": "<h5><strong>Hillary Wright, MEd, RD </strong></h5><p>Director of Nutrition, Boston IVF  Wellness Center</p>",
             "link_label": "",
             "link": ""
           }
@@ -1171,11 +1179,11 @@
         "column_4NTEj6": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/5.png",
+            "image": "shopify://shop_images/5.png",
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>Dr. Anita W. Ph.D. <\/strong><\/h5><p>Biomedical Scientist & Natural Medicine Practitioner<\/p>",
+            "text": "<h5><strong>Dr. Anita W. Ph.D. </strong></h5><p>Biomedical Scientist & Natural Medicine Practitioner</p>",
             "link_label": "",
             "link": ""
           }
@@ -1187,7 +1195,7 @@
         "column_4NTEj6"
       ],
       "custom_css": [
-        ".columns {background-color: #1b3def; \/* padding: 20px 2% 20px 2%;*\/}",
+        ".columns {background-color: #1b3def; /* padding: 20px 2% 20px 2%;*/}",
         ".row {padding: 0px 80px 30px 80px; max-width: 100% !important;}",
         ".multicolumn__image {width: 150px !important;}",
         ".section-header {padding-top: 35px;}",
@@ -1196,7 +1204,7 @@
       "settings": {
         "heading": "",
         "marker_style": "style1",
-        "description": "<h1><strong>Expert backed<\/strong><\/h1>",
+        "description": "<h1><strong>Expert backed</strong></h1>",
         "columns_desktop": 3,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -1285,7 +1293,7 @@
       "disabled": true,
       "settings": {
         "heading": "",
-        "description": "<h2><strong>Your results<\/strong><\/h2><p>Add a short description for this section<\/p>",
+        "description": "<h2><strong>Your results</strong></h2><p>Add a short description for this section</p>",
         "columns": 3,
         "autoplay": true,
         "autoplay_length": 3,

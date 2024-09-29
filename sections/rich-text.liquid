@@ -47,7 +47,7 @@
 								</div>
 							{%- endif -%}
 						{%- when 'subheading' -%}
-							<p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+							<p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text | raw }}</p>
 						{%- when 'heading' -%}
 							{%- liquid
 								assign marker_style = block.settings.marker_style
