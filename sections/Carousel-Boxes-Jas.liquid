@@ -80,8 +80,7 @@
 
 
 <!-- Editable button text -->
-<button class="toggle-box--button">{{ block.settings.button_text | default: 'Toggle' }} <span></span></button>
-{% if block.settings.link_label != blank %}
+<button class="toggle-box--button">{{ block.settings.button_text | default: 'Toggle' }} {% if block.settings.link_label != blank %}
     {%- if block.settings.use_text_button -%}
         {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
     {%- else -%}
@@ -90,7 +89,8 @@
             <span>{% render 'svg-icons' with 'thb-caret-right' %}</span>
         </a>
     {% endif %}
-{% endif %}
+{% endif %}</button>
+
 
 
         
