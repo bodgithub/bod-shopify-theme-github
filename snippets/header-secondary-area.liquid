@@ -41,9 +41,9 @@
   	{%- endif -%}
 
   	<!-- Show cart as text -->
-  	<a class="thb-secondary-area-item h6" href="{{ routes.cart_url }}" id="cart-drawer-toggle">
+  	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle" title="{{ 'general.cart_drawer.title' | t }}><sup>{{ cart.item_count }}</sup>
 
-<span class="h6">{{ 'general.cart_drawer.title' | t }} <sup>{{ cart.item_count }}</sup></span>
+
 
   {% comment %}
   Icon commented for future use:
