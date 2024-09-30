@@ -96,13 +96,21 @@
 								<div {{ block.shopify_attributes }} class="customer-reviews--block">
                                     <div class="customer-reviews--content">
                                   <div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
-                                  <a class="text-button" style="font-size:{{ block.settings.font_size }}!important;" href="{{ block.settings.link }}">{{ block.settings.heading }}</a>
+                                  <a title="{{ block.settings.heading }}" class="text-button text-button--has-icon" role="link" style="font-size:{{ block.settings.font_size }}!important;" href="{{ block.settings.link }}" {% if block.settings.link == blank %}aria-disabled="true"{% endif %}  <span>{% render 'svg-icons' with 'thb-caret-right' %}>{{ block.settings.heading }}</a>
                                       <p>{{ block.settings.text | newline_to_br }}</p>
                                     </div></div>
-                                            {%- when 'button' -%}
+                                         
+                          
+                         
+                          
+                          {%- when 'button' -%}
 								{% if block.settings.button_text != blank %}
 									<a class="button {{ block.settings.button_color }}" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}>{{ block.settings.button_text }}</a>
-								{% endif %}
+								
+                                
+                                  
+                                  
+                                  {% endif %}
 							{% when 'space' %}
 		            <div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
                            
