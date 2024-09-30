@@ -241,9 +241,9 @@
 
 /* Additional CSS for the Image with Text Overlay Section */
 
-/* Specific adjustments to fit reviews within image-with-text-overlay */
+/* General Layout for Customer Reviews in Image with Text Overlay Section */
 .image-with-text-overlay .customer-reviews--block {
-  width: 100%; /* Ensure full-width row */
+  width: 100%; /* Full width row */
   text-align: center; /* Center-align content */
   display: flex;
   flex-direction: column;
@@ -252,58 +252,62 @@
   padding: 20px;
 }
 
+/* Center the star rating and button */
 .customer-reviews--block .star-rating,
 .customer-reviews--block .text-button {
   margin: 0 auto; /* Center elements */
-  display: block; /* Ensure they take up block-level space */
+  display: block; /* Block-level element */
   text-align: center;
-  padding-bottom:10px;
+  padding-bottom: 10px;
 }
 
-/* Text Color and Styling */
+/* Text color adjustments for reviews content */
 .image-with-text-overlay .customer-reviews--content {
   color: var(--text-color, #000);
 }
 
-
+/* Star rating style */
 .image-with-text-overlay .customer-reviews .star-rating {
   font-size: 1.2rem;
   color: var(--color-star, #f5a623);
 }
 
+/* Author span style */
 .image-with-text-overlay .customer-reviews--author span {
   font-size: 1rem;
   color: var(--text-color, #000);
 }
 
-/*animated button */
+/* Hover Animation for Links */
 .image-with-text-overlay .customer-reviews--review a {
-  color: var(--color-header-links, --color-accent);
+  color: var(--color-header-links, --color-accent); /* Default link color */
   position: relative;
-  font-size: inherit; /* Inherit font size from parent element or adjust as needed */
+  font-size: inherit; /* Inherit font size */
+  text-decoration: none; /* Remove default underline */
 }
 
 .image-with-text-overlay .customer-reviews--review a:after {
   content: "";
   display: block;
   position: absolute;
-  top: 100%;
+  bottom: -2px; /* Position just below the text */
   left: 0;
   width: 100%;
   height: 1px;
-  transform: scale(0, 1);
+  background: var(--color-header-links-hover, --color-accent); /* Line color */
+  transform: scaleX(0); /* Initially hidden */
   transform-origin: left center;
-  background: var(--color-header-links-hover, --color-accent);
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease; /* Smooth animation */
 }
 
 .image-with-text-overlay .customer-reviews--review a:hover:after,
 .image-with-text-overlay .customer-reviews--review a:focus:after {
-  transform: scale(1, 1);
+  transform: scaleX(1); /* Full width on hover */
 }
 
 .image-with-text-overlay .customer-reviews--review a:hover,
 .image-with-text-overlay .customer-reviews--review a:focus {
-  color: var(--color-header-links-hover, --color-accent2);
+  color: var(--color-header-links-hover, --color-accent2); /* Change text color on hover */
 }
+
 
