@@ -309,7 +309,7 @@
         "color_text": "#1b3def",
         "color_links": "#ffffff",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "rich_text_7dFmQd": {
@@ -318,8 +318,8 @@
         "text_9XQaXD": {
           "type": "text",
           "settings": {
-            "text": "<p>Learn how unlocking your <em>metabolic health</em> with inositol can help:</p>",
-            "custom_liquid": "",
+            "text": "",
+            "custom_liquid": "<p style=\"padding-left:15%;\">Learn how inositol can help:</p>",
             "size": "text-size-small"
           }
         }
@@ -328,9 +328,9 @@
         "text_9XQaXD"
       ],
       "settings": {
-        "text_width": "medium",
-        "text_position": "center",
-        "text_alignment": "center",
+        "text_width": "small",
+        "text_position": "left",
+        "text_alignment": "left",
         "color_bg": "rgba(0,0,0,0)",
         "color_heading": "#1a1c1d",
         "color_text": "#1b3def",
