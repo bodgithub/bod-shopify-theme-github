@@ -121,7 +121,7 @@
                                     <div class="customer-reviews--content">
                                       
                                   <div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
-                                  <a href="{{ block.settings.link }}">{{ block.settings.heading }}</a>
+                                  <a class="text-button" style="font-size:{{ block.settings.font_size }}!important;" href="{{ block.settings.link }}">{{ block.settings.heading }}</a>
                                       <p>{{ block.settings.text | newline_to_br }}</p>
                                       
                                    </div>
@@ -541,20 +541,15 @@
           "default": "Review heading"
         },
         {
-          "type": "textarea",
-          "id": "text",
-          "label": "Text",
-          "default": "Add your customer review here to showcase them."
+          "type": "text",
+          "id": "font_size",
+          "label": "Font size",
+          "default": "1em"
         },
         {
           "type": "url",
           "id": "link",
-          "label": "Rviews URL",
-        },
-        {
-          "type": "image_picker",
-          "id": "author_image",
-          "label": "Author image"
+          "label": "Reviews URL",
         }
       ]
     }
