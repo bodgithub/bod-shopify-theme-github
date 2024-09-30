@@ -193,6 +193,15 @@
         "disable_bottom_spacing": false
       }
     },
+    "8f6ed916-ced8-44f6-9ef8-b60fd327ae31": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "spacer_hDmb7V": {
       "type": "spacer",
       "custom_css": [
@@ -200,7 +209,16 @@
       ],
       "settings": {
         "spacer_mobile": 10,
-        "spacer_desktop": 10,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": true
+      }
+    },
+    "spacer_FzEHUN": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 40,
         "border_separator": false,
         "border_separator_full": true
       }
@@ -1236,16 +1254,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "8f6ed916-ced8-44f6-9ef8-b60fd327ae31": {
-      "type": "spacer",
-      "disabled": true,
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 55,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "multicolumn_8A3tT7": {
       "type": "multicolumn",
       "blocks": {
@@ -1314,98 +1322,14 @@
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
-    },
-    "customer_reviews_dfQHK7": {
-      "type": "customer-reviews",
-      "blocks": {
-        "review_C68z7U": {
-          "type": "review",
-          "settings": {
-            "product_handle": "",
-            "stars": "5",
-            "heading": "Helped improve my sleep",
-            "text": "I haven't had any GI issues at all from taking it like I have with other brands. I've been getting better sleep since starting this powder and am very happy about that.",
-            "author": "Kristina A"
-          }
-        },
-        "review_qcgQJR": {
-          "type": "review",
-          "settings": {
-            "product_handle": "",
-            "stars": "",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
-          }
-        },
-        "review_XGRfiC": {
-          "type": "review",
-          "settings": {
-            "product_handle": "",
-            "stars": "",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
-          }
-        },
-        "review_xryxDG": {
-          "type": "review",
-          "settings": {
-            "product_handle": "",
-            "stars": "",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
-          }
-        },
-        "review_cWamad": {
-          "type": "review",
-          "settings": {
-            "product_handle": "",
-            "stars": "",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
-          }
-        },
-        "review_H3egMt": {
-          "type": "review",
-          "settings": {
-            "product_handle": "",
-            "stars": "",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
-          }
-        }
-      },
-      "block_order": [
-        "review_C68z7U",
-        "review_qcgQJR",
-        "review_XGRfiC",
-        "review_xryxDG",
-        "review_cWamad",
-        "review_H3egMt"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "description": "<h2><strong>Your results</strong></h2><p>Add a short description for this section</p>",
-        "columns": 3,
-        "autoplay": true,
-        "autoplay_length": 3,
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "color_text": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
     }
   },
   "order": [
     "image_with_text_overlay_zjqnjJ",
     "image_with_text_r96Axa",
+    "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "spacer_hDmb7V",
+    "spacer_FzEHUN",
     "multicolumn_rVnwmF",
     "carousel_boxes_jas_HzyeW9",
     "multicolumn_PHpnpy",
@@ -1424,8 +1348,6 @@
     "text_with_icons_R6Pm86",
     "16620983071df6eb29",
     "rich_text_HHiwAX",
-    "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
-    "multicolumn_8A3tT7",
-    "customer_reviews_dfQHK7"
+    "multicolumn_8A3tT7"
   ]
 }
