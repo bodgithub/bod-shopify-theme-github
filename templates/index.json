@@ -114,7 +114,7 @@
         "text_eeg3Xh": {
           "type": "text",
           "settings": {
-            "text": "<p>Inositol works through <em>metabolic</em> pathways to support hormone and mood health<em>—naturally</em></p>\n<br>"
+            "text": "<p>Inositol works through <em>metabolic</em> pathways to support hormone and mood health<em>—naturally.</em></p>\n<br>"
           }
         },
         "image_gddwin": {
@@ -193,6 +193,165 @@
         "disable_bottom_spacing": false
       }
     },
+    "spacer_hDmb7V": {
+      "type": "spacer",
+      "custom_css": [
+        ".row .spacer {background-color: #f4f4f4;}"
+      ],
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 10,
+        "border_separator": false,
+        "border_separator_full": true
+      }
+    },
+    "multicolumn_rVnwmF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_fUjqfM": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h1>\n<strong>Your metabolism influences your entire body<em>—not just</em><em> your</em><em> weight</em></strong>\n</h1>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_4JdggA": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "Over 80% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>  It’s not ‘just a weight issue’. Here's why:",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_fUjqfM",
+        "column_4JdggA"
+      ],
+      "custom_css": [
+        ".multicolumn {color: #1b3def !important; padding: 100px 0 30px 0;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "carousel_boxes_jas_HzyeW9": {
+      "type": "Carousel-Boxes-Jas",
+      "blocks": {
+        "box_TxAVLm": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
+            "image_link": "",
+            "open": false,
+            "heading": "Fertility",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_YQBT8X": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
+            "image_link": "",
+            "open": false,
+            "heading": "PCOS",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_egXcdC": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
+            "image_link": "",
+            "open": false,
+            "heading": "Hormones",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_fkrYD7": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Anxiety",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_mBqGXB": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "Weight",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "box_TxAVLm",
+        "box_YQBT8X",
+        "box_egXcdC",
+        "box_fkrYD7",
+        "box_mBqGXB"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 4,
+        "column_spacing": "medium",
+        "image_ratio": "adapt",
+        "mobile_swipe": true,
+        "text_alignment": "left",
+        "color_bg": "#ffffff",
+        "color_heading": "#1a1c1d",
+        "marker_color": "#fd6262",
+        "color_text": "#1b3def",
+        "color_link": "#3f72e5",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
     "multicolumn_PHpnpy": {
       "type": "multicolumn",
       "blocks": {
@@ -223,6 +382,7 @@
         "column_WnDFcf",
         "column_4fnRDe"
       ],
+      "disabled": true,
       "custom_css": [
         ".multicolumn {background-color: #1b3def !important; padding: 100px 0 30px 0;}"
       ],
@@ -238,70 +398,6 @@
         "color_heading": "#ffffff",
         "marker_color": "#ffffff",
         "color_text": "#ffffff",
-        "color_links": "#ffffff",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "spacer_hDmb7V": {
-      "type": "spacer",
-      "disabled": true,
-      "custom_css": [
-        ".row .spacer {background-color: #1b3def;}"
-      ],
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 10,
-        "border_separator": false,
-        "border_separator_full": true
-      }
-    },
-    "multicolumn_rVnwmF": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_fUjqfM": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h1>\n<strong>Your </strong><em><strong>metabolism </strong></em><strong>isn't just about </strong><em><strong>weight</strong></em>\n</h1>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_4JdggA": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "Over 80% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>  It’s not ‘just a weight issue’. Here's why:",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_fUjqfM",
-        "column_4JdggA"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".multicolumn {color: #1b3def !important; padding: 100px 0 30px 0;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
-        "color_text": "#1b3def",
         "color_links": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -386,107 +482,10 @@
         "box_eVKh38",
         "box_NLhUR6"
       ],
+      "disabled": true,
       "custom_css": [
         ".section-toggle-boxes {background-color: #1b3def !important;}"
       ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "columns_desktop": 4,
-        "column_spacing": "medium",
-        "image_ratio": "adapt",
-        "mobile_swipe": true,
-        "text_alignment": "left",
-        "color_bg": "#ffffff",
-        "color_heading": "#1a1c1d",
-        "marker_color": "#fd6262",
-        "color_text": "#1b3def",
-        "color_link": "#3f72e5",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
-    "carousel_boxes_jas_HzyeW9": {
-      "type": "Carousel-Boxes-Jas",
-      "blocks": {
-        "box_TxAVLm": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
-            "image_link": "",
-            "open": false,
-            "heading": "Fertility",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_YQBT8X": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
-            "image_link": "",
-            "open": false,
-            "heading": "PCOS",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_egXcdC": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
-            "image_link": "",
-            "open": false,
-            "heading": "Hormones",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_fkrYD7": {
-          "type": "box",
-          "settings": {
-            "image_link": "",
-            "open": false,
-            "heading": "Anxiety",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_mBqGXB": {
-          "type": "box",
-          "settings": {
-            "image_link": "",
-            "open": false,
-            "heading": "Weight",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "box_TxAVLm",
-        "box_YQBT8X",
-        "box_egXcdC",
-        "box_fkrYD7",
-        "box_mBqGXB"
-      ],
-      "disabled": true,
       "settings": {
         "heading": "",
         "marker_style": "style1",
@@ -1403,11 +1402,11 @@
   "order": [
     "image_with_text_overlay_zjqnjJ",
     "image_with_text_r96Axa",
-    "multicolumn_PHpnpy",
     "spacer_hDmb7V",
     "multicolumn_rVnwmF",
-    "carousel_boxes_jas_baGN4Y",
     "carousel_boxes_jas_HzyeW9",
+    "multicolumn_PHpnpy",
+    "carousel_boxes_jas_baGN4Y",
     "testimonials_ncYmHF",
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
     "featured_collection_mxheen",
