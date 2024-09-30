@@ -92,36 +92,29 @@
 								<h3 class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</h3>
 							{%- when 'text' -%}
 								<div class="rte description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
-							{%- when 'button' -%}
-								{% if block.settings.button_text != blank %}
-									<a class="button {{ block.settings.button_color }}" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}>{{ block.settings.button_text }}</a>
-								{% endif %}
-							{% when 'space' %}
-		            <div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
-                            {%- when 'customer_reviews' -%}
+							 {%- when 'customer_reviews' -%}
 								<div {{ block.shopify_attributes }} class="customer-reviews--block">
                                     <div class="customer-reviews--content">
                                   <div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
                                   <a class="text-button" style="font-size:{{ block.settings.font_size }}!important;" href="{{ block.settings.link }}">{{ block.settings.heading }}</a>
                                       <p>{{ block.settings.text | newline_to_br }}</p>
                                     </div></div>
+                                            {%- when 'button' -%}
+								{% if block.settings.button_text != blank %}
+									<a class="button {{ block.settings.button_color }}" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}>{{ block.settings.button_text }}</a>
+								{% endif %}
+							{% when 'space' %}
+		            <div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
+                           
                           
                           
 						{%- endcase -%}
 					{% endfor %}
 				</div>
 			</div>
+        
 
 
-
-
-
-
-
-
-
-    
-  </div>
 
 
           
