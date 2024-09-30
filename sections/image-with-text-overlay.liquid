@@ -132,7 +132,6 @@
 <script src="{{ 'image-with-text-overlay.js' | asset_url }}" defer="defer"></script>
 
 
-{% schema %}
 {
   "name": "Image with text overlay",
   "class": "section-image-with-text-overlay",
@@ -506,63 +505,48 @@
       ]
     },
     {
-  "type": "customer_reviews",
-  "name": "Customer Reviews",
-  "settings": [
-    {
-      "type": "select",
-      "id": "stars",
-      "options": [
-        { "value": "", "label": "None" },
-        { "value": "3", "label": "3 out of 5" },
-        { "value": "3.5", "label": "3.5 out of 5" },
-        { "value": "4", "label": "4 out of 5" },
-        { "value": "4.5", "label": "4.5 out of 5" },
-        { "value": "5", "label": "5 out of 5" }
-      ],
-      "default": "",
-      "label": "Star rating"
-    },
-    {
-      "type": "textarea",
-      "id": "star_svg",
-      "label": "SVG for Star Rating",
-      "default": "<svg>...</svg>",
-      "info": "Paste your full 5-star SVG code here"
-    },
-    {
-      "type": "color",
-      "id": "star_color",
-      "label": "Star Color",
-      "default": "#FFD700",
-      "info": "Choose the color of the stars"
-    },
-    {
-      "id": "heading",
-      "type": "text",
-      "label": "Heading",
-      "default": "Review heading"
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Text",
-      "default": "Add your customer review here to showcase them."
-    },
-    {
-      "type": "text",
-      "id": "author",
-      "label": "Author name",
-      "default": "Review author"
-    },
-    {
-      "type": "image_picker",
-      "id": "author_image",
-      "label": "Author image"
+      "type": "customer_reviews",
+      "name": "Customer Reviews",
+      "settings": [
+        {
+          "type": "select",
+          "id": "stars",
+          "options": [
+            { "value": "", "label": "None" },
+            { "value": "3", "label": "3 out of 5" },
+            { "value": "3.5", "label": "3.5 out of 5" },
+            { "value": "4", "label": "4 out of 5" },
+            { "value": "4.5", "label": "4.5 out of 5" },
+            { "value": "5", "label": "5 out of 5" }
+          ],
+          "default": "",
+          "label": "Star rating"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Heading",
+          "default": "Review heading"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Add your customer review here to showcase them."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "Review author"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author image"
+        }
+      ]
     }
-  ]
-}
-
   ],
   "max_blocks": 10,
   "presets": [
@@ -589,4 +573,3 @@
   ]
 }
 
-{% endschema %}
