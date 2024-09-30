@@ -4190,8 +4190,8 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 
 .custom-cursor3 {
     position: absolute;
-    min-width: 50px; /* Minimum size of the circle */
-    min-height: 50px; /* Minimum size of the circle */
+    min-width: 70px; /* Minimum size of the circle */
+    min-height: 70px; /* Minimum size of the circle */
     max-width: 100px; /* Maximum width */
     max-height: 100px; /* Maximum height */
     border-radius: 50%; /* Makes the element a circle */
@@ -4203,7 +4203,7 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     font-weight: bold;
     pointer-events: none;
     z-index: 100;
-    font-size: 26px;
+    font-size: 20px;
     transition: transform 0.15s ease, width 0.2s, height 0.2s; /* Animate the resizing */
     transform: scale(0); /* Initially hidden */
     text-align: center;
