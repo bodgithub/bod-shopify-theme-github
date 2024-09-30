@@ -28,14 +28,14 @@
 			assign columns_desktop_class = 'medium-1/5 large-1/5'
 	endcase
 -%}
-<div class="multicolumn {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %} text-alignment--{{ text_alignment }}" style="--color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};"{%- if section.settings.data-tooltip != blank -%} data-tooltip="{{ section.settings.data-tooltip }}" {%- elsif section.settings.data-tooltip3 != blank -%} data-tooltip3="{{ section.settings.data-tooltip3 }}{%- endif -%}">
+<div class="multicolumn {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %} text-alignment--{{ text_alignment }}" style="--color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};">
 	<div class="row">
 		<div class="small-12 columns">
 			{% render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style %}
 			<div class="multicolumn__inner text-{{ text_alignment }}">
 				<div class="row align-stretch no-padding">
 					{%- for block in section.blocks -%}
-						<div class="multicolumn__column small-12 {{ columns_desktop_class }} columns" {{ block.shopify_attributes }}>
+						<div class="multicolumn__column small-12 {{ columns_desktop_class }} columns" {{ block.shopify_attributes }} {%- if section.settings.data-tooltip != blank -%} data-tooltip="{{ section.settings.data-tooltip }}" {%- elsif section.settings.data-tooltip3 != blank -%} data-tooltip3="{{ section.settings.data-tooltip3 }}{%- endif -%}">
 							{% if block.settings.image != blank %}
 								{%- liquid
 									assign ratio = 1
