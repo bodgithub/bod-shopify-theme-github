@@ -29,10 +29,10 @@
 
 {%- assign content_present = false -%}
 					{%- if block.settings.content != blank -%}
-						{%- assign content_present = true -%}
+						{%- assign content_present = false -%}
 					{%- endif -%}
 					{%- if block.settings.page.content != blank -%}
-						{%- assign content_present = true -%}
+						{%- assign content_present = false -%}
 					{%- endif -%}
 					
 					{%- if block.settings.heading != blank -%}
