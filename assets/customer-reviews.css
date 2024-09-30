@@ -255,6 +255,13 @@
   box-shadow: var(--block-shadows);
 }
 
+.customer-reviews--block .star-rating,
+.customer-reviews--block .text-button {
+  margin: 0 auto; /* Center elements */
+  display: block; /* Ensure they take up block-level space */
+  text-align: center;
+}
+
 /* Text Color and Styling */
 .image-with-text-overlay .customer-reviews--content {
   color: var(--text-color, #000);
