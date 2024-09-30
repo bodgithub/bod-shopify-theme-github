@@ -28,7 +28,7 @@
 			assign columns_desktop_class = 'medium-1/5 large-1/5'
 	endcase
 -%}
-<div class="multicolumn {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %} text-alignment--{{ text_alignment }}" style="--color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};">
+<div class="multicolumn {% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %} text-alignment--{{ text_alignment }}" style="--color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};"{%- if section.settings.data-tooltip != blank -%} data-tooltip="{{ section.settings.data-tooltip }}" {%- elsif section.settings.data-tooltip3 != blank -%} data-tooltip3="{{ section.settings.data-tooltip3 }}{%- endif -%}">
 	<div class="row">
 		<div class="small-12 columns">
 			{% render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style %}
@@ -119,6 +119,19 @@
         "label": "Description",
         "default": "<p>Add a short description for this section</p>"
       },
+      {
+      "type": "text",
+      "id": "data-tooltip",
+      "label": "Tooltip 2",
+      "info": "Add tooltip style 2 to image/video"
+    },
+    {
+      "type": "text",
+      "id": "data-tooltip3",
+      "label": "Tooltip 3",
+      "info": "Add tooltip style 3 to image/video"
+    },
+
 
 			{
 	      "type": "range",
