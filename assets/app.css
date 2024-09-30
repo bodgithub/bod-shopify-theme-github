@@ -4232,4 +4232,22 @@ h2 {
 }
 
 
+/* Base style for the star-rating-block in image-with-text-overlay.liquid */
+
+.star-rating-block {
+  text-align: center;
+}
+
+.five-star-image {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.star-rating-block p {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
 
