@@ -12,6 +12,12 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "space_UqqzGi": {
+          "type": "space",
+          "settings": {
+            "height": 130
+          }
+        },
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
@@ -59,10 +65,10 @@
             "button_color": "white"
           }
         },
-        "space_UqqzGi": {
+        "space_dgXhDh": {
           "type": "space",
           "settings": {
-            "height": 100
+            "height": 90
           }
         },
         "customer_reviews_CtBhV3": {
@@ -77,13 +83,14 @@
         }
       },
       "block_order": [
+        "space_UqqzGi",
         "heading_FGRE4D",
         "heading_YUHmEX",
         "heading_em97ki",
         "text_fHEjjg",
         "text_tDP8jc",
         "button_rBDtc7",
-        "space_UqqzGi",
+        "space_dgXhDh",
         "customer_reviews_CtBhV3"
       ],
       "custom_css": [
