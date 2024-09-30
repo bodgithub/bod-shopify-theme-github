@@ -592,7 +592,7 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Video 2_V2_Small.mov",
         "video_autoplay": true,
-        "aspect_ratio": "square",
+        "aspect_ratio": "4-3",
         "marker_color": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -794,6 +794,7 @@
         "text_yJ3AXx",
         "button_tYiWAy"
       ],
+      "disabled": true,
       "custom_css": [
         ".image-with-text--content {padding: 0px 90px 0px 55px;}"
       ],
