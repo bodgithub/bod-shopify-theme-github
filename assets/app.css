@@ -4202,8 +4202,8 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
     justify-content: center;
     font-weight: bold;
     pointer-events: none;
-    z-index: 0;
-    font-size: 16px;
+    z-index: 100;
+    font-size: 26px;
     transition: transform 0.15s ease, width 0.2s, height 0.2s; /* Animate the resizing */
     transform: scale(0); /* Initially hidden */
     text-align: center;
