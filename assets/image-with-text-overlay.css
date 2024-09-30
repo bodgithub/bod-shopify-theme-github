@@ -132,3 +132,12 @@
     .image-with-text-overlay--content.content-bottom-right {
       justify-content: flex-end;
       align-items: flex-end; }
+
+
+.image-with-text--content--inner .accordion summary {
+    font-size: 0.91em;
+    line-height: 1.3em;
+    padding: 0 12px;
+
+  
+}
