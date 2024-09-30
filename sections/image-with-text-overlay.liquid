@@ -84,7 +84,12 @@
 				<div class="image-with-text-overlay--content-inner content-width-{{ content_width }}">
 					{% for block in section.blocks %}
 						{%- case block.type -%}
-							{%- when 'badge' -%}
+							
+                          {%- when 'text-button' -%}
+
+								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+                          
+                          {%- when 'badge' -%}
 								<div {{ block.shopify_attributes }}>
 									<span class="inline-badge" style="--badge-bg: {{ block.settings.color_bg }};--badge-text: {{ block.settings.color_text }}">{{ block.settings.text }}</span>
 								</div>
