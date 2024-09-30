@@ -14,7 +14,6 @@
       "blocks": {
         "heading_FGRE4D": {
           "type": "heading",
-          "disabled": true,
           "settings": {
             "text": "Your <i>hormones</i> deserve better",
             "heading_size": "h1-xlarge"
@@ -30,6 +29,7 @@
         },
         "heading_em97ki": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "text": "A <i>new way</i> to balance hormones, mood, <i>metabolism</i>",
             "heading_size": "h1-xlarge"
@@ -43,6 +43,13 @@
             "description_size": "small"
           }
         },
+        "text_tDP8jc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A new way to balance hormones, mood and metabolism</p>",
+            "description_size": "small"
+          }
+        },
         "button_rBDtc7": {
           "type": "button",
           "settings": {
@@ -51,11 +58,11 @@
             "button_color": "white"
           }
         },
-        "customer_reviews_bWBAzn": {
+        "customer_reviews_CtBhV3": {
           "type": "customer_reviews",
           "settings": {
             "stars": "5",
-            "heading": "View real customer results",
+            "heading": "See real results with inositol",
             "font_size": "0.7em",
             "link": "shopify://products/myo-d-chiro-inositol-powder",
             "scale": "1.5"
@@ -67,8 +74,9 @@
         "heading_YUHmEX",
         "heading_em97ki",
         "text_fHEjjg",
+        "text_tDP8jc",
         "button_rBDtc7",
-        "customer_reviews_bWBAzn"
+        "customer_reviews_CtBhV3"
       ],
       "custom_css": [
         "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
@@ -139,6 +147,18 @@
         "color_links": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "spacer_hDmb7V": {
+      "type": "spacer",
+      "custom_css": [
+        ".row .spacer {background-color: #1b3def;}"
+      ],
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 10,
+        "border_separator": false,
+        "border_separator_full": true
       }
     },
     "multicolumn_rVnwmF": {
@@ -1336,6 +1356,7 @@
   "order": [
     "image_with_text_overlay_zjqnjJ",
     "multicolumn_PHpnpy",
+    "spacer_hDmb7V",
     "multicolumn_rVnwmF",
     "carousel_boxes_jas_baGN4Y",
     "carousel_boxes_jas_HzyeW9",
