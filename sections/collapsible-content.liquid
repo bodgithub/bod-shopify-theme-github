@@ -38,18 +38,17 @@
 					{%- if block.settings.heading != blank -%}
 
 						<collapsible-row class="accordion" {{ block.shopify_attributes }}>
-    <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open and content_present == false %}open{% else %}open="false"{% endif %}>
-        <summary>
-            {{ block.settings.heading | default: block.settings.page.title }}
-            <span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
-        </summary>
-        <div class="collapsible__content accordion__content rte" id="Accordion-{{ block.id }}-{{ section.id }}">
-            {{ block.settings.content }}
-            {{ block.settings.page.content }}
-        </div>
-    </details>
-</collapsible-row>
-
+							<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
+								<summary>
+									{{ block.settings.heading | default: block.settings.page.title }}
+									<span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
+								</summary>
+								<div class="collapsible__content accordion__content rte" id="Accordion-{{ block.id }}-{{ section.id }}">
+									{{ block.settings.content }}
+									{{ block.settings.page.content }}
+								</div>
+							</details>
+						</collapsible-row>
 					{%- endif -%}
 				{%- endfor -%}
 			</div>
