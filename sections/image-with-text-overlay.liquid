@@ -40,7 +40,7 @@
 		assign priority = 'high'
 	endif
 -%}
-<div class="row {% if full_width %}full-width-row-full{% endif %}" data-tooltip="NOT ANOTHER P*LL">
+<div class="row {% if full_width %}full-width-row-full{% endif %}" data-tooltip="<h5>NOT ANOTHER P*LL</h5>">
 	<div class="small-12 columns">
 		<image-with-text-overlay class="image-with-text-overlay image-with-text-overlay--full-width-{{ full_width }} text-{{ text_alignment }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--text-color: {{ text_color }}; --overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
 			<div class="image-with-text-overlay--bg parallax--{{ image_parallax }}">
