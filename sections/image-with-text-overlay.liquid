@@ -101,6 +101,15 @@
 					{% endfor %}
 				</div>
 			</div>
+
+<div class="star-rating-block">
+  <a href="{{ section.settings.rating_link }}" title="Real people, real results">
+    <img src="{{ 'five-star-image-url.png' | asset_url }}" alt="5-star rating" class="five-star-image">
+    <p>{{ section.settings.rating_text }}</p>
+  </a>
+</div>
+
+          
 		</image-with-text-overlay>
 	</div>
 </div>
