@@ -104,7 +104,7 @@
 
 <div class="star-rating-block">
   <a href="{{ section.settings.rating_link }}" title="Real people, real results">
-    <img src="{{ 'five-star-image-url.png' | asset_url }}" alt="5-star rating" class="five-star-image">
+    <img src="{{ section.settings.star_image | img_url: '200x' }}" alt="5-star rating" class="five-star-image">
     <p>{{ section.settings.rating_text }}</p>
   </a>
 </div>
@@ -115,379 +115,317 @@
 </div>
 <script src="{{ 'image-with-text-overlay.js' | asset_url }}" defer="defer"></script>
 {% schema %}
-  {
-    "name": "Image with text overlay",
-		"class": "section-image-with-text-overlay",
-    "settings": [
-			{
-				"type": "image_picker",
-				"id": "image",
-				"label": "Image",
-				"info": "2800 x 650 .jpg recommended."
-			},
-			{
-				"type": "image_picker",
-				"id": "mobile_image",
-				"label": "Mobile image (optional)",
-				"info": "375 x 650 .jpg recommended."
-			},
-			{
-				"type": "checkbox",
-				"id": "image_parallax",
-				"default": false,
-				"label": "Enable parallax",
-				"info": "Animations must be enabled in theme settings"
-			},
-			{
-				"type": "select",
-				"id": "desktop_height",
-				"label": "Desktop height",
-				"options": [
-					{
-						"value": "desktop-height-450",
-						"label": "450px"
-					},
-					{
-						"value": "desktop-height-550",
-						"label": "550px"
-					},
-					{
-						"value": "desktop-height-650",
-						"label": "650px"
-					},
-					{
-						"value": "desktop-height-750",
-						"label": "750px"
-					},
-					{
-						"value": "desktop-height-full",
-						"label": "Full screen"
-					}
-				],
-				"default": "desktop-height-650"
-			},
-			{
-				"type": "select",
-				"id": "mobile_height",
-				"label": "Mobile height",
-				"options": [
-					{
-						"value": "mobile-height-auto",
-						"label": "Adapt to content"
-					},
-					{
-						"value": "mobile-height-350",
-						"label": "350px"
-					},
-					{
-						"value": "mobile-height-400",
-						"label": "400px"
-					},
-					{
-						"value": "mobile-height-450",
-						"label": "450px"
-					},
-					{
-						"value": "mobile-height-500",
-						"label": "500px"
-					},
-					{
-						"value": "mobile-height-full",
-						"label": "Full screen"
-					}
-				],
-				"default": "mobile-height-500"
-			},
-			{
-				"type": "checkbox",
-				"id": "full_width",
-				"label": "Make section full width",
-				"default": true
-			},
-			{
-				"type": "select",
-				"id": "content_width",
-				"label": "Content width",
-				"options": [
-					{
-						"value": "small",
-						"label": "Small"
-					},
-					{
-						"value": "medium",
-						"label": "Medium"
-					},
-					{
-						"value": "large",
-						"label": "Large"
-					}
-				],
-				"default": "medium"
-			},
-			{
-				 "type": "select",
-				 "id": "content_position",
-				 "label": "Content position",
-				 "options": [
-					 { "value": "top-left", "label": "Top left" },
-					 { "value": "top-center", "label": "Top center" },
-					 { "value": "top-right", "label": "Top right" },
-					 { "value": "middle-left", "label": "Middle left" },
-					 { "value": "middle-center", "label": "Middle center" },
-					 { "value": "middle-right", "label": "Middle right" },
-					 { "value": "bottom-left", "label": "Bottom left" },
-					 { "value": "bottom-center", "label": "Bottom center" },
-					 { "value": "bottom-right", "label": "Bottom right" }
-				 ],
-				 "default": "bottom-center"
-			},
-			{
-				"type": "select",
-				"id": "text_alignment",
-				"options": [
-					{
-						"value": "left",
-						"label": "Left"
-					},
-					{
-						"value": "center",
-						"label": "Center"
-					},
-					{
-						"value": "right",
-						"label": "Right"
-					}
-				],
-				"default": "center",
-				"label": "Content alignment"
-			},
-			{
-	      "type": "header",
-	      "content": "Colors"
-	    },
-			{
-				"type": "color",
-				"id": "text_color",
-				"label": "Text",
-				"default": "#FFFFFF"
-			},
-			{
-				"type": "color",
-				"id": "overlay_color",
-				"label": "Overlay",
-				"default": "#000000"
-			},
-			{
-				"type": "range",
-				"id": "overlay_opacity",
-				"min": 0,
-				"max": 100,
-				"step": 1,
-				"unit": "%",
-				"label": "Overlay opacity",
-				"default": 30
-			},
-			{
-	      "type": "header",
-	      "content": "Spacing"
-	    },
-			{
-				"type": "checkbox",
-				"id": "disable_top_spacing",
-				"default": false,
-				"label": "Remove top spacing"
-			},
-			{
-				"type": "checkbox",
-				"id": "disable_bottom_spacing",
-				"default": false,
-				"label": "Remove bottom spacing"
-			}
-    ],
-    "blocks": [
-			{
-				"type": "badge",
-				"name": "Badge",
-				"limit": 3,
-				"settings": [
-					{
-						"type": "text",
-						"id": "text",
-						"label": "Text",
-						"default": "Badge heading"
-					},
-					{
-						"type": "color",
-						"id": "color_bg",
-						"label": "Background",
-						"default": "#3f72e5"
-					},
-					{
-						"type": "color",
-						"id": "color_text",
-						"label": "Text",
-						"default": "#ffffff"
-					}
-				]
-			},
-			{
-				"type": "subheading",
-				"name": "Subheading",
-				"limit": 3,
-				"settings": [
-					{
-						"type": "text",
-						"id": "text",
-						"label": "Text",
-						"default": "Add a tagline"
-					}
-				]
-			},
-			{
-				"type": "heading",
-				"name": "Heading",
-				"limit": 3,
-				"settings": [
-					{
-						"type": "text",
-						"id": "text",
-						"label": "Text",
-						"default": "Image with text overlay"
-					},
-					{
-						"type": "select",
-						"id": "heading_size",
-						"label": "Size",
-						"options": [
-							{
-								"value": "h2",
-								"label": "Small"
-							},
-							{
-								"value": "h1",
-								"label": "Medium"
-							},
-							{
-								"value": "h1-large",
-								"label": "Large"
-							},
-							{
-								"value": "h1-xlarge",
-								"label": "Extra large"
-							}
-						],
-						"default": "h1-xlarge"
-					}
-				]
-			},
-			{
-        "type": "text",
-        "name": "Text",
-				"limit": 3,
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Content",
-            "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
-          },
-					{
-						"type": "select",
-						"id": "description_size",
-						"label": "Size",
-						"options": [
-							{
-								"value": "small",
-								"label": "Small"
-							},
-							{
-								"value": "medium",
-								"label": "Medium"
-							},
-							{
-								"value": "large",
-								"label": "Large"
-							}
-						],
-						"default": "medium"
-					}
-        ]
-      },
-			{
-        "type": "button",
-        "name": "Button",
-				"limit": 3,
-        "settings": [
-					{
-						"id": "button_text",
-						"type": "text",
-						"label": "Button label",
-						"default": "Shop Now",
-						"info": "Leave the label blank to hide the button."
-					},
-					{
-						"id": "button_link",
-						"type": "url",
-						"label": "Button link"
-					},
-					{
-						"type": "select",
-						"id": "button_color",
-						"label": "Color",
-						"options": [
-							{
-								"value": "regular",
-								"label": "Regular"
-							},
-							{
-								"value": "accent",
-								"label": "Accent"
-							},
-							{
-								"value": "white",
-								"label": "White"
-							}
-						],
-						"default": "accent"
-					}
-        ]
-      },
-      {
-        "type": "space",
-        "name": "Empty space",
-        "settings": [
-          {
-            "type": "range",
-            "id": "height",
-            "min": 0,
-            "max": 100,
-            "step": 1,
-            "unit": "px",
-            "label": "Height",
-            "default": 50
-          }
-        ]
-      }
-    ],
-  	"max_blocks": 10,
-    "presets": [
-      {
-        "name": "Image with text overlay",
-				"blocks": [
-					{
-						"type": "subheading"
-					},
-					{
-						"type": "heading"
-					},
-					{
-						"type": "text"
-					},
-					{
-						"type": "button"
-					}
-				]
-      }
-    ]
-  }
+{
+  "name": "Image with text overlay",
+  "class": "section-image-with-text-overlay",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "2800 x 650 .jpg recommended."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)",
+      "info": "375 x 650 .jpg recommended."
+    },
+    {
+      "type": "checkbox",
+      "id": "image_parallax",
+      "default": false,
+      "label": "Enable parallax",
+      "info": "Animations must be enabled in theme settings"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Desktop height",
+      "options": [
+        { "value": "desktop-height-450", "label": "450px" },
+        { "value": "desktop-height-550", "label": "550px" },
+        { "value": "desktop-height-650", "label": "650px" },
+        { "value": "desktop-height-750", "label": "750px" },
+        { "value": "desktop-height-full", "label": "Full screen" }
+      ],
+      "default": "desktop-height-650"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Mobile height",
+      "options": [
+        { "value": "mobile-height-auto", "label": "Adapt to content" },
+        { "value": "mobile-height-350", "label": "350px" },
+        { "value": "mobile-height-400", "label": "400px" },
+        { "value": "mobile-height-450", "label": "450px" },
+        { "value": "mobile-height-500", "label": "500px" },
+        { "value": "mobile-height-full", "label": "Full screen" }
+      ],
+      "default": "mobile-height-500"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Make section full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "content_width",
+      "label": "Content width",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        { "value": "top-left", "label": "Top left" },
+        { "value": "top-center", "label": "Top center" },
+        { "value": "top-right", "label": "Top right" },
+        { "value": "middle-left", "label": "Middle left" },
+        { "value": "middle-center", "label": "Middle center" },
+        { "value": "middle-right", "label": "Middle right" },
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "bottom-center", "label": "Bottom center" },
+        { "value": "bottom-right", "label": "Bottom right" }
+      ],
+      "default": "bottom-center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center",
+      "label": "Content alignment"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Badge heading"
+        },
+        {
+          "type": "color",
+          "id": "color_bg",
+          "label": "Background",
+          "default": "#3f72e5"
+        },
+        {
+          "type": "color",
+          "id": "color_text",
+          "label": "Text",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Add a tagline"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Image with text overlay"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Size",
+          "options": [
+            { "value": "h2", "label": "Small" },
+            { "value": "h1", "label": "Medium" },
+            { "value": "h1-large", "label": "Large" },
+            { "value": "h1-xlarge", "label": "Extra large" }
+          ],
+          "default": "h1-xlarge"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Content",
+          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+        },
+        {
+          "type": "select",
+          "id": "description_size",
+          "label": "Size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "large", "label": "Large" }
+          ],
+          "default": "medium"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 3,
+      "settings": [
+        {
+          "id": "button_text",
+          "type": "text",
+          "label": "Button label",
+          "default": "Shop Now",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "id": "button_link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "type": "select",
+          "id": "button_color",
+          "label": "Color",
+          "options": [
+            { "value": "regular", "label": "Regular" },
+            { "value": "accent", "label": "Accent" },
+            { "value": "white", "label": "White" }
+          ],
+          "default": "accent"
+        }
+      ]
+    },
+    {
+      "type": "space",
+      "name": "Empty space",
+      "settings": [
+        {
+          "type": "range",
+          "id": "height",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Height",
+          "default": 50
+        }
+      ]
+    },
+    {
+      "type": "reviews",
+      "name": "Reviews",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "rating_text",
+          "label": "Rating text",
+          "default": "Real people, real results"
+        },
+        {
+          "type": "url",
+          "id": "rating_link",
+          "label": "Link URL",
+          "default": "/"
+        },
+        {
+          "type": "image_picker",
+          "id": "star_image",
+          "label": "5-Star Rating Image",
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Image with text overlay",
+      "category": "Custom",
+      "blocks": [
+        { "type": "subheading" },
+        { "type": "heading" },
+        { "type": "text" },
+        { "type": "button" },
+        { "type": "reviews" }
+      ]
+    }
+  ]
+}
 {% endschema %}
+
