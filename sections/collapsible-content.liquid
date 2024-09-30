@@ -26,7 +26,17 @@
 			{% render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style %}
 			<div class="collapsible-content__inner">
 				{%- for block in section.blocks -%}
-					{%- if block.settings.heading != blank -%}
+
+{%- assign content_present = false -%}
+					{%- if block.settings.content != blank -%}
+						{%- assign content_present = true -%}
+					{%- endif -%}
+					{%- if block.settings.page.content != blank -%}
+						{%- assign content_present = true -%}
+					{%- endif -%}
+					
+					{%- if block.settings.heading != blank and content_present -%}
+
 						<collapsible-row class="accordion" {{ block.shopify_attributes }}>
 							<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
 								<summary>
