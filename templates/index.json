@@ -166,6 +166,13 @@
             "link_label": "View detailed benefits",
             "link": ""
           }
+        },
+        "text_button_JpfFxg": {
+          "type": "text-button",
+          "settings": {
+            "link_label": "*Read disclaimer",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -176,12 +183,13 @@
         "collapsible_tab_BAVgTR",
         "collapsible_tab_J4N3mA",
         "collapsible_tab_E8WqFp",
-        "text_button_rYnTh9"
+        "text_button_rYnTh9",
+        "text_button_JpfFxg"
       ],
       "custom_css": [
         ".image-with-text--content {padding: 0 20% 0 5%;}",
         "#Accordion-collapsible_tab_XCi3Ld-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_BAVgTR-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_J4N3mA-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_E8WqFp-template--18405848416475__image_with_text_r96Axa {padding: 0px !important;}",
-        ".text-button {justify-content: left;}"
+        ".text-button {justify-content: left; padding-bottom: 8px;}"
       ],
       "settings": {
         "use_video": true,
