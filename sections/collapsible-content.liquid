@@ -38,7 +38,7 @@
 					{%- if block.settings.heading != blank -%}
 
 						<collapsible-row class="accordion" {{ block.shopify_attributes }}>
-							<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open and content_present == false %}open{% endif %}>
+							<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
 								<summary>
 									{{ block.settings.heading | default: block.settings.page.title }}
 									<span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
