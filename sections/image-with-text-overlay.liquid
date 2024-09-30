@@ -96,7 +96,7 @@
 								<div {{ block.shopify_attributes }} class="customer-reviews--block">
                                     <div class="customer-reviews--content">
                                   <div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
-                                  <a title="{{ block.settings.heading }}" class="text-button text-button--has-icon" role="link" style="font-size:{{ block.settings.font_size }}!important;" href="{{ block.settings.link }}" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} >{{ block.settings.heading }}<span style="margin-left:3px;">{% render 'svg-icons' with 'thb-caret-right' %}</a>
+                                  <a title="{{ block.settings.heading }}" class="text-button text-button--has-icon" role="link" style="font-size:{{ block.settings.font_size }}!important;" href="{{ block.settings.link }}" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} >{{ block.settings.heading }}<span style="margin-left:5px;">{% render 'svg-icons' with 'thb-caret-right' %}</a>
                                       <p>{{ block.settings.text | newline_to_br }}</p>
                                     </div></div>
                                          
