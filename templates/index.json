@@ -119,15 +119,56 @@
         },
         "image_gddwin": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Inositol-Supplement-List-9.png"
+          }
+        },
+        "collapsible_tab_XCi3Ld": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Natural support for PCOS, thyroid and ovarian health<sup>*</sup>",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_BAVgTR": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shown to improve anxiety<sup>*</sup>",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_J4N3mA": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Backed by 100+ clinical studies<sup>*</sup>",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_E8WqFp": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Trusted by leading experts<sup>*</sup>",
+            "open": false,
+            "content": "",
+            "page": ""
           }
         }
       },
       "block_order": [
         "heading_rjkAPY",
         "text_eeg3Xh",
-        "image_gddwin"
+        "image_gddwin",
+        "collapsible_tab_XCi3Ld",
+        "collapsible_tab_BAVgTR",
+        "collapsible_tab_J4N3mA",
+        "collapsible_tab_E8WqFp"
       ],
       "custom_css": [
         ".image-with-text--content {padding: 0px 130px 0px 35px;}"
