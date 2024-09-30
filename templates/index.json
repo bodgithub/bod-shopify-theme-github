@@ -277,6 +277,33 @@
         "disable_bottom_spacing": false
       }
     },
+    "rich_text_7dFmQd": {
+      "type": "rich-text",
+      "blocks": {
+        "text_9XQaXD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Learn how unlocking your metabolic health with inositol can help with:</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "text_9XQaXD"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#1a1c1d",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "carousel_boxes_jas_HzyeW9": {
       "type": "Carousel-Boxes-Jas",
       "blocks": {
@@ -286,7 +313,7 @@
             "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
             "image_link": "",
             "open": false,
-            "heading": "Inositol for Fertility",
+            "heading": "Fertility",
             "text": "",
             "link_label": "Learn more",
             "link": "",
@@ -300,7 +327,7 @@
             "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
             "image_link": "",
             "open": false,
-            "heading": "Inositol for PCOS",
+            "heading": "PCOS",
             "text": "",
             "link_label": "Learn more",
             "link": "",
@@ -314,7 +341,7 @@
             "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
             "image_link": "",
             "open": false,
-            "heading": "Inositol for Hormones",
+            "heading": "Hormones",
             "text": "",
             "link_label": "Learn more",
             "link": "",
@@ -1332,6 +1359,7 @@
     "spacer_hDmb7V",
     "spacer_FzEHUN",
     "multicolumn_rVnwmF",
+    "rich_text_7dFmQd",
     "carousel_boxes_jas_HzyeW9",
     "multicolumn_PHpnpy",
     "carousel_boxes_jas_baGN4Y",
