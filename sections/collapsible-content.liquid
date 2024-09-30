@@ -35,7 +35,7 @@
 						{%- assign content_present = true -%}
 					{%- endif -%}
 					
-					{%- if block.settings.heading != blank and content_present -%}
+					{%- if block.settings.heading != blank -%}
 
 						<collapsible-row class="accordion" {{ block.shopify_attributes }}>
 							<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
