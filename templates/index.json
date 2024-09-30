@@ -238,7 +238,8 @@
       "custom_css": [
         ".multicolumn {color: #1b3def !important; align-content: end !important;}",
         ".row .columns {align-content: end !important;}",
-        ".columns h1 {margin-bottom:0px !important;align-content:end !important;}"
+        ".columns h1 {margin-bottom: 0px !important; align-content: end !important;}",
+        "@media only screen and (min-width: 768px) {.row .columns {padding: 0px 15px 0 5% !important; }}"
       ],
       "settings": {
         "heading": "",
