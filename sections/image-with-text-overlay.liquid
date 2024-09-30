@@ -109,7 +109,8 @@
 								{% if block.settings.button_text != blank %}
 									<a class="button {{ block.settings.button_color }}" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}>{{ block.settings.button_text }}</a>
 								
-                                
+                                	
+							
                                   
                                   
                                   {% endif %}
@@ -343,6 +344,24 @@
     }
   ],
   "blocks": [
+    {
+        "type": "text-button",
+        "name": "Link",
+        "settings": [
+					{
+						"id": "link_label",
+						"type": "text",
+						"label": "Label",
+						"default": "Learn More",
+						"info": "Leave the label blank to hide the button."
+					},
+					{
+						"id": "link",
+						"type": "url",
+						"label": "Link"
+					}
+        ]
+      },
     {
       "type": "badge",
       "name": "Badge",
