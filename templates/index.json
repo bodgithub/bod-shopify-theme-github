@@ -233,7 +233,7 @@
         "spacer_mobile": 10,
         "spacer_desktop": 40,
         "border_separator": false,
-        "border_separator_full": false
+        "border_separator_full": true
       }
     },
     "spacer_hDmb7V": {
@@ -277,7 +277,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4 class=\"rte\">Over 80% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>  It’s not ‘just a weight issue’.</h4>",
+            "text": "<h4 class=\"rte\">Over 80% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>  It’s not ‘just a weight issue’.</h4>\n<p>Discover how unlocking your metabolic health with inositol can help:</p>",
             "link_label": "",
             "link": ""
           }
@@ -309,7 +309,7 @@
         "color_text": "#1b3def",
         "color_links": "#ffffff",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
+        "disable_bottom_spacing": false
       }
     },
     "multicolumn_6e9RVY": {
@@ -330,6 +330,7 @@
       "block_order": [
         "column_QHrFD9"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (min-width: 768px) {.row .columns {padding: 0px 7% 0 5% !important; }}"
       ],
@@ -643,6 +644,17 @@
     "multicolumn_yRYBT4": {
       "type": "multicolumn",
       "blocks": {
+        "column_cwXkx6": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "column_nFMWxd": {
           "type": "column",
           "settings": {
@@ -653,22 +665,11 @@
             "link_label": "",
             "link": ""
           }
-        },
-        "column_cwXkx6": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h4 class=\"rte\">Get started today and receive 20% off.</h4>",
-            "link_label": "",
-            "link": ""
-          }
         }
       },
       "block_order": [
-        "column_nFMWxd",
-        "column_cwXkx6"
+        "column_cwXkx6",
+        "column_nFMWxd"
       ],
       "custom_css": [
         ".multicolumn {color: #1b3def !important;}",
