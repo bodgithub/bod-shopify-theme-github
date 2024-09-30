@@ -126,105 +126,94 @@
 		{%- endunless -%}
 	{%- endif -%}
 
-  <!-- Custom Cursor JavaScript START --> 
+  <!-- Custom Cursors JavaScript START --> 
 	<script>
   document.addEventListener('DOMContentLoaded', function() {
-      // Create the custom cursor element
-      const cursor = document.createElement('div');
-      cursor.classList.add('custom-cursor');
-      document.body.appendChild(cursor);
+      // Create the custom cursor3 element
+      const cursor3 = document.createElement('div');
+      cursor3.classList.add('custom-cursor3');
+      document.body.appendChild(cursor3);
 
-      // Handle mouse movement
+      // Handle mouse movement for custom cursor3
       document.addEventListener('mousemove', function(e) {
-          cursor.style.left = `${e.pageX - 40}px`; // Adjust position (width / 2)
-          cursor.style.top = `${e.pageY - 40}px`;  // Adjust position (height / 2)
+          cursor3.style.left = `${e.pageX - 40}px`; // Center horizontally
+          cursor3.style.top = `${e.pageY - 40}px`; // Center vertically
       });
 
-      // Handle product card hover
-      const productCards = document.querySelectorAll('.product-card'); // Select all product cards
-      productCards.forEach(card => {
-          card.addEventListener('mouseenter', function() {
-              const supply = this.getAttribute('data-supply'); // Get the custom supply metafield
-              cursor.innerHTML = supply ? `<i>${supply}</i>` : '<i>Shop Now</i>'; // Show italicized supply value or fallback
-              cursor.style.transform = 'scale(1)'; // Show cursor
-          });
+      // Handle hover over elements with data-tooltip3 (for cursor3)
+      const tooltipElementsCursor3 = document.querySelectorAll('[data-tooltip3]'); // Select elements with data-tooltip3 attribute
 
-          card.addEventListener('mouseleave', function() {
-              cursor.style.transform = 'scale(0)'; // Hide cursor
-          });
-      });
-  });
-</script>
-
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      // Note: This script ensures that alt text and title tooltips are suppressed for product card images.
-
-      // Select all images within product cards
-      const productImages = document.querySelectorAll('.product-card img');
-
-      productImages.forEach(img => {
-          // Remove the title attribute to prevent tooltips from showing
-          img.removeAttribute('title');
-
-          // Set a title attribute to an empty string to fully suppress any title tooltip
-          img.setAttribute('title', '');
-
-          // Optional: Set alt attribute to an empty string to stop browsers from showing alt tooltips on hover
-          img.setAttribute('alt', img.getAttribute('alt') || ''); // Ensures alt isn't removed for SEO, just overridden
-      });
-  });
-</script>
-
-
-	<!-- Custom Cursor JavaScript END -->
-
-
-<!-- Custom Cursor2 JavaScript START -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      // Create the custom cursor2 element
-      const cursor2 = document.createElement('div');
-      cursor2.classList.add('custom-cursor2');
-      document.body.appendChild(cursor2);
-
-      // Handle mouse movement
-      document.addEventListener('mousemove', function(e) {
-          cursor2.style.left = `${e.pageX - 40}px`; // Center horizontally
-          cursor2.style.top = `${e.pageY - 40}px`; // Center vertically
-        
-      });
-
-      // Handle hover over elements with data-tooltip
-      const tooltipElements = document.querySelectorAll('[data-tooltip]'); // Select elements with the data-tooltip attribute
-
-      tooltipElements.forEach(element => {
+      tooltipElementsCursor3.forEach(element => {
           element.addEventListener('mouseenter', function() {
-              const tooltipText = this.getAttribute('data-tooltip'); // Get the tooltip text from the data-tooltip attribute
+              const tooltipText = this.getAttribute('data-tooltip3'); // Get the tooltip text for cursor3
               if (tooltipText) {
-                  cursor2.textContent = tooltipText; // Set the tooltip text in cursor2
-                  adjustCursorSize(cursor2); // Adjust the size based on content
-                  cursor2.style.transform = 'scale(1)'; // Show cursor2 with tooltip
+                  cursor3.textContent = tooltipText; // Set the tooltip text for cursor3
+                  adjustCursorSize(cursor3); // Adjust cursor size based on content
+                  cursor3.style.transform = 'scale(1)'; // Show cursor3 with tooltip
               }
+              // Hide the other cursors when this one is active
+              hideOtherCursors(cursor3);
           });
 
           element.addEventListener('mouseleave', function() {
-              cursor2.style.transform = 'scale(0)'; // Hide cursor2 when not hovering
+              cursor3.style.transform = 'scale(0)'; // Hide cursor3 when not hovering
           });
       });
 
-      // Function to adjust the cursor size based on its content
+      // Function to adjust the size of the cursor based on its content
       function adjustCursorSize(cursor) {
           const computedStyle = window.getComputedStyle(cursor);
           const padding = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
-          
+
           // Create a temporary element to measure content size
           const tempDiv = document.createElement('div');
           tempDiv.style.visibility = 'hidden';
           tempDiv.style.position = 'absolute';
           tempDiv.style.width = 'auto';
-          tempDiv.style.height = 'auto';
+          <script>
+  document.addEventListener('DOMContentLoaded', function() {
+      // Create the custom cursor3 element
+      const cursor3 = document.createElement('div');
+      cursor3.classList.add('custom-cursor3');
+      document.body.appendChild(cursor3);
+
+      // Handle mouse movement for custom cursor3
+      document.addEventListener('mousemove', function(e) {
+          cursor3.style.left = `${e.pageX - 40}px`; // Center horizontally
+          cursor3.style.top = `${e.pageY - 40}px`; // Center vertically
+      });
+
+      // Handle hover over elements with data-tooltip3 (for cursor3)
+      const tooltipElementsCursor3 = document.querySelectorAll('[data-tooltip3]'); // Select elements with data-tooltip3 attribute
+
+      tooltipElementsCursor3.forEach(element => {
+          element.addEventListener('mouseenter', function() {
+              const tooltipText = this.getAttribute('data-tooltip3'); // Get the tooltip text for cursor3
+              if (tooltipText) {
+                  cursor3.textContent = tooltipText; // Set the tooltip text for cursor3
+                  adjustCursorSize(cursor3); // Adjust cursor size based on content
+                  cursor3.style.transform = 'scale(1)'; // Show cursor3 with tooltip
+              }
+              // Hide the other cursors when this one is active
+              hideOtherCursors(cursor3);
+          });
+
+          element.addEventListener('mouseleave', function() {
+              cursor3.style.transform = 'scale(0)'; // Hide cursor3 when not hovering
+          });
+      });
+
+      // Function to adjust the size of the cursor based on its content
+      function adjustCursorSize(cursor) {
+          const computedStyle = window.getComputedStyle(cursor);
+          const padding = parseFloat(computedStyle.paddingTop) + parseFloat(computedStyle.paddingBottom);
+
+          // Create a temporary element to measure content size
+          const tempDiv = document.createElement('div');
+          tempDiv.style.visibility = 'hidden';
+          tempDiv.style.position = 'absolute';
+          tempDiv.style.width = 'auto';
+                    tempDiv.style.height = 'auto';
           tempDiv.style.whiteSpace = 'nowrap';
           tempDiv.textContent = cursor.textContent;
 
@@ -233,7 +222,7 @@
           const contentWidth = tempDiv.offsetWidth + padding;
           const contentHeight = tempDiv.offsetHeight + padding;
 
-          // Calculate the size to keep 1:1 ratio
+          // Calculate the size to keep a 1:1 ratio
           const newSize = Math.max(contentWidth, contentHeight);
 
           // Set new size
@@ -242,8 +231,20 @@
 
           document.body.removeChild(tempDiv); // Clean up
       }
+
+      // Function to hide other cursors when one is active
+      function hideOtherCursors(activeCursor) {
+          const cursors = document.querySelectorAll('.custom-cursor, .custom-cursor2, .custom-cursor3');
+          cursors.forEach(cursor => {
+              if (cursor !== activeCursor) {
+                  cursor.style.transform = 'scale(0)'; // Hide other cursors
+              }
+          });
+      }
   });
 </script>
+
+
 
 
   	<!-- Custom Cursor2 JavaScript END -->
