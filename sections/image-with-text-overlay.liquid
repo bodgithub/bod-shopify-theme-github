@@ -102,18 +102,38 @@
 				</div>
 			</div>
 
-<div class="star-rating-block">
-  <a href="{{ section.settings.rating_link }}" title="Real people, real results">
-    <img src="{{ section.settings.star_image | img_url: '200x' }}" alt="5-star rating" class="five-star-image">
-    <p>{{ section.settings.rating_text }}</p>
-  </a>
-</div>
+{% if block.type == 'customer_reviews' %}
+  <div class="customer-reviews--block" {{ block.shopify_attributes }}>
+    <div class="customer-reviews--content">
+      {% if block.settings.stars and block.settings.stars != '' %}
+        <div class="star-rating" style="--star-rating-color: {{ block.settings.star_color }};">
+          {{ block.settings.star_svg | raw }}
+        </div>
+      {% endif %}
+      {% if block.settings.heading != blank %}
+        <h6>{{ block.settings.heading }}</h6>
+      {% endif %}
+      <p>{{ block.settings.text | newline_to_br }}</p>
+      {% if block.settings.author != blank %}
+        <div class="customer-reviews--author">
+          {% if block.settings.author_image != blank %}
+            {% render 'responsive-image', image: block.settings.author_image, sizes: '64x64' %}
+          {% endif %}
+          <span>{{ block.settings.author }}</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
 
           
 		</image-with-text-overlay>
 	</div>
 </div>
 <script src="{{ 'image-with-text-overlay.js' | asset_url }}" defer="defer"></script>
+
+
 {% schema %}
 {
   "name": "Image with text overlay",
@@ -143,11 +163,26 @@
       "id": "desktop_height",
       "label": "Desktop height",
       "options": [
-        { "value": "desktop-height-450", "label": "450px" },
-        { "value": "desktop-height-550", "label": "550px" },
-        { "value": "desktop-height-650", "label": "650px" },
-        { "value": "desktop-height-750", "label": "750px" },
-        { "value": "desktop-height-full", "label": "Full screen" }
+        {
+          "value": "desktop-height-450",
+          "label": "450px"
+        },
+        {
+          "value": "desktop-height-550",
+          "label": "550px"
+        },
+        {
+          "value": "desktop-height-650",
+          "label": "650px"
+        },
+        {
+          "value": "desktop-height-750",
+          "label": "750px"
+        },
+        {
+          "value": "desktop-height-full",
+          "label": "Full screen"
+        }
       ],
       "default": "desktop-height-650"
     },
@@ -156,12 +191,30 @@
       "id": "mobile_height",
       "label": "Mobile height",
       "options": [
-        { "value": "mobile-height-auto", "label": "Adapt to content" },
-        { "value": "mobile-height-350", "label": "350px" },
-        { "value": "mobile-height-400", "label": "400px" },
-        { "value": "mobile-height-450", "label": "450px" },
-        { "value": "mobile-height-500", "label": "500px" },
-        { "value": "mobile-height-full", "label": "Full screen" }
+        {
+          "value": "mobile-height-auto",
+          "label": "Adapt to content"
+        },
+        {
+          "value": "mobile-height-350",
+          "label": "350px"
+        },
+        {
+          "value": "mobile-height-400",
+          "label": "400px"
+        },
+        {
+          "value": "mobile-height-450",
+          "label": "450px"
+        },
+        {
+          "value": "mobile-height-500",
+          "label": "500px"
+        },
+        {
+          "value": "mobile-height-full",
+          "label": "Full screen"
+        }
       ],
       "default": "mobile-height-500"
     },
@@ -176,9 +229,18 @@
       "id": "content_width",
       "label": "Content width",
       "options": [
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
       ],
       "default": "medium"
     },
@@ -187,15 +249,42 @@
       "id": "content_position",
       "label": "Content position",
       "options": [
-        { "value": "top-left", "label": "Top left" },
-        { "value": "top-center", "label": "Top center" },
-        { "value": "top-right", "label": "Top right" },
-        { "value": "middle-left", "label": "Middle left" },
-        { "value": "middle-center", "label": "Middle center" },
-        { "value": "middle-right", "label": "Middle right" },
-        { "value": "bottom-left", "label": "Bottom left" },
-        { "value": "bottom-center", "label": "Bottom center" },
-        { "value": "bottom-right", "label": "Bottom right" }
+        {
+          "value": "top-left",
+          "label": "Top left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top right"
+        },
+        {
+          "value": "middle-left",
+          "label": "Middle left"
+        },
+        {
+          "value": "middle-center",
+          "label": "Middle center"
+        },
+        {
+          "value": "middle-right",
+          "label": "Middle right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom right"
+        }
       ],
       "default": "bottom-center"
     },
@@ -203,16 +292,21 @@
       "type": "select",
       "id": "text_alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center",
       "label": "Content alignment"
-    },
-    {
-      "type": "header",
-      "content": "Colors"
     },
     {
       "type": "color",
@@ -235,10 +329,6 @@
       "unit": "%",
       "label": "Overlay opacity",
       "default": 30
-    },
-    {
-      "type": "header",
-      "content": "Spacing"
     },
     {
       "type": "checkbox",
@@ -308,10 +398,22 @@
           "id": "heading_size",
           "label": "Size",
           "options": [
-            { "value": "h2", "label": "Small" },
-            { "value": "h1", "label": "Medium" },
-            { "value": "h1-large", "label": "Large" },
-            { "value": "h1-xlarge", "label": "Extra large" }
+            {
+              "value": "h2",
+              "label": "Small"
+            },
+            {
+              "value": "h1",
+              "label": "Medium"
+            },
+            {
+              "value": "h1-large",
+              "label": "Large"
+            },
+            {
+              "value": "h1-xlarge",
+              "label": "Extra large"
+            }
           ],
           "default": "h1-xlarge"
         }
@@ -333,9 +435,18 @@
           "id": "description_size",
           "label": "Size",
           "options": [
-            { "value": "small", "label": "Small" },
-            { "value": "medium", "label": "Medium" },
-            { "value": "large", "label": "Large" }
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
           ],
           "default": "medium"
         }
@@ -363,9 +474,18 @@
           "id": "button_color",
           "label": "Color",
           "options": [
-            { "value": "regular", "label": "Regular" },
-            { "value": "accent", "label": "Accent" },
-            { "value": "white", "label": "White" }
+            {
+              "value": "regular",
+              "label": "Regular"
+            },
+            {
+              "value": "accent",
+              "label": "Accent"
+            },
+            {
+              "value": "white",
+              "label": "White"
+            }
           ],
           "default": "accent"
         }
@@ -388,44 +508,87 @@
       ]
     },
     {
-      "type": "reviews",
-      "name": "Reviews",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "rating_text",
-          "label": "Rating text",
-          "default": "Real people, real results"
-        },
-        {
-          "type": "url",
-          "id": "rating_link",
-          "label": "Link URL",
-          "default": "/"
-        },
-        {
-          "type": "image_picker",
-          "id": "star_image",
-          "label": "5-Star Rating Image",
-        }
-      ]
+  "type": "customer_reviews",
+  "name": "Customer Reviews",
+  "settings": [
+    {
+      "type": "select",
+      "id": "stars",
+      "options": [
+        { "value": "", "label": "None" },
+        { "value": "3", "label": "3 out of 5" },
+        { "value": "3.5", "label": "3.5 out of 5" },
+        { "value": "4", "label": "4 out of 5" },
+        { "value": "4.5", "label": "4.5 out of 5" },
+        { "value": "5", "label": "5 out of 5" }
+      ],
+      "default": "",
+      "label": "Star rating"
+    },
+    {
+      "type": "textarea",
+      "id": "star_svg",
+      "label": "SVG for Star Rating",
+      "default": "<svg>...</svg>",
+      "info": "Paste your full 5-star SVG code here"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star Color",
+      "default": "#FFD700",
+      "info": "Choose the color of the stars"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "Review heading"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Add your customer review here to showcase them."
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author name",
+      "default": "Review author"
+    },
+    {
+      "type": "image_picker",
+      "id": "author_image",
+      "label": "Author image"
     }
+  ]
+}
+
   ],
   "max_blocks": 10,
   "presets": [
     {
       "name": "Image with text overlay",
-      "category": "Custom",
       "blocks": [
-        { "type": "subheading" },
-        { "type": "heading" },
-        { "type": "text" },
-        { "type": "button" },
-        { "type": "reviews" }
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        },
+        {
+          "type": "customer_reviews"
+        }
       ]
     }
   ]
 }
-{% endschema %}
 
+{% endschema %}
