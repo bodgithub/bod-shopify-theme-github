@@ -250,9 +250,6 @@
   align-items: center;
   margin-top: 20px;
   padding: 20px;
-  background-color: var(--overlay-color-rgb, #ffffff);
-  border-radius: var(--block-border-radius, 16px);
-  box-shadow: var(--block-shadows);
 }
 
 .customer-reviews--block .star-rating,
@@ -260,6 +257,7 @@
   margin: 0 auto; /* Center elements */
   display: block; /* Ensure they take up block-level space */
   text-align: center;
+  padding-bottom:10px;
 }
 
 /* Text Color and Styling */
@@ -267,9 +265,8 @@
   color: var(--text-color, #000);
 }
 
-.image-with-text-overlay .customer-reviews--review h6 {
-  font-size: 1.5rem;
-  color: var(--text-color, #000);
+.image-with-text-overlay .customer-reviews--review a {
+  text-decoration:none;
 }
 
 .image-with-text-overlay .customer-reviews .star-rating {
