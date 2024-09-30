@@ -128,7 +128,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Natural support for PCOS, thyroid and ovarian health*",
-            "open": true,
+            "open": false,
             "content": "",
             "page": ""
           }
@@ -137,7 +137,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Shown to improve anxiety*",
-            "open": true,
+            "open": false,
             "content": "",
             "page": ""
           }
@@ -146,7 +146,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Backed by 100+ clinical studies*",
-            "open": true,
+            "open": false,
             "content": "",
             "page": ""
           }
@@ -155,7 +155,7 @@
           "type": "collapsible_tab",
           "settings": {
             "heading": "Trusted by leading experts*",
-            "open": true,
+            "open": false,
             "content": "",
             "page": ""
           }
@@ -171,7 +171,8 @@
         "collapsible_tab_E8WqFp"
       ],
       "custom_css": [
-        ".image-with-text--content {padding: 0 20% 0 5%;}"
+        ".image-with-text--content {padding: 0 20% 0 5%;}",
+        "#Accordion-collapsible_tab_XCi3Ld-template--18405848416475__image_with_text_r96Axa {padding:0px!important;}"
       ],
       "settings": {
         "use_video": true,
