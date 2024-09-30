@@ -236,7 +236,8 @@
         "column_4JdggA"
       ],
       "custom_css": [
-        ".multicolumn {color: #1b3def !important; padding: 100px 0 30px 0;}"
+        ".multicolumn {color: #1b3def !important; align-content: end !important; }",
+        ".row .columns {align-content: end !important;}"
       ],
       "settings": {
         "heading": "",
@@ -251,7 +252,7 @@
         "marker_color": "#ffffff",
         "color_text": "#1b3def",
         "color_links": "#ffffff",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
