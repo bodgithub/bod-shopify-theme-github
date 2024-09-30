@@ -81,7 +81,8 @@
       ],
       "custom_css": [
         "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
-        "@media only screen and (min-width: 768px) {}"
+        "@media only screen and (min-width: 768px) {}",
+        ".h1-xlarge {font-size: calc(var(--font-heading-scale) * 74px) !important; line-height: calc(var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 72px)) !important;}"
       ],
       "settings": {
         "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-1.jpg",
@@ -188,6 +189,7 @@
       ],
       "custom_css": [
         ".image-with-text--content {padding: 0 20% 0 5%;}",
+        ".h1 {font-size: 70px;}",
         "#Accordion-collapsible_tab_XCi3Ld-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_BAVgTR-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_J4N3mA-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_E8WqFp-template--18405848416475__image_with_text_r96Axa {padding: 0px !important;}",
         ".text-button {justify-content: left; padding-bottom: 8px;}"
       ],
@@ -633,7 +635,7 @@
         "column_cwXkx6"
       ],
       "custom_css": [
-        ".multicolumn {color: #1b3def !important; }",
+        ".multicolumn {color: #1b3def !important;}",
         ".columns h1 {margin-bottom: 0px !important;}",
         "@media only screen and (min-width: 768px) {.row .columns {padding: 0px 15px 0 5% !important; }}"
       ],
