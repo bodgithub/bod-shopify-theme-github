@@ -103,27 +103,30 @@
 				</div>
 			</div>
 
-{% if block.type == 'customer_reviews' %}
-  <div class="customer-reviews--block" {{ block.shopify_attributes }}>
-    <div class="customer-reviews--content">
-      {%- if block.settings.stars and block.settings.stars != '' -%}
-        <div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
-      {%- endif -%}
-      {%- if block.settings.heading != blank -%}
-        <h6>{{ block.settings.heading }}</h6>
-      {%- endif -%}
-      <p>{{ block.settings.text | newline_to_br }}</p>
-      {%- if block.settings.author != blank -%}
-        <div class="customer-reviews--author">
-          {%- if block.settings.author_image != blank -%}
-            {%- render 'responsive-image', image: block.settings.author_image, sizes: '64x64' -%}
-          {%- endif -%}
-          <span>{{- block.settings.author -}}</span>
-        </div>
-      {%- endif -%}
-    </div>
-  </div>
-{% endif %}
+
+
+
+
+
+
+<div class="image-with-text-overlay--content content-{{ content_position }}">
+				<div class="image-with-text-overlay--content-inner content-width-{{ content_width }}">
+					{% for block in section.blocks %}
+						{%- case block.type -%}
+							{%- when 'customer_reviews' -%}
+								<div {{ block.shopify_attributes }}>
+									<div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
+                                  								</div>
+					
+						{%- endcase -%}
+					{% endfor %}
+				</div>
+			</div>
+
+
+
+
+
 
 
           
