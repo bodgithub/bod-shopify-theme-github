@@ -277,7 +277,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4 class=\"rte\">Over 80% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>  It’s not ‘just a weight issue’.</h4> <p><strong>Learn how inositol helps:</strong></p>",
+            "text": "",
             "link_label": "",
             "link": ""
           }
@@ -309,7 +309,56 @@
         "color_text": "#1b3def",
         "color_links": "#ffffff",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
+      }
+    },
+    "multicolumn_zBkNGq": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_k73ndb": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ExHNM9": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h4 class=\"rte\">Over 80% of adults have impaired metabolic function <span class=\"tooltip\" data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>  It’s not ‘just a weight issue’.</h4><h4><strong>Discover how inositol helps:</strong></h4>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_k73ndb",
+        "column_ExHNM9"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "data-tooltip": "",
+        "data-tooltip3": "Did you know?",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     },
     "multicolumn_6e9RVY": {
@@ -321,7 +370,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<p>Discover how unlocking your metabolic health with inositol can help:</p>",
+            "text": "<h4><strong>Discover how inositol helps:</strong></h4>",
             "link_label": "",
             "link": ""
           }
@@ -865,38 +914,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "rich_text_HpJCVc": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_nJFhJ9": {
-          "type": "heading",
-          "settings": {
-            "text": "Did you know? Your metabolism affects your entire body|—not just your weight|",
-            "marker_style": "style1",
-            "size": "h1",
-            "marker_color": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "heading_nJFhJ9"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".rich-text__inner {max-width: 780px; background-color: #1b3def;}"
-      ],
-      "settings": {
-        "text_width": "large",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#1b3def",
-        "color_heading": "#ffffff",
-        "color_text": "#ffffff",
-        "color_links": "#ffffff",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
     "image_with_text_C9a98T": {
       "type": "image-with-text",
       "blocks": {
@@ -1343,6 +1360,7 @@
     "spacer_hDmb7V",
     "spacer_FzEHUN",
     "multicolumn_rVnwmF",
+    "multicolumn_zBkNGq",
     "multicolumn_6e9RVY",
     "carousel_boxes_jas_HzyeW9",
     "spacer_qeNUwn",
@@ -1355,7 +1373,6 @@
     "featured_collection_mxheen",
     "testimonials_ncYmHF",
     "multicolumn_bcEC7r",
-    "rich_text_HpJCVc",
     "image_with_text_C9a98T",
     "multicolumn_bQBAHG",
     "text_with_icons_R6Pm86",
