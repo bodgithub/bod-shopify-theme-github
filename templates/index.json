@@ -12,17 +12,6 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "customer_reviews_bWBAzn": {
-          "type": "customer_reviews",
-          "settings": {
-            "stars": "5",
-            "star_svg": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 152.12 27.79\">\n  <defs>\n    <style>\n      .cls-1 {\n        fill: #1b3def;\n        stroke-width: 0px;\n      }\n    </style>\n  </defs>\n  <g>\n    <path class=\"cls-1\" d=\"m28.12,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m14.58,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m58.87,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m45.33,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m89.62,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m76.08,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m120.37,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m106.83,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m151.12,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m137.58,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n</svg>",
-            "star_color": "#1b3def",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
-          }
-        },
         "heading_FGRE4D": {
           "type": "heading",
           "disabled": true,
@@ -61,15 +50,26 @@
             "button_link": "",
             "button_color": "white"
           }
+        },
+        "customer_reviews_bWBAzn": {
+          "type": "customer_reviews",
+          "settings": {
+            "stars": "5",
+            "star_svg": "<svg id=\"Layer_1\" data-name=\"Layer 1\" xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 152.12 27.79\">\n  <defs>\n    <style>\n      .cls-1 {\n        fill: #1b3def;\n        stroke-width: 0px;\n      }\n    </style>\n  </defs>\n  <g>\n    <path class=\"cls-1\" d=\"m28.12,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m14.58,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m58.87,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m45.33,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m89.62,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m76.08,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m120.37,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m106.83,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n  <g>\n    <path class=\"cls-1\" d=\"m151.12,10.81l-27.12.14,8.41,6.07-3.14,9.72c7.28-5.31,14.57-10.62,21.85-15.93Z\"></path>\n    <path class=\"cls-1\" d=\"m137.58,1c-2.79,8.6-5.58,17.19-8.37,25.79l8.4-6.08,8.24,6.03c-2.76-8.58-5.52-17.16-8.27-25.74Z\"></path>\n  </g>\n</svg>",
+            "star_color": "#1b3def",
+            "heading": "Cassy",
+            "text": "Add your customer review here to showcase them.",
+            "author": "Review author"
+          }
         }
       },
       "block_order": [
-        "customer_reviews_bWBAzn",
         "heading_FGRE4D",
         "heading_YUHmEX",
         "heading_em97ki",
         "text_fHEjjg",
-        "button_rBDtc7"
+        "button_rBDtc7",
+        "customer_reviews_bWBAzn"
       ],
       "custom_css": [
         "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
