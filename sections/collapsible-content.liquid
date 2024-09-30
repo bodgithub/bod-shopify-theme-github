@@ -43,7 +43,7 @@
 									{{ block.settings.heading | default: block.settings.page.title }}
 									<span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
 								</summary>
-								<div class="collapsible__content accordion__content {% if block.settings.open == true %} style="padding:0px!important;"	{%- endif -%} rte" id="Accordion-{{ block.id }}-{{ section.id }}">
+<div class="collapsible__content accordion__content rte" id="Accordion-{{ block.id }}-{{ section.id }}" {% if block.settings.open == true %} style="padding:0px!important;" {% endif %}>
 									{{ block.settings.content }}
 									{{ block.settings.page.content }}
 								</div>
