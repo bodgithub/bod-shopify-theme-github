@@ -70,6 +70,74 @@
         "disable_bottom_spacing": true
       }
     },
+    "testimonials_ncYmHF": {
+      "type": "testimonials",
+      "blocks": {
+        "quote_FPFza8": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Sofia started ovulating*",
+            "author": "Wasn't sure what to expect with Bodology Inositol, given my PCOS history and practically non-existent cycles after coming off of birth control. It's been a bit over two months, and out of nowhere, I actually ovulated."
+          }
+        },
+        "quote_cA4Yz7": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Jasmin's cycles returned*",
+            "author": "I've had PCOS for 11 years and irregular cycles my whole life. 35 days after taking myo & d-chiro inositol powder my periods returned"
+          }
+        },
+        "quote_wFpXHz": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Sandra's cycles improved*",
+            "author": "I’m definitely going to be ordering more. Highly recommend!"
+          }
+        },
+        "quote_QyYCE3": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Irina lost 10 pounds*",
+            "author": "Little to no taste, and feeling much better. Lost 10 pounds so far & has regulated my cycle!"
+          }
+        },
+        "quote_arHRAy": {
+          "type": "quote",
+          "settings": {
+            "stars": "5",
+            "text": "Kristina's sleep improved*",
+            "author": "I haven't had any GI issues at all from taking it like I have with other brands. I've been getting better sleep since starting this powder and am very happy about that!"
+          }
+        }
+      },
+      "block_order": [
+        "quote_FPFza8",
+        "quote_cA4Yz7",
+        "quote_wFpXHz",
+        "quote_QyYCE3",
+        "quote_arHRAy"
+      ],
+      "custom_css": [
+        ".testimonials--author {line-height: 1.4em;}"
+      ],
+      "settings": {
+        "heading": "",
+        "full_width": true,
+        "text_size": "small",
+        "font_family": "body",
+        "pagination": "dots",
+        "autoplay": true,
+        "autoplay_length": 4,
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "multicolumn_PHpnpy": {
       "type": "multicolumn",
       "blocks": {
@@ -326,74 +394,6 @@
         "autoplay_length": 5,
         "transition": "zoom",
         "controls": "arrows",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "testimonials_ncYmHF": {
-      "type": "testimonials",
-      "blocks": {
-        "quote_FPFza8": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Sofia started ovulating*",
-            "author": "Wasn't sure what to expect with Bodology Inositol, given my PCOS history and practically non-existent cycles after coming off of birth control. It's been a bit over two months, and out of nowhere, I actually ovulated."
-          }
-        },
-        "quote_cA4Yz7": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Jasmin's cycles returned*",
-            "author": "I've had PCOS for 11 years and irregular cycles my whole life. 35 days after taking myo & d-chiro inositol powder my periods returned"
-          }
-        },
-        "quote_wFpXHz": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Sandra's cycles improved*",
-            "author": "I’m definitely going to be ordering more. Highly recommend!"
-          }
-        },
-        "quote_QyYCE3": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Irina lost 10 pounds*",
-            "author": "Little to no taste, and feeling much better. Lost 10 pounds so far & has regulated my cycle!"
-          }
-        },
-        "quote_arHRAy": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Kristina's sleep improved*",
-            "author": "I haven't had any GI issues at all from taking it like I have with other brands. I've been getting better sleep since starting this powder and am very happy about that!"
-          }
-        }
-      },
-      "block_order": [
-        "quote_FPFza8",
-        "quote_cA4Yz7",
-        "quote_wFpXHz",
-        "quote_QyYCE3",
-        "quote_arHRAy"
-      ],
-      "custom_css": [
-        ".testimonials--author {line-height: 1.4em;}"
-      ],
-      "settings": {
-        "heading": "",
-        "full_width": true,
-        "text_size": "small",
-        "font_family": "body",
-        "pagination": "dots",
-        "autoplay": true,
-        "autoplay_length": 4,
-        "color_bg": "#ffffff",
-        "color_text": "#1b3def",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -1164,11 +1164,11 @@
   },
   "order": [
     "image_with_text_overlay_zjqnjJ",
+    "testimonials_ncYmHF",
     "multicolumn_PHpnpy",
     "carousel_boxes_jas_baGN4Y",
     "image_with_text_r96Axa",
     "8ba47ba3-de7f-4f0a-b30d-6f2a540748c3",
-    "testimonials_ncYmHF",
     "featured_collection_mxheen",
     "rich_text_zTWM4w",
     "rich_text_HpJCVc",
