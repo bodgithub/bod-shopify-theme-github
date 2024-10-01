@@ -215,6 +215,33 @@
         "disable_bottom_spacing": true
       }
     },
+    "countdown_banner_6GN8An": {
+      "type": "countdown-banner",
+      "settings": {
+        "full_width": true,
+        "section_layout": "horizontal",
+        "desktop_height": "desktop-height-auto",
+        "mobile_height": "mobile-height-auto",
+        "subheading": "",
+        "heading": "<h5><b>30% off your first subscription</b></h5>",
+        "heading_size": "h2",
+        "content": "",
+        "content_size": "small",
+        "button_text": "Get 30% off inositol",
+        "button_link": "",
+        "timer_year": 2024,
+        "timer_month": "11",
+        "timer_day": "29",
+        "timer_hour": "00",
+        "timer_minute": "00",
+        "color_bg": "#f5f3ef",
+        "color_text": "#1b3def",
+        "overlay_color": "#F5F5F5",
+        "overlay_opacity": 100,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
     "image_with_text_mGhHwp": {
       "type": "image-with-text",
       "blocks": {
@@ -665,6 +692,7 @@
   "order": [
     "main",
     "slideshow_8B6yA4",
+    "countdown_banner_6GN8An",
     "image_with_text_mGhHwp",
     "rich_text_9b4GFW",
     "rich_text_wfT4mJ",
