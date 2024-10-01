@@ -32,7 +32,7 @@
 					{%- case block.type -%}
 						{%- when 'badge' -%}
 							<div>
-								<span class="inline-badge" style="--badge-bg: {{ block.settings.color_bg }};--badge-text: {{ block.settings.color_text }}">{{ block.settings.text | newline_to_br }}</span>
+								<span class="inline-badge" style="--badge-bg: {{ block.settings.color_bg }};--badge-text: {{ block.settings.color_text }}"><p>{{ block.settings.text | newline_to_br }}</p></span>
 							</div>
 						{%- when 'image' -%}
 							{%- if block.settings.image != blank -%}
