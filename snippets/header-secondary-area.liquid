@@ -35,7 +35,7 @@
   
 	{%- if shop.customer_accounts_enabled -%}
 		{% comment %} Replace Account Icon with Text{% endcomment %} 
-    	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}"  {% if request.path contains '/blog' %} style="opacity:0;" {% endif %}>
+    	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}"  {% if request.path contains '/blog' %} style="display:none;" {% endif %}>
       		Account
       		{% comment %}
       		Icon commented for future use:
@@ -45,7 +45,7 @@
   	{%- endif -%}
 
   	{% comment %} Show cart as text {% endcomment %}
-<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle">
+<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle" {% if request.path contains '/blog' %} style="display:none;" {% endif %}>
   Cart<span class="thb-item-count">
       {%- if cart.item_count < 1 -%} {%- else -%}{{ cart.item_count }}{%- endif -%}</span></a>
 
