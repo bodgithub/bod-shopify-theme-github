@@ -386,8 +386,28 @@
     "featured_product_aTcNxC": {
       "type": "featured-product",
       "blocks": {
+        "text_GJipLq": {
+          "type": "text",
+          "settings": {
+            "text": "Myo & D-Chiro Inositol",
+            "text_style": "style_body"
+          }
+        },
+        "text_FVcrNK": {
+          "type": "text",
+          "settings": {
+            "text": "40:1 ratio",
+            "text_style": "subheading"
+          }
+        },
+        "yotpo_subscriptions_app_block_wGzyfM": {
+          "type": "shopify://apps/yotpo-subscriptions/blocks/app-block/ef25e582-ada5-4bb0-b4e7-f94e97ab1bb4",
+          "settings": {
+          }
+        },
         "title_nrLxNA": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "show_products_rating": true
           }
@@ -399,6 +419,7 @@
         },
         "variant_picker_Uxpyqm": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "color_picker": true,
@@ -411,6 +432,7 @@
         },
         "quantity_9z4AVR": {
           "type": "quantity",
+          "disabled": true,
           "settings": {
           }
         },
@@ -422,19 +444,25 @@
         }
       },
       "block_order": [
+        "text_GJipLq",
+        "text_FVcrNK",
+        "yotpo_subscriptions_app_block_wGzyfM",
         "title_nrLxNA",
         "description_VzmGzW",
         "variant_picker_Uxpyqm",
         "quantity_9z4AVR",
         "buy_buttons_XqXWVd"
       ],
+      "custom_css": [
+        ".thb-product-detail {padding: 0 14% 0 14%;}"
+      ],
       "settings": {
-        "heading": "Featured product",
+        "heading": "",
         "marker_style": "style1",
-        "description": "<p>Add a short description for this featured product</p>",
+        "description": "<h3>Shop Bodology <em>Inositol</em> Powder</h3>",
         "product": "myo-d-chiro-inositol-powder",
         "show_taxes_included": false,
-        "thumbnail_position": "left",
+        "thumbnail_position": "bottom",
         "media_aspect_ratio": "square",
         "display_captions": true,
         "hide_variants": false,
