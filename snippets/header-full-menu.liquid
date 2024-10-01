@@ -1,4 +1,4 @@
-<full-menu class="full-menu">
+<full-menu class="full-menu" {% if request.path contains '/blog' or request.path contains '/pages/-' %} style="opacity:0;" {% endif %}>
 	<ul class="thb-full-menu" role="menubar">
 	  {%- for link in menu.links -%}
 		  {%- liquid
