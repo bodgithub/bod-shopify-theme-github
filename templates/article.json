@@ -1,1 +1,115 @@
-{"sections":{"breadcrumbs":{"type":"breadcrumbs","settings":{}},"main-article":{"type":"main-article","blocks":{"title":{"type":"title","settings":{}},"content":{"type":"content","settings":{}},"tags":{"type":"tags","settings":{}},"post_navigation":{"type":"post_navigation","settings":{}}},"block_order":["title","content","tags","post_navigation"],"settings":{"article_show_date":true,"article_show_author":true}}},"order":["breadcrumbs","main-article"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+      }
+    },
+    "image_with_text_riptgc": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_Cfezzx": {
+          "type": "subheading",
+          "settings": {
+            "text": "Add a tagline"
+          }
+        },
+        "heading_YYa9AX": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text",
+            "marker_style": "style1",
+            "heading_size": "h3",
+            "marker_color": "#FD6262"
+          }
+        },
+        "text_RK7eNh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        },
+        "image_Vxqjmc": {
+          "type": "image",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Cfezzx",
+        "heading_YYa9AX",
+        "text_RK7eNh",
+        "image_Vxqjmc"
+      ],
+      "settings": {
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "data-tooltip": "",
+        "data-tooltip3": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "full_width": false,
+        "layout": "image_first",
+        "content_position": "text-left",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_border": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "main-article": {
+      "type": "main-article",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "content": {
+          "type": "content",
+          "settings": {
+          }
+        },
+        "tags": {
+          "type": "tags",
+          "settings": {
+          }
+        },
+        "post_navigation": {
+          "type": "post_navigation",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "content",
+        "tags",
+        "post_navigation"
+      ],
+      "settings": {
+        "article_show_date": true,
+        "article_show_author": true,
+        "article_show_nav": true,
+        "article_show_sharing": true
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "image_with_text_riptgc",
+    "main-article"
+  ]
+}
