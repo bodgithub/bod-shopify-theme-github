@@ -278,7 +278,7 @@
         "heading_qW6xtP": {
           "type": "heading",
           "settings": {
-            "text": "1. It makes your periods super regular , no more missed cycles",
+            "text": "1. It Helps Make Your Periods Super Regular <em>     for cycles you can plan around</em>",
             "marker_style": "style1",
             "size": "h4",
             "marker_color": "#fd6262"
@@ -296,6 +296,43 @@
       "block_order": [
         "heading_qW6xtP",
         "text_yXbF46"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "left",
+        "color_bg": "#ffffff",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_wfT4mJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_UKYDFj": {
+          "type": "heading",
+          "settings": {
+            "text": "1. It makes your periods super regular , no more missed cycles",
+            "marker_style": "style1",
+            "size": "h4",
+            "marker_color": "#fd6262"
+          }
+        },
+        "text_yk6W9R": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Did you know that 85% of study participants experienced improved cycle regularity with inositol supplementation? Irregular periods can be a sign of hormonal imbalance, often linked to conditions like PCOS. Bodology's Myo & D-Chiro Inositol supplement supports a balanced hormonal response and promotes menstrual regularity. Experience the difference Bodology can make in your monthly cycle for more predictable, comfortable periods.*</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UKYDFj",
+        "text_yk6W9R"
       ],
       "settings": {
         "text_width": "large",
@@ -516,6 +553,7 @@
     "slideshow_8B6yA4",
     "image_with_text_mGhHwp",
     "rich_text_9b4GFW",
+    "rich_text_wfT4mJ",
     "rich_text_CkCK8z",
     "rich_text_qCGXTE",
     "rich_text_AKcWdR",
