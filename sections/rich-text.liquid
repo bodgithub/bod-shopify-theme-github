@@ -36,8 +36,8 @@
 							</div>
 						{%- when 'image' -%}
   {%- if block.settings.image != blank -%}
-    <div style="width: {{ block.settings.image_width }}%; text-align: {{ block.settings.image_alignment }};">
-      <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" style="width: 100%;" />
+    <div style="text-align: {{ block.settings.image_alignment }};">
+      <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" style="width: {{ block.settings.image_width }}%; {% if block.settings.image_alignment == 'center' %}display: block; margin-left: auto; margin-right: auto;{% endif %}" />
     </div>
   {%- else -%}
     <div class="thb-placeholder">
