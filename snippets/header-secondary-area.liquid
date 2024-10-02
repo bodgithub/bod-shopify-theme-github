@@ -35,7 +35,7 @@
   
 	{%- if shop.customer_accounts_enabled -%}
 		{% comment %} Replace Account Icon with Text{% endcomment %} 
-    	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}"  {% if request.path contains '/blog' or request.path contains '/pages/-' %} style="display:none;" {% endif %}>
+    	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}"  {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}>
       		Account
       		{% comment %}
       		Icon commented for future use:
