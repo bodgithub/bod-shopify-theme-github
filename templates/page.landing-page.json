@@ -215,6 +215,33 @@
         "disable_bottom_spacing": true
       }
     },
+    "countdown_banner_AHLx3E": {
+      "type": "countdown-banner",
+      "settings": {
+        "full_width": true,
+        "section_layout": "horizontal",
+        "desktop_height": "desktop-height-auto",
+        "mobile_height": "mobile-height-auto",
+        "subheading": "",
+        "heading": "<h6 style=\"color:white; margin:12px 0 10px 0;\"><b>30% OFF YOUR FIRST SUBSCRIPTION</b></h6>",
+        "heading_size": "h2",
+        "content": "",
+        "content_size": "small",
+        "button_text": "",
+        "button_link": "",
+        "timer_year": 2024,
+        "timer_month": "11",
+        "timer_day": "29",
+        "timer_hour": "00",
+        "timer_minute": "00",
+        "color_bg": "#1b3def",
+        "color_text": "#ffffff",
+        "overlay_color": "#1b3def",
+        "overlay_opacity": 100,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "image_with_text_mGhHwp": {
       "type": "image-with-text",
       "blocks": {
@@ -275,9 +302,9 @@
     "spacer_VVrNpC": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 20,
+        "spacer_mobile": 0,
         "spacer_desktop": 30,
-        "border_separator": true,
+        "border_separator": false,
         "border_separator_full": false
       }
     },
@@ -292,38 +319,29 @@
         "desktop_height": "desktop-height-auto",
         "mobile_height": "mobile-height-auto",
         "subheading": "",
-        "heading": "<h5><b>30% off your first subscription</b></h5>",
+        "heading": "<h6 style=\"color:white; margin:12px 0 10px 0;\"><b>30% OFF YOUR FIRST SUBSCRIPTION</b></h6>",
         "heading_size": "h2",
         "content": "",
         "content_size": "small",
-        "button_text": "Get 30% off inositol",
+        "button_text": "",
         "button_link": "",
         "timer_year": 2024,
         "timer_month": "11",
         "timer_day": "29",
         "timer_hour": "00",
         "timer_minute": "00",
-        "color_bg": "#F5F5F5",
-        "color_text": "#1b3def",
-        "overlay_color": "#F5F5F5",
+        "color_bg": "#1b3def",
+        "color_text": "#ffffff",
+        "overlay_color": "#1b3def",
         "overlay_opacity": 100,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
-    "spacer_LKW9yw": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 45,
-        "spacer_desktop": 30,
-        "border_separator": true,
-        "border_separator_full": false
-      }
-    },
     "spacer_BP3QFY": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 20,
+        "spacer_mobile": 45,
         "spacer_desktop": 45,
         "border_separator": false,
         "border_separator_full": false
@@ -722,10 +740,10 @@
   "order": [
     "main",
     "slideshow_8B6yA4",
+    "countdown_banner_AHLx3E",
     "image_with_text_mGhHwp",
     "spacer_VVrNpC",
     "countdown_banner_6GN8An",
-    "spacer_LKW9yw",
     "spacer_BP3QFY",
     "rich_text_9b4GFW",
     "rich_text_wfT4mJ",

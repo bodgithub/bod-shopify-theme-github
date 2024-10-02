@@ -120,7 +120,7 @@
         line-height: 1; }
         @media only screen and (min-width: 768px) {
           .countdown-banner .countdown-timer--column--number {
-            font-size: 1.1rem;
+            font-size: 0.8rem;
           font-weight:800; } }
       .countdown-banner .countdown-timer--column--text {
         font-size: 0.425rem;
@@ -136,7 +136,7 @@
           display: inline-flex;
           justify-content: center;
           width: 12px;
-          font-size: 1.1rem;
+          font-size: 0.8rem;
           line-height: 2.25rem;
           position: absolute;
           top: 50%;
@@ -144,6 +144,6 @@
           left: -16px; }
           @media only screen and (min-width: 768px) {
             .countdown-banner .countdown-timer--column + .countdown-timer--column .countdown-timer--column--number:before {
-              font-size: 1.1rem;
+              font-size: 0.8rem;
               line-height: 3rem;
               left: -21px; } }
