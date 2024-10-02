@@ -49,7 +49,7 @@
       margin-top: 15px; }
       @media only screen and (min-width: 768px) {
         .countdown-banner--inner.layout--horizontal .button {
-          margin: 20px 0 20px 55px; } }
+          margin: 0px 0 0px 55px; } }
     .countdown-banner--inner.layout--vertical .countdown-banner--timer {
       display: flex;
       flex-wrap: wrap;
@@ -103,7 +103,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
-   min-height: 80px; }
+ /*  min-height: 80px; */}
     .countdown-banner .countdown-timer--column {
       display: flex;
       flex-direction: column;
