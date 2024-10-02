@@ -45,7 +45,7 @@
   	{%- endif -%}
 
   	{% comment %} Show cart as text {% endcomment %}
-<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle" {% if request.path contains '/blog' or request.path contains '/pages/-' %} style="display:none;" {% endif %}>
+<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle" {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}>
   Cart<span class="thb-item-count">
       {%- if cart.item_count < 1 -%} {%- else -%}{{ cart.item_count }}{%- endif -%}</span></a>
 
