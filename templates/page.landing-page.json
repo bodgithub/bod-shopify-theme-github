@@ -637,6 +637,16 @@
           "settings": {
             "show_dynamic_checkout": true
           }
+        },
+        "collapsible_tab_gWwcGk": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "open": false,
+            "content": "<ul><li></li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
         }
       },
       "block_order": [
@@ -647,7 +657,8 @@
         "description_VzmGzW",
         "variant_picker_Uxpyqm",
         "quantity_9z4AVR",
-        "buy_buttons_XqXWVd"
+        "buy_buttons_XqXWVd",
+        "collapsible_tab_gWwcGk"
       ],
       "custom_css": [
         "@media only screen and (min-width: 768px) {.thb-product-detail {padding: 0 14% 0 14%; }}",
