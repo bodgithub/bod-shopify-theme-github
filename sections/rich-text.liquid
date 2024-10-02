@@ -41,9 +41,7 @@
 									assign master_width = block.settings.image_width | append: 'x' | append: image.src.height
 									render 'responsive-image', image: image, sizes: master_width, retina: true
 								-%}
-                              <div style="text-align: {{ block.settings.image_alignment }};">
-                                {% render 'responsive-image', image: image, sizes: master_width, retina: true %}
-                              </div>
+                              
 							{%- else -%}
 								<div class="thb-placeholder">
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
