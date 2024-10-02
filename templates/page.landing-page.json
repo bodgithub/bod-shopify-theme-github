@@ -383,12 +383,23 @@
             "image_width": 100,
             "image_alignment": "center"
           }
+        },
+        "button_yL4eHK": {
+          "type": "button",
+          "settings": {
+            "link_label": "Get 30% Off Inositol",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "heading_qW6xtP",
         "text_yXbF46",
-        "image_zKdhdE"
+        "image_zKdhdE",
+        "button_yL4eHK"
+      ],
+      "custom_css": [
+        ".rich-text.text-width-large .rich-text__inner {padding-bottom:30px;}"
       ],
       "settings": {
         "text_width": "large",
@@ -540,7 +551,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Andrew_Huberman_on_Bodology_inositol.png",
-            "image_width": 100,
+            "image_width": 80,
             "image_alignment": "center"
           }
         }
@@ -633,7 +644,8 @@
         "buy_buttons_XqXWVd"
       ],
       "custom_css": [
-        "@media only screen and (min-width: 768px) {.thb-product-detail {padding: 0 14% 0 14%; }}"
+        "@media only screen and (min-width: 768px) {.thb-product-detail {padding: 0 14% 0 14%; }}",
+        ".section-header--content {text-align: center;}"
       ],
       "settings": {
         "heading": "",
@@ -671,11 +683,19 @@
             "custom_liquid": "",
             "size": "text-size-small"
           }
+        },
+        "button_yVCPRw": {
+          "type": "button",
+          "settings": {
+            "link_label": "Get 30% off Inositol",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "heading_UKYDFj",
-        "text_yk6W9R"
+        "text_yk6W9R",
+        "button_yVCPRw"
       ],
       "settings": {
         "text_width": "large",
@@ -745,11 +765,20 @@
             "custom_liquid": "",
             "size": "text-size-small"
           }
+        },
+        "image_Be9erX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-08-26_at_23.14.02.png",
+            "image_width": 100,
+            "image_alignment": "center"
+          }
         }
       },
       "block_order": [
         "heading_AP3JiN",
-        "text_erPGRb"
+        "text_erPGRb",
+        "image_Be9erX"
       ],
       "settings": {
         "text_width": "large",
