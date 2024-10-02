@@ -647,6 +647,28 @@
             "page": "",
             "custom_liquid": ""
           }
+        },
+        "collapsible_tab_gPGnAF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "image": "shopify://shop_images/Supplement-Facts.png",
+            "open": false,
+            "content": "<p>Bodology™ Myo-Inositol,  D-Chiro-Inositol</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_RhK7NF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The \"NO\" List",
+            "image": "shopify://shop_images/Supplement-Facts.png",
+            "open": false,
+            "content": "<ul><li>No fillers</li><li>No gluten</li><li>No flavoring</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
         }
       },
       "block_order": [
@@ -658,7 +680,9 @@
         "variant_picker_Uxpyqm",
         "quantity_9z4AVR",
         "buy_buttons_XqXWVd",
-        "collapsible_tab_gWwcGk"
+        "collapsible_tab_gWwcGk",
+        "collapsible_tab_gPGnAF",
+        "collapsible_tab_RhK7NF"
       ],
       "custom_css": [
         "@media only screen and (min-width: 768px) {.thb-product-detail {padding: 0 14% 0 14%; }}",
