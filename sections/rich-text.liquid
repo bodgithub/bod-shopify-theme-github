@@ -38,9 +38,12 @@
 							{%- if block.settings.image != blank -%}
 								{%- liquid
 									assign image = block.settings.image
-									assign master_width = image.src.width | append: 'x' | append: image.src.height
+									assign master_width = block.settings.image_width | append: 'x' | append: image.src.height
 									render 'responsive-image', image: image, sizes: master_width, retina: true
 								-%}
+                              <div style="text-align: {{ block.settings.image_alignment }};">
+                                {% render 'responsive-image', image: image, sizes: master_width, retina: true %}
+                              </div>
 							{%- else -%}
 								<div class="thb-placeholder">
 									{{ 'image' | placeholder_svg_tag: 'placeholder_svg_tag' }}
@@ -228,7 +231,36 @@
 						"type": "image_picker",
 						"id": "image",
 						"label": "Image"
-					}
+					},
+                  {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image width (px)",
+      "default": 600,
+      "min": 400,
+      "max": 1200,
+      "step": 100
+    },
+                  {
+      "type": "select",
+      "id": "image_alignment",
+      "label": "Image alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    }
 				]
 			},
 			{
