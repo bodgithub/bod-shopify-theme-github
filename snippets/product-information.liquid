@@ -211,6 +211,13 @@
           {{ block.settings.content }}
           {{ block.settings.page.content }}
           {{ block.settings.custom_liquid }}
+
+          {% if block.settings.image %}
+          <div class="collapsible-tab-image">
+            <img src="{{ block.settings.image | img_url: 'medium' }}" alt="Collapsible Tab Image">
+          </div>
+        {% endif %}
+          
         </div>
       </details>
     </collapsible-row>
