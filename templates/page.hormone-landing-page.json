@@ -21,40 +21,8 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Balance hormones naturally<em>—don't</em><em> just mask symptoms</em>",
+            "text": "Balance hormones naturally—don't just mask symptoms",
             "heading_size": "h1-xlarge"
-          }
-        },
-        "heading_YUHmEX": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "Better <i>metabolism,</i> better hormones",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "heading_em97ki": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "A <i>new way</i> to balance hormones, mood, <i>metabolism</i>",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "text_fHEjjg": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Address poor metabolic health for better hormones, mood and metabolism with inositol.</p>",
-            "description_size": "small"
-          }
-        },
-        "text_tDP8jc": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<h6>Inositol—the new way to balance hormones, mood and metabolism.</h6>",
-            "description_size": "small"
           }
         },
         "button_rBDtc7": {
@@ -64,6 +32,21 @@
             "button_text": "Get inositol—the new way to balance",
             "button_link": "",
             "button_color": "white"
+          }
+        },
+        "benefits_MfjQJR": {
+          "type": "benefits",
+          "settings": {
+            "title": "Key Benefits",
+            "icon_size": 20,
+            "border_size": 1,
+            "border_color": "#1b3def",
+            "icon_choice": "icon-check",
+            "benefit_1": "Improve menstrual cycle regularity*",
+            "benefit_2": "Shorten cycle length*",
+            "benefit_3": "Support PCOS symptom relief*",
+            "benefit_4": "Significantly improve body composition and fat reduction, in combination with diet and exercise*",
+            "benefit_5": "Help to reduce cravings caused by poor insulin function*"
           }
         },
         "space_dgXhDh": {
@@ -86,11 +69,8 @@
       "block_order": [
         "space_UqqzGi",
         "heading_FGRE4D",
-        "heading_YUHmEX",
-        "heading_em97ki",
-        "text_fHEjjg",
-        "text_tDP8jc",
         "button_rBDtc7",
+        "benefits_MfjQJR",
         "space_dgXhDh",
         "customer_reviews_CtBhV3"
       ],
@@ -175,7 +155,7 @@
         "hide_variants": false,
         "lightbox": true,
         "enable_video_looping": false,
-        "marker_color": "#FD6262",
+        "marker_color": "#fd6262",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
