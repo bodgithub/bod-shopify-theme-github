@@ -37,12 +37,7 @@
 								<div class="testimonials--testimonial-content {{ font_family }}-font">
 									<p>{{ block.settings.text | newline_to_br }}</p>
 								</div>
-								{%- if block.settings.author != empty -%}
-								<div class="testimonials--author">
-									<strong>{{- block.settings.name -}}</strong><br><i>{{ block.settings.expert-title }}</i>
-                      
-								</div>
-								{%- endif -%}
+								
 							</div>
 						</div>
 					{%- endfor -%}
@@ -60,6 +55,12 @@
 													render 'responsive-image', image: image, sizes: width, retina: true
 												endif
 											-%}
+                                          {%- if block.settings.author != empty -%}
+								<div class="testimonials--author">
+									<strong>{{- block.settings.name -}}</strong><br><i>{{ block.settings.expert-title }}</i>
+                      
+								</div>
+								{%- endif -%}
 										</li>
 									{%- endfor -%}
 								</ol>
