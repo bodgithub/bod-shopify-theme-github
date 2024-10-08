@@ -63,6 +63,20 @@
           {%- if block.settings.image_link != blank -%}
           </a>
           {%- endif -%}
+
+      
+          <button class="toggle-box--button" {% if block.settings.text != blank %}style="display:none;" {% endif %}>{{ block.settings.heading }} {% if block.settings.link_label != blank %}
+    {%- if block.settings.use_text_button -%}
+        {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
+    {%- else -%}
+        <a href="{{ block.settings.link }}" title="{{ block.settings.link_label | escape }}" role="link" class="text-button {{ class }} text-button--has-icon" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} {% if block %}{{ block.shopify_attributes }}{% endif %}>
+            {{ block.settings.link_label }} 
+            <span>{% render 'svg-icons' with 'thb-caret-right' %}</a>
+        </a>
+    {% endif %}
+{% endif %}</button>
+
+      
         </figure>
         <div class="toggle-box--content rte text-{{ text_alignment }}">
           <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
@@ -89,17 +103,8 @@
 
 
 
-<!-- Editable button text -->
-<button class="toggle-box--button" {% if block.settings.text != blank %}style="display:none;" {% endif %}>{{ block.settings.heading }} {% if block.settings.link_label != blank %}
-    {%- if block.settings.use_text_button -%}
-        {%- render 'text-button', url: block.settings.link, title: block.settings.link_label, class: 'white' -%}
-    {%- else -%}
-        <a href="{{ block.settings.link }}" title="{{ block.settings.link_label | escape }}" role="link" class="text-button {{ class }} text-button--has-icon" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} {% if block %}{{ block.shopify_attributes }}{% endif %}>
-            {{ block.settings.link_label }} 
-            <span>{% render 'svg-icons' with 'thb-caret-right' %}</a>
-        </a>
-    {% endif %}
-{% endif %}</button>
+
+
 
 
 
