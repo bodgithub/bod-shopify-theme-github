@@ -119,7 +119,9 @@
 
                           {%- when 'benefits' -%}
 <div class="benefits-block">
-  <h3 style="font-weight: bold;">{{ block.settings.title }}</h3>
+  {% if block.settings.title != blank %}
+    <h3 style="font-weight: bold;">{{ block.settings.title }}</h3>
+  {% endif %}
   <div class="benefits-list">
     {% for i in (1..5) %}
       {%- assign benefit_key = "benefit_" | append: i -%}
