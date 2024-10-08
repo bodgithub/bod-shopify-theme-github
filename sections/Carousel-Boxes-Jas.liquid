@@ -37,7 +37,7 @@
           assign ratio = block.settings.image.aspect_ratio
         endif
       -%}
-      <div class="toggle-box" {{ block.shopify_attributes }}>
+      <div class="toggle-box" {{ block.shopify_attributes }} {% if block.settings.text != blank %}style="max-height:525px;"{% endif %}>
         
          {% if block.settings.text != blank %}
     <div class="study">{{ block.settings.text }}</div>
