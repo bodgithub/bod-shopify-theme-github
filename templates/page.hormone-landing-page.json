@@ -581,16 +581,13 @@
         "color_text": "#1b3def",
         "color_link": "#1b3def",
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
-    "spacer_qeNUwn": {
-      "type": "spacer",
+    "custom_liquid_mGtdU3": {
+      "type": "custom-liquid",
       "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 40,
-        "border_separator": false,
-        "border_separator_full": true
+        "custom_liquid": "<div style=\"padding:10px 8% 4% 8%;font-size:0.45em; line-height:1.1em;color:grey; max-width:700px\">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Studies did no tinclude Bodology products specifically.\n</div>"
       }
     },
     "spacer_EJt6Hf": {
@@ -1241,7 +1238,7 @@
     "spacer_FzEHUN",
     "multicolumn_rVnwmF",
     "carousel_boxes_jas_HzyeW9",
-    "spacer_qeNUwn",
+    "custom_liquid_mGtdU3",
     "spacer_EJt6Hf",
     "video_pdBgr8",
     "multicolumn_yRYBT4",
