@@ -137,11 +137,11 @@
   display: inline-flex;
   flex-wrap: nowrap;
   align-items: center;
-  grid-gap: 25px;
+  grid-gap: 10px;
   overflow-x: scroll; }
   @media only screen and (min-width: 768px) {
     .flickity-custom-dots {
-      grid-gap: 50px; } }
+      grid-gap: 10px; } }
   .flickity-custom-dots .dot {
     display: inline-flex;
     opacity: 0.4;
