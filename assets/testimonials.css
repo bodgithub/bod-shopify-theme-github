@@ -120,9 +120,9 @@
   .testimonials--author {
     font-size: 0.875rem;
     line-height: 1; }
-    .testimonials--author:before {
-      content: "\2014";
-      margin-right: 10px; }
+   /* .testimonials--author:before {
+     content: "\2014";
+      margin-right: 10px; }*/
   .testimonials scroll-shadow {
     margin: 0 -15px;
     width: calc(100% + 30px); }
