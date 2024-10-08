@@ -21,7 +21,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Your <i>hormones</i> deserve better",
+            "text": "Balance hormones naturally<em>—don't</em><em> just mask symptoms</em>",
             "heading_size": "h1-xlarge"
           }
         },
@@ -59,8 +59,9 @@
         },
         "button_rBDtc7": {
           "type": "button",
+          "disabled": true,
           "settings": {
-            "button_text": "Get inositol<i>—</i>the new way to balance",
+            "button_text": "Get inositol—the new way to balance",
             "button_link": "",
             "button_color": "white"
           }
@@ -99,19 +100,84 @@
         ".h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-1.jpg",
+        "image": "shopify://shop_images/Bodology-Inositol-Hormones-Banner.jpg",
         "image_parallax": true,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-500",
         "full_width": true,
         "content_width": "medium",
-        "content_position": "bottom-center",
+        "content_position": "bottom-left",
         "text_alignment": "center",
         "text_color": "#1b3def",
         "overlay_color": "#000000",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "spacer_LVK4hF": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 35,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "featured_product_wiHCVn": {
+      "type": "featured-product",
+      "blocks": {
+        "title_ExCfKU": {
+          "type": "title",
+          "settings": {
+            "show_products_rating": true
+          }
+        },
+        "variant_picker_NMTpia": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_use_variants": false,
+            "variant_is_disabled": true,
+            "sizing_guide_text": "Sizing guide",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
+        "quantity_RyV4rX": {
+          "type": "quantity",
+          "settings": {
+          }
+        },
+        "buy_buttons_3FBywE": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "title_ExCfKU",
+        "variant_picker_NMTpia",
+        "quantity_RyV4rX",
+        "buy_buttons_3FBywE"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "product": "myo-d-chiro-inositol-powder",
+        "show_taxes_included": true,
+        "thumbnail_position": "left",
+        "media_aspect_ratio": "adapt",
+        "display_captions": true,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": false,
+        "marker_color": "#FD6262",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
       }
     },
     "image_with_text_r96Axa": {
@@ -1080,56 +1146,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "text_with_icons_R6Pm86": {
-      "type": "text-with-icons",
-      "blocks": {
-        "icon_g4YmNf": {
-          "type": "icon",
-          "settings": {
-            "icon": "washing",
-            "image": "shopify://shop_images/scales.png",
-            "heading": "",
-            "text": "<h5><strong>Smarter 40:1 Myo to D-Chiro Inositol ratio</strong></h5>"
-          }
-        },
-        "icon_M9FPbK": {
-          "type": "icon",
-          "settings": {
-            "icon": "ruler",
-            "image": "shopify://shop_images/certificate.png",
-            "heading": "",
-            "text": "<h5><strong>Backed by 100+ Clinical Studies</strong></h5>"
-          }
-        },
-        "icon_jht6J7": {
-          "type": "icon",
-          "settings": {
-            "icon": "bottle",
-            "image": "shopify://shop_images/puzzle-piece.png",
-            "heading": "",
-            "text": "<h5><strong>Optimized for max absorption</strong></h5>"
-          }
-        }
-      },
-      "block_order": [
-        "icon_g4YmNf",
-        "icon_M9FPbK",
-        "icon_jht6J7"
-      ],
-      "disabled": true,
-      "settings": {
-        "text_alignment": "left",
-        "icon_position": "left",
-        "icon_size": "small",
-        "heading_size": "large",
-        "mobile_swipe": true,
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "color_text": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
     "carousel_boxes_jas_QGw4P6": {
       "type": "Carousel-Boxes-Jas",
       "blocks": {
@@ -1227,70 +1243,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "16620983071df6eb29": {
-      "type": "text-with-icons",
-      "blocks": {
-        "1662098307788ca717-0": {
-          "type": "icon",
-          "settings": {
-            "icon": "washing",
-            "image": "shopify://shop_images/scales.png",
-            "heading": "",
-            "text": "<h5><strong>Third-party tested for purity and potency</strong></h5>"
-          }
-        },
-        "2c4a636c-cb89-4faf-82e6-13a0e7241006": {
-          "type": "icon",
-          "settings": {
-            "icon": "ruler",
-            "image": "shopify://shop_images/certificate.png",
-            "heading": "",
-            "text": "<h5><strong>Endorsed by leading metabolic health experts</strong></h5>"
-          }
-        },
-        "1662098307788ca717-1": {
-          "type": "icon",
-          "settings": {
-            "icon": "bottle",
-            "image": "shopify://shop_images/puzzle-piece.png",
-            "heading": "",
-            "text": "<h5><strong>Versatile, unflavored powder without additives</strong></h5>"
-          }
-        },
-        "1662098307788ca717-2": {
-          "type": "icon",
-          "disabled": true,
-          "settings": {
-            "icon": "leaf",
-            "image": "shopify://shop_images/plant.png",
-            "heading": "Plant Powered",
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "1662098307788ca717-0",
-        "2c4a636c-cb89-4faf-82e6-13a0e7241006",
-        "1662098307788ca717-1",
-        "1662098307788ca717-2"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".text-with-icons__icon svg {width: 70% !important;}"
-      ],
-      "settings": {
-        "text_alignment": "left",
-        "icon_position": "left",
-        "icon_size": "small",
-        "heading_size": "large",
-        "mobile_swipe": true,
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "color_text": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
     "multicolumn_8A3tT7": {
       "type": "multicolumn",
       "blocks": {
@@ -1366,6 +1318,8 @@
   },
   "order": [
     "image_with_text_overlay_zjqnjJ",
+    "spacer_LVK4hF",
+    "featured_product_wiHCVn",
     "image_with_text_r96Axa",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "spacer_hDmb7V",
@@ -1386,9 +1340,7 @@
     "multicolumn_bcEC7r",
     "image_with_text_C9a98T",
     "multicolumn_bQBAHG",
-    "text_with_icons_R6Pm86",
     "carousel_boxes_jas_QGw4P6",
-    "16620983071df6eb29",
     "multicolumn_8A3tT7"
   ]
 }
