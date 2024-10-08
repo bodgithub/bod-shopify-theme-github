@@ -117,8 +117,15 @@
             "show_products_rating": true
           }
         },
+        "custom_liquid_qLxheX": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<b>A new way to balance</b><br><br><h6>Bodology Inositol is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6>"
+          }
+        },
         "variant_picker_NMTpia": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "color_picker": true,
@@ -131,6 +138,7 @@
         },
         "quantity_RyV4rX": {
           "type": "quantity",
+          "disabled": true,
           "settings": {
           }
         },
@@ -139,13 +147,67 @@
           "settings": {
             "show_dynamic_checkout": true
           }
+        },
+        "text_UCNRLk": {
+          "type": "text",
+          "settings": {
+            "text": "A new way to find balance.",
+            "text_style": "style_body"
+          }
+        },
+        "collapsible_tab_zkXkR7": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "open": false,
+            "content": "<ul><li>3rd party tested for purity & potency</li><li>Optimal 40:1 ratio science-backed for its benefits on women's health</li><li>Made sustainably in the USA</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_BEQc3p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "image": "shopify://shop_images/Supplement-Facts.png",
+            "open": false,
+            "content": "<p>Bodology™ Myo-Inositol, D-Chiro-Inositol</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_Qq4nP6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The \"NO\" List",
+            "open": false,
+            "content": "<ul><li>No fillers</li><li>No gluten</li><li>No flavoring</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_RaXCmL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Certifications",
+            "open": false,
+            "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metal, Conaminants and Microbiological Analysis by 3rd Party Laboratories</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
         }
       },
       "block_order": [
         "title_ExCfKU",
+        "custom_liquid_qLxheX",
         "variant_picker_NMTpia",
         "quantity_RyV4rX",
-        "buy_buttons_3FBywE"
+        "buy_buttons_3FBywE",
+        "text_UCNRLk",
+        "collapsible_tab_zkXkR7",
+        "collapsible_tab_BEQc3p",
+        "collapsible_tab_Qq4nP6",
+        "collapsible_tab_RaXCmL"
       ],
       "settings": {
         "heading": "",
