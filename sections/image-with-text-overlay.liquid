@@ -121,8 +121,6 @@
 <div class="benefits-block">
   <h3 style="font-weight: bold;">{{ block.settings.title }}</h3>
   <div class="benefits-list">
-    {% assign marker_style = block.settings.marker_style %}
-    {% assign marker_color = block.settings.marker_color %}
     {% for i in (1..5) %}
       {%- assign benefit_key = "benefit_" | append: i -%}
       {%- assign icon_key = "icon_" | append: i -%}
@@ -133,9 +131,7 @@
           {% if icon %}
             <img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon"/>
           {% else %}
-            <span style="color: {{ marker_color }};">
-              {%- render 'svg-icons' with marker_style -%}
-            </span>
+            
           {% endif %}
           <span>{{ benefit }}</span>
         </div>
