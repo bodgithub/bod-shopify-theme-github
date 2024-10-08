@@ -99,7 +99,7 @@
         assign marker_color = block.settings.marker_color
         assign text = block.settings.title | newline_to_br
     -%}
-  <h1>test</h1>
+  
     <h4 class="{{ heading_size }}">{% render 'animated-marker-heading', heading: text, style: marker_style, color: marker_color %}</h4>
 {% endif %}
 
