@@ -120,7 +120,7 @@
                           {%- when 'benefits' -%}
 <div class="benefits-block">
   {% if block.settings.benefits-title != blank %}
-    <span style="font-weight: bold;">{{ block.settings.benefits-title }}{% else %} What's it for?</span> 
+    <p>{{ block.settings.benefits-title }}</p> 
   {% endif %}
   <div class="benefits-list">
     {% for i in (1..5) %}
