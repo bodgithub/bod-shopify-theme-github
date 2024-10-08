@@ -33,7 +33,7 @@
           assign ratio = block.settings.image.aspect_ratio
         endif
       -%}
-      <div class="toggle-box" {{ block.shopify_attributes }} open>
+      <div class="toggle-box" {{ block.shopify_attributes }}>
         <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
 
           {% if block.settings.text != blank %}
