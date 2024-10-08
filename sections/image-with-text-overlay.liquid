@@ -118,27 +118,31 @@
 
 
                           {%- when 'benefits' -%}
-      <div class="benefits-block">
-        <h3 style="font-weight: bold;">{{ block.settings.title }}</h3>
-        <div class="benefits-list">
-          {% for i in (1..5) %}
-            {%- assign benefit_key = "benefit_" | append: i -%}
-            {%- assign icon_key = "icon_" | append: i -%}
-            {% assign benefit = block.settings[benefit_key] %}
-            {% assign icon = block.settings[icon_key] %}
-            {% if benefit %}
-              <div class="benefit-item" style="border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};">
-                {% if icon %}
-                  <img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon"/>
-                {% else %}
-                  {% render 'svg-icons' with block.settings.icon_choice %}
-                {% endif %}
-                <span>{{ benefit }}</span>
-              </div>
-            {% endif %}
-          {% endfor %}
+<div class="benefits-block">
+  <h3 style="font-weight: bold;">{{ block.settings.title }}</h3>
+  <div class="benefits-list">
+    {% assign marker_style = block.settings.marker_style %}
+    {% assign marker_color = block.settings.marker_color %}
+    {% for i in (1..5) %}
+      {%- assign benefit_key = "benefit_" | append: i -%}
+      {%- assign icon_key = "icon_" | append: i -%}
+      {% assign benefit = block.settings[benefit_key] %}
+      {% assign icon = block.settings[icon_key] %}
+      {% if benefit %}
+        <div class="benefit-item" style="border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};">
+          {% if icon %}
+            <img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon"/>
+          {% else %}
+            <span style="color: {{ marker_color }};">
+              {%- render 'svg-icons' with marker_style -%}
+            </span>
+          {% endif %}
+          <span>{{ benefit }}</span>
         </div>
-      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
 
                           
 							{% when 'space' %}
