@@ -118,9 +118,9 @@
 
 
                           {%- when 'benefits' -%}
-<div class="benefits-block image-with-text--content--inner accordion summary">
+<div class="benefits-block  accordion">
   {% if block.settings.benefits-title != blank %}
-    <div>{{ block.settings.benefits-title }}</div> 
+    <summary>{{ block.settings.benefits-title }}</summary> 
   {% endif %}
   <div class="benefits-list">
     {% for i in (1..5) %}
