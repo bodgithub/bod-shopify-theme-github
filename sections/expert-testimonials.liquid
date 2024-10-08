@@ -72,6 +72,39 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // JavaScript code here
+    const slides = document.querySelectorAll('.testimonials--testimonial');
+    const dots = document.querySelectorAll('.flickity-custom-dots .dot');
+    function scrollToCenter(selectedIndex) {
+      const dot = dots[selectedIndex];
+      const container = document.querySelector('.flickity-custom-dots');
+      const containerWidth = container.offsetWidth;
+      const dotOffsetLeft = dot.offsetLeft;
+      const dotWidth = dot.offsetWidth;
+      const scrollPosition = dotOffsetLeft - containerWidth / 2 + dotWidth / 2;
+      container.scroll({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+      dots.forEach((dot) => dot.classList.remove('is-selected'));
+      dot.classList.add('is-selected');
+    }
+    const carousel = document.querySelector('.testimonials--carousel');
+    carousel.addEventListener('change.flickity', function(event) {
+      scrollToCenter(event.target.selectedIndex);
+    });
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', function() {
+        scrollToCenter(index);
+      });
+    });
+  });
+</script>
+
+
 {% schema %}
   {
     "name": "Expert Testimonials",
