@@ -141,13 +141,6 @@
             "show_dynamic_checkout": true
           }
         },
-        "text_UCNRLk": {
-          "type": "text",
-          "settings": {
-            "text": "A new way to find balance.",
-            "text_style": "style_body"
-          }
-        },
         "collapsible_tab_zkXkR7": {
           "type": "collapsible_tab",
           "settings": {
@@ -196,7 +189,6 @@
         "variant_picker_NMTpia",
         "quantity_RyV4rX",
         "buy_buttons_3FBywE",
-        "text_UCNRLk",
         "collapsible_tab_zkXkR7",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
@@ -208,7 +200,7 @@
         "description": "",
         "product": "myo-d-chiro-inositol-powder",
         "show_taxes_included": true,
-        "thumbnail_position": "left",
+        "thumbnail_position": "bottom",
         "media_aspect_ratio": "square",
         "display_captions": true,
         "hide_variants": false,
@@ -303,6 +295,84 @@
         "autoplay_length": 5,
         "transition": "zoom",
         "controls": "arrows",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_slideshow_dhTxxw": {
+      "type": "image-with-text-slideshow",
+      "blocks": {
+        "slide_NTPjrh": {
+          "type": "slide",
+          "settings": {
+            "subheading": "subheading",
+            "heading": "Slide Heading",
+            "heading_size": "h3",
+            "content": "Add a descriptive text here for your slide.",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "color_bg": "#ffffff",
+            "color_text": "#2c2d2e",
+            "color_button": "#2c2d2e"
+          }
+        },
+        "slide_MAxJBV": {
+          "type": "slide",
+          "settings": {
+            "subheading": "subheading",
+            "heading": "Slide Heading",
+            "heading_size": "h3",
+            "content": "Add a descriptive text here for your slide.",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "color_bg": "#ffffff",
+            "color_text": "#2c2d2e",
+            "color_button": "#2c2d2e"
+          }
+        },
+        "slide_AWryBb": {
+          "type": "slide",
+          "settings": {
+            "subheading": "subheading",
+            "heading": "Slide Heading",
+            "heading_size": "h3",
+            "content": "Add a descriptive text here for your slide.",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "color_bg": "#ffffff",
+            "color_text": "#2c2d2e",
+            "color_button": "#2c2d2e"
+          }
+        },
+        "slide_pqMryi": {
+          "type": "slide",
+          "settings": {
+            "subheading": "subheading",
+            "heading": "Slide Heading",
+            "heading_size": "h3",
+            "content": "Add a descriptive text here for your slide.",
+            "button_text": "Shop Now",
+            "button_link": "",
+            "color_bg": "#ffffff",
+            "color_text": "#2c2d2e",
+            "color_button": "#2c2d2e"
+          }
+        }
+      },
+      "block_order": [
+        "slide_NTPjrh",
+        "slide_MAxJBV",
+        "slide_AWryBb",
+        "slide_pqMryi"
+      ],
+      "settings": {
+        "mobile_height": "mobile-height-350",
+        "desktop_height": "desktop-height-650",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "content_position": "text-left",
+        "autoplay": false,
+        "autoplay_length": 5,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -1339,6 +1409,7 @@
     "spacer_LVK4hF",
     "featured_product_wiHCVn",
     "slideshow_Wmy8by",
+    "image_with_text_slideshow_dhTxxw",
     "image_with_text_r96Axa",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "spacer_hDmb7V",
