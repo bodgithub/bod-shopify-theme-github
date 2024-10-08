@@ -12,12 +12,6 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "space_UqqzGi": {
-          "type": "space",
-          "settings": {
-            "height": 30
-          }
-        },
         "customer_reviews_CtBhV3": {
           "type": "customer_reviews",
           "settings": {
@@ -31,7 +25,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Balance hormones naturally<i>—don't</i><i> just mask symptoms</i>",
+            "text": "Balance hormones naturally<em>—don't</em><em> just mask symptoms</em>",
             "heading_size": "h1-xlarge"
           }
         },
@@ -71,7 +65,6 @@
         }
       },
       "block_order": [
-        "space_UqqzGi",
         "customer_reviews_CtBhV3",
         "heading_FGRE4D",
         "button_rBDtc7",
@@ -89,7 +82,7 @@
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-500",
         "full_width": true,
-        "content_width": "medium",
+        "content_width": "large",
         "content_position": "bottom-left",
         "text_alignment": "left",
         "text_color": "#1b3def",

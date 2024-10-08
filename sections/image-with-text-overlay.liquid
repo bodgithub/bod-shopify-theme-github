@@ -118,7 +118,7 @@
 
 
                           {%- when 'benefits' -%}
-<div class="benefits-block">
+<div class="benefits-block content-width-{{ content_width2 }}">
   {% if block.settings.benefits-title != blank %}
     <div id="title">{{ block.settings.benefits-title }}</div> 
   {% endif %}
@@ -599,6 +599,23 @@
       "type": "benefits",
       "name": "Product Benefits",
       "settings": [
+         {
+      "type": "select",
+      "id": "content_width2",
+      "label": "Content width",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        } ]},
         {
           "type": "html",
           "id": "benefits-title",
