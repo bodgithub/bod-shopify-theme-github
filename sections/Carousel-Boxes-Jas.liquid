@@ -75,13 +75,13 @@
         </a>
     {% endif %}
 {% endif %}</button>
-              <h1>test</h1>
+              
 
       
         </figure>
         <div class="toggle-box--content rte text-{{ text_alignment }}">
           <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
-            <div>
+            <h1>test</h1><div>
               {% if block.settings.text != blank %}
                 {{ block.settings.text | newline_to_br }}
               {% endif %}
