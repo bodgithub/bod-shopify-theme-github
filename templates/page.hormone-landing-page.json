@@ -18,10 +18,20 @@
             "height": 90
           }
         },
+        "customer_reviews_CtBhV3": {
+          "type": "customer_reviews",
+          "settings": {
+            "stars": "5",
+            "heading": "See real results with inositol",
+            "font_size": "0.7em",
+            "link": "shopify://products/myo-d-chiro-inositol-powder",
+            "scale": "1.5"
+          }
+        },
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Balance hormones naturally—don't just mask symptoms",
+            "text": "Balance hormones naturally<em>—don't</em><em> just mask symptoms</em>",
             "heading_size": "h1-xlarge"
           }
         },
@@ -56,28 +66,19 @@
         },
         "space_dgXhDh": {
           "type": "space",
+          "disabled": true,
           "settings": {
             "height": 130
-          }
-        },
-        "customer_reviews_CtBhV3": {
-          "type": "customer_reviews",
-          "settings": {
-            "stars": "5",
-            "heading": "See real results with inositol",
-            "font_size": "0.7em",
-            "link": "shopify://products/myo-d-chiro-inositol-powder",
-            "scale": "1.5"
           }
         }
       },
       "block_order": [
         "space_UqqzGi",
+        "customer_reviews_CtBhV3",
         "heading_FGRE4D",
         "button_rBDtc7",
         "benefits_MfjQJR",
-        "space_dgXhDh",
-        "customer_reviews_CtBhV3"
+        "space_dgXhDh"
       ],
       "custom_css": [
         "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
