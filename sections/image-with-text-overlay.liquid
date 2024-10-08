@@ -118,11 +118,11 @@
 
 
                           {%- when 'benefits' -%}
-<div class="benefits-block  accordion">
+<div class="benefits-block">
   {% if block.settings.benefits-title != blank %}
-    <summary>{{ block.settings.benefits-title }}</summary> 
+    <div>{{ block.settings.benefits-title }}</div> 
   {% endif %}
-  <div class="benefits-list">
+  <div class="benefits-list accordion">
     {% for i in (1..5) %}
       {%- assign benefit_key = "benefit_" | append: i -%}
       {%- assign icon_key = "icon_" | append: i -%}
@@ -133,7 +133,7 @@
           {% if icon %}
             <img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon"/>
           {% endif %}
-          <span>{{ benefit }}</span>
+          <summary>{{ benefit }}</summary>
         </div>
       {% endif %}
     {% endfor %}
