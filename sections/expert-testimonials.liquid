@@ -39,7 +39,8 @@
 								</div>
 								{%- if block.settings.author != empty -%}
 								<div class="testimonials--author">
-									{{- block.settings.author -}}
+									<p>{{- block.settings.name -}}</p>
+                                  <p><i>{{- block.settings.title -}}</i></p>
 								</div>
 								{%- endif -%}
 							</div>
@@ -204,10 +205,16 @@
             "default": "Add your customer or client quote here to showcase them."
           },
           {
-            "id": "author",
+            "id": "name",
             "type": "text",
-            "label": "Author",
-						"default": "Testimonial author"
+            "label": "Name",
+						"default": "Expert Name"
+          },
+          {
+            "id": "tite",
+            "type": "text",
+            "label": "Title",
+						"default": "Expert Title"
           }
         ]
       }
