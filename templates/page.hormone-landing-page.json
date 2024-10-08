@@ -104,8 +104,16 @@
     "featured_product_wiHCVn": {
       "type": "featured-product",
       "blocks": {
+        "text_RWyfgB": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Myo & D-Chiro <em>Inositol</em>Powder</h2>",
+            "text_style": "style_body"
+          }
+        },
         "title_ExCfKU": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "show_products_rating": true
           }
@@ -113,7 +121,7 @@
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<b><i>A new way to balance</i></b><br><br><h6>Bodology Inositol is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6>"
+            "custom_liquid": "<h6>Bodology Inositol is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6>"
           }
         },
         "variant_picker_NMTpia": {
@@ -184,6 +192,7 @@
         }
       },
       "block_order": [
+        "text_RWyfgB",
         "title_ExCfKU",
         "custom_liquid_qLxheX",
         "variant_picker_NMTpia",
@@ -251,7 +260,7 @@
         "quote_eiGUym"
       ],
       "settings": {
-        "heading": "Out experts",
+        "heading": "Our <em>advisory board</em>",
         "full_width": false,
         "text_size": "small",
         "font_family": "body",
