@@ -101,3 +101,45 @@
       grid-template-columns: 4fr 6fr; } }
   .image-with-text-slideshow .flickity-page-dots {
     --color-body: #fff; }
+
+/* New CSS for thumbnails and greying inactive slides */
+/* Thumbnails container */
+.carousel-thumbnails {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Thumbnail styles */
+.carousel-thumbnail {
+  cursor: pointer;
+  margin: 0 10px;
+  opacity: 0.5; /* Greys out the thumbnail by default */
+  transition: opacity 0.3s ease;
+}
+
+.carousel-thumbnail.active {
+  opacity: 1; /* Active thumbnail fully visible */
+}
+
+.carousel-thumbnail img {
+  width: 80px; /* Adjust size as needed */
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Grey out inactive slides */
+.slideshow .carousel__slide {
+  transition: opacity 0.5s ease;
+  position: relative;
+}
+
+.slideshow .carousel__slide.inactive {
+  opacity: 0.5; /* Grey out inactive slides */
+}
+
+/* Flickity modifications for clickable thumbnails */
+.flickity-enabled.is-fade .carousel-thumbnail {
+  display: none; /* Hide flickity-specific thumbnails */
+}
