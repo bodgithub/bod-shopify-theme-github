@@ -81,7 +81,7 @@
         </figure>
         <div class="toggle-box--content rte text-{{ text_alignment }}">
           <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
-            <h1>test</h1><div>
+            <div>
               {% if block.settings.text != blank %}
                 {{ block.settings.text | newline_to_br }}
               {% endif %}
@@ -99,6 +99,7 @@
         assign marker_color = block.settings.marker_color
         assign text = block.settings.title | newline_to_br
     -%}
+  <h1>test</h1>
     <h4 class="{{ heading_size }}">{% render 'animated-marker-heading', heading: text, style: marker_style, color: marker_color %}</h4>
 {% endif %}
 
