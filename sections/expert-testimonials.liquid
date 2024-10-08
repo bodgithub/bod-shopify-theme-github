@@ -20,29 +20,10 @@
 		<div class="testimonials testimonials--full-width-{{ full_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }}; --color-body: {{ color_text }}; --color-text:{{ color_text }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
 			{%- if section_heading -%}
 			<div class="testimonials--heading">
-				<h6>{{ section_heading }}</h6>
+				<h2>{{ section_heading }}</h2>
 			</div>
 			{%- endif -%}
-			<div class="testimonials--inner text-{{ text_size }}">
-				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
-					{%- for block in section.blocks -%}
-						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
-							<div class="testimonials--testimonial-inner">
-								{%- if block.settings.stars and block.settings.stars != '' -%}
-									<div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
-								{%- endif -%}
-								<div class="testimonials--testimonial-content {{ font_family }}-font">
-									<p>{{ block.settings.text | newline_to_br }}</p>
-								</div>
-								{%- if block.settings.author != empty -%}
-								<div class="testimonials--author">
-									{{- block.settings.author -}}
-								</div>
-								{%- endif -%}
-							</div>
-						</div>
-					{%- endfor -%}
-					{%- if section.blocks.size > 1 -%}
+          {%- if section.blocks.size > 1 -%}
 						{%- if pagination == 'logos' -%}
 							<scroll-shadow>
 								<ol class="flickity-custom-dots dot-style--{{ pagination }}">
@@ -62,6 +43,26 @@
 							</scroll-shadow>
 						{%- endif -%}
 					{%- endif -%}
+			<div class="testimonials--inner text-{{ text_size }}">
+				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
+					{%- for block in section.blocks -%}
+						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
+							<div class="testimonials--testimonial-inner">
+								{%- if block.settings.stars and block.settings.stars != '' -%}
+									<div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
+								{%- endif -%}
+								<div class="testimonials--testimonial-content {{ font_family }}-font">
+									<p>{{ block.settings.text | newline_to_br }}</p>
+								</div>
+								{%- if block.settings.author != empty -%}
+								<div class="testimonials--author">
+									{{- block.settings.author -}}
+								</div>
+								{%- endif -%}
+							</div>
+						</div>
+					{%- endfor -%}
+					
 				</slide-show>
 			</div>
 		</div>
