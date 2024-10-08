@@ -120,7 +120,7 @@
                           {%- when 'benefits' -%}
 <div class="benefits-block">
   {% if block.settings.benefits-title != blank %}
-    <p>{{ block.settings.benefits-title }}</p> 
+    <div>{{ block.settings.benefits-title }}</div> 
   {% endif %}
   <div class="benefits-list">
     {% for i in (1..5) %}
