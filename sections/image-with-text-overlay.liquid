@@ -11,7 +11,6 @@
 	assign mobile_height = section.settings.mobile_height
 
 	assign content_width = section.settings.content_width
-    assign content_width2 = section.settings.content_width2
 	assign content_position = section.settings.content_position
 	assign text_alignment = section.settings.text_alignment
 
@@ -119,7 +118,7 @@
 
 
                           {%- when 'benefits' -%}
-<div class="benefits-block content-width-{{ content_width2 }}">
+<div class="benefits-block">
   {% if block.settings.benefits-title != blank %}
     <div id="title">{{ block.settings.benefits-title }}</div> 
   {% endif %}
@@ -600,23 +599,6 @@
       "type": "benefits",
       "name": "Product Benefits",
       "settings": [
-         {
-      "type": "select",
-      "id": "content_width2",
-      "label": "Content width",
-      "options": [
-        {
-          "value": "small",
-          "label": "Small"
-        },
-        {
-          "value": "medium",
-          "label": "Medium"
-        },
-        {
-          "value": "large",
-          "label": "Large"
-        } ]},
         {
           "type": "html",
           "id": "benefits-title",
