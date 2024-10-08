@@ -56,7 +56,7 @@
 												endif
 											-%}
                                           {%- if block.settings.author != empty -%}
-								<div class="testimonials--author">
+								<div class="testimonials--author" style="--color-text:{{ color_text2 }}">
 									<div style="padding-bottom:10px;"><strong>{{- block.settings.name -}}</strong></div><div><i>{{ block.settings.expert-title }}</i></div>
                       
 								</div>
@@ -189,6 +189,12 @@
         "type": "color",
         "id": "color_text",
         "label": "Text",
+        "default": "#2c2d2e"
+      },
+      {
+        "type": "color",
+        "id": "color_text2",
+        "label": "Card Text",
         "default": "#2c2d2e"
       },
 			{
