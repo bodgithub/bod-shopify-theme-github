@@ -208,71 +208,52 @@
         "enable_video_looping": false,
         "marker_color": "#fd6262",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": true
+        "disable_bottom_spacing": false
       }
     },
-    "expert_slides_raD7aa": {
-      "type": "expert-slides",
+    "expert_testimonials_KxH7tC": {
+      "type": "expert-testimonials",
       "blocks": {
-        "slide_9Q6anA": {
-          "type": "slide",
+        "quote_NbJGQh": {
+          "type": "quote",
           "settings": {
-            "image": "shopify://shop_images/5.png",
-            "subheading": "subheading",
-            "heading": "Dr. Anita Wasik\n<i>Biomedical Scientist</i>",
-            "heading_size": "h3",
-            "content": "“I use inositol with my clients dealing with irregular cycles, weight management, and hormonal imbalances like PCOS to promote healthy insulin sensitivity and glucose metabolism, aiding in metabolic function and weight control.”",
-            "button_text": "",
-            "button_link": "",
-            "color_bg": "#ffffff",
-            "color_text": "#1b3def",
-            "color_button": "#2c2d2e"
+            "stars": "",
+            "text": "Expert Testimonials",
+            "author": "Testimonial author"
           }
         },
-        "slide_B4yaXH": {
-          "type": "slide",
+        "quote_WVRc6H": {
+          "type": "quote",
           "settings": {
-            "image": "shopify://shop_images/3_27f29fba-3e84-4e02-b790-cd722ae42ff4.png",
-            "subheading": "subheading",
-            "heading": "Tina Kozman\n<i>Metabolic Health Expert</i>",
-            "heading_size": "h3",
-            "content": "“I use inositol with my clients dealing with irregular cycles, weight management, and hormonal imbalances like PCOS to promote healthy insulin sensitivity and glucose metabolism, aiding in metabolic function and weight control.”",
-            "button_text": "",
-            "button_link": "",
-            "color_bg": "#ffffff",
-            "color_text": "#1b3def",
-            "color_button": "#2c2d2e"
+            "stars": "",
+            "text": "Add your customer or client quote here to showcase them.",
+            "author": "Testimonial author"
           }
         },
-        "slide_RHyDW6": {
-          "type": "slide",
+        "quote_eiGUym": {
+          "type": "quote",
           "settings": {
-            "image": "shopify://shop_images/4.jpg",
-            "subheading": "subheading",
-            "heading": "Hillary Wright\n<i>Nutritionist</i>",
-            "heading_size": "h3",
-            "content": "“I use inositol with my clients dealing with irregular cycles, weight management, and hormonal imbalances like PCOS to promote healthy insulin sensitivity and glucose metabolism, aiding in metabolic function and weight control.”",
-            "button_text": "",
-            "button_link": "",
-            "color_bg": "#ffffff",
-            "color_text": "#1b3def",
-            "color_button": "#2c2d2e"
+            "stars": "",
+            "text": "Add your customer or client quote here to showcase them.",
+            "author": "Testimonial author"
           }
         }
       },
       "block_order": [
-        "slide_9Q6anA",
-        "slide_B4yaXH",
-        "slide_RHyDW6"
+        "quote_NbJGQh",
+        "quote_WVRc6H",
+        "quote_eiGUym"
       ],
       "settings": {
-        "mobile_height": "mobile-height-350",
-        "desktop_height": "desktop-height-650",
-        "desktop_image_width": "small",
-        "layout": "text_first",
-        "content_position": "text-left",
-        "autoplay": true,
+        "heading": "Testimonials",
+        "full_width": false,
+        "text_size": "medium",
+        "font_family": "heading",
+        "pagination": "logos",
+        "autoplay": false,
         "autoplay_length": 5,
+        "color_bg": "#F5F5F5",
+        "color_text": "#2c2d2e",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -1121,7 +1102,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         },
         "image_ByKPwH": {
@@ -1137,7 +1118,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         },
         "image_8r8kBD": {
@@ -1153,7 +1134,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         }
       },
@@ -1224,10 +1205,10 @@
         "text_size": "regular",
         "tab_alignment": "left",
         "text_alignment": "left",
-        "color_bg": "transparent",
+        "color_bg": "rgba(0,0,0,0)",
         "color_tabs": "#2c2d2e",
         "color_text": "#2c2d2e",
-        "marker_color": "#FD6262",
+        "marker_color": "#fd6262",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -1237,7 +1218,7 @@
     "image_with_text_overlay_zjqnjJ",
     "spacer_LVK4hF",
     "featured_product_wiHCVn",
-    "expert_slides_raD7aa",
+    "expert_testimonials_KxH7tC",
     "image_with_text_r96Axa",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "spacer_hDmb7V",
