@@ -801,12 +801,99 @@
         "disable_bottom_spacing": false
       }
     },
+    "expert_testimonials_zpEKKk": {
+      "type": "expert-testimonials",
+      "blocks": {
+        "quote_CUpFMh": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
+            "stars": "",
+            "text": "\"35 days after taking myo & d-chiro inositol powder my periods returned\"",
+            "name": "Jasmin",
+            "expert-title": "Cycle regularity"
+          }
+        },
+        "quote_TyYj38": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
+            "stars": "5",
+            "text": "\"I've been getting better sleep since starting this powder and am very happy about that!\"",
+            "name": "Kristina",
+            "expert-title": "Improved sleep"
+          }
+        },
+        "quote_4P8HUh": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
+            "stars": "",
+            "text": "\"My ovulation became more regular after using this for 3 months.\"",
+            "name": "Rachel",
+            "expert-title": "Craving control"
+          }
+        },
+        "quote_ExXWHa": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
+            "stars": "",
+            "text": "\"This powder is my go-to for hormonal and mood support.\"",
+            "name": "Rachel",
+            "expert-title": "Craving control"
+          }
+        },
+        "quote_XCWEri": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
+            "stars": "",
+            "text": "\"Improved my insulin levels. Cravings are down, and I'm losing weight more easily.\"",
+            "name": "Jade",
+            "expert-title": "Craving control"
+          }
+        },
+        "quote_cEJLTF": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "text": "Add your customer or client quote here to showcase them.",
+            "name": "Expert Name",
+            "expert-title": "Expert Title"
+          }
+        }
+      },
+      "block_order": [
+        "quote_CUpFMh",
+        "quote_TyYj38",
+        "quote_4P8HUh",
+        "quote_ExXWHa",
+        "quote_XCWEri",
+        "quote_cEJLTF"
+      ],
+      "settings": {
+        "heading": "<p>What <em>they're</em> <em>saying</em></p>",
+        "full_width": false,
+        "text_size": "medium",
+        "font_family": "heading",
+        "pagination": "logos",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#F5F5F5",
+        "color_text": "#ffffff",
+        "color_text2": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "testimonials_ncYmHF": {
       "type": "testimonials",
       "blocks": {
         "quote_FPFza8": {
           "type": "quote",
           "settings": {
+            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
             "stars": "5",
             "text": "Sofia started ovulating*",
             "author": "Wasn't sure what to expect with Bodology Inositol, given my PCOS history and practically non-existent cycles after coming off of birth control. It's been a bit over two months, and out of nowhere, I actually ovulated."
@@ -824,8 +911,8 @@
           "type": "quote",
           "settings": {
             "stars": "5",
-            "text": "Sandra's cycles improved*",
-            "author": "I’m definitely going to be ordering more. Highly recommend!"
+            "text": "Sandra's cycles improved. I’m definitely going to be ordering more. Highly recommend!",
+            "author": ""
           }
         },
         "quote_QyYCE3": {
@@ -856,15 +943,15 @@
         ".testimonials--author {line-height: 1.4em;}"
       ],
       "settings": {
-        "heading": "",
-        "full_width": true,
-        "text_size": "small",
+        "heading": "Meet Our experts",
+        "full_width": false,
+        "text_size": "large",
         "font_family": "body",
-        "pagination": "dots",
+        "pagination": "logos",
         "autoplay": true,
         "autoplay_length": 4,
         "color_bg": "#ffffff",
-        "color_text": "#1b3def",
+        "color_text": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -922,61 +1009,6 @@
         "color_links": "#ffffff",
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
-      }
-    },
-    "image_with_text_C9a98T": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_Cwqt3K": {
-          "type": "heading",
-          "settings": {
-            "text": "The <i>inositol</i> solution",
-            "marker_style": "style1",
-            "heading_size": "h1",
-            "marker_color": "#ffffff"
-          }
-        },
-        "text_yJ3AXx": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Inositol plays a crucial role in supporting healthy insulin function <span data-tooltip=\"Insulin: a hormone that controls blood sugar levels, influencing fat storage and energy use.*\"> ⓘ</span>. It works through your body's <i>metabolic</i> pathways, helping to activate <span data-tooltip=\"GLUT4: a protein that lets sugar enter cells.*\">GLUT4 ⓘ</span>, supporting glucose metabolism and hormonal imbalances at their <i>root</i>.</p><h6><strong>Your body naturally produces inositol, but levels can decrease due to factors like diet and stress.</strong></h6>"
-          }
-        },
-        "button_tYiWAy": {
-          "type": "button",
-          "settings": {
-            "button_text": "The science",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_Cwqt3K",
-        "text_yJ3AXx",
-        "button_tYiWAy"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".image-with-text--content {padding: 0px 90px 0px 55px;}"
-      ],
-      "settings": {
-        "image": "shopify://shop_images/Bodology_Hero_Product_a632aff0-c1c0-4849-bc8a-331df375f792.jpg",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "height": "large",
-        "desktop_image_width": "large",
-        "full_width": false,
-        "layout": "image_first",
-        "content_position": "text-left",
-        "column_spacing": "large",
-        "color_bg": "#ffffff",
-        "color_text": "#1b3def",
-        "color_border": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "multicolumn_bQBAHG": {
@@ -1140,7 +1172,7 @@
             "image_link": "",
             "open": false,
             "heading": "Tina Kozman, MEd, CNP",
-            "text": "",
+            "text": "<p><strong>Tina Kozman, MEd, CNP</strong></p><h6><em>Metabolic Health Coach</em></h6>",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -1154,7 +1186,7 @@
             "image_link": "",
             "open": false,
             "heading": "Hillary Wright, MEd, RD",
-            "text": "",
+            "text": "<p><strong>Hillary Wright, MEd, RD</strong></p><h6><em>Director of Nutrition, Boston IVF  Center</em></h6>",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -1168,34 +1200,8 @@
             "image_link": "",
             "open": false,
             "heading": "Dr. Anita W. Ph.D.",
-            "text": "",
+            "text": "<p><strong>Dr. Anita W. Ph.D.</strong></p><h6><em>Natural Medicine Practitioner</em></h6>",
             "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_U9p9AP": {
-          "type": "box",
-          "settings": {
-            "image_link": "",
-            "open": false,
-            "heading": "Anxiety",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_7KLEgy": {
-          "type": "box",
-          "settings": {
-            "image_link": "",
-            "open": false,
-            "heading": "Weight",
-            "text": "",
-            "link_label": "Learn more",
             "link": "",
             "use_text_button": false,
             "block_link": ""
@@ -1205,9 +1211,7 @@
       "block_order": [
         "box_Ak8RFm",
         "box_Ck6CBE",
-        "box_dHBmyP",
-        "box_U9p9AP",
-        "box_7KLEgy"
+        "box_dHBmyP"
       ],
       "settings": {
         "heading": "",
@@ -1225,70 +1229,6 @@
         "color_link": "#1b3def",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
-      }
-    },
-    "16620983071df6eb29": {
-      "type": "text-with-icons",
-      "blocks": {
-        "1662098307788ca717-0": {
-          "type": "icon",
-          "settings": {
-            "icon": "washing",
-            "image": "shopify://shop_images/scales.png",
-            "heading": "",
-            "text": "<h5><strong>Third-party tested for purity and potency</strong></h5>"
-          }
-        },
-        "2c4a636c-cb89-4faf-82e6-13a0e7241006": {
-          "type": "icon",
-          "settings": {
-            "icon": "ruler",
-            "image": "shopify://shop_images/certificate.png",
-            "heading": "",
-            "text": "<h5><strong>Endorsed by leading metabolic health experts</strong></h5>"
-          }
-        },
-        "1662098307788ca717-1": {
-          "type": "icon",
-          "settings": {
-            "icon": "bottle",
-            "image": "shopify://shop_images/puzzle-piece.png",
-            "heading": "",
-            "text": "<h5><strong>Versatile, unflavored powder without additives</strong></h5>"
-          }
-        },
-        "1662098307788ca717-2": {
-          "type": "icon",
-          "disabled": true,
-          "settings": {
-            "icon": "leaf",
-            "image": "shopify://shop_images/plant.png",
-            "heading": "Plant Powered",
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "1662098307788ca717-0",
-        "2c4a636c-cb89-4faf-82e6-13a0e7241006",
-        "1662098307788ca717-1",
-        "1662098307788ca717-2"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".text-with-icons__icon svg {width: 70% !important;}"
-      ],
-      "settings": {
-        "text_alignment": "left",
-        "icon_position": "left",
-        "icon_size": "small",
-        "heading_size": "large",
-        "mobile_swipe": true,
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "color_text": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
       }
     },
     "multicolumn_8A3tT7": {
@@ -1382,13 +1322,12 @@
     "multicolumn_yRYBT4",
     "rich_text_ktwnPa",
     "featured_collection_mxheen",
+    "expert_testimonials_zpEKKk",
     "testimonials_ncYmHF",
     "multicolumn_bcEC7r",
-    "image_with_text_C9a98T",
     "multicolumn_bQBAHG",
     "text_with_icons_R6Pm86",
     "carousel_boxes_jas_QGw4P6",
-    "16620983071df6eb29",
     "multicolumn_8A3tT7"
   ]
 }
