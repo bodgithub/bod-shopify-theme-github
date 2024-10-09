@@ -415,6 +415,20 @@
     "carousel_boxes_jas_HzyeW9": {
       "type": "Carousel-Boxes-Jas",
       "blocks": {
+        "box_egXcdC": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
+            "image_link": "shopify://pages/hormones",
+            "open": false,
+            "heading": "Hormones",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "shopify://pages/hormones",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
         "box_TxAVLm": {
           "type": "box",
           "settings": {
@@ -424,7 +438,7 @@
             "heading": "Fertility",
             "text": "",
             "link_label": "Learn more",
-            "link": "",
+            "link": "shopify://pages/hormones",
             "use_text_button": false,
             "block_link": ""
           }
@@ -443,20 +457,6 @@
             "block_link": "shopify://pages/hormones"
           }
         },
-        "box_egXcdC": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
-            "image_link": "shopify://pages/hormones",
-            "open": false,
-            "heading": "Hormones",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "shopify://pages/hormones",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
         "box_fkrYD7": {
           "type": "box",
           "settings": {
@@ -465,7 +465,7 @@
             "heading": "Anxiety",
             "text": "",
             "link_label": "Learn more",
-            "link": "",
+            "link": "shopify://pages/hormones",
             "use_text_button": false,
             "block_link": ""
           }
@@ -478,16 +478,16 @@
             "heading": "Weight",
             "text": "",
             "link_label": "Learn more",
-            "link": "",
+            "link": "shopify://pages/hormones",
             "use_text_button": false,
             "block_link": ""
           }
         }
       },
       "block_order": [
+        "box_egXcdC",
         "box_TxAVLm",
         "box_YQBT8X",
-        "box_egXcdC",
         "box_fkrYD7",
         "box_mBqGXB"
       ],
