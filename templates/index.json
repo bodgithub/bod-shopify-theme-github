@@ -77,7 +77,7 @@
             "stars": "5",
             "heading": "See real results with inositol",
             "font_size": "0.7em",
-            "link": "shopify://products/myo-d-chiro-inositol-powder",
+            "link": "#reviews",
             "scale": "1.5"
           }
         }
@@ -801,6 +801,12 @@
         "disable_bottom_spacing": false
       }
     },
+    "custom_liquid_LhyTU6": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"reviews\"></div>"
+      }
+    },
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
@@ -1323,6 +1329,7 @@
     "multicolumn_yRYBT4",
     "rich_text_ktwnPa",
     "featured_collection_mxheen",
+    "custom_liquid_LhyTU6",
     "expert_testimonials_zpEKKk",
     "testimonials_ncYmHF",
     "multicolumn_bcEC7r",
