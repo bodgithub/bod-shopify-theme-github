@@ -65,7 +65,35 @@
             "text_size": "medium",
             "button_text": "",
             "button_link": "",
-            "show_social_links": true
+            "show_social_links": false
+          }
+        },
+        "text_yXtAB8": {
+          "type": "text",
+          "settings": {
+            "column_size": "small",
+            "text_alignment": "left",
+            "title": "",
+            "text": "<h6>Ter</h6>",
+            "text_size": "medium",
+            "button_text": "",
+            "button_link": "",
+            "show_social_links": false
+          }
+        },
+        "custom_liquid_X4RePC": {
+          "type": "custom_liquid",
+          "settings": {
+            "column_size": "small",
+            "title": "",
+            "custom_liquid": ""
+          }
+        },
+        "social_pXyayX": {
+          "type": "social",
+          "settings": {
+            "column_size": "small",
+            "title": ""
           }
         }
       },
@@ -75,7 +103,10 @@
         "055d0c35-3f11-4f51-9e3d-eab55edb7a9b",
         "menu_fNNAW6",
         "2ab8345e-9f63-4c80-b028-f4edae3633b5",
-        "ebdaaa5c-c47c-42ac-a830-30a799694755"
+        "ebdaaa5c-c47c-42ac-a830-30a799694755",
+        "text_yXtAB8",
+        "custom_liquid_X4RePC",
+        "social_pXyayX"
       ],
       "settings": {
         "footer_reveal_animation": true,
