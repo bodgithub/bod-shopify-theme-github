@@ -78,7 +78,8 @@
   document.addEventListener('DOMContentLoaded', function() {
   const slides = document.querySelectorAll('.testimonials--testimonial');
   const dots = document.querySelectorAll('.flickity-custom-dots .dot');
-
+  const carousel = document.querySelector('.testimonials--carousel');
+  
   function scrollToCenter(selectedIndex) {
     const dot = dots[selectedIndex];
     const container = document.querySelector('.flickity-custom-dots');
@@ -104,23 +105,28 @@
     }
   }
 
-  const carousel = document.querySelector('.testimonials--carousel');
-  
-  carousel.addEventListener('change.flickity', function(event) {
-    scrollToCenter(event.target.selectedIndex);
-  });
+  if (carousel) {
+    const flickityInstance = new Flickity(carousel);
 
-  // Trigger centering on initial load if there are more than 3 dots
-  if (dots.length > 3) {
-    adjustActiveSlide();
-  }
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', function() {
-      scrollToCenter(index);
+    // Center the active slide on change
+    flickityInstance.on('select', function() {
+      const selectedIndex = flickityInstance.selectedIndex;
+      scrollToCenter(selectedIndex);
     });
-  });
+
+    // Trigger centering on initial load if there are more than 3 dots
+    if (dots.length > 3) {
+      adjustActiveSlide();
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', function() {
+        flickityInstance.select(index);
+      });
+    });
+  }
 });
+
 
 </script>
 
