@@ -76,7 +76,7 @@
         "@media only screen and (min-width: 768px) {}",
         ".h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important;}",
         ".h1-xlarge .line-child {padding-left: 10px; margin-right: -15px;}",
-        ".benefits-block {background: linear-gradient(120deg, #ffffff, #ffffff00); padding: 0 0 10px 10px; border-radius: 10px; }"
+        ".benefits-block {background: linear-gradient(120deg, #ffffff, #ffffff00); padding: 0 0 10px 10px; border-radius: 10px;}"
       ],
       "settings": {
         "image": "shopify://shop_images/Bodology-Inositol-Hormones-Banner3.jpg",
@@ -326,7 +326,7 @@
         "text_eeg3Xh": {
           "type": "text",
           "settings": {
-            "text": "<h6>Your body naturally produces inositol, a vital compound that plays multiple roles in hormonal and metabolic health. Unfortunately, inositol levels can decrease due to factors like diet, stress and PCOS.</h6>\n \n<h6>It’s thought that over 80% of adults have impaired metabolic function <span data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>. Whilst 80% of women with PCOS have insulin resistance  <span data-tooltip=\"According to Genazzani 2016 study: insulin resistance is present in 70-80% of women with PCOS.*\">ⓘ</span>.</h6>\n\n<h6>Insulin function is crucial for a healthy hormonal system. Inositol works through metabolic pathways to activate GLUT4 <span data-tooltip=\"GLUT4 is a protein that moves glucose into cells, helping to control blood sugar levels.*\">ⓘ</span>, improving glucose metabolism and targeting hormonal imbalances at their root.</h6>"
+            "text": "<p>Your body naturally produces <i>inositol</i>, a vital compound that plays multiple roles in hormonal and metabolic health. Unfortunately, <i>inositol</i> levels can decrease due to factors like diet, stress and PCOS.</p>\n \n<h6>It’s thought that over 80% of adults have impaired metabolic function <span data-tooltip=\"According to UNC study: 87.8% of American adults have at least one metabolic health issue.*\">ⓘ</span>. Whilst 80% of women with PCOS have insulin resistance  <span data-tooltip=\"According to Genazzani 2016 study: insulin resistance is present in 70-80% of women with PCOS.*\">ⓘ</span>.</h6>\n\n<h6>Insulin function is crucial for a healthy hormonal system. Inositol works through metabolic pathways to activate GLUT4 <span data-tooltip=\"GLUT4 is a protein that moves glucose into cells, helping to control blood sugar levels.*\">ⓘ</span>, improving glucose metabolism and targeting hormonal imbalances at their root.</h6>"
           }
         },
         "image_gddwin": {
@@ -534,7 +534,20 @@
             "image_link": "",
             "open": false,
             "heading": "",
-            "text": "<p><strong>85%</strong> of women who took <em>Inositol</em> supplement saw their <a href=\"https://pubmed.ncbi.nlm.nih.gov/34624138/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/34624138/\"><strong>cycles return</strong></a><em>*</em></p><h6></h6>",
+            "text": "<p><strong>85%</strong> of women who took <em>inositol</em> supplement saw their <a href=\"https://pubmed.ncbi.nlm.nih.gov/34624138/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/34624138/\"><strong>cycles return</strong></a><em>*</em></p><h6></h6>",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_c8Qrym": {
+          "type": "box",
+          "settings": {
+            "image_link": "",
+            "open": false,
+            "heading": "",
+            "text": "<p>Women with and <strong>without PCOS</strong> saw significant <a href=\"https://pubmed.ncbi.nlm.nih.gov/35664247/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/35664247/\"><strong>decrease in BMI</strong></a><em>*</em></p>",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -548,7 +561,7 @@
             "image_link": "",
             "open": false,
             "heading": "",
-            "text": "<p>Women taking 40:1 <em>Inositol</em> saw<strong> </strong><a href=\"https://pubmed.ncbi.nlm.nih.gov/30915778/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/30915778/\"><strong>significantly higher fat mass </strong>reduction</a><em>*</em></p><h6>— <em>compared with diet alone</em></h6>",
+            "text": "<p>Women taking 40:1 <em>inositol</em> saw<strong> </strong><a href=\"https://pubmed.ncbi.nlm.nih.gov/30915778/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/30915778/\"><strong>significantly higher fat mass </strong>reduction</a><em>*</em></p><h6>— <em>compared with diet alone</em></h6>",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -602,20 +615,7 @@
             "image_link": "",
             "open": false,
             "heading": "",
-            "text": "<p>40:1 <em>Inositol</em> saw <a href=\"https://www.europeanreview.org/article/18223\" target=\"_blank\" title=\"https://www.europeanreview.org/article/18223\"><strong>insulin levels reduce by 45% </strong></a>on average<em>*</em></p>",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_c8Qrym": {
-          "type": "box",
-          "settings": {
-            "image_link": "",
-            "open": false,
-            "heading": "",
-            "text": "<p>Women with and <strong>without PCOS</strong> saw significant <a href=\"https://pubmed.ncbi.nlm.nih.gov/35664247/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/35664247/\"><strong>decrease in BMI</strong></a><em>*</em></p>",
+            "text": "<p>40:1 <em>inositol</em> saw <a href=\"https://www.europeanreview.org/article/18223\" target=\"_blank\" title=\"https://www.europeanreview.org/article/18223\"><strong>insulin levels reduce by 45% </strong></a>on average<em>*</em></p>",
             "link_label": "",
             "link": "",
             "use_text_button": false,
@@ -625,12 +625,12 @@
       },
       "block_order": [
         "box_TxAVLm",
+        "box_c8Qrym",
         "box_egXcdC",
         "box_pRHFAF",
         "box_YQBT8X",
         "box_fkrYD7",
-        "box_mBqGXB",
-        "box_c8Qrym"
+        "box_mBqGXB"
       ],
       "settings": {
         "heading": "",
