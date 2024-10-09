@@ -70,6 +70,7 @@
         },
         "custom_liquid_X4RePC": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "column_size": "large",
             "title": "",
@@ -109,7 +110,7 @@
     "custom_liquid_dbATzR": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div class=\"row\">\n        <a href=\"https://example.com/link1\" class=\"column\">Privacy</a>\n        <a href=\"https://example.com/link2\" class=\"column\">Terms & Conditions</a>\n        <a href=\"https://example.com/link3\" class=\"column\">© 2024 Bodology. All rights reserved.</a> \n<div class=\"disclaimers\"> \n*Disclaimer: This product is not intended to diagnose, treat, cure or prevent any disease. These statements have not been evaluated by the Food and Drug Administration. There is no guarantee of specific results and results can vary. Consult your healthcare professional before taking any dietary supplement. We take our responsibility to our customers seriously. Every product we create is backed by peer-reviewed scientific research. </div>\n    </div>"
+        "custom_liquid": "<div class=\"row\">\n        <a href=\"https://example.com/link1\" class=\"column\">Privacy</a>\n        <a href=\"https://example.com/link2\" class=\"column\">Terms & Conditions</a>\n        <a href=\"https://example.com/link3\" class=\"column\">© 2024 Bodology. All rights reserved.</a> \n    </div>\n\n<div class=\"disclaimers\" style=\"font-size:0.7rem; border:1px solid white; border-radius:5px; padding:10px;\"> \n*Disclaimer: This product is not intended to diagnose, treat, cure or prevent any disease. These statements have not been evaluated by the Food and Drug Administration. There is no guarantee of specific results and results can vary. Consult your healthcare professional before taking any dietary supplement. We take our responsibility to our customers seriously. Every product we create is backed by peer-reviewed scientific research. </div>"
       }
     }
   },
