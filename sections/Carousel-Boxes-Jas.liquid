@@ -83,7 +83,7 @@
           <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
             <div>
               {% if block.settings.text != blank %}
-                {{ block.settings.text | newline_to_br }}
+                {{ block.settings.text | newline_to_br | raw }}
               {% endif %}
             </div>
           </scroll-shadow>
