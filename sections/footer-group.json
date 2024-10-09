@@ -82,6 +82,14 @@
             "column_size": "small",
             "title": ""
           }
+        },
+        "custom_liquid_FfEnxe": {
+          "type": "custom_liquid",
+          "settings": {
+            "column_size": "large",
+            "title": "",
+            "custom_liquid": "<div style=\"margin-bottom:-10%;\">\n        <a href=\"https://bodology.co/policies/privacy-policy\" class=\"column\">Privacy </a>\n       &nbsp;&nbsp; <a href=\"https://bodology.co/policies/terms-of-service\" class=\"column\"> Terms & Conditions</a>\n&nbsp;&nbsp; <a href=\"https://bodology.co/policies/refund-policy\" class=\"column\"> Refund Policy</a>\n    </div>"
+          }
         }
       },
       "block_order": [
@@ -92,7 +100,8 @@
         "2ab8345e-9f63-4c80-b028-f4edae3633b5",
         "ebdaaa5c-c47c-42ac-a830-30a799694755",
         "custom_liquid_X4RePC",
-        "social_pXyayX"
+        "social_pXyayX",
+        "custom_liquid_FfEnxe"
       ],
       "custom_css": [
 
@@ -105,16 +114,9 @@
         "show_payment_icons": true,
         "enable_follow_on_shop": true
       }
-    },
-    "custom_liquid_dbATzR": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div class=\"row\">\n        <a href=\"https://example.com/link1\" class=\"column\">Privacy</a>\n        <a href=\"https://example.com/link2\" class=\"column\">Terms & Conditions</a>\n        <a href=\"https://example.com/link3\" class=\"column\">© 2024 Bodology. All rights reserved.</a> \n    </div>"
-      }
     }
   },
   "order": [
-    "footer",
-    "custom_liquid_dbATzR"
+    "footer"
   ]
 }
