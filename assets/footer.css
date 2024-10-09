@@ -276,3 +276,19 @@
   .social-links--has-label li a {
     width: auto;
     height: auto; }
+
+.column {
+    flex: 1;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    text-align: center;
+    text-decoration: none; /* Removes the default link underline */
+    color: white; /* Sets the text color */
+}
+
+/* Optional: Hover effect for each column */
+.column:hover {
+    background-color: #e0e0e0;
+    border-color: #999;
+}
