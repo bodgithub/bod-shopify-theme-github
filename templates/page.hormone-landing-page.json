@@ -626,6 +626,76 @@
         "custom_liquid": "<div style=\"padding:10px 8% 4% 8%;font-size:0.45em; line-height:1.1em;color:grey; max-width:700px\">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Studies did no tinclude Bodology products specifically.\n</div>"
       }
     },
+    "collapsible_content_YNH6m9": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_tab_FKCPCx": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_rFXTj6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_JCak74": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_cpaVif": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_PjbiRr": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_FKCPCx",
+        "collapsible_tab_rFXTj6",
+        "collapsible_tab_JCak74",
+        "collapsible_tab_cpaVif",
+        "collapsible_tab_PjbiRr"
+      ],
+      "settings": {
+        "heading": "Get <em>answers</em>",
+        "marker_style": "style1",
+        "description": "",
+        "color_bg": "transparent",
+        "color_heading": "#1b3def",
+        "marker_color": "#1b3def",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "color_border": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "spacer_EJt6Hf": {
       "type": "spacer",
       "custom_css": [
@@ -653,61 +723,6 @@
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
-    },
-    "multicolumn_yRYBT4": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_cwXkx6": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_nFMWxd": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h1>Unlock your<em>metabolic health</em>with inositol\n</h1>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_cwXkx6",
-        "column_nFMWxd"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".multicolumn {color: #1b3def !important;}",
-        ".columns h1 {margin-bottom: 0px !important;}",
-        "@media only screen and (min-width: 768px) {.row .columns {padding: 0px 15px 0 5% !important; }}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
-        "color_text": "#1b3def",
-        "color_links": "#ffffff",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
     }
   },
   "order": [
@@ -724,8 +739,8 @@
     "multicolumn_rVnwmF",
     "carousel_boxes_jas_HzyeW9",
     "custom_liquid_mGtdU3",
+    "collapsible_content_YNH6m9",
     "spacer_EJt6Hf",
-    "video_pdBgr8",
-    "multicolumn_yRYBT4"
+    "video_pdBgr8"
   ]
 }
