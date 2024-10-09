@@ -76,33 +76,52 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // JavaScript code here
-    const slides = document.querySelectorAll('.testimonials--testimonial');
-    const dots = document.querySelectorAll('.flickity-custom-dots .dot');
-    function scrollToCenter(selectedIndex) {
-      const dot = dots[selectedIndex];
-      const container = document.querySelector('.flickity-custom-dots');
-      const containerWidth = container.offsetWidth;
-      const dotOffsetLeft = dot.offsetLeft;
-      const dotWidth = dot.offsetWidth;
-      const scrollPosition = dotOffsetLeft - containerWidth / 2 + dotWidth / 2;
-      container.scroll({
-        left: scrollPosition,
-        behavior: 'smooth'
-      });
-      dots.forEach((dot) => dot.classList.remove('is-selected'));
-      dot.classList.add('is-selected');
-    }
-    const carousel = document.querySelector('.testimonials--carousel');
-    carousel.addEventListener('change.flickity', function(event) {
-      scrollToCenter(event.target.selectedIndex);
+  const slides = document.querySelectorAll('.testimonials--testimonial');
+  const dots = document.querySelectorAll('.flickity-custom-dots .dot');
+
+  function scrollToCenter(selectedIndex) {
+    const dot = dots[selectedIndex];
+    const container = document.querySelector('.flickity-custom-dots');
+    const containerWidth = container.offsetWidth;
+    const dotOffsetLeft = dot.offsetLeft;
+    const dotWidth = dot.offsetWidth;
+    const scrollPosition = dotOffsetLeft - containerWidth / 2 + dotWidth / 2;
+    
+    container.scroll({
+      left: scrollPosition,
+      behavior: 'smooth'
     });
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', function() {
-        scrollToCenter(index);
-      });
+
+    dots.forEach((dot) => dot.classList.remove('is-selected'));
+    dot.classList.add('is-selected');
+  }
+
+  function adjustActiveSlide() {
+    const activeSlide = document.querySelector('.carousel__slide.is-selected');
+    const index = Array.from(slides).indexOf(activeSlide);
+    if (index !== -1) {
+      scrollToCenter(index);
+    }
+  }
+
+  const carousel = document.querySelector('.testimonials--carousel');
+  
+  carousel.addEventListener('change.flickity', function(event) {
+    scrollToCenter(event.target.selectedIndex);
+  });
+
+  // Trigger centering on initial load if there are more than 3 dots
+  if (dots.length > 3) {
+    adjustActiveSlide();
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', function() {
+      scrollToCenter(index);
     });
   });
+});
+
 </script>
 
 
