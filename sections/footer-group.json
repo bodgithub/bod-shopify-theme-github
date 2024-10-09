@@ -68,25 +68,12 @@
             "show_social_links": false
           }
         },
-        "text_yXtAB8": {
-          "type": "text",
-          "settings": {
-            "column_size": "small",
-            "text_alignment": "left",
-            "title": "",
-            "text": "<h6>Ter</h6>",
-            "text_size": "medium",
-            "button_text": "",
-            "button_link": "",
-            "show_social_links": false
-          }
-        },
         "custom_liquid_X4RePC": {
           "type": "custom_liquid",
           "settings": {
-            "column_size": "small",
+            "column_size": "large",
             "title": "",
-            "custom_liquid": ""
+            "custom_liquid": "<div class=\"disclaimers\" style=\"font-size:0.7rem; border:1px solid white; border-radius:5px; padding:10px;\"> \n*Disclaimer: This product is not intended to diagnose, treat, cure or prevent any disease. These statements have not been evaluated by the Food and Drug Administration. There is no guarantee of specific results and results can vary. Consult your healthcare professional before taking any dietary supplement. We take our responsibility to our customers seriously. Every product we create is backed by peer-reviewed scientific research. </div>"
           }
         },
         "social_pXyayX": {
@@ -104,9 +91,11 @@
         "menu_fNNAW6",
         "2ab8345e-9f63-4c80-b028-f4edae3633b5",
         "ebdaaa5c-c47c-42ac-a830-30a799694755",
-        "text_yXtAB8",
         "custom_liquid_X4RePC",
         "social_pXyayX"
+      ],
+      "custom_css": [
+
       ],
       "settings": {
         "footer_reveal_animation": true,
