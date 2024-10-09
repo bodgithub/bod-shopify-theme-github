@@ -25,7 +25,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Balance hormones naturally<em>—don't</em><em> just mask symptoms</em>",
+            "text": "Balance hormones naturally<em>—don't</em> <em>just mask </em><em>symptoms</em>",
             "heading_size": "h1-xlarge"
           }
         },
@@ -74,7 +74,7 @@
       "custom_css": [
         "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
         "@media only screen and (min-width: 768px) {}",
-        ".h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important;}"
+        ".h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important; overflow: visible !important;}"
       ],
       "settings": {
         "image": "shopify://shop_images/Bodology-Inositol-Hormones-Banner3.jpg",
