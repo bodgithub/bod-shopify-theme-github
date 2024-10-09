@@ -14,6 +14,14 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "menu_hJbMPp": {
+          "type": "menu",
+          "settings": {
+            "column_size": "small",
+            "title": "SHOP",
+            "menu": "footer-shop"
+          }
+        },
         "d402e6d5-9d79-43ad-900a-cfaddc6cd9f8": {
           "type": "menu",
           "settings": {
@@ -35,14 +43,6 @@
           "settings": {
             "column_size": "small",
             "title": "CONTACT",
-            "menu": "main-menu"
-          }
-        },
-        "menu_hJbMPp": {
-          "type": "menu",
-          "settings": {
-            "column_size": "small",
-            "title": "SHOP",
             "menu": "main-menu"
           }
         },
@@ -70,10 +70,10 @@
         }
       },
       "block_order": [
+        "menu_hJbMPp",
         "d402e6d5-9d79-43ad-900a-cfaddc6cd9f8",
         "055d0c35-3f11-4f51-9e3d-eab55edb7a9b",
         "menu_fNNAW6",
-        "menu_hJbMPp",
         "ebdaaa5c-c47c-42ac-a830-30a799694755",
         "2ab8345e-9f63-4c80-b028-f4edae3633b5"
       ],
