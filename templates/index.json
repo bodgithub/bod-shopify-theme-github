@@ -810,16 +810,6 @@
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
-        "quote_CUpFMh": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
-            "stars": "5",
-            "text": "\"35 days after taking myo & d-chiro inositol powder my periods returned\"",
-            "name": "Jasmin",
-            "expert-title": "Cycle regularity"
-          }
-        },
         "quote_TyYj38": {
           "type": "quote",
           "settings": {
@@ -828,6 +818,16 @@
             "text": "\"I've been getting better sleep since starting this powder and am very happy about that!\"",
             "name": "Kristina",
             "expert-title": "Improved sleep"
+          }
+        },
+        "quote_CUpFMh": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
+            "stars": "5",
+            "text": "\"35 days after taking myo & d-chiro inositol powder my periods returned.\"",
+            "name": "Jasmin",
+            "expert-title": "Cycle regularity"
           }
         },
         "quote_4P8HUh": {
@@ -882,8 +882,8 @@
         }
       },
       "block_order": [
-        "quote_CUpFMh",
         "quote_TyYj38",
+        "quote_CUpFMh",
         "quote_4P8HUh",
         "quote_ExXWHa",
         "quote_XCWEri",
