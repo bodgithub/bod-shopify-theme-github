@@ -180,10 +180,23 @@
           "settings": {
           }
         },
+        "custom_option_Et9EBY": {
+          "type": "custom_option",
+          "settings": {
+            "type": "multiple",
+            "label": "Primary Concern",
+            "text_required": true,
+            "text_placeholder": "Choose your concern",
+            "checkbox_checked_value": "Yes",
+            "checkbox_unchecked_value": "No",
+            "multiple_style": "dropdown",
+            "multiple_options": "PCOS\nPMDD\nEndometriosis\nOther Hormone\nWeight & Body Composition\nAnxiety\nLow Mood\nSleep\nInsulin Resistance"
+          }
+        },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true
+            "show_dynamic_checkout": false
           }
         },
         "collapsible_tab_zkXkR7": {
@@ -226,19 +239,6 @@
             "page": "",
             "custom_liquid": ""
           }
-        },
-        "custom_option_Et9EBY": {
-          "type": "custom_option",
-          "settings": {
-            "type": "multiple",
-            "label": "Primary Concern",
-            "text_required": true,
-            "text_placeholder": "Choose your concern",
-            "checkbox_checked_value": "Yes",
-            "checkbox_unchecked_value": "No",
-            "multiple_style": "dropdown",
-            "multiple_options": "PCOS\nPMDD\nEndometriosis\nOther Hormone\nWeight & Body Composition\nAnxiety\nLow Mood\nSleep\nInsulin Resistance"
-          }
         }
       },
       "block_order": [
@@ -247,12 +247,12 @@
         "custom_liquid_qLxheX",
         "variant_picker_NMTpia",
         "quantity_RyV4rX",
+        "custom_option_Et9EBY",
         "buy_buttons_3FBywE",
         "collapsible_tab_zkXkR7",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
-        "collapsible_tab_RaXCmL",
-        "custom_option_Et9EBY"
+        "collapsible_tab_RaXCmL"
       ],
       "settings": {
         "heading": "",
