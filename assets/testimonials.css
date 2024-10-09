@@ -134,7 +134,8 @@
       --scroll-shadow-top: linear-gradient(rgb(139 37 85), rgba(var(--bg-body-rgb), 0));
     --scroll-shadow-bottom: linear-gradient(rgba(var(--bg-body-rgb), 0), rgb(65 55 197));
     --scroll-shadow-left: linear-gradient(90deg, rgb(67 54 194), rgba(var(--bg-body-rgb), 0));
-    --scroll-shadow-right: linear-gradient(90deg, rgba(var(--bg-body-rgb), 0), rgb(139 37 84));}
+    --scroll-shadow-right: linear-gradient(90deg, rgba(var(--bg-body-rgb), 0), rgb(139 37 84));
+  overflow:hidden;}
 
 .flickity-custom-dots {
   list-style: none;
