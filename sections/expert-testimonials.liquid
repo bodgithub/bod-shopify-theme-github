@@ -79,7 +79,7 @@
   const slides = document.querySelectorAll('.testimonials--testimonial');
   const dots = document.querySelectorAll('.flickity-custom-dots .dot');
   const carousel = document.querySelector('.testimonials--carousel');
-  
+
   function scrollToCenter(selectedIndex) {
     const dot = dots[selectedIndex];
     const container = document.querySelector('.flickity-custom-dots');
@@ -106,7 +106,11 @@
   }
 
   if (carousel) {
-    const flickityInstance = new Flickity(carousel);
+    const flickityInstance = new Flickity(carousel, {
+      wrapAround: true, // Enable infinite looping
+      autoPlay: autoplay || false, // Use the autoplay setting from your Liquid variable
+      pauseAutoPlayOnHover: false, // Optional: keeps autoplay running on hover
+    });
 
     // Center the active slide on change
     flickityInstance.on('select', function() {
@@ -126,6 +130,7 @@
     });
   }
 });
+
 
 
 </script>
