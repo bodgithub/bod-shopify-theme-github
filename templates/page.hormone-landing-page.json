@@ -651,6 +651,9 @@
     },
     "custom_liquid_mGtdU3": {
       "type": "custom-liquid",
+      "custom_css": [
+        "a {color:grey;}"
+      ],
       "settings": {
         "custom_liquid": "<div style=\"padding:10px 8% 4% 8%;font-size:0.45em; line-height:1.1em;color:grey; max-width:700px\">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. These results were based on studies <a href=\"https://pubmed.ncbi.nlm.nih.gov/34624138/\">[1]</a>, <a href=\"https://pubmed.ncbi.nlm.nih.gov/30915778/\">[2]</a>, <a href=\"https://www.europeanreview.org/article/18223\">[3]</a> and <a href=\"https://pubmed.ncbi.nlm.nih.gov/35664247/\">[4]</a>. Bossology products were not used. Results are never guaranteed. Studies did not include Bodology products specifically.\n</div>"
       }
