@@ -783,20 +783,42 @@
         "disable_bottom_spacing": false
       }
     },
-    "featured_collection_mxheen": {
-      "type": "featured-collection",
+    "featured_product_WEQ8Gx": {
+      "type": "featured-product",
+      "blocks": {
+        "title_YbDGPh": {
+          "type": "title",
+          "settings": {
+            "show_products_rating": true
+          }
+        },
+        "buy_buttons_eaYaQd": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "title_YbDGPh",
+        "buy_buttons_eaYaQd"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 400px; }}"
+      ],
       "settings": {
         "heading": "",
         "marker_style": "style1",
         "description": "",
-        "collection": "frontpage",
-        "display_type": "carousel",
-        "product_limit": 2,
-        "columns_desktop": 2,
-        "show_view_all": false,
-        "mobile_swipe": true,
-        "show_progress_bar": false,
-        "marker_color": "#fd6262",
+        "product": "myo-d-chiro-inositol-powder",
+        "show_taxes_included": true,
+        "thumbnail_position": "bottom",
+        "media_aspect_ratio": "square",
+        "display_captions": false,
+        "hide_variants": true,
+        "lightbox": false,
+        "enable_video_looping": false,
+        "marker_color": "#FD6262",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
@@ -1340,7 +1362,7 @@
     "video_pdBgr8",
     "multicolumn_yRYBT4",
     "rich_text_ktwnPa",
-    "featured_collection_mxheen",
+    "featured_product_WEQ8Gx",
     "custom_liquid_LhyTU6",
     "expert_testimonials_zpEKKk",
     "testimonials_ncYmHF",
