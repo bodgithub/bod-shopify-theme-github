@@ -130,7 +130,7 @@
   {%- assign open_side_panel = block.settings.open_side_panel -%}
   {%- assign title = block.settings.link_label -%}
 
-  {%- if open_side_panel -%}
+  {%- if open_side_panel -%} data-open-side-panel="true"
     {%- assign url = 'javascript:void(0);' -%}
   {%- else -%}
     {%- assign url = block.settings.link -%}
@@ -141,6 +141,8 @@
   {%- assign side_panel_3_page = block.settings.side_panel_3_page -%}
 
                           {% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+
+
                           
                           {%- when 'collapsible_tab' -%}
                           
