@@ -160,6 +160,17 @@
             "custom_liquid": "<h6>Bodology™ <i>Inositol</i> is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6><br>"
           }
         },
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Detailed Benefits",
+            "side_panel_1_page": "detailed-benefits",
+            "side_panel_2_label": "Shipping & Returns",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "",
+            "side_panel_3_page": ""
+          }
+        },
         "variant_picker_NMTpia": {
           "type": "variant_picker",
           "disabled": true,
@@ -239,23 +250,13 @@
             "page": "",
             "custom_liquid": ""
           }
-        },
-        "side_panel_NGJTtJ": {
-          "type": "side_panel",
-          "settings": {
-            "side_panel_1_label": "Detailed Benefits",
-            "side_panel_1_page": "detailed-benefits",
-            "side_panel_2_label": "Shipping & Returns",
-            "side_panel_2_page": "shipping-returns",
-            "side_panel_3_label": "",
-            "side_panel_3_page": ""
-          }
         }
       },
       "block_order": [
         "text_RWyfgB",
         "title_ExCfKU",
         "custom_liquid_qLxheX",
+        "side_panel_NGJTtJ",
         "variant_picker_NMTpia",
         "quantity_RyV4rX",
         "custom_option_Et9EBY",
@@ -263,8 +264,7 @@
         "collapsible_tab_zkXkR7",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
-        "collapsible_tab_RaXCmL",
-        "side_panel_NGJTtJ"
+        "collapsible_tab_RaXCmL"
       ],
       "settings": {
         "heading": "",
