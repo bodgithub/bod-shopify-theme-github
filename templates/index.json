@@ -188,14 +188,18 @@
           "type": "text-button",
           "settings": {
             "link_label": "View detailed benefits",
-            "link": ""
+            "link": "",
+            "open_side_panel": true,
+            "side_panel_page": "detailed-benefits"
           }
         },
         "text_button_JpfFxg": {
           "type": "text-button",
           "settings": {
             "link_label": "*Read disclaimer",
-            "link": ""
+            "link": "",
+            "open_side_panel": false,
+            "side_panel_page": ""
           }
         }
       },
@@ -835,7 +839,7 @@
         "hide_variants": true,
         "lightbox": false,
         "enable_video_looping": false,
-        "marker_color": "#FD6262",
+        "marker_color": "#fd6262",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
