@@ -797,11 +797,19 @@
           "settings": {
             "show_dynamic_checkout": true
           }
+        },
+        "text_QCjkW3": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65 <em>|</em> 40:1 Ratio <em>|</em> 90 Scoops</h6>",
+            "text_style": "subheading"
+          }
         }
       },
       "block_order": [
         "title_YbDGPh",
-        "buy_buttons_eaYaQd"
+        "buy_buttons_eaYaQd",
+        "text_QCjkW3"
       ],
       "custom_css": [
         "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 400px; }}"
