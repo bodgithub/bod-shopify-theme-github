@@ -1,3 +1,4 @@
+{{- 'featured-product.css' | asset_url | stylesheet_tag -}}
 {%- assign collapsible_tabs = section.blocks | where: "type", "collapsible_tab" -%}
 {%- if collapsible_tabs -%}
 {{- 'collapsible-content.css' | asset_url | stylesheet_tag -}}
@@ -20,6 +21,7 @@
 	assign color_border = section.settings.color_border
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+ assign side_panels = section.blocks | where: "type", "side_panel"
 
 	assign ratio = 1
 	if height == 'adapt' and image != blank
