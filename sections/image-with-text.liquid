@@ -34,6 +34,18 @@
 		endif
 	endif
 -%}
+
+<div class="side-panel">
+  <div class="side-panel-inner">
+    <button class="side-panel-close">Close</button>
+    <div class="side-panel-content">
+      <!-- Your panel content goes here -->
+      <p>Panel content to be displayed</p>
+    </div>
+  </div>
+</div>
+
+
 <div class="row{% if full_width %} full-width-row{% endif %}">
 	<div class="small-12 columns">
 		<div class="image-with-text column-spacing--{{ column_spacing }} grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }};--color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --solid-button-background: {{ color_text }}; --solid-button-background-hover: {{ color_text | color_darken: 7 }}; --solid-button-label: {{ color_bg }};--bg-body: {{ color_bg }};--color-border: {{ color_border }}">
@@ -112,6 +124,28 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var textButton = document.querySelector(".text-button-class"); // Update with the correct class for your text-button
+    var sidePanel = document.querySelector(".side-panel");
+
+    if (textButton && sidePanel) {
+      textButton.addEventListener("click", function(event) {
+        event.preventDefault();
+        sidePanel.classList.toggle("active");
+      });
+    }
+
+    var closePanelButtons = document.querySelectorAll(".side-panel-close");
+    closePanelButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        sidePanel.classList.remove("active");
+      });
+    });
+  });
+</script>
+
 
 {% schema %}
 {
@@ -475,6 +509,19 @@
       "id": "link",
       "type": "url",
       "label": "Link"
+    }, 
+    {
+      "id": "open_side_panel",
+      "type": "checkbox",
+      "label": "Open Side Panel Instead of URL",
+      "default": false,
+      "info": "If checked, clicking the button will open the side panel."
+    },
+    {
+      "id": "side_panel_page",
+      "type": "page",
+      "label": "Page for Side Panel Content",
+      "info": "Select the page to display in the side panel when the button is clicked."
     }
   ]
 },
