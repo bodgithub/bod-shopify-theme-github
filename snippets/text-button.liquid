@@ -1,11 +1,10 @@
 <a href="{{ url }}" 
    title="{{ title | escape }}" 
    role="link" 
-   class="text-button{% if open_side_panel %} button-open-panel{% endif %} text-button--has-icon" 
-   data-open-side-panel="{{ open_side_panel }}"
-   data-side-panel-page-1="{{ side_panel_1_page.handle }}"
-   data-side-panel-page-2="{{ side_panel_2_page.handle }}"
-   data-side-panel-page-3="{{ side_panel_3_page.handle }}">
-   <span>{{ title }}</span>
+   class="text-button {{ class }} text-button--has-icon" 
+   {% if block %}{{ block.shopify_attributes }}{% endif %}
+   {% if open_side_panel %}data-open-side-panel="true"{% endif %}>
+   {{ title }} 
+   <span>{% render 'svg-icons' with 'thb-caret-right' %}</span>
 </a>
 
