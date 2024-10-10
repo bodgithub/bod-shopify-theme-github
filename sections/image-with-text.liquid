@@ -34,17 +34,6 @@
 		endif
 	endif
 -%}
-
-<div class="side-panel">
-  <div class="side-panel-inner">
-    <button class="side-panel-close">Close</button>
-    <div class="side-panel-content">
-     
-    </div>
-  </div>
-</div>
-
-
 <div class="row{% if full_width %} full-width-row{% endif %}">
 	<div class="small-12 columns">
 		<div class="image-with-text column-spacing--{{ column_spacing }} grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }};--color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --solid-button-background: {{ color_text }}; --solid-button-background-hover: {{ color_text | color_darken: 7 }}; --solid-button-label: {{ color_bg }};--bg-body: {{ color_bg }};--color-border: {{ color_border }}">
@@ -102,27 +91,7 @@
 								<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
 							 
                           {%- when 'text-button' -%}
-  {%- assign open_side_panel = block.settings.open_side_panel -%}
-  {%- assign side_panel_page = block.settings.side_panel_page -%}
-  {%- assign title = block.settings.link_label -%}
-
-  {%- if open_side_panel == 'true' -%}
-    {%- assign url = 'javascript:void(0);' -%}
-  {%- else -%}
-    {%- assign url = block.settings.link -%}
-  {%- endif -%}
-
-  <a href="{{ url }}"
-     class="text-button-class button"
-     data-open-side-panel="{{ open_side_panel }}"
-     data-side-panel-page="{{ side_panel_page | default: '' }}"
-     title="{{ title }}">
-     <span>{{ title }}</span>
-  </a>
-
-
-
-                        {%- when 'collapsible_tab' -%}
+								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}{%- when 'collapsible_tab' -%}
                           
 								<collapsible-row class="accordion" {{ block.shopify_attributes }}>
 									<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
@@ -143,51 +112,6 @@
 		</div>
 	</div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-  var textButtons = document.querySelectorAll(".text-button-class");
-  var sidePanel = document.querySelector(".side-panel");
-
-  textButtons.forEach(function(textButton) {
-    var openSidePanel = textButton.getAttribute("data-open-side-panel") === "true";
-    var sidePanelPage = textButton.getAttribute("data-side-panel-page");
-
-    textButton.addEventListener("click", function(event) {
-      if (openSidePanel && sidePanelPage) {
-        event.preventDefault();
-
-        // Open the side panel
-        sidePanel.classList.add("active");
-
-        // Fetch the page content and display it in the side panel
-        fetch("/pages/" + sidePanelPage)
-          .then(response => response.text())
-          .then(data => {
-            var parser = new DOMParser();
-            var doc = parser.parseFromString(data, "text/html");
-            var pageContent = doc.querySelector(".page-content");
-            sidePanel.querySelector(".side-panel-content").innerHTML = pageContent ? pageContent.innerHTML : "Content not found.";
-          })
-          .catch(error => {
-            sidePanel.querySelector(".side-panel-content").innerHTML = "An error occurred while fetching the content.";
-            console.error("Error fetching page content:", error);
-          });
-      }
-    });
-  });
-
-  var closePanelButtons = document.querySelectorAll(".side-panel-close");
-  closePanelButtons.forEach(function(button) {
-    button.addEventListener("click", function() {
-      sidePanel.classList.remove("active");
-    });
-  });
-});
-
-</script>
-
-
 
 {% schema %}
 {
@@ -502,7 +426,7 @@
         }
       ]
     },
-    { 
+    {
       "type": "button",
       "name": "Button",
       "settings": [
@@ -551,19 +475,6 @@
       "id": "link",
       "type": "url",
       "label": "Link"
-    }, 
-    {
-      "id": "open_side_panel",
-      "type": "checkbox",
-      "label": "Open Side Panel Instead of URL",
-      "default": false,
-      "info": "If checked, clicking the button will open the side panel."
-    },
-    {
-      "id": "side_panel_page",
-      "type": "page",
-      "label": "Page for Side Panel Content",
-      "info": "Select the page to display in the side panel when the button is clicked."
     }
   ]
 },
