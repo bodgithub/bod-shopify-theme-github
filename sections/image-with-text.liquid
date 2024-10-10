@@ -1,4 +1,3 @@
-{{- 'featured-product.css' | asset_url | stylesheet_tag -}}
 {%- assign collapsible_tabs = section.blocks | where: "type", "collapsible_tab" -%}
 {%- if collapsible_tabs -%}
 {{- 'collapsible-content.css' | asset_url | stylesheet_tag -}}
@@ -21,7 +20,6 @@
 	assign color_border = section.settings.color_border
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
- assign side_panels = section.blocks | where: "type", "side_panel"
 
 	assign ratio = 1
 	if height == 'adapt' and image != blank
@@ -36,40 +34,6 @@
 		endif
 	endif
 -%}
-
-{%- assign side_panels = section.blocks | where: "type", "side_panel" -%}
-{%- if side_panels.size > 0 -%}
-<div class="side-panel product-information-drawer" id="Product-Information-Drawer" tabindex="-1">
-  <div class="side-panel-inner">
-    <div class="side-panel-header">
-      <div>
-        <span class="h6">{{ 'products.product.product_information' | t }}</span>
-        <side-panel-close class="side-panel-close">
-          {%- render 'svg-icons' with 'close' -%}
-        </side-panel-close>
-      </div>
-    </div>
-    <div class="side-panel-content side-panel-content--has-tabs">
-      {%- assign block = side_panels[0] -%}
-      <side-panel-content-tabs class="side-panel-content--tabs">
-        {%- if block.settings.side_panel_1_label != '' -%}
-          <button class="tab-active">{{ block.settings.side_panel_1_label }}</button>
-        {%- endif -%}
-       
-      </side-panel-content-tabs>
-      <div class="side-panel-content--inner">
-        {%- if block.settings.side_panel_1_label != '' -%}
-          <div class="side-panel-content--tab-panel rte tab-active">
-            {{ block.settings.side_panel_1_page.content }}
-          </div>
-      
-        {%- endif -%}
-      </div>
-    </div>
-  </div>
-</div>
-{%- endif -%}
-
 <div class="row{% if full_width %} full-width-row{% endif %}">
 	<div class="small-12 columns">
 		<div class="image-with-text column-spacing--{{ column_spacing }} grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }};--color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --solid-button-background: {{ color_text }}; --solid-button-background-hover: {{ color_text | color_darken: 7 }}; --solid-button-label: {{ color_bg }};--bg-body: {{ color_bg }};--color-border: {{ color_border }}">
@@ -125,27 +89,7 @@
 								{% endif %}
 							{%- when 'space' -%}
 								<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
-							 
-                          {%- when 'text-button' -%}
-  {%- assign open_side_panel = block.settings.open_side_panel -%}
-  {%- assign title = block.settings.link_label -%}
-
-  {%- if open_side_panel -%} data-open-side-panel="true"
-    {%- assign url = 'javascript:void(0);' -%}
-  {%- else -%}
-    {%- assign url = block.settings.link -%}
-  {%- endif -%}
-
-  {%- assign side_panel_1_page = block.settings.side_panel_1_page -%}
-  {%- assign side_panel_2_page = block.settings.side_panel_2_page -%}
-  {%- assign side_panel_3_page = block.settings.side_panel_3_page -%}
-
-                          {% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
-
-
-                          
-                          {%- when 'collapsible_tab' -%}
-                          
+							{%- when 'collapsible_tab' -%}
 								<collapsible-row class="accordion" {{ block.shopify_attributes }}>
 									<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
 										<summary>
@@ -166,36 +110,6 @@
 	</div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Find all text buttons with the data-open-side-panel attribute
-    var textButtons = document.querySelectorAll('[data-open-side-panel="true"]');
-    
-    textButtons.forEach(function (button) {
-        button.addEventListener('click', function (event) {
-            event.preventDefault();
-            // Open the side panel
-            var sidePanel = document.getElementById('Product-Information-Drawer');
-            if (sidePanel) {
-                sidePanel.classList.add('active');
-            }
-        });
-    });
-
-    // Close button logic
-    var closeButton = document.querySelector('.side-panel-close');
-    if (closeButton) {
-        closeButton.addEventListener('click', function () {
-            var sidePanel = document.getElementById('Product-Information-Drawer');
-            if (sidePanel) {
-                sidePanel.classList.remove('active');
-            }
-        });
-    }
-});
-
-
-</script>
 {% schema %}
 {
   "name": "Image with text",
@@ -543,46 +457,6 @@
         }
       ]
     },
-    {
-  "type": "text-button",
-  "name": "Link",
-  "settings": [
-    {
-      "id": "link_label",
-      "type": "text",
-      "label": "Label",
-      "default": "Learn More",
-      "info": "Leave the label blank to hide the button."
-    },
-    {
-      "id": "link",
-      "type": "url",
-      "label": "Link"
-    }, 
-    {
-      "type": "checkbox",
-      "id": "open_side_panel",
-      "label": "Open Side Panel",
-      "default": false
-    },
-    {
-           "type": "header",
-           "content": "Panel 1"
-       },
-       {
-           "type": "text",
-           "id": "side_panel_1_label",
-           "default": "Materials",
-           "label": "Label"
-       },
-       {
-           "type": "page",
-           "id": "side_panel_1_page",
-           "label": "Page"
-       },
-      
-  ]
-},
     {
       "type": "collapsible_tab",
       "name": "Collapsible row",
