@@ -55,28 +55,14 @@
         {%- if block.settings.side_panel_1_label != '' -%}
           <button class="tab-active">{{ block.settings.side_panel_1_label }}</button>
         {%- endif -%}
-        {%- if block.settings.side_panel_2_label != '' -%}
-          <button>{{ block.settings.side_panel_2_label }}</button>
-        {%- endif -%}
-        {%- if block.settings.side_panel_3_label != '' -%}
-          <button>{{ block.settings.side_panel_3_label }}</button>
-        {%- endif -%}
+       
       </side-panel-content-tabs>
       <div class="side-panel-content--inner">
         {%- if block.settings.side_panel_1_label != '' -%}
           <div class="side-panel-content--tab-panel rte tab-active">
             {{ block.settings.side_panel_1_page.content }}
           </div>
-        {%- endif -%}
-        {%- if block.settings.side_panel_2_label != '' -%}
-          <div class="side-panel-content--tab-panel rte">
-            {{ block.settings.side_panel_2_page.content }}
-          </div>
-        {%- endif -%}
-        {%- if block.settings.side_panel_3_label != '' -%}
-          <div class="side-panel-content--tab-panel rte">
-            {{ block.settings.side_panel_3_page.content }}
-          </div>
+      
         {%- endif -%}
       </div>
     </div>
