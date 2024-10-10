@@ -127,7 +127,7 @@
 								<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
 							 
                           {%- when 'text-button' -%}
-  {%- assign open_side_panel = block.settings.open_side_panel -%}
+{%- assign open_side_panel = block.settings.open_side_panel -%}
 {%- assign title = block.settings.link_label -%}
 
 {%- if open_side_panel -%}
@@ -138,7 +138,8 @@
 
 <a href="{{ url }}" 
    class="text-button {{ block.shopify_attributes.class }}"
-   data-open-side-panel="{{ open_side_panel }}"
+   data-open-side-panel="{{ open_side_panel }}" 
+   data-side-panel-content="{{ block.settings.side_panel_1_page.content }}" 
    title="{{ title }}">
    {{ title }}
    <span>{% render 'svg-icons' with 'thb-caret-right' %}</span>
@@ -168,17 +169,23 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    // Find all text buttons that should open the side panel
+document.addEventListener('DOMContentLoaded', function () {
+    // Find all text buttons with the data-open-side-panel attribute
     var textButtons = document.querySelectorAll('[data-open-side-panel="true"]');
-    
+
     textButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent default link behavior
+            event.preventDefault();
             // Open the side panel
             var sidePanel = document.getElementById('Product-Information-Drawer');
             if (sidePanel) {
                 sidePanel.classList.add('active');
+                // Load content into the side panel
+                var content = button.getAttribute('data-side-panel-content');
+                var contentContainer = sidePanel.querySelector('.side-panel-content--inner');
+                if (contentContainer && content) {
+                    contentContainer.innerHTML = content;
+                }
             }
         });
     });
@@ -194,6 +201,7 @@
         });
     }
 });
+
 </script>
 
 {% schema %}
