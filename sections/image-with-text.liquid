@@ -104,14 +104,14 @@
                           {%- when 'text-button' -%}
                            {%- assign open_side_panel = block.settings.open_side_panel -%}
   {%- assign side_panel_page = block.settings.side_panel_page -%}
-								
-                          <a href="{% if open_side_panel %}javascript:void(0);{% else %}{{ block.settings.link }}{% endif %}"
-     class="text-button-class button"
-     data-open-side-panel="{{ open_side_panel }}"
-     data-side-panel-page="{{ side_panel_page | default: '' }}"
-     {{ block.shopify_attributes }}>
-    <span>{{ block.settings.link_label }}</span>
-  </a>
+								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+                          <a href="{{ url }}"
+   class="text-button-class button"
+   data-open-side-panel="{{ block.settings.open_side_panel }}"
+   data-side-panel-page="{{ block.settings.side_panel_page | default: '' }}"
+   title="{{ title }}">
+   <span>{{ title }}</span>
+</a>
                         {%- when 'collapsible_tab' -%}
                           
 								<collapsible-row class="accordion" {{ block.shopify_attributes }}>
