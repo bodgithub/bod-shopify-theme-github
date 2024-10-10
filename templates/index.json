@@ -630,6 +630,12 @@
     "featured_product_WEQ8Gx": {
       "type": "featured-product",
       "blocks": {
+        "custom_liquid_YAGR9g": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"product\"></div>"
+          }
+        },
         "text_RWyfgB": {
           "type": "text",
           "settings": {
@@ -648,7 +654,7 @@
           "type": "custom_liquid",
           "disabled": true,
           "settings": {
-            "custom_liquid": "<h6 id=\"product\">Bodology™ <i>Inositol</i> is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6><br>"
+            "custom_liquid": "<h6>Bodology™ <i>Inositol</i> is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6><br>"
           }
         },
         "side_panel_NGJTtJ": {
@@ -747,6 +753,7 @@
         }
       },
       "block_order": [
+        "custom_liquid_YAGR9g",
         "text_RWyfgB",
         "title_ExCfKU",
         "custom_liquid_qLxheX",
