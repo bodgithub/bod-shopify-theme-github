@@ -141,7 +141,9 @@
 								<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
 							 
                           {%- when 'text-button' -%}
-								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}{%- when 'collapsible_tab' -%}
+								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+                          
+                          {%- when 'collapsible_tab' -%}
                           
 								<collapsible-row class="accordion" {{ block.shopify_attributes }}>
 									<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
@@ -163,6 +165,26 @@
 	</div>
 </div>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.button-open-panel').forEach(function (button) {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      var sidePanel = document.getElementById('Product-Information-Drawer');
+      if (sidePanel) {
+        sidePanel.classList.add('active');
+        // Load the content for the first tab
+        var firstPageHandle = button.getAttribute('data-side-panel-page-1');
+        if (firstPageHandle) {
+          // Load content dynamically based on the page handle
+          // You can use AJAX to fetch and populate the content for the first tab
+        }
+      }
+    });
+  });
+});
+
+</script>
 {% schema %}
 {
   "name": "Image with text",
