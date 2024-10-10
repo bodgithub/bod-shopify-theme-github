@@ -786,39 +786,131 @@
     "featured_product_WEQ8Gx": {
       "type": "featured-product",
       "blocks": {
-        "text_QCjkW3": {
+        "text_RWyfgB": {
           "type": "text",
           "settings": {
-            "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65 <em>|</em> 40:1 Ratio <em>|</em> 90 Scoops</h6>",
-            "text_style": "subheading"
-          }
-        },
-        "text_PhexAg": {
-          "type": "text",
-          "settings": {
-            "text": "<h6>Bodology™<em>Inositol</em>is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6>",
+            "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65<em> </em> <em>|</em> 40:1 Ratio<em> </em> <em>|</em> 90 Scoops</h6>",
             "text_style": "style_vendor"
           }
         },
-        "title_YbDGPh": {
+        "title_ExCfKU": {
           "type": "title",
           "disabled": true,
           "settings": {
             "show_products_rating": true
           }
         },
-        "buy_buttons_eaYaQd": {
+        "custom_liquid_qLxheX": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<h6>Bodology™ <i>Inositol</i> is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6><br>"
+          }
+        },
+        "variant_picker_NMTpia": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_use_variants": false,
+            "variant_is_disabled": true,
+            "sizing_guide_text": "Sizing guide",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
+        "quantity_RyV4rX": {
+          "type": "quantity",
+          "disabled": true,
+          "settings": {
+          }
+        },
+        "custom_option_Et9EBY": {
+          "type": "custom_option",
+          "disabled": true,
+          "settings": {
+            "type": "multiple",
+            "label": "Primary Concern",
+            "text_required": true,
+            "text_placeholder": "Choose your concern",
+            "checkbox_checked_value": "Yes",
+            "checkbox_unchecked_value": "No",
+            "multiple_style": "dropdown",
+            "multiple_options": "PCOS\nPMDD\nEndometriosis\nOther Hormone\nWeight & Body Composition\nAnxiety\nLow Mood\nSleep\nInsulin Resistance"
+          }
+        },
+        "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": false
           }
+        },
+        "collapsible_tab_zkXkR7": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "open": false,
+            "content": "<ul><li>3rd party tested for purity & potency</li><li>Optimal 40:1 ratio science-backed for its benefits on women's health</li><li>Made sustainably in the USA</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_BEQc3p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "image": "shopify://shop_images/Supplement-Facts.png",
+            "open": false,
+            "content": "<p>Bodology™ Myo-Inositol, D-Chiro-Inositol</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_Qq4nP6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The \"NO\" List",
+            "open": false,
+            "content": "<ul><li>No fillers</li><li>No gluten</li><li>No flavoring</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_RaXCmL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Certifications",
+            "open": false,
+            "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metal, Conaminants and Microbiological Analysis by 3rd Party Laboratories</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Detailed Benefits",
+            "side_panel_1_page": "detailed-benefits",
+            "side_panel_2_label": "Shipping & Returns",
+            "side_panel_2_page": "",
+            "side_panel_3_label": "Care Guide",
+            "side_panel_3_page": ""
+          }
         }
       },
       "block_order": [
-        "text_QCjkW3",
-        "text_PhexAg",
-        "title_YbDGPh",
-        "buy_buttons_eaYaQd"
+        "text_RWyfgB",
+        "title_ExCfKU",
+        "custom_liquid_qLxheX",
+        "variant_picker_NMTpia",
+        "quantity_RyV4rX",
+        "custom_option_Et9EBY",
+        "buy_buttons_3FBywE",
+        "collapsible_tab_zkXkR7",
+        "collapsible_tab_BEQc3p",
+        "collapsible_tab_Qq4nP6",
+        "collapsible_tab_RaXCmL",
+        "side_panel_NGJTtJ"
       ],
       "custom_css": [
         "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 400px; }}"
