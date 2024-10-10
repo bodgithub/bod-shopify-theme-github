@@ -786,8 +786,23 @@
     "featured_product_WEQ8Gx": {
       "type": "featured-product",
       "blocks": {
+        "text_QCjkW3": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65 <em>|</em> 40:1 Ratio <em>|</em> 90 Scoops</h6>",
+            "text_style": "subheading"
+          }
+        },
+        "text_PhexAg": {
+          "type": "text",
+          "settings": {
+            "text": "<h6>Bodology™<em>Inositol</em>is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6>",
+            "text_style": "style_vendor"
+          }
+        },
         "title_YbDGPh": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "show_products_rating": true
           }
@@ -795,21 +810,15 @@
         "buy_buttons_eaYaQd": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true
-          }
-        },
-        "text_QCjkW3": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65 <em>|</em> 40:1 Ratio <em>|</em> 90 Scoops</h6>",
-            "text_style": "subheading"
+            "show_dynamic_checkout": false
           }
         }
       },
       "block_order": [
+        "text_QCjkW3",
+        "text_PhexAg",
         "title_YbDGPh",
-        "buy_buttons_eaYaQd",
-        "text_QCjkW3"
+        "buy_buttons_eaYaQd"
       ],
       "custom_css": [
         "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 400px; }}"
