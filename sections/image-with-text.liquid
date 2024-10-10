@@ -169,12 +169,12 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Find all text buttons with the data-open-side-panel attribute
+    // Find all text buttons that should open the side panel
     var textButtons = document.querySelectorAll('[data-open-side-panel="true"]');
     
     textButtons.forEach(function (button) {
         button.addEventListener('click', function (event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent default link behavior
             // Open the side panel
             var sidePanel = document.getElementById('Product-Information-Drawer');
             if (sidePanel) {
@@ -194,9 +194,8 @@
         });
     }
 });
-
-
 </script>
+
 {% schema %}
 {
   "name": "Image with text",
