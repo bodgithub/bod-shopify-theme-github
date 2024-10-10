@@ -129,11 +129,13 @@
                           {%- when 'text-button' -%}
   {%- assign open_side_panel = block.settings.open_side_panel -%}
 {%- assign title = block.settings.link_label -%}
+
 {%- if open_side_panel -%}
   {%- assign url = 'javascript:void(0);' -%}
 {%- else -%}
   {%- assign url = block.settings.link -%}
 {%- endif -%}
+
 <a href="{{ url }}" 
    class="text-button {{ block.shopify_attributes.class }}"
    data-open-side-panel="{{ open_side_panel }}"
@@ -141,6 +143,7 @@
    {{ title }}
    <span>{% render 'svg-icons' with 'thb-caret-right' %}</span>
 </a>
+
                           
                           {%- when 'collapsible_tab' -%}
                           
