@@ -180,22 +180,32 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.button-open-panel').forEach(function (button) {
-    button.addEventListener('click', function (event) {
-      event.preventDefault();
-      var sidePanel = document.getElementById('Product-Information-Drawer');
-      if (sidePanel) {
-        sidePanel.classList.add('active');
-        // Load the content for the first tab
-        var firstPageHandle = button.getAttribute('data-side-panel-page-1');
-        if (firstPageHandle) {
-          // Load content dynamically based on the page handle
-          // You can use AJAX to fetch and populate the content for the first tab
-        }
-      }
+    // Find all text buttons with the data-open-side-panel attribute
+    var textButtons = document.querySelectorAll('[data-open-side-panel="true"]');
+    
+    textButtons.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            // Open the side panel
+            var sidePanel = document.getElementById('Product-Information-Drawer');
+            if (sidePanel) {
+                sidePanel.classList.add('active');
+            }
+        });
     });
-  });
+
+    // Close button logic
+    var closeButton = document.querySelector('.side-panel-close');
+    if (closeButton) {
+        closeButton.addEventListener('click', function () {
+            var sidePanel = document.getElementById('Product-Information-Drawer');
+            if (sidePanel) {
+                sidePanel.classList.remove('active');
+            }
+        });
+    }
 });
+
 
 </script>
 {% schema %}
