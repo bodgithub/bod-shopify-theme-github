@@ -104,7 +104,7 @@
                           {%- when 'text-button' -%}
                            {%- assign open_side_panel = block.settings.open_side_panel -%}
   {%- assign side_panel_page = block.settings.side_panel_page -%}
-								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+								
                           <a href="{% if open_side_panel %}javascript:void(0);{% else %}{{ block.settings.link }}{% endif %}"
      class="text-button-class button"
      data-open-side-panel="{{ open_side_panel }}"
