@@ -1,10 +1,11 @@
 <a href="{{ url }}" 
    title="{{ title | escape }}" 
    role="link" 
-   class="text-button {{ open_side_panel ? 'button-open-panel' : '' }} text-button--has-icon" 
+   class="text-button{% if open_side_panel %} button-open-panel{% endif %} text-button--has-icon" 
    data-open-side-panel="{{ open_side_panel }}"
    data-side-panel-page-1="{{ side_panel_1_page.handle }}"
    data-side-panel-page-2="{{ side_panel_2_page.handle }}"
    data-side-panel-page-3="{{ side_panel_3_page.handle }}">
    <span>{{ title }}</span>
 </a>
+
