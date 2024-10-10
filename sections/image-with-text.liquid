@@ -104,20 +104,23 @@
                           {%- when 'text-button' -%}
   {%- assign open_side_panel = block.settings.open_side_panel -%}
   {%- assign side_panel_page = block.settings.side_panel_page -%}
-  
-  {% render 'text-button',
-     url: block.settings.open_side_panel ? 'javascript:void(0);' : block.settings.link,
-     title: block.settings.link_label,
-     open_side_panel: open_side_panel,
-     side_panel_page: side_panel_page %}
+  {%- assign title = block.settings.link_label -%}
+
+  {%- if open_side_panel == 'true' -%}
+    {%- assign url = 'javascript:void(0);' -%}
+  {%- else -%}
+    {%- assign url = block.settings.link -%}
+  {%- endif -%}
 
   <a href="{{ url }}"
-   class="text-button-class button"
-   data-open-side-panel="{{ open_side_panel }}"
-   data-side-panel-page="{{ side_panel_page }}"
-   title="{{ title }}">
-   <span>{{ title }}</span>
-</a>
+     class="text-button-class button"
+     data-open-side-panel="{{ open_side_panel }}"
+     data-side-panel-page="{{ side_panel_page | default: '' }}"
+     title="{{ title }}">
+     <span>{{ title }}</span>
+  </a>
+
+
 
                         {%- when 'collapsible_tab' -%}
                           
