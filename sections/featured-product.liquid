@@ -90,47 +90,48 @@
 						</div>
 			    </div>
 
+{%- assign side_panels = section.blocks | where: "type", "side_panel" -%}
 {%- if side_panels.size > 0 -%}
 <div class="side-panel product-information-drawer" id="Product-Information-Drawer" tabindex="-1">
-    <div class="side-panel-inner">
-        <div class="side-panel-header">
-            <div>
-                <span class="h6">{{ 'products.product.product_information' | t }}</span>
-                <side-panel-close class="side-panel-close">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
-            </div>
-        </div>
-        <div class="side-panel-content side-panel-content--has-tabs">
-            {%- assign block = side_panels[0] -%}
-            <side-panel-content-tabs class="side-panel-content--tabs">
-                {%- if block.settings.side_panel_1_label != '' -%}
-                    <button class="tab-active">{{ block.settings.side_panel_1_label }}</button>
-                {%- endif -%}
-                {%- if block.settings.side_panel_2_label != '' -%}
-                    <button>{{ block.settings.side_panel_2_label }}</button>
-                {%- endif -%}
-                {%- if block.settings.side_panel_3_label != '' -%}
-                    <button>{{ block.settings.side_panel_3_label }}</button>
-                {%- endif -%}
-            </side-panel-content-tabs>
-            <div class="side-panel-content--inner">
-                {%- if block.settings.side_panel_1_label != '' -%}
-                <div class="side-panel-content--tab-panel rte tab-active">
-                  {{ block.settings.side_panel_1_page.content }}
-                </div>
-                {%- endif -%}
-                {%- if block.settings.side_panel_2_label != '' -%}
-                <div class="side-panel-content--tab-panel rte">
-                  {{ block.settings.side_panel_2_page.content }}
-                </div>
-                {%- endif -%}
-                {%- if block.settings.side_panel_3_label != '' -%}
-                <div class="side-panel-content--tab-panel rte">
-                  {{ block.settings.side_panel_3_page.content }}
-                </div>
-                {%- endif -%}
-            </div>
-        </div>
-    </div>
+	<div class="side-panel-inner">
+		<div class="side-panel-header">
+			<div>
+				<span class="h6">{{ 'products.product.product_information' | t }}</span>
+				<side-panel-close class="side-panel-close">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
+			</div>
+		</div>
+		<div class="side-panel-content side-panel-content--has-tabs">
+			{%- assign block = side_panels[0] -%}
+			<side-panel-content-tabs class="side-panel-content--tabs">
+				{%- if block.settings.side_panel_1_label != '' -%}
+					<button class="tab-active">{{ block.settings.side_panel_1_label }}</button>
+				{%- endif -%}
+				{%- if block.settings.side_panel_2_label != '' -%}
+					<button>{{ block.settings.side_panel_2_label }}</button>
+				{%- endif -%}
+				{%- if block.settings.side_panel_3_label != '' -%}
+					<button>{{ block.settings.side_panel_3_label }}</button>
+				{%- endif -%}
+			</side-panel-content-tabs>
+			<div class="side-panel-content--inner">
+				{%- if block.settings.side_panel_1_label != '' -%}
+				<div class="side-panel-content--tab-panel rte tab-active">
+				  {{ block.settings.side_panel_1_page.content }}
+				</div>
+				{%- endif -%}
+				{%- if block.settings.side_panel_2_label != '' -%}
+				<div class="side-panel-content--tab-panel rte">
+				  {{ block.settings.side_panel_2_page.content }}
+				</div>
+				{%- endif -%}
+				{%- if block.settings.side_panel_3_label != '' -%}
+				<div class="side-panel-content--tab-panel rte">
+				  {{ block.settings.side_panel_3_page.content }}
+				</div>
+				{%- endif -%}
+			</div>
+		</div>
+	</div>
 </div>
 {%- endif -%}
 
