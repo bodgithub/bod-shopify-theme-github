@@ -39,8 +39,7 @@
   <div class="side-panel-inner">
     <button class="side-panel-close">Close</button>
     <div class="side-panel-content">
-      <!-- Your panel content goes here -->
-      <p>Panel content to be displayed</p>
+     
     </div>
   </div>
 </div>
@@ -103,7 +102,17 @@
 								<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
 							 
                           {%- when 'text-button' -%}
-								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}{%- when 'collapsible_tab' -%}
+                           {%- assign open_side_panel = block.settings.open_side_panel -%}
+  {%- assign side_panel_page = block.settings.side_panel_page -%}
+								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+                          <a href="{% if open_side_panel %}javascript:void(0);{% else %}{{ block.settings.link }}{% endif %}"
+     class="text-button-class button"
+     data-open-side-panel="{{ open_side_panel }}"
+     data-side-panel-page="{{ side_panel_page | default: '' }}"
+     {{ block.shopify_attributes }}>
+    <span>{{ block.settings.link_label }}</span>
+  </a>
+                        {%- when 'collapsible_tab' -%}
                           
 								<collapsible-row class="accordion" {{ block.shopify_attributes }}>
 									<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
@@ -127,15 +136,36 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
-    var textButton = document.querySelector(".text-button-class"); // Update with the correct class for your text-button
+    var textButtons = document.querySelectorAll(".text-button-class");
     var sidePanel = document.querySelector(".side-panel");
 
-    if (textButton && sidePanel) {
+    textButtons.forEach(function(textButton) {
+      var openSidePanel = textButton.getAttribute("data-open-side-panel") === "true";
+      var sidePanelPage = textButton.getAttribute("data-side-panel-page");
+
       textButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        sidePanel.classList.toggle("active");
+        if (openSidePanel && sidePanelPage) {
+          event.preventDefault();
+
+          // Open the side panel
+          sidePanel.classList.add("active");
+
+          // Fetch the page content and display it in the side panel
+          fetch("/pages/" + sidePanelPage)
+            .then(response => response.text())
+            .then(data => {
+              var parser = new DOMParser();
+              var doc = parser.parseFromString(data, "text/html");
+              var pageContent = doc.querySelector(".page-content"); // Assuming your page content is in .page-content
+              sidePanel.querySelector(".side-panel-content").innerHTML = pageContent ? pageContent.innerHTML : "Content not found.";
+            })
+            .catch(error => {
+              sidePanel.querySelector(".side-panel-content").innerHTML = "An error occurred while fetching the content.";
+              console.error("Error fetching page content:", error);
+            });
+        }
       });
-    }
+    });
 
     var closePanelButtons = document.querySelectorAll(".side-panel-close");
     closePanelButtons.forEach(function(button) {
@@ -145,6 +175,7 @@
     });
   });
 </script>
+
 
 
 {% schema %}
