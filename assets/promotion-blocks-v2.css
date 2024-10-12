@@ -16,6 +16,12 @@
     height: auto;
   
 }
+
+.expert-image-row:hover {
+  background-color: #1b3def;
+  
+}
+
 .expert-image-row img {
 border-radius:14px;
 }
