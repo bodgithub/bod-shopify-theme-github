@@ -11,7 +11,6 @@
     position: relative;
 }
 
-/* The expert image row (image and hover effect container) */
 .expert-image-row {
     position: relative;
     width: 100%;
@@ -19,15 +18,20 @@
   z-index: 10;
 }
 
-/* Wrapper around the image */
+.image-wrapper {
+    position: relative;
+    width: 100%;
+}
+
 .image-wrapper img {
     width: 100%;
     height: auto;
     border-radius: 14px;
     display: block;
-    transition: opacity 0.3s ease;
-  z-index: 10;
+    transition: opacity 0.3s ease; /* Fade effect on hover */
+    z-index: 1; /* Ensure the image stays on top initially */
 }
+
 
 /* Hidden by default, shown on hover */
 .expert-image-row-hover {
@@ -49,6 +53,7 @@
 .expert-image-row-hover h5, h6 {
   display: visible;
   color:white;
+  padding:20px;
 
 }
 
