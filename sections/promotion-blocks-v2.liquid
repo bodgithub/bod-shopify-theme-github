@@ -23,39 +23,48 @@
 				endif
 			-%}
 			<div class="container" {{ block.shopify_attributes }}>
-   <div class="expert-image-row">
-      <div class="image-wrapper">{%- render 'responsive-image', image: block.settings.image, sizes: '520x0,640x0' -%}</div>
-   </div>
+			
+          
+				   {% if block.settings.image != blank %}
+                  <div class="expert-image-row">
+					
+					{%- render 'responsive-image', image: block.settings.image, sizes: '520x0,640x0' -%}
+					
+				</div>
+				{% endif %}
 
-   <div class="expert-image-row-hover">
-      {% if block.settings.quote != blank %}
-         <h6>{{ block.settings.quote }}</h6>
-      {% endif %}
-   </div>
+              <div class="expert-image-row-hover "  id="hoverElement">
+					<h6>{{ block.settings.quote }}</h6>
+				
+					
+				</div>
+             
+          
+              <div class="expert-text-row">
+					{% if block.settings.title != blank %}
+						<h6>{{ block.settings.title }}</h6>
+					{% endif %}
+		
+				</div>
 
-   <div class="expert-text-row">
-      {% if block.settings.title != blank %}
-         <h6>{{ block.settings.quote }}</h6>
-      {% endif %}
-   </div>
+              <div class="expert-quote-row">
+					{% if block.settings.quote != blank %}
+						<h6>{{ block.settings.quote }}</h6>
+					{% endif %}
+		
+				</div>
 
-{% comment %}   <div class="expert-quote-row">
-      {% if block.settings.quote != blank %}
-         <h6>{{ block.settings.quote }}</h6>
-      {% endif %}
-   </div> {% endcomment %}
-
-   <div class="expert-button-row">
-      {% if block.settings.button_text != blank %}
-         {% render 'text-button', url: block.settings.button_link, title: block.settings.button_text %}
-      {% endif %}
-   </div>
-</div>
+              <div class="expert-button-row">
+                 {% if block.settings.button_text != blank %}
+						{% render 'text-button', url: block.settings.button_link, title: block.settings.button_text %}
+					{% endif %}
+              </div>
+              
+				
+			</div>
 		{%- endfor -%}
 	</div>
 </div>
-
-
 
 {% schema %}
   {

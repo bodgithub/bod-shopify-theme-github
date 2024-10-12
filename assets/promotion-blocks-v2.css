@@ -3,64 +3,43 @@
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
-    box-shadow: var(--block-shadows);
-    border: 0.5px solid #f6f6f6;
-    border-radius: 15px;
-    height: fit-content;
-    position: relative;
+  box-shadow: var(--block-shadows);
+  border: 0.5px solid #f6f6f6;
+  border-radius:15px;
+  height: fit-content;
 }
 
+
 .expert-image-row {
-    margin: 25px 25px;
-    position: relative; /* Make this relative for absolute positioning inside it */
-    width: 100%;
+  margin: 25px 25px;
+  width: contain;
     height: auto;
+  
+}
+
+.expert-image-row:hover {
+  margin: 25px 25px;
+  width: contain;
+    height: auto;
+  
 }
 
 .expert-image-row img {
-    width: 100%;
-    height: auto;
-    border-radius: 14px;
-    display: block;
-    transition: opacity 0.3s ease; /* Smooth transition when hiding */
+border-radius:14px;
 }
 
-.expert-image-row-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #1b3def;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 14px;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth transition when appearing */
+.expert-text-row {
+  margin: 20px 30px;
 }
-
-/* On hover, hide the image and show the quote */
-.expert-image-row:hover img {
-    opacity: 0; /* Hide the image on hover */
-}
-
-.expert-image-row:hover .expert-image-row-hover {
-    opacity: 1; /* Show the quote on hover */
-}
-
-.expert-text-row, .expert-quote-row, .expert-button-row {
-    margin: 20px 30px;
-}
-
 .expert-quote-row {
-    padding-top: 20px;
-    border-top: 1px solid #1b3def;
+  margin: 20px 30px;
+  padding-top:20px;
+  border-top: 1px solid #1b3def;
 }
 
 .expert-button-row a.text-button.text-button--has-icon {
-    justify-content: center !important;
-    margin-bottom: 20px;
+  justify-content: center !important;
+  margin-bottom:20px;
+  
 }
+
