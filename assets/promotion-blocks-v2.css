@@ -13,7 +13,7 @@
 .expert-image-row {
     margin: 25px 25px;
     position: relative; /* Make this relative for absolute positioning inside it */
-    width: contain;
+    width: 100%;
     height: auto;
 }
 
