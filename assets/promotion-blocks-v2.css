@@ -17,10 +17,20 @@
   
 }
 
-.expert-image-row:hover {
-  margin: 25px 25px;
+expert-image-row-hover {
+margin: 25px 25px;
   width: contain;
-    height: auto;
+  height: 100%;
+  max-height:250px;
+  background-color: #1b3def;
+    color:white;
+  opacity:0;
+  z-index: 10;
+  
+}
+
+.container:hover expert-image-row-hover {
+  opacity: 1;
   
 }
 
