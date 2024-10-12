@@ -31,14 +31,12 @@
 
 /* Hidden by default, shown on hover */
 .expert-image-row-hover {
-    position: absolute;
-    top: 0;
-    left: 0;
+    
+    
     width: 100%;
-    height: 100%;
+    height: contain;
     background-color: #1b3def;
     color: white;
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
