@@ -47,11 +47,11 @@
 }
 
 /* On hover, hide the image and show the quote */
-.expert-image-row:hover .image-wrapper img {
+.container:hover .image-wrapper img {
     opacity: 0; /* Hide the image */
 }
 
-.expert-image-row:hover .expert-image-row-hover {
+.container:hover .expert-image-row-hover {
     opacity: 1; /* Show the quote */
 }
 
