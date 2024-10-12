@@ -17,8 +17,8 @@
   
 }
 
-.expert-image-row:hover {
-  background-color: #1b3def;
+.expert-image-row-hovered {
+  transition: background-color 0.3s ease;
   
 }
 
