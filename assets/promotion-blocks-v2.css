@@ -33,17 +33,16 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: #1b3def; /* Blue background */
-    color: white; /* White text */
+    height: auto;
+    background-color: #1b3def;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 14px;
-    opacity: 0; /* Hidden by default */
     transition: opacity 0.3s ease; /* Fade in on hover */
-    z-index: 10; /* Make sure it appears above the image */
+    
 }
 
 /* On hover, hide the image and show the quote */
