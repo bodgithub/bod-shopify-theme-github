@@ -415,9 +415,24 @@
     "carousel_boxes_jas_HzyeW9": {
       "type": "Carousel-Boxes-Jas",
       "blocks": {
+        "box_YQBT8X": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_Empowered.jpg",
+            "image_link": "",
+            "open": false,
+            "heading": "PCOS",
+            "text": "",
+            "link_label": "Learn more",
+            "link": "shopify://pages/hormones",
+            "use_text_button": false,
+            "block_link": "shopify://pages/hormones"
+          }
+        },
         "box_egXcdC": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_Fertility_Hormones.jpg",
             "image_link": "shopify://pages/hormones",
             "open": false,
             "heading": "Hormones",
@@ -442,23 +457,10 @@
             "block_link": ""
           }
         },
-        "box_YQBT8X": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
-            "image_link": "",
-            "open": false,
-            "heading": "PCOS",
-            "text": "",
-            "link_label": "Learn more",
-            "link": "shopify://pages/hormones",
-            "use_text_button": false,
-            "block_link": "shopify://pages/hormones"
-          }
-        },
         "box_fkrYD7": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_for_Mood_4.jpg",
             "image_link": "",
             "open": false,
             "heading": "Anxiety",
@@ -485,9 +487,9 @@
         }
       },
       "block_order": [
+        "box_YQBT8X",
         "box_egXcdC",
         "box_TxAVLm",
-        "box_YQBT8X",
         "box_fkrYD7",
         "box_mBqGXB"
       ],
@@ -1173,7 +1175,6 @@
         "box_Ak8RFm": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-09-09_at_18.39.45.png",
             "image_link": "",
             "open": false,
             "heading": "Tina Kozman, MEd, CNP",
@@ -1187,7 +1188,6 @@
         "box_Ck6CBE": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
             "image_link": "",
             "open": false,
             "heading": "Hillary Wright, MEd, RD",
@@ -1201,7 +1201,6 @@
         "box_dHBmyP": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
             "image_link": "",
             "open": false,
             "heading": "Dr. Anita W. Ph.D.",
