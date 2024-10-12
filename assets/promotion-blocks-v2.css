@@ -9,10 +9,11 @@
   height: fit-content;
 }
 
+@media only screen and (min-width:800px;){
 .container:first-child,
 .container:last-child {
     margin-top: 35px;
-}
+}}
 
 .expert-image-row {
   margin: 15px 15px;
