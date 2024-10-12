@@ -1,3 +1,4 @@
+/* Container styling */
 .container {
     width: 100%;
     max-width: 600px;
@@ -10,48 +11,54 @@
     position: relative;
 }
 
+/* The expert image row (image and hover effect container) */
 .expert-image-row {
-    margin: 25px 25px;
-    position: relative; /* Make this relative for absolute positioning inside it */
+    position: relative;
     width: 100%;
     height: auto;
 }
 
-.expert-image-row img {
+/* Wrapper around the image */
+.image-wrapper img {
     width: 100%;
     height: auto;
     border-radius: 14px;
     display: block;
-    transition: opacity 0.3s ease; /* Smooth transition when hiding */
+    transition: opacity 0.3s ease; /* Fade effect on hover */
 }
 
+/* Hidden by default, shown on hover */
 .expert-image-row-hover {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #1b3def;
-    color: white;
+    background-color: #1b3def; /* Blue background */
+    color: white; /* White text */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 14px;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease; /* Smooth transition when appearing */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease; /* Fade in on hover */
+    z-index: 10; /* Make sure it appears above the image */
 }
 
 /* On hover, hide the image and show the quote */
-.expert-image-row:hover img {
-    opacity: 0; /* Hide the image on hover */
+.expert-image-row:hover .image-wrapper img {
+    opacity: 0; /* Hide the image */
 }
 
 .expert-image-row:hover .expert-image-row-hover {
-    opacity: 1; /* Show the quote on hover */
+    opacity: 1; /* Show the quote */
 }
 
-.expert-text-row, .expert-quote-row, .expert-button-row {
+/* Additional styles for the text and button rows */
+.expert-text-row,
+.expert-quote-row,
+.expert-button-row {
     margin: 20px 30px;
 }
 
