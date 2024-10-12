@@ -21,6 +21,8 @@
 .image-wrapper {
     position: relative;
     width: 100%;
+  transition: opacity 0.3s ease; /* Fade effect on hover */
+    z-index: 1; /* Ensure the image stays on top initially */
 }
 
 .image-wrapper img {
@@ -28,8 +30,7 @@
     height: auto;
     border-radius: 14px;
     display: block;
-    transition: opacity 0.3s ease; /* Fade effect on hover */
-    z-index: 1; /* Ensure the image stays on top initially */
+    
 }
 
 
