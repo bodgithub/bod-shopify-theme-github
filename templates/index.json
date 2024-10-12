@@ -1169,6 +1169,82 @@
         "disable_bottom_spacing": true
       }
     },
+    "gallery_aFmaWe": {
+      "type": "gallery",
+      "blocks": {
+        "image_VmrkzD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "",
+            "title": "|Tina Kozman|",
+            "marker_style": "style1",
+            "text": "MEd, CNP, Metabolic Health Coach",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "marker_color": "#FD6262"
+          }
+        },
+        "image_AG7K8d": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_Bodology.jpg",
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "",
+            "title": "|Hillary Wright|",
+            "marker_style": "style1",
+            "text": "MEd, RD, Director of Nutrition, Boston IVF Center",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "marker_color": "#FD6262"
+          }
+        },
+        "image_4iTje6": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Anita-Bodology-Square5.jpg",
+            "enable_gallery_video": false,
+            "enable_hover_play": false,
+            "subheading": "",
+            "title": "| Dr. Anita W.|",
+            "marker_style": "style1",
+            "text": "Ph.D.\n\nNatural Medicine Practitioner",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": "",
+            "marker_color": "#FD6262"
+          }
+        }
+      },
+      "block_order": [
+        "image_VmrkzD",
+        "image_AG7K8d",
+        "image_4iTje6"
+      ],
+      "settings": {
+        "columns_desktop": 3,
+        "full_width": false,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "content_position": "bottom-center",
+        "text_alignment": "center",
+        "column_spacing": "none",
+        "heading_size": "h3",
+        "description_size": "large",
+        "overlay_color": "#000000",
+        "overlay_opacity": 29,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
     "carousel_boxes_jas_QGw4P6": {
       "type": "Carousel-Boxes-Jas",
       "blocks": {
@@ -1220,6 +1296,7 @@
         "box_Ck6CBE",
         "box_dHBmyP"
       ],
+      "disabled": true,
       "custom_css": [
         ".toggle-box {max-width: 18rem;}"
       ],
@@ -1264,6 +1341,7 @@
     "multicolumn_bcEC7r",
     "multicolumn_bQBAHG",
     "text_with_icons_R6Pm86",
+    "gallery_aFmaWe",
     "carousel_boxes_jas_QGw4P6"
   ]
 }
