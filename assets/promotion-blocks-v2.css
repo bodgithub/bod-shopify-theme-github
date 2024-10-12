@@ -7,13 +7,16 @@
   border: 0.5px solid #f6f6f6;
   border-radius:15px;
   height: fit-content;
+      position: relative;
+
 }
 
 
 .expert-image-row {
   margin: 25px 25px;
-  width: contain;
+  width: 100%;
     height: auto;
+      transition: opacity 0.3s ease;
   
 }
 
