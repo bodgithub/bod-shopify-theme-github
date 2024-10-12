@@ -39,6 +39,13 @@
 		
 				</div>
 
+              <div class="expert-text-row">
+					{% if block.settings.quote != blank %}
+						<h6>{{ block.settings.quote }}</h6>
+					{% endif %}
+		
+				</div>
+
               <div class="expert-button-row">
                  {% if block.settings.button_text != blank %}
 						{% render 'text-button', url: block.settings.button_link, title: block.settings.button_text %}
@@ -161,6 +168,12 @@
 						"id": "title",
 						
 						"label": "Heading"
+					},
+          {
+						"type": "richtext",
+						"id": "quote",
+						
+						"label": "Quote"
 					},
 					{
             "id": "button_text",
