@@ -1175,6 +1175,7 @@
         "box_Ak8RFm": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
             "image_link": "",
             "open": false,
             "heading": "Tina Kozman, MEd, CNP",
@@ -1188,6 +1189,7 @@
         "box_Ck6CBE": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Hillary_Bodology.jpg",
             "image_link": "",
             "open": false,
             "heading": "Hillary Wright, MEd, RD",
@@ -1201,6 +1203,7 @@
         "box_dHBmyP": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Anita-Bodology-Square4.jpg",
             "image_link": "",
             "open": false,
             "heading": "Dr. Anita W. Ph.D.",
@@ -1234,78 +1237,6 @@
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
-    },
-    "multicolumn_8A3tT7": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_hWUTxD": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/3.png",
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5><strong>Tina Kozman, MEd, CNP </strong></h5><p>Metabolic Health Expert &amp; Certified Nutritional Practitioner</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_kekGbR": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/4.png",
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5><strong>Hillary Wright, MEd, RD </strong></h5><p>Director of Nutrition, Boston IVF  Wellness Center</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_4NTEj6": {
-          "type": "column",
-          "settings": {
-            "image": "shopify://shop_images/5.png",
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5><strong>Dr. Anita W. Ph.D. </strong></h5><p>Biomedical Scientist &amp; Natural Medicine Practitioner</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_hWUTxD",
-        "column_kekGbR",
-        "column_4NTEj6"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".columns {background-color: #1b3def; /* padding: 20px 2% 20px 2%;*/}",
-        ".row {padding: 0px 80px 30px 80px; max-width: 100% !important;}",
-        ".multicolumn__image {width: 150px !important;}",
-        ".section-header {padding-top: 35px;}",
-        ".row .align-stretch .no-padding {padding: 0 50px !important;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "<h1><strong>Expert backed</strong></h1>",
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "columns_desktop": 3,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "center",
-        "heading_size": "h5",
-        "color_heading": "#ffffff",
-        "marker_color": "#fd6262",
-        "color_text": "#ffffff",
-        "color_links": "#ffffff",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
     }
   },
   "order": [
@@ -1330,7 +1261,6 @@
     "multicolumn_bcEC7r",
     "multicolumn_bQBAHG",
     "text_with_icons_R6Pm86",
-    "carousel_boxes_jas_QGw4P6",
-    "multicolumn_8A3tT7"
+    "carousel_boxes_jas_QGw4P6"
   ]
 }
