@@ -6,6 +6,12 @@
   box-shadow: var(--block-shadows);
   border: 0.5px solid #f6f6f6;
   border-radius:15px;
+  height: fit-content;
+}
+
+.container:first-child,
+.container:last-child {
+    margin-top: 35px;
 }
 
 .expert-image-row {
