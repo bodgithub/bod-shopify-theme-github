@@ -1,4 +1,3 @@
-/* Container styling */
 .container {
     width: 100%;
     max-width: 600px;
@@ -12,29 +11,20 @@
 }
 
 .expert-image-row {
-    position: relative;
+    margin: 25px 25px;
+    position: relative; /* Make this relative for absolute positioning inside it */
     width: 100%;
     height: auto;
-  z-index: 10;
 }
 
-.image-wrapper {
-    position: relative;
-    width: 100%;
-  transition: opacity 0.3s ease; /* Fade effect on hover */
-    z-index: 1; /* Ensure the image stays on top initially */
-}
-
-.image-wrapper img {
+.expert-image-row img {
     width: 100%;
     height: auto;
     border-radius: 14px;
     display: block;
-    
+    transition: opacity 0.3s ease; /* Smooth transition when hiding */
 }
 
-
-/* Hidden by default, shown on hover */
 .expert-image-row-hover {
     position: absolute;
     top: 0;
@@ -48,38 +38,27 @@
     align-items: center;
     text-align: center;
     border-radius: 14px;
-    transition: opacity 0.3s ease; /* Fade in on hover */
-    z-index: -1; /* Make sure it appears above the image */
-}
-.expert-image-row-hover h5, h6 {
-  display: visible;
-  color:white;
-  padding:20px;
-
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth transition when appearing */
 }
 
 /* On hover, hide the image and show the quote */
-.container:hover .image-wrapper img {
-    opacity: 0; /* Hide the image */
+.expert-image-row:hover img {
+    opacity: 0; /* Hide the image on hover */
 }
 
-.container:hover .expert-image-row-hover {
-    opacity: 1; /* Show the quote */
+.expert-image-row:hover .expert-image-row-hover {
+    opacity: 1; /* Show the quote on hover */
 }
 
-/* Additional styles for the text and button rows */
-.expert-text-row,
-.expert-quote-row,
-.expert-button-row {
+.expert-text-row, .expert-quote-row, .expert-button-row {
     margin: 20px 30px;
-  color: #1b3def;
 }
 
-/*.expert-quote-row {
+.expert-quote-row {
     padding-top: 20px;
     border-top: 1px solid #1b3def;
 }
-*/
 
 .expert-button-row a.text-button.text-button--has-icon {
     justify-content: center !important;
