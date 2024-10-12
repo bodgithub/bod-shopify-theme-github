@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  box-shadow: var(--block-shadows);
+}
+
+.expert-image-row {
+  margin: 20px 0;
+width: 100%;
+    height: auto;
+}
+
+.expert-text {
+  margin: 20px 0;
+}

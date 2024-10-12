@@ -1,4 +1,4 @@
-{{- 'promotion-blocks.css' | asset_url | stylesheet_tag -}}
+{{- 'promotion-blocks-v2.css' | asset_url | stylesheet_tag -}}
 {%- liquid
 	assign column_spacing = section.settings.column_spacing
 	assign mobile_swipe = section.settings.mobile_swipe
@@ -20,19 +20,19 @@
 					assign ratio = block.settings.image.aspect_ratio
 				endif
 			-%}
-			<div class="promotion-blocks--item" {{ block.shopify_attributes }}>
+			<div class="container" {{ block.shopify_attributes }}>
 			
           
 				   {% if block.settings.image != blank %}
-                  <div class="expert-image"><figure class="promotion-blocks--image">
+                  <div class="expert-image-row">
 					<div class="aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent:{{ 1.0 | divided_by: ratio | times: 100.0 }}%;">
 					{%- render 'responsive-image', image: block.settings.image, sizes: '120x0,240x0' -%}
 					</div>
-				</figure></div>
+				</div>
 				{% endif %}
               
           
-              <div class="promotion-blocks--text">
+              <div class="expert-text-row">
 					{% if block.settings.title != blank %}
 						<h6>{{ block.settings.title }}</h6>
 					{% endif %}
