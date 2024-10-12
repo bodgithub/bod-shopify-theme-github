@@ -17,9 +17,10 @@
   
 }
 
-.expert-image-row-hovered {
+.expert-image-row-hover {
+  background-color: #1b3def;
   transition: background-color 0.3s ease;
-  
+  color:white;
 }
 
 .expert-image-row img {
