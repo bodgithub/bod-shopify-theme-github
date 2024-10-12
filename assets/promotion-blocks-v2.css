@@ -16,6 +16,7 @@
     position: relative;
     width: 100%;
     height: auto;
+  z-index: 10;
 }
 
 /* Wrapper around the image */
@@ -42,7 +43,7 @@
     text-align: center;
     border-radius: 14px;
     transition: opacity 0.3s ease; /* Fade in on hover */
-    
+    z-index: 1; /* Make sure it appears above the image */
 }
 
 /* On hover, hide the image and show the quote */
