@@ -31,18 +31,25 @@
 
 /* Hidden by default, shown on hover */
 .expert-image-row-hover {
-    
-    
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: contain;
+    height: 100%;
     background-color: #1b3def;
     color: white;
+    display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     border-radius: 14px;
     transition: opacity 0.3s ease; /* Fade in on hover */
     z-index: -1; /* Make sure it appears above the image */
+}
+.expert-image-row-hover h5, h6 {
+  display: visible;
+  color:white;
+
 }
 
 /* On hover, hide the image and show the quote */
