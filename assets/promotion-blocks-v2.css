@@ -72,12 +72,14 @@
 .expert-quote-row,
 .expert-button-row {
     margin: 20px 30px;
+  color: #1b3def;
 }
 
-.expert-quote-row {
+/*.expert-quote-row {
     padding-top: 20px;
     border-top: 1px solid #1b3def;
 }
+*/
 
 .expert-button-row a.text-button.text-button--has-icon {
     justify-content: center !important;
