@@ -1049,16 +1049,6 @@
     "promotion_blocks_v2_reFWxi": {
       "type": "promotion-blocks-v2",
       "blocks": {
-        "promotion_EXFdac": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
-            "title": "<h4><strong>Tina Kozman</strong></h4><h5><em>MEd, DNP, Metabolic Health Coach</em></h5>",
-            "quote": "<h6>\"As a nutritionist, I not only highly recommend Bodology™ <em>Inositol</em> but I also use it myself.\"</h6>",
-            "button_text": "",
-            "button_link": ""
-          }
-        },
         "promotion_nKLGDJ": {
           "type": "promotion",
           "settings": {
@@ -1069,20 +1059,30 @@
             "button_link": ""
           }
         },
+        "promotion_EXFdac": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
+            "title": "<h4><strong>Tina Kozman</strong></h4><h5><em>MEd, DNP, Metabolic Health Coach</em></h5>",
+            "quote": "<h6>\"As a nutritionist, I not only highly recommend Bodology™ <em>Inositol</em> but I also use it myself.\"</h6>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
         "promotion_d7raAD": {
           "type": "promotion",
           "settings": {
             "image": "shopify://shop_images/Anita-Bodology-Square8.jpg",
-            "title": "<h4><strong>Tina Kozman</strong></h4><h5><em>MEd, DNP, Metabolic Health Coach</em></h5>",
-            "quote": "<h6><strong>\"</strong>I use <em>Inositol</em> with my clients dealing with irregular cycles, weight management, and hormonal imbalances like PCOS.”</h6>",
+            "title": "<h4><strong>Dr. Anita W.</strong></h4><h5><em>Ph.D, Natural Medicine Practitioner</em></h5>",
+            "quote": "<h6><strong>\"</strong>I use <em>Inositol</em> with clients dealing with irregular cycles, weight, and hormonal imbalances.”</h6>",
             "button_text": "",
             "button_link": ""
           }
         }
       },
       "block_order": [
-        "promotion_EXFdac",
         "promotion_nKLGDJ",
+        "promotion_EXFdac",
         "promotion_d7raAD"
       ],
       "settings": {
