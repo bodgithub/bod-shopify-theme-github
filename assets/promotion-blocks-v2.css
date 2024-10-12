@@ -45,7 +45,6 @@ border-radius:14px;
     transition: opacity 0.3s ease; /* Smooth transition when appearing */
 }
 
-
 .expert-text-row {
   margin: 20px 30px;
 }
@@ -60,4 +59,14 @@ border-radius:14px;
   margin-bottom:20px;
   
 }
+
+---/* On hover, hide the image and show the quote */
+.container:hover .expert-image-row {
+    opacity: 0; /* Hide the image on hover */
+}
+
+.container:hover .expert-image-row-hover {
+    opacity: 1; /* Show the quote on hover */
+}
+
 
