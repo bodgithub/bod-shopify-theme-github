@@ -893,279 +893,31 @@
         "disable_bottom_spacing": false
       }
     },
-    "testimonials_ncYmHF": {
-      "type": "testimonials",
+    "rich_text_7xWrk9": {
+      "type": "rich-text",
       "blocks": {
-        "quote_FPFza8": {
-          "type": "quote",
+        "heading_ie3Uer": {
+          "type": "heading",
           "settings": {
-            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
-            "stars": "5",
-            "text": "Sofia started ovulating*",
-            "author": "Wasn't sure what to expect with Bodology Inositol, given my PCOS history and practically non-existent cycles after coming off of birth control. It's been a bit over two months, and out of nowhere, I actually ovulated."
-          }
-        },
-        "quote_cA4Yz7": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Jasmin's cycles returned*",
-            "author": "I've had PCOS for 11 years and irregular cycles my whole life. 35 days after taking myo & d-chiro inositol powder my periods returned"
-          }
-        },
-        "quote_wFpXHz": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Sandra's cycles improved. I’m definitely going to be ordering more. Highly recommend!",
-            "author": ""
-          }
-        },
-        "quote_QyYCE3": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Irina lost 10 pounds*",
-            "author": "Little to no taste, and feeling much better. Lost 10 pounds so far & has regulated my cycle!"
-          }
-        },
-        "quote_arHRAy": {
-          "type": "quote",
-          "settings": {
-            "stars": "5",
-            "text": "Kristina's sleep improved*",
-            "author": "I haven't had any GI issues at all from taking it like I have with other brands. I've been getting better sleep since starting this powder and am very happy about that!"
+            "text": "Our <em>experts</em>",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#fd6262"
           }
         }
       },
       "block_order": [
-        "quote_FPFza8",
-        "quote_cA4Yz7",
-        "quote_wFpXHz",
-        "quote_QyYCE3",
-        "quote_arHRAy"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".testimonials--author {line-height: 1.4em;}"
+        "heading_ie3Uer"
       ],
       "settings": {
-        "heading": "Meet Our experts",
-        "full_width": false,
-        "text_size": "large",
-        "font_family": "body",
-        "pagination": "logos",
-        "autoplay": true,
-        "autoplay_length": 4,
-        "color_bg": "#ffffff",
-        "color_text": "#ffffff",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "multicolumn_bcEC7r": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_86JLEV": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h1>\n<strong>Meet our <em> experts</em></strong>\n</h1>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_hFeb3U": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_86JLEV",
-        "column_hFeb3U"
-      ],
-      "custom_css": [
-        ".multicolumn {color: #1b3def !important; align-content: end !important;}",
-        ".row .columns {align-content: end !important;}",
-        ".columns h1 {margin-bottom: 0px !important; align-content: end !important;}",
-        "@media only screen and (min-width: 768px) {.row .columns {padding: 0px 15px 0 5% !important; }}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
-        "color_text": "#1b3def",
-        "color_links": "#ffffff",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "multicolumn_bQBAHG": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_fGCWfE": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h6><strong>Optimal 40:1 Myo to D-Chiro Inositol ratio</strong></h6>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_8XA4n4": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h6><strong>Backed by 100+ clinical studies</strong></h6>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_Lqf8Qd": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h6><strong>Optimized for maximum absorption</strong></h6>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_d3jzaK": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h6><strong>Third-party tested for purity and potency</strong></h6>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_yxVKHK": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h6><strong>Endorsed by leading metabolic health experts</strong></h6>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_Hiw8WK": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h6><strong>Versatile, unflavored powder without additives</strong></h6>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_fGCWfE",
-        "column_8XA4n4",
-        "column_Lqf8Qd",
-        "column_d3jzaK",
-        "column_yxVKHK",
-        "column_Hiw8WK"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".multicolumn__column {border-left: solid 5px #f6f6f6 !important;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "columns_desktop": 3,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h6",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
-    "text_with_icons_R6Pm86": {
-      "type": "text-with-icons",
-      "blocks": {
-        "icon_g4YmNf": {
-          "type": "icon",
-          "settings": {
-            "icon": "washing",
-            "image": "shopify://shop_images/scales.png",
-            "heading": "",
-            "text": "<h5><strong>Smarter 40:1 Myo to D-Chiro Inositol ratio</strong></h5>"
-          }
-        },
-        "icon_M9FPbK": {
-          "type": "icon",
-          "settings": {
-            "icon": "ruler",
-            "image": "shopify://shop_images/certificate.png",
-            "heading": "",
-            "text": "<h5><strong>Backed by 100+ Clinical Studies</strong></h5>"
-          }
-        },
-        "icon_jht6J7": {
-          "type": "icon",
-          "settings": {
-            "icon": "bottle",
-            "image": "shopify://shop_images/puzzle-piece.png",
-            "heading": "",
-            "text": "<h5><strong>Optimized for max absorption</strong></h5>"
-          }
-        }
-      },
-      "block_order": [
-        "icon_g4YmNf",
-        "icon_M9FPbK",
-        "icon_jht6J7"
-      ],
-      "disabled": true,
-      "settings": {
-        "text_alignment": "left",
-        "icon_position": "left",
-        "icon_size": "small",
-        "heading_size": "large",
-        "mobile_swipe": true,
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "color_text": "#1b3def",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
@@ -1241,79 +993,7 @@
         "description_size": "small",
         "overlay_color": "#000000",
         "overlay_opacity": 19,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
-    "carousel_boxes_jas_QGw4P6": {
-      "type": "Carousel-Boxes-Jas",
-      "blocks": {
-        "box_Ak8RFm": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
-            "image_link": "",
-            "open": false,
-            "heading": "Tina Kozman, MEd, CNP",
-            "text": "<p><strong>Tina Kozman, MEd, CNP</strong></p><h6><em>Metabolic Health Coach</em></h6>",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_Ck6CBE": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Hillary_Bodology.jpg",
-            "image_link": "",
-            "open": false,
-            "heading": "Hillary Wright, MEd, RD",
-            "text": "<p><strong>Hillary Wright, MEd, RD</strong></p><h6><em>Director of Nutrition, Boston IVF  Center</em></h6>",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        },
-        "box_dHBmyP": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Anita-Bodology-Square8.jpg",
-            "image_link": "",
-            "open": false,
-            "heading": "Dr. Anita W. Ph.D.",
-            "text": "<p><strong>Dr. Anita W. Ph.D.</strong></p><h6><em>Natural Medicine Practitioner</em></h6>",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "box_Ak8RFm",
-        "box_Ck6CBE",
-        "box_dHBmyP"
-      ],
-      "custom_css": [
-        ".toggle-box {max-width: 18rem;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "columns_desktop": 3,
-        "column_spacing": "medium",
-        "image_ratio": "square",
-        "mobile_swipe": false,
-        "text_alignment": "left",
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "marker_color": "#fd6262",
-        "color_text": "#1b3def",
-        "color_link": "#1b3def",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
     }
@@ -1336,11 +1016,7 @@
     "featured_product_WEQ8Gx",
     "custom_liquid_LhyTU6",
     "expert_testimonials_zpEKKk",
-    "testimonials_ncYmHF",
-    "multicolumn_bcEC7r",
-    "multicolumn_bQBAHG",
-    "text_with_icons_R6Pm86",
-    "gallery_aFmaWe",
-    "carousel_boxes_jas_QGw4P6"
+    "rich_text_7xWrk9",
+    "gallery_aFmaWe"
   ]
 }
