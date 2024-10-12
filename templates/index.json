@@ -1043,6 +1043,51 @@
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
+    },
+    "promotion_blocks_v2_reFWxi": {
+      "type": "promotion-blocks-v2",
+      "blocks": {
+        "promotion_nKLGDJ": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
+            "title": "<h4><strong>Tina Kozman </strong></h4><p>MEd, DNP, Metabolic Coach</p>",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        },
+        "promotion_jnrT9H": {
+          "type": "promotion",
+          "settings": {
+            "title": "",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        },
+        "promotion_i4FRdt": {
+          "type": "promotion",
+          "settings": {
+            "title": "",
+            "button_text": "Explore",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promotion_nKLGDJ",
+        "promotion_jnrT9H",
+        "promotion_i4FRdt"
+      ],
+      "settings": {
+        "mobile_swipe": false,
+        "image_ratio": "square",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_link": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
@@ -1065,6 +1110,7 @@
     "expert_testimonials_zpEKKk",
     "rich_text_7xWrk9",
     "gallery_aFmaWe",
-    "promotion_blocks_CqPNbi"
+    "promotion_blocks_CqPNbi",
+    "promotion_blocks_v2_reFWxi"
   ]
 }
