@@ -25,9 +25,9 @@
           
 				   {% if block.settings.image != blank %}
                   <div class="expert-image-row">
-					<div class="aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent:{{ 1.0 | divided_by: ratio | times: 100.0 }}%;">
-					{%- render 'responsive-image', image: block.settings.image, sizes: '120x0,240x0' -%}
-					</div>
+					
+					{%- render 'responsive-image', image: block.settings.image, sizes: '520x0,640x0' -%}
+					
 				</div>
 				{% endif %}
               
