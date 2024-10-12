@@ -14,11 +14,19 @@
 
 .expert-image-row {
   margin: 25px 25px;
-  width: contain;
+  width: 100%;
     height: auto;
       transition: opacity 0.3s ease;
   
 }
+.expert-image-row img {
+border-radius:14px;
+  width:contain;
+  height: auto;
+    border-radius: 14px;
+    display: block;
+}
+
 
 .expert-image-row-hover {
   background-color: #1b3def;
@@ -30,9 +38,6 @@
 
 }
 
-.expert-image-row img {
-border-radius:14px;
-}
 
 .expert-text-row {
   margin: 20px 30px;
