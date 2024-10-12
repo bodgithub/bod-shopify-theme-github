@@ -996,6 +996,53 @@
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
+    },
+    "promotion_blocks_CqPNbi": {
+      "type": "promotion-blocks",
+      "blocks": {
+        "promotion_EAG3gR": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
+            "title": "<h4><strong>Tina Kozman </strong></h4><p>MEd, DNP, Metabolic Coach</p>",
+            "button_text": "Learn more",
+            "button_link": ""
+          }
+        },
+        "promotion_JqgzFN": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_Bodology.jpg",
+            "title": "<h4><strong>Hillary Wright</strong></h4><p>MEd, RD, Director of Nutrition, Boston IVF Center</p>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "promotion_KnQJYR": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Anita-Bodology-Square8.jpg",
+            "title": "<h4><strong>Dr. Anita W.</strong></h4><p>Ph.D., Natural Medicine Practitioner</p>",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promotion_EAG3gR",
+        "promotion_JqgzFN",
+        "promotion_KnQJYR"
+      ],
+      "settings": {
+        "mobile_swipe": false,
+        "image_ratio": "square",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_link": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
@@ -1017,6 +1064,7 @@
     "custom_liquid_LhyTU6",
     "expert_testimonials_zpEKKk",
     "rich_text_7xWrk9",
-    "gallery_aFmaWe"
+    "gallery_aFmaWe",
+    "promotion_blocks_CqPNbi"
   ]
 }
