@@ -31,11 +31,9 @@
 				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
 					
             
-                  {%- assign customer_testimonials = page['index'].metafields.custom.customer_testimonials -%}
-
-           {%- if customer_testimonials %}
+                  {%- assign customer_testimonials = page['index'].metafields.custom.customer_testimonials.customer_testimonials.values -%}
          
-             {%- for customer_testimonials in page['index'].metabojects.customer_testimonials.values %}
+             {%- for customer_testimonials in customer_testimonials %}
                
             
 						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
@@ -76,7 +74,7 @@
 							</scroll-shadow>
 						{%- endif -%}
 					{%- endif -%}
-                  			{%- endif -%}
+                  	
 				</slide-show>
 			</div>
 		</div>
