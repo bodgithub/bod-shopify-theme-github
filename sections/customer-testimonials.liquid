@@ -29,28 +29,22 @@
           
 			<div class="testimonials--inner text-{{ text_size }}">
 				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
+
+					{%- assign customer_testimonials = page['index'].metaobjects.customer_testimonials.values -%}
 					
-            
-               {% comment %}   {%- assign customer_testimonials = page['index'].metafields.custom.customer_testimonials.customer_testimonials.values -%}
-         
-             {%- for customer_testimonials in customer_testimonials %}
-                {% endcomment %}
-
-
-                               {%- for customer_testimonials in cpage['index'].metaobjects.customer_testimonials.values %}
-
-						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
+					{%- for testimonial in customer_testimonials -%}
+						<div class="testimonials--testimonial carousel__slide">
 							<div class="testimonials--testimonial-inner">
-								{%- if block.settings.stars and block.settings.stars != '' -%}
-									<div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
+								{%- if testimonial.stars and testimonial.stars != '' -%}
+									<div class="star-rating" style="--star-rating: {{ testimonial.stars }};"></div>
 								{%- endif -%}
 								<div class="testimonials--testimonial-content">
-									<p>This is a quote{{ customer_testimonials.short_quote | newline_to_br }}</p>
+									<p>{{ testimonial.short_quote | newline_to_br }}</p>
 								</div>
-								
 							</div>
 						</div>
 					{%- endfor -%}
+					
 					{%- if section.blocks.size > 1 -%}
 						{%- if pagination == 'logos' -%}
 							<scroll-shadow>
@@ -65,19 +59,19 @@
 													render 'responsive-image', image: image, sizes: width, retina: true
 												endif
 											-%}
-                                          {%- if block.settings.author != empty -%}
-								<div class="testimonials--author" style="color:{{ color_text2 }};">
-									<div style="padding-bottom:10px;"><strong>This is a name{{- customer_testimonials.customer_name -}}</strong></div><div><i>This category{{ customer_testimonials.category }}</i></div>
-                      
-								</div>
-								{%- endif -%}
+										
+											
+											<div class="testimonials--author" style="color:{{ color_text2 }};">
+												<div style="padding-bottom:10px;"><strong>{{ testimonial.customer_name }}</strong></div>
+												<div><i>{{ testimonial.category }}</i></div>
+											</div>
 										</li>
 									{%- endfor -%}
 								</ol>
 							</scroll-shadow>
 						{%- endif -%}
 					{%- endif -%}
-                  	
+
 				</slide-show>
 			</div>
 		</div>
