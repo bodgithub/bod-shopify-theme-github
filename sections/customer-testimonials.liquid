@@ -45,7 +45,7 @@
 									<div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
 								{%- endif -%}
 								<div class="testimonials--testimonial-content">
-									<p>{{ customer_testimonials.short_quote | newline_to_br }}</p>
+									<p>This is a quote{{ customer_testimonials.short_quote | newline_to_br }}</p>
 								</div>
 								
 							</div>
@@ -67,7 +67,7 @@
 											-%}
                                           {%- if block.settings.author != empty -%}
 								<div class="testimonials--author" style="color:{{ color_text2 }};">
-									<div style="padding-bottom:10px;"><strong>{{- customer_testimonials.customer_name -}}</strong></div><div><i>{{ customer_testimonials.category }}</i></div>
+									<div style="padding-bottom:10px;"><strong>This is a name{{- customer_testimonials.customer_name -}}</strong></div><div><i>This category{{ customer_testimonials.category }}</i></div>
                       
 								</div>
 								{%- endif -%}
