@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_with_text_overlay_zjqnjJ": {
@@ -291,39 +291,18 @@
       "blocks": {
         "quote_WVRc6H": {
           "type": "quote",
+          "repeater": "{{ page.metafields.custom.experts.value }}",
           "settings": {
-            "image": "shopify://shop_images/3_27f29fba-3e84-4e02-b790-cd722ae42ff4.png",
+            "image": "{{ block.repeater.expert_logo.value }}",
             "stars": "",
-            "text": "\"Bodology™ <em>Inositol</em> is an exceptional supplement that aligns perfectly with nutritional goals. Its carefully curated ingredients promote optimal health and vitality, backed by scientific research. As a nutritionist, I not only highly recommend it but I also use it myself.\"",
-            "name": "Tina Kozman, MEd, CNP",
-            "expert-title": "Metabolic Health Expert"
-          }
-        },
-        "quote_NbJGQh": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
-            "stars": "",
-            "text": "“I use <em>Inositol</em> with my clients dealing with irregular cycles, weight management, and hormonal imbalances like PCOS to promote healthy insulin sensitivity and glucose metabolism, aiding in metabolic function and weight control.”",
-            "name": "Dr. Anita W., Ph.D.",
-            "expert-title": "Natural Medicine Practitioner"
-          }
-        },
-        "quote_eiGUym": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/4_2fd94de2-0dea-4f29-8057-29c67bfd8114.png",
-            "stars": "",
-            "text": "\"If you have PCOS, or are struggling with fertility, consider supplementing Myo + D-Chiro <em>Inositol</em> to support insulin sensitivity and nurture egg quality.\"",
-            "name": "Hillary Wright, MEd, RD, LDN",
-            "expert-title": "Director of Nutrition, Boston IVF Center"
+            "quote": "<p>{{ block.repeater.expert_long_quote | metafield_tag }}</p>",
+            "name": "{{ block.repeater.expert_name.value }}",
+            "expert-title": "{{ block.repeater.expert_title.value }}"
           }
         }
       },
       "block_order": [
-        "quote_WVRc6H",
-        "quote_NbJGQh",
-        "quote_eiGUym"
+        "quote_WVRc6H"
       ],
       "settings": {
         "heading": "<p>Our <em>experts</em></p>",
@@ -559,7 +538,6 @@
         "box_TxAVLm": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot-2024-07-21-at-20.55.35.png",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -573,7 +551,6 @@
         "box_c8Qrym": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-08-11_at_15.07.52.png",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -587,7 +564,6 @@
         "box_egXcdC": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot2024-08-25at19.42.08.png",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -601,7 +577,6 @@
         "box_pRHFAF": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.15.49.png",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -615,7 +590,6 @@
         "box_YQBT8X": {
           "type": "box",
           "settings": {
-            "image": "shopify://shop_images/Screenshot2024-09-09at18.30.19.png",
             "image_link": "",
             "open": false,
             "heading": "",
