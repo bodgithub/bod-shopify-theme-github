@@ -28,23 +28,18 @@
 
           
 			<div class="testimonials--inner text-{{ text_size }}">
-				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
-					
-            
-         {%- assign customer_testimonials = page['index'].metafields.custom.customer_testimonials.customer_testimonials.values -%}
-         
-           
+				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">              
+                 
 
-
-                               {%- for customer_testimonials in page['index'].metaobjects.customer_testimonials.values %}
-
-						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
+                     {% assign testimonials = shop.metaobjects.customer_testimonials %}
+                     {% for testimonial in testimonials %}
+                {% comment %}  {%- for block in section.blocks -%} {% endcomment %}
+                       
+                    <div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
 							<div class="testimonials--testimonial-inner">
-								{%- if block.settings.stars and block.settings.stars != '' -%}
-									<div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
-								{%- endif -%}
+									<div class="star-rating" style="--star-rating: {{ testimonial.stars }};"></div>
 								<div class="testimonials--testimonial-content">
-									<p>This is a quote{{ customer_testimonials.short_quote | newline_to_br }}</p>
+									<p>{{ testimonial.short_quote }}</p>
 								</div>
 								
 							</div>
@@ -58,33 +53,33 @@
 										<li class="dot" aria-label="{{ forloop.index }}">
 											{%- liquid
 												if block.settings.image != blank
-													assign image = customer_testimonials.customer_logo
+													assign image = block.settings.image
 													assign master_width = image.src.width | append: 'x' | append: image.src.height
 													assign width = '345x' | append: ',' | append: master_width
 													render 'responsive-image', image: image, sizes: width, retina: true
 												endif
 											-%}
-                                          
+                                          {%- if block.settings.author != empty -%}
 								<div class="testimonials--author" style="color:{{ color_text2 }};">
-									<div style="padding-bottom:10px;"><strong>This is a name{{- customer_testimonials.customer_name -}}</strong></div><div><i>This category{{ customer_testimonials.category }}</i></div>
+									<div style="padding-bottom:10px;"><strong>{{- block.settings.name -}}</strong></div><div><i>{{ block.settings.expert-title }}</i></div>
                       
 								</div>
-					
+								{%- endif -%}
 										</li>
 									{%- endfor -%}
+
+                                  
 								</ol>
 							</scroll-shadow>
 						{%- endif -%}
 					{%- endif -%}
-                  	
 				</slide-show>
 			</div>
 		</div>
 	</div>
 </div>
-
-
-
+                     
+        
 
                   
 <script>
