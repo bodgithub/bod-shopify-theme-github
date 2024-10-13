@@ -31,11 +31,14 @@
 				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
 					
             
-            {%- assign customer_testimonials = page.metafields.custom.customer_testimonials.customer_testimonials.values -%} 
+               {% comment %}   {%- assign customer_testimonials = page['index'].metafields.custom.customer_testimonials.customer_testimonials.values -%}
          
              {%- for customer_testimonials in customer_testimonials %}
-               
-            
+                {% endcomment %}
+
+
+                               {%- for customer_testimonials in cpage['index'].metaobjects.customer_testimonials.values %}
+
 						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
 							<div class="testimonials--testimonial-inner">
 								{%- if block.settings.stars and block.settings.stars != '' -%}
