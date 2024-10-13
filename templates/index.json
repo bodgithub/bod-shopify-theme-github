@@ -795,6 +795,37 @@
         "custom_liquid": "<div id=\"reviews\"></div>"
       }
     },
+    "customer_testimonials_gTfGaY": {
+      "type": "customer-testimonials",
+      "blocks": {
+        "quote_4Xmy3L": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "quote": "",
+            "name": "Expert Name",
+            "expert-title": "Expert Title"
+          }
+        }
+      },
+      "block_order": [
+        "quote_4Xmy3L"
+      ],
+      "settings": {
+        "heading": "",
+        "full_width": false,
+        "text_size": "medium",
+        "font_family": "heading",
+        "pagination": "logos",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#F5F5F5",
+        "color_text": "#ffffff",
+        "color_text2": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
@@ -1114,6 +1145,7 @@
     "rich_text_ktwnPa",
     "featured_product_WEQ8Gx",
     "custom_liquid_LhyTU6",
+    "customer_testimonials_gTfGaY",
     "expert_testimonials_zpEKKk",
     "rich_text_7xWrk9",
     "gallery_aFmaWe",
