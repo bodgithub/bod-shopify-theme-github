@@ -286,6 +286,105 @@
         "disable_bottom_spacing": false
       }
     },
+    "promotion_blocks_FLbKam": {
+      "type": "promotion-blocks",
+      "blocks": {
+        "promotion_hncWkH": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/icon_cookie.png",
+            "title": "<h4><strong>Support blood sugar levels</strong></h4>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "promotion_44jRUz": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/icon_check-circle.png",
+            "title": "<h4><strong>Level mood throughout cycle</strong></h4>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "promotion_qCUt8q": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/certificate.png",
+            "title": "<h4><strong>Used by health experts</strong></h4>",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promotion_hncWkH",
+        "promotion_44jRUz",
+        "promotion_qCUt8q"
+      ],
+      "disabled": true,
+      "custom_css": [
+
+      ],
+      "settings": {
+        "mobile_swipe": false,
+        "image_ratio": "square",
+        "column_spacing": "medium",
+        "color_bg": "#f2f4fa",
+        "color_text": "#ac3a53",
+        "color_link": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "promotion_blocks_KJhjit": {
+      "type": "promotion-blocks",
+      "blocks": {
+        "promotion_zccQFi": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/icon_cookie.png",
+            "title": "<h4><strong>Support blood sugar levels</strong></h4>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "promotion_7KWKUC": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/icon_check-circle.png",
+            "title": "<h4><strong>Level mood throughout cycle</strong></h4>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "promotion_NpHULn": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/certificate.png",
+            "title": "<h4><strong>Used by health experts</strong></h4>",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promotion_zccQFi",
+        "promotion_7KWKUC",
+        "promotion_NpHULn"
+      ],
+      "disabled": true,
+      "settings": {
+        "mobile_swipe": false,
+        "image_ratio": "square",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#2c2d2e",
+        "color_link": "#3F72E5",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
     "expert_testimonials_KxH7tC": {
       "type": "expert-testimonials",
       "blocks": {
@@ -538,6 +637,7 @@
         "box_TxAVLm": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_PCOS.jpg",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -551,6 +651,7 @@
         "box_c8Qrym": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_Happy.jpg",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -564,6 +665,7 @@
         "box_egXcdC": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_Hormones_PCOS_Mood.jpg",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -577,6 +679,7 @@
         "box_pRHFAF": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/1.png",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -590,6 +693,7 @@
         "box_YQBT8X": {
           "type": "box",
           "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_for_Mood_3.jpg",
             "image_link": "",
             "open": false,
             "heading": "",
@@ -808,6 +912,8 @@
     "custom_liquid_RcjzA4",
     "rich_text_ktwnPa",
     "featured_product_wiHCVn",
+    "promotion_blocks_FLbKam",
+    "promotion_blocks_KJhjit",
     "expert_testimonials_KxH7tC",
     "image_with_text_r96Axa",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
