@@ -795,6 +795,57 @@
         "custom_liquid": "<div id=\"reviews\"></div>"
       }
     },
+    "customer_testimonials_kJfacm": {
+      "type": "customer-testimonials",
+      "blocks": {
+        "quote_DmmPWk": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "quote": "",
+            "name": "Expert Name",
+            "expert-title": "Expert Title"
+          }
+        },
+        "quote_g48zz7": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "quote": "",
+            "name": "Expert Name",
+            "expert-title": "Expert Title"
+          }
+        },
+        "quote_9jiy3c": {
+          "type": "quote",
+          "settings": {
+            "stars": "",
+            "quote": "",
+            "name": "Expert Name",
+            "expert-title": "Expert Title"
+          }
+        }
+      },
+      "block_order": [
+        "quote_DmmPWk",
+        "quote_g48zz7",
+        "quote_9jiy3c"
+      ],
+      "settings": {
+        "heading": "",
+        "full_width": true,
+        "text_size": "medium",
+        "font_family": "heading",
+        "pagination": "dots",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#F5F5F5",
+        "color_text": "#2c2d2e",
+        "color_text2": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
@@ -1114,6 +1165,7 @@
     "rich_text_ktwnPa",
     "featured_product_WEQ8Gx",
     "custom_liquid_LhyTU6",
+    "customer_testimonials_kJfacm",
     "expert_testimonials_zpEKKk",
     "rich_text_7xWrk9",
     "gallery_aFmaWe",
