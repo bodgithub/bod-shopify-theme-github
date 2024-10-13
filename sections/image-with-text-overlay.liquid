@@ -67,7 +67,7 @@
 					{%- liquid
 						assign image = mobile_image
 						assign master_width = image.src.width | append: 'x' | append: image.src.height
-						assign width = '375x' | append: mobile_image_height | append: ',' | append: master_width
+						assign width = '900x' | append: mobile_image_height | append: ',' | append: master_width
 
 						assign class = ''
 						if image_parallax
