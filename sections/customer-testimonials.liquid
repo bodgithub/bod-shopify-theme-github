@@ -34,7 +34,7 @@
                {% comment %}   {%- assign customer_testimonials = page['index'].metafields.custom.customer_testimonials.customer_testimonials.values -%}
          
              {%- for customer_testimonials in customer_testimonials %}
-                {% endcomment %}
+           
 
 
                                {%- for customer_testimonials in page['index'].metaobjects.customer_testimonials.values %}
@@ -84,6 +84,48 @@
 	</div>
 </div>
 
+{% endcomment %}
+
+<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
+  <div class="testimonials--testimonial-inner">
+    {%- if block.settings.stars and block.settings.stars != '' -%}
+      <div class="star-rating" style="--star-rating: {{ block.settings.stars }};"></div>
+    {%- endif -%}
+    <div class="testimonials--testimonial-content">
+      <p>This is a quote</p>
+    </div>
+  </div>
+</div>
+
+{%- if section.blocks.size > 1 -%}
+  {%- if pagination == 'logos' -%}
+    <scroll-shadow>
+      <ol class="flickity-custom-dots dot-style--{{ pagination }}">
+        {%- for block in section.blocks -%}
+        <li class="dot" aria-label="{{ forloop.index }}">
+          {%- liquid
+            if block.settings.image != blank
+              assign image = customer_testimonials.customer_logo
+              assign master_width = image.src.width | append: 'x' | append: image.src.height
+              assign width = '345x' | append: ',' | append: master_width
+              render 'responsive-image', image: image, sizes: width, retina: true
+            endif
+          -%}
+          <div class="testimonials--author" style="color:{{ color_text2 }};">
+            <div style="padding-bottom:10px;">
+              <strong>This is a name</strong>
+            </div>
+            <div><i>This category</i></div>
+          </div>
+        </li>
+        {%- endfor -%}
+      </ol>
+    </scroll-shadow>
+  {%- endif -%}
+{%- endif -%}
+
+
+                  
 <script>
   document.addEventListener('DOMContentLoaded', function() {
   const slides = document.querySelectorAll('.testimonials--testimonial');
