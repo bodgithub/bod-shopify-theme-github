@@ -28,35 +28,7 @@
 
           
 			<div class="testimonials--inner text-{{ text_size }}">
-				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">
-					
-            
-                  {%- assign customer_testimonials = page['index'].metafields.custom.customer_testimonials -%}
-
-           {%- if customer_testimonials %}
-            {%- for expert in customer_testimonials.value %}
-              <div class="testimonials--testimonial carousel__slide">
-                <div class="testimonials--testimonial-inner">
-                  <div class="testimonials--testimonial-content">
-                    <p>{{ customer_testimonials.short_quote | newline_to_br }}</p>
-                  </div>
-                  <div class="testimonials--author" style="color:{{ color_text2 }};">
-                    <div style="padding-bottom:10px;"><strong>{{- customer_testimonials.customer_name -}}</strong></div>
-                    <div><i>{{ customer_testimonials.category }}</i></div>
-                  </div>
-                </div>
-              </div>
-            {% endfor %}
-          {% endif %}
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
-                  
+				<slide-show class="testimonials--carousel carousel static-dots pagination--{{ pagination }}" data-autoplay="{{ autoplay }}" data-dots="true" data-align="center">              
                   {%- for block in section.blocks -%}
 						<div class="testimonials--testimonial carousel__slide" {{ block.shopify_attributes }}>
 							<div class="testimonials--testimonial-inner">
