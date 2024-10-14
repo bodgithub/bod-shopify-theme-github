@@ -951,22 +951,22 @@
     "promotion_blocks_v2_reFWxi": {
       "type": "promotion-blocks-v2",
       "blocks": {
-        "promotion_Aq4UL7": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/Hillary_Bodology.jpg",
-            "title": "<h4><strong>Hillary Wright</strong></h4><h5><em>MEd, RD, Director of Nutrition at Boston IVF</em></h5>",
-            "quote": "<h6><strong>\"</strong>\"If you have PCOS, or are struggling with fertility, consider supplementing Myo + D-Chiro.<strong>\"</strong></h6>",
-            "button_text": "",
-            "button_link": ""
-          }
-        },
         "promotion_EXFdac": {
           "type": "promotion",
           "settings": {
             "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
             "title": "<h4><strong>Tina Kozman</strong></h4><h5><em>MEd, DNP, Metabolic Health Coach</em></h5>",
             "quote": "<h6>\"As a nutritionist, I not only highly recommend Bodology™ <em>Inositol</em> but I also use it myself.\"</h6>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "promotion_Aq4UL7": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_Bodology.jpg",
+            "title": "<h4><strong>Hillary Wright</strong></h4><h5><em>MEd, RD, Director of Nutrition at Boston IVF</em></h5>",
+            "quote": "<h6><strong>\"</strong>If you have PCOS, or are struggling with fertility, consider supplementing Myo + D-Chiro.<strong>\"</strong></h6>",
             "button_text": "",
             "button_link": ""
           }
@@ -983,8 +983,8 @@
         }
       },
       "block_order": [
-        "promotion_Aq4UL7",
         "promotion_EXFdac",
+        "promotion_Aq4UL7",
         "promotion_d7raAD"
       ],
       "settings": {
