@@ -161,4 +161,8 @@ line-hight:0.9;}
 @media only screen and (max-width: 768px) {
 .benefits-block {
   max-width: 100%; }
+  /* Disable parallax on mobile screens */
+ .thb-parallax-image {
+        background-attachment: scroll; 
+    }
 }
