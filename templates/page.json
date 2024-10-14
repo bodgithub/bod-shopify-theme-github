@@ -52,17 +52,6 @@
     "1728927113bb2612d3": {
       "type": "apps",
       "blocks": {
-        "junip_product_reviews_ugc_junip_ugc_gallery_6jXUGU": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
-          "settings": {
-            "layout": "scroll",
-            "title": "",
-            "product": "myo-d-chiro-inositol-powder",
-            "paddingTop": 48,
-            "paddingBottom": 48,
-            "containerClass": ""
-          }
-        },
         "junip_product_reviews_ugc_junip_review_carousel_REghE4": {
           "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "disabled": true,
@@ -88,7 +77,6 @@
         }
       },
       "block_order": [
-        "junip_product_reviews_ugc_junip_ugc_gallery_6jXUGU",
         "junip_product_reviews_ugc_junip_review_carousel_REghE4",
         "junip_product_reviews_ugc_junip_reviews_8WBcAN"
       ],
