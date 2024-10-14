@@ -803,8 +803,8 @@
           "settings": {
             "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
             "stars": "5",
-            "quote": "<p>This is a quote</p>",
-            "name": "Jasmin",
+            "quote": "",
+            "name": "{{ localization.market.metafields.custom.customer_testimonials | metafield_text: field: 'customer_name' }}",
             "expert-title": "Cycle regularity"
           }
         },
