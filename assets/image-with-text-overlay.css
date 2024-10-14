@@ -143,3 +143,22 @@
 
 .image-with-text .animations-true .line-child {
 line-hight:0.9;}
+
+.benefit-item {
+  padding:15px 0;
+  font-size: 0.91rem;
+}
+.benefit-icon {
+  margin-right:10px;
+}
+.benefits-block {
+  max-width: 80%;
+  
+}
+.benefits-block #title {padding:20px 0;}
+
+
+@media only screen and (max-width: 768px) {
+.benefits-block {
+  max-width: 100%; }
+}
