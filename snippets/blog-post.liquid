@@ -57,17 +57,13 @@
 		<h4><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h4>
 
 
-      {% if article.metafields.custom.ambassador.value %}
-
-  <ul>
-{% for ambassador in article.metafields.custom.ambassador.value %}
-      <li>
-      	<h5 title="{{ ambassador.fields.short_name }}">With {{ ambassador.fields.short_name }}</h5>
-      	</li>
-          {% endfor %}
-  </ul>
-      		{% else %} <p>No author</p>
-		{% endif %}
+     {% if article.metafields.custom.ambassador.value %}
+  <h5 title="{{ article.metafields.custom.ambassador.value.fields.short_name }}">
+    With {{ article.metafields.custom.ambassador.value.fields.short_name }}
+  </h5>
+{% else %}
+  <p>No ambassador</p>
+{% endif %}
 
 
       {% if show_excerpt %}
