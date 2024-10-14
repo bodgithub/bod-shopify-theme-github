@@ -56,9 +56,7 @@
 		{% endif %}
 		<h4><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h4>
 
-      {% assign metaobject_entries = blog_post.metafields.custom.authors.value %}
-
-      
+      {% assign metaobject_entries = blog.metafields.custom.authors.value %}
   <ul>
     {% for entry in metaobject_entries %}
       <li>
