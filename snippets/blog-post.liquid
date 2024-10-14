@@ -58,8 +58,9 @@
 
 
      {% if article.metafields.custom.ambassador.value %}
-  <h5 title="{{ article.metafields.custom.ambassador.value.fields.bio }}">
-    With {{ article.metafields.custom.ambassador.value.fields.bio }}
+  <h5 title="">
+    With {{ article.bio }}
+
   </h5>
 {% else %}
   <p>No bio</p>
