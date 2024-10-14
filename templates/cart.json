@@ -22,7 +22,7 @@
         "show_collection_description": true,
         "show_subcollections": true,
         "color_subcollection_bg": "#ffffff",
-        "color_subcollection_text": "#2C2D2E",
+        "color_subcollection_text": "#2c2d2e",
         "display_description": true
       }
     },
@@ -33,7 +33,7 @@
           "type": "text",
           "settings": {
             "text": "",
-            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-top:6px;\">Your <em>Cart</em>\n</div>",
+            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-top:6px;\">Your <em>cart</em>\n</div>",
             "size": "text-size-regular"
           }
         }
