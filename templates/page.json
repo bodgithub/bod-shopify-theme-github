@@ -27,7 +27,7 @@
         "text_nePwJg": {
           "type": "text",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "text": "<p>Discover how Bodology is changing the conversation on hormones, mood, and metabolism</p>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
@@ -47,6 +47,33 @@
         "color_links": "#1b3def",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_AnwrzA": {
+      "type": "rich-text",
+      "blocks": {
+        "text_nQ4gNy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Disclaimer: These reviews reflect individual experiences and results may vary. Bodology products are not intended to diagnose, treat, cure, or prevent any disease. Always consult with a healthcare professional before starting any new supplement regimen.</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "text_nQ4gNy"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#f9f9f9",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     },
     "1728927113bb2612d3": {
@@ -73,6 +100,7 @@
   "order": [
     "main",
     "rich_text_YUNjJ8",
-    "1728927113bb2612d3"
+    "1728927113bb2612d3",
+    "rich_text_AnwrzA"
   ]
 }
