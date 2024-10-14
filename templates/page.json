@@ -21,7 +21,7 @@
         "custom_liquid_bGTMBH": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-bottom:40px;\">Bodology™ <em>Reviews</em>\n</div>"
+            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-bottom: 40px;\">Bodology™ <em>Reviews</em>\n</div>"
           }
         },
         "text_nePwJg": {
@@ -31,19 +31,11 @@
             "custom_liquid": "",
             "size": "text-size-regular"
           }
-        },
-        "button_VfnrHz": {
-          "type": "button",
-          "settings": {
-            "link_label": "Learn More",
-            "link": ""
-          }
         }
       },
       "block_order": [
         "custom_liquid_bGTMBH",
-        "text_nePwJg",
-        "button_VfnrHz"
+        "text_nePwJg"
       ],
       "settings": {
         "text_width": "large",
