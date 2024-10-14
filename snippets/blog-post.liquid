@@ -57,12 +57,12 @@
 		<h4><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h4>
 
 
-      {% if article.metafields.custom.authors.value %}
+      {% if article.metafields.custom.ambassador.value %}
 
   <ul>
-{% for author in article.metafields.custom.authors.value %}
+{% for ambassador in article.metafields.custom.ambassador.value %}
       <li>
-      	<h5><a href="{{ article.url }}" title="{{ author.fields.short_name }}">With {{ author.fields.short_name }}</a></h5>
+      	<h5 title="{{ ambassador.fields.short_name }}">With {{ ambassador.fields.short_name }}</h5>
       	</li>
           {% endfor %}
   </ul>
@@ -100,20 +100,6 @@
 		{% endif %}
 		<h5><a role="link" aria-disabled="true">{{ 'sections.featured_blog.onboarding_title' | t }}</a></h5>
 		
-          {% if article.metafields.custom.authors.value %}
-  <ul>
-{% for author in article.metafields.custom.authors.value %}
-      <li>
-      	<h5><a href="{{ article.url }}" title="{{ author.fields.short_name }}">With {{ author.fields.short_name }}</a></h5>
-      	</li>
-          {% endfor %}
-  </ul>
-      		{% else %} <p>No author</p>
-		{% endif %}
-
-      
-      
-      
       {% if show_excerpt %}
 		<div class="post-excerpt">
 			<p>{{ 'sections.featured_blog.onboarding_content' | t }}</p>
