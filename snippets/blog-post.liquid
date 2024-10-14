@@ -56,17 +56,6 @@
 		{% endif %}
 		<h4><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h4>
 
-
-     {% if article.metafields.custom.ambassador.value %}
-  <h5 title="">
-    With {{ article.custom.bio }}
-
-  </h5>
-{% else %}
-  <p>No bio</p>
-{% endif %}
-
-
       {% if show_excerpt %}
 		<div class="post-excerpt">
 			<p>{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
