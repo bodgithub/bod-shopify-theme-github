@@ -62,7 +62,7 @@
   <ul>
 {% for product in article.metafields.custom.authors.value %}
       <li>
-      	<h5><a href="{{ article.url }}" title="{{ article.short_name }}">With {{ article.short_name }}</a></h5>
+      	<h5><a href="{{ article.url }}" title="{{ article.fields.short_name }}">With {{ article.fields.short_name }}</a></h5>
       	</li>
           {% endfor %}
   </ul>
