@@ -70,6 +70,7 @@
     scroll-snap-align: center;
     scroll-snap-stop: always;
   }
+  .toggle-boxes--inner {scroll-padding-left: 13px;}
 }
 
 .toggle-box {
@@ -138,13 +139,13 @@
 
 .text-button {
   display: flex;
-  justify-content: flex-end; /* Aligns the button text and icon to the right */
-  align-items: center; /* Vertically aligns the text and icon */
-  width: 100%; /* Ensure the button takes the full width of its container */
+  justify-content: flex-end; 
+  align-items: center; 
+  width: 100%; 
 }
 
 .text-button span {
-  margin-left: 10px; /* Add some space between the text and the icon */
+  margin-left: 10px;  
 }
 .study {
   
