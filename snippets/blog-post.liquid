@@ -58,7 +58,7 @@
 
       {% assign metaobject_entries = blog_post.metafields.custom.authors.value %}
 
-      {% if metaobject_entries.size > 0 %}
+      
   <ul>
     {% for entry in metaobject_entries %}
       <li>
@@ -67,8 +67,7 @@
           {% endfor %}
   </ul>
   {% else %}
-{% endif %}
-      
+
       {% if show_excerpt %}
 		<div class="post-excerpt">
 			<p>{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
