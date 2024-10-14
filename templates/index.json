@@ -798,30 +798,18 @@
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
-        "quote_TyYj38": {
-          "type": "quote",
-          "repeater": "{{ localization.market.metafields.custom.customer_testimonials.value }}",
-          "settings": {
-            "image": "{{ block.repeater.customer_logo.value }}",
-            "stars": "5",
-            "quote": "<p>{{ block.repeater.short_quote | metafield_tag }} test</p>",
-            "name": "{{ block.repeater.customer_name.value }} test",
-            "expert-title": "{{ block.repeater.state_initials.value }} test"
-          }
-        },
         "quote_CUpFMh": {
           "type": "quote",
           "settings": {
             "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
             "stars": "5",
-            "quote": "",
+            "quote": "<p>This is a quote</p>",
             "name": "Jasmin",
             "expert-title": "Cycle regularity"
           }
         },
         "quote_4P8HUh": {
           "type": "quote",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
             "stars": "5",
@@ -832,7 +820,6 @@
         },
         "quote_ExXWHa": {
           "type": "quote",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
             "stars": "5",
@@ -876,7 +863,6 @@
         }
       },
       "block_order": [
-        "quote_TyYj38",
         "quote_CUpFMh",
         "quote_4P8HUh",
         "quote_ExXWHa",
