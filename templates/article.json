@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs": {
@@ -23,13 +23,13 @@
             "text": "{{ article.title }}",
             "marker_style": "style1",
             "heading_size": "h1",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         },
         "subheading_Cfezzx": {
           "type": "subheading",
           "settings": {
-            "text": "Written by {{ article.author }}"
+            "text": "Interview with {{ article.metafields.custom.ambassador.value.short_name.value }}"
           }
         }
       },
