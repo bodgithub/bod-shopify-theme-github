@@ -55,13 +55,19 @@
 		</aside>
 		{% endif %}
 		<h4><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h4>
-		{% if show_author %}
-      	<h5><a href="{{ article.url }}" title="{{ article.author | escape }}">{{ article.title }}</a></h5>
-      	{% endif %}
-      {% if show_expert%}
-      	<h5><a href="{{ article.url }}" title="{{ article.expert | escape }}">{{ article.title }}</a></h5>
-      	{% endif %}
 
+      {% assign metaobject_entries = blog_post.metafields.custom.authors.value %}
+
+      {% if metaobject_entries.size > 0 %}
+  <ul>
+    {% for entry in metaobject_entries %}
+      <li>
+      	<h5><a href="{{ article.url }}" title="{{ {{ entry.fields.short_name }}">{{ entry.fields.short_name }}</a></h5>
+      	</li>
+          {% endfor %}
+  </ul>
+  {% else %}
+{% endif %}
       
       {% if show_excerpt %}
 		<div class="post-excerpt">
