@@ -106,3 +106,16 @@
   @media only screen and (min-width: 768px) {
     .image-with-text.grid--image-large.text_first {
       grid-template-columns: 4fr 6fr; } }
+
+
+
+
+@media only screen and (max-width: 768px) {
+  .image-with-text--content {
+  padding: 0 5% 0 5%;
+}
+}
+
+.image-with-text--content {
+  padding: 0 20% 0 5%;
+}
