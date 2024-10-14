@@ -72,7 +72,8 @@
   .multicolumn.swipe-on-mobile .multicolumn__column {
     margin-bottom: 0;
     width: calc(90vw - 15px); } 
-multicolumn__inner {padding: 0 5% 0 5%}}
+multicolumn__inner {padding: 0 5% 0 5%}
+.multicolumn__column {margin-bottom: 18px;}}
 
 .multicolumn.text-center .rte {
   padding: 0 15px; }
