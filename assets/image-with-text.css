@@ -120,3 +120,7 @@
 .image-with-text--content {
   padding: 0 20% 0 5%;
 }}
+
+@media only screen and (max-width: 768px) {
+  .media-with-text {  
+    justify-items: center;} }
