@@ -800,12 +800,13 @@
       "blocks": {
         "quote_TyYj38": {
           "type": "quote",
+          "repeater": "{{ localization.market.metafields.custom.customer_testimonials.value }}",
           "settings": {
-            "image": "shopify://shop_images/5_5df0ff35-ac71-43e0-8ee4-9aa6011e107c.png",
+            "image": "{{ block.repeater.customer_logo.value }}",
             "stars": "5",
-            "quote": "",
-            "name": "Kristina",
-            "expert-title": "Improved sleep"
+            "quote": "{{ block.repeater.short_quote | metafield_tag }}",
+            "name": "{{ block.repeater.customer_name.value }}",
+            "expert-title": "{{ block.repeater.state_initials.value }}"
           }
         },
         "quote_CUpFMh": {
