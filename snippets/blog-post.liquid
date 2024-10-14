@@ -56,14 +56,19 @@
 		{% endif %}
 		<h4><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h4>
 
-      {% assign metaobject_entries = blog.metafields.custom.authors.value %}
+
+      {% if article.metafields.custom.authors.value %}
+
   <ul>
-    {% for entry in metaobject_entries %}
+{% for product in article.metafields.custom.authors.value %}
       <li>
-      	<h5><a href="{{ article.url }}" title="{{ entry.fields.short_name }}">With {{ entry.fields.short_name }}</a></h5>
+      	<h5><a href="{{ article.url }}" title="{{ article.short_name }}">With {{ article.short_name }}</a></h5>
       	</li>
           {% endfor %}
   </ul>
+      		{% else %} <p>No author</p>
+		{% endif %}
+
 
       {% if show_excerpt %}
 		<div class="post-excerpt">
