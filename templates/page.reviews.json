@@ -13,9 +13,47 @@
       "type": "main-page",
       "settings": {
       }
+    },
+    "rich_text_RWFrTk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AHCNtk": {
+          "type": "heading",
+          "settings": {
+            "text": "My body’s |talking|, I’m done <em>ignoring</em>",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#FD6262"
+          }
+        },
+        "text_JMMQb9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Empowering your journey to better hormones, mood, metabolism through personal stories and science beyond the 'textbook'.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AHCNtk",
+        "text_JMMQb9"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "rich_text_RWFrTk"
   ]
 }
