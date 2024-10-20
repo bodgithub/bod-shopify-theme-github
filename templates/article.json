@@ -28,6 +28,7 @@
         },
         "subheading_Cfezzx": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "text": "Interview with {{ article.metafields.custom.ambassador.value.short_name.value }}"
           }
