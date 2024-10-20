@@ -23,23 +23,23 @@
             "custom_liquid": "<br>"
           }
         },
-        "subheading_TKb4at": {
-          "type": "subheading",
-          "settings": {
-            "text": "Our Blog"
-          }
-        },
         "custom_liquid_Vq4TUb": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div style=\"font-size: 3.2em; font-weight:900; padding:40px;\">Body<em>Talks</em></div>"
           }
+        },
+        "subheading_TKb4at": {
+          "type": "subheading",
+          "settings": {
+            "text": "(Our Blog)"
+          }
         }
       },
       "block_order": [
         "custom_liquid_r3WCe7",
-        "subheading_TKb4at",
-        "custom_liquid_Vq4TUb"
+        "custom_liquid_Vq4TUb",
+        "subheading_TKb4at"
       ],
       "settings": {
         "text_width": "large",
