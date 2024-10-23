@@ -28,10 +28,10 @@
           "type": "benefits",
           "settings": {
             "benefits-title": "",
-            "icon_size": 61,
+            "icon_size": 54,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "Written by {{ article.metafields.custom.blogauthor.value.short_name.value }}",
+            "benefit_1": "Written by {{ article.metafields.custom.blogauthor.value.short_name.value }} | Published {{ article.metafields.custom.date | metafield_text }}",
             "icon_1": "{{ article.metafields.custom.blogauthor.value.image_logo.value }}",
             "benefit_2": "",
             "benefit_3": "",
