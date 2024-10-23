@@ -129,10 +129,7 @@
       {% assign benefit = block.settings[benefit_key] %}
       {% assign icon = block.settings[icon_key] %}
       {% if benefit %}
-        <div class="benefit-item" 
-             {% if block.settings.border_size > 0 and block.settings.border_color != blank %} 
-             style="border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};"
-             {% endif %}>
+        <div class="benefit-item" style="border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};">
           {% if icon %}
             <img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon"/>
           {% endif %}
@@ -142,6 +139,7 @@
     {% endfor %}
   </div>
 </div>
+
 
 
       
