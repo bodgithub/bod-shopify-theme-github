@@ -24,14 +24,6 @@
             "heading_size": "h1-xlarge"
           }
         },
-        "text_CcYQTB": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Written with </p>{{ article.metafields.custom.authors | metafield_tag: field: 'short_name' }}",
-            "description_size": "medium"
-          }
-        },
         "benefits_cw63wQ": {
           "type": "benefits",
           "settings": {
@@ -39,7 +31,7 @@
             "icon_size": 61,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "Written by {{ article.author }}",
+            "benefit_1": "Written by",
             "benefit_2": "",
             "benefit_3": "",
             "benefit_4": "",
@@ -49,7 +41,6 @@
       },
       "block_order": [
         "heading_neLhdg",
-        "text_CcYQTB",
         "benefits_cw63wQ"
       ],
       "custom_css": [
@@ -69,104 +60,6 @@
         "overlay_opacity": 100,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
-      }
-    },
-    "multicolumn_qJxcMm": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_BVzf7y": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "{{ article.title }}",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_9C36UA": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_BVzf7y",
-        "column_9C36UA"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".multicolumn__column h4 {margin-bottom: 8px; font-size: 3.1rem; line-height: 1.1em; font-weight: 800 !important;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#1b3def",
-        "marker_color": "#fd6262",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "image_with_text_riptgc": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_YYa9AX": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ article.title }}",
-            "marker_style": "style1",
-            "heading_size": "h1",
-            "marker_color": "#fd6262"
-          }
-        },
-        "subheading_Cfezzx": {
-          "type": "subheading",
-          "disabled": true,
-          "settings": {
-            "text": "Interview with {{ article.metafields.custom.ambassador.value.short_name.value }}"
-          }
-        }
-      },
-      "block_order": [
-        "heading_YYa9AX",
-        "subheading_Cfezzx"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "{{ article.image }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "full_width": false,
-        "layout": "image_first",
-        "content_position": "text-left",
-        "column_spacing": "medium",
-        "color_bg": "#ffffff",
-        "color_text": "#1b3def",
-        "color_border": "#ffffff",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "main-article": {
@@ -204,8 +97,6 @@
   "order": [
     "breadcrumbs",
     "image_with_text_overlay_n9ynUb",
-    "multicolumn_qJxcMm",
-    "image_with_text_riptgc",
     "main-article"
   ]
 }
