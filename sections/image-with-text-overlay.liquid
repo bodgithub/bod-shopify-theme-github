@@ -122,14 +122,26 @@
   {% if block.settings.benefits-title != blank %}
     <div id="title">{{ block.settings.benefits-title }}</div> 
   {% endif %}
-  <div class="benefits-list">
+
+  {% assign benefits_exist = false %}
+  {% for i in (1..5) %}
+    {%- assign benefit_key = "benefit_" | append: i -%}
+    {% if block.settings[benefit_key] != blank %}
+      {% assign benefits_exist = true %}
+    {% endif %}
+  {% endfor %}
+
+  <div class="benefits-list" 
+       {% if benefits_exist %} 
+       style="border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};"
+       {% endif %}>
     {% for i in (1..5) %}
       {%- assign benefit_key = "benefit_" | append: i -%}
       {%- assign icon_key = "icon_" | append: i -%}
       {% assign benefit = block.settings[benefit_key] %}
       {% assign icon = block.settings[icon_key] %}
       {% if benefit %}
-        <div class="benefit-item" style="border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};">
+        <div class="benefit-item">
           {% if icon %}
             <img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon"/>
           {% endif %}
