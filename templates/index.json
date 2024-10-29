@@ -620,6 +620,13 @@
         },
         "custom_liquid_nxKKT3": {
           "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"padding:30px 5px 10px 5px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>60-Day Happiness Gaurantee</em></h3></div>"
+          }
+        },
+        "custom_liquid_VVcYcp": {
+          "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div style=\"padding:30px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>Pre-Order Promo</em></h3><h5>Pre-order now and get a<b> 17% lifetime discount</b><em>*</em></h5><h6>Your code will automatically apply at checkout. Orders arrive within 3-6 weeks.</h6></div>"
           }
@@ -677,6 +684,7 @@
         "custom_option_Et9EBY",
         "buy_buttons_3FBywE",
         "custom_liquid_nxKKT3",
+        "custom_liquid_VVcYcp",
         "collapsible_tab_zkXkR7",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
