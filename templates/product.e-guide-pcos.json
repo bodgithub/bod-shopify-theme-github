@@ -16,8 +16,16 @@
     "main-product": {
       "type": "main-product",
       "blocks": {
+        "text_6AkKDh": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Metabolic Health Protocol<br/><em><strong>—</strong></em><em>for PCOS</em></h1>",
+            "text_style": "style_vendor"
+          }
+        },
         "title": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "show_products_rating": false
           }
@@ -34,12 +42,13 @@
         }
       },
       "block_order": [
+        "text_6AkKDh",
         "title",
         "0b3e272b-c86a-4dba-946c-c6912251371c",
         "custom_liquid_f3BGqg"
       ],
       "custom_css": [
-        ".shopify-installments, .shopify-installments__content {display: none !important;}"
+        ".shopify-installments,.shopify-installments__content {display: none !important;}"
       ],
       "settings": {
         "enable_sticky_add_to_cart": true,
