@@ -31,100 +31,12 @@
         "title": {
           "type": "title",
           "settings": {
-            "show_products_rating": true
+            "show_products_rating": false
           }
         },
         "0b3e272b-c86a-4dba-946c-c6912251371c": {
           "type": "description",
           "settings": {}
-        },
-        "variant_picker": {
-          "type": "variant_picker",
-          "disabled": true,
-          "settings": {
-            "picker_type": "button",
-            "color_picker": true,
-            "color_picker_use_variants": false,
-            "variant_is_disabled": true,
-            "sizing_guide_variant": "Size",
-            "sizing_guide_text": "",
-            "sizing_guide_icon": "ruler",
-            "sizing_guide_page": ""
-          }
-        },
-        "yotpo_subscriptions_app_block_UBhAmf": {
-          "type": "shopify://apps/yotpo-subscriptions/blocks/app-block/ef25e582-ada5-4bb0-b4e7-f94e97ab1bb4",
-          "disabled": true,
-          "settings": {}
-        },
-        "quantity": {
-          "type": "quantity",
-          "disabled": true,
-          "settings": {}
-        },
-        "buy_buttons": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "386f7e4a-6127-4141-928b-9cb4614ee18c": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Shipping & Returns",
-            "open": false,
-            "content": "<p>Row content</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "d56924f2-0137-4e3b-8c33-49b1f28391c6": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Compatibility",
-            "open": false,
-            "content": "<p>Row content</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "4fd23485-293f-46a0-8a4c-34d0e25ea41b": {
-          "type": "share",
-          "disabled": true,
-          "settings": {}
-        },
-        "fc6da228-45eb-4a6e-aa68-d6ec477bec34": {
-          "type": "complementary",
-          "disabled": true,
-          "settings": {
-            "block_heading": "Pairs well with",
-            "product_list_limit": 6
-          }
-        },
-        "47f50ec7-2a76-44a7-bce6-b7895e0e8ca7": {
-          "type": "info_box",
-          "disabled": true,
-          "settings": {
-            "icon": "ruler",
-            "text": "Info box text",
-            "link": "",
-            "info_box_bg": "#e9e7ed",
-            "info_box_color": "#2b1559"
-          }
-        },
-        "561eac20-aae8-4774-91be-f5693346c253": {
-          "type": "info_box",
-          "disabled": true,
-          "settings": {
-            "icon": "ruler",
-            "text": "Info box text",
-            "link": "",
-            "info_box_bg": "#e9e5e2",
-            "info_box_color": "#592e15"
-          }
         },
         "side_panel_xt3UxH": {
           "type": "side_panel",
@@ -133,7 +45,7 @@
             "side_panel_1_label": "Materials",
             "side_panel_1_icon": "ruler",
             "side_panel_1_page": "",
-            "side_panel_2_label": "Shipping &amp; Returns",
+            "side_panel_2_label": "Shipping & Returns",
             "side_panel_2_icon": "box",
             "side_panel_2_page": "",
             "side_panel_3_label": "Care Guide",
@@ -144,7 +56,7 @@
         "custom_liquid_f3BGqg": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": ""
+            "custom_liquid": "<div class=\"klaviyo-form-TM2rC4\"></div>"
           }
         }
       },
@@ -153,16 +65,6 @@
         "e431a79e-9c7b-4a53-a79a-0cb918617ecf",
         "title",
         "0b3e272b-c86a-4dba-946c-c6912251371c",
-        "variant_picker",
-        "yotpo_subscriptions_app_block_UBhAmf",
-        "quantity",
-        "buy_buttons",
-        "386f7e4a-6127-4141-928b-9cb4614ee18c",
-        "d56924f2-0137-4e3b-8c33-49b1f28391c6",
-        "4fd23485-293f-46a0-8a4c-34d0e25ea41b",
-        "fc6da228-45eb-4a6e-aa68-d6ec477bec34",
-        "47f50ec7-2a76-44a7-bce6-b7895e0e8ca7",
-        "561eac20-aae8-4774-91be-f5693346c253",
         "side_panel_xt3UxH",
         "custom_liquid_f3BGqg"
       ],

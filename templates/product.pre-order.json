@@ -1,26 +1,24 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumbs": {
       "type": "breadcrumbs",
-      "settings": {
-      }
+      "settings": {}
     },
     "main-product": {
       "type": "main-product",
       "blocks": {
         "2b609eea-6cce-4efe-b447-c5560de1d797": {
           "type": "label",
-          "settings": {
-          }
+          "settings": {}
         },
         "e431a79e-9c7b-4a53-a79a-0cb918617ecf": {
           "type": "text",
@@ -33,6 +31,12 @@
           "type": "title",
           "settings": {
             "show_products_rating": true
+          }
+        },
+        "custom_liquid_3hD8rU": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"klaviyo-form-TM2rC4\"></div>"
           }
         },
         "variant_picker": {
@@ -50,8 +54,7 @@
         },
         "quantity": {
           "type": "quantity",
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -62,8 +65,7 @@
         },
         "0b3e272b-c86a-4dba-946c-c6912251371c": {
           "type": "description",
-          "settings": {
-          }
+          "settings": {}
         },
         "386f7e4a-6127-4141-928b-9cb4614ee18c": {
           "type": "collapsible_tab",
@@ -87,8 +89,7 @@
         },
         "4fd23485-293f-46a0-8a4c-34d0e25ea41b": {
           "type": "share",
-          "settings": {
-          }
+          "settings": {}
         },
         "fc6da228-45eb-4a6e-aa68-d6ec477bec34": {
           "type": "complementary",
@@ -149,6 +150,7 @@
         "2b609eea-6cce-4efe-b447-c5560de1d797",
         "e431a79e-9c7b-4a53-a79a-0cb918617ecf",
         "title",
+        "custom_liquid_3hD8rU",
         "variant_picker",
         "quantity",
         "buy_buttons",
@@ -711,8 +713,7 @@
     },
     "16625458859c68803a": {
       "type": "apps",
-      "settings": {
-      }
+      "settings": {}
     },
     "1662552569cce2536d": {
       "type": "spacer",
