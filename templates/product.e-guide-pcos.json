@@ -23,6 +23,19 @@
             "text_style": "style_vendor"
           }
         },
+        "text_wPhDft": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Transform Your PCOS Journey: <strong><br/>Free Expert Guide</strong></p>",
+            "text_style": "style_vendor"
+          }
+        },
+        "custom_liquid_f3BGqg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"klaviyo-form-TM2rC4\"></div>"
+          }
+        },
         "title": {
           "type": "title",
           "disabled": true,
@@ -33,19 +46,14 @@
         "0b3e272b-c86a-4dba-946c-c6912251371c": {
           "type": "description",
           "settings": {}
-        },
-        "custom_liquid_f3BGqg": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div class=\"klaviyo-form-TM2rC4\"></div>"
-          }
         }
       },
       "block_order": [
         "text_6AkKDh",
+        "text_wPhDft",
+        "custom_liquid_f3BGqg",
         "title",
-        "0b3e272b-c86a-4dba-946c-c6912251371c",
-        "custom_liquid_f3BGqg"
+        "0b3e272b-c86a-4dba-946c-c6912251371c"
       ],
       "custom_css": [
         ".shopify-installments,.shopify-installments__content {display: none !important;}"
