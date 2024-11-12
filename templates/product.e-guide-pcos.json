@@ -38,10 +38,13 @@
         "0b3e272b-c86a-4dba-946c-c6912251371c",
         "custom_liquid_f3BGqg"
       ],
+      "custom_css": [
+        ".shopify-installments, .shopify-installments__content {display: none !important;}"
+      ],
       "settings": {
         "enable_sticky_add_to_cart": true,
         "show_taxes_included": false,
-        "thumbnail_position": "left",
+        "thumbnail_position": "bottom",
         "media_aspect_ratio": "square",
         "display_captions": false,
         "hide_variants": false,
