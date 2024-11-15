@@ -33,7 +33,7 @@
         "custom_liquid_f3BGqg": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-TM2rC4\"></div>\n\n\n<script>\n  document.addEventListener(\"DOMContentLoaded\", function () {\n    // Find the Klaviyo form using its unique data-testid\n    const klaviyoForm = document.querySelector('[data-testid=\"klaviyo-form-TM2rC4\"]');\n\n    if (klaviyoForm) {\n      // Listen for the \"submit\" event\n      klaviyoForm.addEventListener(\"submit\", function (event) {\n        // Allow the form to process the submission via AJAX\n        const observer = new MutationObserver(function (mutations) {\n          mutations.forEach(function (mutation) {\n            if (mutation.target.textContent.includes(\"Thank you for signing up\")) {\n              // Redirect after successful submission\n              window.location.href = \"https://bodology.co/products/metabolic-health-protocol-for-pcos#submit\";\n              observer.disconnect(); // Stop observing once the redirect happens\n            }\n          });\n        });\n\n        // Observe changes in the form for submission success\n        observer.observe(klaviyoForm, {\n          childList: true,\n          subtree: true,\n        });\n      });\n    } else {\n      console.warn('Klaviyo form with data-testid=\"klaviyo-form-TM2rC4\" not found.');\n    }\n  });\n</script>"
+            "custom_liquid": "<div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-TM2rC4\"></div>"
           }
         },
         "title": {
