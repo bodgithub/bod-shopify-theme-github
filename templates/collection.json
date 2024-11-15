@@ -30,10 +30,10 @@
         "products_per_page": 12,
         "columns_desktop": 4,
         "pagination_type": "paginated",
-        "enable_filtering": true,
-        "enable_sorting": true,
-        "show_counts": true,
-        "filter_color_swatches": true,
+        "enable_filtering": false,
+        "enable_sorting": false,
+        "show_counts": false,
+        "filter_color_swatches": false,
         "filters_collapsed": false,
         "facets_desktop": "sidebar"
       }
