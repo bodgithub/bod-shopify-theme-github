@@ -13,11 +13,48 @@
       "type": "breadcrumbs",
       "settings": {}
     },
+    "rich_text_6Ty9n7": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MYGn7t": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "marker_style": "style1",
+            "size": "h3",
+            "marker_color": "#FD6262"
+          }
+        },
+        "text_fjT6P8": {
+          "type": "text",
+          "settings": {
+            "text": "<h4><strong>Thank you! Your Metabolic Health Guide is on its way. To ensure you receive it:</strong></h4><h6>• Check your inbox (and promotions/spam folders)<br/>• Drag our email into your Primary inbox<br/>• Add hello@bodology.co to your contacts list</h6>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MYGn7t",
+        "text_fjT6P8"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "template-header": {
       "type": "template-header",
       "settings": {
         "show_collection_image": false,
-        "show_collection_description": true,
+        "show_collection_description": false,
         "show_subcollections": true,
         "color_subcollection_bg": "#ffffff",
         "color_subcollection_text": "#303c43",
@@ -145,6 +182,7 @@
   },
   "order": [
     "breadcrumbs",
+    "rich_text_6Ty9n7",
     "template-header",
     "product-grid",
     "9e57bc14-72e8-48b3-81d3-9b209e520fd0",
