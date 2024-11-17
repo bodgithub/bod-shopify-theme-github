@@ -4303,8 +4303,8 @@ h2 {
 .table-of-contents li::before {
   content: "▊"; /* → Add the arrow symbol */
   position: absolute; /* Position the arrow */
-  left: 30px;
-  margin-top:4px;
+  left: 10px;
+  margin-top:10px;
   font-size:0.8rem;
   color: #1b3def; /* Match the arrow color to the link color */
 }
