@@ -156,6 +156,6 @@
       scroll-snap-stop: always;
       padding: 0; } }
 
-.post-content p {
+.post-content p, .post-content body {
   font-size:0.6em !important;
 }
