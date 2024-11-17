@@ -4353,8 +4353,9 @@ h2 {
   }
 
   .small-3 {
-    width: 100%; /* Ensure TOC column takes full width */
-  }
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
 }
 
   
