@@ -87,19 +87,7 @@
 
           <!-- Updated Content Processing -->
           <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
-  {% assign updated_content = article.content %}
 
- <!-- Add IDs to H2 tags -->
-{% assign updated_content = updated_content | replace: '<h2>', '<h2 id="heading-{{ forloop.index }}"> ' %}
-{% assign updated_content = updated_content | replace: '<h2 ', '<h2 id="heading-' %}
-
-<!-- Add IDs to H3 tags -->
-{% assign updated_content = updated_content | replace: '<h3>', '<h3 id="subheading-{{ forloop.index }}"> ' %}
-{% assign updated_content = updated_content | replace: '<h3 ', '<h3 id="subheading-' %}
-
-
-  <!-- Output the processed content -->
-  {{ updated_content }}
 </div>
           <!-- End of Updated Content Processing -->
 
