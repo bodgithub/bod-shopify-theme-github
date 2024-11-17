@@ -4300,6 +4300,14 @@ h2 {
    line-height: 1!important;
 }
 
+.table-of-contents li::before {
+  content: "→"; /* Add the arrow symbol */
+  position: absolute; /* Position the arrow */
+  left: -20px; /* Adjust spacing to the left of the text */
+  font-size: 1rem; /* Adjust the arrow size */
+  color: #1b3def; /* Match the arrow color to the link color */
+}
+
 .table-of-contents li {
   margin-bottom: 15px;
 }
@@ -4315,6 +4323,7 @@ h2 {
 .table-of-contents a:hover {
   text-decoration: underline;
 }
+
 
 /* Responsive Styling for Mobile */
 @media (max-width: 900px) {
