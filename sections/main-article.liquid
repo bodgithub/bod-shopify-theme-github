@@ -21,7 +21,15 @@
           {% for heading in headings %}
             {% if forloop.index > 1 %}
               {% assign heading_title = heading | split: '</h2>' | first %}
-              <li><a href="#heading-{{ forloop.index }}">{{ heading_title | strip_html | truncate: 100 }}</a></li>
+              <li><a href="#heading-{{ forloop.index }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
+
+              {% assign subheadings = heading | split: '<h3>' %}
+              {% for subheading in subheadings %}
+                {% if forloop.index > 1 %}
+                  {% assign subheading_title = subheading | split: '</h3>' | first %}
+                  <li class="toc-subheading"><a href="#subheading-{{ forloop.parent.index }}-{{ forloop.index }}">{{ subheading_title | strip_html | truncate: 50 }}</a></li>
+                {% endif %}
+              {% endfor %}
             {% endif %}
           {% endfor %}
         </ul>
