@@ -15,22 +15,7 @@
   <div class="table-of-contents" id="table-of-contents">
     <h3>Contents</h3>
     <ul>
-      {% assign headings = article.content | split: '<h2>' %}
-      {% for heading in headings %}
-        {% if forloop.index > 1 %}
-          {% assign heading_title = heading | split: '</h2>' | first %}
-          <li><a>{{ heading_title | strip_html | truncate: 50 }}</a></li>
-
-          <!-- Process H3 inside H2 -->
-          {% assign subheadings = heading | split: '<h3>' %}
-          {% for subheading in subheadings %}
-            {% if forloop.index > 1 %}
-              {% assign subheading_title = subheading | split: '</h3>' | first %}
-              <li class="toc-subheading"><a>{{ subheading_title | strip_html | truncate: 50 }}</a></li>
-            {% endif %}
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
+     
     </ul>
   </div>
 </div>
@@ -151,11 +136,11 @@
 </script>
 
 
-<script>
+<<script>
   document.addEventListener("DOMContentLoaded", function () {
     // Select the blog content container
     const articleContentElement = document.querySelector('.post-content');
-    const tocElement = document.querySelector('.table-of-contents ul');
+    const tocElement = document.querySelector('#table-of-contents ul');
 
     if (articleContentElement && tocElement) {
       let articleContent = articleContentElement.innerHTML;
@@ -183,20 +168,38 @@
       // Update the content in the DOM
       articleContentElement.innerHTML = updatedContent;
 
-      // Update the TOC links
-      const headings = articleContentElement.querySelectorAll('h2, h3');
-      const tocItems = tocElement.querySelectorAll('li > a');
+      // Collect all headings
+      const headings = Array.from(articleContentElement.querySelectorAll('h2, h3'));
+      const totalHeadings = headings.length;
 
-      tocItems.forEach((link, index) => {
-        const heading = headings[index];
-        if (heading) {
-          const id = heading.getAttribute('id');
-          link.setAttribute('href', `#${id}`);
+      // Determine TOC strategy
+      const showSubheadings = totalHeadings <= 15;
+
+      // Generate the TOC
+      headings.forEach((heading) => {
+        if (heading.tagName.toLowerCase() === 'h2' || (showSubheadings && heading.tagName.toLowerCase() === 'h3')) {
+          const id = heading.id;
+          const text = heading.textContent.trim();
+          const isSubheading = heading.tagName.toLowerCase() === 'h3';
+
+          // Create TOC list item
+          const listItem = document.createElement('li');
+          if (isSubheading) {
+            listItem.classList.add('toc-subheading');
+          }
+
+          const anchor = document.createElement('a');
+          anchor.href = `#${id}`;
+          anchor.textContent = text;
+
+          listItem.appendChild(anchor);
+          tocElement.appendChild(listItem);
         }
       });
     }
   });
 </script>
+
 
 
 
