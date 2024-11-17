@@ -4301,7 +4301,7 @@ h2 {
 }
 
 .table-of-contents li::before {
-  content: "▃"; /* → Add the arrow symbol */
+  content: "▬"; /* → Add the arrow symbol */
   position: absolute; /* Position the arrow */
   left: 3px;
   margin-top:4px;
