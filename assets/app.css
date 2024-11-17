@@ -4272,8 +4272,7 @@ h2 {
 
 
 /* Table of Contents Styling */
-/* General styles for the TOC */
-#table-of-contents-column {
+#table-of-contents-column { /* Styling for the TOC column */
   padding-right: 20px; /* Space between TOC and main content */
 }
 
@@ -4284,7 +4283,7 @@ h2 {
   background-color: #fff;
   padding: 15px;
   border-right: 6px solid #1b3def;
-  border-radius: 0;
+  border-radius: 0px;
   margin-bottom: 30px;
   line-height: 1.2;
 }
@@ -4307,8 +4306,10 @@ h2 {
 
 .table-of-contents li::before {
   content: "→"; /* Add the arrow symbol */
-  position: absolute;
-  left: -15px; /* Adjust arrow positioning */
+  position: absolute; /* Position the arrow */
+  left: 15px;
+  margin-top: 8px;
+  font-size: 0.85rem;
   color: #1b3def; /* Match the arrow color to the link color */
 }
 
@@ -4323,7 +4324,7 @@ h2 {
   text-decoration: underline;
 }
 
-/* Responsive styles for screens below 900px */
+/* Responsive Styling for Mobile */
 @media (max-width: 900px) {
   .row {
     display: flex;
@@ -4346,7 +4347,34 @@ h2 {
   }
 
   .small-9 {
-    width: 100%; /* Full width for the content */
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .small-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
   }
 }
 
+  
+  /*#table-of-contents-column {
+    display: none;
+  }
+  .small-9 {
+   flex: 0 0 100% !important;
+    max-width: 100% !important;
+    
+  }
+
+  .table-of-contents {
+    position: static;  
+    max-width: 100%; 
+    width: 100%;  u 
+    margin-bottom: 15px;  
+    border-right: none;  
+    border-bottom: 6px solid #1b3def; 
+  }
+
+  .post-content {
+    margin-top: 30px;  }
+}*/
