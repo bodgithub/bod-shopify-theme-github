@@ -10,32 +10,33 @@
 <div class="blog-post-detail--wrapper section-spacing-bottom">
   <div class="row">
 
-    <!-- Table of Contents Column -->
-    <div class="small-3 columns" id="table-of-contents-column">
-      <div class="table-of-contents" id="table-of-contents">
-        <h3>Contents</h3>
-       <ul>
-  {% assign headings = article.content | split: '<h2>' %}
-  {% for heading in headings %}
-    {% if forloop.index > 1 %}
-      {% assign heading_title = heading | split: '</h2>' | first %}
-      {% assign heading_id = heading_title | handle %}
-      <li><a href="#{{ heading_id }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
-
-      <!-- Process H3 inside H2 -->
-      {% assign subheadings = heading | split: '<h3>' %}
-      {% for subheading in subheadings %}
+<!-- Table of Contents Column -->
+<div class="small-3 columns" id="table-of-contents-column">
+  <div class="table-of-contents" id="table-of-contents">
+    <h3>Contents</h3>
+    <ul>
+      {% assign headings = article.content | split: '<h2>' %}
+      {% for heading in headings %}
         {% if forloop.index > 1 %}
-          {% assign subheading_title = subheading | split: '</h3>' | first %}
-          {% assign subheading_id = subheading_title | handle %}
-          <li class="toc-subheading"><a href="#{{ subheading_id }}">{{ subheading_title | strip_html | truncate: 50 }}</a></li>
+          {% assign heading_title = heading | split: '</h2>' | first %}
+          {% assign heading_id = heading_title | strip_html | remove: '"' | remove: "'" | replace: ' ', '-' | truncate: 20 | downcase %} <!-- Match JavaScript logic -->
+          <li><a href="#{{ heading_id }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
+
+          <!-- Process H3 inside H2 -->
+          {% assign subheadings = heading | split: '<h3>' %}
+          {% for subheading in subheadings %}
+            {% if forloop.index > 1 %}
+              {% assign subheading_title = subheading | split: '</h3>' | first %}
+              {% assign subheading_id = subheading_title | strip_html | remove: '"' | remove: "'" | replace: ' ', '-' | truncate: 20 | downcase %} <!-- Match JavaScript logic -->
+              <li class="toc-subheading"><a href="#{{ subheading_id }}">{{ subheading_title | strip_html | truncate: 50 }}</a></li>
+            {% endif %}
+          {% endfor %}
         {% endif %}
       {% endfor %}
-    {% endif %}
-  {% endfor %}
-</ul>
+    </ul>
+  </div>
 </div>
-    </div>
+
 
     <!-- Blog Content Column -->
     <div class="small-9 columns">
