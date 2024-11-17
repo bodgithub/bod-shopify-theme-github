@@ -4321,7 +4321,6 @@ h2 {
   .table-of-contents { /* Ensure TOC remains readable on small screens */
     position: static;
     max-width: 100%;
-    min-width:250px;
     margin-bottom: 15px;
   }
 }
