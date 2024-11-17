@@ -4297,6 +4297,7 @@ h2 {
 .table-of-contents ul {
   list-style-type: none;
   padding: 0;
+   line-height: 1.2!important;
 }
 
 .table-of-contents li {
@@ -4308,7 +4309,7 @@ h2 {
   text-decoration: none;
   color: #1b3def;
   font-size: 0.9rem;
-   line-height: 1.2;
+   line-height: 1.2!important;
 }
 
 .table-of-contents a:hover {
