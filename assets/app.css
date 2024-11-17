@@ -4272,8 +4272,13 @@ h2 {
 
 
 /* Table of Contents Styling */
-#table-of-contents-column { /* Styling for the TOC column */
-  padding-right: 20px; /* Space between TOC and main content */
+/* Desktop TOC Styling */
+.toc-container-desktop {
+  display: block; /* Visible only on desktop */
+}
+
+.toc-container-mobile {
+  display: none; /* Hidden on desktop */
 }
 
 .table-of-contents {
@@ -4283,7 +4288,6 @@ h2 {
   background-color: #fff;
   padding: 15px;
   border-right: 6px solid #1b3def;
-  border-radius: 0px;
   margin-bottom: 30px;
   line-height: 1.2;
 }
@@ -4299,17 +4303,17 @@ h2 {
   line-height: 1 !important;
 }
 
+.table-of-contents li {
+  margin-bottom: 15px;
+}
+
 .table-of-contents li::before {
-  content: "→"; /* Add the arrow symbol */
-  position: absolute; /* Position the arrow */
+  content: "→";
+  position: absolute;
   left: 15px;
   margin-top: 8px;
   font-size: 0.85rem;
-  color: #1b3def; /* Match the arrow color to the link color */
-}
-
-.table-of-contents li {
-  margin-bottom: 15px;
+  color: #1b3def;
 }
 
 .table-of-contents a {
@@ -4323,22 +4327,28 @@ h2 {
   text-decoration: underline;
 }
 
-/* Responsive Styling for Mobile */
+/* Mobile TOC Styling */
 @media (max-width: 900px) {
-  #table-of-contents-column {
-    display: none; /* Hide the left column for TOC */
+  .toc-container-desktop {
+    display: none; /* Hide desktop TOC */
+  }
+
+  .toc-container-mobile {
+    display: block; /* Show mobile TOC */
+    width: 100%;
+    margin-bottom: 15px;
   }
 
   .table-of-contents {
-    position: static; /* Move TOC out of sticky mode */
-    max-width: 100%; /* Allow TOC to take full width */
-    width: 100%; /* Ensure it spans the entire column */
-    margin-bottom: 15px; /* Space below TOC */
-    border-right: none; /* Remove right border */
-    border-bottom: 6px solid #1b3def; /* Add bottom border */
+    position: static;
+    max-width: 100%;
+    border-right: none;
+    border-bottom: 6px solid #1b3def;
+    padding: 15px;
   }
 
   .post-content {
-    margin-top: 30px; /* Add some spacing below the TOC */
+    margin-top: 15px; /* Space below the TOC */
   }
 }
+
