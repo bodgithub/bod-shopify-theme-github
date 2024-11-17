@@ -162,14 +162,15 @@
 
       // Add IDs to H2 and H3 tags
       const updatedContent = articleContent
-        .replace(/<h2(.*?)>/g, '<h2 id="heading-$1">') // Add IDs to H2 tags
-        .replace(/<h3(.*?)>/g, '<h3 id="subheading-$1">'); // Add IDs to H3 tags
+        .replace(/<h2>/g, '<h2 id="heading-$1">') // Add IDs to H2 tags
+        .replace(/<h3>/g, '<h3 id="subheading-$1">'); // Add IDs to H3 tags
 
       // Update the content in the DOM
       articleContentElement.innerHTML = updatedContent;
     }
   });
 </script>
+
 
 
 {% schema %}
