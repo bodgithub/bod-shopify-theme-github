@@ -39,19 +39,7 @@
 -%}
 {%- if article -%}
 
-  <div class="blog-wrapper">
-  <!-- Table of Contents -->
-  <div class="blog-contents" id="blog-contents">
-    <h4>Contents</h4>
-    <ul>
-      {% for heading in article.content | split: '<h2>' | slice: 1 %}
-        {% assign title = heading | split: '</h2>' | first %}
-        <li><a href="#{{ title | handleize }}">{{ title }}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
-
-  
+  <h3> inositol</h3>
 <div class="blog-post text-{{ article_content_alignment }} blog-post--content-spacing-{{ info_spacing }} blog-post--border-{{ article_card_border }} {{ article_card_shadow_class }}">
 	<figure class="featured-image">
 		<div class="aspect-ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
@@ -70,6 +58,16 @@
 		{% endif %}
 		<h4><a href="{{ article.url }}" title="{{ article.title | escape }}">{{ article.title }}</a></h4>
 
+
+     {% if blogs.metafields.custom.ambassador.value %}
+  <h5 title="{{ blogs.metafields.custom.ambassador.value.fields.short_name }}">
+    With {{ blogs.metafields.custom.ambassador.value.fields.short_name }}
+  </h5>
+{% else %}
+  <p>No ambassador</p>
+{% endif %}
+
+
       {% if show_excerpt %}
 		<div class="post-excerpt">
 			<p>{{ article.excerpt_or_content | strip_html | truncatewords: 20 }}</p>
@@ -81,7 +79,6 @@
 		{% endif %}
 	</div>
 </div>
-  </div>
 {%- else -%}
 <div class="blog-post text-{{ article_content_alignment }} blog-post--content-spacing-{{ info_spacing }} blog-post--border-{{ article_card_border }} {{ article_card_shadow_class }}">
 	<figure class="featured-image">
