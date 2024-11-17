@@ -14,26 +14,26 @@
     <div class="small-3 columns" id="table-of-contents-column">
       <div class="table-of-contents" id="table-of-contents">
         <h3>Contents</h3>
-        <ul>
-    {% assign headings = article.content | split: '<h2>' %}
-    {% for heading in headings %}
-      {% if forloop.index > 1 %}
-        {% assign heading_title = heading | split: '</h2>' | first %}
-        {% assign heading_id = heading_title | handle %} <!-- Generate a unique ID -->
-        <li><a href="#{{ heading_id }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
+       <ul>
+  {% assign headings = article.content | split: '<h2>' %}
+  {% for heading in headings %}
+    {% if forloop.index > 1 %}
+      {% assign heading_title = heading | split: '</h2>' | first %}
+      {% assign heading_id = heading_title | handle %}
+      <li><a href="#{{ heading_id }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
 
-        <!-- Process H3 within H2 -->
-        {% assign subheadings = heading | split: '<h3>' %}
-        {% for subheading in subheadings %}
-          {% if forloop.index > 1 %}
-            {% assign subheading_title = subheading | split: '</h3>' | first %}
-            {% assign subheading_id = subheading_title | handle %} <!-- Generate a unique ID -->
-            <li class="toc-subheading"><a href="#{{ subheading_id }}">{{ subheading_title | strip_html | truncate: 50 }}</a></li>
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
-  </ul>
+      <!-- Process H3 inside H2 -->
+      {% assign subheadings = heading | split: '<h3>' %}
+      {% for subheading in subheadings %}
+        {% if forloop.index > 1 %}
+          {% assign subheading_title = subheading | split: '</h3>' | first %}
+          {% assign subheading_id = subheading_title | handle %}
+          <li class="toc-subheading"><a href="#{{ subheading_id }}">{{ subheading_title | strip_html | truncate: 50 }}</a></li>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</ul>
 </div>
     </div>
 
