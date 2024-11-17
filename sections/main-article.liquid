@@ -56,10 +56,38 @@
 					</div>
 					{% endif %}
 					{% if block.type == 'content' %}
-						<div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
+
+
+
+                      {% comment %} NEW CONTENTS {% endcomment %}
+                      <div class="table-of-contents" id="table-of-contents">
+  <h3>Contents</h3>
+  <ul>
+    {% assign headings = article.content | split: '<h2>' %}
+    {% for heading in headings %}
+      {% if forloop.index > 1 %}
+        <li><a href="#heading-{{ forloop.index }}">{{ heading | strip_html | truncate: 50 }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
+  {% assign heading_count = 0 %}
+  {{ article.content | replace: '<h2>', '<h2 id="heading-' | replace: '</h2>', '</h2>' }}
+</div>
+
+                      {% comment %} END CONTENTS <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
 							{{ article.content }}
 						</div>
-					{% endif %}
+					 {% endcomment %}
+
+
+
+                      
+						
+
+                  {% endif %}
 					{% if block.type == 'tags' %}
 						{%- if article.tags.size > 0 -%}
 						<footer class="article-tags page-content-width" {{ block.shopify_attributes }}>
