@@ -4286,6 +4286,7 @@ h2 {
   border-radius: 0px;
   /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
   margin-bottom: 30px;
+  line-height:1.2
 }
 
 .table-of-contents h3 {
@@ -4294,7 +4295,7 @@ h2 {
 }
 
 .table-of-contents ul {
-  list-style-type: none;
+  /*list-style-type: none;*/
   padding: 0;
 }
 
@@ -4302,10 +4303,12 @@ h2 {
   margin-bottom: 10px;
 }
 
+
 .table-of-contents a {
   text-decoration: none;
   color: #1b3def;
   font-size: 0.9rem;
+   line-height: 1.2;
 }
 
 .table-of-contents a:hover {
