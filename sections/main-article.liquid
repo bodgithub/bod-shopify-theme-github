@@ -157,24 +157,7 @@
   {{ article | structured_data }}
 </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // Select the blog content container
-    const articleContentElement = document.querySelector('.post-content');
 
-    if (articleContentElement) {
-      let articleContent = articleContentElement.innerHTML;
-
-      // Add IDs to H2 and H3 tags
-      const updatedContent = articleContent
-        .replace(/<h2(.*?)>/g, '<h2 id="heading-$1">') // Add IDs to H2 tags
-        .replace(/<h3(.*?)>/g, '<h3 id="subheading-$1">'); // Add IDs to H3 tags
-
-      // Update the content in the DOM
-      articleContentElement.innerHTML = updatedContent;
-    }
-  });
-</script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     // Select the blog content container
