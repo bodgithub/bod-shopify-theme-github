@@ -156,3 +156,73 @@
 <script type="application/ld+json">
   {{ article | structured_data }}
 </script>
+
+{% schema %}
+  {
+		"name": "Blog post",
+		"class": "article-section",
+    "settings": [
+			{
+				"type": "header",
+				"content": "Settings"
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_date",
+				"label": "Show date",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_author",
+				"label": "Show author",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_nav",
+				"label": "Show sticky information",
+				"default": true
+			},
+			{
+				"type": "checkbox",
+				"id": "article_show_sharing",
+				"label": "Show sharing buttons",
+				"default": true
+			},
+			{
+				"type": "paragraph",
+				"content": "If you include a link in social media posts, the page’s featured image will be shown as the preview image. [Learn more](https://help.shopify.com/en/manual/online-store/images/showing-social-media-thumbnail-images)."
+			},
+			{
+				"type": "paragraph",
+				"content": "A store title and description are included with the preview image. [Learn more](https://help.shopify.com/en/manual/promoting-marketing/seo/adding-keywords#set-a-title-and-description-for-your-online-store)."
+			}
+    ],
+		"blocks": [
+			{
+	      "type": "@app"
+	    },
+			{
+        "type": "title",
+        "name": "Title",
+	      "limit": 1
+      },
+			{
+        "type": "post_navigation",
+        "name": "Next article",
+	      "limit": 1
+      },
+			{
+        "type": "content",
+        "name": "Content",
+	      "limit": 1
+      },
+			{
+        "type": "tags",
+        "name": "Tags",
+	      "limit": 1
+      }
+    ]
+  }
+{% endschema %}
