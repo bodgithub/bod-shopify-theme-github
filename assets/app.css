@@ -4295,7 +4295,7 @@ h2 {
 }
 
 .table-of-contents ul {
-
+  list-style-type: none;
   padding: 0;
    line-height: 1!important;
 }
@@ -4323,7 +4323,6 @@ h2 {
 .table-of-contents a:hover {
   text-decoration: underline;
 }
-
 
 /* Responsive Styling for Mobile */
 @media (max-width: 900px) {
