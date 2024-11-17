@@ -16,7 +16,8 @@
 	endcase
 -%}
 {%- paginate blog.articles by per_page -%}
-<div class="section-spacing-bottom">
+TEST
+  <div class="section-spacing-bottom">
 	<div class="row no-padding">
 		<div class="small-12 columns">
 			<div class="row articles">
@@ -36,6 +37,7 @@
 								endcapture
 						endcase
 					-%}
+                  
 					<div class="{{ grid_item_width }} columns">
 						{% render 'blog-post', article: article, show_date: show_date, show_excerpt: show_excerpt, image_ratio: image_ratio, show_read_more: show_read_more %}
 					</div>
