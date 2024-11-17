@@ -4340,20 +4340,16 @@ h2 {
 
   .table-of-contents {
     position: static; /* Disable sticky positioning for mobile */
-    max-width: 100%; /* Full width for TOC */
+    width: 100%; /* Full width for TOC */
     padding: 15px;
     border: none; /* Remove right border */
     border-bottom: 6px solid #1b3def; /* Add bottom border instead */
   }
 
   .small-9 {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
+    width: 100% !important;
   }
-  .small-3 {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
-  }
+  
 }
 
   
