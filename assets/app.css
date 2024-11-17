@@ -4283,9 +4283,9 @@ h2 {
   min-width:250px;
   background-color: #fff;
   padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-right: 4px solid #1b3def;
+  border-radius: 0px;
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
   margin-bottom: 30px;
 }
 
