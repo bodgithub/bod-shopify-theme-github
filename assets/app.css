@@ -4349,7 +4349,10 @@ h2 {
   .small-9 {
     width: 100% !important;
   }
-  
+  .small-3 {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+  }
 }
 
   
