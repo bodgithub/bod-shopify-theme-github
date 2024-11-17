@@ -4304,7 +4304,8 @@ h2 {
   content: "→"; /* Add the arrow symbol */
   position: absolute; /* Position the arrow */
 left: -10px;
- 
+ top:-5px;
+  font-size:1.2rem;
   color: #1b3def; /* Match the arrow color to the link color */
 }
 
