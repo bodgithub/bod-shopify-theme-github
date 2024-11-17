@@ -77,15 +77,15 @@
   {{ article.content | replace: '<h2>', '<h2 id="heading-' | replace: '</h2>', '</h2>' }}
 </div>
 
-                      {% comment %} END CONTENTS <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
-							{{ article.content }}
+                      {% comment %} END CONTENTS 
 						</div>
 					 {% endcomment %}
 
 
 
                       
-						
+						<div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
+							{{ article.content }}
 
                   {% endif %}
 					{% if block.type == 'tags' %}
