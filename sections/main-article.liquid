@@ -160,19 +160,24 @@
     if (articleContentElement) {
       let articleContent = articleContentElement.innerHTML;
 
-      // Counter to generate unique IDs
-      let h2Counter = 0;
-      let h3Counter = 0;
+      // Function to generate IDs based on the heading content
+      function generateId(content) {
+        return content
+          .toLowerCase() // Convert to lowercase
+          .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+          .replace(/\s+/g, '-') // Replace spaces with hyphens
+          .substring(0, 20); // Truncate to 20 characters
+      }
 
       // Add IDs to H2 and H3 tags
       const updatedContent = articleContent
         .replace(/<h2(.*?)>(.*?)<\/h2>/g, function (match, attributes, content) {
-          h2Counter++;
-          return `<h2 id="heading-${h2Counter}"${attributes}>${content}</h2>`;
+          const id = generateId(content);
+          return `<h2 id="${id}"${attributes}>${content}</h2>`;
         })
         .replace(/<h3(.*?)>(.*?)<\/h3>/g, function (match, attributes, content) {
-          h3Counter++;
-          return `<h3 id="subheading-${h3Counter}"${attributes}>${content}</h3>`;
+          const id = generateId(content);
+          return `<h3 id="${id}"${attributes}>${content}</h3>`;
         });
 
       // Update the content in the DOM
@@ -180,6 +185,7 @@
     }
   });
 </script>
+
 
 
 
