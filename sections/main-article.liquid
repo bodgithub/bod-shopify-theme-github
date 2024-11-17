@@ -10,22 +10,17 @@
 <div class="blog-post-detail--wrapper section-spacing-bottom">
   <div class="row">
 
-<!-- Responsive TOC -->
-    <div class="small-12 columns toc-container-mobile">
-      <div class="table-of-contents" id="table-of-contents">
-        <h3>Contents</h3>
-        <ul></ul>
-      </div>
-    </div>
+<!-- Table of Contents Column -->
+<div class="small-3 columns" id="table-of-contents-column">
+  <div class="table-of-contents" id="table-of-contents">
+    <h3>Contents</h3>
+    <ul>
+     
+    </ul>
+  </div>
+</div>
 
-    <!-- Table of Contents Column for Desktop -->
-    <div class="small-3 columns toc-container-desktop" id="table-of-contents-column">
-      <div class="table-of-contents">
-        <h3>Contents</h3>
-        <ul></ul>
-      </div>
-    </div>
-    
+
     <!-- Blog Content Column -->
     <div class="small-9 columns">
       <article class="blog-post-detail" id="main-article">
@@ -143,20 +138,20 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    // Select the blog content container
     const articleContentElement = document.querySelector('.post-content');
-    const tocMobile = document.querySelector('#table-of-contents-mobile ul');
-    const tocDesktop = document.querySelector('#table-of-contents-desktop ul');
+    const tocElement = document.querySelector('#table-of-contents ul');
 
-    if (articleContentElement) {
+    if (articleContentElement && tocElement) {
       let articleContent = articleContentElement.innerHTML;
 
       // Function to generate IDs based on the heading content
       function generateId(content) {
         return content
-          .toLowerCase()
-          .replace(/[^a-z0-9\s]/g, '')
-          .replace(/\s+/g, '-')
-          .substring(0, 20);
+          .toLowerCase() // Convert to lowercase
+          .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+          .replace(/\s+/g, '-') // Replace spaces with hyphens
+          .substring(0, 20); // Truncate to 20 characters
       }
 
       // Add IDs to H2 and H3 tags
@@ -170,40 +165,40 @@
           return `<h3 id="${id}"${attributes}>${content}</h3>`;
         });
 
+      // Update the content in the DOM
       articleContentElement.innerHTML = updatedContent;
 
+      // Collect all headings
       const headings = Array.from(articleContentElement.querySelectorAll('h2, h3'));
       const totalHeadings = headings.length;
+
+      // Determine TOC strategy
       const showSubheadings = totalHeadings <= 15;
 
-      function populateTOC(tocElement) {
-        headings.forEach((heading) => {
-          if (heading.tagName.toLowerCase() === 'h2' || (showSubheadings && heading.tagName.toLowerCase() === 'h3')) {
-            const id = heading.id;
-            const text = heading.textContent.trim();
-            const isSubheading = heading.tagName.toLowerCase() === 'h3';
+      // Generate the TOC
+      headings.forEach((heading) => {
+        if (heading.tagName.toLowerCase() === 'h2' || (showSubheadings && heading.tagName.toLowerCase() === 'h3')) {
+          const id = heading.id;
+          const text = heading.textContent.trim();
+          const isSubheading = heading.tagName.toLowerCase() === 'h3';
 
-            const listItem = document.createElement('li');
-            if (isSubheading) {
-              listItem.classList.add('toc-subheading');
-            }
-
-            const anchor = document.createElement('a');
-            anchor.href = `#${id}`;
-            anchor.textContent = text;
-
-            listItem.appendChild(anchor);
-            tocElement.appendChild(listItem);
+          // Create TOC list item
+          const listItem = document.createElement('li');
+          if (isSubheading) {
+            listItem.classList.add('toc-subheading');
           }
-        });
-      }
 
-      if (tocMobile) populateTOC(tocMobile);
-      if (tocDesktop) populateTOC(tocDesktop);
+          const anchor = document.createElement('a');
+          anchor.href = `#${id}`;
+          anchor.textContent = text;
+
+          listItem.appendChild(anchor);
+          tocElement.appendChild(listItem);
+        }
+      });
     }
   });
 </script>
-
 
 
 
