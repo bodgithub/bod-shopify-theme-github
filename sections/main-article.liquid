@@ -87,7 +87,10 @@
 
           <!-- Updated Content Processing -->
           <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
+  {% assign updated_content = article.content %}
 
+  <!-- Output the processed content -->
+  {{ updated_content }}
 </div>
           <!-- End of Updated Content Processing -->
 
