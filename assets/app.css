@@ -4340,18 +4340,18 @@ h2 {
 
   .table-of-contents {
     position: static; /* Disable sticky positioning for mobile */
-    width: 100%; /* Full width for TOC */
+    max-width: 100%; /* Full width for TOC */
     padding: 15px;
     border: none; /* Remove right border */
     border-bottom: 6px solid #1b3def; /* Add bottom border instead */
   }
 
   .small-9 {
-    width: 100% !important;
+    width: 100%; /* Full width for the content */
   }
+
   .small-3 {
-    flex: 0 0 100% !important;
-    width: 100% !important;
+    width: 100%; /* Ensure TOC column takes full width */
   }
 }
 
