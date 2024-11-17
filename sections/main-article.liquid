@@ -10,6 +10,29 @@
 {%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
 <div class="blog-post-detail--wrapper section-spacing-bottom">
 	<div class="row">
+
+
+<!-- NEW: Added a column for the Table of Contents -->
+    <div class="small-3 columns" id="table-of-contents-column">
+      <div class="table-of-contents" id="table-of-contents">
+        <h3>Contents</h3>
+        <ul>
+          {% assign headings = article.content | split: '<h2>' %}
+          {% for heading in headings %}
+            {% if forloop.index > 1 %}
+              {% assign heading_title = heading | split: '</h2>' | first %}
+              <li><a href="#heading-{{ forloop.index }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <!-- END OF NEW COLUMN -->
+
+
+
+
+      
 		<div class="small-12 columns">
 			<article class="blog-post-detail" id="main-article">
 				{% for block in section.blocks %}
@@ -59,29 +82,10 @@
 
 
 
-                     {% comment %} NEW CONTENTS {% endcomment %}
-  <div class="table-of-contents" id="table-of-contents">
-    <h3>Contents</h3>
-    <ul>
-      {% assign headings = article.content | split: '<h2>' %}
-      {% for heading in headings %}
-        {% if forloop.index > 1 %}
-          {% assign heading_title = heading | split: '</h2>' | first %}
-          <li><a href="#heading-{{ forloop.index }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
-
-  <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
-    {% assign heading_count = 0 %}
-    {{ article.content | replace: '<h2>', '<h2 id="heading-' | replace: '</h2>', '</h2>' }}
-  </div>
-
-                      {% comment %} END CONTENTS 
+                    
 						</div> 						<div class="post-content page-content-width rte" {{ block.shopify_attributes }}> {{ article.content }}
 
-					 {% endcomment %}
+				
 
 
 
