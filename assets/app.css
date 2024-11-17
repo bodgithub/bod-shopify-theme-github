@@ -4280,7 +4280,6 @@ h2 {
   position: sticky;
   top: 100px;
   max-width: 300px;
-  min-width:250px;
   background-color: #fff;
   padding: 15px;
   border-right: 4px solid #1b3def;
@@ -4322,6 +4321,7 @@ h2 {
   .table-of-contents { /* Ensure TOC remains readable on small screens */
     position: static;
     max-width: 100%;
+    min-width:250px;
     margin-bottom: 15px;
   }
 }
