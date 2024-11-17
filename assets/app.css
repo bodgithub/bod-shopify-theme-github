@@ -4315,7 +4315,7 @@ h2 {
 /* Responsive Styling for Mobile */
 @media (max-width: 900px) {
   #table-of-contents-column { /* NEW: Hide TOC column on mobile */
-    display: none;
+   
   }
 
   .table-of-contents { /* Ensure TOC remains readable on small screens */
