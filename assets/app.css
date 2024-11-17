@@ -4257,6 +4257,9 @@ h2 {
     opacity: 1;
 }
 
-.blog-post-detail p {
-    font-size: 0.9em;
+.blog-post-detail p,
+.blog-post-detail ul,
+.blog-post-detail ol,
+.blog-post-detail li {
+    font-size: 0.8em;
 }
