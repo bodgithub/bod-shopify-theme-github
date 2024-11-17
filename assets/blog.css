@@ -156,3 +156,40 @@
       scroll-snap-stop: always;
       padding: 0; } }
 
+.blog-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.blog-contents {
+  position: sticky;
+  top: 20px;
+  flex: 0 0 250px;
+  background: #f9f9f9;
+  padding: 10px 15px;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+}
+
+.blog-contents h4 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.blog-contents ul {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-contents li {
+  margin-bottom: 10px;
+}
+
+.blog-contents a {
+  text-decoration: none;
+  color: #007acc;
+}
+
+.blog-contents a:hover {
+  text-decoration: underline;
+}
