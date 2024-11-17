@@ -4272,6 +4272,10 @@ h2 {
 
 
 /* Table of Contents Styling */
+#table-of-contents-column { /* NEW: Added styling for the TOC column */
+  padding-right: 20px; /* Space between TOC and main content */
+}
+
 .table-of-contents {
   position: sticky;
   top: 20px;
@@ -4310,9 +4314,14 @@ h2 {
 
 /* Responsive Styling for Mobile */
 @media (max-width: 767px) {
-  .table-of-contents {
+  #table-of-contents-column { /* NEW: Hide TOC column on mobile */
+    display: none;
+  }
+
+  .table-of-contents { /* Ensure TOC remains readable on small screens */
     position: static;
     max-width: 100%;
     margin-bottom: 15px;
   }
 }
+
