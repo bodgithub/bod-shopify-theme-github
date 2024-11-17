@@ -4272,7 +4272,7 @@ h2 {
 
 
 /* Table of Contents Styling */
-#table-of-contents-column { /* NEW: Added styling for the TOC column */
+#table-of-contents-column { /* Styling for the TOC column */
   padding-right: 20px; /* Space between TOC and main content */
 }
 
@@ -4284,9 +4284,8 @@ h2 {
   padding: 15px;
   border-right: 6px solid #1b3def;
   border-radius: 0px;
-  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
   margin-bottom: 30px;
-  line-height:1.2
+  line-height: 1.2;
 }
 
 .table-of-contents h3 {
@@ -4297,15 +4296,15 @@ h2 {
 .table-of-contents ul {
   list-style-type: none;
   padding: 0;
-   line-height: 1!important;
+  line-height: 1 !important;
 }
 
 .table-of-contents li::before {
-  content: "→"; /* → Add the arrow symbol */
+  content: "→"; /* Add the arrow symbol */
   position: absolute; /* Position the arrow */
   left: 15px;
-  margin-top:8px;
-  font-size:0.85rem;
+  margin-top: 8px;
+  font-size: 0.85rem;
   color: #1b3def; /* Match the arrow color to the link color */
 }
 
@@ -4313,12 +4312,11 @@ h2 {
   margin-bottom: 15px;
 }
 
-
 .table-of-contents a {
   text-decoration: none;
   color: #1b3def;
   font-size: 0.9rem;
-   line-height: 1!important;
+  line-height: 1 !important;
 }
 
 .table-of-contents a:hover {
@@ -4327,14 +4325,20 @@ h2 {
 
 /* Responsive Styling for Mobile */
 @media (max-width: 900px) {
-  #table-of-contents-column { /* NEW: Hide TOC column on mobile */
-   
+  #table-of-contents-column {
+    display: none; /* Hide the left column for TOC */
   }
 
-  .table-of-contents { /* Ensure TOC remains readable on small screens */
-    position: static;
-    max-width: 100%;
-    margin-bottom: 15px;
+  .table-of-contents {
+    position: static; /* Move TOC out of sticky mode */
+    max-width: 100%; /* Allow TOC to take full width */
+    width: 100%; /* Ensure it spans the entire column */
+    margin-bottom: 15px; /* Space below TOC */
+    border-right: none; /* Remove right border */
+    border-bottom: 6px solid #1b3def; /* Add bottom border */
+  }
+
+  .post-content {
+    margin-top: 30px; /* Add some spacing below the TOC */
   }
 }
-
