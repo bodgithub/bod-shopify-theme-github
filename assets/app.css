@@ -4301,10 +4301,9 @@ h2 {
 }
 
 .table-of-contents li::before {
-  content: "→"; /* Add the arrow symbol */
+  content: "〰️"; /* → Add the arrow symbol */
   position: absolute; /* Position the arrow */
-left: -10px;
-
+  left: -6px;
   color: #1b3def; /* Match the arrow color to the link color */
 }
 
