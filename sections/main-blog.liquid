@@ -39,8 +39,8 @@
 					-%}
                   
 					<div class="{{ grid_item_width }} columns">
-						<h2>INOSITOL</h2>{% render 'blog-post', article: article, show_date: show_date, show_excerpt: show_excerpt, image_ratio: image_ratio, show_read_more: show_read_more %}
-					</div>
+						{% render 'blog-post', article: article, show_date: show_date, show_excerpt: show_excerpt, image_ratio: image_ratio, show_read_more: show_read_more %}
+					<h2>INOSITOL</h2></div>
 				{%- endfor -%}
 				<div class="small-12 columns">
 					{%- render 'pagination', paginate: paginate, pagination_type: 'paginated' -%}
