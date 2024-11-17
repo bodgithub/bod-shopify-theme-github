@@ -15,24 +15,26 @@
       <div class="table-of-contents" id="table-of-contents">
         <h3>Contents</h3>
         <ul>
-          {% assign headings = article.content | split: '<h2>' %}
-          {% for heading in headings %}
-            {% if forloop.index > 1 %}
-              {% assign heading_title = heading | split: '</h2>' | first %}
-              <li><a href="#heading-{{ forloop.index }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
+    {% assign headings = article.content | split: '<h2>' %}
+    {% for heading in headings %}
+      {% if forloop.index > 1 %}
+        {% assign heading_title = heading | split: '</h2>' | first %}
+        {% assign heading_id = heading_title | handle %} <!-- Generate a unique ID -->
+        <li><a href="#{{ heading_id }}">{{ heading_title | strip_html | truncate: 50 }}</a></li>
 
-              <!-- Process H3 inside H2 -->
-              {% assign subheadings = heading | split: '<h3>' %}
-              {% for subheading in subheadings %}
-                {% if forloop.index > 1 %}
-                  {% assign subheading_title = subheading | split: '</h3>' | first %}
-                  <li class="toc-subheading"><a href="#subheading-{{ forloop.parent.index }}-{{ forloop.index }}">{{ subheading_title | strip_html | truncate: 50 }}</a></li>
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
+        <!-- Process H3 within H2 -->
+        {% assign subheadings = heading | split: '<h3>' %}
+        {% for subheading in subheadings %}
+          {% if forloop.index > 1 %}
+            {% assign subheading_title = subheading | split: '</h3>' | first %}
+            {% assign subheading_id = subheading_title | handle %} <!-- Generate a unique ID -->
+            <li class="toc-subheading"><a href="#{{ subheading_id }}">{{ subheading_title | strip_html | truncate: 50 }}</a></li>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
     </div>
 
     <!-- Blog Content Column -->
@@ -85,19 +87,15 @@
 
           <!-- Updated Content Processing -->
           <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
-            {% assign updated_content = article.content %}
+  {% assign updated_content = article.content %}
 
-            <!-- Add IDs to H2 tags -->
-            {% assign updated_content = updated_content | replace: '<h2>', '<h2 id="heading-' %}
-            {% assign updated_content = updated_content | replace: '</h2>', '</h2>' %}
+  <!-- Safely add IDs to H2 and H3 tags -->
+  {% assign updated_content = updated_content | replace: '<h2', '<h2 id="heading-' %}
+  {% assign updated_content = updated_content | replace: '<h3', '<h3 id="subheading-' %}
 
-            <!-- Add IDs to H3 tags -->
-            {% assign updated_content = updated_content | replace: '<h3>', '<h3 id="subheading-' %}
-            {% assign updated_content = updated_content | replace: '</h3>', '</h3>' %}
-
-            <!-- Output the processed content -->
-            {{ updated_content }}
-          </div>
+  <!-- Output the processed content -->
+  {{ updated_content }}
+</div>
           <!-- End of Updated Content Processing -->
 
           {% endif %}
