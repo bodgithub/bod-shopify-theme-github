@@ -193,3 +193,7 @@
 .blog-contents a:hover {
   text-decoration: underline;
 }
+
+.blog-content {
+  flex: 1;
+}
