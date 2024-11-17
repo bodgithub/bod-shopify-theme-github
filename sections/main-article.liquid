@@ -160,16 +160,27 @@
     if (articleContentElement) {
       let articleContent = articleContentElement.innerHTML;
 
+      // Counter to generate unique IDs
+      let h2Counter = 0;
+      let h3Counter = 0;
+
       // Add IDs to H2 and H3 tags
       const updatedContent = articleContent
-        .replace(/<h2>/g, '<h2 id="heading-$1">') // Add IDs to H2 tags
-        .replace(/<h3>/g, '<h3 id="subheading-$1">'); // Add IDs to H3 tags
+        .replace(/<h2(.*?)>(.*?)<\/h2>/g, function (match, attributes, content) {
+          h2Counter++;
+          return `<h2 id="heading-${h2Counter}"${attributes}>${content}</h2>`;
+        })
+        .replace(/<h3(.*?)>(.*?)<\/h3>/g, function (match, attributes, content) {
+          h3Counter++;
+          return `<h3 id="subheading-${h3Counter}"${attributes}>${content}</h3>`;
+        });
 
       // Update the content in the DOM
       articleContentElement.innerHTML = updatedContent;
     }
   });
 </script>
+
 
 
 
