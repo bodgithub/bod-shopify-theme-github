@@ -21,16 +21,7 @@
           {% for heading in headings %}
             {% if forloop.index > 1 %}
               {% assign heading_title = heading | split: '</h2>' | first %}
-              <li class="toc-h2"><a href="#heading-{{ forloop.index }}">{{ h2_heading | strip_html | truncate: 100 }}</a></li>
-            {% assign subheadings = heading | split: '<h3>' %}
-        {% for subheading in subheadings %}
-          {% if forloop.index > 1 %}
-            {% assign h3_heading = subheading | split: '</h3>' | first %}
-            <li class="toc-h3">
-              <a href="#heading-{{ forloop.parentloop.index }}-{{ forloop.index }}">{{ h3_heading | strip_html | truncate: 50 }}</a>
-            </li>
-             {% endif %}
-        {% endfor %}
+              <li><a href="#heading-{{ forloop.index }}">{{ heading_title | strip_html | truncate: 100 }}</a></li>
             {% endif %}
           {% endfor %}
         </ul>
@@ -38,10 +29,7 @@
     </div>
     <!-- END OF NEW COLUMN -->
 
-<div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
-  {% assign heading_count = 0 %}
-  {{ article.content | replace: '<h2>', '<h2 id="heading-' | replace: '</h2>', '</h2>' | replace: '<h3>', '<h3 id="heading-' | replace: '</h3>', '</h3>' }}
-</div>
+
 
 
       
@@ -92,7 +80,6 @@
 					{% endif %}
 					{% if block.type == 'content' %}
 
-                      
 <div class="post-content page-content-width rte" {{ block.shopify_attributes }}>
               {% assign heading_count = 0 %}
               {{ article.content | replace: '<h2>', '<h2 id="heading-' | replace: '</h2>', '</h2>' }}
