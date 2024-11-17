@@ -4347,7 +4347,9 @@ h2 {
   }
 
   .small-9 {
-    width: 100%; /* Full width for the content */
+   flex: 0 0 100% !important;
+    max-width: 100% !important;
+    
   }
 
   .small-3 {
