@@ -46,6 +46,9 @@
       class="ambassador-image"
     >
     <div class="ambassador-details">
+      <pre>
+  {{ article.metafields.custom.ambassador.value.image_logo | json }}
+</pre>
       <div class="ambassador-name">{{ article.metafields.custom.ambassador.value.short_name }}</div>
       <div class="ambassador-title">{{ article.metafields.custom.ambassador.value.title }}</div>
     </div>
