@@ -38,9 +38,9 @@
     <ul>
 {% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
   <div class="article-ambassador">
-    {{ article.metafields.custom.ambassador.value }}
+    {{ article.metafields.custom.ambassador.value.name }}
   </div>
-{% endif %}     
+{% endif %} 
     </ul>
   </div> 
   <div class="table-of-contents" id="table-of-contents">
