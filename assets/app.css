@@ -4377,11 +4377,12 @@ h2 {
   overflow: hidden;  
   position: relative;
   margin-bottom:35px;
-border-radius:30px;
+border-radius:20px;
 }
 
 .blog-photo img {
   width: 100%; 
   height: auto; 
    object-fit: cover;
+  object-position: center;
 }
