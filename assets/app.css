@@ -4400,6 +4400,6 @@ border-radius:20px;
 
   @media (max-width: 900px) {
     .mobile-only-TOC {
-      display: block;
+      display: block !important;
     }
   }
