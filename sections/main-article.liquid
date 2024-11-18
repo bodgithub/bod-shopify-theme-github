@@ -34,6 +34,7 @@
 <!-- Table of Contents Column -->
 <div class="small-3 columns" id="table-of-contents-column">
 {% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
+{% if article.metafields.custom.blogauthor and article.metafields.custom.blogauthor.value != blank %}
 
      <div class="author-contents">
        <h3>Authors</h3>
@@ -75,6 +76,7 @@
     </ul>
   </div> 
         {% endif %}
+  {% endif %}
 
   
   <div class="table-of-contents" id="table-of-contents">
