@@ -72,7 +72,8 @@ margin-left:5px;}
       width: 100%; } }
   .blog-post-detail .post-title .share-article {
     margin-top: auto;
-    margin-bottom: 0; }
+    margin-bottom: 0; 
+  display:none;}
 
 .blog-post-detail .post-title-wrapper {
   border-radius: var(--block-border-radius, 16px);
