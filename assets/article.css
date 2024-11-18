@@ -206,12 +206,12 @@ max-width:100%}
     transform: translateY(-1px); }
 @media only screen and (min-width: 768px) {
     .blog-post-detail--navigation {
-      height: 50px; } }
+      height: 0px; } }
   .blog-post-detail--navigation--inner {
-  display:none; /* width: 100%;
+  width: 100%;
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 1fr;*/ }
+    grid-template-columns: 1fr 1fr; }
     .blog-post-detail--navigation--inner .share-article {
       margin-bottom: 0;
       margin-left: auto; }
