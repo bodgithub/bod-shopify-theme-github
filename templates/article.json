@@ -44,6 +44,7 @@
         "heading_neLhdg",
         "benefits_cw63wQ"
       ],
+      "disabled": true,
       "custom_css": [
         ".image-with-text-overlay {box-shadow: none;}",
         "@media only screen and (min-width: 768px) {.desktop-height-450 {min-height: 250px;}"
@@ -68,7 +69,6 @@
       "blocks": {
         "title_CKiGjz": {
           "type": "title",
-          "disabled": true,
           "settings": {}
         },
         "tags": {
