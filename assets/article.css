@@ -40,7 +40,7 @@
     background: var(--color-accent); }
 
 .post-meta-wrapper {
-  display:none;
+  visibility:hidden;
 }
 /*.blog-post-detail .post-meta-wrapper {
   font-size: 0.75rem;
