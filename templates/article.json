@@ -66,6 +66,11 @@
     "main-article": {
       "type": "main-article",
       "blocks": {
+        "title_CKiGjz": {
+          "type": "title",
+          "disabled": true,
+          "settings": {}
+        },
         "tags": {
           "type": "tags",
           "settings": {}
@@ -80,6 +85,7 @@
         }
       },
       "block_order": [
+        "title_CKiGjz",
         "tags",
         "content",
         "post_navigation"
