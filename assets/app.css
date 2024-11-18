@@ -4317,7 +4317,7 @@ h2 {
 }
 
 .active-toc-item a {
-  color: #1b3def;
+  color: #1b3def !important;
   font-weight: bold;
   text-decoration: underline;
 }
