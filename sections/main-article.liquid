@@ -25,15 +25,7 @@
   <div class="row">
 
     <div class="mobile-only-TOC">
-    
-          {%- liquid
-            assign has_image = false
-            if article.image
-              assign has_image = true
-            endif
-
-            assign article_card_border = settings.article_card_border
-          -%}
+  
           <div class="post-title-wrapper mobile post-title-wrapper--has-img-{{- has_image }} post-title-wrapper--border-{{ article_card_border }}" id="post-title-wrapper">
             <div class="post-title">
             
