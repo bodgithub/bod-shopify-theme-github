@@ -36,9 +36,14 @@
  <div class="table-of-contents">
     <h3>Authors</h3>
     <ul>
-     
+{% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
+  <div class="article-ambassador">
+    {{ article.metafields.custom.ambassador.value }}
+  </div>
+{% endif %}     
     </ul>
-  </div> <div class="table-of-contents" id="table-of-contents">
+  </div> 
+  <div class="table-of-contents" id="table-of-contents">
     <h3>Contents</h3>
     <ul>
      
