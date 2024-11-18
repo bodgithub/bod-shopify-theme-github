@@ -305,7 +305,8 @@ max-width:100%}
     display: flex;
     align-items: center;
     gap: 10px; 
-    margin-bottom:10px;
+    margin-bottom:15px;
+    padding-right:10px;
   }
 
   .author-image {
@@ -328,7 +329,7 @@ max-width:100%}
   }
 
   .author-title {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #899cff;
  
   }
