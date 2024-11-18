@@ -36,11 +36,23 @@
  <div class="table-of-contents">
     <h3>Authors</h3>
     <ul>
+
+      
 {% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
-  <div class="article-ambassador">
-    {{ article.metafields.custom.ambassador.value.short_name }}
+  <div class="ambassador-container">
+    <img 
+      src="{{ article.metafields.custom.ambassador.value.image_logo | url: width: 80, height: 80 }}" 
+      alt="{{ article.metafields.custom.ambassador.value.short_name }}" 
+      class="ambassador-image"
+    >
+    <div class="ambassador-details">
+      <div class="ambassador-name">{{ article.metafields.custom.ambassador.value.short_name }}</div>
+      <div class="ambassador-title">{{ article.metafields.custom.ambassador.value.title }}</div>
+    </div>
   </div>
-{% endif %} 
+{% endif %}
+
+      
     </ul>
   </div> 
   <div class="table-of-contents" id="table-of-contents">
