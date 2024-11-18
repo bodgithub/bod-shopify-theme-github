@@ -42,29 +42,42 @@
   
 {% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
   <div class="author-container">
-    
     <img 
       src="{{ article.metafields.custom.ambassador.value.image_logo | file_url }}"  
       alt="{{ article.metafields.custom.ambassador.value.short_name }}" 
-      class="author-image"
-    >
+      class="author-image">
     <div class="author-details">
-     
       <div class="author-name">{{ article.metafields.custom.ambassador.value.short_name }}</div>
       <div class="author-title">{{ article.metafields.custom.ambassador.value.title }}</div>
     </div>
   </div>
 {% endif %}
+
+
+      
+      {% if article.metafields.custom.experts and article.metafields.custom.experts.value != blank %}
+  <div class="author-container">
+    <img 
+      src="{{ article.metafields.custom.experts.value.expert_logo | file_url }}"  
+      alt="{{ article.metafields.custom.experts.value.expert_name }}" 
+      class="author-image">
+    <div class="author-details">
+      <div class="author-name">{{ article.metafields.custom.experts.value.expert_name }}</div>
+      <div class="author-title">{{ article.metafields.custom.experts.value.expert_title }}</div>
+    </div>
+  </div>
+{% endif %}
+
+
+      
+      
       {% if article.metafields.custom.blogauthor and article.metafields.custom.blogauthor.value != blank %}
   <div class="author-container">
-    
     <img 
       src="{{ article.metafields.custom.blogauthor.value.image_logo | file_url }}"  
       alt="{{ article.metafields.custom.blogauthor.value.short_name }}" 
-      class="author-image"
-    >
+      class="author-image">
     <div class="author-details">
-     
       <div class="author-name">{{ article.metafields.custom.blogauthor.value.short_name }}</div>
       <div class="author-title">{{ article.metafields.custom.blogauthor.value.title }}</div>
     </div>
