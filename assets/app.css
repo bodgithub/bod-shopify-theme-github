@@ -4393,3 +4393,13 @@ border-radius:20px;
   object-position: center;
   max-height: 280px;
 }
+
+.mobile-only-TOC {
+  display: none;
+  }
+
+  @media (max-width: 900px) {
+    .mobile-only-TOC {
+      display: block;
+    }
+  }
