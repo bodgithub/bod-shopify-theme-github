@@ -39,7 +39,10 @@
     color: #fff;
     background: var(--color-accent); }
 
-.blog-post-detail .post-meta-wrapper {
+.post-meta-wrapper {
+  display:none;
+}
+/*.blog-post-detail .post-meta-wrapper {
   font-size: 0.75rem;
   color: var(--color-body, #2c2d2e);
   margin-bottom: 10px;
@@ -57,7 +60,7 @@ margin-left:5px;}
       margin-left: 10px;
       opacity: 0.6; }
     .blog-post-detail .post-meta-wrapper aside:last-child:after {
-      content: none; }
+      content: none; } */
 
 .blog-post-detail .post-title {
   width: 100%;
