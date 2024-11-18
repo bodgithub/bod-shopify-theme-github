@@ -40,8 +40,7 @@
     background: var(--color-accent); }
 
 .post-meta-wrapper {
-  visibility:hidden;
-  max-height:5px;
+  display:none;
 }
 /*.blog-post-detail .post-meta-wrapper {
   font-size: 0.75rem;
@@ -62,6 +61,11 @@ margin-left:5px;}
       opacity: 0.6; }
     .blog-post-detail .post-meta-wrapper aside:last-child:after {
       content: none; } */
+
+.post-title .entry-title .h2 h1 {
+  padding-top:5px;
+  font-size:10rem;
+}
 
 .blog-post-detail .post-title {
   width: 100%;
