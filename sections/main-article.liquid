@@ -33,12 +33,14 @@
 
 <!-- Table of Contents Column -->
 <div class="small-3 columns" id="table-of-contents-column">
- <div class="table-of-contents">
-    <h3>Authors</h3>
-    <ul>
+
+    
+    
 
       
 {% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
+  <h3>Authors</h3>
+  <ul>
   <div class="author-container">
     
     <img 
@@ -51,7 +53,6 @@
       <div class="author-name">{{ article.metafields.custom.ambassador.value.short_name }}</div>
       <div class="author-title">{{ article.metafields.custom.ambassador.value.title }}</div>
     </div>
-  </div>
 {% endif %}
 
       
