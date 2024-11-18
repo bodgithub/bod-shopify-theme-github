@@ -4299,6 +4299,7 @@ h2 {
   list-style-type: none;
   padding: 0;
   line-height: 1 !important;
+  font-size: 0.8em;
 }
 
 .table-of-contents li {
@@ -4317,14 +4318,14 @@ h2 {
   position: absolute; /* Position the arrow */
   left: -20px;
   margin-top: 8px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #1b3def; /* Match the arrow color to the link color */
 }
 
 .table-of-contents a {
   text-decoration: none;
   color: #1b3def;
-  font-size: 0.9rem;
+  font-size: 0.8em;
   line-height: 1 !important;
 }
 
