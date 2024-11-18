@@ -39,17 +39,17 @@
 
       
 {% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
-  <div class="ambassador-container">
+  <div class="author-container">
     
     <img 
       src="{{ article.metafields.custom.ambassador.value.image_logo | file_url }}"  
       alt="{{ article.metafields.custom.ambassador.value.short_name }}" 
-      class="ambassador-image"
+      class="author-image"
     >
-    <div class="ambassador-details">
+    <div class="author-details">
      
-      <div class="ambassador-name">{{ article.metafields.custom.ambassador.value.short_name }}</div>
-      <div class="ambassador-title">{{ article.metafields.custom.ambassador.value.title }}</div>
+      <div class="author-name">{{ article.metafields.custom.ambassador.value.short_name }}</div>
+      <div class="author-title">{{ article.metafields.custom.ambassador.value.title }}</div>
     </div>
   </div>
 {% endif %}
