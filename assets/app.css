@@ -4321,6 +4321,12 @@ h2 {
   color: #798ae4 ; /* 1b3def Match the arrow color to the link color */
 }
 
+.active-toc-item a {
+  color: #1b3def;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .table-of-contents a {
   text-decoration: none;
   color: #1b3def;
