@@ -317,15 +317,17 @@ max-width:100%}
   .author-details {
     display: flex;
     flex-direction: column; 
+     line-height:0.8em;
   }
 
   .author-name {
-    font-size: 0.7rem;
+    font-size: 0.8em;
+   
     font-weight: bold;  
   }
 
   .author-title {
-    font-size: 0.7rem;
+    font-size: 0.8em;
     color: #899cff;
  
   }
