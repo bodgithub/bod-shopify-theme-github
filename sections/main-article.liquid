@@ -13,11 +13,7 @@
             <div class="post-title">
             
               <h1 class="entry-title h1">{{ article.title }}</h1>
-              {%- liquid
-                if article_show_sharing
-                  render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.featured_image
-                endif
-              -%}
+              
             </div>
             {%- if article.image -%}
             <div class="featured-image">
