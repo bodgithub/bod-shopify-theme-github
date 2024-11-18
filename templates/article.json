@@ -11,8 +11,7 @@
   "sections": {
     "breadcrumbs": {
       "type": "breadcrumbs",
-      "settings": {
-      }
+      "settings": {}
     },
     "image_with_text_overlay_n9ynUb": {
       "type": "image-with-text-overlay",
@@ -67,25 +66,22 @@
     "main-article": {
       "type": "main-article",
       "blocks": {
-        "content": {
-          "type": "content",
-          "settings": {
-          }
-        },
         "tags": {
           "type": "tags",
-          "settings": {
-          }
+          "settings": {}
+        },
+        "content": {
+          "type": "content",
+          "settings": {}
         },
         "post_navigation": {
           "type": "post_navigation",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
-        "content",
         "tags",
+        "content",
         "post_navigation"
       ],
       "settings": {
