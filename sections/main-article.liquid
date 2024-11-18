@@ -7,7 +7,6 @@
 -%}
 {{ 'article.css' | asset_url | stylesheet_tag }}
 
-<div class="blog-post-detail--wrapper section-spacing-bottom">
   <div class="row">
 
 <!-- Table of Contents Column -->
@@ -24,7 +23,8 @@
     <!-- Blog Content Column -->
     <div class="small-9 columns">
 {%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
-      
+      <div class="blog-post-detail--wrapper section-spacing-bottom">
+
       <article class="blog-post-detail" id="main-article">
         {% for block in section.blocks %}
           {% if block.type == '@app' %}
