@@ -177,6 +177,7 @@
       const showSubheadings = totalHeadings <= 15;
 
       // Generate the TOC
+      const tocItems = {};
       headings.forEach((heading) => {
         if (heading.tagName.toLowerCase() === 'h2' || (showSubheadings && heading.tagName.toLowerCase() === 'h3')) {
           const id = heading.id;
@@ -195,11 +196,38 @@
 
           listItem.appendChild(anchor);
           tocElement.appendChild(listItem);
+
+          // Store reference to the TOC item for later
+          tocItems[id] = listItem;
         }
       });
+
+      // Highlight TOC item when section is in view
+      const observerOptions = {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px 0px -50% 0px', // Trigger when the section is halfway in view
+        threshold: 0.5, // Trigger when 50% of the section is in view
+      };
+
+      const observerCallback = (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (entry.isIntersecting && tocItems[id]) {
+            // Highlight the active TOC item
+            Object.values(tocItems).forEach((item) => item.classList.remove('active-toc-item'));
+            tocItems[id].classList.add('active-toc-item');
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+      // Observe each heading
+      headings.forEach((heading) => observer.observe(heading));
     }
   });
 </script>
+
 
 
 
