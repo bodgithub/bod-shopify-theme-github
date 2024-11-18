@@ -89,7 +89,7 @@
     flex-direction: column-reverse; }
     @media only screen and (min-width: 768px) {
       .blog-post-detail .post-title-wrapper--has-img-true {
-        flex-direction: row;
+        flex-direction: column;
         margin-bottom: 60px; } }
     .blog-post-detail .post-title-wrapper--has-img-true .post-title {
       margin: 0; }
