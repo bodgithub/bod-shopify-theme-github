@@ -234,13 +234,13 @@ max-width:100%}
       text-overflow: ellipsis; }
   .blog-post-detail--navigation--bar {
     display: block;
-    height: 5px;
+    height: 50px;
     position: absolute;
     bottom: -6px;
     left: 0;
     width: 100%;
     transform: scale(0, 1);
-    background: var(--color-accent);
+    background: red;
     transform-origin: left center; }
 
 .share-article {
