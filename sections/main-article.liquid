@@ -26,7 +26,9 @@
       
       <div class="blog-photo">
             {%- if article.image -%}
-   {%- render 'responsive-image', image: article.image, sizes: image_sizes -%}
+    <img src="{{ article.image | img_url: 'large' }}" alt="{{ article.title }}">
+
+          
 
            
   {% endif %}
