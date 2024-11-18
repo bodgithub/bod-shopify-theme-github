@@ -6,7 +6,8 @@
   assign article_card_shadow_class = 'has-shadow--' | append: article_card_shadow
 -%}
 {{ 'article.css' | asset_url | stylesheet_tag }}
-
+{%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
+<div class="blog-post-detail--wrapper section-spacing-bottom">
   <div class="row">
 
 <!-- Table of Contents Column -->
@@ -22,8 +23,6 @@
 
     <!-- Blog Content Column -->
     <div class="small-9 columns">
-{%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
-      <div class="blog-post-detail--wrapper section-spacing-bottom">
 
       <article class="blog-post-detail" id="main-article">
         {% for block in section.blocks %}
@@ -41,7 +40,7 @@
 
             assign article_card_border = settings.article_card_border
           -%}
-          <div class="post-title-wrapper post-title-wrapper--has-img-{{- has_image }} post-title-wrapper--border-{{ article_card_border }} {{ article_card_shadow_class }}" id="post-title-wrapper" {{ block.shopify_attributes }}>
+          <div class="post-title-wrapper post-title-wrapper--has-img-{{- has_image }} post-title-wrapper--border-{{ article_card_border }} {{ article_card_shadow_class }}" id="post-title-wrapper">
             <div class="post-title">
               {% if section.settings.article_show_date or section.settings.article_show_author %}
               <div class="post-meta-wrapper">
