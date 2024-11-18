@@ -18,12 +18,6 @@
   }
 </style>
 
-
-{{ 'article.css' | asset_url | stylesheet_tag }}
-{%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
-<div class="blog-post-detail--wrapper section-spacing-bottom">
-  <div class="row">
-
     <div class="mobile-only-TOC">
   
           <div class="post-title-wrapper mobile post-title-wrapper--has-img-{{- has_image }} post-title-wrapper--border-{{ article_card_border }}" id="post-title-wrapper">
@@ -44,6 +38,12 @@
           </div>
   
     </div>
+{{ 'article.css' | asset_url | stylesheet_tag }}
+{%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
+<div class="blog-post-detail--wrapper section-spacing-bottom">
+  <div class="row">
+
+
 
 <!-- Table of Contents Column -->
 <div class="small-3 columns" id="table-of-contents-column">
