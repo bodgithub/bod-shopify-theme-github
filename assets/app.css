@@ -4275,6 +4275,7 @@ h2 {
 /* Table of Contents Styling */
 #table-of-contents-column { /* Styling for the TOC column */
   padding-right: 20px; /* Space between TOC and main content */
+  padding-left:0px;
 }
 
 .table-of-contents {
