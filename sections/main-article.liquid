@@ -5,10 +5,64 @@
   assign article_card_shadow = settings.article_card_shadow
   assign article_card_shadow_class = 'has-shadow--' | append: article_card_shadow
 -%}
+
+<style>
+  .mobile-only {
+    display: none; /* Hide by default */
+  }
+
+  @media (max-width: 900px) {
+    .mobile-only {
+      display: block; /* Show only on screens below 900px */
+    }
+  }
+</style>
+
+
 {{ 'article.css' | asset_url | stylesheet_tag }}
 {%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
 <div class="blog-post-detail--wrapper section-spacing-bottom">
   <div class="row">
+
+    <div class="mobile-only-TOC">
+      {% if block.type == 'title' %}
+          {%- liquid
+            assign has_image = false
+            if article.image
+              assign has_image = true
+            endif
+
+            assign article_card_border = settings.article_card_border
+          -%}
+          <div class="post-title-wrapper mobile post-title-wrapper--has-img-{{- has_image }} post-title-wrapper--border-{{ article_card_border }}" id="post-title-wrapper">
+            <div class="post-title">
+              {% if section.settings.article_show_date or section.settings.article_show_author %}
+              <div class="post-meta-wrapper">
+                {%- if section.settings.article_show_date -%}
+                <aside class="post-meta">
+                  {{- article.published_at | time_tag: '%b %d, %Y' -}}
+                </aside>
+                {%- endif -%}
+                {%- if section.settings.article_show_author -%}
+                <aside class="post-author">{{- article.author -}}</aside>
+                {% endif %}
+              </div>
+              {% endif %}
+              <h1 class="entry-title h1">{{ article.title }}</h1>
+              {%- liquid
+                if article_show_sharing
+                  render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.featured_image
+                endif
+              -%}
+            </div>
+            {%- if article.image -%}
+            <div class="featured-image">
+              {%- render 'responsive-image', image: article.image, sizes: '345x300,640x550,1280x1100' -%}
+            </div>
+            {%- endif -%}
+          </div>
+          {% endif %}
+    </div>
 
 <!-- Table of Contents Column -->
 <div class="small-3 columns" id="table-of-contents-column">
