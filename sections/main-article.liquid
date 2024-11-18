@@ -53,6 +53,21 @@
     </div>
   </div>
 {% endif %}
+      {% if article.metafields.custom.author and article.metafields.custom.author.value != blank %}
+  <div class="author-container">
+    
+    <img 
+      src="{{ article.metafields.custom.author.value.image_logo | file_url }}"  
+      alt="{{ article.metafields.custom.author.value.short_name }}" 
+      class="author-image"
+    >
+    <div class="author-details">
+     
+      <div class="author-name">{{ article.metafields.custom.author.value.short_name }}</div>
+      <div class="author-title">{{ article.metafields.custom.author.value.title }}</div>
+    </div>
+  </div>
+{% endif %}
 
       
     </ul>
