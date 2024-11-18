@@ -220,8 +220,7 @@ max-height:500px;}
     line-height: 1; }
     @media only screen and (min-width: 768px) {
       .blog-post-detail--navigation--title {
-       display:none;
-        /*font-size: 0.9375rem; *} }
+        font-size: 0.9375rem; } }
     .blog-post-detail--navigation--title > div {
       overflow: hidden;
       text-overflow: ellipsis; }
