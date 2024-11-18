@@ -4307,12 +4307,6 @@ h2 {
   font-size: 0.8em;
 }
 
-.table-of-contents a {
-  font-size:0.8em;
-  color: #798ae4 ;
-  
-}
-
 .table-of-contents li::before {
   content: "→"; /* Add the arrow symbol */
   position: absolute; /* Position the arrow */
@@ -4330,7 +4324,6 @@ h2 {
 
 .table-of-contents a {
   text-decoration: none;
-  color: #1b3def;
   font-size: 0.8em;
   line-height: 1 !important;
 }
