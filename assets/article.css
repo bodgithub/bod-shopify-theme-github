@@ -298,3 +298,34 @@ max-width:100%}
       left: 50%; }
   .clipboard-success .clipboard--bubble {
     opacity: 1; }
+
+
+
+  .ambassador-container {
+    display: flex;
+    align-items: center;
+    gap: 5px; 
+  }
+
+  .ambassador-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 2px solid #ddd;  
+  }
+
+  .ambassador-details {
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .ambassador-name {
+    font-size: 1.25rem;
+    font-weight: bold;  
+  }
+
+  .ambassador-title {
+    font-size: 1rem;
+ 
+  }
