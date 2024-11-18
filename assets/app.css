@@ -4315,8 +4315,8 @@ h2 {
 .table-of-contents li::before {
   content: "→"; /* Add the arrow symbol */
   position: absolute; /* Position the arrow */
-  left: -25px;
-  margin-top: 2px;
+  left: -225px;
+  margin-top: 5px;
   font-size: 0.7rem;
   color: #1b3def; /* Match the arrow color to the link color */
 }
