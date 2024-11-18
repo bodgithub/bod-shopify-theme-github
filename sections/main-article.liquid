@@ -23,6 +23,13 @@
 
     <!-- Blog Content Column -->
     <div class="small-9 columns">
+      
+      <div class="blog-photo">
+         {% if article.featured_image %}
+    <img src="{{ article.featured_image | img_url: 'large' }}" alt="{{ article.title }}">
+  {% endif %}
+      </div>
+      
       <article class="blog-post-detail" id="main-article">
         {% for block in section.blocks %}
           {% if block.type == '@app' %}
