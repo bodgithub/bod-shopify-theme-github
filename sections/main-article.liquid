@@ -23,6 +23,7 @@
           </div>
   
     </div>
+    
 {{ 'article.css' | asset_url | stylesheet_tag }}
 {%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
 <div class="blog-post-detail--wrapper section-spacing-bottom">
@@ -51,6 +52,8 @@
               {% render block %}
             </div>
           {% endif %}
+          
+              <div class="desktop-only-TOC">
           {% if block.type == 'title' %}
           {%- liquid
             assign has_image = false
@@ -87,7 +90,8 @@
             </div>
             {%- endif -%}
           </div>
-          {% endif %}
+          {% endif %} 
+              </div>
           {% if block.type == 'content' %}
 
           <!-- Updated Content Processing -->

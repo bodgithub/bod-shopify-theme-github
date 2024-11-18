@@ -4404,3 +4404,13 @@ border-radius:20px;
       padding: 0 20px 10px 20px;
     }
   }
+
+.desktop-only-TOC {
+    display: none; /* Hide by default */
+  }
+
+  @media (min-width: 901px) {
+    .desktop-only-TOC {
+      display: block; /* Show only on screens wider than 900px */
+    }
+  }
