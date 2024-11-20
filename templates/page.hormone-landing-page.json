@@ -25,7 +25,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
+            "text": "<p>{{ page.metafields.custom.problem_category.value.headline | metafield_tag }} </p>",
             "heading_size": "h1-xlarge"
           }
         },
