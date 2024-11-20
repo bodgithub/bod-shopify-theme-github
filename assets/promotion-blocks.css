@@ -71,4 +71,10 @@
       display: none; }
     .promotion-blocks.swipe-on-mobile .promotion-blocks--inner .promotion-blocks--item {
       scroll-snap-align: center;
-      scroll-snap-stop: always; } }
+      scroll-snap-stop: always; } 
+    .promotion-blocks--image {
+      width: 100%;
+      max-height: 200px;     
+      border-radius: 10px;     
+      overflow: hidden;
+  }}
