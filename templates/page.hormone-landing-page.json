@@ -215,6 +215,7 @@
         },
         "custom_liquid_ExQ6qT": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"padding:30px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>Pre-Order Promo</em></h3><h5>Pre-order now and get a<b> 17% lifetime discount</b><em>*</em></h5><h6>Your code will automatically apply at checkout. Orders arrive within 3-6 weeks.</h6></div>"
           }
@@ -259,13 +260,6 @@
             "page": "",
             "custom_liquid": ""
           }
-        },
-        "text_JtCrbk": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ page.metafields.custom.problem_category.value.promo.value.name.value }}</p>{{ page.metafields.custom.problem_category.value.promo.value.sitewide_promotion | metafield_tag }}",
-            "text_style": "style_body"
-          }
         }
       },
       "block_order": [
@@ -281,8 +275,7 @@
         "collapsible_tab_zkXkR7",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
-        "collapsible_tab_RaXCmL",
-        "text_JtCrbk"
+        "collapsible_tab_RaXCmL"
       ],
       "settings": {
         "heading": "",
@@ -307,8 +300,8 @@
         "promotion_hncWkH": {
           "type": "promotion",
           "settings": {
-            "image": "shopify://shop_images/icon_cookie.png",
-            "title": "<h4><strong>Support blood sugar levels</strong></h4>",
+            "image": "shopify://shop_images/Bodology-Inositol-for-Fertility-4.jpg",
+            "title": "{{ page.metafields.custom.problem_category.value.promo.value.promo | metafield_tag }}",
             "button_text": "",
             "button_link": ""
           }
@@ -316,17 +309,8 @@
         "promotion_44jRUz": {
           "type": "promotion",
           "settings": {
-            "image": "shopify://shop_images/icon_check-circle.png",
-            "title": "<h4><strong>Level mood throughout cycle</strong></h4>",
-            "button_text": "",
-            "button_link": ""
-          }
-        },
-        "promotion_qCUt8q": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/certificate.png",
-            "title": "<h4><strong>Used by health experts</strong></h4>",
+            "image": "shopify://shop_images/BODOLOGY_July_24_7487-Edit.png",
+            "title": "{{ page.metafields.custom.problem_category.value.promo_2.value.promo | metafield_tag }}",
             "button_text": "",
             "button_link": ""
           }
@@ -334,10 +318,8 @@
       },
       "block_order": [
         "promotion_hncWkH",
-        "promotion_44jRUz",
-        "promotion_qCUt8q"
+        "promotion_44jRUz"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "mobile_swipe": false,
@@ -348,6 +330,15 @@
         "color_link": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "spacer_VWaT3c": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 65,
+        "border_separator": false,
+        "border_separator_full": false
       }
     },
     "promotion_blocks_KJhjit": {
@@ -390,11 +381,11 @@
       "settings": {
         "mobile_swipe": false,
         "image_ratio": "square",
-        "column_spacing": "medium",
+        "column_spacing": "small",
         "color_bg": "#ffffff",
         "color_text": "#2c2d2e",
         "color_link": "#3f72e5",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
     },
@@ -951,6 +942,7 @@
     "rich_text_ktwnPa",
     "featured_product_wiHCVn",
     "promotion_blocks_FLbKam",
+    "spacer_VWaT3c",
     "promotion_blocks_KJhjit",
     "expert_testimonials_KxH7tC",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",

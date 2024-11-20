@@ -20,7 +20,7 @@
 					assign ratio = block.settings.image.aspect_ratio
 				endif
 			-%}
-			<div class="promotion-blocks--item" {{ block.shopify_attributes }}>
+			<div class="promotion-blocks--item" {{ block.shopify_attributes }} style="border: 1px solid block.settings.border_color">
 				<div class="promotion-blocks--text">
 					{% if block.settings.title != blank %}
 						<h6>{{ block.settings.title }}</h6>
@@ -106,6 +106,13 @@
 				"label": "Background",
 				"default": "#ffffff"
 			},
+      {
+                "type": "color",
+				"id": "border_color",
+				"label": "Border Color",
+				"default": "#ffffff"
+        
+      },
 			{
 				"type": "color",
 				"id": "color_text",
