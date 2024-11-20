@@ -72,7 +72,7 @@
         "space_dgXhDh"
       ],
       "custom_css": [
-        "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
+        "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; } .image-with-text-overlay {background: #e8e6e7; }}",
         "@media only screen and (min-width: 768px) {}",
         ".h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important;}",
         ".h1-xlarge .line-child {padding-left: 10px; margin-right: -15px;}"
@@ -88,7 +88,7 @@
         "content_position": "bottom-left",
         "text_alignment": "left",
         "text_color": "#1b3def",
-        "overlay_color": "#F5F5F5",
+        "overlay_color": "#f5f5f5",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
