@@ -259,6 +259,13 @@
             "page": "",
             "custom_liquid": ""
           }
+        },
+        "text_JtCrbk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>{{ page.metafields.custom.problem_category.value.promo.value.name.value }}</p>{{ page.metafields.custom.problem_category.value.promo.value.sitewide_promotion | metafield_tag }}",
+            "text_style": "style_body"
+          }
         }
       },
       "block_order": [
@@ -274,7 +281,8 @@
         "collapsible_tab_zkXkR7",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
-        "collapsible_tab_RaXCmL"
+        "collapsible_tab_RaXCmL",
+        "text_JtCrbk"
       ],
       "settings": {
         "heading": "",
