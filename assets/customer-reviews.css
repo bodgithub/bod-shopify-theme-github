@@ -264,6 +264,7 @@
 /* Text color adjustments for reviews content */
 .image-with-text-overlay .customer-reviews--content {
   color: var(--text-color, #000);
+  max-height:60px;
 }
 
 /* Star rating style */
