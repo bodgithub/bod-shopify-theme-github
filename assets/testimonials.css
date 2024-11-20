@@ -95,7 +95,6 @@
     padding: 0 15px;
     margin: 0 auto; }
     @media only screen and (min-width: 768px) {
-     .metafield-multi_line_text_field { font-size:1.1rem;}
       .testimonials--inner.text-small {
         font-size: 1.5rem; } }
     @media only screen and (min-width: 768px) {
@@ -164,3 +163,7 @@ scroll-behavior: smooth;}
       opacity: 1; }
 
 .dot-style--logos img {height: 100%;}
+
+
+ @media only screen and (max-width: 768px) {
+.metafield-multi_line_text_field { font-size:1.1rem;} }
