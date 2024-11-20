@@ -18,14 +18,14 @@
             "stars": "5",
             "heading": "See real results with inositol",
             "font_size": "0.7em",
-            "link": "#buy-inositol",
+            "link": "#reviews",
             "scale": "1.5"
           }
         },
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Balance hormones naturally<em>—don't</em> <em>just mask </em><em>symptoms</em>",
+            "text": "Balance hormones naturally—don't just mask symptoms",
             "heading_size": "h1-xlarge"
           }
         },
@@ -45,16 +45,16 @@
             "icon_size": 30,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "Improve menstrual cycle regularity*",
-            "icon_1": "shopify://shop_images/icon_calendar-check.png",
-            "benefit_2": "Shorten cycle length*",
-            "icon_2": "shopify://shop_images/icon_watch.png",
-            "benefit_3": "Support PCOS symptom relief*",
-            "icon_3": "shopify://shop_images/icon_lightning-slash.png",
-            "benefit_4": "Significantly improve body composition and fat reduction, in combination with diet and exercise*",
-            "icon_4": "shopify://shop_images/icon_scales.png",
-            "benefit_5": "Help to reduce cravings caused by poor insulin function*",
-            "icon_5": "shopify://shop_images/icon_cookie.png"
+            "benefit_1": "{{ page.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
+            "icon_1": "{{ page.metafields.custom.problem_category.value.benefit_1.value.icon.value }}",
+            "benefit_2": "{{ page.metafields.custom.problem_category.value.benefit_2.value.benefit.value }}",
+            "icon_2": "{{ page.metafields.custom.problem_category.value.benefit_2.value.icon.value }}",
+            "benefit_3": "{{ page.metafields.custom.problem_category.value.benefit_3.value.benefit.value }}",
+            "icon_3": "{{ page.metafields.custom.problem_category.value.benefit_3.value.icon.value }}",
+            "benefit_4": "{{ page.metafields.custom.problem_category.value.benefit_4.value.benefit.value }}",
+            "icon_4": "{{ page.metafields.custom.problem_category.value.benefit_4.value.icon.value }}",
+            "benefit_5": "{{ page.metafields.custom.problem_category.value.benefit_5.value.benefit.value }}",
+            "icon_5": "{{ page.metafields.custom.problem_category.value.benefit_5.value.icon.value }}"
           }
         },
         "space_dgXhDh": {
@@ -78,8 +78,8 @@
         ".h1-xlarge .line-child {padding-left: 10px; margin-right: -15px;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Bodology-Inositol-Hormones-Banner3.jpg",
-        "mobile_image": "shopify://shop_images/Bodology-Hormone-Banner-2_06aa9dd1-76f1-415c-b3e7-6d2c6f84e5b6.jpg",
+        "image": "{{ page.metafields.custom.problem_category.value.hero_banner_desktop.value }}",
+        "mobile_image": "{{ page.metafields.custom.problem_category.value.hero_banner_mobile.value }}",
         "image_parallax": true,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-500",
