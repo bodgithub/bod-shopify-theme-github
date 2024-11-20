@@ -44,9 +44,7 @@
         
         <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
 
-          {% if block.settings.text != blank %}
-    <div class="study">{{ block.settings.text }}</div>
-{% endif %}
+          
           {%- if block.settings.image_link != blank -%}
           <a href="{{ block.settings.image_link }}">
           {%- endif -%}
@@ -79,6 +77,9 @@
 
       
         </figure>
+              {% if block.settings.text != blank %}
+    <div class="study">{{ block.settings.text }}</div>
+{% endif %}
         <div class="toggle-box--content rte text-{{ text_alignment }}">
           <scroll-shadow class="toggle-box--content-inner" style="--bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
             <div>
