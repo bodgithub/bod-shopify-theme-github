@@ -303,7 +303,7 @@
 
 .image-with-text-overlay .customer-reviews--review a:hover:after,
 .image-with-text-overlay .customer-reviews--review a:focus:after {
-  transform: scaleX(0.5); /* Full width on hover */
+  transform: scaleX(1); /* Full width on hover */
 }
 
 .image-with-text-overlay .customer-reviews--review a:hover,
