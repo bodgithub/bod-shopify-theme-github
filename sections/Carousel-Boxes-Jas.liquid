@@ -39,14 +39,14 @@
       -%}
       <div class="toggle-box" {{ block.shopify_attributes }} {% if block.settings.text != blank %}style="max-height:27rem;"{% endif %}>
         
-         {% if block.settings.text != blank %}
-    <div class="study">{{ block.settings.text }}</div>
-{% endif %}
+         
         
         
         <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
 
-          
+          {% if block.settings.text != blank %}
+    <div class="study">{{ block.settings.text }}</div>
+{% endif %}
           {%- if block.settings.image_link != blank -%}
           <a href="{{ block.settings.image_link }}">
           {%- endif -%}
