@@ -255,7 +255,7 @@
 .customer-reviews--block .star-rating,
 .customer-reviews--block .text-button {
   margin: 0 auto; /* Center elements */
-  display: inline;
+  display: block;
   text-align: left;
   padding-bottom: 10px;
 }
