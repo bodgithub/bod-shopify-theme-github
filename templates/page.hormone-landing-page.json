@@ -502,13 +502,14 @@
       "blocks": {
         "box_TxAVLm": {
           "type": "box",
+          "repeater": "{{ page.metafields.custom.problem_category.value.results.value }}",
           "settings": {
-            "image": "shopify://shop_images/Bodology_Inositol_for_Mood_3.jpg",
-            "image_link": "",
+            "image": "{{ block.repeater.image.value }}",
+            "image_link": "{{ block.repeater.study.value }}",
             "open": false,
             "heading": "",
             "text": "<p>85% of women who took inositol saw their <a href=\"https://pubmed.ncbi.nlm.nih.gov/34624138/\" target=\"_blank\" title=\"https://pubmed.ncbi.nlm.nih.gov/34624138/\"><strong>cycles return</strong></a><em>*</em></p><h6></h6>",
-            "link_label": "",
+            "link_label": "{{ block.repeater.sup_text.value }}",
             "link": "",
             "use_text_button": false,
             "block_link": ""
@@ -646,7 +647,7 @@
         "text_9b6n8V"
       ],
       "custom_css": [
-        "p {font-size: 0.5em; padding-top:20px; padding-left:10px;}"
+        "p {font-size: 0.5em; padding-top: 20px; padding-left: 10px;}"
       ],
       "settings": {
         "text_width": "small",
