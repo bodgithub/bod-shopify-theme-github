@@ -859,6 +859,41 @@
         "disable_bottom_spacing": true
       }
     },
+    "rich_text_zwjMjN": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_liquid_3bRDgb": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"reviews\"></div>"
+          }
+        },
+        "heading_nfgekG": {
+          "type": "heading",
+          "settings": {
+            "text": "Real <em>results</em>",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#FD6262"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_3bRDgb",
+        "heading_nfgekG"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
     "17289436895cc28ff7": {
       "type": "apps",
       "blocks": {
@@ -900,6 +935,7 @@
     "image_with_text_r96Axa",
     "spacer_EJt6Hf",
     "video_pdBgr8",
+    "rich_text_zwjMjN",
     "17289436895cc28ff7"
   ]
 }
