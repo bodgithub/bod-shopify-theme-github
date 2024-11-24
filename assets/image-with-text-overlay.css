@@ -170,3 +170,7 @@ line-hight:0.9;}
 .image-with-text-overlay .customer-reviews--block {
   align-items: flex-start;
 }
+
+.customer-reviews--block .star-rating, .customer-reviews--block .text-button {
+  display: inline;
+}
