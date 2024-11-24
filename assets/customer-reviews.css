@@ -252,12 +252,11 @@
   padding: 20px 0 0 0;
 }
 
-/* Center the star rating and button */
 .customer-reviews--block .star-rating,
 .customer-reviews--block .text-button {
   margin: 0 auto; /* Center elements */
-  display: block; /* Block-level element */
-  text-align: center;
+  display: inline;
+  text-align: left;
   padding-bottom: 10px;
 }
 
