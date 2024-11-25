@@ -42,7 +42,7 @@
           "type": "benefits",
           "settings": {
             "benefits-title": "<b>Inositol works through metabolic pathways to:</b>",
-            "icon_size": 30,
+            "icon_size": 25,
             "border_size": 1,
             "border_color": "#1b3def",
             "benefit_1": "{{ page.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
