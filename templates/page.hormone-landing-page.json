@@ -56,20 +56,13 @@
             "benefit_5": "{{ page.metafields.custom.problem_category.value.benefit_5.value.benefit.value }}",
             "icon_5": "{{ page.metafields.custom.problem_category.value.benefit_5.value.icon.value }}"
           }
-        },
-        "space_dgXhDh": {
-          "type": "space",
-          "settings": {
-            "height": 30
-          }
         }
       },
       "block_order": [
         "customer_reviews_CtBhV3",
         "heading_FGRE4D",
         "button_rBDtc7",
-        "benefits_MfjQJR",
-        "space_dgXhDh"
+        "benefits_MfjQJR"
       ],
       "custom_css": [],
       "settings": {
