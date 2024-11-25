@@ -380,7 +380,7 @@
     "custom_css": [
       ".button.white {padding: 35px !important; background-color: white !important; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;}",
       ".button.white:hover {transform: scale(1.1) !important; transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;}",
-      "@media only screen and (max-width: 768px) {.button, input[type=\"submit\"] {display: block; height: auto; } .button.white {padding: 15px 20px !important; font-size: 0.8em; }}",
+      "@media only screen and (max-width: 768px) {.button, input[type=\"submit\"] {display: block; height: auto; } .button.white {padding: 15px 32px !important; font-size: 0.8em; margin:0px 22px; }}",
       ".logolink {transition: transform 0.4s ease-in-out !important;}",
       ".logolink:hover {transform: scale(1.1); transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) !important;}",
       ".product-grid-container {margin-top: -20px !important;}",
