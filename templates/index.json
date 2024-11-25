@@ -95,7 +95,7 @@
         "text_eeg3Xh": {
           "type": "text",
           "settings": {
-            "text": "<h4>\n<b>Inositol works through <em>metabolic pathways</em> to support hormone and mood health<em>—</em>naturally.</b>\n<br><br>\n</h4>"
+            "text": "<h4>\n<b>Inositol works through <em>metabolic</em> pathways to support hormone and mood health<em>—</em>naturally.</b>\n<br><br>\n</h4>"
           }
         },
         "image_gddwin": {
@@ -510,6 +510,7 @@
         },
         "text_RWyfgB": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65<em> </em> <em>|</em> 40:1 Ratio<em> </em> <em>|</em> 90 Scoops</h6>",
             "text_style": "style_vendor"
@@ -517,16 +518,14 @@
         },
         "title_ExCfKU": {
           "type": "title",
-          "disabled": true,
           "settings": {
             "show_products_rating": true
           }
         },
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
-          "disabled": true,
           "settings": {
-            "custom_liquid": "<h6>Bodology™ <i>Inositol</i> is a natural micronutrient powder in the optimal 40:1 ratio found in the body. Derived from plant sources, inositol is clinically-studied to balance hormones, mood and metabolism.</h6><br>"
+            "custom_liquid": "<div id=\"product-details\"><h6>Unlock your metabolic health with Bodology™ Inositol, a natural micronutrient powder that works through metabolic pathways to support hormones, mood and metabolism.\n\n<br><br>Inositol, in the clinically-studied 40:1 ratio found in the body, is derived from plant sources.</h6><br></div>"
           }
         },
         "side_panel_NGJTtJ": {
@@ -590,6 +589,7 @@
         },
         "custom_liquid_VVcYcp": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"padding:30px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>Pre-Order Promo</em></h3><h5>Pre-order now and get a<b> 17% lifetime discount</b><em>*</em></h5><h6>Your code will automatically apply at checkout. Orders arrive within 3-6 weeks.</h6></div>"
           }
@@ -620,7 +620,7 @@
           "settings": {
             "heading": "The \"NO\" List",
             "open": false,
-            "content": "<ul><li>No fillers</li><li>No gluten</li><li>No flavoring</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
+            "content": "<ul><li>No fillers</li><li>No gluten</li><li>No animal ingredients</li><li>No flavoring</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
             "page": "",
             "custom_liquid": ""
           }
