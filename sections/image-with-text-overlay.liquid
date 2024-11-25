@@ -112,7 +112,7 @@
                           
                           {%- when 'button' -%}
 								{% if block.settings.button_text != blank %}
-									<a class="button {{ block.settings.button_color }}" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}>{{ block.settings.button_text }}</a>
+									<a class="button {{ block.settings.button_color }}" href="{{ block.settings.button_link }}" role="button" {{ block.shopify_attributes }}>{{ block.settings.button_text }}</a>
 								                                  {% endif %}
 
 
