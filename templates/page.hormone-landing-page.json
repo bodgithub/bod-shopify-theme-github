@@ -25,7 +25,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.problem_category.value.headline | metafield_tag }} </p>",
+            "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}<p> </p>",
             "heading_size": "h1-xlarge"
           }
         },
@@ -303,7 +303,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><b>87% of Americans have a metabolic dysfunction, and this directly impacts hormonal function.</b></h5><hr><p>From mood swings and anxiety, to ovarian cysts and abnormal cycles.\n\nStudies show that suboptimal metabolic health disrupts testosterone, estrogen, and cortisol production through direct metabolic pathways. This explains why <b>addressing metabolic health, not just hormone levels, is crucial for lasting balance.</b></p>",
+            "text": "<h5><b>87% of Americans have a metabolic dysfunction, and this directly impacts hormonal function.</b></h5><hr><p>From mood swings and anxiety, to ovarian cysts and abnormal cycles.\n\nStudies show that suboptimal metabolic health disrupts testosterone, estrogen, and cortisol production through direct metabolic pathways. <b>Addressing metabolic health, not just hormone levels, is crucial for lasting balance.</b></p>",
             "link_label": "",
             "link": ""
           }
