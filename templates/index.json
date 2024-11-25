@@ -21,46 +21,14 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "Your <i>hormones</i> deserve better",
+            "text": "<p>Your <em>hormones</em> deserve better</p>",
             "heading_size": "h1-xlarge"
-          }
-        },
-        "heading_YUHmEX": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "Better <i>metabolism,</i> better hormones",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "heading_em97ki": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "A <i>new way</i> to balance hormones, mood, <i>metabolism</i>",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "text_fHEjjg": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Address poor metabolic health for better hormones, mood and metabolism with inositol.</p>",
-            "description_size": "small"
-          }
-        },
-        "text_tDP8jc": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<h6>Inositol—the new way to balance hormones, mood and metabolism.</h6>",
-            "description_size": "small"
           }
         },
         "button_rBDtc7": {
           "type": "button",
           "settings": {
-            "button_text": "Get inositol<i>—</i>the new way to balance",
+            "button_text": "Get inositol—the new way to balance",
             "button_link": "shopify://pages/hormones",
             "button_color": "white"
           }
@@ -85,10 +53,6 @@
       "block_order": [
         "space_UqqzGi",
         "heading_FGRE4D",
-        "heading_YUHmEX",
-        "heading_em97ki",
-        "text_fHEjjg",
-        "text_tDP8jc",
         "button_rBDtc7",
         "space_dgXhDh",
         "customer_reviews_CtBhV3"
@@ -380,7 +344,7 @@
             "image": "shopify://shop_images/Bodology_Inositol_Empowered.jpg",
             "image_link": "",
             "open": false,
-            "heading": "PCOS",
+            "heading": "<p>PCOS</p>",
             "text": "",
             "link_label": "",
             "link": "shopify://pages/hormones",
@@ -394,7 +358,7 @@
             "image": "shopify://shop_images/Bodology_Inositol_Fertility_Hormones.jpg",
             "image_link": "shopify://pages/hormones",
             "open": false,
-            "heading": "Hormones",
+            "heading": "<p>Hormones</p>",
             "text": "",
             "link_label": "",
             "link": "shopify://pages/hormones",
@@ -408,7 +372,7 @@
             "image": "shopify://shop_images/Bodology_Inositol_for_Fertility_2.jpg",
             "image_link": "",
             "open": false,
-            "heading": "Fertility",
+            "heading": "<p>Fertility</p>",
             "text": "",
             "link_label": "",
             "link": "shopify://pages/hormones",
@@ -422,7 +386,7 @@
             "image": "shopify://shop_images/Bodology_Inositol_for_Mood_4.jpg",
             "image_link": "",
             "open": false,
-            "heading": "Anxiety",
+            "heading": "<p>Anxiety</p>",
             "text": "",
             "link_label": "",
             "link": "",
@@ -436,7 +400,7 @@
             "image": "shopify://shop_images/Bodology_Inositol_Happy_2.jpg",
             "image_link": "",
             "open": false,
-            "heading": "Weight",
+            "heading": "<p>Weight</p>",
             "text": "",
             "link_label": "",
             "link": "shopify://pages/hormones",
@@ -949,6 +913,7 @@
         "image_ratio": "square",
         "column_spacing": "medium",
         "color_bg": "#ffffff",
+        "border_color": "#ffffff",
         "color_text": "#1b3def",
         "color_link": "#1b3def",
         "disable_top_spacing": false,
