@@ -58,9 +58,9 @@
         "customer_reviews_CtBhV3"
       ],
       "custom_css": [
-        "@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
-        "@media only screen and (min-width: 768px) {.h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important;}}",
-        ".customer-reviews--block {align-items: center;}",
+        "/*@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
+        "@media only screen and (min-width: 768px) {.h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important; }}",
+        "*/.customer-reviews--block {align-items: center;}",
         ".star-rating {text-align: center;}"
       ],
       "settings": {
