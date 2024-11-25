@@ -242,12 +242,11 @@
 
 /* General Layout for Customer Reviews in Image with Text Overlay Section */
 .image-with-text-overlay .customer-reviews--block {
-  width: 100%; /* Full width row */
-  text-align: center; /* Center-align content */
+  width: 100%; 
+  text-align: center; 
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin-top: 20px;
   padding: 20px 0 0 0;
 }
 
