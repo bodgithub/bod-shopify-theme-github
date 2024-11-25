@@ -40,6 +40,7 @@
         "custom_liquid_Vq4TUb",
         "subheading_TKb4at"
       ],
+      "disabled": true,
       "settings": {
         "text_width": "large",
         "text_position": "center",
@@ -111,7 +112,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "",
+            "text": "<h1><strong>Body</strong><em>Talks</em></h1><h6>(Our blog)</h6>",
             "link_label": "",
             "link": ""
           }
@@ -122,7 +123,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<div style=\"display:block; border-left:8px solid blue; padding-left:20px;margin-left:-20px;margin-bottom:0%; margin-top:6%;\">\n<h4 class=\"rte\">Empowering your journey to better hormones, mood, metabolism through personal stories and science beyond the 'textbook'.</h4>\n</div>",
+            "text": "<h6>Empowering your journey to better hormones, mood, metabolism through personal stories and science beyond the 'textbook'.</h6>",
             "link_label": "",
             "link": ""
           }
@@ -131,6 +132,9 @@
       "block_order": [
         "column_iKmifE",
         "column_6iXq4P"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}"
       ],
       "settings": {
         "heading": "",
