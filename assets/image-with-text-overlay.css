@@ -145,12 +145,22 @@
 line-hight:0.9;}
 
 .benefit-item {
+  display: flex;
+  align-items: center;
   padding:10px 0;
   font-size: 0.81rem;
   max-width:450px;
 }
+
+.benefit-item span {
+  flex: 1;
+  display: block;
+  word-wrap: break-word;
+}
 .benefit-icon {
   margin-right:10px;
+  flex-shrink: 0;
+  
 }
 .benefits-block {
   max-width: 80%;
