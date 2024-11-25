@@ -306,7 +306,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>Approximately 87% of adults have impaired metabolic function,  it’s not ‘just a weight issue’.</h5><h5><strong>Discover how inositol helps:</strong></h5>",
+            "text": "<h5><strong>Approximately 87% of adults have impaired metabolic function,  it’s not ‘just a weight issue’.</strong></h5><h6>Discover how inositol helps:</h6>",
             "link_label": "",
             "link": ""
           }
@@ -315,6 +315,10 @@
       "block_order": [
         "column_k73ndb",
         "column_ExHNM9"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
+        ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
       ],
       "settings": {
         "heading": "",
