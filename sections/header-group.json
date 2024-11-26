@@ -102,11 +102,31 @@
             "promo_4_content": "",
             "promo_4_link": ""
           }
+        },
+        "megamenu_dFyRE4": {
+          "type": "megamenu",
+          "settings": {
+            "position": "4",
+            "promo_1_image": "shopify://shop_images/01_0690abc7-17f8-4c23-8b7a-7f21c09d505d.png",
+            "promo_1_heading": "Discover the truth about PCOS",
+            "promo_1_content": "",
+            "promo_1_link": "",
+            "promo_2_heading": "",
+            "promo_2_content": "",
+            "promo_2_link": "",
+            "promo_3_heading": "",
+            "promo_3_content": "",
+            "promo_3_link": "",
+            "promo_4_heading": "",
+            "promo_4_content": "",
+            "promo_4_link": ""
+          }
         }
       },
       "block_order": [
         "megamenu_LA8Ykr",
-        "megamenu_F6Faah"
+        "megamenu_F6Faah",
+        "megamenu_dFyRE4"
       ],
       "custom_css": [
         ".header.transparent--true:not(:hover):not(.is-sticky) .thb-full-menu > li > a {color: #ffffff00 !important;}",
