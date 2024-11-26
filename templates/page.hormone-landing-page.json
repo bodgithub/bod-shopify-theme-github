@@ -588,7 +588,7 @@
           "settings": {
             "text": "<p>{{ page.metafields.custom.problem_category.value.benefits_disclaimer | metafield_tag }}</p>",
             "custom_liquid": "",
-            "size": "text-size-small"
+            "size": "text-size-regular"
           }
         }
       },
