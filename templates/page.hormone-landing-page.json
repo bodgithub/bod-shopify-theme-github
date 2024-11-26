@@ -586,9 +586,9 @@
         "text_9b6n8V": {
           "type": "text",
           "settings": {
-            "text": "{{ page.metafields.custom.problem_category.value.benefits_disclaimer | metafield_tag }}",
+            "text": "<p>{{ page.metafields.custom.problem_category.value.benefits_disclaimer | metafield_tag }}</p>",
             "custom_liquid": "",
-            "size": "text-size-regular"
+            "size": "text-size-small"
           }
         }
       },
