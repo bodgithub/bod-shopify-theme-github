@@ -156,6 +156,16 @@
           "settings": {
             "heading": "Details",
             "open": false,
+            "content": "<p>Your pre-order will be amongst the first to ship in January 2024. You'll get tracking details the moment your order ships.</p><p>Need to cancel at any point? Simply email <a href=\"mailto:support@bodology.com\" target=\"_blank\">support@bodology.co</a> anytime and we'll process your full cancellation – no fees, no questions asked.</p><p><em>Disclaimer: Shipping timeline may be subject to change. We'll keep you updated via email.</em></p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_KVBdNK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "open": false,
             "content": "<ul><li>3rd party tested for purity & potency (USP standard)</li><li>Clinically-studied 40:1 ratio</li><li>Made sustainably in the USA</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
             "page": "",
             "custom_liquid": ""
@@ -202,6 +212,7 @@
         "buy_buttons_3FBywE",
         "custom_liquid_ExQ6qT",
         "collapsible_tab_zkXkR7",
+        "collapsible_tab_KVBdNK",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
         "collapsible_tab_RaXCmL"
@@ -259,7 +270,7 @@
         "promotion_44jRUz"
       ],
       "custom_css": [
-        "h6 {font-size:15px; line-height:1.3em}"
+        "h6 {font-size: 15px; line-height: 1.3em;}"
       ],
       "settings": {
         "mobile_swipe": false,
