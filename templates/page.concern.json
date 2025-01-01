@@ -17,93 +17,111 @@
     "rich_text_YUNjJ8": {
       "type": "rich-text",
       "blocks": {
-        "custom_liquid_bGTMBH": {
-          "type": "custom_liquid",
+        "heading_6mnFwk": {
+          "type": "heading",
           "settings": {
-            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-bottom: 40px;\">Bodology™ <em>Reviews</em>\n</div>"
-          }
-        },
-        "text_nePwJg": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Discover how Bodology is changing the conversation on hormones, mood, and metabolism</p>",
-            "custom_liquid": "",
-            "size": "text-size-regular"
+            "text": "Select your key |concern:|",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#FD6262"
           }
         }
       },
       "block_order": [
-        "custom_liquid_bGTMBH",
-        "text_nePwJg"
+        "heading_6mnFwk"
       ],
       "settings": {
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#f9f9f9",
+        "color_bg": "#ffffff",
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
-    "1728927113bb2612d3": {
-      "type": "apps",
+    "carousel_boxes_jas_A6tCYG": {
+      "type": "Carousel-Boxes-Jas",
       "blocks": {
-        "junip_product_reviews_ugc_junip_review_carousel_REghE4": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
-          "disabled": true,
+        "box_bmGJCq": {
+          "type": "box",
           "settings": {
-            "reviewsType": "product_reviews",
-            "product": "",
-            "showSummary": true,
-            "title": "Reviews",
-            "paddingTop": 48,
-            "paddingBottom": 48,
-            "containerClass": ""
+            "image": "shopify://shop_images/Bodology_Inositol_Results_Smile.png",
+            "image_link": "",
+            "open": false,
+            "heading": "<p>PCOS</p>",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/pcos",
+            "use_text_button": false,
+            "block_link": "shopify://pages/pcos"
           }
         },
-        "junip_product_reviews_ugc_junip_reviews_8WBcAN": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+        "box_c4gAVy": {
+          "type": "box",
           "settings": {
-            "layout": "list",
-            "reviewsType": "product_reviews",
-            "showSummary": true,
-            "reviewsCount": 10,
-            "containerClass": ""
+            "image": "shopify://shop_images/Bodology_Inositol_Fertility_Hormones.jpg",
+            "image_link": "",
+            "open": false,
+            "heading": "<p>Hormones</p>",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/hormones",
+            "use_text_button": false,
+            "block_link": "shopify://pages/hormones"
+          }
+        },
+        "box_TfeUFK": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_for_Fertility_2.jpg",
+            "image_link": "",
+            "open": false,
+            "heading": "<p>Fertility</p>",
+            "text": "",
+            "link_label": "",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_NPgdtg": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_for_Mood_2.jpg",
+            "image_link": "",
+            "open": false,
+            "heading": "<p>Anxiety</p>",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/anxiety",
+            "use_text_button": false,
+            "block_link": "shopify://pages/anxiety"
           }
         }
       },
       "block_order": [
-        "junip_product_reviews_ugc_junip_review_carousel_REghE4",
-        "junip_product_reviews_ugc_junip_reviews_8WBcAN"
-      ],
-      "settings": {}
-    },
-    "rich_text_AnwrzA": {
-      "type": "rich-text",
-      "blocks": {
-        "text_nQ4gNy": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Disclaimer: These reviews reflect individual experiences and results may vary. Bodology products are not intended to diagnose, treat, cure, or prevent any disease. Always consult with a healthcare professional before starting any new supplement regimen.</p>",
-            "custom_liquid": "",
-            "size": "text-size-small"
-          }
-        }
-      },
-      "block_order": [
-        "text_nQ4gNy"
+        "box_bmGJCq",
+        "box_c4gAVy",
+        "box_TfeUFK",
+        "box_NPgdtg"
       ],
       "settings": {
-        "text_width": "large",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#f9f9f9",
-        "color_heading": "#1B3DEF",
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 4,
+        "column_spacing": "medium",
+        "image_ratio": "adapt",
+        "mobile_swipe": true,
+        "text_alignment": "left",
+        "color_bg": "#ffffff",
+        "color_heading": "#1b3def",
+        "marker_color": "#FD6262",
         "color_text": "#1b3def",
-        "color_links": "#1b3def",
+        "color_link": "#3f72e5",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -112,7 +130,6 @@
   "order": [
     "main",
     "rich_text_YUNjJ8",
-    "1728927113bb2612d3",
-    "rich_text_AnwrzA"
+    "carousel_boxes_jas_A6tCYG"
   ]
 }
