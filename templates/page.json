@@ -12,8 +12,7 @@
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "rich_text_YUNjJ8": {
       "type": "rich-text",
@@ -21,15 +20,15 @@
         "custom_liquid_bGTMBH": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-bottom: 40px;\">Bodology™ <em>Reviews</em>\n</div>"
+            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-bottom: 40px;\"><em>Simple science,<br>real results</em>\n</div>"
           }
         },
         "text_nePwJg": {
           "type": "text",
           "settings": {
-            "text": "<p>Discover how Bodology is changing the conversation on hormones, mood, and metabolism</p>",
+            "text": "<p>Real reviews and experiences from our community.</p>",
             "custom_liquid": "",
-            "size": "text-size-regular"
+            "size": "text-size-small"
           }
         }
       },
@@ -80,8 +79,7 @@
         "junip_product_reviews_ugc_junip_review_carousel_REghE4",
         "junip_product_reviews_ugc_junip_reviews_8WBcAN"
       ],
-      "settings": {
-      }
+      "settings": {}
     },
     "rich_text_AnwrzA": {
       "type": "rich-text",
