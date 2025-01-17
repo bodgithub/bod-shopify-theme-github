@@ -250,7 +250,7 @@
           "type": "promotion",
           "settings": {
             "image": "shopify://shop_images/Bodology-Inositol-for-Fertility-4.jpg",
-            "title": "{{ page.metafields.custom.problem_category.value.promo.value.promo | metafield_tag }}",
+            "title": "<p>{{ page.metafields.custom.problem_category.value.promo.value.promo | metafield_tag }}</p>",
             "button_text": "",
             "button_link": ""
           }
@@ -653,6 +653,15 @@
             "page": ""
           }
         },
+        "collapsible_tab_M6bwYq": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How much should I take?",
+            "open": false,
+            "content": "<p>The recommended dosage is 2 scoops (4g) daily. Or as advised by your healthcare provider. Always consult a professional before starting any new supplement regimen.</p>",
+            "page": ""
+          }
+        },
         "collapsible_tab_rFXTj6": {
           "type": "collapsible_tab",
           "settings": {
@@ -715,27 +724,18 @@
             "content": "<p>Yes, inositol can benefit various aspects of metabolic and hormonal health beyond PCOS, including mood support and general wellness. Many of our satisfied customers without PCOS swear by inositol as part of their daily health routine.</p>",
             "page": ""
           }
-        },
-        "collapsible_tab_M6bwYq": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "How much should I take?",
-            "open": false,
-            "content": "<p>The recommended dosage is 2 scoops (4g) daily. Or as advised by your healthcare provider. Always consult a professional before starting any new supplement regimen.</p>",
-            "page": ""
-          }
         }
       },
       "block_order": [
         "collapsible_tab_FKCPCx",
+        "collapsible_tab_M6bwYq",
         "collapsible_tab_rFXTj6",
         "collapsible_tab_JCak74",
         "collapsible_tab_cpaVif",
         "collapsible_tab_PjbiRr",
         "collapsible_tab_qCXLWp",
         "collapsible_tab_x7zeqp",
-        "collapsible_tab_c934zC",
-        "collapsible_tab_M6bwYq"
+        "collapsible_tab_c934zC"
       ],
       "settings": {
         "heading": "<h1>Get <em>answers</em></h1>",
