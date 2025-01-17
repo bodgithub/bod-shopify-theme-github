@@ -697,24 +697,54 @@
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
+        "quote_yTBQQm": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Ewa.png",
+            "stars": "5",
+            "quote": "<p>\"It’s helped stabilise my insulin levels, improved my energy throughout the day and eased several of my PCOS symptoms.\"</p>",
+            "name": "Ewa S.",
+            "expert-title": "PCOS symptoms"
+          }
+        },
+        "quote_rxzPR7": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Jade.png",
+            "stars": "5",
+            "quote": "<p>\"I would crave sweets throughout the day but this has stopped!\"</p>",
+            "name": "Jade M.",
+            "expert-title": "Cravings"
+          }
+        },
+        "quote_mCAKwc": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Lizzie.png",
+            "stars": "5",
+            "quote": "<p>\"It’s supported my hormones while coming off the pill and helped ease my mood and food cravings.\"</p>",
+            "name": "Lizzie H.",
+            "expert-title": "Hormone balance"
+          }
+        },
+        "quote_F4FmYY": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Bonnie.png",
+            "stars": "5",
+            "quote": "<p>\"I’m waking up a lot less, and falling asleep much easier. I’d also say I generally feel much calmer and focused for the whole day.\"</p>",
+            "name": "Bonnie H.",
+            "expert-title": "Sleep & mood"
+          }
+        },
         "quote_CUpFMh": {
           "type": "quote",
           "settings": {
             "image": "shopify://shop_images/Bodology_Hero_Product.png",
             "stars": "5",
-            "quote": "<p> Lost 10 pounds so far & has regulated my cycle!</p>",
+            "quote": "<p>\"Lost 10 pounds so far & has regulated my cycle!\"</p>",
             "name": "Irina J.",
             "expert-title": "Cycle regularity"
-          }
-        },
-        "quote_4P8HUh": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Bodology_Hero_Product.png",
-            "stars": "5",
-            "quote": "<p>\"I've stopped stress eating! This powder has helped me manage my appetite naturally.\"</p>",
-            "name": "Jade M.",
-            "expert-title": "Craving control"
           }
         },
         "quote_ExXWHa": {
@@ -759,8 +789,11 @@
         }
       },
       "block_order": [
+        "quote_yTBQQm",
+        "quote_rxzPR7",
+        "quote_mCAKwc",
+        "quote_F4FmYY",
         "quote_CUpFMh",
-        "quote_4P8HUh",
         "quote_ExXWHa",
         "quote_XCWEri",
         "quote_AWzBKN",
