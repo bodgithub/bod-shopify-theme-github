@@ -477,22 +477,10 @@ border-radius:20px;
   max-height: 280px;
 }
 
-.mobile-only-TOC {
-  display: none;
-  }
 
-  @media (max-width: 900px) {
-    .mobile-only-TOC {
-      display: block;
-      padding: 0 20px 10px 20px;
-    }
-    .author-container {
-      margin-left:0px;
-    }
-  }
 
 .desktop-only-TOC {
-    display: none; /* Hide by default */
+
   }
 
   @media (min-width: 901px) {
