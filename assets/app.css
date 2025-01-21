@@ -4262,5 +4262,14 @@ h2 {
     visibility: visible;
     opacity: 1;
 }
+.desktop-only {
+  display: none; /* Hidden by default */
+}
+
+@media only screen and (min-width: 1068px) {
+  .desktop-only {
+    display: inline-block; /* Visible only on desktop screens */
+  }
+}
 
 
