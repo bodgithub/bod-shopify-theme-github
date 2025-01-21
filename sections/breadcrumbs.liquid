@@ -1,3 +1,4 @@
+{% unless template contains 'blog' or template contains 'article' %}
 {{- 'breadcrumbs.css' | asset_url | stylesheet_tag -}}
 <div class="row">
 	<div class="small-12 columns">
@@ -57,6 +58,8 @@
 		</scroll-shadow>
 	</div>
 </div>
+  {% endunless %}
+
 {% schema %}
 {
 	"name": "Breadcrumbs",
