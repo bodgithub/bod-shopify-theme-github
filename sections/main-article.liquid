@@ -136,8 +136,8 @@
                 {% endif %}
               </div>
               {% endif %}
-              <h1 class="entry-title h1">{{ article.title }} {{ section.settings.article_show_date }}</h1>
-              
+              <h1 class="entry-title h1">{{ article.title }}</h1>
+              <h6>{{ article.published_at | date: "%B %d, %Y" }}</h6>
               {%- liquid
                 if article_show_sharing
                   render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.featured_image
