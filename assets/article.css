@@ -422,7 +422,7 @@ max-width:100%}
   text-decoration: underline;
 }
 blog-post-detail--wrapper section-spacing-bottom .small-9 .columns {
-   flex: 0 0 65% !important; 
+   max-width: 65% !important; 
   }
 
 /* Responsive Styling for Mobile */
