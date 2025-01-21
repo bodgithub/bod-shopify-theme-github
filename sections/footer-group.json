@@ -54,21 +54,15 @@
             "text": "<p>Join Our Newsletter</p>"
           }
         },
-        "ebdaaa5c-c47c-42ac-a830-30a799694755": {
-          "type": "text",
+        "custom_liquid_X4RePC": {
+          "type": "custom_liquid",
           "settings": {
             "column_size": "large",
-            "text_alignment": "center",
             "title": "",
-            "image": "shopify://shop_images/Bodology_Logo_White_1080px.png",
-            "text": "",
-            "text_size": "medium",
-            "button_text": "",
-            "button_link": "",
-            "show_social_links": false
+            "custom_liquid": "<div style=\"margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; overflow: hidden;\">\n    <div style=\"width: 100%; overflow: hidden;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Bodology_Logo_White_1080px.png?v=1722097409\" \n            alt=\"Bodology Logo\" \n            style=\"width: 100%; display: block; margin: 0 auto; position: relative;\">\n    </div>\n</div>"
           }
         },
-        "custom_liquid_X4RePC": {
+        "custom_liquid_p7PPRc": {
           "type": "custom_liquid",
           "settings": {
             "column_size": "large",
@@ -99,8 +93,8 @@
         "055d0c35-3f11-4f51-9e3d-eab55edb7a9b",
         "menu_fNNAW6",
         "2ab8345e-9f63-4c80-b028-f4edae3633b5",
-        "ebdaaa5c-c47c-42ac-a830-30a799694755",
         "custom_liquid_X4RePC",
+        "custom_liquid_p7PPRc",
         "social_pXyayX",
         "custom_liquid_FfEnxe"
       ],
