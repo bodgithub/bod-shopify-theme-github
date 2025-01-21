@@ -118,7 +118,11 @@ margin-left:5px;}
  
   max-height:500px;
   display: flex;
-  position: relative;}
+  position: relative;
+align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+justify-content:center;}
   @media only screen and (min-width: 768px) {
     .blog-post-detail .featured-image {
       /*display:none;*/
@@ -421,9 +425,7 @@ max-width:100%}
 .table-of-contents a:hover {
   text-decoration: underline;
 }
-blog-post-detail--wrapper section-spacing-bottom .small-9 .columns {
-   max-width: 65% !important; 
-  }
+
 
 /* Responsive Styling for Mobile */
 @media (max-width: 900px) {
