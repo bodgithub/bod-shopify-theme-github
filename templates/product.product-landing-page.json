@@ -64,6 +64,7 @@
         "button_rBDtc7",
         "benefits_MfjQJR"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "image": "{{ product.metafields.custom.problem_category.value.hero_banner_desktop.value }}",
@@ -133,7 +134,8 @@
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": false
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
         "custom_liquid_ExQ6qT": {
@@ -208,6 +210,7 @@
         "collapsible_tab_RaXCmL"
       ],
       "settings": {
+        "enable_sticky_add_to_cart": true,
         "show_taxes_included": false,
         "thumbnail_position": "left",
         "media_aspect_ratio": "square",
