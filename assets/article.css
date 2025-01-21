@@ -117,12 +117,14 @@ margin-left:5px;}
 .blog-post-detail .featured-image {
   width: 100%;
   display: flex;
-  justify-content: center;
+  
   position: relative;}
   @media only screen and (min-width: 768px) {
     .blog-post-detail .featured-image {
       /*display:none;*/
       width: 100%; } }
+
+.featured-image img { border-radius:20px; justify-content: center;}
 
 .blog-post-detail .post-content {
   margin-bottom: 30px; }
