@@ -120,6 +120,18 @@
             "custom_liquid": "<div id=\"product-details\"><h6>\nPure, unflavored inositol powder in the body's optimal 40:1 ratio of myo-inositol to d-chiro-inositol. Scientifically formulated to support hormonal balance, metabolic health, and insulin sensitivity.*\n\n<br><br><b>\n\n100+ studies support inositol's role in supporting cycle regularity, PCOS symptoms, fertility, mood balance, and healthy BMI.* \n</b></h6><br></div>"
           }
         },
+        "buy_buttons_3FBywE": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        },
+        "custom_liquid_W6kXnM": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:25px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 16px; margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:25px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 16px; margin-right: 8px;\">\n        <span>Free shipping, always</span>\n    </div>"
+          }
+        },
         "side_panel_NGJTtJ": {
           "type": "side_panel",
           "settings": {
@@ -136,13 +148,8 @@
         },
         "quantity_RyV4rX": {
           "type": "quantity",
+          "disabled": true,
           "settings": {}
-        },
-        "buy_buttons_3FBywE": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false
-          }
         },
         "custom_liquid_ExQ6qT": {
           "type": "custom_liquid",
@@ -166,7 +173,7 @@
           "settings": {
             "heading": "Details",
             "open": false,
-            "content": "<p>Myo-Inositol, D-Chiro-Inositol</p><ul><li>100% pure formula - no fillers or additives </li><li>Easy-mixing, unflavored powder</li></ul>",            "content": "<ul><li>3rd party tested to Meet USP-Grade Purity Standards</li><li>Clinically-studied 40:1 ratio</li><li>Made sustainably in the USA</li><li>Manufactured in FDA-registered facilities</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
+            "content": "<ul><li>3rd party tested to Meet USP-Grade Purity Standards</li><li>Clinically-studied 40:1 ratio</li><li>Made sustainably in the USA</li><li>Manufactured in FDA-registered facilities</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
             "page": "",
             "custom_liquid": ""
           }
@@ -207,9 +214,10 @@
         "text_RWyfgB",
         "title_ExCfKU",
         "custom_liquid_qLxheX",
+        "buy_buttons_3FBywE",
+        "custom_liquid_W6kXnM",
         "side_panel_NGJTtJ",
         "quantity_RyV4rX",
-        "buy_buttons_3FBywE",
         "custom_liquid_ExQ6qT",
         "collapsible_tab_zkXkR7",
         "collapsible_tab_KVBdNK",
