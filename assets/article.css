@@ -421,6 +421,9 @@ max-width:100%}
 .table-of-contents a:hover {
   text-decoration: underline;
 }
+.blog-post-detail .small-9 {
+   flex: 0 0 65% !important; 
+  }
 
 /* Responsive Styling for Mobile */
 @media (max-width: 900px) {
