@@ -124,7 +124,7 @@ margin-left:5px;}
       /*display:none;*/
       } }
 
-.featured-image img { border-radius:20px; justify-content: center;}
+.featured-image img { border-radius:20px; justify-content: center; width:100%; height:100%;}
 
 .blog-post-detail .post-content {
   margin-bottom: 30px; }
