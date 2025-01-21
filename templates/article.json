@@ -13,55 +13,13 @@
       "type": "breadcrumbs",
       "settings": {}
     },
-    "image_with_text_overlay_n9ynUb": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "heading_neLhdg": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ article.title }}",
-            "heading_size": "h1-large"
-          }
-        },
-        "benefits_cw63wQ": {
-          "type": "benefits",
-          "disabled": true,
-          "settings": {
-            "benefits-title": "",
-            "icon_size": 54,
-            "border_size": 1,
-            "border_color": "#1b3def",
-            "benefit_1": "Written by {{ article.metafields.custom.blogauthor.value.short_name.value }} | Published {{ article.metafields.custom.date | metafield_text }}",
-            "icon_1": "{{ article.metafields.custom.blogauthor.value.image_logo.value }}",
-            "benefit_2": "",
-            "benefit_3": "",
-            "benefit_4": "",
-            "benefit_5": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_neLhdg",
-        "benefits_cw63wQ"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".image-with-text-overlay {box-shadow: none;}",
-        "@media only screen and (min-width: 768px) {.desktop-height-450 {min-height: 250px;}"
-      ],
+    "spacer_r9iype": {
+      "type": "spacer",
       "settings": {
-        "image_parallax": false,
-        "desktop_height": "desktop-height-450",
-        "mobile_height": "mobile-height-auto",
-        "full_width": true,
-        "content_width": "large",
-        "content_position": "middle-center",
-        "text_alignment": "left",
-        "text_color": "#1b3def",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 100,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
+        "spacer_mobile": 55,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
       }
     },
     "main-article": {
@@ -100,7 +58,7 @@
   },
   "order": [
     "breadcrumbs",
-    "image_with_text_overlay_n9ynUb",
+    "spacer_r9iype",
     "main-article"
   ]
 }
