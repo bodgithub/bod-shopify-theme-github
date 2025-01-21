@@ -716,16 +716,6 @@
     "image_with_text_r96Axa": {
       "type": "image-with-text",
       "blocks": {
-        "heading_rjkAPY": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "text": "The inositol solution",
-            "marker_style": "style1",
-            "heading_size": "h1",
-            "marker_color": "#ffffff"
-          }
-        },
         "text_eeg3Xh": {
           "type": "text",
           "settings": {
@@ -805,7 +795,6 @@
         }
       },
       "block_order": [
-        "heading_rjkAPY",
         "text_eeg3Xh",
         "image_gddwin",
         "collapsible_tab_XCi3Ld",
