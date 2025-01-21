@@ -97,7 +97,7 @@ margin-left:5px;}
     @media only screen and (min-width: 768px) {
       .blog-post-detail .post-title-wrapper--has-img-true {
         flex-direction: column;
-        margin-bottom: 0px; } }
+        margin-bottom: 20px; } }
     .blog-post-detail .post-title-wrapper--has-img-true .post-title {
       margin: 0; }
   .blog-post-detail .post-title-wrapper--has-img-false {
@@ -118,8 +118,7 @@ margin-left:5px;}
  
   max-height:500px;
   display: flex;
-  position: relative;
-margin-bottom:20px;}
+  position: relative;}
   @media only screen and (min-width: 768px) {
     .blog-post-detail .featured-image {
       /*display:none;*/
