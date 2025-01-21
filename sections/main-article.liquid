@@ -136,8 +136,9 @@
                 {% endif %}
               </div>
               {% endif %}
+           <div class="author-title" style="padding-bottom:10px;">Published: {{ article.published_at | date: "%m/%d/%Y" }}</div>
+
               <h1 class="entry-title h1">{{ article.title }}</h1>
-              <div class="author-title" style="padding-bottom:10px;">Published:{{ article.published_at | date: "%m/%d/%Y" }}</div>
               {%- liquid
                 if article_show_sharing
                   render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.featured_image
