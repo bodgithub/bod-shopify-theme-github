@@ -13,13 +13,18 @@
       "type": "breadcrumbs",
       "settings": {}
     },
+    "spacer_6KU3qX": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 5,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "main-product": {
       "type": "main-product",
       "blocks": {
-        "text_6AkKDh": {
-          "type": "text",
-          "settings": {}
-        },
         "title_ExCfKU": {
           "type": "title",
           "settings": {
@@ -53,7 +58,8 @@
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": false
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
         "custom_liquid_ExQ6qT": {
@@ -133,8 +139,8 @@
       "settings": {
         "enable_sticky_add_to_cart": true,
         "show_taxes_included": false,
-        "thumbnail_position": "left",
-        "media_aspect_ratio": "portrait",
+        "thumbnail_position": "bottom",
+        "media_aspect_ratio": "square",
         "display_captions": false,
         "hide_variants": false,
         "lightbox": true,
@@ -156,6 +162,7 @@
   },
   "order": [
     "breadcrumbs",
+    "spacer_6KU3qX",
     "main-product",
     "product-recommendations"
   ]
