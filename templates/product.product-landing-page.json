@@ -18,42 +18,114 @@
       "blocks": {
         "text_6AkKDh": {
           "type": "text",
+          "settings": {}
+        },
+        "title_ExCfKU": {
+          "type": "title",
           "settings": {
-            "text": "<h1>Metabolic Health Protocol<br/><em><strong>—</strong></em><em>for </em> <em>Hormones</em></h1>",
-            "text_style": "style_vendor"
+            "show_products_rating": true
           }
         },
-        "text_wPhDft": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Transform Your Hormonal Health: <strong><br/>Free Expert Guide</strong></p>",
-            "text_style": "style_vendor"
-          }
-        },
-        "custom_liquid_f3BGqg": {
+        "custom_liquid_qLxheX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-SLFATQ\"></div>"
+            "custom_liquid": "<div id=\"product-details\"><h6>Unlock your metabolic health with Bodology™ Inositol, a natural micronutrient powder that works through metabolic pathways to support hormones, mood and metabolism.\n\n<br><br>Inositol is backed by 100+ studies to support regular cycles, PCOS, fertility, mood and weight management.</h6><br></div>"
           }
         },
-        "title": {
-          "type": "title",
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Detailed Benefits",
+            "side_panel_1_icon": "question_mark",
+            "side_panel_1_page": "detailed-benefits",
+            "side_panel_2_label": "Returns + Shipping",
+            "side_panel_2_icon": "return",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "Free Delivery on all orders",
+            "side_panel_3_icon": "box",
+            "side_panel_3_page": "shipping-returns"
+          }
+        },
+        "quantity_RyV4rX": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "buy_buttons_3FBywE": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        },
+        "custom_liquid_ExQ6qT": {
+          "type": "custom_liquid",
           "disabled": true,
           "settings": {
-            "show_products_rating": false
+            "custom_liquid": "<div style=\"padding:30px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>Pre-Order Promo</em></h3><h5>Pre-order now and get a<b> 17% lifetime discount</b><em>*</em></h5><h6>Your code will automatically apply at checkout. Orders arrive within 3-6 weeks.</h6></div>"
           }
         },
-        "0b3e272b-c86a-4dba-946c-c6912251371c": {
-          "type": "description",
-          "settings": {}
+        "collapsible_tab_zkXkR7": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "When will I get my pre-order?",
+            "open": false,
+            "content": "<p>Your pre-order will be amongst the first to ship in January 2024. You'll get tracking details the moment your order ships.</p><p>Need to cancel at any point? Simply email <a href=\"mailto:support@bodology.co\" target=\"_blank\" title=\"mailto:support@bodology.co\">support@bodology.co</a> anytime and we'll process your full cancellation – no fees, no questions asked.</p><p><em>Disclaimer: Shipping timeline may be subject to change. We'll keep you updated via email.</em></p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_KVBdNK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "open": false,
+            "content": "<ul><li>3rd party tested for purity & potency (USP standard)</li><li>Clinically-studied 40:1 ratio</li><li>Made sustainably in the USA</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_BEQc3p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "open": false,
+            "content": "<p>Bodology™ Myo-Inositol, D-Chiro-Inositol</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_Qq4nP6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The \"NO\" List",
+            "open": false,
+            "content": "<ul><li>No fillers</li><li>No gluten</li><li>No flavoring</li><li>No animal ingredients</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_RaXCmL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Certifications",
+            "open": false,
+            "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metals, Contaminants and Microbiological Analysis by 3rd Party Laboratories</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
         }
       },
       "block_order": [
-        "text_6AkKDh",
-        "text_wPhDft",
-        "custom_liquid_f3BGqg",
-        "title",
-        "0b3e272b-c86a-4dba-946c-c6912251371c"
+        "title_ExCfKU",
+        "custom_liquid_qLxheX",
+        "side_panel_NGJTtJ",
+        "quantity_RyV4rX",
+        "buy_buttons_3FBywE",
+        "custom_liquid_ExQ6qT",
+        "collapsible_tab_zkXkR7",
+        "collapsible_tab_KVBdNK",
+        "collapsible_tab_BEQc3p",
+        "collapsible_tab_Qq4nP6",
+        "collapsible_tab_RaXCmL"
       ],
       "custom_css": [
         ".shopify-installments,.shopify-installments__content {display: none !important;}"
