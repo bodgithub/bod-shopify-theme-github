@@ -116,9 +116,10 @@ margin-left:5px;}
 
 .blog-post-detail .featured-image {
   width: 100%;
-  
-  justify-content: center; /* Align horizontally */
-  align-items: center; /* Align vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  position: relative;
 max-height:500px;}
   @media only screen and (min-width: 768px) {
     .blog-post-detail .featured-image {
