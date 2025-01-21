@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_YUNjJ8": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_liquid_bGTMBH": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-bottom: 40px;\"><em>Simple science,<br>real results</em>\n</div>"
+          }
+        },
+        "text_nePwJg": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Real reviews and experiences from our community.</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_bGTMBH",
+        "text_nePwJg"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#f9f9f9",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "1728927113bb2612d3": {
+      "type": "apps",
+      "blocks": {
+        "junip_product_reviews_ugc_junip_review_carousel_REghE4": {
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "disabled": true,
+          "settings": {
+            "reviewsType": "product_reviews",
+            "product": "",
+            "showSummary": true,
+            "title": "Reviews",
+            "paddingTop": 48,
+            "paddingBottom": 48,
+            "containerClass": ""
+          }
+        },
+        "junip_product_reviews_ugc_junip_reviews_8WBcAN": {
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "layout": "list",
+            "reviewsType": "product_reviews",
+            "showSummary": true,
+            "reviewsCount": 10,
+            "containerClass": ""
+          }
+        }
+      },
+      "block_order": [
+        "junip_product_reviews_ugc_junip_review_carousel_REghE4",
+        "junip_product_reviews_ugc_junip_reviews_8WBcAN"
+      ],
+      "settings": {}
+    },
+    "rich_text_AnwrzA": {
+      "type": "rich-text",
+      "blocks": {
+        "text_nQ4gNy": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Disclaimer: </strong>These reviews reflect individual experiences and results may vary. Bodology products are not intended to diagnose, treat, cure, or prevent any disease. Always consult with a healthcare professional before starting any new supplement regimen.</p>",
+            "custom_liquid": "",
+            "size": "text-size-small"
+          }
+        }
+      },
+      "block_order": [
+        "text_nQ4gNy"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "color_heading": "#1B3DEF",
+        "color_text": "#777777",
+        "color_links": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_YUNjJ8",
+    "1728927113bb2612d3",
+    "rich_text_AnwrzA"
+  ]
+}
