@@ -25,7 +25,8 @@
 .breadcrumbs-section + .page-header-section .page-header {
   padding-top: 10px; }
 
-breadcrumbs-section: {display:none; visibility: hidden; }
+.breadcrumbs-section: {display:none; visibility: hidden; 
+                     }
 .page-header {
   padding: 25px 0; }
   .page-header h1 {
