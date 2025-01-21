@@ -203,7 +203,77 @@
 
 
     
+"spacer_iGd9ka": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 80,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
 
+    
+    "multicolumn_QQjdQM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_wbzkNR": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "{{ product.metafields.custom.problem_category.value.aha_title | metafield_tag }}",
+            "link_label": "",
+            "link": ""
+          }
+        },
+
+        
+        "column_dUeaGh": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_wbzkNR",
+        "column_dUeaGh"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
+        ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "data-tooltip": "",
+        "data-tooltip3": "Did you know?",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+
+
+
+
+    
 
 
 
@@ -228,6 +298,10 @@
     "main-product",
     "spacer_VWaT3c",
     "promotion_blocks_FLbKam",
+    "spacer_iGd9ka",
+    "multicolumn_QQjdQM",
+   
+    
     
     "product-recommendations"
   ]
