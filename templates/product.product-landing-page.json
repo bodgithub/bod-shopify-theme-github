@@ -113,6 +113,31 @@
             "custom_liquid": "<div id=\"product-details\"><h6>\nPure, unflavored inositol powder in the body's optimal 40:1 ratio of myo-inositol to d-chiro-inositol. Scientifically formulated to support hormonal balance, metabolic health, and insulin sensitivity.*\n\n<br><br><b>\n\n100+ studies support inositol's role in supporting cycle regularity, PCOS symptoms, fertility, mood balance, and healthy BMI.* \n</b></h6><br></div>"
           }
         },
+        "quantity_RyV4rX": {
+          "type": "quantity",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons_3FBywE": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_Aai6fh": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, always</span>\n    </div>"
+          }
+        },
+        "custom_liquid_ExQ6qT": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"padding:30px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>Pre-Order Promo</em></h3><h5>Pre-order now and get a<b> 17% lifetime discount</b><em>*</em></h5><h6>Your code will automatically apply at checkout. Orders arrive within 3-6 weeks.</h6></div>"
+          }
+        },
         "side_panel_NGJTtJ": {
           "type": "side_panel",
           "settings": {
@@ -125,24 +150,6 @@
             "side_panel_3_label": "Free Delivery on all orders",
             "side_panel_3_icon": "box",
             "side_panel_3_page": "shipping-returns"
-          }
-        },
-        "quantity_RyV4rX": {
-          "type": "quantity",
-          "settings": {}
-        },
-        "buy_buttons_3FBywE": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "custom_liquid_ExQ6qT": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div style=\"padding:30px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>Pre-Order Promo</em></h3><h5>Pre-order now and get a<b> 17% lifetime discount</b><em>*</em></h5><h6>Your code will automatically apply at checkout. Orders arrive within 3-6 weeks.</h6></div>"
           }
         },
         "collapsible_tab_zkXkR7": {
@@ -170,7 +177,7 @@
           "settings": {
             "heading": "Ingredients",
             "open": false,
-            "content": "<p><b>Myo-Inositol, D-Chiro-Inositol</b></p><ul><li>100% pure formula - no fillers or additives </li><li>Easy-mixing, unflavored powder</li></ul>",
+            "content": "<p><strong>Myo-Inositol, D-Chiro-Inositol</strong></p><ul><li>100% pure formula - no fillers or additives </li><li>Easy-mixing, unflavored powder</li></ul>",
             "page": "",
             "custom_liquid": ""
           }
@@ -199,10 +206,11 @@
       "block_order": [
         "title_ExCfKU",
         "custom_liquid_qLxheX",
-        "side_panel_NGJTtJ",
         "quantity_RyV4rX",
         "buy_buttons_3FBywE",
+        "custom_liquid_Aai6fh",
         "custom_liquid_ExQ6qT",
+        "side_panel_NGJTtJ",
         "collapsible_tab_zkXkR7",
         "collapsible_tab_KVBdNK",
         "collapsible_tab_BEQc3p",
