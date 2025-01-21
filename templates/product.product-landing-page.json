@@ -156,6 +156,52 @@
         "border_separator_full": false
       }
     },
+
+
+"promotion_blocks_FLbKam": {
+      "type": "promotion-blocks",
+      "blocks": {
+        "promotion_hncWkH": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/Bodology-Inositol-for-Fertility-4.jpg",
+            "title": "<p>{{ product.metafields.custom.problem_category.value.promo.value.promo | metafield_tag }}</p>",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "promotion_44jRUz": {
+          "type": "promotion",
+          "settings": {
+            "image": "shopify://shop_images/BODOLOGY_July_24_7487-Edit.png",
+            "title": "{{ product.metafields.custom.problem_category.value.promo_2.value.promo | metafield_tag }}",
+            "button_text": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "promotion_hncWkH",
+        "promotion_44jRUz"
+      ],
+      "custom_css": [
+        "h6 {font-size: 15px; line-height: 1.3em;}"
+      ],
+      "settings": {
+        "mobile_swipe": false,
+        "image_ratio": "square",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "border_color": "#eaecf6",
+        "color_text": "#1b3def",
+        "color_link": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+
+
+
     
 
 
@@ -181,6 +227,7 @@
     "spacer_6KU3qX",
     "main-product",
     "spacer_VWaT3c",
+    "promotion_blocks_FLbKam",
     
     "product-recommendations"
   ]
