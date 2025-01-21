@@ -485,12 +485,14 @@ border-radius:20px;
 }
 
 .mobile-only-TOC {
-  display: none;
+  display: none !important;
+  visibility: hidden;
   }
 
   @media (max-width: 900px) {
     .mobile-only-TOC {
       display: block;
+      visibility: visible;
       padding: 0 20px 10px 20px;
     }
     .author-container {
