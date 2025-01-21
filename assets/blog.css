@@ -156,4 +156,21 @@
       scroll-snap-stop: always;
       padding: 0; } }
 
+.page-header--tags {
+  display: flex;
+  justify-content: center; /* Centers the content horizontally */
+  align-items: center;    /* Centers the content vertically, if necessary */
+  text-align: center;     /* Ensures the text within tags is centered */
+}
+
+.page-header--tags .blog-header__tags--inner {
+  display: inline-flex;   /* Keeps the tags inline and flexible */
+  gap: 10px;              /* Adds spacing between the tags */
+}
+
+.page-header--tags a {
+  text-decoration: none;  /* Optional: Remove underline for links */
+  padding: 5px 10px;      /* Optional: Add padding around each tag */
+  border-radius: 5px;     /* Optional: Add rounded corners to the tags */
+}
 
