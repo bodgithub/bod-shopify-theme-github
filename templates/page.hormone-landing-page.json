@@ -346,106 +346,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "promotion_blocks_KJhjit": {
-      "type": "promotion-blocks",
-      "blocks": {
-        "promotion_zccQFi": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/icon_cookie.png",
-            "title": "<h4><strong>Support blood sugar levels</strong></h4>",
-            "button_text": "",
-            "button_link": ""
-          }
-        },
-        "promotion_7KWKUC": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/icon_check-circle.png",
-            "title": "<h4><strong>Level mood throughout cycle</strong></h4>",
-            "button_text": "",
-            "button_link": ""
-          }
-        },
-        "promotion_NpHULn": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/certificate.png",
-            "title": "<h4><strong>Used by health experts</strong></h4>",
-            "button_text": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "promotion_zccQFi",
-        "promotion_7KWKUC",
-        "promotion_NpHULn"
-      ],
-      "disabled": true,
-      "settings": {
-        "mobile_swipe": false,
-        "image_ratio": "square",
-        "column_spacing": "small",
-        "color_bg": "#ffffff",
-        "border_color": "#ffffff",
-        "color_text": "#2c2d2e",
-        "color_link": "#3f72e5",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "collapsible_content_wPPR9e": {
-      "type": "collapsible-content",
-      "blocks": {
-        "collapsible_tab_dhDD7f": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Your hormonal imbalance isn't random—it's metabolic",
-            "open": true,
-            "content": "<p>Studies show that insulin resistance disrupts testosterone, estrogen, and cortisol production through direct metabolic pathways. This explains why treating hormones in isolation, without addressing metabolic health, rarely provides lasting results.\"</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_awYWHN": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "87% of Americans have suboptimal metabolic health, and this directly impacts hormonal function. From mood swings, to ovarian cysts and irregular cycles.",
-            "open": false,
-            "content": "<p>GLUT4 is a protein that helps transport glucose into cells. Inositol supports GLUT4 activation, which can improve insulin sensitivity and glucose metabolism.</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_YjJDJN": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "This is why addressing metabolic pathways, not just hormone levels, is crucial for lasting balance.",
-            "open": false,
-            "content": "<p>While inositol is found in some foods, it's challenging to get therapeutic amounts from diet alone. For example, you would need to eat 8 cantaloupe melons daily to match the inositol content in just 2 scoops of our powder. Modern farming practices have also reduced inositol content in many foods.</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_tab_dhDD7f",
-        "collapsible_tab_awYWHN",
-        "collapsible_tab_YjJDJN"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "<h1>How it <em>works</em></h1>",
-        "marker_style": "style1",
-        "description": "",
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "marker_color": "#1b3def",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "color_border": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31": {
       "type": "spacer",
       "settings": {
@@ -1047,8 +947,6 @@
     "promotion_blocks_FLbKam",
     "spacer_iGd9ka",
     "multicolumn_QQjdQM",
-    "promotion_blocks_KJhjit",
-    "collapsible_content_wPPR9e",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "expert_testimonials_KxH7tC",
     "spacer_FzEHUN",
