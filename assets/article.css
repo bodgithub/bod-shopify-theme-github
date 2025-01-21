@@ -81,7 +81,7 @@ margin-left:5px;}
   display:none;}
 
 .blog-post-detail .post-title-wrapper {
-  border-radius: var(--block-border-radius, 16px);
+  /*border-radius: var(--block-border-radius, 16px);*/
   background: var(--color-article-card-bg, #fff);
   display: flex;
   overflow: hidden;
