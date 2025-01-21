@@ -855,8 +855,8 @@ code, .code-inline {
     flex: 0 0 50%;
     max-width: 50%; }
   .footer .small-12 .medium-6 .columns  {
-    flex: 100%;
-    width: 100%; }
+    flex: 100% !important;
+    width: 100% !important; }
   .medium-offset-5 {
     margin-left: 41.66667%; }
   .medium-7 {
