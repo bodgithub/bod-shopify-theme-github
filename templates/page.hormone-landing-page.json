@@ -166,7 +166,7 @@
           "settings": {
             "heading": "Details",
             "open": false,
-            "content": "<p>Myo-Inositol, D-Chiro-Inositol</p><ul><li>100% pure formula - no fillers or additives </li><li>Easy-mixing, unflavored powder</li></ul>",            "content": "<ul><li>3rd party tested to Meet USP-Grade Purity Standards</li><li>Clinically-studied 40:1 ratio</li><li>Made sustainably in the USA</li><li>Manufactured in FDA-registered facilities</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
+            "content": "<ul><li>3rd party tested to Meet USP-Grade Purity Standards</li><li>Clinically-studied 40:1 ratio</li><li>Made sustainably in the USA</li><li>Manufactured in FDA-registered facilities</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
             "page": "",
             "custom_liquid": ""
           }
@@ -236,6 +236,7 @@
     },
     "spacer_VWaT3c": {
       "type": "spacer",
+      "disabled": true,
       "settings": {
         "spacer_mobile": 10,
         "spacer_desktop": 80,
@@ -269,6 +270,7 @@
         "promotion_hncWkH",
         "promotion_44jRUz"
       ],
+      "disabled": true,
       "custom_css": [
         "h6 {font-size: 15px; line-height: 1.3em;}"
       ],
