@@ -105,9 +105,11 @@
 
       <article class="blog-post-detail" id="main-article">
         {% for block in section.blocks %}
-         
+        
             <div class="page-content-width">
-              
+             
+          
+              <div class="desktop-only-TOC">
           {% if block.type == 'title' %}
           {%- liquid
             assign has_image = false
@@ -211,6 +213,7 @@
     </div>
   </div>
 </div>
+      </div>
 <script type="application/ld+json">
   {{ article | structured_data }}
 </script>
