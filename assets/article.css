@@ -492,11 +492,11 @@ border-radius:20px;
   }
 
 .desktop-only-TOC {
-    display: none; /* Hide by default */
-  }
+    display: block; /* Show by default (applies to all screen sizes) */
+}
 
-  @media (min-width: 901px) {
+@media (max-width: 900px) {
     .desktop-only-TOC {
-      display: block; /* Show only on screens wider than 900px */
+        display: none; /* Hide on screens smaller than 901px */
     }
-  }
+}
