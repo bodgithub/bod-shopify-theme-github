@@ -115,14 +115,14 @@ margin-left:5px;}
       margin: 20px auto 0; }
 
 .blog-post-detail .featured-image {
-  width: auto;
+ 
   max-height:500px;
   display: flex;
   position: relative;}
   @media only screen and (min-width: 768px) {
     .blog-post-detail .featured-image {
       /*display:none;*/
-      width: 100%; } }
+      } }
 
 .featured-image img { border-radius:20px; justify-content: center;}
 
