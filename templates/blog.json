@@ -16,40 +16,35 @@
     "rich_text_bUqPyh": {
       "type": "rich-text",
       "blocks": {
-        "custom_liquid_r3WCe7": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<br>"
-          }
-        },
         "custom_liquid_Vq4TUb": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"font-size: 3.2em; font-weight:900; padding:40px;\">Body<em>Talks</em></div>"
+            "custom_liquid": "<div><h3 class=\"h1-xlarge\">Stories and science for women who want <em>answers</em></h3></div>"
           }
         },
-        "subheading_TKb4at": {
-          "type": "subheading",
+        "text_Pq4pdD": {
+          "type": "text",
           "settings": {
-            "text": "(Our Blog)"
+            "text": "<h5>Find answers to your questions on hormones, metabolism, PCOS, fertility, and mood - from experts who get it and women who've been there.</h5>",
+            "custom_liquid": "",
+            "size": "text-size-large"
           }
         }
       },
       "block_order": [
-        "custom_liquid_r3WCe7",
         "custom_liquid_Vq4TUb",
-        "subheading_TKb4at"
+        "text_Pq4pdD"
       ],
-      "disabled": true,
+      "custom_css": [],
       "settings": {
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#f9f9f9",
+        "color_bg": "#ffffff",
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
     },
@@ -62,7 +57,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h1>\n<strong>My body's <em>talking,</em><em></em><br>I'm done <em> ignoring</em></strong>\n</h1>",
+            "text": "<h1><br/><strong>My body's </strong><em><strong>talking,</strong></em><strong><br/>I'm done </strong><em><strong> ignoring</strong></em><br/></h1>",
             "link_label": "",
             "link": ""
           }
@@ -84,58 +79,6 @@
         "column_CreEbF"
       ],
       "disabled": true,
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h5",
-        "color_heading": "#1b3def",
-        "marker_color": "#1b3def",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "multicolumn_XCG4AM": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_iKmifE": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h1><strong>Body</strong><em>Talks</em></h1><h6>(Our blog)</h6>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_6iXq4P": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h6>Empowering your journey to better hormones, mood, metabolism through personal stories and science beyond the 'textbook'.</h6>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_iKmifE",
-        "column_6iXq4P"
-      ],
-      "custom_css": [
-        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}"
-      ],
       "settings": {
         "heading": "",
         "marker_style": "style1",
@@ -199,7 +142,6 @@
     "breadcrumbs",
     "rich_text_bUqPyh",
     "multicolumn_WXydkJ",
-    "multicolumn_XCG4AM",
     "main-blog-header",
     "featured_blog_post_yRMEyK",
     "main-blog"
