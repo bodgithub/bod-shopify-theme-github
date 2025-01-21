@@ -56,6 +56,7 @@
         },
         "ebdaaa5c-c47c-42ac-a830-30a799694755": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "column_size": "large",
             "text_alignment": "left",
@@ -78,6 +79,7 @@
         },
         "social_pXyayX": {
           "type": "social",
+          "disabled": true,
           "settings": {
             "column_size": "small",
             "title": ""
@@ -103,14 +105,16 @@
         "social_pXyayX",
         "custom_liquid_FfEnxe"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".small-12 .medium-6 .columns #disclaimer {flex:100%; max-width:100%;}"
+      ],
       "settings": {
         "footer_reveal_animation": true,
         "copyright_text": "All rights reserved.",
         "show_language_switcher": true,
         "show_currency_switcher": true,
         "show_payment_icons": true,
-        "enable_follow_on_shop": true
+        "enable_follow_on_shop": false
       }
     }
   },
