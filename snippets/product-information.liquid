@@ -320,5 +320,7 @@
 {%- if section.settings.enable_sticky_add_to_cart -%}
 {% render 'product-add-to-cart-sticky', product: product, media: first_image, color_picker: color_picker, picker_type: picker_type, form: form, is_disabled: is_disabled %}
 {%- endif -%}
-
+{% if content_for_header contains 'properties[' %}
+  <script src="{{ 'add-multiple-products-to-cart.js' | asset_url }}"></script>
+{% endif %}
 {{ sizing_popup }}
