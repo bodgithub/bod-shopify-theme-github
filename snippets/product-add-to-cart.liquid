@@ -74,15 +74,9 @@
 									endif
 								endif
 							-%}
-		
-                          
-          
-                          
-                          {{- button_content -}} - <span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
-  <span id="variant-custom-text">
-    {% if product.selected_or_first_available_variant.metafields.custom.reward %}
-      (<span class="tiny-text">{{ product.selected_or_first_available_variant.metafields.custom.reward }}</span>)
-    {% endif %}</span> 
+		{{- button_content -}} - <span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+       <span id="variant-custom-text">{% if product.selected_or_first_available_variant.metafields.custom.reward %}  |  
+      ({{ product.selected_or_first_available_variant.metafields.custom.reward }}){% endif %}</span> 
 
 						</span>
 						<span class="loading-overlay">
@@ -135,36 +129,37 @@
 
 
       <script>
-       document.addEventListener("DOMContentLoaded", function () {
-  const variantSelect = document.getElementById("product-variant-select"); // Replace with your dropdown's ID
-  const variantPrice = document.getElementById("variant-price"); // Price span
-  const variantCustomText = document.getElementById("variant-custom-text"); // Custom text span
+        document.addEventListener("DOMContentLoaded", function () {
+  const variantSelect = document.getElementById("variant-select"); // The variant dropdown
+  const variantPrice = document.getElementById("variant-price"); // The price span on the button
+  const variantCustomText = document.getElementById("variant-custom-text"); // The custom text span on the button
 
   if (variantSelect && variantPrice && variantCustomText) {
     variantSelect.addEventListener("change", function () {
       const selectedOption = this.options[this.selectedIndex];
-      const variantId = selectedOption.value; // Fetch the variant ID
+      const price = selectedOption.getAttribute("data-price");
+      const reward = selectedOption.getAttribute("data-reward");
+      const scoops = selectedOption.getAttribute("data-scoops");
+      const supply = selectedOption.getAttribute("data-supply");
 
-      // Fetch the price and metafields using Shopify's global product object
-      const variant = window.product.variants.find(v => v.id == variantId);
-      if (variant) {
-        // Update the price
+      // Update the price dynamically
+      if (price) {
         variantPrice.textContent = new Intl.NumberFormat("en-US", {
           style: "currency",
           currency: "USD",
-        }).format(variant.price / 100); // Shopify stores prices in cents
-
-        // Update the custom text with the discount (styled as tiny text)
-        const reward = variant.metafields?.custom?.reward || "";
-        if (reward) {
-          variantCustomText.innerHTML = ` (<span class="tiny-text">${reward}</span>)`;
-        } else {
-          variantCustomText.textContent = ""; // Clear if no reward
-        }
+        }).format(price / 100); // Shopify stores prices in cents
       }
+
+      // Update the custom text dynamically
+      if (reward) {
+        variantCustomText.textContent = ` (${reward})`;
+      } else {
+        variantCustomText.textContent = ""; // Clear if no reward
+      }
+
+      
     });
   }
 });
-
 
       </script>
