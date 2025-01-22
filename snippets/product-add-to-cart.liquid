@@ -129,54 +129,35 @@
 
 
       <script>
-       document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", function () {
   const variantSelects = document.querySelector("variant-selects"); // Built-in Shopify variant selector
-  const productPriceContainer = document.getElementById("price-{{ section.id }}"); // Price container
   const addToCartButton = document.getElementById("AddToCart"); // Add to Cart button
+  const variantPrice = document.getElementById("variant-price"); // Price span inside the button
 
-  if (variantSelects && productPriceContainer && addToCartButton) {
+  if (variantSelects && addToCartButton && variantPrice) {
     variantSelects.addEventListener("variantChange", function (event) {
       const selectedVariant = event.detail.variant;
 
       if (selectedVariant) {
-        // Update the price in the product information section
-        productPriceContainer.innerHTML = `
-          <ins><span class="amount">${new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-          }).format(selectedVariant.price / 100)}</span></ins>
-        `;
+        // Update the button text with the variant price
+        const formattedPrice = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+        }).format(selectedVariant.price / 100); // Shopify stores prices in cents
 
-        // Update the Add to Cart button
-        addToCartButton.textContent = selectedVariant.available
-          ? `Add to Cart | ${new Intl.NumberFormat("en-US", {
-              style: "currency",
-              currency: "USD",
-            }).format(selectedVariant.price / 100)}`
-          : "Sold Out";
-        addToCartButton.disabled = !selectedVariant.available;
+        addToCartButton.disabled = !selectedVariant.available; // Enable/disable based on availability
 
-        // Handle compare_at_price
-        if (selectedVariant.compare_at_price > selectedVariant.price) {
-          productPriceContainer.innerHTML = `
-            <del>
-              <span class="amount">${new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-              }).format(selectedVariant.compare_at_price / 100)}</span>
-            </del>
-            <ins>
-              <span class="amount">${new Intl.NumberFormat("en-US", {
-                style: "currency",
-                currency: "USD",
-              }).format(selectedVariant.price / 100)}</span>
-            </ins>
-          `;
+        // Update button text
+        if (selectedVariant.available) {
+          addToCartButton.innerHTML = `Add to Cart | <span id="variant-price">${formattedPrice}</span>`;
+        } else {
+          addToCartButton.innerHTML = "Sold Out";
         }
       }
     });
   }
 });
+
 
 
       </script>
