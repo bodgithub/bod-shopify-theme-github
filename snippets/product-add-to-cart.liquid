@@ -116,3 +116,48 @@
 </pickup-availability>
 <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
+
+
+
+
+
+
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+  const variantSelect = document.getElementById("variant-select"); // The variant dropdown
+  const variantPrice = document.getElementById("variant-price"); // The price span on the button
+  const variantCustomText = document.getElementById("variant-custom-text"); // The custom text span on the button
+
+  if (variantSelect && variantPrice && variantCustomText) {
+    variantSelect.addEventListener("change", function () {
+      const selectedOption = this.options[this.selectedIndex];
+      const price = selectedOption.getAttribute("data-price");
+      const reward = selectedOption.getAttribute("data-reward");
+      const scoops = selectedOption.getAttribute("data-scoops");
+      const supply = selectedOption.getAttribute("data-supply");
+
+      // Update the price dynamically
+      if (price) {
+        variantPrice.textContent = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+        }).format(price / 100); // Shopify stores prices in cents
+      }
+
+      // Update the custom text dynamically
+      if (reward) {
+        variantCustomText.textContent = ` (${reward})`;
+      } else {
+        variantCustomText.textContent = ""; // Clear if no reward
+      }
+
+      // Optional: If you want to include scoops and supply in the button
+      if (scoops && supply) {
+        variantCustomText.textContent += ` | ${scoops} scoops (${supply})`;
+      }
+    });
+  }
+});
+
+      </script>
