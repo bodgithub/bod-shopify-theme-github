@@ -22,6 +22,14 @@
       {% render 'svg-icons' with 'thb-error' %}
       <span class="product-form__error-message"></span>
     </div>
+
+    {% comment %} Dropdown {% endcomment %}
+    <label for="supply-options">Choose your supply:</label>
+<select id="supply-options" name="supply-options">
+  <option value="1">1 scoop per day (3-month supply)</option>
+  <option value="2">2 scoops per day (3-month supply)</option>
+</select>
+    
 		{%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
 			<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
 			{%- if gift_card_recipient_feature_active -%}
