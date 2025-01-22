@@ -4271,9 +4271,10 @@ h2 {
     display: inline-block; /* Visible only on desktop screens */
   }
 }
-.tiny-text, 
-.tiny-text .blog-post-detail,
-.tiny-text .blog-post-detail li, 
-{
+.blog-post-detail .tiny-text, 
+.blog-post-detail .tiny-text li, 
+.blog-post-detail .tiny-text li a, 
+.blog-post-detail .tiny-text span, 
+.blog-post-detail .tiny-text a {
   font-size: 0.7rem;
 }
