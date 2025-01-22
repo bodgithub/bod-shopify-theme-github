@@ -633,7 +633,7 @@ code, .code-inline {
   max-width: 1380px;
   margin-right: auto;
   margin-left: auto;
-  display: flex;
+  
    }
   .row .row {
     margin-right: -0.25rem;
@@ -1352,7 +1352,8 @@ summary {
   padding: 0 11px; }
   @media only screen and (min-width: 768px) {
     .row {
-      padding: 0 35px; } }
+      padding: 0 35px;
+    display: flex;} }
   .row .columns {
     padding: 0 4px; }
     @media only screen and (min-width: 768px) {
