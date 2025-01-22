@@ -10,7 +10,8 @@
   background: var(--color-footer-bg, var(--color-accent));
   padding: 45px 0;
   font-size: 0.9375rem;
-  color: var(--color-footer-text, #fff); }
+  color: var(--color-footer-text, #fff);
+flex-flow: row wrap;}
   @media only screen and (min-width: 768px) {
     .footer {
       padding: 65px 0; } }
@@ -290,6 +291,3 @@
     color: #B4C0FF;
 }
 
-.footer .row {
-  flex-flow: row wrap;
-}
