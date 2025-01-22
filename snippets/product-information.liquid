@@ -324,44 +324,35 @@
 {{ sizing_popup }}
 
 <script>
+  <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const variantSelects = document.querySelector("variant-selects"); // Built-in Shopify variant selector
-    const productPriceContainer = document.getElementById("price-{{ section.id }}"); // Price container
+    const variantSelects = document.querySelector("variant-selects");
+    const addToCartButton = document.getElementById("AddToCart");
+    const variantPrice = document.getElementById("variant-price");
 
-    if (variantSelects && productPriceContainer) {
+    if (variantSelects && addToCartButton && variantPrice) {
       variantSelects.addEventListener("variantChange", function (event) {
         const selectedVariant = event.detail.variant;
 
         if (selectedVariant) {
-          // Update the price in the product information section
-          productPriceContainer.innerHTML = `
-            <ins><span class="amount">${new Intl.NumberFormat("en-US", {
-              style: "currency",
-              currency: "USD",
-            }).format(selectedVariant.price / 100)}</span></ins>
-          `;
+          const formattedPrice = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(selectedVariant.price / 100);
 
-          // If compare_at_price is available, show it as a strikethrough price
-          if (selectedVariant.compare_at_price > selectedVariant.price) {
-            productPriceContainer.innerHTML = `
-              <del>
-                <span class="amount">${new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                }).format(selectedVariant.compare_at_price / 100)}</span>
-              </del>
-              <ins>
-                <span class="amount">${new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "USD",
-                }).format(selectedVariant.price / 100)}</span>
-              </ins>
-            `;
+          addToCartButton.disabled = !selectedVariant.available;
+
+          if (selectedVariant.available) {
+            addToCartButton.innerHTML = `Add to Cart | <span id="variant-price">${formattedPrice}</span>`;
+          } else {
+            addToCartButton.innerHTML = "Sold Out";
           }
         }
       });
     }
   });
+</script>
+
 </script>
 
 
