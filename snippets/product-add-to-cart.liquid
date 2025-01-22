@@ -32,19 +32,18 @@
     
 		{%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
 			
-          
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
          {% comment %} <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled> {% endcomment %}
 
           <select id="variant-select" name="id">
   {% for variant in product.variants %}
-    <option value="{{ variant.id }}" 
-            data-price="{{ variant.price }}" 
-            data-compare-at-price="{{ variant.compare_at_price }}"
-            data-reward="{% if variant.metafields.custom.reward %}{{ variant.metafields.custom.reward }}{% else %}{% endif %}"
-      data-compare-at-price="{{ variant.compare_at_price }}" 
+    <option 
+      value="{{ variant.id }}" 
+      data-price="{{ variant.price }}" 
+      data-compare-at-price="{{ variant.compare_at_price }}"
+      data-reward="{% if variant.metafields.custom.reward %}{{ variant.metafields.custom.reward }}{% else %}{% endif %}"
       data-scoops="{{ variant.metafields.custom.scoops }}" 
-      data-supply="{{ variant.metafields.custom.supply }}"
-      >
+      data-supply="{{ variant.metafields.custom.supply }}">
       {{ variant.title }}
     </option>
   {% endfor %}
@@ -130,19 +129,33 @@
 
       <script>
         document.addEventListener("DOMContentLoaded", function () {
-  const variantSelect = document.getElementById("variant-select"); // The variant dropdown
-  const variantPrice = document.getElementById("variant-price"); // The price span on the button
-  const variantCustomText = document.getElementById("variant-custom-text"); // The custom text span on the button
+  const variantSelect = document.getElementById("variant-select");
+  const variantPrice = document.getElementById("variant-price");
+  const variantCustomText = document.getElementById("variant-custom-text");
 
-  if (variantSelect && variantPrice && variantCustomText) {
+  if (variantSelect) {
     variantSelect.addEventListener("change", function () {
+      // Trigger Shopify's native logic by submitting the form data
+      const form = document.querySelector("form.product-form");
+      const selectedVariantId = this.value;
+
+      // Update the hidden input field with the selected variant ID
+      const variantInput = form.querySelector('input[name="id"]');
+      if (variantInput) {
+        variantInput.value = selectedVariantId;
+      }
+
+      // Trigger Shopify's default variant change logic
+      if (typeof Shopify !== "undefined" && Shopify.Storefront) {
+        Shopify.Storefront.variantSelectOnChange(form);
+      }
+
+      // Custom price and text updates for the button
       const selectedOption = this.options[this.selectedIndex];
       const price = selectedOption.getAttribute("data-price");
       const reward = selectedOption.getAttribute("data-reward");
-      const scoops = selectedOption.getAttribute("data-scoops");
-      const supply = selectedOption.getAttribute("data-supply");
 
-      // Update the price dynamically
+      // Update button price dynamically
       if (price) {
         variantPrice.textContent = new Intl.NumberFormat("en-US", {
           style: "currency",
@@ -150,16 +163,15 @@
         }).format(price / 100); // Shopify stores prices in cents
       }
 
-      // Update the custom text dynamically
+      // Update button custom text
       if (reward) {
         variantCustomText.textContent = ` ${reward}`;
       } else {
         variantCustomText.textContent = ""; // Clear if no reward
       }
-
-      
     });
   }
 });
+
 
       </script>
