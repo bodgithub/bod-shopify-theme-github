@@ -26,6 +26,9 @@
 	</div>
 </div>
 {{ 'page.css' | asset_url | stylesheet_tag }}
+{% if content_for_header contains 'properties[' %}
+  <script src="{{ 'add-multiple-products-to-cart.js' | asset_url }}"></script>
+{% endif %}
 {% schema %}
   {
     "name": "Page",
