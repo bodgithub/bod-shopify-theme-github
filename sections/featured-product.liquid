@@ -163,9 +163,6 @@
   </script>
   <script src="{{ 'product-model.js' | asset_url }}" defer></script>
 {%- endif -%}
-{% if content_for_header contains 'properties[' %}
-  <script src="{{ 'add-multiple-products-to-cart.js' | asset_url }}"></script>
-{% endif %}
 
 {% schema %}
 {
