@@ -118,6 +118,19 @@
           "disabled": true,
           "settings": {}
         },
+        "custom_option_jHGb8n": {
+          "type": "custom_option",
+          "settings": {
+            "type": "multiple",
+            "label": "Choose from:",
+            "text_required": false,
+            "text_placeholder": "",
+            "checkbox_checked_value": "",
+            "checkbox_unchecked_value": "",
+            "multiple_style": "dropdown",
+            "multiple_options": "1 scoop per day (3-month supply)\n2 scoops per day (3-month supply)"
+          }
+        },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
@@ -207,6 +220,7 @@
         "title_ExCfKU",
         "custom_liquid_qLxheX",
         "quantity_RyV4rX",
+        "custom_option_jHGb8n",
         "buy_buttons_3FBywE",
         "custom_liquid_Aai6fh",
         "custom_liquid_ExQ6qT",
