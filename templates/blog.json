@@ -25,7 +25,7 @@
         "text_Pq4pdD": {
           "type": "text",
           "settings": {
-            "text": "<h5>Find answers to your questions on hormones, metabolism, PCOS, fertility, and mood - from experts who get it and women who've been there.</h5>",
+            "text": "<h6>Find answers to your questions on hormones, metabolism, PCOS, fertility, and mood - from experts who get it and women who've been there.</h6>",
             "custom_liquid": "",
             "size": "text-size-large"
           }
@@ -48,10 +48,19 @@
         "disable_bottom_spacing": true
       }
     },
+    "spacer_4jiXDt": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 20,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "main-blog-header": {
       "type": "main-blog-header",
       "custom_css": [
-        ".row {margin-top: -30px; margin-bottom:30px;}"
+        ".row {margin-top: -30px; margin-bottom: 30px;}"
       ],
       "settings": {
         "heading": "",
@@ -64,7 +73,7 @@
       "settings": {
         "blog_layout": "style2",
         "image_ratio": "square",
-        "show_date": true,
+        "show_date": false,
         "show_excerpt": false,
         "show_read_more": true
       }
@@ -73,6 +82,7 @@
   "order": [
     "breadcrumbs",
     "rich_text_bUqPyh",
+    "spacer_4jiXDt",
     "main-blog-header",
     "main-blog"
   ]
