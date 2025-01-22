@@ -346,14 +346,14 @@
       "type": "custom-liquid",
       "custom_css": [
         ".actions {padding: 0px 20px;}",
-        ".actions h6 {font-weight: 1000; text-align: center;}",
-        ".row {display: grid; grid-template-columns: repeat(3, 1fr); /* 3 equal columns */ gap: 20px; /* space between columns */}",
-        ".action {display: flex; align-items: center; font-size: 14px; color: #1b3def;}",
-        ".arrow {font-size: 16px; /* Make the arrow slightly larger for visibility */ margin-right: 8px; /* Space between the arrow and the text */ color: #1b3def; /* Same colour as the text */}",
-        ".no-arrow .arrow {display: none; /* Hide the arrow for the first step */}"
+        ".actions h4 {font-weight: 1000; margin-bottom: 20px;}",
+        ".row {display: grid; grid-template-columns: 30% 5% 30% 5% 30%; /* Increased arrow column width */ align-items: center; /* Align text and arrows vertically */ gap: 0; /* No extra gap */}",
+        ".col-text {font-size: 14px; color: #1b3def; text-align: left; /* Align text to the left */}",
+        ".col-arrow {display: flex; align-items: center; justify-content: center; /* Center the arrow in the column */}",
+        ".arrow {font-size: 18px; /* Increased arrow size */ color: #1b3def; /* Arrow colour */}"
       ],
       "settings": {
-        "custom_liquid": "<div class=\"actions\">\n  <h6>How inositol works:</h6>\n  <div class=\"row\">\n    <div class=\"action no-arrow\">\n      <span>Supports healthy insulin signalling</span>\n    </div>\n    <div class=\"action\">\n      <span class=\"arrow\">→</span>\n      <span>Aids GLUT4 to help cells absorb glucose efficiently</span>\n    </div>\n    <div class=\"action\">\n      <span class=\"arrow\">→</span>\n      <span>Promotes balanced hormones and ovarian health</span>\n    </div>\n  </div>\n</div>"
+        "custom_liquid": "<div class=\"actions\">\n  <h4>How inositol works:</h4>\n  <div class=\"row\">\n    <!-- First Step -->\n    <div class=\"col-text\">\n      <span>Supports healthy insulin signalling</span>\n    </div>\n    <div class=\"col-arrow\"></div>\n    <!-- Second Step -->\n    <div class=\"col-text\">\n      <span>Aids GLUT4 to help cells absorb glucose efficiently</span>\n    </div>\n    <div class=\"col-arrow\">\n      <span class=\"arrow\">→</span>\n    </div>\n    <!-- Third Step -->\n    <div class=\"col-text\">\n      <span>Promotes balanced hormones and ovarian health</span>\n    </div>\n  </div>\n</div>"
       }
     },
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31": {
