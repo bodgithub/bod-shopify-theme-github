@@ -289,3 +289,7 @@
 .column:hover {
     color: #B4C0FF;
 }
+
+.footer .row {
+  flex-flow: row wrap;
+}
