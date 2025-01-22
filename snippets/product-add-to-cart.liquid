@@ -51,7 +51,7 @@
 									endif
 								endif
 							-%}
-							{{- button_content -}}
+							{{- button_content -}} - <span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
 						</span>
 						<span class="loading-overlay">
 							{% render 'svg-icons' with 'thb-loading' %}
