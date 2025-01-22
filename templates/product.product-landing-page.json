@@ -169,7 +169,7 @@
             "open": false,
             "content": "<ul><li>3rd party tested to Meet USP-Grade Purity Standards</li><li>Clinically-studied 40:1 ratio</li><li>Made sustainably in the USA</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "<img href=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Supplement-Facts.png?v=1727882363\" style=\"width:200px; height:auto; display:block;\"></img>"
           }
         },
         "collapsible_tab_BEQc3p": {
@@ -309,7 +309,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
+            "text": "",
             "link_label": "",
             "link": ""
           }
@@ -342,8 +342,62 @@
         "disable_bottom_spacing": true
       }
     },
+    "multicolumn_JycUDX": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_pkBURW": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ctC6yX": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_pkBURW",
+        "column_ctC6yX"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
+        ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "data-tooltip": "",
+        "data-tooltip3": "Did you know?",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "custom_liquid_zmPdpt": {
       "type": "custom-liquid",
+      "disabled": true,
       "custom_css": [
         ".actions {padding: 0px 20px;}",
         ".actions h6 {font-weight: 1000; margin-bottom: 20px; text-align: center;}",
@@ -946,6 +1000,7 @@
     "promotion_blocks_FLbKam",
     "spacer_iGd9ka",
     "multicolumn_QQjdQM",
+    "multicolumn_JycUDX",
     "custom_liquid_zmPdpt",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "expert_testimonials_KxH7tC",
