@@ -4272,6 +4272,8 @@ h2 {
   }
 }
 .tiny-text, 
-.tiny-text .blog-post-detail  {
+.tiny-text .blog-post-detail,
+.tiny-text .blog-post-detail li, 
+{
   font-size: 0.7rem;
 }
