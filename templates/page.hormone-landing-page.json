@@ -319,6 +319,72 @@
         },
         "column_dUeaGh": {
           "type": "column",
+          "disabled": true,
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "{{ page.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_44gdRx": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_wbzkNR",
+        "column_dUeaGh",
+        "column_44gdRx"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; margin-bottom: -15px; }}",
+        ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "data-tooltip": "",
+        "data-tooltip3": "Did you know?",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "multicolumn_TMUdeq": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_NDLekC": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_GFqyRx": {
+          "type": "column",
           "settings": {
             "image_full_width": false,
             "image_link": "",
@@ -330,8 +396,8 @@
         }
       },
       "block_order": [
-        "column_wbzkNR",
-        "column_dUeaGh"
+        "column_NDLekC",
+        "column_GFqyRx"
       ],
       "custom_css": [
         "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
@@ -957,6 +1023,7 @@
     "promotion_blocks_FLbKam",
     "spacer_iGd9ka",
     "multicolumn_QQjdQM",
+    "multicolumn_TMUdeq",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "expert_testimonials_KxH7tC",
     "spacer_FzEHUN",
