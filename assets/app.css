@@ -4271,7 +4271,6 @@ h2 {
     display: inline-block; /* Visible only on desktop screens */
   }
 }
-.tiny-text {
+.tiny-text, .tiny-text li {
   font-size: 0.7rem;
 }
-
