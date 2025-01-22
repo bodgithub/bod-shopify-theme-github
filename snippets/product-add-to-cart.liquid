@@ -74,8 +74,8 @@
 									endif
 								endif
 							-%}
-		{{- button_content -}}⸺<span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
-       <span id="variant-custom-text">{% if product.selected_or_first_available_variant.metafields.custom.reward %}
+		{{- button_content -}}—<span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+       <span style="font-size:12px;" id="variant-custom-text">{% if product.selected_or_first_available_variant.metafields.custom.reward %}
       ({{ product.selected_or_first_available_variant.metafields.custom.reward }}){% endif %}</span> 
 
 						</span>
