@@ -323,36 +323,3 @@
 
 {{ sizing_popup }}
 
-<script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const variantSelects = document.querySelector("variant-selects");
-    const addToCartButton = document.getElementById("AddToCart");
-    const variantPrice = document.getElementById("variant-price");
-
-    if (variantSelects && addToCartButton && variantPrice) {
-      variantSelects.addEventListener("variantChange", function (event) {
-        const selectedVariant = event.detail.variant;
-
-        if (selectedVariant) {
-          const formattedPrice = new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: "USD",
-          }).format(selectedVariant.price / 100);
-
-          addToCartButton.disabled = !selectedVariant.available;
-
-          if (selectedVariant.available) {
-            addToCartButton.innerHTML = `Add to Cart | <span id="variant-price">${formattedPrice}</span>`;
-          } else {
-            addToCartButton.innerHTML = "Sold Out";
-          }
-        }
-      });
-    }
-  });
-</script>
-
-</script>
-
-
