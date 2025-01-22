@@ -113,6 +113,19 @@
             "custom_liquid": "<div id=\"product-details\"><h6>\nPure, unflavored inositol powder in the body's optimal 40:1 ratio of myo-inositol to d-chiro-inositol. Scientifically formulated to support hormonal balance, metabolic health, and insulin sensitivity.*\n\n<br><br><b>\n\n100+ studies support inositol's role in supporting cycle regularity, PCOS symptoms, fertility, mood balance, and healthy BMI.* \n</b></h6><br></div>"
           }
         },
+        "variant_picker_HegXNW": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "color_picker": true,
+            "color_picker_use_variants": false,
+            "variant_is_disabled": true,
+            "sizing_guide_variant": "Size",
+            "sizing_guide_text": "Sizing guide",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
@@ -201,6 +214,7 @@
       "block_order": [
         "title_ExCfKU",
         "custom_liquid_qLxheX",
+        "variant_picker_HegXNW",
         "buy_buttons_3FBywE",
         "custom_liquid_Aai6fh",
         "custom_liquid_ExQ6qT",
