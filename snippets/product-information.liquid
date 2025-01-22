@@ -323,22 +323,3 @@
 
 {{ sizing_popup }}
 
-<script>
-  window.product = {
-    variants: [
-      {% for variant in product.variants %}
-      {
-        id: {{ variant.id }},
-        price: {{ variant.price }},
-        metafields: {
-          custom: {
-            scoops: "{{ variant.metafields.custom.scoops }}",
-            reward: "{{ variant.metafields.custom.reward }}",
-            supply: "{{ variant.metafields.custom.supply }}"
-          }
-        }
-      }{% if forloop.last == false %},{% endif %}
-      {% endfor %}
-    ]
-  };
-</script>
