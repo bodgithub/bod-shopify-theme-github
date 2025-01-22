@@ -31,7 +31,25 @@
 </select>{% endcomment %}
     
 		{%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-			<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
+			
+          
+         {% comment %} <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled> {% endcomment %}
+
+          <select id="variant-select" name="id">
+  {% for variant in product.variants %}
+    <option value="{{ variant.id }}" 
+            data-price="{{ variant.price }}" 
+            data-compare-at-price="{{ variant.compare_at_price }}"
+            data-reward="{% if variant.metafields.custom.reward %}{{ variant.metafields.custom.reward }}{% else %}{% endif %}"
+      data-compare-at-price="{{ variant.compare_at_price }}" 
+      data-scoops="{{ variant.metafields.custom.scoops }}" 
+      data-supply="{{ variant.metafields.custom.supply }}"
+      >
+      {{ variant.title }}
+    </option>
+  {% endfor %}
+</select>
+
 			{%- if gift_card_recipient_feature_active -%}
 				{%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
 			{%- endif -%}
@@ -51,7 +69,10 @@
 									endif
 								endif
 							-%}
-							{{- button_content -}} - <span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+		{{- button_content -}} - <span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+       <span id="variant-custom-text">{% if product.selected_or_first_available_variant.metafields.custom.reward %}  |  
+      ({{ product.selected_or_first_available_variant.metafields.custom.reward }}){% endif %}</span>
+
 						</span>
 						<span class="loading-overlay">
 							{% render 'svg-icons' with 'thb-loading' %}
