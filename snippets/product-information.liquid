@@ -323,3 +323,45 @@
 
 {{ sizing_popup }}
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const variantSelects = document.querySelector("variant-selects"); // Built-in Shopify variant selector
+    const productPriceContainer = document.getElementById("price-{{ section.id }}"); // Price container
+
+    if (variantSelects && productPriceContainer) {
+      variantSelects.addEventListener("variantChange", function (event) {
+        const selectedVariant = event.detail.variant;
+
+        if (selectedVariant) {
+          // Update the price in the product information section
+          productPriceContainer.innerHTML = `
+            <ins><span class="amount">${new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+            }).format(selectedVariant.price / 100)}</span></ins>
+          `;
+
+          // If compare_at_price is available, show it as a strikethrough price
+          if (selectedVariant.compare_at_price > selectedVariant.price) {
+            productPriceContainer.innerHTML = `
+              <del>
+                <span class="amount">${new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(selectedVariant.compare_at_price / 100)}</span>
+              </del>
+              <ins>
+                <span class="amount">${new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                }).format(selectedVariant.price / 100)}</span>
+              </ins>
+            `;
+          }
+        }
+      });
+    }
+  });
+</script>
+
+
