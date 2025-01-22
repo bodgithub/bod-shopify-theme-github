@@ -342,6 +342,17 @@
         "disable_bottom_spacing": true
       }
     },
+    "custom_liquid_zmPdpt": {
+      "type": "custom-liquid",
+      "custom_css": [
+        ".action {display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom: 20px;}",
+        ".actions {padding: 0px 20px;}",
+        ".actions h4 {font-weight: 1000;}"
+      ],
+      "settings": {
+        "custom_liquid": "<div class=\"actions\"><h4> How inositol works:</h4>\n<div class=\"action\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span> Supports healthy insulin signalling </span>\n    </div>\n <div class=\"action\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span> Aids GLUT4 to help cells absorb glucose efficiently  </span>\n    </div>\n <div class=\"action\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span> Promotes balanced hormones and ovarian health</span>\n    </div></div>"
+      }
+    },
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31": {
       "type": "spacer",
       "settings": {
@@ -932,6 +943,7 @@
     "promotion_blocks_FLbKam",
     "spacer_iGd9ka",
     "multicolumn_QQjdQM",
+    "custom_liquid_zmPdpt",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
     "expert_testimonials_KxH7tC",
     "spacer_FzEHUN",
