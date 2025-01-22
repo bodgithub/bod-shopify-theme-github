@@ -345,12 +345,15 @@
     "custom_liquid_zmPdpt": {
       "type": "custom-liquid",
       "custom_css": [
-        ".action {display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom: 20px;}",
         ".actions {padding: 0px 20px;}",
-        ".actions h4 {font-weight: 1000;}"
+        ".actions h6 {font-weight: 1000; text-align: center;}",
+        ".row {display: grid; grid-template-columns: repeat(3, 1fr); /* 3 equal columns */ gap: 20px; /* space between columns */}",
+        ".action {display: flex; align-items: center; font-size: 14px; color: #1b3def;}",
+        ".arrow {font-size: 16px; /* Make the arrow slightly larger for visibility */ margin-right: 8px; /* Space between the arrow and the text */ color: #1b3def; /* Same colour as the text */}",
+        ".no-arrow .arrow {display: none; /* Hide the arrow for the first step */}"
       ],
       "settings": {
-        "custom_liquid": "<div class=\"actions\"><h4> How inositol works:</h4>\n<div class=\"action\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span> Supports healthy insulin signalling </span>\n    </div>\n <div class=\"action\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span> Aids GLUT4 to help cells absorb glucose efficiently  </span>\n    </div>\n <div class=\"action\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span> Promotes balanced hormones and ovarian health</span>\n    </div></div>"
+        "custom_liquid": "<div class=\"actions\">\n  <h6>How inositol works:</h6>\n  <div class=\"row\">\n    <div class=\"action no-arrow\">\n      <span>Supports healthy insulin signalling</span>\n    </div>\n    <div class=\"action\">\n      <span class=\"arrow\">→</span>\n      <span>Aids GLUT4 to help cells absorb glucose efficiently</span>\n    </div>\n    <div class=\"action\">\n      <span class=\"arrow\">→</span>\n      <span>Promotes balanced hormones and ovarian health</span>\n    </div>\n  </div>\n</div>"
       }
     },
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31": {
