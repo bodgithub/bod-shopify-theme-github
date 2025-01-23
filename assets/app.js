@@ -1197,27 +1197,37 @@ document.addEventListener('DOMContentLoaded', function() {
 // The below script changes the add to cart button to the variant dynamically
 
 document.addEventListener("DOMContentLoaded", function () {
-  const variantSelect = document.querySelector('variant-selects, select[name="id"]');
+  // Listen for variant changes using the Shopify product-form API
+  const productForm = document.querySelector("product-form");
   const addToCartButton = document.getElementById("AddToCart");
   const variantPrice = document.getElementById("variant-price");
   const variantCustomText = document.getElementById("variant-custom-text");
 
-  if (variantSelect && addToCartButton) {
-    variantSelect.addEventListener("change", (event) => {
-      const selectedVariant = event.target.options[event.target.selectedIndex];
-      const newPrice = selectedVariant.getAttribute("data-price");
-      const newReward = selectedVariant.getAttribute("data-reward");
+  if (productForm && addToCartButton) {
+    productForm.addEventListener("variantChange", (event) => {
+      const variant = event.detail.variant; // Get the currently selected variant
 
-      // Update the button text
-      variantPrice.textContent = newPrice ? `${Shopify.formatMoney(newPrice)}` : '';
-      variantCustomText.textContent = newReward ? newReward : '';
+      if (variant) {
+        // Update button text with variant price and reward metafield
+        variantPrice.textContent = Shopify.formatMoney(variant.price);
+        if (variant.metafields && variant.metafields.custom && variant.metafields.custom.rewards) {
+          variantCustomText.textContent = variant.metafields.custom.rewards;
+        } else {
+          variantCustomText.textContent = ""; // Clear reward text if none is available
+        }
 
-      // Update button attributes (if needed elsewhere)
-      addToCartButton.setAttribute("data-price", newPrice || "");
-      addToCartButton.setAttribute("data-reward", newReward || "");
+        // Enable or disable the Add to Cart button based on availability
+        if (variant.available) {
+          addToCartButton.removeAttribute("disabled");
+        } else {
+          addToCartButton.setAttribute("disabled", "disabled");
+        }
+      }
     });
   }
 });
+
+
 
 // End add to cart button variant dynamic changes
 
