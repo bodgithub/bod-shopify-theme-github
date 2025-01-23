@@ -131,24 +131,19 @@
       <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
         <label for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
         <div class="select">
-          
           <select name="id" id="Variants-{{ section.id }}" class="select__select" form="{{ product_form_id }}">
-  {%- for variant in product.variants -%}
-    <option
-      data-price="{{ variant.price }}"
-      data-reward="{{ variant.metafields.custom.rewards }}"
-      value="{{ variant.id }}"
-      {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
-      {% if variant.available == false %}disabled{% endif %}
-    >
-      {{ variant.title }}
-      {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-      - {{ variant.price | money | strip_html }}
-    </option>
-  {%- endfor -%}
-</select>
-
-          
+            {%- for variant in product.variants -%}
+              <option
+                {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                {% if variant.available == false %}disabled{% endif %}
+                value="{{ variant.id }}"
+              >
+                {{ variant.title }}
+                {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                - {{ variant.price | money | strip_html }}
+              </option>
+            {%- endfor -%}
+          </select>
         </div>
       </div>
     </noscript>
@@ -283,22 +278,11 @@
 
             {% if block.settings.multiple_style == 'dropdown' %}
               <div class="select">
-                <select name="id" id="Variants-{{ section.id }}" class="select__select" form="{{ product_form_id }}">
-  {%- for variant in product.variants -%}
-    <option
-      data-price="{{ variant.price }}"
-      data-reward="{{ variant.metafields.custom.rewards }}"
-      value="{{ variant.id }}"
-      {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
-      {% if variant.available == false %}disabled{% endif %}
-    >
-      {{ variant.title }}
-      {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-      - {{ variant.price | money | strip_html }}
-    </option>
-  {%- endfor -%}
-</select>
-
+                <select name="{{ line_item_input_name }}" id="{{ line_item_input_id }}" form="{{ product_form_id }}">
+                  {% for option in custom_options %}
+                    <option value="{{ option | escape }}" {% if forloop.first %} selected{% endif %}>{{ option | escape }}</option>
+                  {% endfor %}
+                </select>
                 <div class="select-arrow">{%- render 'svg-icons' with 'thb-select' -%}</div>
               </div>
             {% else %}
@@ -338,29 +322,3 @@
 {%- endif -%}
 
 {{ sizing_popup }}
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-  const variantSelect = document.querySelector('variant-selects, select[name="id"]');
-  const addToCartButton = document.getElementById("AddToCart");
-  const variantPrice = document.getElementById("variant-price");
-  const variantCustomText = document.getElementById("variant-custom-text");
-
-  if (variantSelect && addToCartButton) {
-    variantSelect.addEventListener("change", (event) => {
-      const selectedVariant = event.target.options[event.target.selectedIndex];
-      const newPrice = selectedVariant.getAttribute("data-price");
-      const newReward = selectedVariant.getAttribute("data-reward");
-
-      // Update the button text
-      variantPrice.textContent = newPrice ? `${Shopify.formatMoney(newPrice)}` : '';
-      variantCustomText.textContent = newReward ? newReward : '';
-
-      // Update button attributes (if needed elsewhere)
-      addToCartButton.setAttribute("data-price", newPrice || "");
-      addToCartButton.setAttribute("data-reward", newReward || "");
-    });
-  }
-});
-
-</script>
