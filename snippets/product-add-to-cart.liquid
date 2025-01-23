@@ -35,7 +35,7 @@
 				<div class="add_to_cart_holder{% if show_dynamic_checkout %} add_to_cart_holder--multi{%- endif -%}">
 					
                   
-                  {% comment %}<button type="submit" name="add" id="AddToCart" class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+        <button type="submit" name="add" id="AddToCart" class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
 						<span class="single-add-to-cart-button--text">
 							{%- liquid
 								if product.selected_or_first_available_variant.available == false
@@ -53,31 +53,9 @@
 						<span class="loading-overlay">
 							{% render 'svg-icons' with 'thb-loading' %}
 						</span>
-					</button>{% endcomment %}
+					</button>
 
-                  <button
-  type="submit"
-  name="add"
-  id="AddToCart"
-  class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}"
-  {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
-  data-price="{{ product.selected_or_first_available_variant.price }}"
-  data-reward="{{ product.selected_or_first_available_variant.metafields.custom.rewards }}"
->
-  <span class="single-add-to-cart-button--text">
-    {{ button_content }}—<span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
-    <span style="font-size:12px;" id="variant-custom-text">
-      {% if product.selected_or_first_available_variant.metafields.custom.rewards %}
-        {{ product.selected_or_first_available_variant.metafields.custom.rewards }}
-      {% endif %}
-    </span>
-  </span>
-  <span class="loading-overlay">
-    {% render 'svg-icons' with 'thb-loading' %}
-  </span>
-</button>
-
-
+                  
                   
 					{%- if show_dynamic_checkout -%}
 						{{ form | payment_button }}
@@ -89,26 +67,14 @@
 	{%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">
-       <button
-  type="submit"
-  name="add"
-  id="AddToCart"
-  class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}"
-  {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
->
-  <span class="single-add-to-cart-button--text">
-    {{ button_content }}—<span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
-    <span style="font-size:12px;" id="variant-custom-text">
-      {% if product.selected_or_first_available_variant.metafields.custom.rewards %}
-        {{ product.selected_or_first_available_variant.metafields.custom.rewards }}
-      {% endif %}
-    </span>
-  </span>
-  <span class="loading-overlay">
-    {% render 'svg-icons' with 'thb-loading' %}
-  </span>
-</button>
-
+        <button
+          type="submit"
+          name="add"
+          class="single_add_to_cart_button button sold-out"
+          disabled
+        >
+          <span class="single-add-to-cart-button--text">{{ 'products.product.sold_out' | t }}</span>
+        </button>
       </div>
     </div>
   {%- endif -%}
