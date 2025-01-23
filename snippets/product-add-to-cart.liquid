@@ -23,45 +23,19 @@
       <span class="product-form__error-message"></span>
     </div>
 
-    {% comment %} Dropdown 
-    <label for="supply-options">Choose your supply:</label>
-<select id="supply-options" name="supply-options">
-  <option value="1">1 scoop per day (3-month supply)</option>
-  <option value="2">2 scoops per day (3-month supply)</option>
-</select>{% endcomment %}
+  
     
 		{%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
-			
-          
-  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-
-          <select id="variant-select" name="id">
-  {% for variant in product.variants %}
-    <option value="{{ variant.id }}" 
-            data-price="{{ variant.price }}" 
-            data-compare-at-price="{{ variant.compare_at_price }}"
-            data-reward="{% if variant.metafields.custom.reward %}{{ variant.metafields.custom.reward }}{% else %}{% endif %}"
-      data-compare-at-price="{{ variant.compare_at_price }}" 
-      data-scoops="{{ variant.metafields.custom.scoops }}" 
-      data-supply="{{ variant.metafields.custom.supply }}"
-      >
-      {{ variant.title }}
-    </option>
-  {% endfor %}
-</select>
-
-        
-
-
-          
-
+			<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" disabled>
 			{%- if gift_card_recipient_feature_active -%}
 				{%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
 			{%- endif -%}
 			<div class="product-add-to-cart-container">
 				<div class="form-notification error" style="display:none;"></div>
 				<div class="add_to_cart_holder{% if show_dynamic_checkout %} add_to_cart_holder--multi{%- endif -%}">
-					<button type="submit" name="add" id="AddToCart" class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+					
+                  
+                  {% comment %}<button type="submit" name="add" id="AddToCart" class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
 						<span class="single-add-to-cart-button--text">
 							{%- liquid
 								if product.selected_or_first_available_variant.available == false
@@ -74,15 +48,36 @@
 									endif
 								endif
 							-%}
-		{{- button_content -}}—<span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
-       <span style="font-size:12px;" id="variant-custom-text">{% if product.selected_or_first_available_variant.metafields.custom.reward %}
-      {{ product.selected_or_first_available_variant.metafields.custom.reward }}{% endif %}</span> 
-
+							{{- button_content -}}
 						</span>
 						<span class="loading-overlay">
 							{% render 'svg-icons' with 'thb-loading' %}
 						</span>
-					</button>
+					</button>{% endcomment %}
+
+                  <button
+  type="submit"
+  name="add"
+  id="AddToCart"
+  class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}"
+  {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+  data-price="{{ product.selected_or_first_available_variant.price }}"
+  data-reward="{{ product.selected_or_first_available_variant.metafields.custom.rewards }}"
+>
+  <span class="single-add-to-cart-button--text">
+    {{ button_content }}—<span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+    <span style="font-size:12px;" id="variant-custom-text">
+      {% if product.selected_or_first_available_variant.metafields.custom.rewards %}
+        {{ product.selected_or_first_available_variant.metafields.custom.rewards }}
+      {% endif %}
+    </span>
+  </span>
+  <span class="loading-overlay">
+    {% render 'svg-icons' with 'thb-loading' %}
+  </span>
+</button>
+
+                  
 					{%- if show_dynamic_checkout -%}
 						{{ form | payment_button }}
 					{%- endif -%}
@@ -121,43 +116,3 @@
 </pickup-availability>
 <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
-
-
-
-
-
-
-
-      <script>
-      document.addEventListener("DOMContentLoaded", function () {
-  const variantSelects = document.querySelector("variant-selects"); // Built-in Shopify variant selector
-  const addToCartButton = document.getElementById("AddToCart"); // Add to Cart button
-  const variantPrice = document.getElementById("variant-price"); // Price span inside the button
-
-  if (variantSelects && addToCartButton && variantPrice) {
-    variantSelects.addEventListener("variantChange", function (event) {
-      const selectedVariant = event.detail.variant;
-
-      if (selectedVariant) {
-        // Update the button text with the variant price
-        const formattedPrice = new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(selectedVariant.price / 100); // Shopify stores prices in cents
-
-        addToCartButton.disabled = !selectedVariant.available; // Enable/disable based on availability
-
-        // Update button text
-        if (selectedVariant.available) {
-          addToCartButton.innerHTML = `Add to Cart | <span id="variant-price">${formattedPrice}</span>`;
-        } else {
-          addToCartButton.innerHTML = "Sold Out";
-        }
-      }
-    });
-  }
-});
-
-
-
-      </script>
