@@ -51,6 +51,8 @@
     {% render 'product-inventory-notice', product: product, section: section, block: block %}
   {%- when 'variant_picker' -%}
     {%- unless product.has_only_default_variant -%}
+        <product-form class="product-form" data-section="{{ section.id }}" data-hide-errors="true">
+
     {%- liquid
       assign is_disabled = block.settings.variant_is_disabled
       assign picker_type = 'dropdown'
@@ -124,8 +126,10 @@
       </div>
       <script type="application/json">
         {{ product.variants | json }}
+        
       </script>
     </variant-selects>
+          </product-form> 
     {%- endunless -%}
     <noscript class="product-form__noscript-wrapper-{{ section.id }}">
       <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
