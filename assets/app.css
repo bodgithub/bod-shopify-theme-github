@@ -3498,7 +3498,7 @@ select {
   .price ins {
     text-decoration: none; }
   .price .amount.discounted {
-    color: var(--color-price-discounted, #ee3b45); }
+    color: /*var(--color-price-discounted, #ee3b45)*/#1b3def; }
   .price .unit-price {
     margin-left: 5px;
     font-size: 0.75rem;
