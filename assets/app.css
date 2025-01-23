@@ -3471,7 +3471,7 @@ select {
   align-items: center;
   background: /*var(--color-badge-sale, #c62a32)*/#f4f4f4;
   color: /*var(--color-badge-text, #fff)*/#1b3def;
-  border-radius: var(--badge-corner-radius, 50px);
+  border-radius: /*var(--badge-corner-radius, 50px)*/50px;
   font-size: 11px;
   font-weight: var(--font-body-medium-weight, 500);
   height: 28px;
