@@ -89,14 +89,26 @@
 	{%- else -%}
     <div class="product-form">
       <div class="product-form__buttons form">
-        <button
-          type="submit"
-          name="add"
-          class="single_add_to_cart_button button sold-out"
-          disabled
-        >
-          <span class="single-add-to-cart-button--text">{{ 'products.product.sold_out' | t }}</span>
-        </button>
+       <button
+  type="submit"
+  name="add"
+  id="AddToCart"
+  class="single-add-to-cart-button button accent {% unless product.selected_or_first_available_variant.available %}sold-out{% endunless %}"
+  {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
+>
+  <span class="single-add-to-cart-button--text">
+    {{ button_content }}—<span id="variant-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+    <span style="font-size:12px;" id="variant-custom-text">
+      {% if product.selected_or_first_available_variant.metafields.custom.rewards %}
+        {{ product.selected_or_first_available_variant.metafields.custom.rewards }}
+      {% endif %}
+    </span>
+  </span>
+  <span class="loading-overlay">
+    {% render 'svg-icons' with 'thb-loading' %}
+  </span>
+</button>
+
       </div>
     </div>
   {%- endif -%}
@@ -117,29 +129,3 @@
 </pickup-availability>
 <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-  const variantSelect = document.querySelector('variant-selects, select[name="id"]');
-  const addToCartButton = document.getElementById("AddToCart");
-  const variantPrice = document.getElementById("variant-price");
-  const variantCustomText = document.getElementById("variant-custom-text");
-
-  if (variantSelect && addToCartButton) {
-    variantSelect.addEventListener("change", (event) => {
-      const selectedVariant = event.target.options[event.target.selectedIndex];
-      const newPrice = selectedVariant.getAttribute("data-price");
-      const newReward = selectedVariant.getAttribute("data-reward");
-
-      // Update the button text
-      variantPrice.textContent = newPrice ? `${Shopify.formatMoney(newPrice)}` : '';
-      variantCustomText.textContent = newReward ? newReward : '';
-
-      // Update button attributes (if needed elsewhere)
-      addToCartButton.setAttribute("data-price", newPrice || "");
-      addToCartButton.setAttribute("data-reward", newReward || "");
-    });
-  }
-});
-
-</script>
