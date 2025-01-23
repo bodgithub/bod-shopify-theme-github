@@ -697,7 +697,7 @@
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
-        "quote_mCAKwc": {
+        "quote_PhgFXV": {
           "type": "quote",
           "settings": {
             "image": "shopify://shop_images/Lizzie.png",
@@ -705,6 +705,16 @@
             "quote": "<p>\"It’s supported my hormones while coming off the pill and helped ease my mood and food cravings.\"</p>",
             "name": "Lizzie H.",
             "expert-title": "Hormones"
+          }
+        },
+        "quote_mCAKwc": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-23_at_10.07.27.png",
+            "stars": "5",
+            "quote": "<p>\"I’ve had fewer sugar cravings, and my menstrual cycles have also become much easier, with little to no PMS!\"</p>",
+            "name": "Keira K.",
+            "expert-title": "PMS"
           }
         },
         "quote_rxzPR7": {
@@ -789,6 +799,7 @@
         }
       },
       "block_order": [
+        "quote_PhgFXV",
         "quote_mCAKwc",
         "quote_rxzPR7",
         "quote_yTBQQm",
