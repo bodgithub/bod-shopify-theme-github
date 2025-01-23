@@ -328,3 +328,28 @@
 
 {{ sizing_popup }}
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const variantSelect = document.querySelector('variant-selects, select[name="id"]');
+  const addToCartButton = document.getElementById("AddToCart");
+  const variantPrice = document.getElementById("variant-price");
+  const variantCustomText = document.getElementById("variant-custom-text");
+
+  if (variantSelect && addToCartButton) {
+    variantSelect.addEventListener("change", (event) => {
+      const selectedVariant = event.target.options[event.target.selectedIndex];
+      const newPrice = selectedVariant.getAttribute("data-price");
+      const newReward = selectedVariant.getAttribute("data-reward");
+
+      // Update the button text
+      variantPrice.textContent = newPrice ? `${Shopify.formatMoney(newPrice)}` : '';
+      variantCustomText.textContent = newReward ? newReward : '';
+
+      // Update button attributes (if needed elsewhere)
+      addToCartButton.setAttribute("data-price", newPrice || "");
+      addToCartButton.setAttribute("data-reward", newReward || "");
+    });
+  }
+});
+
+</script>
