@@ -429,20 +429,41 @@
     "expert_testimonials_KxH7tC": {
       "type": "expert-testimonials",
       "blocks": {
-        "quote_WVRc6H": {
+        "quote_BKVLCd": {
           "type": "quote",
-          "repeater": "{{ product.metafields.custom.experts.value }}",
           "settings": {
-            "image": "{{ block.repeater.expert_logo.value }}",
+            "image": "shopify://shop_images/Anita_-_White_-_logo.png",
             "stars": "",
-            "quote": "<p>{{ block.repeater.expert_long_quote | metafield_tag }}</p>",
-            "name": "{{ block.repeater.expert_name.value }}",
-            "expert-title": "{{ block.repeater.expert_title.value }}"
+            "quote": "<p>\"I use Inositol to support clients looking to maintain healthy cycles, manage metabolic wellness, and promote hormonal balance. It plays a helpful role in supporting glucose metabolism and overall vitality.\"</p>",
+            "name": "Dr. Anita W.",
+            "expert-title": "Ph.D, Natural Medicine Practitioner"
+          }
+        },
+        "quote_34jQwD": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Tina_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<p>\"Bodology Inositol is an exceptional supplement that aligns perfectly with nutritional goals. The optimal 40:1 ratio is research-backed for womens wellness, promoting optimal health and vitality. As a nutritionist, I not only highly recommend it but I also use it myself.\"</p>",
+            "name": "Tina Kozman",
+            "expert-title": "MEd, CNP, Metabolic Health Coach"
+          }
+        },
+        "quote_NhrLgL": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<p>\"In my practice, I recommend Myo + D-Chiro Inositol to patients looking to support their reproductive wellness and overall metabolic health. Its role in promoting hormonal balance and cycle regularity makes it a valuable addition for women preparing for conception.\"</p>",
+            "name": "Hillary Wright",
+            "expert-title": "MEd, RD, Director of Nutrition at Boston IVF"
           }
         }
       },
       "block_order": [
-        "quote_WVRc6H"
+        "quote_BKVLCd",
+        "quote_34jQwD",
+        "quote_NhrLgL"
       ],
       "settings": {
         "heading": "<p>Our <em>experts</em></p>",
