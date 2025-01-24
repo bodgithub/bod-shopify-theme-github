@@ -986,8 +986,8 @@
           "source": "{{ shop.metaobjects.experts[\"tina-kozman\"] }}",
           "settings": {
             "image": "{{ shop.metaobjects.experts[\"tina-kozman\"].expert_photo.value }}",
-            "title": "<h4><strong>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_name.value }}</strong></h4><h6>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_title.value }} </h6><p></p>",
-            "quote": "<h4><em>{{ shop.metaobjects.experts[\"tina-kozman\"].exert_short_quote | metafield_tag }}</em></h4>",
+            "title": "<h4><strong>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_name.value }}</strong></h4><h6><strong>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_title.value }}</strong><strong> </strong></h6><p></p>",
+            "quote": "<h6>{{ shop.metaobjects.experts[\"tina-kozman\"].exert_short_quote | metafield_tag }}</h6>",
             "button_text": "",
             "button_link": "{{ shop.metaobjects.experts[\"tina-kozman\"].system.url }}"
           }
@@ -997,8 +997,8 @@
           "source": "{{ shop.metaobjects.experts[\"hillary-wright\"] }}",
           "settings": {
             "image": "{{ shop.metaobjects.experts[\"hillary-wright\"].expert_photo.value }}",
-            "title": "<h5><strong>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_name.value }}</strong></h5><h6>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_title.value }} </h6>",
-            "quote": "<h4><em>{{ shop.metaobjects.experts[\"hillary-wright\"].exert_short_quote | metafield_tag }}</em></h4>",
+            "title": "<h5><strong>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_name.value }}</strong></h5><h6><strong>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_title.value }}</strong><strong> </strong></h6>",
+            "quote": "<h6>{{ shop.metaobjects.experts[\"hillary-wright\"].exert_short_quote | metafield_tag }}</h6>",
             "button_text": "",
             "button_link": "{{ shop.metaobjects.experts[\"hillary-wright\"].system.url }}"
           }
@@ -1008,8 +1008,8 @@
           "source": "{{ shop.metaobjects.experts[\"dr-anita-w\"] }}",
           "settings": {
             "image": "{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_photo.value }}",
-            "title": "<h4><strong>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_name.value }}</strong></h4><h6>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_title.value }} </h6>",
-            "quote": "<h4><em>{{ shop.metaobjects.experts[\"dr-anita-w\"].exert_short_quote | metafield_tag }}</em></h4>",
+            "title": "<h4><strong>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_name.value }}</strong></h4><h6><strong>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_title.value }}</strong><strong> </strong></h6>",
+            "quote": "<h6>{{ shop.metaobjects.experts[\"dr-anita-w\"].exert_short_quote | metafield_tag }}</h6>",
             "button_text": "",
             "button_link": "{{ shop.metaobjects.experts[\"dr-anita-w\"].system.url }}"
           }
