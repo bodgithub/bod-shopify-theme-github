@@ -16,6 +16,7 @@
       "blocks": {
         "955bb93b-7a65-4933-8023-83a64ee46bc2": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "text": "Free delivery, always",
@@ -28,9 +29,9 @@
           "type": "text",
           "settings": {
             "icon": "none",
-            "text": "20% Off when you buy 2",
+            "text": "Use code BALANCE10 for 10%",
             "link": "",
-            "color_bg": "#ffffff",
+            "color_bg": "#f4f4f4",
             "color_text": "#1b3def"
           }
         }
@@ -39,14 +40,13 @@
         "955bb93b-7a65-4933-8023-83a64ee46bc2",
         "text_rDXFYk"
       ],
-      "disabled": true,
       "settings": {
         "announcement_bar": true,
         "announcement_bar_homepage_only": true,
         "announcement_bar_layout": "carousel",
         "direction": "left",
         "speed": "20s",
-        "use_block_colors": false,
+        "use_block_colors": true,
         "autoplay": true,
         "autoplay_length": 5
       }
