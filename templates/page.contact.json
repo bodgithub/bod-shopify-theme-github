@@ -44,7 +44,7 @@
         "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#f9f9f9",
+        "color_bg": "#ffffff",
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
@@ -54,12 +54,14 @@
     },
     "1652268757b7c53383": {
       "type": "contact-form",
+      "disabled": true,
+      "custom_css": [],
       "settings": {
         "heading": "",
         "marker_style": "style1",
         "description": "",
         "show_phone_number": true,
-        "marker_color": "#FD6262",
+        "marker_color": "#fd6262",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
