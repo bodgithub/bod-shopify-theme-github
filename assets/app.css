@@ -655,7 +655,8 @@ code, .code-inline {
       margin-right: auto;
       margin-left: auto; }
   .row:not(.expanded) .row {
-    max-width: none; }
+    max-width: none;
+  overflow:hidden;}
   .row.collapse > .column, .row.collapse > .columns {
     padding-right: 0;
     padding-left: 0; }
