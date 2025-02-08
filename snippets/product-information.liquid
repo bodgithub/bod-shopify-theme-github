@@ -35,7 +35,7 @@
       </div>
       {%- if block.settings.show_products_rating and product.metafields.reviews.rating.value != blank -%}
         <a class="star-rating-container" href="#reviews">
-          <div class="star-rating" style="--star-rating: {{ product.metafields.reviews.rating.value.rating }};"></div>
+          <div class="star-rating" style="--star-rating: {{ product.metafields.reviews.rating.value.rating }};">100+ reviews</div>
         </a>
       {%- endif -%}
       {%- if product != blank -%}
