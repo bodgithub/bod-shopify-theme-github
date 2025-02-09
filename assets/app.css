@@ -3784,6 +3784,9 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 /*! Flickity v2.3.0
 https://flickity.metafizzy.co
 ---------------------------------------------- */
+
+
+ @media only screen and (min-width: 768px) {
 .flickity-enabled {
   position: relative; }
 
@@ -3795,6 +3798,7 @@ overflow: hidden;
   position: relative;
   height: 190%;
   min-width: 100%; }
+ }
 
 .flickity-slider {
   position: absolute;
