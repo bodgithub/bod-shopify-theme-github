@@ -3785,10 +3785,12 @@ input[type="radio"], .field label, .custom-checkbox[type="checkbox"], .custom-ch
 https://flickity.metafizzy.co
 ---------------------------------------------- */
 
-@media only screen and (max-width: 768px) {
-/*.flickity-viewport {height:500px !important;}
-  .flickity-slider {
-  height: 190% !important;}*/
+@media only screen and (min-width: 768px) {
+
+  .flickity-viewport {
+ 
+  min-height:630px !important;}
+  
 }
   
 
@@ -3799,7 +3801,8 @@ https://flickity.metafizzy.co
 overflow: hidden;
   position: relative;
   height: 100%;
-  min-width: 100%; }
+  min-width: 100%;
+min-height:500px;}
    
 
 
