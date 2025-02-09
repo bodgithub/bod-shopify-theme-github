@@ -110,7 +110,13 @@
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"product-details\"><h6>\n<div style=\"font-size:0.8em;margin-top:-5px; margin-bottom:6px;\"><strong>40:1 Ratio | Extended 3-month supply<br></strong></div>\n100+ studies back inositol's role in promoting regular cycles, ovarian health, a sense of calm and healthy BMI.* \n</b></h6><br></div>"
+            "custom_liquid": "<div id=\"product-details\"><h6>\n<div style=\"font-size:0.8em;margin-top:-5px; margin-bottom:6px;\"><strong>40:1 Ratio | Extended 3-month supply<br></strong></div>\n100+ studies back inositol's role in promoting regular cycles, ovarian health, a sense of calm and healthy BMI.* \n</b></h6></div>"
+          }
+        },
+        "custom_liquid_ExQ6qT": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"padding:15px 26px 10px 26px;  border-radius:15px;  text-align:left; margin-bottom:15px; margin-top:15px; background-color:#f8f8f8;\"><h6><b>Get 15% off your order (now $55)\n<br>+ free delivery</b></h6><h6>Code: WINTER15</h6></div>"
           }
         },
         "variant_picker_HegXNW": {
@@ -145,13 +151,6 @@
           "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, arrives in 2-5 days</span>\n    </div>\n<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>2 scoops daily - optimal dose reward (up to 20% off)</span>\n    </div>"
-          }
-        },
-        "custom_liquid_ExQ6qT": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div style=\"padding:30px;  border-radius:15px; border: 1px solid #1b3def; text-align:center; margin-bottom:15px; background-color:#f8f8f8;\"><h3><em>Pre-Order Promo</em></h3><h5>Pre-order now and get a<b> 17% lifetime discount</b><em>*</em></h5><h6>Your code will automatically apply at checkout. Orders arrive within 3-6 weeks.</h6></div>"
           }
         },
         "side_panel_NGJTtJ": {
@@ -212,11 +211,11 @@
       "block_order": [
         "title_ExCfKU",
         "custom_liquid_qLxheX",
+        "custom_liquid_ExQ6qT",
         "variant_picker_HegXNW",
         "buy_buttons_3FBywE",
         "custom_liquid_Aai6fh",
         "custom_liquid_8TqUrD",
-        "custom_liquid_ExQ6qT",
         "side_panel_NGJTtJ",
         "collapsible_tab_KVBdNK",
         "collapsible_tab_BEQc3p",
