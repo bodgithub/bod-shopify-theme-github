@@ -3786,9 +3786,9 @@ https://flickity.metafizzy.co
 ---------------------------------------------- */
 
 @media only screen and (max-width: 768px) {
-/*.flickity-viewport {height:500px !important;}*/
+/*.flickity-viewport {height:500px !important;}
   .flickity-slider {
-  height: 195% !important;}
+  height: 195% !important;}*/
 }
   
  @media only screen and (min-width: 768px) {
@@ -3798,7 +3798,7 @@ https://flickity.metafizzy.co
 .flickity-viewport {
 overflow: hidden;
   position: relative;
-  height: 190%;
+  height: 100%;
   min-width: 100%; }
    
  }
