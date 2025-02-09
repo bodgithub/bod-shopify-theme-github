@@ -1172,8 +1172,8 @@ color: #1b3def;}
 .star-rating {
   --star-percent: calc(var(--star-rating) / 5 * 100%);
   display: inline-block;
-  font-size: 0.6rem;
-  font-family: Times;
+  font-size: 0.8rem;
+  font-family: tenon;
   line-height: 1; }
   .star-rating:before {
     content: "★★★★★";
