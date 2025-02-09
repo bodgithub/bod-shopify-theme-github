@@ -3791,9 +3791,9 @@ https://flickity.metafizzy.co
   outline: none; }
 
 .flickity-viewport {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
+ /* overflow: hidden;
+  position: relative;*/
+  height: 190%;
   min-width: 100%; }
 
 .flickity-slider {
