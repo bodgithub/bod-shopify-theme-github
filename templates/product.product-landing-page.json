@@ -302,10 +302,76 @@
     "spacer_iGd9ka": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 50,
+        "spacer_mobile": 25,
         "spacer_desktop": 80,
         "border_separator": false,
         "border_separator_full": false
+      }
+    },
+    "expert_testimonials_KxH7tC": {
+      "type": "expert-testimonials",
+      "blocks": {
+        "quote_BKVLCd": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Anita_-_White_-_logo.png",
+            "stars": "",
+            "quote": "<h6>\"I use Inositol to support clients looking to maintain healthy cycles, manage metabolic wellness, and promote hormonal balance. It plays a helpful role in supporting glucose metabolism and overall vitality.\"</h6>",
+            "name": "Dr. Anita W.",
+            "expert-title": "Ph.D, Natural Medicine Practitioner"
+          }
+        },
+        "quote_34jQwD": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Tina_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<h6>\"Bodology Inositol is an exceptional supplement that aligns perfectly with nutritional goals. The optimal 40:1 ratio is research-backed for womens wellness, promoting optimal health and vitality. As a nutritionist, I not only highly recommend it but I also use it myself.\"</h6>",
+            "name": "Tina Kozman",
+            "expert-title": "MEd, CNP, RD, Metabolic Health Coach"
+          }
+        },
+        "quote_NhrLgL": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<h6>\"In my practice, I recommend Myo + D-Chiro Inositol to patients looking to support their reproductive wellness and overall metabolic health. Its role in promoting hormonal balance and cycle regularity makes it a valuable addition for women preparing for conception.\"</h6>",
+            "name": "Hillary Wright",
+            "expert-title": "MEd, RD, Director of Nutrition at Boston IVF"
+          }
+        }
+      },
+      "block_order": [
+        "quote_BKVLCd",
+        "quote_34jQwD",
+        "quote_NhrLgL"
+      ],
+      "custom_css": [
+        "h6 {color: white;}"
+      ],
+      "settings": {
+        "heading": "<p>Our <em>experts</em></p>",
+        "full_width": false,
+        "text_size": "small",
+        "font_family": "body",
+        "pagination": "logos",
+        "autoplay": false,
+        "autoplay_length": 5,
+        "color_bg": "#f7f7f7",
+        "color_text": "#ffffff",
+        "color_text2": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "spacer_FzEHUN": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 55,
+        "spacer_desktop": 85,
+        "border_separator": false,
+        "border_separator_full": true
       }
     },
     "multicolumn_QQjdQM": {
@@ -427,78 +493,6 @@
       ],
       "settings": {
         "custom_liquid": "<div class=\"actions\">\n  <h6>How inositol works:</h6>\n  <div class=\"row\">\n    <!-- First Step -->\n    <div class=\"col-text\">\n      <span>Supports healthy insulin signalling</span>\n    </div>\n    <div class=\"col-arrow\"> <span class=\"arrow\">></span> </div>\n    <!-- Second Step -->\n    <div class=\"col-text\">\n      <span>Aids GLUT4 to help cells absorb glucose efficiently</span>\n    </div>\n    <div class=\"col-arrow\">\n      <span class=\"arrow\">></span>\n    </div>\n    <!-- Third Step -->\n    <div class=\"col-text\">\n      <span>Promotes balanced hormones and ovarian health</span>\n    </div>\n  </div>\n</div>"
-      }
-    },
-    "8f6ed916-ced8-44f6-9ef8-b60fd327ae31": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 45,
-        "spacer_desktop": 30,
-        "border_separator": false,
-        "border_separator_full": true
-      }
-    },
-    "expert_testimonials_KxH7tC": {
-      "type": "expert-testimonials",
-      "blocks": {
-        "quote_BKVLCd": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Anita_-_White_-_logo.png",
-            "stars": "",
-            "quote": "<p>\"I use Inositol to support clients looking to maintain healthy cycles, manage metabolic wellness, and promote hormonal balance. It plays a helpful role in supporting glucose metabolism and overall vitality.\"</p>",
-            "name": "Dr. Anita W.",
-            "expert-title": "Ph.D, Natural Medicine Practitioner"
-          }
-        },
-        "quote_34jQwD": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Tina_-_white_-_logo_2.png",
-            "stars": "",
-            "quote": "<p>\"Bodology Inositol is an exceptional supplement that aligns perfectly with nutritional goals. The optimal 40:1 ratio is research-backed for womens wellness, promoting optimal health and vitality. As a nutritionist, I not only highly recommend it but I also use it myself.\"</p>",
-            "name": "Tina Kozman",
-            "expert-title": "MEd, CNP, RD, Metabolic Health Coach"
-          }
-        },
-        "quote_NhrLgL": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Hillary_-_white_-_logo_2.png",
-            "stars": "",
-            "quote": "<p>\"In my practice, I recommend Myo + D-Chiro Inositol to patients looking to support their reproductive wellness and overall metabolic health. Its role in promoting hormonal balance and cycle regularity makes it a valuable addition for women preparing for conception.\"</p>",
-            "name": "Hillary Wright",
-            "expert-title": "MEd, RD, Director of Nutrition at Boston IVF"
-          }
-        }
-      },
-      "block_order": [
-        "quote_BKVLCd",
-        "quote_34jQwD",
-        "quote_NhrLgL"
-      ],
-      "settings": {
-        "heading": "<p>Our <em>experts</em></p>",
-        "full_width": false,
-        "text_size": "small",
-        "font_family": "body",
-        "pagination": "logos",
-        "autoplay": false,
-        "autoplay_length": 5,
-        "color_bg": "#f7f7f7",
-        "color_text": "#ffffff",
-        "color_text2": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "spacer_FzEHUN": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 40,
-        "border_separator": false,
-        "border_separator_full": true
       }
     },
     "multicolumn_rVnwmF": {
@@ -1044,12 +1038,11 @@
     "spacer_VWaT3c",
     "promotion_blocks_FLbKam",
     "spacer_iGd9ka",
+    "expert_testimonials_KxH7tC",
+    "spacer_FzEHUN",
     "multicolumn_QQjdQM",
     "multicolumn_JycUDX",
     "custom_liquid_zmPdpt",
-    "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
-    "expert_testimonials_KxH7tC",
-    "spacer_FzEHUN",
     "multicolumn_rVnwmF",
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
