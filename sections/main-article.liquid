@@ -40,7 +40,7 @@
 
      <div class="author-contents">
        <h3>Authors</h3>
-    <ul>
+    {% comment %}<ul>{% endcomment %}
 
   
 {% if article.metafields.custom.ambassador and article.metafields.custom.ambassador.value != blank %}
@@ -88,7 +88,7 @@
 {% endif %}
 
       
-    </ul>
+    {% comment %}</ul>{% endcomment %}
   </div> 
         {% endif %}
     
