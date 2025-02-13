@@ -122,12 +122,11 @@
         },
         "variant_picker_HegXNW": {
           "type": "variant_picker",
-          "disabled": true,
           "settings": {
-            "picker_type": "dropdown",
-            "color_picker": true,
+            "picker_type": "button",
+            "color_picker": false,
             "color_picker_use_variants": false,
-            "variant_is_disabled": true,
+            "variant_is_disabled": false,
             "sizing_guide_variant": "Size",
             "sizing_guide_text": "Sizing guide",
             "sizing_guide_icon": "ruler",
@@ -169,16 +168,6 @@
             "side_panel_3_page": ""
           }
         },
-        "collapsible_tab_EaUniz": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Why Bodology?",
-            "open": false,
-            "content": "<ul><li>100% ingredients transparency</li><li>Third-party tested for quality and purity</li><li>Clinically-studied 40:1 ratio of myo-inositol to d-chiro-inositol</li><li>Made ethically in the USA</li><li>Trusted by health practitioners</li></ul>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
         "collapsible_tab_KVBdNK": {
           "type": "collapsible_tab",
           "settings": {
@@ -187,6 +176,16 @@
             "content": "<p>Inositol is clinically backed to:</p>",
             "page": "",
             "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Inositol-Research-large.png?v=1737715774\" style=\"width:90%; height:auto; display:block;\">"
+          }
+        },
+        "collapsible_tab_EaUniz": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why Bodology?",
+            "open": false,
+            "content": "<ul><li>100% ingredients transparency</li><li>Third-party tested for quality and purity</li><li>Clinically-studied 40:1 ratio of myo-inositol to d-chiro-inositol</li><li>Made ethically in the USA</li><li>Trusted by health practitioners</li></ul>",
+            "page": "",
+            "custom_liquid": ""
           }
         },
         "collapsible_tab_BEQc3p": {
@@ -229,8 +228,8 @@
         "custom_liquid_Aai6fh",
         "custom_liquid_8TqUrD",
         "side_panel_NGJTtJ",
-        "collapsible_tab_EaUniz",
         "collapsible_tab_KVBdNK",
+        "collapsible_tab_EaUniz",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
         "collapsible_tab_RaXCmL"
