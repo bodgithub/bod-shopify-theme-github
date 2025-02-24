@@ -170,6 +170,7 @@
         },
         "collapsible_tab_KVBdNK": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Benefits",
             "open": false,
@@ -393,7 +394,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "",
+            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
             "link_label": "",
             "link": ""
           }
@@ -456,6 +457,7 @@
         "column_pkBURW",
         "column_ctC6yX"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
         ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
@@ -536,6 +538,7 @@
         "column_fUjqfM",
         "column_4JdggA"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 15px 0 5% !important; }}"
       ],
@@ -586,6 +589,7 @@
       "block_order": [
         "box_TxAVLm"
       ],
+      "disabled": true,
       "custom_css": [
         ".study p {font-size: 0.85em;}",
         ".toggle-box .aspect-ratio.aspect-ratio--square {padding-bottom: 85%;}",
@@ -624,6 +628,7 @@
       "block_order": [
         "text_9b6n8V"
       ],
+      "disabled": true,
       "custom_css": [
         "p {font-size: 0.5em; padding-top: 20px; padding-left: 10px;}",
         "a {color: #767676;}"
@@ -915,6 +920,7 @@
         "text_button_rYnTh9",
         "text_button_JpfFxg"
       ],
+      "disabled": true,
       "custom_css": [
         ".image-with-text--content {padding: 0 20% 0 5%;}",
         "#Accordion-collapsible_tab_XCi3Ld-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_BAVgTR-template--18405848416475__image_with_text_r96Axa,#Accordion-collapsible_tab_J4N3mA-template--18405848416475__image_with_text_r96Axa,.text-button {justify-content: left; padding-bottom: 8px;}",
@@ -1019,6 +1025,7 @@
         },
         "junip_product_reviews_ugc_junip_reviews_YG3wzn": {
           "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "disabled": true,
           "settings": {
             "layout": "list",
             "reviewsType": "product_reviews",
