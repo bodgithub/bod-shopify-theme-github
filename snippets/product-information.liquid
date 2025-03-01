@@ -322,3 +322,28 @@
 {%- endif -%}
 
 {{ sizing_popup }}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Define URL mappings to new titles
+    const titleMappings = {
+        "/products/myo-d-chiro-inositol-powder": "Myo & D-Chiro Inositol Powder – 40:1 Clinically Studied Formula",
+        "/pages/PCOS": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for PCOS, Fertility & Metabolic Health",
+        "/pages/hormones": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Hormones, Fertility & Metabolic Health",
+        "/pages/fertility": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for PCOS, Fertility & Metabolic Health",
+        "/pages/sustainable-weight-loss": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Cravings, Blood Sugar & Metabolic Health",
+        "/pages/anxiety": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Anxiety, Sleep & Metabolic Health"
+    };
+
+    // Get current path
+    const currentPath = window.location.pathname;
+
+    // Find the h1 element with the product-title class
+    const productTitleElement = document.querySelector("h1.product-title");
+
+    // Update the title if the current path is in the mapping
+    if (productTitleElement && titleMappings[currentPath]) {
+        productTitleElement.textContent = titleMappings[currentPath];
+    }
+});
+</script>
