@@ -2368,12 +2368,7 @@ h6,
     display: inline-flex; }
 
 
-  @media only screen and (min-width: 1068px) {
-    .thb-header-mobile-left {
-      display: none; } }
-  [dir="rtl"] .thb-header-mobile-left {
-    margin-right: 0;
-    margin-left: auto; }
+  
 
   
     @media only screen and (min-width: 1068px) {
@@ -2392,7 +2387,7 @@ h6,
         color: var(--color-header-links-hover, --color-accent2); }
       .navigation-uppercase-true .thb-secondary-area-item.thb-secondary-myaccount {
         text-transform: uppercase; }
-      @media only screen and (min-width: 768px) {
+      @media only screen and (min-width: 1068px) {
         .thb-secondary-area-item.thb-secondary-myaccount {
           display: inline-flex; } }
       .thb-secondary-area-item.thb-secondary-myaccount span {
