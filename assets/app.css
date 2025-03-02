@@ -2967,7 +2967,7 @@ input[type="submit"] {
         color: var(--white-button-label, var(--color-body, #2c2d2e)); } }
   .button.accent,
   input[type="submit"].accent {
-    background: linear-gradient(45deg, #1b3def, #a02127);/* var(--color-accent);*/
+    background: #f2eee9; /*linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
     color: var(--solid-button-label, #fff); }
     .button.accent .spinner-path,
     input[type="submit"].accent .spinner-path {
