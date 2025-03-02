@@ -2876,7 +2876,7 @@ input[type="submit"] {
   font-size: 1.15rem;
   font-weight: var(--font-body-medium-weight, 500);
   letter-spacing: var(--button-letter-spacing, 0.02em);
-  background: linear-gradient(45deg, #1b3def, #a02127); /*var(--solid-button-background, var(--color-accent));*/
+  background: linear-gradient(45deg, #1b3def, #c28646 ); /* #a02127var(--solid-button-background, var(--color-accent));*/
   color: var(--solid-button-label, #fff);
   border: 0;
   border-radius: var(--button-border-radius, 6px);
@@ -2967,7 +2967,7 @@ input[type="submit"] {
         color: var(--white-button-label, var(--color-body, #2c2d2e)); } }
   .button.accent,
   input[type="submit"].accent {
-    background: /*linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
+    background: linear-gradient(45deg, #1b3def, #c28646);/* #a02127 var(--color-accent);*/
     color: var(--solid-button-label, #fff); }
     .button.accent .spinner-path,
     input[type="submit"].accent .spinner-path {
