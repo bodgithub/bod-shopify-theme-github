@@ -74,7 +74,7 @@
     padding: 0; }
 
 .testimonials {
-  background: /*var(--color-bg, var(--bg-body, #f5f5f5) ) #a42020 linear-gradient(120deg, #1b3def, #a02127);*/ #f2eee9;
+  background: /*var(--color-bg, var(--bg-body, #f5f5f5) ) #a42020 linear-gradient(120deg, #1b3def, #a02127);*/ #ece8e5;
   color: /*var(--color-text, var(--color-body, #2c2d2e));*/ #1b3def;
   text-align: center;
   overflow: hidden; }
@@ -133,8 +133,8 @@
     width: calc(100% + 70px); 
       --scroll-shadow-top: linear-gradient(rgb(139 37 85), rgba(var(--bg-body-rgb), 0));
     --scroll-shadow-bottom: linear-gradient(rgba(var(--bg-body-rgb), 0), rgb(65 55 197));
-    --scroll-shadow-left: linear-gradient(90deg, rgb(67 54 194), #f2eee9, 0));
-    --scroll-shadow-right: linear-gradient(90deg, rgba(var(--bg-body-rgb), #f2eee9, 0));
+    --scroll-shadow-left: linear-gradient(90deg, rgb(67 54 194), #ece8e5, 0));
+    --scroll-shadow-right: linear-gradient(90deg, rgba(var(--bg-body-rgb), #ece8e5, 0));
   overflow:hidden;}
 
 .flickity-custom-dots {
