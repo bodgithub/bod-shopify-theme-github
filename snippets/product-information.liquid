@@ -162,8 +162,9 @@
       {%- if block.settings.side_panel_3_label != '' -%}
       <button class="side-panel-links--link no-js-hidden" data-id="3">{% render 'svg-icons-inline', icon: block.settings.side_panel_3_icon %}<span class="text-button">{{ block.settings.side_panel_3_label }}</span></button>
       <a href="{{ block.settings.side_panel_3_page.url }}" class="side-panel-links--link no-js" target="_blank">{% render 'svg-icons-inline', icon: block.settings.side_panel_3_icon %}<span class="text-button">{{ block.settings.block.settings.side_panel_3_label }}</span></a>
-      {%- endif -%}
-    </side-panel-links>
+      </side-panel-links>
+        {%- endif -%}
+    
   {%- when 'quantity' -%}
     {%- if product.available -%}
     <div
@@ -331,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "/pages/PCOS": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for PCOS, Fertility & Metabolic Health",
         "/pages/hormones": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Hormones, Fertility & Metabolic Health",
         "/pages/fertility": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for PCOS, Fertility & Metabolic Health",
-        "/pages/sustainable-weight-loss": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Cravings, Blood Sugar & Metabolic Health",
+        "/pages/sustainable-weight-loss": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Helpy Blood Sugar & Metabolic Health",
         "/pages/anxiety": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Anxiety, Sleep & Metabolic Health"
     };
 
