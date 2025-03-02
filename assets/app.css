@@ -2904,7 +2904,7 @@ input[type="submit"] {
   @media screen and (hover: hover) {
     .button:hover,
     input[type="submit"]:hover {
-      background: linear-gradient(45deg, #1b3def, #a02127);/*var(--solid-button-background-hover, var(--color-accent));*/
+      background: linear-gradient(45deg, #0f2ed0, #7c1e45);/*var(--solid-button-background-hover, var(--color-accent));*/
       color: var(--solid-button-label, #fff); } }
   .button.loading span,
   [loading="true"] .button span,
