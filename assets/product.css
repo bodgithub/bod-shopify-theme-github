@@ -395,7 +395,7 @@
       position: relative;
       overflow: hidden;
       cursor: pointer;
-    opacity:0.2;}
+    }
       .product-gallery-container .product-thumbnail-container .product-thumbnail:after {
         content: "";
         display: block;
@@ -418,7 +418,7 @@
         border-radius: 50%;
         pointer-events: none; }
         .product-gallery-container .product-thumbnail-container .product-thumbnail-icon svg {
-          opacity: 0.6;
+          opacity: 0.2;
           width: 8px; }
       .product-gallery-container .product-thumbnail-container .product-thumbnail:hover svg {
         opacity: 1; }
