@@ -139,20 +139,6 @@
             "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, arrives in 2-5 days</span>\n    </div>"
           }
         },
-        "side_panel_NGJTtJ": {
-          "type": "side_panel",
-          "settings": {
-            "side_panel_1_label": "Detailed Benefits",
-            "side_panel_1_icon": "none",
-            "side_panel_1_page": "detailed-benefits",
-            "side_panel_2_label": "Shipping Policy",
-            "side_panel_2_icon": "none",
-            "side_panel_2_page": "shipping-returns",
-            "side_panel_3_label": "",
-            "side_panel_3_icon": "none",
-            "side_panel_3_page": ""
-          }
-        },
         "custom_liquid_ExQ6qT": {
           "type": "custom_liquid",
           "disabled": true,
@@ -174,7 +160,7 @@
         "collapsible_tab_BEQc3p": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Why you will love it",
+            "heading": "Benefits",
             "open": false,
             "content": "<p>At Bodology, we go beyond symptom-masking. Our clinically studied inositol is designed to support hormones, metabolism, and overall well-being at the source.</p><p><strong>✔ Supports Healthy Ovulation & Fertility<br/></strong>Helps regulate cycles and improve egg quality </p><p><strong>✔ Balances Hormones & Lowers Testosterone</strong><br/>Targets PCOS symptoms like hair growth and acne</p><p><strong>✔ Improves Insulin Sensitivity</strong><br/>Helps regulate blood sugar and reduce metabolic dysfunction </p><p><strong>✔ Promotes Mood & Energy Stability</strong><br/>Supports neurotransmitters for emotional well-being </p><p><strong>✔ Backed by 100+ Clinical Studies</strong><br/>One of the most researched nutrients for metabolic health</p>",
             "page": "",
@@ -183,6 +169,17 @@
         },
         "collapsible_tab_KVBdNK": {
           "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why you will love it",
+            "open": false,
+            "content": "<p><strong>Clinically Studied 40:1 Ratio<br/></strong>The gold standard for PCOS, fertility, and metabolic health</p><p><strong>100% Ingredient Transparency</strong><br/>Pure inositol, no fillers or nasties</p><p><strong>Third-Party Tested</strong><br/>Verified for quality, purity, and potency</p><p><strong>Optimized for Absorption</strong><br/>Plant-based formula your body recognizes as food</p><p><strong>Made in the USA</strong><br/>Ethically produced and backed by science</p><p><strong>Trusted by Experts</strong><br/>Recommended by metabolic health experts, dietitians, and health practitioners</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_daMhCg": {
+          "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Details",
             "open": false,
@@ -207,6 +204,17 @@
           "settings": {
             "heading": "The \"NO\" List",
             "open": false,
+            "content": "<ul><li>No fillers, binders, or additives</li><li>No ingredients from animal origin</li><li>No artificial sweeteners, flavors, or stevia</li><li>No added sugar or caffeine</li><li>No gluten, dairy, or soy</li><li>No GMO ingredients</li><li>No hormones or unnecessary compounds—just pure dose-optimised inositol</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_rNzW4i": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "The \"NO\" List",
+            "open": false,
             "content": "<ul><li>No fillers</li><li>No gluten</li><li>No flavoring</li><li>No animal ingredients</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
             "page": "",
             "custom_liquid": ""
@@ -214,12 +222,27 @@
         },
         "collapsible_tab_RaXCmL": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Certifications",
             "open": false,
             "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metals, Contaminants and Microbiological Analysis by 3rd Party Laboratories</li></ul>",
             "page": "",
             "custom_liquid": ""
+          }
+        },
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Detailed Benefits",
+            "side_panel_1_icon": "none",
+            "side_panel_1_page": "detailed-benefits",
+            "side_panel_2_label": "Shipping Policy",
+            "side_panel_2_icon": "none",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "",
+            "side_panel_3_icon": "none",
+            "side_panel_3_page": ""
           }
         }
       },
@@ -230,14 +253,16 @@
         "custom_liquid_KdP8MH",
         "buy_buttons_3FBywE",
         "custom_liquid_eAg6YA",
-        "side_panel_NGJTtJ",
         "custom_liquid_ExQ6qT",
         "collapsible_tab_zkXkR7",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_KVBdNK",
+        "collapsible_tab_daMhCg",
         "collapsible_tab_WEnUUU",
         "collapsible_tab_Qq4nP6",
-        "collapsible_tab_RaXCmL"
+        "collapsible_tab_rNzW4i",
+        "collapsible_tab_RaXCmL",
+        "side_panel_NGJTtJ"
       ],
       "settings": {
         "heading": "",
