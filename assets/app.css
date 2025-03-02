@@ -2878,7 +2878,7 @@ input[type="submit"] {
   letter-spacing: var(--button-letter-spacing, 0.02em);
   background: #f2eee9; /*linear-gradient(45deg, #1b3def, #a02127  );  var(--solid-button-background, var(--color-accent));*/
   color: #1b3def; /*var(--solid-button-label, #fff);*/
-  border: 1px solid #e7dccd;
+  /*border: 1px solid #e7dccd;*/
   border-radius: var(--button-border-radius, 6px);
   text-align: center;
   position: relative;
