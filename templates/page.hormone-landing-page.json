@@ -116,8 +116,15 @@
         },
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div id=\"product-details\"><h6>\nPure, unflavored inositol powder in the body's optimal 40:1 ratio of myo-inositol to d-chiro-inositol. Scientifically formulated to support hormonal balance, metabolic health, and insulin sensitivity.*\n\n<br><br><b>\n\n100+ studies support inositol's role in supporting cycle regularity, PCOS symptoms, fertility, mood balance, and healthy BMI.* \n</b></h6><br></div>"
+          }
+        },
+        "custom_liquid_KdP8MH": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"product-details\"><h6>\nA clean, hormone-friendly formula for metabolic balance—designed to support, not override, your body's natural rhythms.\n</h6><br></div>"
           }
         },
         "buy_buttons_3FBywE": {
@@ -164,6 +171,16 @@
             "custom_liquid": ""
           }
         },
+        "collapsible_tab_BEQc3p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why you will love it",
+            "open": false,
+            "content": "<p>At Bodology, we go beyond symptom-masking. Our clinically studied inositol is designed to support hormones, metabolism, and overall well-being at the source.</p><p><strong>✔ Supports Healthy Ovulation & Fertility<br/></strong>Helps regulate cycles and improve egg quality </p><p><strong>✔ Balances Hormones & Lowers Testosterone</strong><br/>Targets PCOS symptoms like hair growth and acne</p><p><strong>✔ Improves Insulin Sensitivity</strong><br/>Helps regulate blood sugar and reduce metabolic dysfunction </p><p><strong>✔ Promotes Mood & Energy Stability</strong><br/>Supports neurotransmitters for emotional well-being </p><p><strong>✔ Backed by 100+ Clinical Studies</strong><br/>One of the most researched nutrients for metabolic health</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
         "collapsible_tab_KVBdNK": {
           "type": "collapsible_tab",
           "settings": {
@@ -174,8 +191,9 @@
             "custom_liquid": ""
           }
         },
-        "collapsible_tab_BEQc3p": {
+        "collapsible_tab_WEnUUU": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Ingredients",
             "open": false,
@@ -209,13 +227,15 @@
         "text_RWyfgB",
         "title_ExCfKU",
         "custom_liquid_qLxheX",
+        "custom_liquid_KdP8MH",
         "buy_buttons_3FBywE",
         "custom_liquid_eAg6YA",
         "side_panel_NGJTtJ",
         "custom_liquid_ExQ6qT",
         "collapsible_tab_zkXkR7",
-        "collapsible_tab_KVBdNK",
         "collapsible_tab_BEQc3p",
+        "collapsible_tab_KVBdNK",
+        "collapsible_tab_WEnUUU",
         "collapsible_tab_Qq4nP6",
         "collapsible_tab_RaXCmL"
       ],
