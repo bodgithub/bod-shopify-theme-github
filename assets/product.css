@@ -176,12 +176,18 @@
         [dir="rtl"] .variations .product-form__input--block input[type="radio"] + label {
           margin: 0 0 6px 6px; }
       .variations .product-form__input--block input[type="radio"] + label {
-        box-shadow: 0 0 0 1px var(--color-form-border) inset; }
+        /*box-shadow: 0 0 0 1px var(--color-form-border) inset;*/
+        border-left: 10px solid #f2eee9;
+        background-color: #f2eee994;
+        color: #a59887;}
       .variations .product-form__input--block input[type="radio"]:checked + label {
         z-index: 5;
-        box-shadow: 0 0 0 1px var(--color-body, #2c2d2e) inset; 
+        /*box-shadow: 0 0 0 1px var(--color-body, #2c2d2e) inset; 
         background-color: #1b3def;
-        color: white;}
+        color: white;*/
+        background-color: #f2eee9;
+        color: #1b3def;
+        border-left: 10px solid #1b3def;}
       .variations .product-form__input--block input[type="radio"]:focus-visible + label {
         box-shadow: 0 0 0 2px #015ecc; }
     .variations .product-form__input--color {
