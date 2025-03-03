@@ -16,7 +16,7 @@
   {%- when 'title' -%}
     <div class="product-title-container" {{ block.shopify_attributes }}>
       <h1 class="product-title">{{ product.title }}</h1>
-      <em><h5 class="product-subtitle"></h5></em>
+      <h5 class="product-subtitle"></h5>
       <div class="product-price-container">
         <div class="no-js-hidden" id="price-{{ section.id }}">
           {% render 'product-price', product: product, use_variant: true, show_badges: true %}
@@ -339,8 +339,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Get current path
     const currentPath = window.location.pathname;
 
-    // Find the h5 element with the product-subtitle class
-    const productTitleElement = document.querySelector("h5.product-subtitle");
+    // Find the element with the product-subtitle class
+    const productTitleElement = document.querySelector(".product-subtitle");
 
     // Update the title if the current path is in the mapping
     if (productTitleElement && titleMappings[currentPath]) {
