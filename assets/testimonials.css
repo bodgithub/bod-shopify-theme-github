@@ -145,14 +145,11 @@
   flex-wrap: nowrap;
   align-items: center;
   grid-gap: 10px;
-  overflow-x: scroll;
-      
+  overflow-x: scroll; 
 scroll-behavior: smooth;}
   @media only screen and (min-width: 768px) {
     .flickity-custom-dots {
-      grid-gap: 10px;
-    max-width: 350px;
-    min-height: 190px;} }
+      grid-gap: 10px;} }
   .flickity-custom-dots .dot {
     display: inline-flex;
     opacity: 0.4;
@@ -161,7 +158,9 @@ scroll-behavior: smooth;}
   background-color:white;
   border-radius:15px;
   padding:25px;
-  align-items: center;}
+  align-items: center;
+  max-width: 350px;
+    min-height: 190px;}
     .flickity-custom-dots .dot.is-selected {
       opacity: 1;
     }
