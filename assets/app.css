@@ -2874,7 +2874,7 @@ input[type="submit"] {
   justify-content: center;
   height: 50px;
   font-size: 1.15rem;
-  font-weight: var(--font-body-medium-weight, 500);
+  font-weight: var(--font-body-bold-weight, 500);
   letter-spacing: var(--button-letter-spacing, 0.02em);
   background: #f2eee9; /*linear-gradient(45deg, #1b3def, #a02127  );  var(--solid-button-background, var(--color-accent));*/
   color: #1b3def; /*var(--solid-button-label, #fff);*/
