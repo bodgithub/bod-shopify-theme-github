@@ -1435,7 +1435,7 @@ h4,
   @media only screen and (min-width: 1068px) {
     h4,
     .h4 {
-      font-size: calc(var(--font-heading-scale) * 28px);
+      font-size: calc(var(--font-heading-scale) * 20px);
       line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 36px)); } }
 
 h5,
