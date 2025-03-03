@@ -146,12 +146,13 @@
   align-items: center;
   grid-gap: 10px;
   overflow-x: scroll;
-      max-width: 350px;
-    min-height: 190px;
+      
 scroll-behavior: smooth;}
   @media only screen and (min-width: 768px) {
     .flickity-custom-dots {
-      grid-gap: 10px; } }
+      grid-gap: 10px;
+    max-width: 350px;
+    min-height: 190px;} }
   .flickity-custom-dots .dot {
     display: inline-flex;
     opacity: 0.4;
