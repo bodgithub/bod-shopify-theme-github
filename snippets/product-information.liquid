@@ -16,7 +16,7 @@
   {%- when 'title' -%}
     <div class="product-title-container" {{ block.shopify_attributes }}>
       <h1 class="product-title">{{ product.title }}</h1>
-      <h6>40:1 Clinically Studied Formula</h6>
+      <h5 class="product-subtitle"></h5>
       <div class="product-price-container">
         <div class="no-js-hidden" id="price-{{ section.id }}">
           {% render 'product-price', product: product, use_variant: true, show_badges: true %}
@@ -328,19 +328,19 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Define URL mappings to new titles
     const titleMappings = {
-        "/products/myo-d-chiro-inositol-powder": "Myo & D-Chiro Inositol Powder",
-        "/pages/PCOS": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for PCOS, Fertility & Metabolic Health",
-        "/pages/hormones": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Hormones, Fertility & Metabolic Health",
-        "/pages/fertility": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for PCOS, Fertility & Metabolic Health",
-        "/pages/sustainable-weight-loss": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Helpy Blood Sugar & Metabolic Health",
-        "/pages/anxiety": "Myo & D-Chiro Inositol Powder – 40:1 Ratio for Anxiety, Sleep & Metabolic Health"
+        "/products/myo-d-chiro-inositol-powder": "40:1 Clinically Studied Formula",
+        "/pages/PCOS": "40:1 Ratio for PCOS, Fertility & Metabolic Health",
+        "/pages/hormones": "40:1 Ratio for Hormones, Fertility & Metabolic Health",
+        "/pages/fertility": "40:1 Ratio for PCOS, Fertility & Metabolic Health",
+        "/pages/sustainable-weight-loss": "40:1 Ratio for Helpy Blood Sugar & Metabolic Health",
+        "/pages/anxiety": "40:1 Ratio for Anxiety, Sleep & Metabolic Health"
     };
 
     // Get current path
     const currentPath = window.location.pathname;
 
-    // Find the h1 element with the product-title class
-    const productTitleElement = document.querySelector("h1.product-title");
+    // Find the h5 element with the product-subtitle class
+    const productTitleElement = document.querySelector("h5.product-subtitle");
 
     // Update the title if the current path is in the mapping
     if (productTitleElement && titleMappings[currentPath]) {
