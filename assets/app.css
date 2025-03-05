@@ -2968,7 +2968,8 @@ input[type="submit"] {
   .button.accent,
   input[type="submit"].accent {
     background: #1b3def; /*linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
-    color: #f2eee9;/*var(--solid-button-label, #fff);*/ }
+    color: #f2eee9;/*var(--solid-button-label, #fff);*/
+  text-decoration: none;}
     .button.accent .spinner-path,
     input[type="submit"].accent .spinner-path {
       stroke: var(--bg-body); }
