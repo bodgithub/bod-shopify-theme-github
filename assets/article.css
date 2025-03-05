@@ -518,10 +518,10 @@ border-radius:20px;
 .bodology-cta {
   display: flex;
   margin: 40px 0;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
+  background-color: #f2eee8;
 }
 
 .cta-content {
@@ -531,7 +531,7 @@ border-radius:20px;
 
 .cta-image {
   flex: 2;
-  background-color: #f2f2f2;
+  background-color: #f2eee8;
   display: flex;
   align-items: center;
   justify-content: center;
