@@ -20,7 +20,10 @@
   margin-right: auto; }
   @media only screen and (min-width: 768px) {
     .blog-post-detail--navigation--inner {
-      padding: 0 50px; } }
+      padding: 0 50px; }
+  .blog-post-detail--wrapper.section-spacing-bottom .small-9 {
+     padding-right:25%;  }
+  }
 
 .blog-post-detail .article-tags .tag-link {
   display: inline-flex;
@@ -508,3 +511,5 @@ border-radius:20px;
         display: none; /* Hide on screens smaller than 901px */
     }
 }
+
+
