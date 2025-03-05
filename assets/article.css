@@ -512,4 +512,102 @@ border-radius:20px;
     }
 }
 
+.CTA {
+  border-radius: 15px;
+  border: 1px solid #1b3def;
+  padding:45px;
+  margin-bottom:30px;
+}
+
+.at-a-glance h3 {
+      font-size: 1.25rem;
+}{
+
+  
+}
+
+.bodology-cta {
+  display: flex;
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.cta-content {
+  padding: 30px;
+  flex: 3;
+}
+
+.cta-image {
+  flex: 2;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cta-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.bodology-cta:hover .cta-image img {
+  transform: scale(1.05);
+}
+
+.bodology-cta h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 22px;
+  color: #333;
+}
+
+.bodology-cta p {
+  margin-bottom: 24px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #2a7d8c;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.cta-button:hover {
+  background-color: #1c6470;
+}
+
+/* Alternate layout for even-numbered CTAs */
+.cta-insulin, .cta-final {
+  flex-direction: row-reverse;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bodology-cta, .cta-insulin, .cta-final {
+    flex-direction: column;
+  }
+  
+  .cta-image {
+    height: 200px;
+  }
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: #777;
+  margin-top: 32px;
+  font-style: italic;
+}
 
