@@ -520,7 +520,7 @@ border-radius:20px;
   margin: 40px 0;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);*/
   background-color: #f2eee8;
 }
 
@@ -549,18 +549,7 @@ border-radius:20px;
   transform: scale(1.05);
 }
 
-/*.bodology-cta h3 {
-  margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 22px;
-  color: #333;
-}
 
-.bodology-cta p {
-  margin-bottom: 24px;
-  color: #555;
-  line-height: 1.6;
-}*/
 
 .button .accent {
    text-decoration: none;
