@@ -512,19 +512,8 @@ border-radius:20px;
     }
 }
 
-.CTA {
-  border-radius: 15px;
-  border: 1px solid #1b3def;
-  padding:45px;
-  margin-bottom:30px;
-}
 
-.at-a-glance h3 {
-      font-size: 1.25rem;
-}{
-
-  
-}
+/* Bodology Article CTAs */
 
 .bodology-cta {
   display: flex;
@@ -573,29 +562,14 @@ border-radius:20px;
   line-height: 1.6;
 }
 
-.cta-button {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #2a7d8c;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background-color 0.2s ease;
+.bodology-cta .button {
+   text-decoration: none;
 }
 
-.cta-button:hover {
-  background-color: #1c6470;
-}
-
-/* Alternate layout for even-numbered CTAs */
-.cta-insulin, .cta-final {
-  flex-direction: row-reverse;
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .bodology-cta, .cta-insulin, .cta-final {
+  .bodology-cta {
     flex-direction: column;
   }
   
