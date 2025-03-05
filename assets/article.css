@@ -549,7 +549,7 @@ border-radius:20px;
   transform: scale(1.05);
 }
 
-.bodology-cta h3 {
+/*.bodology-cta h3 {
   margin-top: 0;
   margin-bottom: 16px;
   font-size: 22px;
@@ -560,9 +560,9 @@ border-radius:20px;
   margin-bottom: 24px;
   color: #555;
   line-height: 1.6;
-}
+}*/
 
-.bodology-cta .button {
+.bodology-cta .button .accent {
    text-decoration: none;
 }
 
