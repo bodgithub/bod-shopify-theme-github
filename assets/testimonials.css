@@ -134,7 +134,7 @@
   .testimonials scroll-shadow {
     margin: 0 -45px;
     width: calc(100% + 70px); 
-    --scroll-shadow-size: 60 !important;
+  
     --scroll-shadow-top: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
   --scroll-shadow-bottom: linear-gradient(to top, rgba(255, 255, 255, 0), white);
   --scroll-shadow-left: linear-gradient(90deg, white, rgba(255, 255, 255, 0));
