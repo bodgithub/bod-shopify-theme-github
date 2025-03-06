@@ -106,5 +106,6 @@
 
 .collapsible-content-2 .accordion summary {
     padding: 25px 40px 25px 40px;
-    color: #f2eee9;
-    }
+    color: var(--color-heading, #1a1c1d);
+  margin-bottom: 10px;
+}
