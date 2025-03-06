@@ -24,7 +24,13 @@
 	<div class="small-12 columns">
 		<div class="collapsible-content-2 {% if has_bg -%}collapsible-content--has-bg{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}"style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --color-links: {{ color_links }}; --color-border: {{ color_border }};">
 			{% render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style %}
-			<div class="collapsible-content__inner">
+			{% if section.settings.header_image %}
+  <div class="collapsible-header-image">
+    <img src="{{ section.settings.header_image | img_url: 'master' }}" alt="Header Image">
+  </div>
+{% endif %}
+          
+          <div class="collapsible-content__inner">
 				{%- for block in section.blocks -%}
 
 {%- assign content_present = true -%}
