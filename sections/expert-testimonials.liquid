@@ -81,58 +81,52 @@
   const slides = document.querySelectorAll('.testimonials--testimonial');
   const dots = document.querySelectorAll('.flickity-custom-dots .dot');
   const carousel = document.querySelector('.testimonials--carousel');
-
-  if (!carousel || slides.length === 0) return;
-
-  // Initialize Flickity with the middle slide selected
-  const middleIndex = Math.floor(slides.length / 2);
-  const flickityInstance = new Flickity(carousel, {
-    wrapAround: true,  // Allows continuous scrolling
-    pageDots: true,
-    initialIndex: middleIndex, // Set the initial slide to be the middle one
-    cellAlign: 'center', // Ensures slides are centered
-    contain: true,
-    draggable: true,
-    autoPlay: false, // Set to true if autoplay is needed
-  });
-
+  
   function scrollToCenter(selectedIndex) {
-    if (!dots.length) return;
-
     const dot = dots[selectedIndex];
     const container = document.querySelector('.flickity-custom-dots');
-    if (!dot || !container) return;
-
     const containerWidth = container.offsetWidth;
     const dotOffsetLeft = dot.offsetLeft;
     const dotWidth = dot.offsetWidth;
     const scrollPosition = dotOffsetLeft - containerWidth / 2 + dotWidth / 2;
-
+    
     container.scroll({
       left: scrollPosition,
       behavior: 'smooth'
     });
 
-    dots.forEach(dot => dot.classList.remove('is-selected'));
+    dots.forEach((dot) => dot.classList.remove('is-selected'));
     dot.classList.add('is-selected');
   }
 
-  // Ensure the middle slide is highlighted initially
-  flickityInstance.on('ready', function() {
-    scrollToCenter(middleIndex);
-  });
+  function adjustActiveSlide() {
+    const activeSlide = document.querySelector('.carousel__slide.is-selected');
+    const index = Array.from(slides).indexOf(activeSlide);
+    if (index !== -1) {
+      scrollToCenter(index);
+    }
+  }
 
-  // Update dot highlighting on slide change
-  flickityInstance.on('select', function() {
-    scrollToCenter(flickityInstance.selectedIndex);
-  });
+  if (carousel) {
+    const flickityInstance = new Flickity(carousel);
 
-  // Allow clicking dots to select slides
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', function() {
-      flickityInstance.select(index);
+    // Center the active slide on change
+    flickityInstance.on('select', function() {
+      const selectedIndex = flickityInstance.selectedIndex;
+      scrollToCenter(selectedIndex);
     });
-  });
+
+    // Trigger centering on initial load if there are more than 3 dots
+    if (dots.length > 3) {
+      adjustActiveSlide();
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', function() {
+        flickityInstance.select(index);
+      });
+    });
+  }
 });
 
 
