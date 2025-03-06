@@ -46,7 +46,7 @@
 					{%- if section.blocks.size > 1 -%}
 						{%- if pagination == 'logos' -%}
 							<scroll-shadow>
-								<ol class="flickity-custom-dots dot-style--{{ pagination }}" style="--color-bg:{{ color_bg_card }};">
+								<ol class="flickity-custom-dots dot-style--{{ pagination }}" style="--color-bg-card:{{ color_bg_card }};">
 									{%- for block in section.blocks -%}
 										<li class="dot" aria-label="{{ forloop.index }}">
 											{%- liquid
