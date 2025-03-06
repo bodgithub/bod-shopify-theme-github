@@ -46,7 +46,7 @@
 					{%- if section.blocks.size > 1 -%}
 						{%- if pagination == 'logos' -%}
 							<scroll-shadow>
-								<ol class="flickity-custom-dots dot-style--{{ pagination }}" style="--color-bg-card:{{ color_bg_card }};">
+								<ol class="flickity-custom-dots dot-style--{{ pagination }}" style="background-color:{{ color_bg_card }}; border:1px solid {{ color_border_card }}">
 									{%- for block in section.blocks -%}
 										<li class="dot" aria-label="{{ forloop.index }}">
 											{%- liquid
@@ -215,6 +215,12 @@
         "type": "color",
         "id": "color_bg_card",
         "label": "Card Background",
+        "default": "#F5F5F5"
+      },
+      {
+        "type": "color",
+        "id": "color_border_card",
+        "label": "Card Border",
         "default": "#F5F5F5"
       },
 			{
