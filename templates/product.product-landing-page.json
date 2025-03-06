@@ -277,6 +277,76 @@
         "border_separator_full": false
       }
     },
+    "collapsible_content_2_iP8nzP": {
+      "type": "collapsible-content-2",
+      "blocks": {
+        "collapsible_tab_tD74p3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "PCOS & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence:</strong> Very Strong</p><p><strong>No. of studies:</strong> 50+Years of research: 2005 – 2023</p><p><strong>Findings:</strong> Inositol has been shown to reduce key PCOS symptoms, support cycle regularity, and lower testosterone levels. Clinical studies also report improvements in insulin sensitivity, with weight reduction of up to X% in some participants.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_AcachQ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fertility & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence:</strong> Very Strong</p><p><strong>No. of studies: </strong>30+Years of research: 2008 – 2023</p><p><strong>Findings: </strong>Research shows inositol supports ovulation, improves egg quality, and enhances pregnancy outcomes. Used in fertility protocols, inositol has been linked to higher success rates in assisted reproductive treatments (IVF & ICSI).</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_7BTNKP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Mood, Anxiety & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence: </strong>Very Strong</p><p><strong>No. of studies: </strong>20+Years of research: 2000 – 2023</p><p><strong>Findings:</strong> Inositol plays a key role in serotonin and dopamine signaling, supporting mood stability and mental well-being. Studies show inositol supplementation can help reduce anxiety, panic attacks, and symptoms of PMDD.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_Vj7zt3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Hormone Balance & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence: </strong>Strong</p><p><strong>No. of studies:</strong> 15+Years of research: 2010 – 2023</p><p><strong>Findings:</strong> Inositol has been studied for its role in balancing estrogen, progesterone, and testosterone, helping to regulate cycles, support ovulation, and improve overall hormone function.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_wXkCrX": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "PCOS Weight Loss & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence:</strong> Strong</p><p><strong>No. of studies:</strong> 10+Years of research: 2012 – 2023</p><p><strong>Findings:</strong> Inositol has been linked to improvements in insulin sensitivity, which can support weight management in PCOS. Studies suggest that inositol may help reduce visceral fat, improve body composition, and lower BMI over time.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_tD74p3",
+        "collapsible_tab_AcachQ",
+        "collapsible_tab_7BTNKP",
+        "collapsible_tab_Vj7zt3",
+        "collapsible_tab_wXkCrX"
+      ],
+      "settings": {
+        "heading": "<h1>Clean <em>ingredients,</em> clinical <em>results</em>*</h1>",
+        "marker_style": "style1",
+        "description": "<p>Decades of research show inositol’s impact on hormonal balance, fertility, mood, and metabolic health. Here’s what the science says.</p>",
+        "color_bg": "#f2eee9",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "color_border": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "promotion_blocks_FLbKam": {
       "type": "promotion-blocks",
       "blocks": {
@@ -422,6 +492,7 @@
         "column_wbzkNR",
         "column_dUeaGh"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
         ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
@@ -727,10 +798,10 @@
         "disable_bottom_spacing": false
       }
     },
-    "collapsible_content_YNH6m9": {
+    "collapsible_content_cGXRUN": {
       "type": "collapsible-content",
       "blocks": {
-        "collapsible_tab_FKCPCx": {
+        "collapsible_tab_hW7crK": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "What is Myo + D-Chiro Inositol?",
@@ -739,7 +810,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_M6bwYq": {
+        "collapsible_tab_XXxrm7": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "How much should I take?",
@@ -748,7 +819,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_rFXTj6": {
+        "collapsible_tab_KdyDNX": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "What is GLUT4?",
@@ -757,7 +828,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_JCak74": {
+        "collapsible_tab_a3zDiF": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Can you get inositol from diet alone?",
@@ -766,7 +837,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_cpaVif": {
+        "collapsible_tab_X6QGkY": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Why powder?",
@@ -775,7 +846,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_PjbiRr": {
+        "collapsible_tab_ceQNA8": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "When will I see results?",
@@ -784,7 +855,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_qCXLWp": {
+        "collapsible_tab_bmVbCi": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "What does it taste like?",
@@ -793,7 +864,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_x7zeqp": {
+        "collapsible_tab_tgyr8M": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Are there any side effects?",
@@ -802,7 +873,7 @@
             "page": ""
           }
         },
-        "collapsible_tab_PmwR89": {
+        "collapsible_tab_PftAzr": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Can I take while pregnant?",
@@ -813,15 +884,15 @@
         }
       },
       "block_order": [
-        "collapsible_tab_FKCPCx",
-        "collapsible_tab_M6bwYq",
-        "collapsible_tab_rFXTj6",
-        "collapsible_tab_JCak74",
-        "collapsible_tab_cpaVif",
-        "collapsible_tab_PjbiRr",
-        "collapsible_tab_qCXLWp",
-        "collapsible_tab_x7zeqp",
-        "collapsible_tab_PmwR89"
+        "collapsible_tab_hW7crK",
+        "collapsible_tab_XXxrm7",
+        "collapsible_tab_KdyDNX",
+        "collapsible_tab_a3zDiF",
+        "collapsible_tab_X6QGkY",
+        "collapsible_tab_ceQNA8",
+        "collapsible_tab_bmVbCi",
+        "collapsible_tab_tgyr8M",
+        "collapsible_tab_PftAzr"
       ],
       "settings": {
         "heading": "<h1>Get <em>answers</em></h1>",
@@ -835,15 +906,6 @@
         "color_border": "#1b3def",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
-      }
-    },
-    "spacer_EeT6AJ": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 20,
-        "border_separator": false,
-        "border_separator_full": true
       }
     },
     "image_with_text_r96Axa": {
@@ -1068,6 +1130,7 @@
     "custom_liquid_RcjzA4",
     "main-product",
     "spacer_VWaT3c",
+    "collapsible_content_2_iP8nzP",
     "promotion_blocks_FLbKam",
     "spacer_iGd9ka",
     "expert_testimonials_KxH7tC",
@@ -1081,8 +1144,7 @@
     "carousel_boxes_jas_HzyeW9",
     "rich_text_mKahE4",
     "multicolumn_hTVh9C",
-    "collapsible_content_YNH6m9",
-    "spacer_EeT6AJ",
+    "collapsible_content_cGXRUN",
     "image_with_text_r96Axa",
     "spacer_EJt6Hf",
     "video_pdBgr8",
