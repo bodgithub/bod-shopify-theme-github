@@ -170,7 +170,7 @@ scroll-behavior: smooth;}
       opacity: 1;
     }
 
-.dot-style--logos img {height: 100%;}
+.dot-style--logos img {height: 100%; min-width: 140px; padding-bottom:20px;}
 
 
  @media only screen and (max-width: 768px) {
