@@ -79,23 +79,24 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
   const carousel = document.querySelector('.testimonials--carousel');
+  const dotsContainer = document.querySelector('.flickity-custom-dots');
   const dots = document.querySelectorAll('.flickity-custom-dots .dot');
   const slides = document.querySelectorAll('.testimonials--testimonial');
 
-  if (!carousel || slides.length === 0) return;
+  if (!carousel || slides.length === 0 || !dotsContainer) return;
 
   // Find the middle index of testimonials
   const middleIndex = Math.floor(slides.length / 2);
 
-  // Initialize Flickity with proper settings
+  // Initialize Flickity for testimonials
   const flickityInstance = new Flickity(carousel, {
-    wrapAround: true, // Allows infinite looping
-    pageDots: false,  // Disable Flickity's default dots (we're using custom ones)
+    wrapAround: true, // Enables infinite scrolling
+    pageDots: false, // Hide default Flickity dots
     cellAlign: 'center',
     contain: true,
     draggable: true,
     initialIndex: middleIndex, // Start from the middle testimonial
-    autoPlay: false // Set to a number (e.g. 5000) if autoplay is needed
+    autoPlay: false // Set this to a number (e.g. 5000) if autoplay is needed
   });
 
   function updateDotHighlight(selectedIndex) {
@@ -104,6 +105,15 @@
     dots.forEach(dot => dot.classList.remove('is-selected'));
     if (dots[selectedIndex]) {
       dots[selectedIndex].classList.add('is-selected');
+    }
+
+    // Ensure the active dot is centered in the scrollable container
+    const activeDot = dots[selectedIndex];
+    if (activeDot) {
+      dotsContainer.scrollTo({
+        left: activeDot.offsetLeft - dotsContainer.offsetWidth / 2 + activeDot.offsetWidth / 2,
+        behavior: 'smooth'
+      });
     }
   }
 
@@ -123,7 +133,38 @@
       flickityInstance.select(index);
     });
   });
+
+  // Make dots container scrollable with dragging
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  dotsContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    dotsContainer.classList.add('is-dragging');
+    startX = e.pageX - dotsContainer.offsetLeft;
+    scrollLeft = dotsContainer.scrollLeft;
+  });
+
+  dotsContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+    dotsContainer.classList.remove('is-dragging');
+  });
+
+  dotsContainer.addEventListener('mouseup', () => {
+    isDown = false;
+    dotsContainer.classList.remove('is-dragging');
+  });
+
+  dotsContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - dotsContainer.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    dotsContainer.scrollLeft = scrollLeft - walk;
+  });
 });
+
 
 
 
