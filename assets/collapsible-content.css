@@ -103,3 +103,8 @@
  @media only screen and (max-width: 768px){
 .collapsible-content h1 { text-align:center;}
  }
+
+.collapsible-content-2 .accordion summary {
+    padding: 25px 40px 25px 40px;
+    color: #f2eee9;
+    }
