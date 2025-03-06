@@ -167,3 +167,20 @@ font-size: 1.2rem; }
   
 }
 
+.collapsible-content-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px;
+  align-items: center; /* Align content vertically */
+}
+
+.collapsible-content-2 .section-header,
+.collapsible-content-2 .collapsible-content__inner {
+  order: 1; /* Ensure the text stays on the left */
+}
+
+.collapsible-content-2 .collapsible-header-image {
+  order: 2; /* Move the image to the right */
+  text-align: right; /* Align the image to the right */
+}
+
