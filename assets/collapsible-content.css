@@ -150,3 +150,17 @@
 }
 .collapsible-content-2 .accordion summary {
 font-size: 1.2rem; }
+
+
+.collapsible-header-image {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.collapsible-header-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
