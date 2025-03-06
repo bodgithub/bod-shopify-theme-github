@@ -1869,8 +1869,7 @@ scroll-shadow {
   --scroll-shadow-right: linear-gradient(90deg,
       rgba(var(--bg-body-rgb), 0),
       rgba(var(--bg-body-rgb), 1)); }
-  scroll-shadow > * {
-    scrollbar-width: none; }
+  
 
 @media only screen and (max-width: 767px) {
   .mobile-height-full {
