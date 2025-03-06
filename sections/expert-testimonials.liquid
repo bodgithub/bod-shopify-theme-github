@@ -49,7 +49,7 @@
 							<scroll-shadow>
 								<ol class="flickity-custom-dots dot-style--{{ pagination }}">
 									{%- for block in section.blocks -%}
-										<li class="dot" aria-label="{{ forloop.index }}">
+										<li class="dot" aria-label="{{ forloop.index }}" style="background-color:{{ color_bg_card }}; border:1px solid {{ color_border_card }}">
 											{%- liquid
 												if block.settings.image != blank
 													assign image = block.settings.image
@@ -59,7 +59,7 @@
 												endif
 											-%}
                                           {%- if block.settings.author != empty -%}
-								<div class="testimonials--author" style="color:{{ color_text2 }}; background-color:{{ color_bg_card }}; border:1px solid {{ color_border_card }}"}>
+								<div class="testimonials--author" style="color:{{ color_text2 }};">
 									<div style="padding-bottom:10px;"><strong>{{- block.settings.name -}}</strong></div><div><h6>{{ block.settings.expert-title }}</h6></div>
                       
 								</div>
