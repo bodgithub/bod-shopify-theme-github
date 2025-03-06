@@ -164,6 +164,7 @@ scroll-behavior: smooth;}
   padding:20px;
   align-items: center;
   max-width: 350px;
+    min-width: 300px;
     min-height: 190px;}
     .flickity-custom-dots .dot.is-selected {
       opacity: 1;
