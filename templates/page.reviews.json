@@ -11,49 +11,46 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {
-      }
+      "disabled": true,
+      "settings": {}
     },
-    "rich_text_RWFrTk": {
-      "type": "rich-text",
+    "174122704278fd8180": {
+      "type": "apps",
       "blocks": {
-        "heading_AHCNtk": {
-          "type": "heading",
+        "junip_product_reviews_ugc_junip_ugc_gallery_rFBEE7": {
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
-            "text": "My body’s |talking|, I’m done <em>ignoring</em>",
-            "marker_style": "style1",
-            "size": "h1",
-            "marker_color": "#FD6262"
+            "layout": "scroll",
+            "title": "",
+            "product": "",
+            "paddingTop": 48,
+            "paddingBottom": 48,
+            "containerClass": ""
           }
         },
-        "text_JMMQb9": {
-          "type": "text",
+        "junip_product_reviews_ugc_junip_reviews_6qwczN": {
+          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
-            "text": "<p>Empowering your journey to better hormones, mood, metabolism through personal stories and science beyond the 'textbook'.</p>",
-            "custom_liquid": "",
-            "size": "text-size-regular"
+            "layout": "list",
+            "reviewsType": "all",
+            "showSummary": true,
+            "reviewsCount": 10,
+            "containerClass": ""
           }
         }
       },
       "block_order": [
-        "heading_AHCNtk",
-        "text_JMMQb9"
+        "junip_product_reviews_ugc_junip_ugc_gallery_rFBEE7",
+        "junip_product_reviews_ugc_junip_reviews_6qwczN"
       ],
-      "settings": {
-        "text_width": "medium",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "transparent",
-        "color_heading": "#1B3DEF",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
+      "custom_css": [
+        ".junip-product-review-count {display: none !important;}"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "rich_text_RWFrTk"
+    "174122704278fd8180"
   ]
 }
