@@ -507,6 +507,148 @@
         "disable_bottom_spacing": false
       }
     },
+    "custom_liquid_LhyTU6": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"reviews\"></div>"
+      }
+    },
+    "expert_testimonials_zpEKKk": {
+      "type": "expert-testimonials",
+      "blocks": {
+        "quote_PhgFXV": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Lizzie.png",
+            "stars": "5",
+            "quote": "<p>\"It’s supported my hormones while coming off the pill and helped ease my mood and food cravings.\"</p>",
+            "name": "Lizzie H.",
+            "expert-title": "Hormones"
+          }
+        },
+        "quote_mCAKwc": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-23_at_10.07.27.png",
+            "stars": "5",
+            "quote": "<p>\"I’ve had fewer sugar cravings, and my menstrual cycles have also become much easier, with little to no PMS!\"</p>",
+            "name": "Keira K.",
+            "expert-title": "PMS"
+          }
+        },
+        "quote_yTBQQm": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Ewa.png",
+            "stars": "5",
+            "quote": "<p>\"It’s helped stabilise my insulin levels, improved my energy throughout the day and eased several of my PCOS symptoms.\"</p>",
+            "name": "Ewa S.",
+            "expert-title": "PCOS"
+          }
+        },
+        "quote_rxzPR7": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Jade.png",
+            "stars": "5",
+            "quote": "<p>\"Since taking inositol, my cravings are much less. I would crave sweets throughout the day but this has stopped!\"</p>",
+            "name": "Jade M.",
+            "expert-title": "Cravings"
+          }
+        },
+        "quote_CUpFMh": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/KAI2.png",
+            "stars": "5",
+            "quote": "<p>\"Little to no taste, and feeling much better. Lost 10 pounds so far & has regulated my cycle!\"</p>",
+            "name": "Irina J.",
+            "expert-title": "Hormones"
+          }
+        },
+        "quote_F4FmYY": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Bonnie.png",
+            "stars": "5",
+            "quote": "<p>\"I’m waking up a lot less, and falling asleep much easier. I also generally feel much calmer and focused for the whole day.\"</p>",
+            "name": "Bonnie H.",
+            "expert-title": "Mood"
+          }
+        },
+        "quote_XCWEri": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/KAI.png",
+            "stars": "5",
+            "quote": "<p>\"I have gotten off the pill so definitely would give this supplement a try!!!\"</p>",
+            "name": "Shayna B.",
+            "expert-title": "Hormones"
+          }
+        },
+        "quote_AWzBKN": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/KAI2.png",
+            "stars": "5",
+            "quote": "<p>\"It came in such lovely packaging, and the taste is just as delightful!\"</p>",
+            "name": "Sandra P.",
+            "expert-title": "Mood support"
+          }
+        },
+        "quote_KwTygU": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/KAI.png",
+            "stars": "5",
+            "quote": "<p>\"It's been a bit over two months, and out of nowhere, I actually ovulated.\"</p>",
+            "name": "Sofia P.",
+            "expert-title": "Fertility"
+          }
+        },
+        "quote_ExXWHa": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/KAI2.png",
+            "stars": "5",
+            "quote": "<p>\"I've been getting better sleep since starting this powder and am very happy about that!\"</p>",
+            "name": "Kristina A.",
+            "expert-title": "Sleep"
+          }
+        }
+      },
+      "block_order": [
+        "quote_PhgFXV",
+        "quote_mCAKwc",
+        "quote_yTBQQm",
+        "quote_rxzPR7",
+        "quote_CUpFMh",
+        "quote_F4FmYY",
+        "quote_XCWEri",
+        "quote_AWzBKN",
+        "quote_KwTygU",
+        "quote_ExXWHa"
+      ],
+      "custom_css": [
+        ".star-rating {color: white;}"
+      ],
+      "settings": {
+        "heading": "<p>Real results with <em>inositol</em></p>",
+        "full_width": true,
+        "text_size": "small",
+        "font_family": "heading",
+        "pagination": "logos",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#ffffff",
+        "color_bg_card": "#f2eee9",
+        "color_border_card": "#1b3def",
+        "color_text": "#1b3def",
+        "color_text2": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "image_with_text_rEJXXR": {
       "type": "image-with-text",
       "blocks": {
@@ -1030,148 +1172,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "custom_liquid_LhyTU6": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div id=\"reviews\"></div>"
-      }
-    },
-    "expert_testimonials_zpEKKk": {
-      "type": "expert-testimonials",
-      "blocks": {
-        "quote_PhgFXV": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Lizzie.png",
-            "stars": "5",
-            "quote": "<p>\"It’s supported my hormones while coming off the pill and helped ease my mood and food cravings.\"</p>",
-            "name": "Lizzie H.",
-            "expert-title": "Hormones"
-          }
-        },
-        "quote_mCAKwc": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2025-01-23_at_10.07.27.png",
-            "stars": "5",
-            "quote": "<p>\"I’ve had fewer sugar cravings, and my menstrual cycles have also become much easier, with little to no PMS!\"</p>",
-            "name": "Keira K.",
-            "expert-title": "PMS"
-          }
-        },
-        "quote_yTBQQm": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Ewa.png",
-            "stars": "5",
-            "quote": "<p>\"It’s helped stabilise my insulin levels, improved my energy throughout the day and eased several of my PCOS symptoms.\"</p>",
-            "name": "Ewa S.",
-            "expert-title": "PCOS"
-          }
-        },
-        "quote_rxzPR7": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Jade.png",
-            "stars": "5",
-            "quote": "<p>\"Since taking inositol, my cravings are much less. I would crave sweets throughout the day but this has stopped!\"</p>",
-            "name": "Jade M.",
-            "expert-title": "Cravings"
-          }
-        },
-        "quote_CUpFMh": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/KAI2.png",
-            "stars": "5",
-            "quote": "<p>\"Little to no taste, and feeling much better. Lost 10 pounds so far & has regulated my cycle!\"</p>",
-            "name": "Irina J.",
-            "expert-title": "Hormones"
-          }
-        },
-        "quote_F4FmYY": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Bonnie.png",
-            "stars": "5",
-            "quote": "<p>\"I’m waking up a lot less, and falling asleep much easier. I also generally feel much calmer and focused for the whole day.\"</p>",
-            "name": "Bonnie H.",
-            "expert-title": "Mood"
-          }
-        },
-        "quote_XCWEri": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/KAI.png",
-            "stars": "5",
-            "quote": "<p>\"I have gotten off the pill so definitely would give this supplement a try!!!\"</p>",
-            "name": "Shayna B.",
-            "expert-title": "Hormones"
-          }
-        },
-        "quote_AWzBKN": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/KAI2.png",
-            "stars": "5",
-            "quote": "<p>\"It came in such lovely packaging, and the taste is just as delightful!\"</p>",
-            "name": "Sandra P.",
-            "expert-title": "Mood support"
-          }
-        },
-        "quote_KwTygU": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/KAI.png",
-            "stars": "5",
-            "quote": "<p>\"It's been a bit over two months, and out of nowhere, I actually ovulated.\"</p>",
-            "name": "Sofia P.",
-            "expert-title": "Fertility"
-          }
-        },
-        "quote_ExXWHa": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/KAI2.png",
-            "stars": "5",
-            "quote": "<p>\"I've been getting better sleep since starting this powder and am very happy about that!\"</p>",
-            "name": "Kristina A.",
-            "expert-title": "Sleep"
-          }
-        }
-      },
-      "block_order": [
-        "quote_PhgFXV",
-        "quote_mCAKwc",
-        "quote_yTBQQm",
-        "quote_rxzPR7",
-        "quote_CUpFMh",
-        "quote_F4FmYY",
-        "quote_XCWEri",
-        "quote_AWzBKN",
-        "quote_KwTygU",
-        "quote_ExXWHa"
-      ],
-      "custom_css": [
-        ".star-rating {color: white;}"
-      ],
-      "settings": {
-        "heading": "<p>Real results with <em>inositol</em></p>",
-        "full_width": true,
-        "text_size": "small",
-        "font_family": "heading",
-        "pagination": "logos",
-        "autoplay": true,
-        "autoplay_length": 5,
-        "color_bg": "#ffffff",
-        "color_bg_card": "#f2eee9",
-        "color_border_card": "#1b3def",
-        "color_text": "#1b3def",
-        "color_text2": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
     "promotion_blocks_v2_reFWxi": {
       "type": "promotion-blocks-v2",
       "blocks": {
@@ -1234,15 +1234,15 @@
     "image_with_text_r96Axa",
     "collapsible_content_2_hrRGJn",
     "expert_testimonials_mgPFnQ",
+    "custom_liquid_LhyTU6",
+    "spacer_EJt6Hf",
+    "expert_testimonials_zpEKKk",
     "image_with_text_rEJXXR",
     "image_with_text_RJaRcP",
     "multicolumn_rVnwmF",
-    "spacer_EJt6Hf",
     "video_pdBgr8",
     "rich_text_ktwnPa",
     "featured_product_WEQ8Gx",
-    "custom_liquid_LhyTU6",
-    "expert_testimonials_zpEKKk",
     "promotion_blocks_v2_reFWxi"
   ]
 }
