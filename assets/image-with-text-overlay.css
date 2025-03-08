@@ -100,7 +100,12 @@
         font-size: 1.25rem; } }
     @media only screen and (min-width: 1068px) {
       .image-with-text-overlay--content .rte.description-size--large {
-        font-size: 1.5rem; } }
+        font-size: 1.5rem; }
+    .h1-xlarge h1 {
+    font-size: 60px;
+    line-height: 1;
+}
+    }
     .image-with-text-overlay--content .rte p {
       font-size: inherit; }
       .animations-true .image-with-text-overlay--content .rte p {
