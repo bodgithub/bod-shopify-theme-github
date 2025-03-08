@@ -101,10 +101,6 @@
     @media only screen and (min-width: 1068px) {
       .image-with-text-overlay--content .rte.description-size--large {
         font-size: 1.5rem; }
-    .h1-xlarge h1 {
-    font-size: 60px;
-    line-height: 1;
-}
     }
     .image-with-text-overlay--content .rte p {
       font-size: inherit; }
@@ -182,3 +178,9 @@ line-hight:0.9;}
   /*.image-with-text-overlay--bg { filter: blur(15px);}*/
   .image-with-text-overlay { background: #e8e6e7 !important;}
 }
+
+@media only screen and (min-width: 768px) {
+.h1-xlarge h1 {
+    font-size: 60px;
+    line-height: 1;
+} }
