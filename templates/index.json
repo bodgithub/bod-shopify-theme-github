@@ -12,6 +12,12 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "space_g4MqDz": {
+          "type": "space",
+          "settings": {
+            "height": 100
+          }
+        },
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
@@ -58,6 +64,7 @@
         }
       },
       "block_order": [
+        "space_g4MqDz",
         "heading_FGRE4D",
         "text_ekmz8W",
         "space_hakprz",
