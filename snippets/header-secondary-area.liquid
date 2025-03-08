@@ -57,13 +57,13 @@
 {% comment %}Add the Button to the Right with custom styles, visible only on desktop {% endcomment %}
 <a class="button desktop-only" href="{{ section.settings.button_url | default: '/products/myo-d-chiro-inositol-powder' }}" 
    role="button" 
-   title="{{ section.settings.button_text | default: 'Get inositol' }}"
+   title="{{ section.settings.button_text | default: 'Start Your Inositol Journey' }}"
    style="
        background-color: {{ section.settings.button_background_color | default: color_text }};
        color: {{ section.settings.button_font_color | default: color_bg }};
        border: {{ section.settings.button_border_width | default: '2px' }} solid {{ section.settings.button_border_color | default: color_text }};
    ">
-  <span>{{ section.settings.button_text | default: 'Get inositol' }}</span>
+  <span>{{ section.settings.button_text | default: 'Start Your Inositol Journey' }}</span>
 </a>
 
 
