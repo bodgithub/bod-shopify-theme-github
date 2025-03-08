@@ -487,8 +487,11 @@
         "quote_HBBE6p",
         "quote_7wUdL3"
       ],
+      "custom_css": [
+        ".testimonials--heading {padding-bottom: 30px;}"
+      ],
       "settings": {
-        "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by <em>practitioners</em></h1><h6> </h6>",
+        "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by <em>practitioners</em></h1>",
         "full_width": true,
         "text_size": "small",
         "font_family": "body",
