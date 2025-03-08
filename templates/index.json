@@ -150,64 +150,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "toggle_boxes_VFKNRd": {
-      "type": "toggle-boxes",
-      "blocks": {
-        "box_ezFLMx": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Bodology_Inositol_Results_Smile.png",
-            "image_link": "",
-            "open": false,
-            "heading": "PCOS",
-            "text": "<p>Pair text with an image to focus on your chosen image</p>"
-          }
-        },
-        "box_Mkrwgp": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Bodology-Inositol-Mood-Anxiety.jpg",
-            "image_link": "",
-            "open": false,
-            "heading": "Mood",
-            "text": "<p>Pair text with an image to focus on your chosen image</p>"
-          }
-        },
-        "box_VNg4e3": {
-          "type": "box",
-          "settings": {
-            "image": "shopify://shop_images/Bodology_Inositol_for_Fertility.jpg",
-            "image_link": "",
-            "open": false,
-            "heading": "Fertility",
-            "text": "<p>Pair text with an image to focus on your chosen image</p>"
-          }
-        }
-      },
-      "block_order": [
-        "box_ezFLMx",
-        "box_Mkrwgp",
-        "box_VNg4e3"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "columns_desktop": 3,
-        "column_spacing": "large",
-        "image_ratio": "landscape",
-        "mobile_swipe": true,
-        "text_alignment": "left",
-        "color_bg": "#f2eee9",
-        "color_heading": "#1b3def",
-        "marker_color": "#fd6262",
-        "color_text": "#1b3def",
-        "color_link": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
     "carousel_boxes_jas_HzyeW9": {
       "type": "Carousel-Boxes-Jas",
       "blocks": {
@@ -275,7 +217,7 @@
             "image": "shopify://shop_images/Bodology_Inositol_Empowered.jpg",
             "image_link": "shopify://pages/sustainable-weight-loss",
             "open": false,
-            "heading": "<p>Sustainable Weight Loss</p>",
+            "heading": "<p>Metabolism</p>",
             "text": "",
             "link_label": "",
             "link": "shopify://pages/sustainable-weight-loss",
@@ -300,11 +242,82 @@
         "image_ratio": "square",
         "mobile_swipe": false,
         "text_alignment": "left",
-        "color_bg": "#ffffff",
+        "color_bg": "#faf8f6",
         "color_heading": "#1b3def",
         "marker_color": "#fd6262",
         "color_text": "#1b3def",
         "color_link": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "collapsible_content_2_hrRGJn": {
+      "type": "collapsible-content-2",
+      "blocks": {
+        "collapsible_tab_tBJXhQ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "PCOS & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence:</strong> Very Strong</p><p><strong>No. of studies:</strong> 50+Years of research: 2005 – 2023</p><p><strong>Findings:</strong> Inositol has been shown to reduce key PCOS symptoms, support cycle regularity, and lower testosterone levels. Clinical studies also report improvements in insulin sensitivity, with weight reduction of up to X% in some participants.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_zJaULT": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Mood, Anxiety & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence: </strong>Very Strong</p><p><strong>No. of studies: </strong>20+Years of research: 2000 – 2023</p><p><strong>Findings:</strong> Inositol plays a key role in serotonin and dopamine signaling, supporting mood stability and mental well-being. Studies show inositol supplementation can help reduce anxiety, panic attacks, and symptoms of PMDD.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_EHUzbD": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fertility & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence:</strong> Very Strong</p><p><strong>No. of studies: </strong>30+Years of research: 2008 – 2023</p><p><strong>Findings: </strong>Research shows inositol supports ovulation, improves egg quality, and enhances pregnancy outcomes. Used in fertility protocols, inositol has been linked to higher success rates in assisted reproductive treatments (IVF & ICSI).</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_KxhFA9": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Hormone Balance & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence: </strong>Strong</p><p><strong>No. of studies:</strong> 15+Years of research: 2010 – 2023</p><p><strong>Findings:</strong> Inositol has been studied for its role in balancing estrogen, progesterone, and testosterone, helping to regulate cycles, support ovulation, and improve overall hormone function.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_PWdBPc": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "PCOS Weight Loss & Inositol",
+            "open": false,
+            "content": "<p><strong>Strength of evidence:</strong> Strong</p><p><strong>No. of studies:</strong> 10+Years of research: 2012 – 2023</p><p><strong>Findings:</strong> Inositol has been linked to improvements in insulin sensitivity, which can support weight management in PCOS. Studies suggest that inositol may help reduce visceral fat, improve body composition, and lower BMI over time.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_tBJXhQ",
+        "collapsible_tab_zJaULT",
+        "collapsible_tab_EHUzbD",
+        "collapsible_tab_KxhFA9",
+        "collapsible_tab_PWdBPc"
+      ],
+      "settings": {
+        "heading": "<h1>Clean <em>Ingredients,</em> Clinical <em>Results</em></h1>",
+        "header_image": "shopify://shop_images/Bodology-Inositol-1c.png",
+        "marker_style": "style1",
+        "description": "<h6>Decades of research show inositol’s impact on hormonal balance, fertility, mood, and metabolic health. Here’s what the science says.</h6>",
+        "color_bg": "#f2eee9",
+        "color_heading": "#1b3def",
+        "marker_color": "#FD6262",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "color_border": "#DADCE0",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -1195,8 +1208,8 @@
   "order": [
     "image_with_text_overlay_zjqnjJ",
     "multicolumn_zBkNGq",
-    "toggle_boxes_VFKNRd",
     "carousel_boxes_jas_HzyeW9",
+    "collapsible_content_2_hrRGJn",
     "image_with_text_r96Axa",
     "image_with_text_RJaRcP",
     "multicolumn_rVnwmF",
