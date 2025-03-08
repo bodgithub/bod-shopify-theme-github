@@ -434,7 +434,7 @@
         "collapsible_tab_xVREzb"
       ],
       "settings": {
-        "heading": "<h1>You're not <em>broken,</em>your <em>metabolism</em> needs a reset</h1>",
+        "heading": "<h1>You're not broken, Your <em>metabolism</em> needs a reset</h1>",
         "header_image": "shopify://shop_images/Bodology-Inositol-1c.png",
         "marker_style": "style1",
         "description": "<h6>Struggling with hormones and low mood? Metabolic health could be at the root<em>, </em>inositol<em> </em>helps fix it. Here’s what the science says.</h6>",
@@ -444,6 +444,62 @@
         "color_text": "#1b3def",
         "color_links": "#2c2d2e",
         "color_border": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "expert_testimonials_mgPFnQ": {
+      "type": "expert-testimonials",
+      "blocks": {
+        "quote_mwzy7Y": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Anita_-_White_-_logo.png",
+            "stars": "",
+            "quote": "<h5>\"I use Inositol to support clients looking to maintain healthy cycles, manage metabolic wellness, and promote hormonal balance. It plays a helpful role in supporting glucose metabolism and overall vitality.\"</h5>",
+            "name": "Dr. Anita W.",
+            "expert-title": "Ph.D, Natural Medicine Practitioner"
+          }
+        },
+        "quote_HBBE6p": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Tina_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<h5>\"Bodology Inositol is an exceptional supplement that aligns perfectly with nutritional goals. The optimal 40:1 ratio is research-backed for womens wellness, promoting optimal health and vitality. As a nutritionist, I not only highly recommend it but I also use it myself.\"</h5>",
+            "name": "Tina Kozman",
+            "expert-title": "MEd, CNP, Metabolic Health Coach"
+          }
+        },
+        "quote_7wUdL3": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<h4>\"In my practice, I recommend Myo + D-Chiro Inositol to patients looking to support their reproductive wellness and overall metabolic health. Its role in promoting hormonal balance and cycle regularity makes it a valuable addition for women preparing for conception.\"</h4>",
+            "name": "Hillary Wright",
+            "expert-title": "MEd, RD, Director of Nutrition at Boston IVF"
+          }
+        }
+      },
+      "block_order": [
+        "quote_mwzy7Y",
+        "quote_HBBE6p",
+        "quote_7wUdL3"
+      ],
+      "settings": {
+        "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by <em>practitioners</em></h1><h6> </h6>",
+        "full_width": true,
+        "text_size": "small",
+        "font_family": "body",
+        "pagination": "logos",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#ffffff",
+        "color_bg_card": "#f2eee9",
+        "color_border_card": "#1b3def",
+        "color_text": "#1b3def",
+        "color_text2": "#1b3def",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
@@ -738,15 +794,6 @@
         "color_links": "#ffffff",
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
-      }
-    },
-    "spacer_qeNUwn": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 40,
-        "border_separator": false,
-        "border_separator_full": true
       }
     },
     "spacer_EJt6Hf": {
@@ -1334,10 +1381,10 @@
     "carousel_boxes_jas_HzyeW9",
     "image_with_text_r96Axa",
     "collapsible_content_2_hrRGJn",
+    "expert_testimonials_mgPFnQ",
     "image_with_text_rEJXXR",
     "image_with_text_RJaRcP",
     "multicolumn_rVnwmF",
-    "spacer_qeNUwn",
     "spacer_EJt6Hf",
     "video_pdBgr8",
     "rich_text_ktwnPa",
