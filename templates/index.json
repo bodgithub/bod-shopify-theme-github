@@ -12,12 +12,6 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "space_UqqzGi": {
-          "type": "space",
-          "settings": {
-            "height": 30
-          }
-        },
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
@@ -49,7 +43,7 @@
         "space_dgXhDh": {
           "type": "space",
           "settings": {
-            "height": 130
+            "height": 120
           }
         },
         "customer_reviews_CtBhV3": {
@@ -64,7 +58,6 @@
         }
       },
       "block_order": [
-        "space_UqqzGi",
         "heading_FGRE4D",
         "text_ekmz8W",
         "space_hakprz",
@@ -82,7 +75,7 @@
         "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-4_76fb036e-e110-4960-b77d-0a16c44fda51.jpg",
         "mobile_image": "shopify://shop_images/Home_Banner_Mobile_9.jpg",
         "image_parallax": true,
-        "desktop_height": "desktop-height-750",
+        "desktop_height": "desktop-height-650",
         "mobile_height": "mobile-height-auto",
         "full_width": true,
         "content_width": "medium",
