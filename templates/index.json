@@ -513,6 +513,18 @@
         "custom_liquid": "<div id=\"reviews\"></div>"
       }
     },
+    "spacer_EJt6Hf": {
+      "type": "spacer",
+      "custom_css": [
+        ".row .spacer {background-color: #f2eee9;}"
+      ],
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": true
+      }
+    },
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
       "blocks": {
@@ -521,19 +533,9 @@
           "settings": {
             "image": "shopify://shop_images/Lizzie.png",
             "stars": "5",
-            "quote": "<p>\"It’s supported my hormones while coming off the pill and helped ease my mood and food cravings.\"</p>",
-            "name": "Lizzie H.",
-            "expert-title": "Hormones"
-          }
-        },
-        "quote_mCAKwc": {
-          "type": "quote",
-          "settings": {
-            "image": "shopify://shop_images/Screenshot_2025-01-23_at_10.07.27.png",
-            "stars": "5",
-            "quote": "<p>\"I’ve had fewer sugar cravings, and my menstrual cycles have also become much easier, with little to no PMS!\"</p>",
-            "name": "Keira K.",
-            "expert-title": "PMS"
+            "quote": "<h3><strong>\"Amazing product, highly recommend\"</strong></h3>",
+            "name": "LIZZIE H.",
+            "expert-title": "Love this product. It’s supported my hormones while coming off the pill and helped ease my mood and food cravings. Bodology is now well and truly part of my daily routine - it dissolves like a dream too!"
           }
         },
         "quote_yTBQQm": {
@@ -541,13 +543,24 @@
           "settings": {
             "image": "shopify://shop_images/Ewa.png",
             "stars": "5",
-            "quote": "<p>\"It’s helped stabilise my insulin levels, improved my energy throughout the day and eased several of my PCOS symptoms.\"</p>",
-            "name": "Ewa S.",
-            "expert-title": "PCOS"
+            "quote": "<p>\"Bodology has mad a real difference to my PCOS\"</p>",
+            "name": "EWA S.",
+            "expert-title": "My doctor suggested adding it to my plan. It’s helped stabilise my insulin levels, improved my energy throughout the day and eased several of my PCOS symptoms including my irregular cycles."
+          }
+        },
+        "quote_mCAKwc": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-23_at_10.07.27.png",
+            "stars": "5",
+            "quote": "<h3>\"Best Inositol Powder\"</h3>",
+            "name": "KEIRA K.",
+            "expert-title": "I started Bodology's inositol powder several months ago for PCOS. I’ve had fewer sugar cravings, more stable blood sugar levels, and my menstrual cycles have become much easier, with little/no PMS!"
           }
         },
         "quote_rxzPR7": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Jade.png",
             "stars": "5",
@@ -558,6 +571,7 @@
         },
         "quote_CUpFMh": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/KAI2.png",
             "stars": "5",
@@ -568,6 +582,7 @@
         },
         "quote_F4FmYY": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Bonnie.png",
             "stars": "5",
@@ -578,6 +593,7 @@
         },
         "quote_XCWEri": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/KAI.png",
             "stars": "5",
@@ -588,6 +604,7 @@
         },
         "quote_AWzBKN": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/KAI2.png",
             "stars": "5",
@@ -598,6 +615,7 @@
         },
         "quote_KwTygU": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/KAI.png",
             "stars": "5",
@@ -608,6 +626,7 @@
         },
         "quote_ExXWHa": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/KAI2.png",
             "stars": "5",
@@ -619,8 +638,8 @@
       },
       "block_order": [
         "quote_PhgFXV",
-        "quote_mCAKwc",
         "quote_yTBQQm",
+        "quote_mCAKwc",
         "quote_rxzPR7",
         "quote_CUpFMh",
         "quote_F4FmYY",
@@ -939,18 +958,6 @@
         "color_links": "#ffffff",
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
-      }
-    },
-    "spacer_EJt6Hf": {
-      "type": "spacer",
-      "custom_css": [
-        ".row .spacer {background-color: #f2eee9;}"
-      ],
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 20,
-        "border_separator": false,
-        "border_separator_full": true
       }
     },
     "video_pdBgr8": {
