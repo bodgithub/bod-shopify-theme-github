@@ -491,7 +491,7 @@
         ".testimonials--heading {padding-bottom: 30px;}"
       ],
       "settings": {
-        "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by <em>practitioners</em></h1>",
+        "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by practitioners</h1>",
         "full_width": true,
         "text_size": "small",
         "font_family": "body",
@@ -843,6 +843,7 @@
       "block_order": [
         "heading_Kp7pEw"
       ],
+      "disabled": true,
       "settings": {
         "text_width": "medium",
         "text_position": "center",
@@ -1008,6 +1009,7 @@
         "collapsible_tab_Qq4nP6",
         "collapsible_tab_RaXCmL"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 500px; }}"
       ],
@@ -1154,7 +1156,7 @@
         ".star-rating {color: white;}"
       ],
       "settings": {
-        "heading": "<p>Real <em>results</em>with <em>inositol</em></p>",
+        "heading": "<p>Real results with <em>inositol</em></p>",
         "full_width": true,
         "text_size": "small",
         "font_family": "heading",
@@ -1166,160 +1168,6 @@
         "color_border_card": "#1b3def",
         "color_text": "#1b3def",
         "color_text2": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "rich_text_7xWrk9": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_ie3Uer": {
-          "type": "heading",
-          "settings": {
-            "text": "Our <em>experts</em>",
-            "marker_style": "style1",
-            "size": "h1",
-            "marker_color": "#fd6262"
-          }
-        }
-      },
-      "block_order": [
-        "heading_ie3Uer"
-      ],
-      "settings": {
-        "text_width": "medium",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_heading": "#1B3DEF",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
-    "gallery_aFmaWe": {
-      "type": "gallery",
-      "blocks": {
-        "image_VmrkzD": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "|Tina Kozman|",
-            "marker_style": "style1",
-            "text": "MEd, CNP, Metabolic Health Coach",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "marker_color": "#fd6262"
-          }
-        },
-        "image_AG7K8d": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Hillary_Bodology.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "|Hillary Wright|",
-            "marker_style": "style1",
-            "text": "MEd, RD, Director of Nutrition, Boston IVF Center",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "marker_color": "#fd6262"
-          }
-        },
-        "image_4iTje6": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Anita-Bodology-Square8.jpg",
-            "enable_gallery_video": false,
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "| Dr. Anita W.|",
-            "marker_style": "style1",
-            "text": "Ph.D.\n\nNatural Medicine Practitioner",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "marker_color": "#fd6262"
-          }
-        }
-      },
-      "block_order": [
-        "image_VmrkzD",
-        "image_AG7K8d",
-        "image_4iTje6"
-      ],
-      "disabled": true,
-      "settings": {
-        "columns_desktop": 3,
-        "full_width": false,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "content_position": "bottom-center",
-        "text_alignment": "center",
-        "column_spacing": "none",
-        "heading_size": "h3",
-        "description_size": "small",
-        "overlay_color": "#000000",
-        "overlay_opacity": 19,
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "promotion_blocks_CqPNbi": {
-      "type": "promotion-blocks",
-      "blocks": {
-        "promotion_EAG3gR": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/Tina_Bodology_Square.jpg",
-            "title": "<h4><strong>Tina Kozman </strong></h4><p>MEd, DNP, Metabolic Coach</p>",
-            "button_text": "Learn more",
-            "button_link": ""
-          }
-        },
-        "promotion_JqgzFN": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/Hillary_Bodology.jpg",
-            "title": "<h4><strong>Hillary Wright</strong></h4><p>MEd, RD, Director of Nutrition, Boston IVF Center</p>",
-            "button_text": "",
-            "button_link": ""
-          }
-        },
-        "promotion_KnQJYR": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/Anita-Bodology-Square8.jpg",
-            "title": "<h4><strong>Dr. Anita W.</strong></h4><p>Ph.D., Natural Medicine Practitioner</p>",
-            "button_text": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "promotion_EAG3gR",
-        "promotion_JqgzFN",
-        "promotion_KnQJYR"
-      ],
-      "disabled": true,
-      "settings": {
-        "mobile_swipe": false,
-        "image_ratio": "square",
-        "column_spacing": "medium",
-        "color_bg": "#ffffff",
-        "border_color": "#ffffff",
-        "color_text": "#1b3def",
-        "color_link": "#1b3def",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -1366,6 +1214,7 @@
         "promotion_JdGzqe",
         "promotion_g4GPhQ"
       ],
+      "disabled": true,
       "settings": {
         "mobile_swipe": true,
         "image_ratio": "square",
@@ -1394,9 +1243,6 @@
     "featured_product_WEQ8Gx",
     "custom_liquid_LhyTU6",
     "expert_testimonials_zpEKKk",
-    "rich_text_7xWrk9",
-    "gallery_aFmaWe",
-    "promotion_blocks_CqPNbi",
     "promotion_blocks_v2_reFWxi"
   ]
 }
