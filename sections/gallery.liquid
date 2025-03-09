@@ -34,13 +34,13 @@
 								{%- if block.settings.video_hosted -%}
 									{%- liquid
 										assign video = block.settings.video_hosted
-										assign autoplay = false
+										assign autoplay = true
 										if block.settings.enable_hover_play
 											assign autoplay = false
 										endif
 									-%}
 									<div class="gallery__video-hosted gallery__video{% if block.settings.enable_hover_play %} hover-play{% endif %}" data-provider="hosted" data-video-id="{{ video.id }}" >
-										{{ video | video_tag: autoplay: false, loop: false, controls: true, muted: true, image_size: '750x' }}
+										{{ video | video_tag: autoplay: autoplay, loop: true, controls: false, muted: true, image_size: '750x' }}
 									</div>
 								{%- endif -%}
 							{%- else -%}
