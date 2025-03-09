@@ -294,7 +294,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         },
         "image_3Q6qYe": {
@@ -311,7 +311,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         },
         "image_XGAmWb": {
@@ -328,7 +328,7 @@
             "link": "",
             "use_text_button": false,
             "block_link": "",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         }
       },
@@ -337,6 +337,7 @@
         "image_3Q6qYe",
         "image_XGAmWb"
       ],
+      "disabled": true,
       "settings": {
         "columns_desktop": 3,
         "full_width": false,
@@ -420,50 +421,8 @@
         "color_text": "#1b3def",
         "color_links": "#1b3def",
         "color_border": "#1b3def",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": false
-      }
-    },
-    "promotion_blocks_FLbKam": {
-      "type": "promotion-blocks",
-      "blocks": {
-        "promotion_hncWkH": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/Bodology-Inositol-for-Fertility-4.jpg",
-            "title": "<p>{{ product.metafields.custom.problem_category.value.promo.value.promo | metafield_tag }}</p>",
-            "button_text": "",
-            "button_link": ""
-          }
-        },
-        "promotion_44jRUz": {
-          "type": "promotion",
-          "settings": {
-            "image": "shopify://shop_images/BODOLOGY_July_24_7487-Edit.png",
-            "title": "{{ product.metafields.custom.problem_category.value.promo_2.value.promo | metafield_tag }}",
-            "button_text": "",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "promotion_hncWkH",
-        "promotion_44jRUz"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "h6 {font-size: 15px; line-height: 1.3em;}"
-      ],
-      "settings": {
-        "mobile_swipe": false,
-        "image_ratio": "square",
-        "column_spacing": "medium",
-        "color_bg": "#ffffff",
-        "border_color": "#eaecf6",
-        "color_text": "#1b3def",
-        "color_link": "#ffffff",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
       }
     },
     "expert_testimonials_KxH7tC": {
@@ -1196,7 +1155,7 @@
         "show_excerpt": false,
         "show_read_more": true,
         "show_view_all": true,
-        "marker_color": "#FD6262",
+        "marker_color": "#fd6262",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -1210,7 +1169,6 @@
     "spacer_VWaT3c",
     "gallery_EgAVLq",
     "collapsible_content_2_iP8nzP",
-    "promotion_blocks_FLbKam",
     "expert_testimonials_KxH7tC",
     "multicolumn_QQjdQM",
     "multicolumn_JycUDX",
