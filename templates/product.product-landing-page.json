@@ -263,7 +263,7 @@
         "media_aspect_ratio": "square",
         "display_captions": false,
         "hide_variants": false,
-        "lightbox": false,
+        "lightbox": true,
         "enable_video_looping": true
       }
     },
@@ -447,15 +447,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "spacer_FzEHUN": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 55,
-        "spacer_desktop": 85,
-        "border_separator": false,
-        "border_separator_full": true
-      }
-    },
     "multicolumn_QQjdQM": {
       "type": "multicolumn",
       "blocks": {
@@ -487,10 +478,6 @@
         "column_dUeaGh"
       ],
       "disabled": true,
-      "custom_css": [
-        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
-        ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
-      ],
       "settings": {
         "heading": "",
         "marker_style": "style1",
@@ -1116,6 +1103,27 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
+    },
+    "featured_blog_Tfa3kT": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "Learn more",
+        "marker_style": "style1",
+        "description": "",
+        "blog": "bodytalks",
+        "post_limit": 4,
+        "columns_desktop": 2,
+        "mobile_swipe": true,
+        "image_ratio": "square",
+        "show_date": false,
+        "show_excerpt": false,
+        "show_read_more": true,
+        "show_view_all": true,
+        "marker_color": "#FD6262",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     }
   },
   "order": [
@@ -1127,7 +1135,6 @@
     "collapsible_content_2_iP8nzP",
     "promotion_blocks_FLbKam",
     "expert_testimonials_KxH7tC",
-    "spacer_FzEHUN",
     "multicolumn_QQjdQM",
     "multicolumn_JycUDX",
     "spacer_hDmb7V",
@@ -1142,6 +1149,7 @@
     "spacer_EJt6Hf",
     "video_pdBgr8",
     "rich_text_zwjMjN",
-    "17289436895cc28ff7"
+    "17289436895cc28ff7",
+    "featured_blog_Tfa3kT"
   ]
 }
