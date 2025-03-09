@@ -40,7 +40,7 @@
 										endif
 									-%}
 									<div class="gallery__video-hosted gallery__video{% if block.settings.enable_hover_play %} hover-play{% endif %}" data-provider="hosted" data-video-id="{{ video.id }}" >
-										{{ video | video_tag: autoplay: autoplay, loop: true, controls: false, muted: false, image_size: '750x' }}
+										{{ video | video_tag: autoplay: autoplay, loop: true, controls: true, muted: true, image_size: '750x' }}
 									</div>
 								{%- endif -%}
 							{%- else -%}
