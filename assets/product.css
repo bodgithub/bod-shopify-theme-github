@@ -922,9 +922,9 @@ color: #1b3def;}
     list-style: none;
     position: relative;
     padding-right: 40px;
-    font-size: 0.9375rem;
+    font-size: 1.2rem;
     line-height: 1;
-    font-weight: var(--font-body-medium-weight, 500);
+    font-weight: var(--font-body-bold-weight, 500);
     padding: 20px 40px 20px 0;
     color: var(--color-heading, #1a1c1d);
     cursor: pointer; }
