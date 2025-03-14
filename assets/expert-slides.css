@@ -124,6 +124,7 @@
 @media (max-width: 480px) {
   .testimonials-exert {
     max-width: 100%;
+    flex-direction: column;
   }
   .testimonial-carousel {
     width: 100%; /* Full width on mobile */
