@@ -4,6 +4,10 @@
     max-width: 80%;
     margin: 0 auto;
 }
+.testimonials--headings {
+    flex-basis: 50%;
+    padding-right: 40px;
+}
 .testimonial-carousel {
     display: flex;
     align-items: center;
