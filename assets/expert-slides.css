@@ -20,33 +20,24 @@
 
 .testimonial-wrapper {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+  position: relative;
+  width: 500px; /* Adjust width */
+  height: 300px; /* Adjust height */
 }
 
 .testimonial-block {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s ease-in-out;
-  position: absolute;
+  min-width: 50%; /* Show only two blocks at a time */
+  transition: transform 0.5s ease-in-out;
+  box-sizing: border-box;
 }
 
-.testimonial-block.higher {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-20px);
-  z-index: 2;
+.testimonial-block:nth-child(odd) {
+  margin-top: -20px; /* First block higher */
 }
 
-.testimonial-block.lower {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(20px);
-  z-index: 1;
-}
-
-.testimonial-block.hidden {
-  opacity: 0;
-  visibility: hidden;
+.testimonial-block:nth-child(even) {
+  margin-top: 20px; /* Second block lower */
 }
 
 
