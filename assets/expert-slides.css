@@ -67,7 +67,12 @@
     top: 0;
     right: 40%;
 }
-
+.carousel-controls button {
+    border-radius: 100%;
+    border: 1px solid #1b3def;
+    width: 45px;
+    height: 45px;
+}
 /* Responsive Layout */
 @media (min-width: 768px) {
   .testimonial-wrapper {
