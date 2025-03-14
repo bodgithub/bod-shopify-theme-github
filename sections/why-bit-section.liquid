@@ -8,7 +8,10 @@
 
     <!-- Content Wrapper -->
     <div class="why-bits-wrapper">
-
+      <!-- Center Big Image -->
+      <div class="why-bits-center">
+        <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Main Image">
+      </div>
       <!-- Left and Right Grid Content -->
       <div class="why-bits-grid">
         <div class="grid-inner">
@@ -24,10 +27,7 @@
         </div>
       </div>
 
-      <!-- Center Big Image -->
-      <div class="why-bits-center">
-        <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Main Image">
-      </div>
+
 
     </div>
 
