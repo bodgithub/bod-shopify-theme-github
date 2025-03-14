@@ -224,42 +224,32 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const wrapper = document.querySelector('.testimonial-wrapper');
   const blocks = document.querySelectorAll('.testimonial-block');
-  const totalBlocks = blocks.length;
-
-  let currentIndex = 0;
+  let activeIndex = 0;
 
   function updateClasses() {
     blocks.forEach((block, index) => {
-      block.classList.remove('top', 'bottom');
-
-      const relativeIndex = (index - currentIndex + totalBlocks) % totalBlocks;
-
-      if (relativeIndex === 0) {
-        block.classList.add('top');
-      } else if (relativeIndex === 1) {
-        block.classList.add('bottom');
+      block.classList.remove('active');
+      if (index === activeIndex || index === (activeIndex + 1) % blocks.length) {
+        block.classList.add('active');
+        block.style.display = 'block';
       } else {
-        block.style.display = 'none'; // Hide extra blocks
+        block.style.display = 'none';
       }
     });
-
-    const translateX = -(currentIndex * 100) + '%';
-    wrapper.style.transform = `translateX(${translateX})`;
   }
 
   document.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalBlocks;
+    activeIndex = (activeIndex + 1) % blocks.length;
     updateClasses();
   });
 
   document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalBlocks) % totalBlocks;
+    activeIndex = (activeIndex - 1 + blocks.length) % blocks.length;
     updateClasses();
   });
 
-  updateClasses(); // Initial load
+  updateClasses(); // Initial call
 });
 
 </script>
