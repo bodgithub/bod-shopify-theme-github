@@ -1,11 +1,13 @@
 <div class="testimonial-carousel">
   <div class="testimonial-wrapper">
-    {%- for expert in shop.metaobjects.expert.values -%}
+    {%- for block in section.blocks -%}
       <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
-        <img src="{{ expert.image | img_url: 'medium' }}" alt="{{ expert.name }}">
-        <h3>{{ expert.name }}</h3>
-        <p>{{ expert.role }}</p>
-        <p>{{ expert.testimonial }}</p>
+        {%- if block.settings.image != blank -%}
+          <img src="{{ block.settings.image | img_url: 'medium' }}" alt="testimonial image">
+        {%- endif -%}
+        <h3>{{ block.settings.name }}</h3>
+        <p>{{ block.settings.role }}</p>
+        <p>{{ block.settings.quote }}</p>
       </div>
     {%- endfor -%}
   </div>
@@ -15,3 +17,75 @@
     <button class="next">→</button>
   </div>
 </div>
+
+{% schema %}
+{
+  "name": "Testimonial Carousel",
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on Desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns on Tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Columns on Mobile",
+      "min": 1,
+      "max": 1,
+      "step": 1,
+      "default": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role/Position"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Testimonial Quote"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Carousel",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}
