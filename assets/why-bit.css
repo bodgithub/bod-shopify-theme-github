@@ -23,15 +23,16 @@
 
 /* Left & Right Grid */
 .why-bits-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  max-width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    max-width: 100%;
+    justify-content: space-between;
 }
 
 .why-bits-item {
-  flex: 1 1 45%;
-  text-align: center;
+    width: 34%;
+    text-align: center;
 }
 
 .why-bits-item .icon {
