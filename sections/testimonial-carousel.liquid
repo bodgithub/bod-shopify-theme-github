@@ -1,13 +1,11 @@
 <div class="testimonial-carousel">
   <div class="testimonial-wrapper">
-    {%- for block in section.blocks -%}
+    {%- for expert in shop.metaobjects.expert.values -%}
       <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
-        {%- if block.settings.image != blank -%}
-          <img src="{{ block.settings.image | img_url: 'medium' }}" alt="testimonial image">
-        {%- endif -%}
-        <h3>{{ block.settings.name }}</h3>
-        <p>{{ block.settings.role }}</p>
-        <p>{{ block.settings.quote }}</p>
+        <img src="{{ expert.image | img_url: 'medium' }}" alt="{{ expert.name }}">
+        <h3>{{ expert.name }}</h3>
+        <p>{{ expert.role }}</p>
+        <p>{{ expert.testimonial }}</p>
       </div>
     {%- endfor -%}
   </div>
