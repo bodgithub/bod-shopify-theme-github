@@ -120,6 +120,12 @@
     height: 25px;
     width: 25px;
 }
+
+@media (max-width: 1023px) {
+.testimonials-exert {
+    max-width: 90%;
+}
+}
 @media (max-width: 768px) {
     .testimonials-exert {
         max-width: 380px;
