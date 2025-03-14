@@ -125,6 +125,11 @@
   .testimonials-exert {
       max-width: 95%;
   }
+  .testimonial-carousel {
+    flex-basis: 60%;
+    margin-right: -30px;
+    width: 60%;
+  }
   .testimonial-wrapper {
     margin-right: 0;
     width: 100%;
