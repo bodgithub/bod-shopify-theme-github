@@ -122,7 +122,9 @@
 }
 
 @media (max-width: 1220px) {
-
+  .testimonials-exert {
+      max-width: 100%;
+  }
 }
 @media (max-width: 1023px) {
   .testimonials-exert {
