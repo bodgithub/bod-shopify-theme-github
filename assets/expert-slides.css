@@ -129,7 +129,7 @@
 
   .testimonial-block {
     width: 100%; /* One block visible at a time */
-    top: 0; /* No higher or lower effect */
+    transform: none !important;
   }
 
   .carousel-controls {
