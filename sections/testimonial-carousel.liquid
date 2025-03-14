@@ -230,13 +230,16 @@ document.addEventListener('DOMContentLoaded', function() {
   function updateLayout() {
     const total = blocks.length;
 
-    // Remove all classes first
+    // Reset all blocks
     blocks.forEach(block => block.classList.remove('higher', 'lower', 'hidden'));
 
-    // Assign the classes based on the current index
-    blocks[currentIndex].classList.add('higher'); 
-    blocks[(currentIndex + 1) % total].classList.add('lower');
-    blocks[(currentIndex + 2) % total].classList.add('hidden');
+    // Assign the classes
+    const prevIndex = (currentIndex - 1 + total) % total;
+    const nextIndex = (currentIndex + 1) % total;
+
+    blocks[currentIndex].classList.add('higher');
+    blocks[nextIndex].classList.add('lower');
+    blocks[prevIndex].classList.add('hidden');
   }
 
   document.querySelector('.next').addEventListener('click', () => {
