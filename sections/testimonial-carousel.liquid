@@ -228,18 +228,19 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentIndex = 0;
 
   function updateLayout() {
-    const total = blocks.length;
+    blocks.forEach((block, index) => {
+      block.classList.remove('higher', 'lower', 'hidden');
 
-    // Reset all blocks
-    blocks.forEach(block => block.classList.remove('higher', 'lower', 'hidden'));
+      const adjustedIndex = (index - currentIndex + blocks.length) % blocks.length;
 
-    // Assign the classes
-    const prevIndex = (currentIndex - 1 + total) % total;
-    const nextIndex = (currentIndex + 1) % total;
-
-    blocks[currentIndex].classList.add('higher');
-    blocks[nextIndex].classList.add('lower');
-    blocks[prevIndex].classList.add('hidden');
+      if (adjustedIndex === 0) {
+        block.classList.add('higher');
+      } else if (adjustedIndex === 1) {
+        block.classList.add('lower');
+      } else {
+        block.classList.add('hidden');
+      }
+    });
   }
 
   document.querySelector('.next').addEventListener('click', () => {
@@ -254,5 +255,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateLayout(); // Initial call
 });
+
 
 </script>
