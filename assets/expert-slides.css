@@ -90,8 +90,8 @@
 /* Lower block */
 .testimonial-block.bottom {
   opacity: 1;
-  /*transform: translateY(140px);*/
-  top:140px;
+  transform: translateY(140px);
+  /*top:140px;*/
 }
 
 .carousel-controls {
