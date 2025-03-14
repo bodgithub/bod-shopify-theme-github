@@ -1,19 +1,31 @@
-<div class="testimonial-carousel">
-  <div class="testimonial-wrapper">
-    {%- for experts in shop.metaobjects.experts.values -%}
-      <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
-        <img src="{{ experts.expert_photo | img_url: 'medium' }}" alt="{{ experts.expert_name }}">
-        <h3>{{ experts.expert_name }}</h3>
-        <p>{{ experts.expert_title }}</p>
-        <p>{{ experts.exert_short_quote }}</p>
-      </div>
-    {%- endfor -%}
-  </div>
+<div class="row{% if full_width %} full-width-row-full{% endif %}">
+	<div class="small-12 columns">
+		<div class="testimonials testimonials--full-width-{{ full_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }}; --color-body: {{ color_text }}; --color-text:{{ color_text }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
+			{%- if section_heading -%}
+			<div class="testimonials--heading">
+				<h1>{{ section_heading }}</h1>
+			</div>
+			{%- endif -%}
 
-  <div class="carousel-controls">
-    <button class="prev">←</button>
-    <button class="next">→</button>
-  </div>
+          <div class="testimonial-carousel">
+            <div class="testimonial-wrapper">
+              {%- for experts in shop.metaobjects.experts.values -%}
+                <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
+                  <img src="{{ experts.expert_photo | img_url: 'medium' }}" alt="{{ experts.expert_name }}">
+                  <h3>{{ experts.expert_name }}</h3>
+                  <p>{{ experts.expert_title }}</p>
+                  <p>{{ experts.exert_short_quote }}</p>
+                </div>
+              {%- endfor -%}
+            </div>
+          
+            <div class="carousel-controls">
+              <button class="prev">←</button>
+              <button class="next">→</button>
+            </div>
+          </div>
+        </div>
+    </div>
 </div>
 
 {% schema %}
