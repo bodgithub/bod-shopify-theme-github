@@ -4349,12 +4349,6 @@ h2 {
   padding: 20px;
 }
 
-img {
-  width: 80px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-}
-
 .top {
   margin-top: 0;
 }
@@ -4366,15 +4360,6 @@ img {
 .carousel-controls {
   display: flex;
   gap: 15px;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
 /* Responsive Layout */
