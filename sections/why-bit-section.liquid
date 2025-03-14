@@ -3,42 +3,30 @@
 <section class="why-bits-section">
   <div class="why-bits-content">
 
+    <!-- Heading -->
     <h2>{{ section.settings.heading }}</h2>
 
-    <div class="why-bits-grid">
-      
-      <!-- Left Column Blocks -->
-      <div class="why-bits-left">
+    <!-- Content Wrapper -->
+    <div class="why-bits-wrapper">
+
+      <!-- Left and Right Grid Content -->
+      <div class="why-bits-grid">
         {% for block in section.blocks %}
-          {% if block.settings.position == 'left' %}
-            <div class="why-bits-item">
-              <div class="icon">{{ block.settings.icon }}</div>
-              <h3>{{ block.settings.title }}</h3>
-              <p>{{ block.settings.text }}</p>
-            </div>
-          {% endif %}
+          <div class="why-bits-item">
+            <div class="icon">{{ block.settings.icon }}</div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
         {% endfor %}
       </div>
 
-      <!-- Center Image -->
+      <!-- Center Big Image -->
       <div class="why-bits-center">
         <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Main Image">
       </div>
 
-      <!-- Right Column Blocks -->
-      <div class="why-bits-right">
-        {% for block in section.blocks %}
-          {% if block.settings.position == 'right' %}
-            <div class="why-bits-item">
-              <div class="icon">{{ block.settings.icon }}</div>
-              <h3>{{ block.settings.title }}</h3>
-              <p>{{ block.settings.text }}</p>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-
     </div>
+
   </div>
 </section>
 
@@ -81,16 +69,6 @@
           "id": "text",
           "label": "Description",
           "default": "Your description goes here"
-        },
-        {
-          "type": "select",
-          "id": "position",
-          "label": "Position",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "right", "label": "Right" }
-          ],
-          "default": "left"
         }
       ]
     }
@@ -99,12 +77,15 @@
     {
       "name": "Why Bits Section",
       "blocks": [
-        { "type": "icon_block", "settings": { "position": "left" } },
-        { "type": "icon_block", "settings": { "position": "left" } },
-        { "type": "icon_block", "settings": { "position": "right" } },
-        { "type": "icon_block", "settings": { "position": "right" } }
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" }
       ]
     }
   ]
 }
 {% endschema %}
+
