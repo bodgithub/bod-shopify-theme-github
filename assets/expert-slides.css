@@ -32,6 +32,11 @@
 .testi-content {
     padding: 20px;
 }
+
+.testi-content h3 {
+    margin: 0 !important;
+    line-height: 1;
+}
 .testi-content p {
     margin: 0;
     font-size: 18px;
