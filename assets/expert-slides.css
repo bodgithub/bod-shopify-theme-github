@@ -134,9 +134,11 @@
     padding-right: 40px;
   }
   .testimonial-carousel {
-        height: auto;
-        padding-right: 0;
-       flex-direction: column;
+      height: auto;
+      padding-right: 0;
+      flex-direction: column;
+      width: 50%;
+      flex-basis: 50%;
   }
   .testimonial-block {
         transform: none !important;
