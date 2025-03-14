@@ -21,11 +21,13 @@
 }
 
 .testimonial-block {
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 15px;
-  padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #1b3def;
+    border-radius: 15px;
+    padding: 0;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .top {
