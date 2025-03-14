@@ -25,20 +25,20 @@
 }
 
 .testimonial-block {
-    text-align: left;
-    background-color: #fff;   
-    border-radius: 15px;
+    text-align: left;   
     padding: 0;
     flex-direction: column;
-    height: fit-content;
-    overflow: hidden;
+    height: fit-content;  
     flex: 0 0 48%;
     opacity: 0;
     transition: all 0.3s ease-in-out;
     padding-right: 30px;
 }
 .block-inner{
-  border: 1px solid #1b3def;
+   border: 1px solid #1b3def;
+   background-color: #fff;   
+   border-radius: 15px;
+   overflow: hidden;
 }
 .testi-content {
     padding: 20px;
