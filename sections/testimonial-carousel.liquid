@@ -3,7 +3,7 @@
     {%- for expert in shop.metaobjects.expert.values -%}
       <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
         <img src="{{ expert.image | img_url: 'medium' }}" alt="{{ expert.name }}">
-        <h3>{{ expert.name }}</h3>
+        <h3>{{ expert_name }}</h3>
         <p>{{ expert.role }}</p>
         <p>{{ expert.testimonial }}</p>
       </div>
