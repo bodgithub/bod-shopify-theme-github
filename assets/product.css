@@ -918,14 +918,14 @@ color: #1b3def;}
     .accordion summary span svg{
         display:none;
     }
-  .accordion details[open] summary span {
-      background: #1B3DEF;
-      transform: rotateX(0);
-      content: '-';
-      width: 34px;
-      height:1px;
-      font-size: 0px;
-  }
+.accordion details[open] summary span {
+    background: #1b3def;
+    content: "-";
+    width: 25px;
+    height: 1px;
+    font-size: 0px;
+    transform: translateY(10px);
+}
   .accordion summary {
     width: 100%;
     list-style: none;
