@@ -32,6 +32,11 @@
 .testi-content {
     padding: 20px;
 }
+.testi-content p {
+    margin: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+}
 .top {
   margin-top: 0;
 }
