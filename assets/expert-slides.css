@@ -123,7 +123,11 @@
 
 @media (max-width: 1220px) {
   .testimonials-exert {
-      max-width: 100%;
+      max-width: 95%;
+  }
+  .testimonial-wrapper {
+    margin-right: 0;
+    width: 100%;
   }
 }
 @media (max-width: 1023px) {
