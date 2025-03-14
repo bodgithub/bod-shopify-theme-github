@@ -15,6 +15,7 @@
     flex-basis: 60%;
     position: relative;
     overflow: hidden;
+    padding-right: 30px;
 }
 .testimonial-wrapper {
     display: flex;
@@ -28,7 +29,7 @@
     padding: 0;
     flex-direction: column;
     height: fit-content;  
-    flex: 0 0 48%;
+    flex: 0 0 50%;
     opacity: 0;
     transition: all 0.3s ease-in-out;
     padding-right: 30px;
