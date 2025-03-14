@@ -245,8 +245,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentIndex = 0;
 
   function updateCarousel() {
-    const offset = -currentIndex * (100 / 2); // 50% width of each block
+    const offset = -(currentIndex * (100 / 2)); // Move by 50% width
     wrapper.style.transform = `translateX(${offset}%)`;
+
+    // Add active class for opacity effect
+    blocks.forEach((block, index) => {
+      block.classList.toggle('active', index === currentIndex || index === (currentIndex + 1) % blocks.length);
+    });
   }
 
   document.querySelector('.next').addEventListener('click', () => {
