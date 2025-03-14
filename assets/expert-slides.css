@@ -43,13 +43,13 @@
   overflow: hidden;
   position: relative;
 }
-.testimonial-block.higher {
-  margin-top: 0; /* Higher position */
+.higher {
+  margin-top: 0;
   opacity: 1;
 }
 
-.testimonial-block.lower {
-  margin-top: 140px; /* Lower position */
+.lower {
+  margin-top: 140px;
   opacity: 1;
 }
 
