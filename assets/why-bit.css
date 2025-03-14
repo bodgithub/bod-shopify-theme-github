@@ -34,7 +34,19 @@
     width: 34%;
     text-align: center;
 }
-
+.bit-inner {
+    width: 326px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+}
 .why-bits-item .icon {
   font-size: 2rem;
   margin-bottom: 10px;
