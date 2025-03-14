@@ -223,44 +223,40 @@
 
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const carousel = document.querySelector('.testimonial-carousel');
-  const wrapper = document.querySelector('.testimonial-wrapper');
-  const blocks = document.querySelectorAll('.testimonial-block');
-  const totalBlocks = blocks.length;
+const wrapper = document.querySelector('.testimonial-wrapper');
+const blocks = document.querySelectorAll('.testimonial-block');
+const prevButton = document.querySelector('.prev');
+const nextButton = document.querySelector('.next');
 
-  let currentIndex = 0;
-  const visibleBlocks = 2; // Show only two blocks at a time
+let currentIndex = 0;
 
-  function updateClasses() {
-    blocks.forEach((block, index) => {
-      block.classList.remove('top', 'bottom');
+function updateBlocks() {
+  blocks.forEach((block, index) => {
+    block.classList.remove('active', 'lower', 'hidden');
 
-      const relativeIndex = (index - currentIndex + totalBlocks) % totalBlocks;
+    const relativeIndex = (index - currentIndex + blocks.length) % blocks.length;
 
-      if (relativeIndex === 0) {
-        block.classList.add('top');
-      } else if (relativeIndex === 1) {
-        block.classList.add('bottom');
-      } 
-    });
-
-    const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
-    wrapper.style.transform = `translateX(${translateX})`;
-  }
-
-  document.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % totalBlocks;
-    updateClasses();
+    if (relativeIndex === 0) {
+      block.classList.add('active');
+    } else if (relativeIndex === 1) {
+      block.classList.add('lower');
+    } else {
+      block.classList.add('hidden');
+    }
   });
+}
 
-  document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + totalBlocks) % totalBlocks;
-    updateClasses();
-  });
-
-  updateClasses(); // Initial load
+prevButton.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + blocks.length) % blocks.length;
+  updateBlocks();
 });
+
+nextButton.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % blocks.length;
+  updateBlocks();
+});
+
+updateBlocks(); // Initial state
 
 
 </script>
