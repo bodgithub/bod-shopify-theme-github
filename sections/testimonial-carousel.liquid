@@ -28,10 +28,10 @@
 			</div>
 			{%- endif -%}
 
-        <!--  <div class="testimonial-carousel">
+          <div class="testimonial-carousel">
             <div class="testimonial-wrapper">
               {%- for experts in shop.metaobjects.experts.values -%}
-                <div class="testimonial-block">
+                <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                   <div class="expert-image">
                   <img src="{{ experts.expert_photo | img_url: 'medium' }}" alt="{{ experts.expert_name }}">
                   </div>
@@ -50,23 +50,7 @@
               <button class="prev">{% render 'svg-icons' with 'thb-caret-left' %}</button>
               <button class="next">{% render 'svg-icons' with 'thb-caret-right' %}</button>
             </div>
-          </div> -->
-
-          <div class="testimonial-carousel">
-  <div class="testimonial-wrapper">
-    <div class="testimonial-block">Block 1</div>
-    <div class="testimonial-block">Block 2</div>
-    <div class="testimonial-block">Block 3</div>
-    <div class="testimonial-block">Block 4</div>
-  </div>
-
-  <div class="carousel-controls">
-    <button class="prev">←</button>
-    <button class="next">→</button>
-  </div>
-</div>
-
-          
+          </div>
         </div>
     </div>
 </div>
@@ -240,31 +224,43 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.testimonial-carousel');
   const wrapper = document.querySelector('.testimonial-wrapper');
   const blocks = document.querySelectorAll('.testimonial-block');
+  const totalBlocks = blocks.length;
+
   let currentIndex = 0;
+  const visibleBlocks = 2; // Show only two blocks at a time
 
-  function updateCarousel() {
-    const offset = -(currentIndex * (100 / 2)); // Move by 50% width
-    wrapper.style.transform = `translateX(${offset}%)`;
-
-    // Add active class for opacity effect
+  function updateClasses() {
     blocks.forEach((block, index) => {
-      block.classList.toggle('active', index === currentIndex || index === (currentIndex + 1) % blocks.length);
+      block.classList.remove('top', 'bottom');
+
+      const relativeIndex = (index - currentIndex + totalBlocks) % totalBlocks;
+
+      if (relativeIndex === 0) {
+        block.classList.add('top');
+      } else if (relativeIndex === 1) {
+        block.classList.add('bottom');
+      } 
     });
+
+    const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
+    wrapper.style.transform = `translateX(${translateX})`;
   }
 
   document.querySelector('.next').addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % blocks.length;
-    updateCarousel();
+    currentIndex = (currentIndex + 1) % totalBlocks;
+    updateClasses();
   });
 
   document.querySelector('.prev').addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + blocks.length) % blocks.length;
-    updateCarousel();
+    currentIndex = (currentIndex - 1 + totalBlocks) % totalBlocks;
+    updateClasses();
   });
 
-  updateCarousel(); // Initial call
+  updateClasses(); // Initial load
 });
+
 
 </script>
