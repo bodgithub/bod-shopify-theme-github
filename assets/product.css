@@ -926,6 +926,13 @@ color: #1b3def;}
     font-size: 0px;
     transform: translateY(10px);
 }
+.accordion summary span::after {
+    content: '+'; /* Default icon */
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  transition: transform 0.3s ease-in-out;
+}
   .accordion summary {
     width: 100%;
     list-style: none;
