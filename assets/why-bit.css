@@ -39,6 +39,26 @@
     top: 0;
     width: 100%;
 }
+.grid-inner{
+    display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        gap: 0;
+        height: 100%;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1490px;
+        padding-bottom: 16px;
+        width: 100%;
+        padding-left: 27px;
+        padding-right: 27px;
+        -webkit-transition: padding .4sease-in-out;
+        transition: padding .4sease-in-out;
+}
 .why-bits-item {
     width: 34%;
     text-align: center;
