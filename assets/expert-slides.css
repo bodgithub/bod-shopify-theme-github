@@ -37,6 +37,7 @@
     margin-top: 140px;
     transition: all 0.5s ease-in-out;
     box-sizing: border-box;
+    transform: translateY(0);
 }
 .testimonial-carousel {
   width: 100%;
@@ -44,17 +45,19 @@
   position: relative;
 }
 .higher {
-  margin-top: 0;
   opacity: 1;
+  transform: translateY(0);
 }
 
 .lower {
-  margin-top: 140px;
   opacity: 1;
+  transform: translateY(140px);
 }
 
 .hidden {
-  display: none;
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction */
+  visibility: hidden; /* Avoid layout shifting */
 }
 .testi-content {
     padding: 20px;
