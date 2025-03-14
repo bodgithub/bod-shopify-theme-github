@@ -53,8 +53,11 @@
 }
 
 .why-bits-item h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 22px;
+  margin: 16px 0 20px;
+  max-width: none;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .why-bits-item p {
