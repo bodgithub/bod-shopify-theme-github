@@ -84,13 +84,6 @@
   transform: translateY(140px);
 }
 
-.top {
-  margin-top: 0;
-}
-
-.bottom {
-  margin-top: 140px; /* Slightly lower */
-}
 .carousel-controls {
     display: flex;
     gap: 15px;
