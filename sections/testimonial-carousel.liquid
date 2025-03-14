@@ -32,6 +32,45 @@
 {
   "name": "Testimonial Carousel",
   "settings": [
+    	{
+				"type": "richtext",
+				"id": "heading",
+				"label": "Heading",
+				
+		},
+	   {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Make section full width",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "text_size",
+        "label": "Text size",
+        "default": "medium",
+        "options": [
+          { "value": "small", "label": "Small" },
+          { "value": "medium", "label": "Medium" },
+          { "value": "large", "label": "Large" }
+        ]
+      },
+			{
+				"type": "select",
+				"id": "font_family",
+				"options": [
+					{
+						"value": "body",
+						"label": "Body"
+					},
+					{
+						"value": "heading",
+						"label": "Heading"
+					}
+				],
+				"default": "heading",
+				"label": "Font family"
+			},
     {
       "type": "range",
       "id": "columns_desktop",
