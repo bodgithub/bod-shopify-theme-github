@@ -1,0 +1,64 @@
+.why-bits-section {
+  text-align: center;
+  padding: 60px 0;
+}
+
+.why-bits-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.why-bits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-bits-left, .why-bits-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+}
+
+.why-bits-center img {
+  max-width: 80%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.why-bits-item {
+  text-align: center;
+}
+
+.why-bits-item .icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.why-bits-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.why-bits-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .why-bits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .why-bits-left, .why-bits-right {
+    gap: 20px;
+  }
+
+  .why-bits-center img {
+    max-width: 60%;
+  }
+}
