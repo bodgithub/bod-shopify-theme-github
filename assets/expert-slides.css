@@ -126,6 +126,10 @@
     max-width: 100%;
     flex-direction: column;
   }
+  .testimonials--headings {
+    flex-basis: 100%;
+    padding-right: 0;
+  }
   .testimonial-carousel {
     width: 100%; /* Full width on mobile */
     height: auto; /* Flexible height */
