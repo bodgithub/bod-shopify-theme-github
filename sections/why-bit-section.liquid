@@ -1,0 +1,108 @@
+<section class="why-bits-section">
+  <div class="why-bits-content">
+
+    <h2>{{ section.settings.heading }}</h2>
+
+    <div class="why-bits-grid">
+      
+      <!-- Left Column Blocks -->
+      <div class="why-bits-left">
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'left' %}
+            <div class="why-bits-item">
+              <div class="icon">{{ block.settings.icon }}</div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Center Image -->
+      <div class="why-bits-center">
+        <img src="{{ section.settings.main_image | img_url: 'master' }}" alt="Main Image">
+      </div>
+
+      <!-- Right Column Blocks -->
+      <div class="why-bits-right">
+        {% for block in section.blocks %}
+          {% if block.settings.position == 'right' %}
+            <div class="why-bits-item">
+              <div class="icon">{{ block.settings.icon }}</div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Bits Section",
+  "tag": "section",
+  "class": "why-bits-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Why Bits are Better"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Center Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_block",
+      "name": "Icon Block",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon (SVG or Unicode)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title Here"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Your description goes here"
+        },
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "right", "label": "Right" }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Bits Section",
+      "blocks": [
+        { "type": "icon_block", "settings": { "position": "left" } },
+        { "type": "icon_block", "settings": { "position": "left" } },
+        { "type": "icon_block", "settings": { "position": "right" } },
+        { "type": "icon_block", "settings": { "position": "right" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
