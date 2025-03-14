@@ -52,7 +52,11 @@
 
 /* Center Big Image */
 .why-bits-center {
-  max-width: 40%;
+    width: 40%;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
 }
 
 .why-bits-center img {
