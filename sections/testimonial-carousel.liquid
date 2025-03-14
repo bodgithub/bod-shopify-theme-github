@@ -224,11 +224,13 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.testimonial-carousel');
   const wrapper = document.querySelector('.testimonial-wrapper');
   const blocks = document.querySelectorAll('.testimonial-block');
   const totalBlocks = blocks.length;
 
   let currentIndex = 0;
+  const visibleBlocks = 2; // Show only two blocks at a time
 
   function updateClasses() {
     blocks.forEach((block, index) => {
@@ -240,12 +242,10 @@ document.addEventListener('DOMContentLoaded', function() {
         block.classList.add('top');
       } else if (relativeIndex === 1) {
         block.classList.add('bottom');
-      } else {
-        block.style.display = 'none'; // Hide extra blocks
-      }
+      } 
     });
 
-    const translateX = -(currentIndex * 100) + '%';
+    const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
     wrapper.style.transform = `translateX(${translateX})`;
   }
 
@@ -261,5 +261,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateClasses(); // Initial load
 });
+
 
 </script>
