@@ -240,37 +240,26 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  const wrapper = document.querySelector('.testimonial-wrapper');
   const blocks = document.querySelectorAll('.testimonial-block');
   let currentIndex = 0;
 
-  function updateClasses() {
-    blocks.forEach((block, index) => {
-      block.classList.remove('higher', 'lower', 'hidden');
-
-      const adjustedIndex = (index - currentIndex + blocks.length) % blocks.length;
-
-      if (adjustedIndex === 0) {
-        block.classList.add('higher');
-      } else if (adjustedIndex === 1) {
-        block.classList.add('lower');
-      } else {
-        block.classList.add('hidden');
-      }
-    });
+  function updateCarousel() {
+    const offset = -currentIndex * (100 / 2); // 50% width of each block
+    wrapper.style.transform = `translateX(${offset}%)`;
   }
 
   document.querySelector('.next').addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % blocks.length;
-    updateClasses();
+    updateCarousel();
   });
 
   document.querySelector('.prev').addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + blocks.length) % blocks.length;
-    updateClasses();
+    updateCarousel();
   });
 
-  updateClasses(); // Initial call
+  updateCarousel(); // Initial call
 });
 
-  
 </script>
