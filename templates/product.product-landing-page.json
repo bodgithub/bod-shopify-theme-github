@@ -479,6 +479,37 @@
         "disable_bottom_spacing": false
       }
     },
+    "testimonial_carousel_twHytV": {
+      "type": "testimonial-carousel",
+      "blocks": {
+        "testimonial_fMM9qz": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Tina-Bodology-Square-3.jpg",
+            "name": "Tina Kozman",
+            "role": "MEd, CNP, Metabolic Health Expert",
+            "quote": "MEd, CNP, Metabolic Health Expert"
+          }
+        },
+        "testimonial_r98t6A": {
+          "type": "testimonial",
+          "settings": {
+            "name": "",
+            "role": "",
+            "quote": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_fMM9qz",
+        "testimonial_r98t6A"
+      ],
+      "settings": {
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1
+      }
+    },
     "multicolumn_QQjdQM": {
       "type": "multicolumn",
       "blocks": {
@@ -1167,6 +1198,7 @@
     "gallery_EgAVLq",
     "collapsible_content_2_iP8nzP",
     "expert_testimonials_KxH7tC",
+    "testimonial_carousel_twHytV",
     "multicolumn_QQjdQM",
     "multicolumn_JycUDX",
     "spacer_hDmb7V",
