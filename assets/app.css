@@ -4307,3 +4307,11 @@ h2 {
 .bodology-junip-reviews {
   
 }
+
+@media only screen and (min-width: 768px) {
+.template-blog .row.articles {
+    overflow: unset;
+    flex-wrap: wrap;
+    width: 100%;
+}
+}
