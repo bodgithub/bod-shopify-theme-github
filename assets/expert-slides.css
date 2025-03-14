@@ -10,6 +10,19 @@
     padding-right: 40px;
 }
 
+.testimonial-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
 .testimonial-block {
   opacity: 0;
   visibility: hidden;
