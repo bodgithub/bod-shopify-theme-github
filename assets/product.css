@@ -920,18 +920,28 @@ color: #1b3def;}
     }
 .accordion details[open] summary span {
     background: #1b3def;
-    content: "-";
-    width: 25px;
-    height: 1px;
-    font-size: 0px;
-    transform: translateY(10px);
+
 }
-.accordion summary span::after {
-    content: '+'; /* Default icon */
-  font-size: 20px;
-  position: absolute;
-  right: 20px;
-  transition: transform 0.3s ease-in-out;
+.accordion summary span:before, .accordion summary span:after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    background-color: currentColor;
+    transition: transform .4sease-in-out, opacity .4sease-in-out;
+}
+
+.accordion summary span:before {
+    width: 20px;
+    height: 3px;
+    opacity: 1;
+    border-radius: 10px;
+}
+.accordion summary span:after {
+    width: 3px;
+    height: 20px;
+    border-radius: 10px;
 }
   .accordion summary {
     width: 100%;
