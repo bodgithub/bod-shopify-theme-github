@@ -988,14 +988,6 @@
             "text": "Stop wasting money by using more toothpaste than you need."
           }
         },
-        "icon_block_mjhQee": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "title": "Suitcase-Safe",
-            "text": "No more toothpaste explosions in your bag. Just throw a few Bits in your pack and you’re good to go"
-          }
-        },
         "icon_block_JYGDMr": {
           "type": "icon_block",
           "settings": {
@@ -1004,20 +996,28 @@
             "text": "A dry tablet means we can use less-harmful ingredients and still protect your teeth."
           }
         },
-        "icon_block_QxKrbN": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "title": "Earth-Friendly",
-            "text": "Infinitely refillable with no plastic toothpaste tubes, our Bits are better for our earth and oceans."
-          }
-        },
         "icon_block_3h3HNA": {
           "type": "icon_block",
           "settings": {
             "icon": "",
             "title": "Sink-Friendly",
             "text": "Our tablets leave less mess in your sink because no glycerine – what makes most toothpaste, paste – means no sticky goop."
+          }
+        },
+        "icon_block_mjhQee": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "title": "Suitcase-Safe",
+            "text": "No more toothpaste explosions in your bag. Just throw a few Bits in your pack and you’re good to go"
+          }
+        },
+        "icon_block_QxKrbN": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "title": "Earth-Friendly",
+            "text": "Infinitely refillable with no plastic toothpaste tubes, our Bits are better for our earth and oceans."
           }
         },
         "icon_block_RYmKaQ": {
@@ -1031,10 +1031,10 @@
       },
       "block_order": [
         "icon_block_QnLWxr",
-        "icon_block_mjhQee",
         "icon_block_JYGDMr",
-        "icon_block_QxKrbN",
         "icon_block_3h3HNA",
+        "icon_block_mjhQee",
+        "icon_block_QxKrbN",
         "icon_block_RYmKaQ"
       ],
       "settings": {
