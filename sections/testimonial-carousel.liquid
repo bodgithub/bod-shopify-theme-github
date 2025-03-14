@@ -224,19 +224,29 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.testimonial-carousel');
+  const wrapper = document.querySelector('.testimonial-wrapper');
   const blocks = document.querySelectorAll('.testimonial-block');
   const totalBlocks = blocks.length;
 
   let currentIndex = 0;
+  const visibleBlocks = 2; // Show only two blocks at a time
 
   function updateClasses() {
-    blocks.forEach(block => block.classList.remove('top', 'bottom'));
+    blocks.forEach((block, index) => {
+      block.classList.remove('top', 'bottom');
 
-    const firstIndex = currentIndex % totalBlocks;
-    const secondIndex = (currentIndex + 1) % totalBlocks;
+      const relativeIndex = (index - currentIndex + totalBlocks) % totalBlocks;
 
-    blocks[firstIndex].classList.add('top');
-    blocks[secondIndex].classList.add('bottom');
+      if (relativeIndex === 0) {
+        block.classList.add('top');
+      } else if (relativeIndex === 1) {
+        block.classList.add('bottom');
+      } 
+    });
+
+    const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
+    wrapper.style.transform = `translateX(${translateX})`;
   }
 
   document.querySelector('.next').addEventListener('click', () => {
@@ -249,8 +259,8 @@ document.addEventListener('DOMContentLoaded', function() {
     updateClasses();
   });
 
-  // Initialize the first set of blocks
-  updateClasses();
+  updateClasses(); // Initial load
 });
+
 
 </script>
