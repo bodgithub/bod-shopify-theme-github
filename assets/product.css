@@ -931,7 +931,12 @@ color: #1b3def;}
     background-color: currentColor;
     transition: transform .4sease-in-out, opacity .4sease-in-out;
 }
-
+.accordion details[open] summary span:before {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+.accordion details[open] summary span:before {
+    opacity: 0;
+}
 .accordion summary span:before {
     width: 20px;
     height: 3px;
