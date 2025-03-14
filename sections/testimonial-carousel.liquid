@@ -1,3 +1,20 @@
+{%- liquid
+	assign section_heading = section.settings.heading
+	assign full_width = section.settings.full_width
+	assign font_family = section.settings.font_family
+	assign text_size = section.settings.text_size
+	assign pagination = section.settings.pagination
+	assign autoplay = section.settings.autoplay
+	assign color_bg = section.settings.color_bg
+ assign color_border_card = section.settings.color_border_card
+    assign color_bg_card = section.settings.color_bg_card
+	assign color_text = section.settings.color_text
+    assign color_text2 = section.settings.color_text2
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+-%}
+
 <div class="row{% if full_width %} full-width-row-full{% endif %}">
 	<div class="small-12 columns">
 		<div class="testimonials testimonials--full-width-{{ full_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }}; --color-body: {{ color_text }}; --color-text:{{ color_text }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
