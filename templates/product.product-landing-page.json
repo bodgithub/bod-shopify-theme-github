@@ -461,6 +461,7 @@
         "quote_34jQwD",
         "quote_NhrLgL"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by <em>practitioners</em></h1><h6></h6>",
@@ -510,9 +511,9 @@
         "full_width": false,
         "text_size": "medium",
         "font_family": "heading",
-        "color_bg": "#F5F5F5",
-        "color_bg_card": "#F5F5F5",
-        "color_border_card": "#F5F5F5",
+        "color_bg": "#f5f5f5",
+        "color_bg_card": "#f5f5f5",
+        "color_border_card": "#f5f5f5",
         "color_text": "#2c2d2e",
         "color_text2": "#2c2d2e",
         "disable_top_spacing": false,
@@ -1149,7 +1150,7 @@
       "type": "apps",
       "blocks": {
         "junip_product_reviews_ugc_junip_ugc_gallery_8Pj63p": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "layout": "tile",
             "title": "",
@@ -1160,7 +1161,7 @@
           }
         },
         "junip_product_reviews_ugc_junip_reviews_YG3wzn": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "layout": "list",
             "reviewsType": "product_reviews",
