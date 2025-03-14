@@ -1,6 +1,17 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
-{% endschema %}
+<div class="testimonial-carousel">
+  <div class="testimonial-wrapper">
+    {%- for expert in shop.metaobjects.expert.values -%}
+      <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
+        <img src="{{ expert.image | img_url: 'medium' }}" alt="{{ expert.name }}">
+        <h3>{{ expert.name }}</h3>
+        <p>{{ expert.role }}</p>
+        <p>{{ expert.testimonial }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="carousel-controls">
+    <button class="prev">←</button>
+    <button class="next">→</button>
+  </div>
+</div>
