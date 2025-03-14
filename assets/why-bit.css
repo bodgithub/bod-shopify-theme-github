@@ -61,8 +61,10 @@
 }
 
 .why-bits-item p {
-  font-size: 1rem;
-  color: #555;
+  font-size: 16px;
+  line-height: 1.22;
+  margin: 0;
+  max-width: 260px;
 }
 
 /* Center Big Image */
