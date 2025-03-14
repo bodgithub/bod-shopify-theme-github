@@ -120,6 +120,11 @@
     width: 25px;
 }
 
+@media (max-width: 1300px) {
+  .carousel-controls {
+    right: 34%;
+  }
+}
 @media (max-width: 1220px) {
   .testimonials-exert {
       max-width: 1060px;
