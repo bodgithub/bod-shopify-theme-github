@@ -81,13 +81,11 @@
 
 /* Center Big Image */
 .why-bits-center {
-    width: 40%;
-    position: absolute;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
 }
-
 .why-bits-center img {
   width: 100%;
   height: auto;
