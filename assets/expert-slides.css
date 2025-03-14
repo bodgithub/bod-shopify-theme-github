@@ -136,10 +136,12 @@
         padding-right: 0;
         width: 100%;
     }
-  .testimonial-block {
-    width: 100%; /* One block visible at a time */
-    transform: none !important;
-  }
+    .testimonial-block {
+        transform: none !important;
+        padding-right: 0;
+        min-height: unset;
+        flex: 0 0 100%;
+    }
 
   .carousel-controls {
     margin-top: 20px;
