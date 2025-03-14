@@ -4,6 +4,7 @@
     max-width: 80%;
     margin: 0 auto;
     justify-content: space-between;
+    padding: 0px 0 80px 0;
     height:90vh;
 }
 .testimonials--headings {
@@ -15,7 +16,6 @@
     align-items: center;
     flex-basis: 60%;
     position: relative;
-    overflow: hidden;
     padding-right: 30px;
 }
 .testimonial-wrapper {
