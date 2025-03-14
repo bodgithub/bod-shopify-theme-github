@@ -33,9 +33,13 @@
               {%- for experts in shop.metaobjects.experts.values -%}
                 <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
                   <img src="{{ experts.expert_photo | img_url: 'medium' }}" alt="{{ experts.expert_name }}">
+                  <div class="testi-content">
                   <h3>{{ experts.expert_name }}</h3>
                   <p>{{ experts.expert_title }}</p>
+                  </div>
+                  <div class="testi-bottom">
                   <p>{{ experts.exert_short_quote }}</p>
+                  </div>
                 </div>
               {%- endfor -%}
             </div>
