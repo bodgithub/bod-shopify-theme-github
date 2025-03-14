@@ -917,7 +917,7 @@ color: #1b3def;}
       margin-bottom: 0; }
 
   .accordion details[open] summary span svg {
-      color: #000;
+      background: #1B3DEF;
       transform: rotateX(0);
       content: '-';
       display: none;
