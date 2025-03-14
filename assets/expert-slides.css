@@ -11,25 +11,24 @@
 }
 
 .testimonial-carousel {
+  width: 500px; /* Adjust as per your design */
   position: relative;
-  width: 100%;
-  max-width: 600px;
-  overflow: hidden;
-  margin: auto;
 }
 
 .testimonial-wrapper {
   display: flex;
-  overflow: hidden;
-  position: relative;
-  width: 500px; /* Adjust width */
-  height: 300px; /* Adjust height */
+  gap: 20px; /* Adjust gap between blocks */
+  transition: transform 0.5s ease-in-out;
 }
 
 .testimonial-block {
-  min-width: 50%; /* Show only two blocks at a time */
-  transition: transform 0.5s ease-in-out;
+  width: 45%; /* Each block takes 50% */
   box-sizing: border-box;
+  opacity: 0.5;
+}
+
+.testimonial-block.active {
+  opacity: 1;
 }
 
 .testimonial-block:nth-child(odd) {
@@ -39,7 +38,6 @@
 .testimonial-block:nth-child(even) {
   margin-top: 20px; /* Second block lower */
 }
-
 
 
 .testi-content {
