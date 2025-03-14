@@ -139,6 +139,7 @@
         height: auto;
         padding-right: 0;
         width: 100%;
+       flex-direction: column;
     }
     .testimonial-block {
         transform: none !important;
