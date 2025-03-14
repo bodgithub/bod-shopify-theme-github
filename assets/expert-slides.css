@@ -135,6 +135,9 @@
     margin-right: 0;
     width: 100%;
   }
+  .carousel-controls {
+    right: 30%;
+  }
 }
 @media (max-width: 1023px) {
   .testimonials-exert {
