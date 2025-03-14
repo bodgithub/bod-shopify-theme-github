@@ -225,31 +225,33 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const blocks = document.querySelectorAll('.testimonial-block');
-  let activeIndex = 0;
+  let currentIndex = 0;
 
-  function updateClasses() {
+  function updateLayout() {
     blocks.forEach((block, index) => {
-      block.classList.remove('active');
-      if (index === activeIndex || index === (activeIndex + 1) % blocks.length) {
-        block.classList.add('active');
-        block.style.display = 'block';
+      block.classList.remove('higher', 'lower', 'hidden');
+
+      if (index === currentIndex) {
+        block.classList.add('higher');
+      } else if (index === (currentIndex + 1) % blocks.length) {
+        block.classList.add('lower');
       } else {
-        block.style.display = 'none';
+        block.classList.add('hidden');
       }
     });
   }
 
   document.querySelector('.next').addEventListener('click', () => {
-    activeIndex = (activeIndex + 1) % blocks.length;
-    updateClasses();
+    currentIndex = (currentIndex + 1) % blocks.length;
+    updateLayout();
   });
 
   document.querySelector('.prev').addEventListener('click', () => {
-    activeIndex = (activeIndex - 1 + blocks.length) % blocks.length;
-    updateClasses();
+    currentIndex = (currentIndex - 1 + blocks.length) % blocks.length;
+    updateLayout();
   });
 
-  updateClasses(); // Initial call
+  updateLayout(); // Initial call
 });
 
 </script>
