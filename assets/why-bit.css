@@ -153,6 +153,16 @@
         -ms-flex-order: 5;
         order: 5;
     }
+    .bits-are-better__icon-item:nth-child(4) {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+    }
+    .bits-are-better__icon-item:nth-child(5) {
+        -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+        order: 4;
+    }
 }
 
 /* Mobile Responsive */
