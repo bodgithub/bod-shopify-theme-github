@@ -4,3 +4,8 @@
     max-width: 80%;
     margin: 0 auto;
 }
+.testimonial-carousel {
+    display: flex;
+    align-items: center;
+    flex-basis: 50%;
+}
