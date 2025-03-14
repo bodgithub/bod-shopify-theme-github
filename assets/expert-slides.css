@@ -106,22 +106,4 @@
     height: 25px;
     width: 25px;
 }
-/* Responsive Layout */
-@media (min-width: 768px) {
-  .testimonial-wrapper {
-    grid-template-columns: repeat(var(--columns-tablet), 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .testimonial-wrapper {
-    grid-template-columns: repeat(var(--columns-desktop), 1fr);
-  }
-}
-
-@media (max-width: 767px) {
-  .testimonial-wrapper {
-    grid-template-columns: repeat(var(--columns-mobile), 1fr);
-  }
-}
 
