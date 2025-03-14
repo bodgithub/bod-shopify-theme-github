@@ -935,12 +935,12 @@ color: #1b3def;}
 }
 .accordion summary span:before {
     width: 20px;
-    height: 3px;
+    height: 2px;
     opacity: 1;
     border-radius: 10px;
 }
 .accordion summary span:after {
-    width: 3px;
+    width: 2px;
     height: 20px;
     border-radius: 10px;
 }
