@@ -915,14 +915,8 @@ color: #1b3def;}
     margin-left: auto; }
     .accordion-container .accordion:last-child {
       margin-bottom: 0; }
-    .accordion summary span svg {
-        font-size: 0px;
-        content: '+';
-        width: 34px;
-        height: 10px;
-        background: #1B3DEF;
-    }
-  .accordion details[open] summary span svg {
+
+  .accordion details[open] summary span {
       background: #1B3DEF;
       transform: rotateX(0);
       content: '-';
