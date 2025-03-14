@@ -130,11 +130,12 @@
     flex-basis: 100%;
     padding-right: 0;
   }
-  .testimonial-carousel {
-    width: 100%; /* Full width on mobile */
-    height: auto; /* Flexible height */
-  }
-
+   .testimonial-carousel {
+        flex-basis: 100%;
+        height: auto;
+        padding-right: 0;
+        width: 100%;
+    }
   .testimonial-block {
     width: 100%; /* One block visible at a time */
     transform: none !important;
