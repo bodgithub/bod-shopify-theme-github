@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const blocks = document.querySelectorAll('.testimonial-block');
   let currentIndex = 0;
 
-  function updateLayout() {
+  function updateClasses() {
     blocks.forEach((block, index) => {
       block.classList.remove('higher', 'lower', 'hidden');
 
@@ -245,16 +245,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   document.querySelector('.next').addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % blocks.length;
-    updateLayout();
+    updateClasses();
   });
 
   document.querySelector('.prev').addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + blocks.length) % blocks.length;
-    updateLayout();
+    updateClasses();
   });
 
-  updateLayout(); // Initial call
+  updateClasses(); // Initial call
 });
-
 
 </script>
