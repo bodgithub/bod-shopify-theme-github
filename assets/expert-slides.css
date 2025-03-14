@@ -32,6 +32,9 @@
     height: fit-content;
     overflow: hidden;
    flex-basis: 50%;
+  opacity: 0.5;
+  transform: translateY(20px);
+  transition: all 0.3s ease-in-out;
 }
 .testi-content {
     padding: 20px;
