@@ -916,7 +916,7 @@ color: #1b3def;}
     .accordion-container .accordion:last-child {
       margin-bottom: 0; }
     .accordion summary span svg{
-        display:none;
+        display:none !important;
     }
 .accordion summary span:before, .accordion summary span:after {
     position: absolute;
