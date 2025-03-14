@@ -67,6 +67,19 @@
     margin: 0;
     font-size: 18px;
 }
+
+/* Higher block */
+.testimonial-block.top {
+  opacity: 1;
+  transform: translateY(-20px);
+}
+
+/* Lower block */
+.testimonial-block.bottom {
+  opacity: 1;
+  transform: translateY(20px);
+}
+
 .top {
   margin-top: 0;
 }
