@@ -122,10 +122,11 @@
 }
 
 @media (max-width: 480px) {
-  .testimonials-exert {
-    max-width: 100%;
-    flex-direction: column;
-  }
+    .testimonials-exert {
+        max-width: 380px;
+        flex-direction: column;
+        width: 100%;
+    }
   .testimonials--headings {
     flex-basis: 100%;
     padding-right: 0;
