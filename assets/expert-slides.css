@@ -44,20 +44,18 @@
   overflow: hidden;
   position: relative;
 }
-.higher {
-  opacity: 1;
-  transform: translateY(0);
+.testimonial-block.higher {
+  transform: translateY(-20px); /* Move up */
 }
 
-.lower {
-  opacity: 1;
-  transform: translateY(140px);
+.testimonial-block.lower {
+  transform: translateY(20px); /* Move down */
 }
 
-.hidden {
+.testimonial-block.hidden {
   opacity: 0;
-  pointer-events: none; /* Prevent interaction */
-  visibility: hidden; /* Avoid layout shifting */
+  pointer-events: none;
+  visibility: hidden;
 }
 .testi-content {
     padding: 20px;
