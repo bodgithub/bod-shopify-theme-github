@@ -915,8 +915,16 @@ color: #1b3def;}
     margin-left: auto; }
     .accordion-container .accordion:last-child {
       margin-bottom: 0; }
+
   .accordion details[open] summary span svg {
-    transform: rotateX(0deg); }
+      color: #000;
+      transform: rotateX(0);
+      content: '-';
+      display: none;
+      width: 34px;
+      font-size: 0px;
+      margin-top: 14px;
+  }
   .accordion summary {
     width: 100%;
     list-style: none;
