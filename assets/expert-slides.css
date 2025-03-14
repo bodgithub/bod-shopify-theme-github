@@ -122,9 +122,30 @@
 }
 
 @media (max-width: 1023px) {
-.testimonials-exert {
-    max-width: 90%;
-}
+  .testimonials-exert {
+      max-width: 90%;
+  }
+  .testimonial-wrapper {
+    margin-right: 0;
+    width: 100%;
+  }
+  .testimonial-carousel {
+        flex-basis: 100%;
+        height: auto;
+        padding-right: 0;
+        width: 100%;
+       flex-direction: column;
+  }
+  .testimonial-block {
+        transform: none !important;
+        padding-right: 0;
+        min-height: unset;
+        flex: 0 0 100%;
+  }
+  .carousel-controls {
+    margin-top: 30px;
+    position: unset;
+  }
 }
 @media (max-width: 768px) {
     .testimonials-exert {
