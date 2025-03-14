@@ -31,7 +31,7 @@
           <div class="testimonial-carousel">
             <div class="testimonial-wrapper">
               {%- for experts in shop.metaobjects.experts.values -%}
-                <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
+                <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                   <div class="expert-image">
                   <img src="{{ experts.expert_photo | img_url: 'medium' }}" alt="{{ experts.expert_name }}">
                   </div>
