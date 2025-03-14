@@ -11,12 +11,14 @@
 
 /* Flex Wrapper */
 .why-bits-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1490px;
+    margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
 }
 
 /* Left & Right Grid */
