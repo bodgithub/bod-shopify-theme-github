@@ -89,3 +89,27 @@
   ]
 }
 {% endschema %}
+
+
+<script>
+  const blocks = document.querySelectorAll('.testimonial-block');
+let currentIndex = 0;
+
+function updateBlocks() {
+  blocks.forEach((block, i) => {
+    block.style.display = i === currentIndex || i === (currentIndex + 1) % blocks.length ? 'flex' : 'none';
+  });
+}
+
+document.querySelector('.next').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % blocks.length;
+  updateBlocks();
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + blocks.length) % blocks.length;
+  updateBlocks();
+});
+
+updateBlocks();
+</script>
