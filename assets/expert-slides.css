@@ -34,6 +34,9 @@
     transition: all 0.3s ease-in-out;
     padding-right: 30px;
 }
+.testimonial-block:last-child {
+    padding-right: 0;
+}
 .block-inner{
    border: 1px solid #1b3def;
    background-color: #fff;   
