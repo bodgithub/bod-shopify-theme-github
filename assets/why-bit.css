@@ -116,8 +116,9 @@
     position: relative;
 }
 .why-bits-center img {
-  width: 100%;
-  height: auto;
+    width: 50%;
+    height: auto;
+    margin: 0 auto;
 }
 @media only screen and (min-width: 1023px) {
     .why-bits-grid {
