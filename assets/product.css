@@ -918,10 +918,6 @@ color: #1b3def;}
     .accordion summary span svg{
         display:none;
     }
-.accordion details[open] summary span {
-    background: #1b3def;
-
-}
 .accordion summary span:before, .accordion summary span:after {
     position: absolute;
     content: "";
