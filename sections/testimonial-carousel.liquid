@@ -223,24 +223,34 @@
 
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
   const blocks = document.querySelectorAll('.testimonial-block');
-let currentIndex = 0;
+  const totalBlocks = blocks.length;
 
-function updateBlocks() {
-  blocks.forEach((block, i) => {
-    block.style.display = i === currentIndex || i === (currentIndex + 1) % blocks.length ? 'flex' : 'none';
+  let currentIndex = 0;
+
+  function updateClasses() {
+    blocks.forEach(block => block.classList.remove('top', 'bottom'));
+
+    const firstIndex = currentIndex % totalBlocks;
+    const secondIndex = (currentIndex + 1) % totalBlocks;
+
+    blocks[firstIndex].classList.add('top');
+    blocks[secondIndex].classList.add('bottom');
+  }
+
+  document.querySelector('.next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % totalBlocks;
+    updateClasses();
   });
-}
 
-document.querySelector('.next').addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % blocks.length;
-  updateBlocks();
+  document.querySelector('.prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + totalBlocks) % totalBlocks;
+    updateClasses();
+  });
+
+  // Initialize the first set of blocks
+  updateClasses();
 });
 
-document.querySelector('.prev').addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + blocks.length) % blocks.length;
-  updateBlocks();
-});
-
-updateBlocks();
 </script>
