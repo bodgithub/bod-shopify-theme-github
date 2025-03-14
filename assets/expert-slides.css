@@ -32,15 +32,29 @@
     flex-direction: column;
     height: fit-content;
     overflow: hidden;
-    flex: 0 0 50%;
+    width: 45%;
     opacity: 0.5;
     margin-top: 140px;
     transition: all 0.3s ease-in-out;
     box-sizing: border-box;
 }
-.testimonial-block.active {
+.testimonial-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.testimonial-block.higher {
   margin-top: 0; /* Higher position */
   opacity: 1;
+}
+
+.testimonial-block.lower {
+  margin-top: 140px; /* Lower position */
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
 }
 .testi-content {
     padding: 20px;
