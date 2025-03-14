@@ -129,11 +129,13 @@
     margin-right: 0;
     width: 100%;
   }
+  .testimonials--headings {
+    flex-basis: 50%;
+    padding-right: 40px;
+  }
   .testimonial-carousel {
-        flex-basis: 100%;
         height: auto;
         padding-right: 0;
-        width: 100%;
        flex-direction: column;
   }
   .testimonial-block {
