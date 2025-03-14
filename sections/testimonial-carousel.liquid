@@ -2,10 +2,10 @@
   <div class="testimonial-wrapper">
     {%- for experts in shop.metaobjects.experts.values -%}
       <div class="testimonial-block {% if forloop.index == 1 %}top{% else %}bottom{% endif %}">
-        <img src="{{ experts.expert_photo | img_url: 'medium' }}" alt="{{ expert_name }}">
-        <h3>{{ expert_name }}</h3>
-        <p>{{ expert_title }}</p>
-        <p>{{ exert_short_quote }}</p>
+        <img src="{{ experts.expert_photo | img_url: 'medium' }}" alt="{{ experts.expert_name }}">
+        <h3>{{ experts.expert_name }}</h3>
+        <p>{{ experts.expert_title }}</p>
+        <p>{{ experts.exert_short_quote }}</p>
       </div>
     {%- endfor -%}
   </div>
