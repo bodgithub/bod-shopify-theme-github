@@ -190,6 +190,10 @@
     margin: 10px 0;
     max-width: 180px;
 }
+.why-bits-item p {
+    font-size: 14px;
+    margin: 0;
+}
 }
 @media (min-width: 1024px) and (max-width: 1200px) {
   .why-bits-center img {
