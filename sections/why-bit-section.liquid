@@ -17,7 +17,13 @@
         {% for block in section.blocks %}
           <div class="why-bits-item">
             <div class="bit-inner">
-            <div class="icon">{{ block.settings.icon }}</div>
+            <div class="icon">
+              {% if block.settings.icon != blank %}
+              {{ block.settings.icon }}
+              {% else %}
+              <img src="{{ block.settings.icon-img | img_url: 'master' }}" alt="{{ block.settings.icon-img.alt }}">
+              {% endif %}
+            </div>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.text }}</p>
             </div>
@@ -59,6 +65,11 @@
           "type": "html",
           "id": "icon",
           "label": "Icon (SVG or Unicode)"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon-img",
+          "label": "Icon image"
         },
         {
           "type": "text",
