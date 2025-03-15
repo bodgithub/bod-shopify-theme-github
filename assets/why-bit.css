@@ -194,11 +194,13 @@
 }
 
 @media (max-width: 480px) {
+  .why-bits-section {
+    padding: 40px 0;
+  }
   .why-bits-grid {
     grid-template-columns: 1fr; /* Single column */
     position: unset;
   }
-
   .why-bits-center {
     max-width: 100%;
   }
