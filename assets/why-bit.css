@@ -203,7 +203,9 @@
     width: 100%;
   }
   .why-bits-item {
-    width: auto;
+        width: auto;
+        max-width: 250px;
+        margin: 0 auto 15px auto;
   }
   .why-bits-item h3 {
     font-size: 20px;
