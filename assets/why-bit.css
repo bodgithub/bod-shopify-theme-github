@@ -123,13 +123,7 @@
     height: auto;
     margin: 0 auto;
 }
-@media only screen and (min-width: 1023px) {
-    .why-bits-grid {
-        -webkit-box-pack: start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-    }
-}
+
 @media only screen and (min-width: 1279px) {
     .why-bits-item:nth-child(1), .why-bits-item:nth-child(2), .why-bits-item:nth-child(3) {
         -webkit-box-align: start;
@@ -172,7 +166,20 @@
         order: 6;
     }
 }
-
+@media only screen and (min-width: 1023px) {
+    .why-bits-grid {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    .why-bits-grid {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+}
 /* Mobile Responsive */
 @media (min-width: 481px) and (max-width: 767px) {
     .why-bits-wrapper {
