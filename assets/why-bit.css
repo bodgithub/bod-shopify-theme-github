@@ -173,6 +173,32 @@
         justify-content: flex-start;
     }
 }
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .grid-inner {
+    padding: 0;
+  }
+  .why-bits-content h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .bit-inner {
+    width: 146px;
+  }
+  .why-bits-center img {
+    width: 45%;
+  }
+  .why-bits-item h3 {
+    font-size: 17px;
+    margin: 0;
+  }
+  .why-bits-item .icon {    
+    width: 50px;
+    height: 50px;
+  }
+  .why-bits-item p {
+    display: none;
+  }
+}
 @media (min-width: 768px) and (max-width: 1023px) {
   .grid-inner {
     padding: 0;
