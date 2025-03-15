@@ -196,6 +196,7 @@
 @media (max-width: 480px) {
   .why-bits-grid {
     grid-template-columns: 1fr; /* Single column */
+    position: unset;
   }
 
   .why-bits-center {
