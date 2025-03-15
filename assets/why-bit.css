@@ -193,7 +193,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 480px) {
   .why-bits-section {
     padding: 40px 0;
   }
