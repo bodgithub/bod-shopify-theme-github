@@ -214,4 +214,7 @@
     grid-template-columns: repeat(2, 1fr);
     padding-bottom: 32px;
   }
+  .bit-inner {
+    width: 100%;
+  }
 }
