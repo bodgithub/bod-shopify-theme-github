@@ -207,4 +207,10 @@
   .why-bits-center img {
     width: 100%;
   }
+  .grid-inner {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 32px;
+  }
 }
