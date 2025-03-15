@@ -175,42 +175,28 @@
 
 /* Mobile Responsive */
 @media (min-width: 481px) and (max-width: 767px) {
-  .why-bits-section {
-    padding: 40px 0;
+  .why-bits-wrapper {
+    flex-direction: column;
   }
-  .why-bits-grid {
-    grid-template-columns: 1fr; /* Single column */
-    position: unset;
-  }
+
   .why-bits-center {
+    order: -1; /* Big image moves to the top */
+    max-width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .why-bits-grid {
     max-width: 100%;
-  }
-  .why-bits-content h2 {
-    font-size: 30px;
-  }
-  .why-bits-center img {
-    width: 100%;
-  }
-  .grid-inner {
     display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .bit-inner {
-    width: 100%;
-  }
-  .why-bits-item {
-    width: auto;
-  }
-  .why-bits-item h3 {
-    font-size: 16px;
-  }
-  .why-bits-item p {
-    font-size: 14px;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid */
+    gap: 20px;
   }
 }
 
 @media (min-width: 320px) and (max-width: 480px) {
+    .why-bits-wrapper {
+    flex-direction: column;
+  }
   .why-bits-section {
     padding: 40px 0;
   }
