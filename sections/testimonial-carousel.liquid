@@ -228,7 +228,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     const carousel = document.querySelector('.testimonial-carousel');
     const wrapper = document.querySelector('.testimonial-wrapper');
-    const blocks = document.querySelectorAll('.testimonial-block').reverse();
+    const blocks = Array.from(document.querySelectorAll('.testimonial-block')).reverse(); // Reverse the order
     const totalBlocks = blocks.length;
 
     let currentIndex = 0;
