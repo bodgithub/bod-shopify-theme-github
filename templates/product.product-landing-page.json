@@ -9,95 +9,6 @@
  */
 {
   "sections": {
-    "image_with_text_overlay_zjqnjJ": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "customer_reviews_CtBhV3": {
-          "type": "customer_reviews",
-          "settings": {
-            "stars": "5",
-            "heading": "See real results with inositol",
-            "font_size": "0.7em",
-            "link": "#reviews",
-            "scale": ""
-          }
-        },
-        "heading_FGRE4D": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ product.metafields.custom.problem_category.value.headline | metafield_tag }}",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "button_rBDtc7": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_text": "Get inositol—the new way to balance",
-            "button_link": "",
-            "button_color": "white"
-          }
-        },
-        "benefits_MfjQJR": {
-          "type": "benefits",
-          "settings": {
-            "benefits-title": "<b>Inositol is studied to:</b>",
-            "icon_size": 25,
-            "border_size": 1,
-            "border_color": "#1b3def",
-            "benefit_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
-            "icon_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.icon.value }}",
-            "benefit_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.benefit.value }}",
-            "icon_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.icon.value }}",
-            "benefit_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.benefit.value }}",
-            "icon_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.icon.value }}",
-            "benefit_4": "{{ product.metafields.custom.problem_category.value.benefit_4.value.benefit.value }}",
-            "icon_4": "{{ product.metafields.custom.problem_category.value.benefit_4.value.icon.value }}",
-            "benefit_5": "{{ product.metafields.custom.problem_category.value.benefit_5.value.benefit.value }}",
-            "icon_5": "{{ product.metafields.custom.problem_category.value.benefit_5.value.icon.value }}"
-          }
-        }
-      },
-      "block_order": [
-        "customer_reviews_CtBhV3",
-        "heading_FGRE4D",
-        "button_rBDtc7",
-        "benefits_MfjQJR"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "image": "{{ product.metafields.custom.problem_category.value.hero_banner_desktop.value }}",
-        "mobile_image": "{{ product.metafields.custom.problem_category.value.hero_banner_mobile.value }}",
-        "image_parallax": true,
-        "desktop_height": "desktop-height-750",
-        "mobile_height": "mobile-height-500",
-        "full_width": true,
-        "content_width": "medium",
-        "content_position": "bottom-left",
-        "text_alignment": "left",
-        "text_color": "#1b3def",
-        "overlay_color": "#f5f5f5",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "spacer_LVK4hF": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 30,
-        "spacer_desktop": 0,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
-    "custom_liquid_RcjzA4": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<div id=\"buy-inositol\"></div>"
-      }
-    },
     "main-product": {
       "type": "main-product",
       "blocks": {
@@ -274,93 +185,6 @@
         "enable_video_looping": true
       }
     },
-    "spacer_VWaT3c": {
-      "type": "spacer",
-      "disabled": true,
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 80,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
-    "gallery_EgAVLq": {
-      "type": "gallery",
-      "blocks": {
-        "image_N9ACMQ": {
-          "type": "image",
-          "settings": {
-            "enable_gallery_video": true,
-            "video_hosted": "shopify://files/videos/Kiera Testimonial.mp4",
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "Keira",
-            "marker_style": "style1",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "marker_color": "#fd6262"
-          }
-        },
-        "image_3Q6qYe": {
-          "type": "image",
-          "settings": {
-            "enable_gallery_video": true,
-            "video_hosted": "shopify://files/videos/Casey Testimonial.mp4",
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "Casey",
-            "marker_style": "style1",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "marker_color": "#fd6262"
-          }
-        },
-        "image_XGAmWb": {
-          "type": "image",
-          "settings": {
-            "enable_gallery_video": true,
-            "video_hosted": "shopify://files/videos/Anastasia Testimonial.mp4",
-            "enable_hover_play": false,
-            "subheading": "",
-            "title": "Anastasia",
-            "marker_style": "style1",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "use_text_button": false,
-            "block_link": "",
-            "marker_color": "#fd6262"
-          }
-        }
-      },
-      "block_order": [
-        "image_N9ACMQ",
-        "image_3Q6qYe",
-        "image_XGAmWb"
-      ],
-      "disabled": true,
-      "settings": {
-        "columns_desktop": 3,
-        "full_width": false,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "content_position": "bottom-left",
-        "text_alignment": "left",
-        "column_spacing": "small",
-        "heading_size": "h3",
-        "description_size": "small",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
     "collapsible_content_2_iP8nzP": {
       "type": "collapsible-content-2",
       "blocks": {
@@ -408,7 +232,7 @@
         "collapsible_tab_wXkCrX"
       ],
       "settings": {
-        "heading": "<h1>Clean <em>ingredients,</em><br/>Harvard <em>backed</em></h1>",
+        "heading": "<h1>Clean <em>ingredients,</em><br/>science <em>backed</em></h1>",
         "header_image": "shopify://shop_images/Bodology_Inositol_Results_Smile.png",
         "marker_style": "style1",
         "description": "<h6>Decades of research show inositol’s impact on hormonal balance, fertility, mood, and metabolic health. Here’s what the science says.</h6>",
@@ -484,25 +308,17 @@
       "blocks": {
         "testimonial_fMM9qz": {
           "type": "testimonial",
+          "repeater": "{{ product.metafields.custom.experts.value }}",
           "settings": {
-            "image": "shopify://shop_images/Tina-Bodology-Square-3.jpg",
-            "name": "Tina Kozman",
-            "role": "MEd, CNP, Metabolic Health Expert",
+            "image": "{{ block.repeater.expert_logo.value }}",
+            "name": "{{ block.repeater.expert_name.value }}",
+            "role": "{{ block.repeater.expert_title.value }}",
             "quote": "MEd, CNP, Metabolic Health Expert"
-          }
-        },
-        "testimonial_r98t6A": {
-          "type": "testimonial",
-          "settings": {
-            "name": "",
-            "role": "",
-            "quote": ""
           }
         }
       },
       "block_order": [
-        "testimonial_fMM9qz",
-        "testimonial_r98t6A"
+        "testimonial_fMM9qz"
       ],
       "disabled": true,
       "settings": {
@@ -1203,12 +1019,7 @@
     }
   },
   "order": [
-    "image_with_text_overlay_zjqnjJ",
-    "spacer_LVK4hF",
-    "custom_liquid_RcjzA4",
     "main-product",
-    "spacer_VWaT3c",
-    "gallery_EgAVLq",
     "collapsible_content_2_iP8nzP",
     "expert_testimonials_KxH7tC",
     "testimonial_carousel_twHytV",
