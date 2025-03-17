@@ -245,6 +245,16 @@
     }
 
     function updateClasses() {
+      blocks.forEach((block) => {
+  block.style.opacity = "0"; // Hide immediately
+});
+
+setTimeout(() => {
+  blocks.forEach((block) => {
+    block.style.opacity = "1"; // Show after 1s
+  });
+}, 1000);
+      
       blocks.forEach((block, index) => {
         block.classList.remove('top', 'bottom');
 
