@@ -29,12 +29,7 @@
 			{%- endif -%}
 
           <div class="testimonial-carousel">
-         
-             <div class="testimonial-slot left"></div>
-    <div class="testimonial-slot right"></div>
-            
-            
-            {% comment %} <div class="testimonial-wrapper">
+            <div class="testimonial-wrapper">
               {%- for experts in shop.metaobjects.experts.values -%}
                 <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                   <div class="block-inner">
@@ -51,7 +46,7 @@
                   </div>
                 </div>
               {%- endfor -%}
-            </div> {% endcomment %}
+            </div>
           
             <div class="carousel-controls">
               <button class="prev">{% render 'svg-icons' with 'thb-caret-left' %}</button>
@@ -231,45 +226,63 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const testimonials = document.querySelectorAll('.testimonial-block');
-    const leftSlot = document.querySelector('.testimonial-slot.left');
-    const rightSlot = document.querySelector('.testimonial-slot.right');
-    const totalTestimonials = testimonials.length;
-    
+    const carousel = document.querySelector('.testimonial-carousel');
+    const wrapper = document.querySelector('.testimonial-wrapper');
+    const blocks = document.querySelectorAll('.testimonial-block');
+    const totalBlocks = blocks.length;
+
     let currentIndex = 0;
+    let visibleBlocks = getVisibleBlocks(); // Dynamically set the initial visible blocks
 
-    function updateTestimonials() {
-        // Calculate next two testimonials
-        let firstIndex = currentIndex;
-        let secondIndex = (currentIndex + 1) % totalTestimonials;
+    function getVisibleBlocks() {
+      const screenWidth = window.innerWidth;
 
-        // Update left slot (first testimonial)
-        leftSlot.innerHTML = testimonials[firstIndex].innerHTML;
-        leftSlot.classList.add('active');
+      if (screenWidth <= 768) {
+        return 1; // Mobile view: 1 block
+      } else if (screenWidth <= 1024) {
+        return 1; // Tablet view: 2 blocks
+      } else {
+        return 2; // Desktop view: 2 blocks (default)
+      }
+    }
 
-        // Update right slot (second testimonial, with stagger)
-        rightSlot.innerHTML = testimonials[secondIndex].innerHTML;
-        rightSlot.classList.add('active');
+    function updateClasses() {
+      blocks.forEach((block, index) => {
+        block.classList.remove('top', 'bottom');
+
+        const relativeIndex = (index - currentIndex + totalBlocks) % totalBlocks;
+
+        if (relativeIndex === 0) {
+          block.classList.add('top');
+        } else if (relativeIndex === 1) {
+          block.classList.add('bottom');
+        }
+      });
+
+      const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
+      wrapper.style.transform = `translateX(${translateX})`;
     }
 
     function handleNext() {
-        currentIndex = (currentIndex + 1) % totalTestimonials;
-        updateTestimonials();
+      currentIndex = (currentIndex + 1) % totalBlocks;
+      updateClasses();
     }
 
     function handlePrev() {
-        currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
-        updateTestimonials();
+      currentIndex = (currentIndex - 1 + totalBlocks) % totalBlocks;
+      updateClasses();
     }
 
     document.querySelector('.next').addEventListener('click', handleNext);
     document.querySelector('.prev').addEventListener('click', handlePrev);
 
-    updateTestimonials(); // Initial load
+    // Handle window resize to update visible blocks
+    window.addEventListener('resize', () => {
+      visibleBlocks = getVisibleBlocks();
+      updateClasses();
+    });
+
+    updateClasses(); // Initial load
   });
 </script>
-
-
-
-
 
