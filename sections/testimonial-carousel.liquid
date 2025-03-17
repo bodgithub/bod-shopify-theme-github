@@ -246,11 +246,13 @@
 
     function updateClasses() {
       blocks.forEach((block) => {
-  block.style.opacity = "0"; // Hide immediately
+      block.style.transition = "opacity 0s"; // Instantly make opacity transition 0s
+      block.style.opacity = "0"; // Hide immediately
 });
 
 setTimeout(() => {
-  blocks.forEach((block) => {
+    blocks.forEach((block) => {
+    block.style.transition = "opacity 0.2s ease-in-out"; // Restore fade-in transition
     block.style.opacity = "1"; // Show after 1s
   });
 }, 300);
