@@ -45,6 +45,37 @@
     display: flex;  /**/
 }
 
+
+.testimonial-carousel {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 100%;
+}
+
+/**/
+/* Fixed slots for testimonials */
+.testimonial-slot {
+    flex: 0 0 48%; /* Each takes up roughly half the width */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Ensure the second (right) block is always lower */
+.testimonial-slot.right {
+    transform: translateY(140px);
+}
+
+/* When content is active, fade it in */
+.testimonial-slot.active {
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+}
+/**/
+
 .testimonial-block.right-column {
     transform: translateY(140px); /* Pushes second block down */
 }
