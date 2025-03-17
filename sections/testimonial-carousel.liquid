@@ -280,7 +280,7 @@
     function fadeOutBlocks() {
         blocks.forEach((block) => {
             block.style.transition = "opacity 0s";
-            block.style.opacity = "0";
+            block.style.opacity = "0.5";
         });
 
         setTimeout(fadeInBlocks, 100); // Slight delay before fading in
