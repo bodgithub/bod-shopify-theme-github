@@ -233,21 +233,21 @@
     function updateTestimonials() {
       // Hide all blocks first
       blocks.forEach(block => {
-        block.classList.remove('active', 'right-column');
+        block.classList.remove('active', 'staggered');
         block.style.display = 'none';
         block.style.transform = 'translateY(0)'; // Reset transform
       });
 
-      // Determine indexes of two blocks to show
+      // Ensure we always have two testimonials visible
       let firstIndex = currentIndex;
       let secondIndex = (currentIndex + 1) % totalBlocks;
 
-      // Show the first block normally (left column)
+      // Show the first block (left column)
       blocks[firstIndex].classList.add('active');
       blocks[firstIndex].style.display = 'flex';
 
-      // Show the second block (right column) and add the staggered effect
-      blocks[secondIndex].classList.add('active', 'right-column');
+      // Show the second block (right column) and apply the staggered effect
+      blocks[secondIndex].classList.add('active', 'staggered');
       blocks[secondIndex].style.display = 'flex';
     }
 
@@ -267,6 +267,7 @@
     updateTestimonials(); // Initial load
   });
 </script>
+
 
 
 
