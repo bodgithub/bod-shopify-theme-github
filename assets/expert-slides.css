@@ -45,7 +45,9 @@
     display: flex;  /**/
 }
 
-
+.testimonial-block.right-column {
+    transform: translateY(140px); /* Pushes second block down */
+}
 
 .block-inner{
    border: 1px solid #1b3def;
