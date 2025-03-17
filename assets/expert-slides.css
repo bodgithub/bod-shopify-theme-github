@@ -31,13 +31,13 @@
     flex-direction: column;
     height: fit-content;  
     flex: 0 0 50%;
-    opacity: 0;
     min-height: 800px;
-    transition: all 0.3s ease-in-out;
     padding-right: 30px;
-    margin-top:0;
-    position:relative;
-  display: none; /**/
+    margin-top: 0;
+    position: relative;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out; 
+    display: none; 
 }
 
 .testimonial-block.active /**/ {
