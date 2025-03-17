@@ -280,11 +280,14 @@ setTimeout(() => {
       document.querySelector('.prev').disabled = (currentIndex <= 0);
     }
 
-    const nextButton = document.querySelector('.next');
+    onst nextButton = document.querySelector('.next');
 const prevButton = document.querySelector('.prev');
 
-nextButton.style.opacity = currentIndex >= totalBlocks - visibleBlocks ? "0.5" : "1";
-prevButton.style.opacity = currentIndex <= 0 ? "0.5" : "1";
+const atStart = currentIndex === 0;
+const atEnd = currentIndex >= totalBlocks - visibleBlocks;
+
+prevButton.style.opacity = atStart ? "0.5" : "1"; // Dim previous if at the start
+nextButton.style.opacity = atEnd ? "0.5" : "1"; // Dim next if at the end
 
 
     function handleNext() {
