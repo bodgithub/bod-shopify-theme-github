@@ -982,10 +982,8 @@ color: #1b3def;}
   .accordion .accordion__content {
     padding: 0 0 15px 0;
     font-size: 0.9em; }
-    .accordion .accordion__content > *:last-child {
-      margin-bottom: 0; }
-.accordion .accordion__content > *:first-child {
-      margin-bottom: 15px; }
+    /*.accordion .accordion__content > *:last-child {
+      margin-bottom: 0;*/ }
 
 
 .share-article {
