@@ -239,8 +239,6 @@
 
       if (screenWidth <= 768) {
         return 1; // Mobile view: 1 block
-      } else if (screenWidth <= 1024) {
-        return 1; // Tablet view: 2 blocks
       } else {
         return 2; // Desktop view: 2 blocks (default)
       }
@@ -264,16 +262,24 @@
       // Remove transition effect
       wrapper.style.transition = 'none';
       wrapper.style.transform = `translateX(${translateX})`;
+
+      // Disable/Enable buttons based on position
+      document.querySelector('.next').disabled = (currentIndex >= totalBlocks - visibleBlocks);
+      document.querySelector('.prev').disabled = (currentIndex <= 0);
     }
 
     function handleNext() {
-      currentIndex = (currentIndex + 1) % totalBlocks;
-      updateClasses();
+      if (currentIndex < totalBlocks - visibleBlocks) {
+        currentIndex++;
+        updateClasses();
+      }
     }
 
     function handlePrev() {
-      currentIndex = (currentIndex - 1 + totalBlocks) % totalBlocks;
-      updateClasses();
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateClasses();
+      }
     }
 
     document.querySelector('.next').addEventListener('click', handleNext);
@@ -288,5 +294,6 @@
     updateClasses(); // Initial load
   });
 </script>
+
 
 
