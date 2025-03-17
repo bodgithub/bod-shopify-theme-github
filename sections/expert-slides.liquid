@@ -76,7 +76,7 @@
 								<h3 class="{{ block.settings.heading_size }}">{{ block.settings.heading | newline_to_br }}</h3>
 							{% endif %}
 							{% if block.settings.content %}
-							<p>{{ block.settings.content | newline_to_br }}</p>
+							<h6>{{ block.settings.content | newline_to_br }}</h6>
 							{% endif %}
 							{% if block.settings.button_text != blank %}
 								<a class="button" role="button" title="{{ block.settings.button_text | escape }}"{% if block.settings.button_link == blank %} aria-disabled="true"{% else %} href="{{ block.settings.button_link }}"{% endif %}>{{ block.settings.button_text }}</a>
