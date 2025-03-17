@@ -249,6 +249,16 @@
             } else if (relativeIndex === 1) {
                 block.classList.add('bottom');
             }
+          // Hide .testi-bottom for the "bottom" block and show it for others
+const testiBottom = block.querySelector('.testi-bottom');
+if (testiBottom) {
+    if (block.classList.contains('bottom')) {
+        testiBottom.style.display = 'none';
+    } else {
+        testiBottom.style.display = 'block';
+    }
+}
+          
         });
 
         const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
