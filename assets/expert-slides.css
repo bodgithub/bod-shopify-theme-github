@@ -37,6 +37,12 @@
     padding-right: 30px;
     margin-top:0;
     position:relative;
+  display: none; /**/
+}
+
+.testimonial-block.active /**/ {
+    opacity: 1; /**/
+    display: flex;  /**/
 }
 
 .block-inner{
