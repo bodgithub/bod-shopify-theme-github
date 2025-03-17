@@ -286,6 +286,7 @@
         "quote_34jQwD",
         "quote_NhrLgL"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by <em>practitioners</em></h1><h6></h6>",
@@ -312,7 +313,7 @@
           "repeater": "{{ product.metafields.custom.experts.value }}",
           "settings": {
             "image": "{{ block.repeater.expert_logo.value }}",
-            "name": "{{ block.repeater.seo_title.value }}",
+            "name": "{{ block.repeater.expert_name.value }}",
             "role": "{{ block.repeater.expert_title.value }}",
             "quote": ""
           }
@@ -321,7 +322,6 @@
       "block_order": [
         "testimonial_3diFeB"
       ],
-      "disabled": true,
       "settings": {
         "heading": "Trusted by practitioners",
         "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
