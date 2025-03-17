@@ -42,7 +42,11 @@
 
 .testimonial-block.active /**/ {
     opacity: 1; /**/
-    
+    display: flex;  /**/
+}
+
+.testimonial-block.active:nth-child(2) {
+    transform: translateY(140px); /* Pushes second block down */
 }
 
 .block-inner{
