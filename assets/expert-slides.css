@@ -27,14 +27,13 @@
 
 .testimonial-block {
     text-align: left;   
-    padding: 0 50px 0 0;
     flex-direction: column;
     height: fit-content;  
     flex: 0 0 50%;
     opacity: 0;
     min-height: 800px;
     transition: 0.3s ease-in-out, opacity 0.1s ease-in;
-    padding-right: 30px;
+    padding-right: 50px;
     margin-top:0;
     position:relative;
 }
