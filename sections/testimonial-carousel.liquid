@@ -260,6 +260,9 @@
       });
 
       const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
+      
+      // Remove transition effect
+      wrapper.style.transition = 'none';
       wrapper.style.transform = `translateX(${translateX})`;
     }
 
@@ -285,4 +288,5 @@
     updateClasses(); // Initial load
   });
 </script>
+
 
