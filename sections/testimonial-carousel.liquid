@@ -233,23 +233,22 @@
     function updateTestimonials() {
       // Hide all blocks first
       blocks.forEach(block => {
-        block.classList.remove('active', 'staggered');
+        block.classList.remove('active', 'right-column');
         block.style.display = 'none';
         block.style.transform = 'translateY(0)'; // Reset transform
       });
 
-      // Get indexes of two blocks to show
+      // Determine indexes of two blocks to show
       let firstIndex = currentIndex;
       let secondIndex = (currentIndex + 1) % totalBlocks;
 
-      // Show first block normally
+      // Show the first block normally (left column)
       blocks[firstIndex].classList.add('active');
       blocks[firstIndex].style.display = 'flex';
 
-      // Show second block with staggered effect
-      blocks[secondIndex].classList.add('active', 'staggered');
+      // Show the second block (right column) and add the staggered effect
+      blocks[secondIndex].classList.add('active', 'right-column');
       blocks[secondIndex].style.display = 'flex';
-      blocks[secondIndex].style.transform = 'translateY(140px)'; // Always move second block down
     }
 
     function handleNext() {
@@ -268,5 +267,6 @@
     updateTestimonials(); // Initial load
   });
 </script>
+
 
 
