@@ -29,7 +29,12 @@
 			{%- endif -%}
 
           <div class="testimonial-carousel">
-            <div class="testimonial-wrapper">
+         
+             <div class="testimonial-slot left"></div>
+    <div class="testimonial-slot right"></div>
+            
+            
+            {% comment %} <div class="testimonial-wrapper">
               {%- for experts in shop.metaobjects.experts.values -%}
                 <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                   <div class="block-inner">
@@ -46,7 +51,7 @@
                   </div>
                 </div>
               {%- endfor -%}
-            </div>
+            </div> {% endcomment %}
           
             <div class="carousel-controls">
               <button class="prev">{% render 'svg-icons' with 'thb-caret-left' %}</button>
@@ -226,39 +231,35 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const blocks = document.querySelectorAll('.testimonial-block');
-    const totalBlocks = blocks.length;
+    const testimonials = document.querySelectorAll('.testimonial-block');
+    const leftSlot = document.querySelector('.testimonial-slot.left');
+    const rightSlot = document.querySelector('.testimonial-slot.right');
+    const totalTestimonials = testimonials.length;
+    
     let currentIndex = 0;
 
     function updateTestimonials() {
-      // Hide all blocks first
-      blocks.forEach(block => {
-        block.classList.remove('active', 'staggered');
-        block.style.display = 'none';
-        block.style.transform = 'translateY(0)'; // Reset transform
-      });
+        // Calculate next two testimonials
+        let firstIndex = currentIndex;
+        let secondIndex = (currentIndex + 1) % totalTestimonials;
 
-      // Ensure we always have two testimonials visible
-      let firstIndex = currentIndex;
-      let secondIndex = (currentIndex + 1) % totalBlocks;
+        // Update left slot (first testimonial)
+        leftSlot.innerHTML = testimonials[firstIndex].innerHTML;
+        leftSlot.classList.add('active');
 
-      // Show the first block (left column)
-      blocks[firstIndex].classList.add('active');
-      blocks[firstIndex].style.display = 'flex';
-
-      // Show the second block (right column) and apply the staggered effect
-      blocks[secondIndex].classList.add('active', 'staggered');
-      blocks[secondIndex].style.display = 'flex';
+        // Update right slot (second testimonial, with stagger)
+        rightSlot.innerHTML = testimonials[secondIndex].innerHTML;
+        rightSlot.classList.add('active');
     }
 
     function handleNext() {
-      currentIndex = (currentIndex + 1) % totalBlocks;
-      updateTestimonials();
+        currentIndex = (currentIndex + 1) % totalTestimonials;
+        updateTestimonials();
     }
 
     function handlePrev() {
-      currentIndex = (currentIndex - 1 + totalBlocks) % totalBlocks;
-      updateTestimonials();
+        currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+        updateTestimonials();
     }
 
     document.querySelector('.next').addEventListener('click', handleNext);
@@ -267,6 +268,7 @@
     updateTestimonials(); // Initial load
   });
 </script>
+
 
 
 
