@@ -380,7 +380,7 @@ h5, .h5 {
   margin-bottom: 1.25rem; }
 
 h6, .h6 {
-  font-size: /*1.125rem;*/12px;
+  font-size: calc(var(--font-body-scale)* 16px);
   line-height: 1.45;
   margin-top: 0;
   /*margin-bottom: 1.25rem;*/ }
