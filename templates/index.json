@@ -487,6 +487,7 @@
         "quote_HBBE6p",
         "quote_7wUdL3"
       ],
+      "disabled": true,
       "custom_css": [
         ".testimonials--heading {padding-bottom: 30px;}"
       ],
@@ -505,6 +506,26 @@
         "color_text2": "#1b3def",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
+      }
+    },
+    "testimonial_carousel_rfAUyN": {
+      "type": "testimonial-carousel",
+      "settings": {
+        "heading": "Backed by experts, trusted by practitioners",
+        "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
+        "full_width": true,
+        "text_size": "medium",
+        "font_family": "heading",
+        "color_bg": "#ffffff",
+        "color_bg_card": "#F5F5F5",
+        "color_border_card": "#F5F5F5",
+        "color_text": "#2c2d2e",
+        "color_text2": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false,
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1
       }
     },
     "1741568420b2e69de9": {
@@ -1330,6 +1351,7 @@
     "image_with_text_r96Axa",
     "collapsible_content_2_hrRGJn",
     "expert_testimonials_mgPFnQ",
+    "testimonial_carousel_rfAUyN",
     "1741568420b2e69de9",
     "custom_liquid_LhyTU6",
     "spacer_EJt6Hf",

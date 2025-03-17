@@ -333,7 +333,7 @@
         "color_text": "#2c2d2e",
         "color_text2": "#2c2d2e",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false,
+        "disable_bottom_spacing": true,
         "columns_desktop": 2,
         "columns_tablet": 2,
         "columns_mobile": 1
@@ -370,60 +370,6 @@
         "column_dUeaGh"
       ],
       "disabled": true,
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
-        "color_text": "#1b3def",
-        "color_links": "#ffffff",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "multicolumn_JycUDX": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_pkBURW": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_ctC6yX": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_pkBURW",
-        "column_ctC6yX"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
-        ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
-      ],
       "settings": {
         "heading": "",
         "marker_style": "style1",
@@ -1024,7 +970,6 @@
     "expert_testimonials_KxH7tC",
     "testimonial_carousel_twHytV",
     "multicolumn_QQjdQM",
-    "multicolumn_JycUDX",
     "spacer_hDmb7V",
     "custom_liquid_zmPdpt",
     "multicolumn_rVnwmF",
