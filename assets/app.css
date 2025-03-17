@@ -383,7 +383,7 @@ h6, .h6 {
   font-size: /*1.125rem;*/12px;
   line-height: 1.45;
   margin-top: 0;
-  margin-bottom: 1.25rem; }
+  /*margin-bottom: 1.25rem;*/ }
 
 @media print, screen and (min-width: 48em) {
   h1, .h1, .h1-large, .h1-xlarge {
