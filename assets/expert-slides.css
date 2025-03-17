@@ -64,7 +64,7 @@
 .testi-content h5 {
     margin: 0 0 5px 0 !important;
     line-height: 1;
-    font-weight: bold;
+    font-weight: var(--font-body-bold-weight, 500) !important;
 }
 .testi-content h6 {
     margin: 0;
