@@ -231,19 +231,25 @@
     let currentIndex = 0;
 
     function updateTestimonials() {
-      // Hide all blocks
+      // Hide all blocks first
       blocks.forEach(block => {
-        block.classList.remove('active');
+        block.classList.remove('active', 'staggered');
         block.style.display = 'none';
+        block.style.transform = 'translateY(0)'; // Reset transform
       });
 
-      // Show the current and next block
-      blocks[currentIndex].classList.add('active');
-      blocks[currentIndex].style.display = 'flex';
+      // Get indexes of two blocks to show
+      let firstIndex = currentIndex;
+      let secondIndex = (currentIndex + 1) % totalBlocks;
 
-      let nextIndex = (currentIndex + 1) % totalBlocks;
-      blocks[nextIndex].classList.add('active');
-      blocks[nextIndex].style.display = 'flex';
+      // Show first block normally
+      blocks[firstIndex].classList.add('active');
+      blocks[firstIndex].style.display = 'flex';
+
+      // Show second block with staggered effect
+      blocks[secondIndex].classList.add('active', 'staggered');
+      blocks[secondIndex].style.display = 'flex';
+      blocks[secondIndex].style.transform = 'translateY(140px)'; // Always move second block down
     }
 
     function handleNext() {
@@ -262,4 +268,5 @@
     updateTestimonials(); // Initial load
   });
 </script>
+
 
