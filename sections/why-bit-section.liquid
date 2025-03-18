@@ -12,7 +12,17 @@
 
 -%}
 
-  <div class="why-bits-content" style="--color-bg: {{ color_bg }}; --color-text-1: {{ color_text_1 }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }};">
+{% style %}
+   {% for block in section.blocks %}
+      #bit-content-{{ section.id }} .why-bits-item h3{
+        color: var(--color_text_1); 
+      }     
+      #bit-content-{{ section.id }} .why-bits-item p{
+        color: var(--color-text); 
+      }  
+   {% endfor %}
+{% endstyle %}
+  <div class="why-bits-content" id="bit-content-{{ section.id }}" style="--color-bg: {{ color_bg }}; --color-text-1: {{ color_text_1 }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }};">
 
     <!-- Heading -->
     <h2>{{ section.settings.heading }}</h2>
