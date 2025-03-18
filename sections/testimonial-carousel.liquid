@@ -37,6 +37,7 @@
 
           <div class="testimonial-carousel">
             <div class="testimonial-wrapper">
+                {% comment %}       
               {%- for block in section.blocks -%}
               <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                 <div class="block-inner">
@@ -55,9 +56,9 @@
                 </div>
               </div>
             {%- endfor -%}
+  {% endcomment %}       
 
-
-              {% comment %}         
+                
               {%- for experts in shop.metaobjects.experts.values -%}
                 <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                   <div class="block-inner">
@@ -74,7 +75,6 @@
                   </div>
                 </div>
               {%- endfor -%}
-              {% endcomment %}
               
             </div>
           
