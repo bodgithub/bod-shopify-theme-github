@@ -21,10 +21,10 @@
 	endif
 
 -%}
-
+<div class="testimonials-main-section {% if has_bg -%}collapsible-content--has-bg{% endif %} testimonials---full-width-{{ full_width }}" style=" --color-bg:{{ color_bg }};  --color-bg-card:{{ color_bg_card }}; --color-border-card:{{ color_border_card }}; --color-text2: {{ color_text2 }}; --color-text:{{ color_text }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
 <div class="row{% if full_width %} full-width-row-full{% endif %}">
 	<div class="small-12 columns">
-		<div class="testimonials-exert {% if has_bg -%}collapsible-content--has-bg{% endif %} testimonials---full-width-{{ full_width }}" style=" --color-bg:{{ color_bg }};  --color-bg-card:{{ color_bg_card }}; --color-border-card:{{ color_border_card }}; --color-text2: {{ color_text2 }}; --color-text:{{ color_text }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
+		<div class="testimonials-exert">
 			{%- if section_heading -%}
 			<div class="testimonials--headings">
 				<h1>{{ section_heading }}</h1>
