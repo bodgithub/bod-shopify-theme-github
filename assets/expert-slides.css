@@ -13,6 +13,9 @@ testimonials-main-section{
     flex-basis: 40%;
     padding: 0 5% 0 3%;
 }
+.testimonials--headings h1{
+  color: var(--color-heading, #1a1c1d);
+}
 .testimonial-carousel {
     display: flex;
     align-items: center;
