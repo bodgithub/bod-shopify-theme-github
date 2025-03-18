@@ -15,10 +15,10 @@
 {% style %}
    {% for block in section.blocks %}
       #bit-content-{{ section.id }} .why-bits-item h3{
-        color: var(--color_text_1); 
+        color: {{ block.settings.color_text_1}}; 
       }     
       #bit-content-{{ section.id }} .why-bits-item p{
-        color: var(--color-text); 
+        color: {{ block.settings.color_text}}; 
       }  
    {% endfor %}
 {% endstyle %}
