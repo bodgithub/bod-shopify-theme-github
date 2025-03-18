@@ -1,5 +1,21 @@
 {{- 'why-bit.css' | asset_url | stylesheet_tag -}}
 
+{%- liquid
+	assign color_bg = section.settings.color_bg | downcase
+	assign color_heading = section.settings.color_heading
+	assign marker_color = section.settings.marker_color
+	assign color_text = section.settings.color_text
+	assign color_body_bg = settings.color_body_bg | downcase
+
+	assign disable_top_spacing = section.settings.disable_top_spacing
+	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+
+	assign has_bg = true
+	if color_body_bg == color_bg or color_bg == 'transparent' or color_bg == 'rgba(0,0,0,0)'
+		assign has_bg = false
+	endif
+-%}
+
   <div class="why-bits-content">
 
     <!-- Heading -->
