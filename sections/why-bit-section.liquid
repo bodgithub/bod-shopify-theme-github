@@ -28,7 +28,7 @@
       }  
    {% endfor %}
 {% endstyle %}
-  <div class="why-bits-content {% if has_bg -%}collapsible-content--has-bg{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" id="bit-content-{{ section.id }}" style="--color-bg: {{ color_bg }}; --color-text-1: {{ color_text_1 }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }};">
+  <div class="why-bits-content {% if has_bg -%}collapsible-content--has-bg{% endif %} " id="bit-content-{{ section.id }}" style="--color-bg: {{ color_bg }}; --color-text-1: {{ color_text_1 }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }};">
 
     <!-- Heading -->
     <h2>{{ section.settings.heading }}</h2>
@@ -82,22 +82,6 @@
       "id": "main_image",
       "label": "Main Center Image"
     },
-    {
-        "type": "header",
-        "content": "Spacing"
-      },
-			{
-				"type": "checkbox",
-				"id": "disable_top_spacing",
-				"default": false,
-				"label": "Remove top spacing"
-			},
-			{
-				"type": "checkbox",
-				"id": "disable_bottom_spacing",
-				"default": false,
-				"label": "Remove bottom spacing"
-			},
     {
         "type": "header",
         "content": "Colors"
