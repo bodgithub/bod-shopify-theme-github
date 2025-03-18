@@ -78,6 +78,7 @@ testimonials-main-section{
     margin: 0;
   font-size:0.72em;
     text-transform: uppercase;
+     color: var(--color-text2); 
 }
 .testi-bottom {
     border-top: 1px solid #1b3def;
@@ -86,7 +87,7 @@ testimonials-main-section{
 .testi-bottom p {
     padding-bottom: 0 !important;
     font-size: 18px;
-  
+     color: var(--color-text); 
 }
 
 /* Higher block */
