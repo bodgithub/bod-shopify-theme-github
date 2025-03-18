@@ -16,6 +16,9 @@ testimonials-main-section{
 .testimonials--headings h1{
   color: var(--color-heading, #1a1c1d);
 }
+.testimonials--headings p{
+   color: var(--color-text); 
+}
 .testimonial-carousel {
     display: flex;
     align-items: center;
