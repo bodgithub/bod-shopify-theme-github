@@ -127,7 +127,7 @@ testimonials-main-section{
   background-color:#fff;
   margin-bottom: 10px;
 }
-.carousel-controlsbutton:disabled {
+.carousel-controls button:disabled {
 
   cursor: not-allowed; /* Show disabled cursor */
   opacity: 0.4; /* Reduce opacity */
