@@ -56,7 +56,8 @@ testimonials-main-section{
 }
 .testi-content {
     padding: 20px 20px 0px 20px;
-    border-top: 1px solid #1b3def;
+    border-top: 1px solid ;
+    border-color:var(--color-border-card);
 }
 .expert-image img {
     width: 100%;
