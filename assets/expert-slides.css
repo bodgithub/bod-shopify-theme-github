@@ -122,10 +122,15 @@ testimonials-main-section{
     display: flex;
     align-items: center;
     text-align: center;
-    opacity:0.5;
+    opacity:1;
     justify-content: center;
   background-color:#fff;
   margin-bottom: 10px;
+}
+.carousel-controlsbutton:disabled {
+
+  cursor: not-allowed; /* Show disabled cursor */
+  opacity: 0.4; /* Reduce opacity */
 }
 .carousel-controls button:hover {
     opacity: 1;
