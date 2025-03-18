@@ -267,8 +267,8 @@
     .why-bits-wrapper {
     flex-direction: column;
   }
-  .why-bits-section {
-    padding: 40px 0;
+  .why-bits-content{
+   padding: 40px 0;
   }
   .why-bits-grid {
     grid-template-columns: 1fr; /* Single column */
@@ -312,9 +312,9 @@
     .why-bits-wrapper {
     flex-direction: column;
   }
-  .why-bits-section {
-    padding: 40px 0;
-  }
+  .why-bits-content{
+  padding: 40px 0;
+}
   .why-bits-grid {
     grid-template-columns: 1fr; /* Single column */
     position: unset;
