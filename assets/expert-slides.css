@@ -49,7 +49,7 @@ testimonials-main-section{
 
 .block-inner{
    border: 1px solid #1b3def;
-   background-color: #fff;   
+   background-color: var(--color-bg-card); 
    border-radius: 15px;
    overflow: hidden;
 }
