@@ -130,7 +130,7 @@ testimonials-main-section{
 .carousel-controls button:disabled {
 
   cursor: not-allowed; /* Show disabled cursor */
-  opacity: 0.4; /* Reduce opacity */
+  opacity: 0.35; /* Reduce opacity */
 }
 .carousel-controls button:hover {
     opacity: 1;
