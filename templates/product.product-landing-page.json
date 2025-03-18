@@ -329,10 +329,20 @@
             "role": "{{ block.repeater.expert_title.value }}",
             "quote": ""
           }
+        },
+        "testimonial_LiY3Hb": {
+          "type": "testimonial",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_Bodology.jpg",
+            "name": "Tina Kozman, CNP",
+            "role": "Director of Nutrition at Boston IVF",
+            "quote": ""
+          }
         }
       },
       "block_order": [
-        "testimonial_3diFeB"
+        "testimonial_3diFeB",
+        "testimonial_LiY3Hb"
       ],
       "settings": {
         "heading": "Trusted by experts and practitioners",
