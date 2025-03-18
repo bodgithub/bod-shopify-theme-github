@@ -84,8 +84,9 @@ testimonials-main-section{
      color: var(--color-text); 
 }
 .testi-bottom {
-    border-top: 1px solid #1b3def;
+    border-top: 1px solid;
     padding: 20px 20px 0px 20px;
+    border-color:var(--color-border-card);
 }
 .testi-bottom p {
     padding-bottom: 0 !important;
