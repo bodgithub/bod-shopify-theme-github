@@ -55,9 +55,11 @@
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
         },
-        "separator_UyrWzQ": {
-          "type": "separator",
-          "settings": {}
+        "custom_liquid_Aai6fh": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"height:10px;\"></div>"
+          }
         },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
@@ -66,7 +68,7 @@
             "show_gift_card_recipient": false
           }
         },
-        "custom_liquid_Aai6fh": {
+        "custom_liquid_wbFXG8": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Try risk-free for 60-days</span>\n    </div>\n <wdiv style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping</span></div>\n\n<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Arrives in 2-5 days</span></div>"
@@ -171,9 +173,9 @@
         "custom_liquid_ExQ6qT",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
-        "separator_UyrWzQ",
-        "buy_buttons_3FBywE",
         "custom_liquid_Aai6fh",
+        "buy_buttons_3FBywE",
+        "custom_liquid_wbFXG8",
         "custom_liquid_8TqUrD",
         "side_panel_NGJTtJ",
         "collapsible_tab_KVBdNK",
