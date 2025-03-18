@@ -73,12 +73,13 @@ testimonials-main-section{
     margin: 0 0 5px 0 !important;
     line-height: 1;
     font-weight: var(--font-body-bold-weight, 500) !important;
+    color: var(--color-text2); 
 }
 .testi-content h6 {
     margin: 0;
   font-size:0.72em;
     text-transform: uppercase;
-     color: var(--color-text2); 
+     color: var(--color-text); 
 }
 .testi-bottom {
     border-top: 1px solid #1b3def;
