@@ -48,7 +48,8 @@ testimonials-main-section{
 }
 
 .block-inner{
-   border: 1px solid #1b3def;
+   border: 1px solid;
+   border-color:var(--color-border-card);
    background-color: var(--color-bg-card); 
    border-radius: 15px;
    overflow: hidden;
