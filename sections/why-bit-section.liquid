@@ -5,12 +5,23 @@
 	assign color_heading = section.settings.color_heading
 	assign marker_color = section.settings.marker_color
 	assign color_text = section.settings.color_text
+    assign color_text_1 = section.settings.color_text_1
+
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 
 -%}
 
-
+{% style %}
+   {% for block in section.blocks %}
+      #bit-content-{{ section.id }} .why-bits-item h3{
+        color: {{ block.settings.color_text_1}}; 
+      }     
+      #bit-content-{{ section.id }} .why-bits-item p{
+        color: {{ block.settings.color_text}}; 
+      }  
+   {% endfor %}
+{% endstyle %}
   <div class="why-bits-content" id="bit-content-{{ section.id }}" style="--color-bg: {{ color_bg }}; --color-text-1: {{ color_text_1 }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }};">
 
     <!-- Heading -->
@@ -80,6 +91,18 @@
         "id": "color_heading",
         "label": "Heading",
         "default": "#1a1c1d"
+      },
+      {
+        "type": "color",
+        "id": "color_text_1",
+        "label": "Sub heading text",
+        "default": "#2c2d2e"
+      },
+     {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#2c2d2e"
       }
   ],
   "blocks": [
@@ -109,18 +132,22 @@
           "label": "Description",
           "default": "Your description goes here"
         },
-              {
-        "type": "color",
-        "id": "color_text_1",
-        "label": "Sub heading text",
-        "default": "#2c2d2e"
-      },
-     {
-        "type": "color",
-        "id": "color_text",
-        "label": "Text",
-        "default": "#2c2d2e"
-      }
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "color_text_1",
+          "label": "Sub heading text",
+          "default": "#2c2d2e"
+        },
+       {
+          "type": "color",
+          "id": "color_text",
+          "label": "Text",
+          "default": "#2c2d2e"
+        }
       ]
     }
   ],
