@@ -37,6 +37,27 @@
 
           <div class="testimonial-carousel">
             <div class="testimonial-wrapper">
+              {%- for block in section.blocks -%}
+              <div class="testimonial-block" data-index="{{ forloop.index0 }}">
+                <div class="block-inner">
+                  <div class="expert-image">
+                    {%- if block.settings.image -%}
+                      <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.name }}">
+                    {%- endif -%}
+                  </div>
+                  <div class="testi-content">
+                    <h5>{{ block.settings.name }}</h5>
+                    <h6>{{ block.settings.role }}</h6>
+                  </div>
+                  <div class="testi-bottom">
+                    <p>{{ block.settings.quote }}</p>
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+
+
+              {% comment %}         
               {%- for experts in shop.metaobjects.experts.values -%}
                 <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                   <div class="block-inner">
@@ -53,6 +74,8 @@
                   </div>
                 </div>
               {%- endfor -%}
+              {% endcomment %}
+              
             </div>
           
             <div class="carousel-controls">
