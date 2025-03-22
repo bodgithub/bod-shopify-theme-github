@@ -103,8 +103,8 @@
 .why-bits-item .icon {
     font-size: 2rem;
     margin-bottom: 10px;
-    width: 60px;
-    height: 60px;
+    width: 100%;
+    height: 100%;
 }
 .why-bits-item h3 {
     font-size: 24px;
@@ -198,8 +198,8 @@
 }
 .why-bits-item .icon {
     margin-bottom: 0;
-    width: 50px;
-    height: 50px;
+    width: 90%;
+    height: 90%;
 }
 .why-bits-item h3 {
     font-size: 18px;
@@ -255,8 +255,8 @@
     margin: 0;
   }
   .why-bits-item .icon {    
-    width: 50px;
-    height: 50px;
+    width: 90%;
+    height: 90%;
   }
   .why-bits-item p {
     display: none;
