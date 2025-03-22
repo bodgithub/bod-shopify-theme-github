@@ -245,7 +245,7 @@
         "collapsible_tab_wXkCrX"
       ],
       "settings": {
-        "heading": "<h1>You're not broken, your <em>metabolism </em>might need <em>support</em></h1>",
+        "heading": "<h1>You're Not Broken, Your <em>Metabolism</em> Just Needs a <em>Reset</em></h1>",
         "header_image": "shopify://shop_images/Bodology_Inositol_Results_Smile.png",
         "marker_style": "style1",
         "description": "<h6>Decades of research show inositol’s impact on hormonal balance, fertility, mood, and metabolic health. Here’s what the science says.</h6>",
@@ -335,7 +335,7 @@
         "testimonial_3diFeB"
       ],
       "settings": {
-        "heading": "<p>Trusted by experts and practitioners</p>",
+        "heading": "<h2>Trusted by Experts and Practitioners</h2>",
         "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
         "full_width": false,
         "text_size": "small",
@@ -401,6 +401,89 @@
         "color_links": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "why_bit_section_xQmrNX": {
+      "type": "why-bit-section",
+      "blocks": {
+        "icon_block_nrqkhj": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/Week-1-2.png",
+            "title": "Kickstart Your Routine",
+            "text": "Your body begins recognizing inositol, supporting metabolic function from day one.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_CaLjyW": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "title": "Week 2-4: Metabolic Support in Motion",
+            "text": "Cellular processes adjust, promoting steadier energy and blood sugar balance - including for those navigating PCOS.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_NFRW8T": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "title": "Week 4-6: Hormonal & Energy Shifts",
+            "text": "With consistency, mood, cravings, and cycles may start feeling more stable.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_wAyJRt": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "title": "Week 6-8: A More Balanced You",
+            "text": "Enjoy more steady energy, improved focus, and better appetite control.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_kUwwTV": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "title": "Week 8-10: Signs of Real Progress",
+            "text": "With continued support, skin, mood, cycles and overall well-being may feel more predictable.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_U9m6wW": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "title": "Week 10-12: Long-Term Stability",
+            "text": "A daily habit for sustained metabolic support, helping you feel in sync with your body.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        }
+      },
+      "block_order": [
+        "icon_block_nrqkhj",
+        "icon_block_CaLjyW",
+        "icon_block_NFRW8T",
+        "icon_block_wAyJRt",
+        "icon_block_kUwwTV",
+        "icon_block_U9m6wW"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "<h1><em>What to expect</em></h1>",
+        "main_image": "shopify://shop_images/Bodology-Inositol-Difference_3253f0ea-9747-4469-b593-40a02aa2f823.jpg",
+        "color_bg": "#f3eee9",
+        "color_heading": "#1b3def",
+        "color_text_1": "#1b3def",
+        "color_text": "#1b3def"
       }
     },
     "spacer_hDmb7V": {
@@ -981,6 +1064,7 @@
     "expert_testimonials_KxH7tC",
     "testimonial_carousel_twHytV",
     "multicolumn_QQjdQM",
+    "why_bit_section_xQmrNX",
     "spacer_hDmb7V",
     "custom_liquid_zmPdpt",
     "multicolumn_rVnwmF",
