@@ -510,7 +510,45 @@
     },
     "testimonial_carousel_rfAUyN": {
       "type": "testimonial-carousel",
+      "blocks": {
+        "testimonial_QVtE8e": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_CxJCYT": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_bbCtfq": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_QVtE8e",
+        "testimonial_CxJCYT",
+        "testimonial_bbCtfq"
+      ],
       "settings": {
+        "testimonial_source": "blocks",
         "heading": "<h1>Trusted By <em>Experts </em>& Practitioners</h1>",
         "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
         "full_width": true,
