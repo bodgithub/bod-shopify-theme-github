@@ -269,6 +269,9 @@
   .why-bits-item p {
     display: none;
   }
+   .why-bits-content h1{
+   padding: 0px 5%;
+  }
 }
 /* Mobile Responsive */
 @media (min-width: 481px) and (max-width: 767px) {
@@ -279,7 +282,7 @@
    padding: 40px 0;
   }
 
-  .why-bits-content{
+  .why-bits-content h1{
    padding: 0px 5%;
   }
   
