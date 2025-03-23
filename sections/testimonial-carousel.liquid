@@ -1,250 +1,163 @@
-
 {{- 'expert-slides.css' | asset_url | stylesheet_tag -}}
 
 {%- liquid
-	assign section_heading = section.settings.heading
-	assign full_width = section.settings.full_width
-	assign font_family = section.settings.font_family
-	assign text_size = section.settings.text_size
-   assign color_heading = section.settings.color_heading
-	assign color_bg = section.settings.color_bg
-    assign color_body_bg = settings.color_body_bg | downcase
-    assign color_border_card = section.settings.color_border_card
-    assign color_bg_card = section.settings.color_bg_card
-	assign color_text = section.settings.color_text
-    assign color_text2 = section.settings.color_text2
-	assign disable_top_spacing = section.settings.disable_top_spacing
-	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
-
-   assign has_bg = true
-	if color_body_bg == color_bg or color_bg == 'transparent' or color_bg == 'rgba(0,0,0,0)'
-		assign has_bg = false
-	endif
-
+  assign section_heading = section.settings.heading
+  assign full_width = section.settings.full_width
+  assign font_family = section.settings.font_family
+  assign text_size = section.settings.text_size
+  assign color_heading = section.settings.color_heading
+  assign color_bg = section.settings.color_bg
+  assign color_body_bg = settings.color_body_bg | downcase
+  assign color_border_card = section.settings.color_border_card
+  assign color_bg_card = section.settings.color_bg_card
+  assign color_text = section.settings.color_text
+  assign color_text2 = section.settings.color_text2
+  assign disable_top_spacing = section.settings.disable_top_spacing
+  assign disable_bottom_spacing = section.settings.disable_bottom_spacing
+  assign has_bg = true
+  if color_body_bg == color_bg or color_bg == 'transparent' or color_bg == 'rgba(0,0,0,0)'
+    assign has_bg = false
+  endif
 -%}
+
 <div class="testimonials-main-section {% if has_bg -%}collapsible-content--has-bg{% endif %} testimonials---full-width-{{ full_width }}" style=" --color-bg:{{ color_bg }};  --color-bg-card:{{ color_bg_card }}; --color-heading: {{ color_heading }}; --color-border-card:{{ color_border_card }}; --color-text2: {{ color_text2 }}; --color-text:{{ color_text }}; --bg-body-rgb: {{ color_bg.rgb | replace: ' ' , ',' }}">
-<div class="row{% if full_width %} full-width-row-full{% endif %}">
-	<div class="small-12 columns">
-		<div class="testimonials-exert">
-			{%- if section_heading -%}
-			<div class="testimonials--headings">
-				<h1>{{ section_heading }}</h1>
-              {% if section.settings.text != blank %}
-                <p>{{ section.settings.text }}</p>
-                {% endif %}
-			</div>
-			{%- endif -%}
+  <div class="row{% if full_width %} full-width-row-full{% endif %}">
+    <div class="small-12 columns">
+      <div class="testimonials-exert">
+        {%- if section_heading -%}
+        <div class="testimonials--headings">
+          <h1>{{ section_heading }}</h1>
+          {% if section.settings.text != blank %}
+            <p>{{ section.settings.text }}</p>
+          {% endif %}
+        </div>
+        {%- endif -%}
 
-          <div class="testimonial-carousel">
-            <div class="testimonial-wrapper">
-                {% comment %}       
-              {%- for block in section.blocks -%}
-              <div class="testimonial-block" data-index="{{ forloop.index0 }}">
-                <div class="block-inner">
-                  <div class="expert-image">
-                    {%- if block.settings.image -%}
-                      <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.name }}">
-                    {%- endif -%}
-                  </div>
-                  <div class="testi-content">
-                    <h5>{{ block.settings.name }}</h5>
-                    <h6>{{ block.settings.role }}</h6>
-                  </div>
-                  <div class="testi-bottom">
-                    <p>{{ block.settings.quote }}</p>
-                  </div>
-                </div>
-              </div>
-            {%- endfor -%}
-  {% endcomment %}       
-
-                
-              {%- for experts in shop.metaobjects.experts.values  -%}
+        <div class="testimonial-carousel">
+          <div class="testimonial-wrapper">
+            {% if section.settings.testimonial_source == 'blocks' %}
+              {% for block in section.blocks %}
                 <div class="testimonial-block" data-index="{{ forloop.index0 }}">
                   <div class="block-inner">
                     <div class="expert-image">
-                    <img src="{{ experts.expert_photo | img_url: 'master' }}" alt="{{ experts.expert_name }}">
+                      {% if block.settings.image %}
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.name }}">
+                      {% endif %}
                     </div>
                     <div class="testi-content">
-                    <h5>{{ experts.expert_name }}</h5>
-                    <h6>{{ experts.expert_title }}</h6>
+                      <h5>{{ block.settings.name }}</h5>
+                      <h6>{{ block.settings.role }}</h6>
                     </div>
                     <div class="testi-bottom">
-                    <p>{{ block.settings.quote }}</p>
+                      <p>{{ block.settings.quote }}</p>
                     </div>
                   </div>
                 </div>
-              {%- endfor -%}
-              
-            </div>
-          
-            <div class="carousel-controls">
-              <button class="prev">{% render 'svg-icons' with 'thb-caret-left' %}</button>
-              <button class="next">{% render 'svg-icons' with 'thb-caret-right' %}</button>
-            </div>
+              {% endfor %}
+            {% elsif section.settings.testimonial_source == 'metaobject' %}
+              {% for expert in shop.metaobjects.experts.values %}
+                <div class="testimonial-block" data-index="{{ forloop.index0 }}">
+                  <div class="block-inner">
+                    <div class="expert-image">
+                      <img src="{{ expert.expert_photo | img_url: 'master' }}" alt="{{ expert.expert_name }}">
+                    </div>
+                    <div class="testi-content">
+                      <h5>{{ expert.expert_name }}</h5>
+                      <h6>{{ expert.expert_title }}</h6>
+                    </div>
+                    <div class="testi-bottom">
+                      <p>{{ expert.expert_quote }}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <div class="carousel-controls">
+            <button class="prev">{% render 'svg-icons' with 'thb-caret-left' %}</button>
+            <button class="next">{% render 'svg-icons' with 'thb-caret-right' %}</button>
           </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-</div>
+
 {% schema %}
 {
   "name": "Testimonial Carousel B",
   "settings": [
-    	{
-				"type": "richtext",
-				"id": "heading",
-				"label": "Heading",
-				
-		},
-      	{
-				"type": "text",
-				"id": "text",
-				"label": "Text",
-				
-		},
-	   {
-        "type": "checkbox",
-        "id": "full_width",
-        "label": "Make section full width",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "text_size",
-        "label": "Text size",
-        "default": "medium",
-        "options": [
-          { "value": "small", "label": "Small" },
-          { "value": "medium", "label": "Medium" },
-          { "value": "large", "label": "Large" }
-        ]
-      },
-			{
-				"type": "select",
-				"id": "font_family",
-				"options": [
-					{
-						"value": "body",
-						"label": "Body"
-					},
-					{
-						"value": "heading",
-						"label": "Heading"
-					}
-				],
-				"default": "heading",
-				"label": "Font family"
-			},
-    			{
-	      "type": "header",
-	      "content": "Colors"
-	    },
-			{
-        "type": "color",
-        "id": "color_bg",
-        "label": "Background",
-        "default": "#F5F5F5"
-      }, {
-        "type": "color",
-        "id": "color_bg_card",
-        "label": "Card Background",
-        "default": "#F5F5F5"
-      },
-      {
-        "type": "color",
-        "id": "color_border_card",
-        "label": "Card Border",
-        "default": "#F5F5F5"
-      },
     {
-        "type": "color",
-        "id": "color_heading",
-        "label": "Heading",
-        "default": "#1a1c1d"
-      },
-          {
-        "type": "color",
-        "id": "color_text2",
-        "label": "Sub heading",
-        "default": "#2c2d2e"
-      },
-			{
-        "type": "color",
-        "id": "color_text",
-        "label": "Text",
-        "default": "#2c2d2e"
-      },
-
-			{
-	      "type": "header",
-	      "content": "Spacing"
-	    },
-			{
-				"type": "checkbox",
-				"id": "disable_top_spacing",
-				"default": false,
-				"label": "Remove top spacing"
-			},
-			{
-				"type": "checkbox",
-				"id": "disable_bottom_spacing",
-				"default": false,
-				"label": "Remove bottom spacing"
-			},
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "label": "Columns on Desktop",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "default": 2
+      "type": "select",
+      "id": "testimonial_source",
+      "label": "Testimonial source",
+      "default": "blocks",
+      "options": [
+        { "value": "blocks", "label": "Manual Blocks" },
+        { "value": "metaobject", "label": "Metaobjects (Experts)" }
+      ]
     },
     {
-      "type": "range",
-      "id": "columns_tablet",
-      "label": "Columns on Tablet",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 2
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
     },
     {
-      "type": "range",
-      "id": "columns_mobile",
-      "label": "Columns on Mobile",
-      "min": 1,
-      "max": 1,
-      "step": 1,
-      "default": 1
-    }
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Make section full width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "Text size",
+      "default": "medium",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "font_family",
+      "options": [
+        { "value": "body", "label": "Body" },
+        { "value": "heading", "label": "Heading" }
+      ],
+      "default": "heading",
+      "label": "Font family"
+    },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "color_bg", "label": "Background", "default": "#F5F5F5" },
+    { "type": "color", "id": "color_bg_card", "label": "Card Background", "default": "#F5F5F5" },
+    { "type": "color", "id": "color_border_card", "label": "Card Border", "default": "#F5F5F5" },
+    { "type": "color", "id": "color_heading", "label": "Heading", "default": "#1a1c1d" },
+    { "type": "color", "id": "color_text2", "label": "Sub heading", "default": "#2c2d2e" },
+    { "type": "color", "id": "color_text", "label": "Text", "default": "#2c2d2e" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "checkbox", "id": "disable_top_spacing", "default": false, "label": "Remove top spacing" },
+    { "type": "checkbox", "id": "disable_bottom_spacing", "default": false, "label": "Remove bottom spacing" },
+    { "type": "range", "id": "columns_desktop", "label": "Columns on Desktop", "min": 2, "max": 6, "step": 1, "default": 2 },
+    { "type": "range", "id": "columns_tablet", "label": "Columns on Tablet", "min": 1, "max": 4, "step": 1, "default": 2 },
+    { "type": "range", "id": "columns_mobile", "label": "Columns on Mobile", "min": 1, "max": 1, "step": 1, "default": 1 }
   ],
   "blocks": [
     {
       "type": "testimonial",
       "name": "Testimonial Block",
       "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "name",
-          "label": "Name"
-        },
-        {
-          "type": "text",
-          "id": "role",
-          "label": "Role/Position"
-        },
-        {
-          "type": "richtext",
-          "id": "quote",
-          "label": "Testimonial Quote"
-        }
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "role", "label": "Role/Position" },
+        { "type": "richtext", "id": "quote", "label": "Testimonial Quote" }
       ]
     }
   ],
@@ -259,96 +172,3 @@
   ]
 }
 {% endschema %}
-
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.testimonial-carousel');
-    const wrapper = document.querySelector('.testimonial-wrapper');
-    const blocks = document.querySelectorAll('.testimonial-block');
-    const totalBlocks = blocks.length;
-
-    let currentIndex = 0;
-    let visibleBlocks = getVisibleBlocks(); // Dynamically set the initial visible blocks
-
-    function getVisibleBlocks() {
-        const screenWidth = window.innerWidth;
-        return screenWidth <= 768 ? 1 : 2; // Mobile: 1 block, Desktop: 2 blocks
-    }
-
-    function updateClasses() {
-        blocks.forEach((block, index) => {
-            block.classList.remove('top', 'bottom');
-
-            const relativeIndex = (index - currentIndex + totalBlocks) % totalBlocks;
-            if (relativeIndex === 0) {
-                block.classList.add('top');
-            } else if (relativeIndex === 1) {
-                block.classList.add('bottom');
-            }
-          // Hide .testi-bottom for the "bottom" block and show it for others
-const testiBottom = block.querySelector('.testi-bottom');
-if (testiBottom) {
-    if (block.classList.contains('bottom')) {
-        testiBottom.style.display = 'none';
-    } else {
-        testiBottom.style.display = 'block';
-    }
-}
-          
-        });
-
-        const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
-        wrapper.style.transition = 'none'; // Remove transition effect on resize
-        wrapper.style.transform = `translateX(${translateX})`;
-
-        document.querySelector('.next').disabled = (currentIndex >= totalBlocks - visibleBlocks);
-        document.querySelector('.prev').disabled = (currentIndex <= 0);
-    }
-
-    function applyOpacityEffect() {
-        blocks.forEach(block => {
-            block.style.transition = "opacity 0s"; // Instantly hide
-            block.style.opacity = "0";
-        });
-
-        setTimeout(() => {
-            blocks.forEach(block => {
-                block.style.transition = "opacity 0.1s ease-in-out"; // Restore fade-in transition
-                block.style.opacity = "1"; // Show after delay
-            });
-        }, 300);
-    }
-
-    function handleNext() {
-        if (currentIndex < totalBlocks - visibleBlocks) {
-            currentIndex++;
-            applyOpacityEffect(); // Apply opacity effect only when clicking
-            updateClasses();
-        }
-    }
-
-    function handlePrev() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            applyOpacityEffect(); // Apply opacity effect only when clicking
-            updateClasses();
-        }
-    }
-
-    document.querySelector('.next').addEventListener('click', handleNext);
-    document.querySelector('.prev').addEventListener('click', handlePrev);
-
-    // Handle window resize to update visible blocks WITHOUT opacity effect
-    window.addEventListener('resize', () => {
-        visibleBlocks = getVisibleBlocks();
-        updateClasses(); // Only update position, no opacity changes
-    });
-
-    updateClasses(); // Initial load
-});
-
-</script>
-
-
-
