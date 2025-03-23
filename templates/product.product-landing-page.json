@@ -272,10 +272,10 @@
           "type": "testimonial",
           "repeater": "{{ product.metafields.custom.experts.value }}",
           "settings": {
-            "image": "{{ block.repeater.expert_logo.value }}",
+            "image": "{{ block.repeater.expert_photo.value }}",
             "name": "{{ block.repeater.expert_name.value }}",
             "role": "{{ block.repeater.expert_title.value }}",
-            "quote": ""
+            "quote": "<p>{{ block.repeater.safe_quote | metafield_tag }}</p>"
           }
         }
       },
