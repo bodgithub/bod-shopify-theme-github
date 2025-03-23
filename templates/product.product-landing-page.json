@@ -201,7 +201,7 @@
     "spacer_TM4WHh": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 35,
+        "spacer_mobile": 0,
         "spacer_desktop": 65,
         "border_separator": false,
         "border_separator_full": false
@@ -518,7 +518,7 @@
     "spacer_hh3KDw": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 35,
+        "spacer_mobile": 70,
         "spacer_desktop": 65,
         "border_separator": false,
         "border_separator_full": false
@@ -643,7 +643,7 @@
         "text_9b6n8V"
       ],
       "custom_css": [
-        "p {font-size: 0.5em; padding-top: 20px; padding-left: 10px;}",
+        "p {font-size: 0.5em; padding-top: 0px; padding-left: 10px;}",
         "a {color: #767676;}"
       ],
       "settings": {
@@ -656,6 +656,15 @@
         "color_links": "#767676",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "spacer_gxbXYN": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 35,
+        "spacer_desktop": 65,
+        "border_separator": false,
+        "border_separator_full": false
       }
     },
     "multicolumn_hTVh9C": {
@@ -718,7 +727,7 @@
         "marker_color": "#1b3def",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
@@ -990,7 +999,7 @@
         "heading_nfgekG": {
           "type": "heading",
           "settings": {
-            "text": "Real <em>results</em>with inositol",
+            "text": "Real <em>Results</em>With Inositol",
             "marker_style": "style1",
             "size": "h1",
             "marker_color": "#fd6262"
@@ -1083,6 +1092,7 @@
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
     "rich_text_mKahE4",
+    "spacer_gxbXYN",
     "multicolumn_hTVh9C",
     "collapsible_content_cGXRUN",
     "image_with_text_r96Axa",
