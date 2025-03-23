@@ -25,7 +25,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
+            "text": "<p>{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}</p>",
             "heading_size": "h1-xlarge"
           }
         },
@@ -124,7 +124,7 @@
         "custom_liquid_KdP8MH": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"product-details\"><h6>\n<div style=\"font-size:0.8em;margin-top:-5px; margin-bottom:6px;\"></div>A clean, hormone-friendly + drug-free formula for PCOS and metabolic balance.<br><p></p>\n</h6></div>\n\n<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def;\">\n    \n    <!-- Left Column -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Optimal Ratio</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Trusted by Experts</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Pure Myo + D-Chiro</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>100% Plant-Based</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_arrows.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Plastic-Free Tub</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        </div>\n    </div>\n\n</div>"
+            "custom_liquid": "<div id=\"product-details\">\n<div style=\"margin-top:-5px; margin-bottom:6px;\"><p>A clean, hormone-friendly + drug-free formula for PCOS and metabolic balance.<br></p></div>\n\n<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def;\">\n    \n    <!-- Left Column -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Optimal Ratio</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Trusted by Experts</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Pure Myo + D-Chiro</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>100% Plant-Based</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_arrows.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Plastic-Free Tub</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        </div>\n    </div>\n\n</div>"
           }
         },
         "buy_buttons_3FBywE": {
@@ -511,8 +511,8 @@
         "autoplay": false,
         "autoplay_length": 5,
         "color_bg": "#f7f7f7",
-        "color_bg_card": "#F5F5F5",
-        "color_border_card": "#F5F5F5",
+        "color_bg_card": "#f5f5f5",
+        "color_border_card": "#f5f5f5",
         "color_text": "#1b3def",
         "color_text2": "#1b3def",
         "disable_top_spacing": false,
@@ -1053,7 +1053,7 @@
       "type": "apps",
       "blocks": {
         "junip_product_reviews_ugc_junip_ugc_gallery_EdfJTq": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "layout": "tile",
             "title": "",
@@ -1064,7 +1064,7 @@
           }
         },
         "junip_product_reviews_ugc_junip_reviews_YG3wzn": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "layout": "list",
             "reviewsType": "product_reviews",
