@@ -99,6 +99,7 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
+  padding-top:25px;
 }
 .why-bits-item .icon {
     font-size: 2rem;
@@ -192,6 +193,7 @@
 }
 .bit-inner {
     width: 210px;
+  padding-top:25px;
 }
 .why-bits-item {
     margin-bottom: 10px;
@@ -295,6 +297,7 @@
   }
   .bit-inner {
     width: 100%;
+    padding-top:25px;
   }
   .why-bits-item {
         width: auto;
@@ -340,6 +343,7 @@
   }
   .bit-inner {
     width: 100%;
+    padding-top:25px;
   }
   .why-bits-item {
     width: auto;
