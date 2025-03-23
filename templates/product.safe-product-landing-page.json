@@ -1,0 +1,960 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "title_ExCfKU": {
+          "type": "title",
+          "settings": {
+            "show_products_rating": true
+          }
+        },
+        "custom_liquid_qLxheX": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"product-details\"><p>\nA clean, hormone-friendly formula for metabolic and hormonal balance—designed to support, not override, your body's natural rhythms.<br></p></div>"
+          }
+        },
+        "custom_liquid_8bY9Ux": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def;\">\n    \n    <!-- Left Column -->\n    <div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Pure Grade Inositol</span>\n        </div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>45 Servings (6.7oz / 190g)</span>\n        </div>\n\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_arrows.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Plastic-Free Tub</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            Drinkable Formula\n        </div>\n        \n    \n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>4,100mg Serving</span>\n        </div>\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        \n    </div> </div>\n\n</div>"
+          }
+        },
+        "custom_liquid_QE3n6R": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def;\">\n    \n    <!-- Left Column -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Optimal Ratio</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Trusted by Experts</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Pure Myo + D-Chiro</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>100% Plant-Based</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_arrows.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Plastic-Free Tub</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        </div>\n    </div>\n\n</div>"
+          }
+        },
+        "variant_picker_HegXNW": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "color_picker": false,
+            "color_picker_use_variants": false,
+            "variant_is_disabled": false,
+            "sizing_guide_variant": "Size",
+            "sizing_guide_text": "Sizing guide",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
+        "recharge_subscriptions_subscription_widget_v2_9rCap3": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {}
+        },
+        "custom_liquid_Aai6fh": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"height:10px;\"></div>"
+          }
+        },
+        "buy_buttons_3FBywE": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_wbFXG8": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Try risk-free for 60-days</span>\n    </div>\n <wdiv style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping</span></div>\n\n<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Arrives in 2-5 days</span></div>"
+          }
+        },
+        "custom_liquid_8TqUrD": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, arrives in 2-5 days</span>\n    </div>\n<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>2 scoops daily - optimal dose reward (up to 20% off)</span>\n    </div>"
+          }
+        },
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "disabled": true,
+          "settings": {
+            "side_panel_1_label": "Detailed Benefits",
+            "side_panel_1_icon": "none",
+            "side_panel_1_page": "benefits-of-inositol",
+            "side_panel_2_label": "Shipping Policy",
+            "side_panel_2_icon": "none",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "",
+            "side_panel_3_icon": "none",
+            "side_panel_3_page": ""
+          }
+        },
+        "collapsible_tab_KVBdNK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Benefits — reasons you'll love it",
+            "open": true,
+            "content": "<p>At Bodology, we go beyond temporary solutions. Our clinically studied inositol is designed to support hormones, metabolism, and overall well-being at the source.</p><p><strong>✓ Supports Healthy Ovulation & Fertility<br/></strong>Helps promote regular cycles and reproductive wellness*</p><p><strong>✓ Promotes Hormonal Balance</strong><br/>Helps maintain healthy hormone levels.</p><p><strong>✓ Supports Metabolic Function</strong><br/>Helps maintain blood sugar levels and metabolism*†</p><p><strong>✓</strong> <strong>Promotes Emotional Wellbeing & Energy Levels</strong><br/>Supports overall mood balance and healthy stress response*</p><p><strong>✓ Backed by 100+ Clinical Studies</strong><br/>One of the most researched nutrients for metabolic health*</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_dUm7RX": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Benefits",
+            "open": false,
+            "content": "<p>Inositol is clinically backed to:</p>",
+            "page": "",
+            "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Inositol-Research-large.png?v=1737715774\" style=\"width:90%; height:auto; display:block;\">"
+          }
+        },
+        "collapsible_tab_EaUniz": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why Bodology?",
+            "open": false,
+            "content": "<p><strong>Clinically Studied 40:1 Ratio<br/></strong>The gold standard for hormone, reproductive and metabolic health</p><p><strong>100% Ingredient Transparency</strong><br/>Pure inositol, no fillers or nasties</p><p><strong>Third-Party Tested</strong><br/>Verified for quality, purity, and potency</p><p><strong>Optimized for Absorption</strong><br/>Plant-based formula your body recognizes as food</p><p><strong>Made in the USA</strong><br/>Ethically produced and backed by science</p><p><strong>Trusted by Experts</strong><br/>Recommended by metabolic health experts, dieticians, and health practitioners</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_BEQc3p": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Ingredients",
+            "open": false,
+            "content": "<p><strong>Myo-Inositol, D-Chiro-Inositol </strong></p><p>No artificial sweetners, fillers or additives.</p>",
+            "page": "",
+            "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Supplement-Facts.png?v=1727882363\" style=\"width:100%; height:auto; display:block;\">"
+          }
+        },
+        "collapsible_tab_Qq4nP6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The \"NO\" List",
+            "open": false,
+            "content": "<p>At Bodology, we believe in pure, bioavailable formulations—no unnecessary extras:</p><ul><li>No fillers, rice flour, binders, or additives</li><li>No ingredients from animal origin</li><li>No artificial sweeteners, flavors, or stevia</li><li>No added sugar or caffeine</li><li>No gluten, dairy, or soy</li><li>No GMO ingredients</li><li>No hormones or unnecessary compounds—just pure dose-optimised inositol</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_RaXCmL": {
+          "type": "collapsible_tab",
+          "disabled": true,
+          "settings": {
+            "heading": "Certifications",
+            "open": false,
+            "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metals, Contaminants and Microbiological Analysis by Third-Party Laboratories</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac": {
+          "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup-product-slider/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
+          "settings": {
+            "debugging_script": ""
+          }
+        }
+      },
+      "block_order": [
+        "title_ExCfKU",
+        "custom_liquid_qLxheX",
+        "custom_liquid_8bY9Ux",
+        "custom_liquid_QE3n6R",
+        "variant_picker_HegXNW",
+        "recharge_subscriptions_subscription_widget_v2_9rCap3",
+        "custom_liquid_Aai6fh",
+        "buy_buttons_3FBywE",
+        "custom_liquid_wbFXG8",
+        "custom_liquid_8TqUrD",
+        "side_panel_NGJTtJ",
+        "collapsible_tab_KVBdNK",
+        "collapsible_tab_dUm7RX",
+        "collapsible_tab_EaUniz",
+        "collapsible_tab_BEQc3p",
+        "collapsible_tab_Qq4nP6",
+        "collapsible_tab_RaXCmL",
+        "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_add_to_cart": false,
+        "show_taxes_included": false,
+        "thumbnail_position": "left",
+        "media_aspect_ratio": "square",
+        "display_captions": false,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": true
+      }
+    },
+    "spacer_TM4WHh": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 65,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "testimonial_carousel_twHytV": {
+      "type": "testimonial-carousel",
+      "blocks": {
+        "testimonial_xbyEaz": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
+          }
+        },
+        "testimonial_cCt7iB": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-hillary-rd\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
+            "quote": "{{ metaobjects.experts[\"a-hillary-rd\"].safe_short_quote | metafield_tag }}"
+          }
+        },
+        "testimonial_JqWaEF": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"c-dr-anita\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
+            "quote": "{{ metaobjects.experts[\"c-dr-anita\"].safe_short_quote | metafield_tag }}"
+          }
+        },
+        "testimonial_36KrU7": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_xbyEaz",
+        "testimonial_cCt7iB",
+        "testimonial_JqWaEF",
+        "testimonial_36KrU7"
+      ],
+      "settings": {
+        "testimonial_source": "blocks",
+        "heading": "<h1>Trusted By <em>Experts </em>& Practitioners</h1>",
+        "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
+        "full_width": false,
+        "text_size": "small",
+        "font_family": "body",
+        "color_bg": "#ffffff",
+        "color_bg_card": "#ffffff",
+        "color_border_card": "#1b3def",
+        "color_heading": "#1b3def",
+        "color_text2": "#1b3def",
+        "color_text": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true,
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1
+      }
+    },
+    "why_bit_section_xQmrNX": {
+      "type": "why-bit-section",
+      "blocks": {
+        "icon_block_nrqkhj": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/1_37001e7a-cc09-4069-94d3-e7eab362b3ec.png",
+            "title": "Kickstart Your Routine",
+            "text": "Your body begins recognizing inositol, supporting metabolic function from day one.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_CaLjyW": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/2_e10f3d23-138a-4061-853e-1dc756be8415.png",
+            "title": "Metabolic Support in Motion",
+            "text": "Cellular processes adjust, promoting steadier energy and blood sugar balance.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_NFRW8T": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/3_cf3b5a6e-df21-4eed-83ba-e23bd0fe0f07.png",
+            "title": "Hormonal & Energy Shifts",
+            "text": "With consistency, mood, cravings, and cycles may start feeling more stable.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_wAyJRt": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/4_d65cc7bc-50c4-4bfd-a4fe-68c9152ce945.png",
+            "title": "A More Balanced You",
+            "text": "Enjoy more steady energy, improved focus, and better appetite control.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_kUwwTV": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/5_754e5b9f-a13a-4974-87a7-6ef075bf61c6.png",
+            "title": "Real Progress",
+            "text": "Your skin, mood, cycles and overall well-being may feel more predictable.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_U9m6wW": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/6_59b10b70-3d5f-43fd-a4e7-792150455412.png",
+            "title": "Long-Term Stability",
+            "text": "A daily habit for ongoing metabolic support, helping you feel in sync with your body.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        }
+      },
+      "block_order": [
+        "icon_block_nrqkhj",
+        "icon_block_CaLjyW",
+        "icon_block_NFRW8T",
+        "icon_block_wAyJRt",
+        "icon_block_kUwwTV",
+        "icon_block_U9m6wW"
+      ],
+      "custom_css": [],
+      "settings": {
+        "heading": "<h1>What To <em>Expect </em>On Your Inositol Journey</h1>",
+        "main_image": "shopify://shop_images/Bodology-Inositol-1a-90-scoops.jpg",
+        "color_bg": "#f3eee9",
+        "color_heading": "#1b3def",
+        "color_text_1": "#1b3def",
+        "color_text": "#2c2d2e"
+      }
+    },
+    "collapsible_content_2_iP8nzP": {
+      "type": "collapsible-content-2",
+      "blocks": {
+        "collapsible_tab_tD74p3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "ECOS & Inositol",
+            "open": false,
+            "content": "<p>Clinical research shows inositol supports insulin function, reduces testosterone, and restores cycles in 84% of women with ECOS.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_AcachQ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Fertility & Inositol",
+            "open": false,
+            "content": "<p>84.85% of women taking inositol resumed regular cycles in a controlled trial, showing its impact on ovulation and hormone balance.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_7BTNKP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Mood, Anxiety & Inositol",
+            "open": false,
+            "content": "<p>A meta-analysis linked inositol to improved mood, with positive effects for PMDD, anxiety, and emotional balance.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_wXkCrX": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Metabolism & Inositol",
+            "open": false,
+            "content": "<p>Inositol as been shown to reduce fat mass by up to 18.9% while increasing lean muscle, outperforming diet alone for body composition.*</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_tD74p3",
+        "collapsible_tab_AcachQ",
+        "collapsible_tab_7BTNKP",
+        "collapsible_tab_wXkCrX"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "heading": "<h1>Does Your <em>Metabolism</em> Need a Reset?</h1>",
+        "header_image": "shopify://shop_images/Bodology-Inositol-for-Weight-2_20df554e-cb9f-4e55-af04-829cc08558f2.jpg",
+        "marker_style": "style1",
+        "description": "<h6>Decades of research show inositol’s impact on hormonal balance, fertility, mood, and metabolic health. Here’s what the science says.</h6>",
+        "color_bg": "#ffffff",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "color_border": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "multicolumn_QQjdQM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_wbzkNR": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "{{ product.metafields.custom.problem_category.value.aha_title | metafield_tag }}",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_dUeaGh": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_wbzkNR",
+        "column_dUeaGh"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "data-tooltip": "",
+        "data-tooltip3": "Did you know?",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_hDmb7V": {
+      "type": "spacer",
+      "disabled": true,
+      "custom_css": [
+        ".row .spacer {background-color: #f2eee9;}"
+      ],
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": true
+      }
+    },
+    "spacer_hh3KDw": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 70,
+        "spacer_desktop": 65,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "multicolumn_rVnwmF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_fUjqfM": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h1><strong>100+ Studies Show </strong><em><strong>Inositol </strong></em><strong>Benefits</strong></h1>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_4JdggA": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_fUjqfM",
+        "column_4JdggA"
+      ],
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 15px 0 5% !important; }}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "data-tooltip": "",
+        "data-tooltip3": "Did you know?",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "custom_liquid_ax6VDD": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"studies\"></div>"
+      }
+    },
+    "carousel_boxes_jas_HzyeW9": {
+      "type": "Carousel-Boxes-Jas",
+      "blocks": {
+        "box_TxAVLm": {
+          "type": "box",
+          "repeater": "{{ product.metafields.custom.problem_category.value.results.value }}",
+          "settings": {
+            "image": "{{ block.repeater.image.value }}",
+            "image_link": "{{ block.repeater.study.value }}",
+            "open": false,
+            "heading": "",
+            "text": "{{ block.repeater.result | metafield_tag }}",
+            "link_label": "{{ block.repeater.sup_text.value }}",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "box_TxAVLm"
+      ],
+      "custom_css": [
+        ".toggle-box .aspect-ratio.aspect-ratio--square {padding-bottom: 85%;}",
+        "h6 {font-size: 12px !important;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 4,
+        "column_spacing": "medium",
+        "image_ratio": "square",
+        "mobile_swipe": false,
+        "text_alignment": "left",
+        "color_bg": "#ffffff",
+        "color_heading": "#1b3def",
+        "marker_color": "#fd6262",
+        "color_text": "#1b3def",
+        "color_link": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_mKahE4": {
+      "type": "rich-text",
+      "blocks": {
+        "text_9b6n8V": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.custom.problem_category.value.benefits_disclaimer | metafield_tag }}",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "text_9b6n8V"
+      ],
+      "custom_css": [
+        "p {font-size: 0.5em; padding-top: 0px; padding-left: 10px;}",
+        "a {color: #767676;}"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "left",
+        "text_alignment": "left",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#D3D3D3",
+        "color_text": "#767676",
+        "color_links": "#767676",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_gxbXYN": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 35,
+        "spacer_desktop": 65,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "multicolumn_hTVh9C": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_jpiXR8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/POWDER_1.gif",
+            "image_full_width": true,
+            "image_link": "",
+            "title": "",
+            "text": "<p><strong>Mix 1-2 scoops (4g) into water, coffee, smoothie or any drink</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_FT4bTV": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/POWDER_2.gif",
+            "image_full_width": true,
+            "image_link": "",
+            "title": "",
+            "text": "<p><strong>Take daily, ideally with your first meal</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_86pe8K": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/POWDER_3.gif",
+            "image_full_width": true,
+            "image_link": "",
+            "title": "",
+            "text": "<p><strong>For best results, take consistently at the same time each day</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_jpiXR8",
+        "column_FT4bTV",
+        "column_86pe8K"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "<h1>2 Scoops Of <em>Inositol </em><br/>Daily For Best Results</h1>",
+        "data-tooltip": "How to take",
+        "data-tooltip3": "",
+        "columns_desktop": 3,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "center",
+        "heading_size": "h4",
+        "color_heading": "#1b3def",
+        "marker_color": "#1b3def",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "collapsible_content_cGXRUN": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_tab_hW7crK": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What is Myo + D-Chiro Inositol?",
+            "open": false,
+            "content": "<p>Myo-Inositol and D-Chiro-Inositol are naturally occurring compounds that play crucial roles in cellular metabolism (how your body processes sugar). Our high-quality inositol supplement combines these in a clinically-studied 40:1 ratio, mirroring your body's optimal balance, to support hormonal balance, mood and metabolic health. </p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_XXxrm7": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How much should I take?",
+            "open": false,
+            "content": "<p>The recommended dosage is 2 scoops (4g) daily. Or as advised by your healthcare provider. Always consult a professional before starting any new supplement regimen.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_KdyDNX": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What is GLUT4?",
+            "open": false,
+            "content": "<p>GLUT4 is a protein that helps transport glucose into cells where it can be used for energy. Inositol supports optimal GLUT4 activation, which can improve glucose metabolism.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_a3zDiF": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Can you get inositol from diet alone?",
+            "open": false,
+            "content": "<p>While inositol is found in some foods, it's challenging to get therapeutic amounts from diet alone. For example, you would need to eat 8 cantaloupe melons daily to match the inositol content in just 2 scoops of our powder. Modern farming practices have also reduced inositol content in many foods.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_X6QGkY": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why powder?",
+            "open": false,
+            "content": "<p>Our powder ensures flexible dosing and better absorption, delivering the same dose as 6-8 capsules with just 1-2 scoops. It can be mixed into drinks or food for convenient consumption. </p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_ceQNA8": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "When will I see results?",
+            "open": false,
+            "content": "<p>Individual responses vary, but many users report improvements within 3-4 weeks of consistent use. Full benefits may be observed after 3 months.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_bmVbCi": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What does it taste like?",
+            "open": false,
+            "content": "<p>Our inositol is taste-neutral, blending seamlessly into your favorite drinks, smoothies and more. It's so subtle, you won't even know it's there.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_tgyr8M": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Are there any side effects?",
+            "open": false,
+            "content": "<p>Inositol has a strong safety profile. While some may experience mild digestive symptoms initially, the vast majority of our users report no issues – just benefits.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_PftAzr": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Can I take while pregnant?",
+            "open": false,
+            "content": "<p>Yes, you can take inositol while pregnant. </p><p>Consult your healthcare provider before taking any new supplement.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_hW7crK",
+        "collapsible_tab_XXxrm7",
+        "collapsible_tab_KdyDNX",
+        "collapsible_tab_a3zDiF",
+        "collapsible_tab_X6QGkY",
+        "collapsible_tab_ceQNA8",
+        "collapsible_tab_bmVbCi",
+        "collapsible_tab_tgyr8M",
+        "collapsible_tab_PftAzr"
+      ],
+      "settings": {
+        "heading": "<h1>Answers To All Your <em>Questions</em></h1>",
+        "marker_style": "style1",
+        "description": "",
+        "color_bg": "#ffffff",
+        "color_heading": "#1b3def",
+        "marker_color": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#1b3def",
+        "color_border": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "spacer_EJt6Hf": {
+      "type": "spacer",
+      "custom_css": [
+        ".row .spacer {background-color: #f2eee9;}"
+      ],
+      "settings": {
+        "spacer_mobile": 10,
+        "spacer_desktop": 20,
+        "border_separator": false,
+        "border_separator_full": true
+      }
+    },
+    "video_pdBgr8": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "full_width": true,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Video 2_V2_Small.mov",
+        "video_autoplay": true,
+        "aspect_ratio": "4-3",
+        "marker_color": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_zwjMjN": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_liquid_3bRDgb": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"reviews\"></div>"
+          }
+        },
+        "heading_nfgekG": {
+          "type": "heading",
+          "settings": {
+            "text": "Real <em>Results</em>With Inositol",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#fd6262"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_3bRDgb",
+        "heading_nfgekG"
+      ],
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "17289436895cc28ff7": {
+      "type": "apps",
+      "blocks": {
+        "junip_product_reviews_ugc_junip_ugc_gallery_8Pj63p": {
+          "type": "shopify://apps/junip/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "layout": "tile",
+            "title": "",
+            "product": "{{product}}",
+            "paddingTop": 24,
+            "paddingBottom": 10,
+            "containerClass": ""
+          }
+        },
+        "junip_product_reviews_ugc_junip_reviews_YG3wzn": {
+          "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "layout": "list",
+            "reviewsType": "product_reviews",
+            "showSummary": true,
+            "reviewsCount": 10,
+            "containerClass": "bodology-junip-reviews"
+          }
+        }
+      },
+      "block_order": [
+        "junip_product_reviews_ugc_junip_ugc_gallery_8Pj63p",
+        "junip_product_reviews_ugc_junip_reviews_YG3wzn"
+      ],
+      "custom_css": [
+        ".junip-product-review-count {display: none !important;}"
+      ],
+      "settings": {}
+    },
+    "featured_blog_Tfa3kT": {
+      "type": "featured-blog",
+      "disabled": true,
+      "settings": {
+        "heading": "Learn more",
+        "marker_style": "style1",
+        "description": "",
+        "blog": "bodytalks",
+        "post_limit": 4,
+        "columns_desktop": 2,
+        "mobile_swipe": true,
+        "image_ratio": "square",
+        "show_date": false,
+        "show_excerpt": false,
+        "show_read_more": true,
+        "show_view_all": true,
+        "marker_color": "#fd6262",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "main-product",
+    "spacer_TM4WHh",
+    "testimonial_carousel_twHytV",
+    "why_bit_section_xQmrNX",
+    "collapsible_content_2_iP8nzP",
+    "multicolumn_QQjdQM",
+    "spacer_hDmb7V",
+    "spacer_hh3KDw",
+    "multicolumn_rVnwmF",
+    "custom_liquid_ax6VDD",
+    "carousel_boxes_jas_HzyeW9",
+    "rich_text_mKahE4",
+    "spacer_gxbXYN",
+    "multicolumn_hTVh9C",
+    "collapsible_content_cGXRUN",
+    "spacer_EJt6Hf",
+    "video_pdBgr8",
+    "rich_text_zwjMjN",
+    "17289436895cc28ff7",
+    "featured_blog_Tfa3kT"
+  ]
+}
