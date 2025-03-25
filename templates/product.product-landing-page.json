@@ -202,7 +202,7 @@
       "type": "spacer",
       "settings": {
         "spacer_mobile": 0,
-        "spacer_desktop": 65,
+        "spacer_desktop": 100,
         "border_separator": false,
         "border_separator_full": false
       }
@@ -215,8 +215,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "Pure Inositol, Nothing Else",
-            "text": "<p>No unnecessary additives, just the clinically studied dose your body actually needs.</p>",
+            "title": "",
+            "text": "<h4><strong>Pure Inositol, Nothing Else</strong></h4><p>No unnecessary additives, just the clinically studied dose your body actually needs.</p>",
             "link_label": "",
             "link": ""
           }
@@ -226,8 +226,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "Root Cause Approach",
-            "text": "<p>Targets underlying metabolic imbalances, not just surface-level symptoms.</p>",
+            "title": "",
+            "text": "<h4><strong>Root Cause Approach</strong></h4><p>Targets underlying metabolic imbalances, not just surface-level symptoms.</p>",
             "link_label": "",
             "link": ""
           }
@@ -237,8 +237,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "Dose Optimized ",
-            "text": "<p>The right amount, scientifically formulated for real results.</p>",
+            "title": "",
+            "text": "<h4><strong>Dose Optimized </strong></h4><p>The right amount, scientifically formulated for real results.</p>",
             "link_label": "",
             "link": ""
           }
@@ -248,8 +248,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "Built From 100+ Clinical Studies",
-            "text": "<p>Backed by research, not guesswork, to deliver proven metabolic support.</p>",
+            "title": "",
+            "text": "<h4><strong>Built From 100+ Clinical Studies</strong></h4><p>Backed by research, not guesswork, to deliver proven metabolic support.</p>",
             "link_label": "",
             "link": ""
           }
@@ -276,8 +276,8 @@
         "marker_color": "#FD6262",
         "color_text": "#2c2d2e",
         "color_links": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     },
     "testimonial_carousel_twHytV": {
