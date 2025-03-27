@@ -25,7 +25,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "<p>{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}</p>",
+            "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
             "heading_size": "h1-xlarge"
           }
         },
@@ -484,6 +484,72 @@
         "border_separator_full": true
       }
     },
+    "testimonial_carousel_7gkzYQ": {
+      "type": "testimonial-carousel",
+      "blocks": {
+        "testimonial_HmyPUY": {
+          "type": "testimonial",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_GixQhb": {
+          "type": "testimonial",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-hillary-rd\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_C7x4tz": {
+          "type": "testimonial",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"c-dr-anita\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_ap46fx": {
+          "type": "testimonial",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_HmyPUY",
+        "testimonial_GixQhb",
+        "testimonial_C7x4tz",
+        "testimonial_ap46fx"
+      ],
+      "settings": {
+        "testimonial_source": "blocks",
+        "heading": "<h1>Trusted By <em>Experts </em>& Practitioners</h1>",
+        "text": "",
+        "full_width": true,
+        "text_size": "medium",
+        "font_family": "heading",
+        "color_bg": "#ffffff",
+        "color_bg_card": "#ffffff",
+        "color_border_card": "#1b3def",
+        "color_heading": "#1b3def",
+        "color_text2": "#1b3def",
+        "color_text": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false,
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1
+      }
+    },
     "expert_testimonials_KxH7tC": {
       "type": "expert-testimonials",
       "blocks": {
@@ -502,6 +568,7 @@
       "block_order": [
         "quote_WVRc6H"
       ],
+      "disabled": true,
       "settings": {
         "heading": "<p>Our <em>experts</em></p>",
         "full_width": false,
@@ -1095,6 +1162,7 @@
     "multicolumn_QQjdQM",
     "multicolumn_TMUdeq",
     "8f6ed916-ced8-44f6-9ef8-b60fd327ae31",
+    "testimonial_carousel_7gkzYQ",
     "expert_testimonials_KxH7tC",
     "spacer_FzEHUN",
     "multicolumn_rVnwmF",
