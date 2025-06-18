@@ -71,6 +71,7 @@
     },
     "product-recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "description": "<p>Unlock your metabolic health for better hormones, mood and metabolism.</p>",
@@ -80,11 +81,22 @@
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
+    },
+    "spacer_fdEHiA": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 100,
+        "border_separator": false,
+        "border_separator_full": false
+      }
     }
   },
   "order": [
     "breadcrumbs",
     "main-product",
-    "product-recommendations"
+    "product-recommendations",
+    "spacer_fdEHiA"
   ]
 }
