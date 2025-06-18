@@ -24,7 +24,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "{{ product.vendor }}",
+            "text": "<p>{{ product.vendor }}</p>",
             "text_style": "style_vendor"
           }
         },
@@ -51,11 +51,6 @@
             "sizing_guide_icon": "ruler",
             "sizing_guide_page": ""
           }
-        },
-        "yotpo_subscriptions_app_block_UBhAmf": {
-          "type": "shopify://apps/yotpo-subscriptions/blocks/app-block/ef25e582-ada5-4bb0-b4e7-f94e97ab1bb4",
-          "disabled": true,
-          "settings": {}
         },
         "quantity": {
           "type": "quantity",
@@ -154,7 +149,6 @@
         "title",
         "0b3e272b-c86a-4dba-946c-c6912251371c",
         "variant_picker",
-        "yotpo_subscriptions_app_block_UBhAmf",
         "quantity",
         "buy_buttons",
         "386f7e4a-6127-4141-928b-9cb4614ee18c",
@@ -185,7 +179,7 @@
         "mobile_swipe": true,
         "product_limit": 4,
         "columns_desktop": 4,
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
     }
