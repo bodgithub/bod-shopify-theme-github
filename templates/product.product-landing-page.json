@@ -110,7 +110,8 @@
         "column_ggDGAH"
       ],
       "custom_css": [
-        ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}"
+        ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}",
+        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}"
       ],
       "settings": {
         "heading": "",
