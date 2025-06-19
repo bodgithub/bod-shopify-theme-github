@@ -344,7 +344,7 @@
     display: grid;
     align-items: start;
     grid-gap: clamp(30px, 5%, 40px);
-    grid-template-columns: minmax(45%, 740px) clamp(360px, 45%, 500px); } }
+    grid-template-columns: minmax(65%, 740px) clamp(360px, 45%, 500px); } }
 
 @media only screen and (min-width: 1068px) {
   .product-gallery-sticky {
