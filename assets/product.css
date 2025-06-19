@@ -352,7 +352,11 @@
     top: 20px;
     left: 0; }
     .header-sticky--active .product-gallery-sticky {
-      top: calc(var(--header-height, 0px) + 20px); } }
+      top: calc(var(--header-height, 0px) + 20px);
+    } 
+.product-grid-container .flickity-enabled.is-draggable .flickity-viewport: {
+  min-height: 80vh;
+}}
 
 .product-gallery-container {
   position: relative;
