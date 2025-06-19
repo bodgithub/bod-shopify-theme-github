@@ -64,7 +64,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>Pure Inositol, Nothing Else</strong></h4><p>No unnecessary additives, just the clinically studied dose your body actually needs.</p>",
+            "text": "<h4><strong>Pure Inositol, Nothing Else</strong></h4><p>No unnecessary fillers or ingredients that can interfere with your other supplements.</p>",
             "link_label": "",
             "link": ""
           }
@@ -86,7 +86,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>Dose Optimized </strong></h4><p>The right amount, scientifically formulated for real results.</p>",
+            "text": "<h4><strong>Dose Optimized </strong></h4><p>2 scoops daily provides 4,000mg Myo Inositol and 100mg D-Chiro Inositol, in the optimal 40:1 ratio.</p>",
             "link_label": "",
             "link": ""
           }
@@ -97,7 +97,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>Built From 100+ Clinical Studies</strong></h4><p>Backed by research, not guesswork, to deliver proven metabolic support.</p>",
+            "text": "<h4><strong>100+ Clinical Studies</strong></h4><p>Inositol is backed by research, not guesswork, to deliver proven metabolic support.</p>",
             "link_label": "",
             "link": ""
           }
@@ -146,6 +146,7 @@
       "blocks": {
         "title_ExCfKU": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "show_products_rating": true
           }
@@ -153,7 +154,7 @@
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"product-details\"><p>\nA clean, hormone-friendly formula for metabolic and hormonal balance—designed to support, not override, your body's natural rhythms.<br></p></div>"
+            "custom_liquid": "<div id=\"product-details\"><h4><b>\nA clean, hormone-friendly inositol formula for metabolic and hormonal balance—designed to support, not override, your body's natural rhythms.</b><br><br></h4></div>"
           }
         },
         "custom_liquid_8bY9Ux": {
