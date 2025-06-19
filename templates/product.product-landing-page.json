@@ -9,6 +9,138 @@
  */
 {
   "sections": {
+    "rich_text_QFkpNr": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_px8BJQ": {
+          "type": "subheading",
+          "settings": {
+            "text": "UNLOCK YOUR METABOLIC HEALTH"
+          }
+        },
+        "heading_dpWa68": {
+          "type": "heading",
+          "settings": {
+            "text": "Bodology™ Myo + D-Chiro Inositol Powder",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#FD6262"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_px8BJQ",
+        "heading_dpWa68"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "color_heading": "#1b3def",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_4GDyCF": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 25,
+        "spacer_desktop": 35,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "multicolumn_KdNre6": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_9tKhGi": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h4><strong>Pure Inositol, Nothing Else</strong></h4><p>No unnecessary additives, just the clinically studied dose your body actually needs.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_FKEcTh": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h4><strong>Root Cause Approach</strong></h4><p>Targets underlying metabolic imbalances, not just surface-level symptoms.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ppertg": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h4><strong>Dose Optimized </strong></h4><p>The right amount, scientifically formulated for real results.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ggDGAH": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h4><strong>Built From 100+ Clinical Studies</strong></h4><p>Backed by research, not guesswork, to deliver proven metabolic support.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_9tKhGi",
+        "column_FKEcTh",
+        "column_ppertg",
+        "column_ggDGAH"
+      ],
+      "custom_css": [
+        ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "data-tooltip": "",
+        "data-tooltip3": "",
+        "columns_desktop": 4,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h5",
+        "color_heading": "#1b3def",
+        "marker_color": "#fd6262",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "spacer_fcdpRG": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 55,
+        "spacer_desktop": 0,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "main-product": {
       "type": "main-product",
       "blocks": {
@@ -205,82 +337,6 @@
         "spacer_desktop": 100,
         "border_separator": false,
         "border_separator_full": false
-      }
-    },
-    "multicolumn_KdNre6": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_9tKhGi": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h4><strong>Pure Inositol, Nothing Else</strong></h4><p>No unnecessary additives, just the clinically studied dose your body actually needs.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_FKEcTh": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h4><strong>Root Cause Approach</strong></h4><p>Targets underlying metabolic imbalances, not just surface-level symptoms.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_ppertg": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h4><strong>Dose Optimized </strong></h4><p>The right amount, scientifically formulated for real results.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_ggDGAH": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h4><strong>Built From 100+ Clinical Studies</strong></h4><p>Backed by research, not guesswork, to deliver proven metabolic support.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_9tKhGi",
-        "column_FKEcTh",
-        "column_ppertg",
-        "column_ggDGAH"
-      ],
-      "custom_css": [
-        ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "columns_desktop": 4,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h5",
-        "color_heading": "#1b3def",
-        "marker_color": "#fd6262",
-        "color_text": "#2c2d2e",
-        "color_links": "#2c2d2e",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
       }
     },
     "testimonial_carousel_twHytV": {
@@ -1013,9 +1069,12 @@
     }
   },
   "order": [
+    "rich_text_QFkpNr",
+    "spacer_4GDyCF",
+    "multicolumn_KdNre6",
+    "spacer_fcdpRG",
     "main-product",
     "spacer_TM4WHh",
-    "multicolumn_KdNre6",
     "testimonial_carousel_twHytV",
     "why_bit_section_xQmrNX",
     "collapsible_content_2_iP8nzP",
