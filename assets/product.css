@@ -453,7 +453,7 @@
       position: relative; }
       @media only screen and (min-width: 768px) {
         .product-gallery-container .product-image-container .product-images {
-          max-width: 640px;
+          /*max-width: 640px;*/
           margin: 0 auto; } }
       .product-gallery-container .product-image-container .product-images:not(.flickity-enabled) .flickity-nav,
       .product-gallery-container .product-image-container .product-images:not(.flickity-enabled) .product-images__slide:not(.is-initial-selected) {
