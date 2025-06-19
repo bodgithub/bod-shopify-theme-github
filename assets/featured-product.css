@@ -481,12 +481,10 @@
 
 .product-image-container .flickity-viewport {
   isolation: isolate;
-  height:100%;
   border-radius: calc(var(--block-border-radius, 16px) / 2); }
   @media only screen and (min-width: 768px) {
     .product-image-container .flickity-viewport {
-      border-radius: var(--block-border-radius, 16px);
-    height:100%;} }
+      border-radius: var(--block-border-radius, 16px); } }
 
 .product-images__slide {
   display: none; }
@@ -494,7 +492,6 @@
     display: block; }
 
 .product-images .flickity-viewport .product-images__slide {
-  height:100%;
   display: block; }
 
 
