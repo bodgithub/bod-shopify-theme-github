@@ -358,6 +358,12 @@
   min-height: 80vh !important;
 }}
 
+@media only screen and (max-width: 768px) {
+.flickity-enabled.is-draggable .flickity-viewport 
+.product-grid-container .flickity-enabled.is-draggable .flickity-viewport {
+  min-height: 45vh !important;
+}}
+
 .product-gallery-container {
   position: relative;
   margin-bottom: 40px; }
@@ -513,7 +519,7 @@
 
 .product-images .flickity-viewport .product-images__slide {
   display: block;
-height:100%;}
+}
 
 
 
