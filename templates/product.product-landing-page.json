@@ -32,6 +32,7 @@
         "subheading_px8BJQ",
         "heading_dpWa68"
       ],
+      "disabled": true,
       "name": "Rich text",
       "settings": {
         "text_width": "medium",
@@ -74,6 +75,13 @@
           "disabled": true,
           "settings": {
             "show_products_rating": true
+          }
+        },
+        "text_6nKqcU": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Inositol Powder</h1>",
+            "text_style": "style_vendor"
           }
         },
         "custom_liquid_qLxheX": {
@@ -226,6 +234,7 @@
       },
       "block_order": [
         "title_ExCfKU",
+        "text_6nKqcU",
         "custom_liquid_qLxheX",
         "custom_liquid_8bY9Ux",
         "custom_liquid_QE3n6R",
