@@ -70,18 +70,17 @@
     "main-product": {
       "type": "main-product",
       "blocks": {
-        "title_ExCfKU": {
-          "type": "title",
-          "disabled": true,
-          "settings": {
-            "show_products_rating": true
-          }
-        },
         "text_6nKqcU": {
           "type": "text",
           "settings": {
             "text": "<h1>Inositol Powder</h1><h6>CLINICALLY OPTIMIZED 40:1 RATIO</h6>",
             "text_style": "style_vendor"
+          }
+        },
+        "title_ExCfKU": {
+          "type": "title",
+          "settings": {
+            "show_products_rating": true
           }
         },
         "custom_liquid_qLxheX": {
@@ -244,8 +243,8 @@
         }
       },
       "block_order": [
-        "title_ExCfKU",
         "text_6nKqcU",
+        "title_ExCfKU",
         "custom_liquid_qLxheX",
         "custom_liquid_8bY9Ux",
         "custom_liquid_QE3n6R",
@@ -265,7 +264,10 @@
         "collapsible_tab_RaXCmL",
         "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".product-title {display: none;}",
+        ".amount {display: none;}"
+      ],
       "settings": {
         "enable_sticky_add_to_cart": false,
         "show_taxes_included": false,
