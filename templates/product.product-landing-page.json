@@ -79,8 +79,15 @@
         },
         "title_ExCfKU": {
           "type": "title",
+          "disabled": true,
           "settings": {
             "show_products_rating": true
+          }
+        },
+        "custom_liquid_8d7xtd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"padding-bottom:20px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
           }
         },
         "custom_liquid_qLxheX": {
@@ -245,6 +252,7 @@
       "block_order": [
         "text_6nKqcU",
         "title_ExCfKU",
+        "custom_liquid_8d7xtd",
         "custom_liquid_qLxheX",
         "custom_liquid_8bY9Ux",
         "custom_liquid_QE3n6R",
