@@ -378,14 +378,16 @@ max-width:100%}
 
 .table-of-contents {
   position: sticky;
-  top: 100px;
+  top: 120px;
   max-width: 300px;
   background-color: #fff;
   padding: 15px 0;
   /*border-bottom: 5px solid #1b3def;*/
-  border-radius: 0px;
+  border-radius: 20px;
   margin-bottom: 30px;
   line-height: 1.2;
+  padding:20px;
+  border: 1px #1b3def solid;
 }
 
 #table-of-contents-column h3 {
