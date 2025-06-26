@@ -145,6 +145,12 @@
             "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Tina_-_white_-_logo_2.png?v=1731443642\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"Supporting your metabolism is the key to balanced hormones, mood, and energy.\" <b>— Tina Kozman, CNP</b></p>\n  </div>\n</div>\n\n<style>\n.expert-quote-section {\n  \n  align-items: center;\n  gap: 1rem;\n  margin-bototm: 0rem;\n}\n\n.expert-profile img {\n \n width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.expert-profile {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  overflow: hidden;\n  border: 1px solid #1b3def;\n  flex-shrink: 0;\nmargin-right:10px;\n}\n.expert-quote {\n  display:inline-flex;\nbackground-color: white;\n  border: 1px solid #1b3def;\n  border-radius: 10px;\n  padding: 0.9rem 0.75rem 0rem 0.75rem;\n  font-size: 0.95rem;\n  color: #333;\n  font-style: italic;\n  max-width: 450px;\nmargin-bottom: 20px;\n}\n\n\n</style>"
           }
         },
+        "custom_liquid_BD87bT": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"rc-widget\"></div>"
+          }
+        },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
@@ -272,6 +278,7 @@
         "custom_liquid_KdP8MH",
         "custom_liquid_ExQ6qT",
         "custom_liquid_AnALnm",
+        "custom_liquid_BD87bT",
         "buy_buttons_3FBywE",
         "custom_liquid_eAg6YA",
         "collapsible_tab_zkXkR7",
