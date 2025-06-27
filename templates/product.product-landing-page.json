@@ -127,13 +127,6 @@
             "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Tina_-_white_-_logo_2.png?v=1731443642\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"Supporting your metabolism is the key to balanced hormones, mood, and energy.\" <b><br>— Tina Kozman, CNP</b></p>\n  </div>\n</div>\n\n<style>\n.expert-quote-section {\n  \n  align-items: center;\n  gap: 1rem;\n  margin-bototm: 0rem;\n}\n\n.expert-profile img {\n \n width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.expert-profile {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  overflow: hidden;\n  border: 1px solid #1b3def;\n  flex-shrink: 0;\nmargin-right:10px;\n}\n.expert-quote {\n  display:inline-flex;\nbackground-color: white;\n  border: 1px solid #1b3def;\n  border-radius: 10px;\n  padding: 0.9rem 0.75rem 0rem 0.75rem;\n  font-size: 0.95rem;\n  color: #333;\n  font-style: italic;\n  max-width: 450px;\nmargin-bottom: 20px;\n}\n\n\n</style>"
           }
         },
-        "custom_liquid_QE3n6R": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def;\">\n    \n    <!-- Left Column -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Optimal Ratio</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Trusted by Experts</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Pure Myo + D-Chiro</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>100% Plant-Based</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_arrows.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Plastic-Free Tub</span>\n        </div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        </div>\n    </div>\n\n</div>"
-          }
-        },
         "variant_picker_HegXNW": {
           "type": "variant_picker",
           "disabled": true,
@@ -203,47 +196,14 @@
             "custom_liquid": ""
           }
         },
-        "collapsible_tab_dUm7RX": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Benefits",
-            "open": false,
-            "content": "<p>Inositol is clinically backed to:</p>",
-            "page": "",
-            "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Inositol-Research-large.png?v=1737715774\" style=\"width:90%; height:auto; display:block;\">"
-          }
-        },
-        "collapsible_tab_EaUniz": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Reasons you'll love it",
-            "open": false,
-            "content": "<h6><strong>Clinically Studied 40:1 Ratio</strong></h6><p>The gold standard for hormone, reproductive and metabolic health.</p><h6><strong>100% Ingredient Transparency</strong></h6><p>Pure inositol, sourced from non-GMO corn.</p><h6><strong>Just Inositol, Nothing Else</strong></h6><p>No fillers or additional ingredients that could interfere with your other supplements, or prenatals.</p><h6><strong>Third-Party Tested</strong></h6><p>Verified for quality, purity, and potency.</p><h6><strong>Made in the USA</strong></h6><p>Ethically produced and backed by science</p><h6><strong>Trusted by Experts</strong></h6><p>Recommended by metabolic health experts, dieticians, and health practitioners</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
         "collapsible_tab_KixfDF": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Why we made it",
             "open": false,
-            "content": "<p>We created this inositol powder to give women a cleaner, simpler choice. Without fillers or extras that might interfere with other supplements or prenatals. Just pure inositol sourced from high-quality non-GMO corn and made in a GMP and FDA-compliant facility. Support your hormonal and metabolic health with confidence.</p>",
+            "content": "<p>We created Bodology™ Inositol Powder to give women a cleaner, simpler choice. Without fillers or extras that might interfere with other supplements or prenatals. Just pure inositol sourced from high-quality non-GMO corn and made in a GMP and FDA-compliant facility. Support your hormonal and metabolic health with confidence.</p>",
             "page": "",
             "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_BEQc3p": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Ingredients",
-            "open": false,
-            "content": "<p><strong>Myo-Inositol, D-Chiro-Inositol </strong></p><p>No artificial sweetners, fillers or additives.</p>",
-            "page": "",
-            "custom_liquid": "<img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Supplement-Facts.png?v=1727882363\" style=\"width:100%; height:auto; display:block;\">"
           }
         },
         "collapsible_tab_Qq4nP6": {
@@ -252,17 +212,6 @@
             "heading": "The \"NO\" list",
             "open": false,
             "content": "<p>At Bodology, we believe in pure, bioavailable formulations—no unnecessary extras:</p><ul><li>No fillers, rice flour, binders, or additives</li><li>No ingredients from animal origin</li><li>No artificial sweeteners, flavors, or stevia</li><li>No added sugar or caffeine</li><li>No gluten, dairy, or soy</li><li>No GMO ingredients</li><li>No hormones or unnecessary compounds—just pure dose-optimised inositol</li></ul>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_RaXCmL": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "Certifications",
-            "open": false,
-            "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metals, Contaminants and Microbiological Analysis by Third-Party Laboratories</li></ul>",
             "page": "",
             "custom_liquid": ""
           }
@@ -284,7 +233,6 @@
         "custom_liquid_8TqUrD",
         "custom_liquid_ymVUr7",
         "custom_liquid_nfgEm4",
-        "custom_liquid_QE3n6R",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
@@ -293,12 +241,8 @@
         "custom_liquid_wbFXG8",
         "side_panel_NGJTtJ",
         "collapsible_tab_KVBdNK",
-        "collapsible_tab_dUm7RX",
-        "collapsible_tab_EaUniz",
         "collapsible_tab_KixfDF",
-        "collapsible_tab_BEQc3p",
         "collapsible_tab_Qq4nP6",
-        "collapsible_tab_RaXCmL",
         "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac"
       ],
       "custom_css": [
