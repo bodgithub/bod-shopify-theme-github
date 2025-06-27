@@ -15,8 +15,8 @@
         "text_yf4JGV": {
           "type": "text",
           "settings": {
-            "text": "<p>METABOLIC SUPPORT + FERTILITY</p>",
-            "description_size": "medium"
+            "text": "<p>{{ page.metafields.custom.problem_category.value.category_title.value }}</p>",
+            "description_size": "small"
           }
         },
         "heading_FGRE4D": {
