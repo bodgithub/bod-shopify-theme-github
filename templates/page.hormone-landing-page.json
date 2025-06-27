@@ -12,8 +12,23 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "text_yf4JGV": {
+          "type": "text",
+          "settings": {
+            "text": "<p>METABOLIC SUPPORT + FERTILITY</p>",
+            "description_size": "medium"
+          }
+        },
+        "heading_FGRE4D": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
+            "heading_size": "h1-xlarge"
+          }
+        },
         "customer_reviews_CtBhV3": {
           "type": "customer_reviews",
+          "disabled": true,
           "settings": {
             "stars": "5",
             "heading": "See real results with inositol",
@@ -22,26 +37,10 @@
             "scale": ""
           }
         },
-        "heading_FGRE4D": {
-          "type": "heading",
-          "settings": {
-            "text": "<p>{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}</p>",
-            "heading_size": "h1-xlarge"
-          }
-        },
-        "button_rBDtc7": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_text": "Get inositol—the new way to balance",
-            "button_link": "",
-            "button_color": "white"
-          }
-        },
         "benefits_MfjQJR": {
           "type": "benefits",
           "settings": {
-            "benefits-title": "<b>Inositol is clinically-studied to:</b>",
+            "benefits-title": "",
             "icon_size": 25,
             "border_size": 1,
             "border_color": "#1b3def",
@@ -56,13 +55,23 @@
             "benefit_5": "{{ page.metafields.custom.problem_category.value.benefit_5.value.benefit.value }}",
             "icon_5": "{{ page.metafields.custom.problem_category.value.benefit_5.value.icon.value }}"
           }
+        },
+        "button_rBDtc7": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_text": "Get inositol—the new way to balance",
+            "button_link": "",
+            "button_color": "white"
+          }
         }
       },
       "block_order": [
-        "customer_reviews_CtBhV3",
+        "text_yf4JGV",
         "heading_FGRE4D",
-        "button_rBDtc7",
-        "benefits_MfjQJR"
+        "customer_reviews_CtBhV3",
+        "benefits_MfjQJR",
+        "button_rBDtc7"
       ],
       "custom_css": [],
       "settings": {
