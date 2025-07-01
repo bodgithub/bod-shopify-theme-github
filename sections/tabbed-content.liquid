@@ -47,6 +47,25 @@
 	</div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  // Target all videos inside the tab content area
+  const videos = document.querySelectorAll('.tabbed-content--content video');
+
+  videos.forEach((video) => {
+    video.setAttribute('autoplay', true);
+    video.setAttribute('muted', true); // required for autoplay to work
+    video.setAttribute('loop', true);
+    video.setAttribute('playsinline', true);
+    
+    // Start playing if ready
+    video.play().catch(() => {
+      // Optional: log or silently fail if browser blocks autoplay
+    });
+  });
+});
+</script>
+
 {% schema %}
   {
     "name": "Tabbed content",
