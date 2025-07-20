@@ -196,6 +196,51 @@
         "disable_bottom_spacing": false
       }
     },
+    "rich_text_CUWHK9": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_Vi6jGi": {
+          "type": "subheading",
+          "settings": {
+            "text": "Did you know?"
+          }
+        },
+        "heading_Lq7BDe": {
+          "type": "heading",
+          "settings": {
+            "text": "YOUR METABOLISM IMPACTS YOUR ENTIRE BODY - NOT JUST YOUR WEIGHT",
+            "marker_style": "style1",
+            "size": "h3",
+            "marker_color": "#FD6262"
+          }
+        },
+        "text_JXGczt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>87% of adults have impaired metabolic function, it’s not ‘just a weight issue’. <strong>Discover how inositol helps.</strong></p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_Vi6jGi",
+        "heading_Lq7BDe",
+        "text_JXGczt"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
     "multicolumn_zBkNGq": {
       "type": "multicolumn",
       "blocks": {
@@ -226,6 +271,7 @@
         "column_k73ndb",
         "column_ExHNM9"
       ],
+      "disabled": true,
       "custom_css": [
         "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
         ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
@@ -320,11 +366,11 @@
       ],
       "settings": {
         "heading": "",
-        "bgcolor": "#ffffff",
+        "bgcolor": "#f2eee9",
         "header_image": "shopify://shop_images/Bodology-Inositol-1a-90-scoops.png",
         "marker_style": "style1",
-        "description": "",
-        "color_bg": "#ffffff",
+        "description": "<p></p><p></p>",
+        "color_bg": "rgba(0,0,0,0)",
         "color_heading": "#1b3def",
         "marker_color": "#fd6262",
         "color_text": "#2c2d2e",
@@ -1288,6 +1334,7 @@
   "order": [
     "image_with_text_overlay_zjqnjJ",
     "carousel_boxes_jas_HzyeW9",
+    "rich_text_CUWHK9",
     "multicolumn_zBkNGq",
     "collapsible_content_2_hrRGJn",
     "expert_testimonials_mgPFnQ",
