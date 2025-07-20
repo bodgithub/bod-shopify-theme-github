@@ -46,25 +46,32 @@
 					{%- endif -%}
 					
 					{%- if block.settings.heading != blank -%}
-
-						<collapsible-row class="accordion" {{ block.shopify_attributes }}>
-							<details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
-								<summary>
-									{{ block.settings.heading | default: block.settings.page.title }}
-									<span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
-								</summary>
-<div class="collapsible__content accordion__content rte" id="Accordion-{{ block.id }}-{{ section.id }}" {% if block.settings.open == true %} style="padding:0px!important;" {% endif %}>
-									{{ block.settings.content }}
-									{{ block.settings.page.content }}
-								</div>
-							</details>
-						</collapsible-row>
-
-                      
-
-                      
-					{%- endif -%}
-				{%- endfor -%}
+    <collapsible-row class="accordion" {{ block.shopify_attributes }}>
+      <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
+        <summary>
+          {{ block.settings.heading | default: block.settings.page.title }}
+          <span>{%- render 'svg-icons' with 'thb-collapsible-arrow' -%}</span>
+        </summary>
+        <div class="collapsible__content accordion__content rte"
+             id="Accordion-{{ block.id }}-{{ section.id }}"
+             {% if block.settings.open == true %} style="padding:0px!important;" {% endif %}>
+          {{ block.settings.content }}
+          {{ block.settings.page.content }}
+        </div>
+      </details>
+    </collapsible-row>
+  {%- elsif block.type == 'button' -%}
+    {% if block.settings.link_label != blank %}
+      <a class="button"
+         {% if block.settings.link_label == blank %} aria-disabled="true"
+         {% else %} href="{{ block.settings.link }}"
+         {% endif %}
+         {{ block.shopify_attributes }}>
+        {{ block.settings.link_label }}
+      </a>
+    {% endif %}
+  {%- endif -%}
+{%- endfor -%}
 			</div>
 		</div>
 	</div>
@@ -207,7 +214,25 @@
 						"label": "Row content from page"
 					}
 				]
-			}
+			},
+      {
+        "type": "button",
+        "name": "Button",
+        "settings": [
+					{
+						"id": "link_label",
+						"type": "text",
+						"label": "Label",
+						"default": "Learn More",
+						"info": "Leave the label blank to hide the button."
+					},
+					{
+						"id": "link",
+						"type": "url",
+						"label": "Link"
+					}
+        ]
+      }
     ],
     "presets": [
       {
@@ -227,6 +252,9 @@
 	        },
 	        {
 	          "type": "collapsible_tab"
+	        },
+            {
+	          "type": "button"
 	        }
 	      ]
       }
