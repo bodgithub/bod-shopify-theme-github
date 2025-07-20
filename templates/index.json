@@ -41,7 +41,7 @@
         "button_rBDtc7": {
           "type": "button",
           "settings": {
-            "button_text": "Start Your Inositol Journey",
+            "button_text": "Start My Inositol Journey",
             "button_link": "shopify://products/myo-d-chiro-inositol-powder",
             "button_color": "white"
           }
@@ -409,6 +409,41 @@
         "color_text": "#2c2d2e",
         "color_links": "#2c2d2e",
         "color_border": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_Vd8Nyi": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_liquid_w9abnF": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"height:50px;\"></div>"
+          }
+        },
+        "button_AyFyJF": {
+          "type": "button",
+          "settings": {
+            "link_label": "Start My Inositol Journey",
+            "link": "shopify://products/myo-d-chiro-inositol-powder"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_w9abnF",
+        "button_AyFyJF"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "bgcolor": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
@@ -1372,6 +1407,7 @@
     "rich_text_XXb67A",
     "multicolumn_zBkNGq",
     "collapsible_content_2_hrRGJn",
+    "rich_text_Vd8Nyi",
     "expert_testimonials_mgPFnQ",
     "testimonial_carousel_rfAUyN",
     "1741568420b2e69de9",
