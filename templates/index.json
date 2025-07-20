@@ -199,19 +199,12 @@
     "rich_text_CUWHK9": {
       "type": "rich-text",
       "blocks": {
-        "subheading_Vi6jGi": {
-          "type": "subheading",
+        "text_fNKBq9": {
+          "type": "text",
           "settings": {
-            "text": "Did you know?"
-          }
-        },
-        "heading_Lq7BDe": {
-          "type": "heading",
-          "settings": {
-            "text": "YOUR METABOLISM IMPACTS YOUR ENTIRE BODY - NOT JUST YOUR WEIGHT",
-            "marker_style": "style1",
-            "size": "h3",
-            "marker_color": "#fd6262"
+            "text": "<h1>Your metabolic health impacts your entire body <em>–</em> <em>not just your</em> <em>weight</em></h1>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
           }
         },
         "text_JXGczt": {
@@ -224,8 +217,7 @@
         }
       },
       "block_order": [
-        "subheading_Vi6jGi",
-        "heading_Lq7BDe",
+        "text_fNKBq9",
         "text_JXGczt"
       ],
       "name": "Rich text",
@@ -303,7 +295,7 @@
         "collapsible_tab_tBJXhQ": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "PCOS & Inositol",
+            "heading": "PCOS",
             "open": false,
             "content": "<p>Clinical research shows inositol lowers insulin resistance, reduces testosterone, and restores cycles in 84% of women with PCOS.*</p>",
             "page": ""
@@ -312,7 +304,7 @@
         "collapsible_tab_zJaULT": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Mood, Anxiety & Inositol",
+            "heading": "Mood + Anxiety",
             "open": false,
             "content": "<p>A meta-analysis linked inositol to improved mood, with positive effects for PMDD, anxiety, and emotional balance.*</p>",
             "page": ""
@@ -321,7 +313,7 @@
         "collapsible_tab_EHUzbD": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Fertility & Inositol",
+            "heading": "Fertility",
             "open": false,
             "content": "<p>84.85% of women taking inositol resumed regular cycles in a controlled trial, showing its impact on ovulation and hormone balance.*</p>",
             "page": ""
@@ -350,7 +342,7 @@
         "collapsible_tab_xVREzb": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "Metabolism & Inositol",
+            "heading": "Metabolism",
             "open": false,
             "content": "<p>Inositol as been shown to reduce fat mass by up to 18.9% while increasing lean muscle, outperforming diet alone for body composition.</p>",
             "page": ""
