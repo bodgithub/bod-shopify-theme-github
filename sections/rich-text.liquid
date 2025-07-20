@@ -24,7 +24,7 @@
 		assign transparent = true
 	endif
 -%}
-<div class="row" style="background-color:{{ colorbg }}"">
+<div class="row" style="background-color:{{ section.settings.colorbg }}"">
 	<div class="small-12 columns">
 		<div class="rich-text rich-text--transparent-{{ transparent }} text-{{ text_alignment }} text-position-{{ text_position }} text-width-{{ text_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --solid-button-background: {{ color_text }}; --bg-body: {{ color_bg }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};">
 			<div class="rich-text__inner">
