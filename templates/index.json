@@ -202,12 +202,33 @@
         "text_fNKBq9": {
           "type": "text",
           "settings": {
-            "text": "<h1>Your metabolic health impacts your entire body <em>–</em> <em>not just your</em> <em>weight</em></h1>",
+            "text": "<h1>Your metabolic health impacts your entire body <em>– not just your weight</em></h1>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
-        },
-        "text_JXGczt": {
+        }
+      },
+      "block_order": [
+        "text_fNKBq9"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_width": "xlarge",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "bgcolor": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_XXb67A": {
+      "type": "rich-text",
+      "blocks": {
+        "text_nJhEEa": {
           "type": "text",
           "settings": {
             "text": "<p>87% of adults have impaired metabolic function, it’s not ‘just a weight issue’. <strong>Discover how inositol helps.</strong></p>",
@@ -217,8 +238,7 @@
         }
       },
       "block_order": [
-        "text_fNKBq9",
-        "text_JXGczt"
+        "text_nJhEEa"
       ],
       "name": "Rich text",
       "settings": {
@@ -230,7 +250,7 @@
         "color_heading": "#1b3def",
         "color_text": "#2c2d2e",
         "color_links": "#2c2d2e",
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
     },
@@ -1329,6 +1349,7 @@
     "image_with_text_overlay_zjqnjJ",
     "carousel_boxes_jas_HzyeW9",
     "rich_text_CUWHK9",
+    "rich_text_XXb67A",
     "multicolumn_zBkNGq",
     "collapsible_content_2_hrRGJn",
     "expert_testimonials_mgPFnQ",
