@@ -42,6 +42,7 @@
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "#f9f9f9",
+        "bgcolor": "rgba(0,0,0,0)",
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
@@ -53,7 +54,7 @@
       "type": "apps",
       "blocks": {
         "junip_product_reviews_ugc_junip_ugc_gallery_WQnHqh": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "layout": "tile",
             "title": "",
@@ -64,10 +65,11 @@
           }
         },
         "junip_product_reviews_ugc_junip_review_carousel_REghE4": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "disabled": true,
           "settings": {
             "reviewsType": "product_reviews",
+            "sortOrder": "mostRecent",
             "product": "",
             "showSummary": true,
             "title": "Reviews",
@@ -77,7 +79,7 @@
           }
         },
         "junip_product_reviews_ugc_junip_reviews_8WBcAN": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "layout": "list",
             "reviewsType": "product_reviews",
@@ -116,7 +118,8 @@
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#ffffff",
+        "color_bg": "rgba(0,0,0,0)",
+        "bgcolor": "#f8f4f3",
         "color_heading": "#1B3DEF",
         "color_text": "#777777",
         "color_links": "#1b3def",
