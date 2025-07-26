@@ -589,6 +589,11 @@ border-radius:20px;
     font-size: 1rem;
   border: 1px solid #1b3def;
 }
+
+.post-content h3 {
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
 }
 .blog-post-detail img {
   border: 1px #1b3def solid;
