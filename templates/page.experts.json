@@ -95,20 +95,18 @@
             "marker_color": "#fd6262"
           }
         },
-        "heading_enEV6i": {
-          "type": "heading",
-          "disabled": true,
+        "text_CLJqTw": {
+          "type": "text",
           "settings": {
-            "text": "Clinically-informed, Formulated by Experts",
-            "marker_style": "style1",
-            "size": "h2",
-            "marker_color": "#fd6262"
+            "text": "<p>Trusted names in metabolic health, hormone research, and functional medicine guide our innovation.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
           }
         }
       },
       "block_order": [
         "template--17918040834330__430e3fd4-6487-4550-8d73-86cdc88a218b-1676976677d37e1c8b-1",
-        "heading_enEV6i"
+        "text_CLJqTw"
       ],
       "settings": {
         "text_width": "xlarge",
@@ -117,7 +115,7 @@
         "color_bg": "rgba(0,0,0,0)",
         "bgcolor": "rgba(0,0,0,0)",
         "color_heading": "#1b3def",
-        "color_text": "#1b3def",
+        "color_text": "#2c2d2e",
         "color_links": "#1b3def",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -295,110 +293,57 @@
         "disable_bottom_spacing": false
       }
     },
-    "image_with_text_R8YXFm": {
+    "image_with_text_B9wdkf": {
       "type": "image-with-text",
       "blocks": {
-        "subheading_taY6Jc": {
-          "type": "subheading",
-          "settings": {
-            "text": "Add a tagline"
-          }
-        },
-        "heading_DiBgHK": {
+        "heading_yqdtMD": {
           "type": "heading",
           "settings": {
-            "text": "Image with text",
+            "text": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
             "marker_style": "style1",
             "heading_size": "h3",
             "marker_color": "#fd6262"
           }
         },
-        "text_zrakEq": {
+        "text_FQQkUx": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+            "text": "<h3><em>{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}</em></h3>"
           }
         },
-        "image_c3AixA": {
-          "type": "image",
-          "settings": {}
+        "collapsible_tab_jef6kW": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "PROFESSIONAL BIO",
+            "open": false,
+            "content": "{{ metaobjects.experts[\"a-hillary-rd\"].bio | metafield_tag }}",
+            "page": ""
+          }
         }
       },
       "block_order": [
-        "subheading_taY6Jc",
-        "heading_DiBgHK",
-        "text_zrakEq",
-        "image_c3AixA"
+        "heading_yqdtMD",
+        "text_FQQkUx",
+        "collapsible_tab_jef6kW"
       ],
       "name": "Image with text",
       "settings": {
-        "image": "shopify://shop_images/mock-up.png",
+        "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": true,
+        "video_autoplay": false,
         "data-tooltip": "",
         "data-tooltip3": "",
         "height": "adapt",
         "desktop_image_width": "medium",
         "full_width": false,
-        "layout": "image_first",
+        "layout": "text_first",
         "content_position": "text-left",
         "column_spacing": "medium",
         "color_bg": "#ffffff",
-        "color_text": "#2c2d2e",
+        "color_text": "#1b3def",
         "color_border": "#e2e2e2",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "expert_slides_3ii9GE": {
-      "type": "expert-slides",
-      "blocks": {
-        "slide_cYhi9D": {
-          "type": "slide",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "subheading": "",
-            "heading": "Tina Kozman",
-            "heading_size": "h3",
-            "content": "Metabolic Health Coach",
-            "button_text": "",
-            "button_link": "",
-            "color_bg": "#ffffff",
-            "color_text": "#2c2d2e",
-            "color_button": "#2c2d2e"
-          }
-        },
-        "slide_7w3D3c": {
-          "type": "slide",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
-            "subheading": "",
-            "heading": "Hillary Wright",
-            "heading_size": "h3",
-            "content": "Metabolic Health Coach",
-            "button_text": "",
-            "button_link": "",
-            "color_bg": "#ffffff",
-            "color_text": "#2c2d2e",
-            "color_button": "#2c2d2e"
-          }
-        }
-      },
-      "block_order": [
-        "slide_cYhi9D",
-        "slide_7w3D3c"
-      ],
-      "name": "Experts",
-      "settings": {
-        "mobile_height": "mobile-height-350",
-        "desktop_height": "desktop-height-650",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "content_position": "text-left",
-        "autoplay": true,
-        "autoplay_length": 5,
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
@@ -682,8 +627,7 @@
     "image_with_text_P8GCCQ",
     "image_with_text_V4EdfX",
     "image_with_text_8T3hWK",
-    "image_with_text_R8YXFm",
-    "expert_slides_3ii9GE",
+    "image_with_text_B9wdkf",
     "e33b843b-b58f-4267-816b-664b79a1bcbb",
     "3dffb284-32e0-40fe-b93f-9a6ac28668ec",
     "8653503a-90e7-446a-8f99-8905e1d4a2ac",
