@@ -2876,8 +2876,8 @@ input[type="submit"] {
   height: 50px;
   font-weight: var(--font-body-medium-weight, 400);
   letter-spacing: var(--button-letter-spacing, 0.02em);
-  background: #f2eee9; /*linear-gradient(45deg, #1b3def, #a02127  );  var(--solid-button-background, var(--color-accent));*/
-  color: #1b3def; /*var(--solid-button-label, #fff);*/
+  background: linear-gradient(105deg, #0f2ed0, #0a95ef); /*#f2eee9; linear-gradient(45deg, #1b3def, #a02127  );  var(--solid-button-background, var(--color-accent));*/
+  color: #fff; /*#1b3def; var(--solid-button-label, #fff);*/
   border: 1px solid #e7dccd;
   border-radius: var(--button-border-radius, 6px);
   text-align: center;
@@ -2967,8 +2967,8 @@ input[type="submit"] {
         color: var(--white-button-label, var(--color-body, #2c2d2e)); } }
   .button.accent,
   input[type="submit"].accent {
-    background: linear-gradient(55deg, #0f2ed0, #0a95ef) /*#1b3def; linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
-    color: #fff; /* #f2eee9; var(--solid-button-label, #fff);*/
+    background: #1b3def; /* background: linear-gradient(55deg, #0f2ed0, #0a95ef) linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
+    color: #f2eee9;/*var(--solid-button-label, #fff);*/
   text-decoration: none;}
     .button.accent .spinner-path,
     input[type="submit"].accent .spinner-path {
