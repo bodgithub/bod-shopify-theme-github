@@ -184,3 +184,14 @@ line-hight:0.9;}
     font-size: 70px;
     line-height: 1;
 } }
+
+.image-with-text-overlay h1,
+.image-with-text-overlay h2,
+.image-with-text-overlay h3,
+.image-with-text-overlay .h1,
+.image-with-text-overlay .h2,
+.image-with-text-overlay .h3,
+.image-with-text-overlay blockquote p,
+.image-with-text-overlay blockquote span {
+  color: var(--text-color, #fff) !important;
+}
