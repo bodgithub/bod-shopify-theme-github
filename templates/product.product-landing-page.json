@@ -9,44 +9,6 @@
  */
 {
   "sections": {
-    "rich_text_QFkpNr": {
-      "type": "rich-text",
-      "blocks": {
-        "subheading_px8BJQ": {
-          "type": "subheading",
-          "settings": {
-            "text": "UNLOCK YOUR METABOLIC HEALTH"
-          }
-        },
-        "heading_dpWa68": {
-          "type": "heading",
-          "settings": {
-            "text": "Bodology™ Myo + D-Chiro Inositol Powder",
-            "marker_style": "style1",
-            "size": "h1",
-            "marker_color": "#fd6262"
-          }
-        }
-      },
-      "block_order": [
-        "subheading_px8BJQ",
-        "heading_dpWa68"
-      ],
-      "disabled": true,
-      "name": "Rich text",
-      "settings": {
-        "text_width": "medium",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "rgba(0,0,0,0)",
-        "bgcolor": "rgba(0,0,0,0)",
-        "color_heading": "#1b3def",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
     "spacer_fcdpRG": {
       "type": "spacer",
       "name": "Spacer",
@@ -1346,9 +1308,8 @@
     }
   },
   "order": [
-    "rich_text_QFkpNr",
-    "spacer_fcdpRG",
     "gpt_product_seo_DWikHm",
+    "spacer_fcdpRG",
     "main-product",
     "spacer_TM4WHh",
     "multicolumn_KdNre6",
