@@ -12,18 +12,18 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "subheading_BBmz3f": {
-          "type": "subheading",
-          "settings": {
-            "text": "<p>{{ page.metafields.custom.problem_category.value.category_title.value }}</p>",
-            "text_color": "#1b3def"
-          }
-        },
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
             "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
             "heading_size": "h1-xlarge"
+          }
+        },
+        "subheading_BBmz3f": {
+          "type": "subheading",
+          "settings": {
+            "text": "<h4>{{ page.metafields.custom.problem_category.value.benefits_intro.value }}</h4>",
+            "text_color": "#1b3def"
           }
         },
         "customer_reviews_CtBhV3": {
@@ -67,8 +67,8 @@
         }
       },
       "block_order": [
-        "subheading_BBmz3f",
         "heading_FGRE4D",
+        "subheading_BBmz3f",
         "customer_reviews_CtBhV3",
         "benefits_MfjQJR",
         "button_rBDtc7"
