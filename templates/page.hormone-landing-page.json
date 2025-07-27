@@ -15,14 +15,14 @@
         "subheading_BBmz3f": {
           "type": "subheading",
           "settings": {
-            "text": "<h4>{{ page.metafields.custom.problem_category.value.benefits_intro.value }}</h4>",
+            "text": "<h4>{{ page.metafields.custom.problem_category.value.category_title.value }}</h4>",
             "text_color": "#1b3def"
           }
         },
-        "space_etV4MH": {
+        "space_GJGWrA": {
           "type": "space",
           "settings": {
-            "height": 20
+            "height": 10
           }
         },
         "heading_FGRE4D": {
@@ -41,6 +41,14 @@
             "font_size": "0.7em",
             "link": "#reviews",
             "scale": ""
+          }
+        },
+        "text_iHjVwG": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>{{ page.metafields.custom.problem_category.value.benefits_intro.value }}</strong></p>",
+            "color_text": "#ffffff",
+            "description_size": "medium"
           }
         },
         "benefits_MfjQJR": {
@@ -74,9 +82,10 @@
       },
       "block_order": [
         "subheading_BBmz3f",
-        "space_etV4MH",
+        "space_GJGWrA",
         "heading_FGRE4D",
         "customer_reviews_CtBhV3",
+        "text_iHjVwG",
         "benefits_MfjQJR",
         "button_rBDtc7"
       ],
