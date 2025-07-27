@@ -1,4 +1,5 @@
   <!-- JSON-LD Schema -->
+<!-- JSON-LD Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -6,6 +7,7 @@
     {
       "@type": "Product",
       "name": "Myo + D-Chiro Inositol Powder",
+      "@id": "https://bodology.co/products/myo-d-chiro-inositol-powder#product",
       "image": "https://bodology.co/cdn/shop/files/Bodology-Inositol-1a-90-scoops-2.png?v=1751301997",
       "description": "Clinically studied 40:1 Myo + D-Chiro Inositol powder to support metabolic health, hormone balance, and fertility. Trusted by practitioners.",
       "brand": {
@@ -21,6 +23,7 @@
       "offers": {
         "@type": "Offer",
         "url": "https://bodology.co/products/myo-d-chiro-inositol-powder",
+        "@id": "https://bodology.co/products/myo-d-chiro-inositol-powder#offer",
         "priceCurrency": "USD",
         "price": "65.00",
         "availability": "https://schema.org/InStock",
@@ -43,7 +46,78 @@
             "priceCurrency": "USD",
             "name": "Subscribe + Affiliate Code (20% off)"
           }
+        ],
+        "shippingDetails": [
+          {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0.00",
+              "currency": "USD"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "US"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "d"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 2,
+                "maxValue": 5,
+                "unitCode": "d"
+              }
+            },
+            "shippingLabel": "Standard Shipping"
+          },
+          {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "5.00",
+              "currency": "USD"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "US"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "d"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 2,
+                "maxValue": 3,
+                "unitCode": "d"
+              }
+            },
+            "shippingLabel": "Express Shipping"
+          }
         ]
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 60,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn",
+        "returnShippingFeesAmount": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "USD"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -53,150 +127,142 @@
     },
     {
       "@type": "FAQPage",
-  "name": "Bodology Inositol Product FAQs",
-"@id": "https://bodology.co/products/myo-d-chiro-inositol-powder#faq",
+      "name": "Bodology Inositol Product FAQs",
+      "@id": "https://bodology.co/products/myo-d-chiro-inositol-powder#faq",
       "mainEntity": [
         {
-      "@type": "Question",
-      "name": "What is inositol and how does it work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inositol is a naturally occurring compound involved in insulin signaling, hormone balance, and neurotransmitter function. It's widely researched for supporting metabolic health, fertility, and mood regulation."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can you get inositol from diet alone?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It’s difficult to get enough inositol from food alone. For example, you’d need to eat around 8 cantaloupe melons to match the amount in 2 scoops of Bodology’s inositol powder."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is GLUT4?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "GLUT4 is a protein that helps move glucose into cells to be used for energy. Inositol supports healthy GLUT4 activity, which plays a key role in metabolic function and insulin sensitivity."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to see results?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most users notice changes in energy, mood, or cravings within 4–8 weeks. Studies suggest menstrual cycle improvements and ovulation restoration may occur within 3 months in some PCOS cases."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does inositol help with PCOS?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inositol may support insulin sensitivity, which is a key factor in 80% of PCOS cases. It’s been shown to help restore ovulation, lower testosterone, and support more balanced cycles."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can inositol support fertility goals?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inositol supports egg quality, ovulation, and hormone signaling. In clinical settings like IVF, it's associated with improved embryo quality and increased pregnancy rates."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does it help with weight or cravings?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inositol may support weight regulation and appetite control by improving insulin signaling. Many users report reduced cravings and more stable energy when taken consistently."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Could it influence mood, stress, or PMDD?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Some studies and user reports suggest inositol may support neurotransmitters like serotonin and GABA, helping with emotional regulation during PMS or PMDD."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I take this if I don’t have PCOS?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Inositol may help support insulin sensitivity, energy, mood, and metabolic health in women without PCOS as well."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this safe to take with prenatals or GLP-1s?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Inositol is a gentle, single-ingredient supplement that may be taken with prenatals or GLP-1 medications. Consult your healthcare provider if unsure."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there any side effects?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inositol is well-tolerated by most people. A small number may experience mild digestive shifts when starting. If needed, begin with 1 scoop and build up."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I take inositol while pregnant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Inositol is sometimes used during pregnancy for metabolic support. However, it’s important to check with your healthcare provider before starting any supplement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What does it taste like?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our inositol is neutral in taste and dissolves easily into water, coffee, smoothies, or yogurt. No added flavors, sweeteners, or aftertaste."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I take it?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Take 2 scoops (4g) daily with or after your first meal. Mix into any hot or cold liquid, or sprinkle on food. Consistency is key."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes Bodology different from other inositol supplements?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We’re a female-led, expert-backed brand created by women who’ve lived through PCOS, fertility journeys, and hormonal struggles. Our inositol is clean, bioavailable, and free of unnecessary extras."
-      },
+          "@type": "Question",
+          "name": "What is inositol and how does it work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol is a naturally occurring compound that plays a key role in insulin signaling, hormone balance, and neurotransmitter function. It's often categorized as a B-vitamin-like nutrient and has been widely researched for its role in PCOS, fertility, and metabolic health."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you get inositol from diet alone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol is found in foods like citrus fruit, beans, and cantaloupe—but only in small amounts. You’d need to eat around 8 melons a day to match the dosage in 2 scoops of Bodology. Modern farming practices have also reduced food-based inositol levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is GLUT4?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GLUT4 is a protein that helps transport glucose into cells where it can be used for energy. Inositol supports optimal GLUT4 activation, which can improve glucose metabolism."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to see results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every body is different, but many users report changes in energy, cravings, mood, or cycle regularity within 4–8 weeks. Clinical studies show menstrual regularity and ovulation can return within 3 months in 85% of PCOS cases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does inositol help with PCOS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol may help address the metabolic root cause in 80% of PCOS cases: insulin resistance. Studies show it can restore ovulation, lower testosterone, reduce cravings, and rebalance cycles—often outperforming metformin, with fewer side effects."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can inositol support fertility goals?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol improves egg quality, ovulation, and hormone balance. In ART cycles like IVF, it boosts embryo quality and pregnancy rates by up to 34%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it help with weight or cravings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol may support metabolic balance by improving insulin signaling, which can influence hunger, energy, and where fat is stored. Many find it useful alongside diet, movement, and functional health practices."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Could it influence mood, stress, or PMDD?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol participates in neurotransmitter pathways like serotonin and GABA. Some clinical studies and user experiences suggest it may support mood resilience, particularly during menstrual cycles or PMS phases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I take this if I don’t have PCOS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. Inositol supports insulin sensitivity, energy, mood, metabolic function, and weight regulation in both PCOS and non-PCOS women."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this safe to take with prenatals or GLP-1s?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Inositol is a single-ingredient supplement, not a hormone, and is generally well tolerated alongside prenatals or metabolic medications like GLP-1s. As always, confirm with your healthcare provider."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there any side effects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol has a strong safety record. A small number of people may experience mild bloating or digestive shifts in the first few days. Starting with 1 scoop and building up may help."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I take inositol while pregnant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Inositol is sometimes used during pregnancy, especially in gestational metabolic contexts. However, you should always consult your healthcare provider before starting any new supplement during pregnancy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it taste like?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our inositol powder is completely neutral in taste and dissolves easily in water, coffee, smoothies, or even yogurt. No flavorings, no weird aftertaste, just smooth, easy supplementation."
+          }
+        },
   {
-          "@type": "Question",
-          "name": "What is the ideal ratio of Myo-Inositol to D-Chiro Inositol?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Research suggests a 40:1 ratio mimics the natural plasma ratio and may be most effective for supporting insulin sensitivity and hormonal balance."
-          }
-        },
+  "@type": "Question",
+  "name": "What ingredients do you avoid in your inositol powder?",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "We believe in pure, bioavailable formulations without unnecessary extras. Our inositol powder contains no fillers, binders, additives, animal ingredients, artificial sweeteners, flavors, stevia, sugar, caffeine, gluten, dairy, soy, GMOs, or hormones—just pure dose-optimized inositol."
+  }
+  },
+  {
+  "@type": "Question",
+  "name": "Why did you create Bodology Inositol Powder?",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "We’re a female-led, practitioner-backed brand built by women who’ve lived through PCOS, fertility struggles, and hormonal imbalances. Unlike mass brands or male-led supplements, we created Bodology Inositol Powder to give women a cleaner, simpler choice—without fillers or extras that may interfere with other supplements or prenatals."
+  }
+}, {
+  "@type": "Question",
+  "name": "How is Bodology Inositol different from other inositol supplements?",
+  "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "We’re a female-led, practitioner-backed brand built by women who’ve lived through PCOS, fertility struggles, and hormonal imbalances. Unlike mass brands or male-led supplements, we created Bodology Inositol Powder to give women a cleaner, simpler choice—without fillers or extras that may interfere with other supplements or prenatals."
+  }
+}
         {
           "@type": "Question",
-          "name": "Can this supplement help with PCOS symptoms?",
+          "name": "How do I take it?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Inositol has been clinically studied for its potential to support ovulation, metabolic markers, and hormonal health in women with PCOS."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I take this supplement?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We recommend taking 2 scoops (4g) per day, mixed with water or a smoothie. Always consult your healthcare provider before starting any supplement."
+            "text": "Take 2 scoops (4g) daily. You can mix it into hot or cold liquids, or sprinkle onto food. Morning or evening both work, consistency is what matters most."
           }
         }
       ]
@@ -220,7 +286,7 @@
         "@type": "Organization",
         "name": "Bodology"
       },
-      "sameAs": ["hhttps://www.tiktok.com/@lesliekhealthnhormones"]
+      "sameAs": ["https://www.tiktok.com/@lesliekhealthnhormones"]
     },
     {
       "@type": "Person",
@@ -238,14 +304,14 @@
       "jobTitle": "Biomedical Scientist & Natural Medicine Practitioner",
       "affiliation": {
         "@type": "Organization",
-        "name": "Bodology" 
+        "name": "Bodology"
       },
       "sameAs": ["https://www.linkedin.com/in/dranitawasik"]
-    },
-
+    }
   ]
 }
 </script>
+
 
 {% schema %}
 {
