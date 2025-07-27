@@ -1,10 +1,3 @@
-{% schema %}
-{
-  "name": "GPT PROBLEM SEO",
-  "settings": []
-}
-{% endschema %}
-
 {%- if page and page.metafields.custom.problem_category -%}
   {%- assign problem = page.metafields.custom.problem_category.value -%}
 
@@ -125,3 +118,15 @@
   }
   </script>
 {%- endif -%}
+
+{% schema %}
+{
+  "name": "GPT PROBLEM SEO",
+  "settings": [],
+  "presets": [
+    {
+      "name": "GPT Problem SEO"
+    }
+  ]
+}
+{% endschema %}
