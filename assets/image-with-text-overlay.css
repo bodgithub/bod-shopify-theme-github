@@ -195,3 +195,8 @@ line-hight:0.9;}
 .image-with-text-overlay blockquote span {
   color: var(--text-color, #fff) !important;
 }
+
+.image-with-text-overlay .tagline,
+.image-with-text-overlay .subheading {
+  color: var(--text-color, #fff) !important;
+}
