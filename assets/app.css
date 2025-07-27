@@ -2909,7 +2909,7 @@ input[type="submit"] {
   @media screen and (hover: hover) {
     .button:hover,
     input[type="submit"]:hover {
-      background: linear-gradient(45deg, #0f2ed0, #7c1e45);/*var(--solid-button-background-hover, var(--color-accent));*/
+      background: linear-gradient(45deg, #0f2ed0, #0a95ef);/*var(--solid-button-background-hover, var(--color-accent));*/
       color: var(--solid-button-label, #fff); } }
   .button.loading span,
   [loading="true"] .button span,
@@ -2976,7 +2976,7 @@ input[type="submit"] {
     @media screen and (hover: hover) {
       .button.accent:hover,
       input[type="submit"].accent:hover {
-        background: linear-gradient(45deg, #0f2ed0, #7c1e45);/*var(--color-accent-hover, var(--color-accent));*/
+        background: linear-gradient(45deg, #0f2ed0, #0a95ef);/*var(--color-accent-hover, var(--color-accent));*/
       color: #fff;} }
   .button[disabled],
   input[type="submit"][disabled] {
