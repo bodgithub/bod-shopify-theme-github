@@ -200,3 +200,9 @@ line-hight:0.9;}
 .image-with-text-overlay .subheading {
   color: var(--text-color, #fff) !important;
 }
+
+.tagline p {
+    border: 1px solid blue;
+    border-radius: 50px;
+    width: fit-content;
+}
