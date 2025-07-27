@@ -15,7 +15,7 @@
   overflow: hidden;
   width: 100%;
   background: var(--color-accent);
-  color: var(--text-color, #fff);
+  color: var(--text-color, #fff) !important;
   padding: 40px 0; }
   @media only screen and (min-width: 768px) {
     .image-with-text-overlay {
@@ -85,7 +85,7 @@
       .image-with-text-overlay--content-inner.content-width-large {
         max-width: 900px; }
     .image-with-text-overlay--content h3 {
-      color: var(--text-color, #fff); }
+      color: var(--text-color, #fff); !important }
       .animations-true .image-with-text-overlay--content h3 {
         visibility: hidden;
         will-change: visibility; }
