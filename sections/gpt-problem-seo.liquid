@@ -1,6 +1,127 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "GPT PROBLEM SEO",
+  "settings": []
+}
 {% endschema %}
+
+{%- if page and page.metafields.custom.problem_category -%}
+  {%- assign problem = page.metafields.custom.problem_category.value -%}
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "{{ shop.url }}"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "{{ page.title }}",
+            "item": "{{ problem.canonical_url | default: request.origin | append: request.path }}"
+          }
+        ]
+      }
+      {% if problem.meta_author %},
+      {
+        "@type": "Person",
+        "name": "{{ problem.meta_author }}",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Bodology"
+        }
+      }
+      {% endif %},
+      {
+        "@type": "MedicalCondition",
+        "name": "{{ problem.display_name }}",
+        "description": "{{ problem.meta_description }}",
+        "associatedAnatomy": {
+          "@type": "AnatomicalSystem",
+          "name": "Endocrine system"
+        },
+        "possibleTreatment": {
+          "@type": "DietarySupplement",
+          "name": "Myo-Inositol and D-Chiro-Inositol",
+          "description": "Clinically studied supplement that improves insulin sensitivity and supports hormonal balance, especially in PCOS and fertility contexts.",
+          "activeIngredient": "Myo-Inositol, D-Chiro-Inositol (40:1 ratio)",
+          "dosageForm": "Powder",
+          "recommendedIntake": "2 scoops (4g) per day or as advised by your healthcare provider"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Myo + D-Chiro Inositol Powder",
+        "image": "https://bodology.co/cdn/shop/files/Bodology-Inositol-1a-90-scoops-2.png?v=1751301997",
+        "description": "Clinically studied 40:1 Myo + D-Chiro Inositol powder to support metabolic health, hormone balance, and fertility. Trusted by practitioners.",
+        "brand": {
+          "@type": "Brand",
+          "name": "Bodology"
+        },
+        "offers": {
+  "@type": "Offer",
+  "url": "https://bodology.co/products/myo-d-chiro-inositol-powder",
+  "priceCurrency": "USD",
+  "availability": "https://schema.org/InStock",
+  "price": "65.00",
+  "priceSpecification": [
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 65.00,
+      "priceCurrency": "USD",
+      "name": "One-time purchase"
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 52.00,
+      "priceCurrency": "USD",
+      "name": "Subscribe & Save"
+    },
+    {
+      "@type": "UnitPriceSpecification",
+      "price": 41.60,
+      "priceCurrency": "USD",
+      "name": "Subscribe + Affiliate Code (20% off)"
+    }
+  ]
+},
+        "sku": "1-MDCI",
+        "gtin": "199284309265",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ problem.average_rating | default: '4.9' }}",
+          "reviewCount": "{{ problem.review_count | default: '120' }}"
+        },
+        "activeIngredient": "Myo-Inositol, D-Chiro-Inositol",
+        "dosageForm": "Powder",
+        "recommendedIntake": "2 scoop daily (4g)"
+      }
+      {% if problem.faq and problem.faq.size > 0 %},
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {% for entry in problem.faq %}
+          {
+            "@type": "Question",
+            "name": "{{ entry.question | escape }}",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "{{ entry.answer | strip_html | escape }}"
+            }
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }
+      {% endif %}
+    ]
+  }
+  </script>
+{%- endif -%}
