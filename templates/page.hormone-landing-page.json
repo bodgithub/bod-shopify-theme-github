@@ -16,6 +16,7 @@
           "type": "text",
           "settings": {
             "text": "<p>{{ page.metafields.custom.problem_category.value.category_title.value }}</p>",
+            "color_text": "#ffffff",
             "description_size": "small"
           }
         },
@@ -24,6 +25,13 @@
           "settings": {
             "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
             "heading_size": "h1-xlarge"
+          }
+        },
+        "subheading_BBmz3f": {
+          "type": "subheading",
+          "settings": {
+            "text": "<h6>Add a tagline</h6>",
+            "text_color": "#1b3def"
           }
         },
         "customer_reviews_CtBhV3": {
@@ -69,6 +77,7 @@
       "block_order": [
         "text_yf4JGV",
         "heading_FGRE4D",
+        "subheading_BBmz3f",
         "customer_reviews_CtBhV3",
         "benefits_MfjQJR",
         "button_rBDtc7"
@@ -382,8 +391,7 @@
         "heading": "",
         "marker_style": "style1",
         "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
+        "bgcolor": "",
         "columns_desktop": 2,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -436,8 +444,7 @@
         "heading": "",
         "marker_style": "style1",
         "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
+        "bgcolor": "",
         "columns_desktop": 2,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -608,8 +615,7 @@
         "heading": "",
         "marker_style": "style1",
         "description": "",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
+        "bgcolor": "",
         "columns_desktop": 2,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -698,6 +704,7 @@
         "text_position": "left",
         "text_alignment": "left",
         "color_bg": "rgba(0,0,0,0)",
+        "bgcolor": "rgba(0,0,0,0)",
         "color_heading": "#D3D3D3",
         "color_text": "#767676",
         "color_links": "#767676",
@@ -754,8 +761,7 @@
         "heading": "",
         "marker_style": "style1",
         "description": "<h1>2 scoops of <em>inositol</em><br/>daily for best results</h1>",
-        "data-tooltip": "",
-        "data-tooltip3": "",
+        "bgcolor": "",
         "columns_desktop": 3,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -905,7 +911,7 @@
         "text_eeg3Xh": {
           "type": "text",
           "settings": {
-            "text": "<h3><b>Your body naturally produces inositol, a vital compound that plays multiple roles in hormonal and metabolic health.</b></h3>\n<hr><h6>Unfortunately, inositol levels can decrease due to factors like diet, stress and PCOS.\n<h6>Insulin function is crucial for a healthy hormonal system. Inositol works through metabolic pathways to activate GLUT4 <span data-tooltip=\"GLUT4 is a protein that moves glucose into cells, helping to control blood sugar levels.*\">ⓘ</span>, improving glucose metabolism and targeting hormonal imbalances at their root.</h6>\n<br>\n</h6>"
+            "text": "<h3><strong>Your body naturally produces inositol, a vital compound that plays multiple roles in hormonal and metabolic health.</strong></h3><h6>Unfortunately, inositol levels can decrease due to factors like diet, stress and PCOS.<br/></h6><h6>Insulin function is crucial for a healthy hormonal system. Inositol works through metabolic pathways to activate GLUT4, improving glucose metabolism and targeting hormonal imbalances at their root.</h6>"
           }
         },
         "image_gddwin": {
@@ -1061,6 +1067,7 @@
         "text_position": "center",
         "text_alignment": "center",
         "color_bg": "rgba(0,0,0,0)",
+        "bgcolor": "rgba(0,0,0,0)",
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
@@ -1077,6 +1084,7 @@
             "layout": "tile",
             "title": "",
             "product": "",
+            "reviewTag": "",
             "paddingTop": 24,
             "paddingBottom": 10,
             "containerClass": ""
