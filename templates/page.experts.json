@@ -239,60 +239,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "image_with_text_8T3hWK": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_NUQHbj": {
-          "type": "heading",
-          "settings": {
-            "text": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
-            "marker_style": "style1",
-            "heading_size": "h3",
-            "marker_color": "#fd6262"
-          }
-        },
-        "text_xC6gd3": {
-          "type": "text",
-          "settings": {
-            "text": "<h3><em>{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}</em></h3>"
-          }
-        },
-        "collapsible_tab_6ULwmc": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "PROFESSIONAL BIO",
-            "open": false,
-            "content": "{{ metaobjects.experts[\"a-hillary-rd\"].bio | metafield_tag }}",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_NUQHbj",
-        "text_xC6gd3",
-        "collapsible_tab_6ULwmc"
-      ],
-      "name": "Image with text",
-      "settings": {
-        "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
-        "use_video": false,
-        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_autoplay": false,
-        "data-tooltip": "",
-        "data-tooltip3": "",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "full_width": false,
-        "layout": "image_first",
-        "content_position": "text-left",
-        "column_spacing": "medium",
-        "color_bg": "#ffffff",
-        "color_text": "#1b3def",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": false
-      }
-    },
     "image_with_text_B9wdkf": {
       "type": "image-with-text",
       "blocks": {
@@ -329,6 +275,60 @@
       "name": "Image with text",
       "settings": {
         "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": false,
+        "data-tooltip": "",
+        "data-tooltip3": "",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "full_width": false,
+        "layout": "image_first",
+        "content_position": "text-left",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_8T3hWK": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_NUQHbj": {
+          "type": "heading",
+          "settings": {
+            "text": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
+            "marker_style": "style1",
+            "heading_size": "h3",
+            "marker_color": "#fd6262"
+          }
+        },
+        "text_xC6gd3": {
+          "type": "text",
+          "settings": {
+            "text": "<h3><em>{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}</em></h3>"
+          }
+        },
+        "collapsible_tab_6ULwmc": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "PROFESSIONAL BIO",
+            "open": false,
+            "content": "{{ metaobjects.experts[\"a-hillary-rd\"].bio | metafield_tag }}",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_NUQHbj",
+        "text_xC6gd3",
+        "collapsible_tab_6ULwmc"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": false,
@@ -626,8 +626,8 @@
     "spacer_PzATtT",
     "image_with_text_P8GCCQ",
     "image_with_text_V4EdfX",
-    "image_with_text_8T3hWK",
     "image_with_text_B9wdkf",
+    "image_with_text_8T3hWK",
     "e33b843b-b58f-4267-816b-664b79a1bcbb",
     "3dffb284-32e0-40fe-b93f-9a6ac28668ec",
     "8653503a-90e7-446a-8f99-8905e1d4a2ac",
