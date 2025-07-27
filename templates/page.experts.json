@@ -9,22 +9,13 @@
  */
 {
   "sections": {
-    "94589f0a-09ae-45e4-9510-dfed64308805": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 50,
-        "spacer_desktop": 40,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "166161901464a25e50": {
       "type": "image-with-text-overlay",
       "blocks": {
         "166161901437c6bc67-1": {
           "type": "heading",
           "settings": {
-            "text": "",
+            "text": "<p>Built on Truth, Not Trends</p>",
             "heading_size": "h2"
           }
         }
@@ -33,15 +24,15 @@
         "166161901437c6bc67-1"
       ],
       "settings": {
-        "image": "shopify://shop_images/BODOLOGY_July_24_7487-Edit.png",
+        "image": "shopify://shop_images/3-Pillars-bg.jpg",
         "image_parallax": true,
         "desktop_height": "desktop-height-450",
         "mobile_height": "mobile-height-350",
-        "full_width": false,
-        "content_width": "medium",
-        "content_position": "middle-center",
-        "text_alignment": "center",
-        "text_color": "#1b3def",
+        "full_width": true,
+        "content_width": "small",
+        "content_position": "middle-left",
+        "text_alignment": "left",
+        "text_color": "#ffffff",
         "overlay_color": "#1b3def",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
@@ -381,7 +372,6 @@
     }
   },
   "order": [
-    "94589f0a-09ae-45e4-9510-dfed64308805",
     "166161901464a25e50",
     "430e3fd4-6487-4550-8d73-86cdc88a218b",
     "expert_slides_3ii9GE",
