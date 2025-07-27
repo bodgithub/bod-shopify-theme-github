@@ -15,7 +15,7 @@
         "subheading_BBmz3f": {
           "type": "subheading",
           "settings": {
-            "text": "<h4>{{ page.metafields.custom.problem_category.value.category_title.value }}</h4>",
+            "text": "<p>{{ page.metafields.custom.problem_category.value.category_title.value }}</p>",
             "text_color": "#1b3def"
           }
         },
