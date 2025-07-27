@@ -299,7 +299,7 @@
         "heading_yqdtMD": {
           "type": "heading",
           "settings": {
-            "text": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
+            "text": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
             "marker_style": "style1",
             "heading_size": "h3",
             "marker_color": "#fd6262"
@@ -308,7 +308,7 @@
         "text_FQQkUx": {
           "type": "text",
           "settings": {
-            "text": "<h3><em>{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}</em></h3>"
+            "text": "<h3><em>{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}</em></h3>"
           }
         },
         "collapsible_tab_jef6kW": {
@@ -316,7 +316,7 @@
           "settings": {
             "heading": "PROFESSIONAL BIO",
             "open": false,
-            "content": "{{ metaobjects.experts[\"a-hillary-rd\"].bio | metafield_tag }}",
+            "content": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].bio | metafield_tag }}",
             "page": ""
           }
         }
