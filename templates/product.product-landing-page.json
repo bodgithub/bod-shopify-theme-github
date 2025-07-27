@@ -57,6 +57,11 @@
         "border_separator_full": false
       }
     },
+    "gpt_product_seo_DWikHm": {
+      "type": "gpt-product-seo",
+      "name": "GPT PRODUCT SEO",
+      "settings": {}
+    },
     "main-product": {
       "type": "main-product",
       "blocks": {
@@ -530,70 +535,6 @@
         "color_heading": "#1b3def",
         "color_text_1": "#1b3def",
         "color_text": "#2c2d2e"
-      }
-    },
-    "collapsible_content_2_iP8nzP": {
-      "type": "collapsible-content-2",
-      "blocks": {
-        "collapsible_tab_tD74p3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "ECOS & Inositol",
-            "open": false,
-            "content": "<p>Clinical research shows inositol supports insulin function, reduces testosterone, and restores cycles in 84% of women with ECOS.*</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_AcachQ": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Fertility & Inositol",
-            "open": false,
-            "content": "<p>84.85% of women taking inositol resumed regular cycles in a controlled trial, showing its impact on ovulation and hormone balance.*</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_7BTNKP": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Mood, Anxiety & Inositol",
-            "open": false,
-            "content": "<p>A meta-analysis linked inositol to improved mood, with positive effects for PMDD, anxiety, and emotional balance.*</p>",
-            "page": ""
-          }
-        },
-        "collapsible_tab_wXkCrX": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Metabolism & Inositol",
-            "open": false,
-            "content": "<p>Inositol as been shown to reduce fat mass by up to 18.9% while increasing lean muscle, outperforming diet alone for body composition.*</p>",
-            "page": ""
-          }
-        }
-      },
-      "block_order": [
-        "collapsible_tab_tD74p3",
-        "collapsible_tab_AcachQ",
-        "collapsible_tab_7BTNKP",
-        "collapsible_tab_wXkCrX"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "heading": "<h1>Does Your <em>Metabolism</em> Need a Reset?</h1>",
-        "bgcolor": "",
-        "header_image": "shopify://shop_images/Bodology-Inositol-for-Weight-2_20df554e-cb9f-4e55-af04-829cc08558f2.jpg",
-        "marker_style": "style1",
-        "description": "<h6>Decades of research show inositol’s impact on hormonal balance, fertility, mood, and metabolic health. Here’s what the science says.</h6>",
-        "color_bg": "#ffffff",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "color_border": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "multicolumn_QQjdQM": {
@@ -1407,13 +1348,13 @@
   "order": [
     "rich_text_QFkpNr",
     "spacer_fcdpRG",
+    "gpt_product_seo_DWikHm",
     "main-product",
     "spacer_TM4WHh",
     "multicolumn_KdNre6",
     "spacer_4GDyCF",
     "testimonial_carousel_twHytV",
     "why_bit_section_xQmrNX",
-    "collapsible_content_2_iP8nzP",
     "multicolumn_QQjdQM",
     "spacer_hDmb7V",
     "multicolumn_rVnwmF",
