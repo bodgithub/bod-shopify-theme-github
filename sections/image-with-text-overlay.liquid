@@ -94,8 +94,9 @@
 									<span class="inline-badge" style="--badge-bg: {{ block.settings.color_bg }};--badge-text: {{ block.settings.color_text }}">{{ block.settings.text }}</span>
 								</div>
 							{%- when 'subheading' -%}
-								<p class="subheading" {{ block.shopify_attributes }}>{{ block.settings.text  | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</p>
-							{%- when 'heading' -%}
+<h6 class="tagline" style="color: {{ block.settings.text_color }};" {{ block.shopify_attributes }}>
+  {{ block.settings.text | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}
+</h6>						{%- when 'heading' -%}
 								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
 							{%- when 'text' -%}
 								<div class="rte description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }}>
@@ -418,7 +419,13 @@
           "id": "text",
           "label": "Text",
           "default": "Add a tagline"
-        }
+        },
+        {
+  "type": "color",
+  "id": "text_color",
+  "label": "Text Color",
+  "default": "#1b3def"
+}
       ]
     },
     {
