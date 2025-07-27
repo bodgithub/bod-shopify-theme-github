@@ -12,12 +12,11 @@
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
-        "text_yf4JGV": {
-          "type": "text",
+        "subheading_BBmz3f": {
+          "type": "subheading",
           "settings": {
             "text": "<p>{{ page.metafields.custom.problem_category.value.category_title.value }}</p>",
-            "color_text": "#ffffff",
-            "description_size": "small"
+            "text_color": "#1b3def"
           }
         },
         "heading_FGRE4D": {
@@ -25,13 +24,6 @@
           "settings": {
             "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
             "heading_size": "h1-xlarge"
-          }
-        },
-        "subheading_BBmz3f": {
-          "type": "subheading",
-          "settings": {
-            "text": "<h6>Add a tagline</h6>",
-            "text_color": "#1b3def"
           }
         },
         "customer_reviews_CtBhV3": {
@@ -75,9 +67,8 @@
         }
       },
       "block_order": [
-        "text_yf4JGV",
-        "heading_FGRE4D",
         "subheading_BBmz3f",
+        "heading_FGRE4D",
         "customer_reviews_CtBhV3",
         "benefits_MfjQJR",
         "button_rBDtc7"
@@ -1008,8 +999,6 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
         "video_autoplay": true,
-        "data-tooltip": "",
-        "data-tooltip3": "Not another p*ll",
         "height": "large",
         "desktop_image_width": "large",
         "full_width": false,
