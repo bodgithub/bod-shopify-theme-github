@@ -191,7 +191,7 @@
           "settings": {
             "heading": "WHY WE MADE IT",
             "open": false,
-            "content": "<h6><strong>Made for women, by women who've been there. </strong></h6><p>We created Bodology™ Inositol Powder to give women a cleaner, simpler choice. Without fillers or extras that may interfere with other supplements or prenatals. Just pure inositol sourced from high-quality non-GMO corn and made in a GMP and FDA-compliant facility. Support your hormonal and metabolic health with confidence.</p>",
+            "content": "<h6><strong>Made for women, by women who've been there. </strong></h6><p>We created Bodology™ Inositol Powder to give women a cleaner, simpler choice. Without fillers or extras that may interfere with other supplements or prenatals. Just pure inositol so you can support your hormonal and metabolic health with confidence.</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -322,8 +322,6 @@
         "marker_style": "style1",
         "description": "",
         "bgcolor": "",
-        "data-tooltip": "",
-        "data-tooltip3": "",
         "columns_desktop": 4,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -612,8 +610,6 @@
         "marker_style": "style1",
         "description": "",
         "bgcolor": "",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
         "columns_desktop": 2,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -687,8 +683,6 @@
         "marker_style": "style1",
         "description": "",
         "bgcolor": "",
-        "data-tooltip": "",
-        "data-tooltip3": "",
         "columns_desktop": 2,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -844,8 +838,6 @@
         "marker_style": "style1",
         "description": "<h1>2 scoops of inositol<em> </em><br/>daily for <em>best results</em></h1>",
         "bgcolor": "",
-        "data-tooltip": "How to take",
-        "data-tooltip3": "",
         "columns_desktop": 3,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -865,9 +857,9 @@
         "collapsible_tab_hW7crK": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "What is Myo + D-Chiro Inositol?",
+            "heading": "What makes Bodology different from other inositol supplements?",
             "open": false,
-            "content": "<p>Myo-Inositol and D-Chiro-Inositol are naturally occurring compounds that play crucial roles in cellular metabolism (how your body processes sugar). Our high-quality inositol supplement combines these in a clinically-studied 40:1 ratio, mirroring your body's optimal balance, to support hormonal balance, mood and metabolic health. </p>",
+            "content": "<p>We’re a female-led, practitioner-backed brand that formulates clean, high-quality inositol based on science and real-world experience. Unlike mass brands or male-led supplement companies, we design with hormonal health, fertility, and women’s lived experiences in mind.</p><p>Bodology delivers a clinically-backed 40:1 myo-to-D-chiro inositol ratio, in pure powder form with no fillers or unnecessary additives. Unlike many capsules that underdose or add ingredients like DIM or folate (which may not suit PCOS or TTC), our blend is clean, bioavailable, and practitioner-trusted.</p>",
             "page": ""
           }
         },
@@ -910,9 +902,9 @@
         "collapsible_tab_ceQNA8": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "When will I see results?",
+            "heading": "How long does it take to see results?",
             "open": false,
-            "content": "<p>Individual responses vary, but many users report improvements within 3-4 weeks of consistent use. Full benefits may be observed after 3 months.</p>",
+            "content": "<p>Most users report improvements in energy, cravings, mood, or cycle regularity within 4–8 weeks. Clinical studies show menstrual regularity and ovulation can return within 3 months in 85% of PCOS cases*</p>",
             "page": ""
           }
         },
@@ -988,7 +980,7 @@
         "show_excerpt": false,
         "show_read_more": true,
         "show_view_all": false,
-        "marker_color": "#FD6262",
+        "marker_color": "#fd6262",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
@@ -1054,6 +1046,7 @@
             "layout": "tile",
             "title": "",
             "product": "{{product}}",
+            "reviewTag": "",
             "paddingTop": 24,
             "paddingBottom": 10,
             "containerClass": ""
