@@ -968,7 +968,8 @@ color: #1b3def;}
     /*font-weight: var(--font-body-bold-weight, 500);*/
     padding: 20px 40px 20px 0;
     color: var(--color-heading, #1a1c1d);
-    cursor: pointer; }
+    cursor: pointer;
+  text-transform: uppercase;}
     .accordion summary span {
       display: inline-flex;
       align-items: center;
