@@ -134,6 +134,7 @@
         },
         "text_7pNtRd": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Metabolic Health Coach</p>"
           }
@@ -141,7 +142,7 @@
         "collapsible_tab_TkHEqj": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "PROFESSIONAL BIO",
+            "heading": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
             "open": false,
             "content": "{{ metaobjects.experts[\"a-tina-kozman\"].bio | metafield_tag }}",
             "page": ""
