@@ -9,6 +9,11 @@
  */
 {
   "sections": {
+    "gpt_problem_seo_kPxd7C": {
+      "type": "gpt-problem-seo",
+      "name": "GPT Problem SEO",
+      "settings": {}
+    },
     "image_with_text_overlay_zjqnjJ": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -1117,6 +1122,7 @@
     }
   },
   "order": [
+    "gpt_problem_seo_kPxd7C",
     "image_with_text_overlay_zjqnjJ",
     "spacer_LVK4hF",
     "custom_liquid_RcjzA4",
