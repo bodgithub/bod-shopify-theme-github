@@ -481,6 +481,13 @@
         "disable_bottom_spacing": true
       }
     },
+    "custom_liquid_CwjPxw": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"Person\",\n      \"name\": \"Tina Kozman\",\n      \"jobTitle\": \"Certified Nutrition Practitioner\",\n      \"affiliation\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Bodology\"\n      },\n      \"email\": \"tina@bodology.co\",\n      \"sameAs\": [\"https://www.instagram.com/trinityhealth20\"]\n    },\n    {\n      \"@type\": \"Person\",\n      \"name\": \"Dr. Anita Wąsik\",\n      \"jobTitle\": \"Biomedical Scientist & Medical Herbalist\",\n      \"affiliation\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Bodology\"\n      },\n      \"email\": \"anita@bodology.co\"\n    },\n    {\n      \"@type\": \"Person\",\n      \"name\": \"Leslie Kutcha\",\n      \"jobTitle\": \"Functional Diagnostic Nutrition Practitioner\",\n      \"affiliation\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Bodology\"\n      },\n      \"email\": \"leslie@bodology.co\",\n      \"sameAs\": [\"https://www.tiktok.com/@lesliekhealthnhormones\"]\n    },\n    {\n      \"@type\": \"Person\",\n      \"name\": \"Hillary Wright\",\n      \"jobTitle\": \"Director of Nutrition at Boston IVF\",\n      \"worksFor\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Boston IVF\"\n      },\n      \"affiliation\": {\n        \"@type\": \"Organization\",\n        \"name\": \"Bodology\"\n      },\n      \"email\": \"hillary@bodology.co\",\n      \"sameAs\": [\"https://hillarywright.com/\"]\n    }\n  ]\n}\n</script>"
+      }
+    },
     "spacer_G4gjdn": {
       "type": "spacer",
       "settings": {
@@ -564,6 +571,7 @@
     "image_with_text_V4EdfX",
     "image_with_text_B9wdkf",
     "image_with_text_8T3hWK",
+    "custom_liquid_CwjPxw",
     "spacer_G4gjdn",
     "collapsible_content_Tw9qkh"
   ]
