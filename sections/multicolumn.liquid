@@ -35,7 +35,7 @@
 			<div class="multicolumn__inner text-{{ text_alignment }}">
 				<div class="row align-stretch no-padding">
 					{%- for block in section.blocks -%}
-						<div class="multicolumn__column small-12 {{ columns_desktop_class }} columns" {{ block.shopify_attributes }} {%- if section.settings.data-tooltip != blank -%} data-tooltip="{{ section.settings.data-tooltip }}" {%- elsif section.settings.data-tooltip3 != blank -%} data-tooltip3="{{ section.settings.data-tooltip3 }}{%- endif -%}">
+						<div class="multicolumn__column small-12 {{ columns_desktop_class }} columns" {{ block.shopify_attributes }}>
 							{% if block.settings.image != blank %}
 								{%- liquid
 									assign ratio = 1
@@ -124,18 +124,6 @@
       "id": "bgcolor",
       "label": "Background Color",
      
-    },
-      {
-      "type": "text",
-      "id": "data-tooltip",
-      "label": "Tooltip 2",
-      "info": "Add tooltip style 2 to image/video"
-    },
-    {
-      "type": "text",
-      "id": "data-tooltip3",
-      "label": "Tooltip 3",
-      "info": "Add tooltip style 3 to image/video"
     },
 
 
