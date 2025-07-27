@@ -91,13 +91,135 @@
         "template--17918040834330__430e3fd4-6487-4550-8d73-86cdc88a218b-1676976677d37e1c8b-1": {
           "type": "heading",
           "settings": {
-            "text": "Meet our scientific advisory board",
+            "text": "Not made to sell, made to work",
             "marker_style": "style1",
             "size": "h2",
             "marker_color": "#fd6262"
           }
         },
         "text_CLJqTw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We’re not here to sell trends. We’re here to fix what’s broken, in women’s healthcare, in the supplement aisle, and in the stories you’ve been told about your body.</p><p></p><p><strong>Our science-first process:</strong></p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "template--17918040834330__430e3fd4-6487-4550-8d73-86cdc88a218b-1676976677d37e1c8b-1",
+        "text_CLJqTw"
+      ],
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "bgcolor": "rgba(0,0,0,0)",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "multicolumn_AYWa9m": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_xwULXW": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "ROOTED IN RESEARCH",
+            "text": "<p>We use only clinically-proven ingredients at therapeutic doses. Our formula (40:1 Myo- & D-Chiro Inositol) mirrors what the body needs, no fluff, no fillers.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_nggjwq": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "VALIDATED BY EXPERTS",
+            "text": "<p>We collaborate with respected health professionals to ensure our product claims are backed by clinical data, not wellness marketing.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_XGJdCQ": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "TRANSPARENT BY DESIGN",
+            "text": "<p>We share our Certificates of Analysis, testing practices, and rationale for every ingredient we use. You deserve to know exactly what you're putting in your body, and why it works.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_arpJXe": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "PIONEERING THE FUTURE",
+            "text": "<p>We’re conducting and reviewing the latest science to reshape what \"hormone support\" truly means, for PCOS, fertility, mood, and more.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_xwULXW",
+        "column_nggjwq",
+        "column_XGJdCQ",
+        "column_arpJXe"
+      ],
+      "name": "Multicolumn",
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "bgcolor": "",
+        "data-tooltip": "",
+        "data-tooltip3": "",
+        "columns_desktop": 4,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h5",
+        "color_heading": "#1b3def",
+        "marker_color": "#FD6262",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "3deaef5c-9bfc-4ffe-b1f5-65bfbbad2be0": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 30,
+        "border_separator": true,
+        "border_separator_full": false
+      }
+    },
+    "rich_text_MFdmmg": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LRxGH4": {
+          "type": "heading",
+          "settings": {
+            "text": "Meet our scientific advisory board",
+            "marker_style": "style1",
+            "size": "h2",
+            "marker_color": "#fd6262"
+          }
+        },
+        "text_i94fVG": {
           "type": "text",
           "settings": {
             "text": "<p>Trusted names in metabolic health, hormone research, and functional medicine guide our innovation.</p>",
@@ -107,8 +229,8 @@
         }
       },
       "block_order": [
-        "template--17918040834330__430e3fd4-6487-4550-8d73-86cdc88a218b-1676976677d37e1c8b-1",
-        "text_CLJqTw"
+        "heading_LRxGH4",
+        "text_i94fVG"
       ],
       "settings": {
         "text_width": "xlarge",
@@ -121,15 +243,6 @@
         "color_links": "#1b3def",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
-      }
-    },
-    "3deaef5c-9bfc-4ffe-b1f5-65bfbbad2be0": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 50,
-        "spacer_desktop": 30,
-        "border_separator": true,
-        "border_separator_full": false
       }
     },
     "spacer_PzATtT": {
@@ -432,7 +545,9 @@
   "order": [
     "166161901464a25e50",
     "430e3fd4-6487-4550-8d73-86cdc88a218b",
+    "multicolumn_AYWa9m",
     "3deaef5c-9bfc-4ffe-b1f5-65bfbbad2be0",
+    "rich_text_MFdmmg",
     "spacer_PzATtT",
     "image_with_text_P8GCCQ",
     "image_with_text_V4EdfX",
