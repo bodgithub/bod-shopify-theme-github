@@ -4328,6 +4328,6 @@ h2 {
 }
 }
 
-:root {
-  --storefront-drawer-accent: #1b3def !important;
+.recharge-cart-drawer, .recharge-widget {
+  --storefront-drawer-accent: #1b3def;
 }
