@@ -125,7 +125,10 @@
                       
 							<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" data-index="{{ item.index | plus: 1 }}">{% render 'svg-icons' with 'trash' %}</a>
 						
-                          <button class="js-debug button">Start your inositol journey!</button>
+                
+                      </div>
+
+                      <button class="js-debug button">Start your inositol journey!</button>
               {%- unless item.properties._reCharge_interval_unit_count -%}
   {%- assign sub_variant = item.product.variants
        | where: "title", "Subscribe & save"
@@ -141,7 +144,6 @@
     </button>
   {%- endif -%}
 {%- endunless -%}
-                      </div>
 						<div class="product-cart-item-price">
 							<span class="price">
 							{%- if item.original_line_price != item.final_line_price -%}
