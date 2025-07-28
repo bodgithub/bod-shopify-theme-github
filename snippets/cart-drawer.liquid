@@ -58,6 +58,11 @@
 
 
 
+ {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
+         
+
+                      
+
                 
 							{% if item.selling_plan_allocation %}
 							<div class="properties">
@@ -125,22 +130,7 @@
                       
 							<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" data-index="{{ item.index | plus: 1 }}">{% render 'svg-icons' with 'trash' %}</a>
 						
-                {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
-              {%- unless item.properties._recharge_interval_unit_count -%}
-  {%- assign sub_variant = item.product.variants
-       | where: "title", "6 week subscription with 20% discount"
-       | first -%}
-  {%- if sub_variant -%}
-    <button
-      class="js-upgrade-to-sub button"
-      data-line-item-key="{{ item.key }}"
-      data-sub-variant-id="{{ sub_variant.id }}"
-      data-interval-unit-count="6"
-      data-interval-unit="weeks">
-      Save an extra 20% instantly
-    </button>
-  {%- endif -%}
-{%- endunless -%}
+               
                       </div>
 
                     
