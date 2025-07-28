@@ -353,18 +353,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     	<!-- Upgrade to Subscription Button -->
 
 
-  <script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
+ <script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
 <script>
-  function swapToSubscription(btn) {
-    const { lineItemKey, variantId, planId, intervalUnitCount, intervalUnit } = btn.dataset;
+  function refreshCartDrawer() {
+    fetch('/cart?section_id=cart-drawer&_' + Date.now())
+      .then(res => res.text())
+      .then(html => {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        const newContent = tmp.querySelector('#Cart-Drawer .side-panel-content');
+        document.querySelector('#Cart-Drawer .side-panel-content').innerHTML = newContent.innerHTML;
+        bindSubscriptionButtons();
+      })
+      .catch(console.error);
+  }
 
-    // 1) remove one‑off
+  function swapToSubscription(btn) {
+    const lineKey   = btn.dataset.lineItemKey;
+    const variantId = btn.dataset.variantId;
+    const planId    = btn.dataset.planId;
+    const count     = btn.dataset.intervalUnitCount;
+    const unit      = btn.dataset.intervalUnit;
+
+    // 1) remove the one‑off
     fetch('/cart/change.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: lineItemKey, quantity: 0 })
+      body: JSON.stringify({ id: lineKey, quantity: 0 })
     })
-    // 2) add same variant + selling‑plan
+    // 2) add it back as a subscription
     .then(() => fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -373,13 +390,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         quantity: 1,
         properties: {
           "_recharge_selling_plan_id": planId,
-          "_recharge_interval_unit_count": intervalUnitCount,
-          "_recharge_interval_unit": intervalUnit
+          "_recharge_interval_unit_count": count,
+          "_recharge_interval_unit": unit
         }
       })
     }))
-    // 3) refresh drawer (or page)
-    .then(() => window.location.reload())
+    // 3) refresh just the drawer
+    .then(refreshCartDrawer)
     .catch(console.error);
   }
 
@@ -387,13 +404,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.querySelectorAll('.js-upgrade-to-sub').forEach(btn => {
       if (btn._bound) return;
       btn._bound = true;
-      btn.addEventListener('click', () => swapToSubscription(btn));
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        swapToSubscription(btn);
+      });
     });
   }
 
   document.addEventListener('DOMContentLoaded', bindSubscriptionButtons);
   document.addEventListener('CartDrawerOpen', bindSubscriptionButtons);
 </script>
+
 
 
   
