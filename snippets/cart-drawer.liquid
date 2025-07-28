@@ -60,11 +60,16 @@
 
  {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
                   {%- unless item.selling_plan_allocation -%}
-      {%- assign spg = item.product.selling_plan_groups | first -%}
+      <!-- DEBUG: key={{ item.key }} variant={{ item.variant.id }} spg_count={{ item.product.selling_plan_groups.size }} -->
+{%- assign spg = item.product.selling_plan_groups | first -%}
+                    <!-- DEBUG: spg.name={{ spg.name }} plans={{ spg.selling_plans.size }} -->
+
       {%- assign six_week_plan = spg.selling_plans
            | where: "interval_count", 6
            | where: "interval_unit", "weeks"
            | first -%}
+                    <!-- DEBUG: six_week_plan.id={{ six_week_plan.id }} -->
+
       {%- if six_week_plan -%}
         <button
           class="js-upgrade-to-sub button small"
