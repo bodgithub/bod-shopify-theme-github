@@ -59,7 +59,28 @@
 
 
  {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
-         
+                  {%- unless item.selling_plan_allocation -%}
+      {%- assign spg = item.product.selling_plan_groups | first -%}
+      {%- assign six_week_plan = spg.selling_plans
+           | where: "interval_count", 6
+           | where: "interval_unit", "weeks"
+           | first -%}
+      {%- if six_week_plan -%}
+        <button
+          class="js-upgrade-to-sub button small"
+          data-line-item-key="{{ item.key }}"
+          data-variant-id="{{ item.variant.id }}"
+          data-plan-id="{{ six_week_plan.id }}"
+          data-interval-unit-count="{{ six_week_plan.interval_count }}"
+          data-interval-unit="{{ six_week_plan.interval_unit }}">
+          Save an extra 20% instantly
+        </button>
+      {%- endif -%}
+    {%- endunless -%}
+
+    <!-- … your quantity-selector, remove‑link, etc. … -->
+  </div>
+{%- endfor -%}
 
                       
 
@@ -159,7 +180,6 @@
 						</div>
 					</div>
                   
-					{% endfor %}
 
               
                                     
