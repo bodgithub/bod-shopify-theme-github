@@ -5,7 +5,11 @@
   assign article_card_shadow = settings.article_card_shadow
   assign article_card_shadow_class = 'has-shadow--' | append: article_card_shadow
 -%}
-
+{% if article.metafields.custom.gpt_seo %}
+  <script type="application/ld+json">
+    {{ article.metafields.custom.gpt_seo | strip_newlines }}
+  </script>
+{% endif %}
 
     <div class="mobile-only-TOC">
   
