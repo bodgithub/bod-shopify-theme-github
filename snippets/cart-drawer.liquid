@@ -59,7 +59,7 @@
 
 
 
- {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
+ {% comment %} <button class="js-debug button">Start your inositol journey!</button>  
       {%- unless item.selling_plan_allocation -%}
   {%- assign spg  = item.product.selling_plan_groups
        | where: "name", "6 week subscription with 20% discount"
@@ -78,10 +78,8 @@
     </button>
   {%- endif -%}
 {%- endunless -%}
-<pre style="font-size:12px; white-space: pre-wrap;">
-DEBUG PLAN → {{ plan | json }}
-</pre>
 
+{% endcomment %}
                       
    <!-- DEBUG: spg.name={{ spg.name }} plans={{ spg.selling_plans.size }} -->
                     <!-- DEBUG: six_week_plan.id={{ six_week_plan.id }} -->
