@@ -117,7 +117,9 @@
 							 >
 							 <button class="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}">{% render 'svg-icons' with 'plus' %}</button>
 							
-                              <button class="js-debug button">Start your inositol journey!</button>
+                              
+                            </quantity-selector>
+<button class="js-debug button">Start your inositol journey!</button>
               {%- unless item.properties._reCharge_interval_unit_count -%}
   {%- assign sub_variant = item.product.variants
        | where: "title", "Subscribe & save"
@@ -133,8 +135,6 @@
     </button>
   {%- endif -%}
 {%- endunless -%}
-                            </quantity-selector>
-
                           
 
                       
