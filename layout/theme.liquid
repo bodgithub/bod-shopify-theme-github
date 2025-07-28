@@ -355,7 +355,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     	<!-- Upgrade to Subscription Button -->
 
-
+<script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
 <script>
   function refreshCartDrawer() {
     fetch('/cart?section_id=cart-drawer&_' + Date.now())
@@ -377,13 +377,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const count     = btn.dataset.intervalUnitCount;
     const unit      = btn.dataset.intervalUnit;
 
-    // 1) remove the one‑off
     fetch('/cart/change.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id: lineKey, quantity: 0 })
     })
-    // 2) add it back as a subscription
     .then(() => fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -397,7 +395,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
       })
     }))
-    // 3) refresh just the drawer
     .then(refreshCartDrawer)
     .catch(console.error);
   }
@@ -416,6 +413,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.addEventListener('DOMContentLoaded', bindSubscriptionButtons);
   document.addEventListener('CartDrawerOpen', bindSubscriptionButtons);
 </script>
+
 
 
 
