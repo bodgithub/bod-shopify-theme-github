@@ -59,7 +59,7 @@
 
 
 
- {% comment %} <button class="js-debug button">Start your inositol journey!</button>  
+
       {%- unless item.selling_plan_allocation -%}
   {%- assign spg  = item.product.selling_plan_groups
        | where: "name", "6 week subscription with 20% discount"
@@ -79,10 +79,10 @@
       data-plan-id="{{ plan.id }}"
       data-interval-unit-count="{{ parts[0] }}"
       data-interval-unit="{{ parts[1] }}">
-      Save an extra 20% instantly
+      *
     </button>
   {%- endif -%}
-{%- endunless -%} {% endcomment %}
+{%- endunless -%} 
 
 
                       
