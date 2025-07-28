@@ -350,6 +350,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   	<!-- Custom Cursor3 JavaScript END -->
 
+    	<!-- Upgrade to Subscription Button -->
+
+
+  <script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
+<script>
+  function swapToSubscription(btn){
+    const { lineItemKey, subVariantId, intervalUnitCount, intervalUnit } = btn.dataset;
+    fetch('/cart/change.js', {
+      method: 'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ id: lineItemKey, quantity: 0 })
+    })
+    .then(() =>
+      fetch('/cart/add.js', {
+        method: 'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({
+          id: subVariantId,
+          quantity: 1,
+          properties: {
+            "_reCharge_interval_unit_count": intervalUnitCount,
+            "_reCharge_interval_unit": intervalUnit
+          }
+        })
+      })
+    )
+    .then(() => {
+      // if your theme exposes a cart-refresh API, call it here
+      window.location.reload();
+    })
+    .catch(console.error);
+  }
+
+  function bindSubscriptionUpgrades(){
+    document.querySelectorAll('.js-upgrade-to-sub').forEach(btn => {
+      if (btn._handled) return;
+      btn._handled = true;
+      btn.addEventListener('click', () => swapToSubscription(btn));
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', bindSubscriptionUpgrades);
+  document.addEventListener('CartDrawerOpen', bindSubscriptionUpgrades);
+</script>
   
 </body>
 </html>
