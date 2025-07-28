@@ -128,22 +128,7 @@
                 
                       </div>
 
-                      <button class="js-debug button">Start your inositol journey!</button>
-              {%- unless item.properties._reCharge_interval_unit_count -%}
-  {%- assign sub_variant = item.product.variants
-       | where: "title", "Subscribe & save"
-       | first -%}
-  {%- if sub_variant -%}
-    <button
-      class="js-upgrade-to-sub button"
-      data-line-item-key="{{ item.key }}"
-      data-sub-variant-id="{{ sub_variant.id }}"
-      data-interval-unit-count="6"
-      data-interval-unit="weeks">
-      Save an extra 20% instantly
-    </button>
-  {%- endif -%}
-{%- endunless -%}
+                    
 						<div class="product-cart-item-price">
 							<span class="price">
 							{%- if item.original_line_price != item.final_line_price -%}
@@ -164,6 +149,23 @@
                               
 							{%- endif -%}
 							</span>
+                           
+                      {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
+              {%- unless item.properties._recharge_interval_unit_count -%}
+  {%- assign sub_variant = item.product.variants
+       | where: "title", "6 week subscription with 20% discount"
+       | first -%}
+  {%- if sub_variant -%}
+    <button
+      class="js-upgrade-to-sub button"
+      data-line-item-key="{{ item.key }}"
+      data-sub-variant-id="{{ sub_variant.id }}"
+      data-interval-unit-count="6"
+      data-interval-unit="weeks">
+      Save an extra 20% instantly
+    </button>
+  {%- endif -%}
+{%- endunless -%}
 						</div>
 					</div>
                   
