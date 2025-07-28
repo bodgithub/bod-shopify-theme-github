@@ -140,11 +140,7 @@
 									{%- endif -%}
 									{{ item.variant.unit_price_measurement.reference_unit }}
 								</small>
-							{%- endif -%}
-							</span>
-						</div>
-					</div>
-                  <button class="js-debug button">Start your inositol journey!</button>
+                              <button class="js-debug button">Start your inositol journey!</button>
               {%- unless item.properties._reCharge_interval_unit_count -%}
   {%- assign sub_variant = item.product.variants
        | where: "title", "Subscribe & save"
@@ -160,6 +156,11 @@
     </button>
   {%- endif -%}
 {%- endunless -%}
+							{%- endif -%}
+							</span>
+						</div>
+					</div>
+                  
 					{% endfor %}
 
               
