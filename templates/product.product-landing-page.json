@@ -115,17 +115,17 @@
             "custom_liquid": "<div class=\"gfp_ref_input\"></div>"
           }
         },
-        "custom_liquid_ECD6CT": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div id=\"discount-banner\" style=\"display:none; margin-top: 1em; font-weight: bold; color: #2d8a54;\"></div>"
-          }
-        },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_ECD6CT": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"discount-banner\" style=\" margin-top: 1em; font-weight: bold; padding-bottom:10px;\"></div>"
           }
         },
         "custom_liquid_wbFXG8": {
@@ -220,8 +220,8 @@
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
         "custom_liquid_pNPMRH",
-        "custom_liquid_ECD6CT",
         "buy_buttons_3FBywE",
+        "custom_liquid_ECD6CT",
         "custom_liquid_wbFXG8",
         "side_panel_NGJTtJ",
         "collapsible_tab_KVBdNK",
