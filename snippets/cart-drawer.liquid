@@ -58,21 +58,7 @@
 
 
 
-                      {%- unless item.properties._reCharge_interval_unit_count -%}
-  {%- assign sub_variant = item.product.variants
-       | where: "title", "Subscribe & save"
-       | first -%}
-  {%- if sub_variant -%}
-    <button
-      class="js-upgrade-to-sub button small"
-      data-line-item-key="{{ item.key }}"
-      data-sub-variant-id="{{ sub_variant.id }}"
-      data-interval-unit-count="1"
-      data-interval-unit="month">
-      Save an extra 20% instantly
-    </button>
-  {%- endif -%}
-{%- endunless -%}
+                
 							{% if item.selling_plan_allocation %}
 							<div class="properties">
 								<span class="selling-plan">{{ item.selling_plan_allocation.selling_plan.name }}</span>
@@ -159,7 +145,26 @@
 						</div>
 					</div>
 					{% endfor %}
+
+              
                                     <div class="js-debug">Start your inositol journey!</div>
+              {%- unless item.properties._reCharge_interval_unit_count -%}
+  {%- assign sub_variant = item.product.variants
+       | where: "title", "Subscribe & save"
+       | first -%}
+  {%- if sub_variant -%}
+    <button
+      class="js-upgrade-to-sub button small"
+      data-line-item-key="{{ item.key }}"
+      data-sub-variant-id="{{ sub_variant.id }}"
+      data-interval-unit-count="1"
+      data-interval-unit="month">
+      Save an extra 20% instantly
+    </button>
+  {%- endif -%}
+{%- endunless -%}
+
+              
 
 				</div>
 			{%- else -%}
