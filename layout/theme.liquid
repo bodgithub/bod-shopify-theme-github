@@ -351,6 +351,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   	<!-- Custom Cursor3 JavaScript END -->
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Wait for Recharge cart to load
+    const waitForRecharge = setInterval(() => {
+      if (window.Recharge && Recharge.Cart) {
+        clearInterval(waitForRecharge);
+
+        Recharge.Cart.getCart().then(function(cart) {
+          if (
+            cart &&
+            cart.discount_applications &&
+            cart.discount_applications.length > 0
+          ) {
+            const discountCode = cart.discount_applications[0].code;
+
+            // Create and inject discount display element
+            const discountDiv = document.createElement("div");
+            discountDiv.innerText = `Discount code applied: ${discountCode}`;
+            discountDiv.style.fontWeight = "bold";
+            discountDiv.style.marginTop = "10px";
+            discountDiv.style.color = "#2d8a54";
+
+            // Append to Recharge cart summary
+            const target = document.querySelector(".rc-cart__footer") || document.querySelector(".rc-cart__totals");
+            if (target) {
+              target.prepend(discountDiv);
+            }
+          }
+        });
+      }
+    }, 300);
+  });
+</script>
+
 
 </body>
 </html>
