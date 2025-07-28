@@ -355,24 +355,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  <script>
   document.addEventListener("DOMContentLoaded", function () {
     fetch('/cart.js')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) throw new Error("Cart fetch failed");
+        return response.json();
+      })
       .then(cart => {
         if (
-          cart &&
-          cart.discount_applications &&
-          cart.discount_applications.length > 0
+          cart.discount_codes &&
+          cart.discount_codes.length > 0 &&
+          cart.discount_codes[0].applicable
         ) {
-          const discountCode = cart.discount_applications[0].code;
+          const discountCode = cart.discount_codes[0].code;
           const banner = document.getElementById("discount-banner");
 
           if (banner) {
-            banner.textContent = `Your discount ${discountCode.toUpperCase()} can be combined with our first-time subscription.`;
+            banner.innerText = `DISCOUNT ${discountCode.toUpperCase()} WILL BE APPLIED AT CHECKOUT. CAN BE COMBINED WITH SUBSCRIPTION DISCOUNT.`;
             banner.style.display = "block";
           }
         }
-      });
+      })
+      .catch(err => console.error("Discount fetch error:", err));
   });
 </script>
+
 
 
 </body>
