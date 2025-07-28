@@ -59,6 +59,7 @@
 
 
  {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
+                  {%- unless item.selling_plan_allocation -%}
       <!-- DEBUG: key={{ item.key }} variant={{ item.variant.id }} spg_count={{ item.product.selling_plan_groups.size }} -->
 {%- assign spg = item.product.selling_plan_groups | first -%}
                     <!-- DEBUG: spg.name={{ spg.name }} plans={{ spg.selling_plans.size }} -->
@@ -80,6 +81,7 @@
           Save an extra 20% instantly
         </button>
       {%- endif -%}
+    {%- endunless -%}
 
 
                       
