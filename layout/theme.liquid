@@ -353,83 +353,82 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   	<!-- Custom Cursor3 JavaScript END -->
 
     	<!-- Upgrade to Subscription Button -->
-  <script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
+<script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
 
-  <script>
-    // 1) Refresh only the cart‑drawer content via AJAX
-    function refreshCartDrawer() {
-      fetch('/cart?section_id=cart-drawer&_' + Date.now())
-        .then(res => res.text())
-        .then(html => {
-          const tmp = document.createElement('div');
-          tmp.innerHTML = html;
-          const newContent = tmp.querySelector('#Cart-Drawer .side-panel-content');
-          document.querySelector('#Cart-Drawer .side-panel-content').innerHTML = newContent.innerHTML;
-        })
-        .then(bindSubscriptionButtons)  // re-bind buttons in the refreshed HTML
-        .catch(console.error);
-    }
+<script>
+  // 1️⃣ Refresh only the drawer content via AJAX
+  function refreshCartDrawer() {
+    fetch('/cart?section_id=cart-drawer&_' + Date.now())
+      .then(r => r.text())
+      .then(html => {
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        const newContent = tmp.querySelector('#Cart-Drawer .side-panel-content');
+        document.querySelector('#Cart-Drawer .side-panel-content').innerHTML = newContent.innerHTML;
+      })
+      .then(bindSubscriptionButtons)  // re-bind handlers on the new HTML
+      .catch(console.error);
+  }
 
-    // 2) Swap a one‑off line for its subscription selling plan
-    function swapToSubscription(btn) {
-      console.log('[swap] start', btn.dataset);
-      const { lineItemKey, variantId, planId, intervalUnitCount, intervalUnit } = btn.dataset;
+  // 2️⃣ Swap logic: remove one‑off, add it back with the selling‑plan only
+  function swapToSubscription(btn) {
+    console.log('[swap] clicked', btn.dataset);
+    const { lineItemKey, variantId, planId } = btn.dataset;
 
-      // a) remove the one‑off
-      fetch('/cart/change.js', {
+    // a) remove the one‑off
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: lineItemKey, quantity: 0 })
+    })
+    // b) add with the plan
+    .then(() => {
+      console.log('[swap] removed, now adding plan ' + planId);
+      return fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: lineItemKey, quantity: 0 })
-      })
-      .then(() => {
-        console.log('[swap] removed, now adding as subscription');
-        // b) add the same variant with Recharge selling‑plan properties
-        return fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            id: parseInt(variantId, 10),
-            quantity: 1,
-            properties: {
-              "_recharge_selling_plan_id": planId,
-              "_recharge_interval_unit_count": intervalUnitCount,
-              "_recharge_interval_unit": intervalUnit
-            }
-          })
-        });
-      })
-      .then(() => {
-        console.log('[swap] added subscription, refreshing drawer');
-        refreshCartDrawer();
-      })
-      .catch(err => console.error('[swap] error', err));
-    }
-
-    // 3) Find and bind all “upgrade” buttons
-    function bindSubscriptionButtons() {
-      document.querySelectorAll('.js-upgrade-to-sub').forEach(btn => {
-        if (btn._bound) return;
-        btn._bound = true;
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          swapToSubscription(btn);
-        });
+        body: JSON.stringify({
+          id: parseInt(variantId, 10),
+          quantity: 1,
+          properties: {
+            "_recharge_selling_plan_id": planId
+          }
+        })
       });
-    }
+    })
+    // c) refresh just the drawer
+    .then(() => {
+      console.log('[swap] added, refreshing drawer');
+      refreshCartDrawer();
+    })
+    .catch(err => console.error('[swap] error', err));
+  }
 
-    // 4) Delegated listener in case drawer content is re-rendered
-    document.addEventListener('click', e => {
-      const btn = e.target.closest('.js-upgrade-to-sub');
-      if (!btn) return;
-      e.preventDefault();
-      swapToSubscription(btn);
+  // 3️⃣ Attach handlers to all buttons
+  function bindSubscriptionButtons() {
+    document.querySelectorAll('.js-upgrade-to-sub').forEach(btn => {
+      if (btn._bound) return;
+      btn._bound = true;
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        swapToSubscription(btn);
+      });
     });
+  }
 
-    // 5) Initial bind on page load (covers non-AJAX case)
-    document.addEventListener('DOMContentLoaded', bindSubscriptionButtons);
-    // If your theme fires a custom event when the drawer opens, bind there too:
-    document.addEventListener('CartDrawerOpen', bindSubscriptionButtons);
-  </script>
+  // 4️⃣ Delegated catch‑all (in case the drawer is re‑rendered by other code)
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('.js-upgrade-to-sub');
+    if (!btn) return;
+    e.preventDefault();
+    swapToSubscription(btn);
+  });
+
+  // 5️⃣ Kick off on page load & drawer open
+  document.addEventListener('DOMContentLoaded', bindSubscriptionButtons);
+  document.addEventListener('CartDrawerOpen', bindSubscriptionButtons);
+</script>
+
 
 
 
