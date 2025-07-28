@@ -61,22 +61,26 @@
 
  {% comment %} <button class="js-debug button">Start your inositol journey!</button>  {% endcomment %}
       {%- unless item.selling_plan_allocation -%}
-  {%- assign spg = item.product.selling_plan_groups
+  {%- assign spg  = item.product.selling_plan_groups
        | where: "name", "6 week subscription with 20% discount"
        | first -%}
   {%- assign plan = spg.selling_plans.first -%}
   {%- if plan -%}
+    {%- assign parts = plan.options[0] | split: " " -%}
     <button
       class="js-upgrade-to-sub button small"
       data-line-item-key="{{ item.key }}"
       data-variant-id="{{ item.variant.id }}"
       data-plan-id="{{ plan.id }}"
-      data-interval-unit-count="{{ plan.delivery_policy.interval_count }}"
-      data-interval-unit="{{ plan.delivery_policy.interval_unit }}">
+      data-interval-unit-count="{{ parts[0] }}"
+      data-interval-unit="{{ parts[1] }}">
       Save an extra 20% instantly
     </button>
   {%- endif -%}
 {%- endunless -%}
+<pre style="font-size:12px; white-space: pre-wrap;">
+DEBUG PLAN → {{ plan | json }}
+</pre>
 
                       
    <!-- DEBUG: spg.name={{ spg.name }} plans={{ spg.selling_plans.size }} -->
