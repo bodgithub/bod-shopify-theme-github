@@ -55,6 +55,22 @@
 									</small>
 								{%- endif -%}
 							</span>
+                         
+                      {%- unless item.properties._reCharge_interval_unit_count -%}
+  {%- assign sub_variant = item.product.variants
+       | where: "title", "Subscribe & save"
+       | first -%}
+  {%- if sub_variant -%}
+    <button
+      class="js-upgrade-to-sub button small"
+      data-line-item-key="{{ item.key }}"
+      data-sub-variant-id="{{ sub_variant.id }}"
+      data-interval-unit-count="1"
+      data-interval-unit="month">
+      Save an extra 20% instantly
+    </button>
+  {%- endif -%}
+{%- endunless -%}
 							{% if item.selling_plan_allocation %}
 							<div class="properties">
 								<span class="selling-plan">{{ item.selling_plan_allocation.selling_plan.name }}</span>
@@ -113,6 +129,10 @@
 							 >
 							 <button class="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}">{% render 'svg-icons' with 'plus' %}</button>
 							</quantity-selector>
+
+                          
+
+                      
 							<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" data-index="{{ item.index | plus: 1 }}">{% render 'svg-icons' with 'trash' %}</a>
 						</div>
 						<div class="product-cart-item-price">
@@ -249,3 +269,46 @@
 	</div>
 </div>
 {%- endif -%}
+<script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.js-upgrade-to-sub').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var lineKey      = btn.dataset.lineItemKey;
+        var subVariantId = btn.dataset.subVariantId;
+        var intervalCount= btn.dataset.intervalUnitCount;
+        var intervalUnit = btn.dataset.intervalUnit;
+
+        // 1) Remove the one-off item
+        fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: lineKey, quantity: 0 })
+        })
+        .then(function(){
+          // 2) Add the subscription variant
+          return fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: parseInt(subVariantId,10),
+              quantity: 1,
+              properties: {
+                "_reCharge_interval_unit_count": intervalCount,
+                "_reCharge_interval_unit": intervalUnit
+              }
+            })
+          });
+        })
+        .then(function(){
+          // 3) Refresh the drawer to show the new discount
+          // If your theme uses AJAX to re-open the drawer, call that here instead of full reload.
+          window.location.reload();
+        })
+        .catch(function(err){
+          console.error('Subscription swap failed:', err);
+        });
+      });
+    });
+  });
+</script>
