@@ -354,22 +354,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
  <script>
   document.addEventListener("DOMContentLoaded", function () {
-    // Get discount from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const discountFromURL = urlParams.get("discount");
+    fetch('/cart.js')
+      .then(response => response.json())
+      .then(cart => {
+        if (
+          cart &&
+          cart.discount_applications &&
+          cart.discount_applications.length > 0
+        ) {
+          const discountCode = cart.discount_applications[0].code;
+          const banner = document.getElementById("discount-banner");
 
-    // Save to sessionStorage if present
-    if (discountFromURL) {
-      sessionStorage.setItem("bodology_discount_code", discountFromURL);
-    }
-
-    // Retrieve and show the discount
-    const discountCode = sessionStorage.getItem("bodology_discount_code");
-    if (discountCode) {
-      const banner = document.getElementById("discount-banner");
-      banner.textContent = `DISCOUNT ${discountCode.toUpperCase()} WILL BE APPLIED AT CHECKOUT. CAN BE COMBINED WITH SUBSCRIPTION DISCOUNT.`;
-      banner.style.display = "block";
-    }
+          if (banner) {
+            banner.textContent = `Your discount ${discountCode.toUpperCase()} can be combined with our first-time subscription.`;
+            banner.style.display = "block";
+          }
+        }
+      });
   });
 </script>
 
