@@ -154,11 +154,11 @@
        | first -%}
   {%- if sub_variant -%}
     <button
-      class="js-upgrade-to-sub button small"
+      class="js-upgrade-to-sub button"
       data-line-item-key="{{ item.key }}"
       data-sub-variant-id="{{ sub_variant.id }}"
-      data-interval-unit-count="1"
-      data-interval-unit="month">
+      data-interval-unit-count="6"
+      data-interval-unit="weeks">
       Save an extra 20% instantly
     </button>
   {%- endif -%}
