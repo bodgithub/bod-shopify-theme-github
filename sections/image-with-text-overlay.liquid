@@ -115,11 +115,12 @@
 								{% endif %}
 							{%- when 'benefits' -%}
 								<div class="benefits-block">
-									{% if block.settings.benefits-title != blank %}
-										<div id="title">{{ block.settings.benefits-title }}</div> 
-									{% endif %}
+									
 									<div class="benefits-list">
-										{% for i in (1..5) %}
+										{% if block.settings.benefits-title != blank %}
+										<div id="title"><strong>{{ block.settings.benefits-title }}</strong></div> 
+									{% endif %}
+                          {% for i in (1..5) %}
 											{%- assign benefit_key = "benefit_" | append: i -%}
 											{%- assign icon_key = "icon_" | append: i -%}
 											{% assign benefit = block.settings[benefit_key] %}
@@ -596,7 +597,7 @@
       "name": "Product Benefits",
       "settings": [
         {
-          "type": "html",
+          "type": "text",
           "id": "benefits-title",
           "label": "Title",
           "default": "Key Benefits"
