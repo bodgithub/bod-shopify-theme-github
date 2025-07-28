@@ -352,41 +352,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   	<!-- Custom Cursor3 JavaScript END -->
 <script src="https://cdn.rechargeapps.com/assets/v2/recharge.js"></script>
 
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-  // Retry every 500ms until Recharge cart loads
-  const tryInsertDiscount = setInterval(() => {
-    const cartTotals = document.querySelector(".rc-cart__footer") || document.querySelector(".rc-cart__totals");
-    if (!cartTotals) return;
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get discount from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const discountFromURL = urlParams.get("discount");
 
-    if (window.Recharge && Recharge.Cart && typeof Recharge.Cart.getCart === "function") {
-      Recharge.Cart.getCart().then(function (cart) {
-        if (
-          cart &&
-          cart.discount_applications &&
-          cart.discount_applications.length > 0
-        ) {
-          const code = cart.discount_applications[0].code;
-
-          // Prevent duplicate injection
-          if (!document.querySelector("#rc-discount-code-label")) {
-            const discountElement = document.createElement("div");
-            discountElement.id = "rc-discount-code-label";
-            discountElement.style.marginTop = "10px";
-            discountElement.style.fontWeight = "bold";
-            discountElement.style.color = "#2d8a54";
-            discountElement.innerText = `Discount code applied: ${code}`;
-            cartTotals.prepend(discountElement);
-          }
-
-          clearInterval(tryInsertDiscount);
-        }
-      });
+    // Save to sessionStorage if present
+    if (discountFromURL) {
+      sessionStorage.setItem("bodology_discount_code", discountFromURL);
     }
-  }, 500);
-});
-</script>
 
+    // Retrieve and show the discount
+    const discountCode = sessionStorage.getItem("bodology_discount_code");
+    if (discountCode) {
+      const banner = document.getElementById("discount-banner");
+      banner.textContent = `DISCOUNT ${discountCode.toUpperCase()} WILL BE APPLIED AT CHECKOUT. CAN BE COMBINED WITH SUBSCRIPTION DISCOUNT.`;
+      banner.style.display = "block";
+    }
+  });
+</script>
 
 
 </body>
