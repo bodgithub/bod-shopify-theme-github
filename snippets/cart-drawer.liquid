@@ -60,30 +60,7 @@
 
 
 
-      {%- unless item.selling_plan_allocation -%}
-  {%- assign spg  = item.product.selling_plan_groups
-       | where: "name", "6 week subscription with 20% discount"
-       | first -%}
-  {%- assign plan = spg.selling_plans.first -%}
-  {%- if plan and plan.options.size > 1 -%}
-    {%- comment %}
-      plan.options[0] is the internal plan ID;
-      plan.options[1].value is "6-week"
-    {% endcomment -%}
-    {%- assign freq_option = plan.options[1] -%}
-    {%- assign parts = freq_option.value | split: "-" -%}
-    <button
-      class="js-upgrade-to-sub button small"
-      data-line-item-key="{{ item.key }}"
-      data-variant-id="{{ item.variant.id }}"
-      data-plan-id="{{ plan.id }}"
-      data-interval-unit-count="{{ parts[0] }}"
-      data-interval-unit="{{ parts[1] }}">
-      *
-    </button>
-  {%- endif -%}
-{%- endunless -%} 
-
+        
 
                       
    <!-- DEBUG: spg.name={{ spg.name }} plans={{ spg.selling_plans.size }} -->
