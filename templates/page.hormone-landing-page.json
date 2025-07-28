@@ -48,18 +48,10 @@
             "scale": ""
           }
         },
-        "text_iHjVwG": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>{{ page.metafields.custom.problem_category.value.benefits_intro.value }}</strong></p>",
-            "color_text": "#ffffff",
-            "description_size": "medium"
-          }
-        },
         "benefits_MfjQJR": {
           "type": "benefits",
           "settings": {
-            "benefits-title": "",
+            "benefits-title": "{{ page.metafields.custom.problem_category.value.benefits_intro.value }}",
             "icon_size": 25,
             "border_size": 1,
             "border_color": "#1b3def",
@@ -90,7 +82,6 @@
         "space_GJGWrA",
         "heading_FGRE4D",
         "customer_reviews_CtBhV3",
-        "text_iHjVwG",
         "benefits_MfjQJR",
         "button_rBDtc7"
       ],
