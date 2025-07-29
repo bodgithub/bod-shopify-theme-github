@@ -281,3 +281,16 @@ testimonials-main-section{
   }
 }
 
+@media (max-width: 768px) {
+  .carousel-controls {
+    position: static !important;
+    width: 100% !important;
+    margin: 16px 0 0 !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    transform: none !important;
+    top: auto !important;
+    right: auto !important;
+  }
+}
