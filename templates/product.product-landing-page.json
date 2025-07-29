@@ -386,13 +386,23 @@
             "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
             "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
           }
+        },
+        "testimonial_jNbziQ": {
+          "type": "testimonial",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].exert_short_quote | metafield_tag }}</p>"
+          }
         }
       },
       "block_order": [
         "testimonial_xbyEaz",
         "testimonial_cCt7iB",
         "testimonial_JqWaEF",
-        "testimonial_36KrU7"
+        "testimonial_36KrU7",
+        "testimonial_jNbziQ"
       ],
       "custom_css": [
         ".row {background-color: white;}"
