@@ -194,45 +194,90 @@ testimonials-main-section{
     position: unset;
   }
 }
-
+@media (min-width: 481px) and (max-width: 767px) {
+    .testimonials-exert {
+        max-width: 380px;
+        flex-direction: column;
+        width: 100%;
+    }
+  .testimonials--headings {
+    flex-basis: 100%;
+    padding-right: 0;
+  }
+  .testimonial-wrapper {
+    margin-right: 0;
+    width: 100%;
+  }
+  .testimonial-carousel {
+        flex-basis: 100%;
+        height: auto;
+        padding-right: 0;
+        width: 100%;
+       /*flex-direction: column;*/
+  }
+  .testimonial-block {
+        /*transform: none !important;*/
+        padding-right: 0;
+        min-height: unset;
+        /*flex: 0 0 100%;*/
+  }
+  .carousel-controls {
+    margin-top: 30px;
+    position: unset;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .testimonials-exert {
+        max-width: 380px;
+        flex-direction: column;
+        width: 100%;
+    }
+  .testimonials--headings {
+    flex-basis: 100%;
+    padding-right: 0;
+  }
+  .testimonial-wrapper {
+    margin-right: 0;
+    width: 100%;
+  }
+  .testimonial-carousel {
+        flex-basis: 100%;
+        height: auto;
+        padding-right: 0;
+        width: 100%;
+       /*flex-direction: column;*/
+  }
+  .testimonial-block {
+        /*transform: none !important;*/
+        padding-right: 0;
+        min-height: unset;
+        /*flex: 0 0 100%;*/
+  }
+  .carousel-controls {
+    margin-top: 30px;
+    position: unset;
+  }
+}
 
 @media (max-width: 768px) {
-  /* 1-card carousel, arrows inside, no page‑wide scroll */
+  /* Make sure the carousel container shows overflow (so arrows aren’t cut off) */
   .testimonial-carousel {
-    overflow-x: hidden !important;
-    position: relative; /* for absolutely‑positioned arrows */
+    overflow: visible !important;
   }
-
-  .testimonial-wrapper {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    width: auto !important;
-        margin-right: 0 !important;        /* ← reset the -30px */
-
-  }
-
-  .testimonial-block {
-    flex: 0 0 100% !important;
-    padding-right: 0 !important;
-    min-height: unset !important;
-  }
-
+  /* Position arrows absolutely inside the carousel again */
   .carousel-controls {
     position: absolute !important;
     top: 50% !important;
     right: 10px !important;
     transform: translateY(-50%) !important;
     display: flex !important;
-    gap: 10px !important;
-    z-index: 10;
+    gap: 10px;
+    z-index: 5;
   }
-
+  /* Ensure the buttons themselves are visible and clickable */
   .carousel-controls button {
     opacity: 1 !important;
     pointer-events: auto !important;
   }
-
-  html, body {
-    overflow-x: hidden !important;
-  }
 }
+
