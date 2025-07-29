@@ -262,7 +262,7 @@ testimonials-main-section{
 @media (max-width: 768px) {
   /* Make sure the carousel container shows overflow (so arrows aren’t cut off) */
   .testimonial-carousel {
-    overflow: visible !important;
+    overflow: hidden !important;
   }
   /* Position arrows absolutely inside the carousel again */
   .carousel-controls {
