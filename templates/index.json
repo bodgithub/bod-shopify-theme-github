@@ -29,6 +29,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Backed by 100+ studies, inositol supports PCOS, fertility and mood.</p>",
+            "color_text": "#ffffff",
             "description_size": "small"
           }
         },
@@ -300,8 +301,6 @@
         "marker_style": "style1",
         "description": "",
         "bgcolor": "#ffffff",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
         "columns_desktop": 2,
         "mobile_swipe": false,
         "image_ratio": "adapt",
@@ -546,13 +545,23 @@
             "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
             "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
           }
+        },
+        "testimonial_8L49nw": {
+          "type": "testimonial",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
+            "quote": "<p>Bodology inositol is a great supplement for the PCOS girlies, for supporting insulin sensitivity, naturally.</p>"
+          }
         }
       },
       "block_order": [
         "testimonial_qWeH6Y",
         "testimonial_CxJCYT",
         "testimonial_bbCtfq",
-        "testimonial_QVtE8e"
+        "testimonial_QVtE8e",
+        "testimonial_8L49nw"
       ],
       "settings": {
         "testimonial_source": "blocks",
@@ -843,8 +852,6 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
         "video_autoplay": true,
-        "data-tooltip": "",
-        "data-tooltip3": "Not another p*ll",
         "height": "large",
         "desktop_image_width": "large",
         "full_width": false,
@@ -961,8 +968,6 @@
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
         "video_autoplay": true,
-        "data-tooltip": "",
-        "data-tooltip3": "Not another p*ll",
         "height": "large",
         "desktop_image_width": "large",
         "full_width": false,
@@ -1018,8 +1023,6 @@
         "marker_style": "style1",
         "description": "",
         "bgcolor": "",
-        "data-tooltip": "",
-        "data-tooltip3": "Did you know?",
         "columns_desktop": 2,
         "mobile_swipe": false,
         "image_ratio": "adapt",
