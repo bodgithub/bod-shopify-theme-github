@@ -259,3 +259,24 @@ testimonials-main-section{
   }
 }
 
+@media (max-width: 768px) {
+  /* Make sure the carousel container shows overflow (so arrows aren’t cut off) */
+  .testimonial-carousel {
+    overflow: visible !important;
+  }
+  /* Position arrows absolutely inside the carousel again */
+  .carousel-controls {
+    position: absolute !important;
+    top: 50% !important;
+    right: 10px !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    gap: 10px;
+    z-index: 5;
+  }
+  /* Ensure the buttons themselves are visible and clickable */
+  .carousel-controls button {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
