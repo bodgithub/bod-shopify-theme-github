@@ -294,3 +294,18 @@ testimonials-main-section{
     right: auto !important;
   }
 }
+
+/* default: desktop shows desktop-only, mobile hides it */
+.desktop-only { display: inline-block; }
+.mobile-only  { display: none; }
+
+@media (max-width: 768px) {
+  /* swap them on mobile */
+  .desktop-only { display: none; }
+  .mobile-only  { 
+    display: block; 
+    text-align: center;
+    margin: 20px auto 0;  /* spacing above button */
+  }
+}
+

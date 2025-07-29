@@ -32,7 +32,7 @@
             <p>{{ section.settings.text }}</p>
           {% endif %}
 {% if section.settings.show_button %}
-  <a href="{{ section.settings.button_url }}" class="button">
+  <a href="{{ section.settings.button_url }}" class="button desktop-only">
     {{ section.settings.button_text }}
   </a>
 {% endif %}
@@ -86,6 +86,12 @@
             <button class="next">{% render 'svg-icons' with 'thb-caret-right' %}</button>
           </div>
         </div>
+
+        {% if section.settings.show_button %}
+  <a href="{{ section.settings.button_url }}" class="button mobile-only">
+    {{ section.settings.button_text }}
+  </a>
+{% endif %}
       </div>
     </div>
   </div>
