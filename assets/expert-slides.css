@@ -194,70 +194,7 @@ testimonials-main-section{
     position: unset;
   }
 }
-@media (min-width: 481px) and (max-width: 767px) {
-    .testimonials-exert {
-        max-width: 380px;
-        flex-direction: column;
-        width: 100%;
-    }
-  .testimonials--headings {
-    flex-basis: 100%;
-    padding-right: 0;
-  }
-  .testimonial-wrapper {
-    margin-right: 0;
-    width: 100%;
-  }
-  .testimonial-carousel {
-        flex-basis: 100%;
-        height: auto;
-        padding-right: 0;
-        width: 100%;
-       /*flex-direction: column;*/
-  }
-  .testimonial-block {
-        /*transform: none !important;*/
-        padding-right: 0;
-        min-height: unset;
-        /*flex: 0 0 100%;*/
-  }
-  .carousel-controls {
-    margin-top: 30px;
-    position: unset;
-  }
-}
-@media (min-width: 320px) and (max-width: 480px) {
-    .testimonials-exert {
-        max-width: 380px;
-        flex-direction: column;
-        width: 100%;
-    }
-  .testimonials--headings {
-    flex-basis: 100%;
-    padding-right: 0;
-  }
-  .testimonial-wrapper {
-    margin-right: 0;
-    width: 100%;
-  }
-  .testimonial-carousel {
-        flex-basis: 100%;
-        height: auto;
-        padding-right: 0;
-        width: 100%;
-       /*flex-direction: column;*/
-  }
-  .testimonial-block {
-        /*transform: none !important;*/
-        padding-right: 0;
-        min-height: unset;
-        /*flex: 0 0 100%;*/
-  }
-  .carousel-controls {
-    margin-top: 30px;
-    position: unset;
-  }
-}
+
 
 @media (max-width: 768px) {
   /* Make sure the carousel container shows overflow (so arrows aren’t cut off) */
@@ -282,30 +219,47 @@ testimonials-main-section{
 }
 
 @media (max-width: 768px) {
-  .carousel-controls {
-    position: static !important;
-    width: 100% !important;
-    margin: 16px 0 0 !important;
+  /* 1‑card slider, arrows absolutely inside, no page scroll */
+  .testimonial-carousel {
+    overflow-x: hidden !important;
+    position: relative !important;
+  }
+  .testimonial-wrapper {
     display: flex !important;
-    justify-content: center !important;
-    gap: 12px !important;
-    transform: none !important;
-    top: auto !important;
-    right: auto !important;
+    flex-wrap: nowrap !important;
+    width: auto !important;
+    margin-right: 0 !important;     /* reset your –30px */
   }
-}
+  .testimonial-block {
+    flex: 0 0 100% !important;
+    padding-right: 0 !important;
+    min-height: unset !important;
+  }
+  /* KEEP arrows inside carousel */
+  .carousel-controls {
+    position: absolute !important;
+    top: 50% !important;
+    right: 10px !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    gap: 10px !important;
+    z-index: 10;
+  }
+  .carousel-controls button {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
 
-/* default: desktop shows desktop-only, mobile hides it */
-.desktop-only { display: inline-block; }
-.mobile-only  { display: none; }
-
-@media (max-width: 768px) {
-  /* swap them on mobile */
+  /* Swap CTA buttons */
   .desktop-only { display: none !important; }
-  .mobile-only  { 
-    display: block; 
+  .mobile-only  {
+    display: block !important;
     text-align: center;
-    margin: 20px auto 0;  /* spacing above button */
+    margin: 20px auto 0;
+  }
+
+  /* kill any unexpected horizontal scroll */
+  html, body {
+    overflow-x: hidden !important;
   }
 }
-
