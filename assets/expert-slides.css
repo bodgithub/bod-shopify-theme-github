@@ -259,21 +259,3 @@ testimonials-main-section{
   }
 }
 
-@media (max-width: 768px) {
-  .testimonial-carousel {
-    flex-direction: row !important;
-    overflow: hidden;
-  }
-  .testimonial-wrapper {
-    display: flex !important;
-    flex-wrap: nowrap;
-    width: auto !important;
-    margin-right: 0;
-  }
-  .testimonial-block {
-    flex: 0 0 100% !important; /* one card per view */
-    padding-right: 0;
-    min-height: unset;
-    /* no transform overrides */
-  }
-}
