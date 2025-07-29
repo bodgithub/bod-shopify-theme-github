@@ -1811,7 +1811,7 @@ margin-right:10px;
 }
 .expert-quote {
   display:inline-flex;
-background-color: linear-gradient(105deg, #0f2ed0, #0a95ef);
+background: linear-gradient(105deg, #0f2ed0, #0a95ef); 
   border: 1px solid #1b3def;
   border-radius: 10px;
   padding: 0.9rem 0.75rem 0rem 0.75rem;
