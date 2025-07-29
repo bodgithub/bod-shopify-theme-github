@@ -625,7 +625,8 @@
         "column_4JdggA"
       ],
       "custom_css": [
-        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 15px 0 5% !important; }}"
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 15px 0 5% !important; }}",
+        ".multicolumn {background: linear-gradient(105deg, #0f2ed0, #0a95ef); padding-top: 100px;}"
       ],
       "settings": {
         "heading": "",
@@ -637,9 +638,9 @@
         "image_ratio": "adapt",
         "text_alignment": "left",
         "heading_size": "h3",
-        "color_heading": "#1b3def",
+        "color_heading": "#ffffff",
         "marker_color": "#ffffff",
-        "color_text": "#1b3def",
+        "color_text": "#ffffff",
         "color_links": "#ffffff",
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
@@ -674,9 +675,10 @@
         "box_TxAVLm"
       ],
       "custom_css": [
-        ".study p {font-size: 0.85em;}",
         ".toggle-box .aspect-ratio.aspect-ratio--square {padding-bottom: 85%;}",
-        "h6 {font-size: 12px !important;}"
+        "h6 {font-size: 12px !important;}",
+        ".study {background-color: white;}",
+        ".section-toggle-boxes {background: linear-gradient(105deg, #0f2ed0, #0a95ef);}"
       ],
       "settings": {
         "heading": "",
@@ -713,7 +715,8 @@
       ],
       "custom_css": [
         "p {font-size: 0.5em; padding-top: 20px; padding-left: 10px;}",
-        "a {color: #767676;}"
+        "a {color: #fff;}",
+        ".row {background: linear-gradient(105deg, #0f2ed0, #0a95ef); padding-bottom: 50px;}"
       ],
       "settings": {
         "text_width": "medium",
@@ -722,8 +725,8 @@
         "color_bg": "rgba(0,0,0,0)",
         "bgcolor": "rgba(0,0,0,0)",
         "color_heading": "#D3D3D3",
-        "color_text": "#767676",
-        "color_links": "#767676",
+        "color_text": "#ffffff",
+        "color_links": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -897,8 +900,9 @@
         "collapsible_tab_c934zC",
         "collapsible_tab_PmwR89"
       ],
+      "custom_css": [],
       "settings": {
-        "heading": "<h1>Answers To All Your <em>Questions</em></h1>",
+        "heading": "<h2>Answers to all of your questions about inositol for {{ page.metafields.custom.problem_category.value.problem.value }}</h2>",
         "marker_style": "style1",
         "description": "",
         "color_bg": "rgba(0,0,0,0)",
