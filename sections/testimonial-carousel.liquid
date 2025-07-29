@@ -31,6 +31,12 @@
           {% if section.settings.text != blank %}
             <p>{{ section.settings.text }}</p>
           {% endif %}
+{% if section.settings.show_button %}
+  <a href="{{ section.settings.button_url }}" class="button">
+    {{ section.settings.button_text }}
+  </a>
+{% endif %}
+          
         </div>
         {%- endif -%}
 
@@ -148,7 +154,24 @@
     { "type": "checkbox", "id": "disable_bottom_spacing", "default": false, "label": "Remove bottom spacing" },
     { "type": "range", "id": "columns_desktop", "label": "Columns on Desktop", "min": 2, "max": 6, "step": 1, "default": 2 },
     { "type": "range", "id": "columns_tablet", "label": "Columns on Tablet", "min": 1, "max": 4, "step": 1, "default": 2 },
-    { "type": "range", "id": "columns_mobile", "label": "Columns on Mobile", "min": 1, "max": 1, "step": 1, "default": 1 }
+    { "type": "range", "id": "columns_mobile", "label": "Columns on Mobile", "min": 1, "max": 1, "step": 1, "default": 1 },
+{
+  "type": "checkbox",
+  "id": "show_button",
+  "label": "Show heading button",
+  "default": false
+},
+{
+  "type": "text",
+  "id": "button_text",
+  "label": "Button text",
+  "default": "Learn more"
+},
+{
+  "type": "url",
+  "id": "button_url",
+  "label": "Button URL"
+}
   ],
   "blocks": [
     {
