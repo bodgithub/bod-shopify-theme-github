@@ -177,93 +177,85 @@
 
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.testimonial-carousel');
-    const wrapper = document.querySelector('.testimonial-wrapper');
-    const blocks = document.querySelectorAll('.testimonial-block');
-    const totalBlocks = blocks.length;
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('.testimonial-carousel');
+  const wrapper  = document.querySelector('.testimonial-wrapper');
+  const blocks   = Array.from(document.querySelectorAll('.testimonial-block'));
+  const total    = blocks.length;
 
-    let currentIndex = 0;
-    let visibleBlocks = getVisibleBlocks(); // Dynamically set the initial visible blocks
+  let index = 0;
 
-    function getVisibleBlocks() {
-        const screenWidth = window.innerWidth;
-        return screenWidth <= 768 ? 1 : 2; // Mobile: 1 block, Desktop: 2 blocks
-    }
+  // 2 on desktop (>768px), 1 on mobile
+  function visibleCount() {
+    return window.innerWidth <= 768 ? 1 : 2;
+  }
 
-    function updateClasses() {
-        blocks.forEach((block, index) => {
-            block.classList.remove('top', 'bottom');
+  // Compute widths in px and apply
+  function updateSizes() {
+    const visible = visibleCount();
+    const width   = carousel.clientWidth;
+    const blockW  = width / visible;
 
-            const relativeIndex = (index - currentIndex + totalBlocks) % totalBlocks;
-            if (relativeIndex === 0) {
-                block.classList.add('top');
-            } else if (relativeIndex === 1) {
-                block.classList.add('bottom');
-            }
-          // Hide .testi-bottom for the "bottom" block and show it for others
-const testiBottom = block.querySelector('.testi-bottom');
-if (testiBottom) {
-    if (block.classList.contains('bottom')) {
-        testiBottom.style.display = 'none';
-    } else {
-        testiBottom.style.display = 'block';
-    }
-}
-          
-        });
-
-        const translateX = -(currentIndex * (100 / visibleBlocks)) + '%';
-        wrapper.style.transition = 'none'; // Remove transition effect on resize
-        wrapper.style.transform = `translateX(${translateX})`;
-
-        document.querySelector('.next').disabled = (currentIndex >= totalBlocks - visibleBlocks);
-        document.querySelector('.prev').disabled = (currentIndex <= 0);
-    }
-
-    function applyOpacityEffect() {
-        blocks.forEach(block => {
-            block.style.transition = "opacity 0s"; // Instantly hide
-            block.style.opacity = "0";
-        });
-
-        setTimeout(() => {
-            blocks.forEach(block => {
-                block.style.transition = "opacity 0.1s ease-in-out"; // Restore fade-in transition
-                block.style.opacity = "1"; // Show after delay
-            });
-        }, 300);
-    }
-
-    function handleNext() {
-        if (currentIndex < totalBlocks - visibleBlocks) {
-            currentIndex++;
-            applyOpacityEffect(); // Apply opacity effect only when clicking
-            updateClasses();
-        }
-    }
-
-    function handlePrev() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            applyOpacityEffect(); // Apply opacity effect only when clicking
-            updateClasses();
-        }
-    }
-
-    document.querySelector('.next').addEventListener('click', handleNext);
-    document.querySelector('.prev').addEventListener('click', handlePrev);
-
-    // Handle window resize to update visible blocks WITHOUT opacity effect
-    window.addEventListener('resize', () => {
-        visibleBlocks = getVisibleBlocks();
-        updateClasses(); // Only update position, no opacity changes
+    blocks.forEach(b => {
+      b.style.flex = `0 0 ${blockW}px`;
     });
 
-    updateClasses(); // Initial load
-});
+    wrapper.style.width = `${blockW * total}px`;
+  }
 
+  // Position wrapper by index * blockWidth
+  function updatePosition() {
+    const visible = visibleCount();
+    const blockW  = carousel.clientWidth / visible;
+
+    wrapper.style.transition = 'transform 0.3s ease-in-out';
+    wrapper.style.transform  = `translateX(-${index * blockW}px)`;
+
+    document.querySelector('.prev').disabled = index <= 0;
+    document.querySelector('.next').disabled = index >= total - visible;
+  }
+
+  // Toggle “top”/“bottom” classes and hide/show quote area
+  function updateClasses() {
+    const vis = visibleCount();
+    blocks.forEach((b, i) => {
+      b.classList.remove('top','bottom');
+      const rel = (i - index + total) % total;
+      if (rel === 0) b.classList.add('top');
+      if (rel === 1) b.classList.add('bottom');
+
+      const qb = b.querySelector('.testi-bottom');
+      if (qb) qb.style.display = b.classList.contains('bottom') ? 'none' : 'block';
+    });
+  }
+
+  // Full redraw
+  function refresh() {
+    updateSizes();
+    updateClasses();
+    updatePosition();
+  }
+
+  // Handlers
+  document.querySelector('.next').addEventListener('click', () => {
+    if (index < total - visibleCount()) {
+      index++;
+      refresh();
+    }
+  });
+  document.querySelector('.prev').addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      refresh();
+    }
+  });
+  window.addEventListener('resize', refresh);
+
+  // Initial render
+  refresh();
+});
 </script>
+
 
 
 
