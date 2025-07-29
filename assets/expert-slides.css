@@ -213,13 +213,13 @@ testimonials-main-section{
         height: auto;
         padding-right: 0;
         width: 100%;
-       flex-direction: column;
+       /*flex-direction: column;*/
   }
   .testimonial-block {
-        transform: none !important;
+        /*transform: none !important;*/
         padding-right: 0;
         min-height: unset;
-        flex: 0 0 100%;
+        /*flex: 0 0 100%;*/
   }
   .carousel-controls {
     margin-top: 30px;
@@ -245,13 +245,13 @@ testimonials-main-section{
         height: auto;
         padding-right: 0;
         width: 100%;
-       flex-direction: column;
+       /*flex-direction: column;*/
   }
   .testimonial-block {
-        transform: none !important;
+        /*transform: none !important;*/
         padding-right: 0;
         min-height: unset;
-        flex: 0 0 100%;
+        /*flex: 0 0 100%;*/
   }
   .carousel-controls {
     margin-top: 30px;
