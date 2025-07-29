@@ -301,7 +301,7 @@ testimonials-main-section{
 
 @media (max-width: 768px) {
   /* swap them on mobile */
-  .desktop-only { display: none; }
+  .desktop-only { display: none !important; }
   .mobile-only  { 
     display: block; 
     text-align: center;
