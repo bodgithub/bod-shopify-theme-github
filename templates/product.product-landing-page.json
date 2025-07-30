@@ -115,6 +115,12 @@
             "custom_liquid": "<div class=\"gfp_ref_input\"></div>"
           }
         },
+        "custom_liquid_NXwTMj": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"klaviyo-form-VPfdAp\"></div>"
+          }
+        },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
@@ -220,6 +226,7 @@
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
         "custom_liquid_pNPMRH",
+        "custom_liquid_NXwTMj",
         "buy_buttons_3FBywE",
         "custom_liquid_ECD6CT",
         "custom_liquid_wbFXG8",
@@ -1315,6 +1322,7 @@
             "layout": "list",
             "reviewsType": "product_reviews",
             "showSummary": true,
+            "showMediaGallery": false,
             "reviewsCount": 10,
             "containerClass": "bodology-junip-reviews"
           }
