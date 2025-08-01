@@ -130,8 +130,15 @@
         },
         "custom_liquid_ECD6CT": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div id=\"discount-banner\" style=\" margin-top: 15px; font-weight: bold; padding-bottom:15px;\"></div>"
+          }
+        },
+        "custom_liquid_JMxr8q": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"font-family: Arial, sans-serif; font-size: 13px; padding-bottom:20px; margin-top:-10px;\">*Choose delivery every 6 weeks for 2 scoops per day (optimal dose), \nor every 3 months for 1 scoop per day. Each product is a 45-day supply.</div>"
           }
         },
         "custom_liquid_wbFXG8": {
@@ -229,6 +236,7 @@
         "custom_liquid_NXwTMj",
         "buy_buttons_3FBywE",
         "custom_liquid_ECD6CT",
+        "custom_liquid_JMxr8q",
         "custom_liquid_wbFXG8",
         "side_panel_NGJTtJ",
         "collapsible_tab_KVBdNK",
