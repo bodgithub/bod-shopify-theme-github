@@ -18,7 +18,17 @@
           "type": "text",
           "settings": {
             "icon": "none",
-            "text": "$20 OFF SHORT-DATE STOCK WITH CODE <b>SHORT20</b>",
+            "text": "LABOR DAY EXCLUSIVE: BUY ONE GET ONE FREE",
+            "link": "",
+            "color_bg": "#1b3def",
+            "color_text": "#ffffff"
+          }
+        },
+        "text_Ghpx8y": {
+          "type": "text",
+          "settings": {
+            "icon": "none",
+            "text": "$20 OFF SHORT-DATE STOCK WITH CODE SHORT20",
             "link": "",
             "color_bg": "#1b3def",
             "color_text": "#ffffff"
@@ -38,6 +48,7 @@
       },
       "block_order": [
         "955bb93b-7a65-4933-8023-83a64ee46bc2",
+        "text_Ghpx8y",
         "text_rDXFYk"
       ],
       "custom_css": [],
