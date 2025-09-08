@@ -185,3 +185,14 @@
     display: block;
     font-size: inherit;
     color: var(--color-header-links, --color-accent); }
+
+      .mobile-menu__cta .shop-now-cta{
+    display:block;
+    width:100%;
+    text-align:center;
+    color: white;
+   
+  
+  }
+  .mobile-menu__cta{ margin:8px 0 4px; }
+}
