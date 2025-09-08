@@ -372,5 +372,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   });
 </script>
 
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.innerWidth <= 768) { // mobile only
+    document.querySelectorAll("nav a, .site-nav a, .navigation a").forEach(function(link) {
+      if (link.textContent.trim().toLowerCase() === "concern") {
+        link.textContent = "SHOP NOW";
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>
