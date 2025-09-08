@@ -2,6 +2,15 @@
 	<div class="mobile-menu-drawer--inner">
 		{%- if header_settings.menu -%}
     <ul class="mobile-menu">
+		 <!-- SHOP NOW CTA (mobile drawer) -->
+  <li class="mobile-menu__cta">
+    <a
+      class="button button--primary shop-now-cta"
+      href="{{ routes.all_products_collection_url }}"
+      title="Shop Now"
+      role="menuitem"
+    >Shop Now</a>
+  </li>
 			{%- for link in header_settings.menu.links -%}
 				{%- liquid
 					assign parent_index = forloop.index
