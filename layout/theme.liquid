@@ -374,24 +374,80 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  function updateMobileNav() {
-    // Only run on mobile widths (adjust 768px if your theme’s breakpoint differs)
-    if (window.innerWidth <= 768) {
-      // Find all nav links
-      document.querySelectorAll("nav a, .site-nav a, .mobile-nav a").forEach(function(link) {
-        if (link.textContent.trim() === "Concern") {
-          link.textContent = "Shop Now";
-        }
-      });
-    }
+(function() {
+  const MOBILE_MAX = 750; // match your theme's mobile breakpoint
+  const NAV_ROOT_SELECTORS = [
+    'header',            // Dawn/most Online Store 2.0 headers
+    'header nav',
+    '.menu-drawer',      // mobile drawer container
+    '.mobile-nav',       // legacy themes
+    '.site-nav',
+    '.list-menu'         // Dawn menu lists
+  ].join(',');
+
+  function isMobile() {
+    return window.innerWidth <= MOBILE_MAX;
   }
 
-  updateMobileNav();
-  // Re-run if screen is resized
-  window.addEventListener("resize", updateMobileNav);
-});
+  function swapIn(root=document) {
+    if (!isMobile()) return;
+    root.querySelectorAll(`${NAV_ROOT_SELECTORS} a`).forEach(a => {
+      const text = (a.textContent || '').trim();
+      if (!a.dataset.origText && text.toLowerCase() === 'concern') {
+        a.dataset.origText = text;
+        a.textContent = 'Shop Now';
+      }
+    });
+  }
+
+  function swapOut(root=document) {
+    if (isMobile()) return;
+    root.querySelectorAll(`${NAV_ROOT_SELECTORS} a[data-orig-text]`).forEach(a => {
+      a.textContent = a.dataset.origText;
+      delete a.dataset.origText;
+    });
+  }
+
+  // Debounced resize handler to enforce mobile-only behavior
+  let resizeTO;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTO);
+    resizeTO = setTimeout(() => {
+      if (isMobile()) {
+        swapIn(document);
+      } else {
+        swapOut(document);
+      }
+    }, 120);
+  });
+
+  // Run on initial load
+  document.addEventListener('DOMContentLoaded', () => {
+    if (isMobile()) swapIn(document);
+  });
+
+  // Observe dynamic insertions (mobile drawer opens, header re-renders, etc.)
+  const observer = new MutationObserver(mutations => {
+    for (const m of mutations) {
+      if (m.type === 'childList') {
+        m.addedNodes.forEach(node => {
+          if (node.nodeType === 1) { // ELEMENT_NODE
+            // If new nav/drawer content appears, apply swap/revert accordingly
+            if (node.matches && node.matches(NAV_ROOT_SELECTORS)) {
+              isMobile() ? swapIn(node) : swapOut(node);
+            } else {
+              const navChild = node.querySelector && node.querySelector(NAV_ROOT_SELECTORS);
+              if (navChild) isMobile() ? swapIn(navChild) : swapOut(navChild);
+            }
+          }
+        });
+      }
+    }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
 </script>
+
 
 </body>
 </html>
