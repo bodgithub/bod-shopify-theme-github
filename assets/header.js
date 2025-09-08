@@ -192,3 +192,78 @@ if (!customElements.get('full-menu')) {
   }
   customElements.define('full-menu', FullMenu);
 }
+
+// === SHOP NOW CTA (mobile only) ===
+const MOBILE_MAX = 750;           // adjust to your theme breakpoint
+const LABEL = 'Shop Now';
+const HREF  = '/collections/all'; // change to your desired URL
+
+const isMobile = () => window.innerWidth <= MOBILE_MAX;
+
+// Find the primary list inside the mobile drawer
+const findPrimaryList = () => {
+  if (!this.menu) return null;
+  return (
+    this.menu.querySelector('.menu-drawer__navigation .list-menu') ||
+    this.menu.querySelector('.list-menu') ||
+    this.menu.querySelector('ul')
+  );
+};
+
+const injectShopNowCTA = () => {
+  if (!isMobile()) return;
+  const list = findPrimaryList();
+  if (!list) return;
+
+  // avoid duplicates
+  if (list.querySelector('[data-shop-now-cta]')) return;
+
+  const li = document.createElement('li');
+  li.setAttribute('data-shop-now-cta', '1');
+  li.className = 'list-menu__item';
+
+  const a = document.createElement('a');
+  a.href = HREF;
+  // Use theme button styles if present (Dawn-compatible); keep a hook class too
+  a.className = 'button button--primary shop-now-cta';
+  a.textContent = LABEL;
+
+  li.appendChild(a);
+
+  // Insert near top (after first item); fallback to append
+  if (list.children.length > 1) {
+    list.insertBefore(li, list.children[1]);
+  } else {
+    list.appendChild(li);
+  }
+};
+
+const removeShopNowCTA = () => {
+  this.menu?.querySelectorAll('[data-shop-now-cta]').forEach(n => n.remove());
+};
+
+// Inject when the drawer is opened
+this.toggle.addEventListener('click', () => {
+  // wait a tick for DOM to render
+  setTimeout(() => { if (isMobile()) injectShopNowCTA(); }, 60);
+});
+
+// Observe late menu content (megamenu chunks injected after open)
+const mo = new MutationObserver(() => {
+  if (isMobile()) injectShopNowCTA();
+});
+if (this.menu) {
+  mo.observe(this.menu, { childList: true, subtree: true });
+}
+
+// Initial run
+if (isMobile()) injectShopNowCTA();
+
+// Enforce mobile-only on resize
+window.addEventListener('resize', debounce(() => {
+  if (isMobile()) {
+    injectShopNowCTA();
+  } else {
+    removeShopNowCTA();
+  }
+}, 120));
