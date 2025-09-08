@@ -373,15 +373,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 
-  <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
-  if (window.innerWidth <= 768) { // mobile only
-    document.querySelectorAll("nav a, .site-nav a, .navigation a").forEach(function(link) {
-      if (link.textContent.trim().toLowerCase() === "concern") {
-        link.textContent = "SHOP NOW";
-      }
-    });
+  function updateMobileNav() {
+    // Only run on mobile widths (adjust 768px if your theme’s breakpoint differs)
+    if (window.innerWidth <= 768) {
+      // Find all nav links
+      document.querySelectorAll("nav a, .site-nav a, .mobile-nav a").forEach(function(link) {
+        if (link.textContent.trim() === "Concern") {
+          link.textContent = "Shop Now";
+        }
+      });
+    }
   }
+
+  updateMobileNav();
+  // Re-run if screen is resized
+  window.addEventListener("resize", updateMobileNav);
 });
 </script>
 
