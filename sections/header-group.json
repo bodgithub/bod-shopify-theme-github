@@ -18,15 +18,26 @@
           "type": "text",
           "settings": {
             "icon": "none",
-            "text": "SUBSCRIBE & SAVE BONUS: USE CODE FALL10 TO SAVE EXTRA $10 (ENDS OCT 8)",
+            "text": "SUBSCRIBE & SAVE BONUS: EXTRA $10 SAVED WITH CODE FALL10 (ENDS OCT 8)",
             "link": "shopify://products/myo-d-chiro-inositol-powder",
             "color_bg": "#1b3def",
+            "color_text": "#ffffff"
+          }
+        },
+        "text_Yb34xk": {
+          "type": "text",
+          "settings": {
+            "icon": "none",
+            "text": "Add campaign text here.",
+            "link": "",
+            "color_bg": "#3f72e5",
             "color_text": "#ffffff"
           }
         }
       },
       "block_order": [
-        "955bb93b-7a65-4933-8023-83a64ee46bc2"
+        "955bb93b-7a65-4933-8023-83a64ee46bc2",
+        "text_Yb34xk"
       ],
       "custom_css": [],
       "settings": {
