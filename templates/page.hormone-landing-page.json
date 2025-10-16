@@ -165,6 +165,12 @@
         "custom_liquid_mPyjyp": {
           "type": "custom_liquid",
           "settings": {
+            "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Anita_-_White_-_logo.png?v=1728818022\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Inositol to promote regular cycles, weight and hormonal balance.\"\n <b><br>— Dr. Anita W., Ph.D</b></p>\n  </div>\n</div>\n\n<style>\n.expert-quote-section {\n  \n  align-items: center;\n  gap: 1rem;\n  margin-bototm: 0rem;\n}\n\n.expert-profile img {\n \n width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.expert-profile {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  overflow: hidden;\n  border: 1px solid #1b3def;\n  flex-shrink: 0;\nmargin-right:10px;\n}\n.expert-quote {\n  display:inline-flex;\nbackground-color: white;\n  border: 1px solid #1b3def;\n  border-radius: 10px;\n  padding: 0.9rem 0.75rem 0rem 0.75rem;\n  font-size: 0.95rem;\n  color: #333;\n  font-style: italic;\n  max-width: 450px;\nmargin-bottom: 20px;\n}\n\n\n</style>"
+          }
+        },
+        "custom_liquid_Gw68VU": {
+          "type": "custom_liquid",
+          "settings": {
             "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Hillary_-_white_-_logo_2.png?v=1731439561\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\"\n <b><br>— Hillary Wright, RD @ BOSTON IVF</b></p>\n  </div>\n</div>\n\n<style>\n.expert-quote-section {\n  \n  align-items: center;\n  gap: 1rem;\n  margin-bototm: 0rem;\n}\n\n.expert-profile img {\n \n width: 100%;\n  height: 100%;\n  object-fit: cover;\n  display: block;\n}\n.expert-profile {\n  width: 60px;\n  height: 60px;\n  border-radius: 50%;\n  overflow: hidden;\n  border: 1px solid #1b3def;\n  flex-shrink: 0;\nmargin-right:10px;\n}\n.expert-quote {\n  display:inline-flex;\nbackground-color: white;\n  border: 1px solid #1b3def;\n  border-radius: 10px;\n  padding: 0.9rem 0.75rem 0rem 0.75rem;\n  font-size: 0.95rem;\n  color: #333;\n  font-style: italic;\n  max-width: 450px;\nmargin-bottom: 20px;\n}\n\n\n</style>"
           }
         },
@@ -180,22 +186,22 @@
             "custom_liquid": "<div id=\"recharge-subscribe-container\"></div>\n<script>\n  Recharge.Widget.createWidget({\n    container: '#recharge-subscribe-container',\n    productId: 'YOUR_PRODUCT_ID',\n    // Add additional options as needed\n  });\n</script>"
           }
         },
+        "variant_picker_gryp3B": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "color_picker": false,
+            "color_picker_use_variants": false,
+            "variant_is_disabled": false,
+            "sizing_guide_text": "Sizing guide",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
         "buy_buttons_3FBywE": {
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": false
-          }
-        },
-        "variant_picker_gryp3B": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "color_picker": true,
-            "color_picker_use_variants": false,
-            "variant_is_disabled": true,
-            "sizing_guide_text": "Sizing guide",
-            "sizing_guide_icon": "ruler",
-            "sizing_guide_page": ""
           }
         },
         "custom_liquid_eAg6YA": {
@@ -263,10 +269,11 @@
         "custom_liquid_KdP8MH",
         "custom_liquid_ExQ6qT",
         "custom_liquid_mPyjyp",
+        "custom_liquid_Gw68VU",
         "custom_liquid_AnALnm",
         "custom_liquid_BD87bT",
-        "buy_buttons_3FBywE",
         "variant_picker_gryp3B",
+        "buy_buttons_3FBywE",
         "custom_liquid_eAg6YA",
         "collapsible_tab_BEQc3p",
         "collapsible_tab_KVBdNK",
