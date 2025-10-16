@@ -254,6 +254,19 @@
             "side_panel_3_page": ""
           }
         },
+        "junip_junip_review_badge_ejYHzB": {
+          "type": "shopify://apps/junip/blocks/junip-review-badge/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "badgeStyle": "bold",
+            "summaryType": "all_reviews",
+            "product": "{{section.settings.product}}",
+            "clickable": true,
+            "darkMode": false,
+            "textAlign": "center",
+            "paddingTop": 20,
+            "paddingBottom": 20
+          }
+        },
         "reelup_shoppable_videos_reels_reelup_playlist_pUbTUw": {
           "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_playlist/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
           "settings": {
@@ -279,6 +292,7 @@
         "collapsible_tab_KVBdNK",
         "collapsible_tab_Qq4nP6",
         "side_panel_NGJTtJ",
+        "junip_junip_review_badge_ejYHzB",
         "reelup_shoppable_videos_reels_reelup_playlist_pUbTUw"
       ],
       "custom_css": [
