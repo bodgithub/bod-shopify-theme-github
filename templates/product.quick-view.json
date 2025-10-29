@@ -12,13 +12,6 @@
     "main-product-quick-view": {
       "type": "main-product-quick-view",
       "blocks": {
-        "26a6ea49-e332-4310-8736-e77ad4f3ba02": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "style_vendor"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -27,7 +20,6 @@
         },
         "e196b5f8-d86c-4dcd-8840-980aac4eb6de": {
           "type": "description",
-          "disabled": true,
           "settings": {}
         },
         "variant_picker": {
@@ -51,7 +43,6 @@
         }
       },
       "block_order": [
-        "26a6ea49-e332-4310-8736-e77ad4f3ba02",
         "title",
         "e196b5f8-d86c-4dcd-8840-980aac4eb6de",
         "variant_picker",
