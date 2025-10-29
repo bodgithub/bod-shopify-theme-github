@@ -1829,4 +1829,4 @@ margin-bottom: 20px;
 }
 
 .outer-scoop-selector { width:20px; height:20px; border:1px solid #1b3def; border-radius:100px; margin-right:8px; margin-left:5px; padding:4px; }
-.variations .product-form__input--block input[type="radio"] + label:focus .active-scoop-selector { border:1px solid #1b3def; width:100%; height:100%;background-color:#1b3def;border-radius:100px; }
+.variations .product-form__input--block input[type="radio"] + label:checked .active-scoop-selector { border:1px solid #1b3def; width:100%; height:100%;background-color:#1b3def;border-radius:100px; }
