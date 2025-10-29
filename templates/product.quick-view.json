@@ -27,6 +27,7 @@
         },
         "e196b5f8-d86c-4dcd-8840-980aac4eb6de": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         },
         "variant_picker": {
@@ -58,9 +59,9 @@
         "buy_buttons"
       ],
       "settings": {
-        "show_taxes_included": true,
+        "show_taxes_included": false,
         "thumbnail_position": "bottom",
-        "media_aspect_ratio": "adapt",
+        "media_aspect_ratio": "portrait",
         "hide_variants": false
       }
     }
