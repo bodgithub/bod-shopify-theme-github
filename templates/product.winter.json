@@ -15,9 +15,12 @@
     },
     "custom_liquid_Q8bf3x": {
       "type": "custom-liquid",
+      "custom_css": [
+        ".eSBzsN {display: none !important;}"
+      ],
       "name": "Custom liquid",
       "settings": {
-        "custom_liquid": "<iframe src=\"https://www.videoask.com/fi5a10ml1\" allow=\"camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;\" width=\"100%\" height=\"600px\" style=\"border: none; border-radius: 24px\"></iframe>"
+        "custom_liquid": "<iframe\n  src=\"https://www.videoask.com/fi5a10ml1?hideplay\"\n  allow=\"camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;\"\n  width=\"100%\"\n  height=\"800px\"\n  style=\"padding:2%; border-radius:54px; border:none;\"\n></iframe>"
       }
     },
     "main-product": {
