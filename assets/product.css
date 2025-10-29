@@ -187,7 +187,9 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
         background-color: #1b3def;
         background-color: #ffffff;
-        color: #1b3def;
+        color: #000;
+        font-size: 17px;
+        font-weight: 600;
         border: 1px solid #1b3def;}
       .variations .product-form__input--block input[type="radio"]:focus-visible + label {
         box-shadow: 0 0 0 2px #015ecc; }
