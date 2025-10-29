@@ -182,8 +182,9 @@
         font-size: 17px;
         font-weight: 600;
         border: 1px solidrgb(224, 224, 224);
-        background-color:rgba(235, 235, 235, 0.58);
-        color: #1b3def8f;}
+        background-color:#e8ecfd;
+        color: #1b3def;}
+      .variations .product-form__input--block:hover {background-color: #d2dafa}
       .variations .product-form__input--block input[type="radio"]:checked + label {
         z-index: 5;
         /*box-shadow: 0 4px 7px rgba(0, 0, 0, 0.15); */
