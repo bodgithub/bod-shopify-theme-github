@@ -12,7 +12,8 @@
     "main": {
       "type": "main-page",
       "custom_css": [
-        ".section-spacing {margin-top: 0px !important;}"
+        ".section-spacing {margin-top: 0px !important;}",
+        ". {display: none !important;}"
       ],
       "settings": {}
     },
