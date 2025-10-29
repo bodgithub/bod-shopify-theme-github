@@ -179,16 +179,16 @@
           margin: 0 0 6px 6px; }
       .variations .product-form__input--block input[type="radio"] + label {
         /*box-shadow: 0 0 0 1px var(--color-form-border) inset;*/
-        border: 2px solidrgb(224, 224, 224);
+        border: 1px solidrgb(224, 224, 224);
         background-color:rgba(235, 235, 235, 0.58);
         color: #1b3def8f;}
       .variations .product-form__input--block input[type="radio"]:checked + label {
         z-index: 5;
-        box-shadow: 0 0 0 1px var(--color-body, #2c2d2e) inset; 
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
         background-color: #1b3def;
         background-color: #ffffff;
         color: #1b3def;
-        border: 2px solid #1b3def;}
+        border: 1px solid #1b3def;}
       .variations .product-form__input--block input[type="radio"]:focus-visible + label {
         box-shadow: 0 0 0 2px #015ecc; }
     .variations .product-form__input--color {
