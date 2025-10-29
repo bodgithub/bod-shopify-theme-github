@@ -1827,3 +1827,6 @@ background: linear-gradient(105deg, #0f2ed0, #0a95ef);
   max-width: 450px;
 margin-bottom: 20px;
 }
+
+.outer-scoop-selector { width:20px; height:20px; border:1px solid #1b3def; border-radius:100px; margin-right:8px; margin-left:5px; padding:4px; }
+.active-scoop-selector { border:1px solid #1b3def; width:100%; height:100%;background-color:#1b3def;border-radius:100px; }

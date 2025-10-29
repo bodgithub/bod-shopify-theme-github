@@ -37,7 +37,10 @@
 						{% if option.selected_value == value %}checked{% endif %}
 			>
 			<label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}{{ appended }}">
-				<span>{{ value }}</span>
+				<div class="outer-scoop-selector">
+      <div class="active-scoop-selector"></div>
+    </div>
+	<span>{{ value }}</span>
 			</label>
 		{%- endfor -%}
 	</fieldset>
