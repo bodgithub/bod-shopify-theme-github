@@ -178,7 +178,7 @@
         [dir="rtl"] .variations .product-form__input--block input[type="radio"] + label {
           margin: 0 0 6px 6px; }
       .variations .product-form__input--block input[type="radio"] + label {
-        box-shadow: 0 4px 7px rgba(0, 0, 0, 0.05); 
+        /*box-shadow: 0 4px 7px rgba(0, 0, 0, 0.05); */
         font-size: 17px;
         font-weight: 600;
         border: 1px solidrgb(224, 224, 224);
@@ -186,7 +186,7 @@
         color: #1b3def8f;}
       .variations .product-form__input--block input[type="radio"]:checked + label {
         z-index: 5;
-        box-shadow: 0 4px 7px rgba(0, 0, 0, 0.15); 
+        /*box-shadow: 0 4px 7px rgba(0, 0, 0, 0.15); */
         background-color: #1b3def;
         background-color: #ffffff;
         color: #000;
