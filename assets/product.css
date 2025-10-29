@@ -1828,7 +1828,7 @@ background: linear-gradient(105deg, #0f2ed0, #0a95ef);
 margin-bottom: 20px;
 }
 
-.outer-scoop-selector { width:20px; height:20px; border:1px solid rgb(121, 141, 243); background-color: #fff; border-radius:100px; margin-right:8px; margin-left:5px; padding:4px; }
+.outer-scoop-selector { width:20px; height:20px; border:1px solid rgb(121, 141, 243); background-color: rgba(255, 255, 255, 0.38); border-radius:100px; margin-right:8px; margin-left:5px; padding:4px; }
 
 .variations .product-form__input--block input[type="radio"]:checked + label .outer-scoop-selector { width:20px; height:20px; border:1px solid #1b3def; border-radius:100px; margin-right:8px; margin-left:5px; padding:4px; }
 
