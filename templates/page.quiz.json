@@ -12,16 +12,9 @@
     "main": {
       "type": "main-page",
       "custom_css": [
-        ".section-spacing{margin-top:-100px !important;}"
+        ".section-spacing {margin-top: 0px !important;}"
       ],
       "settings": {}
-    },
-    "custom_liquid_RRc6YD": {
-      "type": "custom-liquid",
-      "name": "Custom liquid",
-      "settings": {
-        "custom_liquid": "<iframe\n  src=\"https://www.videoask.com/fi5a10ml1?hideplay\"\n  allow=\"camera *; microphone *; autoplay *; encrypted-media *; fullscreen *; display-capture *;\"\n  width=\"100%\"\n  height=\"800px\"\n  style=\"padding:2%; border-radius:54px; border:none;\"\n></iframe>"
-      }
     },
     "1728927113bb2612d3": {
       "type": "apps",
@@ -79,7 +72,6 @@
   },
   "order": [
     "main",
-    "custom_liquid_RRc6YD",
     "1728927113bb2612d3"
   ]
 }
