@@ -11,6 +11,9 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "custom_css": [
+        ".page-content-width {max-width: 100% !important;}"
+      ],
       "settings": {}
     },
     "custom_liquid_RRc6YD": {
