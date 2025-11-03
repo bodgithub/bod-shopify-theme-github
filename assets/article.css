@@ -581,7 +581,7 @@ border-radius:20px;
   font-style: italic;
 }
 
-.post-content {
+.post-content p {
   font-family:arial !important;
 }
 
@@ -592,6 +592,7 @@ border-radius:20px;
     margin: 20px 0px 50px 0px;
     font-size: 1rem;
   border: 1px solid #1b3def;
+   font-family:arial !important;
 }
 
 .post-content a {
