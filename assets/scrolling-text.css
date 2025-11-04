@@ -137,8 +137,8 @@
   flex-direction: column;
   align-items: flex-start;
   vertical-align: top;
-  min-width: 0;
-  max-width: 280px; /* adjust 240–320px to taste */
+  min-width: 260px;
+ max-width: 260px;
   white-space: normal; /* break nowrap inheritance */
 }
 
