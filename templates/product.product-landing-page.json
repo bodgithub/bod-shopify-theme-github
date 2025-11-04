@@ -79,6 +79,20 @@
             "sizing_guide_page": ""
           }
         },
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Which size is for me?",
+            "side_panel_1_icon": "none",
+            "side_panel_1_page": "",
+            "side_panel_2_label": "Shipping Policy",
+            "side_panel_2_icon": "none",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "",
+            "side_panel_3_icon": "none",
+            "side_panel_3_page": ""
+          }
+        },
         "recharge_subscriptions_subscription_widget_v2_9rCap3": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
@@ -139,21 +153,6 @@
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Anita_-_White_-_logo.png?v=1728818022\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Inositol to promote regular cycles, weight and hormonal balance.”\n\n <b><br>— Dr. Anita W., Ph.D</b></p>\n  </div>\n</div>"
-          }
-        },
-        "side_panel_NGJTtJ": {
-          "type": "side_panel",
-          "disabled": true,
-          "settings": {
-            "side_panel_1_label": "Detailed Benefits",
-            "side_panel_1_icon": "none",
-            "side_panel_1_page": "benefits-of-inositol",
-            "side_panel_2_label": "Shipping Policy",
-            "side_panel_2_icon": "none",
-            "side_panel_2_page": "shipping-returns",
-            "side_panel_3_label": "",
-            "side_panel_3_icon": "none",
-            "side_panel_3_page": ""
           }
         },
         "collapsible_tab_KVBdNK": {
@@ -219,6 +218,7 @@
         "custom_liquid_qLxheX",
         "custom_liquid_8bY9Ux",
         "variant_picker_HegXNW",
+        "side_panel_NGJTtJ",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
         "custom_liquid_pNPMRH",
@@ -229,7 +229,6 @@
         "custom_liquid_ymVUr7",
         "custom_liquid_nfgEm4",
         "custom_liquid_8TqUrD",
-        "side_panel_NGJTtJ",
         "collapsible_tab_KVBdNK",
         "collapsible_tab_KixfDF",
         "collapsible_tab_Qq4nP6",
@@ -401,7 +400,7 @@
         "image_ReiBNR": {
           "type": "image",
           "settings": {
-            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
+            "image": "shopify://shop_images/Leslie_Profile_Picture_2.png",
             "link": "",
             "heading": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
             "text": "<p>{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}</p>"
@@ -414,15 +413,6 @@
             "link": "",
             "heading": "Keira Kroin, CNS",
             "text": "<p>Hormone Balance Nutritionist & Herbalist</p>"
-          }
-        },
-        "image_w9NdKi": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Tiffany_Profile_Picture_copy.png",
-            "link": "",
-            "heading": "Tiffany Windju, NBC-HWC",
-            "text": "<p>Board Certified Health Coach</p>"
           }
         },
         "image_aTVijy": {
@@ -460,17 +450,26 @@
             "heading": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
             "text": "<p>{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}</p>"
           }
+        },
+        "image_w9NdKi": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Tiffany_Profile_Picture_copy.png",
+            "link": "",
+            "heading": "Tiffany Windju, NBC-HWC",
+            "text": "<p>Board Certified Health Coach</p>"
+          }
         }
       },
       "block_order": [
         "image_qqjAnc",
         "image_ReiBNR",
         "image_zEMYxj",
-        "image_w9NdKi",
         "image_aTVijy",
         "image_UkDdda",
         "image_QUgJae",
-        "image_XD69kQ"
+        "image_XD69kQ",
+        "image_w9NdKi"
       ],
       "custom_css": [
         "p {text-align: center; color: #7a7a98; font-size: 0.8em;}",
