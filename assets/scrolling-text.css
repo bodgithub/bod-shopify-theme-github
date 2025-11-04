@@ -96,7 +96,7 @@
 .scrolling-images--item {
   display: inline-flex;
   flex-direction: column;
-  align-items: flex-start;
+  
   width: 260px;          /* ← Change this number to whatever fixed width you want */
   min-width: 260px;      /* ← Prevent shrinking */
   max-width: 260px;      /* ← Prevent expanding */
