@@ -419,6 +419,15 @@
         "image_QUgJae": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Baylee_Profile_Picture.webp",
+            "link": "",
+            "heading": "Baylee Allison",
+            "text": "<p>Women's Nutritionist + Trainer</p>"
+          }
+        },
+        "image_XD69kQ": {
+          "type": "image",
+          "settings": {
             "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
             "link": "",
             "heading": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
@@ -430,7 +439,8 @@
         "image_qqjAnc",
         "image_ReiBNR",
         "image_UkDdda",
-        "image_QUgJae"
+        "image_QUgJae",
+        "image_XD69kQ"
       ],
       "custom_css": [
         "p {text-align: center; color: #7a7a98; font-size: 0.8em;}",
