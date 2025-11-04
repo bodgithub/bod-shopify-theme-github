@@ -15,7 +15,13 @@
   #scrolling-images-{{ section.id }} .scrolling-images--item{
     display: inline-flex;
     flex-direction: column;
-    
+    align-items: flex-start;
+    /* FORCE SAME FIXED WIDTH FOR ALL ITEMS */
+    flex: 0 0 260px !important;
+    width: 260px !important;
+    min-width: 260px !important;
+    max-width: 260px !important;
+    vertical-align: top;
   }
 
   /* Make sure link wrapper doesn't expand width */
