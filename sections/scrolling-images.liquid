@@ -11,7 +11,8 @@
 -%}
 <div class="scrolling-images section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" id="scrolling-images-{{ section.id }}">
 	<style>
-  /* Scope to ONLY this section */
+ 
+ /* Scope to ONLY this section */
   #scrolling-images-{{ section.id }} .scrolling-images--inner { /* rail can stay nowrap for marquee */
     white-space: nowrap;
   }
@@ -62,6 +63,24 @@
     height: 220px;  // pick 180–260px to taste
   } 
   */
+  
+  /* Make sure link wrapper doesn't expand width */
+  #scrolling-images-{{ section.id }} .scrolling-images--link{
+    display: block;
+    max-width: 100%;
+  }
+
+  /* OVERRIDE the inherited nowrap just for the text */
+  #scrolling-images-{{ section.id }} .scrolling-images--content,
+  #scrolling-images-{{ section.id }} .scrolling-images--content *,
+  #scrolling-images-{{ section.id }} h6,
+  #scrolling-images-{{ section.id }} p{
+    white-space: normal !important;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+    display: block;
+  }
 </style>
 
 <div class="scrolling-images--inner scrolling-images--{{ image_alignment }} direction-{{ direction }} scrolling-images--spacing-{{ column_spacing }}" style="--marquee-speed: {{ speed }}">
