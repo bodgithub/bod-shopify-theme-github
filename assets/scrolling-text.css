@@ -93,13 +93,22 @@
     transform: translateX(0%); } }
 
     /* Allow text to wrap without stretching the marquee width */
+
+    .scrolling-images--image {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.scrolling-images--image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;      /* fills space and crops to maintain ratio */
+  object-position: center;
+}
 .scrolling-images--item {
   display: inline-flex;
   flex-direction: column;
-  
-  width: 260px;          /* ← Change this number to whatever fixed width you want */
-  min-width: 260px;      /* ← Prevent shrinking */
-  max-width: 260px;      /* ← Prevent expanding */
+
   vertical-align: top;
 }
 
