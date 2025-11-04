@@ -91,3 +91,25 @@
     transform: translateX(-100%); }
   100% {
     transform: translateX(0%); } }
+
+    /* Allow text to wrap without stretching the marquee width */
+.scrolling-images--item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: min(var(--item-width, 300px), 320px);
+  min-width: 0;
+}
+
+.scrolling-images--content,
+.scrolling-images--heading,
+.scrolling-images--desc,
+.scrolling-images--desc p {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+.scrolling-images--heading { margin: 6px 0 4px; }
+.scrolling-images--desc p { margin: 0; }
