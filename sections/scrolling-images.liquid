@@ -15,7 +15,7 @@
 			<div>
 				{%- for i in (1..size) -%}
 					{% assign index = i | minus: 1 %}
-					<div class="scrolling-images--item" {{ section.blocks[index].shopify_attributes }}>
+<div class="scrolling-images--item" {{ section.blocks[index].shopify_attributes }} style="--item-width: {{ width }}px;">
 						{%- if section.blocks[index].settings.link -%}
 							<a href="{{ section.blocks[index].settings.link }}" target="_blank" class="scrolling-images--link">
 						{%- endif -%}
@@ -47,15 +47,15 @@
 							</a>
 						{%- endif -%}
 						{%- if section.blocks[index].settings.heading or section.blocks[index].settings.text -%}
-						<div class="scrolling-images--content">
-							{%- if section.blocks[index].settings.heading -%}
-							<h6>{{ section.blocks[index].settings.heading }}</h6>
-							{%- endif -%}
-							{%- if section.blocks[index].settings.text -%}
-							{{ section.blocks[index].settings.text }}
-							{%- endif -%}
-						</div>
-						{%- endif -%}
+<div class="scrolling-images--content">
+  {%- if section.blocks[index].settings.heading -%}
+  <h6 class="scrolling-images--heading">{{ section.blocks[index].settings.heading }}</h6>
+  {%- endif -%}
+  {%- if section.blocks[index].settings.text -%}
+  <div class="scrolling-images--desc">{{ section.blocks[index].settings.text }}</div>
+  {%- endif -%}
+</div>
+{%- endif -%}
 					</div>
 				{%- endfor -%}
 			</div>
