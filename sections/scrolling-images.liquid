@@ -10,85 +10,12 @@
 	assign size = section.blocks.size | plus: 0
 -%}
 <div class="scrolling-images section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" id="scrolling-images-{{ section.id }}">
-	<style>
- 
- /* Scope to ONLY this section */
-  #scrolling-images-{{ section.id }} .scrolling-images--inner { /* rail can stay nowrap for marquee */
-    white-space: nowrap;
-  }
-
-  /* Allow each item to wrap its own content, even if the rail is nowrap */
-  #scrolling-images-{{ section.id }} .scrolling-images--item {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-start;
-    white-space: normal !important;  /* break inheritance from rail */
-    min-width: 0;                     /* allow children to shrink */
-    vertical-align: top;
-  }
-
-  /* Text wrapping (metafields) */
-  #scrolling-images-{{ section.id }} .scrolling-images--content,
-  #scrolling-images-{{ section.id }} .scrolling-images--content *,
-  #scrolling-images-{{ section.id }} h6,
-  #scrolling-images-{{ section.id }} p {
-    white-space: normal !important;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    max-width: 100%;
-    display: block;
-  }
-
-  /* Link wrapper should not force one-line layout */
-  #scrolling-images-{{ section.id }} .scrolling-images--link {
-    display: block;
-    max-width: 100%;
-  }
-
-  /* Image should fill wrapper (aspect-ratio wrapper controls height) */
-  #scrolling-images-{{ section.id }} .scrolling-images--image {
-    width: 100% !important;
-    height: auto !important; /* height comes from aspect ratio */
-  }
-  #scrolling-images-{{ section.id }} .scrolling-images--image img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    object-position: center;
-  }
-
-  /* Optional: if you want a fixed visible height for images, uncomment: */
-  /* 
-  #scrolling-images-{{ section.id }} .scrolling-images--image.aspect-ratio {
-    height: 220px;  // pick 180–260px to taste
-  } 
-  */
-  
-  /* Make sure link wrapper doesn't expand width */
-  #scrolling-images-{{ section.id }} .scrolling-images--link{
-    display: block;
-    max-width: 100%;
-  }
-
-  /* OVERRIDE the inherited nowrap just for the text */
-  #scrolling-images-{{ section.id }} .scrolling-images--content,
-  #scrolling-images-{{ section.id }} .scrolling-images--content *,
-  #scrolling-images-{{ section.id }} h6,
-  #scrolling-images-{{ section.id }} p{
-    white-space: normal !important;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    max-width: 100%;
-    display: block;
-  }
-</style>
-
-<div class="scrolling-images--inner scrolling-images--{{ image_alignment }} direction-{{ direction }} scrolling-images--spacing-{{ column_spacing }}" style="--marquee-speed: {{ speed }}">
+	<div class="scrolling-images--inner scrolling-images--{{ image_alignment }} direction-{{ direction }} scrolling-images--spacing-{{ column_spacing }}" style="--marquee-speed: {{ speed }}">
 		{% capture scrolling_text %}
 			<div>
 				{%- for i in (1..size) -%}
 					{% assign index = i | minus: 1 %}
-<div class="scrolling-images--item" {{ section.blocks[index].shopify_attributes }} style="--item-width: {{ width }}px;">
+					<div class="scrolling-images--item" {{ section.blocks[index].shopify_attributes }}>
 						{%- if section.blocks[index].settings.link -%}
 							<a href="{{ section.blocks[index].settings.link }}" target="_blank" class="scrolling-images--link">
 						{%- endif -%}
@@ -107,7 +34,7 @@
 							endif
 
 						-%}
-<div class="scrolling-images--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent:{{ 1.0 | divided_by: ratio | times: 100.0 }}%;">
+						<div class="scrolling-images--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent:{{ 1.0 | divided_by: ratio | times: 100.0 }}%; width: {{ width }}px;">
 							{%- if image -%}
 								{%- render 'responsive-image', image: image, sizes: sizes, retina: 1 -%}
 							{%- else -%}
@@ -120,15 +47,15 @@
 							</a>
 						{%- endif -%}
 						{%- if section.blocks[index].settings.heading or section.blocks[index].settings.text -%}
-<div class="scrolling-images--content">
-  {%- if section.blocks[index].settings.heading -%}
-  <h6 class="scrolling-images--heading">{{ section.blocks[index].settings.heading }}</h6>
-  {%- endif -%}
-  {%- if section.blocks[index].settings.text -%}
-  <div class="scrolling-images--desc">{{ section.blocks[index].settings.text }}</div>
-  {%- endif -%}
-</div>
-{%- endif -%}
+						<div class="scrolling-images--content">
+							{%- if section.blocks[index].settings.heading -%}
+							<h6>{{ section.blocks[index].settings.heading }}</h6>
+							{%- endif -%}
+							{%- if section.blocks[index].settings.text -%}
+							{{ section.blocks[index].settings.text }}
+							{%- endif -%}
+						</div>
+						{%- endif -%}
 					</div>
 				{%- endfor -%}
 			</div>
