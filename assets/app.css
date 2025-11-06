@@ -2131,7 +2131,7 @@ h5,
 h6,
 .h6 .h1-large,
 .h1-xlarge {
-  letter-spacing: var(--font-heading-letter-spacing, normal); }
+  /*letter-spacing: var(--font-heading-letter-spacing, normal);*/ }
 
 @media only screen and (min-width: 1068px) {
   .heading-size--small {
@@ -3795,7 +3795,7 @@ https://flickity.metafizzy.co
 @media only screen and (min-width: 768px) {
 
   .flickity-viewport {
-  min-height:630px;}
+  min-height:16px;}
 }
   
 
