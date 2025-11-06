@@ -1836,14 +1836,14 @@ margin-bottom: 20px;
 
 .product-benefits {
   display: inline-flex;
-  grid-column-gap: 5px;
   color:grey;
   font-size:0.7em;
-  padding-top: 20px
+  padding-bottom: 20px
 }
 .product-benefits .benefit {
   border-radius:20px;
   border: 1px solid grey;
   padding: 3px 5px;
+  margin-right:5px;
 
 }
