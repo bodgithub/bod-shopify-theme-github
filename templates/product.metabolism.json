@@ -507,9 +507,9 @@
           "settings": {
             "image": "{{ block.repeater.image.value }}",
             "image_link": "{{ block.repeater.study.value }}",
-            "heading": "{{ block.repeater.result | metafield_tag }}",
-            "text": "<p>{{ block.repeater.sup_text.value }}</p>",
-            "link_label": "{{ block.repeater.name.value }}"
+            "heading": "",
+            "text": "{{ block.repeater.result | metafield_tag }}",
+            "link_label": "{{ block.repeater.sup_text.value }}"
           }
         }
       },
