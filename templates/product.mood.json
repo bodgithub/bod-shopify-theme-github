@@ -20,7 +20,7 @@
         "subheading_BBmz3f": {
           "type": "subheading",
           "settings": {
-            "text": "<p>{{ metaobjects.problem.pcos.category_title.value }}</p>",
+            "text": "<p>{{ metaobjects.problem[\"mood-anxiety\"].category_title.value }}</p>",
             "text_color": "#1b3def"
           }
         },
@@ -33,7 +33,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "{{ metaobjects.problem.pcos.headline | metafield_tag }}",
+            "text": "{{ metaobjects.problem[\"mood-anxiety\"].headline | metafield_tag }}",
             "heading_size": "h1-xlarge"
           }
         },
@@ -51,20 +51,20 @@
         "benefits_MfjQJR": {
           "type": "benefits",
           "settings": {
-            "benefits-title": "{{ product.metafields.custom.problem_category.value.benefits_intro.value }}",
+            "benefits-title": "{{ metaobjects.problem[\"mood-anxiety\"].benefits_intro.value }}",
             "icon_size": 25,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "{{ metaobjects.problem.pcos.benefit_1.value.benefit.value }}",
-            "icon_1": "{{ metaobjects.problem.pcos.benefit_1.value.icon.value }}",
-            "benefit_2": "{{ metaobjects.problem.pcos.benefit_2.value.benefit.value }}",
-            "icon_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.icon.value }}",
-            "benefit_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.benefit.value }}",
-            "icon_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.icon.value }}",
-            "benefit_4": "{{ product.metafields.custom.problem_category.value.benefit_4.value.benefit.value }}",
-            "icon_4": "{{ product.metafields.custom.problem_category.value.benefit_4.value.icon.value }}",
-            "benefit_5": "{{ product.metafields.custom.problem_category.value.benefit_5.value.benefit.value }}",
-            "icon_5": "{{ product.metafields.custom.problem_category.value.benefit_5.value.icon.value }}"
+            "benefit_1": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_1.value.benefit.value }}",
+            "icon_1": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_1.value.icon.value }}",
+            "benefit_2": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_2.value.benefit.value }}",
+            "icon_2": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_2.value.icon.value }}",
+            "benefit_3": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_3.value.benefit.value }}",
+            "icon_3": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_3.value.icon.value }}",
+            "benefit_4": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_4.value.benefit.value }}",
+            "icon_4": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_4.value.icon.value }}",
+            "benefit_5": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_5.value.benefit.value }}",
+            "icon_5": "{{ metaobjects.problem[\"mood-anxiety\"].benefit_5.value.icon.value }}"
           }
         },
         "button_rBDtc7": {
@@ -87,8 +87,8 @@
       ],
       "custom_css": [],
       "settings": {
-        "image": "{{ product.metafields.custom.problem_category.value.hero_banner_desktop.value }}",
-        "mobile_image": "{{ product.metafields.custom.problem_category.value.hero_banner_mobile.value }}",
+        "image": "{{ metaobjects.problem[\"mood-anxiety\"].hero_banner_desktop.value }}",
+        "mobile_image": "{{ metaobjects.problem[\"mood-anxiety\"].hero_banner_mobile.value }}",
         "image_parallax": true,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-500",
@@ -503,7 +503,7 @@
       "blocks": {
         "box_TxAVLm": {
           "type": "box",
-          "repeater": "{{ metaobjects.problem.pcos.results.value }}",
+          "repeater": "{{ metaobjects.problem[\"mood-anxiety\"].results.value }}",
           "settings": {
             "image": "{{ block.repeater.image.value }}",
             "image_link": "{{ block.repeater.study.value }}",
