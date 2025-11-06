@@ -20,7 +20,7 @@
         "subheading_BBmz3f": {
           "type": "subheading",
           "settings": {
-            "text": "<p>{{ metaobjects.problem[\"sustainable-weight-loss\"].category_title.value }}</p>",
+            "text": "<p>{{ metaobjects.problem.metabolism.category_title.value }}</p>",
             "text_color": "#1b3def"
           }
         },
@@ -33,7 +33,7 @@
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "{{ metaobjects.problem[\"sustainable-weight-loss\"].headline | metafield_tag }}",
+            "text": "{{ metaobjects.problem.metabolism.headline | metafield_tag }}",
             "heading_size": "h1-xlarge"
           }
         },
@@ -55,16 +55,16 @@
             "icon_size": 25,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_1.value.benefit.value }}",
-            "icon_1": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_1.value.icon.value }}",
-            "benefit_2": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_2.value.benefit.value }}",
-            "icon_2": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_2.value.icon.value }}",
-            "benefit_3": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_3.value.benefit.value }}",
-            "icon_3": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_3.value.icon.value }}",
-            "benefit_4": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_4.value.benefit.value }}",
-            "icon_4": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_4.value.icon.value }}",
-            "benefit_5": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_5.value.benefit.value }}",
-            "icon_5": "{{ metaobjects.problem[\"sustainable-weight-loss\"].benefit_5.value.icon.value }}"
+            "benefit_1": "{{ metaobjects.problem.metabolism.benefit_1.value.benefit.value }}",
+            "icon_1": "{{ metaobjects.problem.metabolism.benefit_1.value.icon.value }}",
+            "benefit_2": "{{ metaobjects.problem.metabolism.benefit_2.value.benefit.value }}",
+            "icon_2": "{{ metaobjects.problem.metabolism.benefit_2.value.icon.value }}",
+            "benefit_3": "{{ metaobjects.problem.metabolism.benefit_3.value.benefit.value }}",
+            "icon_3": "{{ metaobjects.problem.metabolism.benefit_3.value.icon.value }}",
+            "benefit_4": "{{ metaobjects.problem.metabolism.benefit_4.value.benefit.value }}",
+            "icon_4": "{{ metaobjects.problem.metabolism.benefit_4.value.icon.value }}",
+            "benefit_5": "{{ metaobjects.problem.metabolism.benefit_5.value.benefit.value }}",
+            "icon_5": "{{ metaobjects.problem.metabolism.benefit_5.value.icon.value }}"
           }
         },
         "button_rBDtc7": {
@@ -87,8 +87,8 @@
       ],
       "custom_css": [],
       "settings": {
-        "image": "{{ metaobjects.problem[\"sustainable-weight-loss\"].hero_banner_desktop.value }}",
-        "mobile_image": "{{ metaobjects.problem[\"sustainable-weight-loss\"].hero_banner_mobile.value }}",
+        "image": "{{ metaobjects.problem.metabolism.hero_banner_desktop.value }}",
+        "mobile_image": "{{ metaobjects.problem.metabolism.hero_banner_mobile.value }}",
         "image_parallax": true,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-500",
@@ -503,7 +503,7 @@
       "blocks": {
         "box_TxAVLm": {
           "type": "box",
-          "repeater": "{{ metaobjects.problem[\"sustainable-weight-loss\"].results.value }}",
+          "repeater": "{{ metaobjects.problem.metabolism.results.value }}",
           "settings": {
             "image": "{{ block.repeater.image.value }}",
             "image_link": "{{ block.repeater.study.value }}",
