@@ -1835,14 +1835,14 @@ margin-bottom: 20px;
 .variations .product-form__input--block input[type="radio"]:checked + label .active-scoop-selector { border:1px solid #1b3def; width:100%; height:100%;background-color:#1b3def;border-radius:100px; }
 
 .product-benefits {
-  color:#000;
+  color:#1b3def;
   
   padding-bottom: 20px;
   grid-gap:5px;
 }
 .product-benefits .benefit {
   border-radius:20px;
-  border: 1px solid rgb(172, 172, 172);
+  border: 1px solid #dadce0;
   padding: 3px 10px;
   margin-right:5px;
   margin-bottom:5px;
