@@ -107,7 +107,7 @@
     "spacer_LVK4hF": {
       "type": "spacer",
       "settings": {
-        "spacer_mobile": 50,
+        "spacer_mobile": 5,
         "spacer_desktop": 35,
         "border_separator": false,
         "border_separator_full": false
@@ -119,33 +119,14 @@
         "custom_liquid": "<div id=\"buy-inositol\"></div>"
       }
     },
-    "rich_text_ktwnPa": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_Kp7pEw": {
-          "type": "heading",
-          "settings": {
-            "text": "Start your <em>inositol</em> journey",
-            "marker_style": "style1",
-            "size": "h1",
-            "marker_color": "#fd6262"
-          }
-        }
-      },
-      "block_order": [
-        "heading_Kp7pEw"
-      ],
-      "disabled": true,
+        "spacer_fcdpRG": {
+      "type": "spacer",
+      "name": "Spacer",
       "settings": {
-        "text_width": "small",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_heading": "#1B3DEF",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "spacer_mobile": 55,
+        "spacer_desktop": 0,
+        "border_separator": false,
+        "border_separator_full": false
       }
     },
     "main-product": {
@@ -446,6 +427,7 @@
         "button_text": "Meet Our Experts",
         "button_url": "shopify://pages/meet-our-experts"
       }
+    
     },
     "spacer_hDmb7V": {
       "type": "spacer",
@@ -1204,7 +1186,7 @@
     "image_with_text_overlay_zjqnjJ",
     "spacer_LVK4hF",
     "custom_liquid_RcjzA4",
-    "rich_text_ktwnPa",
+    "spacer_fcdpRG",
     "main-product",
     "spacer_4GDyCF",
     "testimonial_carousel_twHytV",
