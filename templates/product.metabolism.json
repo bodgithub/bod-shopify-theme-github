@@ -503,17 +503,13 @@
       "blocks": {
         "box_TxAVLm": {
           "type": "box",
-          "repeater": "{{ product.metafields.custom.problem_category.value.results.value }}",
+          "repeater": "{{ metaobjects.problem[\"sustainable-weight-loss\"].results.value }}",
           "settings": {
             "image": "{{ block.repeater.image.value }}",
             "image_link": "{{ block.repeater.study.value }}",
-            "open": false,
-            "heading": "",
-            "text": "{{ block.repeater.result | metafield_tag }}",
-            "link_label": "{{ block.repeater.sup_text.value }}",
-            "link": "",
-            "use_text_button": false,
-            "block_link": ""
+            "heading": "{{ block.repeater.result | metafield_tag }}",
+            "text": "<p>{{ block.repeater.sup_text.value }}</p>",
+            "link_label": "{{ block.repeater.name.value }}"
           }
         }
       },
