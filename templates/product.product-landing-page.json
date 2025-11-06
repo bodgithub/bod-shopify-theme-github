@@ -30,7 +30,7 @@
         "text_6nKqcU": {
           "type": "text",
           "settings": {
-            "text": "<h6>CLINICAL-GRADE SUPPLEMENT</h6>",
+            "text": "<h6><em>Clinical-Grade Supplement</em></h6>",
             "text_style": "style_vendor"
           }
         },
@@ -41,6 +41,12 @@
             "text_style": "style_vendor"
           }
         },
+        "custom_liquid_8d7xtd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"padding-bottom:20px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
+          }
+        },
         "title_ExCfKU": {
           "type": "title",
           "disabled": true,
@@ -48,16 +54,10 @@
             "show_products_rating": true
           }
         },
-        "custom_liquid_8d7xtd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:20px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
-          }
-        },
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"product-details\"><p><b>\nA clean, hormone-friendly 40:1 inositol formula for metabolic and hormonal balance. Made with carob-sourced D-Chiro Inositol for optimal purity and flavor.</b>\n<br></p><p>Designed to support, not override, your body's natural rhythms.<br></p></div>"
+            "custom_liquid": "<div id=\"product-details\" style=\"font-size:15px;\"><p>\nA clean, hormone-friendly 40:1 inositol formula for metabolic and hormonal balance. Made with carob-sourced D-chiro inositol for optimal purity and flavor.\n<br></p><p style=\"color:#797b7a;\">Designed to support, not override, your body's natural rhythms.</p></div>\n<div class=\"product-benefits\">\n<div class=\"benefit\">Reproductive Health</div> <div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Energy</div> <div class=\"benefit\">Mood</div><div class=\"benefit\">Hormones</div>\n</div>"
           }
         },
         "custom_liquid_8bY9Ux": {
@@ -213,8 +213,8 @@
       "block_order": [
         "text_6nKqcU",
         "text_4wkmaU",
-        "title_ExCfKU",
         "custom_liquid_8d7xtd",
+        "title_ExCfKU",
         "custom_liquid_qLxheX",
         "custom_liquid_8bY9Ux",
         "variant_picker_HegXNW",
