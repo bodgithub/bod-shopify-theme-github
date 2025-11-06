@@ -87,8 +87,8 @@
       ],
       "custom_css": [],
       "settings": {
-        "image": "{{ product.metafields.custom.problem_category.value.hero_banner_desktop.value }}",
-        "mobile_image": "{{ product.metafields.custom.problem_category.value.hero_banner_mobile.value }}",
+        "image": "{{ metaobjects.problem.pcos.hero_banner_desktop.value }}",
+        "mobile_image": "{{ metaobjects.problem.pcos.hero_banner_mobile.value }}",
         "image_parallax": true,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-500",
