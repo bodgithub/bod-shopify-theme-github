@@ -6,1444 +6,1446 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
-    "sections": {
-        "image_with_text_overlay_zjqnjJ": {
-            "type": "image-with-text-overlay",
-            "blocks": {
-                "space_g4MqDz": {
-                    "type": "space",
-                    "settings": {
-                        "height": 100
-                    }
-                },
-                "heading_FGRE4D": {
-                    "type": "heading",
-                    "settings": {
-                        "text": "<h1>Your <em>hormones</em> deserve better</h1>",
-                        "heading_size": "h1-xlarge"
-                    }
-                },
-                "text_ekmz8W": {
-                    "type": "text",
-                    "settings": {
-                        "text": "<p>Backed by 100+ studies, inositol supports PCOS, fertility and mood.</p>",
-                        "color_text": "#ffffff",
-                        "description_size": "small"
-                    }
-                },
-                "space_hakprz": {
-                    "type": "space",
-                    "settings": {
-                        "height": 30
-                    }
-                },
-                "button_rBDtc7": {
-                    "type": "button",
-                    "settings": {
-                        "button_text": "Start My Inositol Journey",
-                        "button_link": "shopify://products/myo-d-chiro-inositol-powder",
-                        "button_color": "white"
-                    }
-                },
-                "space_dgXhDh": {
-                    "type": "space",
-                    "settings": {
-                        "height": 120
-                    }
-                },
-                "customer_reviews_CtBhV3": {
-                    "type": "customer_reviews",
-                    "settings": {
-                        "stars": "5",
-                        "heading": "See Real Results With Inositol",
-                        "font_size": "0.7em",
-                        "link": "#reviews",
-                        "scale": "1.5"
-                    }
-                }
-            },
-            "block_order": [
-                "space_g4MqDz",
-                "heading_FGRE4D",
-                "text_ekmz8W",
-                "space_hakprz",
-                "button_rBDtc7",
-                "space_dgXhDh",
-                "customer_reviews_CtBhV3"
-            ],
-            "custom_css": [
-                "/*@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
-                "@media only screen and (min-width: 768px) {.h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important; }}",
-                "*/.customer-reviews--block {align-items: center;}",
-                ".star-rating {text-align: center;}",
-                "h5 {padding: 0 10%;}"
-            ],
-            "settings": {
-                "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-4_76fb036e-e110-4960-b77d-0a16c44fda51.jpg",
-                "mobile_image": "shopify://shop_images/Home_Banner_Mobile_9.jpg",
-                "image_parallax": true,
-                "desktop_height": "desktop-height-650",
-                "mobile_height": "mobile-height-auto",
-                "full_width": true,
-                "content_width": "medium",
-                "content_position": "bottom-center",
-                "text_alignment": "center",
-                "text_color": "#1b3def",
-                "overlay_color": "#000000",
-                "overlay_opacity": 0,
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": true
-            }
+ */
+{
+  "sections": {
+    "image_with_text_overlay_zjqnjJ": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "space_g4MqDz": {
+          "type": "space",
+          "settings": {
+            "height": 100
+          }
         },
-        "carousel_boxes_jas_HzyeW9": {
-            "type": "Carousel-Boxes-Jas",
-            "blocks": {
-                "box_YQBT8X": {
-                    "type": "box",
-                    "settings": {
-                        "image": "shopify://shop_images/Girls-Inositol-PCOS_00446e49-aab3-4b8d-94b8-bb00d021b60f.jpg",
-                        "image_link": "shopify://pages/pcos",
-                        "open": false,
-                        "heading": "<h5>PCOS</h5>",
-                        "text": "",
-                        "link_label": "",
-                        "link": "shopify://pages/pcos",
-                        "use_text_button": false,
-                        "block_link": "shopify://pages/pcos"
-                    }
-                },
-                "box_egXcdC": {
-                    "type": "box",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/Bodology_Inositol_Fertility_Hormones.jpg",
-                        "image_link": "shopify://pages/hormones",
-                        "open": false,
-                        "heading": "<p>Hormones</p>",
-                        "text": "",
-                        "link_label": "",
-                        "link": "shopify://pages/hormones",
-                        "use_text_button": false,
-                        "block_link": ""
-                    }
-                },
-                "box_TxAVLm": {
-                    "type": "box",
-                    "settings": {
-                        "image": "shopify://shop_images/Bodology_Inositol_for_Fertility.jpg",
-                        "image_link": "shopify://pages/fertility",
-                        "open": false,
-                        "heading": "<h5>FERTILITY</h5>",
-                        "text": "",
-                        "link_label": "",
-                        "link": "shopify://pages/fertility",
-                        "use_text_button": false,
-                        "block_link": "shopify://pages/fertility"
-                    }
-                },
-                "box_fkrYD7": {
-                    "type": "box",
-                    "settings": {
-                        "image": "shopify://shop_images/Kai-Mood-Inositol_2d880ece-8a5d-4bf9-a8e4-dc84f885ab38.jpg",
-                        "image_link": "shopify://pages/anxiety",
-                        "open": false,
-                        "heading": "<h5>MOOD</h5>",
-                        "text": "",
-                        "link_label": "",
-                        "link": "shopify://pages/anxiety",
-                        "use_text_button": false,
-                        "block_link": "shopify://pages/anxiety"
-                    }
-                },
-                "box_mBqGXB": {
-                    "type": "box",
-                    "settings": {
-                        "image": "shopify://shop_images/Bodology-Inositol-for-Weight-2_20df554e-cb9f-4e55-af04-829cc08558f2.jpg",
-                        "image_link": "shopify://pages/sustainable-weight-loss",
-                        "open": false,
-                        "heading": "<h5>METABOLISM</h5>",
-                        "text": "",
-                        "link_label": "",
-                        "link": "shopify://pages/sustainable-weight-loss",
-                        "use_text_button": false,
-                        "block_link": "shopify://pages/sustainable-weight-loss"
-                    }
-                }
-            },
-            "block_order": [
-                "box_YQBT8X",
-                "box_egXcdC",
-                "box_TxAVLm",
-                "box_fkrYD7",
-                "box_mBqGXB"
-            ],
-            "settings": {
-                "heading": "",
-                "marker_style": "style1",
-                "description": "",
-                "columns_desktop": 3,
-                "column_spacing": "medium",
-                "image_ratio": "square",
-                "mobile_swipe": false,
-                "text_alignment": "left",
-                "color_bg": "#ffffff",
-                "color_heading": "#1b3def",
-                "marker_color": "#fd6262",
-                "color_text": "#1b3def",
-                "color_link": "#1b3def",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": false
-            }
+        "heading_FGRE4D": {
+          "type": "heading",
+          "settings": {
+            "text": "<h1>Your <em>hormones</em> deserve better</h1>",
+            "heading_size": "h1-xlarge"
+          }
         },
-        "rich_text_CUWHK9": {
-            "type": "rich-text",
-            "blocks": {
-                "text_fNKBq9": {
-                    "type": "text",
-                    "settings": {
-                        "text": "<h1>Your metabolic health impacts your entire body <em>\u2013 not just your weight</em></h1>",
-                        "custom_liquid": "",
-                        "size": "text-size-regular"
-                    }
-                }
-            },
-            "block_order": [
-                "text_fNKBq9"
-            ],
-            "custom_css": [
-                ".section-rich-text {background-color: white;}"
-            ],
-            "name": "Rich text",
-            "settings": {
-                "text_width": "xlarge",
-                "text_position": "center",
-                "text_alignment": "center",
-                "color_bg": "#ffffff",
-                "bgcolor": "#ffffff",
-                "color_heading": "#1b3def",
-                "color_text": "#2c2d2e",
-                "color_links": "#2c2d2e",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": true
-            }
+        "text_ekmz8W": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Backed by 100+ studies, inositol supports PCOS, fertility and mood.</p>",
+            "color_text": "#ffffff",
+            "description_size": "small"
+          }
         },
-        "rich_text_XXb67A": {
-            "type": "rich-text",
-            "blocks": {
-                "text_nJhEEa": {
-                    "type": "text",
-                    "settings": {
-                        "text": "<p>87% of adults have impaired metabolic function, it\u2019s not \u2018just a weight issue\u2019. <strong>Discover how inositol helps.</strong></p>",
-                        "custom_liquid": "",
-                        "size": "text-size-regular"
-                    }
-                }
-            },
-            "block_order": [
-                "text_nJhEEa"
-            ],
-            "custom_css": [
-                ".section-rich-text {background-color: white;}"
-            ],
-            "name": "Rich text",
-            "settings": {
-                "text_width": "medium",
-                "text_position": "center",
-                "text_alignment": "center",
-                "color_bg": "#ffffff",
-                "bgcolor": "#ffffff",
-                "color_heading": "#1b3def",
-                "color_text": "#2c2d2e",
-                "color_links": "#2c2d2e",
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": true
-            }
+        "space_hakprz": {
+          "type": "space",
+          "settings": {
+            "height": 30
+          }
         },
-        "multicolumn_zBkNGq": {
-            "type": "multicolumn",
-            "blocks": {
-                "column_k73ndb": {
-                    "type": "column",
-                    "settings": {
-                        "image_full_width": false,
-                        "image_link": "",
-                        "title": "",
-                        "text": "<h3><strong>You metabolism influences your entire body </strong><em><strong>\u2014not just your</strong></em><strong> </strong><em><strong>weight </strong></em></h3>",
-                        "link_label": "",
-                        "link": ""
-                    }
-                },
-                "column_ExHNM9": {
-                    "type": "column",
-                    "settings": {
-                        "image_full_width": false,
-                        "image_link": "",
-                        "title": "",
-                        "text": "<p>87% of adults have impaired metabolic function,  it\u2019s not \u2018just a weight issue\u2019.</p><p><strong>Discover how inositol helps:</strong></p>",
-                        "link_label": "",
-                        "link": ""
-                    }
-                }
-            },
-            "block_order": [
-                "column_k73ndb",
-                "column_ExHNM9"
-            ],
-            "disabled": true,
-            "custom_css": [
-                "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
-                ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
-            ],
-            "settings": {
-                "heading": "",
-                "marker_style": "style1",
-                "description": "",
-                "bgcolor": "#ffffff",
-                "columns_desktop": 2,
-                "mobile_swipe": false,
-                "image_ratio": "adapt",
-                "text_alignment": "left",
-                "heading_size": "h3",
-                "color_heading": "#1b3def",
-                "marker_color": "#ffffff",
-                "color_text": "#2c2d2e",
-                "color_links": "#ffffff",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": true
-            }
+        "button_rBDtc7": {
+          "type": "button",
+          "settings": {
+            "button_text": "Start My Inositol Journey",
+            "button_link": "shopify://products/myo-d-chiro-inositol-powder",
+            "button_color": "white"
+          }
         },
-        "collapsible_content_2_hrRGJn": {
-            "type": "collapsible-content-2",
-            "blocks": {
-                "collapsible_tab_tBJXhQ": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "IRREGULAR PERIODS OR PCOS?",
-                        "open": false,
-                        "content": "<p>Up to <strong>80% of women with PCOS have insulin resistance</strong>. Inositol helps restore ovulation and balance hormones\u2014<strong>85% saw their cycles return</strong>, and cycle length dropped by <strong>54%</strong> in studies.*</p>",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_zJaULT": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "CRAVINGS AND BLOOD SUGAR DIPS?",
-                        "open": false,
-                        "content": "<p>Blood sugar spikes, cravings, and energy crashes are signs your metabolism may be out of sync. Inositol supports <strong>healthy glucose metabolism</strong>\u2014so you feel more balanced throughout the day. In one trial, it helped reduce cravings, improve fat loss by <strong>35% more than diet alone</strong>, and preserved <strong>7.1% lean muscle</strong>.*</p>",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_EHUzbD": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "MOOD SWINGS AND ANXIETY?",
-                        "open": false,
-                        "content": "<p>If your mood feels unpredictable or you\u2019re constantly on edge, it might not \u201cjust be hormones\u201d\u2014<strong>it could be your metabolism</strong>.<strong> </strong>A meta-analysis linked inositol to <strong>improved mood</strong>, with positive effects for <strong>PMDD</strong>, <strong>anxiety</strong>, and <strong>emotional balance</strong>.*</p>",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_AmTzjg": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "ON THE PILL BUT STILL FEEL OFF?",
-                        "open": false,
-                        "content": "<p>The pill can provide temporary relief, but does not fix the root cause. Inositol supports natural hormone balance. <strong>Ovulation returned in 62.5%</strong> within 3 months and <strong>testosterone dropped</strong> significantly in PCOS studies.*</p>",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_9mhfxD": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "FERTILITY STRUGGLES?",
-                        "open": false,
-                        "content": "<p>It\u2019s not just hormones\u2014<strong>insulin resistance</strong> impacts fertility too. Inositol improved egg quality by <strong>46%</strong>, and <strong>pregnancy rates rose by 34%</strong> in IVF patients.*</p>",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_xVREzb": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "LOW ENERGY AND CRASHES?",
-                        "open": false,
-                        "content": "<p>Constant fatigue? It could be blood sugar chaos. Inositol <strong>cut fasting insulin by 25%</strong> and improved insulin resistance markers by <strong>45%</strong>, leading to steadier energy thoughout the day.*</p>",
-                        "page": ""
-                    }
-                },
-                "button_ph69bW": {
-                    "type": "button",
-                    "settings": {
-                        "link_label": "Start My Inositol Journey",
-                        "link": "shopify://products/myo-d-chiro-inositol-powder"
-                    }
-                }
-            },
-            "block_order": [
-                "collapsible_tab_tBJXhQ",
-                "collapsible_tab_zJaULT",
-                "collapsible_tab_EHUzbD",
-                "collapsible_tab_AmTzjg",
-                "collapsible_tab_9mhfxD",
-                "collapsible_tab_xVREzb",
-                "button_ph69bW"
-            ],
-            "custom_css": [
-                ".section-collapsible-content {background-color: white;}"
-            ],
-            "settings": {
-                "heading": "",
-                "bgcolor": "#ffffff",
-                "header_image": "shopify://shop_images/Josie-Square-Bodology-Inositol-2_a3728b0a-9af5-4f61-ad3e-b7fc3319a7bb.jpg",
-                "marker_style": "style1",
-                "description": "<p></p><p></p>",
-                "color_bg": "#ffffff",
-                "color_heading": "#1b3def",
-                "marker_color": "#fd6262",
-                "color_text": "#2c2d2e",
-                "color_links": "#2c2d2e",
-                "color_border": "#1b3def",
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": false
-            }
+        "space_dgXhDh": {
+          "type": "space",
+          "settings": {
+            "height": 120
+          }
         },
-        "rich_text_Vd8Nyi": {
-            "type": "rich-text",
-            "blocks": {
-                "custom_liquid_w9abnF": {
-                    "type": "custom_liquid",
-                    "settings": {
-                        "custom_liquid": "<div style=\"height:50px;\"></div>"
-                    }
-                },
-                "button_AyFyJF": {
-                    "type": "button",
-                    "settings": {
-                        "link_label": "Start My Inositol Journey",
-                        "link": "shopify://products/myo-d-chiro-inositol-powder"
-                    }
-                }
-            },
-            "block_order": [
-                "custom_liquid_w9abnF",
-                "button_AyFyJF"
-            ],
-            "disabled": true,
-            "name": "Rich text",
-            "settings": {
-                "text_width": "medium",
-                "text_position": "center",
-                "text_alignment": "center",
-                "color_bg": "#ffffff",
-                "bgcolor": "#ffffff",
-                "color_heading": "#1b3def",
-                "color_text": "#2c2d2e",
-                "color_links": "#2c2d2e",
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": false
-            }
-        },
-        "expert_testimonials_mgPFnQ": {
-            "type": "expert-testimonials",
-            "blocks": {
-                "quote_mwzy7Y": {
-                    "type": "quote",
-                    "settings": {
-                        "image": "shopify://shop_images/Anita_-_White_-_logo.png",
-                        "stars": "",
-                        "quote": "<p>\"I use Inositol to support clients looking to maintain healthy cycles, manage metabolic wellness, and promote hormonal balance. It plays a helpful role in supporting glucose metabolism and overall vitality.\"</p>",
-                        "name": "Dr. Anita W.",
-                        "expert-title": "Ph.D, Natural Medicine Practitioner"
-                    }
-                },
-                "quote_HBBE6p": {
-                    "type": "quote",
-                    "settings": {
-                        "image": "shopify://shop_images/Tina_-_white_-_logo_2.png",
-                        "stars": "",
-                        "quote": "<p>\"Bodology Inositol is an exceptional supplement. With it's research-backed 40:1 ratio for womens metabolic health. As a nutritionist, I not only highly recommend it but I also use it myself.\"</p>",
-                        "name": "Tina Kozman",
-                        "expert-title": "MEd, CNP, Metabolic Health Expert"
-                    }
-                },
-                "quote_7wUdL3": {
-                    "type": "quote",
-                    "settings": {
-                        "image": "shopify://shop_images/Hillary_-_white_-_logo_2.png",
-                        "stars": "",
-                        "quote": "<p>\"Metabolic health is the foundation of hormone balance. Myo + D-Chiro Inositol supports reproductive wellness and is a valuable addition for women struggling with fertility.\"</p>",
-                        "name": "Hillary Wright",
-                        "expert-title": "MEd, RD, Director of Nutrition at Boston IVF"
-                    }
-                }
-            },
-            "block_order": [
-                "quote_mwzy7Y",
-                "quote_HBBE6p",
-                "quote_7wUdL3"
-            ],
-            "disabled": true,
-            "custom_css": [
-                ".testimonials--heading {padding-bottom: 30px;}"
-            ],
-            "settings": {
-                "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by practitioners</h1>",
-                "full_width": true,
-                "text_size": "small",
-                "font_family": "body",
-                "pagination": "logos",
-                "autoplay": true,
-                "autoplay_length": 5,
-                "color_bg": "#ffffff",
-                "color_bg_card": "#f2eee9",
-                "color_border_card": "#1b3def",
-                "color_text": "#1b3def",
-                "color_text2": "#1b3def",
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": false
-            }
-        },
-        "testimonial_carousel_rfAUyN": {
-            "type": "testimonial-carousel",
-            "blocks": {
-                "testimonial_qWeH6Y": {
-                    "type": "testimonial",
-                    "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-                    "settings": {
-                        "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-                        "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-                        "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-                        "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
-                    }
-                },
-                "testimonial_CxJCYT": {
-                    "type": "testimonial",
-                    "source": "{{ metaobjects.experts[\"a-hillary-rd\"] }}",
-                    "settings": {
-                        "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
-                        "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
-                        "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
-                        "quote": "<p>{{ metaobjects.experts[\"a-hillary-rd\"].exert_short_quote | metafield_tag }}</p>"
-                    }
-                },
-                "testimonial_bbCtfq": {
-                    "type": "testimonial",
-                    "source": "{{ metaobjects.experts[\"c-dr-anita\"] }}",
-                    "settings": {
-                        "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
-                        "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
-                        "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
-                        "quote": "<p>{{ metaobjects.experts[\"c-dr-anita\"].exert_short_quote | metafield_tag }}</p>"
-                    }
-                },
-                "testimonial_QVtE8e": {
-                    "type": "testimonial",
-                    "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-                    "settings": {
-                        "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-                        "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-                        "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-                        "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
-                    }
-                },
-                "testimonial_8L49nw": {
-                    "type": "testimonial",
-                    "settings": {
-                        "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
-                        "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
-                        "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
-                        "quote": "<p>Bodology inositol is a great supplement for the PCOS girlies, for supporting insulin sensitivity, naturally.</p>"
-                    }
-                }
-            },
-            "block_order": [
-                "testimonial_qWeH6Y",
-                "testimonial_CxJCYT",
-                "testimonial_bbCtfq",
-                "testimonial_QVtE8e",
-                "testimonial_8L49nw"
-            ],
-            "settings": {
-                "testimonial_source": "blocks",
-                "heading": "<h1>Trusted by\u00a0<em>experts </em>& practitioners</h1>",
-                "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
-                "full_width": true,
-                "text_size": "medium",
-                "font_family": "heading",
-                "color_bg": "#f8f4f3",
-                "color_bg_card": "#ffffff",
-                "color_border_card": "#1b3def",
-                "color_heading": "#1b3def",
-                "color_text2": "#1b3def",
-                "color_text": "#2c2d2e",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": false,
-                "columns_desktop": 2,
-                "columns_tablet": 2,
-                "columns_mobile": 1,
-                "show_button": true,
-                "button_text": "Meet Our Experts",
-                "button_url": "shopify://pages/meet-our-experts"
-            }
-        },
-        "1741568420b2e69de9": {
-            "type": "apps",
-            "blocks": {
-                "reelup_shoppable_videos_reels_reelup_playlist_AexzE9": {
-                    "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_playlist/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
-                    "settings": {
-                        "playlist_id": ""
-                    }
-                }
-            },
-            "block_order": [
-                "reelup_shoppable_videos_reels_reelup_playlist_AexzE9"
-            ],
-            "disabled": true,
-            "settings": {}
-        },
-        "custom_liquid_LhyTU6": {
-            "type": "custom-liquid",
-            "settings": {
-                "custom_liquid": "<div id=\"reviews\"></div>"
-            }
-        },
-        "expert_testimonials_zpEKKk": {
-            "type": "expert-testimonials",
-            "blocks": {
-                "quote_PhgFXV": {
-                    "type": "quote",
-                    "settings": {
-                        "image": "shopify://shop_images/Lizzie.png",
-                        "stars": "5",
-                        "quote": "<h3><strong>\"Amazing product, highly recommend\"</strong></h3>",
-                        "name": "LIZZIE H.",
-                        "expert-title": "Love this product. It\u2019s supported my hormones while coming off the pill and helped ease my mood and food cravings. Bodology is now well and truly part of my daily routine - it dissolves like a dream too!"
-                    }
-                },
-                "quote_yTBQQm": {
-                    "type": "quote",
-                    "settings": {
-                        "image": "shopify://shop_images/Ewa.png",
-                        "stars": "5",
-                        "quote": "<h3>\"Bodology has mad a real difference for my PCOS\"</h3>",
-                        "name": "EWA S.",
-                        "expert-title": "My doctor suggested adding it to my plan. It\u2019s helped stabilise my insulin levels, improved my energy throughout the day and eased several of my PCOS symptoms including my irregular cycles."
-                    }
-                },
-                "quote_mCAKwc": {
-                    "type": "quote",
-                    "settings": {
-                        "image": "shopify://shop_images/Screenshot_2025-01-23_at_10.07.27.png",
-                        "stars": "5",
-                        "quote": "<h3>\"Best Inositol Powder\"</h3>",
-                        "name": "KEIRA K.",
-                        "expert-title": "I started Bodology's inositol powder several months ago for PCOS. I\u2019ve had fewer sugar cravings, more stable blood sugar levels, and my menstrual cycles have become much easier, with little/no PMS!"
-                    }
-                },
-                "quote_rxzPR7": {
-                    "type": "quote",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/Jade.png",
-                        "stars": "5",
-                        "quote": "<p>\"Since taking inositol, my cravings are much less. I would crave sweets throughout the day but this has stopped!\"</p>",
-                        "name": "JADE M",
-                        "expert-title": "If you have PCOS or high insulin levels you NEED to try this supplement."
-                    }
-                },
-                "quote_CUpFMh": {
-                    "type": "quote",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/KAI2.png",
-                        "stars": "5",
-                        "quote": "<p>\"Little to no taste, and feeling much better. Lost 10 pounds so far & has regulated my cycle!\"</p>",
-                        "name": "Irina\u00a0J.",
-                        "expert-title": "Hormones"
-                    }
-                },
-                "quote_F4FmYY": {
-                    "type": "quote",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/Bonnie.png",
-                        "stars": "5",
-                        "quote": "<p>\"I\u2019m waking up a lot less, and falling asleep much easier. I also generally feel much calmer and focused for the whole day.\"</p>",
-                        "name": "Bonnie H.",
-                        "expert-title": "Mood"
-                    }
-                },
-                "quote_XCWEri": {
-                    "type": "quote",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/KAI.png",
-                        "stars": "5",
-                        "quote": "<p>\"I have gotten off the pill so definitely would give this supplement a try!!!\"</p>",
-                        "name": "Shayna B.",
-                        "expert-title": "Hormones"
-                    }
-                },
-                "quote_AWzBKN": {
-                    "type": "quote",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/KAI2.png",
-                        "stars": "5",
-                        "quote": "<p>\"It came in such lovely packaging, and the taste is just as delightful!\"</p>",
-                        "name": "Sandra P.",
-                        "expert-title": "Mood support"
-                    }
-                },
-                "quote_KwTygU": {
-                    "type": "quote",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/KAI.png",
-                        "stars": "5",
-                        "quote": "<p>\"It's been a bit over two months, and out of nowhere, I actually ovulated.\"</p>",
-                        "name": "Sofia P.",
-                        "expert-title": "Fertility"
-                    }
-                },
-                "quote_ExXWHa": {
-                    "type": "quote",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/KAI2.png",
-                        "stars": "5",
-                        "quote": "<p>\"I've been getting better sleep since starting this powder and am very happy about that!\"</p>",
-                        "name": "Kristina A.",
-                        "expert-title": "Sleep"
-                    }
-                }
-            },
-            "block_order": [
-                "quote_PhgFXV",
-                "quote_yTBQQm",
-                "quote_mCAKwc",
-                "quote_rxzPR7",
-                "quote_CUpFMh",
-                "quote_F4FmYY",
-                "quote_XCWEri",
-                "quote_AWzBKN",
-                "quote_KwTygU",
-                "quote_ExXWHa"
-            ],
-            "custom_css": [
-                ".star-rating {color: white;}"
-            ],
-            "settings": {
-                "heading": "<p>Real results with <em>inositol</em></p>",
-                "full_width": true,
-                "text_size": "small",
-                "font_family": "heading",
-                "pagination": "logos",
-                "autoplay": true,
-                "autoplay_length": 5,
-                "color_bg": "#ffffff",
-                "color_bg_card": "#fbf8f5",
-                "color_border_card": "#1b3def",
-                "color_text": "#1b3def",
-                "color_text2": "#1b3def",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": false
-            }
-        },
-        "image_with_text_rEJXXR": {
-            "type": "image-with-text",
-            "blocks": {
-                "heading_cGJQNB": {
-                    "type": "heading",
-                    "settings": {
-                        "text": "You're not broken. Your <em>metabolism</em> needs a reset.",
-                        "marker_style": "style1",
-                        "heading_size": "h2",
-                        "marker_color": "#ffffff"
-                    }
-                },
-                "text_UmdkFU": {
-                    "type": "text",
-                    "settings": {
-                        "text": "<h5>\nStruggling with hormones and low mood? Metabolic imbalance could be at the root<em>\u2014</em>Inositol helps fix it.\n<br><br>\n</h5>"
-                    }
-                },
-                "image_FAGjFq": {
-                    "type": "image",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/Inositol-Supplement-List-9.png"
-                    }
-                },
-                "collapsible_tab_6GmEBw": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Natural support for PCOS, thyroid and ovarian health*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_zdiLzW": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Shown to improve anxiety*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_68fhiE": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Promotes healthy BMI*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_fLykdN": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Backed by 100+ clinical studies*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_Fgx9gn": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Trusted by leading experts*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "text_button_jgdF64": {
-                    "type": "text-button",
-                    "settings": {
-                        "link_label": "View detailed benefits",
-                        "link": "#product"
-                    }
-                },
-                "text_button_knJzD9": {
-                    "type": "text-button",
-                    "settings": {
-                        "link_label": "*Read disclaimer",
-                        "link": "#disclaimer"
-                    }
-                }
-            },
-            "block_order": [
-                "heading_cGJQNB",
-                "text_UmdkFU",
-                "image_FAGjFq",
-                "collapsible_tab_6GmEBw",
-                "collapsible_tab_zdiLzW",
-                "collapsible_tab_68fhiE",
-                "collapsible_tab_fLykdN",
-                "collapsible_tab_Fgx9gn",
-                "text_button_jgdF64",
-                "text_button_knJzD9"
-            ],
-            "disabled": true,
-            "settings": {
-                "use_video": true,
-                "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-                "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
-                "video_autoplay": true,
-                "height": "large",
-                "desktop_image_width": "large",
-                "full_width": false,
-                "layout": "text_first",
-                "content_position": "text-left",
-                "column_spacing": "small",
-                "color_bg": "#ffffff",
-                "color_text": "#1b3def",
-                "color_border": "#1b3def",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": false
-            }
-        },
-        "image_with_text_RJaRcP": {
-            "type": "image-with-text",
-            "blocks": {
-                "heading_mJkfdK": {
-                    "type": "heading",
-                    "settings": {
-                        "text": "The new wayto balance",
-                        "marker_style": "style1",
-                        "heading_size": "h1",
-                        "marker_color": "#ffffff"
-                    }
-                },
-                "text_7WC934": {
-                    "type": "text",
-                    "settings": {
-                        "text": "<h5>\nInositol works through <em>metabolic</em> pathways to support hormone and mood health<em>\u2014</em>naturally.\n<br><br>\n</h5>"
-                    }
-                },
-                "image_W9MA8d": {
-                    "type": "image",
-                    "disabled": true,
-                    "settings": {
-                        "image": "shopify://shop_images/Inositol-Supplement-List-9.png"
-                    }
-                },
-                "collapsible_tab_6ARFkT": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Natural support for PCOS, thyroid and ovarian health*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_tWJ7NJ": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Shown to improve anxiety*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_nb68HL": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Promotes healthy BMI*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_pD6TVf": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Backed by 100+ clinical studies*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "collapsible_tab_fk6HWW": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Trusted by leading experts*",
-                        "open": false,
-                        "content": "",
-                        "page": ""
-                    }
-                },
-                "text_button_EPypgQ": {
-                    "type": "text-button",
-                    "settings": {
-                        "link_label": "View detailed benefits",
-                        "link": "#product"
-                    }
-                },
-                "text_button_Edfcwz": {
-                    "type": "text-button",
-                    "settings": {
-                        "link_label": "*Read disclaimer",
-                        "link": "#disclaimer"
-                    }
-                }
-            },
-            "block_order": [
-                "heading_mJkfdK",
-                "text_7WC934",
-                "image_W9MA8d",
-                "collapsible_tab_6ARFkT",
-                "collapsible_tab_tWJ7NJ",
-                "collapsible_tab_nb68HL",
-                "collapsible_tab_pD6TVf",
-                "collapsible_tab_fk6HWW",
-                "text_button_EPypgQ",
-                "text_button_Edfcwz"
-            ],
-            "disabled": true,
-            "settings": {
-                "use_video": true,
-                "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-                "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
-                "video_autoplay": true,
-                "height": "large",
-                "desktop_image_width": "large",
-                "full_width": false,
-                "layout": "text_first",
-                "content_position": "text-left",
-                "column_spacing": "small",
-                "color_bg": "#ffffff",
-                "color_text": "#1b3def",
-                "color_border": "#1b3def",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": false
-            }
-        },
-        "multicolumn_rVnwmF": {
-            "type": "multicolumn",
-            "blocks": {
-                "column_fUjqfM": {
-                    "type": "column",
-                    "settings": {
-                        "image_full_width": false,
-                        "image_link": "",
-                        "title": "",
-                        "text": "<h1>Your <em>metabolism</em> influences your entire body</h1><p></p><p>(not just your weight)</p>",
-                        "link_label": "",
-                        "link": ""
-                    }
-                },
-                "column_4JdggA": {
-                    "type": "column",
-                    "settings": {
-                        "image_full_width": false,
-                        "image_link": "",
-                        "title": "",
-                        "text": "",
-                        "link_label": "",
-                        "link": ""
-                    }
-                }
-            },
-            "block_order": [
-                "column_fUjqfM",
-                "column_4JdggA"
-            ],
-            "disabled": true,
-            "custom_css": [
-                ".multicolumn {color: #1b3def !important; align-content: end !important;}",
-                ".row .columns {align-content: end !important;}",
-                ".columns h1 {margin-bottom: 0px !important; align-content: end !important; padding-right: 15%;}",
-                "@media only screen and (min-width: 768px) {.row .columns {padding: 0px 15px 0 5% !important; }}"
-            ],
-            "settings": {
-                "heading": "",
-                "marker_style": "style1",
-                "description": "",
-                "bgcolor": "",
-                "columns_desktop": 2,
-                "mobile_swipe": false,
-                "image_ratio": "adapt",
-                "text_alignment": "left",
-                "heading_size": "h3",
-                "color_heading": "#1b3def",
-                "marker_color": "#ffffff",
-                "color_text": "#1b3def",
-                "color_links": "#ffffff",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": true
-            }
-        },
-        "why_bit_section_LfxKfP": {
-            "type": "why-bit-section",
-            "blocks": {
-                "icon_block_QnLWxr": {
-                    "type": "icon_block",
-                    "settings": {
-                        "icon": "",
-                        "icon-img": "shopify://shop_images/icons-1.png",
-                        "title": "Perfectly portioned",
-                        "text": "Stop wasting money by using more toothpaste than you need.",
-                        "color_text_1": "#1b3def",
-                        "color_text": "#1b3def"
-                    }
-                },
-                "icon_block_JYGDMr": {
-                    "type": "icon_block",
-                    "settings": {
-                        "icon": "",
-                        "icon-img": "shopify://shop_images/icons-2.png",
-                        "title": "Better-for-You Formulations",
-                        "text": "A dry tablet means we can use less-harmful ingredients and still protect your teeth.",
-                        "color_text_1": "#2c2d2e",
-                        "color_text": "#2c2d2e"
-                    }
-                },
-                "icon_block_3h3HNA": {
-                    "type": "icon_block",
-                    "settings": {
-                        "icon": "",
-                        "icon-img": "shopify://shop_images/icons-3.png",
-                        "title": "Sink-Friendly",
-                        "text": "Our tablets leave less mess in your sink because no glycerine \u2013 what makes most toothpaste, paste \u2013 means no sticky goop.",
-                        "color_text_1": "#2c2d2e",
-                        "color_text": "#2c2d2e"
-                    }
-                },
-                "icon_block_mjhQee": {
-                    "type": "icon_block",
-                    "settings": {
-                        "icon": "",
-                        "icon-img": "shopify://shop_images/icons-4.png",
-                        "title": "Suitcase-Safe",
-                        "text": "No more toothpaste explosions in your bag. Just throw a few Bits in your pack and you\u2019re good to go",
-                        "color_text_1": "#2c2d2e",
-                        "color_text": "#2c2d2e"
-                    }
-                },
-                "icon_block_QxKrbN": {
-                    "type": "icon_block",
-                    "settings": {
-                        "icon": "",
-                        "icon-img": "shopify://shop_images/icons-5.png",
-                        "title": "Earth-Friendly",
-                        "text": "Infinitely refillable with no plastic toothpaste tubes, our Bits are better for our earth and oceans.",
-                        "color_text_1": "#2c2d2e",
-                        "color_text": "#2c2d2e"
-                    }
-                },
-                "icon_block_RYmKaQ": {
-                    "type": "icon_block",
-                    "settings": {
-                        "icon": "",
-                        "icon-img": "shopify://shop_images/icons-6.png",
-                        "title": "Stops the spread of Bacteria",
-                        "text": "The top of a toothpaste tube can transfer bacteria from your partners brush to your mouth. Our Bits can stop the spread.",
-                        "color_text_1": "#2c2d2e",
-                        "color_text": "#2c2d2e"
-                    }
-                }
-            },
-            "block_order": [
-                "icon_block_QnLWxr",
-                "icon_block_JYGDMr",
-                "icon_block_3h3HNA",
-                "icon_block_mjhQee",
-                "icon_block_QxKrbN",
-                "icon_block_RYmKaQ"
-            ],
-            "disabled": true,
-            "settings": {
-                "heading": "<p>Balance your hormons, Support fertility, and feel in control again</p>",
-                "main_image": "shopify://shop_images/Bodology-Inositol-7.jpg",
-                "color_bg": "#ffffff",
-                "color_heading": "#1b3def",
-                "color_text_1": "#1b3def",
-                "color_text": "#1b3def"
-            }
-        },
-        "video_pdBgr8": {
-            "type": "video",
-            "disabled": true,
-            "settings": {
-                "heading": "",
-                "marker_style": "style1",
-                "description": "",
-                "full_width": true,
-                "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-                "video_hosted": "shopify://files/videos/Video 2_V2_Small.mov",
-                "video_autoplay": true,
-                "aspect_ratio": "4-3",
-                "marker_color": "#ffffff",
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": true
-            }
-        },
-        "rich_text_ktwnPa": {
-            "type": "rich-text",
-            "blocks": {
-                "heading_Kp7pEw": {
-                    "type": "heading",
-                    "settings": {
-                        "text": "Start your <em>inositol journey</em>",
-                        "marker_style": "style1",
-                        "size": "h1",
-                        "marker_color": "#fd6262"
-                    }
-                }
-            },
-            "block_order": [
-                "heading_Kp7pEw"
-            ],
-            "disabled": true,
-            "settings": {
-                "text_width": "medium",
-                "text_position": "center",
-                "text_alignment": "center",
-                "color_bg": "rgba(0,0,0,0)",
-                "bgcolor": "rgba(0,0,0,0)",
-                "color_heading": "#1B3DEF",
-                "color_text": "#1b3def",
-                "color_links": "#1b3def",
-                "disable_top_spacing": false,
-                "disable_bottom_spacing": false
-            }
-        },
-        "featured_product_WEQ8Gx": {
-            "type": "featured-product",
-            "blocks": {
-                "custom_liquid_YAGR9g": {
-                    "type": "custom_liquid",
-                    "settings": {
-                        "custom_liquid": "<div id=\"product\"></div>"
-                    }
-                },
-                "text_RWyfgB": {
-                    "type": "text",
-                    "disabled": true,
-                    "settings": {
-                        "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65<em> </em> <em>|</em> 40:1 Ratio<em> </em> <em>|</em> 90 Scoops</h6>",
-                        "text_style": "style_vendor"
-                    }
-                },
-                "title_ExCfKU": {
-                    "type": "title",
-                    "settings": {
-                        "show_products_rating": true
-                    }
-                },
-                "custom_liquid_qLxheX": {
-                    "type": "custom_liquid",
-                    "settings": {
-                        "custom_liquid": "<div id=\"product-details\"><h6>\nPure, unflavored inositol powder in the body's optimal 40:1 ratio of myo-inositol to d-chiro-inositol. Scientifically formulated to support hormonal balance, metabolic health, and insulin sensitivity.*\n\n<br><br><b>\n\n100+ studies support inositol's role in supporting cycle regularity, PCOS symptoms, fertility, mood balance, and healthy BMI.* \n</b></h6><br></div>"
-                    }
-                },
-                "variant_picker_NMTpia": {
-                    "type": "variant_picker",
-                    "disabled": true,
-                    "settings": {
-                        "picker_type": "button",
-                        "color_picker": true,
-                        "color_picker_use_variants": false,
-                        "variant_is_disabled": true,
-                        "sizing_guide_text": "Sizing guide",
-                        "sizing_guide_icon": "ruler",
-                        "sizing_guide_page": ""
-                    }
-                },
-                "quantity_RyV4rX": {
-                    "type": "quantity",
-                    "disabled": true,
-                    "settings": {}
-                },
-                "custom_option_Et9EBY": {
-                    "type": "custom_option",
-                    "disabled": true,
-                    "settings": {
-                        "type": "multiple",
-                        "label": "Primary Concern",
-                        "text_required": true,
-                        "text_placeholder": "Choose your concern",
-                        "checkbox_checked_value": "Yes",
-                        "checkbox_unchecked_value": "No",
-                        "multiple_style": "dropdown",
-                        "multiple_options": "PCOS\nPMDD\nEndometriosis\nOther Hormone\nWeight & Body Composition\nAnxiety\nLow Mood\nSleep\nInsulin Resistance"
-                    }
-                },
-                "buy_buttons_3FBywE": {
-                    "type": "buy_buttons",
-                    "settings": {
-                        "show_dynamic_checkout": false
-                    }
-                },
-                "custom_liquid_mqw4Uy": {
-                    "type": "custom_liquid",
-                    "settings": {
-                        "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, arrives in 2-5 days</span>\n    </div>"
-                    }
-                },
-                "custom_liquid_nxKKT3": {
-                    "type": "custom_liquid",
-                    "disabled": true,
-                    "settings": {
-                        "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, arrives in 2-5 days</span>\n    </div>\n<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>2 scoops daily - optimal dose reward (up to 20% off)</span>\n    </div>"
-                    }
-                },
-                "side_panel_NGJTtJ": {
-                    "type": "side_panel",
-                    "settings": {
-                        "side_panel_1_label": "Detailed Benefits",
-                        "side_panel_1_icon": "none",
-                        "side_panel_1_page": "detailed-benefits",
-                        "side_panel_2_label": "Shipping Policy",
-                        "side_panel_2_icon": "none",
-                        "side_panel_2_page": "shipping-returns",
-                        "side_panel_3_label": "",
-                        "side_panel_3_icon": "none",
-                        "side_panel_3_page": ""
-                    }
-                },
-                "collapsible_tab_inD7kY": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Details",
-                        "open": false,
-                        "content": "<ul><li>3rd party tested for purity & potency</li><li>Optimal 40:1 ratio science-backed for its benefits on women's health</li><li>Made sustainably in the USA</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
-                        "page": "",
-                        "custom_liquid": ""
-                    }
-                },
-                "collapsible_tab_BEQc3p": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Ingredients",
-                        "image": "shopify://shop_images/Supplement-Facts.png",
-                        "open": false,
-                        "content": "<p>Bodology\u2122 Myo-Inositol, D-Chiro-Inositol</p>",
-                        "page": "",
-                        "custom_liquid": ""
-                    }
-                },
-                "collapsible_tab_Qq4nP6": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "The \"NO\" List",
-                        "open": false,
-                        "content": "<ul><li>No fillers</li><li>No gluten</li><li>No animal ingredients</li><li>No flavoring</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
-                        "page": "",
-                        "custom_liquid": ""
-                    }
-                },
-                "collapsible_tab_RaXCmL": {
-                    "type": "collapsible_tab",
-                    "settings": {
-                        "heading": "Certifications",
-                        "open": false,
-                        "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metal, Conaminants and Microbiological Analysis by 3rd Party Laboratories</li></ul>",
-                        "page": "",
-                        "custom_liquid": ""
-                    }
-                }
-            },
-            "block_order": [
-                "custom_liquid_YAGR9g",
-                "text_RWyfgB",
-                "title_ExCfKU",
-                "custom_liquid_qLxheX",
-                "variant_picker_NMTpia",
-                "quantity_RyV4rX",
-                "custom_option_Et9EBY",
-                "buy_buttons_3FBywE",
-                "custom_liquid_mqw4Uy",
-                "custom_liquid_nxKKT3",
-                "side_panel_NGJTtJ",
-                "collapsible_tab_inD7kY",
-                "collapsible_tab_BEQc3p",
-                "collapsible_tab_Qq4nP6",
-                "collapsible_tab_RaXCmL"
-            ],
-            "disabled": true,
-            "custom_css": [
-                "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 500px; }}"
-            ],
-            "settings": {
-                "heading": "",
-                "marker_style": "style1",
-                "description": "",
-                "product": "myo-d-chiro-inositol-powder",
-                "show_taxes_included": true,
-                "thumbnail_position": "bottom",
-                "media_aspect_ratio": "square",
-                "display_captions": false,
-                "hide_variants": true,
-                "lightbox": false,
-                "enable_video_looping": false,
-                "marker_color": "#fd6262",
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": false
-            }
-        },
-        "promotion_blocks_v2_reFWxi": {
-            "type": "promotion-blocks-v2",
-            "blocks": {
-                "promotion_EXFdac": {
-                    "type": "promotion",
-                    "source": "{{ shop.metaobjects.experts[\"tina-kozman\"] }}",
-                    "settings": {
-                        "image": "{{ shop.metaobjects.experts[\"tina-kozman\"].expert_photo.value }}",
-                        "title": "<h4><strong>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_name.value }}</strong></h4><h6><strong>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_title.value }}</strong><strong> </strong></h6><p></p>",
-                        "quote": "<h6>{{ shop.metaobjects.experts[\"tina-kozman\"].exert_short_quote | metafield_tag }}</h6>",
-                        "button_text": "",
-                        "button_link": "{{ shop.metaobjects.experts[\"tina-kozman\"].system.url }}"
-                    }
-                },
-                "promotion_JdGzqe": {
-                    "type": "promotion",
-                    "source": "{{ shop.metaobjects.experts[\"hillary-wright\"] }}",
-                    "settings": {
-                        "image": "{{ shop.metaobjects.experts[\"hillary-wright\"].expert_photo.value }}",
-                        "title": "<h5><strong>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_name.value }}</strong></h5><h6><strong>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_title.value }}</strong><strong> </strong></h6>",
-                        "quote": "<h6>{{ shop.metaobjects.experts[\"hillary-wright\"].exert_short_quote | metafield_tag }}</h6>",
-                        "button_text": "",
-                        "button_link": "{{ shop.metaobjects.experts[\"hillary-wright\"].system.url }}"
-                    }
-                },
-                "promotion_g4GPhQ": {
-                    "type": "promotion",
-                    "source": "{{ shop.metaobjects.experts[\"dr-anita-w\"] }}",
-                    "settings": {
-                        "image": "{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_photo.value }}",
-                        "title": "<h4><strong>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_name.value }}</strong></h4><h6><strong>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_title.value }}</strong><strong> </strong></h6>",
-                        "quote": "<h6>{{ shop.metaobjects.experts[\"dr-anita-w\"].exert_short_quote | metafield_tag }}</h6>",
-                        "button_text": "",
-                        "button_link": "{{ shop.metaobjects.experts[\"dr-anita-w\"].system.url }}"
-                    }
-                }
-            },
-            "block_order": [
-                "promotion_EXFdac",
-                "promotion_JdGzqe",
-                "promotion_g4GPhQ"
-            ],
-            "disabled": true,
-            "settings": {
-                "mobile_swipe": true,
-                "image_ratio": "square",
-                "column_spacing": "medium",
-                "color_bg": "#ffffff",
-                "color_text": "#1b3def",
-                "color_link": "#1b3def",
-                "disable_top_spacing": true,
-                "disable_bottom_spacing": false
-            }
-        },
-        "1753011701114d441a": {
-            "type": "apps",
-            "blocks": {
-                "junip_junip_reviews_zijeBp": {
-                    "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
-                    "settings": {
-                        "layout": "list",
-                        "reviewsType": "all",
-                        "showSummary": true,
-                        "reviewsCount": 10,
-                        "containerClass": ""
-                    }
-                }
-            },
-            "block_order": [
-                "junip_junip_reviews_zijeBp"
-            ],
-            "custom_css": [
-                ".junip-product-review-count {display: none !important;}"
-            ],
-            "settings": {}
+        "customer_reviews_CtBhV3": {
+          "type": "customer_reviews",
+          "settings": {
+            "stars": "5",
+            "heading": "See Real Results With Inositol",
+            "font_size": "0.7em",
+            "link": "#reviews",
+            "scale": "1.5"
+          }
         }
+      },
+      "block_order": [
+        "space_g4MqDz",
+        "heading_FGRE4D",
+        "text_ekmz8W",
+        "space_hakprz",
+        "button_rBDtc7",
+        "space_dgXhDh",
+        "customer_reviews_CtBhV3"
+      ],
+      "custom_css": [
+        "/*@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
+        "@media only screen and (min-width: 768px) {.h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important; }}",
+        "*/.customer-reviews--block {align-items: center;}",
+        ".star-rating {text-align: center;}",
+        "h5 {padding: 0 10%;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-4_76fb036e-e110-4960-b77d-0a16c44fda51.jpg",
+        "mobile_image": "shopify://shop_images/Home_Banner_Mobile_9.jpg",
+        "image_parallax": true,
+        "desktop_height": "desktop-height-650",
+        "mobile_height": "mobile-height-auto",
+        "full_width": true,
+        "content_width": "medium",
+        "content_position": "bottom-center",
+        "text_alignment": "center",
+        "text_color": "#1b3def",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
     },
-    "order": [
-        "image_with_text_overlay_zjqnjJ",
-        "carousel_boxes_jas_HzyeW9",
-        "rich_text_CUWHK9",
-        "rich_text_XXb67A",
-        "multicolumn_zBkNGq",
-        "collapsible_content_2_hrRGJn",
-        "rich_text_Vd8Nyi",
-        "expert_testimonials_mgPFnQ",
-        "testimonial_carousel_rfAUyN",
-        "1741568420b2e69de9",
-        "custom_liquid_LhyTU6",
-        "expert_testimonials_zpEKKk",
-        "image_with_text_rEJXXR",
-        "image_with_text_RJaRcP",
-        "multicolumn_rVnwmF",
-        "why_bit_section_LfxKfP",
-        "video_pdBgr8",
-        "rich_text_ktwnPa",
-        "featured_product_WEQ8Gx",
-        "promotion_blocks_v2_reFWxi",
-        "1753011701114d441a"
-    ]
+    "carousel_boxes_jas_HzyeW9": {
+      "type": "Carousel-Boxes-Jas",
+      "blocks": {
+        "box_YQBT8X": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Girls-Inositol-PCOS_00446e49-aab3-4b8d-94b8-bb00d021b60f.jpg",
+            "image_link": "shopify://pages/pcos",
+            "open": false,
+            "heading": "<h5>HORMONES</h5>",
+            "text": "",
+            "link_label": "",
+            "link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=hormones",
+            "use_text_button": false,
+            "block_link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=hormones"
+          }
+        },
+        "box_egXcdC": {
+          "type": "box",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_Fertility_Hormones.jpg",
+            "image_link": "shopify://pages/hormones",
+            "open": false,
+            "heading": "<p>Hormones</p>",
+            "text": "",
+            "link_label": "",
+            "link": "shopify://pages/hormones",
+            "use_text_button": false,
+            "block_link": ""
+          }
+        },
+        "box_TxAVLm": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Bodology_Inositol_for_Fertility.jpg",
+            "image_link": "shopify://pages/fertility",
+            "open": false,
+            "heading": "<h5>FERTILITY</h5>",
+            "text": "",
+            "link_label": "",
+            "link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=fertility",
+            "use_text_button": false,
+            "block_link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=fertility"
+          }
+        },
+        "box_fkrYD7": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Kai-Mood-Inositol_2d880ece-8a5d-4bf9-a8e4-dc84f885ab38.jpg",
+            "image_link": "shopify://pages/anxiety",
+            "open": false,
+            "heading": "<h5>MOOD</h5>",
+            "text": "",
+            "link_label": "",
+            "link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=mood",
+            "use_text_button": false,
+            "block_link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=mood"
+          }
+        },
+        "box_mBqGXB": {
+          "type": "box",
+          "settings": {
+            "image": "shopify://shop_images/Bodology-Inositol-for-Weight-2_20df554e-cb9f-4e55-af04-829cc08558f2.jpg",
+            "image_link": "shopify://pages/sustainable-weight-loss",
+            "open": false,
+            "heading": "<h5>METABOLISM</h5>",
+            "text": "",
+            "link_label": "",
+            "link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=metabolism",
+            "use_text_button": false,
+            "block_link": "https://bodology.co/products/myo-d-chiro-inositol-powder?view=metabolism"
+          }
+        }
+      },
+      "block_order": [
+        "box_YQBT8X",
+        "box_egXcdC",
+        "box_TxAVLm",
+        "box_fkrYD7",
+        "box_mBqGXB"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "columns_desktop": 3,
+        "column_spacing": "medium",
+        "image_ratio": "square",
+        "mobile_swipe": false,
+        "text_alignment": "left",
+        "color_bg": "#ffffff",
+        "color_heading": "#1b3def",
+        "marker_color": "#fd6262",
+        "color_text": "#1b3def",
+        "color_link": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_CUWHK9": {
+      "type": "rich-text",
+      "blocks": {
+        "text_fNKBq9": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Your metabolic health impacts your entire body <em>– not just your weight</em></h1>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "text_fNKBq9"
+      ],
+      "custom_css": [
+        ".section-rich-text {background-color: white;}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_width": "xlarge",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "bgcolor": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_XXb67A": {
+      "type": "rich-text",
+      "blocks": {
+        "text_nJhEEa": {
+          "type": "text",
+          "settings": {
+            "text": "<p>87% of adults have impaired metabolic function, it’s not ‘just a weight issue’. <strong>Discover how inositol helps.</strong></p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "text_nJhEEa"
+      ],
+      "custom_css": [
+        ".section-rich-text {background-color: white;}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "bgcolor": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "multicolumn_zBkNGq": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_k73ndb": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h3><strong>You metabolism influences your entire body </strong><em><strong>—not just your</strong></em><strong> </strong><em><strong>weight </strong></em></h3>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ExHNM9": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<p>87% of adults have impaired metabolic function,  it’s not ‘just a weight issue’.</p><p><strong>Discover how inositol helps:</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_k73ndb",
+        "column_ExHNM9"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.multicolumn .row .columns {padding: 0px 5% !important; }}",
+        ".multicolumn__column h5 {border-bottom: 1px solid #1b3def; padding-bottom: 23px; margin-bottom: 23px;}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "bgcolor": "#ffffff",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#2c2d2e",
+        "color_links": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "collapsible_content_2_hrRGJn": {
+      "type": "collapsible-content-2",
+      "blocks": {
+        "collapsible_tab_tBJXhQ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "IRREGULAR PERIODS OR PCOS?",
+            "open": false,
+            "content": "<p>Up to <strong>80% of women with PCOS have insulin resistance</strong>. Inositol helps restore ovulation and balance hormones—<strong>85% saw their cycles return</strong>, and cycle length dropped by <strong>54%</strong> in studies.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_zJaULT": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "CRAVINGS AND BLOOD SUGAR DIPS?",
+            "open": false,
+            "content": "<p>Blood sugar spikes, cravings, and energy crashes are signs your metabolism may be out of sync. Inositol supports <strong>healthy glucose metabolism</strong>—so you feel more balanced throughout the day. In one trial, it helped reduce cravings, improve fat loss by <strong>35% more than diet alone</strong>, and preserved <strong>7.1% lean muscle</strong>.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_EHUzbD": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "MOOD SWINGS AND ANXIETY?",
+            "open": false,
+            "content": "<p>If your mood feels unpredictable or you’re constantly on edge, it might not “just be hormones”—<strong>it could be your metabolism</strong>.<strong> </strong>A meta-analysis linked inositol to <strong>improved mood</strong>, with positive effects for <strong>PMDD</strong>, <strong>anxiety</strong>, and <strong>emotional balance</strong>.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_AmTzjg": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "ON THE PILL BUT STILL FEEL OFF?",
+            "open": false,
+            "content": "<p>The pill can provide temporary relief, but does not fix the root cause. Inositol supports natural hormone balance. <strong>Ovulation returned in 62.5%</strong> within 3 months and <strong>testosterone dropped</strong> significantly in PCOS studies.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_9mhfxD": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "FERTILITY STRUGGLES?",
+            "open": false,
+            "content": "<p>It’s not just hormones—<strong>insulin resistance</strong> impacts fertility too. Inositol improved egg quality by <strong>46%</strong>, and <strong>pregnancy rates rose by 34%</strong> in IVF patients.*</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_xVREzb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "LOW ENERGY AND CRASHES?",
+            "open": false,
+            "content": "<p>Constant fatigue? It could be blood sugar chaos. Inositol <strong>cut fasting insulin by 25%</strong> and improved insulin resistance markers by <strong>45%</strong>, leading to steadier energy thoughout the day.*</p>",
+            "page": ""
+          }
+        },
+        "button_ph69bW": {
+          "type": "button",
+          "settings": {
+            "link_label": "Start My Inositol Journey",
+            "link": "shopify://products/myo-d-chiro-inositol-powder"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_tab_tBJXhQ",
+        "collapsible_tab_zJaULT",
+        "collapsible_tab_EHUzbD",
+        "collapsible_tab_AmTzjg",
+        "collapsible_tab_9mhfxD",
+        "collapsible_tab_xVREzb",
+        "button_ph69bW"
+      ],
+      "custom_css": [
+        ".section-collapsible-content {background-color: white;}"
+      ],
+      "settings": {
+        "heading": "",
+        "bgcolor": "#ffffff",
+        "header_image": "shopify://shop_images/Josie-Square-Bodology-Inositol-2_a3728b0a-9af5-4f61-ad3e-b7fc3319a7bb.jpg",
+        "marker_style": "style1",
+        "description": "<p></p><p></p>",
+        "color_bg": "#ffffff",
+        "color_heading": "#1b3def",
+        "marker_color": "#fd6262",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "color_border": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_Vd8Nyi": {
+      "type": "rich-text",
+      "blocks": {
+        "custom_liquid_w9abnF": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"height:50px;\"></div>"
+          }
+        },
+        "button_AyFyJF": {
+          "type": "button",
+          "settings": {
+            "link_label": "Start My Inositol Journey",
+            "link": "shopify://products/myo-d-chiro-inositol-powder"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_w9abnF",
+        "button_AyFyJF"
+      ],
+      "disabled": true,
+      "name": "Rich text",
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "bgcolor": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "expert_testimonials_mgPFnQ": {
+      "type": "expert-testimonials",
+      "blocks": {
+        "quote_mwzy7Y": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Anita_-_White_-_logo.png",
+            "stars": "",
+            "quote": "<p>\"I use Inositol to support clients looking to maintain healthy cycles, manage metabolic wellness, and promote hormonal balance. It plays a helpful role in supporting glucose metabolism and overall vitality.\"</p>",
+            "name": "Dr. Anita W.",
+            "expert-title": "Ph.D, Natural Medicine Practitioner"
+          }
+        },
+        "quote_HBBE6p": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Tina_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<p>\"Bodology Inositol is an exceptional supplement. With it's research-backed 40:1 ratio for womens metabolic health. As a nutritionist, I not only highly recommend it but I also use it myself.\"</p>",
+            "name": "Tina Kozman",
+            "expert-title": "MEd, CNP, Metabolic Health Expert"
+          }
+        },
+        "quote_7wUdL3": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Hillary_-_white_-_logo_2.png",
+            "stars": "",
+            "quote": "<p>\"Metabolic health is the foundation of hormone balance. Myo + D-Chiro Inositol supports reproductive wellness and is a valuable addition for women struggling with fertility.\"</p>",
+            "name": "Hillary Wright",
+            "expert-title": "MEd, RD, Director of Nutrition at Boston IVF"
+          }
+        }
+      },
+      "block_order": [
+        "quote_mwzy7Y",
+        "quote_HBBE6p",
+        "quote_7wUdL3"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".testimonials--heading {padding-bottom: 30px;}"
+      ],
+      "settings": {
+        "heading": "<h1>Backed by <em>experts,</em> <br/>trusted by practitioners</h1>",
+        "full_width": true,
+        "text_size": "small",
+        "font_family": "body",
+        "pagination": "logos",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#ffffff",
+        "color_bg_card": "#f2eee9",
+        "color_border_card": "#1b3def",
+        "color_text": "#1b3def",
+        "color_text2": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "testimonial_carousel_rfAUyN": {
+      "type": "testimonial-carousel",
+      "blocks": {
+        "testimonial_qWeH6Y": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_CxJCYT": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-hillary-rd\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-hillary-rd\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_bbCtfq": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"c-dr-anita\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"c-dr-anita\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_QVtE8e": {
+          "type": "testimonial",
+          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
+            "quote": "<p>{{ metaobjects.experts[\"a-tina-kozman\"].exert_short_quote | metafield_tag }}</p>"
+          }
+        },
+        "testimonial_8L49nw": {
+          "type": "testimonial",
+          "settings": {
+            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
+            "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
+            "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
+            "quote": "<p>Bodology inositol is a great supplement for the PCOS girlies, for supporting insulin sensitivity, naturally.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_qWeH6Y",
+        "testimonial_CxJCYT",
+        "testimonial_bbCtfq",
+        "testimonial_QVtE8e",
+        "testimonial_8L49nw"
+      ],
+      "settings": {
+        "testimonial_source": "blocks",
+        "heading": "<h1>Trusted by <em>experts </em>& practitioners</h1>",
+        "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
+        "full_width": true,
+        "text_size": "medium",
+        "font_family": "heading",
+        "color_bg": "#f8f4f3",
+        "color_bg_card": "#ffffff",
+        "color_border_card": "#1b3def",
+        "color_heading": "#1b3def",
+        "color_text2": "#1b3def",
+        "color_text": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false,
+        "columns_desktop": 2,
+        "columns_tablet": 2,
+        "columns_mobile": 1,
+        "show_button": true,
+        "button_text": "Meet Our Experts",
+        "button_url": "shopify://pages/meet-our-experts"
+      }
+    },
+    "1741568420b2e69de9": {
+      "type": "apps",
+      "blocks": {
+        "reelup_shoppable_videos_reels_reelup_playlist_AexzE9": {
+          "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_playlist/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
+          "settings": {
+            "playlist_id": ""
+          }
+        }
+      },
+      "block_order": [
+        "reelup_shoppable_videos_reels_reelup_playlist_AexzE9"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "custom_liquid_LhyTU6": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"reviews\"></div>"
+      }
+    },
+    "expert_testimonials_zpEKKk": {
+      "type": "expert-testimonials",
+      "blocks": {
+        "quote_PhgFXV": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Lizzie.png",
+            "stars": "5",
+            "quote": "<h3><strong>\"Amazing product, highly recommend\"</strong></h3>",
+            "name": "LIZZIE H.",
+            "expert-title": "Love this product. It’s supported my hormones while coming off the pill and helped ease my mood and food cravings. Bodology is now well and truly part of my daily routine - it dissolves like a dream too!"
+          }
+        },
+        "quote_yTBQQm": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Ewa.png",
+            "stars": "5",
+            "quote": "<h3>\"Bodology has mad a real difference for my PCOS\"</h3>",
+            "name": "EWA S.",
+            "expert-title": "My doctor suggested adding it to my plan. It’s helped stabilise my insulin levels, improved my energy throughout the day and eased several of my PCOS symptoms including my irregular cycles."
+          }
+        },
+        "quote_mCAKwc": {
+          "type": "quote",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2025-01-23_at_10.07.27.png",
+            "stars": "5",
+            "quote": "<h3>\"Best Inositol Powder\"</h3>",
+            "name": "KEIRA K.",
+            "expert-title": "I started Bodology's inositol powder several months ago for PCOS. I’ve had fewer sugar cravings, more stable blood sugar levels, and my menstrual cycles have become much easier, with little/no PMS!"
+          }
+        },
+        "quote_rxzPR7": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Jade.png",
+            "stars": "5",
+            "quote": "<p>\"Since taking inositol, my cravings are much less. I would crave sweets throughout the day but this has stopped!\"</p>",
+            "name": "JADE M",
+            "expert-title": "If you have PCOS or high insulin levels you NEED to try this supplement."
+          }
+        },
+        "quote_CUpFMh": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/KAI2.png",
+            "stars": "5",
+            "quote": "<p>\"Little to no taste, and feeling much better. Lost 10 pounds so far & has regulated my cycle!\"</p>",
+            "name": "Irina J.",
+            "expert-title": "Hormones"
+          }
+        },
+        "quote_F4FmYY": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Bonnie.png",
+            "stars": "5",
+            "quote": "<p>\"I’m waking up a lot less, and falling asleep much easier. I also generally feel much calmer and focused for the whole day.\"</p>",
+            "name": "Bonnie H.",
+            "expert-title": "Mood"
+          }
+        },
+        "quote_XCWEri": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/KAI.png",
+            "stars": "5",
+            "quote": "<p>\"I have gotten off the pill so definitely would give this supplement a try!!!\"</p>",
+            "name": "Shayna B.",
+            "expert-title": "Hormones"
+          }
+        },
+        "quote_AWzBKN": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/KAI2.png",
+            "stars": "5",
+            "quote": "<p>\"It came in such lovely packaging, and the taste is just as delightful!\"</p>",
+            "name": "Sandra P.",
+            "expert-title": "Mood support"
+          }
+        },
+        "quote_KwTygU": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/KAI.png",
+            "stars": "5",
+            "quote": "<p>\"It's been a bit over two months, and out of nowhere, I actually ovulated.\"</p>",
+            "name": "Sofia P.",
+            "expert-title": "Fertility"
+          }
+        },
+        "quote_ExXWHa": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/KAI2.png",
+            "stars": "5",
+            "quote": "<p>\"I've been getting better sleep since starting this powder and am very happy about that!\"</p>",
+            "name": "Kristina A.",
+            "expert-title": "Sleep"
+          }
+        }
+      },
+      "block_order": [
+        "quote_PhgFXV",
+        "quote_yTBQQm",
+        "quote_mCAKwc",
+        "quote_rxzPR7",
+        "quote_CUpFMh",
+        "quote_F4FmYY",
+        "quote_XCWEri",
+        "quote_AWzBKN",
+        "quote_KwTygU",
+        "quote_ExXWHa"
+      ],
+      "custom_css": [
+        ".star-rating {color: white;}"
+      ],
+      "settings": {
+        "heading": "<p>Real results with <em>inositol</em></p>",
+        "full_width": true,
+        "text_size": "small",
+        "font_family": "heading",
+        "pagination": "logos",
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#ffffff",
+        "color_bg_card": "#fbf8f5",
+        "color_border_card": "#1b3def",
+        "color_text": "#1b3def",
+        "color_text2": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_rEJXXR": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_cGJQNB": {
+          "type": "heading",
+          "settings": {
+            "text": "You're not broken. Your <em>metabolism</em> needs a reset.",
+            "marker_style": "style1",
+            "heading_size": "h2",
+            "marker_color": "#ffffff"
+          }
+        },
+        "text_UmdkFU": {
+          "type": "text",
+          "settings": {
+            "text": "<h5>\nStruggling with hormones and low mood? Metabolic imbalance could be at the root<em>—</em>Inositol helps fix it.\n<br><br>\n</h5>"
+          }
+        },
+        "image_FAGjFq": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Inositol-Supplement-List-9.png"
+          }
+        },
+        "collapsible_tab_6GmEBw": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Natural support for PCOS, thyroid and ovarian health*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_zdiLzW": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shown to improve anxiety*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_68fhiE": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Promotes healthy BMI*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_fLykdN": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Backed by 100+ clinical studies*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_Fgx9gn": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Trusted by leading experts*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "text_button_jgdF64": {
+          "type": "text-button",
+          "settings": {
+            "link_label": "View detailed benefits",
+            "link": "#product"
+          }
+        },
+        "text_button_knJzD9": {
+          "type": "text-button",
+          "settings": {
+            "link_label": "*Read disclaimer",
+            "link": "#disclaimer"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cGJQNB",
+        "text_UmdkFU",
+        "image_FAGjFq",
+        "collapsible_tab_6GmEBw",
+        "collapsible_tab_zdiLzW",
+        "collapsible_tab_68fhiE",
+        "collapsible_tab_fLykdN",
+        "collapsible_tab_Fgx9gn",
+        "text_button_jgdF64",
+        "text_button_knJzD9"
+      ],
+      "disabled": true,
+      "settings": {
+        "use_video": true,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
+        "video_autoplay": true,
+        "height": "large",
+        "desktop_image_width": "large",
+        "full_width": false,
+        "layout": "text_first",
+        "content_position": "text-left",
+        "column_spacing": "small",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_border": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_RJaRcP": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_mJkfdK": {
+          "type": "heading",
+          "settings": {
+            "text": "The new wayto balance",
+            "marker_style": "style1",
+            "heading_size": "h1",
+            "marker_color": "#ffffff"
+          }
+        },
+        "text_7WC934": {
+          "type": "text",
+          "settings": {
+            "text": "<h5>\nInositol works through <em>metabolic</em> pathways to support hormone and mood health<em>—</em>naturally.\n<br><br>\n</h5>"
+          }
+        },
+        "image_W9MA8d": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Inositol-Supplement-List-9.png"
+          }
+        },
+        "collapsible_tab_6ARFkT": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Natural support for PCOS, thyroid and ovarian health*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_tWJ7NJ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shown to improve anxiety*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_nb68HL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Promotes healthy BMI*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_pD6TVf": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Backed by 100+ clinical studies*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_fk6HWW": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Trusted by leading experts*",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "text_button_EPypgQ": {
+          "type": "text-button",
+          "settings": {
+            "link_label": "View detailed benefits",
+            "link": "#product"
+          }
+        },
+        "text_button_Edfcwz": {
+          "type": "text-button",
+          "settings": {
+            "link_label": "*Read disclaimer",
+            "link": "#disclaimer"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mJkfdK",
+        "text_7WC934",
+        "image_W9MA8d",
+        "collapsible_tab_6ARFkT",
+        "collapsible_tab_tWJ7NJ",
+        "collapsible_tab_nb68HL",
+        "collapsible_tab_pD6TVf",
+        "collapsible_tab_fk6HWW",
+        "text_button_EPypgQ",
+        "text_button_Edfcwz"
+      ],
+      "disabled": true,
+      "settings": {
+        "use_video": true,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
+        "video_autoplay": true,
+        "height": "large",
+        "desktop_image_width": "large",
+        "full_width": false,
+        "layout": "text_first",
+        "content_position": "text-left",
+        "column_spacing": "small",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_border": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "multicolumn_rVnwmF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_fUjqfM": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h1>Your <em>metabolism</em> influences your entire body</h1><p></p><p>(not just your weight)</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_4JdggA": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_fUjqfM",
+        "column_4JdggA"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".multicolumn {color: #1b3def !important; align-content: end !important;}",
+        ".row .columns {align-content: end !important;}",
+        ".columns h1 {margin-bottom: 0px !important; align-content: end !important; padding-right: 15%;}",
+        "@media only screen and (min-width: 768px) {.row .columns {padding: 0px 15px 0 5% !important; }}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "bgcolor": "",
+        "columns_desktop": 2,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h3",
+        "color_heading": "#1b3def",
+        "marker_color": "#ffffff",
+        "color_text": "#1b3def",
+        "color_links": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "why_bit_section_LfxKfP": {
+      "type": "why-bit-section",
+      "blocks": {
+        "icon_block_QnLWxr": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/icons-1.png",
+            "title": "Perfectly portioned",
+            "text": "Stop wasting money by using more toothpaste than you need.",
+            "color_text_1": "#1b3def",
+            "color_text": "#1b3def"
+          }
+        },
+        "icon_block_JYGDMr": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/icons-2.png",
+            "title": "Better-for-You Formulations",
+            "text": "A dry tablet means we can use less-harmful ingredients and still protect your teeth.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_3h3HNA": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/icons-3.png",
+            "title": "Sink-Friendly",
+            "text": "Our tablets leave less mess in your sink because no glycerine – what makes most toothpaste, paste – means no sticky goop.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_mjhQee": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/icons-4.png",
+            "title": "Suitcase-Safe",
+            "text": "No more toothpaste explosions in your bag. Just throw a few Bits in your pack and you’re good to go",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_QxKrbN": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/icons-5.png",
+            "title": "Earth-Friendly",
+            "text": "Infinitely refillable with no plastic toothpaste tubes, our Bits are better for our earth and oceans.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        },
+        "icon_block_RYmKaQ": {
+          "type": "icon_block",
+          "settings": {
+            "icon": "",
+            "icon-img": "shopify://shop_images/icons-6.png",
+            "title": "Stops the spread of Bacteria",
+            "text": "The top of a toothpaste tube can transfer bacteria from your partners brush to your mouth. Our Bits can stop the spread.",
+            "color_text_1": "#2c2d2e",
+            "color_text": "#2c2d2e"
+          }
+        }
+      },
+      "block_order": [
+        "icon_block_QnLWxr",
+        "icon_block_JYGDMr",
+        "icon_block_3h3HNA",
+        "icon_block_mjhQee",
+        "icon_block_QxKrbN",
+        "icon_block_RYmKaQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "<p>Balance your hormons, Support fertility, and feel in control again</p>",
+        "main_image": "shopify://shop_images/Bodology-Inositol-7.jpg",
+        "color_bg": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text_1": "#1b3def",
+        "color_text": "#1b3def"
+      }
+    },
+    "video_pdBgr8": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "full_width": true,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_hosted": "shopify://files/videos/Video 2_V2_Small.mov",
+        "video_autoplay": true,
+        "aspect_ratio": "4-3",
+        "marker_color": "#ffffff",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "rich_text_ktwnPa": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Kp7pEw": {
+          "type": "heading",
+          "settings": {
+            "text": "Start your <em>inositol journey</em>",
+            "marker_style": "style1",
+            "size": "h1",
+            "marker_color": "#fd6262"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Kp7pEw"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "rgba(0,0,0,0)",
+        "bgcolor": "rgba(0,0,0,0)",
+        "color_heading": "#1B3DEF",
+        "color_text": "#1b3def",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "featured_product_WEQ8Gx": {
+      "type": "featured-product",
+      "blocks": {
+        "custom_liquid_YAGR9g": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"product\"></div>"
+          }
+        },
+        "text_RWyfgB": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<h2>Myo & D-Chiro <em>Inositol </em>Powder</h2><h6>$65<em> </em> <em>|</em> 40:1 Ratio<em> </em> <em>|</em> 90 Scoops</h6>",
+            "text_style": "style_vendor"
+          }
+        },
+        "title_ExCfKU": {
+          "type": "title",
+          "settings": {
+            "show_products_rating": true
+          }
+        },
+        "custom_liquid_qLxheX": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"product-details\"><h6>\nPure, unflavored inositol powder in the body's optimal 40:1 ratio of myo-inositol to d-chiro-inositol. Scientifically formulated to support hormonal balance, metabolic health, and insulin sensitivity.*\n\n<br><br><b>\n\n100+ studies support inositol's role in supporting cycle regularity, PCOS symptoms, fertility, mood balance, and healthy BMI.* \n</b></h6><br></div>"
+          }
+        },
+        "variant_picker_NMTpia": {
+          "type": "variant_picker",
+          "disabled": true,
+          "settings": {
+            "picker_type": "button",
+            "color_picker": true,
+            "color_picker_use_variants": false,
+            "variant_is_disabled": true,
+            "sizing_guide_text": "Sizing guide",
+            "sizing_guide_icon": "ruler",
+            "sizing_guide_page": ""
+          }
+        },
+        "quantity_RyV4rX": {
+          "type": "quantity",
+          "disabled": true,
+          "settings": {}
+        },
+        "custom_option_Et9EBY": {
+          "type": "custom_option",
+          "disabled": true,
+          "settings": {
+            "type": "multiple",
+            "label": "Primary Concern",
+            "text_required": true,
+            "text_placeholder": "Choose your concern",
+            "checkbox_checked_value": "Yes",
+            "checkbox_unchecked_value": "No",
+            "multiple_style": "dropdown",
+            "multiple_options": "PCOS\nPMDD\nEndometriosis\nOther Hormone\nWeight & Body Composition\nAnxiety\nLow Mood\nSleep\nInsulin Resistance"
+          }
+        },
+        "buy_buttons_3FBywE": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false
+          }
+        },
+        "custom_liquid_mqw4Uy": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, arrives in 2-5 days</span>\n    </div>"
+          }
+        },
+        "custom_liquid_nxKKT3": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>60-day money back guarantee</span>\n    </div>\n <div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping, arrives in 2-5 days</span>\n    </div>\n<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>2 scoops daily - optimal dose reward (up to 20% off)</span>\n    </div>"
+          }
+        },
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Detailed Benefits",
+            "side_panel_1_icon": "none",
+            "side_panel_1_page": "detailed-benefits",
+            "side_panel_2_label": "Shipping Policy",
+            "side_panel_2_icon": "none",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "",
+            "side_panel_3_icon": "none",
+            "side_panel_3_page": ""
+          }
+        },
+        "collapsible_tab_inD7kY": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "open": false,
+            "content": "<ul><li>3rd party tested for purity & potency</li><li>Optimal 40:1 ratio science-backed for its benefits on women's health</li><li>Made sustainably in the USA</li><li>Backed by 100+ clinical studies*</li><li>Trusted by leading experts*</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_BEQc3p": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Ingredients",
+            "image": "shopify://shop_images/Supplement-Facts.png",
+            "open": false,
+            "content": "<p>Bodology™ Myo-Inositol, D-Chiro-Inositol</p>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_Qq4nP6": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "The \"NO\" List",
+            "open": false,
+            "content": "<ul><li>No fillers</li><li>No gluten</li><li>No animal ingredients</li><li>No flavoring</li><li>No GMOs</li><li>No hormones</li><li>No unnecessary ingredients (just inositol)</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        },
+        "collapsible_tab_RaXCmL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Certifications",
+            "open": false,
+            "content": "<ul><li>Good Manufacturing Practices (GMPs) 3rd Party Certified Facilities</li><li>Made in the USA in FDA-Registered Facilities</li><li>Comprehensive Testing for Heavy Metal, Conaminants and Microbiological Analysis by 3rd Party Laboratories</li></ul>",
+            "page": "",
+            "custom_liquid": ""
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_YAGR9g",
+        "text_RWyfgB",
+        "title_ExCfKU",
+        "custom_liquid_qLxheX",
+        "variant_picker_NMTpia",
+        "quantity_RyV4rX",
+        "custom_option_Et9EBY",
+        "buy_buttons_3FBywE",
+        "custom_liquid_mqw4Uy",
+        "custom_liquid_nxKKT3",
+        "side_panel_NGJTtJ",
+        "collapsible_tab_inD7kY",
+        "collapsible_tab_BEQc3p",
+        "collapsible_tab_Qq4nP6",
+        "collapsible_tab_RaXCmL"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 500px; }}"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "product": "myo-d-chiro-inositol-powder",
+        "show_taxes_included": true,
+        "thumbnail_position": "bottom",
+        "media_aspect_ratio": "square",
+        "display_captions": false,
+        "hide_variants": true,
+        "lightbox": false,
+        "enable_video_looping": false,
+        "marker_color": "#fd6262",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "promotion_blocks_v2_reFWxi": {
+      "type": "promotion-blocks-v2",
+      "blocks": {
+        "promotion_EXFdac": {
+          "type": "promotion",
+          "source": "{{ shop.metaobjects.experts[\"tina-kozman\"] }}",
+          "settings": {
+            "image": "{{ shop.metaobjects.experts[\"tina-kozman\"].expert_photo.value }}",
+            "title": "<h4><strong>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_name.value }}</strong></h4><h6><strong>{{ shop.metaobjects.experts[\"tina-kozman\"].expert_title.value }}</strong><strong> </strong></h6><p></p>",
+            "quote": "<h6>{{ shop.metaobjects.experts[\"tina-kozman\"].exert_short_quote | metafield_tag }}</h6>",
+            "button_text": "",
+            "button_link": "{{ shop.metaobjects.experts[\"tina-kozman\"].system.url }}"
+          }
+        },
+        "promotion_JdGzqe": {
+          "type": "promotion",
+          "source": "{{ shop.metaobjects.experts[\"hillary-wright\"] }}",
+          "settings": {
+            "image": "{{ shop.metaobjects.experts[\"hillary-wright\"].expert_photo.value }}",
+            "title": "<h5><strong>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_name.value }}</strong></h5><h6><strong>{{ shop.metaobjects.experts[\"hillary-wright\"].expert_title.value }}</strong><strong> </strong></h6>",
+            "quote": "<h6>{{ shop.metaobjects.experts[\"hillary-wright\"].exert_short_quote | metafield_tag }}</h6>",
+            "button_text": "",
+            "button_link": "{{ shop.metaobjects.experts[\"hillary-wright\"].system.url }}"
+          }
+        },
+        "promotion_g4GPhQ": {
+          "type": "promotion",
+          "source": "{{ shop.metaobjects.experts[\"dr-anita-w\"] }}",
+          "settings": {
+            "image": "{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_photo.value }}",
+            "title": "<h4><strong>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_name.value }}</strong></h4><h6><strong>{{ shop.metaobjects.experts[\"dr-anita-w\"].expert_title.value }}</strong><strong> </strong></h6>",
+            "quote": "<h6>{{ shop.metaobjects.experts[\"dr-anita-w\"].exert_short_quote | metafield_tag }}</h6>",
+            "button_text": "",
+            "button_link": "{{ shop.metaobjects.experts[\"dr-anita-w\"].system.url }}"
+          }
+        }
+      },
+      "block_order": [
+        "promotion_EXFdac",
+        "promotion_JdGzqe",
+        "promotion_g4GPhQ"
+      ],
+      "disabled": true,
+      "settings": {
+        "mobile_swipe": true,
+        "image_ratio": "square",
+        "column_spacing": "medium",
+        "color_bg": "#ffffff",
+        "color_text": "#1b3def",
+        "color_link": "#1b3def",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
+    "1753011701114d441a": {
+      "type": "apps",
+      "blocks": {
+        "junip_junip_reviews_zijeBp": {
+          "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "layout": "list",
+            "reviewsType": "all",
+            "showSummary": true,
+            "showMediaGallery": false,
+            "reviewsCount": 10,
+            "containerClass": ""
+          }
+        }
+      },
+      "block_order": [
+        "junip_junip_reviews_zijeBp"
+      ],
+      "custom_css": [
+        ".junip-product-review-count {display: none !important;}"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "image_with_text_overlay_zjqnjJ",
+    "carousel_boxes_jas_HzyeW9",
+    "rich_text_CUWHK9",
+    "rich_text_XXb67A",
+    "multicolumn_zBkNGq",
+    "collapsible_content_2_hrRGJn",
+    "rich_text_Vd8Nyi",
+    "expert_testimonials_mgPFnQ",
+    "testimonial_carousel_rfAUyN",
+    "1741568420b2e69de9",
+    "custom_liquid_LhyTU6",
+    "expert_testimonials_zpEKKk",
+    "image_with_text_rEJXXR",
+    "image_with_text_RJaRcP",
+    "multicolumn_rVnwmF",
+    "why_bit_section_LfxKfP",
+    "video_pdBgr8",
+    "rich_text_ktwnPa",
+    "featured_product_WEQ8Gx",
+    "promotion_blocks_v2_reFWxi",
+    "1753011701114d441a"
+  ]
 }
