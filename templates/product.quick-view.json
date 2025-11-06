@@ -31,7 +31,7 @@
         "custom_liquid_43KUUL": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% case product.handle %}\n  {% when 'metabolic-health-protocol-for-pcos' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-TM2rC4\"></div>\n\n  {% when 'metabolic-health-protocol-for-metabolism' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-RgKJCq\"></div>\n\n  {% when 'YOUR-HANDLE-3' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-XXXXX3\"></div>\n\n  {% when 'YOUR-HANDLE-4' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-XXXXX4\"></div>\n{% endcase %}"
+            "custom_liquid": "{% case product.handle %}\n  {% when 'metabolic-health-protocol-for-pcos' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-TM2rC4\"></div>\n\n  {% when 'metabolic-health-protocol-for-metabolism' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-RgKJCq\"></div>\n\n  {% when 'metabolic-health-protocol-for-fertility' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-T2zmW2\"></div>\n\n  {% when 'metabolic-health-protocol-for-sustainable-hormones' %}\n    <div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-SLFATQ\"></div>\n{% endcase %}"
           }
         },
         "variant_picker": {
