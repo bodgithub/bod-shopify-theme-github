@@ -1,0 +1,102 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {}
+    },
+    "main-product": {
+      "type": "main-product",
+      "blocks": {
+        "text_6AkKDh": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Metabolic Health Protocol<br/><em><strong>—</strong></em><em>For </em> <em>Hormones</em></h1>",
+            "text_style": "style_vendor"
+          }
+        },
+        "text_wPhDft": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Transform Your Hormonal Health: <strong><br/>Free Expert Guide</strong></p>",
+            "text_style": "style_vendor"
+          }
+        },
+        "custom_liquid_f3BGqg": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"border-bottom:4px solid blue;padding-bottom:20px;margin-bottom:30px;\" class=\"klaviyo-form-SLFATQ\"></div>"
+          }
+        },
+        "title": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "show_products_rating": false
+          }
+        },
+        "0b3e272b-c86a-4dba-946c-c6912251371c": {
+          "type": "description",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "text_6AkKDh",
+        "text_wPhDft",
+        "custom_liquid_f3BGqg",
+        "title",
+        "0b3e272b-c86a-4dba-946c-c6912251371c"
+      ],
+      "custom_css": [
+        ".shopify-installments,.shopify-installments__content {display: none !important;}"
+      ],
+      "settings": {
+        "enable_sticky_add_to_cart": true,
+        "show_taxes_included": false,
+        "thumbnail_position": "left",
+        "media_aspect_ratio": "portrait",
+        "display_captions": false,
+        "hide_variants": false,
+        "lightbox": true,
+        "enable_video_looping": false
+      }
+    },
+    "spacer_CW4NYb": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 50,
+        "spacer_desktop": 100,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "description": "<p>Unlock your metabolic health for better hormones, mood and metabolism.</p>",
+        "mobile_swipe": true,
+        "product_limit": 2,
+        "columns_desktop": 2,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main-product",
+    "spacer_CW4NYb",
+    "product-recommendations"
+  ]
+}
