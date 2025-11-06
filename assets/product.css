@@ -182,9 +182,9 @@
         font-size: 17px;
         font-weight: 600;
         border: 1px solidrgb(224, 224, 224);
-        background-color:#e8ecfd;
+        background-color:#fbfbfb;
         color: #1b3def;}
-      .variations .product-form__input--block input[type="radio"] + label:hover {background-color: #d2dafa}
+      .variations .product-form__input--block input[type="radio"] + label:hover {background-color: #f8f8f8}
       .variations .product-form__input--block input[type="radio"]:checked + label {
         z-index: 5;
         /*box-shadow: 0 4px 7px rgba(0, 0, 0, 0.15); */
