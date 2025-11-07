@@ -74,20 +74,6 @@
             "sizing_guide_page": ""
           }
         },
-        "side_panel_NGJTtJ": {
-          "type": "side_panel",
-          "settings": {
-            "side_panel_1_label": "Choosing my scoop",
-            "side_panel_1_icon": "question_mark",
-            "side_panel_1_page": "which-size-is-right-for-me",
-            "side_panel_2_label": "Shipping & returns",
-            "side_panel_2_icon": "truck",
-            "side_panel_2_page": "shipping-returns",
-            "side_panel_3_label": "",
-            "side_panel_3_icon": "none",
-            "side_panel_3_page": ""
-          }
-        },
         "recharge_subscriptions_subscription_widget_v2_9rCap3": {
           "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
           "settings": {}
@@ -103,6 +89,20 @@
           "settings": {
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
+          }
+        },
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
+          "settings": {
+            "side_panel_1_label": "Choosing my scoop",
+            "side_panel_1_icon": "question_mark",
+            "side_panel_1_page": "which-size-is-right-for-me",
+            "side_panel_2_label": "Shipping & returns",
+            "side_panel_2_icon": "truck",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "",
+            "side_panel_3_icon": "none",
+            "side_panel_3_page": ""
           }
         },
         "custom_liquid_JMxr8q": {
@@ -204,10 +204,10 @@
         "title_ExCfKU",
         "custom_liquid_qLxheX",
         "variant_picker_HegXNW",
-        "side_panel_NGJTtJ",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
         "buy_buttons_3FBywE",
+        "side_panel_NGJTtJ",
         "custom_liquid_JMxr8q",
         "custom_liquid_wbFXG8",
         "custom_liquid_ymVUr7",
