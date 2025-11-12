@@ -324,12 +324,6 @@
     "rich_text_zwjMjN": {
       "type": "rich-text",
       "blocks": {
-        "custom_liquid_3bRDgb": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div id=\"reviews\"></div>"
-          }
-        },
         "heading_nfgekG": {
           "type": "heading",
           "settings": {
@@ -341,9 +335,9 @@
         }
       },
       "block_order": [
-        "custom_liquid_3bRDgb",
         "heading_nfgekG"
       ],
+      "custom_css": [],
       "settings": {
         "text_width": "large",
         "text_position": "center",
