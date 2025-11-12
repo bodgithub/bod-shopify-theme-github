@@ -2131,7 +2131,7 @@ h5,
 h6,
 .h6 .h1-large,
 .h1-xlarge {
-  letter-spacing: -0.6px!important; } /*var(--font-heading-letter-spacing, normal);*/
+  letter-spacing: 0px!important; } /*var(--font-heading-letter-spacing, normal);*/
 
 @media only screen and (min-width: 1068px) {
   .heading-size--small {
@@ -2152,6 +2152,12 @@ h6,
   .heading-size--xlarge {
     font-size: 4.5rem;
     line-height: 5rem; } }
+    
+
+    h1, .h1, .h1-large, .h1-xlarge,
+h2, .h2 {
+  letter-spacing: -0.6px!important; }
+}
 
 
 .header-section {
