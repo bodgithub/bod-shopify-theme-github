@@ -2045,16 +2045,16 @@ scroll-shadow {
     transform: scale(1, 1) translateY(0); }
 
 h1, .h1, .h1-large, .h1-xlarge {
-  font-size: calc(var(--font-heading-scale) * 34px);
-  line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 42px)); }
+  font-size: calc(var(--font-heading-scale) * 38px);
+  line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 46px)); }
   @media only screen and (min-width: 768px) {
     h1, .h1, .h1-large, .h1-xlarge {
-      font-size: calc(var(--font-heading-scale) * 38px);
-      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 46px)); } }
+      font-size: calc(var(--font-heading-scale) * 42px);
+      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 50px)); } }
   @media only screen and (min-width: 1068px) {
     h1, .h1, .h1-large, .h1-xlarge {
-      font-size: calc(var(--font-heading-scale) * 54px);
-      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 62px)); } }
+      font-size: calc(var(--font-heading-scale) * 58px);
+      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 66px)); } }
 
 h2, .h2, blockquote p,
 blockquote span {
