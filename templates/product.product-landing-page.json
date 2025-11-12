@@ -114,8 +114,15 @@
         },
         "custom_liquid_wbFXG8": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Try risk-free for 60-days</span>\n    </div>\n <wdiv style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Free shipping</span></div>\n\n<div style=\"display: flex; align-items: center; font-family: Arial, sans-serif; font-size: 14px; color: #1b3def; padding-bottom:20px;\">\n        <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Checkmark.png?v=1737474877\" \n             alt=\"Checkmark\" \n             style=\"width: 15px;  margin-right: 8px;\">\n        <span>Arrives in 2-5 days</span></div>"
+          }
+        },
+        "custom_liquid_YGHAge": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"align-items: center; font-size: 13px; color: #1b3def; padding-bottom:20px;\"><b>Free shipping</b> on all orders. <b>Money-back</b> guarantee. <br>Arrives in <b>2-5 days</b>.\n</div>"
           }
         },
         "custom_liquid_ymVUr7": {
@@ -210,6 +217,7 @@
         "side_panel_NGJTtJ",
         "custom_liquid_JMxr8q",
         "custom_liquid_wbFXG8",
+        "custom_liquid_YGHAge",
         "custom_liquid_ymVUr7",
         "custom_liquid_nfgEm4",
         "custom_liquid_8TqUrD",
@@ -650,8 +658,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "",
-            "text": "{{ product.metafields.custom.problem_category.value.aha_title | metafield_tag }}",
+            "title": "Why inositol",
+            "text": "",
             "link_label": "",
             "link": ""
           }
