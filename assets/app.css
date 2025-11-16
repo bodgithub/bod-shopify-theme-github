@@ -2167,6 +2167,18 @@ h2, .h2 {
   z-index: 50;
   width: 100%; }
 
+  .header.header-sticky--active {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+}
+
+.header.header-sticky--active.transparent--true {
+  position: sticky;
+}
+
 .header {
   display: block;
   position: relative;
