@@ -231,7 +231,9 @@
       ],
       "custom_css": [
         ".product-title {display: none;}",
-        ".amount {display: none;}"
+        ".amount {display: none;}",
+        ".product-grid-container {padding-top: 55px;}",
+        "@media only screen and (min-width: 1068px) {.product-grid-container {padding-top: 120px; }}"
       ],
       "settings": {
         "enable_sticky_add_to_cart": false,
