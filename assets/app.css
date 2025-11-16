@@ -2161,11 +2161,11 @@ h2, .h2 {
 
 
 .header-section {
-  position: sticky;
+    position: fixed;
   top: 0;
   left: 0;
-  z-index: 50;
-  width: 100%; }
+  right: 0;
+  z-index: 50; }
 
   .header.header-sticky--active {
     position: fixed;
@@ -2173,6 +2173,7 @@ h2, .h2 {
   left: 0;
   right: 0;
   z-index: 50;
+}
 
 .header.header-sticky--active.transparent--true {
   position: sticky;
