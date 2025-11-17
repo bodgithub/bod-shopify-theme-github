@@ -35,42 +35,126 @@
 			<div class="multicolumn__inner text-{{ text_alignment }}">
 				<div class="row align-stretch no-padding">
 					{%- for block in section.blocks -%}
-						<div class="multicolumn__column small-12 {{ columns_desktop_class }} columns" {{ block.shopify_attributes }}>
-							{% if block.settings.image != blank %}
-								{%- liquid
-									assign ratio = 1
-									assign max_width = block.settings.image.width | divided_by: 2 | append: 'px'
-									assign image_link = block.settings.image_link
-									if image_ratio == 'adapt'
-										assign ratio = block.settings.image.aspect_ratio
-									endif
-									if block.settings.image_full_width
-										assign max_width = '100%'
-									endif
-								-%}
-								<figure class="multicolumn__image" style="width: {{ max_width }};">
-									<div class="multicolumn__image--inner aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
-										{% if image_link != blank %}
-											<a href="{{ image_link }}">
-										{% endif %}
-										{%- render 'responsive-image', image: block.settings.image, sizes: '407x0,814x0', retina: true -%}
-										{% if image_link != blank %}
-											</a>
-										{% endif %}
-									</div>
-								</figure>
-							{% endif %}
-							{% if block.settings.title != blank %}
-								<h4 class="{{ heading_size }}">{{ block.settings.title }}</h4>
-							{% endif %}
-							{% if block.settings.text != blank %}
-								<div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
-							{% endif %}
-							{% if block.settings.link_label != blank %}
-								{% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
-							{% endif %}
-						</div>
-					{%- endfor -%}
+  {%- case block.type -%}
+
+    {%- when 'testimonials_row' -%}
+      <div class="eli-row-wrap" {{ block.shopify_attributes }}>
+        <div
+          class="eli-row-grid"
+          style="
+            --eli-grid-cols: {{ section.settings.eli_desktop_cols | default: '45% 18% 18% 18%' }};
+            --eli-grid-gap: {{ section.settings.eli_gap | default: '28px' }};
+            --eli-card-padding: {{ section.settings.eli_card_padding | default: '22px' }};
+            --eli-card-radius: {{ section.settings.eli_card_radius | default: '12px' }};
+            --eli-card-border: {{ section.settings.eli_card_border | default: '1px solid rgba(0,0,0,.08)' }};
+            --eli-card-bg: {{ section.settings.eli_card_bg | default: '#fff' }};
+          "
+        >
+          <!-- Left title area -->
+          <div class="eli-left">
+            {%- if block.settings.left_kicker != blank -%}
+              <div class="eli-kicker">{{ block.settings.left_kicker }}</div>
+            {%- endif -%}
+            {%- if block.settings.left_heading != blank -%}
+              <h2 class="eli-heading">{{ block.settings.left_heading }}</h2>
+            {%- endif -%}
+            {%- if block.settings.left_subheading != blank -%}
+              <div class="eli-subheading">{{ block.settings.left_subheading }}</div>
+            {%- endif -%}
+          </div>
+
+          <!-- Card 1 -->
+          <article class="eli-card">
+            {%- if block.settings.card1_title != blank -%}
+              <h3 class="eli-card-title">{{ block.settings.card1_title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.card1_body != blank -%}
+              <div class="eli-card-body">{{ block.settings.card1_body }}</div>
+            {%- endif -%}
+            {%- if block.settings.card1_author != blank -%}
+              <div class="eli-card-author">
+                {{ block.settings.card1_author }}
+                {%- if block.settings.show_check_1 -%}
+                  <span class="eli-verified" aria-hidden="true">✔</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </article>
+
+          <!-- Card 2 -->
+          <article class="eli-card">
+            {%- if block.settings.card2_title != blank -%}
+              <h3 class="eli-card-title">{{ block.settings.card2_title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.card2_body != blank -%}
+              <div class="eli-card-body">{{ block.settings.card2_body }}</div>
+            {%- endif -%}
+            {%- if block.settings.card2_author != blank -%}
+              <div class="eli-card-author">
+                {{ block.settings.card2_author }}
+                {%- if block.settings.show_check_2 -%}
+                  <span class="eli-verified" aria-hidden="true">✔</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </article>
+
+          <!-- Card 3 -->
+          <article class="eli-card">
+            {%- if block.settings.card3_title != blank -%}
+              <h3 class="eli-card-title">{{ block.settings.card3_title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.card3_body != blank -%}
+              <div class="eli-card-body">{{ block.settings.card3_body }}</div>
+            {%- endif -%}
+            {%- if block.settings.card3_author != blank -%}
+              <div class="eli-card-author">
+                {{ block.settings.card3_author }}
+                {%- if block.settings.show_check_3 -%}
+                  <span class="eli-verified" aria-hidden="true">✔</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </article>
+        </div>
+      </div>
+
+    {%- else -%}
+      <!-- keep existing multicolumn column behavior -->
+      <div class="multicolumn__column small-12 {{ columns_desktop_class }} columns" {{ block.shopify_attributes }}>
+        {% if block.settings.image != blank %}
+          {%- liquid
+            assign ratio = 1
+            assign max_width = block.settings.image.width | divided_by: 2 | append: 'px'
+            assign image_link = block.settings.image_link
+            if image_ratio == 'adapt'
+              assign ratio = block.settings.image.aspect_ratio
+            endif
+            if block.settings.image_full_width
+              assign max_width = '100%'
+            endif
+          -%}
+          <figure class="multicolumn__image" style="width: {{ max_width }};">
+            <div class="multicolumn__image--inner aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
+              {% if image_link != blank %}<a href="{{ image_link }}">{% endif %}
+              {%- render 'responsive-image', image: block.settings.image, sizes: '407x0,814x0', retina: true -%}
+              {% if image_link != blank %}</a>{% endif %}
+            </div>
+          </figure>
+        {% endif %}
+        {% if block.settings.title != blank %}
+          <h4 class="{{ heading_size }}">{{ block.settings.title }}</h4>
+        {% endif %}
+        {% if block.settings.text != blank %}
+          <div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+        {% endif %}
+        {% if block.settings.link_label != blank %}
+          {% render 'text-button', url: block.settings.link, title: block.settings.link_label %}
+        {% endif %}
+      </div>
+    {%- endcase -%}
+{%- endfor -%}
+
 				</div>
 			</div>
 
@@ -298,9 +382,74 @@
 	          "type": "url",
 	          "id": "link",
 	          "label": "Link"
-	        }
+	        },
+			{
+  "type": "header",
+  "content": "Eli-style Row (layout controls)"
+},
+{
+  "type": "text",
+  "id": "eli_desktop_cols",
+  "label": "Desktop grid columns",
+  "default": "45% 18% 18% 18%",
+  "info": "CSS grid-template-columns for the Eli row. Example: 45% 18% 18% 18%."
+},
+{
+  "type": "text",
+  "id": "eli_gap",
+  "label": "Grid gap",
+  "default": "28px"
+},
+{
+  "type": "text",
+  "id": "eli_card_padding",
+  "label": "Card padding",
+  "default": "22px"
+},
+{
+  "type": "text",
+  "id": "eli_card_radius",
+  "label": "Card border radius",
+  "default": "12px"
+},
+{
+  "type": "text",
+  "id": "eli_card_border",
+  "label": "Card border",
+  "default": "1px solid rgba(0,0,0,.08)"
+},
+{
+  "type": "color",
+  "id": "eli_card_bg",
+  "label": "Card background",
+  "default": "#FFFFFF"
+}
         ]
-      }
+      },
+	  {
+  "type": "testimonials_row",
+  "name": "Testimonials row",
+  "settings": [
+    { "type": "text", "id": "left_kicker", "label": "Kicker (optional)", "default": "Why members love Bodology" },
+    { "type": "richtext", "id": "left_heading", "label": "Left heading", "default": "<p>Why members love our Cortisol Tests</p>" },
+    { "type": "richtext", "id": "left_subheading", "label": "Left subheading (optional)", "default": "<p>Optional</p>" },
+
+    { "type": "text", "id": "card1_title", "label": "Card 1 — Title", "default": "Fast answers—finally." },
+    { "type": "richtext", "id": "card1_body", "label": "Card 1 — Body", "default": "<p>“It’s amazing how fast I can get results… it’s so easy.”</p>" },
+    { "type": "text", "id": "card1_author", "label": "Card 1 — Author", "default": "ARIEL" },
+    { "type": "checkbox", "id": "show_check_1", "label": "Show verified check", "default": true },
+
+    { "type": "text", "id": "card2_title", "label": "Card 2 — Title", "default": "Patterns you can actually see." },
+    { "type": "richtext", "id": "card2_body", "label": "Card 2 — Body", "default": "<p>“I finally understand how my body responds…”</p>" },
+    { "type": "text", "id": "card2_author", "label": "Card 2 — Author", "default": "MAYA" },
+    { "type": "checkbox", "id": "show_check_2", "label": "Show verified check", "default": true },
+
+    { "type": "text", "id": "card3_title", "label": "Card 3 — Title", "default": "Simple enough for real life." },
+    { "type": "richtext", "id": "card3_body", "label": "Card 3 — Body", "default": "<p>“No labs, no needles… just a quick test at home.”</p>" },
+    { "type": "text", "id": "card3_author", "label": "Card 3 — Author", "default": "JOHN" },
+    { "type": "checkbox", "id": "show_check_3", "label": "Show verified check", "default": true }
+  ]
+}
     ],
     "presets": [
       {
