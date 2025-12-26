@@ -251,3 +251,8 @@ line-hight:0.9;}
   background: var(--section-bg);
   color: var(--section-text, var(--color-body));
 }
+
+.section-image-with-text .image-with-text,
+.section-image-with-text .image-with-text--content {
+  background: transparent !important;
+}
