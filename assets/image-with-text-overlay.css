@@ -240,6 +240,7 @@ line-hight:0.9;}
 
 .image-with-text--content {
   color: var(--color-text, var(--color-body));
+  background: transparent;
 }
 
 .image-with-text--content .rte,
