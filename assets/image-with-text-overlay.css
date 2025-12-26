@@ -194,13 +194,28 @@ line-hight:0.9;}
 .image-with-text-overlay .h3,
 .image-with-text-overlay blockquote p,
 .image-with-text-overlay blockquote span {
-  color: var(--text-color, #fff);
+  color: var(--text-color, #fff) !important;
 }
 
 .image-with-text-overlay .tagline,
 .image-with-text-overlay .subheading {
   color: var(--text-color, #fff) !important;
 }
+
+.image-with-text-overlay {
+  color: var(--text-color, #fff);
+}
+
+.image-with-text-overlay .rte,
+.image-with-text-overlay p,
+.image-with-text-overlay li,
+.image-with-text-overlay a,
+.image-with-text-overlay .subheading,
+.image-with-text-overlay .accordion summary,
+.image-with-text-overlay .accordion .collapsible__content {
+  color: var(--text-color, #fff) !important;
+}
+
 
 .tagline p {
     border: 1px solid blue;
