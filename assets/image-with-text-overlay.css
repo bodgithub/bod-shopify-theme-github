@@ -232,3 +232,7 @@ line-hight:0.9;}
 .image-with-text--content .subheading {
   color: inherit;
 }
+.row.full-width-row {
+  background: var(--section-bg);
+  color: var(--section-text, var(--color-body));
+}
