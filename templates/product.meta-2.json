@@ -14,6 +14,112 @@
       "name": "GPT PRODUCT SEO",
       "settings": {}
     },
+    "image_with_text_nBBWJP": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_d6JxVX": {
+          "type": "subheading",
+          "settings": {
+            "text": "Add a tagline"
+          }
+        },
+        "heading_kxbnew": {
+          "type": "heading",
+          "settings": {
+            "text": "Image with text",
+            "marker_style": "style1",
+            "heading_size": "h3",
+            "marker_color": "#FD6262"
+          }
+        },
+        "text_cPj88M": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+          }
+        },
+        "image_MHJVxg": {
+          "type": "image",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "subheading_d6JxVX",
+        "heading_kxbnew",
+        "text_cPj88M",
+        "image_MHJVxg"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "full_width": false,
+        "layout": "image_first",
+        "content_position": "text-left",
+        "column_spacing": "medium",
+        "color_bg": "linear-gradient(105deg, rgba(15, 46, 208, 1), rgba(10, 149, 239, 1) 100%)",
+        "color_text": "#ffffff",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "image_with_text_4xNKmW": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_Rbp96X": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Discover the Metabolic Key to Balanced Hormones",
+            "marker_style": "style1",
+            "heading_size": "h3",
+            "marker_color": "#fd6262"
+          }
+        },
+        "text_ge8MhP": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Discover the <em>metabolic</em> key to balanced hormones</h1>"
+          }
+        },
+        "text_bKVGET": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you’ve tried everything and still feel stuck, this isn’t a willpower problem. <strong>It’s a metabolic one. </strong>Support the underlying metabolic signals that influence hormones, cycles, mood, energy, and fertility.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Rbp96X",
+        "text_ge8MhP",
+        "text_bKVGET"
+      ],
+      "custom_css": [
+        "h1 {line-height: 0.9em;}"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/Bodology_girl_water.png",
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "full_width": true,
+        "layout": "text_first",
+        "content_position": "text-center",
+        "column_spacing": "small",
+        "color_bg": "#1b3def",
+        "color_text": "#ffffff",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "spacer_fcdpRG": {
       "type": "spacer",
       "name": "Spacer",
@@ -557,256 +663,6 @@
         "speed": "50s",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
-      }
-    },
-    "testimonial_carousel_twHytV": {
-      "type": "testimonial-carousel",
-      "blocks": {
-        "testimonial_xbyEaz": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_cCt7iB": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-hillary-rd\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-hillary-rd\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_JqWaEF": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"c-dr-anita\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"c-dr-anita\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_36KrU7": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_jNbziQ": {
-          "type": "testimonial",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
-            "quote": "<p>{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].exert_short_quote | metafield_tag }}</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_xbyEaz",
-        "testimonial_cCt7iB",
-        "testimonial_JqWaEF",
-        "testimonial_36KrU7",
-        "testimonial_jNbziQ"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".row {background-color: white;}"
-      ],
-      "settings": {
-        "testimonial_source": "blocks",
-        "heading": "<h1>Trusted by <em>experts </em>&<em> </em>practitioners</h1>",
-        "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
-        "full_width": false,
-        "text_size": "small",
-        "font_family": "body",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_bg_card": "#ffffff",
-        "color_border_card": "#1b3def",
-        "color_heading": "#1b3def",
-        "color_text2": "#1b3def",
-        "color_text": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true,
-        "columns_desktop": 2,
-        "columns_tablet": 2,
-        "columns_mobile": 1,
-        "show_button": true,
-        "button_text": "Meet Our Experts",
-        "button_url": "shopify://pages/meet-our-experts"
-      }
-    },
-    "why_bit_section_xQmrNX": {
-      "type": "why-bit-section",
-      "blocks": {
-        "icon_block_nrqkhj": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/1_37001e7a-cc09-4069-94d3-e7eab362b3ec.png",
-            "title": "Kickstart Your Routine",
-            "text": "Your body begins recognizing inositol, supporting metabolic function from day one.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_CaLjyW": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/2_e10f3d23-138a-4061-853e-1dc756be8415.png",
-            "title": "Metabolic Support in Motion",
-            "text": "Cellular processes adjust, promoting steadier energy and blood sugar balance.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_NFRW8T": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/3_cf3b5a6e-df21-4eed-83ba-e23bd0fe0f07.png",
-            "title": "Hormonal & Energy Shifts",
-            "text": "With consistency, mood, cravings, and cycles may start feeling more stable.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_wAyJRt": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/4_d65cc7bc-50c4-4bfd-a4fe-68c9152ce945.png",
-            "title": "A More Balanced You",
-            "text": "Enjoy more steady energy, improved focus, and better appetite control.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_kUwwTV": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/5_754e5b9f-a13a-4974-87a7-6ef075bf61c6.png",
-            "title": "Real Progress",
-            "text": "Your skin, mood, cycles and overall well-being may feel more predictable.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_U9m6wW": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/6_59b10b70-3d5f-43fd-a4e7-792150455412.png",
-            "title": "Long-Term Stability",
-            "text": "A daily habit for ongoing metabolic support, helping you feel in sync with your body.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        }
-      },
-      "block_order": [
-        "icon_block_nrqkhj",
-        "icon_block_CaLjyW",
-        "icon_block_NFRW8T",
-        "icon_block_wAyJRt",
-        "icon_block_kUwwTV",
-        "icon_block_U9m6wW"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "heading": "<h1>What To <em>Expect </em>On Your Inositol Journey</h1>",
-        "main_image": "shopify://shop_images/FRONT-Bodology-Inositol-Powder-90-Scoops.png",
-        "color_bg": "#ebe2da",
-        "color_heading": "#1b3def",
-        "color_text_1": "#1b3def",
-        "color_text": "#2c2d2e"
-      }
-    },
-    "multicolumn_QQjdQM": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_wbzkNR": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "Why inositol",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_dUeaGh": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "column_wbzkNR",
-        "column_dUeaGh"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "bgcolor": "",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
-        "color_text": "#1b3def",
-        "color_links": "#ffffff",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "spacer_hDmb7V": {
-      "type": "spacer",
-      "disabled": true,
-      "custom_css": [
-        ".row .spacer {background-color: #f2eee9;}"
-      ],
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 20,
-        "border_separator": false,
-        "border_separator_full": true
       }
     },
     "multicolumn_rVnwmF": {
@@ -1377,6 +1233,8 @@
   },
   "order": [
     "gpt_product_seo_DWikHm",
+    "image_with_text_nBBWJP",
+    "image_with_text_4xNKmW",
     "spacer_fcdpRG",
     "main-product",
     "spacer_TM4WHh",
@@ -1385,10 +1243,6 @@
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
     "scrolling_images_qqa6dt",
-    "testimonial_carousel_twHytV",
-    "why_bit_section_xQmrNX",
-    "multicolumn_QQjdQM",
-    "spacer_hDmb7V",
     "multicolumn_rVnwmF",
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
