@@ -34,9 +34,17 @@
 		endif
 	endif
 -%}
-<div class="row{% if full_width %} full-width-row{% endif %}">
+<div class="row{% if full_width %} full-width-row{% endif %}" style="--section-bg: {{ color_bg }};
++          --section-text: {{ color_text }};
++          --section-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }};
++          --color-border: {{ color_border }};">>
 	<div class="small-12 columns">
-		<div class="image-with-text column-spacing--{{ column_spacing }} grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }};--color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --solid-button-background: {{ color_text }}; --solid-button-background-hover: {{ color_text | color_darken: 7 }}; --solid-button-label: {{ color_bg }};--bg-body: {{ color_bg }};--color-border: {{ color_border }}">
+		<div class="image-with-text column-spacing--{{ column_spacing }} 
+      grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} 
+      section-spacing{% if disable_top_spacing %} 
+      section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} 
+      section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }};--color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --solid-button-background: {{ color_text }}; --solid-button-background-hover: {{ color_text | color_darken: 7 }}; 
+      --solid-button-label: {{ color_bg }};--bg-body: {{ color_bg }};--color-border: {{ color_border }}">
 			<div class="image-with-text--image image-with-text--inner">
 				<div class="image-with-text--image-media aspect-ratio aspect-ratio--{{ height }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
 					{%- if use_video -%}
@@ -272,10 +280,10 @@
       "content": "Colors"
     },
     {
-      "type": "color",
-      "id": "color_bg",
-      "label": "Background",
-      "default": "#ffffff"
+       "type": "color_background",
+  "id": "color_bg",
+  "label": "Background",
+  "default": "linear-gradient(105deg, #0f2ed0, #0a95ef)"
     },
     {
       "type": "color",

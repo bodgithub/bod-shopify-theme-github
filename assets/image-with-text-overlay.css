@@ -222,3 +222,13 @@ line-hight:0.9;}
 .benefits-list .benefit-item:last-child {
   border-bottom: none !important;
 }
+
+.image-with-text--content {
+  color: var(--color-text, var(--color-body));
+}
+
+.image-with-text--content .rte,
+.image-with-text--content p,
+.image-with-text--content .subheading {
+  color: inherit;
+}
