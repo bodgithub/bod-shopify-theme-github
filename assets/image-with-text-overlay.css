@@ -84,7 +84,7 @@
         /*max-width: 550px;*/ }
       .image-with-text-overlay--content-inner.content-width-large {
         max-width: 900px; }
-    .image-with-text-overlay--content  {
+    .image-with-text-overlay--content h3 {
       color: var(--text-color, #fff) !important; }
       .animations-true .image-with-text-overlay--content h3 {
         visibility: hidden;
