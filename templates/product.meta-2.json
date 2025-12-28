@@ -51,7 +51,7 @@
           "type": "button",
           "settings": {
             "button_text": "Claim 30% off now",
-            "button_link": "#powder"
+            "button_link": "#bodology-inositol"
           }
         }
       },
@@ -90,6 +90,13 @@
         "spacer_desktop": 0,
         "border_separator": false,
         "border_separator_full": false
+      }
+    },
+    "custom_liquid_Fqabeb": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"bodology-inositol\"></div>"
       }
     },
     "main-product": {
@@ -1197,6 +1204,7 @@
     "gpt_product_seo_DWikHm",
     "image_with_text_rDFVkL",
     "spacer_fcdpRG",
+    "custom_liquid_Fqabeb",
     "main-product",
     "spacer_TM4WHh",
     "multicolumn_RVwaEr",
