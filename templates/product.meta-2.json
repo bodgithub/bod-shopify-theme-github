@@ -51,7 +51,7 @@
           "type": "button",
           "settings": {
             "button_text": "Claim 30% off now",
-            "button_link": "#reviews"
+            "button_link": "#powder"
           }
         }
       },
@@ -98,7 +98,7 @@
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
+            "custom_liquid": "<div id=\"powder\" style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
           }
         },
         "text_6nKqcU": {
@@ -125,7 +125,7 @@
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"powder\">\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is supported, hormones follow. Care for yours daily with clean, 40:1 inositol — a clinical grade supplement supporting regular cycles, steady energy and mind.</p>\n</div>\n\n\n<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
+            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is supported, hormones follow. Care for yours daily with clean, 40:1 inositol — a clinical grade supplement supporting regular cycles, steady energy and mind.</p>\n</div>\n\n\n<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
           }
         },
         "variant_picker_HegXNW": {
