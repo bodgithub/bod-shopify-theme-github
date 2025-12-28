@@ -126,3 +126,5 @@
 }}
 
 .image-with-text--content p {color: var(--text-color);}
+
+  @media only screen and (max-width: 1180px).image-with-text--content h3, .image-with-text--content h1, .image-with-text--content h2 { text-align:center;}
