@@ -82,7 +82,7 @@
         background: var(--color-accent);
         margin-bottom: 20px; }
    
-    .image-with-text--content h3 {
+    .image-with-text--content h3, .image-with-text--content h1, .image-with-text--content h2 {
       color: var(--color-text, --color-body); }
     .image-with-text--content .text-button {
       color: var(--color-text, --color-body); }
