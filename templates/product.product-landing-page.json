@@ -14,6 +14,46 @@
       "name": "GPT PRODUCT SEO",
       "settings": {}
     },
+    "image_with_text_BtX3Vm": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_3PFJhN": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Discover a <em>metabolism–first</em> approach to hormone care. The <em>new way</em> to balance.</h2>"
+          }
+        },
+        "button_EdBk3b": {
+          "type": "button",
+          "settings": {
+            "button_text": "Claim 30% off now",
+            "button_link": "#bodology-inositol"
+          }
+        }
+      },
+      "block_order": [
+        "text_3PFJhN",
+        "button_EdBk3b"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/Bodology_girl_water.png",
+        "use_video": false,
+        "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_autoplay": true,
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "full_width": false,
+        "layout": "text_first",
+        "content_position": "text-center",
+        "column_spacing": "medium",
+        "color_bg": "linear-gradient(105deg, rgba(15, 46, 208, 1), rgba(10, 149, 239, 1) 100%)",
+        "color_text": "#ffffff",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "spacer_fcdpRG": {
       "type": "spacer",
       "name": "Spacer",
@@ -250,68 +290,6 @@
         "spacer_desktop": 75,
         "border_separator": false,
         "border_separator_full": false
-      }
-    },
-    "multicolumn_RVwaEr": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_KRQQ9K": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h4><strong>Bodology inositol is like MAGIC.</strong></h4><p>\"Bodology is truly life changing!! Inositol has helped me so much with my PMDD, cramps, and irregular cycle.\"</p><h6><strong>KYLIE</strong></h6>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_wBMg6U": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<p> </p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "column_KRQQ9K",
-        "column_wBMg6U"
-      ],
-      "disabled": true,
-      "name": "Multicolumn",
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "<h1>Why Bodology member <br/><em>love our inositol powder</em></h1>",
-        "bgcolor": "",
-        "columns_desktop": 4,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h5",
-        "color_heading": "#1b3def",
-        "marker_color": "#fd6262",
-        "color_text": "#2c2d2e",
-        "color_links": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "multicolumn_KdNre6": {
@@ -1377,10 +1355,10 @@
   },
   "order": [
     "gpt_product_seo_DWikHm",
+    "image_with_text_BtX3Vm",
     "spacer_fcdpRG",
     "main-product",
     "spacer_TM4WHh",
-    "multicolumn_RVwaEr",
     "multicolumn_KdNre6",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
