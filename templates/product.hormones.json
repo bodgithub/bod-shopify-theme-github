@@ -34,7 +34,7 @@
           "type": "heading",
           "settings": {
             "text": "{{ metaobjects.problem.hormones.headline | metafield_tag }}",
-            "heading_size": "h1-xlarge"
+            "heading_size": "h1-large"
           }
         },
         "customer_reviews_CtBhV3": {
@@ -451,7 +451,13 @@
             "title": "",
             "text": "<h1><strong>100+ studies show </strong><em><strong>inositol benefits</strong></em></h1>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
           }
         },
         "column_4JdggA": {
@@ -462,7 +468,13 @@
             "title": "",
             "text": "",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
           }
         }
       },
@@ -507,9 +519,13 @@
           "settings": {
             "image": "{{ block.repeater.image.value }}",
             "image_link": "{{ block.repeater.study.value }}",
+            "open": false,
             "heading": "",
             "text": "{{ block.repeater.result | metafield_tag }}",
-            "link_label": "{{ block.repeater.sup_text.value }}"
+            "link_label": "{{ block.repeater.sup_text.value }}",
+            "link": "",
+            "use_text_button": false,
+            "block_link": ""
           }
         }
       },
@@ -594,7 +610,13 @@
             "title": "",
             "text": "<p><strong>Mix 1-2 scoops (4g) into water, coffee, smoothie or any drink</strong></p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
           }
         },
         "column_FT4bTV": {
@@ -606,7 +628,13 @@
             "title": "",
             "text": "<p><strong>Take daily, ideally with your first meal</strong></p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
           }
         },
         "column_86pe8K": {
@@ -618,7 +646,13 @@
             "title": "",
             "text": "<p><strong>For best results, take consistently at the same time each day</strong></p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
           }
         }
       },
