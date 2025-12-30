@@ -35,7 +35,6 @@
         "text_3PFJhN",
         "button_EdBk3b"
       ],
-      "disabled": true,
       "name": "Image with text",
       "settings": {
         "image": "shopify://shop_images/Bodology_girl_water.png",
@@ -63,6 +62,13 @@
         "spacer_desktop": 0,
         "border_separator": false,
         "border_separator_full": false
+      }
+    },
+    "custom_liquid_WV46gi": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<div id=\"bodology-inositol\"><div>"
       }
     },
     "main-product": {
@@ -623,95 +629,6 @@
         "show_button": true,
         "button_text": "Meet Our Experts",
         "button_url": "shopify://pages/meet-our-experts"
-      }
-    },
-    "why_bit_section_xQmrNX": {
-      "type": "why-bit-section",
-      "blocks": {
-        "icon_block_nrqkhj": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/1_37001e7a-cc09-4069-94d3-e7eab362b3ec.png",
-            "title": "Kickstart Your Routine",
-            "text": "Your body begins recognizing inositol, supporting metabolic function from day one.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_CaLjyW": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/2_e10f3d23-138a-4061-853e-1dc756be8415.png",
-            "title": "Metabolic Support in Motion",
-            "text": "Cellular processes adjust, promoting steadier energy and blood sugar balance.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_NFRW8T": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/3_cf3b5a6e-df21-4eed-83ba-e23bd0fe0f07.png",
-            "title": "Hormonal & Energy Shifts",
-            "text": "With consistency, mood, cravings, and cycles may start feeling more stable.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_wAyJRt": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/4_d65cc7bc-50c4-4bfd-a4fe-68c9152ce945.png",
-            "title": "A More Balanced You",
-            "text": "Enjoy more steady energy, improved focus, and better appetite control.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_kUwwTV": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/5_754e5b9f-a13a-4974-87a7-6ef075bf61c6.png",
-            "title": "Real Progress",
-            "text": "Your skin, mood, cycles and overall well-being may feel more predictable.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        },
-        "icon_block_U9m6wW": {
-          "type": "icon_block",
-          "settings": {
-            "icon": "",
-            "icon-img": "shopify://shop_images/6_59b10b70-3d5f-43fd-a4e7-792150455412.png",
-            "title": "Long-Term Stability",
-            "text": "A daily habit for ongoing metabolic support, helping you feel in sync with your body.",
-            "color_text_1": "#2c2d2e",
-            "color_text": "#2c2d2e"
-          }
-        }
-      },
-      "block_order": [
-        "icon_block_nrqkhj",
-        "icon_block_CaLjyW",
-        "icon_block_NFRW8T",
-        "icon_block_wAyJRt",
-        "icon_block_kUwwTV",
-        "icon_block_U9m6wW"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "settings": {
-        "heading": "<h1>What To <em>Expect </em>On Your Inositol Journey</h1>",
-        "main_image": "shopify://shop_images/FRONT-Bodology-Inositol-Powder-90-Scoops.png",
-        "color_bg": "#ebe2da",
-        "color_heading": "#1b3def",
-        "color_text_1": "#1b3def",
-        "color_text": "#2c2d2e"
       }
     },
     "multicolumn_QQjdQM": {
@@ -1358,6 +1275,7 @@
     "gpt_product_seo_DWikHm",
     "image_with_text_BtX3Vm",
     "spacer_fcdpRG",
+    "custom_liquid_WV46gi",
     "main-product",
     "spacer_TM4WHh",
     "multicolumn_KdNre6",
@@ -1365,7 +1283,6 @@
     "spacer_4GDyCF",
     "scrolling_images_qqa6dt",
     "testimonial_carousel_twHytV",
-    "why_bit_section_xQmrNX",
     "multicolumn_QQjdQM",
     "spacer_hDmb7V",
     "multicolumn_rVnwmF",
