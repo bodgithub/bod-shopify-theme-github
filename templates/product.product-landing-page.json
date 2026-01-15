@@ -80,19 +80,16 @@
             "custom_liquid": "<div style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
           }
         },
-        "text_6nKqcU": {
-          "type": "text",
-          "disabled": true,
+        "custom_liquid_WPt4Yc": {
+          "type": "custom_liquid",
           "settings": {
-            "text": "<h4><em>Metabolic Support — Made Simple</em></h4>",
-            "text_style": "style_vendor"
+            "custom_liquid": "<div style=\"margin-bottom:-10px;\"><h1>Bodology® Inositol Powder</h1></div>"
           }
         },
-        "text_4wkmaU": {
-          "type": "text",
+        "custom_liquid_WRFhPD": {
+          "type": "custom_liquid",
           "settings": {
-            "text": "<h2>Bodology® Inositol Powder</h2>",
-            "text_style": "style_vendor"
+            "custom_liquid": "<div><h4> Metabolic support for hormones, mood + fertility</h4></div>"
           }
         },
         "title_ExCfKU": {
@@ -102,14 +99,7 @@
             "show_products_rating": true
           }
         },
-        "text_KLrUDy": {
-          "type": "text",
-          "settings": {
-            "text": "<h4><em>Metabolism-first</em> support for hormones, mood + fertility</h4>",
-            "text_style": "style_vendor"
-          }
-        },
-        "custom_liquid_WPt4Yc": {
+        "custom_liquid_bJXfU6": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.8rem;flex-wrap: wrap\">\n\n<div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em> $46.80</em></div> <div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;white-space:nowrap;\">30% OFF YOUR FIRST SUBSCRIPTION</div> </div>"
@@ -266,11 +256,10 @@
       },
       "block_order": [
         "custom_liquid_8d7xtd",
-        "text_6nKqcU",
-        "text_4wkmaU",
-        "title_ExCfKU",
-        "text_KLrUDy",
         "custom_liquid_WPt4Yc",
+        "custom_liquid_WRFhPD",
+        "title_ExCfKU",
+        "custom_liquid_bJXfU6",
         "custom_liquid_cnQHf3",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
