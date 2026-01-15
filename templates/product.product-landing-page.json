@@ -88,17 +88,17 @@
             "text_style": "style_vendor"
           }
         },
-        "text_4wkmaU": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Myo + D-Chiro<em> </em>Inositol<em> </em>Powder</h2>",
-            "text_style": "style_vendor"
-          }
-        },
         "text_KLrUDy": {
           "type": "text",
           "settings": {
             "text": "<h4><em>Metabolism-first support for hormones + mood</em></h4>",
+            "text_style": "style_vendor"
+          }
+        },
+        "text_4wkmaU": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Myo + D-Chiro<em> </em>Inositol<em> </em>Powder</h2>",
             "text_style": "style_vendor"
           }
         },
@@ -109,7 +109,13 @@
             "show_products_rating": true
           }
         },
-        "custom_liquid_qLxheX": {
+        "custom_liquid_WPt4Yc": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.8rem;\"><div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"color:black;\"><em> $46.80</em></div> <div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;\">30% OFF YOUR FIRST SUBSCRIPTION</div> </div>"
+          }
+        },
+        "custom_liquid_cnQHf3": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 Myo + D-chiro inositol designed to support regular cycles, steady energy, and mental clarity.*</p>\n</div>\n\n\n<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
@@ -261,10 +267,11 @@
       "block_order": [
         "custom_liquid_8d7xtd",
         "text_6nKqcU",
-        "text_4wkmaU",
         "text_KLrUDy",
+        "text_4wkmaU",
         "title_ExCfKU",
-        "custom_liquid_qLxheX",
+        "custom_liquid_WPt4Yc",
+        "custom_liquid_cnQHf3",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
