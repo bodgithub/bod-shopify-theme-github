@@ -112,7 +112,7 @@
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.8rem;\">\n\n<div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em> $46.80</em></div> <div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;\">30% OFF YOUR FIRST SUBSCRIPTION</div> </div>"
+            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.8rem;flex-wrap: wrap\">\n\n<div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em> $46.80</em></div> <div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;white-space:nowrap;\">30% OFF YOUR FIRST SUBSCRIPTION</div> </div>"
           }
         },
         "custom_liquid_cnQHf3": {
