@@ -90,7 +90,7 @@
         "custom_liquid_WRFhPD": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div><h4 style=\"color:black !important;\"><em>Metabolic support for hormones + mood</em></h4></div>"
+            "custom_liquid": "<div><h4 style=\"color:grey !important;\"><em>Metabolic support for hormones + mood</em></h4></div>"
           }
         },
         "custom_liquid_8d7xtd": {
@@ -122,7 +122,14 @@
         "custom_liquid_UEHeie": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 Myo + D-chiro inositol designed to support regular cycles, steady energy, and mental clarity.*</p>\n</div>\n\n\n<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
+            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 Myo + D-chiro inositol designed to support regular cycles, steady energy, and mental clarity.*</p>\n</div>"
+          }
+        },
+        "custom_liquid_8aUQnn": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
           }
         },
         "variant_picker_HegXNW": {
@@ -271,6 +278,7 @@
         },
         "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac": {
           "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_product_slider/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -283,6 +291,7 @@
         "custom_liquid_Et3tif",
         "custom_liquid_cnQHf3",
         "custom_liquid_UEHeie",
+        "custom_liquid_8aUQnn",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
@@ -318,6 +327,75 @@
         "enable_video_looping": true
       }
     },
+    "1768505899436dba61": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e5ed95a_KhkA73": {
+          "type": "ai_gen_block_e5ed95a",
+          "settings": {
+            "heading": "Real-stories from our community",
+            "subheading": "",
+            "text_alignment": "center",
+            "container_width": 1200,
+            "slides_per_view": 3,
+            "card_gap": 20,
+            "padding_top": 50,
+            "padding_bottom": 50,
+            "autoplay": true,
+            "autoplay_speed": 5000,
+            "card_padding": 20,
+            "card_border_radius": 12,
+            "video_border_radius": 8,
+            "card_shadow": true,
+            "background_color": "#ffffff",
+            "card_background": "#f9f9f9",
+            "heading_color": "#1b3def",
+            "text_color": "#2c2d2e",
+            "star_color": "#1b3def",
+            "button_background": "#1b3def",
+            "button_color": "#ffffff",
+            "heading_size": 36,
+            "subheading_size": 16,
+            "quote_size": 14,
+            "video_1": "shopify://files/videos/Krstina Testimonial.mp4",
+            "quote_1": "",
+            "author_1": "Krstina's fertility journey",
+            "author_title_1": "Verified User",
+            "author_image_1": "shopify://shop_images/Screenshot_2026-01-15_at_15.15.24.png",
+            "rating_1": 5,
+            "video_2": "shopify://files/videos/Ashley Testimonial.mp4",
+            "quote_2": "",
+            "author_2": "Ashley's hormone journey",
+            "author_title_2": "Verified User",
+            "author_image_2": "shopify://shop_images/Screenshot_2026-01-15_at_15.36.40.png",
+            "rating_2": 5,
+            "quote_3": "",
+            "author_3": "",
+            "author_title_3": "",
+            "rating_3": 5,
+            "video_4": "shopify://files/videos/Casey Testimonial.mp4",
+            "quote_4": "",
+            "author_4": "Casey's mood support journey",
+            "author_title_4": "Verified User",
+            "author_image_4": "shopify://shop_images/Screenshot_2026-01-15_at_15.46.11.png",
+            "rating_4": 5,
+            "quote_5": "",
+            "author_5": "",
+            "author_title_5": "",
+            "rating_5": 0,
+            "quote_6": "",
+            "author_6": "",
+            "author_title_6": "",
+            "rating_6": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e5ed95a_KhkA73"
+      ],
+      "settings": {}
+    },
     "spacer_TM4WHh": {
       "type": "spacer",
       "settings": {
@@ -336,7 +414,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>Root-Cause Metabolic Support</strong></h5><h4><em>Not symptom chasing</em></h4><p>Targets insulin signaling and metabolic balance at the root — the upstream driver of hormone disruption, cravings, mood crashes, and cycle irregularity.</p>",
+            "text": "<h5>Root-Cause Metabolic Support</h5><h4><em>Not symptom chasing</em></h4><p>Targets insulin signaling and metabolic balance at the root — the upstream driver of hormone disruption, cravings, mood crashes, and cycle irregularity.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -353,7 +431,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>Clinically Aligned 40:1 Ratio</strong></h5><h4><em><strong>Dose matters</strong></em></h4><p>4,000mg Myo-Inositol + 100mg D-Chiro Inositol per day — the ratio most consistently studied for metabolic and hormonal support.</p>",
+            "text": "<h5>Clinically Aligned 40:1 Ratio</h5><h4><em><strong>Dose matters</strong></em></h4><p>4,000mg Myo-Inositol + 100mg D-Chiro Inositol per day — the ratio most consistently studied for metabolic and hormonal support.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -366,6 +444,7 @@
         },
         "column_ppertg": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "image_full_width": false,
             "image_link": "",
@@ -387,7 +466,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>Research-Backed Ingredient</strong></h5><h4><em><strong>100+ Clinical Studies</strong></em></h4><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
+            "text": "<h5>Research-Backed Ingredient</h5><h4><em><strong>100+ Clinical Studies</strong></em></h4><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -632,19 +711,6 @@
         "color_links": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
-      }
-    },
-    "spacer_hDmb7V": {
-      "type": "spacer",
-      "disabled": true,
-      "custom_css": [
-        ".row .spacer {background-color: #f2eee9;}"
-      ],
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 20,
-        "border_separator": false,
-        "border_separator_full": true
       }
     },
     "multicolumn_rVnwmF": {
@@ -1219,13 +1285,13 @@
     "spacer_fcdpRG",
     "custom_liquid_WV46gi",
     "main-product",
+    "1768505899436dba61",
     "spacer_TM4WHh",
     "multicolumn_KdNre6",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
     "scrolling_images_qqa6dt",
     "multicolumn_QQjdQM",
-    "spacer_hDmb7V",
     "multicolumn_rVnwmF",
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
