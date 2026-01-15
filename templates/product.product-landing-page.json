@@ -329,7 +329,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>Root-Cause Metabolic Support</strong></h4><h6><em>Not symptom chasing</em></h6><p>Targets insulin signaling and metabolic balance at the root — the upstream driver of hormone disruption, cravings, mood crashes, and cycle irregularity.</p>",
+            "text": "<h5><strong>Root-Cause Metabolic Support</strong></h5><h4><em>Not symptom chasing</em></h4><p>Targets insulin signaling and metabolic balance at the root — the upstream driver of hormone disruption, cravings, mood crashes, and cycle irregularity.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -346,7 +346,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>Clinically Aligned 40:1 Ratio</strong></h4><h6><em><strong>Dose matters</strong></em></h6><p>4,000mg Myo-Inositol + 100mg D-Chiro Inositol per day — the ratio most consistently studied for metabolic and hormonal support.</p>",
+            "text": "<h5><strong>Clinically Aligned 40:1 Ratio</strong></h5><h4><em><strong>Dose matters</strong></em></h4><p>4,000mg Myo-Inositol + 100mg D-Chiro Inositol per day — the ratio most consistently studied for metabolic and hormonal support.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -363,7 +363,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>Clean Formula, Nothing Extra</strong></h4><h6><em>Plays well with your stack</em></h6><p>No fillers, no sweeteners, no additives that interfere with absorption or other supplements.</p>",
+            "text": "<h5><strong>Clean Formula, Nothing Extra</strong></h5><h4><em>Plays well with your stack</em></h4><p>No fillers, no sweeteners, no additives that interfere with absorption or other supplements.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -380,7 +380,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>Research-Backed Ingredient</strong></h4><h6><em><strong>100+ Clinical Studies</strong></em></h6><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
+            "text": "<h5><strong>Research-Backed Ingredient</strong></h5><h4><em><strong>100+ Clinical Studies</strong></em></h4><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -400,7 +400,8 @@
       ],
       "custom_css": [
         ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}",
-        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}"
+        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
+        "h4 {color: black !important;}"
       ],
       "settings": {
         "heading": "",
