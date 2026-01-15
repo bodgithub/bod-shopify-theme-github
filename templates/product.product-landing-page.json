@@ -77,7 +77,7 @@
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
+            "custom_liquid": "<div style=\"padding-bottom:13px;\" margin: 20px 0px;> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
           }
         },
         "custom_liquid_WPt4Yc": {
@@ -89,7 +89,7 @@
         "custom_liquid_WRFhPD": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div><h4> Metabolic support for hormones, mood + fertility</h4></div>"
+            "custom_liquid": "<div style=\"color:grey;\"><h4> Metabolic support for hormones, mood + fertility</h4></div>"
           }
         },
         "title_ExCfKU": {
@@ -106,6 +106,13 @@
           }
         },
         "custom_liquid_cnQHf3": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow.</p>\n</div>\n<div>\n<ul>\n        <li><span class=\"tick\">✓</span>Clean 40:1 myo + d-chiro inositol</li>\n        <li><span class=\"tick\">✓</span>Supports cycles, energy &amp; mental clarity</li>\n        <li><span class=\"tick\">✓</span>Designed for long-term metabolic balance</li>\n      </ul>\n</div>"
+          }
+        },
+        "custom_liquid_UEHeie": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 Myo + D-chiro inositol designed to support regular cycles, steady energy, and mental clarity.*</p>\n</div>\n\n\n<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
@@ -261,6 +268,7 @@
         "title_ExCfKU",
         "custom_liquid_bJXfU6",
         "custom_liquid_cnQHf3",
+        "custom_liquid_UEHeie",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
