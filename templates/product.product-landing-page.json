@@ -20,7 +20,7 @@
         "text_3PFJhN": {
           "type": "text",
           "settings": {
-            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1><p>Designed to support insulin resistance, PCOS, and hormonal imbalance.</p>"
+            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1><p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
           }
         },
         "button_EdBk3b": {
@@ -564,93 +564,6 @@
         "speed": "50s",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
-      }
-    },
-    "testimonial_carousel_twHytV": {
-      "type": "testimonial-carousel",
-      "blocks": {
-        "testimonial_xbyEaz": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_cCt7iB": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-hillary-rd\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-hillary-rd\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_JqWaEF": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"c-dr-anita\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"c-dr-anita\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_36KrU7": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_jNbziQ": {
-          "type": "testimonial",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
-            "quote": "<p>{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].exert_short_quote | metafield_tag }}</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_xbyEaz",
-        "testimonial_cCt7iB",
-        "testimonial_JqWaEF",
-        "testimonial_36KrU7",
-        "testimonial_jNbziQ"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".row {background-color: white;}"
-      ],
-      "settings": {
-        "testimonial_source": "blocks",
-        "heading": "<h1>Trusted by <em>experts </em>&<em> </em>practitioners</h1>",
-        "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
-        "full_width": false,
-        "text_size": "small",
-        "font_family": "body",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_bg_card": "#ffffff",
-        "color_border_card": "#1b3def",
-        "color_heading": "#1b3def",
-        "color_text2": "#1b3def",
-        "color_text": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true,
-        "columns_desktop": 2,
-        "columns_tablet": 2,
-        "columns_mobile": 1,
-        "show_button": true,
-        "button_text": "Meet Our Experts",
-        "button_url": "shopify://pages/meet-our-experts"
       }
     },
     "multicolumn_QQjdQM": {
@@ -1304,7 +1217,6 @@
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
     "scrolling_images_qqa6dt",
-    "testimonial_carousel_twHytV",
     "multicolumn_QQjdQM",
     "spacer_hDmb7V",
     "multicolumn_rVnwmF",
