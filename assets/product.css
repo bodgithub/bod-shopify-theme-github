@@ -1430,8 +1430,8 @@ h1,
 .h1,
 .h1-large,
 .h1-xlarge {
-  font-size: calc(var(--font-heading-scale) * 44px);
-  line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 42px)); }
+  font-size: calc(var(--font-heading-scale) * 30px);
+  line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px)); }
   @media only screen and (min-width: 768px) {
     h1,
     .h1,
