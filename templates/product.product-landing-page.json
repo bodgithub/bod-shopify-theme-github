@@ -102,7 +102,14 @@
         "custom_liquid_bJXfU6": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.8rem;flex-wrap: wrap\">\n\n<div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em> $46.80</em></div> <div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;white-space:nowrap;\">30% OFF YOUR FIRST SUBSCRIPTION</div> </div>"
+            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.4rem;flex-wrap: wrap;\">\n\n <div style=\"color:grey !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"size:1.4rem;\"><em>$46.80</em></div>\n<div style=\"font-size:0.9rem;color:grey;\" >Save 30% with subscription</div>\n\n</div>"
+          }
+        },
+        "custom_liquid_Et3tif": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.4rem;flex-wrap: wrap;\">\n\n<div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em>$46.80</em></div> \n\n\n<div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;white-space:nowrap;\">30% OFF YOUR FIRST SUBSCRIPTION</div> \n</div>"
           }
         },
         "custom_liquid_cnQHf3": {
@@ -267,6 +274,7 @@
         "custom_liquid_WRFhPD",
         "title_ExCfKU",
         "custom_liquid_bJXfU6",
+        "custom_liquid_Et3tif",
         "custom_liquid_cnQHf3",
         "custom_liquid_UEHeie",
         "variant_picker_HegXNW",
