@@ -1,4 +1,7 @@
-
+{% doc %}
+  @prompt
+    testimonial video carousel, the videos should be 9:16 aspect ratio
+{% enddoc %}
 
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
@@ -92,7 +95,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    background: #f4f4f4;
   }
 
   .ai-testimonial-carousel__video-placeholder-{{ ai_gen_id }} {
@@ -295,42 +297,33 @@
             {% assign rating_key = 'rating_' | append: i %}
 
             {% if block.settings[video_key] != blank %}
-              {% assign v = block.settings[video_key] %}
               <div class="ai-testimonial-carousel__slide-{{ ai_gen_id }}">
                 <div class="ai-testimonial-carousel__card-{{ ai_gen_id }}">
                   <div class="ai-testimonial-carousel__video-wrapper-{{ ai_gen_id }}">
-                    {% if v != blank and v.sources != blank %}
-                      <video
-                        class="ai-testimonial-carousel__video-{{ ai_gen_id }}"
-                        controls
-                        playsinline
-                        preload="auto"
-                        muted
-                        poster="{{ v.preview_image | image_url: width: 900 }}"
-                      >
-                        {% for s in v.sources %}
-                          <source src="{{ s.url }}" type="{{ s.mime_type }}">
-                        {% endfor %}
-                      </video>
-                    {% else %}
-                      <div class="ai-testimonial-carousel__video-placeholder-{{ ai_gen_id }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                        </svg>
-                      </div>
-                    {% endif %}
-                  </div>
+                    
+                  
+                  {% assign v = block.settings[video_key] %}
 
-                  <div class="ai-testimonial-carousel__content-{{ ai_gen_id }}">
-                    {% if block.settings[rating_key] > 0 %}
-                      <div class="ai-testimonial-carousel__rating-{{ ai_gen_id }}">
-                        {% for star in (1..5) %}
-                          <svg class="ai-testimonial-carousel__star-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{% if star <= block.settings[rating_key] %}currentColor{% else %}none{% endif %}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                          </svg>
-                        {% endfor %}
-                      </div>
-                    {% endif %}
+{% if v != blank and v.sources != blank %}
+  <video
+    class="ai-testimonial-carousel__video-{{ ai_gen_id }}"
+    controls
+    playsinline
+    preload="auto"
+    muted
+    poster="{{ v.preview_image | image_url: width: 900 }}"
+  >
+    {% for s in v.sources %}
+      <source src="{{ s.url }}" type="{{ s.mime_type }}">
+    {% endfor %}
+  </video>
+{% else %}
+  <div class="ai-testimonial-carousel__video-placeholder-{{ ai_gen_id }}">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+    </svg>
+  </div>
+{% endif %}
 
                     {% if block.settings[quote_key] != blank %}
                       <p class="ai-testimonial-carousel__quote-{{ ai_gen_id }}">{{ block.settings[quote_key] }}</p>
@@ -409,7 +402,6 @@
         super();
         this.currentIndex = 0;
         this.autoplayInterval = null;
-        this.onResize = null;
       }
 
       connectedCallback() {
@@ -431,38 +423,12 @@
         this.updateCarousel();
         this.forceVideoPosters();
 
+
         if (this.autoplay) {
           this.startAutoplay();
         }
 
-        this.onResize = () => this.updateSlidesPerView();
-        window.addEventListener('resize', this.onResize);
-      }
-
-      forceVideoPosters() {
-        const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
-        videos.forEach((video) => {
-          const nudge = () => {
-            video.muted = true;
-            const p = video.play();
-            if (p && typeof p.then === 'function') {
-              p.then(() => {
-                video.pause();
-                try { video.currentTime = 0.01; } catch(e) {}
-              }).catch(() => {
-                try { video.currentTime = 0.01; } catch(e) {}
-              });
-            } else {
-              try { video.currentTime = 0.01; } catch(e) {}
-            }
-          };
-
-          if (video.readyState >= 1) {
-            nudge();
-          } else {
-            video.addEventListener('loadedmetadata', nudge, { once: true });
-          }
-        });
+        window.addEventListener('resize', () => this.updateSlidesPerView());
       }
 
       updateSlidesPerView() {
@@ -489,6 +455,33 @@
           this.dotsContainer.appendChild(dot);
         }
       }
+
+      forceVideoPosters() {
+  const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
+  videos.forEach((video) => {
+    const nudge = () => {
+      video.muted = true;
+
+      const p = video.play();
+      if (p && typeof p.then === 'function') {
+        p.then(() => {
+          video.pause();
+          video.currentTime = 0.01;
+        }).catch(() => {
+          try { video.currentTime = 0.01; } catch(e) {}
+        });
+      } else {
+        try { video.currentTime = 0.01; } catch(e) {}
+      }
+    };
+
+    if (video.readyState >= 1) {
+      nudge();
+    } else {
+      video.addEventListener('loadedmetadata', nudge, { once: true });
+    }
+  });
+}
 
       setupEventListeners() {
         this.prevButton.addEventListener('click', () => this.prev());
@@ -558,18 +551,13 @@
 
       disconnectedCallback() {
         this.stopAutoplay();
-        if (this.onResize) {
-          window.removeEventListener('resize', this.onResize);
-        }
+        window.removeEventListener('resize', () => this.updateSlidesPerView());
       }
     }
 
     customElements.define('testimonial-carousel-{{ ai_gen_id }}', TestimonialCarousel{{ ai_gen_id }});
   })();
 </script>
-
-
-
 
 {% schema %}
 {
