@@ -2131,7 +2131,7 @@ h5,
 h6,
 .h6 .h1-large,
 .h1-xlarge {
-  letter-spacing: -1px!important; } /*var(--font-heading-letter-spacing, normal);*/
+  letter-spacing: -0.5px!important; } /*var(--font-heading-letter-spacing, normal);*/
 
 @media only screen and (min-width: 1068px) {
   .heading-size--small {
