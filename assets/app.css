@@ -2997,7 +2997,7 @@ input[type="submit"] {
         color: var(--white-button-label, var(--color-body, #2c2d2e)); } }
   .button.accent,
   input[type="submit"].accent {
-    background: #1b3def; /* background: linear-gradient(55deg, #0f2ed0, #0a95ef) linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
+    background: background: linear-gradient(55deg, #0f2ed0, #0a95ef); /*  #1b3def; /* background: linear-gradient(55deg, #0f2ed0, #0a95ef) linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
     color: #f2eee9;/*var(--solid-button-label, #fff);*/
   text-decoration: none;}
     .button.accent .spinner-path,
@@ -3006,7 +3006,7 @@ input[type="submit"] {
     @media screen and (hover: hover) {
       .button.accent:hover,
       input[type="submit"].accent:hover {
-        background: linear-gradient(105deg, #0f2ed0, #0a95ef);/*var(--color-accent-hover, var(--color-accent));*/
+        background: #1b3def; /*linear-gradient(105deg, #0f2ed0, #0a95ef); var(--color-accent-hover, var(--color-accent));*/
       color: #fff;} }
   .button[disabled],
   input[type="submit"][disabled] {
