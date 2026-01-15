@@ -74,10 +74,11 @@
     "main-product": {
       "type": "main-product",
       "blocks": {
-        "custom_liquid_8d7xtd": {
-          "type": "custom_liquid",
+        "title_ExCfKU": {
+          "type": "title",
+          "disabled": true,
           "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px;\" margin: 20px 0px;> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
+            "show_products_rating": true
           }
         },
         "custom_liquid_WPt4Yc": {
@@ -89,14 +90,13 @@
         "custom_liquid_WRFhPD": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div><h4><em>Metabolic support for hormones + mood</em></h4></div>"
+            "custom_liquid": "<div><h4 style=\"color:black !important;\"><em>Metabolic support for hormones + mood</em></h4></div>"
           }
         },
-        "title_ExCfKU": {
-          "type": "title",
-          "disabled": true,
+        "custom_liquid_8d7xtd": {
+          "type": "custom_liquid",
           "settings": {
-            "show_products_rating": true
+            "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
           }
         },
         "custom_liquid_bJXfU6": {
@@ -269,10 +269,10 @@
         }
       },
       "block_order": [
-        "custom_liquid_8d7xtd",
+        "title_ExCfKU",
         "custom_liquid_WPt4Yc",
         "custom_liquid_WRFhPD",
-        "title_ExCfKU",
+        "custom_liquid_8d7xtd",
         "custom_liquid_bJXfU6",
         "custom_liquid_Et3tif",
         "custom_liquid_cnQHf3",
