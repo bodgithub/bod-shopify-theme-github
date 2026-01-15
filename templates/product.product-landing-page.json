@@ -88,13 +88,6 @@
             "text_style": "style_vendor"
           }
         },
-        "text_KLrUDy": {
-          "type": "text",
-          "settings": {
-            "text": "<h4><em>Metabolism-first support for hormones + mood</em></h4>",
-            "text_style": "style_vendor"
-          }
-        },
         "text_4wkmaU": {
           "type": "text",
           "settings": {
@@ -109,10 +102,17 @@
             "show_products_rating": true
           }
         },
+        "text_KLrUDy": {
+          "type": "text",
+          "settings": {
+            "text": "<h5><em>Metabolism-first support for hormones + mood</em></h5>",
+            "text_style": "style_vendor"
+          }
+        },
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.8rem;\"><div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"color:black;\"><em> $46.80</em></div> <div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;\">30% OFF YOUR FIRST SUBSCRIPTION</div> </div>"
+            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.8rem;\"><div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em> $46.80</em></div> <div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;\">30% OFF YOUR FIRST SUBSCRIPTION</div> </div>"
           }
         },
         "custom_liquid_cnQHf3": {
@@ -267,9 +267,9 @@
       "block_order": [
         "custom_liquid_8d7xtd",
         "text_6nKqcU",
-        "text_KLrUDy",
         "text_4wkmaU",
         "title_ExCfKU",
+        "text_KLrUDy",
         "custom_liquid_WPt4Yc",
         "custom_liquid_cnQHf3",
         "variant_picker_HegXNW",
