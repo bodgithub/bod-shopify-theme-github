@@ -20,14 +20,14 @@
         "text_3PFJhN": {
           "type": "text",
           "settings": {
-            "text": "<h2>Discover a <em>metabolism–first</em> approach to hormone care. The <em>new way</em> to balance.</h2>"
+            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1><p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
           }
         },
         "button_EdBk3b": {
           "type": "button",
           "settings": {
             "button_text": "Claim 30% off now",
-            "button_link": "#bodology-inositol"
+            "button_link": "#product-details"
           }
         }
       },
@@ -35,10 +35,9 @@
         "text_3PFJhN",
         "button_EdBk3b"
       ],
-      "disabled": true,
       "name": "Image with text",
       "settings": {
-        "image": "shopify://shop_images/Bodology_girl_water.png",
+        "image": "shopify://shop_images/Bodology_girl_water_4.png",
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
@@ -48,10 +47,10 @@
         "layout": "text_first",
         "content_position": "text-center",
         "column_spacing": "medium",
-        "color_bg": "linear-gradient(105deg, rgba(15, 46, 208, 1), rgba(10, 149, 239, 1) 100%)",
-        "color_text": "#ffffff",
+        "color_bg": "linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(250, 250, 250, 1) 78%)",
+        "color_text": "#2c2d2e",
         "color_border": "#e2e2e2",
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
@@ -75,26 +74,6 @@
     "main-product": {
       "type": "main-product",
       "blocks": {
-        "custom_liquid_8d7xtd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
-          }
-        },
-        "text_6nKqcU": {
-          "type": "text",
-          "settings": {
-            "text": "<p><em>Metabolic Support — Made Simple</em></p>",
-            "text_style": "style_vendor"
-          }
-        },
-        "text_4wkmaU": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>MYO + D-CHIRO INOSITOL POWDER</h2>",
-            "text_style": "style_vendor"
-          }
-        },
         "title_ExCfKU": {
           "type": "title",
           "disabled": true,
@@ -102,10 +81,55 @@
             "show_products_rating": true
           }
         },
-        "custom_liquid_qLxheX": {
+        "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 inositol — a clinical grade supplement supporting regular cycles, steady energy and mind.</p>\n</div>\n\n\n<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
+            "custom_liquid": "<div style=\"margin-bottom:-10px; \"><h1 style=\"color:black!important;\">Bodology® <em>Inositol </em>Powder</h1></div>"
+          }
+        },
+        "custom_liquid_WRFhPD": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div><h4 style=\"color:grey !important;\"><em>Metabolic support for hormones + mood</em></h4></div>"
+          }
+        },
+        "custom_liquid_8d7xtd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
+          }
+        },
+        "custom_liquid_bJXfU6": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; gap:10px; align-items: center; margin-bottom:16px; font-size:1.4rem;flex-wrap: wrap;\">\n\n \n\n<div style=\"color:grey !important; text-decoration:line-through;\"><em>$65 </em></div>\n\n<div><em>$46.80</em></div>\n\n<div style=\"font-size:0.9rem;color:grey;\">30% off your first subscription</div>\n\n</div>"
+          }
+        },
+        "custom_liquid_Et3tif": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.4rem;flex-wrap: wrap;\">\n\n<div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em>$46.80</em></div> \n\n\n<div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;white-space:nowrap;\">30% OFF YOUR FIRST SUBSCRIPTION</div> \n</div>"
+          }
+        },
+        "custom_liquid_cnQHf3": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow.</p>\n</div>\n<div>\n<ul>\n        <li><span class=\"tick\">✓</span>Clean 40:1 myo + d-chiro inositol</li>\n        <li><span class=\"tick\">✓</span>Supports cycles, energy &amp; mental clarity</li>\n        <li><span class=\"tick\">✓</span>Designed for long-term metabolic balance</li>\n      </ul>\n</div>"
+          }
+        },
+        "custom_liquid_UEHeie": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 Myo + D-chiro inositol designed to support regular cycles, steady energy, and mental clarity.*</p>\n</div>"
+          }
+        },
+        "custom_liquid_8aUQnn": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
           }
         },
         "variant_picker_HegXNW": {
@@ -169,13 +193,19 @@
         "custom_liquid_YGHAge": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"align-items: center; font-size: 14px;  padding-bottom:20px;\"><b>Free shipping</b> on all orders. <b>60-day</b> money back guarantee. <br>Arrives in <b>2-5 days</b>.\n</div>\n<div style=\"border:1px solid #1b3def; width:100%; height:auto; padding:10px; margin-bottom:20px; font-size: 14px; color:#1b3def;\"><b>Practitioner code?</b> Enter at checkout.</div>"
+            "custom_liquid": "<div style=\"align-items: center; font-size: 14px;  padding-bottom:20px;\"><b>Free shipping</b> on all orders. <b>60-day</b> money back guarantee. <br>Arrives in <b>2-5 days</b>.\n</div>"
+          }
+        },
+        "custom_liquid_jbg4iU": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"border:0.1px solid #1b3def; padding:10px; border-radius:5px; width:100%; height:auto;  margin-bottom:20px; font-size: 14px; \"><img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 19px; margin-right: 4px;\"><strong>Practitioner Approved</strong> <div style=\"padding:10px 0px 0px;color:#2c2d2e;\">Used by practitioners as part of metabolic support protocols for women with PCOS and those preparing for conception.</div></div>"
           }
         },
         "custom_liquid_ymVUr7": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div id=\"practitioners\" class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Hillary_-_white_-_logo_2.png?v=1731439561\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\"\n <br><i style=\"padding-top:5px;\">Hillary Wright, RD Boston IVF</i></p>\n  </div>\n</div>"
+            "custom_liquid": "<!-- Bodology Expert Quote Section -->\n\n<div id=\"practitioners\" class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Hillary_-_white_-_logo_2.png?v=1731439561\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\"\n <br><i style=\"padding-top:5px;\">Hillary Wright, RD Boston IVF</i></p>\n  </div>\n</div>"
           }
         },
         "custom_liquid_nfgEm4": {
@@ -248,15 +278,20 @@
         },
         "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac": {
           "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_product_slider/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
+          "disabled": true,
           "settings": {}
         }
       },
       "block_order": [
-        "custom_liquid_8d7xtd",
-        "text_6nKqcU",
-        "text_4wkmaU",
         "title_ExCfKU",
-        "custom_liquid_qLxheX",
+        "custom_liquid_WPt4Yc",
+        "custom_liquid_WRFhPD",
+        "custom_liquid_8d7xtd",
+        "custom_liquid_bJXfU6",
+        "custom_liquid_Et3tif",
+        "custom_liquid_cnQHf3",
+        "custom_liquid_UEHeie",
+        "custom_liquid_8aUQnn",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
@@ -265,6 +300,7 @@
         "custom_liquid_JMxr8q",
         "custom_liquid_wbFXG8",
         "custom_liquid_YGHAge",
+        "custom_liquid_jbg4iU",
         "custom_liquid_ymVUr7",
         "custom_liquid_nfgEm4",
         "custom_liquid_8TqUrD",
@@ -287,9 +323,78 @@
         "media_aspect_ratio": "square",
         "display_captions": false,
         "hide_variants": true,
-        "lightbox": true,
+        "lightbox": false,
         "enable_video_looping": true
       }
+    },
+    "1768505899436dba61": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e5ed95a_KhkA73": {
+          "type": "ai_video_testimonials",
+          "settings": {
+            "heading": "Real-stories from our community",
+            "subheading": "",
+            "text_alignment": "center",
+            "container_width": 1200,
+            "slides_per_view": 3,
+            "card_gap": 20,
+            "padding_top": 50,
+            "padding_bottom": 50,
+            "autoplay": true,
+            "autoplay_speed": 5000,
+            "card_padding": 20,
+            "card_border_radius": 12,
+            "video_border_radius": 8,
+            "card_shadow": true,
+            "background_color": "#ffffff",
+            "card_background": "#f9f9f9",
+            "heading_color": "#1b3def",
+            "text_color": "#2c2d2e",
+            "star_color": "#1b3def",
+            "button_background": "#eaeaea",
+            "button_color": "#1b3def",
+            "heading_size": 36,
+            "subheading_size": 16,
+            "quote_size": 19,
+            "video_1": "shopify://files/videos/Krstina Testimonial 2.mp4",
+            "quote_1": "Krstina's fertility journey",
+            "author_1": "Krstina Perez",
+            "author_title_1": "Verified User • @krstinaperez",
+            "author_image_1": "shopify://shop_images/Screenshot_2026-01-15_at_15.15.24.png",
+            "rating_1": 5,
+            "video_2": "shopify://files/videos/Ashley Testimonial_490c3d0a-49f2-49bd-83d2-5e7e23b973e5.mp4",
+            "quote_2": "Ashley's hormone journey",
+            "author_2": "Ashley Moya",
+            "author_title_2": "Verified User • @ashleymoya7",
+            "author_image_2": "shopify://shop_images/Screenshot_2026-01-15_at_15.36.40.png",
+            "rating_2": 5,
+            "quote_3": "",
+            "author_3": "",
+            "author_title_3": "",
+            "rating_3": 5,
+            "video_4": "shopify://files/videos/Lauren Testimonial.mp4",
+            "quote_4": "Lauren's inositol story",
+            "author_4": "Lauren Elam",
+            "author_title_4": "Verified User • @larslavishlife",
+            "author_image_4": "shopify://shop_images/Screenshot_2026-01-15_at_16.30.10.png",
+            "rating_4": 5,
+            "quote_5": "",
+            "author_5": "",
+            "author_title_5": "",
+            "rating_5": 0,
+            "quote_6": "",
+            "author_6": "",
+            "author_title_6": "",
+            "rating_6": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e5ed95a_KhkA73"
+      ],
+      "settings": {}
     },
     "spacer_TM4WHh": {
       "type": "spacer",
@@ -309,7 +414,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>PURE INOSITOL, NOTHING ELSE</strong></h4><p>No unnecessary fillers or ingredients that can interfere with your other supplements.</p>",
+            "text": "<h5>Root-Cause Metabolic Support</h5><h4><em>Not symptom chasing</em></h4><p>Targets insulin signaling and metabolic balance at the root — the upstream driver of hormone disruption, cravings, mood crashes, and cycle irregularity.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -326,7 +431,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>ROOT CAUSE APPROACH</strong></h4><p>Targets underlying metabolic imbalances, not just surface-level symptoms.</p>",
+            "text": "<h5>Clinically Aligned 40:1 Ratio</h5><h4><em><strong>Dose matters</strong></em></h4><p>4,000mg Myo-Inositol + 100mg D-Chiro Inositol per day — the ratio most consistently studied for metabolic and hormonal support.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -339,11 +444,12 @@
         },
         "column_ppertg": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>DOSE OPTIMIZED</strong></h4><p>2 scoops daily provides 4,000mg Myo Inositol and 100mg D-Chiro Inositol, in the optimal 40:1 ratio.</p>",
+            "text": "<h5><strong>Clean Formula, Nothing Extra</strong></h5><h4><em>Plays well with your stack</em></h4><p>No fillers, no sweeteners, no additives that interfere with absorption or other supplements.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -360,7 +466,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h4><strong>100+ CLINICAL STUDIES</strong></h4><p>Inositol is backed by research, not guesswork, to deliver proven metabolic support.</p>",
+            "text": "<h5>Research-Backed Ingredient</h5><h4><em><strong>100+ Clinical Studies</strong></em></h4><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -380,7 +486,8 @@
       ],
       "custom_css": [
         ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}",
-        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}"
+        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
+        "h4 {color: black !important;}"
       ],
       "settings": {
         "heading": "",
@@ -545,93 +652,6 @@
         "disable_bottom_spacing": false
       }
     },
-    "testimonial_carousel_twHytV": {
-      "type": "testimonial-carousel",
-      "blocks": {
-        "testimonial_xbyEaz": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_cCt7iB": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-hillary-rd\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-hillary-rd\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_JqWaEF": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"c-dr-anita\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"c-dr-anita\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_36KrU7": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_jNbziQ": {
-          "type": "testimonial",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
-            "quote": "<p>{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].exert_short_quote | metafield_tag }}</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_xbyEaz",
-        "testimonial_cCt7iB",
-        "testimonial_JqWaEF",
-        "testimonial_36KrU7",
-        "testimonial_jNbziQ"
-      ],
-      "disabled": true,
-      "custom_css": [
-        ".row {background-color: white;}"
-      ],
-      "settings": {
-        "testimonial_source": "blocks",
-        "heading": "<h1>Trusted by <em>experts </em>&<em> </em>practitioners</h1>",
-        "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
-        "full_width": false,
-        "text_size": "small",
-        "font_family": "body",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_bg_card": "#ffffff",
-        "color_border_card": "#1b3def",
-        "color_heading": "#1b3def",
-        "color_text2": "#1b3def",
-        "color_text": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true,
-        "columns_desktop": 2,
-        "columns_tablet": 2,
-        "columns_mobile": 1,
-        "show_button": true,
-        "button_text": "Meet Our Experts",
-        "button_url": "shopify://pages/meet-our-experts"
-      }
-    },
     "multicolumn_QQjdQM": {
       "type": "multicolumn",
       "blocks": {
@@ -691,19 +711,6 @@
         "color_links": "#ffffff",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
-      }
-    },
-    "spacer_hDmb7V": {
-      "type": "spacer",
-      "disabled": true,
-      "custom_css": [
-        ".row .spacer {background-color: #f2eee9;}"
-      ],
-      "settings": {
-        "spacer_mobile": 10,
-        "spacer_desktop": 20,
-        "border_separator": false,
-        "border_separator_full": true
       }
     },
     "multicolumn_rVnwmF": {
@@ -1278,14 +1285,13 @@
     "spacer_fcdpRG",
     "custom_liquid_WV46gi",
     "main-product",
+    "1768505899436dba61",
     "spacer_TM4WHh",
     "multicolumn_KdNre6",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
     "scrolling_images_qqa6dt",
-    "testimonial_carousel_twHytV",
     "multicolumn_QQjdQM",
-    "spacer_hDmb7V",
     "multicolumn_rVnwmF",
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
