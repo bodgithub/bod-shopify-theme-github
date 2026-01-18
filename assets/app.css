@@ -4358,20 +4358,4 @@ h2 {
 }
 }
 
-/* Fix: allow sticky header to work inside section wrapper */
-.shopify-section-group-header-group,
-.header-section,
-[id^="shopify-section-sections--"][id$="__header"] {
-  overflow: visible !important;
-  transform: none !important;
-  filter: none !important;
-  perspective: none !important;
-  contain: none !important;
-}
 
-/* Ensure the actual header stays on top */
-theme-header.header.header-sticky--active {
-  position: sticky;
-  top: 0;
-  z-index: 2000; /* higher than drawers/sections */
-}
