@@ -36,6 +36,7 @@
 -%}
 <div class="row{% if full_width %} full-width-row{% endif %}" style="background: {{ section.settings.color_bg }}; padding-top:2em; padding-bottom:2em;
     --text-color: {{ section.settings.color_text }};
+    --p-text-color: {{ section.settings.color_p_text }};
     --color-border: {{ section.settings.color_border }};
   "
 >
@@ -287,11 +288,17 @@
   "default": "linear-gradient(105deg, #0f2ed0, #0a95ef)"
     },
     {
-      "type": "color",
-      "id": "color_text",
-      "label": "Text",
-      "default": "#2c2d2e"
-    },
+  "type": "color",
+  "id": "color_text",
+  "label": "Text",
+  "default": "#2c2d2e"
+},
+{
+  "type": "color",
+  "id": "color_p_text",
+  "label": "Paragraph text",
+  "default": "#2c2d2e"
+},
     {
       "type": "color",
       "id": "color_border",
