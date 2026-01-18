@@ -4358,4 +4358,14 @@ h2 {
 }
 }
 
+/* Make sure the HEADER SECTION sits above everything */
+#shopify-section-sections--18405847826651__header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important;
+}
 
+/* And the actual header element too */
+#shopify-section-sections--18405847826651__header theme-header.header {
+  z-index: 9999 !important;
+}
