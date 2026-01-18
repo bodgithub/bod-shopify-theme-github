@@ -50,6 +50,7 @@
         "column_spacing": "medium",
         "color_bg": "linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(250, 250, 250, 1) 78%)",
         "color_text": "#2c2d2e",
+        "color_p_text": "#2c2d2e",
         "color_border": "#e2e2e2",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
@@ -85,7 +86,7 @@
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"margin-bottom:-10px; \"><h1 style=\"color:black!important;\">Bodology® <em>Inositol </em>Powder</h1></div>"
+            "custom_liquid": "<div style=\"margin-bottom:-10px; \"><h1 style=\"\">Bodology® <em>Inositol </em>Powder</h1></div>"
           }
         },
         "custom_liquid_WRFhPD": {
