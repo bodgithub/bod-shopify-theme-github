@@ -1445,7 +1445,7 @@ h1,
     .h1-large,
     .h1-xlarge {
       font-size: calc(var(--font-heading-scale) * 54px);
-      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 62px)); } }
+      line-height: 1em /*calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 62px))*/; } }
 
 h2,
 .h2 {

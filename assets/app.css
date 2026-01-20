@@ -2054,7 +2054,7 @@ h1, .h1, .h1-large, .h1-xlarge {
   @media only screen and (min-width: 1068px) {
     h1, .h1, .h1-large, .h1-xlarge {
       font-size: calc(var(--font-heading-scale) * 58px);
-      line-height: 1em /*calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 66px))*/; } }
+      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 66px)); } }
 
 h2, .h2, blockquote p,
 blockquote span {
