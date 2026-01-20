@@ -218,7 +218,7 @@
         "collapsible_tab_KVBdNK": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "BENEFITS",
+            "heading": "{{ metaobjects.problem.metabolism.benefits_for_title.value }}",
             "open": false,
             "content": "{{ metaobjects.problem.metabolism.benefit_list | metafield_tag }}",
             "page": "",
