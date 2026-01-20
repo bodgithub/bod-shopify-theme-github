@@ -131,24 +131,23 @@
     "main-product": {
       "type": "main-product",
       "blocks": {
-        "custom_liquid_8d7xtd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
-          }
-        },
-        "text_6nKqcU": {
-          "type": "text",
-          "settings": {
-            "text": "<h6>CLINICAL-GRADE SUPPLEMENT</h6>",
-            "text_style": "style_vendor"
-          }
-        },
         "text_4wkmaU": {
           "type": "text",
           "settings": {
             "text": "<h1>Bodology® <em>Inositol</em> Powder</h1>",
             "text_style": "style_vendor"
+          }
+        },
+        "custom_liquid_X84cQw": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div><h4 style=\"color:grey !important; padding-bottom:15px;”><em>Metabolic support for hormones + mood</em></h4></div>"
+          }
+        },
+        "custom_liquid_GRcjrY": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
           }
         },
         "title_ExCfKU": {
@@ -161,7 +160,7 @@
         "custom_liquid_qLxheX": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id=\"product-details\"><p>\nA clean, hormone-friendly inositol formula in the clinically aligned 40:1 ratio for metabolic and hormonal balance. Designed to support, not override, your natural rhythms.\n<br></p><p style=\"color:#797b7a;\">Made with carob-sourced D-chiro inositol for optimal purity and flavor.</p></div>\n<div class=\"product-benefits\">\n\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Reproductive Health</div> \n</div>"
+            "custom_liquid": "<div>\n\n<p style=\"padding-top:10px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 Myo + D-chiro inositol designed to support regular cycles, steady energy, and mental clarity.*</p>\n</div>"
           }
         },
         "variant_picker_HegXNW": {
@@ -175,20 +174,6 @@
             "sizing_guide_text": "Sizing guide",
             "sizing_guide_icon": "ruler",
             "sizing_guide_page": ""
-          }
-        },
-        "side_panel_NGJTtJ": {
-          "type": "side_panel",
-          "settings": {
-            "side_panel_1_label": "Choosing my scoop",
-            "side_panel_1_icon": "question_mark",
-            "side_panel_1_page": "which-size-is-right-for-me",
-            "side_panel_2_label": "Shipping & returns",
-            "side_panel_2_icon": "truck",
-            "side_panel_2_page": "shipping-returns",
-            "side_panel_3_label": "",
-            "side_panel_3_icon": "none",
-            "side_panel_3_page": ""
           }
         },
         "recharge_subscriptions_subscription_widget_v2_9rCap3": {
@@ -208,11 +193,18 @@
             "show_gift_card_recipient": false
           }
         },
-        "custom_liquid_JMxr8q": {
-          "type": "custom_liquid",
-          "disabled": true,
+        "side_panel_NGJTtJ": {
+          "type": "side_panel",
           "settings": {
-            "custom_liquid": "<div style=\"font-family: Arial, sans-serif; font-size: 13px; padding-bottom:20px; margin-top:-10px;\">*Choose delivery every 6 weeks for 2 scoops per day (optimal dose), \nor every 3 months for 1 scoop per day. Each product contains 90 scoops.</div>\n\n<div style=\"font-family: Arial, sans-serif; font-size: 13px; padding-bottom:20px; margin-top:-10px;\">**New and improved packaging: We’ve recently updated our packaging. You may receive either the new or previous design while we transition.</div>"
+            "side_panel_1_label": "Choosing my scoop",
+            "side_panel_1_icon": "question_mark",
+            "side_panel_1_page": "which-size-is-right-for-me",
+            "side_panel_2_label": "Shipping & returns",
+            "side_panel_2_icon": "truck",
+            "side_panel_2_page": "shipping-returns",
+            "side_panel_3_label": "",
+            "side_panel_3_icon": "none",
+            "side_panel_3_page": ""
           }
         },
         "custom_liquid_wbFXG8": {
@@ -301,17 +293,16 @@
         }
       },
       "block_order": [
-        "custom_liquid_8d7xtd",
-        "text_6nKqcU",
         "text_4wkmaU",
+        "custom_liquid_X84cQw",
+        "custom_liquid_GRcjrY",
         "title_ExCfKU",
         "custom_liquid_qLxheX",
         "variant_picker_HegXNW",
-        "side_panel_NGJTtJ",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
         "buy_buttons_3FBywE",
-        "custom_liquid_JMxr8q",
+        "side_panel_NGJTtJ",
         "custom_liquid_wbFXG8",
         "custom_liquid_ymVUr7",
         "custom_liquid_nfgEm4",
