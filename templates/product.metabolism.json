@@ -230,7 +230,7 @@
           "settings": {
             "heading": "WHY WE MADE IT",
             "open": false,
-            "content": "<p>We created Bodology™ Inositol Powder to give women a cleaner, simpler choice. Unlike mass brands or male-led supplements, Bodology™ is female-led, <a href=\"/pages/meet-our-experts\" target=\"_blank\" title=\"Meet Our Experts\">practitioner-backed</a> and built by women who’ve lived through PCOS, fertility struggles, and hormonal imbalances.</p><p>That's why we don’t add fillers or extras that interfere with other supplements or prenatals and why every ingredient is intentional, including our carob-sourced D-Chiro Inositol for its natural origin, bioavailability, antioxidant profile, and smoother taste. </p>",
+            "content": "<p>{{ metaobjects.problem.metabolism.why_we_made_it | metafield_tag }}</p>",
             "page": "",
             "custom_liquid": ""
           }
