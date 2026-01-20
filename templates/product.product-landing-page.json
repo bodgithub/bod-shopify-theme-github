@@ -200,7 +200,7 @@
         "custom_liquid_jbg4iU": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"border:0.1px solid #1b3def; padding:10px; border-radius:5px; width:100%; height:auto;  margin-bottom:20px; font-size: 14px; \"><img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 19px; margin-right: 4px;\"><strong>Practitioner Approved</strong> <div style=\"padding:10px 0px 0px;color:#2c2d2e;\">Used by practitioners as part of metabolic support protocols for women with PCOS and those preparing for conception.</div></div>"
+            "custom_liquid": "<div style=\"border:0.1px solid #1b3def; border: 1px #E0E5F0 solid; padding:10px; border-radius:5px; width:100%; height:auto;  margin-bottom:20px; font-size: 14px; color:#1b3def; \"><img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 19px; margin-right: 4px;\"><strong>Practitioner Approved</strong> <div style=\"padding:10px 0px 0px;color:#2c2d2e;\">Used by practitioners as part of metabolic support protocols for women with PCOS and those preparing for conception.</div></div>"
           }
         },
         "custom_liquid_ymVUr7": {
@@ -331,6 +331,28 @@
     "1768505899436dba61": {
       "type": "_blocks",
       "blocks": {
+        "ai_gen_block_23be19a_U47bUD": {
+          "type": "ai_gen_block_23be19a",
+          "disabled": true,
+          "settings": {
+            "avatar_1": "shopify://shop_images/Kylie_Profile_Picture.jpg",
+            "avatar_2": "shopify://shop_images/Keira_Profile_Picture.jpg",
+            "avatar_3": "shopify://shop_images/Leslie-Bodology-Square_d5ff9a1a-2e34-485c-8a41-8099e22be7ea.png",
+            "headline": "Loved by 100,000+ women",
+            "description": "<p>Real stories, real results from women supporting their hormones and metabolism with Bodology® Inositol.</p>",
+            "cta_text": "View customer reviews",
+            "cta_link": "#reviews",
+            "border_radius": 16,
+            "border_width": 1,
+            "background_color": "#f8f9fb",
+            "border_color": "#e0e5f0",
+            "headline_size": 30,
+            "headline_color": "#1b3def",
+            "description_size": 16,
+            "description_color": "#2c2d2e"
+          },
+          "blocks": {}
+        },
         "ai_gen_block_e5ed95a_KhkA73": {
           "type": "ai_video_testimonials",
           "settings": {
@@ -355,7 +377,7 @@
             "star_color": "#1b3def",
             "button_background": "#eaeaea",
             "button_color": "#1b3def",
-            "heading_size": 36,
+            "heading_size": 40,
             "subheading_size": 16,
             "quote_size": 19,
             "video_1": "shopify://files/videos/Krstina Testimonial 2.mp4",
@@ -393,18 +415,10 @@
         }
       },
       "block_order": [
+        "ai_gen_block_23be19a_U47bUD",
         "ai_gen_block_e5ed95a_KhkA73"
       ],
       "settings": {}
-    },
-    "spacer_TM4WHh": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 0,
-        "spacer_desktop": 75,
-        "border_separator": false,
-        "border_separator_full": false
-      }
     },
     "multicolumn_KdNre6": {
       "type": "multicolumn",
@@ -506,6 +520,15 @@
         "color_links": "#2c2d2e",
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "spacer_TM4WHh": {
+      "type": "spacer",
+      "settings": {
+        "spacer_mobile": 0,
+        "spacer_desktop": 75,
+        "border_separator": false,
+        "border_separator_full": false
       }
     },
     "rich_text_zwjMjN": {
@@ -1178,13 +1201,13 @@
         "marker_style": "style1",
         "description": "",
         "blog": "bodytalks",
-        "post_limit": 3,
+        "post_limit": 4,
         "columns_desktop": 3,
         "mobile_swipe": true,
         "image_ratio": "landscape",
         "show_date": false,
         "show_excerpt": false,
-        "show_read_more": true,
+        "show_read_more": false,
         "show_view_all": false,
         "marker_color": "#fd6262",
         "disable_top_spacing": false,
@@ -1287,8 +1310,8 @@
     "custom_liquid_WV46gi",
     "main-product",
     "1768505899436dba61",
-    "spacer_TM4WHh",
     "multicolumn_KdNre6",
+    "spacer_TM4WHh",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
     "scrolling_images_qqa6dt",
