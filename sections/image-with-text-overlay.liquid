@@ -118,7 +118,7 @@
 									
 									<div class="benefits-list">
 										{% if block.settings.benefits-title != blank %}
-										<div id="title"><strong>{{ block.settings.benefits-title }}</strong></div> 
+										{%comment%}<div id="title"><strong>{{ block.settings.benefits-title }}</strong></div> {% endcomment %}
 									{% endif %}
                           {% for i in (1..5) %}
 											{%- assign benefit_key = "benefit_" | append: i -%}
