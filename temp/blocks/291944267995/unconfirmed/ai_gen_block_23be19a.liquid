@@ -1,6 +1,364 @@
+{% doc %}
+  @prompt
+    Create a clean call-out section with a soft rounded border that stands out subtly on the page. The section should feel premium, calm, and trustworthy, with centered content and mobile-first spacing. Its purpose is to highlight social proof and guide users toward exploring real customer experiences with the Bodology powder.
+    
+    Include a short headline referencing 100+ real reviews, a supporting line emphasizing genuine customer results (no hype or medical claims), and a clear CTA button that links to the reviews section or page. Example direction: “Loved by 100+ women” followed by a line such as “Real stories, real results from women supporting their hormones and metabolism with Bodology.” The CTA should read “View Customer Reviews.”, Make the button class="button" so that it styles the same as the rest of the buttons on the website. and make the font size match the rest of the bottons on the website. At the top or just above the headline, include three small circular profile images (uploaded by the merchant) that slightly overlap horizontally, with a subtle visual cue (such as a fade or partial fourth circle) to suggest many more women beyond those shown.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-social-proof-callout-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .ai-social-proof-callout__container-{{ ai_gen_id }} {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    background-color: {{ block.settings.background_color }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    text-align: center;
+  }
+
+  .ai-social-proof-callout__avatars-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 48px;
+  }
+
+  .ai-social-proof-callout__avatar-group-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .ai-social-proof-callout__avatar-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid {{ block.settings.background_color }};
+    overflow: hidden;
+    position: relative;
+    background-color: #e0e5f0;
+  }
+
+  .ai-social-proof-callout__avatar-{{ ai_gen_id }}:not(:first-child) {
+    margin-left: -12px;
+  }
+
+  .ai-social-proof-callout__avatar-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-social-proof-callout__avatar-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e0e5f0;
+  }
+
+  .ai-social-proof-callout__avatar-placeholder-{{ ai_gen_id }} svg {
+    width: 24px;
+    height: 24px;
+    opacity: 0.4;
+  }
+
+  .ai-social-proof-callout__avatar-more-{{ ai_gen_id }} {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid {{ block.settings.background_color }};
+    background: linear-gradient(135deg, rgba(27, 61, 239, 0.1) 0%, rgba(27, 61, 239, 0.05) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -12px;
+    position: relative;
+  }
+
+  .ai-social-proof-callout__avatar-more-{{ ai_gen_id }}::before {
+    content: '+';
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ block.settings.headline_color }};
+    opacity: 0.6;
+  }
+
+  .ai-social-proof-callout__headline-{{ ai_gen_id }} {
+    margin: 0 0 12px;
+    font-size: {{ block.settings.headline_size }}px;
+    line-height: 1.3;
+    color: {{ block.settings.headline_color }};
+    font-weight: 600;
+  }
+
+  .ai-social-proof-callout__description-{{ ai_gen_id }} {
+    margin: 0 0 24px;
+    font-size: {{ block.settings.description_size }}px;
+    line-height: 1.5;
+    color: {{ block.settings.description_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-social-proof-callout__container-{{ ai_gen_id }} {
+      padding: 48px 40px;
+    }
+
+    .ai-social-proof-callout__avatars-{{ ai_gen_id }} {
+      margin-bottom: 24px;
+      height: 56px;
+    }
+
+    .ai-social-proof-callout__avatar-{{ ai_gen_id }},
+    .ai-social-proof-callout__avatar-more-{{ ai_gen_id }} {
+      width: 56px;
+      height: 56px;
+    }
+
+    .ai-social-proof-callout__avatar-{{ ai_gen_id }}:not(:first-child),
+    .ai-social-proof-callout__avatar-more-{{ ai_gen_id }} {
+      margin-left: -14px;
+    }
+
+    .ai-social-proof-callout__headline-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.headline_size }}px * 1.2);
+    }
+
+    .ai-social-proof-callout__description-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.description_size }}px * 1.1);
+      margin-bottom: 32px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-social-proof-callout-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-social-proof-callout__container-{{ ai_gen_id }}">
+    <div class="ai-social-proof-callout__avatars-{{ ai_gen_id }}">
+      <div class="ai-social-proof-callout__avatar-group-{{ ai_gen_id }}">
+        <div class="ai-social-proof-callout__avatar-{{ ai_gen_id }}">
+          {% if block.settings.avatar_1 %}
+            <img
+              src="{{ block.settings.avatar_1 | image_url: width: 112 }}"
+              alt="Customer"
+              width="56"
+              height="56"
+              loading="lazy"
+            >
+          {% else %}
+            <div class="ai-social-proof-callout__avatar-placeholder-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="ai-social-proof-callout__avatar-{{ ai_gen_id }}">
+          {% if block.settings.avatar_2 %}
+            <img
+              src="{{ block.settings.avatar_2 | image_url: width: 112 }}"
+              alt="Customer"
+              width="56"
+              height="56"
+              loading="lazy"
+            >
+          {% else %}
+            <div class="ai-social-proof-callout__avatar-placeholder-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="ai-social-proof-callout__avatar-{{ ai_gen_id }}">
+          {% if block.settings.avatar_3 %}
+            <img
+              src="{{ block.settings.avatar_3 | image_url: width: 112 }}"
+              alt="Customer"
+              width="56"
+              height="56"
+              loading="lazy"
+            >
+          {% else %}
+            <div class="ai-social-proof-callout__avatar-placeholder-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="ai-social-proof-callout__avatar-more-{{ ai_gen_id }}"></div>
+      </div>
+    </div>
+
+    {% if block.settings.headline != blank %}
+      <h2 class="ai-social-proof-callout__headline-{{ ai_gen_id }}">
+        {{ block.settings.headline }}
+      </h2>
+    {% endif %}
+
+    {% if block.settings.description != blank %}
+      <div class="ai-social-proof-callout__description-{{ ai_gen_id }}">
+        {{ block.settings.description }}
+      </div>
+    {% endif %}
+
+    {% if block.settings.cta_text != blank %}
+      <a 
+        href="{{ block.settings.cta_link }}" 
+        class="button"
+      >
+        {{ block.settings.cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Social proof callout",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Customer avatars"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "Customer photo 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "Customer photo 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "Customer photo 3"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Loved by 100+ women"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Real stories, real results from women supporting their hormones and metabolism with Bodology.</p>"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "View customer reviews"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f8f9fb"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e0e5f0"
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Color",
+      "default": "#1b3def"
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#2c2d2e"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social proof callout"
+    }
+  ]
+}
 {% endschema %}
