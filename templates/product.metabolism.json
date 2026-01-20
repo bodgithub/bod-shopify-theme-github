@@ -286,6 +286,7 @@
         },
         "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac": {
           "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_product_slider/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
+          "disabled": true,
           "settings": {}
         }
       },
@@ -485,10 +486,9 @@
       "blocks": {
         "ai_video_testimonials_Pa99TG": {
           "type": "ai_video_testimonials",
-          "disabled": true,
           "settings": {
             "heading": "Real-stories from our community",
-            "subheading": "Real customer stories",
+            "subheading": "",
             "text_alignment": "center",
             "container_width": 1200,
             "slides_per_view": 3,
@@ -511,13 +511,16 @@
             "heading_size": 36,
             "subheading_size": 16,
             "quote_size": 14,
-            "quote_1": "This product changed my life! Highly recommend to anyone looking for quality.",
-            "author_1": "Sarah Johnson",
-            "author_title_1": "Verified Customer",
+            "video_1": "shopify://files/videos/Baylee Review_ef1487ba-ac0e-4aee-aef8-6d35d5ae0ebe.mp4",
+            "quote_1": "",
+            "author_1": "Baylee Allison",
+            "author_title_1": "@strongbybayleeallison",
             "rating_1": 5,
-            "quote_2": "Amazing quality and fast shipping. Will definitely order again!",
-            "author_2": "Michael Chen",
+            "video_2": "shopify://files/videos/Lauren Testimonial.mp4",
+            "quote_2": "",
+            "author_2": "@larslavishlife",
             "author_title_2": "Verified Customer",
+            "author_image_2": "shopify://shop_images/Screenshot_2026-01-15_at_16.30.10.png",
             "rating_2": 5,
             "quote_3": "",
             "author_3": "",
