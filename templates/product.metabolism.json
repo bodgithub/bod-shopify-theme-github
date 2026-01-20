@@ -100,29 +100,10 @@
       "type": "_blocks",
       "settings": {}
     },
-    "spacer_LVK4hF": {
-      "type": "spacer",
-      "settings": {
-        "spacer_mobile": 5,
-        "spacer_desktop": 35,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "custom_liquid_RcjzA4": {
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "<div id=\"buy-inositol\"></div>"
-      }
-    },
-    "spacer_fcdpRG": {
-      "type": "spacer",
-      "name": "Spacer",
-      "settings": {
-        "spacer_mobile": 55,
-        "spacer_desktop": 0,
-        "border_separator": false,
-        "border_separator_full": false
       }
     },
     "main-product": {
@@ -327,71 +308,6 @@
         "lightbox": true,
         "enable_video_looping": true
       }
-    },
-    "blocks_eR7TWa": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_video_testimonials_hA3tD4": {
-          "type": "ai_video_testimonials",
-          "disabled": true,
-          "settings": {
-            "heading": "What our customers say",
-            "subheading": "Real customer stories",
-            "text_alignment": "center",
-            "container_width": 1200,
-            "slides_per_view": 3,
-            "card_gap": 20,
-            "padding_top": 50,
-            "padding_bottom": 50,
-            "autoplay": true,
-            "autoplay_speed": 5000,
-            "card_padding": 20,
-            "card_border_radius": 12,
-            "video_border_radius": 8,
-            "card_shadow": true,
-            "background_color": "#ffffff",
-            "card_background": "#f9f9f9",
-            "heading_color": "#1b3def",
-            "text_color": "#2c2d2e",
-            "star_color": "#1b3def",
-            "button_background": "#1b3def",
-            "button_color": "#ffffff",
-            "heading_size": 36,
-            "subheading_size": 16,
-            "quote_size": 14,
-            "quote_1": "This product changed my life! Highly recommend to anyone looking for quality.",
-            "author_1": "Sarah Johnson",
-            "author_title_1": "Verified Customer",
-            "rating_1": 5,
-            "quote_2": "Amazing quality and fast shipping. Will definitely order again!",
-            "author_2": "Michael Chen",
-            "author_title_2": "Verified Customer",
-            "rating_2": 5,
-            "quote_3": "Exceeded my expectations in every way. Customer service was excellent too!",
-            "author_3": "Emily Rodriguez",
-            "author_title_3": "Verified Customer",
-            "rating_3": 5,
-            "quote_4": "",
-            "author_4": "",
-            "author_title_4": "",
-            "rating_4": 0,
-            "quote_5": "",
-            "author_5": "",
-            "author_title_5": "",
-            "rating_5": 0,
-            "quote_6": "",
-            "author_6": "",
-            "author_title_6": "",
-            "rating_6": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_video_testimonials_hA3tD4"
-      ],
-      "name": "Video Testimonials",
-      "settings": {}
     },
     "spacer_4GDyCF": {
       "type": "spacer",
@@ -1324,14 +1240,11 @@
     "gpt_problem_seo_kPxd7C",
     "image_with_text_overlay_zjqnjJ",
     "1768939077852da8f6",
-    "spacer_LVK4hF",
     "custom_liquid_RcjzA4",
-    "spacer_fcdpRG",
     "main-product",
-    "blocks_eR7TWa",
     "spacer_4GDyCF",
-    "testimonial_carousel_twHytV",
     "blocks_yP6a7p",
+    "testimonial_carousel_twHytV",
     "multicolumn_rVnwmF",
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
