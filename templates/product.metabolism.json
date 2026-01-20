@@ -84,7 +84,7 @@
         "mobile_image": "{{ metaobjects.problem.metabolism.hero_banner_mobile.value }}",
         "image_parallax": true,
         "desktop_height": "desktop-height-750",
-        "mobile_height": "mobile-height-500",
+        "mobile_height": "mobile-height-auto",
         "full_width": true,
         "content_width": "medium",
         "content_position": "bottom-left",
@@ -96,14 +96,13 @@
         "disable_bottom_spacing": true
       }
     },
-    "1768939077852da8f6": {
-      "type": "_blocks",
-      "settings": {}
-    },
-    "custom_liquid_RcjzA4": {
-      "type": "custom-liquid",
+    "spacer_LVK4hF": {
+      "type": "spacer",
       "settings": {
-        "custom_liquid": "<div id=\"buy-inositol\"></div>"
+        "spacer_mobile": 35,
+        "spacer_desktop": 35,
+        "border_separator": false,
+        "border_separator_full": false
       }
     },
     "main-product": {
@@ -1239,12 +1238,11 @@
   "order": [
     "gpt_problem_seo_kPxd7C",
     "image_with_text_overlay_zjqnjJ",
-    "1768939077852da8f6",
-    "custom_liquid_RcjzA4",
+    "spacer_LVK4hF",
     "main-product",
     "spacer_4GDyCF",
-    "blocks_yP6a7p",
     "testimonial_carousel_twHytV",
+    "blocks_yP6a7p",
     "multicolumn_rVnwmF",
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
