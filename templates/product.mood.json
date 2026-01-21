@@ -20,14 +20,14 @@
         "subheading_BBmz3f": {
           "type": "subheading",
           "settings": {
-            "text": "<p>{{ metaobjects.problem.mood.category_title.value }}</p>",
+            "text": "<p>{{ metaobjects.problem['mood-anxiety'].category_title.value }}</p>",
             "text_color": "#1b3def"
           }
         },
         "heading_FGRE4D": {
           "type": "heading",
           "settings": {
-            "text": "{{ metaobjects.problem.mood.headline | metafield_tag }}",
+            "text": "{{ metaobjects.problem['mood-anxiety'].headline | metafield_tag }}",
             "heading_size": "h1-large"
           }
         },
@@ -49,16 +49,16 @@
             "icon_size": 25,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "{{ metaobjects.problem.mood.benefit_1.value.benefit.value }}",
-            "icon_1": "{{ metaobjects.problem.mood.benefit_1.value.icon.value }}",
-            "benefit_2": "{{ metaobjects.problem.mood.benefit_2.value.benefit.value }}",
-            "icon_2": "{{ metaobjects.problem.mood.benefit_2.value.icon.value }}",
-            "benefit_3": "{{ metaobjects.problem.mood.benefit_3.value.benefit.value }}",
-            "icon_3": "{{ metaobjects.problem.mood.benefit_3.value.icon.value }}",
-            "benefit_4": "{{ metaobjects.problem.mood.benefit_4.value.benefit.value }}",
-            "icon_4": "{{ metaobjects.problem.mood.benefit_4.value.icon.value }}",
-            "benefit_5": "{{ metaobjects.problem.mood.benefit_5.value.benefit.value }}",
-            "icon_5": "{{ metaobjects.problem.mood.benefit_5.value.icon.value }}"
+            "benefit_1": "{{ metaobjects.problem['mood-anxiety'].benefit_1.value.benefit.value }}",
+            "icon_1": "{{ metaobjects.problem['mood-anxiety'].benefit_1.value.icon.value }}",
+            "benefit_2": "{{ metaobjects.problem['mood-anxiety'].benefit_2.value.benefit.value }}",
+            "icon_2": "{{ metaobjects.problem['mood-anxiety'].benefit_2.value.icon.value }}",
+            "benefit_3": "{{ metaobjects.problem['mood-anxiety'].benefit_3.value.benefit.value }}",
+            "icon_3": "{{ metaobjects.problem['mood-anxiety'].benefit_3.value.icon.value }}",
+            "benefit_4": "{{ metaobjects.problem['mood-anxiety'].benefit_4.value.benefit.value }}",
+            "icon_4": "{{ metaobjects.problem['mood-anxiety'].benefit_4.value.icon.value }}",
+            "benefit_5": "{{ metaobjects.problem['mood-anxiety'].benefit_5.value.benefit.value }}",
+            "icon_5": "{{ metaobjects.problem['mood-anxiety'].benefit_5.value.icon.value }}"
           }
         },
         "button_rBDtc7": {
@@ -80,8 +80,8 @@
       ],
       "custom_css": [],
       "settings": {
-        "image": "{{ metaobjects.problem.mood.hero_banner_desktop.value }}",
-        "mobile_image": "{{ metaobjects.problem.mood.hero_banner_mobile.value }}",
+        "image": "{{ metaobjects.problem['mood-anxiety'].hero_banner_desktop.value }}",
+        "mobile_image": "{{ metaobjects.problem['mood-anxiety'].hero_banner_mobile.value }}",
         "image_parallax": true,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-auto",
@@ -137,7 +137,7 @@
         "text_KqaHce": {
           "type": "text",
           "settings": {
-            "text": "<p>{{ metaobjects.problem.mood.product_description | metafield_tag }}</p>",
+            "text": "<p>{{ metaobjects.problem['mood-anxiety'].product_description | metafield_tag }}</p>",
             "text_style": "style_vendor"
           }
         },
@@ -218,9 +218,9 @@
         "collapsible_tab_KVBdNK": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "{{ metaobjects.problem.mood.benefits_for_title.value }}",
+            "heading": "{{ metaobjects.problem['mood-anxiety'].benefits_for_title.value }}",
             "open": false,
-            "content": "{{ metaobjects.problem.mood.benefit_list | metafield_tag }}",
+            "content": "{{ metaobjects.problem['mood-anxiety'].benefit_list | metafield_tag }}",
             "page": "",
             "custom_liquid": ""
           }
@@ -230,7 +230,7 @@
           "settings": {
             "heading": "WHY WE MADE IT",
             "open": false,
-            "content": "<p>{{ metaobjects.problem.mood.why_we_made_it | metafield_tag }}</p>",
+            "content": "<p>{{ metaobjects.problem['mood-anxiety'].why_we_made_it | metafield_tag }}</p>",
             "page": "",
             "custom_liquid": ""
           }
@@ -542,7 +542,7 @@
       "blocks": {
         "box_TxAVLm": {
           "type": "box",
-          "repeater": "{{ metaobjects.problem.mood.results.value }}",
+          "repeater": "{{ metaobjects.problem['mood-anxiety'].results.value }}",
           "settings": {
             "image": "{{ block.repeater.image.value }}",
             "image_link": "{{ block.repeater.study.value }}",
