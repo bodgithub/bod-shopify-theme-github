@@ -126,7 +126,7 @@
     overflow: hidden;
     border-radius: {{ block.settings.image_border_radius }}px;
     min-height: {{ block.settings.image_min_height }}px;
-    max-height: {{ block.settings.image_max_height }}px;
+    max-height: 
 
   }
 
@@ -140,12 +140,13 @@
     margin-right: 60px;
     flex-shrink: 0;
     height: 100%;
+    width: 100%;
   }
 
   .ai-featured-product__image-{{ ai_gen_id }} {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    object-fit: {{ block.settings.image_fit }};
     display: block;
   
   }
