@@ -139,15 +139,15 @@
     min-width: calc(100% - 60px);
     margin-right: 60px;
     flex-shrink: 0;
+    height: 100%;
   }
 
   .ai-featured-product__image-{{ ai_gen_id }} {
     width: 100%;
     height: auto;
-    
     object-fit: {{ block.settings.image_fit }};
     display: block;
-    border-radius: {{ block.settings.image_border_radius }}px;
+  
   }
 
   .ai-featured-product__image-placeholder-{{ ai_gen_id }} {
