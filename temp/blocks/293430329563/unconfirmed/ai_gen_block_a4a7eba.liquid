@@ -1,6 +1,1310 @@
+{% doc %}
+  @prompt
+    featured product with getrecharge subscription widget, Make 2 variant tabs beneath the product description, one for '90 scoops', and one for '60 scoops'. When the 90 scoop option is clicked, it should display a subscribe and save option for $52 with three bullet points about the product that (I should be able to edit/change myself) - when this option is clicked, the product should be automatically added to the cart as a subscription for variant 46444646269147. beneath this option, there should be a One-time option for $65 - when this is selected, it should automatically add this variant to the cart as a one-off purchase. The two options should be avaialabel for the second variant (46444657279195) too (subscribe or One-time.), make it so I can upload my own icon for the tick lists, but ensure it defaults to the tick symbol you currently have if no other icon is uploaded. Add toggleable selection indicator (radio-style) to the left of the option titles (i.e Subscribe & save, and One-time purchase), the toggle outline should be the color #1b3def, and the circle inside when toggled on should also be #1b3def. Add a small sentence text below the option title too, for me to customise, it should say something like "2 scoops daily", there needs to be 35px padding to the left and right of the entire module..to match the other modules on the page. Show other photos which have been assigned to the product, the photos should be a carousel with dynamic arrows which display over the image when the mouse is hovered. The photo carousel should slide to the left , and on the left you should be able to see a small peak of the next image. when the selection is made and the "add to cart" button is clicked, the cart draw should slide open, but it should not direct us to the cart page. Don't show the product description or price, allow me to write a new custom product description instead. The price should dynamically change depending on which tab and option is selected., Allow be to change the title text using a rich text box. Also, allow me to change the max and min  height of the photo and how it displays (contained, cover etc). plus I cannot see the sneak peak of the photos to the left of the photo? Also, when a customer selects Subscribe & Save on either product size tab, the cart must receive a subscription line item (not a one-time purchase). In Shopify, a subscription isn’t a separate product or variant. It’s the same Shopify variant ID, plus a selling_plan ID (what we’re calling the “plan id”).
+    So:
+    
+    • One-time purchase: add variant only
+    
+    • Subscribe & Save: add variant + selling_plan. 
+    
+    IDs to use:
+    90 scoop: 
+    • Variant ID: 46444646269147
+    • Selling plan (Subscribe & Save) ID: 18569559
+    
+    60 scoop:
+    • Variant ID: 46444657279195
+    • Selling plan (Subscribe & Save) ID: 19905752
+    
+    Expected behavior
+    If 90 scoop tab is selected
+    
+    If user chooses One-time → add id: 46444646269147
+    
+    If user chooses Subscribe & Save → add:
+    
+    id: 46444646269147
+    
+    selling_plan: 18569559
+    
+    If 60 scoop tab is selected
+    
+    If user chooses One-time → add id: 46444657279195
+    
+    If user chooses Subscribe & Save → add:
+    
+    id: 46444657279195
+    
+    selling_plan: 19905752
+    
+    Implementation approach (AJAX cart)
+    
+    When the “Add to cart” button is clicked, the code should read:
+    
+    which tab/size is active (60 vs 90)
+    
+    whether Subscribe & Save is selected
+    
+    build the correct payload to /cart/add.js
+    
+    Example payloads
+    
+    One-time:
+    
+    {
+      items: [{
+        id: VARIANT_ID,
+        quantity: 1
+      }]
+    }
+    
+    
+    Subscribe & Save:
+    
+    {
+      items: [{
+        id: VARIANT_ID,
+        quantity: 1,
+        selling_plan: SELLING_PLAN_ID
+      }]
+    }
+    
+    Example function (copy/paste pattern)
+    async function addToCart({ variantId, quantity = 1, sellingPlanId = null }) {
+      const item = { id: variantId, quantity };
+      if (sellingPlanId) item.selling_plan = sellingPlanId;
+    
+      const res = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [item] })
+      });
+    
+      if (!res.ok) throw new Error(await res.text());
+      return res.json();
+    }
+    
+    Mapping logic
+    
+    If active size = 90 scoop
+    
+    variantId = 46444646269147
+    
+    if subscribe selected → sellingPlanId = 18569559
+    
+    If active size = 60 scoop
+    
+    variantId = 46444657279195
+    
+    if subscribe selected → sellingPlanId = 19905752
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-featured-product-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 35px;
+  }
+
+  .ai-featured-product__container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .ai-featured-product__image-section-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+  }
+
+  .ai-featured-product__carousel-{{ ai_gen_id }} {
+    position: relative;
+    overflow: hidden;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-featured-product__carousel-track-{{ ai_gen_id }} {
+    display: flex;
+    transition: transform 0.4s ease;
+  }
+
+  .ai-featured-product__carousel-slide-{{ ai_gen_id }} {
+    min-width: calc(100% - 60px);
+    margin-right: 60px;
+    flex-shrink: 0;
+  }
+
+  .ai-featured-product__image-{{ ai_gen_id }} {
+    width: 100%;
+    height: auto;
+    min-height: {{ block.settings.image_min_height }}px;
+    max-height: {{ block.settings.image_max_height }}px;
+    object-fit: {{ block.settings.image_fit }};
+    display: block;
+    border-radius: {{ block.settings.image_border_radius }}px;
+  }
+
+  .ai-featured-product__image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    position: relative;
+  }
+
+  .ai-featured-product__image-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .ai-featured-product__empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  .ai-featured-product__carousel-arrow-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-featured-product__carousel-{{ ai_gen_id }}:hover .ai-featured-product__carousel-arrow-{{ ai_gen_id }} {
+    opacity: 1;
+  }
+
+  .ai-featured-product__carousel-arrow-{{ ai_gen_id }}:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  .ai-featured-product__carousel-arrow-{{ ai_gen_id }}:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .ai-featured-product__carousel-arrow--prev-{{ ai_gen_id }} {
+    left: 15px;
+  }
+
+  .ai-featured-product__carousel-arrow--next-{{ ai_gen_id }} {
+    right: 15px;
+  }
+
+  .ai-featured-product__carousel-arrow-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+    fill: #2c2d2e;
+  }
+
+  .ai-featured-product__content-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-featured-product__vendor-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: {{ block.settings.vendor_color }};
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  .ai-featured-product__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .ai-featured-product__custom-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    color: {{ block.settings.description_color }};
+    line-height: 1.6;
+  }
+
+  .ai-featured-product__variant-tabs-{{ ai_gen_id }} {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid {{ block.settings.tab_border_color }};
+    margin-bottom: 20px;
+  }
+
+  .ai-featured-product__tab-{{ ai_gen_id }} {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 16px;
+    color: {{ block.settings.tab_inactive_color }};
+    transition: all 0.3s ease;
+    margin-bottom: -2px;
+  }
+
+  .ai-featured-product__tab-{{ ai_gen_id }}.active {
+    color: {{ block.settings.tab_active_color }};
+    border-bottom-color: {{ block.settings.tab_active_border_color }};
+  }
+
+  .ai-featured-product__tab-content-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-featured-product__tab-content-{{ ai_gen_id }}.active {
+    display: block;
+  }
+
+  .ai-featured-product__purchase-options-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ai-featured-product__option-card-{{ ai_gen_id }} {
+    border: 2px solid {{ block.settings.option_border_color }};
+    border-radius: {{ block.settings.option_border_radius }}px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .ai-featured-product__option-card-{{ ai_gen_id }}:hover {
+    border-color: {{ block.settings.option_hover_border_color }};
+  }
+
+  .ai-featured-product__option-card-{{ ai_gen_id }}.selected {
+    border-color: {{ block.settings.option_selected_border_color }};
+    background-color: {{ block.settings.option_selected_bg_color }};
+  }
+
+  .ai-featured-product__option-header-{{ ai_gen_id }} {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .ai-featured-product__option-left-{{ ai_gen_id }} {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .ai-featured-product__radio-{{ ai_gen_id }} {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #1b3def;
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    margin-top: 2px;
+    transition: all 0.3s ease;
+  }
+
+  .ai-featured-product__option-card-{{ ai_gen_id }}.selected .ai-featured-product__radio-{{ ai_gen_id }}::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #1b3def;
+    border-radius: 50%;
+  }
+
+  .ai-featured-product__option-title-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ai-featured-product__option-type-{{ ai_gen_id }} {
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ block.settings.option_title_color }};
+  }
+
+  .ai-featured-product__option-subtitle-{{ ai_gen_id }} {
+    font-size: 13px;
+    color: {{ block.settings.option_subtitle_color }};
+    font-weight: 400;
+  }
+
+  .ai-featured-product__option-price-{{ ai_gen_id }} {
+    font-size: 24px;
+    font-weight: 700;
+    color: {{ block.settings.option_price_color }};
+    flex-shrink: 0;
+  }
+
+  .ai-featured-product__option-bullets-{{ ai_gen_id }} {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ai-featured-product__option-bullets-{{ ai_gen_id }} li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 8px;
+    color: {{ block.settings.option_text_color }};
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .ai-featured-product__option-bullets-{{ ai_gen_id }} li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    {% if block.settings.bullet_icon != blank %}
+      background-image: url('{{ block.settings.bullet_icon | image_url: width: 36 }}');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    {% else %}
+      content: '✓';
+      color: {{ block.settings.option_checkmark_color }};
+      font-weight: bold;
+      font-size: 16px;
+      width: auto;
+      height: auto;
+      background: none;
+    {% endif %}
+  }
+
+  .ai-featured-product__add-to-cart-{{ ai_gen_id }} {
+    padding: 16px 32px;
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_text_size }}px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .ai-featured-product__add-to-cart-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_bg_color }};
+  }
+
+  .ai-featured-product__add-to-cart-{{ ai_gen_id }}:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-featured-product-{{ ai_gen_id }} {
+      padding: 0 20px;
+    }
+
+    .ai-featured-product__container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .ai-featured-product__carousel-slide-{{ ai_gen_id }} {
+      min-width: calc(100% - 30px);
+      margin-right: 30px;
+    }
+
+    .ai-featured-product__variant-tabs-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .ai-featured-product__tab-{{ ai_gen_id }} {
+      border-bottom: 1px solid {{ block.settings.tab_border_color }};
+      margin-bottom: 0;
+    }
+
+    .ai-featured-product__tab-{{ ai_gen_id }}.active {
+      border-left: 3px solid {{ block.settings.tab_active_border_color }};
+      border-bottom: 1px solid {{ block.settings.tab_border_color }};
+    }
+
+    .ai-featured-product__option-header-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ai-featured-product__option-price-{{ ai_gen_id }} {
+      align-self: flex-start;
+      margin-left: 32px;
+    }
+  }
+{% endstyle %}
+
+<product-variant-selector-{{ ai_gen_id }}
+  class="ai-featured-product-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+  data-variant-1-id="46444646269147"
+  data-variant-1-selling-plan="18569559"
+  data-variant-1-subscribe-price="{{ block.settings.variant_1_subscribe_price }}"
+  data-variant-1-onetime-price="{{ block.settings.variant_1_onetime_price }}"
+  data-variant-2-id="46444657279195"
+  data-variant-2-selling-plan="19905752"
+  data-variant-2-subscribe-price="{{ block.settings.variant_2_subscribe_price }}"
+  data-variant-2-onetime-price="{{ block.settings.variant_2_onetime_price }}"
+>
+  {% if block.settings.product != blank %}
+    {% assign product = block.settings.product %}
+    <div class="ai-featured-product__container-{{ ai_gen_id }}">
+      <div class="ai-featured-product__image-section-{{ ai_gen_id }}">
+        {% if product.images.size > 0 %}
+          <div class="ai-featured-product__carousel-{{ ai_gen_id }}">
+            <div class="ai-featured-product__carousel-track-{{ ai_gen_id }}">
+              {% for image in product.images %}
+                <div class="ai-featured-product__carousel-slide-{{ ai_gen_id }}">
+                  <img
+                    src="{{ image | image_url: width: 1000 }}"
+                    alt="{{ image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ image.width }}"
+                    height="{{ image.height }}"
+                    class="ai-featured-product__image-{{ ai_gen_id }}"
+                  >
+                </div>
+              {% endfor %}
+            </div>
+            {% if product.images.size > 1 %}
+              <button
+                class="ai-featured-product__carousel-arrow-{{ ai_gen_id }} ai-featured-product__carousel-arrow--prev-{{ ai_gen_id }}"
+                aria-label="Previous image"
+                data-carousel-prev
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+              </button>
+              <button
+                class="ai-featured-product__carousel-arrow-{{ ai_gen_id }} ai-featured-product__carousel-arrow--next-{{ ai_gen_id }}"
+                aria-label="Next image"
+                data-carousel-next
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+              </button>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="ai-featured-product__image-placeholder-{{ ai_gen_id }}">
+            {{ 'product-1' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-featured-product__content-{{ ai_gen_id }}">
+        {% if block.settings.show_vendor and product.vendor != blank %}
+          <p class="ai-featured-product__vendor-{{ ai_gen_id }}">{{ product.vendor }}</p>
+        {% endif %}
+
+        {% if block.settings.custom_title != blank %}
+          <div class="ai-featured-product__title-{{ ai_gen_id }}">
+            {{ block.settings.custom_title }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.custom_description != blank %}
+          <div class="ai-featured-product__custom-description-{{ ai_gen_id }}">
+            {{ block.settings.custom_description }}
+          </div>
+        {% endif %}
+
+        <div class="ai-featured-product__variant-tabs-{{ ai_gen_id }}">
+          <button
+            class="ai-featured-product__tab-{{ ai_gen_id }} active"
+            data-tab="90-scoops"
+            data-variant-id="46444646269147"
+          >
+            {{ block.settings.variant_1_label }}
+          </button>
+          <button
+            class="ai-featured-product__tab-{{ ai_gen_id }}"
+            data-tab="60-scoops"
+            data-variant-id="46444657279195"
+          >
+            {{ block.settings.variant_2_label }}
+          </button>
+        </div>
+
+        <div
+          class="ai-featured-product__tab-content-{{ ai_gen_id }} active"
+          data-content="90-scoops"
+        >
+          <div class="ai-featured-product__purchase-options-{{ ai_gen_id }}">
+            <div
+              class="ai-featured-product__option-card-{{ ai_gen_id }} selected"
+              data-option="subscribe"
+              data-variant-id="46444646269147"
+              data-selling-plan="18569559"
+              data-price="{{ block.settings.variant_1_subscribe_price }}"
+            >
+              <div class="ai-featured-product__option-header-{{ ai_gen_id }}">
+                <div class="ai-featured-product__option-left-{{ ai_gen_id }}">
+                  <div class="ai-featured-product__radio-{{ ai_gen_id }}"></div>
+                  <div class="ai-featured-product__option-title-wrapper-{{ ai_gen_id }}">
+                    <span class="ai-featured-product__option-type-{{ ai_gen_id }}">Subscribe & Save</span>
+                    {% if block.settings.variant_1_subscribe_subtitle != blank %}
+                      <span class="ai-featured-product__option-subtitle-{{ ai_gen_id }}">{{ block.settings.variant_1_subscribe_subtitle }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+                <span class="ai-featured-product__option-price-{{ ai_gen_id }}">${{ block.settings.variant_1_subscribe_price }}</span>
+              </div>
+              <ul class="ai-featured-product__option-bullets-{{ ai_gen_id }}">
+                {% if block.settings.variant_1_bullet_1 != blank %}
+                  <li>{{ block.settings.variant_1_bullet_1 }}</li>
+                {% endif %}
+                {% if block.settings.variant_1_bullet_2 != blank %}
+                  <li>{{ block.settings.variant_1_bullet_2 }}</li>
+                {% endif %}
+                {% if block.settings.variant_1_bullet_3 != blank %}
+                  <li>{{ block.settings.variant_1_bullet_3 }}</li>
+                {% endif %}
+              </ul>
+            </div>
+
+            <div
+              class="ai-featured-product__option-card-{{ ai_gen_id }}"
+              data-option="onetime"
+              data-variant-id="46444646269147"
+              data-price="{{ block.settings.variant_1_onetime_price }}"
+            >
+              <div class="ai-featured-product__option-header-{{ ai_gen_id }}">
+                <div class="ai-featured-product__option-left-{{ ai_gen_id }}">
+                  <div class="ai-featured-product__radio-{{ ai_gen_id }}"></div>
+                  <div class="ai-featured-product__option-title-wrapper-{{ ai_gen_id }}">
+                    <span class="ai-featured-product__option-type-{{ ai_gen_id }}">One-time purchase</span>
+                    {% if block.settings.variant_1_onetime_subtitle != blank %}
+                      <span class="ai-featured-product__option-subtitle-{{ ai_gen_id }}">{{ block.settings.variant_1_onetime_subtitle }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+                <span class="ai-featured-product__option-price-{{ ai_gen_id }}">${{ block.settings.variant_1_onetime_price }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="ai-featured-product__tab-content-{{ ai_gen_id }}"
+          data-content="60-scoops"
+        >
+          <div class="ai-featured-product__purchase-options-{{ ai_gen_id }}">
+            <div
+              class="ai-featured-product__option-card-{{ ai_gen_id }} selected"
+              data-option="subscribe"
+              data-variant-id="46444657279195"
+              data-selling-plan="19905752"
+              data-price="{{ block.settings.variant_2_subscribe_price }}"
+            >
+              <div class="ai-featured-product__option-header-{{ ai_gen_id }}">
+                <div class="ai-featured-product__option-left-{{ ai_gen_id }}">
+                  <div class="ai-featured-product__radio-{{ ai_gen_id }}"></div>
+                  <div class="ai-featured-product__option-title-wrapper-{{ ai_gen_id }}">
+                    <span class="ai-featured-product__option-type-{{ ai_gen_id }}">Subscribe & Save</span>
+                    {% if block.settings.variant_2_subscribe_subtitle != blank %}
+                      <span class="ai-featured-product__option-subtitle-{{ ai_gen_id }}">{{ block.settings.variant_2_subscribe_subtitle }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+                <span class="ai-featured-product__option-price-{{ ai_gen_id }}">${{ block.settings.variant_2_subscribe_price }}</span>
+              </div>
+              <ul class="ai-featured-product__option-bullets-{{ ai_gen_id }}">
+                {% if block.settings.variant_2_bullet_1 != blank %}
+                  <li>{{ block.settings.variant_2_bullet_1 }}</li>
+                {% endif %}
+                {% if block.settings.variant_2_bullet_2 != blank %}
+                  <li>{{ block.settings.variant_2_bullet_2 }}</li>
+                {% endif %}
+                {% if block.settings.variant_2_bullet_3 != blank %}
+                  <li>{{ block.settings.variant_2_bullet_3 }}</li>
+                {% endif %}
+              </ul>
+            </div>
+
+            <div
+              class="ai-featured-product__option-card-{{ ai_gen_id }}"
+              data-option="onetime"
+              data-variant-id="46444657279195"
+              data-price="{{ block.settings.variant_2_onetime_price }}"
+            >
+              <div class="ai-featured-product__option-header-{{ ai_gen_id }}">
+                <div class="ai-featured-product__option-left-{{ ai_gen_id }}">
+                  <div class="ai-featured-product__radio-{{ ai_gen_id }}"></div>
+                  <div class="ai-featured-product__option-title-wrapper-{{ ai_gen_id }}">
+                    <span class="ai-featured-product__option-type-{{ ai_gen_id }}">One-time purchase</span>
+                    {% if block.settings.variant_2_onetime_subtitle != blank %}
+                      <span class="ai-featured-product__option-subtitle-{{ ai_gen_id }}">{{ block.settings.variant_2_onetime_subtitle }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+                <span class="ai-featured-product__option-price-{{ ai_gen_id }}">${{ block.settings.variant_2_onetime_price }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="ai-featured-product__add-to-cart-{{ ai_gen_id }}"
+          data-add-to-cart
+        >
+          {{ block.settings.button_text }}
+        </button>
+      </div>
+    </div>
+  {% else %}
+    <div class="ai-featured-product__image-placeholder-{{ ai_gen_id }}">
+      {{ 'product-1' | placeholder_svg_tag }}
+      <div class="ai-featured-product__empty-state-{{ ai_gen_id }}">
+        Next, select a product to feature
+      </div>
+    </div>
+  {% endif %}
+</product-variant-selector-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ProductVariantSelector{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentVariantId = '46444646269147';
+        this.currentSellingPlanId = '18569559';
+        this.currentPurchaseType = 'subscribe';
+        this.currentSlide = 0;
+      }
+
+      connectedCallback() {
+        this.tabs = this.querySelectorAll('.ai-featured-product__tab-{{ ai_gen_id }}');
+        this.tabContents = this.querySelectorAll('.ai-featured-product__tab-content-{{ ai_gen_id }}');
+        this.optionCards = this.querySelectorAll('.ai-featured-product__option-card-{{ ai_gen_id }}');
+        this.addToCartButton = this.querySelector('[data-add-to-cart]');
+        this.carouselTrack = this.querySelector('.ai-featured-product__carousel-track-{{ ai_gen_id }}');
+        this.prevButton = this.querySelector('[data-carousel-prev]');
+        this.nextButton = this.querySelector('[data-carousel-next]');
+        this.slides = this.querySelectorAll('.ai-featured-product__carousel-slide-{{ ai_gen_id }}');
+
+        this.setupEventListeners();
+        this.updateCarouselButtons();
+        this.updateButtonPrice();
+      }
+
+      setupEventListeners() {
+        this.tabs.forEach((tab) => {
+          tab.addEventListener('click', (e) => this.handleTabClick(e));
+        });
+
+        this.optionCards.forEach((card) => {
+          card.addEventListener('click', (e) => this.handleOptionClick(e));
+        });
+
+        if (this.addToCartButton) {
+          this.addToCartButton.addEventListener('click', () => this.handleAddToCart());
+        }
+
+        if (this.prevButton) {
+          this.prevButton.addEventListener('click', () => this.previousSlide());
+        }
+
+        if (this.nextButton) {
+          this.nextButton.addEventListener('click', () => this.nextSlide());
+        }
+      }
+
+      handleTabClick(e) {
+        const clickedTab = e.currentTarget;
+        const tabName = clickedTab.getAttribute('data-tab');
+        const variantId = clickedTab.getAttribute('data-variant-id');
+
+        this.tabs.forEach((tab) => tab.classList.remove('active'));
+        clickedTab.classList.add('active');
+
+        this.tabContents.forEach((content) => {
+          content.classList.remove('active');
+          if (content.getAttribute('data-content') === tabName) {
+            content.classList.add('active');
+          }
+        });
+
+        this.currentVariantId = variantId;
+
+        const activeContent = this.querySelector('.ai-featured-product__tab-content-{{ ai_gen_id }}.active');
+        const selectedOption = activeContent.querySelector('.ai-featured-product__option-card-{{ ai_gen_id }}.selected');
+        if (selectedOption) {
+          this.currentPurchaseType = selectedOption.getAttribute('data-option');
+          this.currentSellingPlanId = selectedOption.getAttribute('data-selling-plan') || null;
+          this.updateButtonPrice();
+        }
+      }
+
+      handleOptionClick(e) {
+        const clickedCard = e.currentTarget;
+        const parentContent = clickedCard.closest('.ai-featured-product__tab-content-{{ ai_gen_id }}');
+        const allCardsInTab = parentContent.querySelectorAll('.ai-featured-product__option-card-{{ ai_gen_id }}');
+
+        allCardsInTab.forEach((card) => card.classList.remove('selected'));
+        clickedCard.classList.add('selected');
+
+        this.currentPurchaseType = clickedCard.getAttribute('data-option');
+        this.currentVariantId = clickedCard.getAttribute('data-variant-id');
+        this.currentSellingPlanId = clickedCard.getAttribute('data-selling-plan') || null;
+        this.updateButtonPrice();
+      }
+
+      updateButtonPrice() {
+        if (!this.addToCartButton) return;
+
+        const activeContent = this.querySelector('.ai-featured-product__tab-content-{{ ai_gen_id }}.active');
+        const selectedOption = activeContent.querySelector('.ai-featured-product__option-card-{{ ai_gen_id }}.selected');
+        
+        if (selectedOption) {
+          const price = selectedOption.getAttribute('data-price');
+          const buttonText = '{{ block.settings.button_text }}';
+          this.addToCartButton.textContent = `${buttonText} - $${price}`;
+        }
+      }
+
+      async handleAddToCart() {
+        if (!this.addToCartButton) return;
+
+        const originalText = this.addToCartButton.textContent;
+        this.addToCartButton.disabled = true;
+        this.addToCartButton.textContent = 'Adding...';
+
+        try {
+          const item = {
+            id: this.currentVariantId,
+            quantity: 1
+          };
+
+          if (this.currentPurchaseType === 'subscribe' && this.currentSellingPlanId) {
+            item.selling_plan = parseInt(this.currentSellingPlanId);
+          }
+
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ items: [item] })
+          });
+
+          if (response.ok) {
+            this.openCartDrawer();
+          } else {
+            const errorText = await response.text();
+            throw new Error(errorText);
+          }
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          alert('There was an error adding the product to your cart. Please try again.');
+        } finally {
+          this.addToCartButton.disabled = false;
+          this.addToCartButton.textContent = originalText;
+        }
+      }
+
+      openCartDrawer() {
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer && typeof cartDrawer.open === 'function') {
+          cartDrawer.open();
+        } else {
+          const cartIconLink = document.querySelector('a[href="/cart"]');
+          if (cartIconLink) {
+            cartIconLink.click();
+          }
+        }
+        
+        document.dispatchEvent(new CustomEvent('cart:refresh'));
+        
+        const cartRefreshEvent = new CustomEvent('cart:updated');
+        document.dispatchEvent(cartRefreshEvent);
+      }
+
+      previousSlide() {
+        if (this.currentSlide > 0) {
+          this.currentSlide--;
+          this.updateCarousel();
+        }
+      }
+
+      nextSlide() {
+        if (this.currentSlide < this.slides.length - 1) {
+          this.currentSlide++;
+          this.updateCarousel();
+        }
+      }
+
+      updateCarousel() {
+        if (this.carouselTrack && this.slides.length > 0) {
+          const slideWidth = this.slides[0].offsetWidth + 60;
+          this.carouselTrack.style.transform = `translateX(-${this.currentSlide * slideWidth}px)`;
+          this.updateCarouselButtons();
+        }
+      }
+
+      updateCarouselButtons() {
+        if (this.prevButton) {
+          this.prevButton.disabled = this.currentSlide === 0;
+        }
+        if (this.nextButton) {
+          this.nextButton.disabled = this.currentSlide >= this.slides.length - 1;
+        }
+      }
+    }
+
+    customElements.define('product-variant-selector-{{ ai_gen_id }}', ProductVariantSelector{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Product with variants",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "custom_title",
+      "label": "Custom title",
+      "default": "<p>Featured Product</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "custom_description",
+      "label": "Custom description",
+      "default": "<p>Write your custom product description here.</p>"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Variant 1 (90 scoops)"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_label",
+      "label": "Tab label",
+      "default": "90 scoops"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_subscribe_price",
+      "label": "Subscribe price",
+      "default": "52"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_subscribe_subtitle",
+      "label": "Subscribe subtitle",
+      "default": "2 scoops daily"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_onetime_price",
+      "label": "One-time price",
+      "default": "65"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_onetime_subtitle",
+      "label": "One-time subtitle",
+      "default": "2 scoops daily"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_bullet_1",
+      "label": "Benefit 1",
+      "default": "Free shipping on all orders"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_bullet_2",
+      "label": "Benefit 2",
+      "default": "Cancel or pause anytime"
+    },
+    {
+      "type": "text",
+      "id": "variant_1_bullet_3",
+      "label": "Benefit 3",
+      "default": "Save 20% on every order"
+    },
+    {
+      "type": "header",
+      "content": "Variant 2 (60 scoops)"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_label",
+      "label": "Tab label",
+      "default": "60 scoops"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_subscribe_price",
+      "label": "Subscribe price",
+      "default": "42"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_subscribe_subtitle",
+      "label": "Subscribe subtitle",
+      "default": "2 scoops daily"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_onetime_price",
+      "label": "One-time price",
+      "default": "52"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_onetime_subtitle",
+      "label": "One-time subtitle",
+      "default": "2 scoops daily"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_bullet_1",
+      "label": "Benefit 1",
+      "default": "Free shipping on all orders"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_bullet_2",
+      "label": "Benefit 2",
+      "default": "Cancel or pause anytime"
+    },
+    {
+      "type": "text",
+      "id": "variant_2_bullet_3",
+      "label": "Benefit 3",
+      "default": "Save 20% on every order"
+    },
+    {
+      "type": "header",
+      "content": "Bullet icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "bullet_icon",
+      "label": "Custom bullet icon",
+      "info": "Upload a custom icon for bullet points. If no icon is uploaded, a checkmark will be used."
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_min_height",
+      "label": "Minimum height",
+      "min": 200,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_max_height",
+      "label": "Maximum height",
+      "min": 400,
+      "max": 1000,
+      "step": 50,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "select",
+      "id": "image_fit",
+      "label": "Image fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "Contain"
+        },
+        {
+          "value": "cover",
+          "label": "Cover"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "scale-down",
+          "label": "Scale down"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "label": "Description size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Tab colors"
+    },
+    {
+      "type": "color",
+      "id": "tab_border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "tab_inactive_color",
+      "label": "Inactive text",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_color",
+      "label": "Active text",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "tab_active_border_color",
+      "label": "Active border",
+      "default": "#1b3def"
+    },
+    {
+      "type": "header",
+      "content": "Option card colors"
+    },
+    {
+      "type": "color",
+      "id": "option_border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "option_hover_border_color",
+      "label": "Hover border",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "option_selected_border_color",
+      "label": "Selected border",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "option_selected_bg_color",
+      "label": "Selected background",
+      "default": "#f0f4ff"
+    },
+    {
+      "type": "color",
+      "id": "option_title_color",
+      "label": "Title",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "color",
+      "id": "option_subtitle_color",
+      "label": "Subtitle",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "option_price_color",
+      "label": "Price",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "option_text_color",
+      "label": "Text",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "color",
+      "id": "option_checkmark_color",
+      "label": "Checkmark",
+      "default": "#1b3def"
+    },
+    {
+      "type": "range",
+      "id": "option_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "General colors"
+    },
+    {
+      "type": "color",
+      "id": "vendor_color",
+      "label": "Vendor",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Add to cart"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background color",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Hover background color",
+      "default": "#0f2bb8"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product with variants"
+    }
+  ]
+}
 {% endschema %}
