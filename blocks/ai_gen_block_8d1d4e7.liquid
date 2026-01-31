@@ -449,6 +449,8 @@
     .ai-featured-product__carousel-slide-{{ ai_gen_id }} {
       min-width: calc(100% - 40px);
       margin-right: 40px;
+      min-height: {{ block.settings.image_min_height_mobile }}px;
+      max-height: {{ block.settings.image_max_height_mobile }}px;
     }
 
     .ai-featured-product__image-{{ ai_gen_id }} {
