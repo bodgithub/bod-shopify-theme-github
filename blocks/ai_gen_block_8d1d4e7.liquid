@@ -145,7 +145,7 @@
     max-height: {{ block.settings.image_max_height }}px;
     object-fit: {{ block.settings.image_fit }};
     display: block;
-    border-radius: {{ block.settings.image_border_radius }}px; 
+    border-radius: {{ block.settings.image_border_radius }}px;
   }
 
   .ai-featured-product__image-placeholder-{{ ai_gen_id }} {
@@ -495,22 +495,6 @@
       margin-left: 32px;
     }
   }
-
-  .ai-featured-product__image-frame-{{ ai_gen_id }} {
-  width: 100%;
-  aspect-ratio: 1 / 1;   /* <-- forces square */
-  overflow: hidden;
-  border-radius: {{ block.settings.image_border_radius }}px;
-}
-
-.ai-featured-product__image-{{ ai_gen_id }} {
-  width: 100%;
-  height: 100%;          /* <-- fill the square */
-  min-height: 0;         /* <-- stop height rules from breaking the square */
-  max-height: none;
-  object-fit: {{ block.settings.image_fit }};
-  display: block;
-}
 {% endstyle %}
 
 <product-variant-selector-{{ ai_gen_id }}
@@ -534,17 +518,15 @@
             <div class="ai-featured-product__carousel-track-{{ ai_gen_id }}">
               {% for image in product.images %}
                 <div class="ai-featured-product__carousel-slide-{{ ai_gen_id }}">
-  <div class="ai-featured-product__image-frame-{{ ai_gen_id }}">
-    <img
-      src="{{ image | image_url: width: 1000 }}"
-      alt="{{ image.alt | escape }}"
-      loading="lazy"
-      width="{{ image.width }}"
-      height="{{ image.height }}"
-      class="ai-featured-product__image-{{ ai_gen_id }}"
-    >
-  </div>
-</div>
+                  <img
+                    src="{{ image | image_url: width: 1000 }}"
+                    alt="{{ image.alt | escape }}"
+                    loading="lazy"
+                    width="{{ image.width }}"
+                    height="{{ image.height }}"
+                    class="ai-featured-product__image-{{ ai_gen_id }}"
+                  >
+                </div>
               {% endfor %}
             </div>
             {% if product.images.size > 1 %}
