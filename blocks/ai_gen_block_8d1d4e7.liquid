@@ -568,6 +568,18 @@
           </div>
         {% endif %}
 
+        {%- if product != blank and product.metafields.reviews.rating.value != blank -%}
+  <a class="star-rating-container" href="#reviews">
+    <div
+      class="star-rating"
+      style="--star-rating: {{ product.metafields.reviews.rating.value.rating }};"
+    >
+      <strong>{{ product.metafields.reviews.rating.value.rating | round: 1 }}</strong>
+      | <u>Read reviews</u>
+    </div>
+  </a>
+{%- endif -%}
+
         {% if block.settings.custom_description != blank %}
           <div class="ai-featured-product__custom-description-{{ ai_gen_id }}">
             {{ block.settings.custom_description }}
