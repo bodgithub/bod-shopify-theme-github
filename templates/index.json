@@ -628,16 +628,6 @@
         "border_separator_full": false
       }
     },
-    "spacer_WiExzb": {
-      "type": "spacer",
-      "name": "Spacer",
-      "settings": {
-        "spacer_mobile": 15,
-        "spacer_desktop": 80,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "1769820728e82a395c": {
       "type": "_blocks",
       "blocks": {
@@ -706,6 +696,16 @@
         "ai_gen_block_8d1d4e7_qyqwAF"
       ],
       "settings": {}
+    },
+    "spacer_WiExzb": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 15,
+        "spacer_desktop": 80,
+        "border_separator": false,
+        "border_separator_full": false
+      }
     },
     "expert_testimonials_zpEKKk": {
       "type": "expert-testimonials",
@@ -830,6 +830,7 @@
         "quote_KwTygU",
         "quote_ExXWHa"
       ],
+      "disabled": true,
       "custom_css": [
         ".star-rating {color: white;}"
       ],
@@ -848,6 +849,35 @@
         "color_text2": "#1b3def",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
+      }
+    },
+    "rich_text_G8RCad": {
+      "type": "rich-text",
+      "blocks": {
+        "text_iqRmyW": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Real-life <em>inositol</em> results</h1>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "text_iqRmyW"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "transparent",
+        "bgcolor": "transparent",
+        "color_heading": "#1b3def",
+        "color_text": "#1b3def",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
       }
     },
     "image_with_text_rEJXXR": {
@@ -1523,7 +1553,7 @@
             "layout": "list",
             "reviewsType": "all",
             "showSummary": true,
-            "showMediaGallery": false,
+            "showMediaGallery": true,
             "reviewsCount": 10,
             "containerClass": ""
           }
@@ -1554,6 +1584,7 @@
     "1769820728e82a395c",
     "spacer_WiExzb",
     "expert_testimonials_zpEKKk",
+    "rich_text_G8RCad",
     "image_with_text_rEJXXR",
     "image_with_text_RJaRcP",
     "multicolumn_rVnwmF",
