@@ -125,6 +125,9 @@
     position: relative;
     overflow: hidden;
     border-radius: {{ block.settings.image_border_radius }}px;
+    min-height: {{ block.settings.image_min_height }}px;
+    max-height: {{ block.settings.image_max_height }}px;
+
   }
 
   .ai-featured-product__carousel-track-{{ ai_gen_id }} {
@@ -141,8 +144,7 @@
   .ai-featured-product__image-{{ ai_gen_id }} {
     width: 100%;
     height: auto;
-    min-height: {{ block.settings.image_min_height }}px;
-    max-height: {{ block.settings.image_max_height }}px;
+    
     object-fit: {{ block.settings.image_fit }};
     display: block;
     border-radius: {{ block.settings.image_border_radius }}px;
