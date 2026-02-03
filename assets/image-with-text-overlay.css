@@ -205,15 +205,15 @@ line-hight:0.9;}
   color: var(--text-color, #fff);
 }
 
-.image-with-text-overlay .rte,
+/*.image-with-text-overlay .rte,
 .image-with-text-overlay p,
 .image-with-text-overlay li,
 .image-with-text-overlay a,
 .image-with-text-overlay .subheading,
 .image-with-text-overlay .accordion summary,
 .image-with-text-overlay .accordion .collapsible__content {
-  color: var(--text-color, #1b3def) !important;
-}
+  color: var(--text-color) !important;
+}*/
 
 
 .tagline p {
@@ -258,3 +258,5 @@ line-hight:0.9;}
 .section-image-with-text .image-with-text--content {
   background: transparent !important;
 }
+
+.button .regular {color:#fff; !important;}
