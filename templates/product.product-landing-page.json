@@ -20,7 +20,14 @@
         "text_3PFJhN": {
           "type": "text",
           "settings": {
-            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1><p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
+            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1>"
+          }
+        },
+        "text_UrjqNQ": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
           }
         },
         "button_EdBk3b": {
@@ -33,6 +40,7 @@
       },
       "block_order": [
         "text_3PFJhN",
+        "text_UrjqNQ",
         "button_EdBk3b"
       ],
       "name": "Image with text",
@@ -430,6 +438,49 @@
         "ai_gen_block_e5ed95a_KhkA73"
       ],
       "settings": {}
+    },
+    "image_with_text_R7yxcH": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_Byk6MT": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1><p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
+          }
+        },
+        "button_gRMVr6": {
+          "type": "button",
+          "settings": {
+            "button_text": "Claim 30% off now",
+            "button_link": "#product-details"
+          }
+        }
+      },
+      "block_order": [
+        "text_Byk6MT",
+        "button_gRMVr6"
+      ],
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/Bodology_girl_water_4.png",
+        "use_video": true,
+        "video": "",
+        "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
+        "video_autoplay": true,
+        "mobile_layout": "text_first",
+        "height": "large",
+        "desktop_image_width": "small",
+        "full_width": true,
+        "layout": "text_first",
+        "content_position": "text-center",
+        "column_spacing": "medium",
+        "color_bg": "linear-gradient(135deg, rgba(243, 238, 235, 1), rgba(246, 242, 240, 1) 78%)",
+        "color_text": "#1b3def",
+        "color_p_text": "#2c2d2e",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
     },
     "multicolumn_KdNre6": {
       "type": "multicolumn",
@@ -1312,6 +1363,7 @@
     "custom_liquid_WV46gi",
     "main-product",
     "1768505899436dba61",
+    "image_with_text_R7yxcH",
     "multicolumn_KdNre6",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
