@@ -95,8 +95,12 @@
 								<div class="rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
 							{%- when 'button' -%}
 								{% if block.settings.button_text != blank %}
-									<a class="button accent" href="{{ block.settings.button_link }}" role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}><span>{{ block.settings.button_text }}</span></a>
+									<a class="button accent" href="{{ block.settings.button_link }}" {%- if block.settings.button_html != blank -%} onclick="{{ block.settings.button_html}}" {% endif %} role="button" title="{{ block.settings.button_text | escape }}" {{ block.shopify_attributes }}><span>{{ block.settings.button_text }}</span></a>
 								{% endif %}
+
+
+
+
 							{%- when 'space' -%}
 								<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
 							 
@@ -462,7 +466,13 @@
           "id": "button_link",
           "type": "url",
           "label": "Button link"
-        }
+        },
+        { 
+          "id": "button_html",
+          "type": "html",
+          "label": "Button On Click",
+          "default": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
+      }
       ]
     },
     {
