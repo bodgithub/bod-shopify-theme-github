@@ -213,7 +213,7 @@ line-hight:0.9;}
 .image-with-text-overlay .subheading,
 .image-with-text-overlay .accordion summary,
 .image-with-text-overlay .accordion .collapsible__content {
-  color: var(--text-color, #fff) !important;
+  color: var(--text-color) !important;
 }
 
 
