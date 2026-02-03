@@ -471,14 +471,52 @@
         },
         "text_qneWGL": {
           "type": "text",
+          "disabled": true,
           "settings": {
-            "text": "<p>You felt it</p><p>Fatigue, cravings, mood swings, PCOS, and TTC challenges. Far too common, yet too often treated as isolated problems instead of part of a bigger picture. That picture?</p>"
+            "text": "<p>You felt it.</p><p>Fatigue, cravings, mood swings, PCOS, and TTC challenges. Too often treated as isolated problems instead of part of a bigger picture. That picture?</p>"
           }
         },
         "text_LA3kry": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<h4><em><strong>Your metabolism.</strong></em></h4>"
+          }
+        },
+        "collapsible_tab_LzB4BY": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "87% of women have impaired metabolic funciton",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_Dt7Wiq": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Cravings",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_3zXTzd": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Mood",
+            "open": false,
+            "content": "",
+            "page": ""
+          }
+        },
+        "collapsible_tab_PftrBD": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Pcos",
+            "open": false,
+            "content": "",
+            "page": ""
           }
         },
         "button_gRMVr6": {
@@ -495,11 +533,16 @@
         "text_Byk6MT",
         "text_qneWGL",
         "text_LA3kry",
+        "collapsible_tab_LzB4BY",
+        "collapsible_tab_Dt7Wiq",
+        "collapsible_tab_3zXTzd",
+        "collapsible_tab_PftrBD",
         "button_gRMVr6"
       ],
+      "disabled": true,
       "name": "Image with text",
       "settings": {
-        "image": "shopify://shop_images/Bodology_Inositol_Empowered_b4546f60-e45f-4b20-9202-23c81c6b9bc2.jpg",
+        "image": "shopify://shop_images/Bodology-Inositol-Empowered-2_b274647e-5a99-4977-b196-7420f3e7cb27.jpg",
         "use_video": false,
         "video": "",
         "video_autoplay": true,
@@ -508,65 +551,6 @@
         "desktop_image_width": "medium",
         "full_width": true,
         "layout": "text_first",
-        "content_position": "text-left",
-        "column_spacing": "medium",
-        "color_bg": "linear-gradient(135deg, rgba(243, 238, 235, 1), rgba(246, 242, 240, 1) 78%)",
-        "color_text": "#1b3def",
-        "color_p_text": "#2c2d2e",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
-    "image_with_text_We9bL9": {
-      "type": "image-with-text",
-      "blocks": {
-        "text_maXafM": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Your <em>metabolic</em> <em>health</em> impacts your entire body</h2>"
-          }
-        },
-        "text_RqCbBm": {
-          "type": "text",
-          "settings": {
-            "text": "<p></p><p>Fatigue, cravings, mood swings, PCOS, and TTC challenges. Far too common, yet too often treated as isolated problems instead of part of a bigger picture. That picture?</p>"
-          }
-        },
-        "text_xf9ff8": {
-          "type": "text",
-          "settings": {
-            "text": "<h4><em><strong>Your metabolism.</strong></em></h4>"
-          }
-        },
-        "button_i8Gbnw": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_text": "Claim 30% off now",
-            "button_link": "#product-details",
-            "button_html": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
-          }
-        }
-      },
-      "block_order": [
-        "text_maXafM",
-        "text_RqCbBm",
-        "text_xf9ff8",
-        "button_i8Gbnw"
-      ],
-      "disabled": true,
-      "name": "Image with text",
-      "settings": {
-        "image": "shopify://shop_images/Bodology_Inositol_Empowered_b4546f60-e45f-4b20-9202-23c81c6b9bc2.jpg",
-        "use_video": false,
-        "video": "",
-        "video_autoplay": true,
-        "mobile_layout": "text_first",
-        "height": "large",
-        "desktop_image_width": "medium",
-        "full_width": true,
-        "layout": "image_first",
         "content_position": "text-left",
         "column_spacing": "medium",
         "color_bg": "linear-gradient(135deg, rgba(243, 238, 235, 1), rgba(246, 242, 240, 1) 78%)",
@@ -1459,7 +1443,6 @@
     "main-product",
     "1768505899436dba61",
     "image_with_text_R7yxcH",
-    "image_with_text_We9bL9",
     "multicolumn_KdNre6",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
