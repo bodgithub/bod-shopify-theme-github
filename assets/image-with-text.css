@@ -127,3 +127,20 @@
 
 .image-with-text--content p {color: var(--text-color);}
 
+/* Mobile only: flip order based on theme setting */
+@media (max-width: 767px) {
+  .image-with-text.mobile-text_first .image-with-text--image {
+    order: 2;
+  }
+  .image-with-text.mobile-text_first .image-with-text--content {
+    order: 1;
+  }
+
+  .image-with-text.mobile-image_first .image-with-text--image {
+    order: 1;
+  }
+  .image-with-text.mobile-image_first .image-with-text--content {
+    order: 2;
+  }
+}
+

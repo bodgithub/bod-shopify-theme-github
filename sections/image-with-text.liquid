@@ -42,7 +42,7 @@
 >
 	<div class="small-12 columns">
 		<div class="image-with-text column-spacing--{{ column_spacing }} 
-      grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} 
+      grid--image-{{ desktop_image_width }} {{ desktop_layout }} {{ content_position }} mobile-{{ section.settings.mobile_layout }}
       section-spacing{% if disable_top_spacing %} 
       section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} 
       section-spacing--disable-bottom{% endif %}" style="--color-bg:{{ color_bg }};--color-text:{{ color_text }};--color-text-rgb: {{ color_text.rgb | replace: ' ' , ',' }}; --solid-button-background: {{ color_text }}; --solid-button-background-hover: {{ color_text | color_darken: 7 }}; 
