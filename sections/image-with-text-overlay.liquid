@@ -98,7 +98,7 @@
 							{%- when 'heading' -%}
 								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ heading_color }};">{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
 							{%- when 'text' -%}
-								<div class="rte description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.text_color }};">
+								<div class="rte description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }} style="--text-color: {{ description_color }};">
 									{{ block.settings.text }}</div>
 								
 							{%- when 'customer_reviews' -%}
@@ -454,11 +454,12 @@
           "id": "text",
           "label": "Content",
           "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
-        },{
+        },
+        {
           "type": "color",
-          "id": "color_text",
-          "label": "Text",
-          "default": "#ffffff"
+          "id": "description_text",
+          "label": "Text"
+          
         },
         {
           "type": "select",
