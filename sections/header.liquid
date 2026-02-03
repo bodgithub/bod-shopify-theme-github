@@ -85,21 +85,18 @@
   </script>
 
 <script>
-  let hasScrolled = false;
-
   window.addEventListener(
     "scroll",
     () => {
-      if (!hasScrolled && window.scrollY > 0) {
-        document
-          .querySelector(".thb-secondary-area")
-          ?.classList.add("is-visible");
-        hasScrolled = true;
-      }
+      const el = document.querySelector(".thb-secondary-area");
+      if (!el) return;
+
+      el.classList.toggle("is-visible", window.scrollY > 0);
     },
     { passive: true }
   );
 </script>
+
 
 {%- endif -%}
 {% schema %}
