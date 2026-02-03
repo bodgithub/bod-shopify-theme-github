@@ -2371,13 +2371,21 @@ box-shadow: 0 0 16px 0 #00000047;}
     display: flex;
     align-items: center; }
 
-    .thb-secondary-area.is-visible {
+/* Only hide on pages where JS is running */
+html.scroll-reveal-enabled .thb-secondary-area {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Show after scroll */
+html.scroll-reveal-enabled .thb-secondary-area.is-visible {
   opacity: 1;
   pointer-events: auto;
 }
+
 .thb-secondary-area {
-  opacity:0;
-  pointer-events: none;
+  opacity:1;
+  pointer-events: auto;
   transition: opacity 0.3s ease;
   margin-left: auto;
   line-height: 1;
