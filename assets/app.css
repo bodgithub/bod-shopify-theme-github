@@ -2988,7 +2988,7 @@ input[type="submit"] {
   .button.white,
   input[type="submit"].white {
     background: #fff;
-    color: var(--white-button-label, var(--color-body, #2c2d2e)); }
+    color: #1b3def; }
     @media screen and (hover: hover) {
       .button.white:hover,
       input[type="submit"].white:hover {
