@@ -255,6 +255,73 @@
     color: {{ block.settings.text_color }};
     opacity: 0.6;
   }
+
+  
+
+
+
+
+
+    .ai-testimonial-carousel__overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 2;
+
+    background: {{ block.settings.overlay_background }};
+    border-radius: {{ block.settings.overlay_border_radius }}px;
+    padding: {{ block.settings.overlay_padding }}px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ai-testimonial-carousel__overlay-{{ ai_gen_id }} * {
+    color: {{ block.settings.overlay_text_color }};
+  }
+
+  .ai-testimonial-carousel__overlay-{{ ai_gen_id }} .ai-testimonial-carousel__quote-{{ ai_gen_id }} {
+    margin: 0;
+  }
+
+  .ai-testimonial-carousel__overlay-row-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .ai-testimonial-carousel__author-{{ ai_gen_id }} {
+    margin-top: 0; /* override your existing margin-top:auto so it doesn’t push weirdly inside overlay */
+  }
+
+  .ai-testimonial-carousel__author-title-{{ ai_gen_id }} {
+    opacity: 0.85;
+  }
+
+  .ai-testimonial-carousel__rating-{{ ai_gen_id }} {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .ai-testimonial-carousel__star-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+  }
+
+  .ai-testimonial-carousel__star-{{ ai_gen_id }} svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+
+
+
 {% endstyle %}
 
 <testimonial-carousel-{{ ai_gen_id }}
@@ -324,6 +391,48 @@
     </svg>
   </div>
 {% endif %}
+
+{% assign rating_value = block.settings[rating_key] | default: 0 %}
+
+{% if block.settings[quote_key] != blank or block.settings[author_key] != blank or block.settings[author_title_key] != blank or rating_value > 0 %}
+  <div class="ai-testimonial-carousel__overlay-{{ ai_gen_id }}">
+    
+  
+
+    <div class="ai-testimonial-carousel__overlay-row-{{ ai_gen_id }}">
+     
+
+          <div class="ai-testimonial-carousel__author-info-{{ ai_gen_id }}">
+            {% if block.settings[author_key] != blank %}
+              <p class="ai-testimonial-carousel__author-name-{{ ai_gen_id }}">{{ block.settings[author_key] }}</p>
+            {% endif %}
+            {% if block.settings[author_title_key] != blank %}
+              <p class="ai-testimonial-carousel__author-title-{{ ai_gen_id }}">{{ block.settings[author_title_key] }}</p>
+            {% endif %}
+          </div>
+        </div>
+
+      {% if rating_value > 0 %}
+        <div class="ai-testimonial-carousel__rating-{{ ai_gen_id }}" aria-label="Rating: {{ rating_value }} out of 5">
+          {% for star in (1..5) %}
+            <span class="ai-testimonial-carousel__star-{{ ai_gen_id }}">
+              {% if star <= rating_value %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.star_color }}" stroke-width="2">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              {% endif %}
+            </span>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
 
                     {% if block.settings[quote_key] != blank %}
                       <p class="ai-testimonial-carousel__quote-{{ ai_gen_id }}">{{ block.settings[quote_key] }}</p>
@@ -758,6 +867,42 @@
       "id": "button_color",
       "label": "Button icon",
       "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_background",
+      "label": "Overlay background",
+      "default": "rgba(255, 255, 255, 0.92)"
+    },
+    {
+      "type": "color",
+      "id": "overlay_text_color",
+      "label": "Overlay text",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "range",
+      "id": "overlay_padding",
+      "min": 8,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Overlay padding",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "overlay_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Overlay border radius",
+      "default": 12
     },
     {
       "type": "header",
