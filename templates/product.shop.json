@@ -27,7 +27,8 @@
           "type": "button",
           "settings": {
             "button_text": "Claim 30% off now",
-            "button_link": "#product-details"
+            "button_link": "#product-details",
+            "button_html": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
           }
         }
       },
@@ -42,6 +43,7 @@
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
+        "mobile_layout": "image_first",
         "height": "adapt",
         "desktop_image_width": "small",
         "full_width": true,
@@ -86,13 +88,13 @@
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"margin-bottom:-10px; \"><h1 style=\"\">Bodology® <em>Inositol </em>Powder</h1></div>"
+            "custom_liquid": "<div style=\"margin-bottom:-10px; \"><h1 style=\"\">Inositol Powder</h1></div>"
           }
         },
         "custom_liquid_WRFhPD": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div><h4 style=\"color:grey !important;\"><em>Metabolic support for hormones + mood</em></h4></div>"
+            "custom_liquid": "<div><p4 style=\"\">Metabolic support for hormones, mood and metabolism</p></div>"
           }
         },
         "custom_liquid_8d7xtd": {
