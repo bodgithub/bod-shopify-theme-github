@@ -466,11 +466,24 @@
         "text_Byk6MT": {
           "type": "text",
           "settings": {
-            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1><p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
+            "text": "<h2>You <em>felt</em> it</h2>"
+          }
+        },
+        "text_qneWGL": {
+          "type": "text",
+          "settings": {
+            "text": "<p></p><p>Fatigue, cravings, mood swings, PCOS, and TTC challenges. Far too common, yet too often treated as isolated problems instead of part of a bigger picture. That picture?</p>"
+          }
+        },
+        "text_LA3kry": {
+          "type": "text",
+          "settings": {
+            "text": "<h4><em><strong>Your metabolism.</strong></em></h4>"
           }
         },
         "button_gRMVr6": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_text": "Claim 30% off now",
             "button_link": "#product-details",
@@ -480,22 +493,22 @@
       },
       "block_order": [
         "text_Byk6MT",
+        "text_qneWGL",
+        "text_LA3kry",
         "button_gRMVr6"
       ],
-      "disabled": true,
       "name": "Image with text",
       "settings": {
-        "image": "shopify://shop_images/Bodology_girl_water_4.png",
-        "use_video": true,
+        "image": "shopify://shop_images/Bodology_Inositol_Empowered_b4546f60-e45f-4b20-9202-23c81c6b9bc2.jpg",
+        "use_video": false,
         "video": "",
-        "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
         "video_autoplay": true,
         "mobile_layout": "text_first",
         "height": "large",
-        "desktop_image_width": "small",
+        "desktop_image_width": "medium",
         "full_width": true,
         "layout": "text_first",
-        "content_position": "text-center",
+        "content_position": "text-left",
         "column_spacing": "medium",
         "color_bg": "linear-gradient(135deg, rgba(243, 238, 235, 1), rgba(246, 242, 240, 1) 78%)",
         "color_text": "#1b3def",
