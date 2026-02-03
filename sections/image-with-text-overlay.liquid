@@ -43,7 +43,7 @@
 
 <div class="row {% if full_width %}full-width-row-full{% endif %}">
 	<div class="small-12 columns">
-		<div class="image-with-text-overlay image-with-text-overlay--full-width-{{ full_width }} text-{{ text_alignment }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--text-color: {{ text_color }}; --overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
+		<div class="image-with-text-overlay image-with-text-overlay--full-width-{{ full_width }} text-{{ text_alignment }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style=" --overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
 			<div class="image-with-text-overlay--bg parallax--{{ image_parallax }}" >
 				{% if image %}
 					{%- liquid
@@ -96,7 +96,7 @@
 									{{ block.settings.text | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}
 								</div>
 							{%- when 'heading' -%}
-								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }}>{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
+								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ heading_color }};">{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
 							{%- when 'text' -%}
 								<div class="rte description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }}>
 									<div style="color: {{ block.settings.text_color }} !important;">{{ block.settings.text }}</div>
@@ -412,6 +412,12 @@
           "id": "text",
           "label": "Text"
         },
+        {
+  "type": "color",
+  "id": "heading_color",
+  "label": "Heading Color",
+  "default": "#1b3def"
+},
         {
           "type": "select",
           "id": "heading_size",
