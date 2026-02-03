@@ -97,6 +97,12 @@
     "image_with_text_overlay_T3rmDc": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "space_GXftQ9": {
+          "type": "space",
+          "settings": {
+            "height": 50
+          }
+        },
         "subheading_PpxNFH": {
           "type": "subheading",
           "settings": {
@@ -116,7 +122,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Cravings, mood swings, PCOS, and TTC challenges aren’t separate issues. They’re metabolic signals.</p>",
-            "description_color": "#1b3def",
+            "description_color": "#2c2d2e",
             "description_size": "small"
           }
         },
@@ -133,6 +139,12 @@
             "benefit_3": "",
             "benefit_4": "",
             "benefit_5": ""
+          }
+        },
+        "space_h3QWPp": {
+          "type": "space",
+          "settings": {
+            "height": 50
           }
         },
         "benefits_b3bkkE": {
@@ -152,26 +164,16 @@
             "benefit_4": "",
             "benefit_5": ""
           }
-        },
-        "customer_reviews_pWXf3e": {
-          "type": "customer_reviews",
-          "disabled": true,
-          "settings": {
-            "stars": "5",
-            "heading": "Review heading",
-            "font_size": "1em",
-            "link": "",
-            "scale": "1"
-          }
         }
       },
       "block_order": [
+        "space_GXftQ9",
         "subheading_PpxNFH",
         "heading_xiV3aM",
         "text_WiQefq",
         "benefits_d8eRbc",
-        "benefits_b3bkkE",
-        "customer_reviews_pWXf3e"
+        "space_h3QWPp",
+        "benefits_b3bkkE"
       ],
       "name": "Image with text overlay",
       "settings": {
