@@ -4,7 +4,7 @@
 
    
 	assign body_font_500 = tenon_font | font_modify: 'weight', '400'
-	assign body_font_bold = tenon_font | font_modify: 'weight', '500' 
+	assign body_font_bold = tenon_font | font_modify: 'weight', '1000' 
 
     # assign body_font_italic = plantin_font_italic | font_modify: 'style', 'italic'
     # assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
@@ -93,14 +93,22 @@
 	.logolink.text-logo,
 	.heading-font,
 	.h1-xlarge,
-	.h1-large,
-	blockquote p,
+	.h1-large, {
+		font-style: normal;
+		font-weight: 1000;
+		font-family: "tenon", sans-serif;
+	}
+
+	.h4,.h5,.h6,
+	.logolink.text-logo,
+	.heading-font, blockquote p,
 	blockquote span,
 	.customer-addresses .my-address .address-index {
 		font-style: normal;
-		font-weight: 500;
+		font-weight: 400;
 		font-family: "tenon", sans-serif;
 	}
+
 	body,
 	.body-font,
 	.thb-product-detail .product-title {
