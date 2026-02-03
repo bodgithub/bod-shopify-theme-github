@@ -98,11 +98,14 @@
 							{%- when 'heading' -%}
 								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ heading_color }};">{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
 							{%- when 'text' -%}
-  <div class="rte description-size--{{ block.settings.description_size }}" {{ block.shopify_attributes }}>
-    {{ block.settings.text
-      | replace: '<p>', '<p style="color:' | append: block.settings.description_color | append: ';">'
-    }}
-  </div>
+  <div
+  class="rte description-size--{{ block.settings.description_size }}"
+  style="--description-color: {{ block.settings.description_color }};"
+  {{ block.shopify_attributes }}
+>
+  {{ block.settings.text }}
+</div>
+
 
 								
 							{%- when 'customer_reviews' -%}

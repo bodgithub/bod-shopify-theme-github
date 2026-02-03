@@ -7,6 +7,19 @@
 .image-with-text-overlay {
   box-shadow: var(--block-shadows); }
 
+.image-with-text-overlay--content-inner .customer-reviews--block {
+  align-items: center;
+}
+.image-with-text-overlay--content-inner .star-rating {
+  text-align: center;
+}
+.image-with-text-overlay--content-inner h5 {
+  padding: 0 10%;
+}
+.image-with-text-overlay .rte,
+.image-with-text-overlay .rte p {
+  color: var(--description-color, inherit);
+}
 
 
 .image-with-text-overlay {
