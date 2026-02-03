@@ -34,7 +34,8 @@
           "type": "button",
           "settings": {
             "button_text": "Claim 30% off now",
-            "button_link": "#product-details"
+            "button_link": "#product-details",
+            "button_html": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
           }
         }
       },
@@ -257,6 +258,7 @@
         },
         "collapsible_tab_KixfDF": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "WHY WE MADE IT",
             "open": false,
@@ -452,7 +454,8 @@
           "type": "button",
           "settings": {
             "button_text": "Claim 30% off now",
-            "button_link": "#product-details"
+            "button_link": "#product-details",
+            "button_html": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
           }
         }
       },
