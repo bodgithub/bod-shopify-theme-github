@@ -567,7 +567,7 @@
         "subheading_AwFEkQ": {
           "type": "subheading",
           "settings": {
-            "text": "<p>WHY INOSITOL</p>",
+            "text": "<p>WHY METABOLISM</p>",
             "text_color": "#1b3def"
           }
         },
@@ -582,7 +582,8 @@
         "text_Pxy4YU": {
           "type": "text",
           "settings": {
-            "text": "<p>The connection between hormones and metabolism is undeniable, yet for decades, that truth has been overlooked. The result?</p>",
+            "text": "<p>Hormones and metabolism are inseparable.The problem? We’ve spent decades pretending they aren’t.</p>",
+            "description_color": "#2c2d2e",
             "description_size": "small"
           }
         },
@@ -590,13 +591,13 @@
           "type": "benefits",
           "settings": {
             "benefits-title": "",
-            "icon_size": 24,
+            "icon_size": 73,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "87% of women in the U.S. have impaired metabolic function",
-            "icon_1": "shopify://shop_images/icon_lightning-slash.png",
-            "benefit_2": "2 in 5 have insulin resistance",
-            "icon_2": "shopify://shop_images/icon_chart-scatter.png",
+            "benefit_1": "women have poor metabolic function",
+            "icon_1": "shopify://shop_images/Stat-1.png",
+            "benefit_2": "have insulin resistance",
+            "icon_2": "shopify://shop_images/Stat-2.png",
             "benefit_3": "",
             "benefit_4": "",
             "benefit_5": ""
@@ -621,13 +622,13 @@
         "benefits_htqp6r",
         "customer_reviews_pYbB3h"
       ],
-      "disabled": true,
       "name": "Image with text overlay",
       "settings": {
         "image": "shopify://shop_images/Bodology-Hormone-Desktop-Banner-2.jpg",
+        "mobile_image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-2.jpg",
         "image_parallax": false,
         "desktop_height": "desktop-height-650",
-        "mobile_height": "mobile-height-500",
+        "mobile_height": "mobile-height-auto",
         "full_width": true,
         "content_width": "small",
         "content_position": "middle-left",
