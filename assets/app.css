@@ -4368,3 +4368,13 @@ h2 {
 #shopify-section-sections--18405847826651__header theme-header.header {
   z-index: 9999 !important;
 }
+
+.image-with-text-overlay--content-inner .customer-reviews--block {
+  align-items: center;
+}
+.image-with-text-overlay--content-inner .star-rating {
+  text-align: center;
+}
+.image-with-text-overlay--content-inner h5 {
+  padding: 0 10%;
+}
