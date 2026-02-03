@@ -127,6 +127,12 @@
 
 .image-with-text--content p {color: var(--text-color);}
 
+@media (max-width: 767px) {
+  .image-with-text.mobile-text_first .image-with-text--image {
+    margin-top: 24px;
+  }
+}
+
 /* Mobile only: flip order based on theme setting */
 @media (max-width: 767px) {
   .image-with-text.mobile-text_first .image-with-text--image {
