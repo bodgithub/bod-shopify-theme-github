@@ -126,7 +126,7 @@
 											{% assign benefit = block.settings[benefit_key] %}
 											{% assign icon = block.settings[icon_key] %}
 											{% if benefit %}
-												<div class="benefit-item" style="{% if benefit != blank %}color: {{ block.settings.border_color }} border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};{% else %} height:0px;margin:0px;padding:0px; {% endif %}">
+												<div class="benefit-item" style="{% if benefit != blank %}color: {{ block.settings.border_color }}; border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};{% else %} height:0px;margin:0px;padding:0px; {% endif %}">
 													{% if icon %}
 														<img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon"/>
 													{% endif %}
