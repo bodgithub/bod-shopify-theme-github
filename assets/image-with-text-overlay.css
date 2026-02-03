@@ -216,6 +216,15 @@ line-hight:0.9;}
   color: var(--text-color, #1b3def) !important;
 }
 
+.customer-reviews--block {
+  align-items: center;
+}
+.star-rating {
+  text-align: center;
+}
+h5 {
+  padding: 0 10%;
+}
 
 .tagline p {
     border: 1px solid blue;
