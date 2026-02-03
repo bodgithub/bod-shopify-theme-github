@@ -2371,7 +2371,14 @@ box-shadow: 0 0 16px 0 #00000047;}
     display: flex;
     align-items: center; }
 
+    .thb-secondary-area.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 .thb-secondary-area {
+  opacity:0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
   margin-left: auto;
   line-height: 1;
   height: 100%;

@@ -78,7 +78,29 @@
       },
       "url": {{ request.origin | append: page.url | json }}
     }
+  
+  
+  
+  
   </script>
+
+<script>
+  let hasScrolled = false;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!hasScrolled && window.scrollY > 0) {
+        document
+          .querySelector(".thb-secondary-area")
+          ?.classList.add("is-visible");
+        hasScrolled = true;
+      }
+    },
+    { passive: true }
+  );
+</script>
+
 {%- endif -%}
 {% schema %}
 {
