@@ -216,13 +216,13 @@ line-hight:0.9;}
   color: var(--text-color, #1b3def) !important;
 }
 
-.customer-reviews--block {
+.image-with-text-overlay--content-inner .customer-reviews--block {
   align-items: center;
 }
-.star-rating {
+.image-with-text-overlay--content-inner .star-rating {
   text-align: center;
 }
-h5 {
+.image-with-text-overlay--content-inner  h5 {
   padding: 0 10%;
 }
 
