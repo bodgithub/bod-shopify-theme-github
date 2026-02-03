@@ -74,7 +74,10 @@
         "space_dgXhDh",
         "customer_reviews_CtBhV3"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".customer-reviews--block {align-items: center;}",
+        ".star-rating {text-align: center;}"
+      ],
       "settings": {
         "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-4_76fb036e-e110-4960-b77d-0a16c44fda51.jpg",
         "mobile_image": "shopify://shop_images/Home_Banner_Mobile_9.jpg",
