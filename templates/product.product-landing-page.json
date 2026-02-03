@@ -27,7 +27,7 @@
         "heading_bFmdae": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Balanced hormones begin with <em>metabolic</em> health</h2>",
+            "text": "<h2>Balance begins with <em>metabolic</em> health</h2>",
             "heading_color": "#1b3def",
             "heading_size": "h1-large"
           }
@@ -35,7 +35,7 @@
         "text_Pxy4YU": {
           "type": "text",
           "settings": {
-            "text": "<p>Fatigue, cravings, mood swings, PCOS, TTC challenges. Hormones and metabolism are inseparable. But, we’ve spent decades pretending they aren’t. The result?</p>",
+            "text": "<p>Cravings, mood swings, PCOS, TTC challenges — they're deeply connected. For decades, hormones and metabolism have been separated. The result:</p><p></p>",
             "description_color": "#2c2d2e",
             "description_size": "small"
           }
@@ -47,7 +47,7 @@
             "icon_size": 73,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "women have poor metabolic function",
+            "benefit_1": "women have impaired metabolic function",
             "icon_1": "shopify://shop_images/Stat-1.png",
             "benefit_2": "have insulin resistance",
             "icon_2": "shopify://shop_images/Stat-2.png",
@@ -74,6 +74,87 @@
         "text_Pxy4YU",
         "benefits_htqp6r",
         "customer_reviews_pYbB3h"
+      ],
+      "disabled": true,
+      "name": "Image with text overlay",
+      "settings": {
+        "image": "shopify://shop_images/Bodology-Hormone-Desktop-Banner-2.jpg",
+        "mobile_image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-2.jpg",
+        "image_parallax": false,
+        "desktop_height": "desktop-height-750",
+        "mobile_height": "mobile-height-auto",
+        "full_width": true,
+        "content_width": "small",
+        "content_position": "middle-left",
+        "text_alignment": "left",
+        "text_color": "#2c2d2e",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "image_with_text_overlay_T3rmDc": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_PpxNFH": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>INOSITOL FOR HORMONAL BALANCE</p>",
+            "text_color": "#1b3def"
+          }
+        },
+        "heading_xiV3aM": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>Balance begins with <em>metabolic</em> health</h2>",
+            "heading_color": "#1b3def",
+            "heading_size": "h1-large"
+          }
+        },
+        "text_WiQefq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Cravings, mood swings, PCOS, and TTC challenges aren’t separate issues. They’re metabolic signals.</p>",
+            "description_color": "#2c2d2e",
+            "description_size": "small"
+          }
+        },
+        "benefits_d8eRbc": {
+          "type": "benefits",
+          "settings": {
+            "benefits-title": "",
+            "icon_size": 28,
+            "border_size": 1,
+            "border_color": "#1b3def",
+            "benefit_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
+            "icon_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.icon.value }}",
+            "benefit_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.benefit.value }}",
+            "icon_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.icon.value }}",
+            "benefit_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.benefit.value }}",
+            "icon_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.icon.value }}",
+            "benefit_4": "",
+            "benefit_5": ""
+          }
+        },
+        "customer_reviews_pWXf3e": {
+          "type": "customer_reviews",
+          "disabled": true,
+          "settings": {
+            "stars": "5",
+            "heading": "Review heading",
+            "font_size": "1em",
+            "link": "",
+            "scale": "1"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_PpxNFH",
+        "heading_xiV3aM",
+        "text_WiQefq",
+        "benefits_d8eRbc",
+        "customer_reviews_pWXf3e"
       ],
       "name": "Image with text overlay",
       "settings": {
@@ -539,107 +620,6 @@
         "ai_gen_block_e5ed95a_KhkA73"
       ],
       "settings": {}
-    },
-    "image_with_text_R7yxcH": {
-      "type": "image-with-text",
-      "blocks": {
-        "text_Byk6MT": {
-          "type": "text",
-          "settings": {
-            "text": "<h2>Your <em>metabolic</em> <em>health</em> impacts your entire body</h2>"
-          }
-        },
-        "text_qneWGL": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>You felt it.</p><p>Fatigue, cravings, mood swings, PCOS, and TTC challenges. Too often treated as isolated problems instead of part of a bigger picture. That picture?</p>"
-          }
-        },
-        "text_LA3kry": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<h4><em><strong>Your metabolism.</strong></em></h4>"
-          }
-        },
-        "collapsible_tab_LzB4BY": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "87% of women have impaired metabolic funciton",
-            "open": false,
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible_tab_Dt7Wiq": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Cravings",
-            "open": false,
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible_tab_3zXTzd": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Mood",
-            "open": false,
-            "content": "",
-            "page": ""
-          }
-        },
-        "collapsible_tab_PftrBD": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Pcos",
-            "open": false,
-            "content": "",
-            "page": ""
-          }
-        },
-        "button_gRMVr6": {
-          "type": "button",
-          "disabled": true,
-          "settings": {
-            "button_text": "Claim 30% off now",
-            "button_link": "#product-details",
-            "button_html": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
-          }
-        }
-      },
-      "block_order": [
-        "text_Byk6MT",
-        "text_qneWGL",
-        "text_LA3kry",
-        "collapsible_tab_LzB4BY",
-        "collapsible_tab_Dt7Wiq",
-        "collapsible_tab_3zXTzd",
-        "collapsible_tab_PftrBD",
-        "button_gRMVr6"
-      ],
-      "disabled": true,
-      "name": "Image with text",
-      "settings": {
-        "image": "shopify://shop_images/Bodology-Inositol-Empowered-2_b274647e-5a99-4977-b196-7420f3e7cb27.jpg",
-        "use_video": false,
-        "video": "",
-        "video_autoplay": true,
-        "mobile_layout": "text_first",
-        "height": "large",
-        "desktop_image_width": "medium",
-        "full_width": true,
-        "layout": "text_first",
-        "content_position": "text-left",
-        "column_spacing": "medium",
-        "color_bg": "linear-gradient(135deg, rgba(243, 238, 235, 1), rgba(246, 242, 240, 1) 78%)",
-        "color_text": "#1b3def",
-        "color_p_text": "#2c2d2e",
-        "color_border": "#e2e2e2",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
     },
     "multicolumn_KdNre6": {
       "type": "multicolumn",
@@ -1518,12 +1498,12 @@
   "order": [
     "gpt_product_seo_DWikHm",
     "image_with_text_overlay_yexKYW",
+    "image_with_text_overlay_T3rmDc",
     "image_with_text_BtX3Vm",
     "spacer_fcdpRG",
     "custom_liquid_WV46gi",
     "main-product",
     "1768505899436dba61",
-    "image_with_text_R7yxcH",
     "multicolumn_KdNre6",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
