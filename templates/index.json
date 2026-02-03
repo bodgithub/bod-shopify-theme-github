@@ -22,6 +22,7 @@
           "type": "heading",
           "settings": {
             "text": "<h1>Your <em>hormones</em> deserve better</h1>",
+            "heading_color": "#1b3def",
             "heading_size": "h1-xlarge"
           }
         },
@@ -73,13 +74,7 @@
         "space_dgXhDh",
         "customer_reviews_CtBhV3"
       ],
-      "custom_css": [
-        "/*@media only screen and (max-width: 767px) {.mobile-height-500 {min-height: 600px !important; }}",
-        "@media only screen and (min-width: 768px) {.h1-xlarge {font-size: calc(var(--font-heading-scale) * 76px) !important; line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 76px) ) !important; }}",
-        "*/.customer-reviews--block {align-items: center;}",
-        ".star-rating {text-align: center;}",
-        "h5 {padding: 0 10%;}"
-      ],
+      "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-4_76fb036e-e110-4960-b77d-0a16c44fda51.jpg",
         "mobile_image": "shopify://shop_images/Home_Banner_Mobile_9.jpg",
@@ -90,7 +85,7 @@
         "content_width": "medium",
         "content_position": "bottom-center",
         "text_alignment": "center",
-        "text_color": "#1b3def",
+        "text_color": "#2c2d2e",
         "overlay_color": "#000000",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
@@ -871,8 +866,8 @@
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "transparent",
-        "bgcolor": "transparent",
+        "color_bg": "rgba(0,0,0,0)",
+        "bgcolor": "rgba(0,0,0,0)",
         "color_heading": "#1b3def",
         "color_text": "#1b3def",
         "color_links": "#2c2d2e",
