@@ -79,22 +79,25 @@
       "url": {{ request.origin | append: page.url | json }}
     }
   
-  
-  
-  
   </script>
 
 <script>
-  window.addEventListener(
-    "scroll",
-    () => {
-      const el = document.querySelector(".thb-secondary-area");
-      if (!el) return;
+  (function () {
+    // Mark that the scroll reveal script is active on this page
+    document.documentElement.classList.add("scroll-reveal-enabled");
 
+    const el = document.querySelector(".thb-secondary-area");
+    if (!el) return;
+
+    const update = () => {
       el.classList.toggle("is-visible", window.scrollY > 0);
-    },
-    { passive: true }
-  );
+    };
+
+    // Run once on load (so if user refreshes mid-scroll, it shows correctly)
+    update();
+
+    window.addEventListener("scroll", update, { passive: true });
+  })();
 </script>
 
 
