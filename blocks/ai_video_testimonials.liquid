@@ -359,6 +359,7 @@
             {% assign author_title_key = 'author_title_' | append: i %}
             {% assign author_image_key = 'author_image_' | append: i %}
             {% assign rating_key = 'rating_' | append: i %}
+            {% assign rating_value = block.settings[rating_key] | default: 0 %}
 
             {% if block.settings[video_key] != blank %}
               <div class="ai-testimonial-carousel__slide-{{ ai_gen_id }}">
@@ -387,64 +388,50 @@
                       </div>
                     {% endif %}
 
-                    {% assign rating_value = block.settings[rating_key] | default: 0 %}
-
                     {% if block.settings[quote_key] != blank or block.settings[author_key] != blank or block.settings[author_title_key] != blank or rating_value > 0 %}
                       <div class="ai-testimonial-carousel__overlay-{{ ai_gen_id }}">
-                        {% if block.settings[quote_key] != blank %}
-                          <p class="ai-testimonial-carousel__quote-{{ ai_gen_id }}">{{ block.settings[quote_key] }}</p>
+                        
+                        {% if rating_value > 0 %}
+                          <div
+                            class="star-rating"
+                            style="--star-rating: {{ rating_value }};"
+                            aria-label="Rating: {{ rating_value }} out of 5"
+                          ></div>
                         {% endif %}
 
-                        <div class="ai-testimonial-carousel__overlay-row-{{ ai_gen_id }}">
-                          {% if block.settings[author_key] != blank or block.settings[author_title_key] != blank %}
-                            <div class="ai-testimonial-carousel__author-{{ ai_gen_id }}">
-                              {% if block.settings[author_image_key] %}
-                                <img
-                                  src="{{ block.settings[author_image_key] | image_url: width: 96 }}"
-                                  alt="{{ block.settings[author_key] | escape }}"
-                                  class="ai-testimonial-carousel__author-image-{{ ai_gen_id }}"
-                                  loading="lazy"
-                                  width="48"
-                                  height="48"
-                                >
-                              {% else %}
-                                <div class="ai-testimonial-carousel__author-placeholder-{{ ai_gen_id }}">
-                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                    <circle cx="12" cy="7" r="4"></circle>
-                                  </svg>
-                                </div>
+                        {% if block.settings[quote_key] != blank %}
+                          <p class="ai-testimonial-carousel__quote-{{ ai_gen_id }}">
+                            {{ block.settings[quote_key] }}
+                          </p>
+                        {% endif %}
+
+                        {% if block.settings[author_key] != blank or block.settings[author_title_key] != blank %}
+                          <div class="ai-testimonial-carousel__author-{{ ai_gen_id }}">
+                            {% if block.settings[author_image_key] %}
+                              <img
+                                src="{{ block.settings[author_image_key] | image_url: width: 96 }}"
+                                alt="{{ block.settings[author_key] | escape }}"
+                                class="ai-testimonial-carousel__author-image-{{ ai_gen_id }}"
+                                loading="lazy"
+                                width="48"
+                                height="48"
+                              >
+                            {% endif %}
+
+                            <div class="ai-testimonial-carousel__author-info-{{ ai_gen_id }}">
+                              {% if block.settings[author_key] != blank %}
+                                <p class="ai-testimonial-carousel__author-name-{{ ai_gen_id }}">
+                                  {{ block.settings[author_key] }}
+                                </p>
                               {% endif %}
-
-                              <div class="ai-testimonial-carousel__author-info-{{ ai_gen_id }}">
-                                {% if block.settings[author_key] != blank %}
-                                  <p class="ai-testimonial-carousel__author-name-{{ ai_gen_id }}">{{ block.settings[author_key] }}</p>
-                                {% endif %}
-                                {% if block.settings[author_title_key] != blank %}
-                                  <p class="ai-testimonial-carousel__author-title-{{ ai_gen_id }}">{{ block.settings[author_title_key] }}</p>
-                                {% endif %}
-                              </div>
+                              {% if block.settings[author_title_key] != blank %}
+                                <p class="ai-testimonial-carousel__author-title-{{ ai_gen_id }}">
+                                  {{ block.settings[author_title_key] }}
+                                </p>
+                              {% endif %}
                             </div>
-                          {% endif %}
-
-                          {% if rating_value > 0 %}
-                            <div class="ai-testimonial-carousel__rating-{{ ai_gen_id }}" aria-label="Rating: {{ rating_value }} out of 5">
-                              {% for star in (1..5) %}
-                                <span class="ai-testimonial-carousel__star-{{ ai_gen_id }}">
-                                  {% if star <= rating_value %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{{ block.settings.star_color }}">
-                                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                                    </svg>
-                                  {% else %}
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.star_color }}" stroke-width="2">
-                                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                                    </svg>
-                                  {% endif %}
-                                </span>
-                              {% endfor %}
-                            </div>
-                          {% endif %}
-                        </div>
+                          </div>
+                        {% endif %}
                       </div>
                     {% endif %}
                   </div>
@@ -460,9 +447,7 @@
           class="ai-testimonial-carousel__button-{{ ai_gen_id }} ai-testimonial-carousel__prev-{{ ai_gen_id }}"
           aria-label="Previous testimonial"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
+          ‹
         </button>
 
         <div class="ai-testimonial-carousel__dots-{{ ai_gen_id }}"></div>
@@ -471,9 +456,7 @@
           class="ai-testimonial-carousel__button-{{ ai_gen_id }} ai-testimonial-carousel__next-{{ ai_gen_id }}"
           aria-label="Next testimonial"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
+          ›
         </button>
       </div>
     {% else %}
