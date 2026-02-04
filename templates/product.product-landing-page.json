@@ -593,13 +593,20 @@
             "icon_size": 77,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "women in the U.S. have impaired metabolic function",
+            "benefit_1": "women in the U.S. have impaired metabolic function*",
             "icon_1": "shopify://shop_images/Stat-1.png",
-            "benefit_2": "have insulin resistance",
+            "benefit_2": "have insulin resistance*",
             "icon_2": "shopify://shop_images/Stat-2.png",
-            "benefit_3": "",
+            "benefit_3": "higher risk of mood challenges linked to insulin resistance**",
+            "icon_3": "shopify://shop_images/Stat-4.png",
             "benefit_4": "",
-            "benefit_5": ""
+            "benefit_5": "of PCOS cases"
+          }
+        },
+        "custom_html_Gq37Qr": {
+          "type": "custom_html",
+          "settings": {
+            "html": "<div class=\"tiny-text\" style=\"color:grey; padding-top:10px;\">*World Health Organization**Harvard research study</div>"
           }
         },
         "space_Qa8Qwn": {
@@ -615,6 +622,7 @@
         "heading_bFmdae",
         "text_Pxy4YU",
         "benefits_htqp6r",
+        "custom_html_Gq37Qr",
         "space_Qa8Qwn"
       ],
       "custom_css": [],
