@@ -542,7 +542,7 @@
         const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
         videos.forEach((video) => {
           const nudge = () => {
-            video.muted = true;
+            video.muted = false;
 
             const p = video.play();
             if (p && typeof p.then === 'function') {
