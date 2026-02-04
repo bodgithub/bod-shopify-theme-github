@@ -26,14 +26,14 @@
         "subheading_PpxNFH": {
           "type": "subheading",
           "settings": {
-            "text": "<p>INOSITOL FOR HORMONAL BALANCE</p>",
+            "text": "<p>WHY INOSITOL</p>",
             "text_color": "#1b3def"
           }
         },
         "heading_xiV3aM": {
           "type": "heading",
           "settings": {
-            "text": "<h1>Balance begins with <em>metabolic</em> health</h1>",
+            "text": "<h1>Balanced hormones begin with <em>metabolic</em> health</h1>",
             "heading_color": "#1b3def",
             "heading_size": "h1-large"
           }
@@ -563,10 +563,16 @@
     "image_with_text_overlay_yexKYW": {
       "type": "image-with-text-overlay",
       "blocks": {
+        "space_pJTVXR": {
+          "type": "space",
+          "settings": {
+            "height": 50
+          }
+        },
         "subheading_AwFEkQ": {
           "type": "subheading",
           "settings": {
-            "text": "<p>WHY INOSITOL</p>",
+            "text": "<p>THE TRUTH</p>",
             "text_color": "#1b3def"
           }
         },
@@ -602,39 +608,35 @@
             "benefit_5": ""
           }
         },
-        "customer_reviews_pYbB3h": {
-          "type": "customer_reviews",
-          "disabled": true,
+        "space_Qa8Qwn": {
+          "type": "space",
           "settings": {
-            "stars": "5",
-            "heading": "Review heading",
-            "font_size": "1em",
-            "link": "",
-            "scale": "1"
+            "height": 50
           }
         }
       },
       "block_order": [
+        "space_pJTVXR",
         "subheading_AwFEkQ",
         "heading_bFmdae",
         "text_Pxy4YU",
         "benefits_htqp6r",
-        "customer_reviews_pYbB3h"
+        "space_Qa8Qwn"
       ],
       "name": "Image with text overlay",
       "settings": {
-        "image": "shopify://shop_images/Bodology-myo-inositol-powder-banner-4.jpg",
-        "mobile_image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-2.jpg",
+        "image": "shopify://shop_images/Mood-Desktop-Banner.jpg",
+        "mobile_image": "shopify://shop_images/PCOS-Banner-Mobile-13.jpg",
         "image_parallax": false,
-        "desktop_height": "desktop-height-750",
+        "desktop_height": "desktop-height-650",
         "mobile_height": "mobile-height-auto",
         "full_width": true,
         "content_width": "small",
         "content_position": "middle-left",
         "text_alignment": "left",
         "text_color": "#2c2d2e",
-        "overlay_color": "#ffffff",
-        "overlay_opacity": 86,
+        "overlay_color": "#f3eeea",
+        "overlay_opacity": 76,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -648,7 +650,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>Root-Cause Metabolic Support</h5><h4><em>Not symptom chasing</em></h4><p>Targets insulin signaling and metabolic balance at the root — the upstream driver of hormone disruption, cravings, mood crashes, and cycle irregularity.</p>",
+            "text": "<h5><strong>1. Supports insulin signaling</strong></h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -665,7 +667,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>Clinically Aligned 40:1 Ratio</h5><h4><em><strong>Dose matters</strong></em></h4><p>4,000mg Myo-Inositol + 100mg D-Chiro Inositol per day — the ratio most consistently studied for metabolic and hormonal support.</p>",
+            "text": "<h5><strong>2. Supports ovulation and cycle regularity</strong></h5><h4><em><strong>Less guessing</strong></em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -700,7 +702,24 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>Research-Backed Ingredient</h5><h4><em><strong>100+ Clinical Studies</strong></em></h4><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
+            "text": "<h5><strong>3. Helps regulate cravings and appetite</strong></h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
+            "link_label": "",
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
+          }
+        },
+        "column_bFmyt3": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h5><strong>4. Supports mood and emotional balance</strong></h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -716,8 +735,130 @@
         "column_9tKhGi",
         "column_FKEcTh",
         "column_ppertg",
-        "column_ggDGAH"
+        "column_ggDGAH",
+        "column_bFmyt3"
       ],
+      "custom_css": [
+        ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}",
+        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
+        "h4 {color: black !important;}"
+      ],
+      "settings": {
+        "heading": "How does inositol help?",
+        "marker_style": "style1",
+        "description": "",
+        "bgcolor": "",
+        "columns_desktop": 4,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "center",
+        "heading_size": "h5",
+        "color_heading": "#1b3def",
+        "marker_color": "#fd6262",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "multicolumn_6CdNae": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CqnFMH": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h5>Root-Cause Metabolic Support</h5><h4><em>Not symptom chasing</em></h4><p>Targets insulin signaling and metabolic balance at the root — the upstream driver of hormone disruption, cravings, mood crashes, and cycle irregularity.</p>",
+            "link_label": "",
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
+          }
+        },
+        "column_KWgRHy": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h5>Clinically Aligned 40:1 Ratio</h5><h4><em><strong>Dose matters</strong></em></h4><p>4,000mg Myo-Inositol + 100mg D-Chiro Inositol per day — the ratio most consistently studied for metabolic and hormonal support.</p>",
+            "link_label": "",
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
+          }
+        },
+        "column_ec7QAx": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h5><strong>Clean Formula, Nothing Extra</strong></h5><h4><em>Plays well with your stack</em></h4><p>No fillers, no sweeteners, no additives that interfere with absorption or other supplements.</p>",
+            "link_label": "",
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
+          }
+        },
+        "column_KpXWa3": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h5>Research-Backed Ingredient</h5><h4><em><strong>100+ Clinical Studies</strong></em></h4><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
+            "link_label": "",
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
+          }
+        },
+        "column_AwCNj4": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "",
+            "text": "<h5>Research-Backed Ingredient</h5><h4><em><strong>100+ Clinical Studies</strong></em></h4><p>Inositol is one of the most extensively researched nutrients for metabolic and hormone support — trusted by clinicians, not trends.</p>",
+            "link_label": "",
+            "link": "",
+            "eli_desktop_cols": "45% 18% 18% 18%",
+            "eli_gap": "28px",
+            "eli_card_padding": "22px",
+            "eli_card_radius": "12px",
+            "eli_card_border": "1px solid rgba(0,0,0,.08)",
+            "eli_card_bg": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "column_CqnFMH",
+        "column_KWgRHy",
+        "column_ec7QAx",
+        "column_KpXWa3",
+        "column_AwCNj4"
+      ],
+      "disabled": true,
       "custom_css": [
         ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}",
         ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
@@ -884,67 +1025,6 @@
         "speed": "50s",
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
-      }
-    },
-    "multicolumn_QQjdQM": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_wbzkNR": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "Why inositol",
-            "text": "",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_dUeaGh": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "{{ product.metafields.custom.problem_category.value.aha_statement | metafield_tag }}",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "column_wbzkNR",
-        "column_dUeaGh"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "",
-        "bgcolor": "",
-        "columns_desktop": 2,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "left",
-        "heading_size": "h3",
-        "color_heading": "#1b3def",
-        "marker_color": "#ffffff",
-        "color_text": "#1b3def",
-        "color_links": "#ffffff",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
       }
     },
     "multicolumn_rVnwmF": {
@@ -1523,10 +1603,10 @@
     "1768505899436dba61",
     "image_with_text_overlay_yexKYW",
     "multicolumn_KdNre6",
+    "multicolumn_6CdNae",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
     "scrolling_images_qqa6dt",
-    "multicolumn_QQjdQM",
     "multicolumn_rVnwmF",
     "custom_liquid_ax6VDD",
     "carousel_boxes_jas_HzyeW9",
