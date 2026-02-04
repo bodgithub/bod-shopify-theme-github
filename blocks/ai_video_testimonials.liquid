@@ -476,7 +476,7 @@
         this.currentIndex = 0;
         this.autoplayInterval = null;
 
-        // ✅ keep stable refs so removeEventListener works
+        // stable refs so removeEventListener works
         this._onResize = null;
         this._dragHandlers = null;
         this.trackWrapper = null;
@@ -501,15 +501,14 @@
         this.updateCarousel();
         this.forceVideoPosters();
 
-        /* ✅ ADD these 2 calls inside connectedCallback(), right after this.updateCarousel(); */
         this.setupOverlayHideOnPlay();
+        this.syncAutoplayWithVideoState(); // ✅ NEW: stop autoplay on play, resume when none playing
         this.enableDragSwipe();
 
         if (this.autoplay) {
           this.startAutoplay();
         }
 
-        // ✅ store the resize handler so we can remove it later
         this._onResize = () => this.updateSlidesPerView();
         window.addEventListener('resize', this._onResize);
       }
@@ -543,7 +542,7 @@
         const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
         videos.forEach((video) => {
           const nudge = () => {
-            video.muted = false;
+            video.muted = true;
 
             const p = video.play();
             if (p && typeof p.then === 'function') {
@@ -566,7 +565,6 @@
         });
       }
 
-      /* ✅ PASTE these 2 METHODS anywhere inside the class (e.g. right after forceVideoPosters()) */
       setupOverlayHideOnPlay() {
         const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
 
@@ -583,6 +581,31 @@
           video.addEventListener('play', hide);
           video.addEventListener('pause', show);
           video.addEventListener('ended', show);
+        });
+      }
+
+      // ✅ NEW helper method
+      syncAutoplayWithVideoState() {
+        const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
+
+        videos.forEach((video) => {
+          video.addEventListener('play', () => {
+            // stop carousel autoplay when any video starts playing
+            this.stopAutoplay();
+          });
+
+          const maybeResume = () => {
+            // resume autoplay only if NO videos are currently playing
+            const anyPlaying = Array.from(videos).some(
+              (v) => !v.paused && !v.ended
+            );
+            if (!anyPlaying && this.autoplay) {
+              this.startAutoplay();
+            }
+          };
+
+          video.addEventListener('pause', maybeResume);
+          video.addEventListener('ended', maybeResume);
         });
       }
 
@@ -605,14 +628,12 @@
           const match = transform.match(/matrix\((.+)\)/);
           if (!match) return 0;
           const parts = match[1].split(',').map((v) => parseFloat(v.trim()));
-          // matrix(a,b,c,d,tx,ty) => tx is index 4
-          return parts[4] || 0;
+          return parts[4] || 0; // tx
         };
 
         const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
 
         const calcMinTranslate = () => {
-          // At maxIndex, translateX is negative
           const slideWidth = this.slides[0]?.offsetWidth || 0;
           const gap = parseInt(getComputedStyle(this.track).gap) || 0;
           return -(this.maxIndex * (slideWidth + gap));
@@ -620,8 +641,6 @@
 
         const onPointerDown = (e) => {
           if (!this.track || this.slides.length === 0) return;
-
-          // Only left click / primary touch
           if (e.pointerType === 'mouse' && e.button !== 0) return;
 
           isPointerDown = true;
@@ -634,7 +653,6 @@
           startX = e.clientX;
           startTranslate = getTranslateX();
 
-          // Turn off transition while dragging
           this.track.style.transition = 'none';
         };
 
@@ -655,20 +673,18 @@
           if (!isPointerDown) return;
           isPointerDown = false;
 
-          // Restore transition for snap
           this.track.style.transition = 'transform 0.5s ease';
 
           const slideWidth = this.slides[0]?.offsetWidth || 0;
           const gap = parseInt(getComputedStyle(this.track).gap) || 0;
           const step = slideWidth + gap;
 
-          const currentTranslate = getTranslateX(); // negative or 0
+          const currentTranslate = getTranslateX();
           const rawIndex = Math.round(Math.abs(currentTranslate) / step);
 
           this.currentIndex = clamp(rawIndex, 0, this.maxIndex);
           this.updateCarousel();
 
-          // Prevent accidental clicks after a drag
           if (moved) {
             const blocker = (ev) => {
               ev.preventDefault();
@@ -684,7 +700,6 @@
         window.addEventListener('pointermove', onPointerMove);
         window.addEventListener('pointerup', onPointerUp);
 
-        // Save handlers so they can be cleaned up
         this._dragHandlers = { onPointerDown, onPointerMove, onPointerUp };
       }
 
@@ -694,9 +709,7 @@
 
         this.addEventListener('mouseenter', () => this.stopAutoplay());
         this.addEventListener('mouseleave', () => {
-          if (this.autoplay) {
-            this.startAutoplay();
-          }
+          if (this.autoplay) this.startAutoplay();
         });
       }
 
@@ -757,13 +770,11 @@
       disconnectedCallback() {
         this.stopAutoplay();
 
-        // ✅ remove resize listener reliably
         if (this._onResize) {
           window.removeEventListener('resize', this._onResize);
           this._onResize = null;
         }
 
-        // ✅ clean up drag listeners
         if (this._dragHandlers) {
           if (this.trackWrapper) {
             this.trackWrapper.removeEventListener('pointerdown', this._dragHandlers.onPointerDown);
@@ -775,9 +786,13 @@
       }
     }
 
-    customElements.define('testimonial-carousel-{{ ai_gen_id }}', TestimonialCarousel{{ ai_gen_id }});
+    customElements.define(
+      'testimonial-carousel-{{ ai_gen_id }}',
+      TestimonialCarousel{{ ai_gen_id }}
+    );
   })();
 </script>
+
 
 
 {% schema %}
