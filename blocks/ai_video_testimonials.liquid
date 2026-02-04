@@ -475,6 +475,11 @@
         super();
         this.currentIndex = 0;
         this.autoplayInterval = null;
+
+        // ✅ keep stable refs so removeEventListener works
+        this._onResize = null;
+        this._dragHandlers = null;
+        this.trackWrapper = null;
       }
 
       connectedCallback() {
@@ -483,7 +488,7 @@
         this.prevButton = this.querySelector('.ai-testimonial-carousel__prev-{{ ai_gen_id }}');
         this.nextButton = this.querySelector('.ai-testimonial-carousel__next-{{ ai_gen_id }}');
         this.dotsContainer = this.querySelector('.ai-testimonial-carousel__dots-{{ ai_gen_id }}');
-        
+
         this.slidesPerView = parseInt(this.dataset.slidesPerView) || 3;
         this.autoplay = this.dataset.autoplay === 'true';
         this.autoplaySpeed = parseInt(this.dataset.autoplaySpeed) || 5000;
@@ -496,12 +501,17 @@
         this.updateCarousel();
         this.forceVideoPosters();
 
+        /* ✅ ADD these 2 calls inside connectedCallback(), right after this.updateCarousel(); */
+        this.setupOverlayHideOnPlay();
+        this.enableDragSwipe();
 
         if (this.autoplay) {
           this.startAutoplay();
         }
 
-        window.addEventListener('resize', () => this.updateSlidesPerView());
+        // ✅ store the resize handler so we can remove it later
+        this._onResize = () => this.updateSlidesPerView();
+        window.addEventListener('resize', this._onResize);
       }
 
       updateSlidesPerView() {
@@ -519,7 +529,7 @@
       createDots() {
         this.dotsContainer.innerHTML = '';
         const totalDots = this.slides.length - this.currentSlidesPerView + 1;
-        
+
         for (let i = 0; i < totalDots; i++) {
           const dot = document.createElement('button');
           dot.classList.add('ai-testimonial-carousel__dot-{{ ai_gen_id }}');
@@ -530,31 +540,153 @@
       }
 
       forceVideoPosters() {
-  const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
-  videos.forEach((video) => {
-    const nudge = () => {
-      video.muted = true;
+        const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
+        videos.forEach((video) => {
+          const nudge = () => {
+            video.muted = true;
 
-      const p = video.play();
-      if (p && typeof p.then === 'function') {
-        p.then(() => {
-          video.pause();
-          video.currentTime = 0.01;
-        }).catch(() => {
-          try { video.currentTime = 0.01; } catch(e) {}
+            const p = video.play();
+            if (p && typeof p.then === 'function') {
+              p.then(() => {
+                video.pause();
+                video.currentTime = 0.01;
+              }).catch(() => {
+                try { video.currentTime = 0.01; } catch(e) {}
+              });
+            } else {
+              try { video.currentTime = 0.01; } catch(e) {}
+            }
+          };
+
+          if (video.readyState >= 1) {
+            nudge();
+          } else {
+            video.addEventListener('loadedmetadata', nudge, { once: true });
+          }
         });
-      } else {
-        try { video.currentTime = 0.01; } catch(e) {}
       }
-    };
 
-    if (video.readyState >= 1) {
-      nudge();
-    } else {
-      video.addEventListener('loadedmetadata', nudge, { once: true });
-    }
-  });
-}
+      /* ✅ PASTE these 2 METHODS anywhere inside the class (e.g. right after forceVideoPosters()) */
+      setupOverlayHideOnPlay() {
+        const videos = this.querySelectorAll('video.ai-testimonial-carousel__video-{{ ai_gen_id }}');
+
+        videos.forEach((video) => {
+          const wrapper = video.closest('.ai-testimonial-carousel__video-wrapper-{{ ai_gen_id }}');
+          if (!wrapper) return;
+
+          const overlay = wrapper.querySelector('.ai-testimonial-carousel__overlay-{{ ai_gen_id }}');
+          if (!overlay) return;
+
+          const hide = () => { overlay.style.display = 'none'; };
+          const show = () => { overlay.style.display = ''; };
+
+          video.addEventListener('play', hide);
+          video.addEventListener('pause', show);
+          video.addEventListener('ended', show);
+        });
+      }
+
+      enableDragSwipe() {
+        // Make the wrapper the drag surface
+        this.trackWrapper =
+          this.querySelector('.ai-testimonial-carousel__track-wrapper-{{ ai_gen_id }}') || this;
+
+        // Helps touch devices allow vertical scroll while we handle horizontal
+        this.trackWrapper.style.touchAction = 'pan-y';
+
+        let isPointerDown = false;
+        let startX = 0;
+        let startTranslate = 0;
+        let moved = false;
+
+        const getTranslateX = () => {
+          const transform = getComputedStyle(this.track).transform;
+          if (!transform || transform === 'none') return 0;
+          const match = transform.match(/matrix\((.+)\)/);
+          if (!match) return 0;
+          const parts = match[1].split(',').map((v) => parseFloat(v.trim()));
+          // matrix(a,b,c,d,tx,ty) => tx is index 4
+          return parts[4] || 0;
+        };
+
+        const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+
+        const calcMinTranslate = () => {
+          // At maxIndex, translateX is negative
+          const slideWidth = this.slides[0]?.offsetWidth || 0;
+          const gap = parseInt(getComputedStyle(this.track).gap) || 0;
+          return -(this.maxIndex * (slideWidth + gap));
+        };
+
+        const onPointerDown = (e) => {
+          if (!this.track || this.slides.length === 0) return;
+
+          // Only left click / primary touch
+          if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+          isPointerDown = true;
+          moved = false;
+
+          this.stopAutoplay();
+
+          this.trackWrapper.setPointerCapture?.(e.pointerId);
+
+          startX = e.clientX;
+          startTranslate = getTranslateX();
+
+          // Turn off transition while dragging
+          this.track.style.transition = 'none';
+        };
+
+        const onPointerMove = (e) => {
+          if (!isPointerDown) return;
+
+          const dx = e.clientX - startX;
+          if (Math.abs(dx) > 3) moved = true;
+
+          const minTranslate = calcMinTranslate();
+          const maxTranslate = 0;
+
+          const nextTranslate = clamp(startTranslate + dx, minTranslate, maxTranslate);
+          this.track.style.transform = `translateX(${nextTranslate}px)`;
+        };
+
+        const onPointerUp = () => {
+          if (!isPointerDown) return;
+          isPointerDown = false;
+
+          // Restore transition for snap
+          this.track.style.transition = 'transform 0.5s ease';
+
+          const slideWidth = this.slides[0]?.offsetWidth || 0;
+          const gap = parseInt(getComputedStyle(this.track).gap) || 0;
+          const step = slideWidth + gap;
+
+          const currentTranslate = getTranslateX(); // negative or 0
+          const rawIndex = Math.round(Math.abs(currentTranslate) / step);
+
+          this.currentIndex = clamp(rawIndex, 0, this.maxIndex);
+          this.updateCarousel();
+
+          // Prevent accidental clicks after a drag
+          if (moved) {
+            const blocker = (ev) => {
+              ev.preventDefault();
+              ev.stopPropagation();
+            };
+            this.trackWrapper.addEventListener('click', blocker, { capture: true, once: true });
+          }
+
+          if (this.autoplay) this.startAutoplay();
+        };
+
+        this.trackWrapper.addEventListener('pointerdown', onPointerDown);
+        window.addEventListener('pointermove', onPointerMove);
+        window.addEventListener('pointerup', onPointerUp);
+
+        // Save handlers so they can be cleaned up
+        this._dragHandlers = { onPointerDown, onPointerMove, onPointerUp };
+      }
 
       setupEventListeners() {
         this.prevButton.addEventListener('click', () => this.prev());
@@ -591,7 +723,7 @@
         const slideWidth = this.slides[0].offsetWidth;
         const gap = parseInt(getComputedStyle(this.track).gap) || 0;
         const offset = -(this.currentIndex * (slideWidth + gap));
-        
+
         this.track.style.transform = `translateX(${offset}px)`;
 
         this.prevButton.disabled = this.currentIndex === 0;
@@ -624,13 +756,29 @@
 
       disconnectedCallback() {
         this.stopAutoplay();
-        window.removeEventListener('resize', () => this.updateSlidesPerView());
+
+        // ✅ remove resize listener reliably
+        if (this._onResize) {
+          window.removeEventListener('resize', this._onResize);
+          this._onResize = null;
+        }
+
+        // ✅ clean up drag listeners
+        if (this._dragHandlers) {
+          if (this.trackWrapper) {
+            this.trackWrapper.removeEventListener('pointerdown', this._dragHandlers.onPointerDown);
+          }
+          window.removeEventListener('pointermove', this._dragHandlers.onPointerMove);
+          window.removeEventListener('pointerup', this._dragHandlers.onPointerUp);
+          this._dragHandlers = null;
+        }
       }
     }
 
     customElements.define('testimonial-carousel-{{ ai_gen_id }}', TestimonialCarousel{{ ai_gen_id }});
   })();
 </script>
+
 
 {% schema %}
 {
