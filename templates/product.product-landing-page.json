@@ -741,9 +741,9 @@
         "column_bFmyt3"
       ],
       "custom_css": [
-        ".multicolumn__column.small-12.medium-3.columns {border-left: 1px solid #1b3def; padding-left: 15px;}",
+        ".multicolumn__column.small-12.medium-3.columns {border-left: 0px solid #f2eee9; padding-left: 25px;}",
         ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
-        "h4 {color: black !important;}"
+        "h4 {}"
       ],
       "settings": {
         "heading": "",
@@ -756,7 +756,7 @@
         "text_alignment": "center",
         "heading_size": "h5",
         "color_heading": "#1b3def",
-        "marker_color": "#fd6262",
+        "marker_color": "#f2eee9",
         "color_text": "#2c2d2e",
         "color_links": "#2c2d2e",
         "disable_top_spacing": false,
