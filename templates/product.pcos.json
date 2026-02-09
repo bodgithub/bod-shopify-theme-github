@@ -105,210 +105,222 @@
         "border_separator_full": false
       }
     },
-    "main-product": {
-      "type": "main-product",
-      "blocks": {
-        "text_4wkmaU": {
-          "type": "text",
-          "settings": {
-            "text": "<h1>Inositol Powder</h1>",
-            "text_style": "style_vendor"
-          }
-        },
-        "custom_liquid_JMxr8q": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div><h4 style=\"color:grey !important; padding-bottom:15px;\"><em>Metabolic support for hormones + mood</em></h4></div>"
-          }
-        },
-        "custom_liquid_8d7xtd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px;\" > <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <u>Read reviews</u></div>\n        </a></div>"
-          }
-        },
-        "title_ExCfKU": {
-          "type": "title",
-          "disabled": true,
-          "settings": {
-            "show_products_rating": true
-          }
-        },
-        "text_KqaHce": {
-          "type": "text",
-          "settings": {
-            "text": "<p>{{ metaobjects.problem.pcos.product_description | metafield_tag }}</p>",
-            "text_style": "style_vendor"
-          }
-        },
-        "variant_picker_HegXNW": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "color_picker": false,
-            "color_picker_use_variants": false,
-            "variant_is_disabled": false,
-            "sizing_guide_variant": "Size",
-            "sizing_guide_text": "Sizing guide",
-            "sizing_guide_icon": "ruler",
-            "sizing_guide_page": ""
-          }
-        },
-        "recharge_subscriptions_subscription_widget_v2_9rCap3": {
-          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
-          "settings": {}
-        },
-        "custom_liquid_Aai6fh": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"height:15px;\"></div>"
-          }
-        },
-        "buy_buttons_3FBywE": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "side_panel_NGJTtJ": {
-          "type": "side_panel",
-          "settings": {
-            "side_panel_1_label": "Choosing my scoop",
-            "side_panel_1_icon": "question_mark",
-            "side_panel_1_page": "which-size-is-right-for-me",
-            "side_panel_2_label": "Clinical-Grade Supplement",
-            "side_panel_2_icon": "clipboard",
-            "side_panel_2_page": "what-we-mean-by-clinical-grade",
-            "side_panel_3_label": "",
-            "side_panel_3_icon": "none",
-            "side_panel_3_page": ""
-          }
-        },
-        "custom_liquid_wbFXG8": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"align-items: center; font-size: 14px;  padding-bottom:20px;\"><b>Free shipping</b> on all orders. <b>60-day</b> money back guarantee. <br>Arrives in <b>2-5 days</b>.\n</div>"
-          }
-        },
-        "custom_liquid_ymVUr7": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Hillary_-_white_-_logo_2.png?v=1731439561\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\"\n <br><i style=\"padding-top:5px;\">Hillary Wright, RD Boston IVF</i></p>\n  </div>\n</div>"
-          }
-        },
-        "custom_liquid_nfgEm4": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Tina_-_white_-_logo_2.png?v=1731443642\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"Supporting your metabolism is the key to balanced hormones, mood, and energy.\" <br><i style=\"padding-top:5px;\">Tina Kozman, CNP</i></p>\n  </div>\n</div>"
-          }
-        },
-        "custom_liquid_8TqUrD": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Anita_-_White_-_logo.png?v=1728818022\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Inositol to promote regular cycles, weight and hormonal balance.”\n\n<br><i style=\"padding-top:5px;\">Dr. Anita W., Ph.D</i></p>\n  </div>\n</div>"
-          }
-        },
-        "custom_liquid_8bY9Ux": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #000;\">\n    \n    <!-- Left Column -->\n    <div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Practioner Approved</span>\n        </div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>2,050mg Per Scoop</span>\n        </div>\n\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon-carob-3.png?v=1758397755\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Carob-Derived Formula</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Ratio</span>\n          \n        </div>\n        \n    \n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Third Party Tested</span>\n        </div>\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        \n    </div> </div>\n\n</div>"
-          }
-        },
-        "collapsible_tab_KVBdNK": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "{{ metaobjects.problem.pcos.benefits_for_title.value }}",
-            "open": false,
-            "content": "{{ metaobjects.problem.pcos.benefit_list | metafield_tag }}",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_KixfDF": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "WHY WE MADE IT",
-            "open": false,
-            "content": "<p>{{ metaobjects.problem.pcos.why_we_made_it | metafield_tag }}</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_Qq4nP6": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "THE \"NO\" LIST",
-            "open": false,
-            "content": "<p>We believe in pure, bioavailable formulations, no unnecessary extras:</p><ul><li>No fillers, rice flour, binders, or additives</li><li>No ingredients from animal origin</li><li>No artificial sweeteners, flavors, or stevia</li><li>No added sugar or caffeine</li><li>No gluten, dairy, or soy</li><li>No GMO ingredients</li><li>No hormones or unnecessary compounds: just pure dose-optimised inositol</li></ul>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_LHBcDr": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "What does it taste like?",
-            "open": false,
-            "content": "<p>Our inositol blend is naturally and gently sweet thanks to our <em>carob-sourced</em> D-Chiro Inositol. It dissolves easily into water, coffee, smoothies and yogurt, and many of our customers use it as a light, blood-sugar-friendly way to sweeten drinks without the spike. No flavorings, no weird aftertaste, just smooth, easy supplementation.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "collapsible_tab_w8UWx4": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "How do I take it?",
-            "open": false,
-            "content": "<p>Take 2 scoops (4g) daily. You can mix it into hot or cold liquids, or sprinkle onto food. Morning or evening both work, consistency is what matters most.</p>",
-            "page": "",
-            "custom_liquid": ""
-          }
-        },
-        "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac": {
-          "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_product_slider/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
-          "disabled": true,
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "text_4wkmaU",
-        "custom_liquid_JMxr8q",
-        "custom_liquid_8d7xtd",
-        "title_ExCfKU",
-        "text_KqaHce",
-        "variant_picker_HegXNW",
-        "recharge_subscriptions_subscription_widget_v2_9rCap3",
-        "custom_liquid_Aai6fh",
-        "buy_buttons_3FBywE",
-        "side_panel_NGJTtJ",
-        "custom_liquid_wbFXG8",
-        "custom_liquid_ymVUr7",
-        "custom_liquid_nfgEm4",
-        "custom_liquid_8TqUrD",
-        "custom_liquid_8bY9Ux",
-        "collapsible_tab_KVBdNK",
-        "collapsible_tab_KixfDF",
-        "collapsible_tab_Qq4nP6",
-        "collapsible_tab_LHBcDr",
-        "collapsible_tab_w8UWx4",
-        "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac"
-      ],
-      "custom_css": [
-        ".product-title {display: none;}",
-        ".amount {display: none;}"
-      ],
+    /* Replace your existing "main-product": {...} in the PCOS landing page JSON with this. */
+"main-product": {
+  "type": "main-product",
+  "blocks": {
+    "title_ExCfKU": {
+      "type": "title",
+      "disabled": true,
+      "settings": { "show_products_rating": true }
+    },
+
+    "custom_liquid_WPt4Yc": {
+      "type": "custom_liquid",
       "settings": {
-        "enable_sticky_add_to_cart": false,
-        "show_taxes_included": false,
-        "thumbnail_position": "left",
-        "media_aspect_ratio": "square",
-        "display_captions": false,
-        "hide_variants": true,
-        "lightbox": true,
-        "enable_video_looping": true
+        "custom_liquid": "<div style=\"margin-top:20px;\"><h1 style=\"font-weight:1000 !important;\">Inositol Powder</h1></div>"
       }
     },
+    "custom_liquid_WRFhPD": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div>"
+      }
+    },
+    "custom_liquid_8d7xtd": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <b>103 reviews</b></div>\n        </a></div>"
+      }
+    },
+
+    "custom_liquid_UEHeie": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<div >\n<ul>\n<li>Supports regular cycles<sup>*</sup></li>\n<li>Support healthy blood sugar levels<sup>†</sup></li>\n<li>Works on metabolic health<sup>*</sup></li>\n<li>Supports mood & mental clarity<sup>*</sup></li></ul>\n</div>"
+      }
+    },
+
+    "variant_picker_HegXNW": {
+      "type": "variant_picker",
+      "settings": {
+        "picker_type": "button",
+        "color_picker": false,
+        "color_picker_use_variants": false,
+        "variant_is_disabled": false,
+        "sizing_guide_variant": "Size",
+        "sizing_guide_text": "Sizing guide",
+        "sizing_guide_icon": "ruler",
+        "sizing_guide_page": ""
+      }
+    },
+
+    "recharge_subscriptions_subscription_widget_v2_9rCap3": {
+      "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+      "settings": {}
+    },
+
+    "custom_liquid_Aai6fh": {
+      "type": "custom_liquid",
+      "settings": { "custom_liquid": "<div style=\"height:15px;\"></div>" }
+    },
+
+    "buy_buttons_3FBywE": {
+      "type": "buy_buttons",
+      "settings": { "show_dynamic_checkout": false, "show_gift_card_recipient": false }
+    },
+
+    "side_panel_NGJTtJ": {
+      "type": "side_panel",
+      "settings": {
+        "side_panel_1_label": "Choosing my scoop",
+        "side_panel_1_icon": "question_mark",
+        "side_panel_1_page": "which-size-is-right-for-me",
+        "side_panel_2_label": "Clinical-Grade Supplement",
+        "side_panel_2_icon": "clipboard",
+        "side_panel_2_page": "what-we-mean-by-clinical-grade",
+        "side_panel_3_label": "",
+        "side_panel_3_icon": "none",
+        "side_panel_3_page": ""
+      }
+    },
+
+    "custom_liquid_YGHAge": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"align-items: center; font-size: 14px;  padding-bottom:20px;\"><b>Free shipping</b> on all orders. <b>60-day</b> money back guarantee. <br>Arrives in <b>2-5 days</b>.\n</div>"
+      }
+    },
+
+    "custom_liquid_jbg4iU": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"border:0.1px solid #1b3def; border: 1px #E0E5F0 solid; padding:10px; border-radius:5px; width:100%; height:auto;  margin-bottom:20px; font-size: 14px; color:#1b3def; \"><img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 19px; margin-right: 4px;\"><strong>Practitioner Approved</strong> <div style=\"padding:10px 0px 0px;color:#2c2d2e;\">Used by practitioners to support metabolic and hormonal health.<sup>*</sup></div></div>"
+      }
+    },
+
+    "custom_liquid_ymVUr7": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<!-- Bodology Expert Quote Section -->\n\n<div id=\"practitioners\" class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Hillary_-_white_-_logo_2.png?v=1731439561\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\"\n <br><i style=\"padding-top:5px;\">Hillary Wright, RD Boston IVF</i></p>\n  </div>\n</div>"
+      }
+    },
+    "custom_liquid_nfgEm4": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Tina_-_white_-_logo_2.png?v=1731443642\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"Supporting your metabolism is the key to balanced hormones, mood, and energy.\" <br><i style=\"padding-top:5px;\">Tina Kozman, CNP</i></p>\n  </div>\n</div>"
+      }
+    },
+    "custom_liquid_8TqUrD": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Anita_-_White_-_logo.png?v=1728818022\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Inositol to promote regular cycles, weight and hormonal balance.”\n\n<br><i style=\"padding-top:5px;\">Dr. Anita W., Ph.D</i></p>\n  </div>\n</div>"
+      }
+    },
+
+    "custom_liquid_8bY9Ux": {
+      "type": "custom_liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #000;\">\n    \n    <!-- Left Column -->\n    <div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Practioner Approved</span>\n        </div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>2,050mg Per Scoop</span>\n        </div>\n\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon-carob-3.png?v=1758397755\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Carob-Derived Formula</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Ratio</span>\n          \n        </div>\n        \n    \n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Third Party Tested</span>\n        </div>\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        \n    </div> </div>\n\n</div>"
+      }
+    },
+
+    "collapsible_tab_KVBdNK": {
+      "type": "collapsible_tab",
+      "settings": {
+        "heading": "Why metabolism comes first",
+        "open": false,
+        "content": "<p>Hormones don’t operate in isolation. They respond to metabolic signals, especially how your body processes glucose and insulin.</p><p>When metabolic function is supported, the body is better able to regulate ovulation, energy, mood, and hormone signaling. When it’s impaired, symptoms like irregular cycles, cravings, fatigue, and mood swings often appear, even when blood work looks “normal.”</p><p>Bodology® Inositol is designed to support metabolic pathways that influence hormonal balance at the root.</p>",
+        "page": "",
+        "custom_liquid": ""
+      }
+    },
+
+    "collapsible_tab_KhBe7c": {
+      "type": "collapsible_tab",
+      "settings": {
+        "heading": "What Bodology® Inositol supports",
+        "open": false,
+        "content": "<p>Inositol helps your body respond to insulin, the silent driver behind PCOS, fertility struggles, mood shifts, and blood sugar crashes.</p><p>When taken consistently, inositol has been clinically studied to support:</p><ul><li>Healthy ovulation and cycle regularity*</li><li>Hormone balance associated with PCOS*</li><li>Insulin sensitivity and healthy blood sugar levels†</li><li>Metabolic function linked to appetite regulation and weight balance†  </li><li>Sleep and energy regulation*</li><li>Neurotransmitter signaling linked to mood and emotional balance*</li></ul>",
+        "page": "",
+        "custom_liquid": ""
+      }
+    },
+
+    "collapsible_tab_Qq4nP6": {
+      "type": "collapsible_tab",
+      "settings": {
+        "heading": "What we leave out",
+        "open": false,
+        "content": "<ul><li>No fillers, rice flour, binders, or additives</li><li>No artificial sweeteners or flavors</li><li>No added sugar</li><li>No gluten, dairy, or soy</li><li>No GMO ingredients</li><li>No hormones</li><li>No ingredients from animal origin</li></ul>",
+        "page": "",
+        "custom_liquid": ""
+      }
+    },
+
+    "collapsible_tab_LHBcDr": {
+      "type": "collapsible_tab",
+      "settings": {
+        "heading": "How it tastes",
+        "open": false,
+        "content": "<p>Naturally and gently sweet, with no added flavors.</p><p>Bodology® Inositol dissolves easily into water, smoothies, or coffee without grit or aftertaste, making daily consistency simple.</p>",
+        "page": "",
+        "custom_liquid": ""
+      }
+    },
+
+    "collapsible_tab_w8UWx4": {
+      "type": "collapsible_tab",
+      "settings": {
+        "heading": "How to take it",
+        "open": false,
+        "content": "<p>Take <strong>2 scoops (4g) daily</strong>.</p><p>Mix into hot or cold liquids, blend into smoothies, or sprinkle onto food.<br/><br/>Morning or evening both work, consistency matters more than timing.</p><p>Most people begin with daily use and continue as part of their ongoing metabolic support routine.</p>",
+        "page": "",
+        "custom_liquid": ""
+      }
+    }
+  },
+
+  "block_order": [
+    "title_ExCfKU",
+    "custom_liquid_WPt4Yc",
+    "custom_liquid_WRFhPD",
+    "custom_liquid_8d7xtd",
+    "custom_liquid_UEHeie",
+    "variant_picker_HegXNW",
+    "recharge_subscriptions_subscription_widget_v2_9rCap3",
+    "custom_liquid_Aai6fh",
+    "buy_buttons_3FBywE",
+    "side_panel_NGJTtJ",
+    "custom_liquid_YGHAge",
+    "custom_liquid_jbg4iU",
+    "custom_liquid_ymVUr7",
+    "custom_liquid_nfgEm4",
+    "custom_liquid_8TqUrD",
+    "custom_liquid_8bY9Ux",
+    "collapsible_tab_KVBdNK",
+    "collapsible_tab_KhBe7c",
+    "collapsible_tab_Qq4nP6",
+    "collapsible_tab_LHBcDr",
+    "collapsible_tab_w8UWx4"
+  ],
+
+  "custom_css": [
+    ".product-title {display: none;}",
+    ".amount {display: none;}"
+  ],
+
+  "settings": {
+    "enable_sticky_add_to_cart": false,
+    "show_taxes_included": false,
+    "thumbnail_position": "left",
+    "media_aspect_ratio": "square",
+    "display_captions": false,
+    "hide_variants": true,
+    "lightbox": true,
+    "enable_video_looping": true
+  }
+},
     "spacer_4GDyCF": {
       "type": "spacer",
       "custom_css": [
