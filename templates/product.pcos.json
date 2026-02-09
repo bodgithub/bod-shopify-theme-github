@@ -28,6 +28,7 @@
           "type": "heading",
           "settings": {
             "text": "{{ metaobjects.problem.pcos.headline | metafield_tag }}",
+            "heading_color": "#1b3def",
             "heading_size": "h1-large"
           }
         },
@@ -111,7 +112,7 @@
         "text_4wkmaU": {
           "type": "text",
           "settings": {
-            "text": "<h1>Bodology® <em>Inositol</em> Powder</h1>",
+            "text": "<h1>Inositol Powder</h1>",
             "text_style": "style_vendor"
           }
         },
@@ -424,6 +425,10 @@
             "star_color": "#1b3def",
             "button_background": "#1b3def",
             "button_color": "#ffffff",
+            "overlay_background": "#ffffffeb",
+            "overlay_text_color": "#2c2d2e",
+            "overlay_padding": 14,
+            "overlay_border_radius": 12,
             "heading_size": 36,
             "subheading_size": 16,
             "quote_size": 14,
