@@ -20,11 +20,12 @@
         "space_GXftQ9": {
           "type": "space",
           "settings": {
-            "height": 50
+            "height": 200
           }
         },
         "subheading_PpxNFH": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "text": "<p>WHY INOSITOL</p>",
             "text_color": "#1b3def"
@@ -32,8 +33,9 @@
         },
         "heading_xiV3aM": {
           "type": "heading",
+          "disabled": true,
           "settings": {
-            "text": "<h1>Balanced hormones begin with <em>metabolic</em> health</h1>",
+            "text": "<h1><em>Metabolism</em> = your body's love language</h1>",
             "heading_color": "#1b3def",
             "heading_size": "h1-large"
           }
@@ -41,20 +43,20 @@
         "text_WiQefq": {
           "type": "text",
           "settings": {
-            "text": "<p>Cravings, mood swings, PCOS, and TTC challenges aren’t separate issues. They’re metabolic signals.</p>",
+            "text": "<p> </p>",
             "description_color": "#2c2d2e",
             "description_size": "small"
           }
         },
         "benefits_d8eRbc": {
           "type": "benefits",
+          "disabled": true,
           "settings": {
             "benefits-title": "",
             "icon_size": 28,
             "border_size": 1,
-            "border_color": "#1b3def",
+            "border_color": "#000000",
             "benefit_1": "That's where inositol comes in.",
-            "icon_1": "shopify://shop_images/icon_check-circle.png",
             "benefit_2": "",
             "benefit_3": "",
             "benefit_4": "",
@@ -97,8 +99,8 @@
       ],
       "name": "Image with text overlay",
       "settings": {
-        "image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-6.jpg",
-        "mobile_image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-2.jpg",
+        "image": "shopify://shop_images/Desktop-banner-Love.png",
+        "mobile_image": "shopify://shop_images/Banner.png",
         "image_parallax": false,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-auto",
@@ -113,57 +115,66 @@
         "disable_bottom_spacing": true
       }
     },
-    "image_with_text_BtX3Vm": {
-      "type": "image-with-text",
+    "scrolling_text_awhDpc": {
+      "type": "scrolling-text",
       "blocks": {
-        "text_3PFJhN": {
+        "text_HBiham": {
           "type": "text",
           "settings": {
-            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1>"
+            "text": "SHOW IT SOME LOVE",
+            "link": "",
+            "outline_text": false
           }
         },
-        "text_UrjqNQ": {
+        "text_f8g6aT": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "text": "<p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
+            "text": "20% WITH <b>LOVE20</b>",
+            "link": "",
+            "outline_text": false
           }
         },
-        "button_EdBk3b": {
-          "type": "button",
+        "text_HzdkeM": {
+          "type": "text",
           "settings": {
-            "button_text": "Claim 30% off now",
-            "button_link": "#product-details",
-            "button_html": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
+            "text": "SHOW IT SOME LOVE",
+            "link": "",
+            "outline_text": false
+          }
+        },
+        "text_Q8pT7P": {
+          "type": "text",
+          "settings": {
+            "text": "20% WITH <b>LOVE20</b>",
+            "link": "",
+            "outline_text": false
           }
         }
       },
       "block_order": [
-        "text_3PFJhN",
-        "text_UrjqNQ",
-        "button_EdBk3b"
+        "text_HBiham",
+        "text_f8g6aT",
+        "text_HzdkeM",
+        "text_Q8pT7P"
       ],
-      "disabled": true,
-      "name": "Image with text",
+      "name": "Scrolling text",
       "settings": {
-        "image": "shopify://shop_images/Bodology_girl_water_4.png",
-        "use_video": true,
-        "video": "",
-        "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
-        "video_autoplay": true,
-        "mobile_layout": "text_first",
-        "height": "large",
-        "desktop_image_width": "small",
+        "height": "height-auto",
         "full_width": true,
-        "layout": "text_first",
-        "content_position": "text-center",
-        "column_spacing": "medium",
-        "color_bg": "linear-gradient(135deg, rgba(243, 238, 235, 1), rgba(246, 242, 240, 1) 78%)",
-        "color_text": "#1b3def",
-        "color_p_text": "#1b3def",
-        "color_border": "#e2e2e2",
+        "direction": "left",
+        "speed": "20s",
+        "rotation": 0,
+        "negative_rotation": false,
+        "font_family": "body",
+        "text_size": 20,
+        "text_uppercase": false,
+        "image_size": "medium",
+        "color_bg": "#f3eeea",
+        "color_text": "#1A1C1D",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
         "disable_top_spacing": true,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "spacer_fcdpRG": {
@@ -651,8 +662,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "",
-            "text": "<h5><strong>1. Supports insulin signaling</strong></h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
+            "title": "1. SUPPORTS INSULIN SIGNALLING",
+            "text": "<h5><em>Your metabolic foundation</em></h5><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -668,26 +679,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "",
-            "text": "<h5><strong>2. Supports ovulation and cycle regularity</strong></h5><h4><em><strong>Less guessing</strong></em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_ppertg": {
-          "type": "column",
-          "disabled": true,
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5><strong>Clean Formula, Nothing Extra</strong></h5><h4><em>Plays well with your stack</em></h4><p>No fillers, no sweeteners, no additives that interfere with absorption or other supplements.</p>",
+            "title": "2. SUPPORTS OVULATION + CYCLE REGULARITY",
+            "text": "<h5><em><strong>Less guessing</strong></em></h5><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -703,8 +696,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "",
-            "text": "<h5><strong>3. Helps regulate cravings and appetite</strong></h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
+            "title": "3. HELPS REGULATE CRAVINGS",
+            "text": "<h5><em>Steadier blood sugar, fewer crashes</em></h5><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -720,8 +713,8 @@
           "settings": {
             "image_full_width": false,
             "image_link": "",
-            "title": "",
-            "text": "<h5><strong>4. Supports mood and emotional balance</strong></h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
+            "title": "4. SUPPORTS MOOD + RESILIANCE",
+            "text": "<h5><em>Metabolism and brain chemistry are connected</em></h5><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -736,14 +729,13 @@
       "block_order": [
         "column_9tKhGi",
         "column_FKEcTh",
-        "column_ppertg",
         "column_ggDGAH",
         "column_bFmyt3"
       ],
       "custom_css": [
-        ".multicolumn__column.small-12.medium-3.columns {border: 3em solid #f2eee9; padding-left: 0px;}",
+        ".multicolumn__column.small-12.medium-3.columns {border: 1.5em solid #f2eee9; padding-left: 0px;}",
         ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
-        "h4 {}",
+        "h4 {color: black;}",
         ".section-multicolumn {background-color: #f3eeec;}"
       ],
       "settings": {
@@ -1552,7 +1544,7 @@
   "order": [
     "gpt_product_seo_DWikHm",
     "image_with_text_overlay_T3rmDc",
-    "image_with_text_BtX3Vm",
+    "scrolling_text_awhDpc",
     "spacer_fcdpRG",
     "custom_liquid_WV46gi",
     "main-product",
