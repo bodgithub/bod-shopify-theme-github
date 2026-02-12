@@ -652,7 +652,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>1. Supports insulin signaling</strong></h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
+            "text": "<h5>1. Supports insulin signaling</h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -669,7 +669,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>2. Supports ovulation and cycle regularity</strong></h5><h4><em><strong>Less guessing</strong></em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
+            "text": "<h5>2. Supports ovulation and cycle regularity</h5><h4><em><strong>Less guessing</strong></em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -704,7 +704,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>3. Helps regulate cravings and appetite</strong></h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
+            "text": "<h5>3. Helps regulate cravings and appetite</h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -721,7 +721,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5><strong>4. Supports mood and emotional balance</strong></h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
+            "text": "<h5>4. Supports mood and emotional balance</h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -741,9 +741,10 @@
         "column_bFmyt3"
       ],
       "custom_css": [
-        ".multicolumn__column.small-12.medium-3.columns {border: 3em solid #f2eee9; padding-left: 0px;}",
+        ".multicolumn__column.small-12.medium-3.columns {border: 1.5em solid #f2eee9; padding-left: 0px;}",
         ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
-        "h4 {}",
+        "h4 {color: black; font-size: 20px; line-height: 28px;}",
+        "h5 {font-size: 25px; line-height: 30px; padding-bottom: 6px; text-transform: uppercase;}",
         ".section-multicolumn {background-color: #f3eeec;}"
       ],
       "settings": {
