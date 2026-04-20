@@ -1,6 +1,412 @@
+{% doc %}
+  @prompt
+    animated text carousel that animates text across the screen, If a Text isn't completed, don't include a blank space in the animation. also, allow me to add margin above and below the block, after the final populated text block, add the padding, currently there is no padding between text 3 and text 1 when text 4 and 5 isn't populated, add a 6th text box
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-text-carousel-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_vertical }}px 0;
+    margin-top: {{ block.settings.margin_top }}px;
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+    position: relative;
+  }
+
+  .ai-text-carousel-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    width: max-content;
+    animation: ai-text-carousel-scroll-{{ ai_gen_id }} {{ block.settings.animation_speed }}s linear infinite;
+  }
+
+  .ai-text-carousel-track-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: {{ block.settings.text_spacing }}px;
+    white-space: nowrap;
+  }
+
+  .ai-text-carousel-item-{{ ai_gen_id }} {
+    font-size: {{ block.settings.font_size }}px;
+    color: {{ block.settings.text_color }};
+    font-weight: {{ block.settings.font_weight }};
+    text-transform: {{ block.settings.text_transform }};
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+  }
+
+  .ai-text-carousel-separator-{{ ai_gen_id }} {
+    width: {{ block.settings.separator_size }}px;
+    height: {{ block.settings.separator_size }}px;
+    background-color: {{ block.settings.separator_color }};
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @keyframes ai-text-carousel-scroll-{{ ai_gen_id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .ai-text-carousel-wrapper-{{ ai_gen_id }}:hover {
+    animation-play-state: {{ block.settings.pause_on_hover | default: false | if: 'paused', 'running' }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-text-carousel-item-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.font_size }}px * 0.8);
+    }
+  }
+{% endstyle %}
+
+<text-carousel-{{ ai_gen_id }}
+  class="ai-text-carousel-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-text-carousel-wrapper-{{ ai_gen_id }}">
+    <div class="ai-text-carousel-track-{{ ai_gen_id }}">
+      {% if block.settings.text_1 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_2 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_3 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_4 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_5 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_6 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+    </div>
+
+    <div class="ai-text-carousel-track-{{ ai_gen_id }}" aria-hidden="true">
+      {% if block.settings.text_1 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_2 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_3 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_4 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_5 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+
+      {% if block.settings.text_6 != blank %}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 }}</span>
+        {% if block.settings.show_separator %}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}"></span>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</text-carousel-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TextCarousel{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.wrapper = this.querySelector('.ai-text-carousel-wrapper-{{ ai_gen_id }}');
+      }
+    }
+
+    customElements.define('text-carousel-{{ ai_gen_id }}', TextCarousel{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Text carousel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Text content"
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Text 1",
+      "default": "Premium Myo-Inositol Supplements"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Text 2",
+      "default": "Support Your Metabolic Health"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Text 3",
+      "default": "Science-Backed Formulas"
+    },
+    {
+      "type": "text",
+      "id": "text_4",
+      "label": "Text 4",
+      "default": "Free Shipping Over $50"
+    },
+    {
+      "type": "text",
+      "id": "text_5",
+      "label": "Text 5",
+      "default": "Trusted by Thousands"
+    },
+    {
+      "type": "text",
+      "id": "text_6",
+      "label": "Text 6"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Animation speed",
+      "default": 30,
+      "info": "Lower values = faster scrolling"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 24
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "lowercase",
+          "label": "Lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": -2,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Letter spacing",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "text_spacing",
+      "min": 20,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Space between text items",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Separator"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_separator",
+      "label": "Show separator",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "separator_size",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "label": "Separator size",
+      "default": 6
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator color",
+      "default": "#1b3def"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text carousel"
+    }
+  ]
+}
 {% endschema %}
