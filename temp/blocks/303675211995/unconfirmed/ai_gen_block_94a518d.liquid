@@ -1,6 +1,274 @@
+{% doc %}
+  @prompt
+    Diagram which says "LESS INSULIN" arrow to the right "LESS BLOOG SUGAR CHAOS" arrow to the right "MORE BALANCE"
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-flow-diagram-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-flow-diagram__container-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: {{ block.settings.spacing }}px;
+    flex-wrap: wrap;
+  }
+
+  .ai-flow-diagram__step-{{ ai_gen_id }} {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .ai-flow-diagram__text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.text_size }}px;
+    font-weight: {{ block.settings.text_weight }};
+    color: {{ block.settings.text_color }};
+    line-height: 1.2;
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+  }
+
+  .ai-flow-diagram__arrow-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ai-flow-diagram__arrow-{{ ai_gen_id }} svg {
+    width: {{ block.settings.arrow_size }}px;
+    height: {{ block.settings.arrow_size }}px;
+    fill: none;
+    stroke: {{ block.settings.arrow_color }};
+    stroke-width: {{ block.settings.arrow_thickness }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-flow-diagram__container-{{ ai_gen_id }} {
+      flex-direction: column;
+      gap: {{ block.settings.spacing | times: 0.6 }}px;
+    }
+
+    .ai-flow-diagram__arrow-{{ ai_gen_id }} svg {
+      transform: rotate(90deg);
+    }
+
+    .ai-flow-diagram__text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.text_size | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-flow-diagram-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-flow-diagram__container-{{ ai_gen_id }}">
+    <div class="ai-flow-diagram__step-{{ ai_gen_id }}">
+      <div class="ai-flow-diagram__text-{{ ai_gen_id }}">{{ block.settings.step_1_text }}</div>
+    </div>
+
+    <div class="ai-flow-diagram__arrow-{{ ai_gen_id }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </div>
+
+    <div class="ai-flow-diagram__step-{{ ai_gen_id }}">
+      <div class="ai-flow-diagram__text-{{ ai_gen_id }}">{{ block.settings.step_2_text }}</div>
+    </div>
+
+    <div class="ai-flow-diagram__arrow-{{ ai_gen_id }}">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </div>
+
+    <div class="ai-flow-diagram__step-{{ ai_gen_id }}">
+      <div class="ai-flow-diagram__text-{{ ai_gen_id }}">{{ block.settings.step_3_text }}</div>
+    </div>
+  </div>
+</div>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Flow diagram",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "step_1_text",
+      "label": "Step 1 text",
+      "default": "LESS INSULIN"
+    },
+    {
+      "type": "text",
+      "id": "step_2_text",
+      "label": "Step 2 text",
+      "default": "LESS BLOOD SUGAR CHAOS"
+    },
+    {
+      "type": "text",
+      "id": "step_3_text",
+      "label": "Step 3 text",
+      "default": "MORE BALANCE"
+    },
+    {
+      "type": "header",
+      "content": "Text style"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Text weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#1b3def"
+    },
+    {
+      "type": "header",
+      "content": "Arrow style"
+    },
+    {
+      "type": "range",
+      "id": "arrow_size",
+      "label": "Arrow size",
+      "min": 16,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "arrow_thickness",
+      "label": "Arrow thickness",
+      "min": 1,
+      "max": 4,
+      "step": 0.5,
+      "default": 2
+    },
+    {
+      "type": "color",
+      "id": "arrow_color",
+      "label": "Arrow color",
+      "default": "#1b3def"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "Spacing between elements",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flow diagram"
+    }
+  ]
+}
 {% endschema %}
