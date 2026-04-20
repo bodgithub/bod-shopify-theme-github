@@ -457,6 +457,55 @@
     "1768505899436dba61": {
       "type": "_blocks",
       "blocks": {
+        "ai_gen_block_66d84b5_zDxjMN": {
+          "type": "ai_gen_block_66d84b5",
+          "settings": {
+            "text_1": "LESS INSULIN",
+            "text_2": "LESS BLOOD SUGAR CHAOS",
+            "text_3": "MORE BALANCE",
+            "text_4": "LESS INSULIN",
+            "text_5": "LESS BLOOD SUGAR CHAOS",
+            "text_6": "MORE BALANCE",
+            "animation_speed": 30,
+            "pause_on_hover": true,
+            "font_size": 22,
+            "font_weight": "500",
+            "text_transform": "uppercase",
+            "letter_spacing": 0,
+            "text_spacing": 70,
+            "padding_vertical": 30,
+            "margin_top": 30,
+            "margin_bottom": 0,
+            "show_separator": true,
+            "separator_size": 20,
+            "separator_color": "#ffffff",
+            "text_color": "#ffffff",
+            "background_color": "#1e3ace"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_94a518d_Q7B8W4": {
+          "type": "ai_gen_block_94a518d",
+          "disabled": true,
+          "settings": {
+            "step_1_text": "LESS INSULIN",
+            "step_2_text": "LESS BLOOD SUGAR CHAOS",
+            "step_3_text": "MORE BALANCE",
+            "text_size": 20,
+            "text_weight": "700",
+            "letter_spacing": 1,
+            "text_color": "#1b3def",
+            "arrow_size": 32,
+            "arrow_thickness": 1.5,
+            "arrow_color": "#1b3def",
+            "spacing": 20,
+            "padding": 40,
+            "desktop_width_percent": 100,
+            "background_color": "#ffffff",
+            "border_radius": 10
+          },
+          "blocks": {}
+        },
         "ai_gen_block_23be19a_U47bUD": {
           "type": "ai_gen_block_23be19a",
           "disabled": true,
@@ -548,6 +597,8 @@
         }
       },
       "block_order": [
+        "ai_gen_block_66d84b5_zDxjMN",
+        "ai_gen_block_94a518d_Q7B8W4",
         "ai_gen_block_23be19a_U47bUD",
         "ai_gen_block_e5ed95a_KhkA73"
       ],
