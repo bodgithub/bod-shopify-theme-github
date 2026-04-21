@@ -1,6 +1,422 @@
+{% doc %}
+  @prompt
+    create a countdown banner. allow me to change the background of the space to a gradient where I can choose the colors of the gradient. The countdown should be counting down to a specific date.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-countdown-banner-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    background: linear-gradient({{ block.settings.gradient_angle }}deg, {{ block.settings.gradient_color_1 }}, {{ block.settings.gradient_color_2 }});
+    text-align: center;
+  }
+
+  .ai-countdown-banner__content-{{ ai_gen_id }} {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.content_gap }}px;
+    align-items: center;
+  }
+
+  .ai-countdown-banner__heading-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.2;
+  }
+
+  .ai-countdown-banner__timer-{{ ai_gen_id }} {
+    display: flex;
+    gap: {{ block.settings.timer_gap }}px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .ai-countdown-banner__time-unit-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ai-countdown-banner__number-{{ ai_gen_id }} {
+    font-size: {{ block.settings.number_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.number_color }};
+    line-height: 1;
+    min-width: 60px;
+    padding: {{ block.settings.number_padding }}px;
+    background-color: {{ block.settings.number_bg_color }};
+    border-radius: {{ block.settings.number_border_radius }}px;
+  }
+
+  .ai-countdown-banner__label-{{ ai_gen_id }} {
+    font-size: {{ block.settings.label_size }}px;
+    color: {{ block.settings.label_color }};
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .ai-countdown-banner__expired-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    display: none;
+  }
+
+  .ai-countdown-banner__expired-{{ ai_gen_id }}.active {
+    display: block;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-countdown-banner-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_vertical | times: 0.7 }}px {{ block.settings.padding_horizontal | times: 0.7 }}px;
+    }
+
+    .ai-countdown-banner__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size | times: 0.7 }}px;
+    }
+
+    .ai-countdown-banner__number-{{ ai_gen_id }} {
+      font-size: {{ block.settings.number_size | times: 0.7 }}px;
+      min-width: 45px;
+      padding: {{ block.settings.number_padding | times: 0.7 }}px;
+    }
+
+    .ai-countdown-banner__label-{{ ai_gen_id }} {
+      font-size: {{ block.settings.label_size | times: 0.8 }}px;
+    }
+
+    .ai-countdown-banner__timer-{{ ai_gen_id }} {
+      gap: {{ block.settings.timer_gap | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<countdown-banner-{{ ai_gen_id }}
+  class="ai-countdown-banner-{{ ai_gen_id }}"
+  data-end-date="{{ block.settings.end_date }}"
+  data-end-time="{{ block.settings.end_time }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-countdown-banner__content-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-countdown-banner__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-countdown-banner__timer-{{ ai_gen_id }}" data-timer>
+      {% if block.settings.show_days %}
+        <div class="ai-countdown-banner__time-unit-{{ ai_gen_id }}">
+          <div class="ai-countdown-banner__number-{{ ai_gen_id }}" data-days>00</div>
+          <div class="ai-countdown-banner__label-{{ ai_gen_id }}">Days</div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_hours %}
+        <div class="ai-countdown-banner__time-unit-{{ ai_gen_id }}">
+          <div class="ai-countdown-banner__number-{{ ai_gen_id }}" data-hours>00</div>
+          <div class="ai-countdown-banner__label-{{ ai_gen_id }}">Hours</div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_minutes %}
+        <div class="ai-countdown-banner__time-unit-{{ ai_gen_id }}">
+          <div class="ai-countdown-banner__number-{{ ai_gen_id }}" data-minutes>00</div>
+          <div class="ai-countdown-banner__label-{{ ai_gen_id }}">Minutes</div>
+        </div>
+      {% endif %}
+
+      {% if block.settings.show_seconds %}
+        <div class="ai-countdown-banner__time-unit-{{ ai_gen_id }}">
+          <div class="ai-countdown-banner__number-{{ ai_gen_id }}" data-seconds>00</div>
+          <div class="ai-countdown-banner__label-{{ ai_gen_id }}">Seconds</div>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ai-countdown-banner__expired-{{ ai_gen_id }}" data-expired>
+      {{ block.settings.expired_message }}
+    </div>
+  </div>
+</countdown-banner-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CountdownBanner{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.endDate = this.dataset.endDate;
+        this.endTime = this.dataset.endTime;
+        this.timer = this.querySelector('[data-timer]');
+        this.expiredMessage = this.querySelector('[data-expired]');
+        this.daysEl = this.querySelector('[data-days]');
+        this.hoursEl = this.querySelector('[data-hours]');
+        this.minutesEl = this.querySelector('[data-minutes]');
+        this.secondsEl = this.querySelector('[data-seconds]');
+      }
+
+      connectedCallback() {
+        if (!this.endDate) return;
+
+        this.updateCountdown();
+        this.interval = setInterval(() => this.updateCountdown(), 1000);
+      }
+
+      disconnectedCallback() {
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
+      }
+
+      updateCountdown() {
+        const endDateTime = new Date(this.endDate + ' ' + (this.endTime || '23:59:59')).getTime();
+        const now = new Date().getTime();
+        const distance = endDateTime - now;
+
+        if (distance < 0) {
+          clearInterval(this.interval);
+          if (this.timer) this.timer.style.display = 'none';
+          if (this.expiredMessage) this.expiredMessage.classList.add('active');
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        if (this.daysEl) this.daysEl.textContent = String(days).padStart(2, '0');
+        if (this.hoursEl) this.hoursEl.textContent = String(hours).padStart(2, '0');
+        if (this.minutesEl) this.minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (this.secondsEl) this.secondsEl.textContent = String(seconds).padStart(2, '0');
+      }
+    }
+
+    customElements.define('countdown-banner-{{ ai_gen_id }}', CountdownBanner{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Countdown banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Limited Time Offer"
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "End date",
+      "info": "Format: YYYY-MM-DD (e.g., 2026-12-31)"
+    },
+    {
+      "type": "text",
+      "id": "end_time",
+      "label": "End time",
+      "default": "23:59:59",
+      "info": "Format: HH:MM:SS (e.g., 23:59:59)"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "expired_message",
+      "label": "Expired message",
+      "default": "This offer has ended"
+    },
+    {
+      "type": "header",
+      "content": "Timer display"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_days",
+      "label": "Show days",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_hours",
+      "label": "Show hours",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_minutes",
+      "label": "Show minutes",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seconds",
+      "label": "Show seconds",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Background gradient"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient color 1",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient color 2",
+      "default": "#b4c0ff"
+    },
+    {
+      "type": "range",
+      "id": "gradient_angle",
+      "min": 0,
+      "max": 360,
+      "step": 15,
+      "unit": "deg",
+      "label": "Gradient angle",
+      "default": 90
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "number_color",
+      "label": "Number",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "number_bg_color",
+      "label": "Number background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "number_size",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Number size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "label_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Label size",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Content gap",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "timer_gap",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "label": "Timer gap",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "number_padding",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Number padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "number_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Number border radius",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Countdown banner"
+    }
+  ]
+}
 {% endschema %}
