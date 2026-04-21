@@ -14,6 +14,45 @@
       "disabled": true,
       "settings": {}
     },
+    "1776812052094a9642": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_38ab15c_E9Vi7W": {
+          "type": "ai_gen_block_38ab15c",
+          "settings": {
+            "heading": "Coming <em>soon</em>",
+            "end_date": "2026-04-27",
+            "end_time": "23:59:59",
+            "expired_message": "This campaign has ended",
+            "show_days": true,
+            "show_hours": true,
+            "show_minutes": true,
+            "show_seconds": true,
+            "gradient_color_1": "#0f2ed0",
+            "gradient_color_2": "#0a95ef",
+            "gradient_angle": 45,
+            "heading_color": "#ffffff",
+            "number_color": "#1b3def",
+            "number_bg_color": "#ffffff",
+            "label_color": "#ffffff",
+            "heading_size": 32,
+            "number_size": 48,
+            "label_size": 12,
+            "padding_vertical": 40,
+            "padding_horizontal": 20,
+            "content_gap": 20,
+            "timer_gap": 20,
+            "number_padding": 12,
+            "number_border_radius": 8
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_38ab15c_E9Vi7W"
+      ],
+      "settings": {}
+    },
     "rich_text_YUNjJ8": {
       "type": "rich-text",
       "blocks": {
@@ -62,10 +101,10 @@
         "heading_gQt3bQ": {
           "type": "heading",
           "settings": {
-            "text": "Your label will be <i>decoded</i> at launch on Monday 27th",
+            "text": "Your label will be decoded at launch on Monday 27th",
             "marker_style": "style1",
             "heading_size": "h1",
-            "marker_color": "#FD6262"
+            "marker_color": "#fd6262"
           }
         },
         "text_NMTQEB": {
@@ -191,6 +230,7 @@
   },
   "order": [
     "main",
+    "1776812052094a9642",
     "rich_text_YUNjJ8",
     "image_with_text_EktFWn",
     "1728927113bb2612d3",
