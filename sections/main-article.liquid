@@ -229,65 +229,93 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-  const articleContentElement = document.querySelector('.post-content');
-  const tocElement = document.querySelector('#table-of-contents ul');
+    // Select the blog content container
+    const articleContentElement = document.querySelector('.post-content');
+    const tocElement = document.querySelector('#table-of-contents ul');
 
-  if (!articleContentElement || !tocElement) return;
+    if (articleContentElement && tocElement) {
+      let articleContent = articleContentElement.innerHTML;
 
-  const headings = articleContentElement.querySelectorAll('h2, h3');
-  const tocItems = {};
-
-  function generateId(text) {
-    return text
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, '')
-      .trim()
-      .replace(/\s+/g, '-')
-      .slice(0, 60);
-  }
-
-  headings.forEach((heading) => {
-    const text = heading.textContent.trim();
-    if (!text) return;
-
-    const id = generateId(text);
-    heading.id = id;
-
-    const li = document.createElement('li');
-
-    if (heading.tagName.toLowerCase() === 'h3') {
-      li.classList.add('toc-subheading');
-    }
-
-    const a = document.createElement('a');
-    a.href = `#${id}`;
-    a.textContent = text;
-
-    li.appendChild(a);
-    tocElement.appendChild(li);
-
-    tocItems[id] = li;
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const id = entry.target.id;
-
-      if (entry.isIntersecting && tocItems[id]) {
-        Object.values(tocItems).forEach(el =>
-          el.classList.remove('active-toc-item')
-        );
-        tocItems[id].classList.add('active-toc-item');
+      // Function to generate IDs based on the heading content
+      function generateId(content) {
+        return content
+          .toLowerCase() // Convert to lowercase
+          .replace(/[^a-z0-9\s]/g, '') // Remove special characters
+          .replace(/\s+/g, '-') // Replace spaces with hyphens
+          .substring(0, 20); // Truncate to 20 characters
       }
-    });
-  }, {
-    root: null,
-    rootMargin: '0px 0px -50% 0px',
-    threshold: 0.5,
-  });
 
-  headings.forEach((h) => observer.observe(h));
-});
+      // Add IDs to H2 and H3 tags
+      const updatedContent = articleContent
+        .replace(/<h2(.*?)>(.*?)<\/h2>/g, function (match, attributes, content) {
+          const id = generateId(content);
+          return `<h2 id="${id}"${attributes}>${content}</h2>`;
+        })
+        .replace(/<h3(.*?)>(.*?)<\/h3>/g, function (match, attributes, content) {
+          const id = generateId(content);
+          return `<h3 id="${id}"${attributes}>${content}</h3>`;
+        });
+
+      // Update the content in the DOM
+      articleContentElement.innerHTML = updatedContent;
+
+      // Collect all headings
+      const headings = Array.from(articleContentElement.querySelectorAll('h2, h3'));
+      const totalHeadings = headings.length;
+
+      // Determine TOC strategy
+      const showSubheadings = totalHeadings <= 10;
+
+      // Generate the TOC
+      const tocItems = {};
+      headings.forEach((heading) => {
+        if (heading.tagName.toLowerCase() === 'h2' || (showSubheadings && heading.tagName.toLowerCase() === 'h3')) {
+          const id = heading.id;
+          const text = heading.textContent.trim();
+          const isSubheading = heading.tagName.toLowerCase() === 'h3';
+
+          // Create TOC list item
+          const listItem = document.createElement('li');
+          if (isSubheading) {
+            listItem.classList.add('toc-subheading');
+          }
+
+          const anchor = document.createElement('a');
+          anchor.href = `#${id}`;
+          anchor.textContent = text;
+
+          listItem.appendChild(anchor);
+          tocElement.appendChild(listItem);
+
+          // Store reference to the TOC item for later
+          tocItems[id] = listItem;
+        }
+      });
+
+      // Highlight TOC item when section is in view
+      const observerOptions = {
+        root: null, // Use the viewport as the root
+        rootMargin: '0px 0px -50% 0px', // Trigger when the section is halfway in view
+        threshold: 0.5, // Trigger when 50% of the section is in view
+      };
+
+      const observerCallback = (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id;
+          if (entry.isIntersecting && tocItems[id]) {
+            // Highlight the active TOC item
+            Object.values(tocItems).forEach((item) => item.classList.remove('active-toc-item'));
+            tocItems[id].classList.add('active-toc-item');
+          }
+        });
+      };
+
+      const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+      // Observe each heading
+      headings.forEach((heading) => observer.observe(heading));
+    }
+  });
 </script>
 
 
