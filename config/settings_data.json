@@ -94,6 +94,7 @@
     "search_product_collection": "all",
     "search_product_collection_limit": 3,
     "email_terms_conditions_enable": false,
+    "custom_html_head": "<style>\n  /* Text Carousel Gradient Overlays */\n  [data-block-type=\"ai_gen_block_66d84b5\"] {\n    position: relative;\n    overflow: hidden;\n  }\n\n  /* Left gradient overlay - fades from opaque to transparent (left to right) */\n  [data-block-type=\"ai_gen_block_66d84b5\"]::before {\n    content: '';\n    position: absolute;\n    left: 0;\n    top: 0;\n    height: 100%;\n    width: 25%;\n    background: linear-gradient(to right, rgba(30, 58, 206, 1), rgba(30, 58, 206, 0));\n    z-index: 10;\n    pointer-events: none;\n  }\n\n  /* Right gradient overlay - fades from opaque to transparent (right to left) */\n  [data-block-type=\"ai_gen_block_66d84b5\"]::after {\n    content: '';\n    position: absolute;\n    right: 0;\n    top: 0;\n    height: 100%;\n    width: 25%;\n    background: linear-gradient(to left, rgba(30, 58, 206, 1), rgba(30, 58, 206, 0));\n    z-index: 10;\n    pointer-events: none;\n  }\n</style>",
     "favicon": "shopify://shop_images/Bodology_Favicon_B_4b1d56c0-6e83-45c3-9978-78f4fd9d9fda.png",
     "search_product_list": [],
     "content_for_index": [],
