@@ -1,19 +1,18 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "slideshow_8B6yA4": {
       "type": "slideshow",
@@ -294,8 +293,6 @@
         "use_video": false,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_autoplay": true,
-        "data-tooltip": "",
-        "data-tooltip3": "",
         "height": "large",
         "desktop_image_width": "medium",
         "full_width": false,
@@ -320,9 +317,7 @@
     },
     "countdown_banner_6GN8An": {
       "type": "countdown-banner",
-      "custom_css": [
-
-      ],
+      "custom_css": [],
       "settings": {
         "full_width": true,
         "section_layout": "horizontal",
@@ -599,7 +594,7 @@
           }
         },
         "junip_product_reviews_ugc_junip_review_carousel_PgPQcR": {
-          "type": "shopify://apps/junip-product-reviews-ugc/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "type": "shopify://apps/junip/blocks/junip-review-carousel/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
             "reviewsType": "product_reviews",
             "product": "{{section.settings.product}}",
@@ -608,11 +603,6 @@
             "paddingTop": 14,
             "paddingBottom": 15,
             "containerClass": ""
-          }
-        },
-        "yotpo_subscriptions_app_block_wGzyfM": {
-          "type": "shopify://apps/yotpo-subscriptions/blocks/app-block/ef25e582-ada5-4bb0-b4e7-f94e97ab1bb4",
-          "settings": {
           }
         },
         "title_nrLxNA": {
@@ -625,8 +615,7 @@
         "description_VzmGzW": {
           "type": "description",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         },
         "variant_picker_Uxpyqm": {
           "type": "variant_picker",
@@ -644,8 +633,7 @@
         "quantity_9z4AVR": {
           "type": "quantity",
           "disabled": true,
-          "settings": {
-          }
+          "settings": {}
         },
         "buy_buttons_XqXWVd": {
           "type": "buy_buttons",
@@ -699,7 +687,6 @@
         "text_GJipLq",
         "text_FVcrNK",
         "junip_product_reviews_ugc_junip_review_carousel_PgPQcR",
-        "yotpo_subscriptions_app_block_wGzyfM",
         "title_nrLxNA",
         "description_VzmGzW",
         "variant_picker_Uxpyqm",
