@@ -10,38 +10,339 @@
 {
   "sections": {
     "bod_hero": {
-      "type": "custom-liquid",
-      "name": "Hero",
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "sub": {
+          "type": "subheading",
+          "settings": {
+            "text": "<p>The experts behind Bodology</p>",
+            "text_color": "#ffffff"
+          }
+        },
+        "head": {
+          "type": "heading",
+          "settings": {
+            "text": "<p>Backed by <em>science</em>. Guided by <em>experts</em>.</p>",
+            "heading_color": "#ffffff",
+            "heading_size": "h1-xlarge"
+          }
+        },
+        "body": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Your metabolism powers everything — hormones, mood, fertility. Every scoop of Bodology is shaped by the experts who understand how it all connects.</p>",
+            "description_color": "#ffffff",
+            "description_size": "medium"
+          }
+        },
+        "sp": {
+          "type": "space",
+          "settings": {
+            "height": 10
+          }
+        },
+        "btn1": {
+          "type": "button",
+          "settings": {
+            "button_text": "Meet the team",
+            "button_link": "#experts",
+            "button_color": "white"
+          }
+        },
+        "btn2": {
+          "type": "button",
+          "settings": {
+            "button_text": "Shop inositol",
+            "button_link": "https://bodology.co/products/myo-d-chiro-inositol-powder",
+            "button_color": "accent"
+          }
+        }
+      },
+      "block_order": [
+        "sub",
+        "head",
+        "body",
+        "sp",
+        "btn1",
+        "btn2"
+      ],
       "settings": {
-        "custom_liquid": "<style>\n/* ===== Bodology experts page — design system ===== */\n.bx{padding:clamp(56px,8vw,100px) 0;background:linear-gradient(165deg,#142cb8 0%,#1b3def 45%,#3a55ff 100%);background-attachment:fixed;}\n.bx--soft{}\n.bx__container{max-width:1120px;margin:0 auto;padding:0 24px;}\n.bx__container--narrow{max-width:860px;}\n.bx__head{text-align:center;max-width:720px;margin:0 auto clamp(36px,5vw,56px);}\n.bx__eyebrow{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);}\n.bx__title{margin:0 0 18px;font-size:clamp(40px,6.5vw,76px);line-height:1.02;color:#fff;font-weight:700;letter-spacing:-.01em;}\n.bx__title em{font-style:italic;}\n.bx__lead{margin:0;font-size:clamp(16px,1.7vw,19px);line-height:1.6;color:#fff;opacity:.9;}\n/* hero */\n.bx--hero{color:#fff;padding:clamp(84px,13vw,168px) 0;}\n.bx-hero__inner{text-align:center;max-width:820px;margin:0 auto;}\n.bx-hero__eyebrow{margin:0 0 16px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78);}\n.bx-hero__title{margin:0 0 22px;font-size:clamp(48px,8vw,92px);line-height:1;font-weight:700;color:#fff;letter-spacing:-.02em;}\n.bx-hero__title em{font-style:italic;}\n.bx-hero__lead{margin:0 auto 34px;max-width:580px;font-size:clamp(16px,1.8vw,19px);line-height:1.6;color:#fff;opacity:.92;}\n.bx-hero__actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}\n/* buttons */\n.bx-btn{display:inline-block;padding:15px 36px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;transition:transform .25s ease,background .25s ease,border-color .25s ease;}\n.bx-btn--light{background:#fff;color:#1b3def;}\n.bx-btn--light:hover{transform:translateY(-2px);background:#f3eeeb;}\n.bx-btn--ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.55);}\n.bx-btn--ghost:hover{transform:translateY(-2px);border-color:#fff;}\n/* pillars */\n.bx-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}\n@media(max-width:900px){.bx-pillars{grid-template-columns:repeat(2,1fr);}}\n@media(max-width:540px){.bx-pillars{grid-template-columns:1fr;}}\n.bx-pillar{background:#fff;border:1px solid #e6e9f5;border-radius:18px;padding:28px 24px;}\n.bx-pillar__n{font-size:13px;font-weight:700;color:#1b3def;letter-spacing:.05em;}\n.bx-pillar__t{margin:12px 0 10px;font-size:15px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#1b3def;}\n.bx-pillar__d{margin:0;font-size:14.5px;line-height:1.6;color:#2c2d2e;opacity:.85;}\n/* accordion */\n.bx-acc{display:flex;flex-direction:column;gap:12px;}\n.bx-acc__item{background:#fff;border:1px solid #e6e9f5;border-radius:16px;padding:4px 24px;}\n.bx-acc__item summary{cursor:pointer;list-style:none;display:flex;align-items:center;padding:20px 0;font-size:16px;font-weight:700;color:#1b3def;}\n.bx-acc__item summary::-webkit-details-marker{display:none;}\n.bx-acc__item summary::after{content:\"+\";margin-left:auto;padding-left:16px;font-size:22px;line-height:1;color:#1b3def;transition:transform .3s ease;}\n.bx-acc__item[open] summary::after{transform:rotate(45deg);}\n.bx-acc__c{padding:0 0 22px;font-size:15px;line-height:1.65;color:#2c2d2e;opacity:.88;}\n.bx-acc__c p{margin:0;}\n/* cta */\n.bx-cta{background:#fff;border:1px solid #e0e5f6;border-radius:28px;padding:clamp(48px,7vw,84px) 28px;text-align:center;color:#2c2d2e;box-shadow:0 30px 70px rgba(19,28,90,.22);}\n.bx-cta__eyebrow{margin:0 0 14px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#1b3def;}\n.bx-cta__title{margin:0 0 14px;font-size:clamp(32px,4.5vw,56px);line-height:1.05;color:#1b3def;letter-spacing:-.01em;}\n.bx-cta__text{margin:0 auto 30px;max-width:520px;font-size:16px;line-height:1.6;color:#2c2d2e;opacity:.82;}\n.bx-cta__btn{display:inline-block;background:#1b3def;color:#fff;font-weight:700;padding:16px 42px;border-radius:999px;text-decoration:none;transition:transform .25s ease,background .25s ease;}\n.bx-cta__btn:hover{transform:translateY(-2px);background:#142cb8;}\n</style>\n<section class=\"bx bx--hero\">\n  <div class=\"bx__container\">\n    <div class=\"bx-hero__inner\">\n      <p class=\"bx-hero__eyebrow\">The experts behind Bodology</p>\n      <h1 class=\"bx-hero__title\">Backed by <em>science</em>.<br>Guided by <em>experts</em>.</h1>\n      <p class=\"bx-hero__lead\">Your metabolism powers everything — hormones, mood, fertility. Every scoop of Bodology is shaped by the experts who understand how it all connects.</p>\n      <div class=\"bx-hero__actions\">\n        <a class=\"bx-btn bx-btn--light\" href=\"#experts\">Meet the team</a>\n        <a class=\"bx-btn bx-btn--ghost\" href=\"/products/myo-d-chiro-inositol-powder\">Shop inositol</a>\n      </div>\n    </div>\n  </div>\n</section>"
+        "image": "shopify://shop_images/3-Pillars-bg.jpg",
+        "image_parallax": true,
+        "desktop_height": "desktop-height-650",
+        "mobile_height": "mobile-height-450",
+        "full_width": true,
+        "content_width": "medium",
+        "content_position": "middle-center",
+        "text_alignment": "center",
+        "text_color": "#ffffff",
+        "overlay_color": "#1b3def",
+        "overlay_opacity": 45,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
       }
     },
     "bod_ethos": {
-      "type": "custom-liquid",
-      "name": "Ethos",
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "text": "Not made to sell. Made to work.",
+            "marker_style": "style1",
+            "size": "h2",
+            "marker_color": "#1b3def"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We’re not here to sell trends. We’re here to fix what’s broken — in women’s healthcare, in the supplement aisle, and in the stories you’ve been told about your body. So we built Bodology with the people who study it for a living.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ],
       "settings": {
-        "custom_liquid": "<section class=\"bx bx--soft\">\n  <div class=\"bx__container\">\n    <header class=\"bx__head\">\n      <p class=\"bx__eyebrow\">Why it matters</p>\n      <h2 class=\"bx__title\">Not made to sell. <em>Made to work.</em></h2>\n      <p class=\"bx__lead\">We’re not here to sell trends. We’re here to fix what’s broken — in women’s healthcare, in the supplement aisle, and in the stories you’ve been told about your body. So we built Bodology with the people who study it for a living.</p>\n    </header>\n    <div class=\"bx-pillars\">\n      <div class=\"bx-pillar\"><span class=\"bx-pillar__n\">01</span><h3 class=\"bx-pillar__t\">Rooted in research</h3><p class=\"bx-pillar__d\">Only clinically-proven ingredients at therapeutic doses. Our 40:1 Myo &amp; D-Chiro Inositol mirrors what your body needs — no fluff, no fillers.</p></div>\n      <div class=\"bx-pillar\"><span class=\"bx-pillar__n\">02</span><h3 class=\"bx-pillar__t\">Validated by experts</h3><p class=\"bx-pillar__d\">We work with respected health professionals so every claim is backed by clinical data — not wellness marketing.</p></div>\n      <div class=\"bx-pillar\"><span class=\"bx-pillar__n\">03</span><h3 class=\"bx-pillar__t\">Transparent by design</h3><p class=\"bx-pillar__d\">We share our Certificates of Analysis, testing, and the reason behind every ingredient. You deserve to know exactly what’s in your body — and why it works.</p></div>\n      <div class=\"bx-pillar\"><span class=\"bx-pillar__n\">04</span><h3 class=\"bx-pillar__t\">Pioneering the future</h3><p class=\"bx-pillar__d\">We review and contribute to the latest science to redefine what hormone support really means — for PCOS, fertility, mood, and more.</p></div>\n    </div>\n  </div>\n</section>"
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "bgcolor": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
+      }
+    },
+    "bod_pillars": {
+      "type": "multicolumn",
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "ROOTED IN RESEARCH",
+            "text": "<p>Only clinically-proven ingredients at therapeutic doses. Our 40:1 Myo &amp; D-Chiro Inositol mirrors what your body needs — no fluff, no fillers.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "VALIDATED BY EXPERTS",
+            "text": "<p>We work with respected health professionals so every claim is backed by clinical data — not wellness marketing.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "TRANSPARENT BY DESIGN",
+            "text": "<p>We share our Certificates of Analysis, testing, and the reason behind every ingredient. You deserve to know exactly what’s in your body — and why it works.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c4": {
+          "type": "column",
+          "settings": {
+            "image_full_width": false,
+            "image_link": "",
+            "title": "PIONEERING THE FUTURE",
+            "text": "<p>We review and contribute to the latest science to redefine what hormone support really means — for PCOS, fertility, mood, and more.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "heading": "",
+        "marker_style": "style1",
+        "description": "",
+        "bgcolor": "#f6f7fb",
+        "data-tooltip": "",
+        "data-tooltip3": "",
+        "columns_desktop": 4,
+        "mobile_swipe": false,
+        "image_ratio": "adapt",
+        "text_alignment": "left",
+        "heading_size": "h5",
+        "color_heading": "#1b3def",
+        "marker_color": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
+    "bod_experts_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "text": "Meet our scientific advisory board",
+            "marker_style": "style1",
+            "size": "h2",
+            "marker_color": "#1b3def"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Trusted voices in metabolic health, hormone research, and functional medicine — the people who guide what we make and stand behind it.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ],
+      "settings": {
+        "text_width": "xlarge",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#ffffff",
+        "bgcolor": "#ffffff",
+        "color_heading": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#1b3def",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": true
       }
     },
     "bod_experts": {
       "type": "custom-liquid",
-      "name": "Experts",
+      "name": "Expert cards",
       "settings": {
-        "custom_liquid": "<section id=\"experts\" class=\"bx\">\n  <div class=\"bx__container\">\n    <header class=\"bx__head\">\n      <p class=\"bx__eyebrow\">Meet the team</p>\n      <h2 class=\"bx__title\">Our <em>scientific advisory</em> board</h2>\n      <p class=\"bx__lead\">Trusted voices in metabolic health, hormone research, and functional medicine — the people who guide what we make and stand behind it.</p>\n    </header>\n    <div class=\"bx-ex__grid\">\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"a-tina-kozman\"] -%}\n        <div class=\"bx-ex__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}\n          {%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}\n        </div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}\n        <button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"a-tina-kozman\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>\n        {%- endif -%}\n      </article>\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"c-dr-anita\"] -%}\n        <div class=\"bx-ex__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}\n          {%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}\n        </div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}\n        <button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"c-dr-anita\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>\n        {%- endif -%}\n      </article>\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"leslie-kutcha-fdnp\"] -%}\n        <div class=\"bx-ex__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}\n          {%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}\n        </div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}\n        <button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"leslie-kutcha-fdnp\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>\n        {%- endif -%}\n      </article>\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"a-hillary-rd\"] -%}\n        <div class=\"bx-ex__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}\n          {%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}\n        </div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}\n        <button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"a-hillary-rd\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>\n        {%- endif -%}\n      </article>\n    </div>\n  </div>\n    {%- assign e = metaobjects.experts[\"a-tina-kozman\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-a-tina-kozman\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}\n          {%- endif -%}\n        </div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n    {%- assign e = metaobjects.experts[\"c-dr-anita\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-c-dr-anita\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}\n          {%- endif -%}\n        </div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n    {%- assign e = metaobjects.experts[\"leslie-kutcha-fdnp\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-leslie-kutcha-fdnp\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}\n          {%- endif -%}\n        </div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n    {%- assign e = metaobjects.experts[\"a-hillary-rd\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-a-hillary-rd\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">\n          {%- if e.expert_photo.value != blank -%}\n            {{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}\n          {%- endif -%}\n        </div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n<style>\n/* experts cards */\n.bx-ex__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px;}\n@media(max-width:520px){.bx-ex__grid{grid-template-columns:1fr;}}\n.bx-ex__card{position:relative;display:flex;background:linear-gradient(135deg,#eef1fc 0%,#e1e8fb 100%);border:1px solid #e0e5f6;border-radius:18px;overflow:hidden;min-height:210px;}\n.bx-ex__photo{flex:0 0 42%;max-width:42%;background:#e7ebfa;}\n.bx-ex__img,.bx-ex__ph{width:100%;height:100%;object-fit:cover;display:block;}\n.bx-ex__ph{background:linear-gradient(135deg,#e7ebfa,#d4ddf6);}\n.bx-ex__info{flex:1;padding:26px 24px 60px;display:flex;flex-direction:column;}\n.bx-ex__name{margin:0 0 8px;font-size:19px;font-weight:700;color:#1b3def;line-height:1.25;}\n.bx-ex__role{margin:0;font-size:14px;line-height:1.5;color:#2c2d2e;opacity:.75;}\n.bx-ex__open{position:absolute;right:18px;bottom:18px;width:42px;height:42px;border-radius:50%;border:1.5px solid #1b3def;background:rgba(255,255,255,.45);color:#1b3def;font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background .2s ease,color .2s ease,transform .2s ease;}\n.bx-ex__open:hover{background:#1b3def;color:#fff;transform:scale(1.06);}\n@media(max-width:380px){.bx-ex__card{flex-direction:column;}.bx-ex__photo{flex:none;max-width:100%;aspect-ratio:16/10;}}\n/* modal */\n.bx-modal{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;}\n.bx-modal.is-open{display:flex;}\n.bx-modal__overlay{position:absolute;inset:0;background:rgba(19,28,90,.55);backdrop-filter:blur(3px);}\n.bx-modal__box{position:relative;z-index:1;background:#fff;border-radius:22px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;padding:28px 28px 32px;box-shadow:0 30px 70px rgba(19,28,90,.3);}\n.bx-modal__close{position:absolute;top:14px;right:16px;width:36px;height:36px;border:none;background:transparent;font-size:28px;line-height:1;color:#1b3def;cursor:pointer;padding:0;}\n.bx-modal__photo{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#eef1fc,#dce4f8);margin-bottom:20px;}\n.bx-modal__photo img{width:100%;height:100%;object-fit:cover;display:block;}\n.bx-modal__name{margin:0 0 4px;font-size:26px;font-weight:700;color:#1b3def;line-height:1.15;}\n.bx-modal__role{margin:0 0 18px;font-size:15px;font-weight:700;color:#1b3def;}\n.bx-modal__bio{border-left:3px solid #1b3def;padding-left:18px;font-size:15px;line-height:1.65;color:#2c2d2e;}\n.bx-modal__bio p{margin:0 0 12px;}.bx-modal__bio p:last-child{margin:0;}\n</style>\n<script>\n(function(){\n  function closeAll(){document.querySelectorAll('.bx-modal.is-open').forEach(function(m){m.classList.remove('is-open');});document.body.style.overflow='';}\n  document.querySelectorAll('[data-bx-open]').forEach(function(btn){\n    btn.addEventListener('click',function(){var m=document.getElementById('bx-modal-'+btn.getAttribute('data-bx-open'));if(m){closeAll();m.classList.add('is-open');document.body.style.overflow='hidden';}});\n  });\n  document.querySelectorAll('.bx-modal').forEach(function(m){\n    m.addEventListener('click',function(e){if(e.target===m||e.target.classList.contains('bx-modal__overlay'))closeAll();});\n  });\n  document.querySelectorAll('.bx-modal__close').forEach(function(b){b.addEventListener('click',closeAll);});\n  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});\n})();\n</script>\n</section>"
+        "custom_liquid": "<div class=\"bxg\"><div class=\"bx-ex__grid\">\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"a-tina-kozman\"] -%}\n        <div class=\"bx-ex__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}{%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}</div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}<button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"a-tina-kozman\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>{%- endif -%}\n      </article>\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"c-dr-anita\"] -%}\n        <div class=\"bx-ex__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}{%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}</div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}<button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"c-dr-anita\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>{%- endif -%}\n      </article>\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"leslie-kutcha-fdnp\"] -%}\n        <div class=\"bx-ex__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}{%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}</div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}<button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"leslie-kutcha-fdnp\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>{%- endif -%}\n      </article>\n      <article class=\"bx-ex__card\">\n        {%- assign e = metaobjects.experts[\"a-hillary-rd\"] -%}\n        <div class=\"bx-ex__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 600 | image_tag: loading: 'lazy', class: 'bx-ex__img', alt: e.expert_name.value }}{%- else -%}<div class=\"bx-ex__ph\"></div>{%- endif -%}</div>\n        <div class=\"bx-ex__info\">\n          <h3 class=\"bx-ex__name\">{{ e.expert_name.value }}</h3>\n          <p class=\"bx-ex__role\">{{ e.expert_title.value }}</p>\n        </div>\n        {%- if e.bio != blank -%}<button class=\"bx-ex__open\" type=\"button\" data-bx-open=\"a-hillary-rd\" aria-label=\"Read bio of {{ e.expert_name.value }}\">+</button>{%- endif -%}\n      </article>\n</div></div>\n    {%- assign e = metaobjects.experts[\"a-tina-kozman\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-a-tina-kozman\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}{%- endif -%}</div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n    {%- assign e = metaobjects.experts[\"c-dr-anita\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-c-dr-anita\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}{%- endif -%}</div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n    {%- assign e = metaobjects.experts[\"leslie-kutcha-fdnp\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-leslie-kutcha-fdnp\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}{%- endif -%}</div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n    {%- assign e = metaobjects.experts[\"a-hillary-rd\"] -%}\n    <div class=\"bx-modal\" id=\"bx-modal-a-hillary-rd\" role=\"dialog\" aria-modal=\"true\">\n      <div class=\"bx-modal__overlay\"></div>\n      <div class=\"bx-modal__box\">\n        <button class=\"bx-modal__close\" type=\"button\" aria-label=\"Close\">&times;</button>\n        <div class=\"bx-modal__photo\">{%- if e.expert_photo.value != blank -%}{{ e.expert_photo.value | image_url: width: 800 | image_tag: loading: 'lazy', alt: e.expert_name.value }}{%- endif -%}</div>\n        <h3 class=\"bx-modal__name\">{{ e.expert_name.value }}</h3>\n        <p class=\"bx-modal__role\">{{ e.expert_title.value }}</p>\n        <div class=\"bx-modal__bio\">{{ e.bio | metafield_tag }}</div>\n      </div>\n    </div>\n<style>\n/* hero polish (native overlay section) */\n.image-with-text-overlay .h1-xlarge{line-height:1.05;}\n.image-with-text-overlay--content-inner .button{margin:8px 6px 0;}\n/* expert cards */\n.bxg{max-width:1120px;margin:0 auto;padding:8px 24px 0;}\n.bx-ex__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px;}\n@media(max-width:520px){.bx-ex__grid{grid-template-columns:1fr;}}\n.bx-ex__card{position:relative;display:flex;background:linear-gradient(135deg,#eef1fc 0%,#e1e8fb 100%);border:1px solid #e0e5f6;border-radius:18px;overflow:hidden;min-height:210px;}\n.bx-ex__photo{flex:0 0 42%;max-width:42%;background:#e7ebfa;}\n.bx-ex__img,.bx-ex__ph{width:100%;height:100%;object-fit:cover;display:block;}\n.bx-ex__ph{background:linear-gradient(135deg,#e7ebfa,#d4ddf6);}\n.bx-ex__info{flex:1;padding:26px 24px 60px;display:flex;flex-direction:column;}\n.bx-ex__name{margin:0 0 8px;font-size:19px;font-weight:700;color:#1b3def;line-height:1.25;}\n.bx-ex__role{margin:0;font-size:14px;line-height:1.5;color:#2c2d2e;opacity:.75;}\n.bx-ex__open{position:absolute;right:18px;bottom:18px;width:42px;height:42px;border-radius:50%;border:1.5px solid #1b3def;background:rgba(255,255,255,.45);color:#1b3def;font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background .2s,color .2s,transform .2s;}\n.bx-ex__open:hover{background:#1b3def;color:#fff;transform:scale(1.06);}\n@media(max-width:380px){.bx-ex__card{flex-direction:column;}.bx-ex__photo{flex:none;max-width:100%;aspect-ratio:16/10;}}\n/* modal */\n.bx-modal{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;}\n.bx-modal.is-open{display:flex;}\n.bx-modal__overlay{position:absolute;inset:0;background:rgba(19,28,90,.55);backdrop-filter:blur(3px);}\n.bx-modal__box{position:relative;z-index:1;background:#fff;border-radius:22px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;padding:28px 28px 32px;box-shadow:0 30px 70px rgba(19,28,90,.3);}\n.bx-modal__close{position:absolute;top:14px;right:16px;width:36px;height:36px;border:none;background:transparent;font-size:28px;line-height:1;color:#1b3def;cursor:pointer;padding:0;}\n.bx-modal__photo{width:100%;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#eef1fc,#dce4f8);margin-bottom:20px;}\n.bx-modal__photo img{width:100%;height:100%;object-fit:cover;display:block;}\n.bx-modal__name{margin:0 0 4px;font-size:26px;font-weight:700;color:#1b3def;line-height:1.15;}\n.bx-modal__role{margin:0 0 18px;font-size:15px;font-weight:700;color:#1b3def;}\n.bx-modal__bio{border-left:3px solid #1b3def;padding-left:18px;font-size:15px;line-height:1.65;color:#2c2d2e;}\n.bx-modal__bio p{margin:0 0 12px;}.bx-modal__bio p:last-child{margin:0;}\n</style>\n<script>\n(function(){\n  function closeAll(){document.querySelectorAll('.bx-modal.is-open').forEach(function(m){m.classList.remove('is-open');});document.body.style.overflow='';}\n  document.querySelectorAll('[data-bx-open]').forEach(function(btn){btn.addEventListener('click',function(){var m=document.getElementById('bx-modal-'+btn.getAttribute('data-bx-open'));if(m){closeAll();m.classList.add('is-open');document.body.style.overflow='hidden';}});});\n  document.querySelectorAll('.bx-modal').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m||e.target.classList.contains('bx-modal__overlay'))closeAll();});});\n  document.querySelectorAll('.bx-modal__close').forEach(function(b){b.addEventListener('click',closeAll);});\n  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});\n})();\n</script>"
       }
     },
     "bod_standards": {
-      "type": "custom-liquid",
-      "name": "Standards",
+      "type": "collapsible-content",
+      "blocks": {
+        "t1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Clinically-informed formulation",
+            "open": false,
+            "content": "<p>Our formula was built from the ground up using published clinical studies and reviewed by experts in metabolic health, PCOS, and fertility. We chose the 40:1 ratio because it’s the most effective — and we stuck to the science, not the hype.</p>",
+            "page": ""
+          }
+        },
+        "t2": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Expert validation at every step",
+            "open": false,
+            "content": "<p>Our advisors review our claims, confirm our dosages, and approve every Certificate of Analysis for ingredient purity. Real oversight — not rubber stamps.</p>",
+            "page": ""
+          }
+        },
+        "t3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Purity that meets clinical standards",
+            "open": false,
+            "content": "<p>We benchmark against pharmacopoeial purity standards, sourcing ingredients that meet or exceed these thresholds — verified by Certificates of Analysis and third-party labs.</p>",
+            "page": ""
+          }
+        },
+        "t4": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Third-party tested in the USA",
+            "open": false,
+            "content": "<p>Every batch is manufactured in an FDA-compliant facility and undergoes rigorous third-party testing for identity, potency, and purity — so you get exactly what’s on the label.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
       "settings": {
-        "custom_liquid": "<section class=\"bx bx--soft\">\n  <div class=\"bx__container bx__container--narrow\">\n    <header class=\"bx__head\">\n      <p class=\"bx__eyebrow\">Our standards</p>\n      <h2 class=\"bx__title\">Quality + formulation, <em>without compromise</em></h2>\n      <p class=\"bx__lead\">Every decision is grounded in peer-reviewed research and validated by health professionals.</p>\n    </header>\n    <div class=\"bx-acc\">\n      <details class=\"bx-acc__item\"><summary>Clinically-informed formulation</summary><div class=\"bx-acc__c\"><p>Our formula was built from the ground up using published clinical studies and reviewed by experts in metabolic health, PCOS, and fertility. We chose the 40:1 ratio because it’s the most effective — and we stuck to the science, not the hype.</p></div></details>\n      <details class=\"bx-acc__item\"><summary>Expert validation at every step</summary><div class=\"bx-acc__c\"><p>Our advisors review our claims, confirm our dosages, and approve every Certificate of Analysis for ingredient purity. Real oversight — not rubber stamps.</p></div></details>\n      <details class=\"bx-acc__item\"><summary>Purity that meets clinical standards</summary><div class=\"bx-acc__c\"><p>We benchmark against pharmacopoeial purity standards, sourcing ingredients that meet or exceed these thresholds — verified by Certificates of Analysis and third-party labs. It’s part of keeping Bodology pure, transparent, and trustworthy.</p></div></details>\n      <details class=\"bx-acc__item\"><summary>Third-party tested in the USA</summary><div class=\"bx-acc__c\"><p>Every batch is manufactured in an FDA-compliant facility and undergoes rigorous third-party testing for identity, potency, and purity — so you get exactly what’s on the label.</p></div></details>\n    </div>\n  </div>\n</section>"
+        "heading": "<h2>Our quality + formulation standards</h2>",
+        "marker_style": "style1",
+        "description": "<p>Every decision is grounded in peer-reviewed research and validated by health professionals.</p>",
+        "color_bg": "#f6f7fb",
+        "color_heading": "#1b3def",
+        "marker_color": "#1b3def",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "color_border": "#DADCE0",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
       }
     },
     "bod_cta": {
-      "type": "custom-liquid",
-      "name": "CTA",
+      "type": "rich-text",
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "text": "Support your body trusts",
+            "marker_style": "style1",
+            "size": "h2",
+            "marker_color": "#ffffff"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Clean, clinically-informed inositol — formulated alongside the experts who guide our science.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        },
+        "b": {
+          "type": "button",
+          "settings": {
+            "link_label": "Shop inositol",
+            "link": "https://bodology.co/products/myo-d-chiro-inositol-powder"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t",
+        "b"
+      ],
       "settings": {
-        "custom_liquid": "<section class=\"bx\">\n  <div class=\"bx__container\">\n    <div class=\"bx-cta\">\n      <p class=\"bx-cta__eyebrow\">Backed by experts. Built for you.</p>\n      <h2 class=\"bx-cta__title\">Support your body trusts</h2>\n      <p class=\"bx-cta__text\">Clean, clinically-informed inositol — formulated alongside the experts who guide our science.</p>\n      <a class=\"bx-cta__btn\" href=\"/products/myo-d-chiro-inositol-powder\">Shop inositol</a>\n    </div>\n  </div>\n</section>"
+        "text_width": "large",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#1b3def",
+        "bgcolor": "#1b3def",
+        "color_heading": "#ffffff",
+        "color_text": "#ffffff",
+        "color_links": "#ffffff",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
       }
     },
     "custom_liquid_CwjPxw": {
@@ -55,6 +356,8 @@
   "order": [
     "bod_hero",
     "bod_ethos",
+    "bod_pillars",
+    "bod_experts_intro",
     "bod_experts",
     "bod_standards",
     "bod_cta",

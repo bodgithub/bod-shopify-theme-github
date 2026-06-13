@@ -6,7 +6,6 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- * CRO v2 landing template — re-sync touch.
  */
 {
   "sections": {
@@ -727,7 +726,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">01</span><h5>Supports insulin signaling</h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p></div>",
+            "text": "<h6>01</h6><h5>Supports insulin signaling</h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -744,7 +743,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">02</span><h5>Supports ovulation and cycle regularity</h5><h4><em>Less guessing</em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p></div>",
+            "text": "<h6>02</h6><h5>Supports ovulation and cycle regularity</h5><h4><em>Less guessing</em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -779,7 +778,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">03</span><h5>Helps regulate cravings and appetite</h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p></div>",
+            "text": "<h6>03</h6><h5>Helps regulate cravings and appetite</h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -796,7 +795,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">04</span><h5>Supports mood and emotional balance</h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p></div>",
+            "text": "<h6>04</h6><h5>Supports mood and emotional balance</h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -820,13 +819,13 @@
         ".section-multicolumn {background: linear-gradient(180deg,#f7f4f2 0%,#eef1fb 100%);}",
         ".multicolumn h1 {font-size: 40px; letter-spacing: -0.5px; margin-bottom: 6px;}",
         ".multicolumn__column.small-12.medium-3.columns {background: transparent; border: 0; padding-left: 12px; padding-right: 12px; display: flex; text-align: left;}",
-        ".hiw-step {position: relative; display: flex; flex-direction: column; flex: 1; background: #ffffff; border: 1px solid rgba(27,61,239,.10); border-radius: 20px; padding: 30px 24px 26px; box-shadow: 0 12px 30px rgba(20,22,40,.07); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease;}",
-        ".hiw-step:hover {transform: translateY(-6px); box-shadow: 0 22px 46px rgba(20,22,40,.13);}",
-        ".hiw-step::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,#1b3def,#7d92ff);}",
-        ".hiw-num {display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; background: linear-gradient(135deg,#1b3def,#5a76f8); color: #fff; font-weight: 700; font-size: 17px; letter-spacing: .5px; margin-bottom: 18px; box-shadow: 0 8px 18px rgba(27,61,239,.28);}",
-        ".section-multicolumn .hiw-step h5 {font-size: 19px; line-height: 1.3; text-transform: none; color: #14163a; font-weight: 700; margin: 0 0 4px; padding: 0;}",
-        ".section-multicolumn .hiw-step h4 {font-size: 13px; line-height: 1.4; color: #1b3def; font-style: italic; font-weight: 600; margin: 0 0 12px;}",
-        ".section-multicolumn .hiw-step p {font-size: 14.5px; line-height: 1.65; color: #4a4d5e; margin: 0;}",
+        ".multicolumn__column .rte {position: relative; display: flex; flex-direction: column; flex: 1; background: #ffffff; border: 1px solid rgba(27,61,239,.10); border-radius: 20px; padding: 30px 24px 26px; box-shadow: 0 12px 30px rgba(20,22,40,.07); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease;}",
+        ".multicolumn__column .rte:hover {transform: translateY(-6px); box-shadow: 0 22px 46px rgba(20,22,40,.13);}",
+        ".multicolumn__column .rte::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,#1b3def,#7d92ff);}",
+        ".multicolumn__column .rte h6 {align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; background: linear-gradient(135deg,#1b3def,#5a76f8); color: #fff; font-weight: 700; font-size: 17px; letter-spacing: .5px; text-transform: none; margin: 0 0 18px; padding: 0;}",
+        ".section-multicolumn .multicolumn__column .rte h5 {font-size: 19px; line-height: 1.3; text-transform: none; color: #14163a; font-weight: 700; margin: 0 0 4px; padding: 0;}",
+        ".section-multicolumn .multicolumn__column .rte h4 {font-size: 13px; line-height: 1.4; color: #1b3def; font-style: italic; font-weight: 600; margin: 0 0 12px;}",
+        ".section-multicolumn .multicolumn__column .rte p {font-size: 14.5px; line-height: 1.65; color: #4a4d5e; margin: 0;}",
         "@media (max-width: 768px) {.multicolumn__column.small-12.medium-3.columns {margin-bottom: 14px;}}"
       ],
       "settings": {
