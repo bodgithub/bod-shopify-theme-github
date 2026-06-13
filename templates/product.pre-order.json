@@ -23,7 +23,7 @@
         "e431a79e-9c7b-4a53-a79a-0cb918617ecf": {
           "type": "text",
           "settings": {
-            "text": "{{ product.vendor }}",
+            "text": "<p>{{ product.vendor }}</p>",
             "text_style": "style_vendor"
           }
         },
