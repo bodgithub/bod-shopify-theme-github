@@ -1,0 +1,113 @@
+/* ============================================================
+   Bodology — Product landing page CRO enhancements
+   Loaded only by templates/product.product-landing-page-v2.json
+   ============================================================ */
+
+/* --- Trust / risk-reversal row under Add to Cart --- */
+.cro-trust-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px 14px;
+  margin: 14px 0 18px;
+}
+.cro-trust-row__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.25;
+  color: #1b3def;
+  font-weight: 600;
+}
+.cro-trust-row__item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  stroke: #1b3def;
+  fill: none;
+}
+@media (max-width: 600px) {
+  .cro-trust-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --- Factual product badges (made in USA / GMP / tested / vegan) --- */
+.cro-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 18px;
+}
+.cro-badge-row__pill {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #2c2d2e;
+  background: #eef1fb;
+  border: 1px solid #d9e0f7;
+  border-radius: 999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+}
+
+/* --- Subscribe & save reassurance line --- */
+.cro-sub-reassure {
+  font-size: 13px;
+  color: #2c2d2e;
+  margin: 4px 0 12px;
+}
+.cro-sub-reassure b { color: #1b3def; }
+
+/* --- Exit-intent / offer modal (disabled until configured in JS) --- */
+.cro-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 22, 40, 0.55);
+  padding: 20px;
+}
+.cro-modal.is-open { display: flex; }
+.cro-modal__card {
+  background: #fff;
+  border-radius: 14px;
+  max-width: 420px;
+  width: 100%;
+  padding: 28px 24px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+.cro-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 22px;
+  line-height: 1;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: #6b7280;
+}
+.cro-modal__title { font-size: 22px; margin: 0 0 8px; color: #1b3def; }
+.cro-modal__body { font-size: 14px; color: #2c2d2e; margin: 0 0 16px; }
+.cro-modal__form { display: flex; gap: 8px; }
+.cro-modal__form input[type="email"] {
+  flex: 1;
+  padding: 11px 12px;
+  border: 1px solid #d9e0f7;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.cro-modal__form button {
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #1b3def;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.cro-modal__fineprint { font-size: 11px; color: #9098a8; margin: 10px 0 0; }
