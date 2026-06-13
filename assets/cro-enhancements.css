@@ -111,3 +111,79 @@
   cursor: pointer;
 }
 .cro-modal__fineprint { font-size: 11px; color: #9098a8; margin: 10px 0 0; }
+
+/* --- "How inositol works" — modern numbered cards --------------- */
+.hiw-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border: 1px solid rgba(27, 61, 239, 0.10);
+  border-radius: 20px;
+  padding: 30px 24px 26px;
+  box-shadow: 0 12px 30px rgba(20, 22, 40, 0.07);
+  overflow: hidden;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.hiw-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 46px rgba(20, 22, 40, 0.13);
+}
+.hiw-step::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1b3def, #7d92ff);
+}
+.hiw-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1b3def, #5a76f8);
+  color: #fff;
+  font-weight: 700;
+  font-size: 17px;
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 18px rgba(27, 61, 239, 0.28);
+}
+.hiw-step h5 {
+  font-size: 19px;
+  line-height: 1.3;
+  text-transform: none;
+  color: #14163a;
+  font-weight: 700;
+  margin: 0 0 4px;
+  padding: 0;
+}
+.hiw-step h4 {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #1b3def;
+  font-style: italic;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.hiw-step p {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #4a4d5e;
+  margin: 0;
+}
+/* hold the card inside the column, using the theme gutter as the gap */
+.section-multicolumn .multicolumn__column:has(.hiw-step) {
+  display: flex;
+  background: transparent;
+  border: 0;
+}
+@media (max-width: 768px) {
+  .section-multicolumn .multicolumn__column:has(.hiw-step) {
+    margin-bottom: 14px;
+  }
+}
