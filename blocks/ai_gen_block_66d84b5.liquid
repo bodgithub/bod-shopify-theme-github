@@ -29,12 +29,12 @@
 
   .ai-text-carousel-{{ ai_gen_id }}::before {
     left: 0;
-    background: linear-gradient(to right, {{ block.settings.fade_color }} 0%, transparent 100%);
+    background: linear-gradient(to right, {{ block.settings.fade_color }} 0%, {{ block.settings.fade_color }} {{ block.settings.fade_strength }}%, transparent 100%);
   }
 
   .ai-text-carousel-{{ ai_gen_id }}::after {
     right: 0;
-    background: linear-gradient(to left, {{ block.settings.fade_color }} 0%, transparent 100%);
+    background: linear-gradient(to left, {{ block.settings.fade_color }} 0%, {{ block.settings.fade_color }} {{ block.settings.fade_strength }}%, transparent 100%);
   }
 
   .ai-text-carousel-wrapper-{{ ai_gen_id }} {
@@ -505,6 +505,17 @@
       "label": "Fade width",
       "default": 10,
       "info": "Set to 0 to disable the fade"
+    },
+    {
+      "type": "range",
+      "id": "fade_strength",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Fade strength",
+      "default": 50,
+      "info": "How much of the fade stays fully opaque before fading out"
     },
     {
       "type": "color",
