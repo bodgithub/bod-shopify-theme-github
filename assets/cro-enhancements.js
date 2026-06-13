@@ -54,8 +54,18 @@
     var lens = (param('lens') || '').toLowerCase();
     var copy = CONFIG.lensCopy[lens];
     if (!copy) return;
-    var h = document.querySelector('.js-lens-headline');
+    // The hero headline/subcopy can't carry a class (Shopify rich-text settings
+    // forbid the class attribute), so fall back to locating them structurally:
+    // the first <h1> in the main content, and the first <p> that follows it.
+    var main = document.getElementById('main-content') || document;
+    var h = document.querySelector('.js-lens-headline') || main.querySelector('h1');
     var s = document.querySelector('.js-lens-subcopy');
+    if (!s && h) {
+      var ps = main.querySelectorAll('p');
+      for (var i = 0; i < ps.length; i++) {
+        if (h.compareDocumentPosition(ps[i]) & Node.DOCUMENT_POSITION_FOLLOWING) { s = ps[i]; break; }
+      }
+    }
     if (h && copy.h) h.innerHTML = copy.h;
     if (s && copy.s) s.innerHTML = copy.s;
     document.documentElement.setAttribute('data-lens', lens);
