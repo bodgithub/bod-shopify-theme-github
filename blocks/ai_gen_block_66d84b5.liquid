@@ -16,6 +16,27 @@
     position: relative;
   }
 
+  .ai-text-carousel-{{ ai_gen_id }}::before,
+  .ai-text-carousel-{{ ai_gen_id }}::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: {{ block.settings.fade_width }}%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .ai-text-carousel-{{ ai_gen_id }}::before {
+    left: 0;
+    background: linear-gradient(to right, {{ block.settings.fade_color }} 0%, transparent 100%);
+  }
+
+  .ai-text-carousel-{{ ai_gen_id }}::after {
+    right: 0;
+    background: linear-gradient(to left, {{ block.settings.fade_color }} 0%, transparent 100%);
+  }
+
   .ai-text-carousel-wrapper-{{ ai_gen_id }} {
     display: flex;
     width: max-content;
@@ -80,7 +101,7 @@
   <div class="ai-text-carousel-wrapper-{{ ai_gen_id }}">
     <div class="ai-text-carousel-track-{{ ai_gen_id }}">
       {% if block.settings.text_1 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -92,7 +113,7 @@
       {% endif %}
 
       {% if block.settings.text_2 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -104,7 +125,7 @@
       {% endif %}
 
       {% if block.settings.text_3 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -116,7 +137,7 @@
       {% endif %}
 
       {% if block.settings.text_4 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -128,7 +149,7 @@
       {% endif %}
 
       {% if block.settings.text_5 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -140,7 +161,7 @@
       {% endif %}
 
       {% if block.settings.text_6 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -154,7 +175,7 @@
 
     <div class="ai-text-carousel-track-{{ ai_gen_id }}" aria-hidden="true">
       {% if block.settings.text_1 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -166,7 +187,7 @@
       {% endif %}
 
       {% if block.settings.text_2 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -178,7 +199,7 @@
       {% endif %}
 
       {% if block.settings.text_3 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -190,7 +211,7 @@
       {% endif %}
 
       {% if block.settings.text_4 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -202,7 +223,7 @@
       {% endif %}
 
       {% if block.settings.text_5 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -214,7 +235,7 @@
       {% endif %}
 
       {% if block.settings.text_6 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 }}</span>
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 | strip }}</span>
         {% if block.settings.show_separator %}
           <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -469,6 +490,28 @@
       "id": "background_color",
       "label": "Background color",
       "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Edge fade"
+    },
+    {
+      "type": "range",
+      "id": "fade_width",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "%",
+      "label": "Fade width",
+      "default": 10,
+      "info": "Set to 0 to disable the fade"
+    },
+    {
+      "type": "color",
+      "id": "fade_color",
+      "label": "Fade color",
+      "default": "#1e3ace",
+      "info": "Usually matches the background color"
     }
   ],
   "presets": [
