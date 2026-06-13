@@ -156,7 +156,7 @@
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{%- assign cro_rating = product.metafields.reviews.rating.value.rating | default: 4.9 -%}{%- assign cro_count = product.metafields.reviews.rating_count.value | default: 103 -%}<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:{{ cro_rating | round }};\"> <strong>{{ cro_rating }}</strong> | <b>{{ cro_count }} reviews</b></div>\n        </a></div>"
+            "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.84</strong> | <b>103 reviews</b></div>\n        </a></div>"
           }
         },
         "custom_liquid_bJXfU6": {
@@ -183,7 +183,7 @@
         "custom_liquid_UEHeie": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div >\n<ul>\n<li>Supports regular cycles<sup>*</sup></li>\n<li>Supports healthy blood sugar levels already in the normal range<sup>*</sup></li>\n<li>Supports healthy glucose metabolism<sup>*</sup></li>\n<li>Supports mood & mental clarity<sup>*</sup></li></ul>\n</div>"
+            "custom_liquid": "<div >\n<ul>\n<li>Supports regular cycles<sup>*</sup></li>\n<li>Support healthy blood sugar levels<sup>†</sup></li>\n<li>Works on metabolic health<sup>*</sup></li>\n<li>Supports mood & mental clarity<sup>*</sup></li></ul>\n</div>"
           }
         },
         "custom_liquid_EEFXLw": {
@@ -220,7 +220,7 @@
         "custom_liquid_Aai6fh": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"cro-sub-reassure\"><b>Subscribe &amp; save</b> — ships every 6 weeks, cancel anytime.</div>"
+            "custom_liquid": "<div style=\"height:15px;\"></div>"
           }
         },
         "buy_buttons_3FBywE": {
@@ -458,6 +458,7 @@
         },
         "ai_gen_block_23be19a_U47bUD": {
           "type": "ai_gen_block_23be19a",
+          "disabled": true,
           "settings": {
             "avatar_1": "shopify://shop_images/Kylie_Profile_Picture.jpg",
             "avatar_2": "shopify://shop_images/Keira_Profile_Picture.jpg",
@@ -726,7 +727,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>1. Supports insulin signaling</h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
+            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">01</span><h5>Supports insulin signaling</h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p></div>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -743,7 +744,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>2. Supports ovulation and cycle regularity</h5><h4><em><strong>Less guessing</strong></em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
+            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">02</span><h5>Supports ovulation and cycle regularity</h5><h4><em>Less guessing</em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p></div>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -778,7 +779,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>3. Helps regulate cravings and appetite</h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
+            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">03</span><h5>Helps regulate cravings and appetite</h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p></div>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -795,7 +796,7 @@
             "image_full_width": false,
             "image_link": "",
             "title": "",
-            "text": "<h5>4. Supports mood and emotional balance</h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
+            "text": "<div class=\"hiw-step\"><span class=\"hiw-num\">04</span><h5>Supports mood and emotional balance</h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p></div>",
             "link_label": "",
             "link": "",
             "eli_desktop_cols": "45% 18% 18% 18%",
@@ -815,11 +816,18 @@
         "column_bFmyt3"
       ],
       "custom_css": [
-        ".multicolumn__column.small-12.medium-3.columns {border: 1.5em solid #f2eee9; padding-left: 0px;}",
-        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
-        "h4 {color: black; font-size: 20px; line-height: 28px;}",
-        "h5 {font-size: 25px; line-height: 30px; padding-bottom: 6px; text-transform: uppercase;}",
-        ".section-multicolumn {background-color: #f3eeec;}"
+        ".multicolumn__inner.text-left {max-width: 1280px; margin: auto;}",
+        ".section-multicolumn {background: linear-gradient(180deg,#f7f4f2 0%,#eef1fb 100%);}",
+        ".multicolumn h1 {font-size: 40px; letter-spacing: -0.5px; margin-bottom: 6px;}",
+        ".multicolumn__column.small-12.medium-3.columns {background: transparent; border: 0; padding-left: 12px; padding-right: 12px; display: flex; text-align: left;}",
+        ".hiw-step {position: relative; display: flex; flex-direction: column; flex: 1; background: #ffffff; border: 1px solid rgba(27,61,239,.10); border-radius: 20px; padding: 30px 24px 26px; box-shadow: 0 12px 30px rgba(20,22,40,.07); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease;}",
+        ".hiw-step:hover {transform: translateY(-6px); box-shadow: 0 22px 46px rgba(20,22,40,.13);}",
+        ".hiw-step::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,#1b3def,#7d92ff);}",
+        ".hiw-num {display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; background: linear-gradient(135deg,#1b3def,#5a76f8); color: #fff; font-weight: 700; font-size: 17px; letter-spacing: .5px; margin-bottom: 18px; box-shadow: 0 8px 18px rgba(27,61,239,.28);}",
+        ".section-multicolumn .hiw-step h5 {font-size: 19px; line-height: 1.3; text-transform: none; color: #14163a; font-weight: 700; margin: 0 0 4px; padding: 0;}",
+        ".section-multicolumn .hiw-step h4 {font-size: 13px; line-height: 1.4; color: #1b3def; font-style: italic; font-weight: 600; margin: 0 0 12px;}",
+        ".section-multicolumn .hiw-step p {font-size: 14.5px; line-height: 1.65; color: #4a4d5e; margin: 0;}",
+        "@media (max-width: 768px) {.multicolumn__column.small-12.medium-3.columns {margin-bottom: 14px;}}"
       ],
       "settings": {
         "heading": "",
