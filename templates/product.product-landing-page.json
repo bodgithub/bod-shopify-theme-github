@@ -413,7 +413,7 @@
             "text_4": "LESS INSULIN",
             "text_5": "LESS BLOOD SUGAR CHAOS",
             "text_6": "MORE BALANCE",
-            "animation_speed": 30,
+            "animation_speed": 20,
             "pause_on_hover": true,
             "font_size": 22,
             "font_weight": "500",
@@ -427,9 +427,10 @@
             "separator_size": 20,
             "separator_color": "#ffffff",
             "text_color": "#ffffff",
-            "background_color": "#191F82",
+            "background_color": "#191f82",
             "fade_width": 40,
-            "fade_color": "#1E3ACE"
+            "fade_strength": 50,
+            "fade_color": "#1e3ace"
           },
           "blocks": {}
         },
