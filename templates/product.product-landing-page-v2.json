@@ -260,7 +260,7 @@
         "custom_liquid_YGHAge": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"cro-trust-row\"><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg><span>60-day money-back guarantee</span></div><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg><span>Free shipping · 2–5 days</span></div><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg><span>Secure checkout</span></div></div><div class=\"cro-badge-row\"><span class=\"cro-badge-row__pill\">Made in USA</span><span class=\"cro-badge-row__pill\">GMP facility</span><span class=\"cro-badge-row__pill\">Third-party tested</span><span class=\"cro-badge-row__pill\">Vegan</span><span class=\"cro-badge-row__pill\">Gluten-free</span><span class=\"cro-badge-row__pill\">Non-GMO</span></div>"
+            "custom_liquid": "<div class=\"cro-trust-row\"><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg><span>60-day money-back guarantee</span></div><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg><span>Free shipping · 2–5 days</span></div><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg><span>Secure checkout</span></div></div><div class=\"cro-badge-row\"><span class=\"cro-badge-row__pill\">Made in USA</span><span class=\"cro-badge-row__pill\">GMP facility</span><span class=\"cro-badge-row__pill\">Third-party tested</span><span class=\"cro-badge-row__pill\">Vegan</span><span class=\"cro-badge-row__pill\">Gluten-free</span><span class=\"cro-badge-row__pill\">Non-GMO</span></div>\n<style>\n[id*=\"multicolumn_KdNre6\"] .multicolumn{background:linear-gradient(180deg,#f7f4f2 0%,#eef1fb 100%);}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__inner.text-left{max-width:1280px;margin:auto;}\n[id*=\"multicolumn_KdNre6\"] .multicolumn h1{font-size:40px;letter-spacing:-0.5px;margin-bottom:6px;}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column.small-12.medium-3.columns{background:transparent;border:0;padding-left:12px;padding-right:12px;display:flex;text-align:left;}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column .rte{position:relative;display:flex;flex-direction:column;flex:1;background:#fff;border:1px solid rgba(27,61,239,.10);border-radius:20px;padding:30px 24px 26px;box-shadow:0 12px 30px rgba(20,22,40,.07);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column .rte:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(20,22,40,.13);}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column .rte::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1b3def,#7d92ff);}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column .rte h6{align-self:flex-start;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;background:linear-gradient(135deg,#1b3def,#5a76f8);color:#fff;font-weight:700;font-size:17px;letter-spacing:.5px;text-transform:none;margin:0 0 18px;padding:0;}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column .rte h5{font-size:19px;line-height:1.3;text-transform:none;color:#14163a;font-weight:700;margin:0 0 4px;padding:0;}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column .rte h4{font-size:13px;line-height:1.4;color:#1b3def;font-style:italic;font-weight:600;margin:0 0 12px;}\n[id*=\"multicolumn_KdNre6\"] .multicolumn__column .rte p{font-size:14.5px;line-height:1.65;color:#4a4d5e;margin:0;}\n@media (max-width:768px){[id*=\"multicolumn_KdNre6\"] .multicolumn__column.small-12.medium-3.columns{margin-bottom:14px;}}\n</style>"
           }
         },
         "custom_liquid_jbg4iU": {
@@ -543,13 +543,73 @@
             "rating_6": 0
           },
           "blocks": {}
+        },
+        "video_testimonials_hover_bod1": {
+          "type": "video_testimonials_hover",
+          "disabled": true,
+          "settings": {
+            "heading": "Real stories from our community",
+            "subheading": "",
+            "text_alignment": "center",
+            "container_width": 1200,
+            "columns": 3,
+            "card_gap": 22,
+            "video_border_radius": 16,
+            "padding_top": 50,
+            "padding_bottom": 50,
+            "background_color": "#ffffff",
+            "heading_color": "#1b3def",
+            "text_color": "#2c2d2e",
+            "name_color": "#14163a",
+            "hover_overlay_color": "#0b1b66",
+            "hover_text_color": "#ffffff",
+            "topic_bg": "#eef1fb",
+            "topic_text": "#1b3def",
+            "play_bg": "#ffffff",
+            "play_icon": "#1b3def",
+            "heading_size": 42,
+            "subheading_size": 16,
+            "quote_size": 16,
+            "name_size": 14,
+            "video_1": "shopify://files/videos/Krstina Testimonial 2.mp4",
+            "quote_1": "Supporting my body on my fertility journey",
+            "author_1": "Krstina Perez",
+            "author_title_1": "Verified customer @krstinaperez",
+            "topic_1": "Fertility",
+            "author_image_1": "shopify://shop_images/Screenshot_2026-01-15_at_15.15.24.png",
+            "video_2": "shopify://files/videos/Ashley Testimonial_490c3d0a-49f2-49bd-83d2-5e7e23b973e5.mp4",
+            "quote_2": "Living with endometriosis, supporting my metabolism",
+            "author_2": "Ashley Moya",
+            "author_title_2": "Verified customer @ashleymoya7",
+            "topic_2": "Endometriosis",
+            "video_3": "shopify://files/videos/Kylie Testimonial - 1.mp4",
+            "quote_3": "More emotional steadiness, less PMDD overwhelm",
+            "author_3": "Kylie Spencer",
+            "author_title_3": "Verified customer @kyliespencerhealth",
+            "topic_3": "Mood & PMDD",
+            "author_image_3": "shopify://shop_images/Kylie_Profile_Picture.jpg",
+            "video_4": "shopify://files/videos/Lauren Testimonial.mp4",
+            "quote_4": "It has been life changing for my cycles, skin and mood",
+            "author_4": "Lauren Elam",
+            "author_title_4": "Verified customer @larslavishlife",
+            "topic_4": "Cycles & skin",
+            "author_image_4": "shopify://shop_images/Screenshot_2026-01-15_at_16.30.10.png",
+            "video_5": "shopify://files/videos/Baylee Review_ef1487ba-ac0e-4aee-aef8-6d35d5ae0ebe.mp4",
+            "quote_5": "Supporting cravings and weight through metabolism",
+            "author_5": "Baylee Alisson",
+            "author_title_5": "Verified customer @strongbybayleeallison",
+            "topic_5": "Cravings & weight",
+            "author_image_5": "shopify://shop_images/Baylee_Profile_Picture_91306933-682a-4bee-b216-9576bcc32ab6.webp"
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "ai_gen_block_66d84b5_zDxjMN",
         "ai_gen_block_94a518d_Q7B8W4",
         "ai_gen_block_23be19a_U47bUD",
-        "ai_gen_block_e5ed95a_KhkA73"
+        "ai_gen_block_e5ed95a_KhkA73",
+        "video_testimonials_hover_bod1"
       ],
       "settings": {}
     },
@@ -814,20 +874,7 @@
         "column_ggDGAH",
         "column_bFmyt3"
       ],
-      "custom_css": [
-        ".multicolumn__inner.text-left {max-width: 1280px; margin: auto;}",
-        ".section-multicolumn {background: linear-gradient(180deg,#f7f4f2 0%,#eef1fb 100%);}",
-        ".multicolumn h1 {font-size: 40px; letter-spacing: -0.5px; margin-bottom: 6px;}",
-        ".multicolumn__column.small-12.medium-3.columns {background: transparent; border: 0; padding-left: 12px; padding-right: 12px; display: flex; text-align: left;}",
-        ".multicolumn__column .rte {position: relative; display: flex; flex-direction: column; flex: 1; background: #ffffff; border: 1px solid rgba(27,61,239,.10); border-radius: 20px; padding: 30px 24px 26px; box-shadow: 0 12px 30px rgba(20,22,40,.07); overflow: hidden; transition: transform .25s ease, box-shadow .25s ease;}",
-        ".multicolumn__column .rte:hover {transform: translateY(-6px); box-shadow: 0 22px 46px rgba(20,22,40,.13);}",
-        ".multicolumn__column .rte::before {content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg,#1b3def,#7d92ff);}",
-        ".multicolumn__column .rte h6 {align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; background: linear-gradient(135deg,#1b3def,#5a76f8); color: #fff; font-weight: 700; font-size: 17px; letter-spacing: .5px; text-transform: none; margin: 0 0 18px; padding: 0;}",
-        ".section-multicolumn .multicolumn__column .rte h5 {font-size: 19px; line-height: 1.3; text-transform: none; color: #14163a; font-weight: 700; margin: 0 0 4px; padding: 0;}",
-        ".section-multicolumn .multicolumn__column .rte h4 {font-size: 13px; line-height: 1.4; color: #1b3def; font-style: italic; font-weight: 600; margin: 0 0 12px;}",
-        ".section-multicolumn .multicolumn__column .rte p {font-size: 14.5px; line-height: 1.65; color: #4a4d5e; margin: 0;}",
-        "@media (max-width: 768px) {.multicolumn__column.small-12.medium-3.columns {margin-bottom: 14px;}}"
-      ],
+      "custom_css": [],
       "settings": {
         "heading": "",
         "marker_style": "style1",

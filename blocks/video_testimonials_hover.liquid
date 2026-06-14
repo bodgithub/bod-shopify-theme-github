@@ -1,0 +1,401 @@
+{% comment %}
+  Video Testimonials — Hover grid
+  Alternate design for the video testimonials. Same video/copy fields as the
+  carousel block (video_N, quote_N, author_N, author_title_N, author_image_N)
+  plus a per-testimonial topic_N roundel. Clean 9:16 preview with a centred
+  play button (no native controls until played); on hover a coloured gradient
+  reveals the quote.
+{% endcomment %}
+
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{%- assign ov = block.settings.hover_overlay_color -%}
+{%- assign ov_strong = ov | color_modify: 'alpha', 0.96 -%}
+{%- assign ov_mid = ov | color_modify: 'alpha', 0.55 -%}
+{%- assign ov_soft = ov | color_modify: 'alpha', 0.0 -%}
+
+{% style %}
+  .vt-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.background_color }};
+    padding: {{ block.settings.padding_top }}px 0 {{ block.settings.padding_bottom }}px;
+  }
+  .vt__container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .vt__header-{{ ai_gen_id }} {
+    text-align: {{ block.settings.text_alignment }};
+    margin-bottom: 36px;
+  }
+  .vt__heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+    margin: 0 0 10px;
+    line-height: 1.15;
+  }
+  .vt__subheading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheading_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0;
+  }
+  .vt__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat({{ block.settings.columns }}, 1fr);
+    gap: {{ block.settings.card_gap }}px;
+  }
+  @media (max-width: 989px) {
+    .vt__grid-{{ ai_gen_id }} { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 749px) {
+    .vt__grid-{{ ai_gen_id }} {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -20px;
+      padding: 0 20px;
+    }
+    .vt__grid-{{ ai_gen_id }}::-webkit-scrollbar { display: none; }
+    .vt__card-{{ ai_gen_id }} {
+      flex: 0 0 78%;
+      scroll-snap-align: center;
+    }
+  }
+  .vt__media-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: {{ block.settings.video_border_radius }}px;
+    overflow: hidden;
+    background: #11132a;
+    cursor: pointer;
+  }
+  .vt__video-{{ ai_gen_id }} {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .vt__hover-{{ ai_gen_id }} {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    background: linear-gradient(to top, {{ ov_strong }} 0%, {{ ov_mid }} 46%, {{ ov_soft }} 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .vt__media-{{ ai_gen_id }}:hover .vt__hover-{{ ai_gen_id }} { opacity: 1; }
+  .vt__quote-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.hover_text_color }};
+    font-size: {{ block.settings.quote_size }}px;
+    font-weight: 600;
+    line-height: 1.4;
+    transform: translateY(8px);
+    transition: transform 0.3s ease;
+  }
+  .vt__media-{{ ai_gen_id }}:hover .vt__quote-{{ ai_gen_id }} { transform: translateY(0); }
+  .vt__play-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    width: 64px;
+    height: 64px;
+    border: none;
+    border-radius: 50%;
+    background: {{ block.settings.play_bg }};
+    color: {{ block.settings.play_icon }};
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .vt__media-{{ ai_gen_id }}:hover .vt__play-{{ ai_gen_id }} { transform: translate(-50%, -50%) scale(1.08); }
+  .vt__play-{{ ai_gen_id }} svg { width: 24px; height: 24px; margin-left: 3px; }
+  .vt__media-{{ ai_gen_id }}.is-playing .vt__play-{{ ai_gen_id }},
+  .vt__media-{{ ai_gen_id }}.is-playing .vt__hover-{{ ai_gen_id }} {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .vt__meta-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .vt__person-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .vt__avatar-{{ ai_gen_id }},
+  .vt__avatar-placeholder-{{ ai_gen_id }} {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: {{ block.settings.heading_color }};
+  }
+  .vt__name-{{ ai_gen_id }} {
+    display: block;
+    font-size: {{ block.settings.name_size }}px;
+    font-weight: 600;
+    color: {{ block.settings.name_color }};
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vt__title-{{ ai_gen_id }} {
+    display: block;
+    font-size: 12px;
+    color: {{ block.settings.text_color }};
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .vt__topic-{{ ai_gen_id }} {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: {{ block.settings.topic_text }};
+    background: {{ block.settings.topic_bg }};
+    border-radius: 999px;
+    padding: 6px 12px;
+    white-space: nowrap;
+  }
+{% endstyle %}
+
+<vt-grid-{{ ai_gen_id }} class="vt-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="vt__container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank or block.settings.subheading != blank %}
+      <div class="vt__header-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="vt__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+        {% if block.settings.subheading != blank %}
+          <p class="vt__subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="vt__grid-{{ ai_gen_id }}">
+      {% for i in (1..6) %}
+        {% assign video_key = 'video_' | append: i %}
+        {% assign quote_key = 'quote_' | append: i %}
+        {% assign author_key = 'author_' | append: i %}
+        {% assign author_title_key = 'author_title_' | append: i %}
+        {% assign author_image_key = 'author_image_' | append: i %}
+        {% assign topic_key = 'topic_' | append: i %}
+        {% assign v = block.settings[video_key] %}
+
+        {% if v != blank %}
+          <div class="vt__card-{{ ai_gen_id }}">
+            <div class="vt__media-{{ ai_gen_id }}">
+              {% if v.sources != blank %}
+                <video
+                  class="vt__video-{{ ai_gen_id }}"
+                  playsinline
+                  preload="metadata"
+                  poster="{{ v.preview_image | image_url: width: 900 }}"
+                >
+                  {% for s in v.sources %}
+                    <source src="{{ s.url }}" type="{{ s.mime_type }}">
+                  {% endfor %}
+                </video>
+              {% endif %}
+
+              {% if block.settings[quote_key] != blank %}
+                <div class="vt__hover-{{ ai_gen_id }}">
+                  <p class="vt__quote-{{ ai_gen_id }}">{{ block.settings[quote_key] }}</p>
+                </div>
+              {% endif %}
+
+              <button class="vt__play-{{ ai_gen_id }}" type="button" aria-label="Play video">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+              </button>
+            </div>
+
+            <div class="vt__meta-{{ ai_gen_id }}">
+              <div class="vt__person-{{ ai_gen_id }}">
+                {% if block.settings[author_image_key] %}
+                  <img
+                    class="vt__avatar-{{ ai_gen_id }}"
+                    src="{{ block.settings[author_image_key] | image_url: width: 96 }}"
+                    alt="{{ block.settings[author_key] | escape }}"
+                    width="40"
+                    height="40"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <span class="vt__avatar-placeholder-{{ ai_gen_id }}"></span>
+                {% endif %}
+                <span>
+                  {% if block.settings[author_key] != blank %}
+                    <span class="vt__name-{{ ai_gen_id }}">{{ block.settings[author_key] }}</span>
+                  {% endif %}
+                  {% if block.settings[author_title_key] != blank %}
+                    <span class="vt__title-{{ ai_gen_id }}">{{ block.settings[author_title_key] }}</span>
+                  {% endif %}
+                </span>
+              </div>
+              {% if block.settings[topic_key] != blank %}
+                <span class="vt__topic-{{ ai_gen_id }}">{{ block.settings[topic_key] }}</span>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</vt-grid-{{ ai_gen_id }}>
+
+<script>
+  (function () {
+    class VTGrid{{ ai_gen_id }} extends HTMLElement {
+      connectedCallback() {
+        this.videos = Array.from(this.querySelectorAll('video.vt__video-{{ ai_gen_id }}'));
+        this.querySelectorAll('.vt__media-{{ ai_gen_id }}').forEach((media) => {
+          const video = media.querySelector('video.vt__video-{{ ai_gen_id }}');
+          const playBtn = media.querySelector('.vt__play-{{ ai_gen_id }}');
+          if (!video) return;
+
+          const start = (e) => {
+            if (e) e.preventDefault();
+            this.pauseOthers(video);
+            media.classList.add('is-playing');
+            video.controls = true;
+            video.muted = false;
+            const p = video.play();
+            if (p && typeof p.catch === 'function') p.catch(function () {});
+          };
+
+          if (playBtn) playBtn.addEventListener('click', start);
+
+          video.addEventListener('pause', () => {
+            media.classList.remove('is-playing');
+            video.controls = false;
+          });
+          video.addEventListener('ended', () => {
+            media.classList.remove('is-playing');
+            video.controls = false;
+            try { video.currentTime = 0; } catch (err) {}
+          });
+        });
+      }
+
+      pauseOthers(except) {
+        this.videos.forEach((v) => { if (v !== except) v.pause(); });
+      }
+    }
+    customElements.define('vt-grid-{{ ai_gen_id }}', VTGrid{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Video Testimonials Hover",
+  "tag": null,
+  "settings": [
+    { "type": "header", "content": "Heading" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real stories from our community" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "" },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "container_width", "min": 600, "max": 1400, "step": 50, "unit": "px", "label": "Container width", "default": 1200 },
+    { "type": "range", "id": "columns", "min": 2, "max": 5, "step": 1, "label": "Columns (desktop)", "default": 3 },
+    { "type": "range", "id": "card_gap", "min": 10, "max": 50, "step": 2, "unit": "px", "label": "Gap between cards", "default": 22 },
+    { "type": "range", "id": "video_border_radius", "min": 0, "max": 30, "step": 2, "unit": "px", "label": "Video corner radius", "default": 16 },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding top", "default": 50 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding bottom", "default": 50 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1b3def" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#2c2d2e" },
+    { "type": "color", "id": "name_color", "label": "Name", "default": "#14163a" },
+    { "type": "color", "id": "hover_overlay_color", "label": "Hover gradient", "default": "#0b1b66", "info": "The dark blue (or any colour) that fades in on hover." },
+    { "type": "color", "id": "hover_text_color", "label": "Hover quote text", "default": "#ffffff" },
+    { "type": "color", "id": "topic_bg", "label": "Topic pill background", "default": "#eef1fb" },
+    { "type": "color", "id": "topic_text", "label": "Topic pill text", "default": "#1b3def" },
+    { "type": "color", "id": "play_bg", "label": "Play button background", "default": "#ffffff" },
+    { "type": "color", "id": "play_icon", "label": "Play button icon", "default": "#1b3def" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "heading_size", "min": 20, "max": 60, "step": 2, "unit": "px", "label": "Heading size", "default": 42 },
+    { "type": "range", "id": "subheading_size", "min": 12, "max": 24, "step": 1, "unit": "px", "label": "Subheading size", "default": 16 },
+    { "type": "range", "id": "quote_size", "min": 12, "max": 22, "step": 1, "unit": "px", "label": "Hover quote size", "default": 16 },
+    { "type": "range", "id": "name_size", "min": 12, "max": 20, "step": 1, "unit": "px", "label": "Name size", "default": 14 },
+    { "type": "header", "content": "Testimonial 1" },
+    { "type": "video", "id": "video_1", "label": "Video" },
+    { "type": "textarea", "id": "quote_1", "label": "Quote (shows on hover)" },
+    { "type": "text", "id": "author_1", "label": "Name" },
+    { "type": "text", "id": "author_title_1", "label": "Subtitle (optional)" },
+    { "type": "text", "id": "topic_1", "label": "Topic (roundel)" },
+    { "type": "image_picker", "id": "author_image_1", "label": "Display image" },
+    { "type": "header", "content": "Testimonial 2" },
+    { "type": "video", "id": "video_2", "label": "Video" },
+    { "type": "textarea", "id": "quote_2", "label": "Quote (shows on hover)" },
+    { "type": "text", "id": "author_2", "label": "Name" },
+    { "type": "text", "id": "author_title_2", "label": "Subtitle (optional)" },
+    { "type": "text", "id": "topic_2", "label": "Topic (roundel)" },
+    { "type": "image_picker", "id": "author_image_2", "label": "Display image" },
+    { "type": "header", "content": "Testimonial 3" },
+    { "type": "video", "id": "video_3", "label": "Video" },
+    { "type": "textarea", "id": "quote_3", "label": "Quote (shows on hover)" },
+    { "type": "text", "id": "author_3", "label": "Name" },
+    { "type": "text", "id": "author_title_3", "label": "Subtitle (optional)" },
+    { "type": "text", "id": "topic_3", "label": "Topic (roundel)" },
+    { "type": "image_picker", "id": "author_image_3", "label": "Display image" },
+    { "type": "header", "content": "Testimonial 4" },
+    { "type": "video", "id": "video_4", "label": "Video" },
+    { "type": "textarea", "id": "quote_4", "label": "Quote (shows on hover)" },
+    { "type": "text", "id": "author_4", "label": "Name" },
+    { "type": "text", "id": "author_title_4", "label": "Subtitle (optional)" },
+    { "type": "text", "id": "topic_4", "label": "Topic (roundel)" },
+    { "type": "image_picker", "id": "author_image_4", "label": "Display image" },
+    { "type": "header", "content": "Testimonial 5" },
+    { "type": "video", "id": "video_5", "label": "Video" },
+    { "type": "textarea", "id": "quote_5", "label": "Quote (shows on hover)" },
+    { "type": "text", "id": "author_5", "label": "Name" },
+    { "type": "text", "id": "author_title_5", "label": "Subtitle (optional)" },
+    { "type": "text", "id": "topic_5", "label": "Topic (roundel)" },
+    { "type": "image_picker", "id": "author_image_5", "label": "Display image" },
+    { "type": "header", "content": "Testimonial 6" },
+    { "type": "video", "id": "video_6", "label": "Video" },
+    { "type": "textarea", "id": "quote_6", "label": "Quote (shows on hover)" },
+    { "type": "text", "id": "author_6", "label": "Name" },
+    { "type": "text", "id": "author_title_6", "label": "Subtitle (optional)" },
+    { "type": "text", "id": "topic_6", "label": "Topic (roundel)" },
+    { "type": "image_picker", "id": "author_image_6", "label": "Display image" }
+  ],
+  "presets": [
+    { "name": "Video Testimonials Hover" }
+  ]
+}
+{% endschema %}
