@@ -1,0 +1,144 @@
+{% comment %}
+  Bodology · "How inositol works" — Option E
+  Apple × Hims · warm, photo-led, benefit-first.
+
+  Every field is editable in the theme editor (image, copy, colour, benefits).
+  FONTS: uses the theme's brand fonts:
+    --font-sans  → Tenon  (Adobe Fonts / Typekit — loaded in theme.liquid)
+    --font-serif → Instrument Serif (Google Fonts — loaded below as a fallback)
+{% endcomment %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+
+{%- liquid
+  assign blue = settings.brand_blue | default: '#1B3DEF'
+  assign sand = settings.brand_sand | default: '#F3EEEA'
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .hiw { background: {{ section.settings.bg_color | default: sand }}; padding: 84px 0; }
+  #shopify-section-{{ section.id }} .hiw-wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; display: grid; grid-template-columns: 1fr; gap: 36px; align-items: stretch; }
+  #shopify-section-{{ section.id }} .hiw-media { position: relative; border-radius: 28px; overflow: hidden; min-height: 440px; box-shadow: 0 30px 70px rgba(60,40,20,0.16); }
+  #shopify-section-{{ section.id }} .hiw-media img { width: 100%; height: 100%; object-fit: cover; object-position: center {{ section.settings.image_focus | default: 18 }}%; display: block; }
+  #shopify-section-{{ section.id }} .hiw-cap { position: absolute; left: 18px; right: 18px; bottom: 18px; display: flex; align-items: center; gap: 11px; background: rgba(255,255,255,0.72); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.6); border-radius: 16px; padding: 13px 16px; font-size: 13.5px; line-height: 1.35; color: #000; }
+  #shopify-section-{{ section.id }} .hiw-cap .dot { width: 9px; height: 9px; border-radius: 50%; background: {{ blue }}; flex-shrink: 0; }
+  #shopify-section-{{ section.id }} .hiw-pill { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; background: {{ blue }}14; color: {{ blue }}; border-radius: 999px; padding: 8px 16px; font-size: 13px; font-weight: 500; margin-bottom: 22px; }
+  #shopify-section-{{ section.id }} .hiw-h { font-family: var(--font-sans, 'tenon', sans-serif); font-weight: 600; letter-spacing: -0.03em; line-height: 1.04; font-size: clamp(34px, 4.6vw, 60px); color: #000; margin: 0; text-wrap: balance; }
+  #shopify-section-{{ section.id }} .hiw-h p { margin: 0; }
+  #shopify-section-{{ section.id }} .hiw-h em { font-family: var(--font-serif, 'Instrument Serif', serif); font-style: italic; font-weight: 400; color: {{ blue }}; letter-spacing: 0; }
+  #shopify-section-{{ section.id }} .hiw-lede { font-size: 18px; line-height: 1.55; color: rgba(0,0,0,0.6); margin: 18px 0 0; max-width: 46ch; }
+  #shopify-section-{{ section.id }} .hiw-list { margin-top: 32px; display: flex; flex-direction: column; }
+  #shopify-section-{{ section.id }} .hiw-item { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; padding: 22px 0; border-top: 1px solid rgba(60,40,20,0.12); }
+  #shopify-section-{{ section.id }} .hiw-item:last-child { border-bottom: 1px solid rgba(60,40,20,0.12); }
+  #shopify-section-{{ section.id }} .hiw-ico { width: 48px; height: 48px; border-radius: 50%; background: #fff; border: 1px solid rgba(60,40,20,0.08); color: {{ blue }}; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(60,40,20,0.08); flex-shrink: 0; }
+  #shopify-section-{{ section.id }} .hiw-ico svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  #shopify-section-{{ section.id }} .hiw-it-h { font-family: var(--font-sans, 'tenon', sans-serif); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; color: #000; margin: 3px 0 5px; }
+  #shopify-section-{{ section.id }} .hiw-it-b { font-size: 15px; line-height: 1.5; color: rgba(0,0,0,0.58); margin: 0; }
+  @media (min-width: 900px) {
+    #shopify-section-{{ section.id }} .hiw-wrap { grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: center; }
+    #shopify-section-{{ section.id }} .hiw-media { min-height: 600px; height: 100%; }
+    {% if section.settings.image_side == 'right' %}
+      #shopify-section-{{ section.id }} .hiw-media { order: 2; }
+    {% endif %}
+  }
+{% endstyle %}
+
+<section class="hiw">
+  <div class="hiw-wrap">
+
+    <div class="hiw-media">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: section.settings.image.alt | default: section.settings.heading }}
+      {% else %}
+        <img src="{{ 'model-drink.png' | asset_url }}" alt="{{ section.settings.heading | strip_html | strip }}" loading="lazy">
+      {% endif %}
+      {% if section.settings.caption != blank %}
+        <div class="hiw-cap"><span class="dot"></span>{{ section.settings.caption }}</div>
+      {% endif %}
+    </div>
+
+    <div class="hiw-content">
+      {% if section.settings.pill_text != blank %}
+        <span class="hiw-pill">{{ section.settings.pill_text }}</span>
+      {% endif %}
+      <h2 class="hiw-h">{{ section.settings.heading }}</h2>
+      {% if section.settings.lede != blank %}
+        <p class="hiw-lede">{{ section.settings.lede }}</p>
+      {% endif %}
+
+      <div class="hiw-list">
+        {% for block in section.blocks %}
+          <div class="hiw-item" {{ block.shopify_attributes }}>
+            <div class="hiw-ico">
+              {%- case block.settings.icon -%}
+                {%- when 'signal' -%}<svg viewBox="0 0 24 24"><path d="M2.5 13h3.4l2.3-7.5L12 19l2.2-8 1.6 4h5.7"/></svg>
+                {%- when 'cycle' -%}<svg viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 0 1-14.6 5.9"/><path d="M3.5 12A8.5 8.5 0 0 1 18.1 6.1"/><path d="M18.5 2.5v4h-4"/><path d="M5.5 21.5v-4h4"/></svg>
+                {%- when 'tune' -%}<svg viewBox="0 0 24 24"><path d="M5 21v-7M5 10V3M12 21v-5M12 12V3M19 21v-9M19 8V3"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="10" r="2"/><circle cx="19" cy="6" r="2"/></svg>
+                {%- when 'heart' -%}<svg viewBox="0 0 24 24"><path d="M12 20.4S4.3 15.9 4.3 9.9A3.9 3.9 0 0 1 12 7.2a3.9 3.9 0 0 1 7.7 2.7c0 6-7.7 10.5-7.7 10.5z"/></svg>
+                {%- else -%}<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/></svg>
+              {%- endcase -%}
+            </div>
+            <div>
+              <h3 class="hiw-it-h">{{ block.settings.title }}</h3>
+              <p class="hiw-it-b">{{ block.settings.body }}</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How inositol works",
+  "tag": "section",
+  "class": "section-how-inositol-works",
+  "settings": [
+    { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "image_side", "label": "Image side (desktop)", "default": "left",
+      "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ] },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F3EEEA" },
+
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Photo", "info": "Falls back to model-drink.png in assets if left empty." },
+    { "type": "range", "id": "image_focus", "label": "Vertical focus", "min": 0, "max": 100, "step": 2, "unit": "%", "default": 18 },
+    { "type": "text", "id": "caption", "label": "Photo caption", "default": "One scoop, stirred into your morning coffee or water." },
+
+    { "type": "header", "content": "Heading" },
+    { "type": "text", "id": "pill_text", "label": "Eyebrow pill", "default": "Why it works" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "info": "Wrap a word in italics to render it in the serif accent.", "default": "<p>Feel it work, from the <em>inside out</em></p>" },
+    { "type": "textarea", "id": "lede", "label": "Intro line", "default": "Inositol works upstream on insulin — so the steadier energy, calmer cycles and better mood follow naturally." }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Benefit",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "signal",
+          "options": [
+            { "value": "signal", "label": "Signal / energy" },
+            { "value": "cycle", "label": "Cycle" },
+            { "value": "tune", "label": "Regulate / tune" },
+            { "value": "heart", "label": "Mood / heart" }
+          ] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Steadier energy, all day" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Supports a healthy insulin response, so blood sugar stays even — fewer highs and lows." }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "How inositol works",
+      "blocks": [
+        { "type": "pillar", "settings": { "icon": "signal", "title": "Steadier energy, all day", "body": "Supports a healthy insulin response, so blood sugar stays even — fewer highs and lows." } },
+        { "type": "pillar", "settings": { "icon": "cycle", "title": "Cycles you can count on", "body": "Backs the ovarian function behind a more regular, more predictable cycle." } },
+        { "type": "pillar", "settings": { "icon": "tune", "title": "Fewer cravings", "body": "Smooths the blood-sugar dips that set off cravings and afternoon crashes." } },
+        { "type": "pillar", "settings": { "icon": "heart", "title": "A calmer mood", "body": "Part of the signaling that keeps mood and emotions on a more even keel." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
