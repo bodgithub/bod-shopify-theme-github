@@ -1,0 +1,45 @@
+{%- comment -%}
+  Bodology · Trust strip icon library
+  Outputs the inner SVG paths for a given icon key. Wrapped by the caller in
+  <svg class="bod-ts__ic"> so the gradient stroke + scoping is applied there.
+
+  Usage: {% render 'trust-strip-icon', icon: 'expert' %}
+  Keep the option list here in sync with the "icon" selects in
+  sections/trust-strip.liquid and the trust_strip block in sections/main-product.liquid.
+{%- endcomment -%}
+{%- case icon -%}
+  {%- when 'expert' -%}
+    <circle cx="9.5" cy="7.5" r="3.3"/><path d="M3.5 20 C3.5 15.8 6.2 13.7 9.5 13.7 C11 13.7 12.4 14.1 13.5 14.9"/><path d="M14.4 18.7 L16.5 20.8 L21 16.2"/>
+  {%- when 'flask' -%}
+    <path d="M9 2.5 H15"/><path d="M10 2.5 V9 L4.8 18.2 A1.6 1.6 0 0 0 6.2 20.7 H17.8 A1.6 1.6 0 0 0 19.2 18.2 L14 9 V2.5"/><path d="M9.3 15.4 L11 17.1 L14.4 13.3"/>
+  {%- when 'fingerprint' -%}
+    <path d="M4.5 12 a7.5 7.5 0 0 1 15 0"/><path d="M7 12.5 a5 5 0 0 1 10 -0.5 q0 4 -1.1 7.2"/><path d="M9.6 12 a2.4 2.4 0 0 1 4.8 0.2 q0 4.8 -1.4 8.2"/><path d="M7.6 16 q-0.4 2 -1.4 3.7"/>
+  {%- when 'chart' -%}
+    <path d="M2.5 18 H6.5 L8.5 7 L10.5 18 H12.2 L14 11 L15.8 18 H21.5"/>
+  {%- when 'shield' -%}
+    <path d="M12 2.5 L19.5 5.3 V11 C19.5 15.8 16.2 19.4 12 21.3 C7.8 19.4 4.5 15.8 4.5 11 V5.3 Z"/><path d="M8.8 11.4 L11 13.6 L15.2 9"/>
+  {%- when 'microbe' -%}
+    <circle cx="12" cy="12" r="9"/><circle class="bod-dot" cx="10" cy="10.2" r="1"/><circle class="bod-dot" cx="14.2" cy="11.6" r="1"/><circle class="bod-dot" cx="11.4" cy="14.6" r="1"/>
+  {%- when 'ratio' -%}
+    <path d="M4.5 9 H19.5" stroke-width="2.6"/><path d="M4.5 15 H12" stroke-width="2.6"/>
+  {%- when 'pin' -%}
+    <path d="M12 21.5 C12 21.5 19 15 19 9.5 A7 7 0 0 0 5 9.5 C5 15 12 21.5 12 21.5 Z"/><circle cx="12" cy="9.3" r="2.4"/>
+  {%- when 'leaf' -%}
+    <path d="M5 19 C5 11 11 5 19 5 C19 13 13 19 5 19 Z"/><path d="M5 19 C8 15 12 11.5 16 9.5"/>
+  {%- when 'check' -%}
+    <circle cx="12" cy="12" r="9"/><path d="M8 12.2 L11 15.2 L16.2 9.4"/>
+  {%- when 'beaker' -%}
+    <path d="M8 3 H16"/><path d="M9 3 V8.5 L5.5 18 A1.5 1.5 0 0 0 7 20.5 H17 A1.5 1.5 0 0 0 18.5 18 L15 8.5 V3"/><path d="M6.7 14 H17.3"/>
+  {%- when 'droplet' -%}
+    <path d="M12 3 C12 3 5.5 10 5.5 14.5 A6.5 6.5 0 0 0 18.5 14.5 C18.5 10 12 3 12 3 Z"/>
+  {%- when 'star' -%}
+    <path d="M12 3 L14.6 8.6 L20.5 9.3 L16 13.3 L17.3 19.2 L12 16.1 L6.7 19.2 L8 13.3 L3.5 9.3 L9.4 8.6 Z"/>
+  {%- when 'lock' -%}
+    <rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5 V8 A4 4 0 0 1 16 8 V10.5"/>
+  {%- when 'globe' -%}
+    <circle cx="12" cy="12" r="9"/><path d="M3 12 H21"/><path d="M12 3 C15 6 15 18 12 21 C9 18 9 6 12 3 Z"/>
+  {%- when 'award' -%}
+    <circle cx="12" cy="9" r="5"/><path d="M9 13.5 L7.5 21 L12 18.5 L16.5 21 L15 13.5"/>
+  {%- else -%}
+    <circle cx="12" cy="12" r="9"/><path d="M8 12.2 L11 15.2 L16.2 9.4"/>
+{%- endcase -%}
