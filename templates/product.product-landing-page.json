@@ -113,6 +113,59 @@
         "disable_bottom_spacing": true
       }
     },
+    "image_with_text_BtX3Vm": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_3PFJhN": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>Discover a <em>metabolism–first</em> approach to hormone care</h1>"
+          }
+        },
+        "text_UrjqNQ": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Support insulin sensitivity, cravings, and cycle rhythm—daily and gently.</p>"
+          }
+        },
+        "button_EdBk3b": {
+          "type": "button",
+          "settings": {
+            "button_text": "Claim 30% off now",
+            "button_link": "#product-details",
+            "button_html": "window._klOnsite=window._klOnsite||[]; window._klOnsite.push(['openForm','TLyDZU']); return false;"
+          }
+        }
+      },
+      "block_order": [
+        "text_3PFJhN",
+        "text_UrjqNQ",
+        "button_EdBk3b"
+      ],
+      "disabled": true,
+      "name": "Image with text",
+      "settings": {
+        "image": "shopify://shop_images/Bodology_girl_water_4.png",
+        "use_video": true,
+        "video": "",
+        "video_hosted": "shopify://files/videos/Video 1_V2_4K.mov",
+        "video_autoplay": true,
+        "mobile_layout": "text_first",
+        "height": "large",
+        "desktop_image_width": "small",
+        "full_width": true,
+        "layout": "text_first",
+        "content_position": "text-center",
+        "column_spacing": "medium",
+        "color_bg": "linear-gradient(135deg, rgba(243, 238, 235, 1), rgba(246, 242, 240, 1) 78%)",
+        "color_text": "#1b3def",
+        "color_p_text": "#1b3def",
+        "color_border": "#e2e2e2",
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false
+      }
+    },
     "spacer_fcdpRG": {
       "type": "spacer",
       "name": "Spacer",
@@ -155,7 +208,7 @@
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <b>103 reviews</b></div>\n        </a></div>"
+            "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <b>97 reviews</b></div>\n        </a></div>"
           }
         },
         "custom_liquid_bJXfU6": {
@@ -413,7 +466,7 @@
             "text_4": "LESS INSULIN",
             "text_5": "LESS BLOOD SUGAR CHAOS",
             "text_6": "MORE BALANCE",
-            "animation_speed": 20,
+            "animation_speed": 30,
             "pause_on_hover": true,
             "font_size": 22,
             "font_weight": "500",
@@ -427,10 +480,7 @@
             "separator_size": 20,
             "separator_color": "#ffffff",
             "text_color": "#ffffff",
-            "background_color": "#191f82",
-            "fade_width": 40,
-            "fade_strength": 50,
-            "fade_color": "#1e3ace"
+            "background_color": "#1e3ace"
           },
           "blocks": {}
         },
@@ -553,81 +603,6 @@
         "ai_gen_block_e5ed95a_KhkA73"
       ],
       "settings": {}
-    },
-    "testimonial_carousel_twHytV": {
-      "type": "testimonial-carousel",
-      "blocks": {
-        "testimonial_xbyEaz": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-tina-kozman\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-tina-kozman\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-tina-kozman\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_cCt7iB": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"a-hillary-rd\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"a-hillary-rd\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"a-hillary-rd\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_JqWaEF": {
-          "type": "testimonial",
-          "source": "{{ metaobjects.experts[\"c-dr-anita\"] }}",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"c-dr-anita\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"c-dr-anita\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"c-dr-anita\"].expert_title.value }}",
-            "quote": "{{ metaobjects.experts[\"c-dr-anita\"].safe_short_quote | metafield_tag }}"
-          }
-        },
-        "testimonial_jNbziQ": {
-          "type": "testimonial",
-          "settings": {
-            "image": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_photo.value }}",
-            "name": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_name.value }}",
-            "role": "{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].expert_title.value }}",
-            "quote": "<p>{{ metaobjects.experts[\"leslie-kutcha-fdnp\"].exert_short_quote | metafield_tag }}</p>"
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_xbyEaz",
-        "testimonial_cCt7iB",
-        "testimonial_JqWaEF",
-        "testimonial_jNbziQ"
-      ],
-      "custom_css": [
-        ".row {background-color: white;}"
-      ],
-      "settings": {
-        "testimonial_source": "blocks",
-        "heading": "<h1>Trusted by <em>experts + </em>practitioners</h1>",
-        "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of metabolic health.",
-        "full_width": false,
-        "text_size": "small",
-        "font_family": "body",
-        "color_bg": "rgba(0,0,0,0)",
-        "color_bg_card": "#ffffff",
-        "color_border_card": "#1b3def",
-        "color_heading": "#1b3def",
-        "color_text2": "#1b3def",
-        "color_text": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true,
-        "columns_desktop": 2,
-        "columns_tablet": 2,
-        "columns_mobile": 1,
-        "show_button": true,
-        "button_text": "Meet Our Experts",
-        "button_url": "shopify://pages/meet-our-experts"
-      }
     },
     "image_with_text_overlay_yexKYW": {
       "type": "image-with-text-overlay",
@@ -1495,11 +1470,18 @@
             "size": "h1",
             "marker_color": "#fd6262"
           }
+        },
+        "custom_liquid_x3kcPp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<a class=\"junip-review-btn\" href=\"https://junip.co/forms/bodology\" target=\"_top\">Leave a review</a>\n\n<style>\n  .junip-review-btn {\n    display: inline-block;\n    box-sizing: border-box;\n    cursor: pointer;\n    width: 200px;\n    text-align: center;\n    text-transform: uppercase;\n    text-decoration: none;\n    color: #fff !important;\n    background: linear-gradient(#0F2ED0, #0A95EF);\n    font-weight: 600;\n    font-size: 15px;\n    letter-spacing: 1px;\n    padding: 12px 18px;\n    border: 0px solid #000;\n    border-radius: 50px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;\n  }\n</style>"
+          }
         }
       },
       "block_order": [
         "custom_liquid_WNyj3J",
-        "heading_UaPWhd"
+        "heading_UaPWhd",
+        "custom_liquid_x3kcPp"
       ],
       "settings": {
         "text_width": "medium",
@@ -1517,18 +1499,6 @@
     "17289436895cc28ff7": {
       "type": "apps",
       "blocks": {
-        "junip_product_reviews_ugc_junip_ugc_gallery_8Pj63p": {
-          "type": "shopify://apps/junip/blocks/junip-ugc-gallery/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
-          "settings": {
-            "layout": "tile",
-            "title": "",
-            "product": "{{product}}",
-            "reviewTag": "",
-            "paddingTop": 24,
-            "paddingBottom": 10,
-            "containerClass": ""
-          }
-        },
         "junip_product_reviews_ugc_junip_reviews_YG3wzn": {
           "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
           "settings": {
@@ -1537,12 +1507,11 @@
             "showSummary": true,
             "showMediaGallery": false,
             "reviewsCount": 10,
-            "containerClass": "bodology-junip-reviews"
+            "containerClass": ""
           }
         }
       },
       "block_order": [
-        "junip_product_reviews_ugc_junip_ugc_gallery_8Pj63p",
         "junip_product_reviews_ugc_junip_reviews_YG3wzn"
       ],
       "custom_css": [
@@ -1592,7 +1561,7 @@
         "text_Ydjw63": {
           "type": "text",
           "settings": {
-            "text": "<p>Not another hormone supplement, a metabolic foundation. Because women deserve answers, not symptom chasing.<br><br>— Jasmin, Founder</p>"
+            "text": "<p>Not another hormone supplement, a metabolic foundation. Because women deserve answers, not symptom chasing.<br/><br/>— Jasmin, Founder</p>"
           }
         }
       },
@@ -1603,6 +1572,7 @@
         "collapsible_tab_3TtVpF",
         "text_Ydjw63"
       ],
+      "disabled": true,
       "name": "Image with text",
       "settings": {
         "image": "shopify://shop_images/JASMIN-PIC-10.png",
@@ -1628,11 +1598,11 @@
   "order": [
     "gpt_product_seo_DWikHm",
     "image_with_text_overlay_T3rmDc",
+    "image_with_text_BtX3Vm",
     "spacer_fcdpRG",
     "custom_liquid_WV46gi",
     "main-product",
     "1768505899436dba61",
-    "testimonial_carousel_twHytV",
     "image_with_text_overlay_yexKYW",
     "multicolumn_KdNre6",
     "rich_text_zwjMjN",
