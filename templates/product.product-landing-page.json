@@ -188,7 +188,6 @@
       "blocks": {
         "title_ExCfKU": {
           "type": "title",
-          "disabled": true,
           "settings": {
             "show_products_rating": true
           }
@@ -211,45 +210,10 @@
             "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.9</strong> | <b>97 reviews</b></div>\n        </a></div>"
           }
         },
-        "custom_liquid_bJXfU6": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div style=\"display: flex; gap:10px; align-items: center; margin-bottom:16px; font-size:1.4rem;flex-wrap: wrap;\">\n\n \n\n<div style=\"color:grey !important; text-decoration:line-through;\"><em>$65 </em></div>\n\n<div><em>$46.80</em></div>\n\n<div style=\"font-size:0.9rem;color:grey;\">30% off your first subscription</div>\n\n</div>"
-          }
-        },
-        "custom_liquid_Et3tif": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div style=\"display: flex; gap:12px; align-items: center; margin-bottom:16px; font-size:1.4rem;flex-wrap: wrap;\">\n\n<div style=\"color:#bababa !important; text-decoration:line-through;\"><em>$65 </em></div><div style=\"\"><em>$46.80</em></div> \n\n\n<div style=\"padding:5px 10px; background-color:#f5f5f5; color:#1b3def; max-width: fit-content; border-radius:3px; font-size:0.9rem;white-space:nowrap;\">30% OFF YOUR FIRST SUBSCRIPTION</div> \n</div>"
-          }
-        },
-        "custom_liquid_cnQHf3": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow.</p>\n</div>\n<div>\n<ul>\n        <li><span class=\"tick\">✓</span>Clean 40:1 myo + d-chiro inositol</li>\n        <li><span class=\"tick\">✓</span>Supports cycles, energy &amp; mental clarity</li>\n        <li><span class=\"tick\">✓</span>Designed for long-term metabolic balance</li>\n      </ul>\n</div>"
-          }
-        },
         "custom_liquid_UEHeie": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div >\n<ul>\n<li>Supports regular cycles<sup>*</sup></li>\n<li>Support healthy blood sugar levels<sup>†</sup></li>\n<li>Works on metabolic health<sup>*</sup></li>\n<li>Supports mood & mental clarity<sup>*</sup></li></ul>\n</div>"
-          }
-        },
-        "custom_liquid_EEFXLw": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div>\n\n<p style=\"padding-top:px;\">\n\nWhen metabolism is balanced, hormones follow. Boost yours daily with clean, 40:1 Myo + D-chiro inositol designed to support regular cycles, steady energy, and mental clarity.*</p>\n</div>"
-          }
-        },
-        "custom_liquid_8aUQnn": {
-          "type": "custom_liquid",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div class=\"product-benefits\"><div id=\"product-details\">\n<div class=\"benefit\">Metabolism</div>\n<div class=\"benefit\">Hormones</div>\n<div class=\"benefit\">Mood</div> \n<div class=\"benefit\">Energy</div> \n<div class=\"benefit\">Reproductive Health</div> \n</div></div>"
           }
         },
         "variant_picker_HegXNW": {
@@ -413,12 +377,7 @@
         "custom_liquid_WPt4Yc",
         "custom_liquid_WRFhPD",
         "custom_liquid_8d7xtd",
-        "custom_liquid_bJXfU6",
-        "custom_liquid_Et3tif",
-        "custom_liquid_cnQHf3",
         "custom_liquid_UEHeie",
-        "custom_liquid_EEFXLw",
-        "custom_liquid_8aUQnn",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
@@ -480,7 +439,10 @@
             "separator_size": 20,
             "separator_color": "#ffffff",
             "text_color": "#ffffff",
-            "background_color": "#1e3ace"
+            "background_color": "#1e3ace",
+            "fade_width": 10,
+            "fade_strength": 50,
+            "fade_color": "#1e3ace"
           },
           "blocks": {}
         },
@@ -1561,7 +1523,7 @@
         "text_Ydjw63": {
           "type": "text",
           "settings": {
-            "text": "<p>Not another hormone supplement, a metabolic foundation. Because women deserve answers, not symptom chasing.<br/><br/>— Jasmin, Founder</p>"
+            "text": "<p>Not another hormone supplement, a metabolic foundation. Because women deserve answers, not symptom chasing.<br><br>— Jasmin, Founder</p>"
           }
         }
       },

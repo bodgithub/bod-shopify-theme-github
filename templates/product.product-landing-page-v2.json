@@ -6,7 +6,6 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- * (resynced)
  */
 {
   "sections": {
@@ -134,6 +133,18 @@
     "main-product": {
       "type": "main-product",
       "blocks": {
+        "custom_liquid_WPt4Yc": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"margin-top:20px;\"><h1 style=\"font-weight:1000 !important;\">Inositol Powder</h1></div>"
+          }
+        },
+        "custom_liquid_8d7xtd": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.84</strong> | <b>Read Reviews</b></div>\n        </a></div>"
+          }
+        },
         "title_ExCfKU": {
           "type": "title",
           "disabled": true,
@@ -141,22 +152,10 @@
             "show_products_rating": true
           }
         },
-        "custom_liquid_WPt4Yc": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"margin-top:20px;\"><h1 style=\"font-weight:1000 !important;\">Inositol Powder</h1></div>"
-          }
-        },
         "custom_liquid_WRFhPD": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div>"
-          }
-        },
-        "custom_liquid_8d7xtd": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.84</strong> | <b>103 reviews</b></div>\n        </a></div>"
           }
         },
         "custom_liquid_bJXfU6": {
@@ -357,10 +356,10 @@
         }
       },
       "block_order": [
-        "title_ExCfKU",
         "custom_liquid_WPt4Yc",
-        "custom_liquid_WRFhPD",
         "custom_liquid_8d7xtd",
+        "title_ExCfKU",
+        "custom_liquid_WRFhPD",
         "custom_liquid_bJXfU6",
         "custom_liquid_Et3tif",
         "custom_liquid_cnQHf3",
@@ -428,9 +427,10 @@
             "separator_size": 20,
             "separator_color": "#ffffff",
             "text_color": "#ffffff",
-            "background_color": "#191F82",
+            "background_color": "#191f82",
             "fade_width": 40,
-            "fade_color": "#1E3ACE"
+            "fade_strength": 50,
+            "fade_color": "#1e3ace"
           },
           "blocks": {}
         },
@@ -600,7 +600,11 @@
             "author_5": "Baylee Alisson",
             "author_title_5": "Verified customer @strongbybayleeallison",
             "topic_5": "Cravings & weight",
-            "author_image_5": "shopify://shop_images/Baylee_Profile_Picture_91306933-682a-4bee-b216-9576bcc32ab6.webp"
+            "author_image_5": "shopify://shop_images/Baylee_Profile_Picture_91306933-682a-4bee-b216-9576bcc32ab6.webp",
+            "quote_6": "",
+            "author_6": "",
+            "author_title_6": "",
+            "topic_6": ""
           },
           "blocks": {}
         }
@@ -776,6 +780,73 @@
         "overlay_opacity": 21,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
+      }
+    },
+    "how_it_works_bod": {
+      "type": "how-inositol-works",
+      "blocks": {
+        "b1": {
+          "type": "pillar",
+          "settings": {
+            "icon": "signal",
+            "title": "Steadier energy, all day",
+            "body": "Supports a healthy insulin response, so blood sugar stays even — fewer highs and lows."
+          }
+        },
+        "b2": {
+          "type": "pillar",
+          "settings": {
+            "icon": "cycle",
+            "title": "Cycles you can count on",
+            "body": "Backs the ovarian function behind a more regular, more predictable cycle."
+          }
+        },
+        "b3": {
+          "type": "pillar",
+          "settings": {
+            "icon": "tune",
+            "title": "Fewer cravings",
+            "body": "Smooths the blood-sugar dips that set off cravings and afternoon crashes."
+          }
+        },
+        "b4": {
+          "type": "pillar",
+          "settings": {
+            "icon": "heart",
+            "title": "A calmer mood",
+            "body": "Part of the signaling that keeps mood and emotions on a more even keel."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "image_side": "left",
+        "padding_top": 84,
+        "padding_bottom": 84,
+        "bg_color": "#F3EEEA",
+        "bg_image_opacity": 100,
+        "image_focus": 18,
+        "caption": "One scoop, stirred into your morning coffee or water.",
+        "caption_color": "#000000",
+        "pill_text": "Why it works",
+        "pill_bg": "#ffffff",
+        "pill_text_color": "#1b3def",
+        "pill_border": "#1b3def",
+        "heading": "<p>Feel it work, from the <em>inside out</em></p>",
+        "heading_color": "#000000",
+        "marker_color": "#1b3def",
+        "lede": "Inositol works upstream on insulin — so the steadier energy, calmer cycles and better mood follow naturally.",
+        "lede_color": "#5c5651",
+        "benefit_title_color": "#000000",
+        "benefit_body_color": "#5c5651",
+        "icon_color": "#1b3def",
+        "icon_bg": "#ffffff",
+        "divider_color": "#e6ded5"
       }
     },
     "rich_text_zwjMjN": {
@@ -1560,58 +1631,6 @@
         "color_border": "#e2e2e2",
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
-      }
-    },
-    "how_it_works_bod": {
-      "type": "how-inositol-works",
-      "blocks": {
-        "b1": {
-          "type": "pillar",
-          "settings": {
-            "icon": "signal",
-            "title": "Steadier energy, all day",
-            "body": "Supports a healthy insulin response, so blood sugar stays even — fewer highs and lows."
-          }
-        },
-        "b2": {
-          "type": "pillar",
-          "settings": {
-            "icon": "cycle",
-            "title": "Cycles you can count on",
-            "body": "Backs the ovarian function behind a more regular, more predictable cycle."
-          }
-        },
-        "b3": {
-          "type": "pillar",
-          "settings": {
-            "icon": "tune",
-            "title": "Fewer cravings",
-            "body": "Smooths the blood-sugar dips that set off cravings and afternoon crashes."
-          }
-        },
-        "b4": {
-          "type": "pillar",
-          "settings": {
-            "icon": "heart",
-            "title": "A calmer mood",
-            "body": "Part of the signaling that keeps mood and emotions on a more even keel."
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4"
-      ],
-      "settings": {
-        "image_side": "left",
-        "bg_color": "#F3EEEA",
-        "image_focus": 18,
-        "caption": "One scoop, stirred into your morning coffee or water.",
-        "pill_text": "Why it works",
-        "heading": "<p>Feel it work, from the <em>inside out</em></p>",
-        "lede": "Inositol works upstream on insulin — so the steadier energy, calmer cycles and better mood follow naturally."
       }
     }
   },
