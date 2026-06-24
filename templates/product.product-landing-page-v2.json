@@ -135,12 +135,14 @@
       "blocks": {
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
+          "name": "Product Title",
           "settings": {
             "custom_liquid": "<div style=\"margin-top:20px;\"><h1 style=\"font-weight:1000 !important;\">Inositol Powder</h1></div>"
           }
         },
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
+          "name": "Stars",
           "settings": {
             "custom_liquid": "<div style=\"padding-bottom:13px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.84</strong> | <b>Read Reviews</b></div>\n        </a></div>"
           }
@@ -154,12 +156,14 @@
         },
         "custom_liquid_WRFhPD": {
           "type": "custom_liquid",
+          "name": "Blurb",
           "settings": {
             "custom_liquid": "<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div>"
           }
         },
         "custom_liquid_UEHeie": {
           "type": "custom_liquid",
+          "name": "Product details",
           "settings": {
             "custom_liquid": "<div >\n<ul>\n<li>Supports regular cycles<sup>*</sup></li>\n<li>Support healthy blood sugar levels<sup>†</sup></li>\n<li>Works on metabolic health<sup>*</sup></li>\n<li>Supports mood & mental clarity<sup>*</sup></li></ul>\n</div>"
           }
@@ -210,36 +214,43 @@
         },
         "custom_liquid_YGHAge": {
           "type": "custom_liquid",
+          "name": "Free shipping + product pills",
           "settings": {
-            "custom_liquid": "<div class=\"cro-trust-row\"><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg><span>60-day money-back guarantee</span></div><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg><span>Free shipping · 2–5 days</span></div><div class=\"cro-trust-row__item\"><svg viewBox=\"0 0 24 24\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg><span>Secure checkout</span></div></div><div class=\"cro-badge-row\"><span class=\"cro-badge-row__pill\">Made in USA</span><span class=\"cro-badge-row__pill\">GMP facility</span><span class=\"cro-badge-row__pill\">Third-party tested</span><span class=\"cro-badge-row__pill\">Vegan</span><span class=\"cro-badge-row__pill\">Gluten-free</span><span class=\"cro-badge-row__pill\">Non-GMO</span></div>"
+            "custom_liquid": "<div style=\"align-items: center; font-size: 14px;  padding-bottom:20px;\"><b>Free shipping</b> on all orders. <b>60-day</b> money back guarantee. <br>Arrives in <b>2-5 days</b>.</div>\n\n\n\n<div class=\"cro-badge-row\"><span class=\"cro-badge-row__pill\">Made in USA</span><span class=\"cro-badge-row__pill\">GMP facility</span><span class=\"cro-badge-row__pill\">Third-party tested</span><span class=\"cro-badge-row__pill\">Vegan</span><span class=\"cro-badge-row__pill\">Gluten-free</span><span class=\"cro-badge-row__pill\">Non-GMO</span></div>"
           }
         },
         "custom_liquid_jbg4iU": {
           "type": "custom_liquid",
+          "name": "Practitioner approved",
           "settings": {
             "custom_liquid": "<div style=\"border:0.1px solid #1b3def; border: 1px #E0E5F0 solid; padding:10px; border-radius:5px; width:100%; height:auto;  margin-bottom:20px; font-size: 14px; color:#1b3def; \"><img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 19px; margin-right: 4px;\"><strong>Practitioner Approved</strong> <div style=\"padding:10px 0px 0px;color:#2c2d2e;\">Used by practitioners to support metabolic and hormonal health.<sup>*</sup></div></div>"
           }
         },
         "custom_liquid_ymVUr7": {
           "type": "custom_liquid",
+          "name": "Hillary Wright",
           "settings": {
             "custom_liquid": "<!-- Bodology Expert Quote Section -->\n\n<div id=\"practitioners\" class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Hillary_-_white_-_logo_2.png?v=1731439561\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\"\n <br><i style=\"padding-top:5px;\">Hillary Wright, RD Boston IVF</i></p>\n  </div>\n</div>"
           }
         },
         "custom_liquid_nfgEm4": {
           "type": "custom_liquid",
+          "name": "Tina Kozman",
           "settings": {
             "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Tina_-_white_-_logo_2.png?v=1731443642\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"Supporting your metabolism is the key to balanced hormones, mood, and energy.\" <br><i style=\"padding-top:5px;\">Tina Kozman, CNP</i></p>\n  </div>\n</div>"
           }
         },
         "custom_liquid_8TqUrD": {
           "type": "custom_liquid",
+          "name": "Anita Wasik",
           "settings": {
             "custom_liquid": "<!-- Bodology Expert Quote Section -->\n<div class=\"expert-quote-section\">\n  \n  <div class=\"expert-quote\">\n   \n <div class=\"expert-profile\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Anita_-_White_-_logo.png?v=1728818022\" alt=\"Expert Inositol Quote\" />\n  </div> \n\n<p>\"I use Inositol to promote regular cycles, weight and hormonal balance.”\n\n<br><i style=\"padding-top:5px;\">Dr. Anita W., Ph.D</i></p>\n  </div>\n</div>"
           }
         },
         "custom_liquid_8bY9Ux": {
           "type": "custom_liquid",
+          "name": "More Features",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #000;\">\n    \n    <!-- Left Column -->\n    <div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Practioner Approved</span>\n        </div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>2,050mg Per Scoop</span>\n        </div>\n\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon-carob-3.png?v=1758397755\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Carob-Derived Formula</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Ratio</span>\n          \n        </div>\n        \n    \n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Third Party Tested</span>\n        </div>\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Made in the USA</span>\n        \n    </div> </div>\n\n</div>"
           }
