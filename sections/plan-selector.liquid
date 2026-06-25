@@ -1,0 +1,459 @@
+{%- comment -%}
+  ════════════════════════════════════════════════════════════════
+  BODOLOGY · PLAN SELECTOR  (presentational section)
+  ────────────────────────────────────────────────────────────────
+  A single-column, 3-plan subscription picker for the product buy-box.
+  Matches "Plan Selector.html". Selection + "Adding…" state are wired
+  here; connect Add-to-cart to your existing product form / selling
+  plan logic at the marked hook (data-ps-submit).
+
+  THREE STYLES — set per theme in section settings:
+    • "bordered" → selected card gets a gradient border (Style A)
+    • "clean"    → white cards, blue ring on select (Style B)
+    • "expanded" → stacked accordion selector; selected card opens to
+                   big price + per-serving cue + welcome-kit (Style C)
+
+  Gradient-border thickness is tweakable (range setting "Border width").
+
+  EDIT IN THEME EDITOR
+    • Section: style, border width, accent colours, heading, CTA label.
+    • Each "Plan" block: name, cadence, price, compare-at, SAVE badge,
+      banner/ribbon, IMAGE, spec line, benefits, billing + per-serving
+      lines (Style C), and up to 4 gift / welcome-kit tiles.
+    • Drag to reorder. First block = selected on load.
+
+  All CSS scoped to #ps-{{ section.id }}.
+  ════════════════════════════════════════════════════════════════
+{%- endcomment -%}
+
+<link rel="stylesheet" href="https://use.typekit.net/sxx4ssa.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+
+{%- assign acc = section.settings.accent_color -%}
+{%- assign ink = section.settings.title_color -%}
+{%- assign deep = section.settings.deep_color -%}
+{%- assign bw = section.settings.border_width -%}
+
+<style>
+#ps-{{ section.id }} .bod-ps, #ps-{{ section.id }} .bod-pc{
+  --ps-sans:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;
+  --ps-serif:"Instrument Serif","Times New Roman",Georgia,serif;
+  --ps-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ps-blue:{{ acc }}; --ps-ink:{{ ink }}; --ps-ink-2:#5566A0; --ps-deep:{{ deep }};
+  --ps-hair:rgba(20,40,120,0.14); --ps-sand:#F3EEEA; --ps-tile:#F7F5F1;
+  --ps-bw:{{ bw }}px;
+  --ps-grad-border:linear-gradient(135deg,#6E8BF2 0%,{{ acc }} 46%,{{ deep }} 100%);
+  --ps-grad-banner:linear-gradient(110deg,{{ deep }} 0%,{{ acc }} 60%,#0A95EF 135%);
+  --ps-grad-deep:radial-gradient(140% 165% at 18% 10%,#2E54C8 0%,#1E3FA8 32%,{{ ink }} 66%,{{ deep }} 100%);
+  font-family:var(--ps-sans); color:#1A1A14; box-sizing:border-box; container-type:inline-size;
+  display:flex; flex-direction:column; gap:14px; max-width:{{ section.settings.max_width }}px; margin:0 auto;
+}
+#ps-{{ section.id }} .bod-ps *,#ps-{{ section.id }} .bod-pc *,
+#ps-{{ section.id }} .bod-ps *::before,#ps-{{ section.id }} .bod-pc *::before,
+#ps-{{ section.id }} .bod-ps *::after,#ps-{{ section.id }} .bod-pc *::after{box-sizing:border-box;}
+#ps-{{ section.id }} .ps-h{font-weight:600; font-size:clamp(18px,3vw,22px); letter-spacing:-0.02em; color:var(--ps-ink); margin:0 0 2px;}
+
+/* ─── A / B shared card ─── */
+#ps-{{ section.id }} .ps-card{position:relative; border-radius:14px; cursor:pointer;}
+#ps-{{ section.id }} .ps-card__frame{position:relative; border-radius:14px; background:#fff; border:1.5px solid var(--ps-hair); transition:border-color .18s,box-shadow .18s; overflow:hidden;}
+#ps-{{ section.id }} .ps-card:hover .ps-card__frame{border-color:rgba(27,61,239,0.5); box-shadow:0 10px 30px rgba(15,31,138,0.10);}
+#ps-{{ section.id }}.bod-ps--clean .ps-card.is-selected .ps-card__frame{border-color:var(--ps-blue); box-shadow:0 0 0 1px var(--ps-blue),0 14px 36px rgba(27,61,239,0.16);}
+#ps-{{ section.id }}.bod-ps--bordered .ps-card.is-selected{background:var(--ps-grad-border); padding:var(--ps-bw); box-shadow:0 16px 40px rgba(8,18,62,0.20);}
+#ps-{{ section.id }}.bod-ps--bordered .ps-card.is-selected .ps-card__frame{border-color:transparent; border-radius:10px;}
+#ps-{{ section.id }} .ps-card:focus-visible{outline:none;}
+#ps-{{ section.id }} .ps-card:focus-visible .ps-card__frame{box-shadow:0 0 0 3px rgba(27,61,239,0.35); border-color:var(--ps-blue);}
+#ps-{{ section.id }} .ps-banner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:7px 16px; background:var(--ps-grad-banner); color:#fff;}
+#ps-{{ section.id }} .ps-banner__label{font-family:var(--ps-mono); font-size:10.5px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; white-space:nowrap;}
+#ps-{{ section.id }} .ps-save{display:inline-flex; align-items:center; gap:5px; background:#fff; color:var(--ps-blue); font-weight:700; font-size:11px; padding:3px 9px; border-radius:999px; white-space:nowrap;}
+#ps-{{ section.id }} .ps-banner--value{background:var(--ps-grad-deep);}
+#ps-{{ section.id }}.bod-ps--clean .ps-banner{background:linear-gradient(110deg,#EEF1FE 0%,#E3E9FE 100%); color:var(--ps-ink);}
+#ps-{{ section.id }}.bod-ps--clean .ps-banner__label{color:var(--ps-blue);}
+#ps-{{ section.id }}.bod-ps--clean .ps-save{background:var(--ps-grad-banner); color:#fff;}
+#ps-{{ section.id }}.bod-ps--clean .ps-banner--value{background:linear-gradient(110deg,#EEF1FE 0%,#E3E9FE 100%);}
+#ps-{{ section.id }} .ps-body{display:flex; gap:14px; padding:16px 18px; align-items:flex-start;}
+#ps-{{ section.id }} .ps-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; margin-top:2px; position:relative; transition:.15s;}
+#ps-{{ section.id }} .ps-card.is-selected .ps-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
+#ps-{{ section.id }} .ps-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
+#ps-{{ section.id }} .ps-card.is-selected .ps-radio svg{opacity:1; transform:scale(1);}
+#ps-{{ section.id }} .ps-thumb{flex:0 0 auto; width:62px; height:62px; border-radius:9px; background:var(--ps-sand); display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--ps-hair);}
+#ps-{{ section.id }} .ps-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+#ps-{{ section.id }} .ps-main{flex:1 1 auto; min-width:0;}
+#ps-{{ section.id }} .ps-row1{display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+#ps-{{ section.id }} .ps-name{font-weight:600; font-size:17px; letter-spacing:-0.01em; color:var(--ps-ink); margin:0;}
+#ps-{{ section.id }} .ps-cadence{font-size:12px; color:var(--ps-ink-2); margin:2px 0 0; line-height:1.4;}
+#ps-{{ section.id }} .ps-price{display:flex; align-items:baseline; gap:7px; white-space:nowrap;}
+#ps-{{ section.id }} .ps-price__now{font-weight:700; font-size:20px; color:var(--ps-ink); letter-spacing:-0.02em;}
+#ps-{{ section.id }} .ps-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
+#ps-{{ section.id }} .ps-spec{font-family:var(--ps-mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ps-ink-2); margin:12px 0 0; line-height:1.5;}
+#ps-{{ section.id }} .ps-spec b{color:var(--ps-blue); font-weight:500;}
+#ps-{{ section.id }} .ps-spec .dot{opacity:.45; margin:0 4px;}
+#ps-{{ section.id }} .ps-benes{list-style:none; margin:11px 0 0; padding:0; display:flex; flex-direction:column; gap:7px;}
+#ps-{{ section.id }} .ps-benes li{position:relative; padding-left:22px; font-size:13px; line-height:1.4; color:#33342c;}
+#ps-{{ section.id }} .ps-benes svg{position:absolute; left:0; top:3px; width:14px; height:14px;}
+#ps-{{ section.id }} .ps-gifts{margin:14px 18px 16px; padding-top:14px; border-top:1px dashed var(--ps-hair);}
+#ps-{{ section.id }} .ps-gifts__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:0 0 10px;}
+#ps-{{ section.id }} .ps-gifts__track{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(118px,1fr); gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px;}
+#ps-{{ section.id }} .ps-gifts__track::-webkit-scrollbar{height:5px;}
+#ps-{{ section.id }} .ps-gifts__track::-webkit-scrollbar-thumb{background:rgba(20,40,120,0.18); border-radius:999px;}
+#ps-{{ section.id }} .ps-tile{scroll-snap-align:start; background:var(--ps-tile); border:1px solid var(--ps-hair); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; position:relative;}
+#ps-{{ section.id }} .ps-tile__free{position:absolute; top:8px; left:8px; background:var(--ps-grad-banner); color:#fff; font-family:var(--ps-mono); font-size:8px; font-weight:500; letter-spacing:0.1em; padding:2px 6px; border-radius:999px;}
+#ps-{{ section.id }} .ps-tile__img{width:100%; aspect-ratio:1/1; border-radius:7px; background:#fff; border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+#ps-{{ section.id }} .ps-tile__img img{width:78%; height:78%; object-fit:contain;}
+#ps-{{ section.id }} .ps-tile__name{font-size:11.5px; font-weight:600; color:var(--ps-ink); line-height:1.25;}
+#ps-{{ section.id }} .ps-tile__val{font-size:10px; color:#9aa0b5; text-decoration:line-through;}
+#ps-{{ section.id }} .ps-tile__unlock{font-family:var(--ps-mono); font-size:8px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ps-blue);}
+
+/* ─── Style C · stacked expanded selector ─── */
+#ps-{{ section.id }} .pc-card{position:relative; border-radius:16px; cursor:pointer; background:#fff; border:1.5px solid var(--ps-hair); padding:0; transition:border-color .18s,box-shadow .18s; overflow:hidden;}
+#ps-{{ section.id }} .pc-card:hover{border-color:rgba(27,61,239,0.45);}
+#ps-{{ section.id }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:var(--ps-bw); overflow:visible; box-shadow:0 18px 44px rgba(8,18,62,0.16);}
+#ps-{{ section.id }} .pc-card__in{position:relative; background:#fff; border-radius:11px; overflow:hidden;}
+#ps-{{ section.id }} .pc-card:not(.is-selected) .pc-card__in{border-radius:15px;}
+#ps-{{ section.id }} .pc-card:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(27,61,239,0.35);}
+#ps-{{ section.id }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:var(--ps-grad-banner); color:#fff; font-family:var(--ps-mono); font-size:10px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; padding:6px 15px 6px 20px; border-bottom-left-radius:13px; border-top-right-radius:11px; white-space:nowrap; display:none;}
+#ps-{{ section.id }} .pc-card.is-selected .pc-ribbon{display:block;}
+#ps-{{ section.id }} .pc-pad{padding:18px 22px 20px;}
+#ps-{{ section.id }} .pc-head{display:flex; align-items:center; gap:11px;}
+#ps-{{ section.id }} .pc-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; position:relative; transition:.15s;}
+#ps-{{ section.id }} .pc-card.is-selected .pc-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
+#ps-{{ section.id }} .pc-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
+#ps-{{ section.id }} .pc-card.is-selected .pc-radio svg{opacity:1; transform:scale(1);}
+#ps-{{ section.id }} .pc-title{font-weight:600; font-size:19px; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
+#ps-{{ section.id }} .pc-pill{display:inline-flex; align-items:center; background:var(--ps-sand); color:var(--ps-blue); font-weight:700; font-size:11px; padding:4px 10px; border-radius:999px; white-space:nowrap;}
+#ps-{{ section.id }} .pc-card.is-selected .pc-pill{background:var(--ps-grad-banner); color:#fff;}
+#ps-{{ section.id }} .pc-mini{margin-left:auto; display:flex; align-items:baseline; gap:6px; white-space:nowrap;}
+#ps-{{ section.id }} .pc-mini__now{font-weight:700; font-size:17px; color:var(--ps-ink); letter-spacing:-0.02em;}
+#ps-{{ section.id }} .pc-mini__was{font-size:12px; color:#9aa0b5; text-decoration:line-through;}
+#ps-{{ section.id }} .pc-card.is-selected .pc-mini{display:none;}
+#ps-{{ section.id }} .pc-cadence{font-size:12px; color:var(--ps-ink-2); margin:7px 0 0; padding-left:33px;}
+#ps-{{ section.id }} .pc-card.is-selected .pc-cadence{display:none;}
+#ps-{{ section.id }} .pc-expand{display:none;}
+#ps-{{ section.id }} .pc-card.is-selected .pc-expand{display:block;}
+#ps-{{ section.id }} .pc-price{display:flex; align-items:baseline; gap:9px; margin:14px 0 0;}
+#ps-{{ section.id }} .pc-price__now{font-weight:700; font-size:36px; line-height:1; letter-spacing:-0.03em; color:var(--ps-ink);}
+#ps-{{ section.id }} .pc-price__was{font-size:16px; color:#9aa0b5; text-decoration:line-through;}
+#ps-{{ section.id }} .pc-price__per{font-size:14px; color:var(--ps-ink-2); white-space:nowrap;}
+#ps-{{ section.id }} .pc-bill{display:flex; align-items:center; justify-content:space-between; gap:14px; margin:8px 0 0; flex-wrap:wrap;}
+#ps-{{ section.id }} .pc-bill__txt{font-size:12.5px; color:var(--ps-ink-2);}
+#ps-{{ section.id }} .pc-serving{font-family:var(--ps-mono); font-size:11px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:4px 11px; white-space:nowrap;}
+#ps-{{ section.id }} .pc-hr{border:0; border-top:1px solid var(--ps-hair); margin:16px 0;}
+#ps-{{ section.id }} .pc-benes{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+#ps-{{ section.id }} .pc-benes li{position:relative; padding-left:26px; font-size:14px; line-height:1.4; color:#2c2d26;}
+#ps-{{ section.id }} .pc-benes svg{position:absolute; left:0; top:2px; width:15px; height:15px;}
+#ps-{{ section.id }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:18px 0 11px;}
+#ps-{{ section.id }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(92px,1fr); gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px;}
+#ps-{{ section.id }} .pc-kit__track::-webkit-scrollbar{height:5px;}
+#ps-{{ section.id }} .pc-kit__track::-webkit-scrollbar-thumb{background:rgba(20,40,120,0.18); border-radius:999px;}
+#ps-{{ section.id }} .pc-tile{scroll-snap-align:start; text-align:center;}
+#ps-{{ section.id }} .pc-tile__img{width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--ps-tile); border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:7px;}
+#ps-{{ section.id }} .pc-tile__img img{width:74%; height:74%; object-fit:contain;}
+#ps-{{ section.id }} .pc-tile__val{font-size:10px; color:#9aa0b5; text-decoration:line-through; display:block;}
+#ps-{{ section.id }} .pc-tile__name{font-size:11px; font-weight:600; color:var(--ps-ink); line-height:1.2; display:block; margin-top:1px;}
+
+/* ─── shared CTA + error ─── */
+#ps-{{ section.id }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-weight:600; font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
+#ps-{{ section.id }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
+#ps-{{ section.id }} .ps-cta:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(27,61,239,0.4);}
+#ps-{{ section.id }} .ps-cta__sub{font-family:var(--ps-mono); font-weight:400; font-size:10px; letter-spacing:0.08em; opacity:.82; white-space:nowrap;}
+#ps-{{ section.id }} .ps-cta.is-loading{pointer-events:none; opacity:.85; background:#3a4a8f;}
+#ps-{{ section.id }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:psspin .7s linear infinite; display:none;}
+#ps-{{ section.id }} .ps-cta.is-loading .spin{display:block;}
+@keyframes psspin{to{transform:rotate(360deg);}}
+#ps-{{ section.id }} .ps-footnote{font-size:11px; color:var(--ps-ink-2); text-align:center; margin:2px 0 0;}
+#ps-{{ section.id }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
+#ps-{{ section.id }} .ps-error.is-shown{display:flex;}
+#ps-{{ section.id }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
+@container (max-width:430px){
+  #ps-{{ section.id }} .ps-thumb{width:50px; height:50px;}
+  #ps-{{ section.id }} .ps-body{padding:14px;}
+  #ps-{{ section.id }} .ps-gifts{margin:12px 14px 14px;}
+  #ps-{{ section.id }} .pc-pad{padding:16px 16px 18px;}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="psGradV-{{ section.id }}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3354D6"/><stop offset="1" stop-color="{{ deep }}"/></linearGradient>
+</defs></svg>
+
+{%- assign style = section.settings.style -%}
+{%- capture check -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ acc }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
+{%- capture checkw -%}<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
+
+<div id="ps-{{ section.id }}">
+{%- if style == 'expanded' -%}
+{%- comment -%} ───────── STYLE C ───────── {%- endcomment -%}
+<div class="bod-pc" role="radiogroup" data-ps-root aria-label="{{ section.settings.heading | default: 'Choose your plan' | escape }}">
+  {%- if section.settings.heading != blank -%}<h2 class="ps-h">{{ section.settings.heading }}</h2>{%- endif -%}
+  {%- for block in section.blocks -%}{%- if block.type == 'plan' -%}
+    {%- assign first = forloop.first -%}
+    <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+         data-ps-card data-ps-name="{{ block.settings.name | escape }}" data-ps-variant="{{ block.settings.variant_id }}" data-ps-plan="{{ block.settings.selling_plan_id }}" data-ps-qty="{{ block.settings.quantity | default: 1 }}" {{ block.shopify_attributes }}>
+      <div class="pc-card__in">
+        {%- if block.settings.banner_label != blank and block.settings.banner_type != 'none' -%}<span class="pc-ribbon">{{ block.settings.banner_label }}</span>{%- endif -%}
+        <div class="pc-pad">
+          <div class="pc-head">
+            <span class="pc-radio">{{ checkw }}</span>
+            <h3 class="pc-title">{{ block.settings.name }}</h3>
+            {%- if block.settings.save_badge != blank -%}<span class="pc-pill">{{ block.settings.save_badge }}</span>{%- endif -%}
+            <span class="pc-mini"><span class="pc-mini__now">{{ block.settings.price }}</span>{%- if block.settings.compare_price != blank -%}<span class="pc-mini__was">{{ block.settings.compare_price }}</span>{%- endif -%}</span>
+          </div>
+          {%- if block.settings.cadence != blank -%}<p class="pc-cadence">{{ block.settings.cadence }}</p>{%- endif -%}
+          <div class="pc-expand">
+            <div class="pc-price">
+              <span class="pc-price__now">{{ block.settings.price }}</span>
+              {%- if block.settings.compare_price != blank -%}<span class="pc-price__was">{{ block.settings.compare_price }}</span>{%- endif -%}
+              {%- if block.settings.price_per != blank -%}<span class="pc-price__per">{{ block.settings.price_per }}</span>{%- endif -%}
+            </div>
+            <div class="pc-bill">
+              {%- if block.settings.bill_text != blank -%}<span class="pc-bill__txt">{{ block.settings.bill_text }}</span>{%- endif -%}
+              {%- if block.settings.serving_text != blank -%}<span class="pc-serving">{{ block.settings.serving_text }}</span>{%- endif -%}
+            </div>
+            <hr class="pc-hr">
+            {%- assign benes = block.settings.benefits | newline_to_br | split: '<br />' -%}
+            <ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
+            {%- if block.settings.gift1_name != blank -%}
+              <p class="pc-kit__lab">{{ block.settings.gifts_label | default: 'Welcome kit — arrives with first order' }}</p>
+              <div class="pc-kit__track">
+                {%- for n in (1..4) -%}
+                  {%- assign gn = 'gift' | append: n | append: '_name' -%}{%- assign gi = 'gift' | append: n | append: '_image' -%}{%- assign gv = 'gift' | append: n | append: '_value' -%}
+                  {%- if block.settings[gn] != blank -%}
+                    <div class="pc-tile">
+                      <div class="pc-tile__img">{%- if block.settings[gi] != blank -%}{{ block.settings[gi] | image_url: width: 200 | image_tag: alt: block.settings[gn], loading: 'lazy' }}{%- endif -%}</div>
+                      {%- if block.settings[gv] != blank -%}<span class="pc-tile__val">{{ block.settings[gv] }}</span>{%- endif -%}
+                      <span class="pc-tile__name">{{ block.settings[gn] }}</span>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}{%- endfor -%}
+
+{%- else -%}
+{%- comment -%} ───────── STYLE A / B ───────── {%- endcomment -%}
+<div class="bod-ps bod-ps--{{ style }}" role="radiogroup" data-ps-root aria-label="{{ section.settings.heading | default: 'Choose your plan' | escape }}">
+  {%- if section.settings.heading != blank -%}<h2 class="ps-h">{{ section.settings.heading }}</h2>{%- endif -%}
+  {%- for block in section.blocks -%}{%- if block.type == 'plan' -%}
+    {%- assign first = forloop.first -%}
+    <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+         data-ps-card data-ps-name="{{ block.settings.name | escape }}" data-ps-variant="{{ block.settings.variant_id }}" data-ps-plan="{{ block.settings.selling_plan_id }}" data-ps-qty="{{ block.settings.quantity | default: 1 }}" {{ block.shopify_attributes }}>
+      <div class="ps-card__frame">
+        {%- if block.settings.banner_type != 'none' and block.settings.banner_label != blank -%}
+          <div class="ps-banner{% if block.settings.banner_type == 'value' %} ps-banner--value{% endif %}">
+            <span class="ps-banner__label">{{ block.settings.banner_label }}</span>
+            {%- if block.settings.save_badge != blank -%}<span class="ps-save">{{ block.settings.save_badge }}</span>{%- endif -%}
+          </div>
+        {%- endif -%}
+        <div class="ps-body">
+          <div class="ps-radio">{{ checkw }}</div>
+          <div class="ps-thumb">{%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 160 | image_tag: alt: block.settings.name, loading: 'lazy' }}{%- endif -%}</div>
+          <div class="ps-main">
+            <div class="ps-row1">
+              <div>
+                <h3 class="ps-name">{{ block.settings.name }}</h3>
+                {%- if block.settings.cadence != blank -%}<p class="ps-cadence">{{ block.settings.cadence }}</p>{%- endif -%}
+              </div>
+              <div class="ps-price">
+                <span class="ps-price__now">{{ block.settings.price }}</span>
+                {%- if block.settings.compare_price != blank -%}<span class="ps-price__was">{{ block.settings.compare_price }}</span>{%- endif -%}
+              </div>
+            </div>
+            {%- if block.settings.spec_line != blank -%}<div class="ps-spec">{{ block.settings.spec_line }}</div>{%- endif -%}
+            {%- assign benes = block.settings.benefits | newline_to_br | split: '<br />' -%}
+            {%- if block.settings.benefits != blank -%}
+              <ul class="ps-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
+            {%- endif -%}
+          </div>
+        </div>
+        {%- if block.settings.gift1_name != blank or block.settings.gift2_name != blank or block.settings.gift3_name != blank -%}
+          <div class="ps-gifts">
+            <p class="ps-gifts__lab">{{ block.settings.gifts_label | default: 'Free gifts included' }}</p>
+            <div class="ps-gifts__track">
+              {%- for n in (1..4) -%}
+                {%- assign gn = 'gift' | append: n | append: '_name' -%}{%- assign gi = 'gift' | append: n | append: '_image' -%}{%- assign gv = 'gift' | append: n | append: '_value' -%}{%- assign gu = 'gift' | append: n | append: '_unlock' -%}
+                {%- if block.settings[gn] != blank -%}
+                  <div class="ps-tile">
+                    <span class="ps-tile__free">Free</span>
+                    <div class="ps-tile__img">{%- if block.settings[gi] != blank -%}{{ block.settings[gi] | image_url: width: 200 | image_tag: alt: block.settings[gn], loading: 'lazy' }}{%- endif -%}</div>
+                    <span class="ps-tile__name">{{ block.settings[gn] }}</span>
+                    {%- if block.settings[gv] != blank -%}<span class="ps-tile__val">{{ block.settings[gv] }}</span>{%- endif -%}
+                    {%- if block.settings[gu] != blank -%}<span class="ps-tile__unlock">Unlocks · {{ block.settings[gu] }}</span>{%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}{%- endfor -%}
+{%- endif -%}
+
+  <button class="ps-cta" type="button" data-ps-submit>
+    <span class="spin"></span>
+    <span class="ps-cta__label">{{ section.settings.cta_label | default: 'Add to cart' }}</span>
+    <span class="ps-cta__sub" data-ps-sub></span>
+  </button>
+  <div class="ps-error" data-ps-error>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+    <span>{{ section.settings.error_text | default: 'Please choose a plan first' }}</span>
+  </div>
+  {%- if section.settings.footnote != blank -%}<p class="ps-footnote">{{ section.settings.footnote }}</p>{%- endif -%}
+</div>
+</div>
+
+<script>
+(function(){
+  var root = document.querySelector('#ps-{{ section.id }} [data-ps-root]');
+  if(!root) return;
+  var cards = [].slice.call(root.querySelectorAll('[data-ps-card]'));
+  var sub = root.querySelector('[data-ps-sub]'), err = root.querySelector('[data-ps-error]');
+  var cta = root.querySelector('[data-ps-submit]'), label = cta.querySelector('.ps-cta__label');
+  var ctaText = label.textContent;
+  function selected(){ return root.querySelector('[data-ps-card].is-selected'); }
+  function syncSub(){ var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps-name') : ''; }
+  function select(c){
+    cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
+    c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
+    err.classList.remove('is-shown'); syncSub();
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){ select(c); });
+    c.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); select(c); } });
+  });
+  syncSub();
+  var cartUrl = {{ routes.cart_url | json }};
+  var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
+  cta.addEventListener('click', function(){
+    var c = selected();
+    if(!c){ showErr(); return; }
+    var variant = (c.getAttribute('data-ps-variant') || '').trim();
+    var plan = (c.getAttribute('data-ps-plan') || '').trim();
+    var qty = parseInt(c.getAttribute('data-ps-qty'), 10) || 1;
+    if(!variant){ showErr('{{ section.settings.novariant_text | default: "This plan needs a variant ID — add it in the theme editor." | escape }}'); return; }
+    err.classList.remove('is-shown');
+    cta.classList.add('is-loading'); label.textContent = '{{ section.settings.adding_label | default: "Adding…" }}';
+    var item = { id: variant, quantity: qty };
+    if(plan){ item.selling_plan = plan; }
+    fetch(addBase + 'cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ items: [item] })
+    })
+    .then(function(r){ if(!r.ok){ return r.json().then(function(e){ throw e; }); } return r.json(); })
+    .then(function(){
+      {%- if section.settings.go_to_cart -%}
+      window.location = cartUrl;
+      {%- else -%}
+      document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles: true }));
+      document.dispatchEvent(new CustomEvent('ajaxProduct:added', { bubbles: true }));
+      cta.classList.remove('is-loading'); label.textContent = '{{ section.settings.added_label | default: "Added ✓" | escape }}';
+      setTimeout(function(){ label.textContent = ctaText; }, 1800);
+      {%- endif -%}
+    })
+    .catch(function(e){
+      cta.classList.remove('is-loading'); label.textContent = ctaText;
+      showErr((e && (e.description || e.message)) || 'Could not add to cart');
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Plan selector",
+  "tag": "section",
+  "class": "bodology-plan-selector",
+  "settings": [
+    { "type": "header", "content": "Style" },
+    { "type": "select", "id": "style", "label": "Card style", "default": "bordered",
+      "options": [
+        { "value": "bordered", "label": "A · Gradient border" },
+        { "value": "clean", "label": "B · Clean white + gradient accents" },
+        { "value": "expanded", "label": "C · Stacked expanded selector" }
+      ] },
+    { "type": "range", "id": "border_width", "label": "Gradient border width", "min": 2, "max": 12, "step": 1, "unit": "px", "default": 5,
+      "info": "Thickness of the gradient frame on the selected card (Styles A & C)." },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 360, "max": 720, "step": 20, "unit": "px", "default": 560 },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "accent_color", "label": "Accent (Bodology blue)", "default": "#1B3DEF" },
+    { "type": "color", "id": "title_color", "label": "Title ink (dark blue)", "default": "#14307C" },
+    { "type": "color", "id": "deep_color", "label": "Gradient deep stop", "default": "#0E2160" },
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "heading", "label": "Heading (optional)" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Add to cart" },
+    { "type": "text", "id": "adding_label", "label": "Button — adding state", "default": "Adding…" },
+    { "type": "text", "id": "error_text", "label": "Error message", "default": "Please choose a plan first" },
+    { "type": "text", "id": "footnote", "label": "Footnote", "default": "Cancel or pause anytime. Free shipping on all subscriptions." },
+    { "type": "header", "content": "Add-to-cart behaviour" },
+    { "type": "checkbox", "id": "go_to_cart", "label": "Go to cart after adding", "info": "Off = stay on page and show \"Added\" (relies on your theme's cart drawer/refresh).", "default": true },
+    { "type": "text", "id": "added_label", "label": "Button — added state", "default": "Added ✓" },
+    { "type": "text", "id": "novariant_text", "label": "Error — missing variant ID", "default": "This plan needs a variant ID — add it in the theme editor." }
+  ],
+  "blocks": [
+    {
+      "type": "plan",
+      "name": "Plan",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Plan name", "default": "3-Month Bundle" },
+        { "type": "text", "id": "cadence", "label": "Cadence / sub-label", "default": "Ships every 3 months · cancel anytime" },
+        { "type": "text", "id": "price", "label": "Price", "default": "$99" },
+        { "type": "text", "id": "compare_price", "label": "Compare-at (strikethrough)", "default": "$147" },
+        { "type": "text", "id": "price_per", "label": "Price suffix (Style C)", "default": "/ 3 mo" },
+        { "type": "select", "id": "banner_type", "label": "Banner / ribbon", "default": "popular",
+          "options": [
+            { "value": "popular", "label": "Accent (Most Popular / Best Value ribbon)" },
+            { "value": "value", "label": "Deep (Best Value)" },
+            { "value": "none", "label": "None" }
+          ] },
+        { "type": "text", "id": "banner_label", "label": "Banner / ribbon label", "default": "Most Popular" },
+        { "type": "text", "id": "save_badge", "label": "SAVE badge", "default": "Save 33%" },
+        { "type": "image_picker", "id": "image", "label": "Product image (Styles A & B)" },
+        { "type": "html", "id": "spec_line", "label": "Spec line (Styles A & B)",
+          "info": "Use <b> for blue highlight, <span class='dot'>·</span> as a separator.",
+          "default": "40:1 <b>MYO : DCI</b><span class='dot'>·</span>HPLC-verified<span class='dot'>·</span>270 scoops" },
+        { "type": "text", "id": "bill_text", "label": "Billing line (Style C)", "default": "Billed $99.00 USD every 12 weeks" },
+        { "type": "text", "id": "serving_text", "label": "Per-serving cue (Style C)", "default": "$0.37 / serving" },
+        { "type": "textarea", "id": "benefits", "label": "Benefit lines (one per line)",
+          "info": "Structure/function claims only.",
+          "default": "Supports healthy insulin sensitivity\nSupports hormonal & metabolic balance\nLowest price per serving — best value\nPause, skip or cancel anytime\nFree shipping on every delivery" },
+        { "type": "header", "content": "Add-to-cart wiring" },
+        { "type": "text", "id": "variant_id", "label": "Product variant ID", "info": "Numeric variant ID this plan adds. Admin > Products > the variant; the number at the end of the URL." },
+        { "type": "text", "id": "selling_plan_id", "label": "ReCharge selling-plan ID", "info": "Leave blank for a one-time purchase; set the selling-plan id for a subscription." },
+        { "type": "number", "id": "quantity", "label": "Quantity", "default": 1 },
+        { "type": "header", "content": "Gift / welcome-kit tiles (optional)" },
+        { "type": "text", "id": "gifts_label", "label": "Tiles row label", "default": "Free gifts included" },
+        { "type": "image_picker", "id": "gift1_image", "label": "Tile 1 · image" },
+        { "type": "text", "id": "gift1_name", "label": "Tile 1 · name" },
+        { "type": "text", "id": "gift1_value", "label": "Tile 1 · value (strikethrough)" },
+        { "type": "text", "id": "gift1_unlock", "label": "Tile 1 · unlocks at (A/B only)" },
+        { "type": "image_picker", "id": "gift2_image", "label": "Tile 2 · image" },
+        { "type": "text", "id": "gift2_name", "label": "Tile 2 · name" },
+        { "type": "text", "id": "gift2_value", "label": "Tile 2 · value (strikethrough)" },
+        { "type": "text", "id": "gift2_unlock", "label": "Tile 2 · unlocks at (A/B only)" },
+        { "type": "image_picker", "id": "gift3_image", "label": "Tile 3 · image" },
+        { "type": "text", "id": "gift3_name", "label": "Tile 3 · name" },
+        { "type": "text", "id": "gift3_value", "label": "Tile 3 · value (strikethrough)" },
+        { "type": "text", "id": "gift3_unlock", "label": "Tile 3 · unlocks at (A/B only)" },
+        { "type": "image_picker", "id": "gift4_image", "label": "Tile 4 · image (Style C)" },
+        { "type": "text", "id": "gift4_name", "label": "Tile 4 · name (Style C)" },
+        { "type": "text", "id": "gift4_value", "label": "Tile 4 · value (strikethrough)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Plan selector",
+      "blocks": [
+        { "type": "plan", "settings": { "name": "3-Month Bundle", "cadence": "Ships every 3 months · cancel anytime", "price": "$99", "compare_price": "$147", "price_per": "/ 3 mo", "banner_type": "popular", "banner_label": "Most Popular", "save_badge": "Save 33%", "bill_text": "Billed $99.00 USD every 12 weeks", "serving_text": "$0.37 / serving" } },
+        { "type": "plan", "settings": { "name": "Sample Bodology", "cadence": "Starter tub, then monthly refills · cancel anytime", "price": "$29", "compare_price": "$39", "price_per": "/ mo", "banner_type": "value", "banner_label": "Starter", "save_badge": "", "bill_text": "Billed monthly · cancel anytime", "serving_text": "$0.97 / serving", "spec_line": "40:1 <b>MYO : DCI</b><span class='dot'>·</span>HPLC-verified<span class='dot'>·</span>90 scoops", "benefits": "Same clinically-studied 40:1 formula\nSupports healthy insulin sensitivity\nFree shipping · pause anytime" } },
+        { "type": "plan", "settings": { "name": "One-Time Purchase", "cadence": "Single tub · no subscription", "price": "$49", "compare_price": "", "price_per": "", "banner_type": "none", "banner_label": "", "save_badge": "", "bill_text": "One 90-scoop tub · no subscription", "serving_text": "$0.54 / serving", "spec_line": "40:1 <b>MYO : DCI</b><span class='dot'>·</span>HPLC-verified<span class='dot'>·</span>90 scoops", "benefits": "One 90-scoop tub\nFree shipping" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

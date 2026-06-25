@@ -1,0 +1,287 @@
+{%- comment -%}
+  BODOLOGY · Community Videos slider (section)
+  Full-bleed poster cards, text at bottom, hover reveals play.
+  Tag filter chips (built from each video's Tag), dot pagination, drag.
+  Two card styles: Gradient / Split. Optional full-bleed + scroll-pin.
+  Add via theme editor: Add section -> Community Videos. Works on product
+  templates AND pages. Each video is a block (add/reorder/remove).
+{%- endcomment -%}
+
+{%- liquid
+  assign uid = section.id | replace: '-', '' | replace: '_', ''
+  assign s = 'vcg-' | append: uid
+  assign pin = section.settings.scroll_pin
+-%}
+
+<style>
+  #{{ s }}{
+    --blue: {{ section.settings.accent }};
+    --sec: {{ section.settings.section_bg }};
+    --ov: {{ section.settings.overlay }};
+    --fg: {{ section.settings.font_color }};
+    --panel: {{ section.settings.panel_bg }};
+    --fs-title: {{ section.settings.fs_title }}px;
+    --fs-name: {{ section.settings.fs_name }}px;
+    --fs-role: {{ section.settings.fs_role }}px;
+    --fs-quote: {{ section.settings.fs_quote }}px;
+    --card-w: {{ section.settings.card_width }}px;
+    box-sizing:border-box; position:relative;
+    font-family:"tenon","Helvetica Neue",Arial,sans-serif;
+    background:radial-gradient(140% 130% at 18% 8%, color-mix(in srgb,var(--sec) 70%,#4a6cff) 0%, var(--sec) 54%, color-mix(in srgb,var(--sec) 72%,#000) 100%);
+    padding:{{ section.settings.pad_top }}px 0 {{ section.settings.pad_bottom }}px;
+  }
+  {%- if section.settings.section_bg_solid -%}
+  #{{ s }}{ background: {{ section.settings.section_bg }}; }
+  {%- endif -%}
+  {%- if section.settings.full_bleed -%}
+  #{{ s }}{ width:100vw; max-width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; overflow-x:clip; }
+  {%- endif -%}
+  #{{ s }} *, #{{ s }} *::before, #{{ s }} *::after{ box-sizing:border-box; }
+
+  #{{ s }} .vcg__head{ text-align:center; max-width:42ch; margin:0 auto 6px; padding:0 16px; }
+  #{{ s }} .vcg__eyebrow{ font-size:10.5px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:color-mix(in srgb,var(--fg) 64%,transparent); margin:0 0 11px; }
+  #{{ s }} .vcg__title{ font-weight:600; font-size:var(--fs-title); letter-spacing:-0.03em; line-height:1.06; color:var(--fg); margin:0; }
+
+  #{{ s }} .vcg__tags{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin:20px auto 0; padding:0 16px; }
+  #{{ s }} .vcg__tag{ font-size:12.5px; font-weight:500; color:color-mix(in srgb,var(--fg) 78%,transparent); background:transparent; border:1px solid color-mix(in srgb,var(--fg) 28%,transparent); border-radius:999px; padding:8px 17px; cursor:pointer; transition:all .16s; font-family:inherit; }
+  #{{ s }} .vcg__tag:hover{ border-color:color-mix(in srgb,var(--fg) 55%,transparent); color:var(--fg); }
+  #{{ s }} .vcg__tag.is-on{ background:var(--fg); border-color:var(--fg); color:var(--sec); }
+
+  #{{ s }} .vcg__view{ overflow-x:hidden; padding:26px 0 6px; touch-action:pan-y; }
+  #{{ s }} .vcg__track{ display:flex; gap:22px; padding:0 max(24px,calc((100% - 1160px)/2)); will-change:transform; user-select:none; cursor:grab; }
+  #{{ s }} .vcg__track.is-drag{ cursor:grabbing; }
+
+  #{{ s }} .vcg__card{ flex:0 0 var(--card-w); position:relative; border-radius:14px; overflow:hidden; background:var(--panel); box-shadow:0 22px 50px rgba(6,14,46,0.4); transition:transform .25s; }
+  #{{ s }} .vcg__card:hover{ transform:translateY(-3px); }
+
+  #{{ s }} .vcg__media{ position:relative; aspect-ratio:3/4; overflow:hidden; }
+  #{{ s }} .vcg__media img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s, filter .3s; }
+  #{{ s }} .vcg__card:hover .vcg__media img{ transform:scale(1.04); filter:brightness(0.84); }
+
+  #{{ s }} .vcg__play{ position:absolute; left:50%; top:50%; transform:translate(-50%,-46%) scale(.9); width:62px; height:62px; border-radius:50%; background:rgba(255,255,255,0.94); display:flex; align-items:center; justify-content:center; z-index:4; opacity:0; pointer-events:none; transition:opacity .28s, transform .28s; box-shadow:0 10px 30px rgba(6,14,46,0.5); }
+  #{{ s }} .vcg__play svg{ width:22px; height:22px; fill:var(--blue); margin-left:3px; }
+  #{{ s }} .vcg__card:hover .vcg__play{ opacity:1; transform:translate(-50%,-50%) scale(1); }
+
+  #{{ s }} .vcg__scrim{ position:absolute; left:0; right:0; bottom:0; z-index:3; padding:20px 18px 18px; background:linear-gradient(to top, var(--ov) 6%, color-mix(in srgb,var(--ov) 58%,transparent) 44%, transparent 100%); transition:opacity .28s; }
+  #{{ s }} .vcg__card:hover .vcg__scrim{ opacity:0; }
+  #{{ s }} .vcg__name{ font-weight:600; font-size:var(--fs-name); line-height:1.08; color:var(--fg); margin:0 0 5px; letter-spacing:-0.01em; }
+  #{{ s }} .vcg__role{ font-weight:400; font-size:var(--fs-role); line-height:1.35; color:color-mix(in srgb,var(--fg) 80%,transparent); margin:0 0 11px; }
+  #{{ s }} .vcg__quote{ {% if section.settings.show_quote %}display:block;{% else %}display:none;{% endif %} font-weight:400; font-size:var(--fs-quote); line-height:1.4; color:color-mix(in srgb,var(--fg) 90%,transparent); margin:0 0 12px; }
+  #{{ s }} .vcg__pill{ display:inline-block; font-size:9px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--fg); border:1px solid color-mix(in srgb,var(--fg) 50%,transparent); border-radius:999px; padding:6px 12px; }
+
+  #{{ s }}[data-style="split"] .vcg__media{ aspect-ratio:1/1; }
+  #{{ s }}[data-style="split"] .vcg__scrim{ position:static; background:var(--panel); padding:18px 18px 20px; opacity:1 !important; }
+  #{{ s }}[data-style="split"] .vcg__card:hover .vcg__media img{ filter:brightness(0.78); }
+
+  #{{ s }} .vcg__dots{ display:flex; justify-content:center; align-items:center; gap:8px; margin-top:26px; }
+  #{{ s }} .vcg__dot{ width:8px; height:8px; border-radius:50%; background:color-mix(in srgb,var(--fg) 34%,transparent); border:0; padding:0; cursor:pointer; transition:all .22s; }
+  #{{ s }} .vcg__dot.is-on{ background:var(--fg); width:26px; border-radius:999px; }
+
+  /* Scroll-pin (scroll-jack) mode */
+  #{{ s }}.vcg--pin .vcg__sticky{ position:sticky; top:0; min-height:100vh; display:flex; flex-direction:column; justify-content:center; overflow:hidden; }
+  #{{ s }}.vcg--pin .vcg__view{ overflow:hidden; }
+  #{{ s }}.vcg--pin .vcg__track{ cursor:default; }
+  #{{ s }}.vcg--pin .vcg__dots{ display:none; }
+
+  @media (max-width:560px){ #{{ s }} .vcg__card{ flex-basis:230px; } }
+</style>
+
+<div id="{{ s }}" class="{% if pin %}vcg--pin{% endif %}" data-style="{{ section.settings.card_style }}" {% if pin %}data-pin="1"{% endif %}>
+  {%- capture inner -%}
+  <div class="vcg__head">
+    {%- if section.settings.eyebrow != blank -%}<p class="vcg__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="vcg__title">{{ section.settings.title }}</h2>{%- endif -%}
+  </div>
+
+  {%- if section.settings.show_tags -%}
+    {%- assign tag_list = '' -%}
+    {%- for block in section.blocks -%}
+      {%- assign t = block.settings.tag | strip -%}
+      {%- if t != blank -%}
+        {%- unless tag_list contains t -%}
+          {%- assign tag_list = tag_list | append: t | append: '|' -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+    <div class="vcg__tags" data-tags>
+      <button class="vcg__tag is-on" data-tag="All">{{ section.settings.all_label | default: 'All' }}</button>
+      {%- assign tags = tag_list | split: '|' -%}
+      {%- for t in tags -%}
+        {%- if t != blank -%}<button class="vcg__tag" data-tag="{{ t }}">{{ t }}</button>{%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="vcg__view" data-view>
+    <div class="vcg__track" data-track>
+      {%- for block in section.blocks -%}
+        <div class="vcg__card" data-card data-tag="{{ block.settings.tag | strip }}" {{ block.shopify_attributes }}>
+          <div class="vcg__media">
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.name | escape }}" loading="lazy" width="700" height="933">
+            {%- endif -%}
+            {%- if block.settings.video_url != blank -%}
+              <a class="vcg__play" href="{{ block.settings.video_url }}" target="_blank" rel="noopener" aria-label="Play {{ block.settings.name | escape }}" style="pointer-events:auto;">
+                <svg viewBox="0 0 24 24"><path d="M7 4 L20 12 L7 20 Z"/></svg>
+              </a>
+            {%- else -%}
+              <span class="vcg__play"><svg viewBox="0 0 24 24"><path d="M7 4 L20 12 L7 20 Z"/></svg></span>
+            {%- endif -%}
+          </div>
+          <div class="vcg__scrim">
+            {%- if block.settings.name != blank -%}<h3 class="vcg__name">{{ block.settings.name }}</h3>{%- endif -%}
+            {%- if block.settings.role != blank -%}<p class="vcg__role">{{ block.settings.role }}</p>{%- endif -%}
+            {%- if block.settings.quote != blank -%}<p class="vcg__quote">{{ block.settings.quote }}</p>{%- endif -%}
+            {%- if block.settings.tag != blank -%}<span class="vcg__pill">{{ block.settings.tag }}</span>{%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="vcg__dots" data-dots></div>
+  {%- endcapture -%}
+
+  {%- if pin -%}<div class="vcg__sticky">{{ inner }}</div>{%- else -%}{{ inner }}{%- endif -%}
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('{{ s }}');
+  if(!root || root.dataset.vcgBound) return;
+  root.dataset.vcgBound='1';
+  var track = root.querySelector('[data-track]');
+  var view  = root.querySelector('[data-view]');
+  var dotsEl= root.querySelector('[data-dots]');
+  var tagsEl= root.querySelector('[data-tags]');
+  var isPin = root.getAttribute('data-pin')==='1';
+  var allCards = [].slice.call(track.querySelectorAll('[data-card]'));
+  var page=0, cur=0, step=0, filter='All';
+  function gap(){ return 22; }
+  function visible(){ return allCards.filter(function(c){ return c.style.display!=='none'; }); }
+  function maxOff(){ return Math.min(0, view.clientWidth - track.scrollWidth); }
+
+  if(tagsEl){
+    tagsEl.addEventListener('click', function(e){
+      var b=e.target.closest('.vcg__tag'); if(!b) return;
+      filter=b.getAttribute('data-tag');
+      [].forEach.call(tagsEl.children,function(c){ c.classList.toggle('is-on', c===b); });
+      allCards.forEach(function(c){
+        c.style.display = (filter==='All' || c.getAttribute('data-tag')===filter) ? '' : 'none';
+      });
+      page=0;
+      if(isPin){ sizePin(); onScroll(); } else { buildDots(); go(false); }
+    });
+  }
+
+  /* scroll-pin */
+  function sizePin(){ if(isPin){ root.style.height = (window.innerHeight + (-maxOff())) + 'px'; } }
+  function onScroll(){
+    if(!isPin) return;
+    var rect = root.getBoundingClientRect();
+    var total = root.offsetHeight - window.innerHeight;
+    var prog = total>0 ? Math.min(1, Math.max(0, (-rect.top)/total)) : 0;
+    track.style.transition='none';
+    track.style.transform='translateX('+(maxOff()*prog)+'px)';
+  }
+
+  /* drag + dots */
+  function per(){ var v=visible(); if(!v.length) return 1; return Math.max(1, Math.round(view.clientWidth/(v[0].offsetWidth+gap()))); }
+  function pages(){ return Math.max(1, visible().length - per() + 1); }
+  function buildDots(){
+    if(!dotsEl) return; dotsEl.innerHTML=''; var n=pages(); if(n<=1) return;
+    for(var i=0;i<n;i++){ (function(i){
+      var b=document.createElement('button'); b.className='vcg__dot'+(i===page?' is-on':'');
+      b.onclick=function(){ page=i; go(); }; dotsEl.appendChild(b);
+    })(i); }
+  }
+  function go(snap){
+    var v=visible(); if(!v.length) return;
+    page=Math.max(0, Math.min(page, pages()-1));
+    step=v[0].offsetWidth+gap();
+    var off=Math.max(maxOff(), -(page*step));
+    track.style.transition = snap===false ? 'none' : 'transform .5s cubic-bezier(.2,.7,.2,1)';
+    track.style.transform='translateX('+off+'px)'; cur=off;
+    if(dotsEl)[].forEach.call(dotsEl.children,function(c,i){ c.classList.toggle('is-on', i===page); });
+  }
+
+  if(isPin){
+    sizePin(); onScroll();
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', function(){ sizePin(); onScroll(); });
+  } else {
+    var dragging=false,sx=0,base=0,moved=false;
+    view.addEventListener('pointerdown',function(e){ dragging=true; moved=false; sx=e.clientX; base=cur; track.classList.add('is-drag'); track.style.transition='none'; view.setPointerCapture(e.pointerId); });
+    view.addEventListener('pointermove',function(e){ if(!dragging)return; var dx=e.clientX-sx; if(Math.abs(dx)>4)moved=true; track.style.transform='translateX('+(base+dx)+'px)'; cur=base+dx; });
+    function end(){ if(!dragging)return; dragging=false; track.classList.remove('is-drag'); if(moved){ var v=visible(); step=v[0].offsetWidth+gap(); page=Math.round(-cur/step); } go(); }
+    view.addEventListener('pointerup',end); view.addEventListener('pointercancel',end);
+    view.addEventListener('click',function(e){ if(moved){ e.preventDefault(); e.stopPropagation(); } },true);
+    buildDots(); go(false);
+    window.addEventListener('resize',function(){ buildDots(); go(false); });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Community Videos",
+  "tag": "section",
+  "class": "section-community-videos",
+  "settings": [
+    { "type": "header", "content": "Heading" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Verified reviews" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Real stories from our community" },
+    { "type": "header", "content": "Layout" },
+    { "type": "select", "id": "card_style", "label": "Card style", "default": "gradient", "options": [
+        { "value": "gradient", "label": "Gradient (text over poster)" },
+        { "value": "split", "label": "Split (solid panel below)" } ] },
+    { "type": "checkbox", "id": "show_quote", "label": "Show quote on card", "default": false },
+    { "type": "checkbox", "id": "show_tags", "label": "Show tag filter chips", "default": true },
+    { "type": "checkbox", "id": "full_bleed", "label": "Full-bleed (span page edge to edge)", "default": true },
+    { "type": "checkbox", "id": "scroll_pin", "label": "Scroll-pin (pin section, scroll slides through videos)", "info": "Pins the section and turns vertical scroll into a horizontal slide-through, releasing at the end.", "default": false },
+    { "type": "text", "id": "all_label", "label": "\"All\" chip label", "default": "All" },
+    { "type": "range", "id": "card_width", "label": "Card width", "min": 200, "max": 360, "step": 4, "unit": "px", "default": 272 },
+    { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 54 },
+    { "type": "range", "id": "pad_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 60 },
+    { "type": "header", "content": "Colors" },
+    { "type": "checkbox", "id": "section_bg_solid", "label": "Solid section background (off = brand gradient)", "default": false },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#16307F" },
+    { "type": "color", "id": "panel_bg", "label": "Card panel (Split style)", "default": "#0E2160" },
+    { "type": "color", "id": "overlay", "label": "Card overlay (Gradient style)", "default": "#081034" },
+    { "type": "color", "id": "font_color", "label": "Font color", "default": "#ffffff" },
+    { "type": "color", "id": "accent", "label": "Play-button accent", "default": "#1B3DEF" },
+    { "type": "header", "content": "Font sizes" },
+    { "type": "range", "id": "fs_title", "label": "Title", "min": 18, "max": 56, "step": 1, "unit": "px", "default": 34 },
+    { "type": "range", "id": "fs_name", "label": "Name", "min": 12, "max": 30, "step": 1, "unit": "px", "default": 19 },
+    { "type": "range", "id": "fs_role", "label": "Role / meta", "min": 9, "max": 18, "step": 1, "unit": "px", "default": 12 },
+    { "type": "range", "id": "fs_quote", "label": "Quote", "min": 10, "max": 20, "step": 1, "unit": "px", "default": 13 }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Poster image" },
+        { "type": "text", "id": "name", "label": "Name", "default": "Customer name" },
+        { "type": "text", "id": "role", "label": "Role / meta", "default": "Verified customer" },
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "tag", "label": "Tag (used for filter chips)", "info": "e.g. HORMONES, MOOD, METABOLISM. Cards with the same tag group under one chip.", "default": "MOOD" },
+        { "type": "url", "id": "video_url", "label": "Video URL (opens on play)" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Community Videos",
+      "blocks": [
+        { "type": "video", "settings": { "name": "Krstina Perez", "role": "Verified customer @krstinaperez", "tag": "HORMONES", "quote": "Supporting my body on my fertility journey" } },
+        { "type": "video", "settings": { "name": "Ashley Moya", "role": "Verified customer @ashleymoya7", "tag": "METABOLISM", "quote": "Living with endometriosis, supporting my metabolism" } },
+        { "type": "video", "settings": { "name": "Kylie Spencer", "role": "Verified customer @kyliespencerhealth", "tag": "MOOD", "quote": "More emotional steadiness, less PMDD overwhelm" } },
+        { "type": "video", "settings": { "name": "Lauren Elam", "role": "Verified customer @larslavishlife", "tag": "MOOD", "quote": "It has been life changing for my cycles, skin and mood" } },
+        { "type": "video", "settings": { "name": "Baylee Alisson", "role": "Verified customer @strongbybayleeallison", "tag": "METABOLISM", "quote": "Supporting cravings and weight through metabolism" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
