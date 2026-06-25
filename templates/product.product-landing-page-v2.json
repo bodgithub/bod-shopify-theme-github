@@ -216,12 +216,13 @@
           "type": "custom_liquid",
           "name": "Free shipping + product pills",
           "settings": {
-            "custom_liquid": "<div style=\"align-items: center; font-size: 14px;  padding-bottom:20px;\"><b>Free shipping</b> on all orders. <b>60-day</b> money back guarantee. <br>Arrives in <b>2-5 days</b>.</div>\n\n\n\n<div class=\"cro-badge-row\"><span class=\"cro-badge-row__pill\">Made in USA</span><span class=\"cro-badge-row__pill\">GMP facility</span><span class=\"cro-badge-row__pill\">Third-party tested</span><span class=\"cro-badge-row__pill\">Vegan</span><span class=\"cro-badge-row__pill\">Gluten-free</span><span class=\"cro-badge-row__pill\">Non-GMO</span></div>"
+            "custom_liquid": "<div class=\"cro-badge-row\"><span class=\"cro-badge-row__pill\"><b>Free shipping</b> on all orders</span><span class=\"cro-badge-row__pill\"><b>60-day</b> money back gaurantee</span><span class=\"cro-badge-row__pill\">Arrives in <b>2-5 days</span></div>"
           }
         },
         "custom_liquid_jbg4iU": {
           "type": "custom_liquid",
           "name": "Practitioner approved",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"border:0.1px solid #1b3def; border: 1px #E0E5F0 solid; padding:10px; border-radius:5px; width:100%; height:auto;  margin-bottom:20px; font-size: 14px; color:#1b3def; \"><img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 19px; margin-right: 4px;\"><strong>Practitioner Approved</strong> <div style=\"padding:10px 0px 0px;color:#2c2d2e;\">Used by practitioners to support metabolic and hormonal health.<sup>*</sup></div></div>"
           }
