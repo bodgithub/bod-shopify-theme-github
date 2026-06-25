@@ -45,6 +45,9 @@
   {%- if s.section_bg_solid -%}
   #{{ sid }}{ background: {{ s.section_bg | default: '#16307F' }}; }
   {%- endif -%}
+  {%- if s.full_bleed -%}
+  #{{ sid }}{ width:100vw; max-width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; overflow-x:clip; }
+  {%- endif -%}
   #{{ sid }} *, #{{ sid }} *::before, #{{ sid }} *::after{ box-sizing:border-box; }
 
   #{{ sid }} .vcg__head{ text-align:center; max-width:42ch; margin:0 auto 6px; padding:0 16px; }
