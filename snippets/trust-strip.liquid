@@ -1,0 +1,169 @@
+{%- comment -%}
+  Bodology · Trust strip (shared render)
+  Rendered by BOTH:
+    - the "Trust strip" block inside the main-product section (product details), and
+    - the standalone "Trust strip" section (sections/trust-strip.liquid) for pages.
+
+  Params:
+    s   - settings object (block.settings or section.settings)
+    uid - unique instance id (block.id or section.id)
+
+  All type is Tenon (loaded site-wide in layout/theme.liquid). Styles are scoped to
+  #bodTS-{{ uid }} so instances never collide and each carries its own settings.
+{%- endcomment -%}
+
+{%- liquid
+  assign sans = '"tenon","Helvetica Neue",Arial,sans-serif'
+  assign root_class = 'bod-ts'
+  if s.style == 'gradient'
+    assign root_class = root_class | append: ' bod-ts--solid'
+  endif
+  if s.center_all
+    assign root_class = root_class | append: ' bod-ts--center'
+  endif
+-%}
+
+<style>
+#bodTS-{{ uid }}{
+  --ts-sans:{{ sans }};
+  --ts-border:linear-gradient(135deg,#6E8BF2 0%,#1B3DEF 46%,#0E2160 100%);
+  --ts-grad-solid:radial-gradient(140% 165% at 18% 10%,#2E54C8 0%,#1E3FA8 30%,#14307C 65%,#0E2160 100%);
+  --ts-ink:#14307C; --ts-ink-2:#42579E; --ts-hair:rgba(20,40,120,0.12);
+  --ts-title:{{ s.title_color | default: '#14307C' }};
+  --ts-sub:{{ s.sub_color | default: '#42579E' }};
+  --ts-h-color:{{ s.headline_color | default: '#14307C' }};
+  --ts-h-size:{{ s.headline_size | default: 21 }}px;
+  --ts-h-weight:{{ s.headline_weight | default: 600 }};
+}
+#bodTS-{{ uid }} .bod-ts{position:relative; box-sizing:border-box; container-type:inline-size;}
+#bodTS-{{ uid }} .bod-ts *,#bodTS-{{ uid }} .bod-ts *::before,#bodTS-{{ uid }} .bod-ts *::after{box-sizing:border-box;}
+
+#bodTS-{{ uid }} .bod-ts__frame{background:var(--ts-border); padding:6px; border-radius:14px; box-shadow:0 14px 36px rgba(8,18,62,0.16);}
+#bodTS-{{ uid }} .bod-ts__card{background:#fff; border-radius:8px;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__frame{background:transparent; padding:0; border-radius:12px; box-shadow:0 14px 36px rgba(8,18,62,0.22);}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__card{background:var(--ts-grad-solid); border-radius:12px;}
+
+#bodTS-{{ uid }} .bod-ts__head{padding:18px 20px 15px; border-bottom:1px solid var(--ts-hair);}
+#bodTS-{{ uid }} .bod-ts__title{font-family:var(--ts-sans); font-weight:var(--ts-h-weight); font-size:var(--ts-h-size); letter-spacing:-0.02em; line-height:1.16; color:var(--ts-h-color); margin:0;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__head{border-bottom-color:rgba(255,255,255,0.16);}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__title{color:#fff;}
+#bodTS-{{ uid }} .bod-ts--center .bod-ts__head{text-align:center; padding:22px 20px 18px;}
+
+#bodTS-{{ uid }} .bod-ts__grid{display:grid; grid-template-columns:repeat(4,1fr);}
+#bodTS-{{ uid }} .bod-ts__cell{position:relative; padding:18px 16px 16px; border-right:1px solid var(--ts-hair); border-bottom:1px solid var(--ts-hair); display:flex; flex-direction:column; align-items:flex-start; text-align:left; gap:10px;}
+#bodTS-{{ uid }} .bod-ts__cell:nth-child(4n){border-right:0;}
+#bodTS-{{ uid }} .bod-ts__cell:nth-child(n+5){border-bottom:0;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__cell{border-right-color:rgba(255,255,255,0.16); border-bottom-color:rgba(255,255,255,0.16);}
+#bodTS-{{ uid }} .bod-ts--center .bod-ts__cell{align-items:center; text-align:center;}
+
+#bodTS-{{ uid }} .bod-ts__ic{width:30px; height:30px; display:block; fill:none; stroke:url(#bodIconGrad-{{ uid }}); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;}
+#bodTS-{{ uid }} .bod-ts__ic .bod-dot{fill:url(#bodIconGrad-{{ uid }}); stroke:none;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__ic{stroke:#fff;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__ic .bod-dot{fill:#fff;}
+
+#bodTS-{{ uid }} .bod-ts__txt{display:flex; flex-direction:column; gap:4px; padding-right:14px;}
+#bodTS-{{ uid }} .bod-ts--center .bod-ts__txt{padding-right:0; align-items:center;}
+#bodTS-{{ uid }} .bod-ts__t{font-family:var(--ts-sans); font-weight:600; font-size:13px; line-height:1.22; color:var(--ts-title); letter-spacing:-0.01em;}
+#bodTS-{{ uid }} .bod-ts__s{font-family:var(--ts-sans); font-size:9.5px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ts-sub); line-height:1.45;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__t{color:#fff;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__s{color:rgba(255,255,255,0.66);}
+
+#bodTS-{{ uid }} .bod-ts__info{position:absolute; top:12px; right:12px; width:14px; height:14px; padding:0; border:none; border-radius:50%; background:#ECEDF1; color:#1B3DEF; font-family:var(--ts-sans); font-weight:600; font-size:10px; line-height:1; cursor:pointer; transition:background .15s,color .15s; display:flex; align-items:center; justify-content:center;}
+#bodTS-{{ uid }} .bod-ts__info:hover,#bodTS-{{ uid }} .bod-ts__info:focus-visible{background:#1B3DEF; color:#fff; outline:none;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__info{background:rgba(255,255,255,0.14); color:#fff;}
+#bodTS-{{ uid }} .bod-ts--solid .bod-ts__info:hover,#bodTS-{{ uid }} .bod-ts--solid .bod-ts__info:focus-visible{background:#fff; color:#1B3DEF;}
+
+#bodTS-{{ uid }} .bod-ts__tip{position:absolute; bottom:calc(100% + 9px); top:auto; left:50%; transform:translateX(-50%); width:max-content; max-width:min(280px,82vw); background:#fff; color:#1A1A14; text-align:left; font-family:var(--ts-sans); font-size:12.5px; font-weight:400; line-height:1.5; padding:14px 16px; border-radius:8px; box-shadow:0 16px 40px rgba(8,18,62,0.22), 0 0 0 1px rgba(20,40,120,0.10); opacity:0; visibility:hidden; pointer-events:none; transition:opacity .16s; z-index:30;}
+#bodTS-{{ uid }} .bod-ts__tip b,#bodTS-{{ uid }} .bod-ts__tip strong{color:#1B3DEF; font-weight:600;}
+#bodTS-{{ uid }} .bod-ts__tip p{margin:0;}
+#bodTS-{{ uid }} .bod-ts__cell:nth-child(4n+1) .bod-ts__tip{left:0; right:auto; transform:none;}
+#bodTS-{{ uid }} .bod-ts__cell:nth-child(4n) .bod-ts__tip{left:auto; right:0; transform:none;}
+#bodTS-{{ uid }} .bod-ts__info:hover ~ .bod-ts__tip,
+#bodTS-{{ uid }} .bod-ts__info:focus-visible ~ .bod-ts__tip,
+#bodTS-{{ uid }} .bod-ts__tip:hover,
+#bodTS-{{ uid }} .bod-ts__cell.is-open .bod-ts__tip{opacity:1; visibility:visible; pointer-events:auto;}
+
+@container (max-width:560px){
+  #bodTS-{{ uid }} .bod-ts__grid{grid-template-columns:repeat(2,1fr);}
+  #bodTS-{{ uid }} .bod-ts__cell{border-right:1px solid var(--ts-hair); border-bottom:1px solid var(--ts-hair);}
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(4n){border-right:1px solid var(--ts-hair);}
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(n+5){border-bottom:1px solid var(--ts-hair);}
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(2n){border-right:0;}
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(n+7){border-bottom:0;}
+  #bodTS-{{ uid }} .bod-ts--solid .bod-ts__cell{border-right-color:rgba(255,255,255,0.16); border-bottom-color:rgba(255,255,255,0.16);}
+  #bodTS-{{ uid }} .bod-ts--solid .bod-ts__cell:nth-child(2n){border-right:0;}
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(4n+1) .bod-ts__tip,
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(4n) .bod-ts__tip{left:50%; right:auto; transform:translateX(-50%);}
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(2n+1) .bod-ts__tip{left:0; right:auto; transform:none;}
+  #bodTS-{{ uid }} .bod-ts__cell:nth-child(2n) .bod-ts__tip{left:auto; right:0; transform:none;}
+}
+</style>
+
+<div id="bodTS-{{ uid }}" style="padding:{{ s.padding_top | default: 16 }}px 16px {{ s.padding_bottom | default: 16 }}px;">
+  <div class="{{ root_class }}" style="max-width:{{ s.max_width | default: 720 }}px;margin:0 auto;">
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+      <linearGradient id="bodIconGrad-{{ uid }}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3354D6"/><stop offset="1" stop-color="#0E2160"/>
+      </linearGradient>
+    </defs></svg>
+
+    <div class="bod-ts__frame">
+      <div class="bod-ts__card">
+
+        {%- if s.headline != blank -%}
+        <div class="bod-ts__head">
+          <h3 class="bod-ts__title">{{ s.headline | escape }}</h3>
+        </div>
+        {%- endif -%}
+
+        <div class="bod-ts__grid">
+          {%- for i in (1..8) -%}
+            {%- liquid
+              assign enable_key = 'b' | append: i | append: '_enable'
+              assign icon_key   = 'b' | append: i | append: '_icon'
+              assign title_key  = 'b' | append: i | append: '_title'
+              assign sub_key    = 'b' | append: i | append: '_sub'
+              assign tip_key    = 'b' | append: i | append: '_tip'
+            -%}
+            {%- if s[enable_key] -%}
+              <div class="bod-ts__cell" tabindex="0">
+                {%- if s[tip_key] != blank -%}
+                  <button class="bod-ts__info" type="button" aria-label="More about {{ s[title_key] | escape }}">i</button>
+                {%- endif -%}
+                <svg class="bod-ts__ic" viewBox="0 0 24 24">{%- render 'trust-strip-icon', icon: s[icon_key] -%}</svg>
+                <span class="bod-ts__txt">
+                  <span class="bod-ts__t">{{ s[title_key] | escape }}</span>
+                  {%- if s[sub_key] != blank -%}<span class="bod-ts__s">{{ s[sub_key] | escape }}</span>{%- endif -%}
+                </span>
+                {%- if s[tip_key] != blank -%}
+                  <span class="bod-ts__tip" role="tooltip">{{ s[tip_key] }}</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var scope = document.getElementById('bodTS-{{ uid }}');
+  if(!scope || scope.dataset.tsBound) return;
+  scope.dataset.tsBound = '1';
+  scope.addEventListener('click',function(e){
+    var btn=e.target.closest('.bod-ts__info'); if(!btn) return;
+    e.stopPropagation();
+    var cell=btn.closest('.bod-ts__cell');
+    var wasOpen=cell.classList.contains('is-open');
+    scope.querySelectorAll('.bod-ts__cell.is-open').forEach(function(c){c.classList.remove('is-open');});
+    if(!wasOpen) cell.classList.add('is-open');
+  });
+  document.addEventListener('click',function(ev){
+    if(scope.contains(ev.target)) return;
+    scope.querySelectorAll('.bod-ts__cell.is-open').forEach(function(c){c.classList.remove('is-open');});
+  });
+})();
+</script>

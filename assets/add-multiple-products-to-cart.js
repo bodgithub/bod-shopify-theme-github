@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get the selected option from the dropdown
         const selectedOption = dropdown.value;
 
-        // Determine quantity based on the selected option
-        const quantity = selectedOption === '1 scoop per day (3-month supply)' ? 2 : 1;
+        // 90 scoops/tub; "3-month supply" = 90 days.
+        // 2 scoops/day -> 180 scoops -> 2 tubs; otherwise 1 tub.
         const quantity = selectedOption === '2 scoops per day (3-month supply)' ? 2 : 1;
 
         // Get the product variant ID
