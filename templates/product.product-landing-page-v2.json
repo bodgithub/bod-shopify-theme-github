@@ -795,128 +795,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "multicolumn_KdNre6": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_9tKhGi": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5>1. Supports insulin signaling</h5><h4><em>Your metabolic foundation</em></h4><p>Inositol plays a role in insulin signaling, helping the body respond more effectively to insulin.* This supports steadier blood sugar levels and reduces the metabolic stress that can disrupt hormones.</p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_FKEcTh": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5>2. Supports ovulation and cycle regularity</h5><h4><em><strong>Less guessing</strong></em></h4><p>Healthy insulin signaling supports ovarian function and ovulation.* That’s why inositol has been widely studied in women with irregular cycles and PCOS-related hormone imbalances.*</p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_ppertg": {
-          "type": "column",
-          "disabled": true,
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5><strong>Clean Formula, Nothing Extra</strong></h5><h4><em>Plays well with your stack</em></h4><p>No fillers, no sweeteners, no additives that interfere with absorption or other supplements.</p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_ggDGAH": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5>3. Helps regulate cravings and appetite</h5><h4><em>Steadier blood sugar, fewer crashes</em></h4><p>By supporting insulin sensitivity, inositol may help reduce blood sugar swings that drive intense cravings and energy crashes.*</p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_bFmyt3": {
-          "type": "column",
-          "settings": {
-            "image_full_width": false,
-            "image_link": "",
-            "title": "",
-            "text": "<h5>4. Supports mood and emotional balance</h5><h4><em>Metabolism and brain chemistry are connected</em></h4><p>Inositol is involved in neurotransmitter signaling linked to mood regulation and emotional steadiness.*</p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "column_9tKhGi",
-        "column_FKEcTh",
-        "column_ppertg",
-        "column_ggDGAH",
-        "column_bFmyt3"
-      ],
-      "custom_css": [
-        ".multicolumn__column.small-12.medium-3.columns {border: 1.5em solid #f2eee9; padding-left: 0px;}",
-        ".multicolumn__inner.text-left {max-width: 1500px; margin: auto;}",
-        "h4 {color: black; font-size: 20px; line-height: 28px;}",
-        "h5 {font-size: 25px; line-height: 30px; padding-bottom: 6px; text-transform: uppercase;}",
-        ".section-multicolumn {background-color: #f3eeec;}"
-      ],
-      "settings": {
-        "heading": "",
-        "marker_style": "style1",
-        "description": "<h1>How inositol <em>works</em></h1><p></p>",
-        "bgcolor": "#f3eeec",
-        "columns_desktop": 4,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "center",
-        "heading_size": "h5",
-        "color_heading": "#1b3def",
-        "marker_color": "#f2eee9",
-        "color_text": "#2c2d2e",
-        "color_links": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
-    },
     "how_it_works_bod": {
       "type": "how-inositol-works",
       "blocks": {
@@ -1774,7 +1652,6 @@
     "1768505899436dba61",
     "testimonial_carousel_twHytV",
     "image_with_text_overlay_yexKYW",
-    "multicolumn_KdNre6",
     "how_it_works_bod",
     "rich_text_zwjMjN",
     "spacer_4GDyCF",
