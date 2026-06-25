@@ -99,11 +99,11 @@
 }
 </style>
 
-<div id="bodTS-{{ uid }}" style="padding:{{ s.padding_top | default: 16 }}px 16px {{ s.padding_bottom | default: 16 }}px;">
+<div id="bodTS-{{ uid }}" style="padding:{{ s.padding_top | default: 16 }}px 0 {{ s.padding_bottom | default: 16 }}px;">
   <div class="{{ root_class }}" style="max-width:{{ s.max_width | default: 720 }}px;margin:0 auto;">
 
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-      <linearGradient id="bodIconGrad-{{ uid }}" x1="0" y1="0" x2="0" y2="1">
+      <linearGradient id="bodIconGrad-{{ uid }}" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="24">
         <stop offset="0" stop-color="#3354D6"/><stop offset="1" stop-color="#0E2160"/>
       </linearGradient>
     </defs></svg>
