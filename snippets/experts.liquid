@@ -85,11 +85,22 @@
         assign name_key  = 'p' | append: i | append: '_name'
         assign role_key  = 'p' | append: i | append: '_role'
         assign quote_key = 'p' | append: i | append: '_quote'
+        assign fallback = ''
+        case i
+          when 1
+            assign fallback = 'Hillary-Bodology-Square-Blue.png'
+          when 2
+            assign fallback = 'Leslie-Bodology-Square-Blue.png'
+          when 3
+            assign fallback = 'Anita-Bodology-Square-Blue.png'
+          when 4
+            assign fallback = 'Tina-Bodology-Square-Blue.png'
+        endcase
       -%}
-      {%- if s[name_key] != blank or s[photo_key] != blank -%}
+      {%- if s[name_key] != blank or s[photo_key] != blank or fallback != blank -%}
         <div class="exr__card" tabindex="0">
           <div class="exr__media">
-            {% if s[photo_key] %}<img src="{{ s[photo_key] | image_url: width: 600 }}" alt="{{ s[name_key] | escape }}" width="600" height="600" loading="lazy">{% else %}<img src="{{ 'image' | placeholder_svg_tag }}" alt="" width="600" height="600">{% endif %}
+            {% if s[photo_key] %}<img src="{{ s[photo_key] | image_url: width: 600 }}" alt="{{ s[name_key] | escape }}" width="600" height="600" loading="lazy">{% elsif fallback != blank %}<img src="{{ fallback | asset_url }}" alt="{{ s[name_key] | escape }}" width="600" height="600" loading="lazy">{% else %}<img src="{{ 'image' | placeholder_svg_tag }}" alt="" width="600" height="600">{% endif %}
             <span class="exr__badge">&#8220;</span>
             <div class="exr__quote">
               <p class="exr__qtext">{{ s[quote_key] }}</p>
