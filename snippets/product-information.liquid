@@ -13,6 +13,16 @@
     </p>
   {%- when 'custom_liquid' -%}
     {{ block.settings.custom_liquid }}
+  {%- when 'badge_pills' -%}
+    {%- assign pill_lines = block.settings.pills | newline_to_br | split: '<br />' -%}
+    <div class="cro-badge-row"{% if block.settings.center %} style="justify-content:center;"{% endif %} {{ block.shopify_attributes }}>
+      {%- for line in pill_lines -%}
+        {%- assign pill = line | strip_newlines | strip -%}
+        {%- if pill != blank -%}
+          <span class="cro-badge-row__pill">{{ pill }}</span>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   {%- when 'trust_strip' -%}
     <div {{ block.shopify_attributes }}>{%- render 'trust-strip', s: block.settings, uid: block.id -%}</div>
   {%- when 'experts' -%}

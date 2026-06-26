@@ -287,10 +287,11 @@
           }
         },
         "custom_liquid_YGHAge": {
-          "type": "custom_liquid",
+          "type": "badge_pills",
           "name": "Free shipping + product pills",
           "settings": {
-            "custom_liquid": "<div>\n\n<div class=\"cro-badge-row\">\n\n<span class=\"cro-badge-row__pill\">Free shipping on all orders</span>\n\n<span class=\"cro-badge-row__pill\">60-day money back gaurantee</span>\n\n<span class=\"cro-badge-row__pill\">Arrives in 2-5 days</span>\n\n</div></div>"
+            "pills": "Free shipping on all orders\n60-day money-back guarantee\nArrives in 2-5 days",
+            "center": false
           }
         },
         "custom_liquid_ymVUr7": {
