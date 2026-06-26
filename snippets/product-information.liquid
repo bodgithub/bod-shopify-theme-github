@@ -31,6 +31,8 @@
     <div {{ block.shopify_attributes }}>{%- render 'trust-strip', s: block.settings, uid: block.id -%}</div>
   {%- when 'experts' -%}
     <div {{ block.shopify_attributes }}>{%- render 'experts', s: block.settings, uid: block.id -%}</div>
+  {%- when 'plan_selector' -%}
+    <div {{ block.shopify_attributes }}>{%- render 'plan-selector', s: block.settings, uid: block.id -%}</div>
   {%- when 'title' -%}
     <div class="product-title-container" {{ block.shopify_attributes }}>
       <h1 class="product-title">{{ product.title }}</h1>
