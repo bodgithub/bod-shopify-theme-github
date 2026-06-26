@@ -138,11 +138,11 @@
 {%- capture checkw -%}<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
 
 <div id="ps-{{ uid }}">
-{%- if style == 'expanded' -%}
-<div class="bod-pc" role="radiogroup" data-ps-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+<div class="{% if style == 'expanded' %}bod-pc{% else %}bod-ps bod-ps--{{ style }}{% endif %}" role="radiogroup" data-ps-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
   {%- for i in (1..3) -%}
     {%- liquid
+      assign imk = 'p' | append: i | append: '_image'
       assign nk = 'p' | append: i | append: '_name'
       assign ck = 'p' | append: i | append: '_cadence'
       assign pk = 'p' | append: i | append: '_price'
@@ -165,6 +165,7 @@
     -%}
     {%- if s[nk] != blank -%}
     {%- assign first = forloop.first -%}
+    {%- if style == 'expanded' -%}
     <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
          data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}">
       <div class="pc-card__in">
@@ -201,37 +202,7 @@
         </div>
       </div>
     </div>
-    {%- endif -%}
-  {%- endfor -%}
-
-{%- else -%}
-<div class="bod-ps bod-ps--{{ style }}" role="radiogroup" data-ps-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
-  {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
-  {%- for i in (1..3) -%}
-    {%- liquid
-      assign nk = 'p' | append: i | append: '_name'
-      assign ck = 'p' | append: i | append: '_cadence'
-      assign pk = 'p' | append: i | append: '_price'
-      assign cpk = 'p' | append: i | append: '_compare'
-      assign btk = 'p' | append: i | append: '_banner_type'
-      assign blk = 'p' | append: i | append: '_banner_label'
-      assign svk = 'p' | append: i | append: '_save'
-      assign imk = 'p' | append: i | append: '_image'
-      assign spk = 'p' | append: i | append: '_spec'
-      assign bnk = 'p' | append: i | append: '_benefits'
-      assign vk = 'p' | append: i | append: '_variant'
-      assign plk = 'p' | append: i | append: '_plan'
-      assign qk = 'p' | append: i | append: '_qty'
-      assign ppk = 'p' | append: i | append: '_price_per'
-      assign bik = 'p' | append: i | append: '_bill'
-      assign srk = 'p' | append: i | append: '_serving'
-      assign g1ik = 'p' | append: i | append: '_gift1_image'
-      assign g1nk = 'p' | append: i | append: '_gift1_name'
-      assign g2ik = 'p' | append: i | append: '_gift2_image'
-      assign g2nk = 'p' | append: i | append: '_gift2_name'
-    -%}
-    {%- if s[nk] != blank -%}
-    {%- assign first = forloop.first -%}
+    {%- else -%}
     <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
          data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}">
       <div class="ps-card__frame">
@@ -277,8 +248,8 @@
       </div>
     </div>
     {%- endif -%}
+    {%- endif -%}
   {%- endfor -%}
-{%- endif -%}
 
   <button class="ps-cta" type="button" data-ps-submit>
     <span class="spin"></span>
@@ -290,6 +261,7 @@
     <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
   </div>
   {%- if s.footnote != blank -%}<p class="ps-footnote">{{ s.footnote }}</p>{%- endif -%}
+</div>
 </div>
 
 <script>
