@@ -38,9 +38,10 @@
   {%- endif -%}
   #{{ s }} *, #{{ s }} *::before, #{{ s }} *::after{ box-sizing:border-box; }
 
-  #{{ s }} .vcg__head{ text-align:center; max-width:42ch; margin:0 auto 6px; padding:0 16px; }
+  #{{ s }} .vcg__head{ text-align:center; max-width:{{ section.settings.headline_width }}px; margin:0 auto 6px; padding:0 16px; }
   #{{ s }} .vcg__eyebrow{ font-size:10.5px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:color-mix(in srgb,var(--fg) 64%,transparent); margin:0 0 11px; }
-  #{{ s }} .vcg__title{ font-weight:600; font-size:var(--fs-title); letter-spacing:-0.03em; line-height:1.06; color:var(--fg); margin:0; }
+  #{{ s }} .vcg__title{ color:var(--fg); margin:0; }
+  #{{ s }} .vcg__title--custom{ font-weight:600; font-size:var(--fs-title); letter-spacing:-0.03em; line-height:1.06; }
 
   #{{ s }} .vcg__tags{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin:20px auto 0; padding:0 16px; }
   #{{ s }} .vcg__tag{ font-size:12.5px; font-weight:500; color:color-mix(in srgb,var(--fg) 78%,transparent); background:transparent; border:1px solid color-mix(in srgb,var(--fg) 28%,transparent); border-radius:999px; padding:8px 17px; cursor:pointer; transition:all .16s; font-family:inherit; }
@@ -84,13 +85,26 @@
   #{{ s }}.vcg--pin .vcg__dots{ display:none; }
 
   @media (max-width:560px){ #{{ s }} .vcg__card{ flex-basis:230px; } }
+
+  /* video lightbox (appended to <body>, so kept unscoped) */
+  .vcg-modal{ position:fixed; inset:0; z-index:99999; display:none; align-items:center; justify-content:center; background:rgba(6,10,30,0.82); padding:20px; }
+  .vcg-modal.is-open{ display:flex; }
+  .vcg-modal__in{ position:relative; width:min(440px,92vw); }
+  .vcg-modal__in video{ width:100%; max-height:84vh; border-radius:14px; display:block; background:#000; }
+  .vcg-modal__x{ position:absolute; top:-15px; right:-15px; width:36px; height:36px; border-radius:50%; border:0; background:#fff; color:#14307C; font-size:21px; line-height:1; cursor:pointer; box-shadow:0 6px 18px rgba(6,14,46,0.4); }
 </style>
 
 <div id="{{ s }}" class="{% if pin %}vcg--pin{% endif %}" data-style="{{ section.settings.card_style }}" {% if pin %}data-pin="1"{% endif %}>
   {%- capture inner -%}
   <div class="vcg__head">
     {%- if section.settings.eyebrow != blank -%}<p class="vcg__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
-    {%- if section.settings.title != blank -%}<h2 class="vcg__title">{{ section.settings.title }}</h2>{%- endif -%}
+    {%- if section.settings.title != blank -%}
+      {%- if section.settings.heading_style == 'custom' -%}
+        <h2 class="vcg__title vcg__title--custom">{{ section.settings.title }}</h2>
+      {%- else -%}
+        <h2 class="vcg__title {{ section.settings.heading_style }}">{{ section.settings.title }}</h2>
+      {%- endif -%}
+    {%- endif -%}
   </div>
 
   {%- if section.settings.show_tags -%}
@@ -120,7 +134,13 @@
             {%- if block.settings.image != blank -%}
               <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.name | escape }}" loading="lazy" width="700" height="933">
             {%- endif -%}
-            {%- if block.settings.video_url != blank -%}
+            {%- if block.settings.video != blank -%}
+              {%- assign mp4 = block.settings.video.sources | where: 'format', 'mp4' -%}
+              {%- assign vsrc = mp4.first.url | default: block.settings.video.sources.first.url -%}
+              <button type="button" class="vcg__play" data-play data-video-src="{{ vsrc }}" aria-label="Play {{ block.settings.name | escape }}" style="pointer-events:auto; border:0; cursor:pointer;">
+                <svg viewBox="0 0 24 24"><path d="M7 4 L20 12 L7 20 Z"/></svg>
+              </button>
+            {%- elsif block.settings.video_url != blank -%}
               <a class="vcg__play" href="{{ block.settings.video_url }}" target="_blank" rel="noopener" aria-label="Play {{ block.settings.name | escape }}" style="pointer-events:auto;">
                 <svg viewBox="0 0 24 24"><path d="M7 4 L20 12 L7 20 Z"/></svg>
               </a>
@@ -160,6 +180,22 @@
   function gap(){ return 22; }
   function visible(){ return allCards.filter(function(c){ return c.style.display!=='none'; }); }
   function maxOff(){ return Math.min(0, view.clientWidth - track.scrollWidth); }
+
+  /* video lightbox */
+  var modal;
+  function openModal(src){
+    if(!src) return;
+    if(!modal){
+      modal=document.createElement('div'); modal.className='vcg-modal';
+      modal.innerHTML='<div class="vcg-modal__in"><button class="vcg-modal__x" aria-label="Close">&times;</button><video controls playsinline></video></div>';
+      document.body.appendChild(modal);
+      modal.addEventListener('click',function(e){ if(e.target===modal || e.target.closest('.vcg-modal__x')){ closeModal(); } });
+    }
+    var v=modal.querySelector('video'); v.src=src; modal.classList.add('is-open'); var p=v.play(); if(p&&p.catch)p.catch(function(){});
+  }
+  function closeModal(){ if(!modal) return; var v=modal.querySelector('video'); v.pause(); v.removeAttribute('src'); v.load(); modal.classList.remove('is-open'); }
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+  track.addEventListener('click',function(e){ var b=e.target.closest('[data-play]'); if(!b) return; e.preventDefault(); e.stopPropagation(); openModal(b.getAttribute('data-video-src')); });
 
   if(tagsEl){
     tagsEl.addEventListener('click', function(e){
@@ -231,6 +267,16 @@
     { "type": "header", "content": "Heading" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Verified reviews" },
     { "type": "text", "id": "title", "label": "Title", "default": "Real stories from our community" },
+    { "type": "select", "id": "heading_style", "label": "Heading style", "default": "custom", "info": "Match a site heading style (H1–H6), or Custom to use the size slider.", "options": [
+      { "value": "custom", "label": "Custom (size slider below)" },
+      { "value": "h1", "label": "Match site H1" },
+      { "value": "h2", "label": "Match site H2" },
+      { "value": "h3", "label": "Match site H3" },
+      { "value": "h4", "label": "Match site H4" },
+      { "value": "h5", "label": "Match site H5" },
+      { "value": "h6", "label": "Match site H6" }
+    ] },
+    { "type": "range", "id": "headline_width", "label": "Headline width", "min": 280, "max": 1000, "step": 20, "unit": "px", "default": 520 },
     { "type": "header", "content": "Layout" },
     { "type": "select", "id": "card_style", "label": "Card style", "default": "gradient", "options": [
         { "value": "gradient", "label": "Gradient (text over poster)" },
@@ -266,7 +312,8 @@
         { "type": "text", "id": "role", "label": "Role / meta", "default": "Verified customer" },
         { "type": "textarea", "id": "quote", "label": "Quote" },
         { "type": "text", "id": "tag", "label": "Tag (used for filter chips)", "info": "e.g. HORMONES, MOOD, METABOLISM. Cards with the same tag group under one chip.", "default": "MOOD" },
-        { "type": "url", "id": "video_url", "label": "Video URL (opens on play)" }
+        { "type": "video", "id": "video", "label": "Video (from your library)", "info": "Plays in a lightbox on click." },
+        { "type": "url", "id": "video_url", "label": "…or external video link (optional)" }
       ]
     }
   ],

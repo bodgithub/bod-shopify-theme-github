@@ -1,0 +1,282 @@
+{%- comment -%}
+  Bodology · Plan Selector (shared render for the product-info BLOCK)
+  Params: s = block.settings, uid = block.id
+  Up to 3 plans as flat settings (p1_..p3_) because a block can't hold
+  repeatable sub-blocks. Cart wired to /cart/add.js with variant + selling_plan.
+  For the full-featured version (gift tiles, Style C billing line) use the
+  standalone "Plan selector" section.
+{%- endcomment -%}
+
+<link rel="stylesheet" href="https://use.typekit.net/sxx4ssa.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+
+{%- assign acc = s.accent_color | default: '#1B3DEF' -%}
+{%- assign ink = s.title_color | default: '#14307C' -%}
+{%- assign deep = s.deep_color | default: '#0E2160' -%}
+{%- assign bw = s.border_width | default: 5 -%}
+{%- assign style = s.style | default: 'bordered' -%}
+
+<style>
+#ps-{{ uid }} .bod-ps, #ps-{{ uid }} .bod-pc{
+  --ps-sans:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;
+  --ps-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ps-blue:{{ acc }}; --ps-ink:{{ ink }}; --ps-ink-2:#5566A0; --ps-deep:{{ deep }};
+  --ps-hair:rgba(20,40,120,0.14); --ps-sand:#F3EEEA; --ps-tile:#F7F5F1; --ps-bw:{{ bw }}px;
+  --ps-grad-border:linear-gradient(135deg,#6E8BF2 0%,{{ acc }} 46%,{{ deep }} 100%);
+  --ps-grad-banner:linear-gradient(110deg,{{ deep }} 0%,{{ acc }} 60%,#0A95EF 135%);
+  --ps-grad-deep:radial-gradient(140% 165% at 18% 10%,#2E54C8 0%,#1E3FA8 32%,{{ ink }} 66%,{{ deep }} 100%);
+  font-family:var(--ps-sans); color:#1A1A14; box-sizing:border-box; container-type:inline-size;
+  display:flex; flex-direction:column; gap:14px; max-width:{{ s.max_width | default: 560 }}px; margin:0 auto;
+}
+#ps-{{ uid }} .bod-ps *,#ps-{{ uid }} .bod-pc *,#ps-{{ uid }} .bod-ps *::before,#ps-{{ uid }} .bod-pc *::before,#ps-{{ uid }} .bod-ps *::after,#ps-{{ uid }} .bod-pc *::after{box-sizing:border-box;}
+#ps-{{ uid }} .ps-h{font-weight:600; font-size:clamp(18px,3vw,22px); letter-spacing:-0.02em; color:var(--ps-ink); margin:0 0 2px;}
+#ps-{{ uid }} .ps-card{position:relative; border-radius:14px; cursor:pointer;}
+#ps-{{ uid }} .ps-card__frame{position:relative; border-radius:14px; background:#fff; border:1.5px solid var(--ps-hair); transition:border-color .18s,box-shadow .18s; overflow:hidden;}
+#ps-{{ uid }} .ps-card:hover .ps-card__frame{border-color:rgba(27,61,239,0.5); box-shadow:0 10px 30px rgba(15,31,138,0.10);}
+#ps-{{ uid }}.bod-ps--clean .ps-card.is-selected .ps-card__frame{border-color:var(--ps-blue); box-shadow:0 0 0 1px var(--ps-blue),0 14px 36px rgba(27,61,239,0.16);}
+#ps-{{ uid }}.bod-ps--bordered .ps-card.is-selected{background:var(--ps-grad-border); padding:var(--ps-bw); box-shadow:0 16px 40px rgba(8,18,62,0.20);}
+#ps-{{ uid }}.bod-ps--bordered .ps-card.is-selected .ps-card__frame{border-color:transparent; border-radius:10px;}
+#ps-{{ uid }} .ps-card:focus-visible{outline:none;}
+#ps-{{ uid }} .ps-card:focus-visible .ps-card__frame{box-shadow:0 0 0 3px rgba(27,61,239,0.35); border-color:var(--ps-blue);}
+#ps-{{ uid }} .ps-banner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:7px 16px; background:var(--ps-grad-banner); color:#fff;}
+#ps-{{ uid }} .ps-banner__label{font-family:var(--ps-mono); font-size:10.5px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; white-space:nowrap;}
+#ps-{{ uid }} .ps-save{display:inline-flex; align-items:center; gap:5px; background:#fff; color:var(--ps-blue); font-weight:700; font-size:11px; padding:3px 9px; border-radius:999px; white-space:nowrap;}
+#ps-{{ uid }} .ps-banner--value{background:var(--ps-grad-deep);}
+#ps-{{ uid }}.bod-ps--clean .ps-banner{background:linear-gradient(110deg,#EEF1FE 0%,#E3E9FE 100%); color:var(--ps-ink);}
+#ps-{{ uid }}.bod-ps--clean .ps-banner__label{color:var(--ps-blue);}
+#ps-{{ uid }}.bod-ps--clean .ps-save{background:var(--ps-grad-banner); color:#fff;}
+#ps-{{ uid }} .ps-body{display:flex; gap:14px; padding:16px 18px; align-items:flex-start;}
+#ps-{{ uid }} .ps-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; margin-top:2px; position:relative; transition:.15s;}
+#ps-{{ uid }} .ps-card.is-selected .ps-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
+#ps-{{ uid }} .ps-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
+#ps-{{ uid }} .ps-card.is-selected .ps-radio svg{opacity:1; transform:scale(1);}
+#ps-{{ uid }} .ps-thumb{flex:0 0 auto; width:62px; height:62px; border-radius:9px; background:var(--ps-sand); display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--ps-hair);}
+#ps-{{ uid }} .ps-thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+#ps-{{ uid }} .ps-main{flex:1 1 auto; min-width:0;}
+#ps-{{ uid }} .ps-row1{display:flex; align-items:baseline; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+#ps-{{ uid }} .ps-name{font-weight:600; font-size:17px; letter-spacing:-0.01em; color:var(--ps-ink); margin:0;}
+#ps-{{ uid }} .ps-cadence{font-size:12px; color:var(--ps-ink-2); margin:2px 0 0; line-height:1.4;}
+#ps-{{ uid }} .ps-price{display:flex; align-items:baseline; gap:7px; white-space:nowrap;}
+#ps-{{ uid }} .ps-price__now{font-weight:700; font-size:20px; color:var(--ps-ink); letter-spacing:-0.02em;}
+#ps-{{ uid }} .ps-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
+#ps-{{ uid }} .ps-spec{font-family:var(--ps-mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ps-ink-2); margin:12px 0 0; line-height:1.5;}
+#ps-{{ uid }} .ps-spec b{color:var(--ps-blue); font-weight:500;}
+#ps-{{ uid }} .ps-spec .dot{opacity:.45; margin:0 4px;}
+#ps-{{ uid }} .ps-benes{list-style:none; margin:11px 0 0; padding:0; display:flex; flex-direction:column; gap:7px;}
+#ps-{{ uid }} .ps-benes li{position:relative; padding-left:22px; font-size:13px; line-height:1.4; color:#33342c;}
+#ps-{{ uid }} .ps-benes svg{position:absolute; left:0; top:3px; width:14px; height:14px;}
+/* Style C */
+#ps-{{ uid }} .pc-card{position:relative; border-radius:16px; cursor:pointer; background:#fff; border:1.5px solid var(--ps-hair); transition:border-color .18s,box-shadow .18s; overflow:hidden;}
+#ps-{{ uid }} .pc-card:hover{border-color:rgba(27,61,239,0.45);}
+#ps-{{ uid }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:var(--ps-bw); overflow:visible; box-shadow:0 18px 44px rgba(8,18,62,0.16);}
+#ps-{{ uid }} .pc-card__in{position:relative; background:#fff; border-radius:11px; overflow:hidden;}
+#ps-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:15px;}
+#ps-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:var(--ps-grad-banner); color:#fff; font-family:var(--ps-mono); font-size:10px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; padding:6px 15px 6px 20px; border-bottom-left-radius:13px; border-top-right-radius:11px; white-space:nowrap; display:none;}
+#ps-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
+#ps-{{ uid }} .pc-pad{padding:18px 22px 20px;}
+#ps-{{ uid }} .pc-head{display:flex; align-items:center; gap:11px;}
+#ps-{{ uid }} .pc-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; position:relative; transition:.15s;}
+#ps-{{ uid }} .pc-card.is-selected .pc-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
+#ps-{{ uid }} .pc-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
+#ps-{{ uid }} .pc-card.is-selected .pc-radio svg{opacity:1; transform:scale(1);}
+#ps-{{ uid }} .pc-title{font-weight:600; font-size:19px; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
+#ps-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:var(--ps-sand); color:var(--ps-blue); font-weight:700; font-size:11px; padding:4px 10px; border-radius:999px; white-space:nowrap;}
+#ps-{{ uid }} .pc-card.is-selected .pc-pill{background:var(--ps-grad-banner); color:#fff;}
+#ps-{{ uid }} .pc-mini{margin-left:auto; display:flex; align-items:baseline; gap:6px; white-space:nowrap;}
+#ps-{{ uid }} .pc-mini__now{font-weight:700; font-size:17px; color:var(--ps-ink); letter-spacing:-0.02em;}
+#ps-{{ uid }} .pc-mini__was{font-size:12px; color:#9aa0b5; text-decoration:line-through;}
+#ps-{{ uid }} .pc-card.is-selected .pc-mini{display:none;}
+#ps-{{ uid }} .pc-cadence{font-size:12px; color:var(--ps-ink-2); margin:7px 0 0; padding-left:33px;}
+#ps-{{ uid }} .pc-card.is-selected .pc-cadence{display:none;}
+#ps-{{ uid }} .pc-expand{display:none;}
+#ps-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
+#ps-{{ uid }} .pc-price{display:flex; align-items:baseline; gap:9px; margin:14px 0 0;}
+#ps-{{ uid }} .pc-price__now{font-weight:700; font-size:36px; line-height:1; letter-spacing:-0.03em; color:var(--ps-ink);}
+#ps-{{ uid }} .pc-price__was{font-size:16px; color:#9aa0b5; text-decoration:line-through;}
+#ps-{{ uid }} .pc-hr{border:0; border-top:1px solid var(--ps-hair); margin:16px 0;}
+#ps-{{ uid }} .pc-benes{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+#ps-{{ uid }} .pc-benes li{position:relative; padding-left:26px; font-size:14px; line-height:1.4; color:#2c2d26;}
+#ps-{{ uid }} .pc-benes svg{position:absolute; left:0; top:2px; width:15px; height:15px;}
+/* CTA */
+#ps-{{ uid }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-weight:600; font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
+#ps-{{ uid }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
+#ps-{{ uid }} .ps-cta__sub{font-family:var(--ps-mono); font-weight:400; font-size:10px; letter-spacing:0.08em; opacity:.82; white-space:nowrap;}
+#ps-{{ uid }} .ps-cta.is-loading{pointer-events:none; opacity:.85; background:#3a4a8f;}
+#ps-{{ uid }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:psspin .7s linear infinite; display:none;}
+#ps-{{ uid }} .ps-cta.is-loading .spin{display:block;}
+@keyframes psspin{to{transform:rotate(360deg);}}
+#ps-{{ uid }} .ps-footnote{font-size:11px; color:var(--ps-ink-2); text-align:center; margin:2px 0 0;}
+#ps-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
+#ps-{{ uid }} .ps-error.is-shown{display:flex;}
+#ps-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="psGradV-{{ uid }}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3354D6"/><stop offset="1" stop-color="{{ deep }}"/></linearGradient>
+</defs></svg>
+
+{%- capture check -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ acc }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
+{%- capture checkw -%}<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
+
+<div id="ps-{{ uid }}">
+{%- if style == 'expanded' -%}
+<div class="bod-pc" role="radiogroup" data-ps-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+  {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
+  {%- for i in (1..3) -%}
+    {%- liquid
+      assign nk = 'p' | append: i | append: '_name'
+      assign ck = 'p' | append: i | append: '_cadence'
+      assign pk = 'p' | append: i | append: '_price'
+      assign cpk = 'p' | append: i | append: '_compare'
+      assign btk = 'p' | append: i | append: '_banner_type'
+      assign blk = 'p' | append: i | append: '_banner_label'
+      assign svk = 'p' | append: i | append: '_save'
+      assign spk = 'p' | append: i | append: '_spec'
+      assign bnk = 'p' | append: i | append: '_benefits'
+      assign vk = 'p' | append: i | append: '_variant'
+      assign plk = 'p' | append: i | append: '_plan'
+      assign qk = 'p' | append: i | append: '_qty'
+    -%}
+    {%- if s[nk] != blank -%}
+    {%- assign first = forloop.first -%}
+    <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}">
+      <div class="pc-card__in">
+        {%- if s[blk] != blank and s[btk] != 'none' -%}<span class="pc-ribbon">{{ s[blk] }}</span>{%- endif -%}
+        <div class="pc-pad">
+          <div class="pc-head">
+            <span class="pc-radio">{{ checkw }}</span>
+            <h3 class="pc-title">{{ s[nk] }}</h3>
+            {%- if s[svk] != blank -%}<span class="pc-pill">{{ s[svk] }}</span>{%- endif -%}
+            <span class="pc-mini"><span class="pc-mini__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-mini__was">{{ s[cpk] }}</span>{%- endif -%}</span>
+          </div>
+          {%- if s[ck] != blank -%}<p class="pc-cadence">{{ s[ck] }}</p>{%- endif -%}
+          <div class="pc-expand">
+            <div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}</div>
+            {%- if s[spk] != blank -%}<div class="ps-spec" style="margin-top:10px;">{{ s[spk] }}</div>{%- endif -%}
+            <hr class="pc-hr">
+            {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
+            <ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+{%- else -%}
+<div class="bod-ps bod-ps--{{ style }}" role="radiogroup" data-ps-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+  {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
+  {%- for i in (1..3) -%}
+    {%- liquid
+      assign nk = 'p' | append: i | append: '_name'
+      assign ck = 'p' | append: i | append: '_cadence'
+      assign pk = 'p' | append: i | append: '_price'
+      assign cpk = 'p' | append: i | append: '_compare'
+      assign btk = 'p' | append: i | append: '_banner_type'
+      assign blk = 'p' | append: i | append: '_banner_label'
+      assign svk = 'p' | append: i | append: '_save'
+      assign imk = 'p' | append: i | append: '_image'
+      assign spk = 'p' | append: i | append: '_spec'
+      assign bnk = 'p' | append: i | append: '_benefits'
+      assign vk = 'p' | append: i | append: '_variant'
+      assign plk = 'p' | append: i | append: '_plan'
+      assign qk = 'p' | append: i | append: '_qty'
+    -%}
+    {%- if s[nk] != blank -%}
+    {%- assign first = forloop.first -%}
+    <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}">
+      <div class="ps-card__frame">
+        {%- if s[btk] != 'none' and s[blk] != blank -%}
+          <div class="ps-banner{% if s[btk] == 'value' %} ps-banner--value{% endif %}">
+            <span class="ps-banner__label">{{ s[blk] }}</span>
+            {%- if s[svk] != blank -%}<span class="ps-save">{{ s[svk] }}</span>{%- endif -%}
+          </div>
+        {%- endif -%}
+        <div class="ps-body">
+          <div class="ps-radio">{{ checkw }}</div>
+          <div class="ps-thumb">{%- if s[imk] != blank -%}{{ s[imk] | image_url: width: 160 | image_tag: alt: s[nk], loading: 'lazy' }}{%- endif -%}</div>
+          <div class="ps-main">
+            <div class="ps-row1">
+              <div>
+                <h3 class="ps-name">{{ s[nk] }}</h3>
+                {%- if s[ck] != blank -%}<p class="ps-cadence">{{ s[ck] }}</p>{%- endif -%}
+              </div>
+              <div class="ps-price"><span class="ps-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="ps-price__was">{{ s[cpk] }}</span>{%- endif -%}</div>
+            </div>
+            {%- if s[spk] != blank -%}<div class="ps-spec">{{ s[spk] }}</div>{%- endif -%}
+            {%- if s[bnk] != blank -%}
+              {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
+              <ul class="ps-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+  <button class="ps-cta" type="button" data-ps-submit>
+    <span class="spin"></span>
+    <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
+    <span class="ps-cta__sub" data-ps-sub></span>
+  </button>
+  <div class="ps-error" data-ps-error>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+    <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
+  </div>
+  {%- if s.footnote != blank -%}<p class="ps-footnote">{{ s.footnote }}</p>{%- endif -%}
+</div>
+
+<script>
+(function(){
+  var root = document.querySelector('#ps-{{ uid }} [data-ps-root]');
+  if(!root || root.dataset.psBound) return;
+  root.dataset.psBound = '1';
+  var cards = [].slice.call(root.querySelectorAll('[data-ps-card]'));
+  var sub = root.querySelector('[data-ps-sub]'), err = root.querySelector('[data-ps-error]');
+  var cta = root.querySelector('[data-ps-submit]'), label = cta.querySelector('.ps-cta__label');
+  var ctaText = label.textContent;
+  var cartUrl = {{ routes.cart_url | json }};
+  var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  function selected(){ return root.querySelector('[data-ps-card].is-selected'); }
+  function syncSub(){ var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps-name') : ''; }
+  function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
+  function select(c){
+    cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
+    c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
+    err.classList.remove('is-shown'); syncSub();
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){ select(c); });
+    c.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); select(c); } });
+  });
+  syncSub();
+  cta.addEventListener('click', function(){
+    var c = selected();
+    if(!c){ showErr(); return; }
+    var variant = (c.getAttribute('data-ps-variant') || '').trim();
+    var plan = (c.getAttribute('data-ps-plan') || '').trim();
+    var qty = parseInt(c.getAttribute('data-ps-qty'), 10) || 1;
+    if(!variant){ showErr('{{ s.novariant_text | default: "This plan needs a variant ID — add it in the theme editor." | escape }}'); return; }
+    err.classList.remove('is-shown');
+    cta.classList.add('is-loading'); label.textContent = '{{ s.adding_label | default: "Adding…" }}';
+    var item = { id: variant, quantity: qty };
+    if(plan){ item.selling_plan = plan; }
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items:[item] }) })
+    .then(function(r){ if(!r.ok){ return r.json().then(function(e){ throw e; }); } return r.json(); })
+    .then(function(){
+      {%- if s.go_to_cart == false -%}
+      document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles:true }));
+      cta.classList.remove('is-loading'); label.textContent = '{{ s.added_label | default: "Added ✓" | escape }}';
+      setTimeout(function(){ label.textContent = ctaText; }, 1800);
+      {%- else -%}
+      window.location = cartUrl;
+      {%- endif -%}
+    })
+    .catch(function(e){ cta.classList.remove('is-loading'); label.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+  });
+})();
+</script>
