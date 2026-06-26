@@ -673,6 +673,81 @@
       ],
       "settings": {}
     },
+    "community_videos_gi9WUU": {
+      "type": "community-videos",
+      "blocks": {
+        "video_zqHtcD": {
+          "type": "video",
+          "settings": {
+            "name": "Ashley Moya",
+            "role": "Verified customer @ashleymoya7",
+            "quote": "Living with endometriosis, supporting my metabolism",
+            "tag": "METABOLISM",
+            "video_url": ""
+          }
+        },
+        "video_aJcXiq": {
+          "type": "video",
+          "settings": {
+            "name": "Kylie Spencer",
+            "role": "Verified customer @kyliespencerhealth",
+            "quote": "More emotional steadiness, less PMDD overwhelm",
+            "tag": "MOOD",
+            "video_url": ""
+          }
+        },
+        "video_J6967X": {
+          "type": "video",
+          "settings": {
+            "name": "Lauren Elam",
+            "role": "Verified customer @larslavishlife",
+            "quote": "It has been life changing for my cycles, skin and mood",
+            "tag": "MOOD",
+            "video_url": ""
+          }
+        },
+        "video_reUBBf": {
+          "type": "video",
+          "settings": {
+            "name": "Baylee Alisson",
+            "role": "Verified customer @strongbybayleeallison",
+            "quote": "Supporting cravings and weight through metabolism",
+            "tag": "METABOLISM",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_zqHtcD",
+        "video_aJcXiq",
+        "video_J6967X",
+        "video_reUBBf"
+      ],
+      "name": "Community Videos",
+      "settings": {
+        "eyebrow": "Verified reviews",
+        "title": "Real stories from our community",
+        "card_style": "gradient",
+        "show_quote": true,
+        "show_tags": true,
+        "full_bleed": true,
+        "scroll_pin": false,
+        "all_label": "All",
+        "card_width": 272,
+        "pad_top": 54,
+        "pad_bottom": 60,
+        "section_bg_solid": false,
+        "section_bg": "#191F82",
+        "panel_bg": "#0E2160",
+        "overlay": "#0B1067",
+        "font_color": "#ffffff",
+        "accent": "#D3D3D3",
+        "fs_title": 34,
+        "fs_name": 19,
+        "fs_role": 12,
+        "fs_quote": 13
+      }
+    },
     "testimonial_carousel_twHytV": {
       "type": "testimonial-carousel",
       "blocks": {
@@ -1671,6 +1746,7 @@
     "custom_liquid_WV46gi",
     "main-product",
     "1768505899436dba61",
+    "community_videos_gi9WUU",
     "testimonial_carousel_twHytV",
     "image_with_text_overlay_yexKYW",
     "multicolumn_KdNre6",
