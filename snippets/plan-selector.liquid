@@ -109,6 +109,25 @@
 #ps-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
 #ps-{{ uid }} .ps-error.is-shown{display:flex;}
 #ps-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
+/* per-serving + gift tiles */
+#ps-{{ uid }} .ps-serving{display:inline-block; font-family:var(--ps-mono); font-size:10px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:3px 9px; margin:10px 0 0;}
+#ps-{{ uid }} .ps-gifts{margin:0 18px 16px; padding-top:14px; border-top:1px dashed var(--ps-hair);}
+#ps-{{ uid }} .ps-gifts__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:0 0 10px;}
+#ps-{{ uid }} .ps-gifts__track{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(110px,1fr); gap:10px; overflow-x:auto; padding-bottom:4px;}
+#ps-{{ uid }} .ps-tile{background:var(--ps-tile); border:1px solid var(--ps-hair); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; position:relative;}
+#ps-{{ uid }} .ps-tile__free{position:absolute; top:8px; left:8px; background:var(--ps-grad-banner); color:#fff; font-family:var(--ps-mono); font-size:8px; font-weight:500; letter-spacing:0.1em; padding:2px 6px; border-radius:999px;}
+#ps-{{ uid }} .ps-tile__img{width:100%; aspect-ratio:1/1; border-radius:7px; background:#fff; border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden;}
+#ps-{{ uid }} .ps-tile__img img{width:78%; height:78%; object-fit:contain;}
+#ps-{{ uid }} .ps-tile__name{font-size:11.5px; font-weight:600; color:var(--ps-ink); line-height:1.25;}
+#ps-{{ uid }} .pc-price__per{font-size:14px; color:var(--ps-ink-2); white-space:nowrap;}
+#ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
+#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:4px 11px; margin:8px 0 0;}
+#ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:14px 0 11px;}
+#ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(92px,1fr); gap:10px; overflow-x:auto; padding-bottom:4px;}
+#ps-{{ uid }} .pc-tile{text-align:center;}
+#ps-{{ uid }} .pc-tile__img{width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--ps-tile); border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:7px;}
+#ps-{{ uid }} .pc-tile__img img{width:74%; height:74%; object-fit:contain;}
+#ps-{{ uid }} .pc-tile__name{font-size:11px; font-weight:600; color:var(--ps-ink); line-height:1.2;}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -136,6 +155,13 @@
       assign vk = 'p' | append: i | append: '_variant'
       assign plk = 'p' | append: i | append: '_plan'
       assign qk = 'p' | append: i | append: '_qty'
+      assign ppk = 'p' | append: i | append: '_price_per'
+      assign bik = 'p' | append: i | append: '_bill'
+      assign srk = 'p' | append: i | append: '_serving'
+      assign g1ik = 'p' | append: i | append: '_gift1_image'
+      assign g1nk = 'p' | append: i | append: '_gift1_name'
+      assign g2ik = 'p' | append: i | append: '_gift2_image'
+      assign g2nk = 'p' | append: i | append: '_gift2_name'
     -%}
     {%- if s[nk] != blank -%}
     {%- assign first = forloop.first -%}
@@ -152,11 +178,20 @@
           </div>
           {%- if s[ck] != blank -%}<p class="pc-cadence">{{ s[ck] }}</p>{%- endif -%}
           <div class="pc-expand">
-            <div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}</div>
+            <div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div>
+            {%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}
+            {%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}
             {%- if s[spk] != blank -%}<div class="ps-spec" style="margin-top:10px;">{{ s[spk] }}</div>{%- endif -%}
             <hr class="pc-hr">
             {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
             <ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
+            {%- if s[g1nk] != blank or s[g2nk] != blank -%}
+              <p class="pc-kit__lab">{{ s.gifts_label | default: 'Welcome kit — arrives with first order' }}</p>
+              <div class="pc-kit__track">
+                {%- if s[g1nk] != blank -%}<div class="pc-tile"><div class="pc-tile__img">{%- if s[g1ik] != blank -%}{{ s[g1ik] | image_url: width: 200 | image_tag: alt: s[g1nk], loading: 'lazy' }}{%- endif -%}</div><span class="pc-tile__name">{{ s[g1nk] }}</span></div>{%- endif -%}
+                {%- if s[g2nk] != blank -%}<div class="pc-tile"><div class="pc-tile__img">{%- if s[g2ik] != blank -%}{{ s[g2ik] | image_url: width: 200 | image_tag: alt: s[g2nk], loading: 'lazy' }}{%- endif -%}</div><span class="pc-tile__name">{{ s[g2nk] }}</span></div>{%- endif -%}
+              </div>
+            {%- endif -%}
           </div>
         </div>
       </div>
@@ -182,6 +217,13 @@
       assign vk = 'p' | append: i | append: '_variant'
       assign plk = 'p' | append: i | append: '_plan'
       assign qk = 'p' | append: i | append: '_qty'
+      assign ppk = 'p' | append: i | append: '_price_per'
+      assign bik = 'p' | append: i | append: '_bill'
+      assign srk = 'p' | append: i | append: '_serving'
+      assign g1ik = 'p' | append: i | append: '_gift1_image'
+      assign g1nk = 'p' | append: i | append: '_gift1_name'
+      assign g2ik = 'p' | append: i | append: '_gift2_image'
+      assign g2nk = 'p' | append: i | append: '_gift2_name'
     -%}
     {%- if s[nk] != blank -%}
     {%- assign first = forloop.first -%}
@@ -205,6 +247,7 @@
               </div>
               <div class="ps-price"><span class="ps-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="ps-price__was">{{ s[cpk] }}</span>{%- endif -%}</div>
             </div>
+            {%- if s[srk] != blank -%}<span class="ps-serving">{{ s[srk] }}</span>{%- endif -%}
             {%- if s[spk] != blank -%}<div class="ps-spec">{{ s[spk] }}</div>{%- endif -%}
             {%- if s[bnk] != blank -%}
               {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
@@ -212,6 +255,15 @@
             {%- endif -%}
           </div>
         </div>
+        {%- if s[g1nk] != blank or s[g2nk] != blank -%}
+          <div class="ps-gifts">
+            <p class="ps-gifts__lab">{{ s.gifts_label | default: 'Free gifts included' }}</p>
+            <div class="ps-gifts__track">
+              {%- if s[g1nk] != blank -%}<div class="ps-tile"><span class="ps-tile__free">Free</span><div class="ps-tile__img">{%- if s[g1ik] != blank -%}{{ s[g1ik] | image_url: width: 200 | image_tag: alt: s[g1nk], loading: 'lazy' }}{%- endif -%}</div><span class="ps-tile__name">{{ s[g1nk] }}</span></div>{%- endif -%}
+              {%- if s[g2nk] != blank -%}<div class="ps-tile"><span class="ps-tile__free">Free</span><div class="ps-tile__img">{%- if s[g2ik] != blank -%}{{ s[g2ik] | image_url: width: 200 | image_tag: alt: s[g2nk], loading: 'lazy' }}{%- endif -%}</div><span class="ps-tile__name">{{ s[g2nk] }}</span></div>{%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
       </div>
     </div>
     {%- endif -%}
