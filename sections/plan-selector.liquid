@@ -102,9 +102,10 @@
 #ps-{{ section.id }} .ps-tile__name{font-size:11.5px; font-weight:600; color:var(--ps-ink); line-height:1.25;}
 #ps-{{ section.id }} .ps-tile__val{font-size:10px; color:#9aa0b5; text-decoration:line-through;}
 #ps-{{ section.id }} .ps-tile__unlock{font-family:var(--ps-mono); font-size:8px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ps-blue);}
+#ps-{{ section.id }} .ps-tile__sub{font-size:10px; color:var(--ps-blue); line-height:1.3; display:block; margin-top:2px;}
 
 /* ─── Style C · stacked expanded selector ─── */
-#ps-{{ section.id }} .pc-card{position:relative; border-radius:16px; cursor:pointer; background:#fff; border:1.5px solid var(--ps-hair); padding:0; transition:border-color .18s,box-shadow .18s; overflow:hidden;}
+#ps-{{ section.id }} .pc-card{position:relative; border-radius:13px; cursor:pointer; background:#fff; border:1.5px solid var(--ps-hair); padding:0; transition:border-color .18s,box-shadow .18s; overflow:hidden;}
 #ps-{{ section.id }} .pc-card:hover{border-color:rgba(27,61,239,0.45);}
 #ps-{{ section.id }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:var(--ps-bw); overflow:visible; box-shadow:0 18px 44px rgba(8,18,62,0.16);}
 #ps-{{ section.id }} .pc-card__in{position:relative; background:#fff; border-radius:11px; overflow:hidden;}
@@ -144,7 +145,9 @@
 #ps-{{ section.id }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:4px;}
 #ps-{{ section.id }} .pc-kit__track::-webkit-scrollbar{height:5px;}
 #ps-{{ section.id }} .pc-kit__track::-webkit-scrollbar-thumb{background:rgba(20,40,120,0.18); border-radius:999px;}
-#ps-{{ section.id }} .pc-tile{scroll-snap-align:start; text-align:center;}
+#ps-{{ section.id }} .pc-tile{scroll-snap-align:start; text-align:center; position:relative;}
+#ps-{{ section.id }} .pc-tile__roundel{position:absolute; top:6px; left:6px; z-index:2; background:var(--ps-grad-banner); color:#fff; font-family:var(--ps-mono); font-size:8px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:3px 8px; border-radius:999px; white-space:nowrap;}
+#ps-{{ section.id }} .pc-tile__sub{font-size:10px; color:var(--ps-blue); line-height:1.3; display:block; margin-top:2px;}
 #ps-{{ section.id }} .pc-tile__img{width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--ps-tile); border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:7px;}
 #ps-{{ section.id }} .pc-tile__img img{width:74%; height:74%; object-fit:contain;}
 #ps-{{ section.id }} .pc-tile__val{font-size:10px; color:#9aa0b5; text-decoration:line-through; display:block;}
@@ -215,12 +218,14 @@
               <p class="pc-kit__lab">{{ block.settings.gifts_label | default: 'Welcome kit — arrives with first order' }}</p>
               <div class="pc-kit__track">
                 {%- for n in (1..4) -%}
-                  {%- assign gn = 'gift' | append: n | append: '_name' -%}{%- assign gi = 'gift' | append: n | append: '_image' -%}{%- assign gv = 'gift' | append: n | append: '_value' -%}
+                  {%- assign gn = 'gift' | append: n | append: '_name' -%}{%- assign gi = 'gift' | append: n | append: '_image' -%}{%- assign gv = 'gift' | append: n | append: '_value' -%}{%- assign gr = 'gift' | append: n | append: '_roundel' -%}{%- assign gsub = 'gift' | append: n | append: '_sub' -%}
                   {%- if block.settings[gn] != blank -%}
                     <div class="pc-tile">
+                      {%- if block.settings[gr] != blank -%}<span class="pc-tile__roundel">{{ block.settings[gr] }}</span>{%- endif -%}
                       <div class="pc-tile__img">{%- if block.settings[gi] != blank -%}{{ block.settings[gi] | image_url: width: 200 | image_tag: alt: block.settings[gn], loading: 'lazy' }}{%- endif -%}</div>
-                      {%- if block.settings[gv] != blank -%}<span class="pc-tile__val">{{ block.settings[gv] }}</span>{%- endif -%}
                       <span class="pc-tile__name">{{ block.settings[gn] }}</span>
+                      {%- if block.settings[gv] != blank -%}<span class="pc-tile__val">{{ block.settings[gv] }}</span>{%- endif -%}
+                      {%- if block.settings[gsub] != blank -%}<span class="pc-tile__sub">{{ block.settings[gsub] }}</span>{%- endif -%}
                     </div>
                   {%- endif -%}
                 {%- endfor -%}
@@ -267,13 +272,14 @@
             <p class="ps-gifts__lab">{{ block.settings.gifts_label | default: 'Free gifts included' }}</p>
             <div class="ps-gifts__track">
               {%- for n in (1..4) -%}
-                {%- assign gn = 'gift' | append: n | append: '_name' -%}{%- assign gi = 'gift' | append: n | append: '_image' -%}{%- assign gv = 'gift' | append: n | append: '_value' -%}{%- assign gu = 'gift' | append: n | append: '_unlock' -%}
+                {%- assign gn = 'gift' | append: n | append: '_name' -%}{%- assign gi = 'gift' | append: n | append: '_image' -%}{%- assign gv = 'gift' | append: n | append: '_value' -%}{%- assign gu = 'gift' | append: n | append: '_unlock' -%}{%- assign gr = 'gift' | append: n | append: '_roundel' -%}{%- assign gsub = 'gift' | append: n | append: '_sub' -%}
                 {%- if block.settings[gn] != blank -%}
                   <div class="ps-tile">
-                    <span class="ps-tile__free">Free</span>
+                    {%- if block.settings[gr] != blank -%}<span class="ps-tile__free">{{ block.settings[gr] }}</span>{%- endif -%}
                     <div class="ps-tile__img">{%- if block.settings[gi] != blank -%}{{ block.settings[gi] | image_url: width: 200 | image_tag: alt: block.settings[gn], loading: 'lazy' }}{%- endif -%}</div>
                     <span class="ps-tile__name">{{ block.settings[gn] }}</span>
                     {%- if block.settings[gv] != blank -%}<span class="ps-tile__val">{{ block.settings[gv] }}</span>{%- endif -%}
+                    {%- if block.settings[gsub] != blank -%}<span class="ps-tile__sub">{{ block.settings[gsub] }}</span>{%- endif -%}
                     {%- if block.settings[gu] != blank -%}<span class="ps-tile__unlock">Unlocks · {{ block.settings[gu] }}</span>{%- endif -%}
                   </div>
                 {%- endif -%}
@@ -424,18 +430,26 @@
         { "type": "text", "id": "gifts_label", "label": "Tiles row label", "default": "Free gifts included" },
         { "type": "image_picker", "id": "gift1_image", "label": "Tile 1 · image" },
         { "type": "text", "id": "gift1_name", "label": "Tile 1 · name" },
+        { "type": "text", "id": "gift1_roundel", "label": "Tile 1 · roundel / pill (over image)" },
+        { "type": "text", "id": "gift1_sub", "label": "Tile 1 · subtitle (accent colour)" },
         { "type": "text", "id": "gift1_value", "label": "Tile 1 · value (strikethrough)" },
         { "type": "text", "id": "gift1_unlock", "label": "Tile 1 · unlocks at (A/B only)" },
         { "type": "image_picker", "id": "gift2_image", "label": "Tile 2 · image" },
         { "type": "text", "id": "gift2_name", "label": "Tile 2 · name" },
+        { "type": "text", "id": "gift2_roundel", "label": "Tile 2 · roundel / pill (over image)" },
+        { "type": "text", "id": "gift2_sub", "label": "Tile 2 · subtitle (accent colour)" },
         { "type": "text", "id": "gift2_value", "label": "Tile 2 · value (strikethrough)" },
         { "type": "text", "id": "gift2_unlock", "label": "Tile 2 · unlocks at (A/B only)" },
         { "type": "image_picker", "id": "gift3_image", "label": "Tile 3 · image" },
         { "type": "text", "id": "gift3_name", "label": "Tile 3 · name" },
+        { "type": "text", "id": "gift3_roundel", "label": "Tile 3 · roundel / pill (over image)" },
+        { "type": "text", "id": "gift3_sub", "label": "Tile 3 · subtitle (accent colour)" },
         { "type": "text", "id": "gift3_value", "label": "Tile 3 · value (strikethrough)" },
         { "type": "text", "id": "gift3_unlock", "label": "Tile 3 · unlocks at (A/B only)" },
         { "type": "image_picker", "id": "gift4_image", "label": "Tile 4 · image (Style C)" },
         { "type": "text", "id": "gift4_name", "label": "Tile 4 · name (Style C)" },
+        { "type": "text", "id": "gift4_roundel", "label": "Tile 4 · roundel / pill (over image)" },
+        { "type": "text", "id": "gift4_sub", "label": "Tile 4 · subtitle (accent colour)" },
         { "type": "text", "id": "gift4_value", "label": "Tile 4 · value (strikethrough)" }
       ]
     }
