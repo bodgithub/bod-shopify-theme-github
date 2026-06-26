@@ -168,6 +168,13 @@
             "custom_liquid": "<div>\n  <ul style=\"list-style:none; padding:0; margin:0;\">\n    <li style=\"display:flex; align-items:flex-start; gap:.5em; margin-bottom:.5em;\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Supports regular cycles<sup>*</sup></span>\n    </li>\n    <li style=\"display:flex; align-items:flex-start; gap:.5em; margin-bottom:.5em;\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Supports healthy blood sugar levels<sup>†</sup></span>\n    </li>\n    <li style=\"display:flex; align-items:flex-start; gap:.5em; margin-bottom:.5em;\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Works on metabolic health<sup>*</sup></span>\n    </li>\n    <li style=\"display:flex; align-items:flex-start; gap:.5em;\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Supports mood & mental clarity<sup>*</sup></span>\n    </li>\n  </ul>\n</div>"
           }
         },
+        "custom_liquid_fA4mt9": {
+          "type": "custom_liquid",
+          "name": "Spacer 19px",
+          "settings": {
+            "custom_liquid": "<div style=\"height:19px;\"></div>"
+          }
+        },
         "plan_selector_fe7ApL": {
           "type": "plan_selector",
           "settings": {
@@ -498,6 +505,7 @@
         "title_ExCfKU",
         "custom_liquid_WRFhPD",
         "custom_liquid_UEHeie",
+        "custom_liquid_fA4mt9",
         "plan_selector_fe7ApL",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
