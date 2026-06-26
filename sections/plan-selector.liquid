@@ -180,12 +180,12 @@
 {%- capture checkw -%}<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
 
 <div id="ps-{{ section.id }}">
-{%- if style == 'expanded' -%}
-{%- comment -%} ───────── STYLE C ───────── {%- endcomment -%}
-<div class="bod-pc" role="radiogroup" data-ps-root aria-label="{{ section.settings.heading | default: 'Choose your plan' | escape }}">
+<div class="{% if style == 'expanded' %}bod-pc{% else %}bod-ps bod-ps--{{ style }}{% endif %}" role="radiogroup" data-ps-root aria-label="{{ section.settings.heading | default: 'Choose your plan' | escape }}">
   {%- if section.settings.heading != blank -%}<h2 class="ps-h">{{ section.settings.heading }}</h2>{%- endif -%}
   {%- for block in section.blocks -%}{%- if block.type == 'plan' -%}
     {%- assign first = forloop.first -%}
+    {%- if style == 'expanded' -%}
+    {%- comment -%} ───────── STYLE C ───────── {%- endcomment -%}
     <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
          data-ps-card data-ps-name="{{ block.settings.name | escape }}" data-ps-variant="{{ block.settings.variant_id }}" data-ps-plan="{{ block.settings.selling_plan_id }}" data-ps-qty="{{ block.settings.quantity | default: 1 }}" {{ block.shopify_attributes }}>
       <div class="pc-card__in">
@@ -230,14 +230,8 @@
         </div>
       </div>
     </div>
-  {%- endif -%}{%- endfor -%}
-
-{%- else -%}
-{%- comment -%} ───────── STYLE A / B ───────── {%- endcomment -%}
-<div class="bod-ps bod-ps--{{ style }}" role="radiogroup" data-ps-root aria-label="{{ section.settings.heading | default: 'Choose your plan' | escape }}">
-  {%- if section.settings.heading != blank -%}<h2 class="ps-h">{{ section.settings.heading }}</h2>{%- endif -%}
-  {%- for block in section.blocks -%}{%- if block.type == 'plan' -%}
-    {%- assign first = forloop.first -%}
+    {%- else -%}
+    {%- comment -%} ───────── STYLE A / B ───────── {%- endcomment -%}
     <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
          data-ps-card data-ps-name="{{ block.settings.name | escape }}" data-ps-variant="{{ block.settings.variant_id }}" data-ps-plan="{{ block.settings.selling_plan_id }}" data-ps-qty="{{ block.settings.quantity | default: 1 }}" {{ block.shopify_attributes }}>
       <div class="ps-card__frame">
@@ -289,8 +283,8 @@
         {%- endif -%}
       </div>
     </div>
+    {%- endif -%}
   {%- endif -%}{%- endfor -%}
-{%- endif -%}
 
   <button class="ps-cta" type="button" data-ps-submit>
     <span class="spin"></span>
