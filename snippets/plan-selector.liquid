@@ -270,7 +270,7 @@
     <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
     <span class="ps-cta__sub" data-ps-sub></span>
   </button>
-  {%- if s.p3_name != blank and s.p3_variant != blank -%}<a href="#" class="ps-onetime" data-ps-onetime data-variant="{{ s.p3_variant }}" data-qty="{{ s.p3_qty | default: 1 }}">{{ s.p3_name }}{% if s.p3_price != blank %} {{ s.p3_price }}{% endif %}</a>{%- endif -%}
+  {%- if s.p3_name != blank and s.p3_variant != blank or s.p3_name != blank and request.design_mode -%}<a href="#" class="ps-onetime" data-ps-onetime data-variant="{{ s.p3_variant }}" data-qty="{{ s.p3_qty | default: 1 }}">{{ s.p3_name }}{% if s.p3_price != blank %} {{ s.p3_price }}{% endif %}</a>{%- endif -%}
   <div class="ps-error" data-ps-error>
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
     <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
