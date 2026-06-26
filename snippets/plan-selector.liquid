@@ -21,7 +21,7 @@
   --ps-sans:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;
   --ps-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   --ps-blue:{{ acc }}; --ps-ink:{{ ink }}; --ps-ink-2:#5566A0; --ps-deep:{{ deep }};
-  --ps-hair:rgba(20,40,120,0.14); --ps-sand:#F3EEEA; --ps-tile:#F7F5F1; --ps-bw:{{ bw }}px;
+  --ps-hair:rgba(20,40,120,0.14); --ps-sand:#F3EEEA; --ps-tile:#F7F5F1; --ps-bw:{{ bw }}px; --ps-gift-w:{{ s.gift_width | default: 100 }}px;
   --ps-grad-border:linear-gradient(135deg,#6E8BF2 0%,{{ acc }} 46%,{{ deep }} 100%);
   --ps-grad-banner:linear-gradient(110deg,{{ deep }} 0%,{{ acc }} 60%,#0A95EF 135%);
   --ps-grad-deep:radial-gradient(140% 165% at 18% 10%,#2E54C8 0%,#1E3FA8 32%,{{ ink }} 66%,{{ deep }} 100%);
@@ -113,7 +113,7 @@
 #ps-{{ uid }} .ps-serving{display:inline-block; font-family:var(--ps-mono); font-size:10px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:3px 9px; margin:10px 0 0;}
 #ps-{{ uid }} .ps-gifts{margin:0 18px 16px; padding-top:14px; border-top:1px dashed var(--ps-hair);}
 #ps-{{ uid }} .ps-gifts__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:0 0 10px;}
-#ps-{{ uid }} .ps-gifts__track{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(110px,1fr); gap:10px; overflow-x:auto; padding-bottom:4px;}
+#ps-{{ uid }} .ps-gifts__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
 #ps-{{ uid }} .ps-tile{background:var(--ps-tile); border:1px solid var(--ps-hair); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; position:relative;}
 #ps-{{ uid }} .ps-tile__free{position:absolute; top:8px; left:8px; background:var(--ps-grad-banner); color:#fff; font-family:var(--ps-mono); font-size:8px; font-weight:500; letter-spacing:0.1em; padding:2px 6px; border-radius:999px;}
 #ps-{{ uid }} .ps-tile__img{width:100%; aspect-ratio:1/1; border-radius:7px; background:#fff; border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden;}
@@ -123,7 +123,7 @@
 #ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
 #ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:4px 11px; margin:8px 0 0;}
 #ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:14px 0 11px;}
-#ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:minmax(92px,1fr); gap:10px; overflow-x:auto; padding-bottom:4px;}
+#ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
 #ps-{{ uid }} .pc-tile{text-align:center;}
 #ps-{{ uid }} .pc-tile__img{width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--ps-tile); border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:7px;}
 #ps-{{ uid }} .pc-tile__img img{width:74%; height:74%; object-fit:contain;}
@@ -185,11 +185,16 @@
             <hr class="pc-hr">
             {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
             <ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
-            {%- if s[g1nk] != blank or s[g2nk] != blank -%}
+            {%- assign has_gift = false -%}
+            {%- for g in (1..5) -%}{%- assign gnk = 'p' | append: i | append: '_gift' | append: g | append: '_name' -%}{%- if s[gnk] != blank -%}{%- assign has_gift = true -%}{%- endif -%}{%- endfor -%}
+            {%- if has_gift -%}
               <p class="pc-kit__lab">{{ s.gifts_label | default: 'Welcome kit — arrives with first order' }}</p>
               <div class="pc-kit__track">
-                {%- if s[g1nk] != blank -%}<div class="pc-tile"><div class="pc-tile__img">{%- if s[g1ik] != blank -%}{{ s[g1ik] | image_url: width: 200 | image_tag: alt: s[g1nk], loading: 'lazy' }}{%- endif -%}</div><span class="pc-tile__name">{{ s[g1nk] }}</span></div>{%- endif -%}
-                {%- if s[g2nk] != blank -%}<div class="pc-tile"><div class="pc-tile__img">{%- if s[g2ik] != blank -%}{{ s[g2ik] | image_url: width: 200 | image_tag: alt: s[g2nk], loading: 'lazy' }}{%- endif -%}</div><span class="pc-tile__name">{{ s[g2nk] }}</span></div>{%- endif -%}
+                {%- for g in (1..5) -%}
+                  {%- assign gnk = 'p' | append: i | append: '_gift' | append: g | append: '_name' -%}
+                  {%- assign gik = 'p' | append: i | append: '_gift' | append: g | append: '_image' -%}
+                  {%- if s[gnk] != blank -%}<div class="pc-tile"><div class="pc-tile__img">{%- if s[gik] != blank -%}{{ s[gik] | image_url: width: 200 | image_tag: alt: s[gnk], loading: 'lazy' }}{%- endif -%}</div><span class="pc-tile__name">{{ s[gnk] }}</span></div>{%- endif -%}
+                {%- endfor -%}
               </div>
             {%- endif -%}
           </div>
@@ -255,12 +260,17 @@
             {%- endif -%}
           </div>
         </div>
-        {%- if s[g1nk] != blank or s[g2nk] != blank -%}
+        {%- assign has_gift = false -%}
+        {%- for g in (1..5) -%}{%- assign gnk = 'p' | append: i | append: '_gift' | append: g | append: '_name' -%}{%- if s[gnk] != blank -%}{%- assign has_gift = true -%}{%- endif -%}{%- endfor -%}
+        {%- if has_gift -%}
           <div class="ps-gifts">
             <p class="ps-gifts__lab">{{ s.gifts_label | default: 'Free gifts included' }}</p>
             <div class="ps-gifts__track">
-              {%- if s[g1nk] != blank -%}<div class="ps-tile"><span class="ps-tile__free">Free</span><div class="ps-tile__img">{%- if s[g1ik] != blank -%}{{ s[g1ik] | image_url: width: 200 | image_tag: alt: s[g1nk], loading: 'lazy' }}{%- endif -%}</div><span class="ps-tile__name">{{ s[g1nk] }}</span></div>{%- endif -%}
-              {%- if s[g2nk] != blank -%}<div class="ps-tile"><span class="ps-tile__free">Free</span><div class="ps-tile__img">{%- if s[g2ik] != blank -%}{{ s[g2ik] | image_url: width: 200 | image_tag: alt: s[g2nk], loading: 'lazy' }}{%- endif -%}</div><span class="ps-tile__name">{{ s[g2nk] }}</span></div>{%- endif -%}
+              {%- for g in (1..5) -%}
+                {%- assign gnk = 'p' | append: i | append: '_gift' | append: g | append: '_name' -%}
+                {%- assign gik = 'p' | append: i | append: '_gift' | append: g | append: '_image' -%}
+                {%- if s[gnk] != blank -%}<div class="ps-tile"><span class="ps-tile__free">Free</span><div class="ps-tile__img">{%- if s[gik] != blank -%}{{ s[gik] | image_url: width: 200 | image_tag: alt: s[gnk], loading: 'lazy' }}{%- endif -%}</div><span class="ps-tile__name">{{ s[gnk] }}</span></div>{%- endif -%}
+              {%- endfor -%}
             </div>
           </div>
         {%- endif -%}
