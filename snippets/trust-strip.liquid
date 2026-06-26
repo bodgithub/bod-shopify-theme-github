@@ -42,6 +42,9 @@
 #bodTS-{{ uid }} .bod-ts__card{background:#fff; border-radius:8px;}
 #bodTS-{{ uid }} .bod-ts--solid .bod-ts__frame{background:transparent; padding:0; border-radius:12px; box-shadow:0 14px 36px rgba(8,18,62,0.22);}
 #bodTS-{{ uid }} .bod-ts--solid .bod-ts__card{background:var(--ts-grad-solid); border-radius:12px;}
+{%- if s.frame_flat -%}
+#bodTS-{{ uid }} .bod-ts__frame, #bodTS-{{ uid }} .bod-ts--solid .bod-ts__frame{padding:0; box-shadow:none;}
+{%- endif -%}
 
 #bodTS-{{ uid }} .bod-ts__head{padding:18px 20px 15px; border-bottom:1px solid var(--ts-hair);}
 #bodTS-{{ uid }} .bod-ts__title{font-family:var(--ts-sans); font-weight:var(--ts-h-weight); font-size:var(--ts-h-size); letter-spacing:-0.02em; line-height:1.16; color:var(--ts-h-color); margin:0;}

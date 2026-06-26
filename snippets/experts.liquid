@@ -68,10 +68,17 @@
   #exr-{{ uid }} .exr__quote,#exr-{{ uid }} .exr__badge{display:none;}
   #exr-{{ uid }} .exr__body{display:flex; flex-direction:column; justify-content:center; padding:14px;}
   #exr-{{ uid }} .exr__qm{display:block;}
+
+  /* Mobile carousel option: horizontal scroll, ~1/4 of next card visible, vertical cards, quote below name in small text */
+  #exr-{{ uid }}.exr--mcarousel .exr__grid{display:flex; overflow-x:auto; gap:12px; padding:2px 16px 12px; scroll-snap-type:x mandatory; scroll-padding-left:16px; -webkit-overflow-scrolling:touch;}
+  #exr-{{ uid }}.exr--mcarousel .exr__card{display:block; flex:0 0 72%; min-width:0; margin-bottom:0; scroll-snap-align:start;}
+  #exr-{{ uid }}.exr--mcarousel .exr__media{aspect-ratio:1/1; min-height:0;}
+  #exr-{{ uid }}.exr--mcarousel .exr__body{display:block; padding:12px 14px 14px;}
+  #exr-{{ uid }}.exr--mcarousel .exr__qm{display:block; font-size:11px; line-height:1.4; margin:6px 0 0; padding-top:8px;}
 }
 </style>
 
-<div id="exr-{{ uid }}" class="exr">
+<div id="exr-{{ uid }}" class="exr{% if s.mobile_carousel %} exr--mcarousel{% endif %}">
   <div class="exr__head">
     {% if s.pill_style != 'none' and s.pill_text != blank %}<span class="exr__pill">{{ s.pill_text }}</span>{% endif %}
     <h2 class="exr__title">{{ s.title | escape }}</h2>
@@ -88,11 +95,11 @@
         assign fallback = ''
         case i
           when 1
-            assign fallback = 'Hillary-Bodology-Square-Blue.png'
-          when 2
-            assign fallback = 'Leslie-Bodology-Square-Blue.png'
-          when 3
             assign fallback = 'Anita-Bodology-Square-Blue.png'
+          when 2
+            assign fallback = 'Hillary-Bodology-Square-Blue.png'
+          when 3
+            assign fallback = 'Leslie-Bodology-Square-Blue.png'
           when 4
             assign fallback = 'Tina-Bodology-Square-Blue.png'
         endcase
