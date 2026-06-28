@@ -10,7 +10,7 @@
 <style>
 #Cart-Drawer{--bod-blue:#1b3def;--bod-ink:#1a1a14;--bod-muted:#6a6e7a;--bod-line:rgba(20,40,120,0.12);--bod-sand:#f7f5f1;--bod-grad:linear-gradient(110deg,#0e2160 0%,#1b3def 62%,#0a95ef 130%);color:var(--bod-ink);}
 #Cart-Drawer *{box-sizing:border-box;}
-#Cart-Drawer .side-panel-header{padding:20px 22px 12px;}
+#Cart-Drawer .side-panel-header{padding:12px 22px 8px;}
 #Cart-Drawer .side-panel-header > div{display:flex;align-items:center;justify-content:space-between;gap:12px;}
 #Cart-Drawer .side-panel-header .h6{font-size:14px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--bod-ink);margin:0;}
 #Cart-Drawer .side-panel-header .h6 sup{font-size:10px;font-weight:700;color:var(--bod-blue);top:-0.5em;margin-left:2px;}
@@ -18,9 +18,9 @@
 #Cart-Drawer .side-panel-close:hover{opacity:1;}
 #Cart-Drawer .side-panel-close svg{width:15px;height:15px;}
 #Cart-Drawer .side-panel-content{padding:0;}
-#Cart-Drawer .free-shipping{display:flex;flex-direction:column-reverse;gap:8px;padding:6px 22px 16px;margin:0;border-bottom:1px solid var(--bod-line);}
-#Cart-Drawer .free-shipping--bar{height:6px;border-radius:999px;background:var(--bod-line);overflow:hidden;}
-#Cart-Drawer .free-shipping--percentage{height:100%;background:var(--bod-grad);border-radius:999px;}
+#Cart-Drawer .free-shipping{display:flex;flex-direction:column-reverse;gap:8px;padding:6px 22px 16px;margin:0;}
+#Cart-Drawer .free-shipping--bar{height:9px;border-radius:999px;background:var(--bod-line);overflow:hidden;}
+#Cart-Drawer .free-shipping--percentage{background:var(--bod-grad);border-radius:999px;}
 #Cart-Drawer .free-shipping--text{text-align:center;font-size:12.5px;font-weight:600;color:var(--bod-ink);line-height:1.3;}
 #Cart-Drawer .free-shipping--text-full{color:var(--bod-blue);}
 #Cart-Drawer .product-cart-item--container{padding:0;}
@@ -32,11 +32,11 @@
 #Cart-Drawer .product-cart-item-info > .price{display:none;}
 #Cart-Drawer .selling-plan,#Cart-Drawer .product-cart-item-options{font-size:12.5px;color:var(--bod-muted);line-height:1.3;margin:0;}
 #Cart-Drawer .properties{margin:0;}
-#Cart-Drawer .quantity.cart-update{display:inline-flex;align-items:center;border:1px solid var(--bod-line);border-radius:999px;padding:2px;width:max-content;height:34px;margin-top:3px;background:#fff;}
-#Cart-Drawer .quantity.cart-update button{width:28px;height:28px;min-width:28px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--bod-ink);border-radius:50%;padding:0;}
+#Cart-Drawer .quantity.cart-update{position:relative;display:inline-flex !important;align-items:center;justify-content:flex-start;gap:0;border:1px solid var(--bod-line);border-radius:999px;padding:2px;width:auto;max-width:none;height:34px;margin-top:3px;background:#fff;}
+#Cart-Drawer .quantity.cart-update button{position:static !important;inset:auto !important;transform:none !important;flex:0 0 28px;width:28px !important;height:28px !important;min-width:28px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--bod-ink);border-radius:50%;padding:0;margin:0;}
 #Cart-Drawer .quantity.cart-update button:hover{background:var(--bod-sand);}
 #Cart-Drawer .quantity.cart-update button svg{width:11px;height:11px;}
-#Cart-Drawer .quantity.cart-update input{width:30px;border:0;text-align:center;font-size:14px;font-weight:600;background:transparent;padding:0;-moz-appearance:textfield;}
+#Cart-Drawer .quantity.cart-update input{position:static !important;inset:auto !important;flex:0 0 34px;width:34px !important;min-width:34px;height:auto !important;border:0;text-align:center;font-size:14px;font-weight:600;background:transparent;padding:0;margin:0;-moz-appearance:textfield;}
 #Cart-Drawer .quantity.cart-update input::-webkit-outer-spin-button,#Cart-Drawer .quantity.cart-update input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
 #Cart-Drawer .product-cart-item-price{grid-area:price;align-self:end;text-align:right;padding:0;}
 #Cart-Drawer .product-cart-item-price .price{display:flex;flex-direction:row;align-items:baseline;gap:6px;justify-content:flex-end;}
@@ -67,12 +67,19 @@
 #Cart-Drawer .cart-drawer-buttons .button.checkout:hover{filter:brightness(1.06);}
 #Cart-Drawer .cart-drawer-buttons .button:not(.checkout):not(.accent){background:#fff !important;color:var(--bod-blue) !important;border:1px solid var(--bod-line) !important;}
 #Cart-Drawer .cart-drawer__empty-cart .button.accent2{background:var(--bod-grad) !important;color:#fff !important;border-radius:12px !important;}
+#Cart-Drawer .bod-discount{display:flex;gap:8px;width:100%;margin:0;}
+#Cart-Drawer .bod-discount input{flex:1 1 auto;min-width:0;border:1px solid var(--bod-line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--bod-ink);background:#fff;}
+#Cart-Drawer .bod-discount input:focus{outline:none;border-color:var(--bod-blue);}
+#Cart-Drawer .bod-discount button{flex:0 0 auto;border:0;cursor:pointer;border-radius:10px;padding:0 18px;font-size:14px;font-weight:700;color:var(--bod-blue);background:var(--bod-sand);}
+#Cart-Drawer .bod-discount button:hover{background:#edf0fb;}
+#Cart-Drawer .bod-discount.is-loading{opacity:.6;pointer-events:none;}
+#Cart-Drawer .bod-discount-msg{font-size:12px;color:#b42318;margin:6px 0 2px;}
 </style>
 <div class="side-panel cart-drawer {{ shadow_class }}" id="Cart-Drawer" tabindex="-1">
 	<div class="side-panel-inner">
 		<div class="side-panel-header">
 			<div>
-				<span class="h6">{{ 'general.cart_drawer.title' | t }} <sup>{{ cart.item_count }}</sup></span>
+				<span class="h6">Your cart</span>
 				<side-panel-close class="side-panel-close">{%- render 'svg-icons' with 'close' -%}</side-panel-close>
 			</div>
 		</div>
@@ -194,7 +201,7 @@
                       </div>
 
                     
-						{%- unless item.selling_plan_allocation -%}{%- assign upg_group = item.product.selling_plan_groups | first -%}{%- if upg_group -%}{%- assign upg_plan = upg_group.selling_plans | first -%}{%- if upg_plan -%}{%- assign upg_adj = upg_plan.price_adjustments | first -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="{{ upg_plan.id }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>{%- if upg_adj.value_type == 'percentage' -%}Save an Extra {{ upg_adj.value }}% Instantly{%- else -%}Subscribe &amp; Save{%- endif -%}</span></button>{%- endif -%}{%- endif -%}{%- endunless -%}
+						{%- unless item.selling_plan_allocation -%}{%- assign upg_plan = '' -%}{%- if item.variant.id == 46444646269147 -%}{%- assign upg_plan = '5755961563' -%}{%- elsif item.variant.id == 46444657279195 -%}{%- assign upg_plan = '6331924699' -%}{%- endif -%}{%- if upg_plan != '' -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="{{ upg_plan }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
 						<div class="product-cart-item-price">
 							<span class="price">
 							{%- if item.original_line_price != item.final_line_price -%}
@@ -275,18 +282,7 @@
 							{%- endif -%}
 							<tr class="cart-total">
  								<th>
-									{{ 'sections.cart.total' | t }}
-									<p class="cart-policy-text">
-										{%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
-											{{ 'sections.cart.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
-										{%- elsif cart.taxes_included -%}
-											{{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
-										{%- elsif shop.shipping_policy.body != blank -%}
-											{{ 'sections.cart.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
-										{%- else -%}
-											{{ 'sections.cart.taxes_and_shipping_at_checkout' | t }}
-										{%- endif -%}
-									</p>
+									Subtotal ({{ cart.item_count }} item{% if cart.item_count != 1 %}s{% endif %})
 								</th>
 								<td>
 									<span class="price">
@@ -324,9 +320,11 @@
             </div>
           {% endif %}
 					<div class="cart-drawer-buttons">
-						{%- if settings.cart_drawer_cart_button -%}
-						<a href="{{ routes.cart_url }}" class="button" title="{{ 'general.cart_drawer.view_cart' | t | escape }}"><span>{{ 'general.cart_drawer.view_cart' | t }}</span></a>
-						{%- endif -%}
+						<form class="bod-discount" data-bod-discount novalidate>
+							<input type="text" name="discount" placeholder="Discount code" autocomplete="off" spellcheck="false">
+							<button type="submit">Apply</button>
+						</form>
+						<div class="bod-discount-msg" style="display:none;"></div>
 						{%- if settings.cart_drawer_checkout_button -%}
 						<form action="{{ routes.cart_url }}" method="post" novalidate>
 							<button type="submit" class="button accent checkout full" name="checkout" title="{{ 'general.cart_drawer.checkout' | t | escape }}"><span>{{ 'general.cart_drawer.checkout' | t }}</span></button>
@@ -370,6 +368,25 @@
       } catch(err){}
     })
     .catch(function(){ btn.classList.remove('is-loading'); });
+  });
+  document.addEventListener('submit', function(e){
+    var form = e.target.closest('[data-bod-discount]'); if(!form) return;
+    e.preventDefault();
+    var input = form.querySelector('input[name="discount"]'); var code = (input.value||'').trim(); if(!code) return;
+    form.classList.add('is-loading');
+    fetch(root()+'discount/'+encodeURIComponent(code)+'?redirect=/cart.js')
+    .then(function(){ return fetch(root()+'cart.js'); })
+    .then(function(r){ return r.json(); })
+    .then(function(cart){
+      var ok = (cart.cart_level_discount_applications && cart.cart_level_discount_applications.length) || cart.total_discount > 0;
+      return fetch(root()+'?sections=cart-drawer,cart-bubble').then(function(r){ return r.json(); }).then(function(sections){
+        repl(sections,'cart-drawer','.cart-drawer'); repl(sections,'cart-bubble','.thb-item-count');
+        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
+        document.dispatchEvent(new CustomEvent('cart:refresh'));
+        if(!ok){ var m=document.querySelector('#Cart-Drawer .bod-discount-msg'); if(m){ m.textContent='That code isn\u2019t valid.'; m.style.display='block'; } }
+      });
+    })
+    .catch(function(){ form.classList.remove('is-loading'); });
   });
 })();
 </script>
