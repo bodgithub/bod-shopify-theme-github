@@ -6,6 +6,68 @@
 	assign total = cart.total_price
 	assign shadow_class = 'has-shadow--' | append: settings.block_shadows
 -%}
+{%- comment -%} Bodology cart drawer styling {%- endcomment -%}
+<style>
+#Cart-Drawer{--bod-blue:#1b3def;--bod-ink:#1a1a14;--bod-muted:#6a6e7a;--bod-line:rgba(20,40,120,0.12);--bod-sand:#f7f5f1;--bod-grad:linear-gradient(110deg,#0e2160 0%,#1b3def 62%,#0a95ef 130%);color:var(--bod-ink);}
+#Cart-Drawer *{box-sizing:border-box;}
+#Cart-Drawer .side-panel-header{padding:20px 22px 12px;}
+#Cart-Drawer .side-panel-header > div{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+#Cart-Drawer .side-panel-header .h6{font-size:14px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--bod-ink);margin:0;}
+#Cart-Drawer .side-panel-header .h6 sup{font-size:10px;font-weight:700;color:var(--bod-blue);top:-0.5em;margin-left:2px;}
+#Cart-Drawer .side-panel-close{cursor:pointer;color:var(--bod-ink);opacity:.65;display:flex;}
+#Cart-Drawer .side-panel-close:hover{opacity:1;}
+#Cart-Drawer .side-panel-close svg{width:15px;height:15px;}
+#Cart-Drawer .side-panel-content{padding:0;}
+#Cart-Drawer .free-shipping{display:flex;flex-direction:column-reverse;gap:8px;padding:6px 22px 16px;margin:0;border-bottom:1px solid var(--bod-line);}
+#Cart-Drawer .free-shipping--bar{height:6px;border-radius:999px;background:var(--bod-line);overflow:hidden;}
+#Cart-Drawer .free-shipping--percentage{height:100%;background:var(--bod-grad);border-radius:999px;}
+#Cart-Drawer .free-shipping--text{text-align:center;font-size:12.5px;font-weight:600;color:var(--bod-ink);line-height:1.3;}
+#Cart-Drawer .free-shipping--text-full{color:var(--bod-blue);}
+#Cart-Drawer .product-cart-item--container{padding:0;}
+#Cart-Drawer .product-cart-item{position:relative;display:grid;grid-template-columns:72px minmax(0,1fr) auto;grid-template-areas:"img info price" "upg upg upg";column-gap:14px;align-items:start;padding:18px 22px;margin:0;border-bottom:1px solid var(--bod-line);border-top:0;}
+#Cart-Drawer .product-cart-item-image{grid-area:img;width:72px;height:72px;}
+#Cart-Drawer .product-cart-item-image img{width:72px;height:72px;object-fit:cover;border-radius:12px;background:var(--bod-sand);}
+#Cart-Drawer .product-cart-item-info{grid-area:info;display:flex;flex-direction:column;gap:6px;min-width:0;padding:0;}
+#Cart-Drawer .cart-product-link{font-size:14.5px;font-weight:700;line-height:1.22;color:var(--bod-ink);text-decoration:none;padding-right:24px;}
+#Cart-Drawer .product-cart-item-info > .price{display:none;}
+#Cart-Drawer .selling-plan,#Cart-Drawer .product-cart-item-options{font-size:12.5px;color:var(--bod-muted);line-height:1.3;margin:0;}
+#Cart-Drawer .properties{margin:0;}
+#Cart-Drawer .quantity.cart-update{display:inline-flex;align-items:center;border:1px solid var(--bod-line);border-radius:999px;padding:2px;width:max-content;height:34px;margin-top:3px;background:#fff;}
+#Cart-Drawer .quantity.cart-update button{width:28px;height:28px;min-width:28px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--bod-ink);border-radius:50%;padding:0;}
+#Cart-Drawer .quantity.cart-update button:hover{background:var(--bod-sand);}
+#Cart-Drawer .quantity.cart-update button svg{width:11px;height:11px;}
+#Cart-Drawer .quantity.cart-update input{width:30px;border:0;text-align:center;font-size:14px;font-weight:600;background:transparent;padding:0;-moz-appearance:textfield;}
+#Cart-Drawer .quantity.cart-update input::-webkit-outer-spin-button,#Cart-Drawer .quantity.cart-update input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+#Cart-Drawer .product-cart-item-price{grid-area:price;align-self:end;text-align:right;padding:0;}
+#Cart-Drawer .product-cart-item-price .price{display:flex;flex-direction:row;align-items:baseline;gap:6px;justify-content:flex-end;}
+#Cart-Drawer .product-cart-item-price del{order:2;font-size:13px;color:#9aa0b5;text-decoration:line-through;}
+#Cart-Drawer .product-cart-item-price ins{order:1;text-decoration:none;font-size:15px;font-weight:700;color:var(--bod-ink);}
+#Cart-Drawer .product-cart-item-price .unit-price{display:none;}
+#Cart-Drawer .product-cart-item .remove{position:absolute;top:16px;right:20px;color:var(--bod-muted);opacity:.55;width:18px;height:18px;display:flex;align-items:center;justify-content:center;}
+#Cart-Drawer .product-cart-item .remove:hover{opacity:1;color:var(--bod-blue);}
+#Cart-Drawer .product-cart-item .remove svg{width:15px;height:15px;}
+#Cart-Drawer .bod-upgrade{grid-area:upg;margin:12px 0 0;width:100%;border:0;cursor:pointer;border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;color:#fff;background:var(--bod-grad);display:flex;align-items:center;justify-content:center;gap:8px;line-height:1;transition:filter .15s,transform .12s;box-shadow:0 6px 16px rgba(27,61,239,0.22);}
+#Cart-Drawer .bod-upgrade:hover{filter:brightness(1.08);}
+#Cart-Drawer .bod-upgrade:active{transform:translateY(1px);}
+#Cart-Drawer .bod-upgrade.is-loading{opacity:.55;pointer-events:none;}
+#Cart-Drawer .bod-upgrade svg{width:14px;height:14px;flex:0 0 auto;}
+#Cart-Drawer .side-panel-footer{padding:0;border-top:1px solid var(--bod-line);}
+#Cart-Drawer .cart-drawer-footer{padding:18px 22px 20px;}
+#Cart-Drawer .collaterals{width:100%;margin:0 0 14px;border:0;}
+#Cart-Drawer .collaterals th,#Cart-Drawer .collaterals td{border:0;padding:2px 0;}
+#Cart-Drawer .cart-total th{font-size:15px;font-weight:700;text-align:left;color:var(--bod-ink);vertical-align:top;}
+#Cart-Drawer .cart-total td{text-align:right;font-size:18px;font-weight:700;color:var(--bod-ink);vertical-align:top;}
+#Cart-Drawer .cart-policy-text{font-size:11px;font-weight:400;color:var(--bod-muted);margin:3px 0 0;}
+#Cart-Drawer .cart-discount th{font-size:13px;font-weight:600;color:var(--bod-blue);text-align:left;}
+#Cart-Drawer .cart-discount td{font-size:13px;color:var(--bod-blue);text-align:right;}
+#Cart-Drawer .cart-drawer-buttons{display:flex;flex-direction:column;gap:10px;margin:0;}
+#Cart-Drawer .cart-drawer-buttons form{margin:0;width:100%;}
+#Cart-Drawer .cart-drawer-buttons .button{width:100%;border-radius:12px !important;padding:16px 22px !important;font-size:16px !important;font-weight:700 !important;letter-spacing:0;text-transform:none;border:0 !important;}
+#Cart-Drawer .cart-drawer-buttons .button.checkout,#Cart-Drawer .cart-drawer-buttons .button.accent{background:var(--bod-grad) !important;color:#fff !important;box-shadow:0 10px 26px rgba(27,61,239,0.26);}
+#Cart-Drawer .cart-drawer-buttons .button.checkout:hover{filter:brightness(1.06);}
+#Cart-Drawer .cart-drawer-buttons .button:not(.checkout):not(.accent){background:#fff !important;color:var(--bod-blue) !important;border:1px solid var(--bod-line) !important;}
+#Cart-Drawer .cart-drawer__empty-cart .button.accent2{background:var(--bod-grad) !important;color:#fff !important;border-radius:12px !important;}
+</style>
 <div class="side-panel cart-drawer {{ shadow_class }}" id="Cart-Drawer" tabindex="-1">
 	<div class="side-panel-inner">
 		<div class="side-panel-header">
@@ -132,6 +194,7 @@
                       </div>
 
                     
+						{%- unless item.selling_plan_allocation -%}{%- assign upg_group = item.product.selling_plan_groups | first -%}{%- if upg_group -%}{%- assign upg_plan = upg_group.selling_plans | first -%}{%- if upg_plan -%}{%- assign upg_adj = upg_plan.price_adjustments | first -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="{{ upg_plan.id }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>{%- if upg_adj.value_type == 'percentage' -%}Save an Extra {{ upg_adj.value }}% Instantly{%- else -%}Subscribe &amp; Save{%- endif -%}</span></button>{%- endif -%}{%- endif -%}{%- endunless -%}
 						<div class="product-cart-item-price">
 							<span class="price">
 							{%- if item.original_line_price != item.final_line_price -%}
@@ -275,4 +338,40 @@
 		{%- endif -%}
 	</div>
 </div>
+
+{%- comment -%} Bodology cart drawer: subscription upgrade {%- endcomment -%}
+<script>
+(function(){
+  if(window.__bodCartDrawerBound) return; window.__bodCartDrawerBound = true;
+  function root(){ return (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/'; }
+  function repl(sections, name, selector){
+    if(!sections || !sections[name]) return;
+    var frag = new DOMParser().parseFromString(sections[name], 'text/html').querySelector(selector);
+    if(!frag) return;
+    if(selector === '.cart-drawer'){ var host = document.getElementById('Cart-Drawer'); if(host) host.innerHTML = frag.innerHTML; }
+    else { var tgt = document.querySelector(selector); if(tgt) tgt.innerHTML = frag.innerHTML; }
+  }
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.bod-upgrade'); if(!btn) return;
+    e.preventDefault();
+    if(btn.classList.contains('is-loading')) return;
+    var key = btn.getAttribute('data-line-key'), plan = btn.getAttribute('data-plan');
+    if(!key || !plan) return;
+    btn.classList.add('is-loading');
+    fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({ id:key, selling_plan:plan, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      try {
+        repl(res.sections, 'cart-drawer', '.cart-drawer');
+        repl(res.sections, 'cart-bubble', '.thb-item-count');
+        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
+        document.dispatchEvent(new CustomEvent('cart:refresh'));
+      } catch(err){}
+    })
+    .catch(function(){ btn.classList.remove('is-loading'); });
+  });
+})();
+</script>
+
 {%- endif -%}
