@@ -62,6 +62,11 @@
   #{{ s }} .vcg__play{ position:absolute; left:50%; top:50%; transform:translate(-50%,-46%) scale(.9); width:62px; height:62px; border-radius:50%; background:rgba(255,255,255,0.94); display:flex; align-items:center; justify-content:center; z-index:4; opacity:0; pointer-events:none; transition:opacity .28s, transform .28s; box-shadow:0 10px 30px rgba(6,14,46,0.5); }
   #{{ s }} .vcg__play svg{ width:22px; height:22px; fill:var(--blue); margin-left:3px; }
   #{{ s }} .vcg__card:hover .vcg__play{ opacity:1; transform:translate(-50%,-50%) scale(1); }
+  #{{ s }} .vcg__video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:none; z-index:6; background:#000; }
+  #{{ s }} .vcg__card.is-playing .vcg__video{ display:block; }
+  #{{ s }} .vcg__card.is-playing .vcg__play{ opacity:0 !important; pointer-events:none; }
+  #{{ s }} .vcg__card.is-playing .vcg__scrim{ opacity:0 !important; pointer-events:none; }
+  #{{ s }} .vcg__card.is-playing .vcg__media img{ visibility:hidden; }
 
   #{{ s }} .vcg__scrim{ position:absolute; left:0; right:0; bottom:0; z-index:3; padding:20px 18px 18px; background:linear-gradient(to top, var(--ov) 6%, color-mix(in srgb,var(--ov) 58%,transparent) 44%, transparent 100%); transition:opacity .28s; }
   #{{ s }} .vcg__card:hover .vcg__scrim{ opacity:0; }
@@ -108,14 +113,18 @@
   </div>
 
   {%- if section.settings.show_tags -%}
-    {%- assign tag_list = '' -%}
+    {%- assign tag_list = '|' -%}
     {%- for block in section.blocks -%}
-      {%- assign t = block.settings.tag | strip -%}
-      {%- if t != blank -%}
-        {%- unless tag_list contains t -%}
-          {%- assign tag_list = tag_list | append: t | append: '|' -%}
-        {%- endunless -%}
-      {%- endif -%}
+      {%- assign btags = block.settings.tag | split: ',' -%}
+      {%- for bt in btags -%}
+        {%- assign t = bt | strip -%}
+        {%- if t != blank -%}
+          {%- assign probe = '|' | append: t | append: '|' -%}
+          {%- unless tag_list contains probe -%}
+            {%- assign tag_list = tag_list | append: t | append: '|' -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
     {%- endfor -%}
     <div class="vcg__tags" data-tags>
       <button class="vcg__tag is-on" data-tag="All">{{ section.settings.all_label | default: 'All' }}</button>
@@ -129,15 +138,19 @@
   <div class="vcg__view" data-view>
     <div class="vcg__track" data-track>
       {%- for block in section.blocks -%}
-        <div class="vcg__card" data-card data-tag="{{ block.settings.tag | strip }}" {{ block.shopify_attributes }}>
+        {%- capture cardtags -%}|{%- assign btags = block.settings.tag | split: ',' -%}{%- for bt in btags -%}{{ bt | strip }}|{%- endfor -%}{%- endcapture -%}
+        <div class="vcg__card" data-card data-tag="{{ cardtags }}" {{ block.shopify_attributes }}>
           <div class="vcg__media">
-            {%- if block.settings.image != blank -%}
+            {%- if section.settings.use_video_still and block.settings.video != blank and block.settings.video.preview_image != blank -%}
+              <img src="{{ block.settings.video.preview_image | image_url: width: 700 }}" alt="{{ block.settings.name | escape }}" loading="lazy" width="700" height="933">
+            {%- elsif block.settings.image != blank -%}
               <img src="{{ block.settings.image | image_url: width: 700 }}" alt="{{ block.settings.name | escape }}" loading="lazy" width="700" height="933">
             {%- endif -%}
             {%- if block.settings.video != blank -%}
               {%- assign mp4 = block.settings.video.sources | where: 'format', 'mp4' -%}
               {%- assign vsrc = mp4.first.url | default: block.settings.video.sources.first.url -%}
-              <button type="button" class="vcg__play" data-play data-video-src="{{ vsrc }}" aria-label="Play {{ block.settings.name | escape }}" style="pointer-events:auto; border:0; cursor:pointer;">
+              <video class="vcg__video" data-video preload="none" playsinline controls src="{{ vsrc }}"></video>
+              <button type="button" class="vcg__play" data-play aria-label="Play {{ block.settings.name | escape }}" style="pointer-events:auto; border:0; cursor:pointer;">
                 <svg viewBox="0 0 24 24"><path d="M7 4 L20 12 L7 20 Z"/></svg>
               </button>
             {%- elsif block.settings.video_url != blank -%}
@@ -152,7 +165,7 @@
             {%- if block.settings.name != blank -%}<h3 class="vcg__name">{{ block.settings.name }}</h3>{%- endif -%}
             {%- if block.settings.role != blank -%}<p class="vcg__role">{{ block.settings.role }}</p>{%- endif -%}
             {%- if block.settings.quote != blank -%}<p class="vcg__quote">{{ block.settings.quote }}</p>{%- endif -%}
-            {%- if block.settings.tag != blank -%}<span class="vcg__pill">{{ block.settings.tag }}</span>{%- endif -%}
+            {%- if block.settings.tag != blank -%}<span class="vcg__pill">{{ block.settings.tag | split: ',' | first | strip }}</span>{%- endif -%}
           </div>
         </div>
       {%- endfor -%}
@@ -195,7 +208,7 @@
   }
   function closeModal(){ if(!modal) return; var v=modal.querySelector('video'); v.pause(); v.removeAttribute('src'); v.load(); modal.classList.remove('is-open'); }
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
-  track.addEventListener('click',function(e){ var b=e.target.closest('[data-play]'); if(!b) return; e.preventDefault(); e.stopPropagation(); openModal(b.getAttribute('data-video-src')); });
+  track.addEventListener('click',function(e){ var b=e.target.closest('[data-play]'); if(!b) return; e.preventDefault(); e.stopPropagation(); var card=b.closest('[data-card]'); if(!card) return; var v=card.querySelector('[data-video]'); if(!v) return; card.classList.add('is-playing'); var pr=v.play(); if(pr&&pr.catch)pr.catch(function(){}); });
 
   if(tagsEl){
     tagsEl.addEventListener('click', function(e){
@@ -203,7 +216,7 @@
       filter=b.getAttribute('data-tag');
       [].forEach.call(tagsEl.children,function(c){ c.classList.toggle('is-on', c===b); });
       allCards.forEach(function(c){
-        c.style.display = (filter==='All' || c.getAttribute('data-tag')===filter) ? '' : 'none';
+        c.style.display = (filter==='All' || (c.getAttribute('data-tag')||'').indexOf('|'+filter+'|')>=0) ? '' : 'none';
       });
       page=0;
       if(isPin){ sizePin(); onScroll(); } else { buildDots(); go(false); }
@@ -282,6 +295,7 @@
         { "value": "gradient", "label": "Gradient (text over poster)" },
         { "value": "split", "label": "Split (solid panel below)" } ] },
     { "type": "checkbox", "id": "show_quote", "label": "Show quote on card", "default": false },
+    { "type": "checkbox", "id": "use_video_still", "label": "Use video's first frame as the card image", "info": "When on, the card shows the video's still instead of the uploaded poster.", "default": false },
     { "type": "checkbox", "id": "show_tags", "label": "Show tag filter chips", "default": true },
     { "type": "checkbox", "id": "full_bleed", "label": "Full-bleed (span page edge to edge)", "default": true },
     { "type": "checkbox", "id": "scroll_pin", "label": "Scroll-pin (pin section, scroll slides through videos)", "info": "Pins the section and turns vertical scroll into a horizontal slide-through, releasing at the end.", "default": false },
@@ -311,8 +325,8 @@
         { "type": "text", "id": "name", "label": "Name", "default": "Customer name" },
         { "type": "text", "id": "role", "label": "Role / meta", "default": "Verified customer" },
         { "type": "textarea", "id": "quote", "label": "Quote" },
-        { "type": "text", "id": "tag", "label": "Tag (used for filter chips)", "info": "e.g. HORMONES, MOOD, METABOLISM. Cards with the same tag group under one chip.", "default": "MOOD" },
-        { "type": "video", "id": "video", "label": "Video (from your library)", "info": "Plays in a lightbox on click." },
+        { "type": "text", "id": "tag", "label": "Tags (comma-separated, for filter chips)", "info": "Add one or more, e.g. HORMONES, MOOD. Each becomes a filter chip; the card shows under all of its tags.", "default": "MOOD" },
+        { "type": "video", "id": "video", "label": "Video (from your library)", "info": "Plays inline in the card on click." },
         { "type": "url", "id": "video_url", "label": "…or external video link (optional)" }
       ]
     }
