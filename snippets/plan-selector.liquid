@@ -8,7 +8,6 @@
 {%- endcomment -%}
 
 <link rel="stylesheet" href="https://use.typekit.net/sxx4ssa.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
 
 {%- assign acc = s.accent_color | default: '#1B3DEF' -%}
 {%- assign ink = s.title_color | default: '#14307C' -%}
@@ -19,7 +18,7 @@
 <style>
 #ps-{{ uid }} .bod-ps, #ps-{{ uid }} .bod-pc{
   --ps-sans:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;
-  --ps-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --ps-mono:var(--ps-sans);
   --ps-blue:{{ acc }}; --ps-ink:{{ ink }}; --ps-ink-2:#5566A0; --ps-deep:{{ deep }};
   --ps-hair:rgba(20,40,120,0.14); --ps-sand:#F3EEEA; --ps-tile:#F7F5F1; --ps-bw:{{ bw }}px; --ps-gift-w:{{ s.gift_width | default: 100 }}px;
   --ps-grad-border:linear-gradient(135deg,#6E8BF2 0%,{{ acc }} 46%,{{ deep }} 100%);

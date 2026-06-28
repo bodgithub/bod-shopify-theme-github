@@ -17,12 +17,12 @@
 
 <style>
 @import url("https://use.typekit.net/sxx4ssa.css");
-@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap");
 
 #exr-{{ uid }}{
   --sans:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;
   --serif:"Instrument Serif","Times New Roman",Georgia,serif;
-  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --mono:var(--sans);
   --grad-solid:radial-gradient(140% 165% at 18% 10%,#2E54C8 0%,#1E3FA8 30%,#14307C 65%,#0E2160 100%);
   --accent:{{ s.accent_color | default: '#1B3DEF' }};
   --titlec:{{ s.title_color | default: '#14307C' }};
