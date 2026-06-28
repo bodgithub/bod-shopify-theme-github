@@ -233,6 +233,51 @@
                 {%- endfor -%}
               </div>
             {%- endif -%}
+            {%- if i == 1 -%}
+  <div class="ps-protocol" data-ps-protocol>
+    <button type="button" class="ps-protocol__head" data-ps-proto-toggle aria-expanded="false">
+      <span class="ps-protocol__head-text">
+        <span class="ps-protocol__title">Personalize my protocol</span>
+        <span class="ps-protocol__sub" data-ps-proto-summary>Optional &middot; tap to choose focus areas</span>
+      </span>
+      <svg class="ps-protocol__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="ps-protocol__body" data-ps-proto-body hidden>
+      <p class="ps-protocol__q">Which areas are we supporting? Select all that apply.</p>
+      <div class="ps-protocol__grid">
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264176347" data-label="PCOS" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">PCOS</span>
+          <span class="ps-proto-card__desc">Cycle &amp; insulin support</span>
+        </label>
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264143579" data-label="Hormones" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2-5 4 5 6 0s4-5 6 0 4 1 6 0"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">Hormones</span>
+          <span class="ps-proto-card__desc">Balance &amp; steadier mood</span>
+        </label>
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264241883" data-label="Fertility" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 9c0-3 2-5 5-5 0 3-2 5-5 5z"/><path d="M12 11c0-3-2-5-5-5 0 3 2 5 5 5z"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">Fertility</span>
+          <span class="ps-proto-card__desc">Egg quality &amp; conception</span>
+        </label>
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264209115" data-label="Weight" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16L19 8"/><circle cx="7" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">Weight</span>
+          <span class="ps-proto-card__desc">Metabolic &amp; appetite</span>
+        </label>
+      </div>
+      <p class="ps-protocol__supporting">Supporting: <strong data-ps-proto-supporting>Hormones</strong></p>
+    </div>
+  </div>
+            {%- endif -%}
           </div>
         </div>
       </div>
@@ -289,49 +334,6 @@
     {%- endif -%}
   {%- endfor -%}
 
-  <div class="ps-protocol" data-ps-protocol>
-    <button type="button" class="ps-protocol__head" data-ps-proto-toggle aria-expanded="false">
-      <span class="ps-protocol__head-text">
-        <span class="ps-protocol__title">Personalize my protocol</span>
-        <span class="ps-protocol__sub" data-ps-proto-summary>Optional &middot; tap to choose focus areas</span>
-      </span>
-      <svg class="ps-protocol__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-    </button>
-    <div class="ps-protocol__body" data-ps-proto-body hidden>
-      <p class="ps-protocol__q">Which areas are we supporting? Select all that apply.</p>
-      <div class="ps-protocol__grid">
-        <label class="ps-proto-card">
-          <input type="checkbox" class="ps-proto-input" data-variant="48915264176347" data-label="PCOS" hidden>
-          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg></span>
-          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
-          <span class="ps-proto-card__name">PCOS</span>
-          <span class="ps-proto-card__desc">Cycle &amp; insulin support</span>
-        </label>
-        <label class="ps-proto-card">
-          <input type="checkbox" class="ps-proto-input" data-variant="48915264143579" data-label="Hormones" hidden>
-          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2-5 4 5 6 0s4-5 6 0 4 1 6 0"/></svg></span>
-          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
-          <span class="ps-proto-card__name">Hormones</span>
-          <span class="ps-proto-card__desc">Balance &amp; steadier mood</span>
-        </label>
-        <label class="ps-proto-card">
-          <input type="checkbox" class="ps-proto-input" data-variant="48915264241883" data-label="Fertility" hidden>
-          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 9c0-3 2-5 5-5 0 3-2 5-5 5z"/><path d="M12 11c0-3-2-5-5-5 0 3 2 5 5 5z"/></svg></span>
-          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
-          <span class="ps-proto-card__name">Fertility</span>
-          <span class="ps-proto-card__desc">Egg quality &amp; conception</span>
-        </label>
-        <label class="ps-proto-card">
-          <input type="checkbox" class="ps-proto-input" data-variant="48915264209115" data-label="Weight" hidden>
-          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16L19 8"/><circle cx="7" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg></span>
-          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
-          <span class="ps-proto-card__name">Weight</span>
-          <span class="ps-proto-card__desc">Metabolic &amp; appetite</span>
-        </label>
-      </div>
-      <p class="ps-protocol__supporting">Supporting: <strong data-ps-proto-supporting>Hormones</strong></p>
-    </div>
-  </div>
   {%- if s.p3_name != blank and s.p3_variant != blank or s.p3_name != blank and request.design_mode -%}<a href="#" class="ps-onetime" data-ps-onetime data-variant="{{ s.p3_variant }}" data-qty="{{ s.p3_qty | default: 1 }}">{{ s.p3_name }}{% if s.p3_price != blank %} {{ s.p3_price }}{% endif %}</a>{%- endif -%}
   <button class="ps-cta" type="button" data-ps-submit>
     <span class="spin"></span>
