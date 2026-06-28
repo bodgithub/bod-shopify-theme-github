@@ -45,7 +45,7 @@
 #ps-{{ uid }}.bod-ps--clean .ps-banner__label{color:var(--ps-blue);}
 #ps-{{ uid }}.bod-ps--clean .ps-save{background:var(--ps-grad-banner); color:#fff;}
 #ps-{{ uid }} .ps-body{display:flex; gap:14px; padding:16px 18px; align-items:flex-start;}
-#ps-{{ uid }} .ps-radio{display:none; flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; margin-top:2px; position:relative; transition:.15s;}
+#ps-{{ uid }} .ps-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; margin-top:2px; position:relative; transition:.15s;}
 #ps-{{ uid }} .ps-card.is-selected .ps-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
 #ps-{{ uid }} .ps-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
 #ps-{{ uid }} .ps-card.is-selected .ps-radio svg{opacity:1; transform:scale(1);}
@@ -74,7 +74,7 @@
 #ps-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
 #ps-{{ uid }} .pc-pad{padding:18px 22px 20px;}
 #ps-{{ uid }} .pc-head{display:flex; align-items:center; gap:11px;}
-#ps-{{ uid }} .pc-radio{display:none; flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; position:relative; transition:.15s;}
+#ps-{{ uid }} .pc-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; position:relative; transition:.15s;}
 #ps-{{ uid }} .pc-card.is-selected .pc-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
 #ps-{{ uid }} .pc-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
 #ps-{{ uid }} .pc-card.is-selected .pc-radio svg{opacity:1; transform:scale(1);}
@@ -89,7 +89,8 @@
 #ps-{{ uid }} .pc-card.is-selected .pc-cadence{display:none;}
 #ps-{{ uid }} .pc-expand{display:none;}
 #ps-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
-#ps-{{ uid }} .pc-price{display:flex; align-items:baseline; gap:9px; margin:14px 0 0;}
+#ps-{{ uid }} .pc-price{display:flex; align-items:baseline; gap:9px; margin:0;}
+#ps-{{ uid }} .pc-price-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:14px 0 0;}
 #ps-{{ uid }} .pc-price__now{font-weight:700; font-size:36px; line-height:1; letter-spacing:-0.03em; color:var(--ps-ink);}
 #ps-{{ uid }} .pc-price__was{font-size:16px; color:#9aa0b5; text-decoration:line-through;}
 #ps-{{ uid }} .pc-hr{border:0; border-top:1px solid var(--ps-hair); margin:16px 0;}
@@ -120,7 +121,7 @@
 #ps-{{ uid }} .ps-tile__name{font-size:11.5px; font-weight:600; color:var(--ps-ink); line-height:1;}
 #ps-{{ uid }} .pc-price__per{font-size:14px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
-#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:4px 11px; margin:8px 0 0;}
+#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:4px 11px; margin:0;}
 #ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:14px 0 11px;}
 #ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
 #ps-{{ uid }} .pc-tile{text-align:center;}
@@ -210,9 +211,8 @@
           </div>
           {%- if s[ck] != blank -%}<p class="pc-cadence">{{ s[ck] }}</p>{%- endif -%}
           <div class="pc-expand">
-            <div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div>
+            <div class="pc-price-row">{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}<div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div></div>
             {%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}
-            {%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}
             {%- if s[spk] != blank -%}<div class="ps-spec" style="margin-top:10px;">{{ s[spk] }}</div>{%- endif -%}
             <hr class="pc-hr">
             {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}

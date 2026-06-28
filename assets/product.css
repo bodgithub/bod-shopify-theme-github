@@ -350,7 +350,7 @@
     display: grid;
     align-items: start;
     grid-gap: clamp(30px, 5%, 40px);
-    grid-template-columns: minmax(40%, 700px) clamp(420px, 40%, 400px) !important;
+    grid-template-columns: minmax(40%, 700px) 462px !important;
   padding-top: 50px; } 
       }
 
