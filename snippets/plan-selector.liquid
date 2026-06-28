@@ -124,7 +124,7 @@
 #ps-{{ uid }} .pc-price__per{font-size:14px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:0;}
 #ps-{{ uid }} .pc-billrow{display:flex; align-items:center; gap:12px; margin:8px 0 0;}
-#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; background:color-mix(in srgb, {{ s.serving_color | default: '#1B3DEF' }} 8%, transparent); border:1px solid color-mix(in srgb, {{ s.serving_color | default: '#1B3DEF' }} 18%, transparent); border-radius:999px; padding:4px 11px; margin:0 0 0 auto; white-space:nowrap;}
+#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; margin:0 0 0 auto; white-space:nowrap;}
 #ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-blue); margin:14px 0 11px;}
 #ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
 #ps-{{ uid }} .pc-tile{text-align:center;}
