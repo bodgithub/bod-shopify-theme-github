@@ -282,6 +282,7 @@
         },
         "side_panel_NGJTtJ": {
           "type": "side_panel",
+          "disabled": true,
           "settings": {
             "side_panel_1_label": "Choosing my scoop",
             "side_panel_1_icon": "question_mark",
@@ -298,7 +299,7 @@
           "type": "custom_liquid",
           "name": "Free shipping + product pills",
           "settings": {
-            "custom_liquid": "<div>\n\n<div class=\"cro-badge-row\">\n\n<span class=\"cro-badge-row__pill\">Free shipping on all orders</span>\n\n<span class=\"cro-badge-row__pill\">60-day money back gaurantee</span>\n\n<span class=\"cro-badge-row__pill\">Arrives in 2-5 days</span>\n\n</div></div>"
+            "custom_liquid": "<div>\n\n<div class=\"cro-badge-row\">\n\n<span class=\"cro-badge-row__pill\">60-day money back gaurantee</span>\n\n<span class=\"cro-badge-row__pill\">Arrives in 2-5 days</span>\n\n<span class=\"cro-badge-row__pill\">Free shipping over $50</span>\n\n</div></div>"
           }
         },
         "custom_liquid_ymVUr7": {
