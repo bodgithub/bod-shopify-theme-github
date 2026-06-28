@@ -136,6 +136,29 @@
 #ps-{{ uid }} .ps-tile__sub{font-size:10px; color:var(--ps-blue); line-height:1.3; display:block; margin-top:2px;}
 #ps-{{ uid }} .ps-onetime{display:table; margin:0 auto 14px; font-size:14px; color:var(--ps-blue); text-decoration:none; border-bottom:1px solid #1b3def; cursor:pointer;}
 #ps-{{ uid }} .ps-onetime:hover{opacity:0.8;}
+#ps-{{ uid }} .ps-protocol{margin:16px 0 4px;border:1px solid var(--ps-hair);border-radius:14px;background:#fff;overflow:hidden;}
+#ps-{{ uid }} .ps-protocol__head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;background:transparent;border:0;cursor:pointer;text-align:left;font-family:inherit;}
+#ps-{{ uid }} .ps-protocol__head-text{display:flex;flex-direction:column;gap:3px;}
+#ps-{{ uid }} .ps-protocol__title{font-weight:700;font-size:15px;color:var(--ps-deep);}
+#ps-{{ uid }} .ps-protocol__sub{font-size:12.5px;color:var(--ps-ink-2);}
+#ps-{{ uid }} .ps-protocol__sub strong{color:var(--ps-blue);font-weight:700;}
+#ps-{{ uid }} .ps-protocol__chevron{width:16px;height:16px;color:var(--ps-blue);transition:transform .2s;flex:0 0 auto;}
+#ps-{{ uid }} .ps-protocol.is-open .ps-protocol__chevron{transform:rotate(180deg);}
+#ps-{{ uid }} .ps-protocol__body{padding:0 18px 18px;}
+#ps-{{ uid }} .ps-protocol__q{font-size:13px;color:var(--ps-ink-2);margin:6px 0 12px;}
+#ps-{{ uid }} .ps-protocol__grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+#ps-{{ uid }} .ps-proto-card{position:relative;display:flex;flex-direction:column;gap:5px;padding:14px;border:1.5px solid var(--ps-hair);border-radius:12px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s;}
+#ps-{{ uid }} .ps-proto-card__icon{width:34px;height:34px;border-radius:9px;background:#eef1fb;display:flex;align-items:center;justify-content:center;color:var(--ps-blue);}
+#ps-{{ uid }} .ps-proto-card__icon svg{width:18px;height:18px;}
+#ps-{{ uid }} .ps-proto-card__check{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--ps-hair);background:#fff;display:flex;align-items:center;justify-content:center;}
+#ps-{{ uid }} .ps-proto-card__check svg{width:13px;height:13px;color:#fff;opacity:0;}
+#ps-{{ uid }} .ps-proto-card__name{font-weight:700;font-size:14.5px;color:var(--ps-ink);margin-top:3px;}
+#ps-{{ uid }} .ps-proto-card__desc{font-size:12px;color:var(--ps-ink-2);line-height:1.3;}
+#ps-{{ uid }} .ps-proto-card.is-checked{border-color:var(--ps-blue);background:#f4f6fe;}
+#ps-{{ uid }} .ps-proto-card.is-checked .ps-proto-card__check{background:var(--ps-blue);border-color:var(--ps-blue);}
+#ps-{{ uid }} .ps-proto-card.is-checked .ps-proto-card__check svg{opacity:1;}
+#ps-{{ uid }} .ps-protocol__supporting{font-size:12.5px;color:var(--ps-ink-2);margin:14px 0 0;}
+#ps-{{ uid }} .ps-protocol__supporting strong{color:var(--ps-blue);font-weight:700;}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -266,6 +289,49 @@
     {%- endif -%}
   {%- endfor -%}
 
+  <div class="ps-protocol" data-ps-protocol>
+    <button type="button" class="ps-protocol__head" data-ps-proto-toggle aria-expanded="false">
+      <span class="ps-protocol__head-text">
+        <span class="ps-protocol__title">Personalize my protocol</span>
+        <span class="ps-protocol__sub" data-ps-proto-summary>Optional &middot; tap to choose focus areas</span>
+      </span>
+      <svg class="ps-protocol__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+    <div class="ps-protocol__body" data-ps-proto-body hidden>
+      <p class="ps-protocol__q">Which areas are we supporting? Select all that apply.</p>
+      <div class="ps-protocol__grid">
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264176347" data-label="PCOS" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">PCOS</span>
+          <span class="ps-proto-card__desc">Cycle &amp; insulin support</span>
+        </label>
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264143579" data-label="Hormones" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2-5 4 5 6 0s4-5 6 0 4 1 6 0"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">Hormones</span>
+          <span class="ps-proto-card__desc">Balance &amp; steadier mood</span>
+        </label>
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264241883" data-label="Fertility" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9"/><path d="M12 9c0-3 2-5 5-5 0 3-2 5-5 5z"/><path d="M12 11c0-3-2-5-5-5 0 3 2 5 5 5z"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">Fertility</span>
+          <span class="ps-proto-card__desc">Egg quality &amp; conception</span>
+        </label>
+        <label class="ps-proto-card">
+          <input type="checkbox" class="ps-proto-input" data-variant="48915264209115" data-label="Weight" hidden>
+          <span class="ps-proto-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16L19 8"/><circle cx="7" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg></span>
+          <span class="ps-proto-card__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg></span>
+          <span class="ps-proto-card__name">Weight</span>
+          <span class="ps-proto-card__desc">Metabolic &amp; appetite</span>
+        </label>
+      </div>
+      <p class="ps-protocol__supporting">Supporting: <strong data-ps-proto-supporting>Hormones</strong></p>
+    </div>
+  </div>
   {%- if s.p3_name != blank and s.p3_variant != blank or s.p3_name != blank and request.design_mode -%}<a href="#" class="ps-onetime" data-ps-onetime data-variant="{{ s.p3_variant }}" data-qty="{{ s.p3_qty | default: 1 }}">{{ s.p3_name }}{% if s.p3_price != blank %} {{ s.p3_price }}{% endif %}</a>{%- endif -%}
   <button class="ps-cta" type="button" data-ps-submit>
     <span class="spin"></span>
@@ -323,6 +389,32 @@
     c.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); select(c); } });
   });
   syncSub();
+  // Personalize my protocol
+  var proto = root.querySelector('[data-ps-protocol]');
+  var protoInputs = proto ? [].slice.call(proto.querySelectorAll('.ps-proto-input')) : [];
+  function protoSelected(){ return protoInputs.filter(function(i){ return i.checked; }); }
+  function protoGift(fallback){ var sel = protoSelected(); return sel.length ? sel[0].getAttribute('data-variant') : fallback; }
+  function protoFocus(){ return protoSelected().map(function(i){ return i.getAttribute('data-label'); }).join(', '); }
+  if(proto){
+    var protoHead = proto.querySelector('[data-ps-proto-toggle]');
+    var protoBody = proto.querySelector('[data-ps-proto-body]');
+    var protoSummary = proto.querySelector('[data-ps-proto-summary]');
+    var protoSupport = proto.querySelector('[data-ps-proto-supporting]');
+    protoHead.addEventListener('click', function(){
+      var open = proto.classList.toggle('is-open');
+      protoHead.setAttribute('aria-expanded', open ? 'true' : 'false');
+      protoBody.hidden = !open;
+    });
+    var protoUpdate = function(){
+      protoInputs.forEach(function(i){ var cd = i.closest('.ps-proto-card'); if(cd){ cd.classList.toggle('is-checked', i.checked); } });
+      var labels = protoSelected().map(function(i){ return i.getAttribute('data-label'); });
+      var txt = labels.join(' & ');
+      if(protoSummary){ protoSummary.innerHTML = labels.length ? ('Focus: <strong>' + txt + '</strong>') : 'Optional &middot; tap to choose focus areas'; }
+      if(protoSupport){ protoSupport.textContent = labels.length ? txt : 'Hormones'; }
+    };
+    protoInputs.forEach(function(i){ i.addEventListener('change', protoUpdate); });
+    protoUpdate();
+  }
   cta.addEventListener('click', function(){
     var c = selected();
     if(!c){ showErr(); return; }
@@ -336,7 +428,8 @@
     if(plan){ item.selling_plan = plan; }
     var items = [item];
     var giftAdd = (c.getAttribute('data-ps-giftadd') || '').trim();
-    if(giftAdd){ items.push({ id: giftAdd, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-ps-name') || 'your plan') } }); }
+    if(giftAdd){ giftAdd = protoGift(giftAdd); }
+    if(giftAdd){ var gprops = { '_gift': 'Free with ' + (c.getAttribute('data-ps-name') || 'your plan') }; var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; } items.push({ id: giftAdd, quantity: 1, properties: gprops }); }
     fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
     .then(function(r){ return r.json(); })
     .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
