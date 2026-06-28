@@ -124,6 +124,7 @@
 #ps-{{ uid }} .pc-price__per{font-size:14px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:0;}
 #ps-{{ uid }} .pc-billrow{display:flex; align-items:center; gap:12px; margin:8px 0 0;}
+#ps-{{ uid }} .pc-specrow{display:flex; align-items:center; gap:12px; margin-top:10px;}
 #ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; margin:0 0 0 auto; white-space:nowrap;}
 #ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-blue); margin:14px 0 11px;}
 #ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
@@ -216,8 +217,8 @@
           {%- if s[ck] != blank -%}<p class="pc-cadence">{{ s[ck] }}</p>{%- endif -%}
           <div class="pc-expand">
             <div class="pc-price-row"><div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div></div>
-            <div class="pc-billrow">{%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}</div>
-            {%- if s[spk] != blank -%}<div class="ps-spec" style="margin-top:10px;">{{ s[spk] }}</div>{%- endif -%}
+            {%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}
+            {%- if s[spk] != blank or s[srk] != blank -%}<div class="pc-specrow">{%- if s[spk] != blank -%}<div class="ps-spec" style="margin:0;">{{ s[spk] }}</div>{%- endif -%}{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}</div>{%- endif -%}
             <hr class="pc-hr">
             {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
             <ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
