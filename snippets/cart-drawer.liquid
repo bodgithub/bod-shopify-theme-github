@@ -79,6 +79,7 @@
 #Cart-Drawer .bod-discount button:hover{background:#edf0fb;}
 #Cart-Drawer .bod-discount.is-loading{opacity:.6;pointer-events:none;}
 #Cart-Drawer .bod-discount-msg{font-size:12px;color:#b42318;margin:6px 0 2px;}
+#Cart-Drawer .discounts:empty{display:none;}
 </style>
 <div class="side-panel cart-drawer {{ shadow_class }}" id="Cart-Drawer" tabindex="-1">
 	<div class="side-panel-inner">
@@ -162,10 +163,12 @@
 							{%- if item.discounts != blank -%}
 							<ul class="discounts" role="list">
 								{%- for discount in item.discounts -%}
+									{%- if discount.amount > 0 -%}
 									<li class="discounts__discount">
 										{%- render 'svg-icons' with 'discount' -%}
 										{{ discount.title }} (-{{ discount.amount | money }})
 									</li>
+									{%- endif -%}
 								{%- endfor -%}
 							</ul>
 							{%- endif -%}
