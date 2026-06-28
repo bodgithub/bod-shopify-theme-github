@@ -72,7 +72,7 @@
 #ps-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:15px;}
 #ps-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:#fff; color:var(--ps-blue); border-bottom:1px solid #1b3def; border-left:1px solid #1b3def; font-family:var(--ps-mono); font-size:10px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; padding:6px 15px 6px 20px; border-bottom-left-radius:13px; border-top-right-radius:11px; white-space:nowrap; display:none;}
 #ps-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
-#ps-{{ uid }} .pc-pad{padding:18px 22px 20px;}
+#ps-{{ uid }} .pc-pad{padding:0px 15px 8px;}
 #ps-{{ uid }} .pc-head{display:flex; align-items:center; gap:11px;}
 #ps-{{ uid }} .pc-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; position:relative; transition:.15s;}
 #ps-{{ uid }} .pc-card.is-selected .pc-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
@@ -85,7 +85,7 @@
 #ps-{{ uid }} .pc-mini__now{font-weight:700; font-size:17px; color:var(--ps-ink); letter-spacing:-0.02em;}
 #ps-{{ uid }} .pc-mini__was{font-size:12px; color:#9aa0b5; text-decoration:line-through;}
 #ps-{{ uid }} .pc-card.is-selected .pc-mini{display:none;}
-#ps-{{ uid }} .pc-cadence{font-family:var(--ps-mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ps-ink-2); margin:7px 0 0; line-height:1.5;}
+#ps-{{ uid }} .pc-cadence{font-family:var(--ps-mono); font-size:9px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ps-ink-2); margin:0; line-height:1.5;}
 #ps-{{ uid }} .pc-card.is-selected .pc-cadence{display:none;}
 #ps-{{ uid }} .pc-expand{display:none;}
 #ps-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
@@ -204,14 +204,14 @@
         {%- if s[blk] != blank and s[btk] != 'none' -%}<span class="pc-ribbon">{{ s[blk] }}</span>{%- endif -%}
         <div class="pc-pad">
           <div class="pc-head">
-            <span class="pc-radio">{{ checkw }}</span>
+            <span class="pc-radio"></span>
             <h3 class="pc-title">{{ s[nk] }}</h3>
             {%- if s[svk] != blank -%}<span class="pc-pill">{{ s[svk] }}</span>{%- endif -%}
             <span class="pc-mini"><span class="pc-mini__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-mini__was">{{ s[cpk] }}</span>{%- endif -%}</span>
           </div>
           {%- if s[ck] != blank -%}<p class="pc-cadence">{{ s[ck] }}</p>{%- endif -%}
           <div class="pc-expand">
-            <div class="pc-price-row">{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}<div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div></div>
+            <div class="pc-price-row"><div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div>{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}</div>
             {%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}
             {%- if s[spk] != blank -%}<div class="ps-spec" style="margin-top:10px;">{{ s[spk] }}</div>{%- endif -%}
             <hr class="pc-hr">
@@ -292,7 +292,7 @@
           </div>
         {%- endif -%}
         <div class="ps-body">
-          <div class="ps-radio">{{ checkw }}</div>
+          <div class="ps-radio"></div>
           <div class="ps-thumb">{%- if s[imk] != blank -%}{{ s[imk] | image_url: width: 160 | image_tag: alt: s[nk], loading: 'lazy' }}{%- endif -%}</div>
           <div class="ps-main">
             <div class="ps-row1">

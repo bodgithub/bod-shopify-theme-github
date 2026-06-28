@@ -194,7 +194,7 @@
         {%- if block.settings.banner_label != blank and block.settings.banner_type != 'none' -%}<span class="pc-ribbon">{{ block.settings.banner_label }}</span>{%- endif -%}
         <div class="pc-pad">
           <div class="pc-head">
-            <span class="pc-radio">{{ checkw }}</span>
+            <span class="pc-radio"></span>
             <h3 class="pc-title">{{ block.settings.name }}</h3>
             {%- if block.settings.save_badge != blank -%}<span class="pc-pill">{{ block.settings.save_badge }}</span>{%- endif -%}
             <span class="pc-mini"><span class="pc-mini__now">{{ block.settings.price }}</span>{%- if block.settings.compare_price != blank -%}<span class="pc-mini__was">{{ block.settings.compare_price }}</span>{%- endif -%}</span>
@@ -246,7 +246,7 @@
           </div>
         {%- endif -%}
         <div class="ps-body">
-          <div class="ps-radio">{{ checkw }}</div>
+          <div class="ps-radio"></div>
           <div class="ps-thumb">{%- if block.settings.image != blank -%}{{ block.settings.image | image_url: width: 160 | image_tag: alt: block.settings.name, loading: 'lazy' }}{%- endif -%}</div>
           <div class="ps-main">
             <div class="ps-row1">
