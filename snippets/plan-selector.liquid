@@ -46,7 +46,8 @@
 #ps-{{ uid }}.bod-ps--clean .ps-save{background:var(--ps-grad-banner); color:#fff;}
 #ps-{{ uid }} .ps-body{display:flex; gap:14px; padding:16px 18px; align-items:flex-start;}
 #ps-{{ uid }} .ps-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; margin-top:2px; position:relative; transition:.15s;}
-#ps-{{ uid }} .ps-card.is-selected .ps-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
+#ps-{{ uid }} .ps-card.is-selected .ps-radio{border-color:var(--ps-blue); background:#fff;}
+#ps-{{ uid }} .ps-card.is-selected .ps-radio::after{content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; background:var(--ps-blue);}
 #ps-{{ uid }} .ps-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
 #ps-{{ uid }} .ps-card.is-selected .ps-radio svg{opacity:1; transform:scale(1);}
 #ps-{{ uid }} .ps-thumb{flex:0 0 auto; width:62px; height:62px; border-radius:9px; background:var(--ps-sand); display:flex; align-items:center; justify-content:center; overflow:hidden; border:1px solid var(--ps-hair);}
@@ -75,7 +76,8 @@
 #ps-{{ uid }} .pc-pad{padding:0px 15px 8px;}
 #ps-{{ uid }} .pc-head{display:flex; align-items:center; gap:11px;}
 #ps-{{ uid }} .pc-radio{flex:0 0 auto; width:22px; height:22px; border-radius:50%; border:2px solid #C5CBE0; position:relative; transition:.15s;}
-#ps-{{ uid }} .pc-card.is-selected .pc-radio{border-color:var(--ps-blue); background:var(--ps-grad-banner);}
+#ps-{{ uid }} .pc-card.is-selected .pc-radio{border-color:var(--ps-blue); background:#fff;}
+#ps-{{ uid }} .pc-card.is-selected .pc-radio::after{content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; background:var(--ps-blue);}
 #ps-{{ uid }} .pc-radio svg{position:absolute; inset:0; margin:auto; width:12px; height:12px; opacity:0; transform:scale(.6); transition:.18s;}
 #ps-{{ uid }} .pc-card.is-selected .pc-radio svg{opacity:1; transform:scale(1);}
 #ps-{{ uid }} .pc-title{font-weight:600; font-size:19px; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
