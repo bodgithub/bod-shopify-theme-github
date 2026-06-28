@@ -46,6 +46,7 @@
 #Cart-Drawer .product-cart-item-price .price{display:flex;flex-direction:row;align-items:baseline;gap:6px;justify-content:flex-end;}
 #Cart-Drawer .product-cart-item-price del{order:2;font-size:13px;color:#9aa0b5;text-decoration:line-through;}
 #Cart-Drawer .product-cart-item-price ins{order:1;text-decoration:none;font-size:15px;font-weight:700;color:var(--bod-ink);}
+#Cart-Drawer .product-cart-item-price ins.is-free{color:var(--bod-blue);text-transform:uppercase;letter-spacing:0.02em;}
 #Cart-Drawer .product-cart-item-price .unit-price{display:none;}
 #Cart-Drawer .product-cart-item .remove{position:absolute;top:16px;right:20px;color:var(--bod-muted);opacity:.55;width:18px;height:18px;display:flex;align-items:center;justify-content:center;}
 #Cart-Drawer .product-cart-item .remove:hover{opacity:1;color:var(--bod-blue);}
@@ -112,12 +113,7 @@
 						<div class="product-cart-item-info">
 							<a href="{{ item.url }}" title="{{ item.product.title | escape }}" class="cart-product-link">{%- if item.selling_plan_allocation -%}{{ item.selling_plan_allocation.selling_plan.name }}{%- else -%}{{ item.product.title }}{%- endif -%}</a>
 							<span class="price">
-								{%- if item.original_line_price != item.final_line_price -%}
-								 <del><span class="amount">{{ item.original_line_price | money }}</span></del>
-								 <ins><span class="amount">{{ item.final_line_price | money }}</span></ins>
-								{%- else -%}
-								 <ins><span class="amount">{{ item.original_line_price | money }}</span></ins>
-								{%- endif -%}
+								{%- if item.final_line_price == 0 -%}{%- assign strike = 0 -%}{%- if item.original_line_price > 0 -%}{%- assign strike = item.original_line_price -%}{%- elsif item.variant.compare_at_price > item.variant.price -%}{%- assign strike = item.variant.compare_at_price | times: item.quantity -%}{%- endif -%}{%- if strike > 0 -%}<del><span class="amount">{{ strike | money }}</span></del>{%- endif -%}<ins class="is-free"><span class="amount">Free</span></ins>{%- elsif item.original_line_price != item.final_line_price -%}<del><span class="amount">{{ item.original_line_price | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- else -%}<ins><span class="amount">{{ item.original_line_price | money }}</span></ins>{%- endif -%}
 								{%- if item.variant.available and item.unit_price_measurement -%}
 									<small class="unit-price">
 										{{ item.variant.unit_price | money }}
@@ -208,12 +204,7 @@
 						{%- unless item.selling_plan_allocation -%}{%- assign upg_plan = '' -%}{%- if item.variant.id == 46444646269147 -%}{%- assign upg_plan = '5755961563' -%}{%- elsif item.variant.id == 46444657279195 -%}{%- assign upg_plan = '6331924699' -%}{%- endif -%}{%- if upg_plan != '' -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="{{ upg_plan }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
 						<div class="product-cart-item-price">
 							<span class="price">
-							{%- if item.original_line_price != item.final_line_price -%}
-							 <del><span class="amount">{{ item.original_line_price | money }}</span></del>
-							 <ins><span class="amount">{{ item.final_line_price | money }}</span></ins>
-							{%- else -%}
-							 <ins><span class="amount">{{ item.original_line_price | money }}</span></ins>
-							{%- endif -%}
+							{%- if item.final_line_price == 0 -%}{%- assign strike = 0 -%}{%- if item.original_line_price > 0 -%}{%- assign strike = item.original_line_price -%}{%- elsif item.variant.compare_at_price > item.variant.price -%}{%- assign strike = item.variant.compare_at_price | times: item.quantity -%}{%- endif -%}{%- if strike > 0 -%}<del><span class="amount">{{ strike | money }}</span></del>{%- endif -%}<ins class="is-free"><span class="amount">Free</span></ins>{%- elsif item.original_line_price != item.final_line_price -%}<del><span class="amount">{{ item.original_line_price | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- else -%}<ins><span class="amount">{{ item.original_line_price | money }}</span></ins>{%- endif -%}
 							{%- if item.variant.available and item.unit_price_measurement -%}
 								<small class="unit-price">
 									{{ item.variant.unit_price | money }}
