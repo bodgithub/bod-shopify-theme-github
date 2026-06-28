@@ -291,6 +291,25 @@
   var ctaText = label.textContent;
   var cartUrl = {{ routes.cart_url | json }};
   var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  function renderAndOpenCart(response){
+    try {
+      [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+        { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+        { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+      ].forEach(function(sc){
+        if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+        var host = document.getElementById(sc.id);
+        var el = host.querySelector(sc.selector) || host;
+        var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+        if(frag) el.innerHTML = frag.innerHTML;
+        if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+        if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+      });
+    } catch(e){}
+    var drawer = document.getElementById('Cart-Drawer');
+    if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+    else { window.location = cartUrl; }
+  }
   function selected(){ return root.querySelector('[data-ps-card].is-selected'); }
   function syncSub(){ var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps-name') : ''; }
   function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
@@ -318,17 +337,9 @@
     var items = [item];
     var giftAdd = (c.getAttribute('data-ps-giftadd') || '').trim();
     if(giftAdd){ items.push({ id: giftAdd, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-ps-name') || 'your plan') } }); }
-    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items }) })
-    .then(function(r){ if(!r.ok){ return r.json().then(function(e){ throw e; }); } return r.json(); })
-    .then(function(){
-      {%- if s.go_to_cart == false -%}
-      document.dispatchEvent(new CustomEvent('cart:refresh', { bubbles:true }));
-      cta.classList.remove('is-loading'); label.textContent = '{{ s.added_label | default: "Added ✓" | escape }}';
-      setTimeout(function(){ label.textContent = ctaText; }, 1800);
-      {%- else -%}
-      window.location = cartUrl;
-      {%- endif -%}
-    })
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
     .catch(function(e){ cta.classList.remove('is-loading'); label.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
   });
   var oneTime = root.querySelector('[data-ps-onetime]');
@@ -338,9 +349,9 @@
       var v=(oneTime.getAttribute('data-variant')||'').trim(); if(!v){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
       var q=parseInt(oneTime.getAttribute('data-qty'),10)||1;
       oneTime.style.opacity='0.5';
-      fetch(addBase+'cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:v,quantity:q}]})})
-      .then(function(r){ if(!r.ok){return r.json().then(function(e){throw e;});} return r.json(); })
-      .then(function(){ window.location = cartUrl; })
+      fetch(addBase+'cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:v,quantity:q}], sections:['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname})})
+      .then(function(r){ return r.json(); })
+      .then(function(response){ if(response && response.status){ throw response; } oneTime.style.opacity=''; renderAndOpenCart(response); })
       .catch(function(e){ oneTime.style.opacity=''; showErr((e&&(e.description||e.message))||'Could not add to cart'); });
     });
   }
