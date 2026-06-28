@@ -71,7 +71,7 @@
 #ps-{{ uid }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:var(--ps-bw); overflow:visible;}
 #ps-{{ uid }} .pc-card__in{position:relative; background:#fff; border-radius:11px; overflow:hidden;}
 #ps-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:15px;}
-#ps-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:#fff; color:var(--ps-blue); border-bottom:1px solid #1b3def; border-left:1px solid #1b3def; font-family:var(--ps-mono); font-size:10px; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; padding:6px 15px 6px 20px; border-bottom-left-radius:13px; border-top-right-radius:11px; white-space:nowrap; display:none;}
+#ps-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:#fff; color:var(--ps-blue); border-bottom:1px solid #1b3def; border-left:1px solid #1b3def; font-family:var(--ps-mono); font-size:10px; font-weight:500; letter-spacing:0.02em; text-transform:uppercase; padding:4px 11px; border-bottom-left-radius:13px; border-top-right-radius:11px; white-space:nowrap; display:none;}
 #ps-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
 #ps-{{ uid }} .pc-pad{padding:0px 15px 8px;}
 #ps-{{ uid }} .pc-head{display:flex; align-items:center; gap:11px;}
@@ -122,9 +122,10 @@
 #ps-{{ uid }} .ps-tile__img img{width:78%; height:78%; object-fit:contain;}
 #ps-{{ uid }} .ps-tile__name{font-size:11.5px; font-weight:600; color:var(--ps-ink); line-height:1;}
 #ps-{{ uid }} .pc-price__per{font-size:14px; color:var(--ps-ink-2); white-space:nowrap;}
-#ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
-#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:500; letter-spacing:0.05em; text-transform:uppercase; color:var(--ps-blue); background:rgba(27,61,239,0.07); border:1px solid rgba(27,61,239,0.16); border-radius:999px; padding:4px 11px; margin:0;}
-#ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-ink-2); margin:14px 0 11px;}
+#ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:0;}
+#ps-{{ uid }} .pc-billrow{display:flex; align-items:center; gap:12px; margin:8px 0 0;}
+#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; background:color-mix(in srgb, {{ s.serving_color | default: '#1B3DEF' }} 8%, transparent); border:1px solid color-mix(in srgb, {{ s.serving_color | default: '#1B3DEF' }} 18%, transparent); border-radius:999px; padding:4px 11px; margin:0 0 0 auto; white-space:nowrap;}
+#ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-blue); margin:14px 0 11px;}
 #ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
 #ps-{{ uid }} .pc-tile{text-align:center;}
 #ps-{{ uid }} .pc-tile__img{width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--ps-tile); border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:7px;}
@@ -161,6 +162,7 @@
 #ps-{{ uid }} .ps-proto-card.is-checked .ps-proto-card__check svg{opacity:1;}
 #ps-{{ uid }} .ps-protocol__supporting{font-size:12.5px;color:var(--ps-ink-2);margin:14px 0 0;}
 #ps-{{ uid }} .ps-protocol__supporting strong{color:var(--ps-blue);font-weight:700;}
+@media (max-width:749px){#ps-{{ uid }} .pc-title{font-size:17px;}#ps-{{ uid }} .pc-price__now{font-size:30px;}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -213,8 +215,8 @@
           </div>
           {%- if s[ck] != blank -%}<p class="pc-cadence">{{ s[ck] }}</p>{%- endif -%}
           <div class="pc-expand">
-            <div class="pc-price-row"><div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div>{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}</div>
-            {%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}
+            <div class="pc-price-row"><div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div></div>
+            <div class="pc-billrow">{%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}</div>
             {%- if s[spk] != blank -%}<div class="ps-spec" style="margin-top:10px;">{{ s[spk] }}</div>{%- endif -%}
             <hr class="pc-hr">
             {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
