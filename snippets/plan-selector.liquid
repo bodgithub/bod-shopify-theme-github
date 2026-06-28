@@ -59,7 +59,7 @@
 #ps-{{ uid }} .ps-price{display:flex; align-items:baseline; gap:7px; white-space:nowrap;}
 #ps-{{ uid }} .ps-price__now{font-weight:700; font-size:20px; color:var(--ps-ink); letter-spacing:-0.02em;}
 #ps-{{ uid }} .ps-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
-#ps-{{ uid }} .ps-spec{font-family:var(--ps-mono); font-size:9px; letter-spacing:0.06em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; margin:12px 0 0; line-height:1.5;}
+#ps-{{ uid }} .ps-spec{font-family:var(--ps-mono); font-size:12px; letter-spacing:0em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; margin:12px 0 0; line-height:1.5;}
 #ps-{{ uid }} .ps-spec b{color:var(--ps-blue); font-weight:500;}
 #ps-{{ uid }} .ps-spec .dot{opacity:.45; margin:0 4px;}
 #ps-{{ uid }} .ps-benes{list-style:none; margin:11px 0 0; padding:0; display:flex; flex-direction:column; gap:7px;}
@@ -92,10 +92,10 @@
 #ps-{{ uid }} .pc-expand{display:none;}
 #ps-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
 #ps-{{ uid }} .pc-price{display:flex; align-items:baseline; gap:9px; margin:0;}
-#ps-{{ uid }} .pc-price-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:14px 0 0;}
+#ps-{{ uid }} .pc-price-row{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:0;}
 #ps-{{ uid }} .pc-price__now{font-weight:700; font-size:36px; line-height:1; letter-spacing:-0.03em; color:var(--ps-ink);}
 #ps-{{ uid }} .pc-price__was{font-size:16px; color:#9aa0b5; text-decoration:line-through;}
-#ps-{{ uid }} .pc-hr{border:0; border-top:1px solid var(--ps-hair); margin:16px 0;}
+#ps-{{ uid }} .pc-hr{border:0; border-top:1px solid var(--ps-hair); margin:10px 0;}
 #ps-{{ uid }} .pc-benes{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
 #ps-{{ uid }} .pc-benes li{position:relative; padding-left:26px; font-size:14px; line-height:1.4; color:#2c2d26;}
 #ps-{{ uid }} .pc-benes svg{position:absolute; left:0; top:2px; width:15px; height:15px;}
@@ -125,7 +125,7 @@
 #ps-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:0;}
 #ps-{{ uid }} .pc-billrow{display:flex; align-items:center; gap:12px; margin:8px 0 0;}
 #ps-{{ uid }} .pc-specrow{display:flex; align-items:center; gap:12px; margin-top:10px;}
-#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; margin:0 0 0 auto; white-space:nowrap;}
+#ps-{{ uid }} .pc-serving{display:inline-block; font-family:var(--ps-mono); font-size:12px; font-weight:700; letter-spacing:0em; text-transform:{% if s.serving_caps %}uppercase{% else %}none{% endif %}; color:{{ s.serving_color | default: '#1B3DEF' }}; margin:0 0 0 auto; white-space:nowrap;}
 #ps-{{ uid }} .pc-kit__lab{font-family:var(--ps-mono); font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-blue); margin:14px 0 11px;}
 #ps-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
 #ps-{{ uid }} .pc-tile{text-align:center;}
