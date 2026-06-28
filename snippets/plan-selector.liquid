@@ -163,6 +163,7 @@
       assign vk = 'p' | append: i | append: '_variant'
       assign plk = 'p' | append: i | append: '_plan'
       assign qk = 'p' | append: i | append: '_qty'
+      assign gaddk = 'p' | append: i | append: '_giftadd'
       assign ppk = 'p' | append: i | append: '_price_per'
       assign bik = 'p' | append: i | append: '_bill'
       assign srk = 'p' | append: i | append: '_serving'
@@ -175,7 +176,7 @@
     {%- assign first = forloop.first -%}
     {%- if style == 'expanded' -%}
     <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}">
+         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}">
       <div class="pc-card__in">
         {%- if s[blk] != blank and s[btk] != 'none' -%}<span class="pc-ribbon">{{ s[blk] }}</span>{%- endif -%}
         <div class="pc-pad">
@@ -215,7 +216,7 @@
     </div>
     {%- else -%}
     <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}">
+         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}">
       <div class="ps-card__frame">
         {%- if s[btk] != 'none' and s[blk] != blank -%}
           <div class="ps-banner{% if s[btk] == 'value' %} ps-banner--value{% endif %}">
@@ -314,7 +315,10 @@
     cta.classList.add('is-loading'); label.textContent = '{{ s.adding_label | default: "Adding…" }}';
     var item = { id: variant, quantity: qty };
     if(plan){ item.selling_plan = plan; }
-    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items:[item] }) })
+    var items = [item];
+    var giftAdd = (c.getAttribute('data-ps-giftadd') || '').trim();
+    if(giftAdd){ items.push({ id: giftAdd, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-ps-name') || 'your plan') } }); }
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items }) })
     .then(function(r){ if(!r.ok){ return r.json().then(function(e){ throw e; }); } return r.json(); })
     .then(function(){
       {%- if s.go_to_cart == false -%}
