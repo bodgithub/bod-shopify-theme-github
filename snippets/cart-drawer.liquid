@@ -237,7 +237,7 @@
 				<div class="cart-drawer__empty-cart">
 					{% render 'svg-icons' with 'thb-empty-cart' %}
 					<p>{{ 'general.cart_drawer.cart_empty' | t }}</p>
-					<a class="button accent2" href="{{ routes.all_products_collection_url }}"><span>{{ 'general.cart_drawer.start_shopping' | t }}</span></a>
+					<a class="button accent2" href="/products/myo-d-chiro-inositol-powder"><span>{{ 'general.cart_drawer.start_shopping' | t }}</span></a>
 				</div>
 			{%- endif -%}
 			{%- if settings.cart_recommendations and cart != empty -%}
