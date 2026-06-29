@@ -242,7 +242,7 @@
     <button type="button" class="ps-protocol__head" data-ps-proto-toggle aria-expanded="false">
       <span class="ps-protocol__head-text">
         <span class="ps-protocol__title">Personalize my protocol</span>
-        <span class="ps-protocol__sub" data-ps-proto-summary>Optional &middot; tap to choose focus areas</span>
+        <span class="ps-protocol__sub" data-ps-proto-summary>Optional</span>
       </span>
       <svg class="ps-protocol__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
     </button>
@@ -415,7 +415,7 @@
       protoInputs.forEach(function(i){ var cd = i.closest('.ps-proto-card'); if(cd){ cd.classList.toggle('is-checked', i.checked); } });
       var labels = protoSelected().map(function(i){ return i.getAttribute('data-label'); });
       var txt = labels.join(' & ');
-      if(protoSummary){ protoSummary.innerHTML = labels.length ? ('Focus: <strong>' + txt + '</strong>') : 'Optional &middot; tap to choose focus areas'; }
+      if(protoSummary){ protoSummary.innerHTML = labels.length ? ('Focus: <strong>' + txt + '</strong>') : 'Optional'; }
       if(protoSupport){ protoSupport.textContent = labels.length ? txt : 'Hormones'; }
     };
     protoInputs.forEach(function(i){ i.addEventListener('change', protoUpdate); });
