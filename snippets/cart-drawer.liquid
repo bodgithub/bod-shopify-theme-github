@@ -81,6 +81,8 @@
 #Cart-Drawer .bod-discount-msg{font-size:12px;color:#b42318;margin:6px 0 2px;}
 #Cart-Drawer .discounts:empty{display:none;}
 #Cart-Drawer .bod-ships{font-size:11.5px;color:var(--bod-muted);margin:5px 0 0;line-height:1.3;}
+#Cart-Drawer{z-index:10001 !important;}
+body.open-cc #wrapper .click-capture{z-index:10000 !important;}
 </style>
 <div class="side-panel cart-drawer {{ shadow_class }}" id="Cart-Drawer" tabindex="-1">
 	<div class="side-panel-inner">
@@ -139,8 +141,8 @@
 							</div>
 							{%- assign spid = item.selling_plan_allocation.selling_plan.id -%}
 							{%- assign spn = item.selling_plan_allocation.selling_plan.name | downcase -%}
-							{%- if spid == 5755961563 or spn contains '6 week' or spn contains '6-week' -%}<div class="bod-ships">Ships every 3 months &bull; Cancel anytime</div>
-							{%- elsif spid == 7141621979 or spn contains '3 month' or spn contains '3-month' -%}<div class="bod-ships">Ships every 6 weeks &bull; Cancel anytime</div>
+							{%- if spid == 5755961563 or spn contains '6 week' or spn contains '6-week' -%}<div class="bod-ships">Ships every 6 weeks &bull; Cancel anytime</div>
+							{%- elsif spid == 7141621979 or spn contains '3 month' or spn contains '3-month' -%}<div class="bod-ships">Ships every 3 months &bull; Cancel anytime</div>
 							{%- endif -%}
 							{% endif %}
 							{% unless item.variant.title contains 'Default' or item.selling_plan_allocation %}
