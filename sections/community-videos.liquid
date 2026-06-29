@@ -53,9 +53,9 @@
   #{{ s }} .vcg__title--custom{ font-weight:var(--title-weight); font-size:var(--fs-title); letter-spacing:-0.03em; line-height:1.06; }
 
   #{{ s }} .vcg__tags{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin:20px auto 0; padding:0 16px; }
-  #{{ s }} .vcg__tag{ font-size:12.5px; font-weight:500; color:var(--tag); background:transparent; border:1px solid color-mix(in srgb,var(--tag) 28%,transparent); border-radius:999px; padding:8px 17px; cursor:pointer; transition:all .16s; font-family:inherit; }
-  #{{ s }} .vcg__tag:hover{ border-color:color-mix(in srgb,var(--tag) 55%,transparent); color:var(--tag); }
-  #{{ s }} .vcg__tag.is-on{ background:var(--tag); border-color:var(--tag); color:var(--sec); }
+  #{{ s }} .vcg__tag{ font-size:12.5px; font-weight:500; color:#fff; background:transparent; border:1px solid color-mix(in srgb,#fff 26%,transparent); border-radius:999px; padding:8px 17px; cursor:pointer; transition:all .16s; font-family:inherit; }
+  #{{ s }} .vcg__tag:hover{ border-color:color-mix(in srgb,#fff 55%,transparent); color:#fff; }
+  #{{ s }} .vcg__tag.is-on{ background:var(--tag); border-color:var(--tag); color:#fff; }
 
   #{{ s }} .vcg__view{ overflow-x:hidden; padding:26px 0 6px; touch-action:pan-y; }
   #{{ s }} .vcg__track{ display:flex; gap:22px; padding:0 max(24px,calc((100% - 1160px)/2)); will-change:transform; user-select:none; cursor:grab; }
@@ -322,7 +322,7 @@
     { "type": "color", "id": "font_color", "label": "Font color", "default": "#ffffff" },
     { "type": "color", "id": "accent", "label": "Play-button accent", "default": "#1B3DEF" },
     { "type": "color", "id": "heading_color", "label": "Headline color", "default": "#ffffff" },
-    { "type": "color", "id": "tag_color", "label": "Filter chip (tag) color", "default": "#ffffff" },
+    { "type": "color", "id": "tag_color", "label": "Filter chip — selected fill colour", "info": "Chip text is white; this colour fills a chip when it is selected.", "default": "#1B3DEF" },
     { "type": "color", "id": "gradient_1", "label": "Background gradient — start", "default": "#2945A8" },
     { "type": "color", "id": "gradient_2", "label": "Background gradient — end", "default": "#102359" },
     { "type": "checkbox", "id": "no_shadows", "label": "Remove all shadows", "default": false },
