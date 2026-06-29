@@ -139,8 +139,8 @@
 							</div>
 							{%- assign spid = item.selling_plan_allocation.selling_plan.id -%}
 							{%- assign spn = item.selling_plan_allocation.selling_plan.name | downcase -%}
-							{%- if spid == 5755961563 or spn contains '6 week' or spn contains '6-week' -%}<div class="bod-ships">Ships every 6 weeks &bull; Cancel anytime</div>
-							{%- elsif spid == 7141621979 or spn contains '3 month' or spn contains '3-month' -%}<div class="bod-ships">Ships every 3 months &bull; Cancel anytime</div>
+							{%- if spid == 5755961563 or spn contains '6 week' or spn contains '6-week' -%}<div class="bod-ships">Ships every 3 months &bull; Cancel anytime</div>
+							{%- elsif spid == 7141621979 or spn contains '3 month' or spn contains '3-month' -%}<div class="bod-ships">Ships every 6 weeks &bull; Cancel anytime</div>
 							{%- endif -%}
 							{% endif %}
 							{% unless item.variant.title contains 'Default' or item.selling_plan_allocation %}
