@@ -1,0 +1,484 @@
+{% render 'plan-selector', s: section.settings, uid: section.id %}
+{% schema %}
+{
+  "name": "Plan selector (v2)",
+  "tag": "section",
+  "class": "section-plan-selector-v2",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Card style",
+      "default": "bordered",
+      "options": [
+        {
+          "value": "bordered",
+          "label": "A · Gradient border"
+        },
+        {
+          "value": "clean",
+          "label": "B · Clean white + accents"
+        },
+        {
+          "value": "expanded",
+          "label": "C · Stacked expanded"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Gradient border width",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 360,
+      "max": 720,
+      "step": 20,
+      "unit": "px",
+      "default": 560
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (blue)",
+      "default": "#1B3DEF"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title ink",
+      "default": "#14307C"
+    },
+    {
+      "type": "color",
+      "id": "deep_color",
+      "label": "Gradient deep stop",
+      "default": "#0E2160"
+    },
+    {
+      "type": "color",
+      "id": "serving_color",
+      "label": "Serving + billed-line colour",
+      "default": "#1B3DEF"
+    },
+    {
+      "type": "checkbox",
+      "id": "serving_caps",
+      "label": "Serving + billed-line UPPERCASE",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Copy & cart"
+    },
+    {
+      "type": "text",
+      "id": "adding_label",
+      "label": "Button — adding state",
+      "default": "Adding…"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Cancel or pause anytime. Free shipping on subscriptions."
+    },
+    {
+      "type": "text",
+      "id": "gifts_label",
+      "label": "Gift tiles row label",
+      "default": "Free gifts included"
+    },
+    {
+      "type": "range",
+      "id": "gift_width",
+      "label": "Gift tile width",
+      "min": 70,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Plan 1"
+    },
+    {
+      "type": "text",
+      "id": "p1_name",
+      "label": "Name",
+      "default": "3-Month Bundle"
+    },
+    {
+      "type": "text",
+      "id": "p1_cadence",
+      "label": "Cadence",
+      "default": "Ships every 3 months · cancel anytime"
+    },
+    {
+      "type": "text",
+      "id": "p1_price",
+      "label": "Price",
+      "default": "$0"
+    },
+    {
+      "type": "text",
+      "id": "p1_compare",
+      "label": "Compare-at"
+    },
+    {
+      "type": "select",
+      "id": "p1_banner_type",
+      "label": "Banner",
+      "default": "popular",
+      "options": [
+        {
+          "value": "popular",
+          "label": "Accent"
+        },
+        {
+          "value": "value",
+          "label": "Deep"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "p1_banner_label",
+      "label": "Banner label",
+      "default": "Most Popular"
+    },
+    {
+      "type": "text",
+      "id": "p1_save",
+      "label": "SAVE badge"
+    },
+    {
+      "type": "html",
+      "id": "p1_spec",
+      "label": "Spec line",
+      "info": "<b>=blue, <span class='dot'>·</span>=separator",
+      "default": "40:1 <b>MYO : DCI</b><span class='dot'>·</span>HPLC-verified"
+    },
+    {
+      "type": "textarea",
+      "id": "p1_benefits",
+      "label": "Benefits (one per line)",
+      "default": "Supports healthy insulin sensitivity\nPause, skip or cancel anytime\nFree shipping on every delivery"
+    },
+    {
+      "type": "text",
+      "id": "p1_variant",
+      "label": "Product variant ID"
+    },
+    {
+      "type": "text",
+      "id": "p1_plan",
+      "label": "ReCharge selling-plan ID",
+      "info": "Blank = one-time purchase."
+    },
+    {
+      "type": "number",
+      "id": "p1_qty",
+      "label": "Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "p1_price_per",
+      "label": "Price suffix (e.g. / mo)"
+    },
+    {
+      "type": "text",
+      "id": "p1_serving",
+      "label": "Per-serving cost (e.g. $0.37 / serving)"
+    },
+    {
+      "type": "text",
+      "id": "p1_giftadd",
+      "label": "Plan 1 · auto-add FREE variant ID (gift)",
+      "info": "Variant ID of a $0 product to drop into the cart with this plan."
+    },
+    {
+      "type": "image_picker",
+      "id": "p1_gift1_image",
+      "label": "Gift 1 · image"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift1_name",
+      "label": "Gift 1 · name"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift1_roundel",
+      "label": "Gift 1 · roundel / pill (over image)"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift1_crossout",
+      "label": "Gift 1 · crossed-out price"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift1_sub",
+      "label": "Gift 1 · subtitle (accent colour)"
+    },
+    {
+      "type": "image_picker",
+      "id": "p1_gift2_image",
+      "label": "Gift 2 · image"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift2_name",
+      "label": "Gift 2 · name"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift2_roundel",
+      "label": "Gift 2 · roundel / pill (over image)"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift2_crossout",
+      "label": "Gift 2 · crossed-out price"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift2_sub",
+      "label": "Gift 2 · subtitle (accent colour)"
+    },
+    {
+      "type": "image_picker",
+      "id": "p1_gift3_image",
+      "label": "Gift 3 · image"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift3_name",
+      "label": "Gift 3 · name"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift3_roundel",
+      "label": "Gift 3 · roundel / pill (over image)"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift3_crossout",
+      "label": "Gift 3 · crossed-out price"
+    },
+    {
+      "type": "text",
+      "id": "p1_gift3_sub",
+      "label": "Gift 3 · subtitle (accent colour)"
+    },
+    {
+      "type": "header",
+      "content": "Plan 2"
+    },
+    {
+      "type": "text",
+      "id": "p2_name",
+      "label": "Name",
+      "default": "Monthly Subscription"
+    },
+    {
+      "type": "text",
+      "id": "p2_cadence",
+      "label": "Cadence",
+      "default": "Ships monthly · cancel anytime"
+    },
+    {
+      "type": "text",
+      "id": "p2_price",
+      "label": "Price",
+      "default": "$0"
+    },
+    {
+      "type": "text",
+      "id": "p2_compare",
+      "label": "Compare-at"
+    },
+    {
+      "type": "select",
+      "id": "p2_banner_type",
+      "label": "Banner",
+      "default": "value",
+      "options": [
+        {
+          "value": "popular",
+          "label": "Accent"
+        },
+        {
+          "value": "value",
+          "label": "Deep"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "p2_banner_label",
+      "label": "Banner label",
+      "default": "Best Value"
+    },
+    {
+      "type": "text",
+      "id": "p2_save",
+      "label": "SAVE badge"
+    },
+    {
+      "type": "html",
+      "id": "p2_spec",
+      "label": "Spec line",
+      "default": "40:1 <b>MYO : DCI</b><span class='dot'>·</span>HPLC-verified"
+    },
+    {
+      "type": "textarea",
+      "id": "p2_benefits",
+      "label": "Benefits (one per line)",
+      "default": "Supports healthy insulin sensitivity\nFree shipping · pause anytime"
+    },
+    {
+      "type": "text",
+      "id": "p2_variant",
+      "label": "Product variant ID"
+    },
+    {
+      "type": "text",
+      "id": "p2_plan",
+      "label": "ReCharge selling-plan ID",
+      "info": "Blank = one-time purchase."
+    },
+    {
+      "type": "number",
+      "id": "p2_qty",
+      "label": "Quantity",
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "p2_price_per",
+      "label": "Price suffix (e.g. / mo)"
+    },
+    {
+      "type": "text",
+      "id": "p2_serving",
+      "label": "Per-serving cost (e.g. $0.97 / serving)"
+    },
+    {
+      "type": "text",
+      "id": "p2_giftadd",
+      "label": "Plan 2 · auto-add FREE variant ID (gift)",
+      "info": "Variant ID of a $0 product to drop into the cart with this plan."
+    },
+    {
+      "type": "image_picker",
+      "id": "p2_gift1_image",
+      "label": "Gift 1 · image"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift1_name",
+      "label": "Gift 1 · name"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift1_roundel",
+      "label": "Gift 1 · roundel / pill (over image)"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift1_crossout",
+      "label": "Gift 1 · crossed-out price"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift1_sub",
+      "label": "Gift 1 · subtitle (accent colour)"
+    },
+    {
+      "type": "image_picker",
+      "id": "p2_gift2_image",
+      "label": "Gift 2 · image"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift2_name",
+      "label": "Gift 2 · name"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift2_roundel",
+      "label": "Gift 2 · roundel / pill (over image)"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift2_crossout",
+      "label": "Gift 2 · crossed-out price"
+    },
+    {
+      "type": "text",
+      "id": "p2_gift2_sub",
+      "label": "Gift 2 · subtitle (accent colour)"
+    },
+    {
+      "type": "header",
+      "content": "Plan 3 · One-time link"
+    },
+    {
+      "type": "text",
+      "id": "p3_name",
+      "label": "Link text",
+      "default": "One Time Purchase"
+    },
+    {
+      "type": "text",
+      "id": "p3_price",
+      "label": "Price (shown after the text)",
+      "default": "$65"
+    },
+    {
+      "type": "text",
+      "id": "p3_variant",
+      "label": "Product variant ID"
+    },
+    {
+      "type": "number",
+      "id": "p3_qty",
+      "label": "Quantity",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Plan selector (v2)"
+    }
+  ]
+}
+{% endschema %}
