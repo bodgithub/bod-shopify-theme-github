@@ -955,7 +955,7 @@
             "benefits-title": "",
             "icon_size": 77,
             "border_size": 1,
-            "border_color": "#0B1067",
+            "border_color": "#0b1067",
             "benefit_1": "women in the U.S. have impaired metabolic function*",
             "icon_1": "shopify://shop_images/Stat-1.png",
             "benefit_2": "have insulin resistance*",
@@ -1063,7 +1063,7 @@
         "color_links": "#1b3def",
         "color_border": "#1b3def",
         "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "disable_bottom_spacing": true
       }
     },
     "testimonial_carousel_twHytV": {
@@ -1131,8 +1131,8 @@
         "color_heading": "#1b3def",
         "color_text2": "#1b3def",
         "color_text": "#2c2d2e",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": false,
         "columns_desktop": 2,
         "columns_tablet": 2,
         "columns_mobile": 1,
