@@ -111,7 +111,7 @@
   .vcg-modal__x{ position:absolute; top:-15px; right:-15px; width:36px; height:36px; border-radius:50%; border:0; background:#fff; color:#14307C; font-size:21px; line-height:1; cursor:pointer; box-shadow:0 6px 18px rgba(6,14,46,0.4); }
 </style>
 
-<div id="{{ s }}" class="{% if pin %}vcg--pin{% endif %}" data-style="{{ section.settings.card_style }}" {% if pin %}data-pin="1"{% endif %}>
+<div id="{{ s }}" class="{% if pin %}vcg--pin{% endif %}" data-style="{{ section.settings.card_style }}" data-default-tag="{{ section.settings.default_tag | escape }}" {% if pin %}data-pin="1"{% endif %}>
   {%- capture inner -%}
   <div class="vcg__head">
     {%- if section.settings.eyebrow != blank -%}<p class="vcg__eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
@@ -280,6 +280,8 @@
     buildDots(); go(false);
     window.addEventListener('resize',function(){ buildDots(); go(false); });
   }
+  var dft=(root.getAttribute('data-default-tag')||'').trim();
+  if(dft && tagsEl){ var dchip=tagsEl.querySelector('.vcg__tag[data-tag="'+dft.replace(/"/g,'')+'"]'); if(dchip && !dchip.classList.contains('is-on')){ dchip.click(); } }
 })();
 </script>
 
@@ -312,6 +314,7 @@
     { "type": "checkbox", "id": "full_bleed", "label": "Full-bleed (span page edge to edge)", "default": true },
     { "type": "checkbox", "id": "scroll_pin", "label": "Scroll-pin (pin section, scroll slides through videos)", "info": "Pins the section and turns vertical scroll into a horizontal slide-through, releasing at the end.", "default": false },
     { "type": "text", "id": "all_label", "label": "\"All\" chip label", "default": "All" },
+    { "type": "text", "id": "default_tag", "label": "Pre-selected filter tag (blank = All)", "info": "Loads already filtered to this tag; must match a tag on the videos." },
     { "type": "range", "id": "card_width", "label": "Card width", "min": 200, "max": 360, "step": 4, "unit": "px", "default": 272 },
     { "type": "range", "id": "gradient_coverage", "label": "Gradient height on card", "min": 20, "max": 100, "step": 5, "unit": "%", "default": 50 },
     { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 54 },
