@@ -20,6 +20,10 @@
     --ov: {{ section.settings.overlay }};
     --fg: {{ section.settings.font_color }};
     --panel: {{ section.settings.panel_bg }};
+    --heading: {{ section.settings.heading_color }};
+    --tag: {{ section.settings.tag_color }};
+    --g1: {{ section.settings.gradient_1 }};
+    --g2: {{ section.settings.gradient_2 }};
     --fs-title: {{ section.settings.fs_title }}px;
     --fs-name: {{ section.settings.fs_name }}px;
     --fs-role: {{ section.settings.fs_role }}px;
@@ -27,11 +31,14 @@
     --card-w: {{ section.settings.card_width }}px;
     box-sizing:border-box; position:relative;
     font-family:"tenon","Helvetica Neue",Arial,sans-serif;
-    background:radial-gradient(140% 130% at 18% 8%, color-mix(in srgb,var(--sec) 70%,#4a6cff) 0%, var(--sec) 54%, color-mix(in srgb,var(--sec) 72%,#000) 100%);
+    background:radial-gradient(140% 130% at 18% 8%, var(--g1) 0%, var(--g2) 100%);
     padding:{{ section.settings.pad_top }}px 0 {{ section.settings.pad_bottom }}px;
   }
   {%- if section.settings.section_bg_solid -%}
   #{{ s }}{ background: {{ section.settings.section_bg }}; }
+  {%- endif -%}
+  {%- if section.settings.no_shadows -%}
+  #{{ s }} .vcg__card, #{{ s }} .vcg__play{ box-shadow:none !important; }
   {%- endif -%}
   {%- if section.settings.full_bleed -%}
   #{{ s }}{ width:100vw; max-width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; overflow-x:clip; }
@@ -39,14 +46,14 @@
   #{{ s }} *, #{{ s }} *::before, #{{ s }} *::after{ box-sizing:border-box; }
 
   #{{ s }} .vcg__head{ text-align:center; max-width:{{ section.settings.headline_width }}px; margin:0 auto 6px; padding:0 16px; }
-  #{{ s }} .vcg__eyebrow{ font-size:10.5px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:color-mix(in srgb,var(--fg) 64%,transparent); margin:0 0 11px; }
-  #{{ s }} .vcg__title{ color:var(--fg); margin:0; }
+  #{{ s }} .vcg__eyebrow{ font-size:10.5px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:color-mix(in srgb,var(--heading) 64%,transparent); margin:0 0 11px; }
+  #{{ s }} .vcg__title{ color:var(--heading); margin:0; }
   #{{ s }} .vcg__title--custom{ font-weight:600; font-size:var(--fs-title); letter-spacing:-0.03em; line-height:1.06; }
 
   #{{ s }} .vcg__tags{ display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin:20px auto 0; padding:0 16px; }
-  #{{ s }} .vcg__tag{ font-size:12.5px; font-weight:500; color:color-mix(in srgb,var(--fg) 78%,transparent); background:transparent; border:1px solid color-mix(in srgb,var(--fg) 28%,transparent); border-radius:999px; padding:8px 17px; cursor:pointer; transition:all .16s; font-family:inherit; }
-  #{{ s }} .vcg__tag:hover{ border-color:color-mix(in srgb,var(--fg) 55%,transparent); color:var(--fg); }
-  #{{ s }} .vcg__tag.is-on{ background:var(--fg); border-color:var(--fg); color:var(--sec); }
+  #{{ s }} .vcg__tag{ font-size:12.5px; font-weight:500; color:color-mix(in srgb,var(--tag) 78%,transparent); background:transparent; border:1px solid color-mix(in srgb,var(--tag) 28%,transparent); border-radius:999px; padding:8px 17px; cursor:pointer; transition:all .16s; font-family:inherit; }
+  #{{ s }} .vcg__tag:hover{ border-color:color-mix(in srgb,var(--tag) 55%,transparent); color:var(--tag); }
+  #{{ s }} .vcg__tag.is-on{ background:var(--tag); border-color:var(--tag); color:var(--sec); }
 
   #{{ s }} .vcg__view{ overflow-x:hidden; padding:26px 0 6px; touch-action:pan-y; }
   #{{ s }} .vcg__track{ display:flex; gap:22px; padding:0 max(24px,calc((100% - 1160px)/2)); will-change:transform; user-select:none; cursor:grab; }
@@ -310,6 +317,11 @@
     { "type": "color", "id": "overlay", "label": "Card overlay (Gradient style)", "default": "#081034" },
     { "type": "color", "id": "font_color", "label": "Font color", "default": "#ffffff" },
     { "type": "color", "id": "accent", "label": "Play-button accent", "default": "#1B3DEF" },
+    { "type": "color", "id": "heading_color", "label": "Headline color", "default": "#ffffff" },
+    { "type": "color", "id": "tag_color", "label": "Filter chip (tag) color", "default": "#ffffff" },
+    { "type": "color", "id": "gradient_1", "label": "Background gradient — start", "default": "#2945A8" },
+    { "type": "color", "id": "gradient_2", "label": "Background gradient — end", "default": "#102359" },
+    { "type": "checkbox", "id": "no_shadows", "label": "Remove all shadows", "default": false },
     { "type": "header", "content": "Font sizes" },
     { "type": "range", "id": "fs_title", "label": "Title", "min": 18, "max": 56, "step": 1, "unit": "px", "default": 34 },
     { "type": "range", "id": "fs_name", "label": "Name", "min": 12, "max": 30, "step": 1, "unit": "px", "default": 19 },
