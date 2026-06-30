@@ -57,7 +57,7 @@
 #Cart-Drawer .bod-upgrade.is-loading{opacity:.55;pointer-events:none;}
 #Cart-Drawer .bod-upgrade svg{width:14px;height:14px;flex:0 0 auto;}
 #Cart-Drawer .side-panel-footer{padding:0;border-top:1px solid var(--bod-line);}
-#Cart-Drawer .cart-drawer-footer{padding:18px 22px 20px;}
+#Cart-Drawer .cart-drawer-footer{padding:18px 22px 80px;}
 #Cart-Drawer .collaterals{width:100%;margin:0 0 14px;border:0;}
 #Cart-Drawer .collaterals th,#Cart-Drawer .collaterals td{border:0;padding:2px 0;}
 #Cart-Drawer .cart-total th{font-size:15px;font-weight:700;text-align:left;color:var(--bod-ink);vertical-align:top;}
@@ -67,13 +67,14 @@
 #Cart-Drawer .cart-discount td{font-size:13px;color:var(--bod-blue);text-align:right;}
 #Cart-Drawer .cart-drawer-buttons{display:flex;flex-direction:column;gap:10px;margin:0;}
 #Cart-Drawer .cart-drawer-buttons form{margin:0;width:100%;}
-#Cart-Drawer .cart-drawer-buttons .button{width:100%;border-radius:12px !important;padding:16px 22px !important;font-size:16px !important;font-weight:700 !important;letter-spacing:0;text-transform:none;border:0 !important;}
+#Cart-Drawer .cart-drawer-buttons .button{width:100%;margin:0 !important;border-radius:12px !important;padding:16px 22px !important;font-size:16px !important;font-weight:700 !important;letter-spacing:0;text-transform:none;border:0 !important;}
 #Cart-Drawer .cart-drawer-buttons .button.checkout,#Cart-Drawer .cart-drawer-buttons .button.accent{background:var(--bod-grad) !important;color:#fff !important;box-shadow:0 10px 26px rgba(27,61,239,0.26);}
 #Cart-Drawer .cart-drawer-buttons .button.checkout:hover{filter:brightness(1.06);}
 #Cart-Drawer .cart-drawer-buttons .button:not(.checkout):not(.accent){background:#fff !important;color:var(--bod-blue) !important;border:1px solid var(--bod-line) !important;}
 #Cart-Drawer .cart-drawer__empty-cart .button.accent2{background:var(--bod-grad) !important;color:#fff !important;border-radius:12px !important;}
 #Cart-Drawer .bod-discount{display:flex;gap:8px;width:100%;margin:0;}
 #Cart-Drawer .bod-discount input{flex:1 1 auto;min-width:0;border:1px solid var(--bod-line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--bod-ink);background:#fff;}
+#Cart-Drawer .bod-discount input::placeholder{color:#b0b4c0;opacity:1;}
 #Cart-Drawer .bod-discount input:focus{outline:none;border-color:var(--bod-blue);}
 #Cart-Drawer .bod-discount button{flex:0 0 auto;border:0;cursor:pointer;border-radius:10px;padding:0 18px;font-size:14px;font-weight:700;color:var(--bod-blue);background:var(--bod-sand);}
 #Cart-Drawer .bod-discount button:hover{background:#edf0fb;}
@@ -327,7 +328,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
           {% endif %}
 					<div class="cart-drawer-buttons">
 						<form class="bod-discount" data-bod-discount novalidate>
-							<input type="text" name="discount" placeholder="Discount code" autocomplete="off" spellcheck="false">
+							<input type="text" name="discount" placeholder="YOURCODE" autocomplete="off" spellcheck="false">
 							<button type="submit">Apply</button>
 						</form>
 						<div class="bod-discount-msg" style="display:none;"></div>
