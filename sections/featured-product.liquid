@@ -169,181 +169,183 @@
   "name": "Featured product",
   "tag": "section",
   "class": "product-section",
-	"disabled_on": {
-    "templates": ["product"]
+  "disabled_on": {
+    "templates": [
+      "product"
+    ]
   },
-	"settings": [
-		{
-			"type": "text",
-			"id": "heading",
-			"label": "Heading",
-			"default": "Featured product",
-			"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
-		},
-		{
-			"type": "select",
-			"id": "marker_style",
-			"options": [
-				{
-					"value": "style1",
-					"label": "Basic"
-				},
-				{
-					"value": "style2",
-					"label": "Double"
-				},
-				{
-					"value": "style3",
-					"label": "Squiggle"
-				},
-				{
-					"value": "style4",
-					"label": "Zigzag"
-				}
-			],
-			"default": "style1",
-			"label": "Marker"
-		},
-		{
-			"type": "richtext",
-			"id": "description",
-			"label": "Description",
-			"default": "<p>Add a short description for this featured product</p>"
-		},
-		{
-			"type": "header",
-			"content": "Product"
-		},
-		{
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured product",
+      "info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+    },
+    {
+      "type": "select",
+      "id": "marker_style",
+      "options": [
+        {
+          "value": "style1",
+          "label": "Basic"
+        },
+        {
+          "value": "style2",
+          "label": "Double"
+        },
+        {
+          "value": "style3",
+          "label": "Squiggle"
+        },
+        {
+          "value": "style4",
+          "label": "Zigzag"
+        }
+      ],
+      "default": "style1",
+      "label": "Marker"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add a short description for this featured product</p>"
+    },
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
       "type": "product",
       "id": "product",
       "label": "Product"
     },
-		{
-			"type": "checkbox",
-			"id": "show_taxes_included",
-			"default": true,
-			"label": "Show taxes included"
-		},
-		{
-			"type": "header",
-			"content": "Media"
-		},
-		{
-			"type": "paragraph",
-			"content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
-		},
-		{
-			"type": "select",
-			"id": "thumbnail_position",
-			"options": [
-				{
-					"value": "left",
-					"label": "Left"
-				},
-				{
-					"value": "bottom",
-					"label": "Bottom"
-				}
-			],
-			"default": "left",
-			"label": "Thumbnail position"
-		},
-		{
-			"type": "select",
-			"id": "media_aspect_ratio",
-			"options": [
-				{
-					"value": "adapt",
-					"label": "Adapt to image"
-				},
-				{
-					"value": "square",
-					"label": "Square"
-				},
-				{
-					"value": "portrait",
-					"label": "Portrait"
-				},
-				{
-					"value": "landscape",
-					"label": "Landscape"
-				}
-			],
-			"default": "adapt",
-			"label": "Image ratio"
-		},
-		{
+    {
+      "type": "checkbox",
+      "id": "show_taxes_included",
+      "default": true,
+      "label": "Show taxes included"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "paragraph",
+      "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+    },
+    {
+      "type": "select",
+      "id": "thumbnail_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "left",
+      "label": "Thumbnail position"
+    },
+    {
+      "type": "select",
+      "id": "media_aspect_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
+      ],
+      "default": "adapt",
+      "label": "Image ratio"
+    },
+    {
       "type": "checkbox",
       "id": "display_captions",
       "default": true,
       "label": "Display captions"
     },
-		{
+    {
       "type": "checkbox",
       "id": "hide_variants",
       "default": false,
       "label": "Hide unselected variants’ media",
-			"info": "Media for the unselected variants will be hidden."
+      "info": "Media for the unselected variants will be hidden."
     },
-		{
-			"type": "checkbox",
-			"id": "lightbox",
-			"default": true,
-			"label": "Enable image zoom"
-		},
-		{
+    {
+      "type": "checkbox",
+      "id": "lightbox",
+      "default": true,
+      "label": "Enable image zoom"
+    },
+    {
       "type": "checkbox",
       "id": "enable_video_looping",
       "default": false,
       "label": "Enable video looping"
     },
-		{
-			"type": "header",
-			"content": "Colors"
-		},
-		{
-			"type": "color",
-			"id": "marker_color",
-			"label": "Marker",
-			"default": "#FD6262"
-		},
-		{
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "marker_color",
+      "label": "Marker",
+      "default": "#FD6262"
+    },
+    {
       "type": "header",
       "content": "Spacing"
     },
-		{
-			"type": "checkbox",
-			"id": "disable_top_spacing",
-			"default": false,
-			"label": "Remove top spacing"
-		},
-		{
-			"type": "checkbox",
-			"id": "disable_bottom_spacing",
-			"default": false,
-			"label": "Remove bottom spacing"
-		}
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    }
   ],
   "blocks": [
-		{
-			"type": "@app"
-		},
-		{
+    {
+      "type": "@app"
+    },
+    {
       "type": "label",
       "name": "Card labels",
       "settings": [
-				{
-					"type": "paragraph",
-					"content": "Use a dynamic source to highlight a unique attribute by creating product label. [Learn more about product labels.](https://documentation.fuelthemes.net/kb/how-to-add-product-labels-in-vision-theme/)"
-				}
+        {
+          "type": "paragraph",
+          "content": "Use a dynamic source to highlight a unique attribute by creating product label. [Learn more about product labels.](https://documentation.fuelthemes.net/kb/how-to-add-product-labels-in-vision-theme/)"
+        }
       ]
     },
-		{
+    {
       "type": "separator",
       "name": "Separator"
     },
-		{
+    {
       "type": "text",
       "name": "Text",
       "settings": [
@@ -375,49 +377,49 @@
         }
       ]
     },
-		{
+    {
       "type": "title",
       "name": "Title",
       "limit": 1,
-			"settings": [
-				{
-					"type": "checkbox",
-					"id": "show_products_rating",
-					"default": true,
-					"label": "Show product rating",
-					"info": "To display a rating, add a product rating app. [Learn more](https://help.shopify.com/manual/online-store/themes/os20/themes-by-shopify/dawn/sections#featured-collection-show-product-rating)"
-				}
-			]
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_products_rating",
+          "default": true,
+          "label": "Show product rating",
+          "info": "To display a rating, add a product rating app. [Learn more](https://help.shopify.com/manual/online-store/themes/os20/themes-by-shopify/dawn/sections#featured-collection-show-product-rating)"
+        }
+      ]
     },
-		{
+    {
       "type": "inventory_level",
       "name": "Inventory level",
       "limit": 1,
       "settings": [
-				{
-					"type": "select",
-					"id": "show_inventory_notice",
-					"options": [
-						{
-							"value": "always",
-							"label": "Always"
-						},
-						{
-							"value": "low",
-							"label": "Only when inventory low"
-						}
-					],
-					"default": "always",
-					"label": "Show inventory notice"
-				},
+        {
+          "type": "select",
+          "id": "show_inventory_notice",
+          "options": [
+            {
+              "value": "always",
+              "label": "Always"
+            },
+            {
+              "value": "low",
+              "label": "Only when inventory low"
+            }
+          ],
+          "default": "always",
+          "label": "Show inventory notice"
+        },
         {
           "type": "select",
           "id": "show_inventory_count",
           "options": [
-						{
-							"value": "never",
-							"label": "Never"
-						},
+            {
+              "value": "never",
+              "label": "Never"
+            },
             {
               "value": "always",
               "label": "Always"
@@ -430,35 +432,35 @@
           "default": "always",
           "label": "Show count in inventory notice"
         },
-				{
-					"type": "checkbox",
-					"id": "inventory_notice_pulse",
-					"default": true,
-					"label": "Show pulse"
-				},
-				{
-					"type": "checkbox",
-					"id": "inventory_notice_bar",
-					"default": true,
-					"label": "Show progress bar"
-				},
-				{
-				  "type": "number",
-				  "id": "inventory_notice_threshold",
-				  "label": "Low inventory threshold",
-				  "default": 10,
-					"info": "Set the product inventory quantity to alert customers when limited quantities are available. Insert a dynamic source to set different thresholds for multiple products."
-				},
-				{
-				  "type": "number",
-				  "id": "inventory_notice_base",
-				  "label": "Inventory base quantity",
-				  "default": 20,
-					"info": "Enter the initial quantity of your product inventory for progress bar. Insert a dynamic source to set different base quantities for multiple products"
-				}
+        {
+          "type": "checkbox",
+          "id": "inventory_notice_pulse",
+          "default": true,
+          "label": "Show pulse"
+        },
+        {
+          "type": "checkbox",
+          "id": "inventory_notice_bar",
+          "default": true,
+          "label": "Show progress bar"
+        },
+        {
+          "type": "number",
+          "id": "inventory_notice_threshold",
+          "label": "Low inventory threshold",
+          "default": 10,
+          "info": "Set the product inventory quantity to alert customers when limited quantities are available. Insert a dynamic source to set different thresholds for multiple products."
+        },
+        {
+          "type": "number",
+          "id": "inventory_notice_base",
+          "label": "Inventory base quantity",
+          "default": 20,
+          "info": "Enter the initial quantity of your product inventory for progress bar. Insert a dynamic source to set different base quantities for multiple products"
+        }
       ]
     },
-		{
+    {
       "type": "variant_picker",
       "name": "Variant picker",
       "limit": 1,
@@ -479,33 +481,33 @@
           "default": "button",
           "label": "Type"
         },
-				{
-					"type": "checkbox",
-					"id": "color_picker",
-					"default": true,
-					"label": "Enable color swatches",
-					"info": "[Learn more about color swatches.](https://documentation.fuelthemes.net/kb/how-do-i-set-up-product-variant-swatches/)"
-				},
         {
-					"type": "checkbox",
-					"id": "color_picker_use_variants",
-					"default": false,
-					"label": "Use variant images for color swatches",
-					"info": "Color swatches will use variant featured images if available."
-				},
-				{
-					"type": "checkbox",
-					"id": "variant_is_disabled",
-					"default": true,
-					"label": "Show availability in selectors",
-					"info": "When an option is selected, unavailable variants will be crossed-out."
-				},
-				{
+          "type": "checkbox",
+          "id": "color_picker",
+          "default": true,
+          "label": "Enable color swatches",
+          "info": "[Learn more about color swatches.](https://documentation.fuelthemes.net/kb/how-do-i-set-up-product-variant-swatches/)"
+        },
+        {
+          "type": "checkbox",
+          "id": "color_picker_use_variants",
+          "default": false,
+          "label": "Use variant images for color swatches",
+          "info": "Color swatches will use variant featured images if available."
+        },
+        {
+          "type": "checkbox",
+          "id": "variant_is_disabled",
+          "default": true,
+          "label": "Show availability in selectors",
+          "info": "When an option is selected, unavailable variants will be crossed-out."
+        },
+        {
           "type": "text",
           "id": "sizing_guide_text",
           "default": "Sizing guide",
           "label": "Sizing guide label",
-					"info": "Leave empty to remove the sizing guide link."
+          "info": "Leave empty to remove the sizing guide link."
         },
         {
           "type": "select",
@@ -693,27 +695,27 @@
         },
         {
           "type": "page",
-	        "id": "sizing_guide_page",
+          "id": "sizing_guide_page",
           "label": "Sizing guide page"
         }
       ]
     },
-		{
+    {
       "type": "quantity",
       "name": "Quantity selector",
       "limit": 1,
-			"settings": [
-				{
-					"type": "paragraph",
-					"content": "The selector is automatically hidden if all variants are sold out. When at least one variant is available, the selector is always visible to prevent the page from moving when switching variants."
-				}
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "The selector is automatically hidden if all variants are sold out. When at least one variant is available, the selector is always visible to prevent the page from moving when switching variants."
+        }
       ]
     },
-		{
+    {
       "type": "buy_buttons",
       "name": "Product form",
       "limit": 1,
-			"settings": [
+      "settings": [
         {
           "type": "checkbox",
           "id": "show_dynamic_checkout",
@@ -728,7 +730,7 @@
       "name": "Description",
       "limit": 1
     },
-		{
+    {
       "type": "custom_liquid",
       "name": "Custom liquid",
       "settings": [
@@ -740,26 +742,26 @@
         }
       ]
     },
-		{
+    {
       "type": "product_link",
       "name": "Product link",
       "limit": 1,
       "settings": [
         {
-					"type": "paragraph",
-					"content": "Use this to direct users to product page"
+          "type": "paragraph",
+          "content": "Use this to direct users to product page"
         }
       ]
     },
-		{
-   "type": "side_panel",
-   "name": "Information side panel",
-   "limit": 1,
-   "settings": [
-				{
-					"type": "header",
-					"content": "Panel 1"
-				},
+    {
+      "type": "side_panel",
+      "name": "Information side panel",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Panel 1"
+        },
         {
           "type": "text",
           "id": "side_panel_1_label",
@@ -952,13 +954,13 @@
         },
         {
           "type": "page",
-	        "id": "side_panel_1_page",
+          "id": "side_panel_1_page",
           "label": "Page"
         },
-				{
-					"type": "header",
-					"content": "Panel 2"
-				},
+        {
+          "type": "header",
+          "content": "Panel 2"
+        },
         {
           "type": "text",
           "id": "side_panel_2_label",
@@ -1151,13 +1153,13 @@
         },
         {
           "type": "page",
-	        "id": "side_panel_2_page",
+          "id": "side_panel_2_page",
           "label": "Page"
         },
-				{
-					"type": "header",
-					"content": "Panel 3"
-				},
+        {
+          "type": "header",
+          "content": "Panel 3"
+        },
         {
           "type": "text",
           "id": "side_panel_3_label",
@@ -1350,33 +1352,33 @@
         },
         {
           "type": "page",
-	        "id": "side_panel_3_page",
+          "id": "side_panel_3_page",
           "label": "Page"
         }
       ]
-},
+    },
     {
       "type": "collapsible_tab",
       "name": "Collapsible row",
       "settings": [
-				{
-					"type": "text",
-					"id": "heading",
-					"default": "Collapsible row",
-					"info": "Include a heading that explains the content.",
-					"label": "Heading"
-				},
-         {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
-    },
-				{
-					"type": "checkbox",
-					"id": "open",
-					"default": false,
-					"label": "Open by default"
-				},
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible row",
+          "info": "Include a heading that explains the content.",
+          "label": "Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "default": false,
+          "label": "Open by default"
+        },
         {
           "type": "richtext",
           "id": "content",
@@ -1395,15 +1397,15 @@
         }
       ]
     },
-		{
+    {
       "type": "custom_option",
       "name": "Line item property",
       "settings": [
-				{
-					"type": "paragraph",
-					"content": "Line item properties are used to collect customization information for an item added to the cart."
-				},
-				{
+        {
+          "type": "paragraph",
+          "content": "Line item properties are used to collect customization information for an item added to the cart."
+        },
+        {
           "type": "select",
           "id": "type",
           "label": "Type",
@@ -1440,12 +1442,12 @@
           "info": "Only works with 'Add to cart' button",
           "default": false
         },
-				{
+        {
           "type": "header",
           "content": "Text",
-					"info": "Requires line item property type to be Text or Textarea."
+          "info": "Requires line item property type to be Text or Textarea."
         },
-				{
+        {
           "type": "text",
           "id": "text_placeholder",
           "label": "Placeholder",
@@ -1454,7 +1456,7 @@
         {
           "type": "header",
           "content": "Checkbox",
-					"info": "Requires line item property type to be Checkbox."
+          "info": "Requires line item property type to be Checkbox."
         },
         {
           "type": "text",
@@ -1471,7 +1473,7 @@
         {
           "type": "header",
           "content": "Multiple options",
-					"info": "Requires line item property type to be Multiple options."
+          "info": "Requires line item property type to be Multiple options."
         },
         {
           "type": "select",
@@ -1498,30 +1500,30 @@
         }
       ]
     },
-		{
+    {
       "type": "sku",
       "name": "SKU",
       "settings": [
-				{
-					"type": "select",
-					"id": "sku_style",
-					"options": [
-						{
-							"value": "style_body",
-							"label": "Body"
-						},
-						{
-							"value": "subheading",
-							"label": "Subheading"
-						},
-						{
-							"value": "style_vendor",
-							"label": "Vendor"
-						}
-					],
-					"default": "style_vendor",
-					"label": "SKU style"
-				}
+        {
+          "type": "select",
+          "id": "sku_style",
+          "options": [
+            {
+              "value": "style_body",
+              "label": "Body"
+            },
+            {
+              "value": "subheading",
+              "label": "Subheading"
+            },
+            {
+              "value": "style_vendor",
+              "label": "Vendor"
+            }
+          ],
+          "default": "style_vendor",
+          "label": "SKU style"
+        }
       ]
     },
     {
@@ -1560,27 +1562,502 @@
           "default": 20
         }
       ]
+    },
+    {
+      "type": "plan_selector",
+      "name": "Plan selector",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Card style",
+          "default": "bordered",
+          "options": [
+            {
+              "value": "bordered",
+              "label": "A · Gradient border"
+            },
+            {
+              "value": "clean",
+              "label": "B · Clean white + accents"
+            },
+            {
+              "value": "expanded",
+              "label": "C · Stacked expanded"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "border_width",
+          "label": "Gradient border width",
+          "min": 2,
+          "max": 12,
+          "step": 1,
+          "unit": "px",
+          "default": 5
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 360,
+          "max": 720,
+          "step": 20,
+          "unit": "px",
+          "default": 560
+        },
+        {
+          "type": "header",
+          "content": "Colours"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent (blue)",
+          "default": "#1B3DEF"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title ink",
+          "default": "#14307C"
+        },
+        {
+          "type": "color",
+          "id": "deep_color",
+          "label": "Gradient deep stop",
+          "default": "#0E2160"
+        },
+        {
+          "type": "color",
+          "id": "serving_color",
+          "label": "Serving + billed-line colour",
+          "default": "#1B3DEF"
+        },
+        {
+          "type": "checkbox",
+          "id": "serving_caps",
+          "label": "Serving + billed-line UPPERCASE",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Copy & cart"
+        },
+        {
+          "type": "text",
+          "id": "adding_label",
+          "label": "Button — adding state",
+          "default": "Adding…"
+        },
+        {
+          "type": "text",
+          "id": "footnote",
+          "label": "Footnote",
+          "default": "Cancel or pause anytime. Free shipping on subscriptions."
+        },
+        {
+          "type": "text",
+          "id": "gifts_label",
+          "label": "Gift tiles row label",
+          "default": "Free gifts included"
+        },
+        {
+          "type": "range",
+          "id": "gift_width",
+          "label": "Gift tile width",
+          "min": 70,
+          "max": 200,
+          "step": 5,
+          "unit": "px",
+          "default": 100
+        },
+        {
+          "type": "header",
+          "content": "Plan 1"
+        },
+        {
+          "type": "text",
+          "id": "p1_name",
+          "label": "Name",
+          "default": "3-Month Bundle"
+        },
+        {
+          "type": "text",
+          "id": "p1_cadence",
+          "label": "Cadence",
+          "default": "Ships every 3 months · cancel anytime"
+        },
+        {
+          "type": "text",
+          "id": "p1_price",
+          "label": "Price",
+          "default": "$0"
+        },
+        {
+          "type": "text",
+          "id": "p1_compare",
+          "label": "Compare-at"
+        },
+        {
+          "type": "select",
+          "id": "p1_banner_type",
+          "label": "Banner",
+          "default": "popular",
+          "options": [
+            {
+              "value": "popular",
+              "label": "Accent"
+            },
+            {
+              "value": "value",
+              "label": "Deep"
+            },
+            {
+              "value": "none",
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "p1_banner_label",
+          "label": "Banner label",
+          "default": "Most Popular"
+        },
+        {
+          "type": "text",
+          "id": "p1_save",
+          "label": "SAVE badge"
+        },
+        {
+          "type": "html",
+          "id": "p1_spec",
+          "label": "Spec line",
+          "info": "<b>=blue, <span class='dot'>·</span>=separator",
+          "default": "40:1 <b>MYO : DCI</b><span class='dot'>·</span>HPLC-verified"
+        },
+        {
+          "type": "textarea",
+          "id": "p1_benefits",
+          "label": "Benefits (one per line)",
+          "default": "Supports healthy insulin sensitivity\nPause, skip or cancel anytime\nFree shipping on every delivery"
+        },
+        {
+          "type": "text",
+          "id": "p1_variant",
+          "label": "Product variant ID"
+        },
+        {
+          "type": "text",
+          "id": "p1_plan",
+          "label": "ReCharge selling-plan ID",
+          "info": "Blank = one-time purchase."
+        },
+        {
+          "type": "number",
+          "id": "p1_qty",
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "p1_price_per",
+          "label": "Price suffix (e.g. / mo)"
+        },
+        {
+          "type": "text",
+          "id": "p1_serving",
+          "label": "Per-serving cost (e.g. $0.37 / serving)"
+        },
+        {
+          "type": "text",
+          "id": "p1_giftadd",
+          "label": "Plan 1 · auto-add FREE variant ID (gift)",
+          "info": "Variant ID of a $0 product to drop into the cart with this plan."
+        },
+        {
+          "type": "image_picker",
+          "id": "p1_gift1_image",
+          "label": "Gift 1 · image"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift1_name",
+          "label": "Gift 1 · name"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift1_roundel",
+          "label": "Gift 1 · roundel / pill (over image)"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift1_crossout",
+          "label": "Gift 1 · crossed-out price"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift1_sub",
+          "label": "Gift 1 · subtitle (accent colour)"
+        },
+        {
+          "type": "image_picker",
+          "id": "p1_gift2_image",
+          "label": "Gift 2 · image"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift2_name",
+          "label": "Gift 2 · name"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift2_roundel",
+          "label": "Gift 2 · roundel / pill (over image)"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift2_crossout",
+          "label": "Gift 2 · crossed-out price"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift2_sub",
+          "label": "Gift 2 · subtitle (accent colour)"
+        },
+        {
+          "type": "image_picker",
+          "id": "p1_gift3_image",
+          "label": "Gift 3 · image"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift3_name",
+          "label": "Gift 3 · name"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift3_roundel",
+          "label": "Gift 3 · roundel / pill (over image)"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift3_crossout",
+          "label": "Gift 3 · crossed-out price"
+        },
+        {
+          "type": "text",
+          "id": "p1_gift3_sub",
+          "label": "Gift 3 · subtitle (accent colour)"
+        },
+        {
+          "type": "header",
+          "content": "Plan 2"
+        },
+        {
+          "type": "text",
+          "id": "p2_name",
+          "label": "Name",
+          "default": "Monthly Subscription"
+        },
+        {
+          "type": "text",
+          "id": "p2_cadence",
+          "label": "Cadence",
+          "default": "Ships monthly · cancel anytime"
+        },
+        {
+          "type": "text",
+          "id": "p2_price",
+          "label": "Price",
+          "default": "$0"
+        },
+        {
+          "type": "text",
+          "id": "p2_compare",
+          "label": "Compare-at"
+        },
+        {
+          "type": "select",
+          "id": "p2_banner_type",
+          "label": "Banner",
+          "default": "value",
+          "options": [
+            {
+              "value": "popular",
+              "label": "Accent"
+            },
+            {
+              "value": "value",
+              "label": "Deep"
+            },
+            {
+              "value": "none",
+              "label": "None"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "p2_banner_label",
+          "label": "Banner label",
+          "default": "Best Value"
+        },
+        {
+          "type": "text",
+          "id": "p2_save",
+          "label": "SAVE badge"
+        },
+        {
+          "type": "html",
+          "id": "p2_spec",
+          "label": "Spec line",
+          "default": "40:1 <b>MYO : DCI</b><span class='dot'>·</span>HPLC-verified"
+        },
+        {
+          "type": "textarea",
+          "id": "p2_benefits",
+          "label": "Benefits (one per line)",
+          "default": "Supports healthy insulin sensitivity\nFree shipping · pause anytime"
+        },
+        {
+          "type": "text",
+          "id": "p2_variant",
+          "label": "Product variant ID"
+        },
+        {
+          "type": "text",
+          "id": "p2_plan",
+          "label": "ReCharge selling-plan ID",
+          "info": "Blank = one-time purchase."
+        },
+        {
+          "type": "number",
+          "id": "p2_qty",
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "p2_price_per",
+          "label": "Price suffix (e.g. / mo)"
+        },
+        {
+          "type": "text",
+          "id": "p2_serving",
+          "label": "Per-serving cost (e.g. $0.97 / serving)"
+        },
+        {
+          "type": "text",
+          "id": "p2_giftadd",
+          "label": "Plan 2 · auto-add FREE variant ID (gift)",
+          "info": "Variant ID of a $0 product to drop into the cart with this plan."
+        },
+        {
+          "type": "image_picker",
+          "id": "p2_gift1_image",
+          "label": "Gift 1 · image"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift1_name",
+          "label": "Gift 1 · name"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift1_roundel",
+          "label": "Gift 1 · roundel / pill (over image)"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift1_crossout",
+          "label": "Gift 1 · crossed-out price"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift1_sub",
+          "label": "Gift 1 · subtitle (accent colour)"
+        },
+        {
+          "type": "image_picker",
+          "id": "p2_gift2_image",
+          "label": "Gift 2 · image"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift2_name",
+          "label": "Gift 2 · name"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift2_roundel",
+          "label": "Gift 2 · roundel / pill (over image)"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift2_crossout",
+          "label": "Gift 2 · crossed-out price"
+        },
+        {
+          "type": "text",
+          "id": "p2_gift2_sub",
+          "label": "Gift 2 · subtitle (accent colour)"
+        },
+        {
+          "type": "header",
+          "content": "Plan 3 · One-time link"
+        },
+        {
+          "type": "text",
+          "id": "p3_name",
+          "label": "Link text",
+          "default": "One Time Purchase"
+        },
+        {
+          "type": "text",
+          "id": "p3_price",
+          "label": "Price (shown after the text)",
+          "default": "$65"
+        },
+        {
+          "type": "text",
+          "id": "p3_variant",
+          "label": "Product variant ID"
+        },
+        {
+          "type": "number",
+          "id": "p3_qty",
+          "label": "Quantity",
+          "default": 1
+        }
+      ]
     }
   ],
-	"presets": [
-		{
-			"name": "Featured product",
-			"blocks": [
-				{
-					"type": "title"
-				},
-				{
-					"type": "variant_picker"
-				},
-				{
-					"type": "quantity"
-				},
-				{
-					"type": "buy_buttons"
-				}
-			]
-		}
-	]
+  "presets": [
+    {
+      "name": "Featured product",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "variant_picker"
+        },
+        {
+          "type": "quantity"
+        },
+        {
+          "type": "buy_buttons"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
 
