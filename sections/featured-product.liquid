@@ -2037,6 +2037,1259 @@
           "default": 1
         }
       ]
+    },
+    {
+      "type": "experts",
+      "name": "Experts",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Pill"
+        },
+        {
+          "type": "text",
+          "id": "pill_text",
+          "label": "Pill text",
+          "default": "Recommended by experts"
+        },
+        {
+          "type": "select",
+          "id": "pill_style",
+          "label": "Pill style",
+          "default": "solid",
+          "options": [
+            {
+              "value": "none",
+              "label": "None (hidden)"
+            },
+            {
+              "value": "solid",
+              "label": "Solid"
+            },
+            {
+              "value": "outline",
+              "label": "Outline"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "pill_color",
+          "label": "Pill color",
+          "default": "#1B3DEF"
+        },
+        {
+          "type": "header",
+          "content": "Headline & type"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "The experts who recommend inositol"
+        },
+        {
+          "type": "select",
+          "id": "headline_style",
+          "label": "Headline style",
+          "default": "sans",
+          "options": [
+            {
+              "value": "sans",
+              "label": "Sans (Tenon)"
+            },
+            {
+              "value": "serif",
+              "label": "Serif italic"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "label": "Heading size",
+          "min": 14,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "default": 24
+        },
+        {
+          "type": "select",
+          "id": "heading_align",
+          "label": "Heading alignment",
+          "default": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Dietitians and clinicians who use myo + D-chiro inositol with the people they care for."
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title color",
+          "default": "#14307C"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Body text color",
+          "default": "#1A1A14"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent color (credentials)",
+          "default": "#1B3DEF"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "background",
+          "label": "Background",
+          "default": "white",
+          "options": [
+            {
+              "value": "white",
+              "label": "White"
+            },
+            {
+              "value": "gradient",
+              "label": "Gradient"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 480,
+          "max": 1100,
+          "step": 20,
+          "unit": "px",
+          "default": 640
+        },
+        {
+          "type": "checkbox",
+          "id": "mobile_carousel",
+          "label": "Carousel on mobile",
+          "info": "Horizontal swipe on mobile showing part of the next card; quote moves below the name in small text.",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Practitioner 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "p1_photo",
+          "label": "Photo (square)"
+        },
+        {
+          "type": "text",
+          "id": "p1_name",
+          "label": "Name",
+          "default": "Dr. Anita W."
+        },
+        {
+          "type": "text",
+          "id": "p1_role",
+          "label": "Credential / title",
+          "default": "PhD"
+        },
+        {
+          "type": "textarea",
+          "id": "p1_quote",
+          "label": "Quote",
+          "default": "\"I use Inositol to promote regular cycles, weight and hormonal balance.\""
+        },
+        {
+          "type": "header",
+          "content": "Practitioner 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "p2_photo",
+          "label": "Photo (square)"
+        },
+        {
+          "type": "text",
+          "id": "p2_name",
+          "label": "Name",
+          "default": "Hillary Wright"
+        },
+        {
+          "type": "text",
+          "id": "p2_role",
+          "label": "Credential / title",
+          "default": "RD · Boston IVF"
+        },
+        {
+          "type": "textarea",
+          "id": "p2_quote",
+          "label": "Quote",
+          "default": "\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\""
+        },
+        {
+          "type": "header",
+          "content": "Practitioner 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "p3_photo",
+          "label": "Photo (square)"
+        },
+        {
+          "type": "text",
+          "id": "p3_name",
+          "label": "Name",
+          "default": "Leslie Kutcha"
+        },
+        {
+          "type": "text",
+          "id": "p3_role",
+          "label": "Credential / title",
+          "default": "FDN-P"
+        },
+        {
+          "type": "textarea",
+          "id": "p3_quote",
+          "label": "Quote",
+          "default": "\"Inositol is a simple, well-tolerated daily foundation I trust.\""
+        },
+        {
+          "type": "header",
+          "content": "Practitioner 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "p4_photo",
+          "label": "Photo (square)"
+        },
+        {
+          "type": "text",
+          "id": "p4_name",
+          "label": "Name",
+          "default": "Tina Kozman"
+        },
+        {
+          "type": "text",
+          "id": "p4_role",
+          "label": "Credential / title",
+          "default": "CNP"
+        },
+        {
+          "type": "textarea",
+          "id": "p4_quote",
+          "label": "Quote",
+          "default": "\"Supporting your metabolism is the key to balanced hormones, mood, and energy.\""
+        },
+        {
+          "type": "header",
+          "content": "Practitioner 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "p5_photo",
+          "label": "Photo (square)"
+        },
+        {
+          "type": "text",
+          "id": "p5_name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "p5_role",
+          "label": "Credential / title"
+        },
+        {
+          "type": "textarea",
+          "id": "p5_quote",
+          "label": "Quote"
+        },
+        {
+          "type": "header",
+          "content": "Practitioner 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "p6_photo",
+          "label": "Photo (square)"
+        },
+        {
+          "type": "text",
+          "id": "p6_name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "p6_role",
+          "label": "Credential / title"
+        },
+        {
+          "type": "textarea",
+          "id": "p6_quote",
+          "label": "Quote"
+        }
+      ]
+    },
+    {
+      "type": "trust_strip",
+      "name": "Trust strip",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Section headline"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline text",
+          "default": "Every batch, independently verified"
+        },
+        {
+          "type": "range",
+          "id": "headline_size",
+          "label": "Headline size",
+          "min": 12,
+          "max": 34,
+          "step": 1,
+          "unit": "px",
+          "default": 21
+        },
+        {
+          "type": "select",
+          "id": "headline_weight",
+          "label": "Headline weight",
+          "default": "600",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ]
+        },
+        {
+          "type": "color",
+          "id": "headline_color",
+          "label": "Headline color",
+          "info": "On the gradient-background style the headline is white by default.",
+          "default": "#14307C"
+        },
+        {
+          "type": "header",
+          "content": "Design"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Card style",
+          "default": "white",
+          "options": [
+            {
+              "value": "white",
+              "label": "White box, gradient border"
+            },
+            {
+              "value": "gradient",
+              "label": "Gradient background"
+            }
+          ]
+        },
+        {
+          "type": "checkbox",
+          "id": "center_all",
+          "label": "Center-align everything",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "frame_flat",
+          "label": "Remove frame padding & shadow",
+          "info": "Drops the gradient border padding and the drop shadow.",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Badge title color",
+          "info": "On the gradient-background style badge titles are white.",
+          "default": "#14307C"
+        },
+        {
+          "type": "color",
+          "id": "sub_color",
+          "label": "Badge sub-label color",
+          "default": "#42579E"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 480,
+          "max": 1100,
+          "step": 20,
+          "unit": "px",
+          "default": 720
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding top",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "min": 0,
+          "max": 80,
+          "step": 4,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "header",
+          "content": "Badge 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "b1_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b1_icon",
+          "label": "Icon",
+          "default": "expert",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b1_title",
+          "label": "Title",
+          "default": "Expert Reviewed"
+        },
+        {
+          "type": "text",
+          "id": "b1_sub",
+          "label": "Sub-label",
+          "default": "RD • MS • PhD"
+        },
+        {
+          "type": "richtext",
+          "id": "b1_tip",
+          "label": "Info tooltip",
+          "default": "<p>Bodology's formula and label are reviewed by qualified professionals — including a <strong>Registered Dietitian (RD)</strong> and advisors holding <strong>MS and PhD</strong> credentials — so the ingredients, doses, and claims are accurate and responsibly stated.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "b2_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b2_icon",
+          "label": "Icon",
+          "default": "flask",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b2_title",
+          "label": "Title",
+          "default": "Third Party Tested"
+        },
+        {
+          "type": "text",
+          "id": "b2_sub",
+          "label": "Sub-label",
+          "default": "ISO/IEC 17025 Accredited Labs"
+        },
+        {
+          "type": "richtext",
+          "id": "b2_tip",
+          "label": "Info tooltip",
+          "default": "<p>Bodology is tested independently — we don't grade our own work. Every production batch is sent to <strong>Certified Laboratories</strong>, an ISO/IEC 17025-accredited testing lab, and analyzed against written specifications before it can be sold. ISO/IEC 17025 is the international standard for laboratory competence and data integrity.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "b3_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b3_icon",
+          "label": "Icon",
+          "default": "fingerprint",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b3_title",
+          "label": "Title",
+          "default": "Identity Verified"
+        },
+        {
+          "type": "text",
+          "id": "b3_sub",
+          "label": "Sub-label",
+          "default": "HPLC Analytical Testing"
+        },
+        {
+          "type": "richtext",
+          "id": "b3_tip",
+          "label": "Info tooltip",
+          "default": "<p>We use <strong>HPLC analytical testing</strong> to confirm the identity of each active — verifying that what's in the tub is genuinely myo-inositol and D-chiro-inositol, not a substitute or mislabeled material.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "b4_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b4_icon",
+          "label": "Icon",
+          "default": "chart",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b4_title",
+          "label": "Title",
+          "default": "Potency Confirmed"
+        },
+        {
+          "type": "text",
+          "id": "b4_sub",
+          "label": "Sub-label",
+          "default": "Myo & D-Chiro Inositol Verified"
+        },
+        {
+          "type": "richtext",
+          "id": "b4_tip",
+          "label": "Info tooltip",
+          "default": "<p>HPLC confirms that each batch contains <strong>myo-inositol and D-chiro-inositol at the labeled amounts</strong> — and that the 40:1 ratio is correct in the finished powder, not only in the formula. Because the two are isomers, HPLC separates and measures each one individually.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 5"
+        },
+        {
+          "type": "checkbox",
+          "id": "b5_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b5_icon",
+          "label": "Icon",
+          "default": "shield",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b5_title",
+          "label": "Title",
+          "default": "Heavy Metal Tested"
+        },
+        {
+          "type": "text",
+          "id": "b5_sub",
+          "label": "Sub-label",
+          "default": "Arsenic • Cadmium • Mercury • Lead"
+        },
+        {
+          "type": "richtext",
+          "id": "b5_tip",
+          "label": "Info tooltip",
+          "default": "<p>Every batch is tested for heavy metals by <strong>ICP-MS</strong> — arsenic, cadmium, mercury, and lead — and must fall within established safety limits before release. ICP-MS detects these metals down to trace levels, well below the limits set for dietary supplements.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 6"
+        },
+        {
+          "type": "checkbox",
+          "id": "b6_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b6_icon",
+          "label": "Icon",
+          "default": "microbe",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b6_title",
+          "label": "Title",
+          "default": "Microbial Safety Tested"
+        },
+        {
+          "type": "text",
+          "id": "b6_sub",
+          "label": "Sub-label",
+          "default": "USP <61> & USP <62>"
+        },
+        {
+          "type": "richtext",
+          "id": "b6_tip",
+          "label": "Info tooltip",
+          "default": "<p>Every batch is screened for microbial safety: total aerobic count, total yeast and mold, and the absence of specified pathogens — <strong>E. coli, Salmonella, Staphylococcus aureus, and Pseudomonas aeruginosa</strong>. A batch only ships if it meets every limit.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 7"
+        },
+        {
+          "type": "checkbox",
+          "id": "b7_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b7_icon",
+          "label": "Icon",
+          "default": "ratio",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b7_title",
+          "label": "Title",
+          "default": "Clinically Studied Ratio"
+        },
+        {
+          "type": "text",
+          "id": "b7_sub",
+          "label": "Sub-label",
+          "default": "40:1 Myo : D-Chiro"
+        },
+        {
+          "type": "richtext",
+          "id": "b7_tip",
+          "label": "Info tooltip",
+          "default": "<p>The <strong>40:1 ratio</strong> of myo-inositol to D-chiro-inositol is the ratio used in published clinical research. We confirm this ratio in the finished powder by HPLC, so it matches the studied formulation.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 8"
+        },
+        {
+          "type": "checkbox",
+          "id": "b8_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b8_icon",
+          "label": "Icon",
+          "default": "pin",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b8_title",
+          "label": "Title",
+          "default": "Made in USA"
+        },
+        {
+          "type": "text",
+          "id": "b8_sub",
+          "label": "Sub-label",
+          "default": "Final Manufacturing & Packaging"
+        },
+        {
+          "type": "richtext",
+          "id": "b8_tip",
+          "label": "Info tooltip",
+          "info": "Use 'manufactured in the United States' only if actives are all/virtually-all US-sourced.",
+          "default": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
+        }
+      ]
     }
   ],
   "presets": [
