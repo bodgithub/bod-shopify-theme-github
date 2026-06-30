@@ -17,33 +17,44 @@
         "menu_hJbMPp": {
           "type": "menu",
           "settings": {
-            "column_size": "small",
+            "column_size": "medium",
             "title": "SHOP",
             "menu": "footer-shop"
           }
         },
         "d402e6d5-9d79-43ad-900a-cfaddc6cd9f8": {
           "type": "menu",
+          "disabled": true,
           "settings": {
             "column_size": "small",
             "title": "LEARN MORE",
-            "menu": "footer-learn-more"
+            "menu": ""
           }
         },
         "055d0c35-3f11-4f51-9e3d-eab55edb7a9b": {
           "type": "menu",
+          "disabled": true,
           "settings": {
             "column_size": "small",
             "title": "COMMUNITY",
-            "menu": "footer-about"
+            "menu": ""
           }
         },
         "menu_fNNAW6": {
           "type": "menu",
           "settings": {
-            "column_size": "small",
-            "title": "CONTACT",
+            "column_size": "large",
+            "title": "MORE INFO",
             "menu": "footer-contact"
+          }
+        },
+        "menu_eKLrha": {
+          "type": "menu",
+          "disabled": true,
+          "settings": {
+            "column_size": "small",
+            "title": "",
+            "menu": ""
           }
         },
         "2ab8345e-9f63-4c80-b028-f4edae3633b5": {
@@ -100,6 +111,7 @@
         "d402e6d5-9d79-43ad-900a-cfaddc6cd9f8",
         "055d0c35-3f11-4f51-9e3d-eab55edb7a9b",
         "menu_fNNAW6",
+        "menu_eKLrha",
         "2ab8345e-9f63-4c80-b028-f4edae3633b5",
         "custom_liquid_qpWa4N",
         "custom_liquid_X4RePC",
