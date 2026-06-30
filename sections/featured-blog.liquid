@@ -6,6 +6,7 @@
 	assign mobile_swipe = section.settings.mobile_swipe
 	assign section_blog = section.settings.blog
 	assign post_limit = section.settings.post_limit
+	assign filter_experts = section.settings.filter_experts
 	assign show_view_all = section.settings.show_view_all
 	assign show_date = section.settings.show_date
 	assign show_excerpt = section.settings.show_excerpt
@@ -38,10 +39,14 @@
 			{% render 'section-header', section_heading: section_heading, section_description: section_description, section_heading_button_blog: section_heading_button_blog, marker_color: marker_color, marker_style: marker_style %}
 			<div class="row articles no-padding">
 				{% if section_blog and blogs[section_blog].articles.size > 0 %}
-		      {% for article in blogs[section_blog].articles limit: post_limit %}
+					{%- assign shown_count = 0 -%}
+		      {% for article in blogs[section_blog].articles %}
+					{%- if filter_experts and article.metafields.custom.experts.value == blank -%}{%- continue -%}{%- endif -%}
+					{%- if shown_count >= post_limit -%}{%- break -%}{%- endif -%}
 		      <div class="small-12 {{ columns_class }} columns">
 						{% render 'blog-post', article: article, show_date: show_date, show_excerpt: show_excerpt, image_ratio: image_ratio, show_read_more: show_read_more %}
 		      </div>
+					{%- assign shown_count = shown_count | plus: 1 -%}
 		      {% endfor %}
 				{% else %}
 					{% assign placeholder_array = "1,2,3,4,5,6" | split: ',' %}
@@ -103,6 +108,13 @@
          "id": "blog",
          "label": "Blog"
       },
+			{
+				"type": "checkbox",
+				"id": "filter_experts",
+				"default": false,
+				"label": "Only show articles with an Expert",
+				"info": "Hides articles that don't have the custom.experts metafield set."
+			},
 			{
 	      "type": "range",
 	      "id": "post_limit",
