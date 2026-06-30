@@ -179,7 +179,7 @@
           "type": "plan_selector",
           "settings": {
             "style": "expanded",
-            "border_width": 3,
+            "border_width": 2,
             "max_width": 720,
             "accent_color": "#1b3def",
             "title_color": "#14307c",
@@ -893,6 +893,7 @@
         "full_bleed": true,
         "scroll_pin": false,
         "all_label": "All",
+        "default_tag": "",
         "card_width": 272,
         "gradient_coverage": 75,
         "pad_top": 120,
