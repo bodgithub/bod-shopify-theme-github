@@ -1246,14 +1246,14 @@
           "type": "text",
           "settings": {
             "text": "<h1>Real-life <em>inositol</em> results</h1>",
-            "custom_liquid": "<div class=\"reviews\"></div>",
+            "custom_liquid": "",
             "size": "text-size-regular"
           }
         },
         "custom_liquid_MYYJtk": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<a class=\"junip-review-btn\" href=\"https://junip.co/forms/bodology\" target=\"_top\">Leave a review</a>\n\n<style>\n  .junip-review-btn {\n    display: inline-block;\n    box-sizing: border-box;\n    cursor: pointer;\n    width: 200px;\n    text-align: center;\n    text-transform: uppercase;\n    text-decoration: none;\n    color: #fff !important;\n    background: linear-gradient(#0F2ED0, #0A95EF);\n    font-weight: 600;\n    font-size: 15px;\n    letter-spacing: 1px;\n    padding: 12px 18px;\n    border: 0px solid #000;\n    border-radius: 50px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;\n  }\n</style>"
+            "custom_liquid": "<a class=\"junip-review-btn\" id=\"reviews\" href=\"https://junip.co/forms/bodology\" target=\"_top\">Leave a review</a>\n\n<style>\n  .junip-review-btn {\n    display: inline-block;\n    box-sizing: border-box;\n    cursor: pointer;\n    width: 200px;\n    text-align: center;\n    text-transform: uppercase;\n    text-decoration: none;\n    color: #fff !important;\n    background: linear-gradient(#0F2ED0, #0A95EF);\n    font-weight: 600;\n    font-size: 15px;\n    letter-spacing: 1px;\n    padding: 12px 18px;\n    border: 0px solid #000;\n    border-radius: 50px;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;\n  }\n</style>"
           }
         }
       },
