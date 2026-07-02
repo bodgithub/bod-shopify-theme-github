@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "spacer_aXtcic": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 15,
+        "spacer_desktop": 40,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {}
@@ -124,6 +134,7 @@
     }
   },
   "order": [
+    "spacer_aXtcic",
     "main",
     "rich_text_YUNjJ8",
     "1728927113bb2612d3",
