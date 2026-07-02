@@ -16,31 +16,24 @@
     "rich_text_YUNjJ8": {
       "type": "rich-text",
       "blocks": {
-        "custom_liquid_bGTMBH": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"font-size: 2.8em; font-weight:900; padding-bottom: 40px;\"><em>Simple science,<br>real results</em>\n</div>"
-          }
-        },
         "text_nePwJg": {
           "type": "text",
           "settings": {
-            "text": "<p>Real reviews and experiences from our community.</p>",
+            "text": "{{ page.content }}",
             "custom_liquid": "",
             "size": "text-size-small"
           }
         }
       },
       "block_order": [
-        "custom_liquid_bGTMBH",
         "text_nePwJg"
       ],
       "disabled": true,
       "settings": {
         "text_width": "large",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#f9f9f9",
+        "text_position": "left",
+        "text_alignment": "left",
+        "color_bg": "#FFFFFF",
         "bgcolor": "rgba(0,0,0,0)",
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
