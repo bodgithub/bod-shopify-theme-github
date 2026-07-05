@@ -9,12 +9,12 @@
  */
 {
   "sections": {
-    "spacer_aXtcic": {
+    "spacer_PUgq9i": {
       "type": "spacer",
       "name": "Spacer",
       "settings": {
-        "spacer_mobile": 15,
-        "spacer_desktop": 40,
+        "spacer_mobile": 20,
+        "spacer_desktop": 35,
         "border_separator": false,
         "border_separator_full": false
       }
@@ -22,35 +22,6 @@
     "main": {
       "type": "main-page",
       "settings": {}
-    },
-    "rich_text_YUNjJ8": {
-      "type": "rich-text",
-      "blocks": {
-        "text_nePwJg": {
-          "type": "text",
-          "settings": {
-            "text": "{{ page.content }}",
-            "custom_liquid": "",
-            "size": "text-size-small"
-          }
-        }
-      },
-      "block_order": [
-        "text_nePwJg"
-      ],
-      "disabled": true,
-      "settings": {
-        "text_width": "large",
-        "text_position": "left",
-        "text_alignment": "left",
-        "color_bg": "#FFFFFF",
-        "bgcolor": "rgba(0,0,0,0)",
-        "color_heading": "#1B3DEF",
-        "color_text": "#1b3def",
-        "color_links": "#1b3def",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
-      }
     },
     "1728927113bb2612d3": {
       "type": "apps",
@@ -99,45 +70,16 @@
         "junip_product_reviews_ugc_junip_review_carousel_REghE4",
         "junip_product_reviews_ugc_junip_reviews_8WBcAN"
       ],
+      "disabled": true,
       "custom_css": [
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
-    },
-    "rich_text_AnwrzA": {
-      "type": "rich-text",
-      "blocks": {
-        "text_nQ4gNy": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Disclaimer: </strong>These reviews reflect individual experiences and results may vary.</p>",
-            "custom_liquid": "",
-            "size": "text-size-small"
-          }
-        }
-      },
-      "block_order": [
-        "text_nQ4gNy"
-      ],
-      "settings": {
-        "text_width": "large",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "rgba(0,0,0,0)",
-        "bgcolor": "#f8f4f3",
-        "color_heading": "#1B3DEF",
-        "color_text": "#777777",
-        "color_links": "#1b3def",
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
     }
   },
   "order": [
-    "spacer_aXtcic",
+    "spacer_PUgq9i",
     "main",
-    "rich_text_YUNjJ8",
-    "1728927113bb2612d3",
-    "rich_text_AnwrzA"
+    "1728927113bb2612d3"
   ]
 }
