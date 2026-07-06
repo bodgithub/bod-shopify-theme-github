@@ -350,7 +350,7 @@
     display: grid;
     align-items: start;
     grid-gap: clamp(30px, 5%, 40px);
-    grid-template-columns: minmax(40%, 700px) 462px !important;
+    grid-template-columns: minmax(40%, 700px) var(--product-info-col, 462px) !important;
   padding-top: 50px; } 
       }
 
@@ -482,6 +482,33 @@
         left: 20px; }
       .product-gallery-container .product-image-container .product-images .flickity-nav.flickity-next {
         right: 20px; }
+
+      /* Semi-circle carousel arrows attached to the image edges */
+      .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav {
+        opacity: 1;
+        width: 27px;
+        height: 56px;
+        margin-top: -28px;
+        color: var(--color-body, #2c2d2e);
+        background: var(--color-drawer-bg, #fff);
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
+        transition: background 0.2s ease, color 0.2s ease; }
+        .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav svg {
+          width: 9px;
+          height: auto; }
+        .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav.flickity-prev {
+          left: 0;
+          right: auto;
+          border-radius: 0 28px 28px 0; }
+        .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav.flickity-next {
+          right: 0;
+          left: auto;
+          border-radius: 28px 0 0 28px; }
+        .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav:hover {
+          background: #1b3def;
+          color: #fff; }
+        .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav:hover svg {
+          transform: none; }
   @media only screen and (min-width: 768px) {
     .product-gallery-container.thumbnails-bottom {
       padding-left: 0;

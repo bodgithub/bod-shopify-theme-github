@@ -31,11 +31,11 @@
 <div class="thb-product-detail product">
   <div class="row">
 		<div class="small-12 columns">
-			<div class="product-grid-container">
+			<div class="product-grid-container" style="--product-info-col: {{ section.settings.desktop_info_width | default: 462 }}px;">
 				<div class="product-gallery-sticky">
 			    <div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
 						<div class="product-image-container">
-			        <product-slider id="Product-Slider" class="product-images static-dots" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
+			        <product-slider id="Product-Slider" class="product-images static-dots{% if section.settings.carousel_arrow_style == 'semicircle' %} product-images--semicircle-arrows{% endif %}" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
 								{%- if featured_media != null -%}
 		              {%- liquid
 										assign image_index = image_index | plus: 1
@@ -60,8 +60,8 @@
 									{%- endunless -%}
 			          {%- endfor -%}
 								{%- if product.media.size > 1 -%}
-								<div class="flickity-nav flickity-prev" tabindex="0">{%- render 'svg-icons' with 'carousel-prev' -%}</div>
-								<div class="flickity-nav flickity-next" tabindex="0">{%- render 'svg-icons' with 'carousel-next' -%}</div>
+								<div class="flickity-nav flickity-prev" tabindex="0">{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-prev' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-prev' -%}{%- endif -%}</div>
+								<div class="flickity-nav flickity-next" tabindex="0">{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-next' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-next' -%}{%- endif -%}</div>
 								{%- endif -%}
 			        </product-slider>
 							<scroll-shadow>
@@ -195,6 +195,21 @@
 		},
 		{
 			"type": "header",
+			"content": "Desktop layout"
+		},
+		{
+			"type": "range",
+			"id": "desktop_info_width",
+			"label": "Description column width",
+			"info": "Desktop only. Sets the width of the product information column; the photos fill the remaining space.",
+			"min": 360,
+			"max": 560,
+			"step": 2,
+			"unit": "px",
+			"default": 462
+		},
+		{
+			"type": "header",
 			"content": "Media"
 		},
 		{
@@ -240,6 +255,17 @@
 			],
 			"default": "adapt",
 			"label": "Image ratio"
+		},
+		{
+			"type": "select",
+			"id": "carousel_arrow_style",
+			"label": "Carousel arrow style",
+			"info": "Semi-circle attaches rounded arrows to the left and right image edges; they turn blue on hover.",
+			"default": "circle",
+			"options": [
+				{ "value": "circle", "label": "Circle (default)" },
+				{ "value": "semicircle", "label": "Semi-circle on edges" }
+			]
 		},
 		{
       "type": "checkbox",
