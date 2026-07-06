@@ -483,7 +483,7 @@
       .product-gallery-container .product-image-container .product-images .flickity-nav.flickity-next {
         right: 20px; }
 
-      /* Rounded 'tab' carousel arrows extended off the image edges */
+      /* Rounded 'tab' carousel arrows: flat/sharp edge flush to the image, rounded side bulging inward */
       .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav {
         opacity: 1;
         width: 44px;
@@ -491,19 +491,18 @@
         margin-top: -26px;
         color: var(--color-body, #2c2d2e);
         background: var(--color-drawer-bg, #fff);
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
         transition: background 0.2s ease, color 0.2s ease; }
         .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav svg {
           width: 11px;
           height: auto; }
         .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav.flickity-prev {
-          left: -16px;
+          left: 0;
           right: auto;
-          border-radius: 26px 6px 6px 26px; }
+          border-radius: 0 26px 26px 0; }
         .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav.flickity-next {
-          right: -16px;
+          right: 0;
           left: auto;
-          border-radius: 6px 26px 26px 6px; }
+          border-radius: 26px 0 0 26px; }
         .product-gallery-container .product-image-container .product-images.product-images--semicircle-arrows .flickity-nav:hover {
           background: #1b3def;
           color: #fff; }
