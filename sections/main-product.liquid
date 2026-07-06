@@ -28,10 +28,17 @@
   <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'product-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+{%- style -%}
+  @media only screen and (min-width: 1068px) {
+    #shopify-section-{{ section.id }} .product-grid-container {
+      grid-template-columns: minmax(40%, 700px) {{ section.settings.desktop_info_width | default: 462 }}px !important;
+    }
+  }
+{%- endstyle -%}
 <div class="thb-product-detail product">
   <div class="row">
 		<div class="small-12 columns">
-			<div class="product-grid-container" style="--product-info-col: {{ section.settings.desktop_info_width | default: 462 }}px;">
+			<div class="product-grid-container">
 				<div class="product-gallery-sticky">
 			    <div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
 						<div class="product-image-container">
