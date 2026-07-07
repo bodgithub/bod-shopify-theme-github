@@ -38,9 +38,22 @@
 <div class="thb-product-detail product">
   <div class="row">
 		<div class="small-12 columns">
-			<div class="product-grid-container">
+			<div class="product-grid-container{% if section.settings.media_layout == 'stacked' %} product-media-layout--stacked{% endif %}">
 				<div class="product-gallery-sticky">
-			    <div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
+			    {%- if section.settings.media_layout == 'stacked' -%}
+			    <div class="product-gallery-container product-gallery-container--stacked" id="MediaGallery-{{ section.id }}">
+					<div class="product-image-container">
+						<div class="product-images product-images--stacked">
+							{%- for media in product.media -%}
+							<div class="product-stacked-gallery__item{% if forloop.first %} product-stacked-gallery__item--hero{% endif %}">
+								{%- render 'product-media-stacked', media: media, sizes: sizes, section: section, priority: forloop.first, display_captions: display_captions -%}
+							</div>
+							{%- endfor -%}
+						</div>
+					</div>
+			    </div>
+{%- else -%}
+<div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
 						<div class="product-image-container">
 			        <product-slider id="Product-Slider" class="product-images static-dots{% if section.settings.carousel_arrow_style == 'semicircle' %} product-images--semicircle-arrows{% endif %}" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
 								{%- if featured_media != null -%}
@@ -85,6 +98,7 @@
 							</scroll-shadow>
 						</div>
 			    </div>
+{%- endif -%}
 					{%- assign info_boxes = section.blocks | where: "type", "info_box" -%}
 					{%- if info_boxes.size > 0 -%}
 					{{- 'info-box.css' | asset_url | stylesheet_tag -}}
@@ -222,6 +236,17 @@
 		{
 			"type": "paragraph",
 			"content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+		},
+		{
+			"type": "select",
+			"id": "media_layout",
+			"label": "Media layout",
+			"info": "Carousel: one image with thumbnails. Stacked: a large hero image with a grid of the remaining images below (no carousel). Thumbnail position only applies to Carousel.",
+			"default": "carousel",
+			"options": [
+				{ "value": "carousel", "label": "Carousel + thumbnails" },
+				{ "value": "stacked", "label": "Stacked (large image + grid)" }
+			]
 		},
 		{
 			"type": "select",
