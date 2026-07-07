@@ -37,6 +37,9 @@
 	elsif media_aspect_ratio == 'landscape'
 		assign sizes = '160x95'
 	endif
+	if media_layout == 'stacked'
+		assign sizes = '300x300,600x600'
+	endif
 -%}
 <div
   id="Thumb-{{ section.id }}-{{ media.id }}"

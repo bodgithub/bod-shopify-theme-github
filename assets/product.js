@@ -483,6 +483,7 @@ if (!customElements.get('product-slider')) {
       this.next_button = this.querySelector('.flickity-next');
       this.options = {
         wrapAround: true,
+        cellAlign: 'left',
         pageDots: true,
         contain: true,
         adaptiveHeight: true,
