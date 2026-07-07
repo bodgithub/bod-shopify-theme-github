@@ -514,11 +514,16 @@
 
 /* ===== Stacked media layout: hero carousel + 2-col grid of the other photos ===== */
 @media only screen and (min-width: 1068px) {
-  /* Gallery scrolls, then sticks at its bottom until the info column finishes scrolling */
-  .product-media-layout--stacked .product-gallery-sticky {
-    position: sticky;
-    top: auto;
-    bottom: 20px; }
+  /* Gallery scrolls, then sticks at its bottom until the info column finishes scrolling.
+     The second selector beats the base ".header-sticky--active .product-gallery-sticky"
+     rule (which would otherwise force a top offset once the header goes sticky). */
+  .product-media-layout--stacked .product-gallery-sticky,
+  .header-sticky--active .product-media-layout--stacked .product-gallery-sticky {
+    position: sticky !important;
+    top: auto !important;
+    bottom: 20px !important;
+    left: auto;
+    align-self: start; }
   /* Full-width hero (drop the thumbnail gutter/padding) */
   .product-media-layout--stacked .product-gallery-container,
   .product-media-layout--stacked .product-gallery-container .product-image-container {
