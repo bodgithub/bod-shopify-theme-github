@@ -196,6 +196,7 @@
       assign plk = 'p' | append: i | append: '_plan'
       assign qk = 'p' | append: i | append: '_qty'
       assign gaddk = 'p' | append: i | append: '_giftadd'
+      assign hik = 'p' | append: i | append: '_hero_image'
       assign ppk = 'p' | append: i | append: '_price_per'
       assign bik = 'p' | append: i | append: '_bill'
       assign srk = 'p' | append: i | append: '_serving'
@@ -209,7 +210,7 @@
     {%- if i == ps_default -%}{%- assign first = true -%}{%- endif -%}
     {%- if style == 'expanded' -%}
     <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}">
+         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}" data-ps-hero="{{ s[hik] }}">
       <div class="pc-card__in">
         {%- if s[blk] != blank and s[btk] != 'none' -%}<span class="pc-ribbon">{{ s[blk] }}</span>{%- endif -%}
         <div class="pc-pad">
@@ -293,7 +294,7 @@
     </div>
     {%- else -%}
     <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}">
+         data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}" data-ps-hero="{{ s[hik] }}">
       <div class="ps-card__frame">
         {%- if s[btk] != 'none' and s[blk] != blank -%}
           <div class="ps-banner{% if s[btk] == 'value' %} ps-banner--value{% endif %}">
@@ -380,6 +381,22 @@
       window.history.replaceState({}, '', url.toString());
     } catch(e){}
   }
+  function jumpHero(c){
+    if(!c) return;
+    var idx = parseInt(c.getAttribute('data-ps-hero'), 10);
+    if(!idx || idx < 1) return;
+    try {
+      var detail = document.querySelector('.thb-product-detail');
+      if(!detail) return;
+      var gallery = detail.querySelector('.product-images');
+      if(gallery && typeof Flickity !== 'undefined'){
+        var flkty = Flickity.data(gallery);
+        if(flkty){ flkty.select(idx - 1); return; }
+      }
+      var thumbs = detail.querySelectorAll('.product-thumbnail-container .product-thumbnail');
+      if(thumbs[idx - 1]){ thumbs[idx - 1].click(); }
+    } catch(e){}
+  }
   function renderAndOpenCart(response){
     try {
       [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
@@ -405,7 +422,7 @@
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
     c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
-    err.classList.remove('is-shown'); syncSub(); updateURL(c);
+    err.classList.remove('is-shown'); syncSub(); updateURL(c); jumpHero(c);
   }
   cards.forEach(function(c){
     c.addEventListener('click', function(){ select(c); });
@@ -426,6 +443,19 @@
       })[0];
       if(match){ select(match); }
     } catch(e){}
+  })();
+  // Reflect the selected plan's hero image once the gallery/Flickity is ready
+  (function(){
+    var c = selected();
+    if(!c || !c.getAttribute('data-ps-hero')) return;
+    var tries = 0;
+    (function attempt(){
+      var detail = document.querySelector('.thb-product-detail');
+      var gallery = detail && detail.querySelector('.product-images');
+      var ready = gallery && typeof Flickity !== 'undefined' && Flickity.data(gallery);
+      if(ready){ jumpHero(c); }
+      else if(tries++ < 30){ setTimeout(attempt, 150); }
+    })();
   })();
   // Personalize my protocol
   var proto = root.querySelector('[data-ps-protocol]');

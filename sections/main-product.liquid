@@ -531,6 +531,8 @@
         { "type": "checkbox", "id": "swap_plans", "label": "Swap Plan 1 and Plan 2 positions", "default": false },
         { "type": "select", "id": "default_plan", "label": "Plan selected by default", "default": "1", "options": [ { "value": "1", "label": "Plan 1" }, { "value": "2", "label": "Plan 2" } ] },
         { "type": "checkbox", "id": "plan_url_sync", "label": "Link the selected plan in the URL (shareable)", "info": "Adds ?variant & ?selling_plan so a shared link opens on that plan.", "default": true },
+        { "type": "number", "id": "p1_hero_image", "label": "Plan 1 · gallery image on select (1-based)", "info": "When Plan 1 is selected, jump the product gallery to this image number. Blank = no change." },
+        { "type": "number", "id": "p2_hero_image", "label": "Plan 2 · gallery image on select (1-based)", "info": "When Plan 2 is selected, jump the product gallery to this image number. Blank = no change." },
         { "type": "header", "content": "Colours" },
         { "type": "color", "id": "accent_color", "label": "Accent (blue)", "default": "#1B3DEF" },
         { "type": "color", "id": "title_color", "label": "Title ink", "default": "#14307C" },

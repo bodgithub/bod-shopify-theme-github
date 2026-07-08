@@ -161,16 +161,17 @@
         "custom_liquid_f3BGqg"
       ],
       "settings": {
-        "enable_sticky_add_to_cart": true,
-        "show_taxes_included": true,
+        "enable_sticky_add_to_cart": false,
+        "show_taxes_included": false,
         "thumbnail_position": "bottom",
         "carousel_arrow_style": "semicircle",
+        "desktop_info_width": 462,
         "media_layout": "stacked",
         "media_aspect_ratio": "square",
-        "display_captions": true,
-        "hide_variants": false,
+        "display_captions": false,
+        "hide_variants": true,
         "lightbox": false,
-        "enable_video_looping": false
+        "enable_video_looping": true
       }
     },
     "product-recommendations": {
