@@ -612,7 +612,11 @@ if (!customElements.get('product-slider')) {
         el.classList.remove('is-initial-selected');
       });
       thumbnail.classList.add('is-initial-selected');
-      this.flkty.select(index);
+      // Select the matching slide by media id (not by position) so it works even
+      // when some thumbnails are hidden (e.g. the active tile in the stacked grid).
+      var slide = thumbnail.id ? this.querySelector('#' + thumbnail.id.replace('Thumb-', 'Slide-')) : null;
+      if (slide) { this.flkty.selectCell(slide); }
+      else { this.flkty.select(index); }
     }
     setDraggable(draggable) {
       this.flkty.options.draggable = draggable;
