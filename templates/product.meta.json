@@ -274,7 +274,7 @@
           }
         },
         "reelup_shoppable_videos_reels_reelup_product_slider_azq4Ac": {
-          "type": "shopify://apps/reelup-shoppable-videos/blocks/reelup_product_slider/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
+          "type": "shopify://apps/reelup-shoppable-videos-reels/blocks/reelup_product_slider/a8ec9e4d-d192-44f7-9c23-595f9ee7dd5b",
           "settings": {}
         }
       },
@@ -310,10 +310,10 @@
       "settings": {
         "enable_sticky_add_to_cart": false,
         "show_taxes_included": false,
-        "thumbnail_position": "bottom",
-        "carousel_arrow_style": "semicircle",
         "media_layout": "stacked",
+        "thumbnail_position": "bottom",
         "media_aspect_ratio": "square",
+        "carousel_arrow_style": "semicircle",
         "display_captions": false,
         "hide_variants": true,
         "lightbox": true,
