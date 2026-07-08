@@ -17,6 +17,12 @@ if (!customElements.get('theme-footer')) {
       if (!this.animations_enabled) {
         return;
       }
+      // The footer reveal clips #main-content, which disables position:sticky for
+      // descendants. Skip it when a stacked product gallery (which relies on a
+      // sticky gallery column) is present so the sticky behaviour works.
+      if (document.querySelector('.product-media-layout--stacked')) {
+        return;
+      }
       this.content = document.getElementById('main-content');
       this.wrapper = document.getElementById('wrapper');
       this.footer_bg = window.getComputedStyle(document.documentElement).getPropertyValue('--color-footer-bg');
