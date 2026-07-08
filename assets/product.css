@@ -519,9 +519,9 @@
      rule (which would otherwise force a top offset once the header goes sticky). */
   .product-media-layout--stacked .product-gallery-sticky,
   .header-sticky--active .product-media-layout--stacked .product-gallery-sticky {
-    position: sticky !important;
-    top: auto !important;
-    bottom: 20px !important;
+    position: sticky;
+    top: 20px;
+    bottom: auto;
     left: auto;
     align-self: start; }
   /* Full-width hero (drop the thumbnail gutter/padding) */

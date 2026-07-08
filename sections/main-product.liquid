@@ -181,6 +181,42 @@
   {{ product | structured_data }}
 </script>
 
+{%- if section.settings.media_layout == 'stacked' -%}
+<script>
+(function(){
+  var section = document.getElementById('shopify-section-{{ section.id }}');
+  if (!section) return;
+  var gallery = section.querySelector('.product-gallery-sticky');
+  if (!gallery) return;
+  var mq = window.matchMedia('(min-width: 1068px)');
+  function headerH(){
+    var v = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
+    return parseInt(v, 10) || 0;
+  }
+  function update(){
+    if (mq.matches) {
+      var gh = gallery.offsetHeight, vh = window.innerHeight, top;
+      if (gh + 40 <= vh) {
+        top = headerH() + 20;      // gallery fits on screen -> pin at the top
+      } else {
+        top = vh - gh - 20;        // gallery taller than screen -> scroll through, then pin its bottom
+      }
+      gallery.style.position = 'sticky';
+      gallery.style.top = top + 'px';
+      gallery.style.bottom = 'auto';
+    } else {
+      gallery.style.position = '';
+      gallery.style.top = '';
+      gallery.style.bottom = '';
+    }
+  }
+  update();
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+  if (window.ResizeObserver) { new ResizeObserver(update).observe(gallery); }
+})();
+</script>
+{%- endif -%}
 {% schema %}
 {
   "name": "Product information",
