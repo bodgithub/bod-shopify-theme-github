@@ -224,11 +224,11 @@
             <div class="pc-price-row"><div class="pc-price"><span class="pc-price__now">{{ s[pk] }}</span>{%- if s[cpk] != blank -%}<span class="pc-price__was">{{ s[cpk] }}</span>{%- endif -%}{%- if s[ppk] != blank -%}<span class="pc-price__per">{{ s[ppk] }}</span>{%- endif -%}</div></div>
             {%- if s[bik] != blank -%}<p class="pc-bill">{{ s[bik] }}</p>{%- endif -%}
             {%- if s[spk] != blank or s[srk] != blank -%}<div class="pc-specrow">{%- if s[spk] != blank -%}<div class="ps-spec" style="margin:0;">{{ s[spk] }}</div>{%- endif -%}{%- if s[srk] != blank -%}<span class="pc-serving">{{ s[srk] }}</span>{%- endif -%}</div>{%- endif -%}
-            <hr class="pc-hr">
-            {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
-            <ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
             {%- assign has_gift = false -%}
             {%- for g in (1..5) -%}{%- assign gnk = 'p' | append: i | append: '_gift' | append: g | append: '_name' -%}{%- if s[gnk] != blank -%}{%- assign has_gift = true -%}{%- endif -%}{%- endfor -%}
+            {%- if has_gift -%}<hr class="pc-hr">{%- endif -%}
+            {%- assign benes = s[bnk] | newline_to_br | split: '<br />' -%}
+            <ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ check }}{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>
             {%- if has_gift -%}
               <p class="pc-kit__lab">{{ s.gifts_label | default: 'Welcome kit — arrives with first order' }}</p>
               <div class="pc-kit__track">
