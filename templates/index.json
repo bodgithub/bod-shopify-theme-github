@@ -614,7 +614,7 @@
     "custom_liquid_LhyTU6": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<div id=\"reviews\"></div>"
+        "custom_liquid": "{{ 'cro-enhancements.css' | asset_url | stylesheet_tag }}\n\n<div id=\"reviews\"></div>"
       }
     },
     "spacer_4UemBP": {
@@ -678,6 +678,11 @@
             "style": "expanded",
             "border_width": 5,
             "max_width": 720,
+            "swap_plans": true,
+            "default_plan": "2",
+            "plan_url_sync": true,
+            "p1_hero_image": 5,
+            "p2_hero_image": 1,
             "accent_color": "#1b3def",
             "title_color": "#14307c",
             "deep_color": "#0e2160",
@@ -732,7 +737,6 @@
             "p2_price_per": "/ 6 weeks",
             "p2_serving": "$1.22 / serving (2 scoops)",
             "p2_giftadd": "",
-            "p2_gift1_image": "shopify://shop_images/Gift_Bodology_Inositol.png",
             "p2_gift1_name": "",
             "p2_gift1_roundel": "",
             "p2_gift1_crossout": "",
@@ -757,7 +761,8 @@
             "variant_is_disabled": false,
             "sizing_guide_text": "Sizing guide",
             "sizing_guide_icon": "ruler",
-            "sizing_guide_page": ""
+            "sizing_guide_page": "",
+            "sizing_guide_variant": "Size"
           }
         },
         "custom_liquid_Aai6fh": {
@@ -771,7 +776,8 @@
           "type": "buy_buttons",
           "disabled": true,
           "settings": {
-            "show_dynamic_checkout": false
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
         "side_panel_NGJTtJ": {
@@ -793,7 +799,7 @@
           "type": "custom_liquid",
           "name": "Free shipping + product pills",
           "settings": {
-            "custom_liquid": "{{ 'cro-enhancements.css' | asset_url | stylesheet_tag }}\n\n<div>\n\n<div class=\"cro-badge-row\">\n\n<span class=\"cro-badge-row__pill\">60-day money back gaurantee</span>\n\n<span class=\"cro-badge-row__pill\">Arrives in 2-5 days</span>\n\n<span class=\"cro-badge-row__pill\">Free shipping over $50</span>\n\n</div></div>"
+            "custom_liquid": "<div>\n\n<div class=\"cro-badge-row\">\n\n<span class=\"cro-badge-row__pill\">60-day money back gaurantee</span>\n\n<span class=\"cro-badge-row__pill\">Arrives in 2-5 days</span>\n\n<span class=\"cro-badge-row__pill\">Free shipping over $50</span>\n\n</div></div>"
           }
         },
         "custom_liquid_ymVUr7": {
@@ -1035,6 +1041,11 @@
             "b8_sub": "Final Manufacturing & Packaging",
             "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
           }
+        },
+        "recharge_subscriptions_subscription_widget_v2_9rCap3": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "disabled": true,
+          "settings": {}
         }
       },
       "block_order": [
@@ -1046,6 +1057,7 @@
         "custom_liquid_fA4mt9",
         "plan_selector_fe7ApL",
         "variant_picker_HegXNW",
+        "recharge_subscriptions_subscription_widget_v2_9rCap3",
         "custom_liquid_Aai6fh",
         "buy_buttons_3FBywE",
         "side_panel_NGJTtJ",
