@@ -176,8 +176,12 @@
 <div id="ps-{{ uid }}">
 <div class="{% if style == 'expanded' %}bod-pc{% else %}bod-ps bod-ps--{{ style }}{% endif %}" role="radiogroup" data-ps-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
-  {%- for i in (1..2) -%}
+  {%- assign ps_order = '1,2' | split: ',' -%}
+  {%- if s.swap_plans -%}{%- assign ps_order = '2,1' | split: ',' -%}{%- endif -%}
+  {%- assign ps_default = s.default_plan | default: '1' | plus: 0 -%}
+  {%- for istr in ps_order -%}
     {%- liquid
+      assign i = istr | plus: 0
       assign imk = 'p' | append: i | append: '_image'
       assign nk = 'p' | append: i | append: '_name'
       assign ck = 'p' | append: i | append: '_cadence'
@@ -201,7 +205,8 @@
       assign g2nk = 'p' | append: i | append: '_gift2_name'
     -%}
     {%- if s[nk] != blank -%}
-    {%- assign first = forloop.first -%}
+    {%- assign first = false -%}
+    {%- if i == ps_default -%}{%- assign first = true -%}{%- endif -%}
     {%- if style == 'expanded' -%}
     <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
          data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}">
@@ -363,6 +368,18 @@
   var ctaText = label.textContent;
   var cartUrl = {{ routes.cart_url | json }};
   var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  var urlSync = {{ s.plan_url_sync | default: true, allow_false: true }};
+  function updateURL(c){
+    if(!urlSync || !c) return;
+    try {
+      var url = new URL(window.location.href);
+      var v = (c.getAttribute('data-ps-variant')||'').trim();
+      var pl = (c.getAttribute('data-ps-plan')||'').trim();
+      if(v){ url.searchParams.set('variant', v); } else { url.searchParams.delete('variant'); }
+      if(pl){ url.searchParams.set('selling_plan', pl); } else { url.searchParams.delete('selling_plan'); }
+      window.history.replaceState({}, '', url.toString());
+    } catch(e){}
+  }
   function renderAndOpenCart(response){
     try {
       [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
@@ -388,13 +405,28 @@
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
     c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
-    err.classList.remove('is-shown'); syncSub();
+    err.classList.remove('is-shown'); syncSub(); updateURL(c);
   }
   cards.forEach(function(c){
     c.addEventListener('click', function(){ select(c); });
     c.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); select(c); } });
   });
   syncSub();
+  // Preselect the plan referenced in a shared URL (?variant=...&selling_plan=...)
+  (function(){
+    if(!urlSync) return;
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var v = params.get('variant'); if(!v) return;
+      var pl = params.get('selling_plan');
+      var match = cards.filter(function(c){
+        var cv = (c.getAttribute('data-ps-variant')||'').trim();
+        var cp = (c.getAttribute('data-ps-plan')||'').trim();
+        return cv === v && (pl == null ? true : cp === pl);
+      })[0];
+      if(match){ select(match); }
+    } catch(e){}
+  })();
   // Personalize my protocol
   var proto = root.querySelector('[data-ps-protocol]');
   var protoInputs = proto ? [].slice.call(proto.querySelectorAll('.ps-proto-input')) : [];
