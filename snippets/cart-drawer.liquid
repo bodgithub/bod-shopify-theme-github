@@ -390,7 +390,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
     var addPlan = b.getAttribute('data-add-plan');
     if(!key || !addVariant) return;
     b.classList.add('is-loading');
-    var addItem = { id: parseInt(addVariant, 10), quantity: 1 };
+    var addItem = { id: parseInt(addVariant, 10), quantity: 1, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(addPlan){ addItem.selling_plan = parseInt(addPlan, 10); }
     // 1) add the 6-week supply subscription
     fetch(root()+'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},

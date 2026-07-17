@@ -76,7 +76,7 @@
 															{%- endfor -%}
 														</ul>
 														{%- endif -%}
-														<quantity-selector class="quantity cart-update cart-update-mobile small-qty" data-id="{{ item.key | escape }}">
+														<quantity-selector class="quantity cart-update cart-update-mobile small-qty" data-id="{{ item.key | escape }}"{% if item.variant.id == 46444646269147 or item.variant.id == 46444657279195 %} style="display:none"{% endif %}>
 														<button class="minus" type="button" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}">{% render 'svg-icons' with 'minus' %}</button>
 														<input
 															type="number"
@@ -103,7 +103,7 @@
 												</div>
 											</td>
 											<td class="product-quantity">
-												<quantity-selector class="quantity cart-update small-qty" data-id="{{ item.key | escape }}">
+												<quantity-selector class="quantity cart-update small-qty" data-id="{{ item.key | escape }}"{% if item.variant.id == 46444646269147 or item.variant.id == 46444657279195 %} style="display:none"{% endif %}>
 												<button class="minus" type="button">{% render 'svg-icons' with 'minus' %}</button>
 													<input
 														type="number"

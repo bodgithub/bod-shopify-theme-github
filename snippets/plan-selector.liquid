@@ -493,7 +493,7 @@
     if(!variant){ showErr('{{ s.novariant_text | default: "This plan needs a variant ID — add it in the theme editor." | escape }}'); return; }
     err.classList.remove('is-shown');
     cta.classList.add('is-loading'); label.textContent = '{{ s.adding_label | default: "Adding…" }}';
-    var item = { id: variant, quantity: qty };
+    var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(plan){ item.selling_plan = plan; }
     var items = [item];
     var giftAdd = (c.getAttribute('data-ps-giftadd') || '').trim();
@@ -511,7 +511,7 @@
       var v=(oneTime.getAttribute('data-variant')||'').trim(); if(!v){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
       var q=parseInt(oneTime.getAttribute('data-qty'),10)||1;
       oneTime.style.opacity='0.5';
-      fetch(addBase+'cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:v,quantity:q}], sections:['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname})})
+      fetch(addBase+'cart/add.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({items:[{id:v,quantity:q, properties:{ '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) }}], sections:['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname})})
       .then(function(r){ return r.json(); })
       .then(function(response){ if(response && response.status){ throw response; } oneTime.style.opacity=''; renderAndOpenCart(response); })
       .catch(function(e){ oneTime.style.opacity=''; showErr((e&&(e.description||e.message))||'Could not add to cart'); });
