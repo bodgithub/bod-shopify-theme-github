@@ -214,7 +214,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
                       </div>
 
                     
-						{%- unless item.selling_plan_allocation -%}{%- if item.variant.id == 46444657279195 -%}<button type="button" class="bod-upgrade bod-switch6w" data-line-key="{{ item.key | escape }}" data-add-variant="46444646269147" data-add-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 6-week supply for 15% off</span></button>{%- elsif item.variant.id == 46444646269147 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
+						{%- unless item.selling_plan_allocation -%}{%- if item.variant.id == 46444657279195 -%}<button type="button" class="bod-upgrade bod-switch6w" data-line-key="{{ item.key | escape }}" data-line-variant="{{ item.variant.id }}" data-add-variant="46444646269147" data-add-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 6-week supply for 15% off</span></button>{%- elsif item.variant.id == 46444646269147 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
 						{%- if item.selling_plan_allocation and item.selling_plan_allocation.selling_plan.id == 5755961563 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="7141621979" data-qty="2" data-giftadd="48915264143579" data-giftname="3-Month Supply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 3-month supply for 25% off</span></button>{%- endif -%}
 						<div class="product-cart-item-price">
 							<span class="price">
@@ -439,10 +439,28 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
     fetch(root()+'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
       body: JSON.stringify({ items:[addItem] }) })
     .then(function(r){ if(!r.ok){ throw new Error('add failed'); } return r.json(); })
-    // 2) remove the 1-month line, request refreshed drawer markup (only if add succeeded)
-    .then(function(){ return fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({ id:key, quantity:0, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) }); })
+    // 2) re-read the cart and remove the one-time line by its CURRENT key —
+    //    apps (e.g. subscriptions) can rebuild the cart on add, changing line keys
+    .then(function(){ return fetch(root()+'cart.js', { headers:{'Accept':'application/json'} }); })
     .then(function(r){ return r.json(); })
+    .then(function(cart){
+      var lineVariant = parseInt(b.getAttribute('data-line-variant') || '0', 10);
+      var target = null;
+      (cart.items||[]).forEach(function(i){ if(!target && i.key === key){ target = i; } });
+      if(!target){ (cart.items||[]).forEach(function(i){ if(!target && i.variant_id === lineVariant && !i.selling_plan_allocation){ target = i; } }); }
+      if(!target){
+        // nothing left to remove — just re-render the drawer truthfully
+        return fetch(root()+'?sections=cart-drawer,cart-bubble').then(function(r){ return r.json(); }).then(function(s){ return { sections: s }; });
+      }
+      return fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({ id: target.key, quantity: 0, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+      .then(function(r){ return r.json(); })
+      .then(function(res){
+        if(res && res.sections){ return res; }
+        // remove failed — still show the real cart state
+        return fetch(root()+'?sections=cart-drawer,cart-bubble').then(function(r){ return r.json(); }).then(function(s){ return { sections: s }; });
+      });
+    })
     .then(function(res){
       try {
         repl(res.sections, 'cart-drawer', '.cart-drawer');
