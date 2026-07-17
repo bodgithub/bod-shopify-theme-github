@@ -213,7 +213,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
                       </div>
 
                     
-						{%- unless item.selling_plan_allocation -%}{%- assign upg_plan = '' -%}{%- if item.variant.id == 46444646269147 -%}{%- assign upg_plan = '5755961563' -%}{%- elsif item.variant.id == 46444657279195 -%}{%- assign upg_plan = '6331924699' -%}{%- endif -%}{%- if upg_plan != '' -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="{{ upg_plan }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
+						{%- unless item.selling_plan_allocation -%}{%- if item.variant.id == 46444657279195 -%}<button type="button" class="bod-upgrade bod-switch6w" data-line-key="{{ item.key | escape }}" data-add-variant="46444646269147" data-add-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 6-week supply for 15% off</span></button>{%- elsif item.variant.id == 46444646269147 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
 						<div class="product-cart-item-price">
 							<span class="price">
 							{%- if item.final_line_price == 0 -%}{%- assign strike = 0 -%}{%- if item.original_line_price > 0 -%}{%- assign strike = item.original_line_price -%}{%- elsif item.variant.compare_at_price > item.variant.price -%}{%- assign strike = item.variant.compare_at_price | times: item.quantity -%}{%- endif -%}{%- if strike > 0 -%}<del><span class="amount">{{ strike | money }}</span></del>{%- endif -%}<ins class="is-free"><span class="amount">Free</span></ins>{%- elsif item.original_line_price != item.final_line_price -%}<del><span class="amount">{{ item.original_line_price | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- else -%}<ins><span class="amount">{{ item.original_line_price | money }}</span></ins>{%- endif -%}
@@ -358,6 +358,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
   }
   document.addEventListener('click', function(e){
     var btn = e.target.closest('.bod-upgrade'); if(!btn) return;
+    if(btn.classList.contains('bod-switch6w')) return;
     e.preventDefault();
     if(btn.classList.contains('is-loading')) return;
     var key = btn.getAttribute('data-line-key'), plan = btn.getAttribute('data-plan');
@@ -375,6 +376,35 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
       } catch(err){}
     })
     .catch(function(){ btn.classList.remove('is-loading'); });
+  });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('.bod-switch6w'); if(!b) return;
+    e.preventDefault();
+    if(b.classList.contains('is-loading')) return;
+    var key = b.getAttribute('data-line-key');
+    var addVariant = b.getAttribute('data-add-variant');
+    var addPlan = b.getAttribute('data-add-plan');
+    if(!key || !addVariant) return;
+    b.classList.add('is-loading');
+    var addItem = { id: parseInt(addVariant, 10), quantity: 1 };
+    if(addPlan){ addItem.selling_plan = parseInt(addPlan, 10); }
+    // 1) add the 6-week supply subscription
+    fetch(root()+'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({ items:[addItem] }) })
+    .then(function(r){ if(!r.ok){ throw new Error('add failed'); } return r.json(); })
+    // 2) remove the 1-month line, request refreshed drawer markup (only if add succeeded)
+    .then(function(){ return fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({ id:key, quantity:0, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) }); })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      try {
+        repl(res.sections, 'cart-drawer', '.cart-drawer');
+        repl(res.sections, 'cart-bubble', '.thb-item-count');
+        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
+        document.dispatchEvent(new CustomEvent('cart:refresh'));
+      } catch(err){}
+    })
+    .catch(function(){ b.classList.remove('is-loading'); });
   });
   document.addEventListener('submit', function(e){
     var form = e.target.closest('[data-bod-discount]'); if(!form) return;
