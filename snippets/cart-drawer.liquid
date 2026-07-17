@@ -358,6 +358,38 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
     if(selector === '.cart-drawer'){ var host = document.getElementById('Cart-Drawer'); if(host) host.innerHTML = frag.innerHTML; }
     else { var tgt = document.querySelector(selector); if(tgt) tgt.innerHTML = frag.innerHTML; }
   }
+  /* The 3-month plan (7141621979) is only ever sold as 2 units on one line.
+     Apps re-evaluating the cart can split that into 2x qty-1 lines; repair it. */
+  var bodNormBusy = false;
+  function bodNormalize(){
+    if(bodNormBusy) return; bodNormBusy = true;
+    fetch(root()+'cart.js', { headers:{'Accept':'application/json'} })
+    .then(function(r){ return r.json(); })
+    .then(function(cart){
+      var ones = (cart.items||[]).filter(function(i){
+        return i.selling_plan_allocation && i.selling_plan_allocation.selling_plan && i.selling_plan_allocation.selling_plan.id == 7141621979 && i.quantity == 1;
+      });
+      if(!ones.length){ bodNormBusy = false; return; }
+      var ops = [];
+      for(var k = 0; k + 1 < ones.length; k += 2){ ops.push({ id: ones[k+1].key, quantity: 0 }); ops.push({ id: ones[k].key, quantity: 2 }); }
+      if(ones.length % 2){ ops.push({ id: ones[ones.length-1].key, quantity: 2 }); }
+      var chain = Promise.resolve();
+      ops.forEach(function(op){ chain = chain.then(function(){ return fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(op) }); }); });
+      chain
+      .then(function(){ return fetch(root()+'?sections=cart-drawer,cart-bubble'); })
+      .then(function(r){ return r.json(); })
+      .then(function(sections){
+        repl(sections,'cart-drawer','.cart-drawer'); repl(sections,'cart-bubble','.thb-item-count');
+        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
+        bodNormBusy = false;
+        document.dispatchEvent(new CustomEvent('cart:refresh'));
+      })
+      .catch(function(){ bodNormBusy = false; });
+    })
+    .catch(function(){ bodNormBusy = false; });
+  }
+  document.addEventListener('cart:refresh', function(){ bodNormalize(); });
+  bodNormalize();
   document.addEventListener('click', function(e){
     var btn = e.target.closest('.bod-upgrade'); if(!btn) return;
     if(btn.classList.contains('bod-switch6w')) return;
