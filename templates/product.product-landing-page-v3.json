@@ -14,107 +14,9 @@
       "name": "GPT PRODUCT SEO",
       "settings": {}
     },
-    "image_with_text_overlay_T3rmDc": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "space_GXftQ9": {
-          "type": "space",
-          "settings": {
-            "height": 50
-          }
-        },
-        "subheading_PpxNFH": {
-          "type": "subheading",
-          "settings": {
-            "text": "<p>WHY INOSITOL</p>",
-            "text_color": "#1b3def"
-          }
-        },
-        "heading_xiV3aM": {
-          "type": "heading",
-          "settings": {
-            "text": "<h1>Balanced hormones begin with <em>metabolic</em> health</h1>",
-            "heading_color": "#1b3def",
-            "heading_size": "h1-large"
-          }
-        },
-        "text_WiQefq": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Cravings, mood swings, PCOS, and TTC challenges aren’t separate issues. They’re metabolic signals.</p>",
-            "description_color": "#2c2d2e",
-            "description_size": "small"
-          }
-        },
-        "benefits_d8eRbc": {
-          "type": "benefits",
-          "settings": {
-            "benefits-title": "",
-            "icon_size": 28,
-            "border_size": 1,
-            "border_color": "#1b3def",
-            "benefit_1": "That's where inositol comes in.",
-            "icon_1": "shopify://shop_images/icon_check-circle.png",
-            "benefit_2": "",
-            "benefit_3": "",
-            "benefit_4": "",
-            "benefit_5": ""
-          }
-        },
-        "space_h3QWPp": {
-          "type": "space",
-          "settings": {
-            "height": 50
-          }
-        },
-        "benefits_b3bkkE": {
-          "type": "benefits",
-          "disabled": true,
-          "settings": {
-            "benefits-title": "",
-            "icon_size": 28,
-            "border_size": 1,
-            "border_color": "#1b3def",
-            "benefit_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
-            "icon_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.icon.value }}",
-            "benefit_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.benefit.value }}",
-            "icon_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.icon.value }}",
-            "benefit_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.benefit.value }}",
-            "icon_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.icon.value }}",
-            "benefit_4": "",
-            "benefit_5": ""
-          }
-        }
-      },
-      "block_order": [
-        "space_GXftQ9",
-        "subheading_PpxNFH",
-        "heading_xiV3aM",
-        "text_WiQefq",
-        "benefits_d8eRbc",
-        "space_h3QWPp",
-        "benefits_b3bkkE"
-      ],
-      "name": "Image with text overlay",
-      "settings": {
-        "image": "shopify://shop_images/Bodology-Hormone-Desktop-Banner-7.jpg",
-        "mobile_image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-7.jpg",
-        "image_parallax": false,
-        "desktop_height": "desktop-height-750",
-        "mobile_height": "mobile-height-auto",
-        "full_width": true,
-        "content_width": "small",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "text_color": "#2c2d2e",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
     "spacer_fcdpRG": {
       "type": "spacer",
+      "disabled": true,
       "name": "Spacer",
       "settings": {
         "spacer_mobile": 55,
@@ -127,7 +29,7 @@
       "type": "custom-liquid",
       "name": "Custom liquid",
       "settings": {
-        "custom_liquid": "{{ 'cro-enhancements.css' | asset_url | stylesheet_tag }}{{ 'cro-enhancements.js' | asset_url | script_tag }}<div id=\"bodology-inositol\"></div>"
+        "custom_liquid": "{{ 'cro-enhancements.css' | asset_url | stylesheet_tag }}{{ 'cro-enhancements.js' | asset_url | script_tag }}<div id=\"bodology-inositol\"></div>\n\n<div style=\"padding:20px 20px;\"><div style=\"margin-top:20px;\"><h1 style=\"font-weight:1000 !important;font-size:3rem; color:#14307c !important;\">Inositol Powder</h1></div>\n<div style=\"padding-bottom:13px; margin:20px 0px 4px; font-size:13px !important; font-weight:1000; text-decoration:none;\">\n  <a class=\"star-rating-container\" href=\"#reviews\" >\n    Excellent\n    <span style=\"display:inline-block; vertical-align:middle; width:95px; height:20px; margin:0 7px; background:#C2B067; -webkit-mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x; mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x;\" aria-label=\"Rated 4.85 out of 5\"></span>\n    <b style=\"font-weight:1000;\">4.8 out of 5 | Read Reviews</b>\n  </a>\n</div>\n<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div><div>"
       }
     },
     "main-product": {
@@ -136,6 +38,7 @@
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "name": "Product Title",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"margin-top:20px;\"><h1 style=\"font-weight:1000 !important;font-size:3rem; color:#14307c !important;\">Inositol Powder</h1></div>"
           }
@@ -143,6 +46,7 @@
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
           "name": "Stars",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"padding-bottom:13px; margin:20px 0px 4px; font-size:13px !important; font-weight:1000; text-decoration:none;\">\n  <a class=\"star-rating-container\" href=\"#reviews\" >\n    Excellent\n    <span style=\"display:inline-block; vertical-align:middle; width:95px; height:20px; margin:0 7px; background:#C2B067; -webkit-mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x; mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x;\" aria-label=\"Rated 4.85 out of 5\"></span>\n    <b style=\"font-weight:1000;\">4.8 out of 5 | Read Trusted Reviews</b>\n  </a>\n</div>"
           }
@@ -157,6 +61,7 @@
         "custom_liquid_WRFhPD": {
           "type": "custom_liquid",
           "name": "Blurb",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div>"
           }
@@ -182,7 +87,6 @@
             "border_style": "gradient",
             "max_width": 440,
             "accent_color": "#0A23A3",
-            "paper_color": "#FFFFFF",
             "ink_color": "#15171e",
             "eyebrow": "",
             "heading": "",
@@ -214,9 +118,6 @@
             "p2_badge": "Most Popular",
             "sub_claim": "Save up to 25% by subscribing",
             "sub_claim_suffix": "· free $49 protocol · cancel anytime",
-            "gift_variant": "48915264143579",
-            "gift_banner_text": "Free Metabolic Health Protocol + free shipping",
-            "gift_banner_strike": "$49.00",
             "proto_enable": true,
             "proto_title": "Personalize my protocol",
             "proto_optional": "Optional",
@@ -235,7 +136,6 @@
             "c4_label": "Weight",
             "c4_desc": "Metabolic & appetite",
             "c4_variant": "48915264209115",
-            "shipping_text": "Ready to ship — arrives in 2–5 days",
             "cta_sub_prefix": "Subscribe —",
             "cta_one_prefix": "Add to cart —",
             "cta_one_suffix": "one-time",
@@ -1931,7 +1831,6 @@
   },
   "order": [
     "gpt_product_seo_DWikHm",
-    "image_with_text_overlay_T3rmDc",
     "spacer_fcdpRG",
     "custom_liquid_WV46gi",
     "main-product",
