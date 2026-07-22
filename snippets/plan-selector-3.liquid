@@ -36,8 +36,8 @@
 #ps3-{{ uid }} .p3-eyebrow{font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--p3-blue); margin:0 0 6px;}
 #ps3-{{ uid }} .p3-h{font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--p3-ink); margin:0 0 14px;}
 #ps3-{{ uid }} .p3-cards{display:flex; flex-direction:column; gap:9px;}
-#ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; padding:2px; background:var(--p3-line-w); box-shadow:0 1px 5px -3px rgba(0,0,0,0.12); transition:box-shadow .16s,background .16s;}
-#ps3-{{ uid }} .p3-card.is-selected{background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %}; box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);}
+#ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; padding:2px; background:var(--p3-line-w);{% unless s.disable_shadows %} box-shadow:0 1px 5px -3px rgba(0,0,0,0.12);{% endunless %} transition:box-shadow .16s,background .16s;}
+#ps3-{{ uid }} .p3-card.is-selected{background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %};{% unless s.disable_shadows %} box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);{% endunless %}}
 #ps3-{{ uid }} .p3-card:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
 #ps3-{{ uid }} .p3-card__in{border-radius:{{ rad_in }}px; overflow:hidden; background:#fff;}
 #ps3-{{ uid }} .p3-card__head{background:#fff; padding:11px 13px; display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
