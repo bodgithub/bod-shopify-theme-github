@@ -40,7 +40,9 @@
 #ps3-{{ uid }} .p3-card.is-selected{background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %};{% unless s.disable_shadows %} box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);{% endunless %}}
 #ps3-{{ uid }} .p3-card:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
 #ps3-{{ uid }} .p3-card__in{border-radius:{{ rad_in }}px; overflow:hidden; background:#fff;}
-#ps3-{{ uid }} .p3-card__head{background:#fff; padding:11px 13px; display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+#ps3-{{ uid }} .p3-card__head{background:#fff; padding:11px 13px;}
+#ps3-{{ uid }} .p3-card__badgerow{display:flex; justify-content:flex-end; margin-bottom:6px;}
+#ps3-{{ uid }} .p3-card__hrow{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
 #ps3-{{ uid }} .p3-card.is-selected .p3-card__head{background:rgba(27,61,239,0.07);}
 #ps3-{{ uid }} .p3-card__id{min-width:0;}
 #ps3-{{ uid }} .p3-card__row{display:flex; align-items:center; gap:9px;}
@@ -152,16 +154,18 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
            data-p3-subprice="{{ s[subp_k] | escape }}" data-p3-oneprice="{{ s[onep_k] | escape }}" data-p3-subfreq="{{ s[freq_k] | escape }}">
         <div class="p3-card__in">
           <div class="p3-card__head">
-            <div class="p3-card__id">
-              <div class="p3-card__row"><span class="p3-radio"></span><span class="p3-tier">{{ s[tier_k] }}</span></div>
-              {%- if s[save_k] != blank -%}<div class="p3-sub-save v3-subonly">{{ s[save_k] }}</div>{%- endif -%}
-              <div class="p3-detail{% if s[save_k] != blank %} v3-oneonly{% endif %}">{{ s[detail_k] }}</div>
-            </div>
-            <div class="p3-card__price">
-              {%- if s[hero_k] and s[badge_k] != blank -%}<span class="p3-badge">{{ s[badge_k] }}</span>{%- endif -%}
-              <span class="p3-price v3-subonly" style="display:none;">{{ s[subp_k] }}</span>
-              <span class="p3-price v3-oneonly">{{ s[onep_k] }}</span>
-              {%- if s[strike_k] != blank -%}<span class="p3-strike v3-subonly" style="display:none;">{{ s[strike_k] }}</span>{%- endif -%}
+            {%- if s[badge_k] != blank -%}<div class="p3-card__badgerow"><span class="p3-badge">{{ s[badge_k] }}</span></div>{%- endif -%}
+            <div class="p3-card__hrow">
+              <div class="p3-card__id">
+                <div class="p3-card__row"><span class="p3-radio"></span><span class="p3-tier">{{ s[tier_k] }}</span></div>
+                {%- if s[save_k] != blank -%}<div class="p3-sub-save v3-subonly">{{ s[save_k] }}</div>{%- endif -%}
+                <div class="p3-detail{% if s[save_k] != blank %} v3-oneonly{% endif %}">{{ s[detail_k] }}</div>
+              </div>
+              <div class="p3-card__price">
+                <span class="p3-price v3-subonly" style="display:none;">{{ s[subp_k] }}</span>
+                <span class="p3-price v3-oneonly">{{ s[onep_k] }}</span>
+                {%- if s[strike_k] != blank -%}<span class="p3-strike v3-subonly" style="display:none;">{{ s[strike_k] }}</span>{%- endif -%}
+              </div>
             </div>
           </div>
           {%- if s[gtxt_k] != blank -%}
