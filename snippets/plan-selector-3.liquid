@@ -1,0 +1,349 @@
+{%- comment -%}
+  Bodology · Plan Selector 3 (product-info BLOCK, type plan_selector_3)
+  Port of the V13 React mock: paper container, two always-expanded plan cards,
+  one GLOBAL "subscribe & save" checkbox that flips both cards between
+  subscription and one-time pricing, free-gift banner on subscription mode,
+  optional "Personalize my protocol" accordion inside the hero card, dynamic
+  CTA label. Params: s = block.settings, uid = block.id.
+  Cart: /cart/add.js with variant (+ selling_plan when subscribing) + unique
+  _li property; subscriptions also add the gift with the standard _gift /
+  _focus properties (personalize swaps the gift variant like selector 1).
+{%- endcomment -%}
+
+<link rel="stylesheet" href="https://use.typekit.net/sxx4ssa.css">
+
+{%- assign acc = s.accent_color | default: '#1B3DEF' -%}
+{%- assign paper = s.paper_color | default: '#F2EEEA' -%}
+{%- assign ink = s.ink_color | default: '#15171E' -%}
+{%- assign rad = s.radius | default: 13 -%}
+{%- assign rad_in = rad | minus: 2 | at_least: 0 -%}
+{%- assign rad_box = rad | minus: 2 | at_least: 0 -%}
+{%- assign rad_tick = rad | minus: 6 | at_least: 4 -%}
+{%- assign rad_chip = rad | minus: 3 | at_least: 0 -%}
+
+<style>
+#ps3-{{ uid }} .bod-p3{
+  --p3-sans:"tenon","Tenon Local","Figtree","Helvetica Neue",Arial,sans-serif;
+  --p3-blue:{{ acc }}; --p3-paper:{{ paper }}; --p3-ink:{{ ink }};
+  --p3-ink-soft:#585A64; --p3-ink-faint:#8A8B93;
+  --p3-line:#E4DED6; --p3-line-w:#EAE6DF; --p3-tint:rgba(27,61,239,0.06);
+  --p3-grad:linear-gradient(140deg,{{ acc }} 0%,#3358FF 52%,#5C78FF 100%);
+  font-family:var(--p3-sans); color:var(--p3-ink); box-sizing:border-box;
+  background:var(--p3-paper); border:1px solid var(--p3-line); border-radius:{{ rad | plus: 5 }}px;
+  padding:24px 20px 20px; max-width:{{ s.max_width | default: 440 }}px; margin:0 auto;
+}
+#ps3-{{ uid }} .bod-p3 *,#ps3-{{ uid }} .bod-p3 *::before,#ps3-{{ uid }} .bod-p3 *::after{box-sizing:border-box;}
+#ps3-{{ uid }} .p3-eyebrow{font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--p3-blue); margin:0 0 6px;}
+#ps3-{{ uid }} .p3-h{font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--p3-ink); margin:0 0 14px;}
+#ps3-{{ uid }} .p3-cards{display:flex; flex-direction:column; gap:9px;}
+#ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; padding:2px; background:var(--p3-line-w); box-shadow:0 1px 5px -3px rgba(0,0,0,0.12); transition:box-shadow .16s,background .16s;}
+#ps3-{{ uid }} .p3-card.is-selected{background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %}; box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);}
+#ps3-{{ uid }} .p3-card:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
+#ps3-{{ uid }} .p3-card__in{border-radius:{{ rad_in }}px; overflow:hidden; background:#fff;}
+#ps3-{{ uid }} .p3-card__head{background:#fff; padding:11px 13px; display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+#ps3-{{ uid }} .p3-card.is-selected .p3-card__head{background:rgba(27,61,239,0.07);}
+#ps3-{{ uid }} .p3-card__id{min-width:0;}
+#ps3-{{ uid }} .p3-card__row{display:flex; align-items:center; gap:9px;}
+#ps3-{{ uid }} .p3-radio{width:16px; height:16px; border-radius:50%; flex:0 0 auto; border:2px solid var(--p3-line); display:grid; place-items:center; transition:border-color .15s;}
+#ps3-{{ uid }} .p3-card.is-selected .p3-radio{border-color:var(--p3-blue);}
+#ps3-{{ uid }} .p3-radio::after{content:''; width:8px; height:8px; border-radius:50%; background:var(--p3-blue); opacity:0; transition:opacity .15s;}
+#ps3-{{ uid }} .p3-card.is-selected .p3-radio::after{opacity:1;}
+#ps3-{{ uid }} .p3-tier{font-size:14px; font-weight:600; letter-spacing:-0.005em; color:var(--p3-ink);}
+#ps3-{{ uid }} .p3-sub-save{font-size:11.5px; color:var(--p3-blue); font-weight:600; margin:3px 0 0 25px;}
+#ps3-{{ uid }} .p3-detail{font-size:11.5px; color:var(--p3-ink-soft); margin:3px 0 0 25px;}
+#ps3-{{ uid }} .p3-card__price{display:flex; flex-direction:column; align-items:flex-end; gap:2px; flex:0 0 auto;}
+#ps3-{{ uid }} .p3-badge{font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#fff; background:var(--p3-blue); padding:2px 8px; border-radius:20px;}
+#ps3-{{ uid }} .p3-price{font-size:14px; font-weight:600; color:var(--p3-blue);}
+#ps3-{{ uid }} .p3-strike{font-size:11.5px; text-decoration:line-through; color:var(--p3-ink-faint);}
+#ps3-{{ uid }} .p3-giftbar{background:rgba(27,61,239,0.11); padding:8px 13px; display:flex; justify-content:space-between; align-items:center; gap:9px;}
+#ps3-{{ uid }} .p3-giftbar__l{display:flex; align-items:center; gap:8px; min-width:0;}
+#ps3-{{ uid }} .p3-tick{width:17px; height:17px; border-radius:50%; background:var(--p3-blue); color:#fff; display:grid; place-items:center; font-size:10px; font-weight:700; flex:0 0 auto;}
+#ps3-{{ uid }} .p3-giftbar__t{font-size:11.5px; font-weight:600; color:var(--p3-ink);}
+#ps3-{{ uid }} .p3-giftbar__s{font-size:11.5px; text-decoration:line-through; color:var(--p3-ink-faint); flex:0 0 auto;}
+#ps3-{{ uid }} .v3-subonly{display:none;}
+#ps3-{{ uid }} .bod-p3.is-sub .v3-subonly{display:flex;}
+#ps3-{{ uid }} .bod-p3.is-sub .v3-subonly.p3-sub-save,#ps3-{{ uid }} .bod-p3.is-sub .v3-subonly.p3-strike{display:block;}
+#ps3-{{ uid }} .v3-oneonly{display:block;}
+#ps3-{{ uid }} .bod-p3.is-sub .v3-oneonly{display:none;}
+/* personalize */
+#ps3-{{ uid }} .p3-proto{border-top:1px solid var(--p3-line-w); background:#fff; display:none;}
+#ps3-{{ uid }} .bod-p3.is-sub .p3-proto{display:block;}
+#ps3-{{ uid }} .p3-proto__head{width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 13px; background:transparent; border:none; cursor:pointer; text-align:left; font-family:inherit;}
+#ps3-{{ uid }} .p3-proto__t{font-size:13px; font-weight:600; color:var(--p3-ink); display:block;}
+#ps3-{{ uid }} .p3-proto__o{font-size:11.5px; color:var(--p3-ink-faint);}
+#ps3-{{ uid }} .p3-proto__chev{color:var(--p3-blue); font-size:11px; transition:transform .18s;}
+#ps3-{{ uid }} .p3-proto.is-open .p3-proto__chev{transform:rotate(180deg);}
+#ps3-{{ uid }} .p3-proto__body{padding:0 13px 13px; display:none;}
+#ps3-{{ uid }} .p3-proto.is-open .p3-proto__body{display:block;}
+#ps3-{{ uid }} .p3-proto__q{font-size:11.5px; color:var(--p3-ink-soft); margin:0 0 9px;}
+#ps3-{{ uid }} .p3-cgrid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+@media (max-width:480px){#ps3-{{ uid }} .p3-cgrid{grid-template-columns:1fr;}}
+#ps3-{{ uid }} .p3-concern{position:relative; text-align:left; cursor:pointer; padding:9px 10px; border-radius:{{ rad_chip }}px; border:1.5px solid var(--p3-line); background:#fff; transition:all .15s; font-family:inherit;}
+#ps3-{{ uid }} .p3-concern.is-checked{border-color:var(--p3-blue); background:var(--p3-tint);}
+#ps3-{{ uid }} .p3-concern__tick{position:absolute; top:9px; right:9px; width:15px; height:15px; border-radius:{{ rad_chip | minus: 2 | at_least: 2 }}px; border:1.5px solid var(--p3-line); background:#fff; display:grid; place-items:center; color:#fff; font-size:9px; font-weight:700;}
+#ps3-{{ uid }} .p3-concern.is-checked .p3-concern__tick{background:var(--p3-blue); border-color:var(--p3-blue);}
+#ps3-{{ uid }} .p3-concern__icon{display:grid; place-items:center; width:28px; height:28px; border-radius:{{ rad_chip | minus: 1 | at_least: 0 }}px; background:rgba(27,61,239,0.08);}
+#ps3-{{ uid }} .p3-concern__icon svg{width:16px; height:16px;}
+#ps3-{{ uid }} .p3-concern__t{font-size:13px; font-weight:600; color:var(--p3-ink); margin-top:7px;}
+#ps3-{{ uid }} .p3-concern__d{font-size:11px; color:var(--p3-ink-soft);}
+#ps3-{{ uid }} .p3-proto__sup{font-size:11.5px; color:var(--p3-ink-soft); margin:9px 0 0;}
+#ps3-{{ uid }} .p3-proto__sup strong{color:var(--p3-blue); font-weight:600;}
+/* subscribe checkbox */
+#ps3-{{ uid }} .p3-subtick{display:flex; align-items:center; gap:10px; width:100%; text-align:left; cursor:pointer; border:1.5px solid var(--p3-line); background:#fff; border-radius:{{ rad_box }}px; padding:11px 13px; margin-top:11px; font-family:inherit; transition:all .15s;}
+#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick{border-color:var(--p3-blue); background:var(--p3-tint);}
+#ps3-{{ uid }} .p3-subtick__box{width:20px; height:20px; border-radius:{{ rad_tick }}px; flex:0 0 auto; background:#fff; border:2px solid var(--p3-line); display:grid; place-items:center; color:#fff; font-size:13px; font-weight:700; transition:all .15s;}
+#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick__box{background:var(--p3-blue); border-color:var(--p3-blue);}
+#ps3-{{ uid }} .p3-subtick__box::after{content:''; }
+#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick__box::after{content:'✓';}
+#ps3-{{ uid }} .p3-subtick__t{font-size:12.5px;}
+#ps3-{{ uid }} .p3-subtick__t strong{color:var(--p3-ink); font-weight:600;}
+#ps3-{{ uid }} .p3-subtick__t span{color:var(--p3-ink-soft);}
+/* ship line, CTA, trust */
+#ps3-{{ uid }} .p3-ship{font-size:11.5px; display:flex; align-items:center; justify-content:center; gap:7px; margin-top:11px; color:var(--p3-ink-soft);}
+#ps3-{{ uid }} .p3-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--p3-blue); display:inline-block;}
+#ps3-{{ uid }} .p3-cta{width:100%; border:none; border-radius:{{ rad_box }}px; padding:13px 18px; background:var(--p3-grad); color:#fff; font-family:inherit; font-size:14px; font-weight:600; cursor:pointer; transition:filter .16s,transform .12s; margin-top:11px;}
+#ps3-{{ uid }} .p3-cta:hover{filter:brightness(1.06);}
+#ps3-{{ uid }} .p3-cta:active{transform:translateY(1px);}
+#ps3-{{ uid }} .p3-cta:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
+#ps3-{{ uid }} .p3-cta.is-loading{pointer-events:none; opacity:.8;}
+#ps3-{{ uid }} .p3-trust{font-size:11px; display:flex; justify-content:center; flex-wrap:wrap; gap:5px 12px; color:var(--p3-ink-faint); margin-top:11px;}
+#ps3-{{ uid }} .p3-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:10px;}
+#ps3-{{ uid }} .p3-error.is-shown{display:flex;}
+@media (prefers-reduced-motion: reduce){#ps3-{{ uid }} .p3-card,#ps3-{{ uid }} .p3-cta{transition:none;}}
+</style>
+
+{%- capture proto_icons -%}
+ring|<circle cx="8" cy="8" r="5.5" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+wave|<path d="M2 8 Q4 4 6 8 T10 8 T14 8" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+seed|<path d="M8 2.5 C10 6 10 10 8 13.5 C6 10 6 6 8 2.5 Z" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11.5 L10.5 7" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+{%- endcapture -%}
+{%- assign icon_rows = proto_icons | strip | newline_to_br | split: '<br />' -%}
+
+{%- assign p3_default = s.default_selected | default: 'p1' -%}
+{%- assign p3_sub_default = true -%}
+{%- if s.sub_default == false -%}{%- assign p3_sub_default = false -%}{%- endif -%}
+
+<div id="ps3-{{ uid }}">
+<div class="bod-p3{% if p3_sub_default %} is-sub{% endif %}" data-p3-root role="radiogroup" aria-label="{{ s.heading | default: 'Start your protocol' | escape }}">
+  {%- if s.eyebrow != blank -%}<p class="p3-eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+  {%- if s.heading != blank -%}<h2 class="p3-h">{{ s.heading }}</h2>{%- endif -%}
+  <div class="p3-cards">
+    {%- for i in (1..2) -%}
+      {%- assign pk = 'p' | append: i -%}
+      {%- assign tier_k = pk | append: '_tier' -%}{%- assign detail_k = pk | append: '_detail' -%}
+      {%- assign subp_k = pk | append: '_sub_price' -%}{%- assign save_k = pk | append: '_sub_save' -%}
+      {%- assign strike_k = pk | append: '_sub_strike' -%}{%- assign freq_k = pk | append: '_sub_freq' -%}
+      {%- assign onep_k = pk | append: '_one_price' -%}{%- assign var_k = pk | append: '_variant' -%}
+      {%- assign qty_k = pk | append: '_qty' -%}{%- assign plan_k = pk | append: '_plan' -%}
+      {%- assign hero_k = pk | append: '_hero' -%}{%- assign badge_k = pk | append: '_badge' -%}
+      {%- if s[tier_k] != blank -%}
+      <div class="p3-card{% if p3_default == pk %} is-selected{% endif %}" role="radio" aria-checked="{% if p3_default == pk %}true{% else %}false{% endif %}" tabindex="0"
+           data-p3-card data-p3-name="{{ s[tier_k] | escape }}" data-p3-variant="{{ s[var_k] }}" data-p3-qty="{{ s[qty_k] | default: 1 }}" data-p3-plan="{{ s[plan_k] }}"
+           data-p3-subprice="{{ s[subp_k] | escape }}" data-p3-oneprice="{{ s[onep_k] | escape }}" data-p3-subfreq="{{ s[freq_k] | escape }}">
+        <div class="p3-card__in">
+          <div class="p3-card__head">
+            <div class="p3-card__id">
+              <div class="p3-card__row"><span class="p3-radio"></span><span class="p3-tier">{{ s[tier_k] }}</span></div>
+              {%- if s[save_k] != blank -%}<div class="p3-sub-save v3-subonly">{{ s[save_k] }}</div>{%- endif -%}
+              <div class="p3-detail{% if s[save_k] != blank %} v3-oneonly{% endif %}">{{ s[detail_k] }}</div>
+            </div>
+            <div class="p3-card__price">
+              {%- if s[hero_k] and s[badge_k] != blank -%}<span class="p3-badge">{{ s[badge_k] }}</span>{%- endif -%}
+              <span class="p3-price v3-subonly" style="display:none;">{{ s[subp_k] }}</span>
+              <span class="p3-price v3-oneonly">{{ s[onep_k] }}</span>
+              {%- if s[strike_k] != blank -%}<span class="p3-strike v3-subonly" style="display:none;">{{ s[strike_k] }}</span>{%- endif -%}
+            </div>
+          </div>
+          {%- if s.gift_banner_text != blank -%}
+          <div class="p3-giftbar v3-subonly">
+            <span class="p3-giftbar__l"><span class="p3-tick">✓</span><span class="p3-giftbar__t">{{ s.gift_banner_text }}</span></span>
+            {%- if s.gift_banner_strike != blank -%}<span class="p3-giftbar__s">{{ s.gift_banner_strike }}</span>{%- endif -%}
+          </div>
+          {%- endif -%}
+          {%- if s[hero_k] and s.proto_enable -%}
+          <div class="p3-proto" data-p3-proto>
+            <button type="button" class="p3-proto__head" data-p3-proto-toggle aria-expanded="false">
+              <span><span class="p3-proto__t">{{ s.proto_title | default: 'Personalize my protocol' }}</span><span class="p3-proto__o" data-p3-proto-summary>{{ s.proto_optional | default: 'Optional' }}</span></span>
+              <span class="p3-proto__chev">&#9660;</span>
+            </button>
+            <div class="p3-proto__body">
+              <p class="p3-proto__q">{{ s.proto_q | default: 'Which areas are we supporting? Select all that apply.' }}</p>
+              <div class="p3-cgrid">
+                {%- for ci in (1..4) -%}
+                  {%- assign ck = 'c' | append: ci -%}
+                  {%- assign cl_k = ck | append: '_label' -%}{%- assign cd_k = ck | append: '_desc' -%}{%- assign cv_k = ck | append: '_variant' -%}
+                  {%- if s[cl_k] != blank -%}
+                  {%- assign icon_row = icon_rows[forloop.index0] | split: '|' -%}
+                  <button type="button" class="p3-concern" data-p3-concern data-variant="{{ s[cv_k] }}" data-label="{{ s[cl_k] | escape }}" aria-pressed="false">
+                    <span class="p3-concern__tick" aria-hidden="true"></span>
+                    <span class="p3-concern__icon"><svg viewBox="0 0 16 16" aria-hidden="true">{{ icon_row[1] }}</svg></span>
+                    <div class="p3-concern__t">{{ s[cl_k] }}</div>
+                    <div class="p3-concern__d">{{ s[cd_k] }}</div>
+                  </button>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              <p class="p3-proto__sup">{{ s.proto_supporting_label | default: 'Supporting:' }} <strong data-p3-proto-sup>{{ s.proto_supporting_default | default: 'None selected' }}</strong></p>
+            </div>
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <button type="button" class="p3-subtick" role="checkbox" aria-checked="{% if p3_sub_default %}true{% else %}false{% endif %}" data-p3-subtick>
+    <span class="p3-subtick__box" aria-hidden="true"></span>
+    <span class="p3-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong>{%- if s.sub_claim_suffix != blank -%}<span> {{ s.sub_claim_suffix }}</span>{%- endif -%}</span>
+  </button>
+
+  {%- if s.shipping_text != blank -%}
+  <div class="p3-ship"><span class="p3-ship__dot"></span><span>{{ s.shipping_text }}</span></div>
+  {%- endif -%}
+
+  <button type="button" class="p3-cta" data-p3-submit><span class="spin" style="display:none;"></span><span data-p3-cta-label></span></button>
+
+  <div class="p3-error" data-p3-error>
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+    <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
+  </div>
+
+  <div class="p3-trust">
+    {%- if s.trust1 != blank -%}<span>{{ s.trust1 }}</span>{%- endif -%}
+    {%- if s.trust2 != blank -%}<span>·</span><span>{{ s.trust2 }}</span>{%- endif -%}
+    {%- if s.trust3_sub != blank -%}<span>·</span><span class="v3-subonly" style="display:none;">{{ s.trust3_sub }}</span><span class="v3-oneonly" style="display:inline;">{{ s.trust3_one }}</span>{%- endif -%}
+  </div>
+</div>
+</div>
+
+<style>
+/* text-level sub/one toggles need inline-friendly display */
+#ps3-{{ uid }} .bod-p3.is-sub span.v3-subonly{display:inline !important;}
+#ps3-{{ uid }} .bod-p3.is-sub span.v3-oneonly{display:none !important;}
+#ps3-{{ uid }} .bod-p3:not(.is-sub) span.v3-subonly{display:none !important;}
+#ps3-{{ uid }} .bod-p3:not(.is-sub) span.v3-oneonly{display:inline !important;}
+#ps3-{{ uid }} .bod-p3.is-sub div.v3-subonly{display:block;}
+#ps3-{{ uid }} .bod-p3.is-sub .p3-giftbar.v3-subonly{display:flex;}
+</style>
+
+<script>
+(function(){
+  var root = document.querySelector('#ps3-{{ uid }} [data-p3-root]');
+  if(!root || root.dataset.p3Bound) return;
+  root.dataset.p3Bound = '1';
+  var cards = [].slice.call(root.querySelectorAll('[data-p3-card]'));
+  var err = root.querySelector('[data-p3-error]');
+  var cta = root.querySelector('[data-p3-submit]');
+  var ctaLabel = root.querySelector('[data-p3-cta-label]');
+  var subTick = root.querySelector('[data-p3-subtick]');
+  var cartUrl = {{ routes.cart_url | json }};
+  var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  var subPrefix = {{ s.cta_sub_prefix | default: 'Subscribe — ' | json }};
+  var onePrefix = {{ s.cta_one_prefix | default: 'Add to cart — ' | json }};
+  var oneSuffix = {{ s.cta_one_suffix | default: ' one-time' | json }};
+  var addingLabel = {{ s.adding_label | default: 'Adding…' | json }};
+  var giftVariant = {{ s.gift_variant | default: '' | json }};
+  var giftName = {{ s.gift_banner_text | default: 'Free gift' | json }};
+  function isSub(){ return root.classList.contains('is-sub'); }
+  function selected(){ return root.querySelector('[data-p3-card].is-selected'); }
+  function showErr(msg){ var sp = err.querySelector('span'); if(sp && msg) sp.textContent = msg; err.classList.add('is-shown'); }
+  function syncCta(){
+    var c = selected(); if(!c || !ctaLabel) return;
+    if(isSub()){
+      var f = c.getAttribute('data-p3-subfreq') || '';
+      ctaLabel.textContent = subPrefix + (c.getAttribute('data-p3-subprice') || '') + (f ? ' ' + f : '');
+    } else {
+      ctaLabel.textContent = onePrefix + (c.getAttribute('data-p3-oneprice') || '') + oneSuffix;
+    }
+  }
+  function select(c){
+    cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
+    c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
+    err.classList.remove('is-shown'); syncCta();
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(e){ if(e.target.closest('[data-p3-proto]')) return; select(c); });
+    c.addEventListener('keydown', function(e){ if((e.key===' '||e.key==='Enter') && !e.target.closest('[data-p3-proto]')){ e.preventDefault(); select(c); } });
+  });
+  if(subTick){
+    subTick.addEventListener('click', function(){
+      root.classList.toggle('is-sub');
+      subTick.setAttribute('aria-checked', isSub() ? 'true' : 'false');
+      err.classList.remove('is-shown'); syncCta();
+    });
+  }
+  // personalize
+  var proto = root.querySelector('[data-p3-proto]');
+  var concerns = proto ? [].slice.call(proto.querySelectorAll('[data-p3-concern]')) : [];
+  function checkedConcerns(){ return concerns.filter(function(b){ return b.classList.contains('is-checked'); }); }
+  function protoGift(fallback){ var sel = checkedConcerns(); return sel.length ? (sel[0].getAttribute('data-variant') || fallback) : fallback; }
+  function protoFocus(){ return checkedConcerns().map(function(b){ return b.getAttribute('data-label'); }).join(', '); }
+  if(proto){
+    var head = proto.querySelector('[data-p3-proto-toggle]');
+    var sup = proto.querySelector('[data-p3-proto-sup]');
+    head.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = proto.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    concerns.forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.stopPropagation();
+        b.classList.toggle('is-checked');
+        b.setAttribute('aria-pressed', b.classList.contains('is-checked') ? 'true' : 'false');
+        var t = b.querySelector('.p3-concern__tick'); if(t){ t.textContent = b.classList.contains('is-checked') ? '✓' : ''; }
+        if(sup){ var f = protoFocus(); sup.textContent = f || {{ s.proto_supporting_default | default: 'None selected' | json }}; }
+      });
+    });
+  }
+  // add to cart
+  cta.addEventListener('click', function(){
+    var c = selected();
+    if(!c){ showErr(); return; }
+    var variant = (c.getAttribute('data-p3-variant') || '').trim();
+    var plan = (c.getAttribute('data-p3-plan') || '').trim();
+    var qty = parseInt(c.getAttribute('data-p3-qty'), 10) || 1;
+    if(!variant){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
+    if(isSub() && !plan){ showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return; }
+    err.classList.remove('is-shown');
+    cta.classList.add('is-loading');
+    var prevLabel = ctaLabel.textContent; ctaLabel.textContent = addingLabel;
+    var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
+    if(isSub()){ item.selling_plan = plan; }
+    var items = [item];
+    if(isSub() && giftVariant){
+      var g = protoGift(giftVariant);
+      var gprops = { '_gift': 'Free with ' + (c.getAttribute('data-p3-name') || 'your plan') };
+      var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; }
+      items.push({ id: g, quantity: 1, properties: gprops });
+    }
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(response){
+      if(response && response.status){ throw response; }
+      cta.classList.remove('is-loading'); ctaLabel.textContent = prevLabel;
+      try {
+        [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+          { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+          { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+        ].forEach(function(sc){
+          if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+          var host = document.getElementById(sc.id);
+          var el = host.querySelector(sc.selector) || host;
+          var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+          if(frag) el.innerHTML = frag.innerHTML;
+          if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+          if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+        });
+      } catch(e){}
+      var drawer = document.getElementById('Cart-Drawer');
+      if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+      else { window.location = cartUrl; }
+    })
+    .catch(function(e){ cta.classList.remove('is-loading'); ctaLabel.textContent = prevLabel; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+  });
+  syncCta();
+})();
+</script>
