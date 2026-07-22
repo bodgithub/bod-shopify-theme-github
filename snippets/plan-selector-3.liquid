@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://use.typekit.net/sxx4ssa.css">
 
 {%- assign acc = s.accent_color | default: '#1B3DEF' -%}
-{%- assign paper = s.paper_color | default: '#F2EEEA' -%}
+{%- assign acc2 = s.accent_2 | default: '#1B3DEF' -%}
 {%- assign ink = s.ink_color | default: '#15171E' -%}
 {%- assign rad = s.radius | default: 13 -%}
 {%- assign rad_in = rad | minus: 2 | at_least: 0 -%}
@@ -24,13 +24,13 @@
 <style>
 #ps3-{{ uid }} .bod-p3{
   --p3-sans:"tenon","Tenon Local","Figtree","Helvetica Neue",Arial,sans-serif;
-  --p3-blue:{{ acc }}; --p3-paper:{{ paper }}; --p3-ink:{{ ink }};
+  --p3-blue:{{ acc }}; --p3-acc2:{{ acc2 }}; --p3-ink:{{ ink }};
   --p3-ink-soft:#585A64; --p3-ink-faint:#8A8B93;
   --p3-line:#E4DED6; --p3-line-w:#EAE6DF; --p3-tint:rgba(27,61,239,0.06);
   --p3-grad:linear-gradient(140deg,{{ acc }} 0%,#3358FF 52%,#5C78FF 100%);
   font-family:var(--p3-sans); color:var(--p3-ink); box-sizing:border-box;
-  background:var(--p3-paper); border:1px solid var(--p3-line); border-radius:{{ rad | plus: 5 }}px;
-  padding:24px 20px 20px; max-width:{{ s.max_width | default: 440 }}px; margin:0 auto;
+  background:transparent; border-radius:{{ rad | plus: 5 }}px;
+  max-width:{{ s.max_width | default: 440 }}px; margin:0 auto;
 }
 #ps3-{{ uid }} .bod-p3 *,#ps3-{{ uid }} .bod-p3 *::before,#ps3-{{ uid }} .bod-p3 *::after{box-sizing:border-box;}
 #ps3-{{ uid }} .p3-eyebrow{font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--p3-blue); margin:0 0 6px;}
@@ -49,15 +49,15 @@
 #ps3-{{ uid }} .p3-radio::after{content:''; width:8px; height:8px; border-radius:50%; background:var(--p3-blue); opacity:0; transition:opacity .15s;}
 #ps3-{{ uid }} .p3-card.is-selected .p3-radio::after{opacity:1;}
 #ps3-{{ uid }} .p3-tier{font-size:14px; font-weight:600; letter-spacing:-0.005em; color:var(--p3-ink);}
-#ps3-{{ uid }} .p3-sub-save{font-size:11.5px; color:var(--p3-blue); font-weight:600; margin:3px 0 0 25px;}
+#ps3-{{ uid }} .p3-sub-save{font-size:11.5px; color:var(--p3-ink-faint); font-weight:400; margin:3px 0 0 25px;}
 #ps3-{{ uid }} .p3-detail{font-size:11.5px; color:var(--p3-ink-soft); margin:3px 0 0 25px;}
 #ps3-{{ uid }} .p3-card__price{display:flex; flex-direction:column; align-items:flex-end; gap:2px; flex:0 0 auto;}
 #ps3-{{ uid }} .p3-badge{font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#fff; background:var(--p3-blue); padding:2px 8px; border-radius:20px;}
-#ps3-{{ uid }} .p3-price{font-size:14px; font-weight:600; color:var(--p3-blue);}
+#ps3-{{ uid }} .p3-price{font-size:14px; font-weight:600; letter-spacing:-0.005em; color:var(--p3-ink);}
 #ps3-{{ uid }} .p3-strike{font-size:11.5px; text-decoration:line-through; color:var(--p3-ink-faint);}
 #ps3-{{ uid }} .p3-giftbar{background:rgba(27,61,239,0.11); padding:8px 13px; display:flex; justify-content:space-between; align-items:center; gap:9px;}
 #ps3-{{ uid }} .p3-giftbar__l{display:flex; align-items:center; gap:8px; min-width:0;}
-#ps3-{{ uid }} .p3-tick{width:17px; height:17px; border-radius:50%; background:var(--p3-blue); color:#fff; display:grid; place-items:center; font-size:10px; font-weight:700; flex:0 0 auto;}
+#ps3-{{ uid }} .p3-tick{width:18px; height:18px; flex:0 0 auto; display:block;}
 #ps3-{{ uid }} .p3-giftbar__t{font-size:11.5px; font-weight:600; color:var(--p3-ink);}
 #ps3-{{ uid }} .p3-giftbar__s{font-size:11.5px; text-decoration:line-through; color:var(--p3-ink-faint); flex:0 0 auto;}
 #ps3-{{ uid }} .v3-subonly{display:none;}
@@ -69,9 +69,10 @@
 #ps3-{{ uid }} .p3-proto{border-top:1px solid var(--p3-line-w); background:#fff; display:none;}
 #ps3-{{ uid }} .bod-p3.is-sub .p3-proto{display:block;}
 #ps3-{{ uid }} .p3-proto__head{width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 13px; background:transparent; border:none; cursor:pointer; text-align:left; font-family:inherit;}
-#ps3-{{ uid }} .p3-proto__t{font-size:13px; font-weight:600; color:var(--p3-ink); display:block;}
+#ps3-{{ uid }} .p3-proto__tt{display:flex; align-items:baseline; gap:8px; min-width:0;}
+#ps3-{{ uid }} .p3-proto__t{font-size:13px; font-weight:600; color:var(--p3-ink);}
 #ps3-{{ uid }} .p3-proto__o{font-size:11.5px; color:var(--p3-ink-faint);}
-#ps3-{{ uid }} .p3-proto__chev{color:var(--p3-blue); font-size:11px; transition:transform .18s;}
+#ps3-{{ uid }} .p3-proto__chev{width:16px; height:16px; color:var(--p3-blue); transition:transform .18s; flex:0 0 auto;}
 #ps3-{{ uid }} .p3-proto.is-open .p3-proto__chev{transform:rotate(180deg);}
 #ps3-{{ uid }} .p3-proto__body{padding:0 13px 13px; display:none;}
 #ps3-{{ uid }} .p3-proto.is-open .p3-proto__body{display:block;}
@@ -86,6 +87,12 @@
 #ps3-{{ uid }} .p3-concern__icon svg{width:16px; height:16px;}
 #ps3-{{ uid }} .p3-concern__t{font-size:13px; font-weight:600; color:var(--p3-ink); margin-top:7px;}
 #ps3-{{ uid }} .p3-concern__d{font-size:11px; color:var(--p3-ink-soft);}
+@media (max-width:480px){
+#ps3-{{ uid }} .p3-concern{display:flex; align-items:center; gap:10px; padding-right:34px;}
+#ps3-{{ uid }} .p3-concern__icon{flex:0 0 auto;}
+#ps3-{{ uid }} .p3-concern__txt{min-width:0;}
+#ps3-{{ uid }} .p3-concern__t{margin-top:0;}
+}
 #ps3-{{ uid }} .p3-proto__sup{font-size:11.5px; color:var(--p3-ink-soft); margin:9px 0 0;}
 #ps3-{{ uid }} .p3-proto__sup strong{color:var(--p3-blue); font-weight:600;}
 /* subscribe checkbox */
@@ -101,6 +108,7 @@
 /* ship line, CTA, trust */
 #ps3-{{ uid }} .p3-ship{font-size:11.5px; display:flex; align-items:center; justify-content:center; gap:7px; margin-top:11px; color:var(--p3-ink-soft);}
 #ps3-{{ uid }} .p3-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--p3-blue); display:inline-block;}
+#ps3-{{ uid }} .p3-ship__date{color:var(--p3-acc2); font-weight:700; text-decoration:underline;}
 #ps3-{{ uid }} .p3-cta{width:100%; border:none; border-radius:{{ rad_box }}px; padding:13px 18px; background:var(--p3-grad); color:#fff; font-family:inherit; font-size:14px; font-weight:600; cursor:pointer; transition:filter .16s,transform .12s; margin-top:11px;}
 #ps3-{{ uid }} .p3-cta:hover{filter:brightness(1.06);}
 #ps3-{{ uid }} .p3-cta:active{transform:translateY(1px);}
@@ -137,9 +145,10 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       {%- assign onep_k = pk | append: '_one_price' -%}{%- assign var_k = pk | append: '_variant' -%}
       {%- assign qty_k = pk | append: '_qty' -%}{%- assign plan_k = pk | append: '_plan' -%}
       {%- assign hero_k = pk | append: '_hero' -%}{%- assign badge_k = pk | append: '_badge' -%}
+      {%- assign gtxt_k = pk | append: '_gift_text' -%}{%- assign gstk_k = pk | append: '_gift_strike' -%}{%- assign gvar_k = pk | append: '_gift_variant' -%}
       {%- if s[tier_k] != blank -%}
       <div class="p3-card{% if p3_default == pk %} is-selected{% endif %}" role="radio" aria-checked="{% if p3_default == pk %}true{% else %}false{% endif %}" tabindex="0"
-           data-p3-card data-p3-name="{{ s[tier_k] | escape }}" data-p3-variant="{{ s[var_k] }}" data-p3-qty="{{ s[qty_k] | default: 1 }}" data-p3-plan="{{ s[plan_k] }}"
+           data-p3-card data-p3-name="{{ s[tier_k] | escape }}" data-p3-variant="{{ s[var_k] }}" data-p3-qty="{{ s[qty_k] | default: 1 }}" data-p3-plan="{{ s[plan_k] }}" data-p3-gift="{{ s[gvar_k] }}"
            data-p3-subprice="{{ s[subp_k] | escape }}" data-p3-oneprice="{{ s[onep_k] | escape }}" data-p3-subfreq="{{ s[freq_k] | escape }}">
         <div class="p3-card__in">
           <div class="p3-card__head">
@@ -155,17 +164,17 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
               {%- if s[strike_k] != blank -%}<span class="p3-strike v3-subonly" style="display:none;">{{ s[strike_k] }}</span>{%- endif -%}
             </div>
           </div>
-          {%- if s.gift_banner_text != blank -%}
+          {%- if s[gtxt_k] != blank -%}
           <div class="p3-giftbar v3-subonly">
-            <span class="p3-giftbar__l"><span class="p3-tick">✓</span><span class="p3-giftbar__t">{{ s.gift_banner_text }}</span></span>
-            {%- if s.gift_banner_strike != blank -%}<span class="p3-giftbar__s">{{ s.gift_banner_strike }}</span>{%- endif -%}
+            <span class="p3-giftbar__l"><svg class="p3-tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="{{ acc }}"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="p3-giftbar__t">{{ s[gtxt_k] }}</span></span>
+            {%- if s[gstk_k] != blank -%}<span class="p3-giftbar__s">{{ s[gstk_k] }}</span>{%- endif -%}
           </div>
           {%- endif -%}
           {%- if s[hero_k] and s.proto_enable -%}
           <div class="p3-proto" data-p3-proto>
             <button type="button" class="p3-proto__head" data-p3-proto-toggle aria-expanded="false">
-              <span><span class="p3-proto__t">{{ s.proto_title | default: 'Personalize my protocol' }}</span><span class="p3-proto__o" data-p3-proto-summary>{{ s.proto_optional | default: 'Optional' }}</span></span>
-              <span class="p3-proto__chev">&#9660;</span>
+              <span class="p3-proto__tt"><span class="p3-proto__t">{{ s.proto_title | default: 'Personalize my protocol' }}</span><span class="p3-proto__o" data-p3-proto-summary>{{ s.proto_optional | default: 'Optional' }}</span></span>
+              <svg class="p3-proto__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
             </button>
             <div class="p3-proto__body">
               <p class="p3-proto__q">{{ s.proto_q | default: 'Which areas are we supporting? Select all that apply.' }}</p>
@@ -178,8 +187,10 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
                   <button type="button" class="p3-concern" data-p3-concern data-variant="{{ s[cv_k] }}" data-label="{{ s[cl_k] | escape }}" aria-pressed="false">
                     <span class="p3-concern__tick" aria-hidden="true"></span>
                     <span class="p3-concern__icon"><svg viewBox="0 0 16 16" aria-hidden="true">{{ icon_row[1] }}</svg></span>
-                    <div class="p3-concern__t">{{ s[cl_k] }}</div>
-                    <div class="p3-concern__d">{{ s[cd_k] }}</div>
+                    <div class="p3-concern__txt">
+                      <div class="p3-concern__t">{{ s[cl_k] }}</div>
+                      <div class="p3-concern__d">{{ s[cd_k] }}</div>
+                    </div>
                   </button>
                   {%- endif -%}
                 {%- endfor -%}
@@ -199,8 +210,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <span class="p3-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong>{%- if s.sub_claim_suffix != blank -%}<span> {{ s.sub_claim_suffix }}</span>{%- endif -%}</span>
   </button>
 
-  {%- if s.shipping_text != blank -%}
-  <div class="p3-ship"><span class="p3-ship__dot"></span><span>{{ s.shipping_text }}</span></div>
+  {%- if s.shipping_prefix != blank -%}
+  <div class="p3-ship"><span class="p3-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="p3-ship__date" data-p3-shipdate></span></span></div>
   {%- endif -%}
 
   <button type="button" class="p3-cta" data-p3-submit><span class="spin" style="display:none;"></span><span data-p3-cta-label></span></button>
@@ -244,9 +255,15 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var onePrefix = {{ s.cta_one_prefix | default: 'Add to cart — ' | json }};
   var oneSuffix = {{ s.cta_one_suffix | default: ' one-time' | json }};
   var addingLabel = {{ s.adding_label | default: 'Adding…' | json }};
-  var giftVariant = {{ s.gift_variant | default: '' | json }};
-  var giftName = {{ s.gift_banner_text | default: 'Free gift' | json }};
   function isSub(){ return root.classList.contains('is-sub'); }
+  // arrival estimate: today + 5 business days
+  var shipEl = root.querySelector('[data-p3-shipdate]');
+  if(shipEl){
+    var sd = new Date(); var added = 0;
+    while(added < 5){ sd.setDate(sd.getDate() + 1); var dow = sd.getDay(); if(dow !== 0 && dow !== 6){ added++; } }
+    try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
+    catch(e){ shipEl.textContent = sd.toDateString(); }
+  }
   function selected(){ return root.querySelector('[data-p3-card].is-selected'); }
   function showErr(msg){ var sp = err.querySelector('span'); if(sp && msg) sp.textContent = msg; err.classList.add('is-shown'); }
   function syncCta(){
@@ -313,8 +330,9 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(isSub()){ item.selling_plan = plan; }
     var items = [item];
-    if(isSub() && giftVariant){
-      var g = protoGift(giftVariant);
+    var cardGift = (c.getAttribute('data-p3-gift') || '').trim();
+    if(isSub() && cardGift){
+      var g = protoGift(cardGift);
       var gprops = { '_gift': 'Free with ' + (c.getAttribute('data-p3-name') || 'your plan') };
       var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; }
       items.push({ id: g, quantity: 1, properties: gprops });
