@@ -2131,7 +2131,9 @@ h6, .h6 {
     font-size: calc(var(--font-heading-scale) * 72px);
     line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 80px)); } }
 
-h1, .h1, .h1-large, .h1-xlarge,
+h1, .h1, .h1-large, .h1-xlarge {
+  letter-spacing: -1px!important; } /*var(--font-heading-letter-spacing, normal);*/
+
 h2, .h2, blockquote p,
 blockquote span,
 h3,
@@ -2141,9 +2143,8 @@ h4,
 h5,
 .h5,
 h6,
-.h6 .h1-large,
-.h1-xlarge {
-  letter-spacing: -0.5px!important; } /*var(--font-heading-letter-spacing, normal);*/
+.h6 {
+  letter-spacing: 0px!important; }
 
   /* Reset letter-spacing inside <em> */
 h1 em, .h1 em, .h1-large em, .h1-xlarge em,
