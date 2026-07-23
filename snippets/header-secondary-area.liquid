@@ -42,7 +42,7 @@
 
   	{% comment %} Cart: blue outline basket icon + count bubble {% endcomment %}
 <a class="thb-secondary-area-item thb-secondary-cart" href="{{ routes.cart_url }}" id="cart-drawer-toggle" title="{{ 'sections.header.cart' | t | default: 'Cart' }}" {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}><div class="thb-secondary-item-icon">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b3def" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 8h13l-.9 11.2a1.8 1.8 0 0 1-1.8 1.6H8.2a1.8 1.8 0 0 1-1.8-1.6L5.5 8Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b3def" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5.5" y="8" width="13" height="12.5" rx="4.5"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg>
   <span class="thb-item-count">{%- if cart.item_count > 99 -%}{%- render 'svg-icons' with 'thb-asterisk' -%}{%- else -%}{{ cart.item_count }}{%- endif -%}</span></div></a>
 
 
@@ -52,9 +52,11 @@
 
 {% comment %}Add the Button to the Right, styled like the plan selector CTA, visible only on desktop {% endcomment %}
 <style>
-.bod-nav-cta{background:linear-gradient(140deg,#1b3def 0%,#3358FF 52%,#5C78FF 100%) !important; color:#fff !important; border:none !important; border-radius:11px !important; font-weight:600; transition:filter .16s,transform .12s;}
-.bod-nav-cta:hover{filter:brightness(1.06);}
+.bod-nav-cta{background:linear-gradient(140deg,#1b3def 0%,#3358FF 52%,#5C78FF 100%) !important; color:#fff !important; border:none !important; border-radius:12px !important; padding:13px 18px !important; height:auto !important; line-height:1 !important; font-size:14px !important; font-weight:600; box-shadow:0 10px 26px rgba(27,61,239,0.26); transition:filter .16s,transform .12s,box-shadow .14s;}
+.bod-nav-cta:hover{filter:brightness(1.06); box-shadow:0 14px 32px rgba(27,61,239,0.34);}
 .bod-nav-cta:active{transform:translateY(1px);}
+.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount{padding-right:3px;}
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart{padding-left:3px;}
 </style>
 <a class="button desktop-only bod-nav-cta" href="{{ section.settings.button_url | default: '/products/myo-d-chiro-inositol-powder' }}"
    role="button"
