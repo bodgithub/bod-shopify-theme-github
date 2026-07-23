@@ -292,13 +292,17 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var subPrefix = {{ s.cta_sub_prefix | default: 'Subscribe — ' | json }};
   var onePrefix = {{ s.cta_one_prefix | default: 'Add to cart — ' | json }};
   var oneSuffix = {{ s.cta_one_suffix | default: ' one-time' | json }};
+  if(oneSuffix && oneSuffix.charAt(0) !== ' '){ oneSuffix = ' ' + oneSuffix; }
   var addingLabel = {{ s.adding_label | default: 'Adding…' | json }};
   function isSub(){ return root.classList.contains('is-sub'); }
-  // arrival estimate: today + 5 business days
+  // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day
   var shipEl = root.querySelector('[data-p3-shipdate]');
   if(shipEl){
-    var sd = new Date(); var added = 0;
-    while(added < 5){ sd.setDate(sd.getDate() + 1); var dow = sd.getDay(); if(dow !== 0 && dow !== 6){ added++; } }
+    var sd;
+    try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
+    catch(e){ sd = new Date(); }
+    if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
+    while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
     try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
     catch(e){ shipEl.textContent = sd.toDateString(); }
   }
