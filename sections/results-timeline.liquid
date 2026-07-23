@@ -1,0 +1,126 @@
+{%- comment -%}
+  Bodology · When to expect results — expectation-setting timeline section.
+  Standalone section for product and landing pages. Numbered stages joined by
+  a gradient progress line (horizontal on desktop, vertical on mobile).
+  Stages are blocks; all copy, colours and the CTA are editor settings.
+  Default copy is structure/function only and carries the FDA disclaimer —
+  review before publishing.
+{%- endcomment -%}
+
+{%- assign uid = section.id -%}
+{%- assign acc = section.settings.accent_color -%}
+{%- assign acc2 = section.settings.accent_color_2 -%}
+<style>
+#rt-{{ uid }}{background:{{ section.settings.bg_color }}; padding:{{ section.settings.pad_top }}px 20px {{ section.settings.pad_bottom }}px;}
+#rt-{{ uid }} .rt-wrap{max-width:{{ section.settings.max_width }}px; margin:0 auto; font-family:var(--font-body-family, "Helvetica Neue", Arial, sans-serif);}
+#rt-{{ uid }} .rt-head{text-align:center; margin-bottom:38px;}
+#rt-{{ uid }} .rt-eyebrow{font-size:11px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:{{ acc }}; margin:0 0 8px;}
+#rt-{{ uid }} .rt-h{font-size:clamp(24px,4vw,32px); font-weight:700; letter-spacing:-0.02em; color:{{ section.settings.heading_color }}; margin:0 0 10px;}
+#rt-{{ uid }} .rt-sub{font-size:15px; color:{{ section.settings.sub_color }}; margin:0; line-height:1.5;}
+#rt-{{ uid }} .rt-track{display:grid; grid-template-columns:repeat({{ section.blocks.size | at_least: 1 }},1fr); gap:0; position:relative;}
+#rt-{{ uid }} .rt-line{position:absolute; top:17px; left:calc(100% / {{ section.blocks.size | at_least: 1 }} / 2); right:calc(100% / {{ section.blocks.size | at_least: 1 }} / 2); height:3px; border-radius:3px; background:linear-gradient(90deg,{{ acc }} 0%,{{ acc2 }} 100%);}
+#rt-{{ uid }} .rt-stage{position:relative; padding:0 12px; text-align:center;}
+#rt-{{ uid }} .rt-dot{position:relative; z-index:1; width:36px; height:36px; border-radius:50%; margin:0 auto 14px; background:{{ section.settings.dot_bg }}; color:#fff; border:3px solid {{ section.settings.bg_color }}; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; box-shadow:0 4px 12px rgba(0,0,0,0.12);}
+#rt-{{ uid }} .rt-chip{display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:{{ acc }}; background:{{ section.settings.chip_bg }}; border-radius:999px; padding:4px 11px; margin-bottom:9px;}
+#rt-{{ uid }} .rt-t{font-size:15.5px; font-weight:700; letter-spacing:-0.01em; color:{{ section.settings.title_color }}; margin:0 0 7px;}
+#rt-{{ uid }} .rt-d{font-size:13px; line-height:1.55; color:{{ section.settings.text_color }}; margin:0;}
+@media (max-width:749px){
+#rt-{{ uid }} .rt-track{grid-template-columns:1fr; gap:26px;}
+#rt-{{ uid }} .rt-line{top:0; bottom:0; left:17px; right:auto; width:3px; height:auto; background:linear-gradient(180deg,{{ acc }} 0%,{{ acc2 }} 100%);}
+#rt-{{ uid }} .rt-stage{display:grid; grid-template-columns:36px 1fr; column-gap:14px; text-align:left; padding:0;}
+#rt-{{ uid }} .rt-dot{grid-row:1 / span 3; margin:0;}
+#rt-{{ uid }} .rt-chip{justify-self:start;}
+}
+#rt-{{ uid }} .rt-cta-row{text-align:center; margin-top:36px;}
+#rt-{{ uid }} .rt-cta{display:inline-block; border:0; cursor:pointer; border-radius:999px; padding:15px 34px; font-family:inherit; font-size:14.5px; font-weight:600; color:{{ section.settings.cta_text_color }}; background:linear-gradient(120deg,{{ acc }} 0%,{{ acc2 }} 100%); text-decoration:none; transition:filter .15s,transform .12s; box-shadow:0 10px 26px -12px {{ acc }};}
+#rt-{{ uid }} .rt-cta:hover{filter:brightness(1.06);}
+#rt-{{ uid }} .rt-cta:active{transform:translateY(1px);}
+#rt-{{ uid }} .rt-note{font-size:12.5px; color:{{ section.settings.sub_color }}; text-align:center; margin:14px 0 0;}
+#rt-{{ uid }} .rt-disclaimer{font-size:10.5px; line-height:1.55; color:{{ section.settings.disclaimer_color }}; text-align:center; max-width:640px; margin:26px auto 0;}
+</style>
+
+<div id="rt-{{ uid }}">
+  <div class="rt-wrap">
+    <div class="rt-head">
+      {%- if section.settings.eyebrow != blank -%}<p class="rt-eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="rt-h">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="rt-sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+
+    <div class="rt-track">
+      <div class="rt-line" aria-hidden="true"></div>
+      {%- for block in section.blocks -%}
+      <div class="rt-stage" {{ block.shopify_attributes }}>
+        <div class="rt-dot">{{ forloop.index }}</div>
+        {%- if block.settings.chip != blank -%}<span class="rt-chip">{{ block.settings.chip }}</span>{%- endif -%}
+        {%- if block.settings.title != blank -%}<h3 class="rt-t">{{ block.settings.title }}</h3>{%- endif -%}
+        {%- if block.settings.text != blank -%}<p class="rt-d">{{ block.settings.text }}</p>{%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+    <div class="rt-cta-row">
+      <a class="rt-cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+      {%- if section.settings.cta_note != blank -%}<p class="rt-note">{{ section.settings.cta_note }}</p>{%- endif -%}
+    </div>
+    {%- endif -%}
+
+    {%- if section.settings.disclaimer != blank -%}
+    <p class="rt-disclaimer">{{ section.settings.disclaimer }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "When to expect results",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "header", "content": "Section" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#FFFFFF" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 700, "max": 1200, "step": 20, "unit": "px", "default": 1040 },
+    { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "pad_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The realistic timeline" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "When to expect results" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Inositol works with daily consistency — here's what the research window actually looks like." },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "accent_color", "label": "Accent (gradient start)", "default": "#1B3DEF" },
+    { "type": "color", "id": "accent_color_2", "label": "Accent 2 (gradient end)", "default": "#0A95EF" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#111318" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#585A64" },
+    { "type": "color", "id": "dot_bg", "label": "Step number background", "default": "#1B3DEF" },
+    { "type": "color", "id": "chip_bg", "label": "Week chip background", "default": "#EEF1FE" },
+    { "type": "color", "id": "title_color", "label": "Stage title", "default": "#111318" },
+    { "type": "color", "id": "text_color", "label": "Stage text", "default": "#3A3C46" },
+    { "type": "color", "id": "disclaimer_color", "label": "Disclaimer", "default": "#8A8B93" },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Start today" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "color", "id": "cta_text_color", "label": "Button text colour", "default": "#FFFFFF" },
+    { "type": "text", "id": "cta_note", "label": "Note under button", "default": "Subscribers can pause or cancel anytime." },
+    { "type": "header", "content": "Disclaimer" },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer text", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." }
+  ],
+  "blocks": [
+    { "type": "stage", "name": "Stage", "settings": [
+      { "type": "text", "id": "chip", "label": "Week label", "default": "Weeks 1–2" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Stage title" },
+      { "type": "textarea", "id": "text", "label": "Text", "default": "What happens in this window." }
+    ] }
+  ],
+  "presets": [
+    {
+      "name": "When to expect results",
+      "blocks": [
+        { "type": "stage", "settings": { "chip": "Weeks 1–2", "title": "Your body adjusts", "text": "Inositol builds up with daily use. Most women feel nothing yet — that's normal, not a sign it isn't working." } },
+        { "type": "stage", "settings": { "chip": "Weeks 3–6", "title": "Consistency compounds", "text": "Take it at the same time every day. This is where mood and stress resilience support begins for many women.*" } },
+        { "type": "stage", "settings": { "chip": "Weeks 6–12", "title": "The research window", "text": "Published inositol studies typically run 8–12 weeks or longer. Supports menstrual cycle regularity and hormonal balance.*" } },
+        { "type": "stage", "settings": { "chip": "Week 12+", "title": "Long-term support", "text": "Inositol is designed for ongoing daily use. Supports healthy glucose metabolism — for as long as you keep taking it.*" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

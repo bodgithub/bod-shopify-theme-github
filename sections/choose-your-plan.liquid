@@ -1,0 +1,270 @@
+{%- comment -%}
+  Bodology · Choose Your Plan — two-card pricing compare section.
+  Standalone section (addable on product templates and general/landing pages).
+  Left card: one-time purchase. Right card: gradient subscribe & save card
+  with badge, compare price and footnote. Trust row of icon items below.
+  Checklist rows and trust items are blocks; every colour, text, variant,
+  selling plan and button is an editor setting.
+  Buttons: with a variant ID set they AJAX-add to cart (subscribe adds the
+  selling plan; unique _li property so plan lines never merge) and open the
+  cart drawer; with no variant but a link set they navigate to the link.
+{%- endcomment -%}
+
+{%- assign uid = section.id -%}
+<style>
+#cyp-{{ uid }}{background:{{ section.settings.bg_color }}; padding:{{ section.settings.pad_top }}px 20px {{ section.settings.pad_bottom }}px;}
+#cyp-{{ uid }} .cyp-wrap{max-width:980px; margin:0 auto; font-family:var(--font-body-family, "Helvetica Neue", Arial, sans-serif);}
+#cyp-{{ uid }} .cyp-head{text-align:center; margin-bottom:34px;}
+#cyp-{{ uid }} .cyp-h{font-size:clamp(24px,4vw,32px); font-weight:700; letter-spacing:-0.02em; color:{{ section.settings.heading_color }}; margin:0 0 10px;}
+#cyp-{{ uid }} .cyp-sub{font-size:15px; color:{{ section.settings.subheading_color }}; margin:0;}
+#cyp-{{ uid }} .cyp-grid{display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:stretch;}
+@media (max-width:749px){#cyp-{{ uid }} .cyp-grid{grid-template-columns:1fr;}}
+#cyp-{{ uid }} .cyp-card{border-radius:16px; padding:28px 26px; display:flex; flex-direction:column; text-align:center; position:relative;}
+#cyp-{{ uid }} .cyp-card--left{background:{{ section.settings.l_card_bg }}; border:1px solid {{ section.settings.l_card_border }}; color:{{ section.settings.l_text_color }};}
+#cyp-{{ uid }} .cyp-card--right{background:linear-gradient({{ section.settings.grad_angle }}deg,{{ section.settings.grad_start }} 0%,{{ section.settings.grad_end }} 100%); color:{{ section.settings.r_text_color }}; box-shadow:0 18px 40px -18px {{ section.settings.grad_end | color_modify: 'alpha', 0.45 }};}
+#cyp-{{ uid }} .cyp-badge{position:absolute; top:16px; right:16px; background:{{ section.settings.badge_bg }}; color:{{ section.settings.badge_text_color }}; font-size:10.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:5px 12px; border-radius:999px;}
+#cyp-{{ uid }} .cyp-title{font-size:19px; font-weight:700; letter-spacing:-0.01em; margin:0 0 12px;}
+#cyp-{{ uid }} .cyp-pricerow{display:flex; align-items:baseline; justify-content:center; gap:10px;}
+#cyp-{{ uid }} .cyp-compare{font-size:17px; text-decoration:line-through; opacity:0.65;}
+#cyp-{{ uid }} .cyp-price{font-size:32px; font-weight:800; letter-spacing:-0.02em;}
+#cyp-{{ uid }} .cyp-pricenote{font-size:12.5px; opacity:0.75; margin:6px 0 0;}
+#cyp-{{ uid }} .cyp-list{list-style:none; margin:22px 0 0; padding:0; display:flex; flex-direction:column; gap:11px; text-align:left;}
+#cyp-{{ uid }} .cyp-list li{display:flex; align-items:flex-start; gap:10px; font-size:13.5px; line-height:1.45;}
+#cyp-{{ uid }} .cyp-list svg{flex:0 0 auto; width:16px; height:16px; margin-top:2px;}
+#cyp-{{ uid }} .cyp-btn{display:block; width:100%; border:0; cursor:pointer; border-radius:999px; padding:14px 20px; font-family:inherit; font-size:14.5px; font-weight:600; text-align:center; text-decoration:none; margin-top:auto; transition:filter .15s,transform .12s;}
+#cyp-{{ uid }} .cyp-btn:hover{filter:brightness(0.96);}
+#cyp-{{ uid }} .cyp-btn:active{transform:translateY(1px);}
+#cyp-{{ uid }} .cyp-card--left .cyp-list{margin-bottom:22px;}
+#cyp-{{ uid }} .cyp-card--right .cyp-list{margin-bottom:24px;}
+#cyp-{{ uid }} .cyp-btn--left{background:{{ section.settings.l_btn_bg }}; color:{{ section.settings.l_btn_text }};}
+#cyp-{{ uid }} .cyp-btn--right{background:{{ section.settings.r_btn_bg }}; color:{{ section.settings.r_btn_text }};}
+#cyp-{{ uid }} .cyp-btn.is-loading{pointer-events:none; opacity:0.7;}
+#cyp-{{ uid }} .cyp-foot{font-size:11.5px; opacity:0.85; margin:14px 0 0;}
+#cyp-{{ uid }} .cyp-error{display:none; align-items:center; gap:8px; font-size:12.5px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:8px 12px; margin-top:10px; text-align:left;}
+#cyp-{{ uid }} .cyp-card--right .cyp-error{color:#fff; background:rgba(0,0,0,0.25); border-color:rgba(255,255,255,0.4);}
+#cyp-{{ uid }} .cyp-error.is-shown{display:flex;}
+#cyp-{{ uid }} .cyp-trust{display:grid; grid-template-columns:repeat({{ section.blocks | where: 'type', 'trust_item' | size | at_least: 1 }},1fr); gap:20px; margin-top:44px;}
+@media (max-width:749px){#cyp-{{ uid }} .cyp-trust{grid-template-columns:1fr 1fr; gap:26px 14px;}}
+#cyp-{{ uid }} .cyp-titem{text-align:center;}
+#cyp-{{ uid }} .cyp-ticon{width:52px; height:52px; border-radius:50%; background:{{ section.settings.trust_icon_bg }}; color:{{ section.settings.trust_icon_color }}; display:inline-flex; align-items:center; justify-content:center; margin-bottom:10px;}
+#cyp-{{ uid }} .cyp-ticon svg{width:22px; height:22px;}
+#cyp-{{ uid }} .cyp-tt{font-size:13.5px; font-weight:700; color:{{ section.settings.trust_title_color }}; margin:0 0 3px;}
+#cyp-{{ uid }} .cyp-ts{font-size:12px; color:{{ section.settings.trust_sub_color }}; margin:0;}
+</style>
+
+{%- capture tick_l -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.l_tick_color }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
+{%- capture tick_r -%}<svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.r_tick_color }}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>{%- endcapture -%}
+
+<div id="cyp-{{ uid }}">
+  <div class="cyp-wrap">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+    <div class="cyp-head">
+      {%- if section.settings.heading != blank -%}<h2 class="cyp-h">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p class="cyp-sub">{{ section.settings.subheading }}</p>{%- endif -%}
+    </div>
+    {%- endif -%}
+
+    <div class="cyp-grid">
+      <div class="cyp-card cyp-card--left">
+        <h3 class="cyp-title">{{ section.settings.l_title }}</h3>
+        <div class="cyp-pricerow"><span class="cyp-price">{{ section.settings.l_price }}</span></div>
+        {%- if section.settings.l_price_note != blank -%}<p class="cyp-pricenote">{{ section.settings.l_price_note }}</p>{%- endif -%}
+        <ul class="cyp-list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'left_item' and block.settings.text != blank -%}
+            <li {{ block.shopify_attributes }}>{{ tick_l }}<span>{{ block.settings.text }}</span></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        <button type="button" class="cyp-btn cyp-btn--left" data-cyp-buy data-variant="{{ section.settings.l_variant }}" data-qty="{{ section.settings.l_qty | default: 1 }}" data-plan="" data-link="{{ section.settings.l_link }}">{{ section.settings.l_btn_label }}</button>
+        <div class="cyp-error" data-cyp-error><span>Set a variant ID (or link) in the theme editor.</span></div>
+      </div>
+
+      <div class="cyp-card cyp-card--right">
+        {%- if section.settings.badge_text != blank -%}<span class="cyp-badge">{{ section.settings.badge_text }}</span>{%- endif -%}
+        <h3 class="cyp-title">{{ section.settings.r_title }}</h3>
+        <div class="cyp-pricerow">
+          {%- if section.settings.r_compare != blank -%}<span class="cyp-compare">{{ section.settings.r_compare }}</span>{%- endif -%}
+          <span class="cyp-price">{{ section.settings.r_price }}</span>
+        </div>
+        {%- if section.settings.r_price_note != blank -%}<p class="cyp-pricenote">{{ section.settings.r_price_note }}</p>{%- endif -%}
+        <ul class="cyp-list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'right_item' and block.settings.text != blank -%}
+            <li {{ block.shopify_attributes }}>{{ tick_r }}<span>{{ block.settings.text }}</span></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+        <button type="button" class="cyp-btn cyp-btn--right" data-cyp-buy data-variant="{{ section.settings.r_variant }}" data-qty="{{ section.settings.r_qty | default: 1 }}" data-plan="{{ section.settings.r_plan }}" data-requires-plan="1" data-link="{{ section.settings.r_link }}">{{ section.settings.r_btn_label }}</button>
+        <div class="cyp-error" data-cyp-error><span>Set the variant and selling plan IDs in the theme editor.</span></div>
+        {%- if section.settings.r_footnote != blank -%}<p class="cyp-foot">{{ section.settings.r_footnote }}</p>{%- endif -%}
+      </div>
+    </div>
+
+    {%- assign trust_items = section.blocks | where: 'type', 'trust_item' -%}
+    {%- if trust_items.size > 0 -%}
+    <div class="cyp-trust">
+      {%- for block in trust_items -%}
+      <div class="cyp-titem" {{ block.shopify_attributes }}>
+        <span class="cyp-ticon">
+          {%- case block.settings.icon -%}
+          {%- when 'truck' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>
+          {%- when 'shield' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/></svg>
+          {%- when 'box' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M4 7.5l8 4.5 8-4.5"/><path d="M12 12v9"/></svg>
+          {%- when 'star' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9L12 3.5z"/></svg>
+          {%- when 'leaf' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19C5 9 12 4 20 4c0 8-5 15-15 15z"/><path d="M5 19c3-5 7-8 11-10"/></svg>
+          {%- else -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4 4 10-10"/></svg>
+          {%- endcase -%}
+        </span>
+        {%- if block.settings.title != blank -%}<p class="cyp-tt">{{ block.settings.title }}</p>{%- endif -%}
+        {%- if block.settings.sub != blank -%}<p class="cyp-ts">{{ block.settings.sub }}</p>{%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('cyp-{{ uid }}');
+  if(!root || root.dataset.cypBound) return;
+  root.dataset.cypBound = '1';
+  var cartUrl = {{ routes.cart_url | json }};
+  var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  function renderAndOpenCart(response){
+    try {
+      [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+        { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+        { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+      ].forEach(function(sc){
+        if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+        var host = document.getElementById(sc.id);
+        var el = host.querySelector(sc.selector) || host;
+        var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+        if(frag) el.innerHTML = frag.innerHTML;
+        if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+        if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+      });
+    } catch(e){}
+    var drawer = document.getElementById('Cart-Drawer');
+    if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+    else { window.location = cartUrl; }
+  }
+  [].slice.call(root.querySelectorAll('[data-cyp-buy]')).forEach(function(btn){
+    var err = btn.parentElement.querySelector('[data-cyp-error]');
+    function showErr(msg){ if(!err) return; var sp = err.querySelector('span'); if(sp && msg) sp.textContent = msg; err.classList.add('is-shown'); }
+    btn.addEventListener('click', function(){
+      if(btn.classList.contains('is-loading')) return;
+      if(err) err.classList.remove('is-shown');
+      var variant = (btn.getAttribute('data-variant') || '').trim();
+      var plan = (btn.getAttribute('data-plan') || '').trim();
+      var qty = parseInt(btn.getAttribute('data-qty'), 10) || 1;
+      var link = (btn.getAttribute('data-link') || '').trim();
+      if(!variant){
+        if(link){ window.location = link; return; }
+        showErr('Set a variant ID (or link) in the theme editor.'); return;
+      }
+      if(btn.hasAttribute('data-requires-plan') && !plan){
+        showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return;
+      }
+      btn.classList.add('is-loading');
+      var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
+      if(plan){ item.selling_plan = plan; }
+      fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: [item], sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+      .then(function(r){ return r.json(); })
+      .then(function(response){
+        if(response && response.status){ throw response; }
+        btn.classList.remove('is-loading');
+        renderAndOpenCart(response);
+      })
+      .catch(function(e){ btn.classList.remove('is-loading'); showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Choose your plan",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "header", "content": "Section" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#FFFFFF" },
+    { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "pad_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 56 },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Choose Your Plan" },
+    { "type": "color", "id": "heading_color", "label": "Heading colour", "default": "#111318" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Save 30% when you subscribe. Cancel anytime, no questions asked." },
+    { "type": "color", "id": "subheading_color", "label": "Subheading colour", "default": "#585A64" },
+    { "type": "header", "content": "One-time card" },
+    { "type": "text", "id": "l_title", "label": "Title", "default": "One-Time Purchase" },
+    { "type": "text", "id": "l_price", "label": "Price", "default": "$49.99" },
+    { "type": "text", "id": "l_price_note", "label": "Price note", "default": "Per bottle" },
+    { "type": "text", "id": "l_btn_label", "label": "Button label", "default": "Buy Once" },
+    { "type": "text", "id": "l_variant", "label": "Product variant ID", "info": "With a variant ID the button adds to cart; leave blank and set a link to navigate instead." },
+    { "type": "number", "id": "l_qty", "label": "Quantity", "default": 1 },
+    { "type": "url", "id": "l_link", "label": "Button link (fallback)" },
+    { "type": "color", "id": "l_card_bg", "label": "Card background", "default": "#FFFFFF" },
+    { "type": "color", "id": "l_card_border", "label": "Card border", "default": "#E7E7EC" },
+    { "type": "color", "id": "l_text_color", "label": "Text colour", "default": "#15171E" },
+    { "type": "color", "id": "l_tick_color", "label": "Tick colour", "default": "#16A34A" },
+    { "type": "color", "id": "l_btn_bg", "label": "Button background", "default": "#E5E7EB" },
+    { "type": "color", "id": "l_btn_text", "label": "Button text", "default": "#15171E" },
+    { "type": "header", "content": "Subscribe card" },
+    { "type": "text", "id": "r_title", "label": "Title", "default": "Subscribe & Save 30%" },
+    { "type": "text", "id": "badge_text", "label": "Badge", "default": "Best Value" },
+    { "type": "color", "id": "badge_bg", "label": "Badge background", "default": "#FACC15" },
+    { "type": "color", "id": "badge_text_color", "label": "Badge text", "default": "#1A1A1A" },
+    { "type": "text", "id": "r_compare", "label": "Compare-at price", "default": "$49.99" },
+    { "type": "text", "id": "r_price", "label": "Price", "default": "$34.99" },
+    { "type": "text", "id": "r_price_note", "label": "Price note", "default": "Per bottle, delivered monthly" },
+    { "type": "text", "id": "r_btn_label", "label": "Button label", "default": "Subscribe & Save 30% →" },
+    { "type": "text", "id": "r_variant", "label": "Product variant ID", "info": "With a variant ID the button adds to cart; leave blank and set a link to navigate instead." },
+    { "type": "number", "id": "r_qty", "label": "Quantity", "default": 1 },
+    { "type": "text", "id": "r_plan", "label": "Selling plan ID", "info": "Required when adding as a subscription — the button refuses to add until this is set." },
+    { "type": "url", "id": "r_link", "label": "Button link (fallback)" },
+    { "type": "text", "id": "r_footnote", "label": "Footnote", "default": "Join 10,000+ subscribers saving on their hormonal health" },
+    { "type": "color", "id": "grad_start", "label": "Gradient start", "default": "#9333EA" },
+    { "type": "color", "id": "grad_end", "label": "Gradient end", "default": "#E11D8F" },
+    { "type": "range", "id": "grad_angle", "label": "Gradient angle", "min": 0, "max": 360, "step": 5, "unit": "°", "default": 120 },
+    { "type": "color", "id": "r_text_color", "label": "Text colour", "default": "#FFFFFF" },
+    { "type": "color", "id": "r_tick_color", "label": "Tick colour", "default": "#FFFFFF" },
+    { "type": "color", "id": "r_btn_bg", "label": "Button background", "default": "#FFFFFF" },
+    { "type": "color", "id": "r_btn_text", "label": "Button text", "default": "#C026D3" },
+    { "type": "header", "content": "Trust row" },
+    { "type": "color", "id": "trust_icon_bg", "label": "Icon circle background", "default": "#F3E8FF" },
+    { "type": "color", "id": "trust_icon_color", "label": "Icon colour", "default": "#9333EA" },
+    { "type": "color", "id": "trust_title_color", "label": "Title colour", "default": "#15171E" },
+    { "type": "color", "id": "trust_sub_color", "label": "Subtitle colour", "default": "#585A64" }
+  ],
+  "blocks": [
+    { "type": "left_item", "name": "One-time list item", "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "List item" } ] },
+    { "type": "right_item", "name": "Subscribe list item", "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "List item" } ] },
+    { "type": "trust_item", "name": "Trust item", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "check", "options": [
+        { "value": "truck", "label": "Truck" }, { "value": "shield", "label": "Shield" }, { "value": "box", "label": "Box" }, { "value": "check", "label": "Check" }, { "value": "star", "label": "Star" }, { "value": "leaf", "label": "Leaf" } ] },
+      { "type": "text", "id": "title", "label": "Title", "default": "Trust point" },
+      { "type": "text", "id": "sub", "label": "Subtitle" } ] }
+  ],
+  "presets": [
+    {
+      "name": "Choose your plan",
+      "blocks": [
+        { "type": "left_item", "settings": { "text": "30-day supply (120g)" } },
+        { "type": "left_item", "settings": { "text": "Free shipping on orders $50+" } },
+        { "type": "left_item", "settings": { "text": "30-day money-back guarantee" } },
+        { "type": "right_item", "settings": { "text": "Save 30% on every order" } },
+        { "type": "right_item", "settings": { "text": "Free shipping always" } },
+        { "type": "right_item", "settings": { "text": "Cancel, skip, or pause anytime" } },
+        { "type": "right_item", "settings": { "text": "Never run out – delivered to your door" } },
+        { "type": "right_item", "settings": { "text": "30-day money-back guarantee" } },
+        { "type": "trust_item", "settings": { "icon": "truck", "title": "Free Shipping", "sub": "On all subscriptions" } },
+        { "type": "trust_item", "settings": { "icon": "shield", "title": "30-Day Guarantee", "sub": "100% money back" } },
+        { "type": "trust_item", "settings": { "icon": "box", "title": "Cancel Anytime", "sub": "No commitments" } },
+        { "type": "trust_item", "settings": { "icon": "check", "title": "Quality Tested", "sub": "Third-party verified" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
