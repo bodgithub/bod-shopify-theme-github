@@ -16,6 +16,7 @@
 {%- assign acc2 = s.accent_2 | default: '#1B3DEF' -%}
 {%- assign ink = s.ink_color | default: '#15171E' -%}
 {%- assign rad = s.radius | default: 13 -%}
+{%- assign bw3 = s.border_width | default: 2 -%}
 {%- assign rad_in = rad | minus: 2 | at_least: 0 -%}
 {%- assign rad_box = rad | minus: 2 | at_least: 0 -%}
 {%- assign rad_tick = rad | minus: 6 | at_least: 4 -%}
@@ -36,8 +37,8 @@
 #ps3-{{ uid }} .p3-eyebrow{font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--p3-blue); margin:0 0 6px;}
 #ps3-{{ uid }} .p3-h{font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--p3-ink); margin:0 0 14px;}
 #ps3-{{ uid }} .p3-cards{display:flex; flex-direction:column; gap:9px;}
-#ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; padding:2px; background:var(--p3-line-w);{% unless s.disable_shadows %} box-shadow:0 1px 5px -3px rgba(0,0,0,0.12);{% endunless %} transition:box-shadow .16s,background .16s;}
-#ps3-{{ uid }} .p3-card.is-selected{background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %};{% unless s.disable_shadows %} box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);{% endunless %}}
+#ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; padding:1.5px; background:#E2E2E2;{% unless s.disable_shadows %} box-shadow:0 1px 5px -3px rgba(0,0,0,0.12);{% endunless %} transition:box-shadow .16s,background .16s;}
+#ps3-{{ uid }} .p3-card.is-selected{padding:{{ bw3 }}px; background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %};{% unless s.disable_shadows %} box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);{% endunless %}}
 #ps3-{{ uid }} .p3-card:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
 #ps3-{{ uid }} .p3-card__in{border-radius:{{ rad_in }}px; overflow:hidden; background:#fff;}
 #ps3-{{ uid }} .p3-card__head{background:#fff; padding:11px 13px;}
@@ -51,6 +52,7 @@
 #ps3-{{ uid }} .p3-radio::after{content:''; width:8px; height:8px; border-radius:50%; background:var(--p3-blue); opacity:0; transition:opacity .15s;}
 #ps3-{{ uid }} .p3-card.is-selected .p3-radio::after{opacity:1;}
 #ps3-{{ uid }} .p3-tier{font-size:14px; font-weight:600; letter-spacing:-0.005em; color:var(--p3-ink);}
+#ps3-{{ uid }} .p3-roundel{font-size:10px; font-weight:600; letter-spacing:0.01em; color:var(--p3-acc2); background:#fff; border:1px solid var(--p3-acc2); padding:2px 8px; border-radius:999px; white-space:nowrap; flex:0 0 auto;}
 #ps3-{{ uid }} .p3-sub-save{font-size:11.5px; color:var(--p3-ink-faint); font-weight:400; margin:3px 0 0 25px;}
 #ps3-{{ uid }} .p3-detail{font-size:11.5px; color:var(--p3-ink-soft); margin:3px 0 0 25px;}
 #ps3-{{ uid }} .p3-card__price{display:flex; flex-direction:column; align-items:flex-end; gap:2px; flex:0 0 auto;}
@@ -59,7 +61,7 @@
 #ps3-{{ uid }} .p3-strike{font-size:11.5px; text-decoration:line-through; color:var(--p3-ink-faint);}
 #ps3-{{ uid }} .p3-giftbar{background:rgba(27,61,239,0.11); padding:8px 13px; display:flex; justify-content:space-between; align-items:center; gap:9px;}
 #ps3-{{ uid }} .p3-giftbar__l{display:flex; align-items:center; gap:8px; min-width:0;}
-#ps3-{{ uid }} .p3-tick{width:18px; height:18px; flex:0 0 auto; display:block;}
+#ps3-{{ uid }} .p3-tick{width:18px; height:18px; flex:0 0 auto; display:block; color:var(--p3-ink);}
 #ps3-{{ uid }} .p3-giftbar__t{font-size:11.5px; font-weight:600; color:var(--p3-ink);}
 #ps3-{{ uid }} .p3-giftbar__s{font-size:11.5px; text-decoration:line-through; color:var(--p3-ink-faint); flex:0 0 auto;}
 #ps3-{{ uid }} .v3-subonly{display:none;}
@@ -151,7 +153,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       {%- assign strike_k = pk | append: '_sub_strike' -%}{%- assign freq_k = pk | append: '_sub_freq' -%}
       {%- assign onep_k = pk | append: '_one_price' -%}{%- assign var_k = pk | append: '_variant' -%}
       {%- assign qty_k = pk | append: '_qty' -%}{%- assign plan_k = pk | append: '_plan' -%}
-      {%- assign hero_k = pk | append: '_hero' -%}{%- assign badge_k = pk | append: '_badge' -%}
+      {%- assign hero_k = pk | append: '_hero' -%}{%- assign badge_k = pk | append: '_badge' -%}{%- assign rnd_k = pk | append: '_roundel' -%}
       {%- assign gtxt_k = pk | append: '_gift_text' -%}{%- assign gstk_k = pk | append: '_gift_strike' -%}{%- assign gvar_k = pk | append: '_gift_variant' -%}
       {%- if s[tier_k] != blank -%}
       <div class="p3-card{% if p3_default == pk %} is-selected{% endif %}" role="radio" aria-checked="{% if p3_default == pk %}true{% else %}false{% endif %}" tabindex="0"
@@ -162,7 +164,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
             {%- if s[badge_k] != blank -%}<div class="p3-card__badgerow"><span class="p3-badge">{{ s[badge_k] }}</span></div>{%- endif -%}
             <div class="p3-card__hrow">
               <div class="p3-card__id">
-                <div class="p3-card__row"><span class="p3-radio"></span><span class="p3-tier">{{ s[tier_k] }}</span></div>
+                <div class="p3-card__row"><span class="p3-radio"></span><span class="p3-tier">{{ s[tier_k] }}</span>{%- if s[rnd_k] != blank -%}<span class="p3-roundel">{{ s[rnd_k] }}</span>{%- endif -%}</div>
                 {%- if s[save_k] != blank -%}<div class="p3-sub-save v3-subonly">{{ s[save_k] }}</div>{%- endif -%}
                 <div class="p3-detail{% if s[save_k] != blank %} v3-oneonly{% endif %}">{{ s[detail_k] }}</div>
               </div>
@@ -175,7 +177,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
           </div>
           {%- if s[gtxt_k] != blank -%}
           <div class="p3-giftbar v3-subonly">
-            <span class="p3-giftbar__l"><svg class="p3-tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="{{ acc }}"/><path d="M7 12.5l3 3 7-7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="p3-giftbar__t">{{ s[gtxt_k] }}</span></span>
+            <span class="p3-giftbar__l"><svg class="p3-tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 12.5l4.5 4.5 8.5-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="p3-giftbar__t">{{ s[gtxt_k] }}</span></span>
             {%- if s[gstk_k] != blank -%}<span class="p3-giftbar__s">{{ s[gstk_k] }}</span>{%- endif -%}
           </div>
           {%- endif -%}
