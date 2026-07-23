@@ -132,6 +132,7 @@
 #ps3-{{ uid }} .p3-cta:active{transform:translateY(1px);}
 #ps3-{{ uid }} .p3-cta:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
 #ps3-{{ uid }} .p3-cta.is-loading{pointer-events:none; opacity:.8;}
+#ps3-{{ uid }} .p3-cta__dash{display:inline-block; vertical-align:middle; width:22px; height:1px; background:currentColor; margin:0 9px; position:relative; top:-1px;}
 #ps3-{{ uid }} .p3-trust{font-size:11px; display:flex; justify-content:center; flex-wrap:wrap; gap:5px 12px; color:var(--p3-ink-faint); margin-top:11px;}
 #ps3-{{ uid }} .p3-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:10px;}
 #ps3-{{ uid }} .p3-error.is-shown{display:flex;}
@@ -221,7 +222,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   <div class="p3-ship"><span class="p3-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="p3-ship__date" data-p3-shipdate></span></span></div>
   {%- endif -%}
 
-  <button type="button" class="p3-cta" data-p3-submit><svg class="p3-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 9V7.5a3.5 3.5 0 0 1 7 0V9"/><path d="M5.5 9h13v8.5a2.5 2.5 0 0 1-2.5 2.5H8a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 16.6h3.6M9.8 14.8v3.6"/></svg><span data-p3-cta-label>{{ s.cta_label | default: 'Add To Cart' }}</span></button>
+  <button type="button" class="p3-cta" data-p3-submit><svg class="p3-cta__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 9V7.5a3.5 3.5 0 0 1 7 0V9"/><path d="M5.5 9h13v8.5a2.5 2.5 0 0 1-2.5 2.5H8a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M8 16.6h3.6M9.8 14.8v3.6"/></svg><span data-p3-cta-label></span></button>
 
   <div class="p3-error" data-p3-error>
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
@@ -288,7 +289,9 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var subTick = root.querySelector('[data-p3-subtick]');
   var cartUrl = {{ routes.cart_url | json }};
   var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
-  var ctaText = {{ s.cta_label | default: 'Add To Cart' | json }};
+  var subPrefix = {{ s.cta_sub_prefix | default: 'Subscribe — ' | json }};
+  var onePrefix = {{ s.cta_one_prefix | default: 'Add to cart — ' | json }};
+  var oneSuffix = {{ s.cta_one_suffix | default: ' one-time' | json }};
   var addingLabel = {{ s.adding_label | default: 'Adding…' | json }};
   function isSub(){ return root.classList.contains('is-sub'); }
   // arrival estimate: today + 5 business days
@@ -301,7 +304,22 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   }
   function selected(){ return root.querySelector('[data-p3-card].is-selected'); }
   function showErr(msg){ var sp = err.querySelector('span'); if(sp && msg) sp.textContent = msg; err.classList.add('is-shown'); }
-  function syncCta(){ if(ctaLabel){ ctaLabel.textContent = ctaText; } }
+  function setCta(pre, rest){
+    ctaLabel.textContent = '';
+    ctaLabel.appendChild(document.createTextNode(pre.replace(/\s*[—–-]+\s*$/, '')));
+    var d = document.createElement('span'); d.className = 'p3-cta__dash'; d.setAttribute('aria-hidden', 'true');
+    ctaLabel.appendChild(d);
+    ctaLabel.appendChild(document.createTextNode(rest));
+  }
+  function syncCta(){
+    var c = selected(); if(!c || !ctaLabel) return;
+    if(isSub()){
+      var f = c.getAttribute('data-p3-subfreq') || '';
+      setCta(subPrefix, (c.getAttribute('data-p3-subprice') || '') + (f ? ' ' + f : ''));
+    } else {
+      setCta(onePrefix, (c.getAttribute('data-p3-oneprice') || '') + oneSuffix);
+    }
+  }
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
     c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
