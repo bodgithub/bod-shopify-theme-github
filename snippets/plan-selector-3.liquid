@@ -38,8 +38,8 @@
 #ps3-{{ uid }} .p3-eyebrow{font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--p3-blue); margin:0 0 6px;}
 #ps3-{{ uid }} .p3-h{font-size:14px; font-weight:600; letter-spacing:-0.005em; color:var(--p3-blue); margin:0 0 8px; max-height:45px; overflow:hidden;}
 #ps3-{{ uid }} .p3-cards{display:flex; flex-direction:column; gap:9px;}
-#ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; padding:1px; background:#E2E2E2;{% unless s.disable_shadows %} box-shadow:0 1px 5px -3px rgba(0,0,0,0.12);{% endunless %} transition:box-shadow .16s,background .16s;}
-#ps3-{{ uid }} .p3-card.is-selected{padding:{{ bw3 }}px; background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %};{% unless s.disable_shadows %} box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);{% endunless %}}
+#ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; border:1px solid #E2E2E2; background:#fff;{% unless s.disable_shadows %} box-shadow:0 1px 5px -3px rgba(0,0,0,0.12);{% endunless %} transition:box-shadow .16s,border-color .16s;}
+#ps3-{{ uid }} .p3-card.is-selected{border:{{ bw3 }}px solid var(--p3-blue);{% if s.border_style == 'gradient' %} border-color:transparent; background:linear-gradient(#fff,#fff) padding-box, var(--p3-grad) border-box;{% endif %}{% unless s.disable_shadows %} box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);{% endunless %}}
 #ps3-{{ uid }} .p3-card:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
 #ps3-{{ uid }} .p3-card__in{border-radius:{{ rad_in }}px; overflow:hidden; background:#fff;}
 #ps3-{{ uid }} .p3-card__head{background:#fff; padding:11px 13px;}
