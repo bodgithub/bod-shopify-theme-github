@@ -127,6 +127,7 @@
 #ps3-{{ uid }} .p3-cta:active{transform:translateY(1px);}
 #ps3-{{ uid }} .p3-cta:focus-visible{outline:3px solid var(--p3-blue); outline-offset:2px;}
 #ps3-{{ uid }} .p3-cta.is-loading{pointer-events:none; opacity:.8;}
+#ps3-{{ uid }} .p3-cta__dash{display:inline-block; vertical-align:middle; width:22px; height:1px; background:currentColor; margin:0 9px; position:relative; top:-1px;}
 #ps3-{{ uid }} .p3-trust{font-size:11px; display:flex; justify-content:center; flex-wrap:wrap; gap:5px 12px; color:var(--p3-ink-faint); margin-top:11px;}
 #ps3-{{ uid }} .p3-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:10px;}
 #ps3-{{ uid }} .p3-error.is-shown{display:flex;}
@@ -282,13 +283,20 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   }
   function selected(){ return root.querySelector('[data-p3-card].is-selected'); }
   function showErr(msg){ var sp = err.querySelector('span'); if(sp && msg) sp.textContent = msg; err.classList.add('is-shown'); }
+  function setCta(pre, rest){
+    ctaLabel.textContent = '';
+    ctaLabel.appendChild(document.createTextNode(pre.replace(/\s*[—–-]+\s*$/, '')));
+    var d = document.createElement('span'); d.className = 'p3-cta__dash'; d.setAttribute('aria-hidden', 'true');
+    ctaLabel.appendChild(d);
+    ctaLabel.appendChild(document.createTextNode(rest));
+  }
   function syncCta(){
     var c = selected(); if(!c || !ctaLabel) return;
     if(isSub()){
       var f = c.getAttribute('data-p3-subfreq') || '';
-      ctaLabel.textContent = subPrefix + (c.getAttribute('data-p3-subprice') || '') + (f ? ' ' + f : '');
+      setCta(subPrefix, (c.getAttribute('data-p3-subprice') || '') + (f ? ' ' + f : ''));
     } else {
-      ctaLabel.textContent = onePrefix + (c.getAttribute('data-p3-oneprice') || '') + oneSuffix;
+      setCta(onePrefix, (c.getAttribute('data-p3-oneprice') || '') + oneSuffix);
     }
   }
   function select(c){
@@ -345,7 +353,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     if(isSub() && !plan){ showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return; }
     err.classList.remove('is-shown');
     cta.classList.add('is-loading');
-    var prevLabel = ctaLabel.textContent; ctaLabel.textContent = addingLabel;
+    ctaLabel.textContent = addingLabel;
     var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(isSub()){ item.selling_plan = plan; }
     var items = [item];
@@ -360,7 +368,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     .then(function(r){ return r.json(); })
     .then(function(response){
       if(response && response.status){ throw response; }
-      cta.classList.remove('is-loading'); ctaLabel.textContent = prevLabel;
+      cta.classList.remove('is-loading'); syncCta();
       try {
         [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
           { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
@@ -379,7 +387,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
       else { window.location = cartUrl; }
     })
-    .catch(function(e){ cta.classList.remove('is-loading'); ctaLabel.textContent = prevLabel; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+    .catch(function(e){ cta.classList.remove('is-loading'); syncCta(); showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
   });
   syncCta();
 })();
