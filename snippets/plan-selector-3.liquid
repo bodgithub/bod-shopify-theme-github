@@ -70,9 +70,9 @@
 /* personalize */
 #ps3-{{ uid }} .p3-proto{border-top:1px solid var(--p3-line-w); background:#fff; display:none;}
 #ps3-{{ uid }} .bod-p3.is-sub .p3-proto{display:block;}
-#ps3-{{ uid }} .p3-proto__head{width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 13px; background:transparent; border:none; cursor:pointer; text-align:left; font-family:inherit;}
+#ps3-{{ uid }} .p3-proto__head{width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 13px 10px 39px; background:transparent; border:none; cursor:pointer; text-align:left; font-family:inherit;}
 #ps3-{{ uid }} .p3-proto__tt{display:flex; align-items:baseline; gap:8px; min-width:0;}
-#ps3-{{ uid }} .p3-proto__t{font-size:13px; font-weight:600; color:var(--p3-ink);}
+#ps3-{{ uid }} .p3-proto__t{font-size:11.5px; font-weight:600; color:var(--p3-ink);}
 #ps3-{{ uid }} .p3-proto__o{font-size:11.5px; color:var(--p3-ink-faint);}
 #ps3-{{ uid }} .p3-proto__chev{width:16px; height:16px; color:var(--p3-blue); transition:transform .18s; flex:0 0 auto;}
 #ps3-{{ uid }} .p3-proto.is-open .p3-proto__chev{transform:rotate(180deg);}
@@ -109,7 +109,13 @@
 #ps3-{{ uid }} .p3-subtick__t span{color:var(--p3-ink-soft);}
 /* ship line, CTA, trust */
 #ps3-{{ uid }} .p3-ship{font-size:11.5px; display:flex; align-items:center; justify-content:center; gap:7px; margin-top:11px; color:var(--p3-ink-soft);}
-#ps3-{{ uid }} .p3-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--p3-blue); display:inline-block;}
+#ps3-{{ uid }} .p3-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--p3-acc2); display:inline-block; animation:p3pulse-{{ uid }} 1.8s ease-out infinite;}
+@keyframes p3pulse-{{ uid }}{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb, var(--p3-acc2) 40%, transparent);}
+  70%{box-shadow:0 0 0 7px color-mix(in srgb, var(--p3-acc2) 0%, transparent);}
+  100%{box-shadow:0 0 0 0 color-mix(in srgb, var(--p3-acc2) 0%, transparent);}
+}
+@media (prefers-reduced-motion: reduce){#ps3-{{ uid }} .p3-ship__dot{animation:none;}}
 #ps3-{{ uid }} .p3-ship__date{color:var(--p3-acc2); font-weight:700; text-decoration:underline;}
 #ps3-{{ uid }} .p3-cta{width:100%; border:none; border-radius:{{ rad_box }}px; padding:13px 18px; background:var(--p3-grad); color:#fff; font-family:inherit; font-size:14px; font-weight:600; cursor:pointer; transition:filter .16s,transform .12s; margin-top:11px;}
 #ps3-{{ uid }} .p3-cta:hover{filter:brightness(1.06);}
