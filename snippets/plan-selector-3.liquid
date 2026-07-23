@@ -36,7 +36,7 @@
 }
 #ps3-{{ uid }} .bod-p3 *,#ps3-{{ uid }} .bod-p3 *::before,#ps3-{{ uid }} .bod-p3 *::after{box-sizing:border-box;}
 #ps3-{{ uid }} .p3-eyebrow{font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--p3-blue); margin:0 0 6px;}
-#ps3-{{ uid }} .p3-h{font-size:14px; font-weight:600; letter-spacing:-0.005em; color:var(--p3-ink); margin:0 0 8px;}
+#ps3-{{ uid }} .p3-h{font-size:14px; font-weight:600; letter-spacing:-0.005em; color:var(--p3-ink); margin:0 0 8px; max-height:45px; overflow:hidden;}
 #ps3-{{ uid }} .p3-cards{display:flex; flex-direction:column; gap:9px;}
 #ps3-{{ uid }} .p3-card{cursor:pointer; border-radius:{{ rad }}px; padding:1px; background:#E2E2E2;{% unless s.disable_shadows %} box-shadow:0 1px 5px -3px rgba(0,0,0,0.12);{% endunless %} transition:box-shadow .16s,background .16s;}
 #ps3-{{ uid }} .p3-card.is-selected{padding:{{ bw3 }}px; background:{% if s.border_style == 'gradient' %}var(--p3-grad){% else %}var(--p3-blue){% endif %};{% unless s.disable_shadows %} box-shadow:0 10px 26px -14px rgba(27,61,239,0.4);{% endunless %}}
@@ -72,9 +72,9 @@
 #ps3-{{ uid }} .v3-oneonly{display:block;}
 #ps3-{{ uid }} .bod-p3.is-sub .v3-oneonly{display:none;}
 /* customise button + personalize lightbox */
-#ps3-{{ uid }} .p3-custom{display:inline-flex; align-items:center; gap:5px; flex:0 0 auto; border:1px solid color-mix(in srgb, var(--p3-blue) 35%, transparent); background:#fff; color:var(--p3-blue); font-family:inherit; font-size:10.5px; font-weight:600; padding:3px 9px; border-radius:999px; cursor:pointer; transition:border-color .15s;}
-#ps3-{{ uid }} .p3-custom:hover{border-color:var(--p3-blue);}
-#ps3-{{ uid }} .p3-custom svg{width:12px; height:12px; flex:0 0 auto;}
+#ps3-{{ uid }} .p3-custom{display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; border:1px solid var(--p3-acc2); background:#fff; color:var(--p3-acc2); padding:4px; border-radius:999px; cursor:pointer; transition:background .15s;}
+#ps3-{{ uid }} .p3-custom:hover{background:color-mix(in srgb, var(--p3-acc2) 8%, #fff);}
+#ps3-{{ uid }} .p3-custom svg{width:13px; height:13px; flex:0 0 auto;}
 #ps3-{{ uid }} .p3-modal{position:fixed; inset:0; z-index:2147483000; display:flex; align-items:center; justify-content:center; padding:18px;}
 #ps3-{{ uid }} .p3-modal[hidden]{display:none;}
 #ps3-{{ uid }} .p3-modal__ov{position:absolute; inset:0; background:rgba(21,23,30,0.5);}
@@ -198,7 +198,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
               {%- endif -%}
               {%- if s[gt_k] != blank -%}
               <div class="p3-giftrow">
-                <span class="p3-giftbar__l"><svg class="p3-tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 12.5l4.5 4.5 8.5-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="p3-giftbar__t">{{ s[gt_k] }}</span>{%- if gi == last_gift and s.proto_enable -%}<button type="button" class="p3-custom" data-p3-proto-open aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 4h6.5M12.7 4H14M2 8h2.8M7 8h7M2 12h6.5M12.7 12H14"/><circle cx="10.6" cy="4" r="1.7"/><circle cx="4.9" cy="8" r="1.7"/><circle cx="10.6" cy="12" r="1.7"/></svg>{{ s.proto_open_label | default: 'Personalize' }}</button>{%- endif -%}</span>
+                <span class="p3-giftbar__l"><svg class="p3-tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 12.5l4.5 4.5 8.5-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="p3-giftbar__t">{{ s[gt_k] }}</span>{%- if gi == last_gift and s.proto_enable -%}<button type="button" class="p3-custom" data-p3-proto-open aria-haspopup="dialog" aria-label="{{ s.proto_open_label | default: 'Personalize' | escape }}" title="{{ s.proto_open_label | default: 'Personalize' | escape }}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 4h6.5M12.7 4H14M2 8h2.8M7 8h7M2 12h6.5M12.7 12H14"/><circle cx="10.6" cy="4" r="1.7"/><circle cx="4.9" cy="8" r="1.7"/><circle cx="10.6" cy="12" r="1.7"/></svg></button>{%- endif -%}</span>
                 {%- if s[gs_k] != blank -%}<span class="p3-giftbar__s">{{ s[gs_k] }}</span>{%- endif -%}
               </div>
               {%- endif -%}
