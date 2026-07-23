@@ -38,6 +38,7 @@
 #ps4-{{ uid }} .p4-benes li{display:flex; align-items:flex-start; gap:8px; font-size:13px; line-height:1.45; color:{{ ink }};}
 #ps4-{{ uid }} .p4-benes svg{flex:0 0 auto; width:15px; height:15px; margin-top:2px;}
 #ps4-{{ uid }} .p4-hr{border:0; border-top:1px solid #E4E2DC; margin:2px 0;}
+#ps4-{{ uid }} .p4-lab{font-size:12.5px; font-weight:600; letter-spacing:0.02em; color:{{ ink }}; opacity:0.8; margin:0 0 10px;}
 #ps4-{{ uid }} .p4-cta{width:100%; display:flex; align-items:center; justify-content:center; gap:9px; border:0; cursor:pointer; border-radius:999px; padding:16px 24px; margin-top:18px; background:{{ acc }}; color:#fff; font-family:inherit; font-size:13.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; transition:filter .15s,transform .12s;}
 #ps4-{{ uid }} .p4-cta:hover{filter:brightness(1.07);}
 #ps4-{{ uid }} .p4-cta:active{transform:translateY(1px);}
@@ -52,6 +53,9 @@
 
 <div id="ps4-{{ uid }}">
 <div class="bod-p4" role="radiogroup" data-p4-root aria-label="{{ s.sub_title | default: 'Choose your plan' | escape }}">
+
+  {%- if s.supply_label != blank -%}<p class="p4-lab">{{ s.supply_label }}</p>{%- endif -%}
+  <hr class="p4-hr">
 
   <div class="p4-opt{% if p4_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if p4_default == 'sub' %}true{% else %}false{% endif %}" tabindex="0"
        data-p4-opt data-p4-name="{{ s.sub_title | default: 'Subscribe & Save' | escape }}" data-p4-variant="{{ s.sub_variant }}" data-p4-qty="{{ s.sub_qty | default: 1 }}" data-p4-plan="{{ s.sub_plan }}" data-p4-requires-plan="1">
