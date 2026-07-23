@@ -753,6 +753,33 @@
         { "type": "text", "id": "trust3_one", "label": "Trust item 3 (one-time mode)", "default": "No subscription" }
       ]
     },
+    {
+      "type": "benefit_list",
+      "name": "Benefit list",
+      "settings": [
+        { "type": "header", "content": "Style" },
+        { "type": "range", "id": "font_size", "label": "Font size", "min": 11, "max": 20, "step": 1, "unit": "px", "default": 14 },
+        { "type": "range", "id": "row_gap", "label": "Row spacing", "min": 0, "max": 24, "step": 1, "unit": "px", "default": 8 },
+        { "type": "range", "id": "icon_size", "label": "Icon size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 18 },
+        { "type": "select", "id": "font_weight", "label": "Font weight", "default": "500", "options": [ { "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semibold" }, { "value": "700", "label": "Bold" } ] },
+        { "type": "color", "id": "text_color", "label": "Text colour", "default": "#1A1A14" },
+        { "type": "color", "id": "circle_color", "label": "Tick circle", "default": "#F2EEE9" },
+        { "type": "color", "id": "tick_color", "label": "Tick", "default": "#1B3DEF" },
+        { "type": "header", "content": "Items (blank = hidden)" },
+        { "type": "text", "id": "i1_text", "label": "Item 1", "default": "Supports regular cycles" },
+        { "type": "text", "id": "i1_sup", "label": "Item 1 marker", "default": "*" },
+        { "type": "text", "id": "i2_text", "label": "Item 2", "default": "Supports healthy blood sugar levels" },
+        { "type": "text", "id": "i2_sup", "label": "Item 2 marker", "default": "†" },
+        { "type": "text", "id": "i3_text", "label": "Item 3", "default": "Supports healthy insulin sensitivity" },
+        { "type": "text", "id": "i3_sup", "label": "Item 3 marker", "default": "*" },
+        { "type": "text", "id": "i4_text", "label": "Item 4", "default": "Supports mood & mental clarity" },
+        { "type": "text", "id": "i4_sup", "label": "Item 4 marker", "default": "*" },
+        { "type": "text", "id": "i5_text", "label": "Item 5" },
+        { "type": "text", "id": "i5_sup", "label": "Item 5 marker" },
+        { "type": "text", "id": "i6_text", "label": "Item 6" },
+        { "type": "text", "id": "i6_sup", "label": "Item 6 marker" }
+      ]
+    },
 		{
       "type": "label",
       "name": "Card labels",

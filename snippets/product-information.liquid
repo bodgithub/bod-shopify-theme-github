@@ -37,6 +37,8 @@
     <div {{ block.shopify_attributes }}>{%- render 'plan-selector-2', s: block.settings, uid: block.id -%}</div>
   {%- when 'plan_selector_3' -%}
     <div {{ block.shopify_attributes }}>{%- render 'plan-selector-3', s: block.settings, uid: block.id -%}</div>
+  {%- when 'benefit_list' -%}
+    <div {{ block.shopify_attributes }}>{%- render 'benefit-list', s: block.settings, uid: block.id -%}</div>
   {%- when 'title' -%}
     <div class="product-title-container" {{ block.shopify_attributes }}>
       <h1 class="product-title">{{ product.title }}</h1>

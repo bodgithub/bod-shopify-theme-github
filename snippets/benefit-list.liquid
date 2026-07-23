@@ -1,0 +1,30 @@
+{%- comment -%}
+  Bodology · Benefit list (product-info BLOCK, type benefit_list)
+  Circle-tick benefit checklist — up to 6 items, each with editable text and
+  an optional superscript marker (* / †). Font size, row spacing, icon size,
+  weight and colours are settings. Params: s = block.settings, uid = block.id.
+{%- endcomment -%}
+
+<style>
+#bl-{{ uid }} .bod-benes{list-style:none; padding:0; margin:0; font-size:{{ s.font_size | default: 14 }}px; font-weight:{{ s.font_weight | default: '500' }}; line-height:1.2; color:{{ s.text_color | default: '#1A1A14' }}; display:flex; flex-direction:column; gap:{{ s.row_gap | default: 8 }}px;}
+#bl-{{ uid }} .bod-benes li{display:flex; align-items:flex-start; gap:.5em;}
+#bl-{{ uid }} .bod-benes svg{flex-shrink:0; margin-top:.15em; width:{{ s.icon_size | default: 18 }}px; height:{{ s.icon_size | default: 18 }}px;}
+</style>
+
+<div id="bl-{{ uid }}">
+  <ul class="bod-benes">
+    {%- for i in (1..6) -%}
+      {%- assign tk = 'i' | append: i | append: '_text' -%}
+      {%- assign sk = 'i' | append: i | append: '_sup' -%}
+      {%- if s[tk] != blank -%}
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="11" fill="{{ s.circle_color | default: '#F2EEE9' }}"/>
+          <path d="M7 12.5l3 3 7-7" stroke="{{ s.tick_color | default: '#1B3DEF' }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>{{ s[tk] }}{%- if s[sk] != blank -%}<sup>{{ s[sk] }}</sup>{%- endif -%}</span>
+      </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</div>
