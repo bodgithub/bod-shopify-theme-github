@@ -52,9 +52,7 @@
 
 {% comment %}Add the Button to the Right, styled like the plan selector CTA, visible only on desktop {% endcomment %}
 <style>
-.bod-nav-cta{background:linear-gradient(140deg,#1b3def 0%,#3358FF 52%,#5C78FF 100%) !important; color:#fff !important; border:none !important; border-radius:var(--button-border-radius, 40px) !important; font-family:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif; font-weight:var(--font-body-medium-weight, 400); letter-spacing:var(--button-letter-spacing, 0.02em); transition:filter .16s,transform .12s;}
-.bod-nav-cta:hover{filter:brightness(1.06);}
-.bod-nav-cta:active{transform:translateY(1px);}
+{% comment %} .bod-nav-cta intentionally has no overrides: the theme .button styles apply, so it matches the homepage hero banner button exactly (gradient, size, radius, font). {% endcomment %}
 .thb-header-right .thb-secondary-area-item.thb-secondary-myaccount{padding-right:3px;}
 .thb-header-right .thb-secondary-area-item.thb-secondary-cart{padding-left:3px;}
 .thb-secondary-area .thb-item-count:empty{display:none !important;}
