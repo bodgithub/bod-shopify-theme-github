@@ -98,12 +98,11 @@
 #ps3-{{ uid }} .p3-proto__sup{font-size:11.5px; color:var(--p3-ink-soft); margin:9px 0 0;}
 #ps3-{{ uid }} .p3-proto__sup strong{color:var(--p3-blue); font-weight:600;}
 /* subscribe checkbox */
-#ps3-{{ uid }} .p3-subtick{display:flex; align-items:center; gap:10px; width:100%; text-align:left; cursor:pointer; border:1.5px solid var(--p3-line); background:#fff; border-radius:{{ rad_box }}px; padding:11px 13px; margin-top:11px; font-family:inherit; transition:all .15s;}
-#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick{border-color:var(--p3-blue); background:var(--p3-tint);}
-#ps3-{{ uid }} .p3-subtick__box{width:20px; height:20px; border-radius:{{ rad_tick }}px; flex:0 0 auto; background:#fff; border:2px solid var(--p3-line); display:grid; place-items:center; color:#fff; font-size:13px; font-weight:700; transition:all .15s;}
-#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick__box{background:var(--p3-blue); border-color:var(--p3-blue);}
-#ps3-{{ uid }} .p3-subtick__box::after{content:''; }
-#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick__box::after{content:'✓';}
+#ps3-{{ uid }} .p3-subtick{display:flex; align-items:center; gap:10px; width:100%; text-align:left; cursor:pointer; border:1.5px solid #E2E2E2; background:#fff; border-radius:{{ rad_box }}px; padding:11px 13px; margin-top:11px; font-family:inherit; transition:all .15s;}
+#ps3-{{ uid }} .p3-subtick__switch{width:36px; height:20px; border-radius:999px; flex:0 0 auto; background:var(--p3-line); position:relative; transition:background .18s;}
+#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick__switch{background:var(--p3-grad);}
+#ps3-{{ uid }} .p3-subtick__knob{position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.25); transition:transform .18s;}
+#ps3-{{ uid }} .bod-p3.is-sub .p3-subtick__knob{transform:translateX(16px);}
 #ps3-{{ uid }} .p3-subtick__t{font-size:12.5px;}
 #ps3-{{ uid }} .p3-subtick__t strong{color:var(--p3-ink); font-weight:600;}
 #ps3-{{ uid }} .p3-subtick__t span{color:var(--p3-ink-soft);}
@@ -215,8 +214,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     {%- endfor -%}
   </div>
 
-  <button type="button" class="p3-subtick" role="checkbox" aria-checked="{% if p3_sub_default %}true{% else %}false{% endif %}" data-p3-subtick>
-    <span class="p3-subtick__box" aria-hidden="true"></span>
+  <button type="button" class="p3-subtick" role="switch" aria-checked="{% if p3_sub_default %}true{% else %}false{% endif %}" data-p3-subtick>
+    <span class="p3-subtick__switch" aria-hidden="true"><span class="p3-subtick__knob"></span></span>
     <span class="p3-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong>{%- if s.sub_claim_suffix != blank -%}<span> {{ s.sub_claim_suffix }}</span>{%- endif -%}</span>
   </button>
 
