@@ -351,8 +351,13 @@
     align-items: start;
     grid-gap: clamp(30px, 5%, 40px);
     grid-template-columns: minmax(40%, 700px) 462px !important;
-  padding-top: 50px; } 
+  padding-top: 50px; }
       }
+
+@media only screen and (max-width: 1067px) {
+  .thb-product-detail .product-information {
+    padding-top: 24px; }
+}
 
 @media only screen and (min-width: 1068px) {
   .product-gallery-sticky {
