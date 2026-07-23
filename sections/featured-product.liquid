@@ -2259,6 +2259,38 @@
       ]
     },
     {
+      "type": "plan_selector_4",
+      "name": "Plan selector 4",
+      "settings": [
+        { "type": "header", "content": "Colours & layout" },
+        { "type": "color", "id": "accent_color", "label": "Accent (badge, checks, button)", "default": "#5C6B5D" },
+        { "type": "color", "id": "ink_color", "label": "Ink (titles, prices, radios)", "default": "#1A1A14" },
+        { "type": "range", "id": "max_width", "label": "Max width", "min": 360, "max": 720, "step": 20, "unit": "px", "default": 560 },
+        { "type": "select", "id": "default_option", "label": "Preselected option", "default": "sub", "options": [ { "value": "sub", "label": "Subscription" }, { "value": "one", "label": "One-time" } ] },
+        { "type": "header", "content": "Subscribe & save" },
+        { "type": "text", "id": "sub_title", "label": "Title", "default": "Subscribe & Save" },
+        { "type": "text", "id": "sub_badge", "label": "Badge", "default": "15% Off" },
+        { "type": "text", "id": "sub_compare", "label": "Compare-at price", "default": "$65.00" },
+        { "type": "text", "id": "sub_price", "label": "Price", "default": "$55.00" },
+        { "type": "text", "id": "delivery_label", "label": "Delivery label", "default": "Delivery" },
+        { "type": "text", "id": "delivery_value", "label": "Delivery cadence", "default": "Every 6 Weeks" },
+        { "type": "textarea", "id": "sub_benefits", "label": "Benefits (one per line)", "default": "Save 15% on every order.\nNo commitments — adjust or cancel anytime.\nFree shipping on subscriptions." },
+        { "type": "text", "id": "sub_variant", "label": "Product variant ID", "default": "46444646269147" },
+        { "type": "number", "id": "sub_qty", "label": "Quantity", "default": 1 },
+        { "type": "text", "id": "sub_plan", "label": "Selling plan ID", "default": "5755961563", "info": "Required — the button refuses to add the subscription until this is set." },
+        { "type": "header", "content": "One-time purchase" },
+        { "type": "text", "id": "ot_title", "label": "Title", "default": "One time purchase" },
+        { "type": "text", "id": "ot_price", "label": "Price", "default": "$65.00" },
+        { "type": "text", "id": "ot_variant", "label": "Product variant ID", "default": "46444646269147" },
+        { "type": "number", "id": "ot_qty", "label": "Quantity", "default": 1 },
+        { "type": "header", "content": "Button & footnote" },
+        { "type": "text", "id": "cta_label", "label": "Button label", "default": "Add to cart" },
+        { "type": "text", "id": "adding_label", "label": "Button adding label", "default": "Adding…" },
+        { "type": "text", "id": "footnote", "label": "Footnote", "default": "Free shipping on subscriptions" },
+        { "type": "text", "id": "error_text", "label": "Error text", "default": "Please choose a plan first" }
+      ]
+    },
+    {
       "type": "experts",
       "name": "Experts",
       "settings": [
