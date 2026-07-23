@@ -34,20 +34,16 @@
 
   
 	{%- if shop.customer_accounts_enabled -%}
-		{% comment %} Replace Account Icon with Text{% endcomment %} 
+		{% comment %} Account: blue outline person icon {% endcomment %}
     	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}"  {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}>
-      		Account
-      		{% comment %}
-      		Icon commented for future use:
-      		{%- render 'svg-icons' with 'myaccount' -%}
-      		{% endcomment %}
+      		<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b3def" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c1.2-3.7 3.9-5.2 6.5-5.2s5.3 1.5 6.5 5.2"/></svg>
     	</a>
   	{%- endif -%}
 
-  	{% comment %} Show cart as text {% endcomment %}
-<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ routes.cart_url }}" id="cart-drawer-toggle" {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}>
-  Cart<span class="thb-item-count">
-      {%- if cart.item_count < 1 -%} {%- else -%}{{ cart.item_count }}{%- endif -%}</span></a>
+  	{% comment %} Cart: blue outline basket icon + count bubble {% endcomment %}
+<a class="thb-secondary-area-item thb-secondary-cart" href="{{ routes.cart_url }}" id="cart-drawer-toggle" title="{{ 'sections.header.cart' | t | default: 'Cart' }}" {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}><div class="thb-secondary-item-icon">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b3def" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 8h13l-.9 11.2a1.8 1.8 0 0 1-1.8 1.6H8.2a1.8 1.8 0 0 1-1.8-1.6L5.5 8Z"/><path d="M9 10V6.8a3 3 0 0 1 6 0V10"/></svg>
+  <span class="thb-item-count">{%- if cart.item_count > 99 -%}{%- render 'svg-icons' with 'thb-asterisk' -%}{%- else -%}{{ cart.item_count }}{%- endif -%}</span></div></a>
 
 
 
