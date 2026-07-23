@@ -43,7 +43,7 @@
   	{% comment %} Cart: blue outline basket icon + count bubble {% endcomment %}
 <a class="thb-secondary-area-item thb-secondary-cart" href="{{ routes.cart_url }}" id="cart-drawer-toggle" title="{{ 'sections.header.cart' | t | default: 'Cart' }}" {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}><div class="thb-secondary-item-icon">
   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b3def" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5.5" y="9.5" width="13" height="11" rx="3"/><path d="M9 9.5V8.1c0-1.6 1.3-2.8 3-2.8s3 1.2 3 2.8v1.4"/></svg>
-  <span class="thb-item-count">{%- if cart.item_count > 99 -%}{%- render 'svg-icons' with 'thb-asterisk' -%}{%- else -%}{{ cart.item_count }}{%- endif -%}</span></div></a>
+  <span class="thb-item-count">{%- if cart.item_count > 99 -%}{%- render 'svg-icons' with 'thb-asterisk' -%}{%- elsif cart.item_count > 0 -%}{{ cart.item_count }}{%- endif -%}</span></div></a>
 
 
 
@@ -57,6 +57,7 @@
 .bod-nav-cta:active{transform:translateY(1px);}
 .thb-header-right .thb-secondary-area-item.thb-secondary-myaccount{padding-right:3px;}
 .thb-header-right .thb-secondary-area-item.thb-secondary-cart{padding-left:3px;}
+.thb-secondary-area .thb-item-count:empty{display:none !important;}
 </style>
 <a class="button desktop-only bod-nav-cta" href="{{ section.settings.button_url | default: '/products/myo-d-chiro-inositol-powder' }}"
    role="button"
