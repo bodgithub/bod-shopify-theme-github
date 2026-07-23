@@ -69,18 +69,22 @@
 #ps3-{{ uid }} .bod-p3.is-sub .v3-subonly.p3-sub-save,#ps3-{{ uid }} .bod-p3.is-sub .v3-subonly.p3-strike{display:block;}
 #ps3-{{ uid }} .v3-oneonly{display:block;}
 #ps3-{{ uid }} .bod-p3.is-sub .v3-oneonly{display:none;}
-/* personalize */
-#ps3-{{ uid }} .p3-proto{border-top:1px solid var(--p3-line-w); background:#fff; display:none;}
-#ps3-{{ uid }} .bod-p3.is-sub .p3-proto{display:block;}
-#ps3-{{ uid }} .p3-proto__head{width:100%; display:flex; align-items:center; justify-content:space-between; padding:10px 13px 10px 39px; background:transparent; border:none; cursor:pointer; text-align:left; font-family:inherit;}
-#ps3-{{ uid }} .p3-proto__tt{display:flex; align-items:baseline; gap:8px; min-width:0;}
-#ps3-{{ uid }} .p3-proto__t{font-size:11.5px; font-weight:600; color:var(--p3-ink);}
-#ps3-{{ uid }} .p3-proto__o{font-size:11.5px; color:var(--p3-ink-faint);}
-#ps3-{{ uid }} .p3-proto__chev{width:16px; height:16px; color:var(--p3-blue); transition:transform .18s; flex:0 0 auto;}
-#ps3-{{ uid }} .p3-proto.is-open .p3-proto__chev{transform:rotate(180deg);}
-#ps3-{{ uid }} .p3-proto__body{padding:0 13px 13px; display:none;}
-#ps3-{{ uid }} .p3-proto.is-open .p3-proto__body{display:block;}
-#ps3-{{ uid }} .p3-proto__q{font-size:11.5px; color:var(--p3-ink-soft); margin:0 0 9px;}
+/* customise button + personalize lightbox */
+#ps3-{{ uid }} .p3-custom{display:inline-flex; align-items:center; gap:5px; flex:0 0 auto; border:1px solid color-mix(in srgb, var(--p3-blue) 35%, transparent); background:#fff; color:var(--p3-blue); font-family:inherit; font-size:10.5px; font-weight:600; padding:3px 9px; border-radius:999px; cursor:pointer; transition:border-color .15s;}
+#ps3-{{ uid }} .p3-custom:hover{border-color:var(--p3-blue);}
+#ps3-{{ uid }} .p3-custom svg{width:12px; height:12px; flex:0 0 auto;}
+#ps3-{{ uid }} .p3-modal{position:fixed; inset:0; z-index:2147483000; display:flex; align-items:center; justify-content:center; padding:18px;}
+#ps3-{{ uid }} .p3-modal[hidden]{display:none;}
+#ps3-{{ uid }} .p3-modal__ov{position:absolute; inset:0; background:rgba(21,23,30,0.5);}
+#ps3-{{ uid }} .p3-modal__box{position:relative; width:100%; max-width:440px; max-height:calc(100dvh - 36px); overflow:auto; background:#fff; border-radius:{{ rad | plus: 3 }}px; padding:20px; box-shadow:0 24px 64px -18px rgba(0,0,0,0.4);}
+#ps3-{{ uid }} .p3-modal__x{position:absolute; top:12px; right:12px; width:28px; height:28px; display:grid; place-items:center; border:none; background:transparent; color:var(--p3-ink-faint); cursor:pointer; border-radius:8px;}
+#ps3-{{ uid }} .p3-modal__x:hover{color:var(--p3-ink); background:rgba(0,0,0,0.05);}
+#ps3-{{ uid }} .p3-modal__x svg{width:16px; height:16px;}
+#ps3-{{ uid }} .p3-modal__t{font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--p3-ink); margin:0 28px 3px 0;}
+#ps3-{{ uid }} .p3-modal__s{font-size:12.5px; color:var(--p3-ink-soft); margin:0 0 14px;}
+#ps3-{{ uid }} .p3-modal__done{width:100%; border:none; border-radius:{{ rad_box }}px; padding:12px 18px; background:var(--p3-grad); color:#fff; font-family:inherit; font-size:13.5px; font-weight:600; cursor:pointer; margin-top:14px; transition:filter .16s;}
+#ps3-{{ uid }} .p3-modal__done:hover{filter:brightness(1.06);}
+#ps3-{{ uid }} .p3-concern__icon img{width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;}
 #ps3-{{ uid }} .p3-cgrid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
 @media (max-width:480px){#ps3-{{ uid }} .p3-cgrid{grid-template-columns:1fr;}}
 #ps3-{{ uid }} .p3-concern{position:relative; text-align:left; cursor:pointer; padding:9px 10px; border-radius:{{ rad_chip }}px; border:1.5px solid var(--p3-line); background:#fff; transition:all .15s; font-family:inherit;}
@@ -153,7 +157,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       {%- assign strike_k = pk | append: '_sub_strike' -%}{%- assign freq_k = pk | append: '_sub_freq' -%}
       {%- assign onep_k = pk | append: '_one_price' -%}{%- assign var_k = pk | append: '_variant' -%}
       {%- assign qty_k = pk | append: '_qty' -%}{%- assign plan_k = pk | append: '_plan' -%}
-      {%- assign hero_k = pk | append: '_hero' -%}{%- assign badge_k = pk | append: '_badge' -%}{%- assign rnd_k = pk | append: '_roundel' -%}
+      {%- assign badge_k = pk | append: '_badge' -%}{%- assign rnd_k = pk | append: '_roundel' -%}
       {%- assign gtxt_k = pk | append: '_gift_text' -%}{%- assign gstk_k = pk | append: '_gift_strike' -%}{%- assign gvar_k = pk | append: '_gift_variant' -%}
       {%- if s[tier_k] != blank -%}
       <div class="p3-card{% if p3_default == pk %} is-selected{% endif %}" role="radio" aria-checked="{% if p3_default == pk %}true{% else %}false{% endif %}" tabindex="0"
@@ -177,37 +181,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
           </div>
           {%- if s[gtxt_k] != blank -%}
           <div class="p3-giftbar v3-subonly">
-            <span class="p3-giftbar__l"><svg class="p3-tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 12.5l4.5 4.5 8.5-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="p3-giftbar__t">{{ s[gtxt_k] }}</span></span>
+            <span class="p3-giftbar__l"><svg class="p3-tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5.5 12.5l4.5 4.5 8.5-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="p3-giftbar__t">{{ s[gtxt_k] }}</span>{%- if s.proto_enable -%}<button type="button" class="p3-custom" data-p3-proto-open aria-haspopup="dialog"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 4h6.5M12.7 4H14M2 8h2.8M7 8h7M2 12h6.5M12.7 12H14"/><circle cx="10.6" cy="4" r="1.7"/><circle cx="4.9" cy="8" r="1.7"/><circle cx="10.6" cy="12" r="1.7"/></svg>{{ s.proto_open_label | default: 'Customise' }}</button>{%- endif -%}</span>
             {%- if s[gstk_k] != blank -%}<span class="p3-giftbar__s">{{ s[gstk_k] }}</span>{%- endif -%}
-          </div>
-          {%- endif -%}
-          {%- if s[hero_k] and s.proto_enable -%}
-          <div class="p3-proto" data-p3-proto>
-            <button type="button" class="p3-proto__head" data-p3-proto-toggle aria-expanded="false">
-              <span class="p3-proto__tt"><span class="p3-proto__t">{{ s.proto_title | default: 'Personalize my protocol' }}</span><span class="p3-proto__o" data-p3-proto-summary>{{ s.proto_optional | default: 'Optional' }}</span></span>
-              <svg class="p3-proto__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="p3-proto__body">
-              <p class="p3-proto__q">{{ s.proto_q | default: 'Which areas are we supporting? Select all that apply.' }}</p>
-              <div class="p3-cgrid">
-                {%- for ci in (1..4) -%}
-                  {%- assign ck = 'c' | append: ci -%}
-                  {%- assign cl_k = ck | append: '_label' -%}{%- assign cd_k = ck | append: '_desc' -%}{%- assign cv_k = ck | append: '_variant' -%}
-                  {%- if s[cl_k] != blank -%}
-                  {%- assign icon_row = icon_rows[forloop.index0] | split: '|' -%}
-                  <button type="button" class="p3-concern" data-p3-concern data-variant="{{ s[cv_k] }}" data-label="{{ s[cl_k] | escape }}" aria-pressed="false">
-                    <span class="p3-concern__tick" aria-hidden="true"></span>
-                    <span class="p3-concern__icon"><svg viewBox="0 0 16 16" aria-hidden="true">{{ icon_row[1] }}</svg></span>
-                    <div class="p3-concern__txt">
-                      <div class="p3-concern__t">{{ s[cl_k] }}</div>
-                      <div class="p3-concern__d">{{ s[cd_k] }}</div>
-                    </div>
-                  </button>
-                  {%- endif -%}
-                {%- endfor -%}
-              </div>
-              <p class="p3-proto__sup">{{ s.proto_supporting_label | default: 'Supporting:' }} <strong data-p3-proto-sup>{{ s.proto_supporting_default | default: 'None selected' }}</strong></p>
-            </div>
           </div>
           {%- endif -%}
         </div>
@@ -237,6 +212,36 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     {%- if s.trust2 != blank -%}<span>·</span><span>{{ s.trust2 }}</span>{%- endif -%}
     {%- if s.trust3_sub != blank -%}<span>·</span><span class="v3-subonly" style="display:none;">{{ s.trust3_sub }}</span><span class="v3-oneonly" style="display:inline;">{{ s.trust3_one }}</span>{%- endif -%}
   </div>
+
+  {%- if s.proto_enable -%}
+  <div class="p3-modal" data-p3-proto hidden>
+    <div class="p3-modal__ov" data-p3-modal-close></div>
+    <div class="p3-modal__box" role="dialog" aria-modal="true" aria-label="{{ s.proto_title | default: 'Personalize my protocol' | escape }}">
+      <button type="button" class="p3-modal__x" data-p3-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h3 class="p3-modal__t">{{ s.proto_title | default: 'Personalize my protocol' }}</h3>
+      <p class="p3-modal__s">{{ s.proto_subtitle | default: 'Which areas are we supporting? Select all that apply.' }}</p>
+      <div class="p3-cgrid">
+        {%- for ci in (1..4) -%}
+          {%- assign ck = 'c' | append: ci -%}
+          {%- assign cl_k = ck | append: '_label' -%}{%- assign cd_k = ck | append: '_desc' -%}{%- assign cv_k = ck | append: '_variant' -%}{%- assign cimg_k = ck | append: '_image' -%}
+          {%- if s[cl_k] != blank -%}
+          {%- assign icon_row = icon_rows[forloop.index0] | split: '|' -%}
+          <button type="button" class="p3-concern" data-p3-concern data-variant="{{ s[cv_k] }}" data-label="{{ s[cl_k] | escape }}" aria-pressed="false">
+            <span class="p3-concern__tick" aria-hidden="true"></span>
+            <span class="p3-concern__icon">{%- if s[cimg_k] -%}<img src="{{ s[cimg_k] | image_url: width: 112 }}" alt="" loading="lazy">{%- else -%}<svg viewBox="0 0 16 16" aria-hidden="true">{{ icon_row[1] }}</svg>{%- endif -%}</span>
+            <div class="p3-concern__txt">
+              <div class="p3-concern__t">{{ s[cl_k] }}</div>
+              <div class="p3-concern__d">{{ s[cd_k] }}</div>
+            </div>
+          </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <p class="p3-proto__sup">{{ s.proto_supporting_label | default: 'Supporting:' }} <strong data-p3-proto-sup>{{ s.proto_supporting_default | default: 'None selected' }}</strong></p>
+      <button type="button" class="p3-modal__done" data-p3-modal-close>{{ s.proto_done_label | default: 'Done' }}</button>
+    </div>
+  </div>
+  {%- endif -%}
 </div>
 </div>
 
@@ -292,8 +297,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     err.classList.remove('is-shown'); syncCta();
   }
   cards.forEach(function(c){
-    c.addEventListener('click', function(e){ if(e.target.closest('[data-p3-proto]')) return; select(c); });
-    c.addEventListener('keydown', function(e){ if((e.key===' '||e.key==='Enter') && !e.target.closest('[data-p3-proto]')){ e.preventDefault(); select(c); } });
+    c.addEventListener('click', function(e){ if(e.target.closest('[data-p3-proto],[data-p3-proto-open]')) return; select(c); });
+    c.addEventListener('keydown', function(e){ if((e.key===' '||e.key==='Enter') && !e.target.closest('[data-p3-proto],[data-p3-proto-open]')){ e.preventDefault(); select(c); } });
   });
   if(subTick){
     subTick.addEventListener('click', function(){
@@ -309,13 +314,16 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   function protoGift(fallback){ var sel = checkedConcerns(); return sel.length ? (sel[0].getAttribute('data-variant') || fallback) : fallback; }
   function protoFocus(){ return checkedConcerns().map(function(b){ return b.getAttribute('data-label'); }).join(', '); }
   if(proto){
-    var head = proto.querySelector('[data-p3-proto-toggle]');
     var sup = proto.querySelector('[data-p3-proto-sup]');
-    head.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = proto.classList.toggle('is-open');
-      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var openProto = function(){ proto.hidden = false; document.documentElement.style.overflow = 'hidden'; };
+    var closeProto = function(){ proto.hidden = true; document.documentElement.style.overflow = ''; };
+    [].slice.call(root.querySelectorAll('[data-p3-proto-open]')).forEach(function(b){
+      b.addEventListener('click', function(e){ e.stopPropagation(); openProto(); });
     });
+    [].slice.call(proto.querySelectorAll('[data-p3-modal-close]')).forEach(function(b){
+      b.addEventListener('click', function(e){ e.stopPropagation(); closeProto(); });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !proto.hidden){ closeProto(); } });
     concerns.forEach(function(b){
       b.addEventListener('click', function(e){
         e.stopPropagation();
