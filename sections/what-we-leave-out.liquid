@@ -1,0 +1,97 @@
+{%- comment -%}
+  Bodology · What we leave out — row of circular strike-through line icons
+  (synthetic colours, HFCS, GMOs, caffeine, dairy, gelatin, gluten).
+  Pure vector SVGs stroked in an editable colour on a tinted ring.
+  Items are blocks: pick an icon + label. Standalone section with preset.
+{%- endcomment -%}
+
+{%- assign uid = section.id -%}
+<style>
+#wlo-{{ uid }}{background:{{ section.settings.bg_color }}; padding:{{ section.settings.pad_top }}px 20px {{ section.settings.pad_bottom }}px;}
+#wlo-{{ uid }} .wlo-wrap{max-width:1240px; margin:0 auto; text-align:center; font-family:var(--font-body-family, "Helvetica Neue", Arial, sans-serif);}
+#wlo-{{ uid }} .wlo-h{font-family:var(--font-heading-family, inherit); font-size:clamp(26px,4.4vw,40px); font-weight:600; letter-spacing:-0.01em; color:{{ section.settings.heading_color }}; margin:0 0 34px;}
+#wlo-{{ uid }} .wlo-row{display:flex; flex-wrap:wrap; justify-content:center; gap:30px 14px;}
+#wlo-{{ uid }} .wlo-item{flex:0 1 150px; min-width:110px;}
+#wlo-{{ uid }} .wlo-badge{width:96px; height:96px; border-radius:50%; background:{{ section.settings.ring_color }}; display:inline-flex; align-items:center; justify-content:center; margin-bottom:14px;}
+#wlo-{{ uid }} .wlo-badge svg{width:72px; height:72px; color:{{ section.settings.icon_color }};}
+#wlo-{{ uid }} .wlo-label{font-size:12px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; line-height:1.4; color:{{ section.settings.label_color }}; margin:0;}
+@media (max-width:749px){#wlo-{{ uid }} .wlo-item{flex-basis:130px;} #wlo-{{ uid }} .wlo-badge{width:82px; height:82px;} #wlo-{{ uid }} .wlo-badge svg{width:62px; height:62px;}}
+</style>
+
+{%- capture icon_paths -%}
+dropper|<path d="M27.5 16.5l4 4-8.2 8.2a2.9 2.9 0 0 1-4.1-4.1l8.3-8.1z"/><path d="M26 15l7 7"/><path d="M30 12.5l5.5 5.5"/><path d="M18.5 30.5l-1.6 2.8a1.9 1.9 0 1 0 3.4 1.7"/>
+corn|<path d="M24 14c3.2 3.2 3.2 12.8 0 17.5-3.2-4.7-3.2-14.3 0-17.5z"/><path d="M21.7 20h4.6M21.5 24h5M21.8 28h4.4"/><path d="M18.5 21c0 5 2 9 5.5 11-4.5-.5-7.5-5-7-11z"/><path d="M29.5 21c0 5-2 9-5.5 11 4.5-.5 7.5-5 7-11z"/>
+leaf|<path d="M17.5 30.5c0-8 5.5-13 13.5-13 0 8-5 13.5-13 13.5"/><path d="M17.5 30.5c2.5-5 6.5-8.5 10.5-10.5"/>
+bean|<ellipse cx="24" cy="24" rx="6.4" ry="9" transform="rotate(38 24 24)"/><path d="M19.5 19.5c4.5 1.5 4.5 7.5 9 9"/>
+bottle|<path d="M21.5 14.5h5M22 14.5v3.2l2.6 4a1.7 1.7 0 0 1 .3.9v9.4a1.5 1.5 0 0 1-1.5 1.5h-3.3a1.5 1.5 0 0 1-1.5-1.5v-9.4c0-.3.1-.6.3-.9l2.6-4v-3.2"/><path d="M19 27h7"/>
+gelatin|<path d="M18 31h12l-1.7-8.2a4.6 4.6 0 0 0-8.6 0L18 31z"/><path d="M15.5 31h17"/><path d="M21.5 20.5c.8-1 2-1.6 2.5-1.6"/>
+wheat|<path d="M24 14v19"/><path d="M24 20c-2.5 0-4.5-2-4.5-4.5 2.5 0 4.5 2 4.5 4.5zM24 20c2.5 0 4.5-2 4.5-4.5-2.5 0-4.5 2-4.5 4.5z"/><path d="M24 26c-2.5 0-4.5-2-4.5-4.5 2.5 0 4.5 2 4.5 4.5zM24 26c2.5 0 4.5-2 4.5-4.5-2.5 0-4.5 2-4.5 4.5z"/><path d="M24 32c-2.5 0-4.5-2-4.5-4.5 2.5 0 4.5 2 4.5 4.5zM24 32c2.5 0 4.5-2 4.5-4.5-2.5 0-4.5 2-4.5 4.5z"/>
+{%- endcapture -%}
+{%- assign icon_rows = icon_paths | strip | newline_to_br | split: '<br />' -%}
+
+<div id="wlo-{{ uid }}">
+  <div class="wlo-wrap">
+    {%- if section.settings.heading != blank -%}<h2 class="wlo-h">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="wlo-row">
+      {%- for block in section.blocks -%}
+      <div class="wlo-item" {{ block.shopify_attributes }}>
+        <span class="wlo-badge">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="24" cy="24" r="17"/>
+            {%- for row in icon_rows -%}
+              {%- assign parts = row | strip | split: '|' -%}
+              {%- if parts[0] == block.settings.icon -%}{{ parts[1] }}{%- endif -%}
+            {%- endfor -%}
+            <line x1="12.7" y1="35.3" x2="35.3" y2="12.7"/>
+          </svg>
+        </span>
+        {%- if block.settings.label != blank -%}<p class="wlo-label">{{ block.settings.label }}</p>{%- endif -%}
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "What we leave out",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#FCF4E8" },
+    { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 44 },
+    { "type": "range", "id": "pad_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 52 },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What We Leave Out" },
+    { "type": "color", "id": "heading_color", "label": "Heading colour", "default": "#2C2A26" },
+    { "type": "color", "id": "icon_color", "label": "Icon line colour", "default": "#2C2A26" },
+    { "type": "color", "id": "ring_color", "label": "Ring background", "default": "#DBD9CC" },
+    { "type": "color", "id": "label_color", "label": "Label colour", "default": "#2C2A26" }
+  ],
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "leaf", "options": [
+        { "value": "dropper", "label": "Dropper (synthetic colours)" },
+        { "value": "corn", "label": "Corn (HFCS)" },
+        { "value": "leaf", "label": "Leaf (GMOs)" },
+        { "value": "bean", "label": "Coffee bean (caffeine)" },
+        { "value": "bottle", "label": "Milk bottle (dairy)" },
+        { "value": "gelatin", "label": "Gelatin" },
+        { "value": "wheat", "label": "Wheat (gluten)" } ] },
+      { "type": "text", "id": "label", "label": "Label", "default": "Item" }
+    ] }
+  ],
+  "presets": [
+    {
+      "name": "What we leave out",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "dropper", "label": "Synthetic colors" } },
+        { "type": "item", "settings": { "icon": "corn", "label": "High fructose corn syrup" } },
+        { "type": "item", "settings": { "icon": "leaf", "label": "GMOs" } },
+        { "type": "item", "settings": { "icon": "bean", "label": "Caffeine" } },
+        { "type": "item", "settings": { "icon": "bottle", "label": "Dairy" } },
+        { "type": "item", "settings": { "icon": "gelatin", "label": "Gelatin" } },
+        { "type": "item", "settings": { "icon": "wheat", "label": "Gluten" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

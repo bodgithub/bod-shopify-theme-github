@@ -1,0 +1,181 @@
+{%- comment -%}
+  Bodology · Study results — blurred-image hero with clinical stat grid.
+  Left: heading, description, collapsible STUDY ATTRIBUTES chips, footnote.
+  Right: stat tiles (2-col grid with hairline dividers) + CTA.
+  Data is driven by metaobjects: pick a "problem" entry (by handle, or the
+  first entry of the type); its referenced studies render the stat tiles.
+  The metaobject type handle and every field key are editor settings so the
+  wiring can be matched to the store's definitions without code changes.
+  Expected shape (all keys editable):
+    problem[fields]: title, description, studies (list of study references)
+    study[fields]:   stat_value ("81%"), stat_text, attributes (list.single_line_text),
+                     footnote
+{%- endcomment -%}
+
+{%- assign uid = section.id -%}
+{%- assign ov_alpha = section.settings.overlay_opacity | divided_by: 100.0 -%}
+{%- liquid
+  assign mo_type = section.settings.mo_type | default: 'problem'
+  assign problem = nil
+  if section.settings.mo_handle != blank
+    assign problem = shop.metaobjects[mo_type][section.settings.mo_handle]
+  else
+    assign problem = shop.metaobjects[mo_type].values | first
+  endif
+  assign studies = nil
+  if problem
+    assign studies_field = problem[section.settings.key_studies]
+    if studies_field
+      assign studies = studies_field.value
+    endif
+  endif
+  assign attrs = nil
+  assign footnote = ''
+  if studies and studies.size > 0
+    assign first_study = studies | first
+    assign attrs_field = first_study[section.settings.key_attrs]
+    if attrs_field
+      assign attrs = attrs_field.value
+    endif
+    assign fn_field = first_study[section.settings.key_footnote]
+    if fn_field
+      assign footnote = fn_field.value
+    endif
+  endif
+-%}
+
+<style>
+#sr-{{ uid }}{padding:{{ section.settings.pad_top }}px 20px {{ section.settings.pad_bottom }}px; background:{{ section.settings.bg_color }};}
+#sr-{{ uid }} .sr-frame{position:relative; max-width:1180px; margin:0 auto; border-radius:24px; overflow:hidden; color:{{ section.settings.text_color }}; font-family:var(--font-body-family, "Helvetica Neue", Arial, sans-serif);}
+#sr-{{ uid }} .sr-bg{position:absolute; inset:0;}
+#sr-{{ uid }} .sr-bg img{width:100%; height:100%; object-fit:cover; filter:blur({{ section.settings.bg_blur }}px); transform:scale(1.1);}
+#sr-{{ uid }} .sr-bg::after{content:''; position:absolute; inset:0; background:{{ section.settings.overlay_color | color_modify: 'alpha', ov_alpha }};}
+#sr-{{ uid }} .sr-in{position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:48px; padding:clamp(30px,5vw,64px);}
+@media (max-width:849px){#sr-{{ uid }} .sr-in{grid-template-columns:1fr; gap:36px;}}
+#sr-{{ uid }} .sr-h{font-size:clamp(24px,3.4vw,34px); font-weight:500; line-height:1.25; letter-spacing:-0.01em; margin:0 0 22px;}
+#sr-{{ uid }} .sr-desc{font-size:15.5px; line-height:1.55; margin:0 0 26px; opacity:0.95;}
+#sr-{{ uid }} .sr-hr{border:0; border-top:1px solid {{ section.settings.text_color | color_modify: 'alpha', 0.35 }}; margin:0 0 18px;}
+#sr-{{ uid }} .sr-attr-head{width:100%; display:flex; align-items:center; justify-content:space-between; gap:10px; background:transparent; border:0; padding:0 0 16px; cursor:pointer; color:inherit; font-family:inherit;}
+#sr-{{ uid }} .sr-attr-title{font-size:12.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase;}
+#sr-{{ uid }} .sr-chev{width:14px; height:14px; transition:transform .18s; flex:0 0 auto;}
+#sr-{{ uid }} .sr-attrs.is-open .sr-chev{transform:rotate(180deg);}
+#sr-{{ uid }} .sr-attr-body{display:none; padding-bottom:20px;}
+#sr-{{ uid }} .sr-attrs.is-open .sr-attr-body{display:flex; flex-wrap:wrap; gap:10px;}
+#sr-{{ uid }} .sr-chip{font-size:13px; padding:9px 14px; border:1px solid {{ section.settings.text_color | color_modify: 'alpha', 0.45 }}; border-radius:6px; background:{{ section.settings.text_color | color_modify: 'alpha', 0.06 }};}
+#sr-{{ uid }} .sr-foot{font-size:12px; line-height:1.5; opacity:0.85; margin:18px 0 0;}
+#sr-{{ uid }} .sr-stats{display:grid; grid-template-columns:1fr 1fr; align-content:start;}
+#sr-{{ uid }} .sr-stat{padding:26px 28px; position:relative;}
+#sr-{{ uid }} .sr-stat:nth-child(2n)::before{content:''; position:absolute; left:0; top:10%; bottom:10%; width:1px; background:{{ section.settings.text_color | color_modify: 'alpha', 0.35 }};}
+#sr-{{ uid }} .sr-stat:nth-child(n+3)::after{content:''; position:absolute; left:6%; right:6%; top:0; height:1px; background:{{ section.settings.text_color | color_modify: 'alpha', 0.35 }};}
+#sr-{{ uid }} .sr-num{font-size:clamp(30px,3.4vw,40px); font-weight:500; letter-spacing:-0.02em; display:block; margin-bottom:8px;}
+#sr-{{ uid }} .sr-stat p{font-size:13.5px; line-height:1.5; margin:0; opacity:0.95;}
+#sr-{{ uid }} .sr-cta-row{grid-column:1 / -1; padding:26px 28px 0; text-align:center;}
+#sr-{{ uid }} .sr-cta{display:inline-block; min-width:min(320px,100%); border:0; cursor:pointer; border-radius:999px; padding:16px 44px; font-family:inherit; font-size:13.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:{{ section.settings.cta_text_color }}; background:{{ section.settings.cta_bg }}; text-decoration:none; transition:filter .15s;}
+#sr-{{ uid }} .sr-cta:hover{filter:brightness(1.08);}
+#sr-{{ uid }} .sr-empty{font-size:13px; padding:14px; border:1px dashed {{ section.settings.text_color | color_modify: 'alpha', 0.5 }}; border-radius:10px;}
+</style>
+
+<div id="sr-{{ uid }}">
+  <div class="sr-frame">
+    <div class="sr-bg" aria-hidden="true">
+      {%- if section.settings.bg_image != blank -%}
+        {{ section.settings.bg_image | image_url: width: 2000 | image_tag: loading: 'lazy', alt: '' }}
+      {%- else -%}
+        <div style="position:absolute;inset:0;background:{{ section.settings.overlay_color }};"></div>
+      {%- endif -%}
+    </div>
+    <div class="sr-in">
+      <div class="sr-copy">
+        {%- if section.settings.heading != blank -%}<h2 class="sr-h">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.description != blank -%}<p class="sr-desc">{{ section.settings.description }}</p>{%- endif -%}
+        {%- if attrs and attrs.size > 0 -%}
+        <hr class="sr-hr">
+        <div class="sr-attrs{% if section.settings.attrs_open %} is-open{% endif %}" data-sr-attrs>
+          <button type="button" class="sr-attr-head" data-sr-attr-toggle aria-expanded="{% if section.settings.attrs_open %}true{% else %}false{% endif %}">
+            <span class="sr-attr-title">{{ section.settings.attrs_label }}</span>
+            <svg class="sr-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="sr-attr-body">
+            {%- for a in attrs -%}<span class="sr-chip">{{ a }}</span>{%- endfor -%}
+          </div>
+        </div>
+        <hr class="sr-hr">
+        {%- endif -%}
+        {%- if footnote != blank -%}<p class="sr-foot">{{ footnote }}</p>{%- elsif section.settings.fallback_footnote != blank -%}<p class="sr-foot">{{ section.settings.fallback_footnote }}</p>{%- endif -%}
+      </div>
+      <div class="sr-stats">
+        {%- if studies and studies.size > 0 -%}
+          {%- for study in studies limit: section.settings.max_stats -%}
+            {%- assign sv = study[section.settings.key_stat] -%}
+            {%- assign st = study[section.settings.key_stat_text] -%}
+            <div class="sr-stat">
+              {%- if sv -%}<span class="sr-num">{{ sv.value }}</span>{%- endif -%}
+              {%- if st -%}<p>{{ st.value }}</p>{%- endif -%}
+            </div>
+          {%- endfor -%}
+        {%- elsif request.design_mode -%}
+          <div class="sr-empty">No studies found — check the metaobject type handle ("{{ mo_type }}"), the entry handle, and the field keys in the section settings. This note only shows in the theme editor.</div>
+        {%- endif -%}
+        {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
+        <div class="sr-cta-row"><a class="sr-cta" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a></div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('sr-{{ uid }}');
+  if(!root || root.dataset.srBound) return;
+  root.dataset.srBound = '1';
+  var wrap = root.querySelector('[data-sr-attrs]');
+  var head = root.querySelector('[data-sr-attr-toggle]');
+  if(wrap && head){
+    head.addEventListener('click', function(){
+      var open = wrap.classList.toggle('is-open');
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Study results",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "header", "content": "Layout" },
+    { "type": "color", "id": "bg_color", "label": "Page background", "default": "#FCF4E8" },
+    { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "pad_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 32 },
+    { "type": "header", "content": "Background image" },
+    { "type": "image_picker", "id": "bg_image", "label": "Image" },
+    { "type": "range", "id": "bg_blur", "label": "Blur", "min": 0, "max": 40, "step": 1, "unit": "px", "default": 18 },
+    { "type": "color", "id": "overlay_color", "label": "Overlay colour", "default": "#4A3A2E" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay opacity", "min": 0, "max": 90, "step": 5, "unit": "%", "default": 35 },
+    { "type": "header", "content": "Copy" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Real results, backed by clinical research*" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Inositol is clinically studied to support hormonal balance and menstrual cycle regularity.*" },
+    { "type": "text", "id": "attrs_label", "label": "Attributes toggle label", "default": "Study attributes" },
+    { "type": "checkbox", "id": "attrs_open", "label": "Attributes open by default", "default": true },
+    { "type": "textarea", "id": "fallback_footnote", "label": "Footnote (used when the study has none)", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." },
+    { "type": "color", "id": "text_color", "label": "Text colour", "default": "#FFFFFF" },
+    { "type": "header", "content": "Metaobject wiring" },
+    { "type": "text", "id": "mo_type", "label": "Problem metaobject type handle", "default": "problem" },
+    { "type": "text", "id": "mo_handle", "label": "Problem entry handle", "info": "Leave blank to use the first entry of the type." },
+    { "type": "text", "id": "key_studies", "label": "Problem field: studies reference list", "default": "studies" },
+    { "type": "text", "id": "key_stat", "label": "Study field: stat value", "default": "stat_value" },
+    { "type": "text", "id": "key_stat_text", "label": "Study field: stat text", "default": "stat_text" },
+    { "type": "text", "id": "key_attrs", "label": "Study field: attributes list", "default": "attributes" },
+    { "type": "text", "id": "key_footnote", "label": "Study field: footnote", "default": "footnote" },
+    { "type": "range", "id": "max_stats", "label": "Max stat tiles", "min": 1, "max": 8, "step": 1, "default": 4 },
+    { "type": "header", "content": "Call to action" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "color", "id": "cta_bg", "label": "Button background", "default": "#5C6B5D" },
+    { "type": "color", "id": "cta_text_color", "label": "Button text", "default": "#FFFFFF" }
+  ],
+  "presets": [ { "name": "Study results" } ]
+}
+{% endschema %}
