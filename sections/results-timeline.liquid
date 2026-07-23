@@ -30,6 +30,9 @@
 #rt-{{ uid }} .rt-label{font-size:17px; font-weight:400; color:{{ section.settings.label_color }}; margin:0 0 12px;}
 #rt-{{ uid }} .rt-up{font-size:12.5px; font-weight:500; letter-spacing:0.09em; text-transform:uppercase; color:{{ section.settings.uptitle_color }}; margin:0 0 13px;}
 #rt-{{ uid }} .rt-d{font-size:14.5px; line-height:1.6; color:{{ section.settings.text_color }}; margin:0;}
+#rt-{{ uid }} .rt-stage-btn{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; border:0; cursor:pointer; border-radius:12px; padding:13px 18px; margin-top:16px; font-family:inherit; font-size:14px; font-weight:600; color:#fff; background:linear-gradient(140deg,#1B3DEF 0%,#3358FF 52%,#5C78FF 100%); box-shadow:0 10px 26px rgba(27,61,239,0.26); text-decoration:none; text-align:center; transition:filter .16s,transform .12s,box-shadow .14s;}
+#rt-{{ uid }} .rt-stage-btn:hover{filter:brightness(1.06); transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34);}
+#rt-{{ uid }} .rt-stage-btn:active{transform:translateY(1px);}
 @media (max-width:749px){
 #rt-{{ uid }} .rt-h{font-size:26px; margin-bottom:18px;}
 #rt-{{ uid }} .rt-tabs{display:flex; gap:24px; margin-bottom:20px;}
@@ -74,6 +77,7 @@
         {%- if block.settings.chip != blank -%}<p class="rt-label">{{ block.settings.chip }}</p>{%- endif -%}
         {%- if block.settings.title != blank -%}<h3 class="rt-up">{{ block.settings.title }}</h3>{%- endif -%}
         {%- if block.settings.text != blank -%}<p class="rt-d">{{ block.settings.text }}</p>{%- endif -%}
+        {%- if block.settings.btn_label != blank and block.settings.btn_link != blank -%}<a class="rt-stage-btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>{%- endif -%}
       </div>
       {%- endfor -%}
     </div>
@@ -164,7 +168,9 @@
       { "type": "image_picker", "id": "image", "label": "Image" },
       { "type": "text", "id": "chip", "label": "Stage label (also the mobile tab)", "default": "Weeks 1–2", "info": "The first word stacks above the rest in the mobile tab, e.g. 'Weeks' over '1–2'." },
       { "type": "text", "id": "title", "label": "Title (uppercase)", "default": "Stage title" },
-      { "type": "textarea", "id": "text", "label": "Text", "default": "What happens in this window." }
+      { "type": "textarea", "id": "text", "label": "Text", "default": "What happens in this window." },
+      { "type": "text", "id": "btn_label", "label": "Button label", "info": "Optional — the button only shows when both label and link are set." },
+      { "type": "url", "id": "btn_link", "label": "Button link" }
     ] }
   ],
   "presets": [
