@@ -27,6 +27,7 @@
     },
     "custom_liquid_WV46gi": {
       "type": "custom-liquid",
+      "disabled": true,
       "name": "Custom liquid",
       "settings": {
         "custom_liquid": "{{ 'cro-enhancements.css' | asset_url | stylesheet_tag }}{{ 'cro-enhancements.js' | asset_url | script_tag }}<div id=\"bodology-inositol\"></div>\n\n<div style=\"padding:20px 20px;\"><div style=\"margin-top:20px;\"><h1 style=\"font-weight:1000 !important;font-size:3rem; color:#1b3def !important;\">Inositol Powder</h1></div>\n<div style=\"padding-bottom:13px; margin:20px 0px 4px; font-size:13px !important; font-weight:1000; text-decoration:none;\">\n  <a class=\"star-rating-container\" href=\"#reviews\" >\n    Excellent\n    <span style=\"display:inline-block; vertical-align:middle; width:95px; height:20px; margin:0 7px; background:#C2B067; -webkit-mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x; mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x;\" aria-label=\"Rated 4.85 out of 5\"></span>\n    <b style=\"font-weight:1000;\">4.8 out of 5 | Read Reviews</b>\n  </a>\n</div>\n<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div><div>"
@@ -38,15 +39,13 @@
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "name": "Product Title",
-          "disabled": true,
           "settings": {
-            "custom_liquid": "<div style=\"margin:0px;\"><h1 style=\"font-weight:1000 !important;font-size:2.3rem; color:#14307c !important;\">Inositol Powder</h1></div>"
+            "custom_liquid": "<div style=\"margin:0px;\"><h1 style=\"font-weight:1000 !important;font-size:2.3rem; color:#14307c !important;\">40:1 Inositol Powder Supplement</h1></div>"
           }
         },
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
           "name": "Stars",
-          "disabled": true,
           "settings": {
             "custom_liquid": "<div style=\"padding-bottom:13px; margin:20px 0px 4px; font-size:13px !important; font-weight:1000; text-decoration:none;\">\n  <a class=\"star-rating-container\" href=\"#reviews\" >\n    Excellent\n    <span style=\"display:inline-block; vertical-align:middle; width:95px; height:20px; margin:0 7px; background:#C2B067; -webkit-mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x; mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x;\" aria-label=\"Rated 4.85 out of 5\"></span>\n    <b style=\"font-weight:1000;\">4.8 out of 5 | Read Trusted Reviews</b>\n  </a>\n</div>"
           }
@@ -84,6 +83,7 @@
           "settings": {
             "radius": 7,
             "border_style": "solid",
+            "border_width": 2,
             "disable_shadows": true,
             "max_width": 440,
             "accent_color": "#0a23a3",
@@ -94,41 +94,39 @@
             "default_selected": "p1",
             "sub_default": true,
             "p1_tier": "1 Month Supply",
-            "p1_detail": "4 Weeks · 60 scoops",
+            "p1_variant": "46444657279195",
+            "p1_qty": 1,
+            "p1_badge": "",
+            "p1_roundel": "",
             "p1_sub_price": "$38.25",
             "p1_sub_save": "You save $13.00",
             "p1_sub_strike": "$45.00",
             "p1_sub_freq": "every 1 month",
-            "p1_one_price": "$45.00",
-            "p1_variant": "46444657279195",
-            "p1_qty": 1,
             "p1_plan": "",
-            "p1_hero": false,
-            "p1_badge": "",
             "p1_gift_text": "FREE shipping always",
             "p1_gift_strike": "$7.00",
             "p1_gift_variant": "48915264143579",
+            "p1_detail": "4 Weeks · 60 scoops",
+            "p1_one_price": "$45.00",
             "p2_tier": "3-Month Supply",
-            "p2_detail": "12 Weeks · 180 scoops",
+            "p2_variant": "46444646269147",
+            "p2_qty": 2,
+            "p2_badge": "",
+            "p2_roundel": "Save 30%",
             "p2_sub_price": "$98.00",
             "p2_sub_save": "You save $81.00",
             "p2_sub_strike": "$179.00",
             "p2_sub_freq": "every 3 months",
-            "p2_one_price": "$130.00",
-            "p2_variant": "46444646269147",
-            "p2_qty": 2,
             "p2_plan": "7141621979",
-            "p2_hero": false,
-            "p2_badge": "",
             "p2_gift_text": "FREE shipping always + FREE Metabolic Health Protocol",
             "p2_gift_strike": "$56.00",
             "p2_gift_variant": "48915264143579",
+            "p2_detail": "12 Weeks · 180 scoops",
+            "p2_one_price": "$130.00",
             "sub_claim": "Save up to 25% with flexible plan",
             "sub_claim_suffix": "· cancel anytime",
             "proto_enable": true,
             "proto_title": "Personalize my protocol",
-            "proto_optional": "Optional",
-            "proto_q": "Which areas are we supporting? Select all that apply.",
             "proto_supporting_label": "Supporting:",
             "proto_supporting_default": "None selected",
             "c1_label": "PCOS",
@@ -904,6 +902,73 @@
         "fs_name": 19,
         "fs_role": 12,
         "fs_quote": 13
+      }
+    },
+    "results_timeline_rMw3AF": {
+      "type": "results-timeline",
+      "blocks": {
+        "stage_wU9aMD": {
+          "type": "stage",
+          "settings": {
+            "chip": "Weeks 1–2",
+            "title": "Your body adjusts",
+            "text": "Inositol builds up with daily use. Most women feel nothing yet — that's normal, not a sign it isn't working.*"
+          }
+        },
+        "stage_gpL4Nm": {
+          "type": "stage",
+          "settings": {
+            "chip": "Weeks 3–6",
+            "title": "Consistency compounds",
+            "text": "Take it at the same time every day. This is where mood and stress resilience support begins for many women.*"
+          }
+        },
+        "stage_EHNQDE": {
+          "type": "stage",
+          "settings": {
+            "chip": "Weeks 6–12",
+            "title": "The research window",
+            "text": "Published inositol studies typically run 8–12 weeks or longer. Supports menstrual cycle regularity and hormonal balance.*"
+          }
+        },
+        "stage_KrbbKn": {
+          "type": "stage",
+          "settings": {
+            "chip": "Week 12+",
+            "title": "Long-term support",
+            "text": "Inositol is designed for ongoing daily use. Supports healthy glucose metabolism — for as long as you keep taking it.*"
+          }
+        }
+      },
+      "block_order": [
+        "stage_wU9aMD",
+        "stage_gpL4Nm",
+        "stage_EHNQDE",
+        "stage_KrbbKn"
+      ],
+      "name": "When to expect results",
+      "settings": {
+        "bg_color": "#F2EEEA",
+        "max_width": 1240,
+        "pad_top": 48,
+        "pad_bottom": 56,
+        "heading": "When to expect results",
+        "heading_color": "#33322E",
+        "label_color": "#33322E",
+        "uptitle_color": "#4A4944",
+        "text_color": "#4A4944",
+        "line_color": "#B9B5AA",
+        "dot_color": "#6E6C64",
+        "tab_active_color": "#33322E",
+        "tab_inactive_color": "#A5A29A",
+        "img_placeholder": "#E9DFC9",
+        "disclaimer_color": "#8A8B93",
+        "cta_label": "Start today",
+        "cta_link": "",
+        "cta_bg": "#1B3DEF",
+        "cta_text_color": "#FFFFFF",
+        "cta_note": "Subscribers can pause or cancel anytime.",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
     },
     "image_with_text_overlay_yexKYW": {
@@ -1844,6 +1909,7 @@
     "main-product",
     "1768505899436dba61",
     "community_videos_gi9WUU",
+    "results_timeline_rMw3AF",
     "image_with_text_overlay_yexKYW",
     "collapsible_content_7YUgWj",
     "testimonial_carousel_twHytV",
