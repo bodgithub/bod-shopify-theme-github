@@ -40,14 +40,14 @@
           "type": "custom_liquid",
           "name": "Product Title",
           "settings": {
-            "custom_liquid": "<div style=\"margin:0px;\"><h1 style=\"font-weight:1000 !important;font-size:2.3rem;\">40:1 Inositol Powder Supplement</h1></div>"
+            "custom_liquid": "<div style=\"margin:0px;\"><h1 style=\"font-weight:1000 !important;font-size:3.5rem;\">Inositol Powder Supplement</h1></div>"
           }
         },
         "custom_liquid_8d7xtd": {
           "type": "custom_liquid",
           "name": "Stars",
           "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:13px; margin:20px 0px 4px; font-size:13px !important; font-weight:1000; text-decoration:none;\">\n  <a class=\"star-rating-container\" href=\"#reviews\" >\n    Excellent\n    <span style=\"display:inline-block; vertical-align:middle; width:95px; height:20px; margin:0 7px; background:#C2B067; -webkit-mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x; mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x;\" aria-label=\"Rated 4.85 out of 5\"></span>\n    <b style=\"font-weight:1000;\">4.8 out of 5 | Read Trusted Reviews</b>\n  </a>\n</div>"
+            "custom_liquid": "<div style=\"padding-bottom:13px; margin:20px 0px 4px; font-size:16px !important; font-weight:1000; text-decoration:none;\">\n  <a class=\"star-rating-container\" href=\"#reviews\" >\n    Excellent\n    <span style=\"display:inline-block; vertical-align:middle; width:95px; height:20px; margin:0 7px; background:#C2B067; -webkit-mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x; mask:url(&quot;data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2023%2024'%3E%3Cpath%20fill-rule='evenodd'%20d='M4.5%201%20L19.5%201%20Q22%201%2022%203.5%20L22%2020.5%20Q22%2023%2019.5%2023%20L4.5%2023%20Q1%2023%201%2020.5%20L1%203.5%20Q1%201%204.5%201%20Z%20M11.5%205.2%20L13.09%209.82%20L17.97%209.9%20L14.07%2012.83%20L15.5%2017.5%20L11.5%2014.7%20L7.5%2017.5%20L8.93%2012.83%20L5.03%209.9%20L9.91%209.82%20Z'/%3E%3C/svg%3E&quot;) left center/19px 20px repeat-x;\" aria-label=\"Rated 4.85 out of 5\"></span>\n    <b style=\"font-weight:1000;\">4.8 out of 5 | Read Reviews</b>\n  </a>\n</div>"
           }
         },
         "title_ExCfKU": {
@@ -64,11 +64,28 @@
             "custom_liquid": "<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div>"
           }
         },
-        "custom_liquid_UEHeie": {
-          "type": "custom_liquid",
-          "name": "Product details",
+        "benefit_list_RhHGcE": {
+          "type": "benefit_list",
           "settings": {
-            "custom_liquid": "<div>\n  <ul style=\"list-style:none; padding:0; margin:0; font-size:15px; font-weight:500; line-height:1.2;\">\n    <li style=\"display:flex; align-items:flex-start; gap:.5em; margin-bottom:.5em; \">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Supports regular cycles<sup>*</sup></span>\n    </li>\n    <li style=\"display:flex; align-items:flex-start; gap:.5em; margin-bottom:.5em;\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Supports healthy blood sugar levels<sup>†</sup></span>\n    </li>\n    <li style=\"display:flex; align-items:flex-start; gap:.5em; margin-bottom:.5em;\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Supports healthy insulin sensitivity<sup>*</sup></span>\n    </li>\n    <li style=\"display:flex; align-items:flex-start; gap:.5em;\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" style=\"flex-shrink:0; margin-top:.15em;\">\n        <circle cx=\"12\" cy=\"12\" r=\"11\" fill=\"#f2eee9\"/>\n        <path d=\"M7 12.5l3 3 7-7\" stroke=\"#1b3def\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n      </svg>\n      <span>Supports mood & mental clarity<sup>*</sup></span>\n    </li>\n  </ul>\n</div>"
+            "font_size": 14,
+            "row_gap": 8,
+            "icon_size": 18,
+            "font_weight": "500",
+            "text_color": "#121212",
+            "circle_color": "#1B3DEF",
+            "tick_color": "#FFFFFF",
+            "i1_text": "Supports regular cycles",
+            "i1_sup": "*",
+            "i2_text": "Supports healthy blood sugar levels",
+            "i2_sup": "†",
+            "i3_text": "Supports healthy insulin sensitivity",
+            "i3_sup": "*",
+            "i4_text": "Supports mood & mental clarity",
+            "i4_sup": "*",
+            "i5_text": "",
+            "i5_sup": "",
+            "i6_text": "",
+            "i6_sup": ""
           }
         },
         "custom_liquid_fA4mt9": {
@@ -84,21 +101,21 @@
             "radius": 7,
             "border_style": "solid",
             "border_width": 2,
-            "selected_tint": 0,
+            "selected_tint": 3,
             "disable_shadows": true,
-            "max_width": 440,
+            "max_width": 720,
             "accent_color": "#0a23a3",
             "accent_2": "#1b3def",
             "ink_color": "#15171e",
             "eyebrow": "",
-            "heading": "",
+            "heading": "Choose your protocol",
             "default_selected": "p1",
             "sub_default": true,
             "p1_tier": "1 Month Supply",
             "p1_variant": "46444657279195",
             "p1_qty": 1,
             "p1_badge": "",
-            "p1_roundel": "",
+            "p1_roundel": "Save 15%",
             "p1_sub_price": "$38.25",
             "p1_sub_save": "You save $13.00",
             "p1_sub_strike": "$45.00",
@@ -106,8 +123,8 @@
             "p1_plan": "",
             "p1_gift_text": "FREE shipping always",
             "p1_gift_strike": "$7.00",
-            "p1_gift2_text": "",
-            "p1_gift2_strike": "",
+            "p1_gift2_text": "FREE Metabolic Health Protocol",
+            "p1_gift2_strike": "49.00",
             "p1_gift3_text": "",
             "p1_gift3_strike": "",
             "p1_gift_variant": "48915264143579",
@@ -123,10 +140,10 @@
             "p2_sub_strike": "$179.00",
             "p2_sub_freq": "every 3 months",
             "p2_plan": "7141621979",
-            "p2_gift_text": "FREE shipping always + FREE Metabolic Health Protocol",
-            "p2_gift_strike": "$56.00",
-            "p2_gift2_text": "",
-            "p2_gift2_strike": "",
+            "p2_gift_text": "FREE shipping always",
+            "p2_gift_strike": "$7.00",
+            "p2_gift2_text": "FREE Metabolic Health Protocol",
+            "p2_gift2_strike": "49.00",
             "p2_gift3_text": "",
             "p2_gift3_strike": "",
             "p2_gift_variant": "48915264143579",
@@ -154,9 +171,6 @@
             "c4_desc": "Metabolic & appetite",
             "c4_variant": "48915264209115",
             "shipping_prefix": "Ready to ship — arrives by",
-            "cta_sub_prefix": "Subscribe —",
-            "cta_one_prefix": "Add to cart —",
-            "cta_one_suffix": "one-time",
             "adding_label": "Adding…",
             "error_text": "Please choose a plan first",
             "trust1": "Free shipping over $50",
@@ -547,7 +561,7 @@
         "custom_liquid_8d7xtd",
         "title_ExCfKU",
         "custom_liquid_WRFhPD",
-        "custom_liquid_UEHeie",
+        "benefit_list_RhHGcE",
         "custom_liquid_fA4mt9",
         "plan_selector_3_gdT7Ak",
         "plan_selector_fe7ApL",
