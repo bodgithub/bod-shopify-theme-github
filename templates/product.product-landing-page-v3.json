@@ -40,7 +40,7 @@
           "type": "custom_liquid",
           "name": "Product Title",
           "settings": {
-            "custom_liquid": "<div style=\"margin:0px;\"><h1 style=\"font-weight:1000 !important;font-size:2.3rem; color:#14307c !important;\">40:1 Inositol Powder Supplement</h1></div>"
+            "custom_liquid": "<div style=\"margin:0px;\"><h1 style=\"font-weight:1000 !important;font-size:2.3rem;\">40:1 Inositol Powder Supplement</h1></div>"
           }
         },
         "custom_liquid_8d7xtd": {
@@ -84,6 +84,7 @@
             "radius": 7,
             "border_style": "solid",
             "border_width": 2,
+            "selected_tint": 0,
             "disable_shadows": true,
             "max_width": 440,
             "accent_color": "#0a23a3",
@@ -105,6 +106,10 @@
             "p1_plan": "",
             "p1_gift_text": "FREE shipping always",
             "p1_gift_strike": "$7.00",
+            "p1_gift2_text": "",
+            "p1_gift2_strike": "",
+            "p1_gift3_text": "",
+            "p1_gift3_strike": "",
             "p1_gift_variant": "48915264143579",
             "p1_detail": "4 Weeks · 60 scoops",
             "p1_one_price": "$45.00",
@@ -120,13 +125,20 @@
             "p2_plan": "7141621979",
             "p2_gift_text": "FREE shipping always + FREE Metabolic Health Protocol",
             "p2_gift_strike": "$56.00",
+            "p2_gift2_text": "",
+            "p2_gift2_strike": "",
+            "p2_gift3_text": "",
+            "p2_gift3_strike": "",
             "p2_gift_variant": "48915264143579",
             "p2_detail": "12 Weeks · 180 scoops",
             "p2_one_price": "$130.00",
             "sub_claim": "Save up to 25% with flexible plan",
             "sub_claim_suffix": "· cancel anytime",
             "proto_enable": true,
+            "proto_open_label": "Personalize",
             "proto_title": "Personalize my protocol",
+            "proto_subtitle": "Which areas are we supporting? Select all that apply.",
+            "proto_done_label": "Done",
             "proto_supporting_label": "Supporting:",
             "proto_supporting_default": "None selected",
             "c1_label": "PCOS",
@@ -912,7 +924,9 @@
           "settings": {
             "chip": "Weeks 1–2",
             "title": "Your body adjusts",
-            "text": "Inositol builds up with daily use. Most women feel nothing yet — that's normal, not a sign it isn't working.*"
+            "text": "Inositol builds up with daily use. Most women feel nothing yet — that's normal, not a sign it isn't working.*",
+            "btn_label": "",
+            "btn_link": ""
           }
         },
         "stage_gpL4Nm": {
@@ -920,7 +934,9 @@
           "settings": {
             "chip": "Weeks 3–6",
             "title": "Consistency compounds",
-            "text": "Take it at the same time every day. This is where mood and stress resilience support begins for many women.*"
+            "text": "Take it at the same time every day. This is where mood and stress resilience support begins for many women.*",
+            "btn_label": "",
+            "btn_link": ""
           }
         },
         "stage_EHNQDE": {
@@ -928,7 +944,9 @@
           "settings": {
             "chip": "Weeks 6–12",
             "title": "The research window",
-            "text": "Published inositol studies typically run 8–12 weeks or longer. Supports menstrual cycle regularity and hormonal balance.*"
+            "text": "Published inositol studies typically run 8–12 weeks or longer. Supports menstrual cycle regularity and hormonal balance.*",
+            "btn_label": "",
+            "btn_link": ""
           }
         },
         "stage_KrbbKn": {
@@ -936,7 +954,9 @@
           "settings": {
             "chip": "Week 12+",
             "title": "Long-term support",
-            "text": "Inositol is designed for ongoing daily use. Supports healthy glucose metabolism — for as long as you keep taking it.*"
+            "text": "Inositol is designed for ongoing daily use. Supports healthy glucose metabolism — for as long as you keep taking it.*",
+            "btn_label": "",
+            "btn_link": ""
           }
         }
       },
@@ -948,25 +968,25 @@
       ],
       "name": "When to expect results",
       "settings": {
-        "bg_color": "#F2EEEA",
+        "bg_color": "#f2eeea",
         "max_width": 1240,
         "pad_top": 48,
         "pad_bottom": 56,
         "heading": "When to expect results",
-        "heading_color": "#33322E",
-        "label_color": "#33322E",
-        "uptitle_color": "#4A4944",
-        "text_color": "#4A4944",
-        "line_color": "#B9B5AA",
-        "dot_color": "#6E6C64",
-        "tab_active_color": "#33322E",
-        "tab_inactive_color": "#A5A29A",
-        "img_placeholder": "#E9DFC9",
-        "disclaimer_color": "#8A8B93",
+        "heading_color": "#33322e",
+        "label_color": "#33322e",
+        "uptitle_color": "#4a4944",
+        "text_color": "#4a4944",
+        "line_color": "#b9b5aa",
+        "dot_color": "#6e6c64",
+        "tab_active_color": "#33322e",
+        "tab_inactive_color": "#a5a29a",
+        "img_placeholder": "#e9dfc9",
+        "disclaimer_color": "#8a8b93",
         "cta_label": "Start today",
         "cta_link": "",
-        "cta_bg": "#1B3DEF",
-        "cta_text_color": "#FFFFFF",
+        "cta_bg": "#1b3def",
+        "cta_text_color": "#ffffff",
         "cta_note": "Subscribers can pause or cancel anytime.",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
       }
