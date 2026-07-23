@@ -97,16 +97,17 @@
         },
         "plan_selector_3_gdT7Ak": {
           "type": "plan_selector_3",
+          "disabled": true,
           "settings": {
             "radius": 6,
             "border_style": "solid",
-            "border_width": 2,
-            "selected_tint": 3,
+            "border_width": 1,
+            "selected_tint": 0,
             "disable_shadows": true,
             "max_width": 720,
-            "accent_color": "#0A23A3",
+            "accent_color": "#0a23a3",
             "accent_2": "#1b3def",
-            "ink_color": "#1B3DEF",
+            "ink_color": "#0A23A3",
             "eyebrow": "",
             "heading": "Choose your supply:",
             "default_selected": "p1",
@@ -180,6 +181,33 @@
             "trust2": "60-day guarantee",
             "trust3_sub": "Cancel anytime",
             "trust3_one": "No subscription"
+          }
+        },
+        "plan_selector_4_GJk8WU": {
+          "type": "plan_selector_4",
+          "settings": {
+            "accent_color": "#1B3DEF",
+            "ink_color": "#0A23A3",
+            "max_width": 560,
+            "default_option": "sub",
+            "sub_title": "Subscribe & Save",
+            "sub_badge": "15% Off",
+            "sub_compare": "$65.00",
+            "sub_price": "$55.00",
+            "delivery_label": "Delivery",
+            "delivery_value": "Every 6 Weeks",
+            "sub_benefits": "Save 15% on every order.\nNo commitments — adjust or cancel anytime.\nFree shipping on subscriptions.",
+            "sub_variant": "46444646269147",
+            "sub_qty": 1,
+            "sub_plan": "5755961563",
+            "ot_title": "One time purchase",
+            "ot_price": "$65.00",
+            "ot_variant": "46444646269147",
+            "ot_qty": 1,
+            "cta_label": "Add to cart",
+            "adding_label": "Adding…",
+            "footnote": "Free shipping on subscriptions",
+            "error_text": "Please choose a plan first"
           }
         },
         "plan_selector_fe7ApL": {
@@ -567,6 +595,7 @@
         "benefit_list_RhHGcE",
         "custom_liquid_fA4mt9",
         "plan_selector_3_gdT7Ak",
+        "plan_selector_4_GJk8WU",
         "plan_selector_fe7ApL",
         "variant_picker_HegXNW",
         "recharge_subscriptions_subscription_widget_v2_9rCap3",
