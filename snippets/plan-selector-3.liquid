@@ -17,6 +17,7 @@
 {%- assign ink = s.ink_color | default: '#15171E' -%}
 {%- assign rad = s.radius | default: 13 -%}
 {%- assign bw3 = s.border_width | default: 2 -%}
+{%- assign sel_tint = s.selected_tint | default: 7 -%}
 {%- assign rad_in = rad | minus: 2 | at_least: 0 -%}
 {%- assign rad_box = rad | minus: 2 | at_least: 0 -%}
 {%- assign rad_tick = rad | minus: 6 | at_least: 4 -%}
@@ -44,7 +45,7 @@
 #ps3-{{ uid }} .p3-card__head{background:#fff; padding:11px 13px;}
 #ps3-{{ uid }} .p3-card__badgerow{display:flex; justify-content:flex-end; margin-bottom:6px;}
 #ps3-{{ uid }} .p3-card__hrow{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
-#ps3-{{ uid }} .p3-card.is-selected .p3-card__head{background:rgba(27,61,239,0.07);}
+#ps3-{{ uid }} .p3-card.is-selected .p3-card__head{background:color-mix(in srgb, var(--p3-blue) {{ sel_tint }}%, #fff);}
 #ps3-{{ uid }} .p3-card__id{min-width:0;}
 #ps3-{{ uid }} .p3-card__row{display:flex; align-items:center; gap:9px;}
 #ps3-{{ uid }} .p3-radio{width:16px; height:16px; border-radius:50%; flex:0 0 auto; border:2px solid var(--p3-line); display:grid; place-items:center; transition:border-color .15s;}
