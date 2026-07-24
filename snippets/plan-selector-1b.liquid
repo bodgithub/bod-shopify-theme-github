@@ -43,8 +43,6 @@
 #ps1b-{{ uid }} .bod-pc1b .pc-card[data-ps1b-mode="sub"]{display:none;}
 #ps1b-{{ uid }} .bod-pc1b.is-sub .pc-card[data-ps1b-mode="sub"]{display:block;}
 #ps1b-{{ uid }} .bod-pc1b.is-sub .pc-card[data-ps1b-mode="ot"]{display:none;}
-#ps1b-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:#fff; color:var(--ps-blue); border-bottom:1px solid {{ acc }}; border-left:1px solid {{ acc }}; font-size:10px; font-weight:500; letter-spacing:0.02em; text-transform:uppercase; padding:4px 11px; border-bottom-left-radius:13px; border-top-right-radius:10px; white-space:nowrap; display:none;}
-#ps1b-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
 #ps1b-{{ uid }} .pc-pad{padding:15px 16px 14px;}
 #ps1b-{{ uid }} .pc-grid{display:flex; align-items:flex-start; gap:12px;}
 #ps1b-{{ uid }} .pc-left{flex:1 1 auto; min-width:0;}
@@ -58,8 +56,6 @@
 #ps1b-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
 #ps1b-{{ uid }} .pc-price__per{font-size:13px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps1b-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:9px; white-space:nowrap;}
-#ps1b-{{ uid }} .pc-cadence{font-size:12.5px; color:var(--ps-ink-2); margin:6px 0 0; line-height:1.5;}
-#ps1b-{{ uid }} .pc-card.is-selected .pc-cadence{display:none;}
 #ps1b-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
 #ps1b-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
 #ps1b-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:13px; line-height:1.5; color:var(--ps-ink);}
@@ -167,12 +163,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 
       assign k = P | append: '_name'
       assign card_name = s[k]
-      assign k = P | append: '_ribbon'
-      assign card_ribbon = s[k]
       assign k = P | append: '_pill'
       assign card_pill = s[k]
-      assign k = P | append: '_cadence'
-      assign card_cadence = s[k]
       assign k = P | append: '_price'
       assign card_price = s[k]
       assign k = P | append: '_compare'
@@ -212,7 +204,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <div class="pc-card{% if is_sel %} is-selected{% endif %}" role="radio" aria-checked="{% if is_sel %}true{% else %}false{% endif %}" tabindex="0"
          data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}">
       <div class="pc-card__in">
-        {%- if card_ribbon != blank -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
         <div class="pc-pad">
           <div class="pc-grid">
             <div class="pc-left">
@@ -220,7 +211,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
                 <h3 class="pc-title">{{ card_name }}</h3>
                 {%- if card_pill != blank -%}<span class="pc-pill">{{ card_pill }}</span>{%- endif -%}
               </div>
-              {%- if card_cadence != blank -%}<p class="pc-cadence">{{ card_cadence }}</p>{%- endif -%}
               {%- assign benes = card_benefits | newline_to_br | split: '<br />' -%}
               {%- assign has_benes = false -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign has_benes = true -%}{%- endif -%}{%- endfor -%}
               {%- if has_benes -%}<ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
