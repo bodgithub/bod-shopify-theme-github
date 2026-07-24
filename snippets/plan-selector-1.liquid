@@ -239,7 +239,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   <button type="button" class="ps-cta" data-ps1-submit>
     <span class="spin"></span>
     <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
-    <span class="ps-cta__sub" data-ps1-sub></span>
+    {% unless s.cta_static %}<span class="ps-cta__sub" data-ps1-sub></span>{% endunless %}
   </button>
   <div class="ps-error" data-ps1-error>
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
@@ -308,7 +308,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     else { window.location = cartUrl; }
   }
   function selected(){ return root.querySelector('[data-ps1-card].is-selected'); }
-  function syncSub(){ var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps1-name') : ''; }
+  function syncSub(){ if(!sub) return; var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps1-name') : ''; }
   // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day
   var shipEl = root.querySelector('[data-ps1-shipdate]');
   if(shipEl){
