@@ -1,0 +1,236 @@
+{%- comment -%}
+  Bodology · Plan Selector 1 (product-info BLOCK, type plan_selector_1)
+  Duplicate of Plan selector 2 with a flatter card hierarchy: plan name +
+  save pill on the left, crossed-out/current price with a per-serving line
+  stacked on the right, and plain dot benefit bullets underneath. Gradient
+  border on the selected card runs light (top) to deep blue (bottom) and is
+  thicker along the bottom edge.
+  Two fixed options: a one-time purchase and a subscribe-&-save plan with a
+  free gift (e-guide). Params: s = block.settings, uid = block.id.
+  Cart wired to /cart/add.js with variant + selling_plan; every add carries a
+  unique _li property (line items never merge) and the gift carries the same
+  _gift property shape the main plan selector uses.
+{%- endcomment -%}
+
+<link rel="stylesheet" href="https://use.typekit.net/sxx4ssa.css">
+
+{%- assign acc = s.accent_color | default: '#1B3DEF' -%}
+{%- assign ink = s.title_color | default: '#14307C' -%}
+{%- assign deep = s.deep_color | default: '#0E2160' -%}
+{%- assign bw = s.border_width | default: 5 -%}
+
+<style>
+#ps1-{{ uid }} .bod-pc1{
+  --ps-sans:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;
+  --ps-blue:{{ acc }}; --ps-ink:{{ ink }}; --ps-ink-2:#5566A0; --ps-deep:{{ deep }};
+  --ps-hair:rgba(20,40,120,0.14); --ps-sand:#F3EEEA; --ps-tile:#F7F5F1; --ps-bw:{{ bw }}px; --ps-gift-w:{{ s.gift_width | default: 95 }}px;
+  --ps-grad-border:linear-gradient(180deg,#EDF0FC 0%,#8CA0F2 42%,{{ acc }} 76%,{{ deep }} 100%);
+  --ps-grad-banner:linear-gradient(110deg,{{ deep }} 0%,{{ acc }} 60%,#0A95EF 135%);
+  font-family:var(--ps-sans); color:#1A1A14; box-sizing:border-box;
+  display:flex; flex-direction:column; gap:14px; max-width:{{ s.max_width | default: 560 }}px; margin:0 auto;
+}
+#ps1-{{ uid }} .bod-pc1 *,#ps1-{{ uid }} .bod-pc1 *::before,#ps1-{{ uid }} .bod-pc1 *::after{box-sizing:border-box;}
+#ps1-{{ uid }} .ps-h{font-weight:600; font-size:clamp(18px,3vw,22px); letter-spacing:-0.02em; color:var(--ps-ink); margin:0 0 2px;}
+#ps1-{{ uid }} .pc-card{position:relative; border-radius:14px; cursor:pointer; background:#fff; border:1.5px solid #E2E2E2; transition:border-color .18s,box-shadow .18s; overflow:hidden;}
+#ps1-{{ uid }} .pc-card:hover{border-color:rgba(27,61,239,0.45);}
+#ps1-{{ uid }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:calc(var(--ps-bw)*0.5) calc(var(--ps-bw)*0.7) calc(var(--ps-bw)*1.6); overflow:visible;}
+#ps1-{{ uid }} .pc-card__in{position:relative; background:#fff; border-radius:10px; overflow:hidden;}
+#ps1-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:12px;}
+#ps1-{{ uid }} .pc-card:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(27,61,239,0.35);}
+#ps1-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:#fff; color:var(--ps-blue); border-bottom:1px solid {{ acc }}; border-left:1px solid {{ acc }}; font-size:10px; font-weight:500; letter-spacing:0.02em; text-transform:uppercase; padding:4px 11px; border-bottom-left-radius:13px; border-top-right-radius:10px; white-space:nowrap; display:none;}
+#ps1-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
+#ps1-{{ uid }} .pc-pad{padding:15px 16px 14px;}
+#ps1-{{ uid }} .pc-grid{display:flex; align-items:flex-start; gap:12px;}
+#ps1-{{ uid }} .pc-left{flex:1 1 auto; min-width:0;}
+#ps1-{{ uid }} .pc-right{flex:0 0 auto; text-align:right;}
+#ps1-{{ uid }} .pc-titlerow{display:flex; align-items:center; gap:9px; flex-wrap:wrap;}
+#ps1-{{ uid }} .pc-title{font-weight:700; font-size:18px; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
+#ps1-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:var(--ps-sand); color:var(--ps-blue); font-weight:700; font-size:11px; padding:4px 11px; border-radius:999px; white-space:nowrap;}
+#ps1-{{ uid }} .pc-card.is-selected .pc-pill{background:var(--ps-grad-banner); color:#fff;}
+#ps1-{{ uid }} .pc-price{display:flex; align-items:baseline; justify-content:flex-end; gap:7px; margin:0;}
+#ps1-{{ uid }} .pc-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
+#ps1-{{ uid }} .pc-price__now{font-weight:700; font-size:22px; line-height:1.1; letter-spacing:-0.02em; color:var(--ps-ink);}
+#ps1-{{ uid }} .pc-price__per{font-size:13px; color:var(--ps-ink-2); white-space:nowrap;}
+#ps1-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:5px; white-space:nowrap;}
+#ps1-{{ uid }} .pc-cadence{font-size:12.5px; color:var(--ps-ink-2); margin:6px 0 0; line-height:1.5;}
+#ps1-{{ uid }} .pc-card.is-selected .pc-cadence{display:none;}
+#ps1-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
+#ps1-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
+#ps1-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:13px; line-height:1.5; color:var(--ps-ink);}
+#ps1-{{ uid }} .pc-benes li::before{content:''; position:absolute; left:2px; top:0.55em; width:4px; height:4px; border-radius:50%; background:var(--ps-ink);}
+#ps1-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
+#ps1-{{ uid }} .pc-expand{display:none;}
+#ps1-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
+#ps1-{{ uid }} .pc-kit__lab{font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-blue); margin:14px 0 11px;}
+#ps1-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
+#ps1-{{ uid }} .pc-tile{text-align:center; position:relative;}
+#ps1-{{ uid }} .pc-tile__roundel{position:absolute; top:6px; left:6px; z-index:2; background:var(--ps-grad-banner); color:#fff; font-size:8px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:3px 8px; border-radius:999px; white-space:nowrap;}
+#ps1-{{ uid }} .pc-tile__img{width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--ps-tile); border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:7px;}
+#ps1-{{ uid }} .pc-tile__img img{width:74%; height:74%; object-fit:contain;}
+#ps1-{{ uid }} .pc-tile__name{font-size:11px; font-weight:600; color:var(--ps-ink); line-height:1.2; display:block;}
+#ps1-{{ uid }} .pc-tile__val{font-size:10px; color:#9aa0b5; text-decoration:line-through; display:block;}
+#ps1-{{ uid }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-family:var(--ps-sans); font-weight:var(--font-body-medium-weight, 400); letter-spacing:var(--button-letter-spacing, 0.02em); font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
+#ps1-{{ uid }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
+#ps1-{{ uid }} .ps-cta__sub{font-weight:400; font-size:10px; letter-spacing:0.08em; opacity:.82; white-space:nowrap;}
+#ps1-{{ uid }} .ps-cta.is-loading{pointer-events:none; opacity:.85; background:#3a4a8f;}
+#ps1-{{ uid }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:ps1spin-{{ uid }} .7s linear infinite; display:none;}
+#ps1-{{ uid }} .ps-cta.is-loading .spin{display:block;}
+@keyframes ps1spin-{{ uid }}{to{transform:rotate(360deg);}}
+#ps1-{{ uid }} .ps-footnote{font-size:11px; color:var(--ps-ink-2); text-align:center; margin:2px 0 0;}
+#ps1-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
+#ps1-{{ uid }} .ps-error.is-shown{display:flex;}
+#ps1-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
+@media (max-width:749px){#ps1-{{ uid }} .pc-title{font-size:16px;}#ps1-{{ uid }} .pc-price__now{font-size:20px;}}
+</style>
+
+{%- assign ps1_default = s.default_option | default: 'sub' -%}
+{%- assign ps1_order = 'ot,sub' | split: ',' -%}
+{%- if s.sub_first -%}{%- assign ps1_order = 'sub,ot' | split: ',' -%}{%- endif -%}
+
+<div id="ps1-{{ uid }}">
+<div class="bod-pc1" role="radiogroup" data-ps1-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+  {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
+  {%- for opt in ps1_order -%}
+    {%- if opt == 'ot' -%}
+    <div class="pc-card{% if ps1_default == 'ot' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps1_default == 'ot' %}true{% else %}false{% endif %}" tabindex="0"
+         data-ps1-card data-ps1-name="{{ s.ot_name | default: 'One-Time Purchase' | escape }}" data-ps1-variant="{{ s.ot_variant }}" data-ps1-plan="" data-ps1-qty="{{ s.ot_qty | default: 1 }}" data-ps1-gift="">
+      <div class="pc-card__in">
+        <div class="pc-pad">
+          <div class="pc-grid">
+            <div class="pc-left">
+              <div class="pc-titlerow">
+                <h3 class="pc-title">{{ s.ot_name | default: 'One-Time Purchase' }}</h3>
+              </div>
+              {%- if s.ot_cadence != blank -%}<p class="pc-cadence">{{ s.ot_cadence }}</p>{%- endif -%}
+              {%- assign ot_benes = s.ot_benefits | newline_to_br | split: '<br />' -%}
+              {%- assign ot_has = false -%}{%- for b in ot_benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign ot_has = true -%}{%- endif -%}{%- endfor -%}
+              {%- if ot_has -%}<ul class="pc-benes">{%- for b in ot_benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
+            </div>
+            <div class="pc-right">
+              <div class="pc-price">{%- if s.ot_compare != blank -%}<span class="pc-price__was">{{ s.ot_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ s.ot_price }}</span></div>
+              {%- if s.ot_serving != blank -%}<span class="pc-serving">{{ s.ot_serving }}</span>{%- endif -%}
+            </div>
+          </div>
+          {%- if s.ot_bill != blank -%}<div class="pc-expand"><p class="pc-bill">{{ s.ot_bill }}</p></div>{%- endif -%}
+        </div>
+      </div>
+    </div>
+    {%- else -%}
+    <div class="pc-card{% if ps1_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps1_default == 'sub' %}true{% else %}false{% endif %}" tabindex="0"
+         data-ps1-card data-ps1-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps1-variant="{{ s.sub_variant }}" data-ps1-plan="{{ s.sub_plan }}" data-ps1-requires-plan="1" data-ps1-qty="{{ s.sub_qty | default: 1 }}" data-ps1-gift="{{ s.gift_variant }}">
+      <div class="pc-card__in">
+        {%- if s.sub_ribbon != blank -%}<span class="pc-ribbon">{{ s.sub_ribbon }}</span>{%- endif -%}
+        <div class="pc-pad">
+          <div class="pc-grid">
+            <div class="pc-left">
+              <div class="pc-titlerow">
+                <h3 class="pc-title">{{ s.sub_name | default: 'Subscribe & Save' }}</h3>
+                {%- if s.sub_pill != blank -%}<span class="pc-pill">{{ s.sub_pill }}</span>{%- endif -%}
+              </div>
+              {%- if s.sub_cadence != blank -%}<p class="pc-cadence">{{ s.sub_cadence }}</p>{%- endif -%}
+              {%- assign sub_benes = s.sub_benefits | newline_to_br | split: '<br />' -%}
+              {%- assign sub_has = false -%}{%- for b in sub_benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign sub_has = true -%}{%- endif -%}{%- endfor -%}
+              {%- if sub_has -%}<ul class="pc-benes">{%- for b in sub_benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
+            </div>
+            <div class="pc-right">
+              <div class="pc-price">{%- if s.sub_compare != blank -%}<span class="pc-price__was">{{ s.sub_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ s.sub_price }}</span>{%- if s.sub_price_per != blank -%}<span class="pc-price__per">{{ s.sub_price_per }}</span>{%- endif -%}</div>
+              {%- if s.sub_serving != blank -%}<span class="pc-serving">{{ s.sub_serving }}</span>{%- endif -%}
+            </div>
+          </div>
+          <div class="pc-expand">
+            {%- if s.sub_bill != blank -%}<p class="pc-bill">{{ s.sub_bill }}</p>{%- endif -%}
+            {%- if s.gift_name != blank -%}
+              <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
+              <div class="pc-kit__track">
+                <div class="pc-tile">
+                  {%- if s.gift_roundel != blank -%}<span class="pc-tile__roundel">{{ s.gift_roundel }}</span>{%- endif -%}
+                  <div class="pc-tile__img">{%- if s.gift_image != blank -%}{{ s.gift_image | image_url: width: 200 | image_tag: alt: s.gift_name, loading: 'lazy' }}{%- endif -%}</div>
+                  <span class="pc-tile__name">{{ s.gift_name }}</span>
+                  {%- if s.gift_crossout != blank -%}<span class="pc-tile__val">{{ s.gift_crossout }}</span>{%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endif -%}
+  {%- endfor -%}
+  <button type="button" class="ps-cta" data-ps1-submit>
+    <span class="spin"></span>
+    <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
+    <span class="ps-cta__sub" data-ps1-sub></span>
+  </button>
+  <div class="ps-error" data-ps1-error>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+    <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
+  </div>
+  {%- if s.footnote != blank -%}<p class="ps-footnote">{{ s.footnote }}</p>{%- endif -%}
+</div>
+</div>
+
+<script>
+(function(){
+  var root = document.querySelector('#ps1-{{ uid }} [data-ps1-root]');
+  if(!root || root.dataset.ps1Bound) return;
+  root.dataset.ps1Bound = '1';
+  var cards = [].slice.call(root.querySelectorAll('[data-ps1-card]'));
+  var sub = root.querySelector('[data-ps1-sub]'), err = root.querySelector('[data-ps1-error]');
+  var cta = root.querySelector('[data-ps1-submit]'), label = cta.querySelector('.ps-cta__label');
+  var ctaText = label.textContent;
+  var cartUrl = {{ routes.cart_url | json }};
+  var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  function renderAndOpenCart(response){
+    try {
+      [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+        { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+        { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+      ].forEach(function(sc){
+        if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+        var host = document.getElementById(sc.id);
+        var el = host.querySelector(sc.selector) || host;
+        var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+        if(frag) el.innerHTML = frag.innerHTML;
+        if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+        if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+      });
+    } catch(e){}
+    var drawer = document.getElementById('Cart-Drawer');
+    if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+    else { window.location = cartUrl; }
+  }
+  function selected(){ return root.querySelector('[data-ps1-card].is-selected'); }
+  function syncSub(){ var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps1-name') : ''; }
+  function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
+  function select(c){
+    cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
+    c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
+    err.classList.remove('is-shown'); syncSub();
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){ select(c); });
+    c.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); select(c); } });
+  });
+  syncSub();
+  cta.addEventListener('click', function(){
+    var c = selected();
+    if(!c){ showErr(); return; }
+    var variant = (c.getAttribute('data-ps1-variant') || '').trim();
+    var plan = (c.getAttribute('data-ps1-plan') || '').trim();
+    var qty = parseInt(c.getAttribute('data-ps1-qty'), 10) || 1;
+    var gift = (c.getAttribute('data-ps1-gift') || '').trim();
+    if(!variant){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
+    if(c.hasAttribute('data-ps1-requires-plan') && !plan){ showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return; }
+    err.classList.remove('is-shown');
+    cta.classList.add('is-loading'); label.textContent = '{{ s.adding_label | default: "Adding…" }}';
+    var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
+    if(plan){ item.selling_plan = plan; }
+    var items = [item];
+    if(plan && gift){ items.push({ id: gift, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-ps1-name') || 'your plan') } }); }
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
+    .catch(function(e){ cta.classList.remove('is-loading'); label.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+  });
+})();
+</script>
