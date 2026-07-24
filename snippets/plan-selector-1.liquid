@@ -33,7 +33,7 @@
 #ps1-{{ uid }} .ps-h{font-weight:600; font-size:clamp(18px,3vw,22px); letter-spacing:-0.02em; color:var(--ps-ink); margin:0 0 2px;}
 #ps1-{{ uid }} .pc-card{position:relative; border-radius:14px; cursor:pointer; background:#fff; border:1.5px solid #E2E2E2; transition:border-color .18s,box-shadow .18s; overflow:hidden;}
 #ps1-{{ uid }} .pc-card:hover{border-color:rgba(27,61,239,0.45);}
-#ps1-{{ uid }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:calc(var(--ps-bw)*0.5) calc(var(--ps-bw)*0.7) calc(var(--ps-bw)*1.6); overflow:visible;}
+#ps1-{{ uid }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:var(--ps-bw); overflow:visible;}
 #ps1-{{ uid }} .pc-card__in{position:relative; background:#fff; border-radius:10px; overflow:hidden;}
 #ps1-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:12px;}
 #ps1-{{ uid }} .pc-card:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(27,61,239,0.35);}
@@ -44,12 +44,12 @@
 #ps1-{{ uid }} .pc-left{flex:1 1 auto; min-width:0;}
 #ps1-{{ uid }} .pc-right{flex:0 0 auto; text-align:right;}
 #ps1-{{ uid }} .pc-titlerow{display:flex; align-items:center; gap:9px; flex-wrap:wrap;}
-#ps1-{{ uid }} .pc-title{font-weight:700; font-size:18px; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
+#ps1-{{ uid }} .pc-title{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
 #ps1-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:var(--ps-sand); color:var(--ps-blue); font-weight:700; font-size:11px; padding:4px 11px; border-radius:999px; white-space:nowrap;}
 #ps1-{{ uid }} .pc-card.is-selected .pc-pill{background:var(--ps-grad-banner); color:#fff;}
 #ps1-{{ uid }} .pc-price{display:flex; align-items:baseline; justify-content:flex-end; gap:7px; margin:0;}
 #ps1-{{ uid }} .pc-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
-#ps1-{{ uid }} .pc-price__now{font-weight:700; font-size:22px; line-height:1.1; letter-spacing:-0.02em; color:var(--ps-ink);}
+#ps1-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
 #ps1-{{ uid }} .pc-price__per{font-size:13px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps1-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:5px; white-space:nowrap;}
 #ps1-{{ uid }} .pc-cadence{font-size:12.5px; color:var(--ps-ink-2); margin:6px 0 0; line-height:1.5;}
@@ -80,7 +80,7 @@
 #ps1-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
 #ps1-{{ uid }} .ps-error.is-shown{display:flex;}
 #ps1-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
-@media (max-width:749px){#ps1-{{ uid }} .pc-title{font-size:16px;}#ps1-{{ uid }} .pc-price__now{font-size:20px;}}
+@media (max-width:749px){#ps1-{{ uid }} .pc-title{font-size:17px;}#ps1-{{ uid }} .pc-price__now{font-size:17px;}}
 </style>
 
 {%- assign ps1_default = s.default_option | default: 'sub' -%}
