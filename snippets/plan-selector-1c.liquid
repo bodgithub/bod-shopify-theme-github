@@ -61,8 +61,6 @@
 #ps1c-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
 #ps1c-{{ uid }} .pc-price__per{font-size:13px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps1c-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:9px; white-space:nowrap;}
-#ps1c-{{ uid }} .pc-cadence{font-size:12.5px; color:var(--ps-ink-2); margin:6px 0 0; line-height:1.5;}
-#ps1c-{{ uid }} .pc-card.is-selected .pc-cadence{display:none;}
 #ps1c-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
 #ps1c-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:13px; line-height:1.5; color:var(--ps-ink);}
@@ -84,12 +82,14 @@
 #ps1c-{{ uid }} .bod-pc1c.is-sub .ps-subtick__knob{transform:translateX(16px);}
 #ps1c-{{ uid }} .ps-subtick__t{font-size:12.5px;}
 #ps1c-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
-#ps1c-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:{{ gb_rad }}px;{% if gb_bord != blank %} border:1px solid {{ gb_bord }};{% endif %} padding:10px 12px; margin-top:-10px; margin-bottom:10px;}
+#ps1c-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:{{ gb_rad }}px;{% if gb_bord != blank %} border:1px solid {{ gb_bord }};{% endif %} padding:10px 12px; margin-top:{% if s.subtick_enable %}-10px{% else %}0{% endif %}; margin-bottom:10px;}
 #ps1c-{{ uid }} .ps-giftban[hidden]{display:none;}
 #ps1c-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
 #ps1c-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_icon }};}
 #ps1c-{{ uid }} .ps-giftban__icon img{width:100%; height:100%; object-fit:cover;}
+#ps1c-{{ uid }} .ps-giftban__trow{display:flex; align-items:baseline; gap:7px; flex-wrap:wrap;}
 #ps1c-{{ uid }} .ps-giftban__t{display:block; font-size:13.5px; font-weight:600; color:{{ gb_tc }};}
+#ps1c-{{ uid }} .ps-giftban__x{font-size:12px; color:#9aa0b5; text-decoration:line-through;}
 #ps1c-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
 #ps1c-{{ uid }} .ps-giftban__cust{background:none; border:0; padding:0; margin:0; font:inherit; color:inherit; text-decoration:underline; cursor:pointer;}
 #ps1c-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
@@ -186,8 +186,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign card_ribbon = s[k]
       assign k = P | append: '_pill'
       assign card_pill = s[k]
-      assign k = P | append: '_cadence'
-      assign card_cadence = s[k]
       assign k = P | append: '_price'
       assign card_price = s[k]
       assign k = P | append: '_compare'
@@ -227,7 +225,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     -%}
     {%- unless P == 'bd' and card_name == blank -%}
     <div class="pc-card{% if P == ps1c_default %} is-selected{% endif %}" role="radio" aria-checked="{% if P == ps1c_default %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1c-card data-ps1c-p="{{ P }}" data-ps1c-name="{{ card_name | escape }}" data-ps1c-variant="{{ card_variant }}" data-ps1c-plan="{{ card_plan }}"{% if requires_plan %} data-ps1c-requires-plan="1"{% endif %} data-ps1c-qty="{{ card_qty }}" data-ps1c-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1c-gift-title="{{ gift_name | escape }}" data-ps1c-gift-sub="{{ gift_bsub | escape }}" data-ps1c-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
+         data-ps1c-card data-ps1c-p="{{ P }}" data-ps1c-name="{{ card_name | escape }}" data-ps1c-variant="{{ card_variant }}" data-ps1c-plan="{{ card_plan }}"{% if requires_plan %} data-ps1c-requires-plan="1"{% endif %} data-ps1c-qty="{{ card_qty }}" data-ps1c-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1c-gift-title="{{ gift_name | escape }}" data-ps1c-gift-sub="{{ gift_bsub | escape }}" data-ps1c-gift-cross="{{ gift_crossout | escape }}" data-ps1c-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         {%- if card_ribbon != blank -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
         <div class="pc-pad">
@@ -237,7 +235,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
                 <h3 class="pc-title">{{ card_name }}</h3>
                 {%- if card_pill != blank -%}<span class="pc-pill">{{ card_pill }}</span>{%- endif -%}
               </div>
-              {%- if card_cadence != blank -%}<p class="pc-cadence">{{ card_cadence }}</p>{%- endif -%}
               {%- assign benes = card_benefits | newline_to_br | split: '<br />' -%}
               {%- assign has_benes = false -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign has_benes = true -%}{%- endif -%}{%- endfor -%}
               {%- if has_benes -%}<ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
@@ -278,7 +275,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       <img data-ps1c-giftban-img alt="" hidden>
     </span>
     <span class="ps-giftban__txt">
-      <strong class="ps-giftban__t" data-ps1c-giftban-title></strong>
+      <span class="ps-giftban__trow"><strong class="ps-giftban__t" data-ps1c-giftban-title></strong><span class="ps-giftban__x" data-ps1c-giftban-cross hidden></span></span>
       <span class="ps-giftban__s" data-ps1c-giftban-line><span data-ps1c-giftban-sub></span>{% if s.proto_enable %}<span data-ps1c-giftban-sep> · </span><button type="button" class="ps-giftban__cust" data-ps1c-proto-open>{{ s.giftban_cust_label | default: 'Customize' }}</button>{% endif %}</span>
     </span>
   </div>
@@ -386,6 +383,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var gbSvg = gb ? gb.querySelector('[data-ps1c-giftban-svg]') : null;
   var gbSep = gb ? gb.querySelector('[data-ps1c-giftban-sep]') : null;
   var gbCust = gb ? gb.querySelector('.ps-giftban__cust') : null;
+  var gbX = gb ? gb.querySelector('[data-ps1c-giftban-cross]') : null;
   function syncGiftBan(){
     if(!gb) return;
     var c = selected();
@@ -393,6 +391,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     if(!t){ gb.hidden = true; return; }
     gb.hidden = false;
     gbT.textContent = t;
+    if(gbX){ var cx = c.getAttribute('data-ps1c-gift-cross') || ''; gbX.textContent = cx; gbX.hidden = !cx; }
     var st = c.getAttribute('data-ps1c-gift-sub') || '';
     gbS.textContent = st; gbS.hidden = !st;
     if(gbSep){ gbSep.hidden = !st; }

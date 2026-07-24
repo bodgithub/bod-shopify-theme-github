@@ -79,12 +79,14 @@
 #ps1-{{ uid }} .bod-pc1.is-sub .ps-subtick__knob{transform:translateX(16px);}
 #ps1-{{ uid }} .ps-subtick__t{font-size:12.5px;}
 #ps1-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
-#ps1-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:{{ gb_rad }}px;{% if gb_bord != blank %} border:1px solid {{ gb_bord }};{% endif %} padding:10px 12px; margin-top:-10px; margin-bottom:10px;}
+#ps1-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:{{ gb_rad }}px;{% if gb_bord != blank %} border:1px solid {{ gb_bord }};{% endif %} padding:10px 12px; margin-top:{% if s.subtick_enable %}-10px{% else %}0{% endif %}; margin-bottom:10px;}
 #ps1-{{ uid }} .ps-giftban[hidden]{display:none;}
 #ps1-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
 #ps1-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_icon }};}
 #ps1-{{ uid }} .ps-giftban__icon img{width:100%; height:100%; object-fit:cover;}
+#ps1-{{ uid }} .ps-giftban__trow{display:flex; align-items:baseline; gap:7px; flex-wrap:wrap;}
 #ps1-{{ uid }} .ps-giftban__t{display:block; font-size:13.5px; font-weight:600; color:{{ gb_tc }};}
+#ps1-{{ uid }} .ps-giftban__x{font-size:12px; color:#9aa0b5; text-decoration:line-through;}
 #ps1-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
 #ps1-{{ uid }} .ps-giftban__cust{background:none; border:0; padding:0; margin:0; font:inherit; color:inherit; text-decoration:underline; cursor:pointer;}
 #ps1-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
@@ -179,7 +181,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     </div>
     {%- else -%}
     <div class="pc-card{% if ps1_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps1_default == 'sub' %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1-card data-ps1-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps1-variant="{{ s.sub_variant }}" data-ps1-plan="{{ s.sub_plan }}" data-ps1-requires-plan="1" data-ps1-qty="{{ s.sub_qty | default: 1 }}" data-ps1-gift="{{ s.gift_variant }}"{% if s.gift_name != blank %} data-ps1-gift-title="{{ s.gift_name | escape }}" data-ps1-gift-sub="{{ s.gift_ban_sub | escape }}" data-ps1-gift-img="{% if s.gift_image != blank %}{{ s.gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
+         data-ps1-card data-ps1-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps1-variant="{{ s.sub_variant }}" data-ps1-plan="{{ s.sub_plan }}" data-ps1-requires-plan="1" data-ps1-qty="{{ s.sub_qty | default: 1 }}" data-ps1-gift="{{ s.gift_variant }}"{% if s.gift_name != blank %} data-ps1-gift-title="{{ s.gift_name | escape }}" data-ps1-gift-sub="{{ s.gift_ban_sub | escape }}" data-ps1-gift-cross="{{ s.gift_crossout | escape }}" data-ps1-gift-img="{% if s.gift_image != blank %}{{ s.gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -228,7 +230,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       <img data-ps1-giftban-img alt="" hidden>
     </span>
     <span class="ps-giftban__txt">
-      <strong class="ps-giftban__t" data-ps1-giftban-title></strong>
+      <span class="ps-giftban__trow"><strong class="ps-giftban__t" data-ps1-giftban-title></strong><span class="ps-giftban__x" data-ps1-giftban-cross hidden></span></span>
       <span class="ps-giftban__s" data-ps1-giftban-line><span data-ps1-giftban-sub></span>{% if s.proto_enable %}<span data-ps1-giftban-sep> · </span><button type="button" class="ps-giftban__cust" data-ps1-proto-open>{{ s.giftban_cust_label | default: 'Customize' }}</button>{% endif %}</span>
     </span>
   </div>
@@ -336,6 +338,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var gbSvg = gb ? gb.querySelector('[data-ps1-giftban-svg]') : null;
   var gbSep = gb ? gb.querySelector('[data-ps1-giftban-sep]') : null;
   var gbCust = gb ? gb.querySelector('.ps-giftban__cust') : null;
+  var gbX = gb ? gb.querySelector('[data-ps1-giftban-cross]') : null;
   function syncGiftBan(){
     if(!gb) return;
     var c = selected();
@@ -343,6 +346,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     if(!t){ gb.hidden = true; return; }
     gb.hidden = false;
     gbT.textContent = t;
+    if(gbX){ var cx = c.getAttribute('data-ps1-gift-cross') || ''; gbX.textContent = cx; gbX.hidden = !cx; }
     var st = c.getAttribute('data-ps1-gift-sub') || '';
     gbS.textContent = st; gbS.hidden = !st;
     if(gbSep){ gbSep.hidden = !st; }

@@ -96,7 +96,9 @@
 #ps1b-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
 #ps1b-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_icon }};}
 #ps1b-{{ uid }} .ps-giftban__icon img{width:100%; height:100%; object-fit:cover;}
+#ps1b-{{ uid }} .ps-giftban__trow{display:flex; align-items:baseline; gap:7px; flex-wrap:wrap;}
 #ps1b-{{ uid }} .ps-giftban__t{display:block; font-size:13.5px; font-weight:600; color:{{ gb_tc }};}
+#ps1b-{{ uid }} .ps-giftban__x{font-size:12px; color:#9aa0b5; text-decoration:line-through;}
 #ps1b-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
 #ps1b-{{ uid }} .ps-giftban__cust{background:none; border:0; padding:0; margin:0; font:inherit; color:inherit; text-decoration:underline; cursor:pointer;}
 #ps1b-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
@@ -213,7 +215,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     -%}
     {%- unless card_name == blank -%}
     <div class="pc-card{% if is_sel %} is-selected{% endif %}" role="radio" aria-checked="{% if is_sel %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1b-gift-title="{{ gift_name | escape }}" data-ps1b-gift-sub="{{ gift_bsub | escape }}" data-ps1b-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
+         data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1b-gift-title="{{ gift_name | escape }}" data-ps1b-gift-sub="{{ gift_bsub | escape }}" data-ps1b-gift-cross="{{ gift_crossout | escape }}" data-ps1b-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -265,7 +267,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       <img data-ps1b-giftban-img alt="" hidden>
     </span>
     <span class="ps-giftban__txt">
-      <strong class="ps-giftban__t" data-ps1b-giftban-title></strong>
+      <span class="ps-giftban__trow"><strong class="ps-giftban__t" data-ps1b-giftban-title></strong><span class="ps-giftban__x" data-ps1b-giftban-cross hidden></span></span>
       <span class="ps-giftban__s" data-ps1b-giftban-line><span data-ps1b-giftban-sub></span>{% if s.proto_enable %}<span data-ps1b-giftban-sep> · </span><button type="button" class="ps-giftban__cust" data-ps1b-proto-open>{{ s.giftban_cust_label | default: 'Customize' }}</button>{% endif %}</span>
     </span>
   </div>
@@ -371,6 +373,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var gbSvg = gb ? gb.querySelector('[data-ps1b-giftban-svg]') : null;
   var gbSep = gb ? gb.querySelector('[data-ps1b-giftban-sep]') : null;
   var gbCust = gb ? gb.querySelector('.ps-giftban__cust') : null;
+  var gbX = gb ? gb.querySelector('[data-ps1b-giftban-cross]') : null;
   function syncGiftBan(){
     if(!gb) return;
     var c = selected();
@@ -378,6 +381,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     if(!t){ gb.hidden = true; return; }
     gb.hidden = false;
     gbT.textContent = t;
+    if(gbX){ var cx = c.getAttribute('data-ps1b-gift-cross') || ''; gbX.textContent = cx; gbX.hidden = !cx; }
     var st = c.getAttribute('data-ps1b-gift-sub') || '';
     gbS.textContent = st; gbS.hidden = !st;
     if(gbSep){ gbSep.hidden = !st; }
