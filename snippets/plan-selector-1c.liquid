@@ -293,7 +293,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   </button>
   <div class="ps-error" data-ps1c-error>
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
-    <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
+    <span>Please choose a plan first</span>
   </div>
   {%- if s.proto_enable -%}
   <div class="ps-modal" data-ps1c-proto hidden>
@@ -464,7 +464,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     if(!variant){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
     if(c.hasAttribute('data-ps1c-requires-plan') && !plan){ showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return; }
     err.classList.remove('is-shown');
-    cta.classList.add('is-loading'); label.textContent = '{{ s.adding_label | default: "Adding…" }}';
+    cta.classList.add('is-loading'); label.textContent = 'Adding…';
     var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(plan){ item.selling_plan = plan; }
     var items = [item];
