@@ -69,6 +69,23 @@
 #ps1-{{ uid }} .pc-tile__img img{width:74%; height:74%; object-fit:contain;}
 #ps1-{{ uid }} .pc-tile__name{font-size:11px; font-weight:600; color:var(--ps-ink); line-height:1.2; display:block;}
 #ps1-{{ uid }} .pc-tile__val{font-size:10px; color:#9aa0b5; text-decoration:line-through; display:block;}
+#ps1-{{ uid }} .ps-subtick{display:flex; align-items:center; gap:10px; width:100%; text-align:left; cursor:pointer; border:none; background:#fff; border-radius:12px; padding:11px 13px; font-family:inherit; transition:all .15s;}
+#ps1-{{ uid }} .ps-subtick__switch{width:36px; height:20px; border-radius:999px; flex:0 0 auto; background:#E2E2E2; position:relative; transition:background .18s;}
+#ps1-{{ uid }} .bod-pc1.is-sub .ps-subtick__switch{background:var(--ps-grad-banner);}
+#ps1-{{ uid }} .ps-subtick__knob{position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.25); transition:transform .18s;}
+#ps1-{{ uid }} .bod-pc1.is-sub .ps-subtick__knob{transform:translateX(16px);}
+#ps1-{{ uid }} .ps-subtick__t{font-size:12.5px;}
+#ps1-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
+#ps1-{{ uid }} .ps-subtick__t span{color:var(--ps-ink-2);}
+#ps1-{{ uid }} .ps-ship{font-size:11.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink-2);}
+#ps1-{{ uid }} .ps-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--ps-blue); display:inline-block; animation:ps1pulse-{{ uid }} 1.8s ease-out infinite;}
+@keyframes ps1pulse-{{ uid }}{
+  0%{box-shadow:0 0 0 0 {{ acc | color_modify: 'alpha', 0.4 }};}
+  70%{box-shadow:0 0 0 7px {{ acc | color_modify: 'alpha', 0 }};}
+  100%{box-shadow:0 0 0 0 {{ acc | color_modify: 'alpha', 0 }};}
+}
+@media (prefers-reduced-motion: reduce){#ps1-{{ uid }} .ps-ship__dot{animation:none;}}
+#ps1-{{ uid }} .ps-ship__date{color:var(--ps-blue); font-weight:700; text-decoration:underline;}
 #ps1-{{ uid }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-family:var(--ps-sans); font-weight:var(--font-body-medium-weight, 400); letter-spacing:var(--button-letter-spacing, 0.02em); font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
 #ps1-{{ uid }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
 #ps1-{{ uid }} .ps-cta__sub{font-weight:400; font-size:10px; letter-spacing:0.08em; opacity:.82; white-space:nowrap;}
@@ -88,12 +105,12 @@
 {%- if s.sub_first -%}{%- assign ps1_order = 'sub,ot' | split: ',' -%}{%- endif -%}
 
 <div id="ps1-{{ uid }}">
-<div class="bod-pc1" role="radiogroup" data-ps1-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+<div class="bod-pc1{% if ps1_default == 'sub' %} is-sub{% endif %}" role="radiogroup" data-ps1-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
   {%- for opt in ps1_order -%}
     {%- if opt == 'ot' -%}
     <div class="pc-card{% if ps1_default == 'ot' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps1_default == 'ot' %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1-card data-ps1-name="{{ s.ot_name | default: 'One-Time Purchase' | escape }}" data-ps1-variant="{{ s.ot_variant }}" data-ps1-plan="" data-ps1-qty="{{ s.ot_qty | default: 1 }}" data-ps1-gift="">
+         data-ps1-card data-ps1-name="{{ s.ot_name | default: 'One-Time Purchase' | escape }}" data-ps1-variant="{{ s.ot_variant }}" data-ps1-plan="" data-ps1-qty="{{ s.ot_qty | default: 1 }}" data-ps1-gift="{{ s.ot_gift_variant }}">
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -111,7 +128,20 @@
               {%- if s.ot_serving != blank -%}<span class="pc-serving">{{ s.ot_serving }}</span>{%- endif -%}
             </div>
           </div>
-          {%- if s.ot_bill != blank -%}<div class="pc-expand"><p class="pc-bill">{{ s.ot_bill }}</p></div>{%- endif -%}
+          <div class="pc-expand">
+            {%- if s.ot_bill != blank -%}<p class="pc-bill">{{ s.ot_bill }}</p>{%- endif -%}
+            {%- if s.ot_gift_name != blank -%}
+              <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
+              <div class="pc-kit__track">
+                <div class="pc-tile">
+                  {%- if s.ot_gift_roundel != blank -%}<span class="pc-tile__roundel">{{ s.ot_gift_roundel }}</span>{%- endif -%}
+                  <div class="pc-tile__img">{%- if s.ot_gift_image != blank -%}{{ s.ot_gift_image | image_url: width: 200 | image_tag: alt: s.ot_gift_name, loading: 'lazy' }}{%- endif -%}</div>
+                  <span class="pc-tile__name">{{ s.ot_gift_name }}</span>
+                  {%- if s.ot_gift_crossout != blank -%}<span class="pc-tile__val">{{ s.ot_gift_crossout }}</span>{%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
         </div>
       </div>
     </div>
@@ -156,6 +186,15 @@
     </div>
     {%- endif -%}
   {%- endfor -%}
+  {%- if s.subtick_enable -%}
+  <button type="button" class="ps-subtick" role="switch" aria-checked="{% if ps1_default == 'sub' %}true{% else %}false{% endif %}" data-ps1-subtick>
+    <span class="ps-subtick__switch" aria-hidden="true"><span class="ps-subtick__knob"></span></span>
+    <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong>{%- if s.sub_claim_suffix != blank -%}<span> {{ s.sub_claim_suffix }}</span>{%- endif -%}</span>
+  </button>
+  {%- endif -%}
+  {%- if s.shipping_prefix != blank -%}
+  <div class="ps-ship"><span class="ps-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="ps-ship__date" data-ps1-shipdate></span></span></div>
+  {%- endif -%}
   <button type="button" class="ps-cta" data-ps1-submit>
     <span class="spin"></span>
     <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
@@ -201,17 +240,43 @@
   }
   function selected(){ return root.querySelector('[data-ps1-card].is-selected'); }
   function syncSub(){ var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps1-name') : ''; }
+  // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day
+  var shipEl = root.querySelector('[data-ps1-shipdate]');
+  if(shipEl){
+    var sd;
+    try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
+    catch(e){ sd = new Date(); }
+    if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
+    while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
+    try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
+    catch(e){ shipEl.textContent = sd.toDateString(); }
+  }
+  // subscribe toggle mirrors card selection: on = subscription card, off = one-time card
+  var tick = root.querySelector('[data-ps1-subtick]');
+  function syncTick(){
+    var c = selected();
+    var on = !!(c && c.hasAttribute('data-ps1-requires-plan'));
+    root.classList.toggle('is-sub', on);
+    if(tick){ tick.setAttribute('aria-checked', on ? 'true' : 'false'); }
+  }
   function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
     c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
-    err.classList.remove('is-shown'); syncSub();
+    err.classList.remove('is-shown'); syncSub(); syncTick();
   }
   cards.forEach(function(c){
     c.addEventListener('click', function(){ select(c); });
     c.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); select(c); } });
   });
-  syncSub();
+  if(tick){
+    tick.addEventListener('click', function(){
+      var want = !root.classList.contains('is-sub');
+      var target = cards.filter(function(x){ return want === x.hasAttribute('data-ps1-requires-plan'); })[0];
+      if(target){ select(target); }
+    });
+  }
+  syncSub(); syncTick();
   cta.addEventListener('click', function(){
     var c = selected();
     if(!c){ showErr(); return; }
@@ -226,7 +291,7 @@
     var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(plan){ item.selling_plan = plan; }
     var items = [item];
-    if(plan && gift){ items.push({ id: gift, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-ps1-name') || 'your plan') } }); }
+    if(gift){ items.push({ id: gift, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-ps1-name') || 'your plan') } }); }
     fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
     .then(function(r){ return r.json(); })
     .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
