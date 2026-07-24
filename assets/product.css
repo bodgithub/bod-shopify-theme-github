@@ -571,6 +571,15 @@
     margin-right: 10px; }
   .product-media-layout--stacked scroll-shadow {
     display: none !important; }
+  /* Bleed the carousel to the right screen edge so the next photo peeks with no gutter */
+  .product-grid-container.product-media-layout--stacked .product-image-container {
+    width: auto;
+    margin-right: calc(50% - 50vw); }
+  .product-media-layout--stacked .product-image-container .flickity-viewport {
+    border-radius: calc(var(--block-border-radius, 16px) / 2) 0 0 calc(var(--block-border-radius, 16px) / 2); }
+  /* Square slides: without this, min-height (420px/630px) stretches them portrait */
+  .product-media-layout--stacked .product-image-container .product-single__media-image {
+    min-height: 0 !important; }
 }
   @media only screen and (min-width: 768px) {
     .product-gallery-container.thumbnails-bottom {
