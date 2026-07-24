@@ -18,6 +18,9 @@
 {%- assign ink = s.title_color | default: '#14307C' -%}
 {%- assign deep = s.deep_color | default: '#0E2160' -%}
 {%- assign bw = s.border_width | default: 5 -%}
+{%- assign gb_bg = s.giftban_bg | default: '#D6E4FC' -%}
+{%- assign gb_tc = s.giftban_title_color | default: '#14307C' -%}
+{%- assign gb_sc = s.giftban_text_color | default: '#1A1A14' -%}
 
 <style>
 #ps1-{{ uid }} .bod-pc1{
@@ -71,7 +74,13 @@
 #ps1-{{ uid }} .bod-pc1.is-sub .ps-subtick__knob{transform:translateX(16px);}
 #ps1-{{ uid }} .ps-subtick__t{font-size:12.5px;}
 #ps1-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
-#ps1-{{ uid }} .ps-subtick__t span{color:var(--ps-ink-2);}
+#ps1-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:12px; padding:10px 12px; margin-top:-6px;}
+#ps1-{{ uid }} .ps-giftban[hidden]{display:none;}
+#ps1-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
+#ps1-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_tc }};}
+#ps1-{{ uid }} .ps-giftban__icon img{width:100%; height:100%; object-fit:cover;}
+#ps1-{{ uid }} .ps-giftban__t{display:block; font-size:13.5px; font-weight:600; color:{{ gb_tc }};}
+#ps1-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
 #ps1-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
 #ps1-{{ uid }} .ps-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--ps-blue); display:inline-block; animation:ps1pulse-{{ uid }} 1.8s ease-out infinite;}
 @keyframes ps1pulse-{{ uid }}{
@@ -88,7 +97,6 @@
 #ps1-{{ uid }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:ps1spin-{{ uid }} .7s linear infinite; display:none;}
 #ps1-{{ uid }} .ps-cta.is-loading .spin{display:block;}
 @keyframes ps1spin-{{ uid }}{to{transform:rotate(360deg);}}
-#ps1-{{ uid }} .ps-footnote{font-size:11px; color:var(--ps-ink-2); text-align:center; margin:2px 0 0;}
 #ps1-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
 #ps1-{{ uid }} .ps-error.is-shown{display:flex;}
 #ps1-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
@@ -98,6 +106,8 @@
 {%- assign ps1_default = s.default_option | default: 'sub' -%}
 {%- assign ps1_order = 'ot,sub' | split: ',' -%}
 {%- if s.sub_first -%}{%- assign ps1_order = 'sub,ot' | split: ',' -%}{%- endif -%}
+{%- assign gb1_title = s.gift_ban_title -%}
+{%- if gb1_title == blank and s.gift_name != blank -%}{%- assign gb1_title = 'Free ' | append: s.gift_name -%}{%- endif -%}
 
 <div id="ps1-{{ uid }}">
 <div class="bod-pc1{% if ps1_default == 'sub' %} is-sub{% endif %}" role="radiogroup" data-ps1-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
@@ -105,7 +115,7 @@
   {%- for opt in ps1_order -%}
     {%- if opt == 'ot' -%}
     <div class="pc-card{% if ps1_default == 'ot' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps1_default == 'ot' %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1-card data-ps1-name="{{ s.ot_name | default: 'One-Time Purchase' | escape }}" data-ps1-variant="{{ s.ot_variant }}" data-ps1-plan="" data-ps1-qty="{{ s.ot_qty | default: 1 }}" data-ps1-gift="{{ s.ot_gift_variant }}">
+         data-ps1-card data-ps1-name="{{ s.ot_name | default: 'One-Time Purchase' | escape }}" data-ps1-variant="{{ s.ot_variant }}" data-ps1-plan="" data-ps1-qty="{{ s.ot_qty | default: 1 }}" data-ps1-gift="">
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -124,24 +134,13 @@
           </div>
           <div class="pc-expand">
             {%- if s.ot_bill != blank -%}<p class="pc-bill">{{ s.ot_bill }}</p>{%- endif -%}
-            {%- if s.ot_gift_name != blank -%}
-              <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
-              <div class="pc-kit__track">
-                <div class="pc-tile">
-                  {%- if s.ot_gift_roundel != blank -%}<span class="pc-tile__roundel">{{ s.ot_gift_roundel }}</span>{%- endif -%}
-                  <div class="pc-tile__img">{%- if s.ot_gift_image != blank -%}{{ s.ot_gift_image | image_url: width: 200 | image_tag: alt: s.ot_gift_name, loading: 'lazy' }}{%- endif -%}</div>
-                  <span class="pc-tile__name">{{ s.ot_gift_name }}</span>
-                  {%- if s.ot_gift_crossout != blank -%}<span class="pc-tile__val">{{ s.ot_gift_crossout }}</span>{%- endif -%}
-                </div>
-              </div>
-            {%- endif -%}
           </div>
         </div>
       </div>
     </div>
     {%- else -%}
     <div class="pc-card{% if ps1_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps1_default == 'sub' %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1-card data-ps1-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps1-variant="{{ s.sub_variant }}" data-ps1-plan="{{ s.sub_plan }}" data-ps1-requires-plan="1" data-ps1-qty="{{ s.sub_qty | default: 1 }}" data-ps1-gift="{{ s.gift_variant }}">
+         data-ps1-card data-ps1-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps1-variant="{{ s.sub_variant }}" data-ps1-plan="{{ s.sub_plan }}" data-ps1-requires-plan="1" data-ps1-qty="{{ s.sub_qty | default: 1 }}" data-ps1-gift="{{ s.gift_variant }}"{% if s.gift_name != blank %} data-ps1-gift-title="{{ gb1_title | escape }}" data-ps1-gift-sub="{{ s.gift_ban_sub | escape }}" data-ps1-gift-img="{% if s.gift_image != blank %}{{ s.gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -181,9 +180,19 @@
   {%- if s.subtick_enable -%}
   <button type="button" class="ps-subtick" role="switch" aria-checked="{% if ps1_default == 'sub' %}true{% else %}false{% endif %}" data-ps1-subtick>
     <span class="ps-subtick__switch" aria-hidden="true"><span class="ps-subtick__knob"></span></span>
-    <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong>{%- if s.sub_claim_suffix != blank -%}<span> {{ s.sub_claim_suffix }}</span>{%- endif -%}</span>
+    <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong></span>
   </button>
   {%- endif -%}
+  <div class="ps-giftban" data-ps1-giftban hidden>
+    <span class="ps-giftban__icon">
+      <svg data-ps1-giftban-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="17" rx="2.5"/><rect x="9" y="2.5" width="6" height="4" rx="1.2"/><path d="M9 11.5h6M9 15h6M9 18.5h3.5"/></svg>
+      <img data-ps1-giftban-img alt="" hidden>
+    </span>
+    <span class="ps-giftban__txt">
+      <strong class="ps-giftban__t" data-ps1-giftban-title></strong>
+      <span class="ps-giftban__s" data-ps1-giftban-sub></span>
+    </span>
+  </div>
   {%- if s.shipping_prefix != blank -%}
   <div class="ps-ship"><span class="ps-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="ps-ship__date" data-ps1-shipdate></span></span></div>
   {%- endif -%}
@@ -196,7 +205,6 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
     <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
   </div>
-  {%- if s.footnote != blank -%}<p class="ps-footnote">{{ s.footnote }}</p>{%- endif -%}
 </div>
 </div>
 
@@ -251,11 +259,30 @@
     root.classList.toggle('is-sub', on);
     if(tick){ tick.setAttribute('aria-checked', on ? 'true' : 'false'); }
   }
+  // gift banner reflects the selected plan's free gift
+  var gb = root.querySelector('[data-ps1-giftban]');
+  var gbT = gb ? gb.querySelector('[data-ps1-giftban-title]') : null;
+  var gbS = gb ? gb.querySelector('[data-ps1-giftban-sub]') : null;
+  var gbImg = gb ? gb.querySelector('[data-ps1-giftban-img]') : null;
+  var gbSvg = gb ? gb.querySelector('[data-ps1-giftban-svg]') : null;
+  function syncGiftBan(){
+    if(!gb) return;
+    var c = selected();
+    var t = c ? (c.getAttribute('data-ps1-gift-title') || '') : '';
+    if(!t){ gb.hidden = true; return; }
+    gb.hidden = false;
+    gbT.textContent = t;
+    var st = c.getAttribute('data-ps1-gift-sub') || '';
+    gbS.textContent = st; gbS.hidden = !st;
+    var gi = c.getAttribute('data-ps1-gift-img') || '';
+    if(gi){ gbImg.src = gi; gbImg.hidden = false; if(gbSvg){ gbSvg.style.display = 'none'; } }
+    else { gbImg.hidden = true; gbImg.removeAttribute('src'); if(gbSvg){ gbSvg.style.display = ''; } }
+  }
   function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
     c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
-    err.classList.remove('is-shown'); syncSub(); syncTick();
+    err.classList.remove('is-shown'); syncSub(); syncTick(); syncGiftBan();
   }
   cards.forEach(function(c){
     c.addEventListener('click', function(){ select(c); });
@@ -268,7 +295,7 @@
       if(target){ select(target); }
     });
   }
-  syncSub(); syncTick();
+  syncSub(); syncTick(); syncGiftBan();
   cta.addEventListener('click', function(){
     var c = selected();
     if(!c){ showErr(); return; }

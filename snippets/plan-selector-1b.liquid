@@ -21,6 +21,9 @@
 {%- assign ink = s.title_color | default: '#14307C' -%}
 {%- assign deep = s.deep_color | default: '#0E2160' -%}
 {%- assign bw = s.border_width | default: 5 -%}
+{%- assign gb_bg = s.giftban_bg | default: '#D6E4FC' -%}
+{%- assign gb_tc = s.giftban_title_color | default: '#14307C' -%}
+{%- assign gb_sc = s.giftban_text_color | default: '#1A1A14' -%}
 
 <style>
 #ps1b-{{ uid }} .bod-pc1b{
@@ -78,12 +81,18 @@
 #ps1b-{{ uid }} .bod-pc1b.is-sub .ps-subtick__knob{transform:translateX(16px);}
 #ps1b-{{ uid }} .ps-subtick__t{font-size:12.5px;}
 #ps1b-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
-#ps1b-{{ uid }} .ps-subtick__t span{color:var(--ps-ink-2);}
 #ps1b-{{ uid }} .ps-custom{position:relative; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; border:none; background:transparent; color:var(--ps-blue); padding:5px; margin-right:8px; border-radius:50%; cursor:pointer; transition:background .15s,transform .15s;}
 #ps1b-{{ uid }} .ps-custom:hover{background:{{ acc | color_modify: 'alpha', 0.12 }}; transform:scale(1.1);}
 #ps1b-{{ uid }} .ps-custom svg{width:14px; height:14px; flex:0 0 auto;}
 #ps1b-{{ uid }} .ps-custom.has-sel::after{content:attr(data-count); position:absolute; top:-5px; right:-6px; min-width:13px; height:13px; padding:0 3px; border-radius:999px; background:var(--ps-blue); color:#fff; font-size:8.5px; font-weight:700; display:grid; place-items:center; line-height:1;}
 #ps1b-{{ uid }} .bod-pc1b:not(.is-sub) .ps-custom{display:none;}
+#ps1b-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:12px; padding:10px 12px; margin-top:-6px;}
+#ps1b-{{ uid }} .ps-giftban[hidden]{display:none;}
+#ps1b-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
+#ps1b-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_tc }};}
+#ps1b-{{ uid }} .ps-giftban__icon img{width:100%; height:100%; object-fit:cover;}
+#ps1b-{{ uid }} .ps-giftban__t{display:block; font-size:13.5px; font-weight:600; color:{{ gb_tc }};}
+#ps1b-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
 #ps1b-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
 #ps1b-{{ uid }} .ps-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--ps-blue); display:inline-block; animation:ps1bpulse-{{ uid }} 1.8s ease-out infinite;}
 @keyframes ps1bpulse-{{ uid }}{
@@ -130,7 +139,6 @@
 #ps1b-{{ uid }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:ps1bspin-{{ uid }} .7s linear infinite; display:none;}
 #ps1b-{{ uid }} .ps-cta.is-loading .spin{display:block;}
 @keyframes ps1bspin-{{ uid }}{to{transform:rotate(360deg);}}
-#ps1b-{{ uid }} .ps-footnote{font-size:11px; color:var(--ps-ink-2); text-align:center; margin:2px 0 0;}
 #ps1b-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
 #ps1b-{{ uid }} .ps-error.is-shown{display:flex;}
 #ps1b-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
@@ -147,7 +155,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 
 {%- assign ps1b_default = s.default_option | default: 'sub' -%}
 {%- comment -%} card specs: prefix|pair|mode|gift-prefix {%- endcomment -%}
-{%- assign ps1b_specs = 'sub|a|sub|gift,b_sub|b|sub|b_gift,ot|a|ot|ot_gift,b_ot|b|ot|b_ot_gift' | split: ',' -%}
+{%- assign ps1b_specs = 'sub|a|sub|gift,b_sub|b|sub|b_gift,ot|a|ot|no_gift,b_ot|b|ot|no_gift' | split: ',' -%}
 
 <div id="ps1b-{{ uid }}">
 <div class="bod-pc1b{% if ps1b_default == 'sub' %} is-sub{% endif %}" role="radiogroup" data-ps1b-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
@@ -191,6 +199,13 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign gift_crossout = s[k]
       assign k = giftP | append: '_variant'
       assign gift_variant = s[k]
+      assign k = giftP | append: '_ban_title'
+      assign gift_btitle = s[k]
+      if gift_btitle == blank and gift_name != blank
+        assign gift_btitle = 'Free ' | append: gift_name
+      endif
+      assign k = giftP | append: '_ban_sub'
+      assign gift_bsub = s[k]
 
       assign is_sel = false
       if pair == 'a' and mode == ps1b_default
@@ -199,7 +214,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     -%}
     {%- unless card_name == blank -%}
     <div class="pc-card{% if is_sel %} is-selected{% endif %}" role="radio" aria-checked="{% if is_sel %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}">
+         data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1b-gift-title="{{ gift_btitle | escape }}" data-ps1b-gift-sub="{{ gift_bsub | escape }}" data-ps1b-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -239,11 +254,21 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   <div class="ps-subrow">
     <button type="button" class="ps-subtick" role="switch" aria-checked="{% if ps1b_default == 'sub' %}true{% else %}false{% endif %}" data-ps1b-subtick>
       <span class="ps-subtick__switch" aria-hidden="true"><span class="ps-subtick__knob"></span></span>
-      <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong>{%- if s.sub_claim_suffix != blank -%}<span> {{ s.sub_claim_suffix }}</span>{%- endif -%}</span>
+      <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong></span>
     </button>
     {%- if s.proto_enable -%}
     <button type="button" class="ps-custom" data-ps1b-proto-open aria-haspopup="dialog" aria-label="{{ s.proto_open_label | default: 'Personalize' | escape }}" title="{{ s.proto_open_label | default: 'Personalize' | escape }}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 4h6.5M12.7 4H14M2 8h2.8M7 8h7M2 12h6.5M12.7 12H14"/><circle cx="10.6" cy="4" r="1.7"/><circle cx="4.9" cy="8" r="1.7"/><circle cx="10.6" cy="12" r="1.7"/></svg></button>
     {%- endif -%}
+  </div>
+  <div class="ps-giftban" data-ps1b-giftban hidden>
+    <span class="ps-giftban__icon">
+      <svg data-ps1b-giftban-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="17" rx="2.5"/><rect x="9" y="2.5" width="6" height="4" rx="1.2"/><path d="M9 11.5h6M9 15h6M9 18.5h3.5"/></svg>
+      <img data-ps1b-giftban-img alt="" hidden>
+    </span>
+    <span class="ps-giftban__txt">
+      <strong class="ps-giftban__t" data-ps1b-giftban-title></strong>
+      <span class="ps-giftban__s" data-ps1b-giftban-sub></span>
+    </span>
   </div>
   {%- if s.shipping_prefix != blank -%}
   <div class="ps-ship"><span class="ps-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="ps-ship__date" data-ps1b-shipdate></span></span></div>
@@ -257,7 +282,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
     <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
   </div>
-  {%- if s.footnote != blank -%}<p class="ps-footnote">{{ s.footnote }}</p>{%- endif -%}
   {%- if s.proto_enable -%}
   <div class="ps-modal" data-ps1b-proto hidden>
     <div class="ps-modal__ov" data-ps1b-modal-close></div>
@@ -339,11 +363,30 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     var on = root.classList.contains('is-sub');
     if(tick){ tick.setAttribute('aria-checked', on ? 'true' : 'false'); }
   }
+  // gift banner reflects the selected plan's free gift
+  var gb = root.querySelector('[data-ps1b-giftban]');
+  var gbT = gb ? gb.querySelector('[data-ps1b-giftban-title]') : null;
+  var gbS = gb ? gb.querySelector('[data-ps1b-giftban-sub]') : null;
+  var gbImg = gb ? gb.querySelector('[data-ps1b-giftban-img]') : null;
+  var gbSvg = gb ? gb.querySelector('[data-ps1b-giftban-svg]') : null;
+  function syncGiftBan(){
+    if(!gb) return;
+    var c = selected();
+    var t = c ? (c.getAttribute('data-ps1b-gift-title') || '') : '';
+    if(!t){ gb.hidden = true; return; }
+    gb.hidden = false;
+    gbT.textContent = t;
+    var st = c.getAttribute('data-ps1b-gift-sub') || '';
+    gbS.textContent = st; gbS.hidden = !st;
+    var gi = c.getAttribute('data-ps1b-gift-img') || '';
+    if(gi){ gbImg.src = gi; gbImg.hidden = false; if(gbSvg){ gbSvg.style.display = 'none'; } }
+    else { gbImg.hidden = true; gbImg.removeAttribute('src'); if(gbSvg){ gbSvg.style.display = ''; } }
+  }
   function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
     c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
-    err.classList.remove('is-shown'); syncSub(); syncTick();
+    err.classList.remove('is-shown'); syncSub(); syncTick(); syncGiftBan();
   }
   cards.forEach(function(c){
     c.addEventListener('click', function(){ select(c); });
@@ -396,7 +439,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       });
     });
   }
-  syncSub(); syncTick();
+  syncSub(); syncTick(); syncGiftBan();
   cta.addEventListener('click', function(){
     var c = selected();
     if(!c){ showErr(); return; }
