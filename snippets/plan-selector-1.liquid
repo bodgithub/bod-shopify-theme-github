@@ -48,7 +48,6 @@
 #ps1-{{ uid }} .pc-price{display:flex; align-items:baseline; justify-content:flex-end; gap:7px; margin:0;}
 #ps1-{{ uid }} .pc-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
 #ps1-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
-#ps1-{{ uid }} .pc-price__per{font-size:13px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps1-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:9px; white-space:nowrap;}
 #ps1-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
 #ps1-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
@@ -156,7 +155,7 @@
               {%- if sub_has -%}<ul class="pc-benes">{%- for b in sub_benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
             </div>
             <div class="pc-right">
-              <div class="pc-price">{%- if s.sub_compare != blank -%}<span class="pc-price__was">{{ s.sub_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ s.sub_price }}</span>{%- if s.sub_price_per != blank -%}<span class="pc-price__per">{{ s.sub_price_per }}</span>{%- endif -%}</div>
+              <div class="pc-price">{%- if s.sub_compare != blank -%}<span class="pc-price__was">{{ s.sub_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ s.sub_price }}</span></div>
               {%- if s.sub_serving != blank -%}<span class="pc-serving">{{ s.sub_serving }}</span>{%- endif -%}
             </div>
           </div>

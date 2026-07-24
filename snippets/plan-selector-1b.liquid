@@ -54,7 +54,6 @@
 #ps1b-{{ uid }} .pc-price{display:flex; align-items:baseline; justify-content:flex-end; gap:7px; margin:0;}
 #ps1b-{{ uid }} .pc-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
 #ps1b-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
-#ps1b-{{ uid }} .pc-price__per{font-size:13px; color:var(--ps-ink-2); white-space:nowrap;}
 #ps1b-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:9px; white-space:nowrap;}
 #ps1b-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
 #ps1b-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
@@ -169,8 +168,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign card_price = s[k]
       assign k = P | append: '_compare'
       assign card_compare = s[k]
-      assign k = P | append: '_price_per'
-      assign card_per = s[k]
       assign k = P | append: '_serving'
       assign card_serving = s[k]
       assign k = P | append: '_bill'
@@ -216,7 +213,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
               {%- if has_benes -%}<ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
             </div>
             <div class="pc-right">
-              <div class="pc-price">{%- if card_compare != blank -%}<span class="pc-price__was">{{ card_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ card_price }}</span>{%- if card_per != blank -%}<span class="pc-price__per">{{ card_per }}</span>{%- endif -%}</div>
+              <div class="pc-price">{%- if card_compare != blank -%}<span class="pc-price__was">{{ card_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ card_price }}</span></div>
               {%- if card_serving != blank -%}<span class="pc-serving">{{ card_serving }}</span>{%- endif -%}
             </div>
           </div>
