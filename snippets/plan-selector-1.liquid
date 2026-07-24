@@ -45,8 +45,8 @@
 #ps1-{{ uid }} .pc-right{flex:0 0 auto; text-align:right;}
 #ps1-{{ uid }} .pc-titlerow{display:flex; align-items:center; gap:9px; flex-wrap:wrap;}
 #ps1-{{ uid }} .pc-title{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
-#ps1-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:var(--ps-sand); color:var(--ps-blue); font-weight:700; font-size:11px; padding:4px 11px; border-radius:999px; white-space:nowrap;}
-#ps1-{{ uid }} .pc-card.is-selected .pc-pill{background:#E3E7FF; color:var(--ps-ink); border:0.4px solid var(--ps-ink);}
+#ps1-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:#E3E7FF; color:{{ ink | color_modify: 'alpha', 0.75 }}; font-weight:700; font-size:11px; padding:4px 11px; border-radius:999px; border:0.4px solid {{ ink | color_modify: 'alpha', 0.25 }}; white-space:nowrap;}
+#ps1-{{ uid }} .pc-card.is-selected .pc-pill{color:var(--ps-ink); border-color:var(--ps-ink);}
 #ps1-{{ uid }} .pc-price{display:flex; align-items:baseline; justify-content:flex-end; gap:7px; margin:0;}
 #ps1-{{ uid }} .pc-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
 #ps1-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
