@@ -1,0 +1,61 @@
+/* bod-stars — custom star rating component */
+.bod-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bod-label-gap, 8px);
+  margin-top: var(--bod-margin-top, 0);
+  margin-bottom: var(--bod-margin-bottom, 12px);
+  color: var(--bod-label-color, #1a1a1a);
+  text-decoration: none;
+  cursor: pointer;
+}
+.bod-stars--center {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bod-stars:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.bod-stars__svg {
+  width: calc(var(--bod-star-size, 19px) * 5 + var(--bod-star-gap, 2px) * 4);
+  height: calc(var(--bod-star-size, 19px) * 0.9506);
+  display: block;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+.bod-stars__svg use {
+  stroke-linejoin: round;
+  stroke-width: var(--bod-star-round, 0);
+}
+.bod-stars__on {
+  fill: var(--bod-star-on, #ffcd53);
+  stroke: var(--bod-star-on, #ffcd53);
+}
+.bod-stars__off {
+  fill: var(--bod-star-off, #e1e1e1);
+  stroke: var(--bod-star-off, #e1e1e1);
+}
+.bod-stars__c-on {
+  stop-color: var(--bod-star-on, #ffcd53);
+}
+.bod-stars__c-off {
+  stop-color: var(--bod-star-off, #e1e1e1);
+}
+.bod-stars__label {
+  font-size: var(--bod-label-size, 14px);
+  font-weight: var(--bod-label-weight, 600);
+  color: var(--bod-label-color, #1a1a1a);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+.bod-stars__cta {
+  opacity: 0.75;
+}
+.bod-stars:hover .bod-stars__cta {
+  opacity: 1;
+  text-decoration: underline;
+}

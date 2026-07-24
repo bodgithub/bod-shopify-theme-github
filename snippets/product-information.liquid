@@ -43,6 +43,26 @@
     <div {{ block.shopify_attributes }}>{%- render 'benefit-list', s: block.settings, uid: block.id -%}</div>
   {%- when 'plan_selector_4' -%}
     <div {{ block.shopify_attributes }}>{%- render 'plan-selector-4', s: block.settings, uid: block.id -%}</div>
+  {%- when 'bod_stars' -%}
+    {% render 'bod-stars',
+         product: product,
+         style: block.settings.star_style,
+         size: block.settings.star_size,
+         gap: block.settings.star_gap,
+         round: block.settings.star_round,
+         color_on: block.settings.color_on,
+         color_off: block.settings.color_off,
+         show_label: block.settings.show_label,
+         label_color: block.settings.label_color,
+         label_size: block.settings.label_size,
+         label_weight: block.settings.label_weight,
+         label_gap: block.settings.label_gap,
+         alignment: block.settings.alignment,
+         margin_top: block.settings.margin_top,
+         margin_bottom: block.settings.margin_bottom,
+         link: true,
+         uid: block.id,
+         block_attrs: block.shopify_attributes %}
   {%- when 'title' -%}
     <div class="product-title-container" {{ block.shopify_attributes }}>
       <h1 class="product-title">{{ product.title }}</h1>

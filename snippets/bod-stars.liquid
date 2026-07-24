@@ -1,0 +1,138 @@
+{%- comment -%}
+  bod-stars — custom star rating, links down to the Junip review widget.
+
+  Params (all optional except product unless rating/count passed explicitly):
+    product       product object; rating/count read from Junip / Shopify metafields
+    rating        explicit rating, overrides metafields when they're absent
+    count         explicit review count (render guard only — never displayed)
+    style         'bold' | 'chunky' (default) | 'balanced' | 'classic'
+    size          star size in px (default 19)
+    gap           gap between stars in px (default 2)
+    round         corner rounding 0–3 (default 0)
+    color_on      filled star colour (default #FFCD53)
+    color_off     empty star colour (default #E1E1E1)
+    show_label    show "X.X Stars (Read Reviews)" (default true)
+    label_color / label_size / label_weight / label_gap
+    alignment     'left' (default) | 'center'
+    margin_top / margin_bottom   px spacing (defaults 0 / 12)
+    link          false renders a <span> instead of an <a> (default true)
+    uid           unique suffix for SVG ids (use block.id); product.id is always included
+    block_attrs   pass block.shopify_attributes for theme-editor selection
+{%- endcomment -%}
+{%- liquid
+  assign bs_rating = ''
+  assign bs_meta = product.metafields.junip.rating_average
+  if bs_meta.value != blank
+    assign bs_rating = bs_meta.value
+  elsif bs_meta != blank
+    assign bs_rating = bs_meta
+  endif
+  if bs_rating == blank
+    assign bs_meta = product.metafields.reviews.rating
+    if bs_meta.value.rating != blank
+      assign bs_rating = bs_meta.value.rating
+    elsif bs_meta.value != blank
+      assign bs_rating = bs_meta.value
+    endif
+  endif
+  if bs_rating == blank
+    assign bs_rating = rating
+  endif
+
+  assign bs_count = ''
+  assign bs_meta = product.metafields.junip.rating_count
+  if bs_meta.value != blank
+    assign bs_count = bs_meta.value
+  elsif bs_meta != blank
+    assign bs_count = bs_meta
+  endif
+  if bs_count == blank
+    assign bs_meta = product.metafields.reviews.rating_count
+    if bs_meta.value != blank
+      assign bs_count = bs_meta.value
+    elsif bs_meta != blank
+      assign bs_count = bs_meta
+    endif
+  endif
+  if bs_count == blank
+    assign bs_count = count
+  endif
+
+  assign bs_rating_f = bs_rating | plus: 0.0
+  assign bs_count_i = bs_count | plus: 0
+-%}
+{%- if bs_rating_f > 0 and bs_count_i > 0 -%}
+  {%- liquid
+    assign star_style = style | default: 'chunky'
+    case star_style
+      when 'bold'
+        assign star_path = 'M10.94 0 L14.65 6.38 L21.87 7.95 L16.95 13.45 L17.7 20.8 L10.94 17.82 L4.18 20.8 L4.92 13.45 L0 7.95 L7.22 6.38 Z'
+      when 'balanced'
+        assign star_path = 'M10.94 0 L13.98 7.31 L21.87 7.95 L15.86 13.1 L17.7 20.8 L10.94 16.68 L4.18 20.8 L6.02 13.1 L0 7.95 L7.9 7.31 Z'
+      when 'classic'
+        assign star_path = 'M10.94 0 L13.52 7.95 L21.87 7.95 L15.12 12.86 L17.7 20.8 L10.94 15.89 L4.18 20.8 L6.76 12.86 L0 7.95 L8.36 7.95 Z'
+      else
+        assign star_path = 'M10.94 0 L14.32 6.85 L21.87 7.95 L16.41 13.28 L17.7 20.8 L10.94 17.25 L4.18 20.8 L5.47 13.28 L0 7.95 L7.56 6.85 Z'
+    endcase
+
+    assign star_size = size | default: 19
+    assign star_gap = gap | default: 2
+    assign star_round = round | default: 0
+    assign star_on = color_on | default: '#FFCD53'
+    assign star_off = color_off | default: '#E1E1E1'
+    assign lbl_color = label_color | default: '#1A1A1A'
+    assign lbl_size = label_size | default: 14
+    assign lbl_weight = label_weight | default: '600'
+    assign lbl_gap = label_gap | default: 8
+    assign align = alignment | default: 'left'
+    assign m_top = margin_top | default: 0
+    assign m_bottom = margin_bottom | default: 12
+
+    assign bs_rating_f = bs_rating_f | at_most: 5.0
+    assign rating_display = bs_rating_f | times: 10 | round | divided_by: 10.0
+    assign rating_whole = rating_display | floor
+    assign partial_pct = rating_display | minus: rating_whole | times: 100 | round
+
+    assign scale = star_size | plus: 0.0 | divided_by: 21.87
+    assign gap_u = star_gap | plus: 0.0 | divided_by: scale
+    assign pitch_u = gap_u | plus: 21.87
+    assign vb_w = pitch_u | times: 4 | plus: 21.87 | round: 3
+
+    assign sid = product.id | default: 'na' | append: '-' | append: uid
+  -%}
+  {%- capture bs_style -%}--bod-star-size: {{ star_size }}px; --bod-star-gap: {{ star_gap }}px; --bod-star-round: {{ star_round }}; --bod-star-on: {{ star_on }}; --bod-star-off: {{ star_off }}; --bod-label-color: {{ lbl_color }}; --bod-label-size: {{ lbl_size }}px; --bod-label-weight: {{ lbl_weight }}; --bod-label-gap: {{ lbl_gap }}px; --bod-margin-top: {{ m_top }}px; --bod-margin-bottom: {{ m_bottom }}px;{%- endcapture -%}
+  {%- capture bs_inner -%}
+    <svg class="bod-stars__svg" viewBox="0 0 {{ vb_w }} 20.8" role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="bod-star-{{ sid }}" d="{{ star_path }}"/>
+        {%- if partial_pct > 0 and partial_pct < 100 -%}
+          <linearGradient id="bod-grad-{{ sid }}" x1="0" x2="1" y1="0" y2="0">
+            <stop class="bod-stars__c-on" offset="{{ partial_pct }}%"/>
+            <stop class="bod-stars__c-off" offset="{{ partial_pct }}%"/>
+          </linearGradient>
+        {%- endif -%}
+      </defs>
+      {%- for i in (1..5) -%}
+        {%- liquid
+          assign star_fill = rating_display | minus: forloop.index0 | times: 100 | round | at_least: 0 | at_most: 100
+          assign star_x = forloop.index0 | times: pitch_u | round: 3
+        -%}
+        {%- if star_fill >= 100 -%}
+          <use href="#bod-star-{{ sid }}" x="{{ star_x }}" class="bod-stars__on"/>
+        {%- elsif star_fill <= 0 -%}
+          <use href="#bod-star-{{ sid }}" x="{{ star_x }}" class="bod-stars__off"/>
+        {%- else -%}
+          <use href="#bod-star-{{ sid }}" x="{{ star_x }}" fill="url(#bod-grad-{{ sid }})" stroke="url(#bod-grad-{{ sid }})"/>
+        {%- endif -%}
+      {%- endfor -%}
+    </svg>
+    {%- unless show_label == false -%}
+      <span class="bod-stars__label">{{ rating_display }} Stars <span class="bod-stars__cta">(Read Reviews)</span></span>
+    {%- endunless -%}
+  {%- endcapture -%}
+  {%- if link == false -%}
+    <span class="bod-stars bod-stars--{{ align }}" style="{{ bs_style }}" {{ block_attrs }}>{{ bs_inner }}</span>
+  {%- else -%}
+    <a class="bod-stars bod-stars--{{ align }}" href="#junip-reviews" aria-label="Rated {{ rating_display }} out of 5 stars. Read reviews." style="{{ bs_style }}" {{ block_attrs }}>{{ bs_inner }}</a>
+  {%- endif -%}
+{%- endif -%}
