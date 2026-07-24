@@ -21,6 +21,7 @@
 {%- assign gb_bg = s.giftban_bg | default: '#D6E4FC' -%}
 {%- assign gb_tc = s.giftban_title_color | default: '#14307C' -%}
 {%- assign gb_sc = s.giftban_text_color | default: '#1A1A14' -%}
+{%- assign gift_display = s.gift_display | default: 'banner' -%}
 
 <style>
 #ps1-{{ uid }} .bod-pc1{
@@ -160,7 +161,7 @@
           </div>
           <div class="pc-expand">
             {%- if s.sub_bill != blank -%}<p class="pc-bill">{{ s.sub_bill }}</p>{%- endif -%}
-            {%- if s.gift_name != blank -%}
+            {%- if gift_display == 'cards' and s.gift_name != blank -%}
               <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
               <div class="pc-kit__track">
                 <div class="pc-tile">
@@ -183,6 +184,7 @@
     <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong></span>
   </button>
   {%- endif -%}
+  {%- if gift_display == 'banner' -%}
   <div class="ps-giftban" data-ps1-giftban hidden>
     <span class="ps-giftban__icon">
       <svg data-ps1-giftban-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="17" rx="2.5"/><rect x="9" y="2.5" width="6" height="4" rx="1.2"/><path d="M9 11.5h6M9 15h6M9 18.5h3.5"/></svg>
@@ -193,6 +195,7 @@
       <span class="ps-giftban__s" data-ps1-giftban-sub></span>
     </span>
   </div>
+  {%- endif -%}
   {%- if s.shipping_prefix != blank -%}
   <div class="ps-ship"><span class="ps-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="ps-ship__date" data-ps1-shipdate></span></span></div>
   {%- endif -%}

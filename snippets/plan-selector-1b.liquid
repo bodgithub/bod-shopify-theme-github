@@ -24,6 +24,7 @@
 {%- assign gb_bg = s.giftban_bg | default: '#D6E4FC' -%}
 {%- assign gb_tc = s.giftban_title_color | default: '#14307C' -%}
 {%- assign gb_sc = s.giftban_text_color | default: '#1A1A14' -%}
+{%- assign gift_display = s.gift_display | default: 'banner' -%}
 
 <style>
 #ps1b-{{ uid }} .bod-pc1b{
@@ -234,7 +235,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
           </div>
           <div class="pc-expand">
             {%- if card_bill != blank -%}<p class="pc-bill">{{ card_bill }}</p>{%- endif -%}
-            {%- if gift_name != blank -%}
+            {%- if gift_display == 'cards' and gift_name != blank -%}
               <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
               <div class="pc-kit__track">
                 <div class="pc-tile">
@@ -260,6 +261,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <button type="button" class="ps-custom" data-ps1b-proto-open aria-haspopup="dialog" aria-label="{{ s.proto_open_label | default: 'Personalize' | escape }}" title="{{ s.proto_open_label | default: 'Personalize' | escape }}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 4h6.5M12.7 4H14M2 8h2.8M7 8h7M2 12h6.5M12.7 12H14"/><circle cx="10.6" cy="4" r="1.7"/><circle cx="4.9" cy="8" r="1.7"/><circle cx="10.6" cy="12" r="1.7"/></svg></button>
     {%- endif -%}
   </div>
+  {%- if gift_display == 'banner' -%}
   <div class="ps-giftban" data-ps1b-giftban hidden>
     <span class="ps-giftban__icon">
       <svg data-ps1b-giftban-svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4.5" width="14" height="17" rx="2.5"/><rect x="9" y="2.5" width="6" height="4" rx="1.2"/><path d="M9 11.5h6M9 15h6M9 18.5h3.5"/></svg>
@@ -270,6 +272,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       <span class="ps-giftban__s" data-ps1b-giftban-sub></span>
     </span>
   </div>
+  {%- endif -%}
   {%- if s.shipping_prefix != blank -%}
   <div class="ps-ship"><span class="ps-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="ps-ship__date" data-ps1b-shipdate></span></span></div>
   {%- endif -%}
