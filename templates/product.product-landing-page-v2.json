@@ -140,26 +140,23 @@
             "custom_liquid": "<div style=\"margin-top:-20px;\"><h1 style=\"font-weight:1000 !important;\">Inositol Powder</h1></div>"
           }
         },
-        "custom_liquid_8d7xtd": {
-          "type": "custom_liquid",
-          "name": "Stars",
+        "bod_stars_TkJMcg": {
+          "type": "bod_stars",
           "settings": {
-            "custom_liquid": "<div style=\"padding-bottom:6px; margin: 20px 0px 10px;\"> <a class=\"star-rating-container\" href=\"#reviews\">\n          <div class=\"star-rating\" style=\"--star-rating:5;\"> <strong>4.85 Stars</strong> | <b>Read Reviews</b></div>\n        </a></div>"
-          }
-        },
-        "title_ExCfKU": {
-          "type": "title",
-          "disabled": true,
-          "settings": {
-            "show_products_rating": true
-          }
-        },
-        "custom_liquid_WRFhPD": {
-          "type": "custom_liquid",
-          "name": "Blurb",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div><p>A clinically studied inositol blend for cycles, mood, fertility, and metabolic health.</p></div>"
+            "star_style": "chunky",
+            "star_size": 19,
+            "star_gap": 2,
+            "star_round": 0,
+            "color_on": "#EABE53",
+            "color_off": "#E6E6E6",
+            "show_label": true,
+            "label_color": "#14307C",
+            "label_size": 14,
+            "label_weight": "600",
+            "label_gap": 8,
+            "alignment": "left",
+            "margin_top": 0,
+            "margin_bottom": 16
           }
         },
         "benefit_list_kPEzGr": {
@@ -715,9 +712,7 @@
       },
       "block_order": [
         "custom_liquid_WPt4Yc",
-        "custom_liquid_8d7xtd",
-        "title_ExCfKU",
-        "custom_liquid_WRFhPD",
+        "bod_stars_TkJMcg",
         "benefit_list_kPEzGr",
         "custom_liquid_fA4mt9",
         "plan_selector_1_9PHgbL",
