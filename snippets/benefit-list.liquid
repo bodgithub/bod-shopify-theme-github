@@ -8,7 +8,7 @@
 
 <style>
 #bl-{{ uid }} .bod-benes-para,#bl-{{ uid }} .bod-benes{font-family:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;}
-#bl-{{ uid }} .bod-benes-para{margin:0 0 10px; font-size:{{ s.para_size | default: 14 }}px; font-weight:{{ s.para_weight | default: '400' }}; line-height:1.5; color:{{ s.text_color | default: '#1A1A14' }};}
+#bl-{{ uid }} .bod-benes-para{margin:0 0 10px; font-size:{{ s.para_size | default: 14 }}px; font-weight:{{ s.para_weight | default: '400' }}; line-height:1.5; color:{{ s.para_color | default: s.text_color | default: '#1A1A14' }};}
 #bl-{{ uid }} .bod-benes{list-style:none; padding:0; margin:0; font-size:{{ s.font_size | default: 14 }}px; font-weight:{{ s.font_weight | default: '500' }}; line-height:1.2; color:{{ s.text_color | default: '#1A1A14' }}; display:flex; flex-direction:column; gap:{{ s.row_gap | default: 8 }}px;}
 #bl-{{ uid }} .bod-benes li{display:flex; align-items:flex-start; gap:.5em;}
 #bl-{{ uid }} .bod-benes svg{flex-shrink:0; margin-top:.15em; width:{{ s.icon_size | default: 18 }}px; height:{{ s.icon_size | default: 18 }}px;}
