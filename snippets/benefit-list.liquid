@@ -1,17 +1,20 @@
 {%- comment -%}
   Bodology · Benefit list (product-info BLOCK, type benefit_list)
   Circle-tick benefit checklist — up to 6 items, each with editable text and
-  an optional superscript marker (* / †). Font size, row spacing, icon size,
+  an optional superscript marker (* / †). Optional paragraph above the list
+  with its own font size and weight. Font size, row spacing, icon size,
   weight and colours are settings. Params: s = block.settings, uid = block.id.
 {%- endcomment -%}
 
 <style>
+#bl-{{ uid }} .bod-benes-para{margin:0 0 10px; font-size:{{ s.para_size | default: 14 }}px; font-weight:{{ s.para_weight | default: '400' }}; line-height:1.5; color:{{ s.text_color | default: '#1A1A14' }};}
 #bl-{{ uid }} .bod-benes{list-style:none; padding:0; margin:0; font-size:{{ s.font_size | default: 14 }}px; font-weight:{{ s.font_weight | default: '500' }}; line-height:1.2; color:{{ s.text_color | default: '#1A1A14' }}; display:flex; flex-direction:column; gap:{{ s.row_gap | default: 8 }}px;}
 #bl-{{ uid }} .bod-benes li{display:flex; align-items:flex-start; gap:.5em;}
 #bl-{{ uid }} .bod-benes svg{flex-shrink:0; margin-top:.15em; width:{{ s.icon_size | default: 18 }}px; height:{{ s.icon_size | default: 18 }}px;}
 </style>
 
 <div id="bl-{{ uid }}">
+  {%- if s.para_text != blank -%}<p class="bod-benes-para">{{ s.para_text | newline_to_br }}</p>{%- endif -%}
   <ul class="bod-benes">
     {%- for i in (1..6) -%}
       {%- assign tk = 'i' | append: i | append: '_text' -%}
