@@ -22,6 +22,8 @@
 {%- assign gb_tc = s.giftban_title_color | default: '#14307C' -%}
 {%- assign gb_sc = s.giftban_text_color | default: '#1A1A14' -%}
 {%- assign gift_display = s.gift_display | default: 'banner' -%}
+{%- assign gb_rad = s.giftban_radius | default: 12 -%}
+{%- assign gb_bord = s.giftban_border -%}
 
 <style>
 #ps1-{{ uid }} .bod-pc1{
@@ -75,13 +77,14 @@
 #ps1-{{ uid }} .bod-pc1.is-sub .ps-subtick__knob{transform:translateX(16px);}
 #ps1-{{ uid }} .ps-subtick__t{font-size:12.5px;}
 #ps1-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
-#ps1-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:12px; padding:10px 12px; margin-top:-6px;}
+#ps1-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:{{ gb_rad }}px;{% if gb_bord != blank %} border:1px solid {{ gb_bord }};{% endif %} padding:10px 12px; margin-top:-6px;}
 #ps1-{{ uid }} .ps-giftban[hidden]{display:none;}
 #ps1-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
 #ps1-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_tc }};}
 #ps1-{{ uid }} .ps-giftban__icon img{width:100%; height:100%; object-fit:cover;}
 #ps1-{{ uid }} .ps-giftban__t{display:block; font-size:13.5px; font-weight:600; color:{{ gb_tc }};}
 #ps1-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
+#ps1-{{ uid }} .ps-giftban__cust{background:none; border:0; padding:0; margin:0; font:inherit; color:inherit; text-decoration:underline; cursor:pointer;}
 #ps1-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
 #ps1-{{ uid }} .ps-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--ps-blue); display:inline-block; animation:ps1pulse-{{ uid }} 1.8s ease-out infinite;}
 @keyframes ps1pulse-{{ uid }}{
@@ -91,6 +94,36 @@
 }
 @media (prefers-reduced-motion: reduce){#ps1-{{ uid }} .ps-ship__dot{animation:none;}}
 #ps1-{{ uid }} .ps-ship__date{color:var(--ps-blue); font-weight:700; text-decoration:underline;}
+#ps1-{{ uid }} .ps-modal{position:fixed; inset:0; z-index:2147483000; display:flex; align-items:center; justify-content:center; padding:18px;}
+#ps1-{{ uid }} .ps-modal[hidden]{display:none;}
+#ps1-{{ uid }} .ps-modal__ov{position:absolute; inset:0; background:rgba(21,23,30,0.5);}
+#ps1-{{ uid }} .ps-modal__box{position:relative; width:100%; max-width:440px; max-height:calc(100dvh - 36px); overflow:auto; background:#fff; border-radius:16px; padding:20px; box-shadow:0 24px 64px -18px rgba(0,0,0,0.4);}
+#ps1-{{ uid }} .ps-modal__x{position:absolute; top:12px; right:12px; width:28px; height:28px; display:grid; place-items:center; border:none; background:transparent; color:var(--ps-ink-2); cursor:pointer; border-radius:8px;}
+#ps1-{{ uid }} .ps-modal__x:hover{color:var(--ps-ink); background:rgba(0,0,0,0.05);}
+#ps1-{{ uid }} .ps-modal__x svg{width:16px; height:16px;}
+#ps1-{{ uid }} .ps-modal__t{font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--ps-ink); margin:0 28px 3px 0;}
+#ps1-{{ uid }} .ps-modal__s{font-size:12.5px; color:var(--ps-ink-2); margin:0 0 14px;}
+#ps1-{{ uid }} .ps-modal__done{width:100%; border:none; border-radius:12px; padding:12px 18px; background:var(--ps-grad-banner); color:#fff; font-family:inherit; font-size:13.5px; font-weight:600; cursor:pointer; margin-top:14px; transition:filter .16s;}
+#ps1-{{ uid }} .ps-modal__done:hover{filter:brightness(1.06);}
+#ps1-{{ uid }} .ps-cgrid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+@media (max-width:480px){#ps1-{{ uid }} .ps-cgrid{grid-template-columns:1fr;}}
+#ps1-{{ uid }} .ps-concern{position:relative; text-align:left; cursor:pointer; padding:9px 10px; border-radius:10px; border:1.5px solid #E2E2E2; background:#fff; transition:all .15s; font-family:inherit;}
+#ps1-{{ uid }} .ps-concern.is-checked{border-color:var(--ps-blue); background:{{ acc | color_modify: 'alpha', 0.06 }};}
+#ps1-{{ uid }} .ps-concern__tick{position:absolute; top:9px; right:9px; width:15px; height:15px; border-radius:6px; border:1.5px solid #E2E2E2; background:#fff; display:grid; place-items:center; color:#fff; font-size:9px; font-weight:700;}
+#ps1-{{ uid }} .ps-concern.is-checked .ps-concern__tick{background:var(--ps-blue); border-color:var(--ps-blue);}
+#ps1-{{ uid }} .ps-concern__icon{display:grid; place-items:center; width:28px; height:28px; border-radius:8px; background:{{ acc | color_modify: 'alpha', 0.08 }};}
+#ps1-{{ uid }} .ps-concern__icon svg{width:16px; height:16px;}
+#ps1-{{ uid }} .ps-concern__icon img{width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;}
+#ps1-{{ uid }} .ps-concern__t{font-size:13px; font-weight:600; color:var(--ps-ink); margin-top:7px;}
+#ps1-{{ uid }} .ps-concern__d{font-size:11px; color:var(--ps-ink-2);}
+@media (max-width:480px){
+#ps1-{{ uid }} .ps-concern{display:flex; align-items:center; gap:10px; padding-right:34px;}
+#ps1-{{ uid }} .ps-concern__icon{flex:0 0 auto;}
+#ps1-{{ uid }} .ps-concern__txt{min-width:0;}
+#ps1-{{ uid }} .ps-concern__t{margin-top:0;}
+}
+#ps1-{{ uid }} .ps-proto__sup{font-size:11.5px; color:var(--ps-ink-2); margin:9px 0 0;}
+#ps1-{{ uid }} .ps-proto__sup strong{color:var(--ps-blue); font-weight:600;}
 #ps1-{{ uid }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-family:var(--ps-sans); font-weight:var(--font-body-medium-weight, 400); letter-spacing:var(--button-letter-spacing, 0.02em); font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
 #ps1-{{ uid }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
 #ps1-{{ uid }} .ps-cta__sub{font-weight:400; font-size:10px; letter-spacing:0.08em; opacity:.82; white-space:nowrap;}
@@ -104,11 +137,19 @@
 @media (max-width:749px){#ps1-{{ uid }} .pc-title{font-size:17px;}#ps1-{{ uid }} .pc-price__now{font-size:17px;}}
 </style>
 
+{%- capture proto_icons -%}
+ring|<circle cx="8" cy="8" r="5.5" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+wave|<path d="M2 8 Q4 4 6 8 T10 8 T14 8" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+seed|<path d="M8 2.5 C10 6 10 10 8 13.5 C6 10 6 6 8 2.5 Z" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11.5 L10.5 7" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+{%- endcapture -%}
+{%- assign icon_rows = proto_icons | strip | newline_to_br | split: '<br />' -%}
+
 {%- assign ps1_default = s.default_option | default: 'sub' -%}
 {%- assign ps1_order = 'ot,sub' | split: ',' -%}
 {%- if s.sub_first -%}{%- assign ps1_order = 'sub,ot' | split: ',' -%}{%- endif -%}
 {%- assign gb1_title = s.gift_ban_title -%}
-{%- if gb1_title == blank and s.gift_name != blank -%}{%- assign gb1_title = 'Free ' | append: s.gift_name -%}{%- endif -%}
+{%- if gb1_title == blank and s.gift_name != blank -%}{%- assign gb1_title = s.gift_name -%}{%- endif -%}
 
 <div id="ps1-{{ uid }}">
 <div class="bod-pc1{% if ps1_default == 'sub' %} is-sub{% endif %}" role="radiogroup" data-ps1-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
@@ -192,7 +233,7 @@
     </span>
     <span class="ps-giftban__txt">
       <strong class="ps-giftban__t" data-ps1-giftban-title></strong>
-      <span class="ps-giftban__s" data-ps1-giftban-sub></span>
+      <span class="ps-giftban__s" data-ps1-giftban-line><span data-ps1-giftban-sub></span>{% if s.proto_enable %}<span data-ps1-giftban-sep> · </span><button type="button" class="ps-giftban__cust" data-ps1-proto-open>{{ s.giftban_cust_label | default: 'Customize' }}</button>{% endif %}</span>
     </span>
   </div>
   {%- endif -%}
@@ -208,6 +249,35 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
     <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
   </div>
+  {%- if s.proto_enable -%}
+  <div class="ps-modal" data-ps1-proto hidden>
+    <div class="ps-modal__ov" data-ps1-modal-close></div>
+    <div class="ps-modal__box" role="dialog" aria-modal="true" aria-label="{{ s.proto_title | default: 'Personalize my protocol' | escape }}">
+      <button type="button" class="ps-modal__x" data-ps1-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h3 class="ps-modal__t">{{ s.proto_title | default: 'Personalize my protocol' }}</h3>
+      <p class="ps-modal__s">{{ s.proto_subtitle | default: 'Which areas are we supporting? Select all that apply.' }}</p>
+      <div class="ps-cgrid">
+        {%- for ci in (1..4) -%}
+          {%- assign ck = 'c' | append: ci -%}
+          {%- assign cl_k = ck | append: '_label' -%}{%- assign cd_k = ck | append: '_desc' -%}{%- assign cv_k = ck | append: '_variant' -%}{%- assign cimg_k = ck | append: '_image' -%}
+          {%- if s[cl_k] != blank -%}
+          {%- assign icon_row = icon_rows[forloop.index0] | split: '|' -%}
+          <button type="button" class="ps-concern" data-ps1-concern data-variant="{{ s[cv_k] }}" data-label="{{ s[cl_k] | escape }}" aria-pressed="false">
+            <span class="ps-concern__tick" aria-hidden="true"></span>
+            <span class="ps-concern__icon">{%- if s[cimg_k] -%}<img src="{{ s[cimg_k] | image_url: width: 112 }}" alt="" loading="lazy">{%- else -%}<svg viewBox="0 0 16 16" aria-hidden="true">{{ icon_row[1] }}</svg>{%- endif -%}</span>
+            <div class="ps-concern__txt">
+              <div class="ps-concern__t">{{ s[cl_k] }}</div>
+              <div class="ps-concern__d">{{ s[cd_k] }}</div>
+            </div>
+          </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <p class="ps-proto__sup">{{ s.proto_supporting_label | default: 'Supporting:' }} <strong data-ps1-proto-sup>{{ s.proto_supporting_default | default: 'None selected' }}</strong></p>
+      <button type="button" class="ps-modal__done" data-ps1-modal-close>{{ s.proto_done_label | default: 'Done' }}</button>
+    </div>
+  </div>
+  {%- endif -%}
 </div>
 </div>
 
@@ -268,6 +338,8 @@
   var gbS = gb ? gb.querySelector('[data-ps1-giftban-sub]') : null;
   var gbImg = gb ? gb.querySelector('[data-ps1-giftban-img]') : null;
   var gbSvg = gb ? gb.querySelector('[data-ps1-giftban-svg]') : null;
+  var gbSep = gb ? gb.querySelector('[data-ps1-giftban-sep]') : null;
+  var gbCust = gb ? gb.querySelector('.ps-giftban__cust') : null;
   function syncGiftBan(){
     if(!gb) return;
     var c = selected();
@@ -277,6 +349,7 @@
     gbT.textContent = t;
     var st = c.getAttribute('data-ps1-gift-sub') || '';
     gbS.textContent = st; gbS.hidden = !st;
+    if(gbSep){ gbSep.hidden = !st; }
     var gi = c.getAttribute('data-ps1-gift-img') || '';
     if(gi){ gbImg.src = gi; gbImg.hidden = false; if(gbSvg){ gbSvg.style.display = 'none'; } }
     else { gbImg.hidden = true; gbImg.removeAttribute('src'); if(gbSvg){ gbSvg.style.display = ''; } }
@@ -298,6 +371,42 @@
       if(target){ select(target); }
     });
   }
+  // personalize lightbox (concern picker) — first checked concern swaps the gift variant
+  var proto = root.querySelector('[data-ps1-proto]');
+  var concerns = proto ? [].slice.call(proto.querySelectorAll('[data-ps1-concern]')) : [];
+  function checkedConcerns(){ return concerns.filter(function(b){ return b.classList.contains('is-checked'); }); }
+  function protoGift(fallback){ var sel = checkedConcerns(); return sel.length ? (sel[0].getAttribute('data-variant') || fallback) : fallback; }
+  function protoFocus(){ return checkedConcerns().map(function(b){ return b.getAttribute('data-label'); }).join(', '); }
+  if(proto){
+    var sup = proto.querySelector('[data-ps1-proto-sup]');
+    var openProto = function(){ proto.hidden = false; document.documentElement.style.overflow = 'hidden'; };
+    var closeProto = function(){ proto.hidden = true; document.documentElement.style.overflow = ''; };
+    var openBtns = [].slice.call(root.querySelectorAll('[data-ps1-proto-open]'));
+    openBtns.forEach(function(b){
+      b.addEventListener('click', function(e){ e.stopPropagation(); openProto(); });
+    });
+    var updateOpenBtns = function(){
+      var n = checkedConcerns().length;
+      openBtns.forEach(function(b){
+        b.classList.toggle('has-sel', n > 0);
+        if(n > 0){ b.setAttribute('data-count', n); } else { b.removeAttribute('data-count'); }
+      });
+    };
+    [].slice.call(proto.querySelectorAll('[data-ps1-modal-close]')).forEach(function(b){
+      b.addEventListener('click', function(e){ e.stopPropagation(); closeProto(); });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !proto.hidden){ closeProto(); } });
+    concerns.forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.stopPropagation();
+        b.classList.toggle('is-checked');
+        b.setAttribute('aria-pressed', b.classList.contains('is-checked') ? 'true' : 'false');
+        var t = b.querySelector('.ps-concern__tick'); if(t){ t.textContent = b.classList.contains('is-checked') ? '✓' : ''; }
+        if(sup){ var f = protoFocus(); sup.textContent = f || {{ s.proto_supporting_default | default: 'None selected' | json }}; }
+        updateOpenBtns();
+      });
+    });
+  }
   syncSub(); syncTick(); syncGiftBan();
   cta.addEventListener('click', function(){
     var c = selected();
@@ -313,7 +422,12 @@
     var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(plan){ item.selling_plan = plan; }
     var items = [item];
-    if(gift){ items.push({ id: gift, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-ps1-name') || 'your plan') } }); }
+    if(gift){
+      var g = protoGift(gift);
+      var gprops = { '_gift': 'Free with ' + (c.getAttribute('data-ps1-name') || 'your plan') };
+      var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; }
+      items.push({ id: g, quantity: 1, properties: gprops });
+    }
     fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
     .then(function(r){ return r.json(); })
     .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
