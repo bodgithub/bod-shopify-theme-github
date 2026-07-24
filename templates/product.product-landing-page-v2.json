@@ -207,7 +207,7 @@
             "deep_color": "#193D9C",
             "cta_label": "Add to Cart",
             "adding_label": "Adding…",
-            "footnote": "Cancel or skip, anytime • Free shipping on subscriptions",
+            "footnote": "",
             "error_text": "Please choose a plan first",
             "subtick_enable": true,
             "sub_claim": "Subscribe & Save 15% Instantly",
@@ -249,6 +249,7 @@
         },
         "plan_selector_3_bQR8PU": {
           "type": "plan_selector_3",
+          "disabled": true,
           "settings": {
             "radius": 13,
             "border_style": "solid",
@@ -336,6 +337,7 @@
         },
         "plan_selector_fe7ApL": {
           "type": "plan_selector",
+          "disabled": true,
           "settings": {
             "style": "expanded",
             "border_width": 5,
@@ -415,6 +417,7 @@
         },
         "plan_selector_2_mfAqxA": {
           "type": "plan_selector_2",
+          "disabled": true,
           "settings": {
             "border_width": 5,
             "max_width": 560,
