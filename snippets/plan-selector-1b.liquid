@@ -86,11 +86,6 @@
 #ps1b-{{ uid }} .bod-pc1b.is-sub .ps-subtick__knob{transform:translateX(16px);}
 #ps1b-{{ uid }} .ps-subtick__t{font-size:12.5px;}
 #ps1b-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
-#ps1b-{{ uid }} .ps-custom{position:relative; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; border:none; background:transparent; color:var(--ps-blue); padding:5px; margin-right:8px; border-radius:50%; cursor:pointer; transition:background .15s,transform .15s;}
-#ps1b-{{ uid }} .ps-custom:hover{background:{{ acc | color_modify: 'alpha', 0.12 }}; transform:scale(1.1);}
-#ps1b-{{ uid }} .ps-custom svg{width:14px; height:14px; flex:0 0 auto;}
-#ps1b-{{ uid }} .ps-custom.has-sel::after{content:attr(data-count); position:absolute; top:-5px; right:-6px; min-width:13px; height:13px; padding:0 3px; border-radius:999px; background:var(--ps-blue); color:#fff; font-size:8.5px; font-weight:700; display:grid; place-items:center; line-height:1;}
-#ps1b-{{ uid }} .bod-pc1b:not(.is-sub) .ps-custom{display:none;}
 #ps1b-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:{{ gb_rad }}px;{% if gb_bord != blank %} border:1px solid {{ gb_bord }};{% endif %} padding:10px 12px; margin-top:-10px; margin-bottom:10px;}
 #ps1b-{{ uid }} .ps-giftban[hidden]{display:none;}
 #ps1b-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
@@ -256,9 +251,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       <span class="ps-subtick__switch" aria-hidden="true"><span class="ps-subtick__knob"></span></span>
       <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong></span>
     </button>
-    {%- if s.proto_enable -%}
-    <button type="button" class="ps-custom" data-ps1b-proto-open aria-haspopup="dialog" aria-label="{{ s.proto_open_label | default: 'Personalize' | escape }}" title="{{ s.proto_open_label | default: 'Personalize' | escape }}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 4h6.5M12.7 4H14M2 8h2.8M7 8h7M2 12h6.5M12.7 12H14"/><circle cx="10.6" cy="4" r="1.7"/><circle cx="4.9" cy="8" r="1.7"/><circle cx="10.6" cy="12" r="1.7"/></svg></button>
-    {%- endif -%}
   </div>
   {%- if gift_display == 'banner' -%}
   <div class="ps-giftban" data-ps1b-giftban hidden>
