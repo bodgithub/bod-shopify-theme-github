@@ -27,6 +27,9 @@
 {%- assign gift_display = s.gift_display | default: 'banner' -%}
 {%- assign gb_rad = s.giftban_radius | default: 12 -%}
 {%- assign gb_bord = s.giftban_border -%}
+{%- assign gb_icon = gb_tc -%}
+{%- assign gb_tc_lightness = gb_tc | color_extract: 'lightness' -%}
+{%- if gb_tc_lightness > 70 -%}{%- assign gb_icon = gb_bg -%}{%- endif -%}
 
 <style>
 #ps1b-{{ uid }} .bod-pc1b{
@@ -91,7 +94,7 @@
 #ps1b-{{ uid }} .ps-giftban{display:flex; align-items:center; gap:12px; background:{{ gb_bg }}; border-radius:{{ gb_rad }}px;{% if gb_bord != blank %} border:1px solid {{ gb_bord }};{% endif %} padding:10px 12px; margin-top:-10px; margin-bottom:10px;}
 #ps1b-{{ uid }} .ps-giftban[hidden]{display:none;}
 #ps1b-{{ uid }} .ps-giftban__icon{width:40px; height:40px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; overflow:hidden; flex:0 0 auto;}
-#ps1b-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_tc }};}
+#ps1b-{{ uid }} .ps-giftban__icon svg{width:20px; height:20px; color:{{ gb_icon }};}
 #ps1b-{{ uid }} .ps-giftban__icon img{width:100%; height:100%; object-fit:cover;}
 #ps1b-{{ uid }} .ps-giftban__t{display:block; font-size:13.5px; font-weight:600; color:{{ gb_tc }};}
 #ps1b-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
