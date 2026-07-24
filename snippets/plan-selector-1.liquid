@@ -59,7 +59,6 @@
 #ps1-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
 #ps1-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:13px; line-height:1.5; color:var(--ps-ink);}
 #ps1-{{ uid }} .pc-benes li::before{content:''; position:absolute; left:2px; top:0.55em; width:4px; height:4px; border-radius:50%; background:var(--ps-ink);}
-#ps1-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
 #ps1-{{ uid }} .pc-expand{display:none;}
 #ps1-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
 #ps1-{{ uid }} .pc-kit__lab{font-size:12px; font-weight:700; color:var(--ps-ink); margin:14px 0 11px;}
@@ -148,8 +147,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 {%- assign ps1_default = s.default_option | default: 'sub' -%}
 {%- assign ps1_order = 'ot,sub' | split: ',' -%}
 {%- if s.sub_first -%}{%- assign ps1_order = 'sub,ot' | split: ',' -%}{%- endif -%}
-{%- assign gb1_title = s.gift_ban_title -%}
-{%- if gb1_title == blank and s.gift_name != blank -%}{%- assign gb1_title = s.gift_name -%}{%- endif -%}
 
 <div id="ps1-{{ uid }}">
 <div class="bod-pc1{% if ps1_default == 'sub' %} is-sub{% endif %}" role="radiogroup" data-ps1-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
@@ -174,15 +171,12 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
               {%- if s.ot_serving != blank -%}<span class="pc-serving">{{ s.ot_serving }}</span>{%- endif -%}
             </div>
           </div>
-          <div class="pc-expand">
-            {%- if s.ot_bill != blank -%}<p class="pc-bill">{{ s.ot_bill }}</p>{%- endif -%}
-          </div>
         </div>
       </div>
     </div>
     {%- else -%}
     <div class="pc-card{% if ps1_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps1_default == 'sub' %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1-card data-ps1-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps1-variant="{{ s.sub_variant }}" data-ps1-plan="{{ s.sub_plan }}" data-ps1-requires-plan="1" data-ps1-qty="{{ s.sub_qty | default: 1 }}" data-ps1-gift="{{ s.gift_variant }}"{% if s.gift_name != blank %} data-ps1-gift-title="{{ gb1_title | escape }}" data-ps1-gift-sub="{{ s.gift_ban_sub | escape }}" data-ps1-gift-img="{% if s.gift_image != blank %}{{ s.gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
+         data-ps1-card data-ps1-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps1-variant="{{ s.sub_variant }}" data-ps1-plan="{{ s.sub_plan }}" data-ps1-requires-plan="1" data-ps1-qty="{{ s.sub_qty | default: 1 }}" data-ps1-gift="{{ s.gift_variant }}"{% if s.gift_name != blank %} data-ps1-gift-title="{{ s.gift_name | escape }}" data-ps1-gift-sub="{{ s.gift_ban_sub | escape }}" data-ps1-gift-img="{% if s.gift_image != blank %}{{ s.gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -201,7 +195,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
             </div>
           </div>
           <div class="pc-expand">
-            {%- if s.sub_bill != blank -%}<p class="pc-bill">{{ s.sub_bill }}</p>{%- endif -%}
             {%- if gift_display == 'cards' and s.gift_name != blank -%}
               <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
               <div class="pc-kit__track">

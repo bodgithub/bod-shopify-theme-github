@@ -65,7 +65,6 @@
 #ps1b-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
 #ps1b-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:13px; line-height:1.5; color:var(--ps-ink);}
 #ps1b-{{ uid }} .pc-benes li::before{content:''; position:absolute; left:2px; top:0.55em; width:4px; height:4px; border-radius:50%; background:var(--ps-ink);}
-#ps1b-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
 #ps1b-{{ uid }} .pc-expand{display:none;}
 #ps1b-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
 #ps1b-{{ uid }} .pc-kit__lab{font-size:12px; font-weight:700; color:var(--ps-ink); margin:14px 0 11px;}
@@ -182,8 +181,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign card_compare = s[k]
       assign k = P | append: '_serving'
       assign card_serving = s[k]
-      assign k = P | append: '_bill'
-      assign card_bill = s[k]
       assign k = P | append: '_benefits'
       assign card_benefits = s[k]
       assign k = P | append: '_variant'
@@ -203,11 +200,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign gift_crossout = s[k]
       assign k = giftP | append: '_variant'
       assign gift_variant = s[k]
-      assign k = giftP | append: '_ban_title'
-      assign gift_btitle = s[k]
-      if gift_btitle == blank and gift_name != blank
-        assign gift_btitle = gift_name
-      endif
       assign k = giftP | append: '_ban_sub'
       assign gift_bsub = s[k]
 
@@ -218,7 +210,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     -%}
     {%- unless card_name == blank -%}
     <div class="pc-card{% if is_sel %} is-selected{% endif %}" role="radio" aria-checked="{% if is_sel %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1b-gift-title="{{ gift_btitle | escape }}" data-ps1b-gift-sub="{{ gift_bsub | escape }}" data-ps1b-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
+         data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1b-gift-title="{{ gift_name | escape }}" data-ps1b-gift-sub="{{ gift_bsub | escape }}" data-ps1b-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         <div class="pc-pad">
           <div class="pc-grid">
@@ -237,7 +229,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
             </div>
           </div>
           <div class="pc-expand">
-            {%- if card_bill != blank -%}<p class="pc-bill">{{ card_bill }}</p>{%- endif -%}
             {%- if gift_display == 'cards' and gift_name != blank -%}
               <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
               <div class="pc-kit__track">
