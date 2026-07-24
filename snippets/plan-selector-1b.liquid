@@ -1,0 +1,439 @@
+{%- comment -%}
+  Bodology · Plan Selector 1B (product-info BLOCK, type plan_selector_1b)
+  Dual-mode variant of Plan selector 1: two plans (A + B), and the
+  "Save up to 25% by subscribing" toggle flips BOTH cards between their
+  subscription and one-time states.
+  · Toggle ON  → Plan A subscription (sub_*) + Plan B subscription (b_sub_*)
+  · Toggle OFF → Plan A one-time (ot_*) + Plan B one-time (b_ot_*)
+  Free gifts ride on the subscription cards only (gift_* for A, b_gift_* for
+  B). Optional "Personalize my protocol" icon next to the toggle
+  (proto_enable) opens the same concern-picker lightbox as Plan selector 3
+  and swaps the gift variant to the first selected concern.
+  Params: s = block.settings, uid = block.id.
+  Cart wired to /cart/add.js with variant + selling_plan; every add carries a
+  unique _li property (line items never merge) and the gift carries the same
+  _gift / _focus property shape the main plan selector uses.
+{%- endcomment -%}
+
+<link rel="stylesheet" href="https://use.typekit.net/sxx4ssa.css">
+
+{%- assign acc = s.accent_color | default: '#1B3DEF' -%}
+{%- assign ink = s.title_color | default: '#14307C' -%}
+{%- assign deep = s.deep_color | default: '#0E2160' -%}
+{%- assign bw = s.border_width | default: 5 -%}
+
+<style>
+#ps1b-{{ uid }} .bod-pc1b{
+  --ps-sans:"tenon","Tenon Local","Helvetica Neue",Arial,sans-serif;
+  --ps-blue:{{ acc }}; --ps-ink:{{ ink }}; --ps-ink-2:#5566A0; --ps-deep:{{ deep }};
+  --ps-hair:rgba(20,40,120,0.14); --ps-sand:#F3EEEA; --ps-tile:#F7F5F1; --ps-bw:{{ bw }}px; --ps-gift-w:{{ s.gift_width | default: 95 }}px;
+  --ps-grad-border:linear-gradient(180deg,#EDF0FC 0%,#8CA0F2 42%,{{ acc }} 76%,{{ deep }} 100%);
+  --ps-grad-banner:linear-gradient(110deg,{{ deep }} 0%,{{ acc }} 60%,#0A95EF 135%);
+  font-family:var(--ps-sans); color:#1A1A14; box-sizing:border-box;
+  display:flex; flex-direction:column; gap:14px; max-width:{{ s.max_width | default: 560 }}px; margin:0 auto;
+}
+#ps1b-{{ uid }} .bod-pc1b *,#ps1b-{{ uid }} .bod-pc1b *::before,#ps1b-{{ uid }} .bod-pc1b *::after{box-sizing:border-box;}
+#ps1b-{{ uid }} .ps-h{font-weight:600; font-size:clamp(18px,3vw,22px); letter-spacing:-0.02em; color:var(--ps-ink); margin:0 0 2px;}
+#ps1b-{{ uid }} .pc-card{position:relative; border-radius:14px; cursor:pointer; background:#fff; border:1.5px solid #E2E2E2; transition:border-color .18s,box-shadow .18s; overflow:hidden;}
+#ps1b-{{ uid }} .pc-card:hover{border-color:rgba(27,61,239,0.45);}
+#ps1b-{{ uid }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:var(--ps-bw); overflow:visible;}
+#ps1b-{{ uid }} .pc-card__in{position:relative; background:#fff; border-radius:10px; overflow:hidden;}
+#ps1b-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:12px;}
+#ps1b-{{ uid }} .pc-card:focus-visible{outline:none; box-shadow:0 0 0 3px rgba(27,61,239,0.35);}
+#ps1b-{{ uid }} .bod-pc1b .pc-card[data-ps1b-mode="sub"]{display:none;}
+#ps1b-{{ uid }} .bod-pc1b.is-sub .pc-card[data-ps1b-mode="sub"]{display:block;}
+#ps1b-{{ uid }} .bod-pc1b.is-sub .pc-card[data-ps1b-mode="ot"]{display:none;}
+#ps1b-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:#fff; color:var(--ps-blue); border-bottom:1px solid {{ acc }}; border-left:1px solid {{ acc }}; font-size:10px; font-weight:500; letter-spacing:0.02em; text-transform:uppercase; padding:4px 11px; border-bottom-left-radius:13px; border-top-right-radius:10px; white-space:nowrap; display:none;}
+#ps1b-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
+#ps1b-{{ uid }} .pc-pad{padding:15px 16px 14px;}
+#ps1b-{{ uid }} .pc-grid{display:flex; align-items:flex-start; gap:12px;}
+#ps1b-{{ uid }} .pc-left{flex:1 1 auto; min-width:0;}
+#ps1b-{{ uid }} .pc-right{flex:0 0 auto; text-align:right;}
+#ps1b-{{ uid }} .pc-titlerow{display:flex; align-items:center; gap:9px; flex-wrap:wrap;}
+#ps1b-{{ uid }} .pc-title{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink); margin:0;}
+#ps1b-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:#E3E7FF; color:{{ ink | color_modify: 'alpha', 0.75 }}; font-weight:700; font-size:11px; padding:4px 11px; border-radius:999px; border:0.4px solid {{ ink | color_modify: 'alpha', 0.25 }}; white-space:nowrap;}
+#ps1b-{{ uid }} .pc-card.is-selected .pc-pill{color:var(--ps-ink); border-color:var(--ps-ink);}
+#ps1b-{{ uid }} .pc-price{display:flex; align-items:baseline; justify-content:flex-end; gap:7px; margin:0;}
+#ps1b-{{ uid }} .pc-price__was{font-size:13px; color:#9aa0b5; text-decoration:line-through;}
+#ps1b-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
+#ps1b-{{ uid }} .pc-price__per{font-size:13px; color:var(--ps-ink-2); white-space:nowrap;}
+#ps1b-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:9px; white-space:nowrap;}
+#ps1b-{{ uid }} .pc-cadence{font-size:12.5px; color:var(--ps-ink-2); margin:6px 0 0; line-height:1.5;}
+#ps1b-{{ uid }} .pc-card.is-selected .pc-cadence{display:none;}
+#ps1b-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
+#ps1b-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
+#ps1b-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:13px; line-height:1.5; color:var(--ps-ink);}
+#ps1b-{{ uid }} .pc-benes li::before{content:''; position:absolute; left:2px; top:0.55em; width:4px; height:4px; border-radius:50%; background:var(--ps-ink);}
+#ps1b-{{ uid }} .pc-bill{font-size:12.5px; color:var(--ps-ink-2); margin:8px 0 0;}
+#ps1b-{{ uid }} .pc-expand{display:none;}
+#ps1b-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
+#ps1b-{{ uid }} .pc-kit__lab{font-size:9.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ps-blue); margin:14px 0 11px;}
+#ps1b-{{ uid }} .pc-kit__track{display:grid; grid-auto-flow:column; grid-auto-columns:var(--ps-gift-w); gap:10px; overflow-x:auto; padding-bottom:4px;}
+#ps1b-{{ uid }} .pc-tile{text-align:center; position:relative;}
+#ps1b-{{ uid }} .pc-tile__roundel{position:absolute; top:6px; left:6px; z-index:2; background:var(--ps-grad-banner); color:#fff; font-size:8px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; padding:3px 8px; border-radius:999px; white-space:nowrap;}
+#ps1b-{{ uid }} .pc-tile__img{width:100%; aspect-ratio:1/1; border-radius:10px; background:var(--ps-tile); border:1px solid var(--ps-hair); display:flex; align-items:center; justify-content:center; overflow:hidden; margin-bottom:7px;}
+#ps1b-{{ uid }} .pc-tile__img img{width:74%; height:74%; object-fit:contain;}
+#ps1b-{{ uid }} .pc-tile__name{font-size:11px; font-weight:600; color:var(--ps-ink); line-height:1.2; display:block;}
+#ps1b-{{ uid }} .pc-tile__val{font-size:10px; color:#9aa0b5; text-decoration:line-through; display:block;}
+#ps1b-{{ uid }} .ps-subrow{display:flex; align-items:center; gap:2px; margin-top:-5px;}
+#ps1b-{{ uid }} .ps-subtick{flex:1 1 auto; display:flex; align-items:center; gap:10px; text-align:left; cursor:pointer; border:none; background:transparent; border-radius:12px; padding:6px 13px 11px; font-family:inherit; transition:all .15s;}
+#ps1b-{{ uid }} .ps-subtick__switch{width:36px; height:20px; border-radius:999px; flex:0 0 auto; background:#E2E2E2; position:relative; transition:background .18s;}
+#ps1b-{{ uid }} .bod-pc1b.is-sub .ps-subtick__switch{background:var(--ps-grad-banner);}
+#ps1b-{{ uid }} .ps-subtick__knob{position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,0.25); transition:transform .18s;}
+#ps1b-{{ uid }} .bod-pc1b.is-sub .ps-subtick__knob{transform:translateX(16px);}
+#ps1b-{{ uid }} .ps-subtick__t{font-size:12.5px;}
+#ps1b-{{ uid }} .ps-subtick__t strong{color:var(--ps-ink); font-weight:600;}
+#ps1b-{{ uid }} .ps-subtick__t span{color:var(--ps-ink-2);}
+#ps1b-{{ uid }} .ps-custom{position:relative; display:inline-flex; align-items:center; justify-content:center; flex:0 0 auto; border:none; background:transparent; color:var(--ps-blue); padding:5px; margin-right:8px; border-radius:50%; cursor:pointer; transition:background .15s,transform .15s;}
+#ps1b-{{ uid }} .ps-custom:hover{background:{{ acc | color_modify: 'alpha', 0.12 }}; transform:scale(1.1);}
+#ps1b-{{ uid }} .ps-custom svg{width:14px; height:14px; flex:0 0 auto;}
+#ps1b-{{ uid }} .ps-custom.has-sel::after{content:attr(data-count); position:absolute; top:-5px; right:-6px; min-width:13px; height:13px; padding:0 3px; border-radius:999px; background:var(--ps-blue); color:#fff; font-size:8.5px; font-weight:700; display:grid; place-items:center; line-height:1;}
+#ps1b-{{ uid }} .bod-pc1b:not(.is-sub) .ps-custom{display:none;}
+#ps1b-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
+#ps1b-{{ uid }} .ps-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--ps-blue); display:inline-block; animation:ps1bpulse-{{ uid }} 1.8s ease-out infinite;}
+@keyframes ps1bpulse-{{ uid }}{
+  0%{box-shadow:0 0 0 0 {{ acc | color_modify: 'alpha', 0.4 }};}
+  70%{box-shadow:0 0 0 7px {{ acc | color_modify: 'alpha', 0 }};}
+  100%{box-shadow:0 0 0 0 {{ acc | color_modify: 'alpha', 0 }};}
+}
+@media (prefers-reduced-motion: reduce){#ps1b-{{ uid }} .ps-ship__dot{animation:none;}}
+#ps1b-{{ uid }} .ps-ship__date{color:var(--ps-blue); font-weight:700; text-decoration:underline;}
+#ps1b-{{ uid }} .ps-modal{position:fixed; inset:0; z-index:2147483000; display:flex; align-items:center; justify-content:center; padding:18px;}
+#ps1b-{{ uid }} .ps-modal[hidden]{display:none;}
+#ps1b-{{ uid }} .ps-modal__ov{position:absolute; inset:0; background:rgba(21,23,30,0.5);}
+#ps1b-{{ uid }} .ps-modal__box{position:relative; width:100%; max-width:440px; max-height:calc(100dvh - 36px); overflow:auto; background:#fff; border-radius:16px; padding:20px; box-shadow:0 24px 64px -18px rgba(0,0,0,0.4);}
+#ps1b-{{ uid }} .ps-modal__x{position:absolute; top:12px; right:12px; width:28px; height:28px; display:grid; place-items:center; border:none; background:transparent; color:var(--ps-ink-2); cursor:pointer; border-radius:8px;}
+#ps1b-{{ uid }} .ps-modal__x:hover{color:var(--ps-ink); background:rgba(0,0,0,0.05);}
+#ps1b-{{ uid }} .ps-modal__x svg{width:16px; height:16px;}
+#ps1b-{{ uid }} .ps-modal__t{font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--ps-ink); margin:0 28px 3px 0;}
+#ps1b-{{ uid }} .ps-modal__s{font-size:12.5px; color:var(--ps-ink-2); margin:0 0 14px;}
+#ps1b-{{ uid }} .ps-modal__done{width:100%; border:none; border-radius:12px; padding:12px 18px; background:var(--ps-grad-banner); color:#fff; font-family:inherit; font-size:13.5px; font-weight:600; cursor:pointer; margin-top:14px; transition:filter .16s;}
+#ps1b-{{ uid }} .ps-modal__done:hover{filter:brightness(1.06);}
+#ps1b-{{ uid }} .ps-cgrid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+@media (max-width:480px){#ps1b-{{ uid }} .ps-cgrid{grid-template-columns:1fr;}}
+#ps1b-{{ uid }} .ps-concern{position:relative; text-align:left; cursor:pointer; padding:9px 10px; border-radius:10px; border:1.5px solid #E2E2E2; background:#fff; transition:all .15s; font-family:inherit;}
+#ps1b-{{ uid }} .ps-concern.is-checked{border-color:var(--ps-blue); background:{{ acc | color_modify: 'alpha', 0.06 }};}
+#ps1b-{{ uid }} .ps-concern__tick{position:absolute; top:9px; right:9px; width:15px; height:15px; border-radius:6px; border:1.5px solid #E2E2E2; background:#fff; display:grid; place-items:center; color:#fff; font-size:9px; font-weight:700;}
+#ps1b-{{ uid }} .ps-concern.is-checked .ps-concern__tick{background:var(--ps-blue); border-color:var(--ps-blue);}
+#ps1b-{{ uid }} .ps-concern__icon{display:grid; place-items:center; width:28px; height:28px; border-radius:8px; background:{{ acc | color_modify: 'alpha', 0.08 }};}
+#ps1b-{{ uid }} .ps-concern__icon svg{width:16px; height:16px;}
+#ps1b-{{ uid }} .ps-concern__icon img{width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;}
+#ps1b-{{ uid }} .ps-concern__t{font-size:13px; font-weight:600; color:var(--ps-ink); margin-top:7px;}
+#ps1b-{{ uid }} .ps-concern__d{font-size:11px; color:var(--ps-ink-2);}
+@media (max-width:480px){
+#ps1b-{{ uid }} .ps-concern{display:flex; align-items:center; gap:10px; padding-right:34px;}
+#ps1b-{{ uid }} .ps-concern__icon{flex:0 0 auto;}
+#ps1b-{{ uid }} .ps-concern__txt{min-width:0;}
+#ps1b-{{ uid }} .ps-concern__t{margin-top:0;}
+}
+#ps1b-{{ uid }} .ps-proto__sup{font-size:11.5px; color:var(--ps-ink-2); margin:9px 0 0;}
+#ps1b-{{ uid }} .ps-proto__sup strong{color:var(--ps-blue); font-weight:600;}
+#ps1b-{{ uid }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-family:var(--ps-sans); font-weight:var(--font-body-medium-weight, 400); letter-spacing:var(--button-letter-spacing, 0.02em); font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
+#ps1b-{{ uid }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
+#ps1b-{{ uid }} .ps-cta__sub{font-weight:400; font-size:10px; letter-spacing:0.08em; opacity:.82; white-space:nowrap;}
+#ps1b-{{ uid }} .ps-cta.is-loading{pointer-events:none; opacity:.85; background:#3a4a8f;}
+#ps1b-{{ uid }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:ps1bspin-{{ uid }} .7s linear infinite; display:none;}
+#ps1b-{{ uid }} .ps-cta.is-loading .spin{display:block;}
+@keyframes ps1bspin-{{ uid }}{to{transform:rotate(360deg);}}
+#ps1b-{{ uid }} .ps-footnote{font-size:11px; color:var(--ps-ink-2); text-align:center; margin:2px 0 0;}
+#ps1b-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
+#ps1b-{{ uid }} .ps-error.is-shown{display:flex;}
+#ps1b-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
+@media (max-width:749px){#ps1b-{{ uid }} .pc-title{font-size:17px;}#ps1b-{{ uid }} .pc-price__now{font-size:17px;}}
+</style>
+
+{%- capture proto_icons -%}
+ring|<circle cx="8" cy="8" r="5.5" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+wave|<path d="M2 8 Q4 4 6 8 T10 8 T14 8" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+seed|<path d="M8 2.5 C10 6 10 10 8 13.5 C6 10 6 6 8 2.5 Z" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11.5 L10.5 7" fill="none" stroke="{{ acc }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+{%- endcapture -%}
+{%- assign icon_rows = proto_icons | strip | newline_to_br | split: '<br />' -%}
+
+{%- assign ps1b_default = s.default_option | default: 'sub' -%}
+{%- comment -%} card specs: prefix|pair|mode|gift-prefix {%- endcomment -%}
+{%- assign ps1b_specs = 'sub|a|sub|gift,b_sub|b|sub|b_gift,ot|a|ot|ot_gift,b_ot|b|ot|b_ot_gift' | split: ',' -%}
+
+<div id="ps1b-{{ uid }}">
+<div class="bod-pc1b{% if ps1b_default == 'sub' %} is-sub{% endif %}" role="radiogroup" data-ps1b-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+  {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
+  {%- for spec in ps1b_specs -%}
+    {%- liquid
+      assign sp = spec | split: '|'
+      assign P = sp[0]
+      assign pair = sp[1]
+      assign mode = sp[2]
+      assign giftP = sp[3]
+
+      assign k = P | append: '_name'
+      assign card_name = s[k]
+      assign k = P | append: '_ribbon'
+      assign card_ribbon = s[k]
+      assign k = P | append: '_pill'
+      assign card_pill = s[k]
+      assign k = P | append: '_cadence'
+      assign card_cadence = s[k]
+      assign k = P | append: '_price'
+      assign card_price = s[k]
+      assign k = P | append: '_compare'
+      assign card_compare = s[k]
+      assign k = P | append: '_price_per'
+      assign card_per = s[k]
+      assign k = P | append: '_serving'
+      assign card_serving = s[k]
+      assign k = P | append: '_bill'
+      assign card_bill = s[k]
+      assign k = P | append: '_benefits'
+      assign card_benefits = s[k]
+      assign k = P | append: '_variant'
+      assign card_variant = s[k]
+      assign k = P | append: '_plan'
+      assign card_plan = s[k]
+      assign k = P | append: '_qty'
+      assign card_qty = s[k] | default: 1
+
+      assign k = giftP | append: '_name'
+      assign gift_name = s[k]
+      assign k = giftP | append: '_image'
+      assign gift_image = s[k]
+      assign k = giftP | append: '_roundel'
+      assign gift_roundel = s[k]
+      assign k = giftP | append: '_crossout'
+      assign gift_crossout = s[k]
+      assign k = giftP | append: '_variant'
+      assign gift_variant = s[k]
+
+      assign is_sel = false
+      if pair == 'a' and mode == ps1b_default
+        assign is_sel = true
+      endif
+    -%}
+    {%- unless card_name == blank -%}
+    <div class="pc-card{% if is_sel %} is-selected{% endif %}" role="radio" aria-checked="{% if is_sel %}true{% else %}false{% endif %}" tabindex="0"
+         data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}">
+      <div class="pc-card__in">
+        {%- if card_ribbon != blank -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
+        <div class="pc-pad">
+          <div class="pc-grid">
+            <div class="pc-left">
+              <div class="pc-titlerow">
+                <h3 class="pc-title">{{ card_name }}</h3>
+                {%- if card_pill != blank -%}<span class="pc-pill">{{ card_pill }}</span>{%- endif -%}
+              </div>
+              {%- if card_cadence != blank -%}<p class="pc-cadence">{{ card_cadence }}</p>{%- endif -%}
+              {%- assign benes = card_benefits | newline_to_br | split: '<br />' -%}
+              {%- assign has_benes = false -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign has_benes = true -%}{%- endif -%}{%- endfor -%}
+              {%- if has_benes -%}<ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
+            </div>
+            <div class="pc-right">
+              <div class="pc-price">{%- if card_compare != blank -%}<span class="pc-price__was">{{ card_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ card_price }}</span>{%- if card_per != blank -%}<span class="pc-price__per">{{ card_per }}</span>{%- endif -%}</div>
+              {%- if card_serving != blank -%}<span class="pc-serving">{{ card_serving }}</span>{%- endif -%}
+            </div>
+          </div>
+          <div class="pc-expand">
+            {%- if card_bill != blank -%}<p class="pc-bill">{{ card_bill }}</p>{%- endif -%}
+            {%- if gift_name != blank -%}
+              <p class="pc-kit__lab">{{ s.gifts_label | default: 'What you get:' }}</p>
+              <div class="pc-kit__track">
+                <div class="pc-tile">
+                  {%- if gift_roundel != blank -%}<span class="pc-tile__roundel">{{ gift_roundel }}</span>{%- endif -%}
+                  <div class="pc-tile__img">{%- if gift_image != blank -%}{{ gift_image | image_url: width: 200 | image_tag: alt: gift_name, loading: 'lazy' }}{%- endif -%}</div>
+                  <span class="pc-tile__name">{{ gift_name }}</span>
+                  {%- if gift_crossout != blank -%}<span class="pc-tile__val">{{ gift_crossout }}</span>{%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endunless -%}
+  {%- endfor -%}
+  <div class="ps-subrow">
+    <button type="button" class="ps-subtick" role="switch" aria-checked="{% if ps1b_default == 'sub' %}true{% else %}false{% endif %}" data-ps1b-subtick>
+      <span class="ps-subtick__switch" aria-hidden="true"><span class="ps-subtick__knob"></span></span>
+      <span class="ps-subtick__t"><strong>{{ s.sub_claim | default: 'Save up to 25% by subscribing' }}</strong>{%- if s.sub_claim_suffix != blank -%}<span> {{ s.sub_claim_suffix }}</span>{%- endif -%}</span>
+    </button>
+    {%- if s.proto_enable -%}
+    <button type="button" class="ps-custom" data-ps1b-proto-open aria-haspopup="dialog" aria-label="{{ s.proto_open_label | default: 'Personalize' | escape }}" title="{{ s.proto_open_label | default: 'Personalize' | escape }}"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M2 4h6.5M12.7 4H14M2 8h2.8M7 8h7M2 12h6.5M12.7 12H14"/><circle cx="10.6" cy="4" r="1.7"/><circle cx="4.9" cy="8" r="1.7"/><circle cx="10.6" cy="12" r="1.7"/></svg></button>
+    {%- endif -%}
+  </div>
+  {%- if s.shipping_prefix != blank -%}
+  <div class="ps-ship"><span class="ps-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="ps-ship__date" data-ps1b-shipdate></span></span></div>
+  {%- endif -%}
+  <button type="button" class="ps-cta" data-ps1b-submit>
+    <span class="spin"></span>
+    <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
+    <span class="ps-cta__sub" data-ps1b-sub></span>
+  </button>
+  <div class="ps-error" data-ps1b-error>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
+    <span>{{ s.error_text | default: 'Please choose a plan first' }}</span>
+  </div>
+  {%- if s.footnote != blank -%}<p class="ps-footnote">{{ s.footnote }}</p>{%- endif -%}
+  {%- if s.proto_enable -%}
+  <div class="ps-modal" data-ps1b-proto hidden>
+    <div class="ps-modal__ov" data-ps1b-modal-close></div>
+    <div class="ps-modal__box" role="dialog" aria-modal="true" aria-label="{{ s.proto_title | default: 'Personalize my protocol' | escape }}">
+      <button type="button" class="ps-modal__x" data-ps1b-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h3 class="ps-modal__t">{{ s.proto_title | default: 'Personalize my protocol' }}</h3>
+      <p class="ps-modal__s">{{ s.proto_subtitle | default: 'Which areas are we supporting? Select all that apply.' }}</p>
+      <div class="ps-cgrid">
+        {%- for ci in (1..4) -%}
+          {%- assign ck = 'c' | append: ci -%}
+          {%- assign cl_k = ck | append: '_label' -%}{%- assign cd_k = ck | append: '_desc' -%}{%- assign cv_k = ck | append: '_variant' -%}{%- assign cimg_k = ck | append: '_image' -%}
+          {%- if s[cl_k] != blank -%}
+          {%- assign icon_row = icon_rows[forloop.index0] | split: '|' -%}
+          <button type="button" class="ps-concern" data-ps1b-concern data-variant="{{ s[cv_k] }}" data-label="{{ s[cl_k] | escape }}" aria-pressed="false">
+            <span class="ps-concern__tick" aria-hidden="true"></span>
+            <span class="ps-concern__icon">{%- if s[cimg_k] -%}<img src="{{ s[cimg_k] | image_url: width: 112 }}" alt="" loading="lazy">{%- else -%}<svg viewBox="0 0 16 16" aria-hidden="true">{{ icon_row[1] }}</svg>{%- endif -%}</span>
+            <div class="ps-concern__txt">
+              <div class="ps-concern__t">{{ s[cl_k] }}</div>
+              <div class="ps-concern__d">{{ s[cd_k] }}</div>
+            </div>
+          </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <p class="ps-proto__sup">{{ s.proto_supporting_label | default: 'Supporting:' }} <strong data-ps1b-proto-sup>{{ s.proto_supporting_default | default: 'None selected' }}</strong></p>
+      <button type="button" class="ps-modal__done" data-ps1b-modal-close>{{ s.proto_done_label | default: 'Done' }}</button>
+    </div>
+  </div>
+  {%- endif -%}
+</div>
+</div>
+
+<script>
+(function(){
+  var root = document.querySelector('#ps1b-{{ uid }} [data-ps1b-root]');
+  if(!root || root.dataset.ps1bBound) return;
+  root.dataset.ps1bBound = '1';
+  var cards = [].slice.call(root.querySelectorAll('[data-ps1b-card]'));
+  var sub = root.querySelector('[data-ps1b-sub]'), err = root.querySelector('[data-ps1b-error]');
+  var cta = root.querySelector('[data-ps1b-submit]'), label = cta.querySelector('.ps-cta__label');
+  var ctaText = label.textContent;
+  var cartUrl = {{ routes.cart_url | json }};
+  var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  function renderAndOpenCart(response){
+    try {
+      [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+        { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+        { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+      ].forEach(function(sc){
+        if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+        var host = document.getElementById(sc.id);
+        var el = host.querySelector(sc.selector) || host;
+        var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+        if(frag) el.innerHTML = frag.innerHTML;
+        if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+        if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+      });
+    } catch(e){}
+    var drawer = document.getElementById('Cart-Drawer');
+    if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+    else { window.location = cartUrl; }
+  }
+  function selected(){ return root.querySelector('[data-ps1b-card].is-selected'); }
+  function syncSub(){ var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps1b-name') : ''; }
+  // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day
+  var shipEl = root.querySelector('[data-ps1b-shipdate]');
+  if(shipEl){
+    var sd;
+    try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
+    catch(e){ sd = new Date(); }
+    if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
+    while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
+    try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
+    catch(e){ shipEl.textContent = sd.toDateString(); }
+  }
+  // subscribe toggle flips every card between its sub and one-time state
+  var tick = root.querySelector('[data-ps1b-subtick]');
+  function syncTick(){
+    var on = root.classList.contains('is-sub');
+    if(tick){ tick.setAttribute('aria-checked', on ? 'true' : 'false'); }
+  }
+  function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
+  function select(c){
+    cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
+    c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
+    err.classList.remove('is-shown'); syncSub(); syncTick();
+  }
+  cards.forEach(function(c){
+    c.addEventListener('click', function(){ select(c); });
+    c.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); select(c); } });
+  });
+  if(tick){
+    tick.addEventListener('click', function(){
+      root.classList.toggle('is-sub');
+      var mode = root.classList.contains('is-sub') ? 'sub' : 'ot';
+      var cur = selected();
+      var pairId = cur ? cur.getAttribute('data-ps1b-pair') : 'a';
+      var target = cards.filter(function(x){ return x.getAttribute('data-ps1b-mode') === mode && x.getAttribute('data-ps1b-pair') === pairId; })[0]
+                || cards.filter(function(x){ return x.getAttribute('data-ps1b-mode') === mode; })[0];
+      if(target){ select(target); } else { syncTick(); }
+    });
+  }
+  // personalize lightbox (concern picker) — first checked concern swaps the gift variant
+  var proto = root.querySelector('[data-ps1b-proto]');
+  var concerns = proto ? [].slice.call(proto.querySelectorAll('[data-ps1b-concern]')) : [];
+  function checkedConcerns(){ return concerns.filter(function(b){ return b.classList.contains('is-checked'); }); }
+  function protoGift(fallback){ var sel = checkedConcerns(); return sel.length ? (sel[0].getAttribute('data-variant') || fallback) : fallback; }
+  function protoFocus(){ return checkedConcerns().map(function(b){ return b.getAttribute('data-label'); }).join(', '); }
+  if(proto){
+    var sup = proto.querySelector('[data-ps1b-proto-sup]');
+    var openProto = function(){ proto.hidden = false; document.documentElement.style.overflow = 'hidden'; };
+    var closeProto = function(){ proto.hidden = true; document.documentElement.style.overflow = ''; };
+    var openBtns = [].slice.call(root.querySelectorAll('[data-ps1b-proto-open]'));
+    openBtns.forEach(function(b){
+      b.addEventListener('click', function(e){ e.stopPropagation(); openProto(); });
+    });
+    var updateOpenBtns = function(){
+      var n = checkedConcerns().length;
+      openBtns.forEach(function(b){
+        b.classList.toggle('has-sel', n > 0);
+        if(n > 0){ b.setAttribute('data-count', n); } else { b.removeAttribute('data-count'); }
+      });
+    };
+    [].slice.call(proto.querySelectorAll('[data-ps1b-modal-close]')).forEach(function(b){
+      b.addEventListener('click', function(e){ e.stopPropagation(); closeProto(); });
+    });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !proto.hidden){ closeProto(); } });
+    concerns.forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.stopPropagation();
+        b.classList.toggle('is-checked');
+        b.setAttribute('aria-pressed', b.classList.contains('is-checked') ? 'true' : 'false');
+        var t = b.querySelector('.ps-concern__tick'); if(t){ t.textContent = b.classList.contains('is-checked') ? '✓' : ''; }
+        if(sup){ var f = protoFocus(); sup.textContent = f || {{ s.proto_supporting_default | default: 'None selected' | json }}; }
+        updateOpenBtns();
+      });
+    });
+  }
+  syncSub(); syncTick();
+  cta.addEventListener('click', function(){
+    var c = selected();
+    if(!c){ showErr(); return; }
+    var variant = (c.getAttribute('data-ps1b-variant') || '').trim();
+    var plan = (c.getAttribute('data-ps1b-plan') || '').trim();
+    var qty = parseInt(c.getAttribute('data-ps1b-qty'), 10) || 1;
+    var gift = (c.getAttribute('data-ps1b-gift') || '').trim();
+    if(!variant){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
+    if(c.hasAttribute('data-ps1b-requires-plan') && !plan){ showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return; }
+    err.classList.remove('is-shown');
+    cta.classList.add('is-loading'); label.textContent = '{{ s.adding_label | default: "Adding…" }}';
+    var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
+    if(plan){ item.selling_plan = plan; }
+    var items = [item];
+    if(gift){
+      var g = protoGift(gift);
+      var gprops = { '_gift': 'Free with ' + (c.getAttribute('data-ps1b-name') || 'your plan') };
+      var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; }
+      items.push({ id: g, quantity: 1, properties: gprops });
+    }
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
+    .catch(function(e){ cta.classList.remove('is-loading'); label.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+  });
+})();
+</script>
