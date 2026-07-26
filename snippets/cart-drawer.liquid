@@ -215,7 +215,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
 
                     
 						{%- unless item.selling_plan_allocation -%}{%- if item.variant.id == 46444657279195 -%}<button type="button" class="bod-upgrade bod-switch6w" data-line-key="{{ item.key | escape }}" data-line-variant="{{ item.variant.id }}" data-add-variant="46444646269147" data-add-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 6-week supply for 15% off</span></button>{%- elsif item.variant.id == 46444646269147 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
-						{%- if item.selling_plan_allocation and item.selling_plan_allocation.selling_plan.id == 5755961563 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="7141621979" data-qty="2" data-giftadd="48915264143579" data-giftname="3-Month Supply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 3-month supply for 25% off</span></button>{%- endif -%}
+						{%- if item.selling_plan_allocation and item.selling_plan_allocation.selling_plan.id == 5755961563 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="7141621979" data-qty="2" data-add-variant="{{ item.variant.id }}" data-old-plan="{{ item.selling_plan_allocation.selling_plan.id }}" data-old-qty="{{ item.quantity }}" data-giftadd="48915264143579" data-giftname="3-Month Supply"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 3-month supply for 25% off</span></button>{%- endif -%}
 						<div class="product-cart-item-price">
 							<span class="price">
 							{%- assign sub_full = 0 -%}{%- if item.selling_plan_allocation -%}{%- assign sub_full = item.variant.price | times: item.quantity -%}{%- endif -%}{%- if item.final_line_price == 0 -%}{%- assign strike = 0 -%}{%- if item.original_line_price > 0 -%}{%- assign strike = item.original_line_price -%}{%- elsif item.variant.compare_at_price > item.variant.price -%}{%- assign strike = item.variant.compare_at_price | times: item.quantity -%}{%- endif -%}{%- if strike > 0 -%}<del><span class="amount">{{ strike | money }}</span></del>{%- endif -%}<ins class="is-free"><span class="amount">Free</span></ins>{%- elsif sub_full > item.final_line_price -%}{%- assign bod_pct = sub_full | minus: item.final_line_price | times: 100.0 | divided_by: sub_full | round -%}<span class="bod-roundel">-{{ bod_pct }}%</span><del><span class="amount">{{ sub_full | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- elsif item.original_line_price != item.final_line_price -%}<del><span class="amount">{{ item.original_line_price | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- else -%}<ins><span class="amount">{{ item.original_line_price | money }}</span></ins>{%- endif -%}
@@ -360,16 +360,17 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
   }
   /* The 3-month plan (7141621979) is only ever sold as 2 units on one line.
      Apps re-evaluating the cart can split that into 2x qty-1 lines; repair it. */
-  var bodNormBusy = false;
+  var bodNormBusy = false, bodNormAttempts = 0;
   function bodNormalize(){
-    if(bodNormBusy) return; bodNormBusy = true;
+    if(bodNormBusy || bodNormAttempts >= 3) return; bodNormBusy = true;
     fetch(root()+'cart.js', { headers:{'Accept':'application/json'} })
     .then(function(r){ return r.json(); })
     .then(function(cart){
       var ones = (cart.items||[]).filter(function(i){
         return i.selling_plan_allocation && i.selling_plan_allocation.selling_plan && i.selling_plan_allocation.selling_plan.id == 7141621979 && i.quantity == 1;
       });
-      if(!ones.length){ bodNormBusy = false; return; }
+      if(!ones.length){ bodNormBusy = false; bodNormAttempts = 0; return; }
+      bodNormAttempts++;
       var ops = [];
       for(var k = 0; k + 1 < ones.length; k += 2){ ops.push({ id: ones[k+1].key, quantity: 0 }); ops.push({ id: ones[k].key, quantity: 2 }); }
       if(ones.length % 2){ ops.push({ id: ones[ones.length-1].key, quantity: 2 }); }
@@ -411,36 +412,73 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
     var key = btn.getAttribute('data-line-key'), plan = btn.getAttribute('data-plan');
     if(!key || !plan) return;
     btn.classList.add('is-loading');
-    var body = { id:key, selling_plan:plan, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname };
-    var qty = btn.getAttribute('data-qty');
-    if(qty){ body.quantity = parseInt(qty, 10); }
-    fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify(body) })
-    .then(function(r){ return r.json(); })
-    .then(function(res){
-      var gift = btn.getAttribute('data-giftadd');
-      if(!gift || !res || res.status){ return res; }
-      /* the plan being upgraded may already have brought its free gift along —
-         don't add a second one */
-      var gid = parseInt(gift, 10);
-      var hasGift = (res.items || []).some(function(i){ return i.variant_id === gid && i.properties && i.properties['_gift']; });
-      if(hasGift){ return res; }
-      var gname = btn.getAttribute('data-giftname') || 'your plan';
-      return fetch(root()+'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({ items:[{ id: parseInt(gift, 10), quantity: 1, properties: { '_gift': 'Free with ' + gname } }], sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
-      .then(function(r2){ return r2.json(); })
-      .then(function(res2){ return (res2 && res2.sections) ? res2 : res; })
-      .catch(function(){ return res; });
-    })
-    .then(function(res){
+    var qty = parseInt(btn.getAttribute('data-qty') || '0', 10);
+    var addVariant = parseInt(btn.getAttribute('data-add-variant') || '0', 10);
+    var oldPlan = parseInt(btn.getAttribute('data-old-plan') || '0', 10);
+    var oldQty = parseInt(btn.getAttribute('data-old-qty') || '1', 10);
+    var gift = btn.getAttribute('data-giftadd');
+    var gname = btn.getAttribute('data-giftname') || 'your plan';
+    var sectionsArgs = { sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname };
+    function postJson(path, body){
+      return fetch(root()+path, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(body) })
+        .then(function(r){ return r.json(); });
+    }
+    function render(res){
       try {
-        repl(res.sections, 'cart-drawer', '.cart-drawer');
-        repl(res.sections, 'cart-bubble', '.thb-item-count');
+        if(res && res.sections){
+          repl(res.sections, 'cart-drawer', '.cart-drawer');
+          repl(res.sections, 'cart-bubble', '.thb-item-count');
+        }
         if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
         document.dispatchEvent(new CustomEvent('cart:refresh'));
       } catch(err){}
-    })
-    .catch(function(){ btn.classList.remove('is-loading'); });
+    }
+    function renderTruth(){
+      return fetch(root()+'?sections=cart-drawer,cart-bubble')
+        .then(function(r){ return r.json(); })
+        .then(function(s){ render({ sections: s }); })
+        .catch(function(){});
+    }
+    /* the plan being upgraded may already have brought its free gift along —
+       don't add a second one */
+    function maybeGift(cartItems, sections){
+      if(!gift){ return Promise.resolve({ sections: sections }); }
+      var gid = parseInt(gift, 10);
+      var has = (cartItems || []).some(function(i){ return i.variant_id === gid && i.properties && i.properties['_gift']; });
+      if(has){ return Promise.resolve({ sections: sections }); }
+      var body = { items:[{ id: gid, quantity: 1, properties: { '_gift': 'Free with ' + gname } }] };
+      body.sections = sectionsArgs.sections; body.sections_url = sectionsArgs.sections_url;
+      return postJson('cart/add.js', body)
+        .then(function(res2){ return (res2 && res2.sections) ? res2 : { sections: sections }; })
+        .catch(function(){ return { sections: sections }; });
+    }
+    var flow;
+    if(qty > 0 && addVariant){
+      /* cart/change with selling_plan + quantity together is unreliable (the plan
+         applies but the quantity doesn't) — replace the line with a fresh add,
+         which is proven to produce one qty-N line */
+      flow = postJson('cart/change.js', { id: key, quantity: 0 })
+        .then(function(cart){
+          if(!cart || cart.status){ throw cart; }
+          return postJson('cart/add.js', Object.assign({ items:[{ id: addVariant, quantity: qty, selling_plan: parseInt(plan, 10), properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } }] }, sectionsArgs))
+            .then(function(res){
+              if(!res || res.status){
+                /* add failed after we removed the line — put the original back */
+                var restore = { items:[{ id: addVariant, quantity: oldQty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } }] };
+                if(oldPlan){ restore.items[0].selling_plan = oldPlan; }
+                return postJson('cart/add.js', restore).then(function(){ throw res; }, function(){ throw res; });
+              }
+              return maybeGift(cart.items, res.sections);
+            });
+        });
+    } else {
+      flow = postJson('cart/change.js', Object.assign({ id: key, selling_plan: plan }, sectionsArgs))
+        .then(function(res){
+          if(!res || res.status){ throw res; }
+          return maybeGift(res.items, res.sections);
+        });
+    }
+    flow.then(render).catch(function(){ btn.classList.remove('is-loading'); renderTruth(); });
   });
   document.addEventListener('click', function(e){
     var b = e.target.closest('.bod-switch6w'); if(!b) return;
