@@ -390,6 +390,19 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
   }
   document.addEventListener('cart:refresh', function(){ bodNormalize(); });
   bodNormalize();
+  /* The theme's own cart updates (e.g. removing a line) re-render the drawer
+     without dispatching cart:refresh — watch the drawer and repair after any
+     re-render. bodNormalize is a no-op when nothing is split, so the rewrite
+     it triggers doesn't loop. */
+  var bodDrawerHost = document.getElementById('Cart-Drawer');
+  if(bodDrawerHost && window.MutationObserver){
+    var bodNormT = null;
+    new MutationObserver(function(){
+      if(bodNormBusy) return;
+      clearTimeout(bodNormT);
+      bodNormT = setTimeout(bodNormalize, 250);
+    }).observe(bodDrawerHost, { childList: true, subtree: true });
+  }
   document.addEventListener('click', function(e){
     var btn = e.target.closest('.bod-upgrade'); if(!btn) return;
     if(btn.classList.contains('bod-switch6w')) return;
@@ -407,6 +420,11 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
     .then(function(res){
       var gift = btn.getAttribute('data-giftadd');
       if(!gift || !res || res.status){ return res; }
+      /* the plan being upgraded may already have brought its free gift along —
+         don't add a second one */
+      var gid = parseInt(gift, 10);
+      var hasGift = (res.items || []).some(function(i){ return i.variant_id === gid && i.properties && i.properties['_gift']; });
+      if(hasGift){ return res; }
       var gname = btn.getAttribute('data-giftname') || 'your plan';
       return fetch(root()+'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
         body: JSON.stringify({ items:[{ id: parseInt(gift, 10), quantity: 1, properties: { '_gift': 'Free with ' + gname } }], sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
