@@ -208,7 +208,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
                           
 
                       
-							<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" data-index="{{ item.index | plus: 1 }}">{% render 'svg-icons' with 'trash' %}</a>
+							<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" data-index="{{ item.index | plus: 1 }}" data-key="{{ item.key | escape }}">{% render 'svg-icons' with 'trash' %}</a>
 						
                
                       </div>
@@ -404,6 +404,22 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
       bodNormT = setTimeout(bodNormalize, 250);
     }).observe(bodDrawerHost, { childList: true, subtree: true });
   }
+  /* remove lines by their key, not their line number — apps rebuilding the
+     cart can reorder lines, and a stale line number then deletes the wrong item */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('#Cart-Drawer .product-cart-item .remove'); if(!a) return;
+    var k = a.getAttribute('data-key'); if(!k) return;
+    e.preventDefault(); e.stopPropagation();
+    fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({ id: k, quantity: 0, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(res){
+      if(res && res.sections){ repl(res.sections,'cart-drawer','.cart-drawer'); repl(res.sections,'cart-bubble','.thb-item-count'); }
+      if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
+      document.dispatchEvent(new CustomEvent('cart:refresh'));
+    })
+    .catch(function(){});
+  }, true);
   document.addEventListener('click', function(e){
     var btn = e.target.closest('.bod-upgrade'); if(!btn) return;
     if(btn.classList.contains('bod-switch6w')) return;
@@ -532,16 +548,37 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
     e.preventDefault();
     var input = form.querySelector('input[name="discount"]'); var code = (input.value||'').trim(); if(!code) return;
     form.classList.add('is-loading');
-    fetch(root()+'discount/'+encodeURIComponent(code)+'?redirect=/cart.js')
-    .then(function(){ return fetch(root()+'cart.js'); })
+    function discountUpdate(codes){
+      return fetch(root()+'cart/update.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({ discount: codes, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+      .then(function(r){ return r.json(); });
+    }
+    function render(sections){
+      repl(sections,'cart-drawer','.cart-drawer'); repl(sections,'cart-bubble','.thb-item-count');
+      if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
+      document.dispatchEvent(new CustomEvent('cart:refresh'));
+    }
+    /* keep any codes that already apply, then add the new one on top */
+    fetch(root()+'cart.js', { headers:{'Accept':'application/json'} })
     .then(function(r){ return r.json(); })
     .then(function(cart){
-      var ok = (cart.cart_level_discount_applications && cart.cart_level_discount_applications.length) || cart.total_discount > 0;
-      return fetch(root()+'?sections=cart-drawer,cart-bubble').then(function(r){ return r.json(); }).then(function(sections){
-        repl(sections,'cart-drawer','.cart-drawer'); repl(sections,'cart-bubble','.thb-item-count');
-        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
-        document.dispatchEvent(new CustomEvent('cart:refresh'));
-        if(!ok){ var m=document.querySelector('#Cart-Drawer .bod-discount-msg'); if(m){ m.textContent='That code isn\u2019t valid.'; m.style.display='block'; } }
+      var existing = (cart.discount_codes || []).filter(function(dc){ return dc.applicable; }).map(function(dc){ return dc.code; })
+        .filter(function(c){ return c.toLowerCase() !== code.toLowerCase(); });
+      return discountUpdate(existing.concat([code]).join(','))
+      .then(function(res){
+        var entry = (res.discount_codes || []).filter(function(dc){ return (dc.code||'').toLowerCase() === code.toLowerCase(); })[0];
+        if(entry && entry.applicable){
+          render((res.sections) || {});
+          return;
+        }
+        /* code exists but can't apply to this cart \u2014 drop it again and say so */
+        return discountUpdate(existing.join(','))
+        .then(function(res2){ render((res2 && res2.sections) || {}); })
+        .catch(function(){})
+        .then(function(){
+          var m = document.querySelector('#Cart-Drawer .bod-discount-msg');
+          if(m){ m.textContent = 'That code isn\u2019t valid for this cart.'; m.style.display = 'block'; }
+        });
       });
     })
     .catch(function(){ form.classList.remove('is-loading'); });
