@@ -1,0 +1,93 @@
+{
+  "sections": {
+    "cheat_sheet": {
+      "type": "creator-cheat-sheet",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "heading": "Emotion",
+            "subheading": "Pick ONE. Perform it — she's buying the feeling, not the facts."
+          }
+        },
+        "chips_1": {
+          "type": "chips",
+          "settings": {
+            "chips": "Surprised, Shock, Rage, Frustration, Sadness, Relief, Confused, Excitement, Discovery, The “Aha”"
+          }
+        },
+        "note_1": {
+          "type": "note",
+          "settings": {
+            "text": "Decide before you hit record. One emotion — not a blend."
+          }
+        },
+        "tip_1": {
+          "type": "tip",
+          "settings": {
+            "label": "Try this",
+            "text": "Ask a friend to watch with the sound off. If they can name the emotion right away, it worked. If they're not sure, there wasn't enough emotion."
+          }
+        },
+        "tiktok_1": {
+          "type": "tiktok",
+          "settings": {
+            "url": "https://www.tiktok.com/@kyliespencerhealth/video/7533662630616026398"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "heading": "Step 2 heading",
+            "subheading": "Fill in the second thing every video needs."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "heading": "Step 3 heading",
+            "subheading": "Fill in the third thing every video needs."
+          }
+        },
+        "check_1": {
+          "type": "checklist_item",
+          "settings": { "text": "Checklist item 1" }
+        },
+        "check_2": {
+          "type": "checklist_item",
+          "settings": { "text": "Checklist item 2" }
+        },
+        "check_3": {
+          "type": "checklist_item",
+          "settings": { "text": "Checklist item 3" }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "chips_1",
+        "note_1",
+        "tip_1",
+        "tiktok_1",
+        "step_2",
+        "step_3",
+        "check_1",
+        "check_2",
+        "check_3"
+      ],
+      "settings": {
+        "eyebrow": "Creator Cheat Sheet",
+        "heading": "3 things.\nEvery video.",
+        "subheading": "Miss one of these and the video doesn't get watched.",
+        "show_hero_placeholder": true,
+        "hero_placeholder_note": "hero frame \/ example thumbnail row — 1600×420",
+        "check_title": "Before you post",
+        "show_footer": true,
+        "foot_meta": "Creator Cheat Sheet"
+      }
+    }
+  },
+  "order": ["cheat_sheet"]
+}

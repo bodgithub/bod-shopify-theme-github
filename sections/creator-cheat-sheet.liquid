@@ -1,0 +1,453 @@
+{%- comment -%}
+  BODOLOGY · Creator Cheat Sheet (section)
+  One-pager card: gradient hero, numbered steps, chips, tip boxes,
+  TikTok/image collage tiles, pull-quote examples, checklist strip, footer.
+  Every piece of content is a block (add/reorder/remove in the editor).
+  Block order builds the page top-to-bottom: a "Step" block starts a new
+  numbered column; chips/notes/tips/media that follow belong to that step.
+  Checklist items are collected into the strip at the bottom automatically.
+{%- endcomment -%}
+
+{%- liquid
+  assign uid = section.id | replace: '-', '' | replace: '_', ''
+  assign s = 'ccs-' | append: uid
+-%}
+
+<style>
+  #{{ s }}{
+    --grad: linear-gradient(135deg, {{ section.settings.gradient_1 }}, {{ section.settings.gradient_2 }});
+    --bg: {{ section.settings.bg }};
+    --card: {{ section.settings.card_bg }};
+    --ink: #12141c;
+    --ink-soft: #565b6b;
+    --tint: {{ section.settings.accent | color_modify: 'alpha', 0.05 }};
+    --tint-strong: {{ section.settings.accent | color_modify: 'alpha', 0.08 }};
+    --dash: #b7c0d9;
+    --blue: {{ section.settings.accent }};
+    box-sizing:border-box;
+    background: var(--bg);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+  }
+  #{{ s }} *, #{{ s }} *::before, #{{ s }} *::after{ box-sizing:border-box; }
+
+  #{{ s }} .ccs__page{ display:flex; justify-content:center; padding: {{ section.settings.pad_top }}px 16px {{ section.settings.pad_bottom }}px; }
+  #{{ s }} .ccs__card{
+    width:100%; max-width:720px; background:var(--card); border-radius:22px; overflow:hidden;
+    box-shadow: 0 24px 60px {{ section.settings.accent | color_modify: 'alpha', 0.14 }}, 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  /* ---- Hero ---- */
+  #{{ s }} .ccs__hero{ background:var(--grad); padding:46px 48px 40px; color:#fff; }
+  #{{ s }} .ccs__eyebrow-row{ display:flex; align-items:center; gap:10px; margin:0 0 20px; }
+  #{{ s }} .ccs__hero-logo{ height:16px; width:auto; display:block; }
+  #{{ s }} .ccs__hero-logo-text{ font-size:14px; font-weight:800; letter-spacing:.04em; color:#fff; }
+  #{{ s }} .ccs__eyebrow-divider{ color:#fff; opacity:.55; font-size:12px; }
+  #{{ s }} .ccs__eyebrow-label{ text-transform:uppercase; letter-spacing:.16em; font-size:12px; font-weight:700; opacity:.85; color:#fff; }
+  #{{ s }} .ccs__hero h1{ margin:0; font-size:46px; line-height:1.04; font-weight:800; letter-spacing:-0.01em; color:#fff; }
+  #{{ s }} .ccs__hero-sub{ margin:16px 0 0; font-size:17px; font-weight:500; opacity:.92; max-width:460px; }
+
+  /* ---- Placeholders ---- */
+  #{{ s }} .ccs__placeholder{ border:2px dashed var(--dash); border-radius:14px; background:var(--tint); }
+  #{{ s }} .ccs__placeholder-inner{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:34px 20px; text-align:center; }
+  #{{ s }} .ccs__placeholder-inner--small{ padding:22px 14px; }
+  #{{ s }} .ccs__placeholder-label{ font-size:12.5px; font-weight:800; letter-spacing:.09em; color:var(--blue); text-transform:uppercase; margin-top:4px; }
+  #{{ s }} .ccs__placeholder-note{ font-size:13.5px; color:var(--ink-soft); }
+  #{{ s }} .ccs__hero-visual{ margin:-22px 48px 0; position:relative; background:#fff; }
+  #{{ s }} .ccs__hero-visual--img{ border:0; border-radius:14px; overflow:hidden; box-shadow:0 12px 30px rgba(0,0,0,0.12); }
+  #{{ s }} .ccs__hero-visual--img img{ display:block; width:100%; height:auto; }
+
+  /* ---- Grid ---- */
+  #{{ s }} .ccs__grid{ display:grid; grid-template-columns:1fr; gap:46px; padding:44px 48px 8px; }
+  #{{ s }} .ccs__col{ display:flex; flex-direction:column; }
+  #{{ s }} .ccs__num{ width:42px; height:42px; border-radius:999px; background:var(--grad); color:#fff; font-weight:800; font-size:17px; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+  #{{ s }} .ccs__col h2{ margin:0 0 6px; font-size:30px; font-weight:800; letter-spacing:-0.01em; color:var(--ink); }
+  #{{ s }} .ccs__col-sub{ margin:0 0 20px; font-size:17px; font-weight:700; color:var(--blue); line-height:1.4; max-width:520px; }
+  #{{ s }} .ccs__list{ margin:0 0 20px; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:11px; }
+  #{{ s }} .ccs__list li{ font-size:14px; line-height:1.45; color:var(--ink); padding-left:16px; position:relative; }
+  #{{ s }} .ccs__list li::before{ content:""; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:999px; background:var(--grad); }
+
+  #{{ s }} .ccs__chip-row{ display:flex; flex-wrap:wrap; gap:7px; margin:0 0 14px; }
+  #{{ s }} .ccs__chip{ display:inline-flex; align-items:center; padding:9px 16px; border-radius:999px; background:var(--tint-strong); color:var(--blue); font-weight:700; font-size:15px; white-space:nowrap; }
+  #{{ s }} .ccs__col-note{ margin:0 0 24px; font-size:16px; color:var(--ink-soft); font-weight:600; line-height:1.45; }
+
+  #{{ s }} .ccs__tip-box{ background:var(--tint-strong); border-radius:12px; padding:16px 18px; margin:0 0 22px; }
+  #{{ s }} .ccs__tip-label{ display:block; font-size:11.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--blue); margin:0 0 6px; }
+  #{{ s }} .ccs__tip-text{ margin:0; font-size:15.5px; line-height:1.5; color:var(--ink); font-weight:600; }
+
+  #{{ s }} .ccs__collage{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 10px; }
+  #{{ s }} .ccs__collage-tile{ flex:1 1 190px; max-width:260px; border-radius:14px; overflow:hidden; background:#e9e9ee; }
+  #{{ s }} .ccs__collage-tile blockquote{ margin:0; padding:0; border:0; max-width:100% !important; min-width:0 !important; }
+  #{{ s }} .ccs__collage-img{ display:block; width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:14px; }
+  #{{ s }} .ccs__collage-caption{ margin:0 0 24px; font-size:13px; color:var(--ink-soft); font-weight:600; }
+
+  #{{ s }} .ccs__example-wrap{ margin:0 0 18px; display:flex; flex-direction:column; gap:12px; }
+  #{{ s }} .ccs__example{ margin:0; padding-left:16px; border-left:4px solid var(--blue); font-size:16.5px; font-style:italic; line-height:1.48; color:var(--ink); }
+  #{{ s }} .ccs__example-cap{ display:block; margin-top:6px; font-size:12.5px; font-style:normal; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft); }
+
+  /* ---- Check strip ---- */
+  #{{ s }} .ccs__check-strip{ margin:14px 48px 44px; background:var(--tint-strong); border-radius:14px; padding:24px 26px; }
+  #{{ s }} .ccs__check-title{ margin:0 0 16px; font-size:12px; font-weight:800; letter-spacing:.1em; color:var(--blue); text-transform:uppercase; }
+  #{{ s }} .ccs__check-grid{ display:grid; grid-template-columns:1fr; gap:16px; }
+  #{{ s }} .ccs__check-grid label{ display:flex; align-items:center; gap:12px; font-size:16.5px; font-weight:600; color:var(--ink); }
+  #{{ s }} .ccs__box{ width:19px; height:19px; border-radius:6px; border:2px solid var(--blue); flex-shrink:0; }
+
+  /* ---- Footer ---- */
+  #{{ s }} .ccs__foot{ background:{{ section.settings.foot_bg }}; padding:22px 48px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  #{{ s }} .ccs__foot-mark{ display:flex; align-items:center; gap:10px; }
+  #{{ s }} .ccs__foot-logo{ height:26px; width:auto; display:block; }
+  #{{ s }} .ccs__foot-logo-text{ font-size:16px; font-weight:800; letter-spacing:.03em; color:var(--blue); }
+  #{{ s }} .ccs__foot-meta{ color:var(--blue); opacity:.75; font-size:11px; letter-spacing:.06em; font-weight:600; text-transform:uppercase; }
+
+  @media (max-width:720px){
+    #{{ s }} .ccs__grid{ padding:36px 24px 8px; }
+    #{{ s }} .ccs__hero{ padding:36px 24px 32px; }
+    #{{ s }} .ccs__hero h1{ font-size:34px; }
+    #{{ s }} .ccs__hero-visual{ margin:-18px 24px 0; }
+    #{{ s }} .ccs__check-strip{ margin:14px 24px 36px; padding:20px; }
+    #{{ s }} .ccs__foot{ padding:20px 24px; }
+  }
+
+  @media print{
+    #{{ s }}{ background:#fff; }
+    #{{ s }} .ccs__page{ padding:0; }
+    #{{ s }} .ccs__card{ box-shadow:none; border-radius:0; max-width:100%; }
+  }
+</style>
+
+<div id="{{ s }}">
+  <div class="ccs__page">
+    <div class="ccs__card">
+
+      <header class="ccs__hero">
+        <div class="ccs__eyebrow-row">
+          {%- if section.settings.logo != blank -%}
+            <img class="ccs__hero-logo" src="{{ section.settings.logo | image_url: width: 400 }}" alt="{{ shop.name | escape }}" width="{{ section.settings.logo.width }}" height="{{ section.settings.logo.height }}" loading="lazy">
+          {%- else -%}
+            <span class="ccs__hero-logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="ccs__eyebrow-divider">·</span>
+            <span class="ccs__eyebrow-label">{{ section.settings.eyebrow }}</span>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.heading != blank -%}
+          <h1>{{ section.settings.heading | newline_to_br }}</h1>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <p class="ccs__hero-sub">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </header>
+
+      {%- if section.settings.hero_image != blank -%}
+        <div class="ccs__hero-visual ccs__hero-visual--img">
+          <img src="{{ section.settings.hero_image | image_url: width: 1600 }}" alt="{{ section.settings.hero_image.alt | escape }}" width="{{ section.settings.hero_image.width }}" height="{{ section.settings.hero_image.height }}" loading="lazy">
+        </div>
+      {%- elsif section.settings.show_hero_placeholder -%}
+        <div class="ccs__hero-visual ccs__placeholder">
+          <div class="ccs__placeholder-inner">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.accent }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5-4 4-3-3-6 6"/>
+            </svg>
+            <span class="ccs__placeholder-label">Visual placeholder</span>
+            <span class="ccs__placeholder-note">{{ section.settings.hero_placeholder_note }}</span>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- liquid
+        assign col_open = false
+        assign collage_open = false
+        assign has_tiktok = false
+        assign has_checklist = false
+      -%}
+      <div class="ccs__grid">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+
+            {%- when 'step' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              {%- if col_open %}</section>{% endif -%}
+              <section class="ccs__col" {{ block.shopify_attributes }}>
+              {%- assign col_open = true -%}
+                {%- if block.settings.number != blank -%}
+                  <div class="ccs__num">{{ block.settings.number }}</div>
+                {%- endif -%}
+                {%- if block.settings.heading != blank -%}
+                  <h2>{{ block.settings.heading }}</h2>
+                {%- endif -%}
+                {%- if block.settings.subheading != blank -%}
+                  <p class="ccs__col-sub">{{ block.settings.subheading }}</p>
+                {%- endif -%}
+
+            {%- when 'chips' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <div class="ccs__chip-row" {{ block.shopify_attributes }}>
+                {%- assign chips = block.settings.chips | newline_to_br | split: '<br />' | join: ',' | split: ',' -%}
+                {%- for chip in chips -%}
+                  {%- assign c = chip | strip -%}
+                  {%- if c != blank -%}<span class="ccs__chip">{{ c }}</span>{%- endif -%}
+                {%- endfor -%}
+              </div>
+
+            {%- when 'bullets' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <ul class="ccs__list" {{ block.shopify_attributes }}>
+                {%- assign lines = block.settings.items | strip | newline_to_br | split: '<br />' -%}
+                {%- for line in lines -%}
+                  {%- assign l = line | strip -%}
+                  {%- if l != blank -%}<li>{{ l }}</li>{%- endif -%}
+                {%- endfor -%}
+              </ul>
+
+            {%- when 'note' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <p class="ccs__col-note" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+
+            {%- when 'tip' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <div class="ccs__tip-box" {{ block.shopify_attributes }}>
+                {%- if block.settings.label != blank -%}
+                  <span class="ccs__tip-label">{{ block.settings.label }}</span>
+                {%- endif -%}
+                <p class="ccs__tip-text">{{ block.settings.text }}</p>
+              </div>
+
+            {%- when 'example' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <div class="ccs__example-wrap" {{ block.shopify_attributes }}>
+                <blockquote class="ccs__example">
+                  {{ block.settings.quote }}
+                  {%- if block.settings.caption != blank -%}
+                    <span class="ccs__example-cap">{{ block.settings.caption }}</span>
+                  {%- endif -%}
+                </blockquote>
+              </div>
+
+            {%- when 'tiktok' -%}
+              {%- unless collage_open %}<div class="ccs__collage">{% assign collage_open = true %}{% endunless -%}
+              {%- assign has_tiktok = true -%}
+              {%- assign vid = block.settings.url | split: '/video/' | last | split: '?' | first -%}
+              <div class="ccs__collage-tile" {{ block.shopify_attributes }}>
+                <blockquote class="tiktok-embed" cite="{{ block.settings.url }}" data-video-id="{{ vid }}" style="max-width:260px;min-width:0;">
+                  <section>
+                    <a target="_blank" rel="noopener" href="{{ block.settings.url }}">
+                      {%- if block.settings.cover != blank -%}
+                        <img class="ccs__collage-img" src="{{ block.settings.cover | image_url: width: 520 }}" alt="" width="{{ block.settings.cover.width }}" height="{{ block.settings.cover.height }}" loading="lazy">
+                      {%- else -%}
+                        View on TikTok
+                      {%- endif -%}
+                    </a>
+                  </section>
+                </blockquote>
+              </div>
+
+            {%- when 'image' -%}
+              {%- unless collage_open %}<div class="ccs__collage">{% assign collage_open = true %}{% endunless -%}
+              <div class="ccs__collage-tile" {{ block.shopify_attributes }}>
+                {%- if block.settings.image != blank -%}
+                  <img class="ccs__collage-img" src="{{ block.settings.image | image_url: width: 520 }}" alt="{{ block.settings.image.alt | escape }}" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}" loading="lazy">
+                {%- else -%}
+                  <div class="ccs__placeholder" style="border-radius:14px;">
+                    <div class="ccs__placeholder-inner ccs__placeholder-inner--small">
+                      <span class="ccs__placeholder-label">Image</span>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+
+            {%- when 'caption' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <p class="ccs__collage-caption" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+
+            {%- when 'placeholder' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <div class="ccs__placeholder" style="margin:0 0 22px;" {{ block.shopify_attributes }}>
+                <div class="ccs__placeholder-inner ccs__placeholder-inner--small">
+                  <span class="ccs__placeholder-label">{{ block.settings.label }}</span>
+                  {%- if block.settings.note != blank -%}
+                    <span class="ccs__placeholder-note">{{ block.settings.note }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+
+            {%- when 'checklist_item' -%}
+              {%- assign has_checklist = true -%}
+
+          {%- endcase -%}
+        {%- endfor -%}
+        {%- if collage_open %}</div>{% endif -%}
+        {%- if col_open %}</section>{% endif -%}
+      </div>
+
+      {%- if has_checklist -%}
+        <div class="ccs__check-strip">
+          {%- if section.settings.check_title != blank -%}
+            <p class="ccs__check-title">{{ section.settings.check_title }}</p>
+          {%- endif -%}
+          <div class="ccs__check-grid">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'checklist_item' -%}
+                <label {{ block.shopify_attributes }}><span class="ccs__box"></span>{{ block.settings.text }}</label>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_footer -%}
+        <div class="ccs__foot">
+          <div class="ccs__foot-mark">
+            {%- if section.settings.foot_logo != blank -%}
+              <img class="ccs__foot-logo" src="{{ section.settings.foot_logo | image_url: width: 300 }}" alt="{{ shop.name | escape }}" width="{{ section.settings.foot_logo.width }}" height="{{ section.settings.foot_logo.height }}" loading="lazy">
+            {%- else -%}
+              <span class="ccs__foot-logo-text">{{ shop.name }}</span>
+            {%- endif -%}
+          </div>
+          {%- if section.settings.foot_meta != blank -%}
+            <span class="ccs__foot-meta">{{ section.settings.foot_meta }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+{%- if has_tiktok -%}
+  <script async src="https://www.tiktok.com/embed.js"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Creator Cheat Sheet",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "logo", "label": "Logo (white version)", "info": "Shown at 16px tall next to the eyebrow. Falls back to store name text." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow label", "default": "Creator Cheat Sheet" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Line breaks are kept.", "default": "3 things.\nEvery video." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Miss one of these and the video doesn't get watched." },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero visual", "info": "Recommended 1600×420. Leave blank to show a dashed placeholder." },
+    { "type": "checkbox", "id": "show_hero_placeholder", "label": "Show placeholder when no hero visual", "default": true },
+    { "type": "text", "id": "hero_placeholder_note", "label": "Placeholder note", "default": "hero frame \/ example thumbnail row — 1600×420" },
+    { "type": "header", "content": "Checklist strip" },
+    { "type": "text", "id": "check_title", "label": "Checklist title", "default": "Before you post" },
+    { "type": "header", "content": "Footer" },
+    { "type": "checkbox", "id": "show_footer", "label": "Show footer", "default": true },
+    { "type": "image_picker", "id": "foot_logo", "label": "Footer logo", "info": "Falls back to store name text." },
+    { "type": "text", "id": "foot_meta", "label": "Footer meta text", "default": "Creator Cheat Sheet" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "gradient_1", "label": "Gradient start", "default": "#0f2ed0" },
+    { "type": "color", "id": "gradient_2", "label": "Gradient end", "default": "#0a95ef" },
+    { "type": "color", "id": "accent", "label": "Accent blue", "default": "#0f2ed0" },
+    { "type": "color", "id": "bg", "label": "Page background", "default": "#f2f2f2" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "foot_bg", "label": "Footer background", "default": "#f2eeea" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "pad_top", "label": "Top padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "pad_bottom", "label": "Bottom padding", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step (numbered heading)",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "01" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Step heading" },
+        { "type": "text", "id": "subheading", "label": "Subheading (blue)", "default": "One-line summary of the step." }
+      ]
+    },
+    {
+      "type": "chips",
+      "name": "Chip row",
+      "settings": [
+        { "type": "textarea", "id": "chips", "label": "Chips", "info": "Separate with commas or new lines.", "default": "Surprised, Shock, Rage" }
+      ]
+    },
+    {
+      "type": "bullets",
+      "name": "Bullet list",
+      "settings": [
+        { "type": "textarea", "id": "items", "label": "Items", "info": "One bullet per line.", "default": "First point\nSecond point" }
+      ]
+    },
+    {
+      "type": "note",
+      "name": "Note line",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "A short supporting note." }
+      ]
+    },
+    {
+      "type": "tip",
+      "name": "Tip box",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Try this" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "A practical tip for the creator." }
+      ]
+    },
+    {
+      "type": "example",
+      "name": "Example quote",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote", "default": "“An example line a creator could say.”" },
+        { "type": "text", "id": "caption", "label": "Caption", "default": "Example hook" }
+      ]
+    },
+    {
+      "type": "tiktok",
+      "name": "TikTok video tile",
+      "settings": [
+        { "type": "url", "id": "url", "label": "TikTok video URL" },
+        { "type": "image_picker", "id": "cover", "label": "Cover image (fallback)", "info": "Shown while the embed loads. 9:16 recommended." }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image tile",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "9:16 crop." }
+      ]
+    },
+    {
+      "type": "caption",
+      "name": "Collage caption",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Reference examples — match this energy." }
+      ]
+    },
+    {
+      "type": "placeholder",
+      "name": "Visual placeholder",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Visual placeholder" },
+        { "type": "text", "id": "note", "label": "Note", "default": "example frame goes here" }
+      ]
+    },
+    {
+      "type": "checklist_item",
+      "name": "Checklist item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Checklist item" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creator Cheat Sheet",
+      "blocks": [
+        { "type": "step", "settings": { "number": "01", "heading": "Emotion", "subheading": "Pick ONE. Perform it — she's buying the feeling, not the facts." } },
+        { "type": "chips", "settings": { "chips": "Surprised, Shock, Rage, Frustration, Sadness, Relief, Confused, Excitement, Discovery, The “Aha”" } },
+        { "type": "note", "settings": { "text": "Decide before you hit record. One emotion — not a blend." } },
+        { "type": "tip", "settings": { "label": "Try this", "text": "Ask a friend to watch with the sound off. If they can name the emotion right away, it worked. If they're not sure, there wasn't enough emotion." } },
+        { "type": "step", "settings": { "number": "02", "heading": "Step 2 heading", "subheading": "Fill in the second thing every video needs." } },
+        { "type": "step", "settings": { "number": "03", "heading": "Step 3 heading", "subheading": "Fill in the third thing every video needs." } },
+        { "type": "checklist_item", "settings": { "text": "Checklist item 1" } },
+        { "type": "checklist_item", "settings": { "text": "Checklist item 2" } },
+        { "type": "checklist_item", "settings": { "text": "Checklist item 3" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
