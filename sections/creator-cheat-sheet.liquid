@@ -77,9 +77,14 @@
 
   #{{ s }} .ccs__collage{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 10px; }
   #{{ s }} .ccs__collage-tile{ flex:1 1 190px; max-width:260px; border-radius:14px; overflow:hidden; background:#e9e9ee; }
-  #{{ s }} .ccs__collage-tile blockquote{ margin:0; padding:0; border:0; max-width:100% !important; min-width:0 !important; }
   #{{ s }} .ccs__collage-img{ display:block; width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:14px; }
   #{{ s }} .ccs__collage-caption{ margin:0 0 24px; font-size:13px; color:var(--ink-soft); font-weight:600; }
+
+  #{{ s }} .ccs__vrow{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; margin:0 0 12px; width:100%; }
+  #{{ s }} .ccs__vtile{ position:relative; display:block; aspect-ratio:9/16; border-radius:12px; overflow:hidden; background:#e9e9ee; }
+  #{{ s }} .ccs__vtile video, #{{ s }} .ccs__vtile img{ width:100%; height:100%; object-fit:cover; display:block; }
+  #{{ s }} a.ccs__vtile{ cursor:pointer; }
+  #{{ s }} a.ccs__vtile::after{ content:""; position:absolute; inset:0; }
 
   #{{ s }} .ccs__example-wrap{ margin:0 0 18px; display:flex; flex-direction:column; gap:12px; }
   #{{ s }} .ccs__example{ margin:0; padding-left:16px; border-left:4px solid var(--blue); font-size:16.5px; font-style:italic; line-height:1.48; color:var(--ink); }
@@ -100,6 +105,7 @@
   #{{ s }} .ccs__foot-meta{ color:var(--blue); opacity:.75; font-size:11px; letter-spacing:.06em; font-weight:600; text-transform:uppercase; }
 
   @media (max-width:720px){
+    #{{ s }} .ccs__vrow{ gap:7px; }
     #{{ s }} .ccs__grid{ padding:36px 24px 8px; }
     #{{ s }} .ccs__hero{ padding:36px 24px 32px; }
     #{{ s }} .ccs__hero h1{ font-size:34px; }
@@ -158,7 +164,6 @@
       {%- liquid
         assign col_open = false
         assign collage_open = false
-        assign has_tiktok = false
         assign has_checklist = false
       -%}
       <div class="ccs__grid">
@@ -224,22 +229,32 @@
                 </blockquote>
               </div>
 
-            {%- when 'tiktok' -%}
-              {%- unless collage_open %}<div class="ccs__collage">{% assign collage_open = true %}{% endunless -%}
-              {%- assign has_tiktok = true -%}
-              {%- assign vid = block.settings.url | split: '/video/' | last | split: '?' | first -%}
-              <div class="ccs__collage-tile" {{ block.shopify_attributes }}>
-                <blockquote class="tiktok-embed" cite="{{ block.settings.url }}" data-video-id="{{ vid }}" style="max-width:260px;min-width:0;">
-                  <section>
-                    <a target="_blank" rel="noopener" href="{{ block.settings.url }}">
-                      {%- if block.settings.cover != blank -%}
-                        <img class="ccs__collage-img" src="{{ block.settings.cover | image_url: width: 520 }}" alt="" width="{{ block.settings.cover.width }}" height="{{ block.settings.cover.height }}" loading="lazy">
-                      {%- else -%}
-                        View on TikTok
-                      {%- endif -%}
-                    </a>
-                  </section>
-                </blockquote>
+            {%- when 'videos' -%}
+              {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
+              <div class="ccs__vrow" {{ block.shopify_attributes }}>
+                {%- for i in (1..3) -%}
+                  {%- assign vid_key = 'video_' | append: i -%}
+                  {%- assign link_key = 'link_' | append: i -%}
+                  {%- assign vid = block.settings[vid_key] -%}
+                  {%- assign link = block.settings[link_key] -%}
+                  {%- if vid != blank -%}
+                    {%- if link != blank -%}
+                      <a class="ccs__vtile" href="{{ link }}" target="_blank" rel="noopener" aria-label="Watch on TikTok or Instagram">
+                        {{ vid | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                      </a>
+                    {%- else -%}
+                      <div class="ccs__vtile">
+                        {{ vid | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                      </div>
+                    {%- endif -%}
+                  {%- else -%}
+                    <div class="ccs__vtile ccs__placeholder" style="border-radius:12px;">
+                      <div class="ccs__placeholder-inner ccs__placeholder-inner--small" style="height:100%;">
+                        <span class="ccs__placeholder-label">Video {{ i }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
               </div>
 
             {%- when 'image' -%}
@@ -313,10 +328,6 @@
     </div>
   </div>
 </div>
-
-{%- if has_tiktok -%}
-  <script async src="https://www.tiktok.com/embed.js"></script>
-{%- endif -%}
 
 {% schema %}
 {
@@ -396,11 +407,19 @@
       ]
     },
     {
-      "type": "tiktok",
-      "name": "TikTok video tile",
+      "type": "videos",
+      "name": "Video row (3 videos)",
       "settings": [
-        { "type": "url", "id": "url", "label": "TikTok video URL" },
-        { "type": "image_picker", "id": "cover", "label": "Cover image (fallback)", "info": "Shown while the embed loads. 9:16 recommended." }
+        { "type": "paragraph", "content": "Upload MP4s (9:16). Each plays muted on loop with no controls, and clicks through to its TikTok\/Instagram link. Always 3 in a row, including mobile." },
+        { "type": "header", "content": "Video 1" },
+        { "type": "video", "id": "video_1", "label": "Video file" },
+        { "type": "url", "id": "link_1", "label": "Link to TikTok\/IG post" },
+        { "type": "header", "content": "Video 2" },
+        { "type": "video", "id": "video_2", "label": "Video file" },
+        { "type": "url", "id": "link_2", "label": "Link to TikTok\/IG post" },
+        { "type": "header", "content": "Video 3" },
+        { "type": "video", "id": "video_3", "label": "Video file" },
+        { "type": "url", "id": "link_3", "label": "Link to TikTok\/IG post" }
       ]
     },
     {
