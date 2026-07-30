@@ -229,6 +229,23 @@
                 </blockquote>
               </div>
 
+            {%- when 'tiktok' -%}
+              {%- unless collage_open %}<div class="ccs__collage">{% assign collage_open = true %}{% endunless -%}
+              <div class="ccs__collage-tile" {{ block.shopify_attributes }}>
+                <a target="_blank" rel="noopener" href="{{ block.settings.url }}" aria-label="Watch on TikTok">
+                  {%- if block.settings.cover != blank -%}
+                    <img class="ccs__collage-img" src="{{ block.settings.cover | image_url: width: 520 }}" alt="" width="{{ block.settings.cover.width }}" height="{{ block.settings.cover.height }}" loading="lazy">
+                  {%- else -%}
+                    <div class="ccs__placeholder" style="border-radius:14px;">
+                      <div class="ccs__placeholder-inner ccs__placeholder-inner--small">
+                        <span class="ccs__placeholder-label">TikTok</span>
+                        <span class="ccs__placeholder-note">add a cover image, or replace with a Video row block</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </a>
+              </div>
+
             {%- when 'videos' -%}
               {%- if collage_open %}</div>{% assign collage_open = false %}{% endif -%}
               <div class="ccs__vrow" {{ block.shopify_attributes }}>
@@ -404,6 +421,15 @@
       "settings": [
         { "type": "textarea", "id": "quote", "label": "Quote", "default": "“An example line a creator could say.”" },
         { "type": "text", "id": "caption", "label": "Caption", "default": "Example hook" }
+      ]
+    },
+    {
+      "type": "tiktok",
+      "name": "TikTok link tile (legacy)",
+      "settings": [
+        { "type": "paragraph", "content": "Old block — prefer the 'Video row (3 videos)' block. This renders a small cover image that links to the post (no embed)." },
+        { "type": "url", "id": "url", "label": "TikTok video URL" },
+        { "type": "image_picker", "id": "cover", "label": "Cover image", "info": "9:16 recommended." }
       ]
     },
     {
