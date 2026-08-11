@@ -1,0 +1,181 @@
+/* Top sticky add-to-cart bar — drops down from under the header
+   once the primary product CTA has scrolled off the top of the screen. */
+
+.product-sticky-bar {
+  position: fixed;
+  top: var(--psb-top, 0px);
+  left: 0;
+  right: 0;
+  /* Under the header (z-index 50) so it reads as dropping out from behind it,
+     and under the drawers (z-index 90). */
+  z-index: 45;
+  display: block;
+  background: var(--psb-bg, #ffffff);
+  color: var(--psb-text, #16181a);
+  border-bottom: 1px solid var(--psb-border, #e3e5e8);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.28s cubic-bezier(0.16, 0.84, 0.44, 1), opacity 0.18s linear, visibility 0s linear 0.28s;
+}
+
+.product-sticky-bar[hidden] {
+  display: none;
+}
+
+.product-sticky-bar.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 0.28s cubic-bezier(0.16, 0.84, 0.44, 1), opacity 0.18s linear, visibility 0s linear 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-sticky-bar {
+    transition: opacity 0.15s linear, visibility 0s linear 0.15s;
+    transform: none;
+  }
+  .product-sticky-bar.is-visible {
+    transition: opacity 0.15s linear;
+    transform: none;
+  }
+}
+
+.product-sticky-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 50px;
+  max-width: var(--psb-max-width, 100%);
+  margin: 0 auto;
+}
+
+.product-sticky-bar__info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.product-sticky-bar__title {
+  font-size: var(--psb-title-size, 19px);
+  line-height: 1.2;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-sticky-bar__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--psb-badge-bg, #eef7e6);
+  color: var(--psb-badge-text, #2f7a1f);
+  font-size: 13px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.product-sticky-bar__badge-icon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+}
+
+.product-sticky-bar__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  border: 0;
+  cursor: pointer;
+  padding: 14px 34px;
+  border-radius: 999px;
+  background: var(--psb-button-bg, #16181a);
+  color: var(--psb-button-text, #ffffff);
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 500;
+  transition: opacity 0.15s ease;
+}
+.product-sticky-bar__button:hover {
+  opacity: 0.88;
+}
+.product-sticky-bar__button:focus-visible {
+  outline: 2px solid var(--psb-button-bg, #16181a);
+  outline-offset: 2px;
+}
+.product-sticky-bar__button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Price inside the button — inherit the button's colour, sale price first. */
+.product-sticky-bar__price {
+  display: inline-flex;
+  align-items: baseline;
+}
+.product-sticky-bar__price .price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  color: inherit;
+  font-size: inherit;
+}
+.product-sticky-bar__price ins {
+  order: 1;
+  text-decoration: none;
+  color: inherit;
+}
+.product-sticky-bar__price del {
+  order: 2;
+  opacity: 0.6;
+  text-decoration: line-through;
+  color: inherit;
+}
+.product-sticky-bar__price .unit-price,
+.product-sticky-bar__price .price--badges,
+.product-sticky-bar__price .badge {
+  display: none !important;
+}
+
+/* Sits above the fixed bar so it never covers content permanently. */
+.product-sticky-bar__button-label {
+  white-space: nowrap;
+}
+
+@media only screen and (max-width: 1067px) {
+  .product-sticky-bar__inner {
+    padding: 10px 15px;
+    gap: 10px;
+  }
+  .product-sticky-bar__title {
+    font-size: 15px;
+  }
+  .product-sticky-bar__badge {
+    display: none;
+  }
+  .product-sticky-bar__button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .product-sticky-bar__title {
+    font-size: 14px;
+  }
+  .product-sticky-bar__button {
+    padding: 11px 16px;
+    font-size: 13px;
+    gap: 6px;
+  }
+}

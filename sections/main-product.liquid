@@ -120,6 +120,10 @@
 </div>
 <div class="side-panel side-availability" id="Pickup-Availability"></div>
 
+{%- if section.settings.enable_top_sticky_bar -%}
+	{%- render 'product-sticky-bar', product: product, section: section -%}
+{%- endif -%}
+
 {%- assign side_panels = section.blocks | where: "type", "side_panel" -%}
 {%- if side_panels.size > 0 -%}
 <div class="side-panel product-information-drawer" id="Product-Information-Drawer" tabindex="-1">
@@ -229,6 +233,24 @@
 			"default": true,
 			"label": "Show sticky add to cart"
 		},
+		{ "type": "header", "content": "Top sticky bar", "info": "A slim bar that drops down from under the menu once the main add-to-cart button has scrolled off the top of the screen. It hides again as soon as that button is back on screen." },
+		{ "type": "checkbox", "id": "enable_top_sticky_bar", "label": "Show top sticky bar", "default": true },
+		{ "type": "text", "id": "top_bar_title", "label": "Title", "info": "Leave blank to use the product title." },
+		{ "type": "text", "id": "top_bar_button_label", "label": "Button label", "default": "Add to Cart" },
+		{ "type": "checkbox", "id": "top_bar_show_price", "label": "Show price in the button", "default": true },
+		{ "type": "checkbox", "id": "top_bar_show_badge", "label": "Show badge next to the title", "default": true },
+		{ "type": "text", "id": "top_bar_badge_text", "label": "Badge text", "info": "e.g. a stock or dispatch line. Leave blank to hide the badge." },
+		{ "type": "header", "content": "Top sticky bar — colours" },
+		{ "type": "color", "id": "top_bar_bg", "label": "Bar background", "default": "#ffffff" },
+		{ "type": "color", "id": "top_bar_text_color", "label": "Title colour", "default": "#16181a" },
+		{ "type": "color", "id": "top_bar_border_color", "label": "Bottom border", "default": "#e3e5e8" },
+		{ "type": "color", "id": "top_bar_button_bg", "label": "Button background", "default": "#16181a" },
+		{ "type": "color", "id": "top_bar_button_text_color", "label": "Button text", "default": "#ffffff" },
+		{ "type": "color", "id": "top_bar_badge_bg", "label": "Badge background", "default": "#eef7e6" },
+		{ "type": "color", "id": "top_bar_badge_color", "label": "Badge text colour", "default": "#2f7a1f" },
+		{ "type": "header", "content": "Top sticky bar — advanced" },
+		{ "type": "text", "id": "top_bar_target", "label": "Button to watch (CSS selector)", "info": "Leave blank to auto-detect the main add-to-cart / plan-selector button. The bar's button clicks whatever this matches, so plan and subscription choices carry over." },
+		{ "type": "text", "id": "top_bar_scope", "label": "Look inside (CSS selector)", "default": ".product-information", "info": "Limits the search above to the product information column." },
 		{
 			"type": "checkbox",
 			"id": "show_taxes_included",

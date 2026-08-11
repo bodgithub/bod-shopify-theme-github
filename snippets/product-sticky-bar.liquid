@@ -1,0 +1,54 @@
+{%- comment -%}
+  Top sticky bar — drops down from under the header once the primary
+  product CTA has scrolled off the top of the screen, and hides again
+  as soon as that CTA is back on screen.
+
+  Accepts: product, section
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign target_selector = s.top_bar_target | strip
+  if target_selector == blank
+    assign target_selector = '#AddToCart, [data-ps1-submit], [data-ps-submit], .ps-cta, .single-add-to-cart-button'
+  endif
+-%}
+{{- 'product-sticky-bar.css' | asset_url | stylesheet_tag -}}
+<product-sticky-bar
+  class="product-sticky-bar no-js-hidden"
+  data-section="{{ section.id }}"
+  data-target="{{ target_selector | escape }}"
+  data-scope="{{ s.top_bar_scope | default: '.product-information' | escape }}"
+  style="--psb-bg: {{ s.top_bar_bg }};--psb-text: {{ s.top_bar_text_color }};--psb-border: {{ s.top_bar_border_color }};--psb-button-bg: {{ s.top_bar_button_bg }};--psb-button-text: {{ s.top_bar_button_text_color }};--psb-badge-bg: {{ s.top_bar_badge_bg }};--psb-badge-text: {{ s.top_bar_badge_color }};"
+  hidden
+>
+  <div class="product-sticky-bar__inner">
+    <div class="product-sticky-bar__info">
+      <span class="product-sticky-bar__title">{{ s.top_bar_title | default: product.title }}</span>
+      {%- if s.top_bar_show_badge and s.top_bar_badge_text != blank -%}
+        <span class="product-sticky-bar__badge">
+          <svg class="product-sticky-bar__badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M1 4h11v11H1z"/>
+            <path d="M12 8h4.5L21 12v3h-9"/>
+            <circle cx="6" cy="18" r="2"/>
+            <circle cx="17" cy="18" r="2"/>
+          </svg>
+          <span>{{ s.top_bar_badge_text }}</span>
+        </span>
+      {%- endif -%}
+    </div>
+    <button
+      type="button"
+      class="product-sticky-bar__button"
+      data-psb-cta
+      aria-label="{{ s.top_bar_button_label | default: 'Add to Cart' | escape }}"
+    >
+      <span class="product-sticky-bar__button-label">{{ s.top_bar_button_label | default: 'Add to Cart' }}</span>
+      {%- if s.top_bar_show_price -%}
+        <span class="product-sticky-bar__price" id="price-{{ section.id }}--stickybar" data-psb-price>
+          {%- render 'product-price', product: product, use_variant: true, show_badges: false -%}
+        </span>
+      {%- endif -%}
+    </button>
+  </div>
+</product-sticky-bar>
+<script src="{{ 'product-sticky-bar.js' | asset_url }}" defer="defer"></script>
