@@ -277,6 +277,58 @@
       </details>
     </collapsible-row>
     {%- endif -%}
+  {%- when 'comparison_table' -%}
+    {%- if block.settings.heading != blank -%}
+    {{- 'product-comparison-table.css' | asset_url | stylesheet_tag -}}
+    <collapsible-row
+      class="product__accordion accordion product-compare{% if block.settings.highlight_us %} product-compare--highlight{% endif %}"
+      style="--compare-yes-color: {{ block.settings.yes_color }};--compare-no-color: {{ block.settings.no_color }};--compare-border: {{ block.settings.border_color }};--compare-bg: {{ block.settings.card_bg }};--compare-highlight-bg: {{ block.settings.highlight_bg }};"
+      {{ block.shopify_attributes }}
+    >
+      <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
+        <summary>
+          {{ block.settings.heading }}
+          <span></span>
+        </summary>
+        <div class="collapsible__content accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+          {%- if block.settings.intro != blank -%}
+            <div class="product-compare__intro">{{ block.settings.intro }}</div>
+          {%- endif -%}
+          <div class="product-compare__card">
+            <table class="product-compare__table">
+              <thead>
+                <tr>
+                  <th class="product-compare__label" scope="col"><span class="visually-hidden">{{ block.settings.row_col_label | default: 'Feature' }}</span></th>
+                  <th class="product-compare__col-us" scope="col">{{ block.settings.col_us_label }}</th>
+                  <th class="product-compare__col-them" scope="col">{{ block.settings.col_them_label }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for i in (1..10) -%}
+                  {%- liquid
+                    assign label_key = 'r' | append: i | append: '_label'
+                    assign us_key = 'r' | append: i | append: '_us'
+                    assign them_key = 'r' | append: i | append: '_them'
+                    assign row_label = block.settings[label_key]
+                  -%}
+                  {%- if row_label != blank -%}
+                    <tr>
+                      <th class="product-compare__label" scope="row">{{ row_label }}</th>
+                      <td class="product-compare__col-us">{%- render 'product-compare-cell', value: block.settings[us_key] -%}</td>
+                      <td class="product-compare__col-them">{%- render 'product-compare-cell', value: block.settings[them_key] -%}</td>
+                    </tr>
+                  {%- endif -%}
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+          {%- if block.settings.footnote != blank -%}
+            <div class="product-compare__footnote">{{ block.settings.footnote }}</div>
+          {%- endif -%}
+        </div>
+      </details>
+    </collapsible-row>
+    {%- endif -%}
   {%- when 'complementary' -%}
     <product-recommendations class="complementary-products no-js-hidden" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit={{ block.settings.product_list_limit }}&intent=complementary">
       {%- if recommendations.performed and recommendations.products_count > 0 -%}

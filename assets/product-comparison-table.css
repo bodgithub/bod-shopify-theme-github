@@ -1,0 +1,131 @@
+/* Comparison table block — Product information section
+   Renders inside the standard product accordion (.accordion) so it matches
+   the other collapsible rows. */
+
+.product-compare__intro {
+  margin: 0 0 16px;
+}
+.product-compare__intro > *:last-child {
+  margin-bottom: 0;
+}
+
+.product-compare__card {
+  border: 1px solid var(--compare-border, #e3e5e8);
+  border-radius: var(--compare-radius, 10px);
+  background: var(--compare-bg, #ffffff);
+  overflow: hidden;
+}
+
+.product-compare__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0;
+  font-size: var(--compare-font-size, 14px);
+  line-height: 1.35;
+}
+
+.product-compare__table th,
+.product-compare__table td {
+  border: 0;
+  padding: 14px 12px;
+  vertical-align: middle;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Row label column */
+.product-compare__table th.product-compare__label,
+.product-compare__table td.product-compare__label {
+  text-align: left;
+  width: 46%;
+  padding-left: 18px;
+  font-weight: 400;
+  color: var(--compare-label-color, #1a1c1d);
+}
+
+/* Header row */
+.product-compare__table thead th {
+  width: 27%;
+  font-weight: 600;
+  font-size: var(--compare-head-size, 15px);
+  color: var(--compare-head-color, #1a1c1d);
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--compare-border, #e3e5e8);
+}
+.product-compare__table thead th.product-compare__label {
+  font-weight: 600;
+}
+
+/* Body rows */
+.product-compare__table tbody tr + tr th,
+.product-compare__table tbody tr + tr td {
+  border-top: 1px solid var(--compare-border, #e3e5e8);
+}
+
+.product-compare__table tbody td {
+  color: var(--compare-value-color, #42474c);
+}
+
+.product-compare__value {
+  display: inline-block;
+}
+
+/* Icons */
+.product-compare__icon {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+.product-compare__icon--yes .product-compare__icon-bg {
+  fill: var(--compare-yes-color, #1b3def);
+  stroke: none;
+}
+.product-compare__icon--yes .product-compare__icon-mark {
+  stroke: var(--compare-yes-mark, #ffffff);
+}
+.product-compare__icon--no .product-compare__icon-bg {
+  fill: none;
+  stroke: var(--compare-no-color, #b9bdc2);
+}
+.product-compare__icon--no .product-compare__icon-mark {
+  stroke: var(--compare-no-color, #b9bdc2);
+}
+
+.product-compare__footnote {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--compare-footnote-color, #6b7076);
+}
+.product-compare__footnote > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Highlight the "us" column */
+.product-compare--highlight .product-compare__table th.product-compare__col-us,
+.product-compare--highlight .product-compare__table td.product-compare__col-us {
+  background: var(--compare-highlight-bg, #f4f6ff);
+}
+
+@media screen and (max-width: 480px) {
+  .product-compare__table {
+    font-size: var(--compare-font-size-mobile, 13px);
+  }
+  .product-compare__table th,
+  .product-compare__table td {
+    padding: 12px 6px;
+  }
+  .product-compare__table th.product-compare__label,
+  .product-compare__table td.product-compare__label {
+    width: 44%;
+    padding-left: 12px;
+  }
+  .product-compare__icon {
+    width: 20px;
+    height: 20px;
+  }
+}

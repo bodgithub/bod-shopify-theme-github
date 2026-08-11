@@ -1,0 +1,24 @@
+{%- comment -%}
+  Renders one cell of the product comparison table.
+  Accepts: value (string). "yes/y/true/tick/check" -> tick icon,
+  "no/n/false/x/cross/-" -> cross icon, anything else -> plain text.
+{%- endcomment -%}
+{%- liquid
+  assign compare_value = value | strip
+  assign compare_key = compare_value | downcase
+  assign compare_yes = 'yes,y,true,tick,check,✓,✔' | split: ','
+  assign compare_no = 'no,n,false,x,cross,✗,✘,-' | split: ','
+-%}
+{%- if compare_yes contains compare_key -%}
+  <svg class="product-compare__icon product-compare__icon--yes" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ 'Yes' }}" focusable="false">
+    <circle class="product-compare__icon-bg" cx="12" cy="12" r="11"/>
+    <path class="product-compare__icon-mark" d="M7 12.4L10.4 15.8L17 9.2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+{%- elsif compare_no contains compare_key -%}
+  <svg class="product-compare__icon product-compare__icon--no" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="{{ 'No' }}" focusable="false">
+    <circle class="product-compare__icon-bg" cx="12" cy="12" r="11" stroke-width="1.4"/>
+    <path class="product-compare__icon-mark" d="M8.6 8.6L15.4 15.4M15.4 8.6L8.6 15.4" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>
+{%- elsif compare_value != blank -%}
+  <span class="product-compare__value">{{ compare_value }}</span>
+{%- endif -%}

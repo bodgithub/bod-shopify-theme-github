@@ -2240,6 +2240,62 @@
         }
       ]
     },
+    {
+      "type": "comparison_table",
+      "name": "Collapsible row — comparison table",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Compare to market leaders", "info": "Leave blank to hide the whole row." },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false },
+        { "type": "richtext", "id": "intro", "label": "Intro text", "default": "<p>How Bodology compares on the things that actually change what you're taking.</p>" },
+
+        { "type": "header", "content": "Columns" },
+        { "type": "text", "id": "col_us_label", "label": "Left column heading", "default": "Us" },
+        { "type": "text", "id": "col_them_label", "label": "Right column heading", "default": "Them" },
+        { "type": "checkbox", "id": "highlight_us", "label": "Tint the \"Us\" column", "default": false },
+
+        { "type": "header", "content": "Rows", "info": "One row per line item. A row is hidden if its label is empty. In the Us / Them fields type yes for a tick, no for a cross, or any other text (e.g. High, Low, 40:1) to show that text instead." },
+        { "type": "text", "id": "r1_label", "label": "Row 1 label", "default": "Third-party tested, every batch" },
+        { "type": "text", "id": "r1_us", "label": "Row 1 — Us", "default": "yes" },
+        { "type": "text", "id": "r1_them", "label": "Row 1 — Them", "default": "no" },
+        { "type": "text", "id": "r2_label", "label": "Row 2 label", "default": "Myo : D-Chiro ratio" },
+        { "type": "text", "id": "r2_us", "label": "Row 2 — Us", "default": "40:1" },
+        { "type": "text", "id": "r2_them", "label": "Row 2 — Them", "default": "Varies" },
+        { "type": "text", "id": "r3_label", "label": "Row 3 label", "default": "D-Chiro-Inositol from carob" },
+        { "type": "text", "id": "r3_us", "label": "Row 3 — Us", "default": "yes" },
+        { "type": "text", "id": "r3_them", "label": "Row 3 — Them", "default": "no" },
+        { "type": "text", "id": "r4_label", "label": "Row 4 label", "default": "Fillers, flavours, sweeteners" },
+        { "type": "text", "id": "r4_us", "label": "Row 4 — Us", "default": "no" },
+        { "type": "text", "id": "r4_them", "label": "Row 4 — Them", "default": "yes" },
+        { "type": "text", "id": "r5_label", "label": "Row 5 label", "default": "Made in the USA, GMP facility" },
+        { "type": "text", "id": "r5_us", "label": "Row 5 — Us", "default": "yes" },
+        { "type": "text", "id": "r5_them", "label": "Row 5 — Them", "default": "no" },
+        { "type": "text", "id": "r6_label", "label": "Row 6 label", "default": "Vegan, gluten-free, non-GMO" },
+        { "type": "text", "id": "r6_us", "label": "Row 6 — Us", "default": "yes" },
+        { "type": "text", "id": "r6_them", "label": "Row 6 — Them", "default": "no" },
+        { "type": "text", "id": "r7_label", "label": "Row 7 label", "default": "Unflavoured — mixes into anything" },
+        { "type": "text", "id": "r7_us", "label": "Row 7 — Us", "default": "yes" },
+        { "type": "text", "id": "r7_them", "label": "Row 7 — Them", "default": "no" },
+        { "type": "text", "id": "r8_label", "label": "Row 8 label", "default": "Expert reviewed" },
+        { "type": "text", "id": "r8_us", "label": "Row 8 — Us", "default": "yes" },
+        { "type": "text", "id": "r8_them", "label": "Row 8 — Them", "default": "no" },
+        { "type": "text", "id": "r9_label", "label": "Row 9 label" },
+        { "type": "text", "id": "r9_us", "label": "Row 9 — Us" },
+        { "type": "text", "id": "r9_them", "label": "Row 9 — Them" },
+        { "type": "text", "id": "r10_label", "label": "Row 10 label" },
+        { "type": "text", "id": "r10_us", "label": "Row 10 — Us" },
+        { "type": "text", "id": "r10_them", "label": "Row 10 — Them" },
+
+        { "type": "header", "content": "Design" },
+        { "type": "color", "id": "yes_color", "label": "Tick colour", "default": "#1b3def" },
+        { "type": "color", "id": "no_color", "label": "Cross colour", "default": "#b9bdc2" },
+        { "type": "color", "id": "border_color", "label": "Table border", "default": "#e3e5e8" },
+        { "type": "color", "id": "card_bg", "label": "Table background", "default": "#ffffff" },
+        { "type": "color", "id": "highlight_bg", "label": "\"Us\" column tint", "default": "#f4f6ff" },
+
+        { "type": "header", "content": "Footnote" },
+        { "type": "richtext", "id": "footnote", "label": "Footnote", "info": "Small print under the table — use this for any disclaimer." }
+      ]
+    },
 		{
       "type": "complementary",
       "name": "Complementary products",
