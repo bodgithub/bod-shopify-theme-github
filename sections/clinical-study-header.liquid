@@ -1,0 +1,219 @@
+{%- comment -%}
+  BODOLOGY · Clinical Study Header
+  Replica of dosedaily.co/pages/clinical-study hero:
+  big headline + subtext + anchor-link list (arrow right, top borders),
+  tall image pinned to the right edge on wide desktop (hidden < 1200px).
+  Anchor links smooth-scroll to section anchors (100px offset).
+  Fonts: theme brand fonts (tenon / instrument-serif italics).
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .csh {
+    position: relative;
+    width: 100%;
+    background: {{ s.bg_color }};
+    color: {{ s.text_color }};
+    padding-top: {{ s.padding_top }}px;
+    padding-bottom: {{ s.padding_bottom }}px;
+    font-family: "tenon", sans-serif;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .csh__inner { position: relative; width: 100%; }
+  #shopify-section-{{ section.id }} .csh__content {
+    padding: 40px 16px;
+    max-width: 48rem;
+  }
+  #shopify-section-{{ section.id }} .csh__heading {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.5;
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .csh__sub {
+    margin: 12px 0 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 575px;
+  }
+  #shopify-section-{{ section.id }} .csh__links {
+    width: 100%;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  #shopify-section-{{ section.id }} .csh__link-item {
+    width: 100%;
+    padding: 8px 0;
+    position: relative;
+    border-top: 1px solid {{ s.divider_color }};
+  }
+  #shopify-section-{{ section.id }} .csh__link {
+    display: inline-block;
+    width: 100%;
+    font-size: 20px;
+    color: inherit;
+    text-decoration: none;
+  }
+  #shopify-section-{{ section.id }} .csh__arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .csh__arrow svg { display: block; width: 100%; height: 100%; }
+  #shopify-section-{{ section.id }} .csh__links-end {
+    width: 100%;
+    height: 0;
+    border-top: 1px solid {{ s.divider_color }};
+  }
+  #shopify-section-{{ section.id }} .csh__image {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    max-width: 480px;
+  }
+  #shopify-section-{{ section.id }} .csh__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right top;
+    display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .csh__content {
+      width: 500px;
+      padding-top: 40px;
+      padding-bottom: 56px;
+    }
+    #shopify-section-{{ section.id }} .csh__heading { font-size: 48px; }
+    #shopify-section-{{ section.id }} .csh__sub { font-size: 16px; }
+    #shopify-section-{{ section.id }} .csh__link { font-size: 24px; }
+  }
+  @media screen and (min-width: 990px) {
+    #shopify-section-{{ section.id }} .csh__sub { font-size: 18px; }
+    #shopify-section-{{ section.id }} .csh__link { font-size: 30px; }
+  }
+  @media screen and (min-width: 1200px) {
+    #shopify-section-{{ section.id }} .csh__content {
+      width: 72%;
+      margin-left: {{ s.content_indent }}%;
+    }
+    #shopify-section-{{ section.id }} .csh__heading { font-size: 60px; }
+    #shopify-section-{{ section.id }} .csh__sub { font-size: 20px; max-width: none; }
+    {% if s.image != blank %}
+    #shopify-section-{{ section.id }} .csh__image { display: block; }
+    {% endif %}
+  }
+{% endstyle %}
+
+<div class="csh">
+  <div class="csh__inner">
+    <div class="csh__content">
+      <h1 class="csh__heading">{{ s.heading | newline_to_br }}</h1>
+      {%- if s.subtext != blank -%}
+        <p class="csh__sub">{{ s.subtext }}</p>
+      {%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class="csh__links">
+          {%- for block in section.blocks -%}
+            <li class="csh__link-item" {{ block.shopify_attributes }}>
+              <a href="#{{ block.settings.anchor | remove: '#' }}" class="csh__link">{{ block.settings.label }}</a>
+              <span class="csh__arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 12h15m0 0-6-6m6 6-6 6" stroke="{{ s.text_color }}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </li>
+          {%- endfor -%}
+          <li class="csh__links-end" aria-hidden="true"></li>
+        </ul>
+      {%- endif -%}
+    </div>
+    {%- if s.image != blank -%}
+      <div class="csh__image">
+        {{ s.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: s.image.alt | default: s.heading }}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  (function () {
+    function initSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.removeEventListener('click', handleAnchorClick);
+        link.addEventListener('click', handleAnchorClick);
+      });
+    }
+    function handleAnchorClick(e) {
+      var href = this.getAttribute('href');
+      if (!href || href === '#') return;
+      var target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSmoothScroll);
+    } else {
+      initSmoothScroll();
+    }
+    if (typeof window.Shopify !== 'undefined' && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', initSmoothScroll);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Clinical study header",
+  "tag": "section",
+  "class": "section-clinical-study-header",
+  "settings": [
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Bodology:\nThe Studies", "info": "Line breaks are kept." },
+    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Transparency comes first. Here is the research behind what we make, laid out study by study." },
+    { "type": "image_picker", "id": "image", "label": "Right-side image (desktop ≥1200px only)" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#fdf4e7" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#313131" },
+    { "type": "color", "id": "divider_color", "label": "Link divider lines", "default": "#505d55" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "content_indent", "label": "Content left indent (desktop)", "min": 0, "max": 20, "step": 1, "unit": "%", "default": 12 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 }
+  ],
+  "blocks": [
+    {
+      "type": "anchor_link",
+      "name": "Anchor link",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Study 1 Results" },
+        { "type": "text", "id": "anchor", "label": "Anchor ID (without #)", "default": "study-1", "info": "Must match the Anchor ID set on the target section." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clinical study header",
+      "blocks": [
+        { "type": "anchor_link", "settings": { "label": "Study 1 Results", "anchor": "study-1" } },
+        { "type": "anchor_link", "settings": { "label": "Study 2 Results", "anchor": "study-2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,403 @@
+{%- comment -%}
+  BODOLOGY · Study Overview Table
+  Replica of dosedaily.co "Study 1/2 Overview" card:
+  bordered rounded card, title bar, left image column (30%), study
+  background text, divider, attribute chips. Chips with popup text render
+  as buttons with a "+" badge and open a centered lightbox over a cream
+  overlay (close via button, overlay click, or Esc).
+  Mobile: chips shrink; image column can be hidden (Study 2 style).
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign anchor = s.anchor | remove: '#' | default: section.id
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .sot {
+    width: 100%;
+    position: relative;
+    margin-top: {{ s.margin_top_mobile }}px;
+    scroll-margin-top: 96px;
+    font-family: "tenon", sans-serif;
+    color: {{ s.text_color }};
+  }
+  #shopify-section-{{ section.id }} .sot__pw {
+    max-width: {{ s.page_width }}px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  #shopify-section-{{ section.id }} .sot__card {
+    width: 100%;
+    position: relative;
+    border: 1px solid {{ s.border_color }};
+    border-radius: 16px;
+    overflow: hidden;
+    background: {{ s.card_bg }};
+  }
+  #shopify-section-{{ section.id }} .sot__title {
+    background: {{ s.title_bg }};
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    padding: 8px 0;
+    border-bottom: 1px solid {{ s.border_color }};
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .sot__body { width: 100%; position: relative; }
+  #shopify-section-{{ section.id }} .sot__img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  #shopify-section-{{ section.id }} .sot__content {
+    width: 70%;
+    margin-left: 30%;
+    padding: 12px;
+    overflow: hidden;
+  }
+  {%- unless s.show_image_mobile -%}
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .sot__img { display: none; }
+    #shopify-section-{{ section.id }} .sot__content { width: 100%; margin-left: 0; text-align: center; }
+  }
+  {%- endunless -%}
+  #shopify-section-{{ section.id }} .sot__h {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .sot__text {
+    font-size: 14px;
+    margin: 8px 0 0;
+    line-height: 1.5;
+  }
+  #shopify-section-{{ section.id }} .sot__hr {
+    margin: 16px 0;
+    border: 0;
+    border-top: 1px solid {{ s.border_color }};
+    position: relative;
+    left: -12px;
+    width: calc(100% + 24px);
+  }
+  #shopify-section-{{ section.id }} .sot__attrs { width: 100%; margin-top: 8px; }
+  #shopify-section-{{ section.id }} .sot__chip {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: inherit;
+    color: inherit;
+    border: 1px solid {{ s.border_color }};
+    position: relative;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 14px;
+    background-position: left 10px center;
+    margin: 4px 4px 4px 0;
+  }
+  #shopify-section-{{ section.id }} .sot__chip--icon { padding-left: 28px; }
+  #shopify-section-{{ section.id }} button.sot__chip {
+    cursor: pointer;
+    transition: all .5s;
+  }
+  #shopify-section-{{ section.id }} button.sot__chip:hover {
+    background-color: {{ s.border_color }};
+    color: {{ s.chip_hover_text }};
+  }
+  #shopify-section-{{ section.id }} .sot__plus {
+    border: 1px solid currentColor;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 4px;
+    line-height: 15px;
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+  }
+  #shopify-section-{{ section.id }} .sot-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 21;
+    background: {{ s.overlay_color }};
+  }
+  #shopify-section-{{ section.id }} .sot-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2222;
+    background: {{ s.title_bg }};
+    border: 1px solid {{ s.border_color }};
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 32px 0;
+    width: 96%;
+    font-family: "tenon", sans-serif;
+  }
+  #shopify-section-{{ section.id }} .sot-overlay.is-open,
+  #shopify-section-{{ section.id }} .sot-popup.is-open { display: block; }
+  #shopify-section-{{ section.id }} .sot-popup__title {
+    color: {{ s.text_color }};
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  #shopify-section-{{ section.id }} .sot-popup__text {
+    color: {{ s.text_color }};
+    padding: 0 24px 16px;
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  #shopify-section-{{ section.id }} .sot-popup__close-wrap { text-align: center; margin: 0; }
+  #shopify-section-{{ section.id }} .sot-popup__close {
+    color: {{ s.text_color }};
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .sot { margin-top: {{ s.margin_top_desktop }}px; }
+    #shopify-section-{{ section.id }} .sot__card { border-radius: 16px; }
+    #shopify-section-{{ section.id }} .sot__title { font-size: 48px; }
+    #shopify-section-{{ section.id }} .sot__content { padding: 40px 56px; }
+    #shopify-section-{{ section.id }} .sot__h { font-size: 30px; }
+    #shopify-section-{{ section.id }} .sot__text { font-size: 20px; margin-top: 12px; }
+    #shopify-section-{{ section.id }} .sot__hr { margin: 32px 0; left: -56px; width: calc(100% + 112px); }
+    #shopify-section-{{ section.id }} .sot__attrs { margin-top: 16px; }
+    #shopify-section-{{ section.id }} .sot__chip {
+      padding: 20px 32px;
+      border-radius: 16px;
+      font-size: 20px;
+      background-size: 40px;
+      background-position: left 25px center;
+      margin: 16px 24px 16px 0;
+    }
+    #shopify-section-{{ section.id }} .sot__chip--icon { padding-left: 80px; }
+    #shopify-section-{{ section.id }} .sot__plus { width: 20px; height: 20px; line-height: 19px; margin-left: 20px; }
+    #shopify-section-{{ section.id }} .sot-popup { width: 700px; }
+    #shopify-section-{{ section.id }} .sot-popup__title { font-size: 36px; }
+    #shopify-section-{{ section.id }} .sot-popup__text { font-size: 18px; padding: 0 48px 16px; }
+  }
+{% endstyle %}
+
+<div id="{{ anchor }}" class="sot" data-sot>
+  <div class="sot__pw">
+    <div class="sot__card">
+      {%- if s.title != blank -%}
+        <h2 class="sot__title">{{ s.title }}</h2>
+      {%- endif -%}
+      <div class="sot__body">
+        {%- if s.image != blank -%}
+          <div class="sot__img" style="background-image: url('{{ s.image | image_url: width: 600 }}');" role="img" aria-label="{{ s.image.alt | escape }}"></div>
+        {%- endif -%}
+        <div class="sot__content">
+          {%- if s.background_heading != blank -%}
+            <h3 class="sot__h">{{ s.background_heading }}</h3>
+          {%- endif -%}
+          {%- if s.background_text != blank -%}
+            <p class="sot__text">{{ s.background_text }}</p>
+          {%- endif -%}
+          <hr class="sot__hr">
+          {%- if s.attributes_heading != blank -%}
+            <h3 class="sot__h">{{ s.attributes_heading }}</h3>
+          {%- endif -%}
+          <div class="sot__attrs">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                assign has_popup = false
+                if block.settings.popup_title != blank or block.settings.popup_text != blank
+                  assign has_popup = true
+                endif
+                assign icon_class = ''
+                if block.settings.icon != blank
+                  assign icon_class = ' sot__chip--icon'
+                endif
+              -%}
+              {%- if has_popup -%}
+                <button
+                  type="button"
+                  class="sot__chip{{ icon_class }}"
+                  {% if block.settings.icon != blank %}style="background-image: url('{{ block.settings.icon | image_url: width: 80 }}');"{% endif %}
+                  data-popup-link="{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.label }}
+                  <em class="sot__plus" aria-hidden="true">+</em>
+                </button>
+              {%- else -%}
+                <span
+                  class="sot__chip{{ icon_class }}"
+                  {% if block.settings.icon != blank %}style="background-image: url('{{ block.settings.icon | image_url: width: 80 }}');"{% endif %}
+                  {{ block.shopify_attributes }}
+                >{{ block.settings.label }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sot-overlay" data-sot-overlay></div>
+
+  {%- for block in section.blocks -%}
+    {%- if block.settings.popup_title != blank or block.settings.popup_text != blank -%}
+      <div
+        class="sot-popup"
+        data-popup-link="{{ block.id }}"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="sot-popup-title-{{ block.id }}"
+      >
+        <h2 id="sot-popup-title-{{ block.id }}" class="sot-popup__title">{{ block.settings.popup_title }}</h2>
+        <p class="sot-popup__text">{{ block.settings.popup_text }}</p>
+        <p class="sot-popup__close-wrap">
+          <button type="button" class="sot-popup__close" data-sot-close>Close</button>
+        </p>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+<script>
+  (function () {
+    function initSection() {
+      var root = document.getElementById('shopify-section-{{ section.id }}');
+      if (!root || root.dataset.sotInit === 'true') return;
+      root.dataset.sotInit = 'true';
+      var overlay = root.querySelector('[data-sot-overlay]');
+      var popups = root.querySelectorAll('.sot-popup');
+      function closeAll() {
+        if (overlay) overlay.classList.remove('is-open');
+        popups.forEach(function (p) { p.classList.remove('is-open'); });
+      }
+      root.querySelectorAll('button.sot__chip[data-popup-link]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var id = btn.getAttribute('data-popup-link');
+          var target = root.querySelector('.sot-popup[data-popup-link="' + id + '"]');
+          if (target && overlay) {
+            overlay.classList.add('is-open');
+            target.classList.add('is-open');
+          }
+        });
+      });
+      if (overlay) overlay.addEventListener('click', closeAll);
+      root.querySelectorAll('[data-sot-close]').forEach(function (btn) {
+        btn.addEventListener('click', closeAll);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeAll();
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSection);
+    } else {
+      initSection();
+    }
+    if (typeof window.Shopify !== 'undefined' && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function (e) {
+        if (e.detail && e.detail.sectionId === '{{ section.id }}') {
+          var root = document.getElementById('shopify-section-{{ section.id }}');
+          if (root) root.dataset.sotInit = '';
+          initSection();
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Study overview table",
+  "tag": "section",
+  "class": "section-study-overview-table",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor ID (without #)", "default": "study-1", "info": "Used by the header's anchor links." },
+    { "type": "text", "id": "title", "label": "Table title", "default": "Study 1 Overview" },
+    { "type": "image_picker", "id": "image", "label": "Left image column" },
+    { "type": "checkbox", "id": "show_image_mobile", "label": "Show image column on mobile", "default": true },
+    { "type": "text", "id": "background_heading", "label": "First heading", "default": "Study Background" },
+    { "type": "textarea", "id": "background_text", "label": "First text", "default": "[Placeholder — describe the study design and what it set out to measure. Replace with real, cited study details before publishing.]*" },
+    { "type": "text", "id": "attributes_heading", "label": "Second heading", "default": "Study Attributes" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#fdf4e7" },
+    { "type": "color", "id": "title_bg", "label": "Title bar / popup background", "default": "#dedbcc" },
+    { "type": "color", "id": "border_color", "label": "Borders", "default": "#57665c" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#313131" },
+    { "type": "color", "id": "chip_hover_text", "label": "Chip hover text", "default": "#fdf4e7" },
+    { "type": "color_background", "id": "overlay_color", "label": "Popup overlay", "default": "rgba(253, 245, 232, 0.87)" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
+    { "type": "range", "id": "margin_top_desktop", "label": "Top margin (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
+    { "type": "range", "id": "margin_top_mobile", "label": "Top margin (mobile)", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 20 }
+  ],
+  "blocks": [
+    {
+      "type": "attribute",
+      "name": "Study attribute",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "3 months" },
+        { "type": "image_picker", "id": "icon", "label": "Icon" },
+        { "type": "header", "content": "Popup (optional)", "info": "Fill these to turn the chip into a button that opens a lightbox." },
+        { "type": "text", "id": "popup_title", "label": "Popup title" },
+        { "type": "textarea", "id": "popup_text", "label": "Popup text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Study overview table",
+      "blocks": [
+        { "type": "attribute", "settings": { "label": "3 months" } },
+        { "type": "attribute", "settings": { "label": "100 participants" } },
+        {
+          "type": "attribute",
+          "settings": {
+            "label": "Placebo-controlled",
+            "popup_title": "Placebo-Controlled",
+            "popup_text": "A \"placebo-controlled\" study is one in which one group receives the actual product while another receives an inactive look-alike, or placebo. This method allows researchers to distinguish the product's physical effects from the psychological impact of a participant's belief that the product is working."
+          }
+        },
+        {
+          "type": "attribute",
+          "settings": {
+            "label": "Double-blind",
+            "popup_title": "Double-Blind",
+            "popup_text": "\"Double-blind\" means that in a clinical study, neither participants nor researchers know who receives which product, preventing bias and ensuring objective results."
+          }
+        },
+        {
+          "type": "attribute",
+          "settings": {
+            "label": "Randomized",
+            "popup_title": "Randomized",
+            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups (experimental or placebo) based on chance to compare outcome results fairly and minimize bias."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

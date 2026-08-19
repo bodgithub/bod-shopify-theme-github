@@ -1,0 +1,69 @@
+{%- comment -%}
+  BODOLOGY · Clinical Footnote
+  Small print strip used under study sections (†/‡ footnotes, FDA
+  disclaimer). Matches the tiny centered/left text rows on the Dose
+  Daily clinical study page.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .cfn {
+    background: {{ s.bg_color }};
+    color: {{ s.text_color }};
+    font-family: "tenon", sans-serif;
+    padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .cfn__pw {
+    max-width: {{ s.page_width }}px;
+    margin: 0 auto;
+    padding: 0 16px;
+    text-align: {{ s.align }};
+  }
+  #shopify-section-{{ section.id }} .cfn__text { line-height: 1.6; }
+  #shopify-section-{{ section.id }} .cfn__text p {
+    font-size: {{ s.font_size_mobile }}px;
+    margin: 0 0 8px;
+  }
+  #shopify-section-{{ section.id }} .cfn__text p:last-child { margin-bottom: 0; }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .cfn__text p { font-size: {{ s.font_size_desktop }}px; }
+  }
+{% endstyle %}
+
+<div class="cfn">
+  <div class="cfn__pw">
+    <div class="cfn__text">{{ s.text }}</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Clinical footnote",
+  "tag": "section",
+  "class": "section-clinical-footnote",
+  "settings": [
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>†Based on a [duration], randomized, double-blind, placebo-controlled clinical study, when taken daily.</p>" },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#fdf4e7" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#313131" },
+    { "type": "range", "id": "font_size_mobile", "label": "Font size (mobile)", "min": 8, "max": 18, "step": 1, "unit": "px", "default": 10 },
+    { "type": "range", "id": "font_size_desktop", "label": "Font size (desktop)", "min": 8, "max": 20, "step": 1, "unit": "px", "default": 12 },
+    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 16 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 16 }
+  ],
+  "presets": [{ "name": "Clinical footnote" }]
+}
+{% endschema %}

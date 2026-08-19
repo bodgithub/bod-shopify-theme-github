@@ -1,0 +1,412 @@
+{%- comment -%}
+  BODOLOGY · Clinical Results Stats
+  Replica of dosedaily.co "The Results" block:
+  Desktop (≥990px): 60/40 grid — left: badge pill, giant stat, caption,
+  stat cards, info pill buttons; right: rounded/bordered image.
+  Mobile: heading, full-width image on top, stat cards, two info buttons
+  side by side. The giant stat block is hidden on mobile (as on the
+  original). Info buttons open centered lightbox popups.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign stat_cards = section.blocks | where: 'type', 'stat_card'
+  assign info_buttons = section.blocks | where: 'type', 'info_button'
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .crs {
+    background: {{ s.bg_color }};
+    padding: {{ s.padding_top_mobile }}px 0 {{ s.padding_bottom_mobile }}px;
+    font-family: "tenon", sans-serif;
+    color: {{ s.text_color }};
+  }
+  #shopify-section-{{ section.id }} .crs__pw {
+    max-width: {{ s.page_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  #shopify-section-{{ section.id }} .crs__heading {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .crs__img-mobile { margin-top: 32px; width: 100%; }
+  #shopify-section-{{ section.id }} .crs__img-mobile img,
+  #shopify-section-{{ section.id }} .crs__img-mobile svg { width: 100%; height: auto; display: block; }
+  #shopify-section-{{ section.id }} .crs__grid {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  #shopify-section-{{ section.id }} .crs__bigstat { display: none; }
+  #shopify-section-{{ section.id }} .crs__badge {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid {{ s.accent_color }};
+    border-radius: 6px;
+    padding: 4px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: {{ s.accent_color }};
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .crs__bignum {
+    margin: 16px 0 0;
+    color: {{ s.accent_color }};
+    font-size: 148px;
+    line-height: 135px;
+    font-weight: 500;
+  }
+  #shopify-section-{{ section.id }} .crs__bigcaption {
+    margin: 16px 0 0;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    color: {{ s.text_color }};
+  }
+  #shopify-section-{{ section.id }} .crs__cards { display: flex; flex-direction: column; gap: 16px; }
+  #shopify-section-{{ section.id }} .crs__card {
+    border: 1px solid {{ s.accent_color }}b3;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .crs__card-inner { display: flex; gap: 12px; align-items: center; }
+  #shopify-section-{{ section.id }} .crs__card-num {
+    color: {{ s.accent_color }};
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  #shopify-section-{{ section.id }} .crs__card-text { font-size: 14px; margin: 0; color: {{ s.text_color }}; }
+  #shopify-section-{{ section.id }} .crs__btn-row {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  #shopify-section-{{ section.id }} .crs__info-btn {
+    display: inline-block;
+    width: calc(48% - 0.25rem);
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid {{ s.accent_color }};
+    background: {{ s.button_bg }};
+    color: {{ s.accent_color }};
+    font-size: 14px;
+    font-family: inherit;
+    text-align: center;
+    font-weight: 600;
+    transition: all .3s;
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .crs__info-btn:hover {
+    background: {{ s.accent_color }};
+    color: {{ s.button_hover_text }};
+  }
+  #shopify-section-{{ section.id }} .crs__info-btn .crs__plus { display: none; }
+  #shopify-section-{{ section.id }} .crs__img-desktop { display: none; }
+  #shopify-section-{{ section.id }} .crs__img-desktop img,
+  #shopify-section-{{ section.id }} .crs__img-desktop svg {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid {{ s.accent_color }};
+    display: block;
+    object-fit: cover;
+  }
+  #shopify-section-{{ section.id }} .crs-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 21;
+    background: {{ s.overlay_color }};
+  }
+  #shopify-section-{{ section.id }} .crs-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2222;
+    background: {{ s.button_bg }};
+    border: 1px solid {{ s.accent_color }};
+    border-radius: 16px;
+    overflow: hidden;
+    padding: 32px 0;
+    width: 96%;
+    font-family: "tenon", sans-serif;
+  }
+  #shopify-section-{{ section.id }} .crs-overlay.is-open,
+  #shopify-section-{{ section.id }} .crs-popup.is-open { display: block; }
+  #shopify-section-{{ section.id }} .crs-popup__title {
+    color: {{ s.text_color }};
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  #shopify-section-{{ section.id }} .crs-popup__text {
+    color: {{ s.text_color }};
+    padding: 0 24px 16px;
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  #shopify-section-{{ section.id }} .crs-popup__close-wrap { text-align: center; margin: 0; }
+  #shopify-section-{{ section.id }} .crs-popup__close {
+    color: {{ s.text_color }};
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .crs {
+      padding: {{ s.padding_top_desktop }}px 0 {{ s.padding_bottom_desktop }}px;
+    }
+    #shopify-section-{{ section.id }} .crs__heading { font-size: 48px; }
+    #shopify-section-{{ section.id }} .crs__bigstat { display: block; }
+    #shopify-section-{{ section.id }} .crs__card { padding: 24px; justify-content: center; }
+    #shopify-section-{{ section.id }} .crs__card-inner { gap: 24px; }
+    #shopify-section-{{ section.id }} .crs__card-num { font-size: 83px; }
+    #shopify-section-{{ section.id }} .crs__card-text { font-size: 24px; line-height: 1.6; }
+    #shopify-section-{{ section.id }} .crs__info-btn { font-size: 18px; padding: 10px 20px; }
+    #shopify-section-{{ section.id }} .crs__info-btn .crs__plus {
+      display: inline-block;
+      margin-left: 4px;
+      width: 22px;
+      height: 22px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 22px;
+      font-weight: 300;
+      transition: all .3s;
+    }
+    #shopify-section-{{ section.id }} .crs__q { display: none; }
+    #shopify-section-{{ section.id }} .crs-popup { width: 700px; }
+    #shopify-section-{{ section.id }} .crs-popup__title { font-size: 36px; }
+    #shopify-section-{{ section.id }} .crs-popup__text { font-size: 18px; padding: 0 48px 16px; }
+  }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .crs__q { display: inline; }
+  }
+  @media screen and (min-width: 990px) {
+    #shopify-section-{{ section.id }} .crs__img-mobile { display: none; }
+    #shopify-section-{{ section.id }} .crs__img-desktop { display: block; }
+    #shopify-section-{{ section.id }} .crs__grid {
+      display: grid;
+      grid-template-columns: 60% 40%;
+      align-items: start;
+      gap: 48px;
+    }
+    #shopify-section-{{ section.id }} .crs__card { justify-content: flex-start; }
+    #shopify-section-{{ section.id }} .crs__card-num { font-size: 100px; }
+    #shopify-section-{{ section.id }} .crs__card-text { font-size: 34px; }
+  }
+{% endstyle %}
+
+<section class="crs">
+  <div class="crs__pw">
+    {%- if s.heading != blank -%}
+      <h2 class="crs__heading">{{ s.heading }}</h2>
+    {%- endif -%}
+
+    <div class="crs__img-mobile">
+      {%- if s.image != blank -%}
+        {{ s.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: s.image.alt | default: s.heading }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      {%- endif -%}
+    </div>
+
+    <div class="crs__grid">
+      <div class="crs__col">
+        <div class="crs__bigstat">
+          {%- if s.badge_text != blank -%}
+            <p class="crs__badge">{{ s.badge_text }}</p>
+          {%- endif -%}
+          {%- if s.big_stat != blank -%}
+            <p class="crs__bignum">{{ s.big_stat }}</p>
+          {%- endif -%}
+          {%- if s.big_stat_caption != blank -%}
+            <p class="crs__bigcaption">{{ s.big_stat_caption }}</p>
+          {%- endif -%}
+        </div>
+
+        {%- if stat_cards.size > 0 or info_buttons.size > 0 -%}
+          <div class="crs__cards" {% if s.big_stat != blank %}style="margin-top: 24px;"{% endif %}>
+            {%- for block in stat_cards -%}
+              <div class="crs__card" {{ block.shopify_attributes }}>
+                <div class="crs__card-inner">
+                  <span class="crs__card-num">{{ block.settings.value }}</span>
+                  <p class="crs__card-text">{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {%- endfor -%}
+            {%- if info_buttons.size > 0 -%}
+              <div class="crs__btn-row">
+                {%- for block in info_buttons -%}
+                  <button type="button" class="crs__info-btn" data-popup-link="{{ block.id }}" {{ block.shopify_attributes }}>
+                    {{ block.settings.label }}<span class="crs__q">?</span>
+                    <span class="crs__plus" aria-hidden="true">+</span>
+                  </button>
+                {%- endfor -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="crs__img-desktop">
+        {%- if s.image != blank -%}
+          {{ s.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: s.image.alt | default: s.heading }}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="crs-overlay" data-crs-overlay></div>
+
+  {%- for block in info_buttons -%}
+    <div
+      class="crs-popup"
+      data-popup-link="{{ block.id }}"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="crs-popup-title-{{ block.id }}"
+    >
+      <h2 id="crs-popup-title-{{ block.id }}" class="crs-popup__title">{{ block.settings.popup_title }}</h2>
+      <div class="crs-popup__text">{{ block.settings.popup_text }}</div>
+      <p class="crs-popup__close-wrap">
+        <button type="button" class="crs-popup__close" data-crs-close>Close</button>
+      </p>
+    </div>
+  {%- endfor -%}
+</section>
+
+<script>
+  (function () {
+    function initSection() {
+      var root = document.getElementById('shopify-section-{{ section.id }}');
+      if (!root || root.dataset.crsInit === 'true') return;
+      root.dataset.crsInit = 'true';
+      var overlay = root.querySelector('[data-crs-overlay]');
+      var popups = root.querySelectorAll('.crs-popup');
+      function closeAll() {
+        if (overlay) overlay.classList.remove('is-open');
+        popups.forEach(function (p) { p.classList.remove('is-open'); });
+      }
+      root.querySelectorAll('.crs__info-btn[data-popup-link]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var id = btn.getAttribute('data-popup-link');
+          var target = root.querySelector('.crs-popup[data-popup-link="' + id + '"]');
+          if (target && overlay) {
+            overlay.classList.add('is-open');
+            target.classList.add('is-open');
+          }
+        });
+      });
+      if (overlay) overlay.addEventListener('click', closeAll);
+      root.querySelectorAll('[data-crs-close]').forEach(function (btn) {
+        btn.addEventListener('click', closeAll);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeAll();
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSection);
+    } else {
+      initSection();
+    }
+    if (typeof window.Shopify !== 'undefined' && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function (e) {
+        if (e.detail && e.detail.sectionId === '{{ section.id }}') {
+          var root = document.getElementById('shopify-section-{{ section.id }}');
+          if (root) root.dataset.crsInit = '';
+          initSection();
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Clinical results stats",
+  "tag": "section",
+  "class": "section-clinical-results-stats",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The Results" },
+    { "type": "image_picker", "id": "image", "label": "Results image (chart)" },
+    { "type": "header", "content": "Big stat (desktop only)" },
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "MYO + D-CHIRO INOSITOL" },
+    { "type": "text", "id": "big_stat", "label": "Big stat", "default": "XX%" },
+    { "type": "text", "id": "big_stat_caption", "label": "Big stat caption", "default": "of participants reported [outcome] after [duration]*†" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Background", "default": "#fef5e8" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#313131" },
+    { "type": "color", "id": "accent_color", "label": "Accent (stats, borders, buttons)", "default": "#57665c" },
+    { "type": "color", "id": "button_bg", "label": "Button / popup background", "default": "#dedbcc" },
+    { "type": "color", "id": "button_hover_text", "label": "Button hover text", "default": "#fdf4e7" },
+    { "type": "color_background", "id": "overlay_color", "label": "Popup overlay", "default": "rgba(253, 245, 232, 0.87)" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
+    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 30 }
+  ],
+  "blocks": [
+    {
+      "type": "stat_card",
+      "name": "Stat card",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Value", "default": "XX%" },
+        { "type": "text", "id": "text", "label": "Text", "default": "saw a positive impact on [marker]*†" }
+      ]
+    },
+    {
+      "type": "info_button",
+      "name": "Info button + popup",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Button label", "default": "What are [marker] Levels" },
+        { "type": "text", "id": "popup_title", "label": "Popup title", "default": "[Marker] Levels" },
+        { "type": "richtext", "id": "popup_text", "label": "Popup text", "default": "<p>[Placeholder — explain what this marker is and why it is measured.]</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clinical results stats",
+      "blocks": [
+        { "type": "stat_card" },
+        { "type": "stat_card" },
+        { "type": "info_button" },
+        { "type": "info_button" }
+      ]
+    }
+  ]
+}
+{% endschema %}

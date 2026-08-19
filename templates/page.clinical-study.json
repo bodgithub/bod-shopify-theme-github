@@ -1,0 +1,250 @@
+{
+  "sections": {
+    "study_header": {
+      "type": "clinical-study-header",
+      "blocks": {
+        "link_1": {
+          "type": "anchor_link",
+          "settings": {
+            "label": "Study 1 Results",
+            "anchor": "study-1"
+          }
+        },
+        "link_2": {
+          "type": "anchor_link",
+          "settings": {
+            "label": "Study 2 Results",
+            "anchor": "study-2"
+          }
+        }
+      },
+      "block_order": ["link_1", "link_2"],
+      "settings": {
+        "heading": "Bodology:\nThe Studies",
+        "subtext": "Transparency comes first. Here is the research behind what we make, laid out study by study.",
+        "bg_color": "#fdf4e7",
+        "text_color": "#313131",
+        "divider_color": "#505d55",
+        "content_indent": 12,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "study_1_overview": {
+      "type": "study-overview-table",
+      "blocks": {
+        "attr_duration": {
+          "type": "attribute",
+          "settings": {
+            "label": "[X] months"
+          }
+        },
+        "attr_participants": {
+          "type": "attribute",
+          "settings": {
+            "label": "[XXX] participants"
+          }
+        },
+        "attr_placebo": {
+          "type": "attribute",
+          "settings": {
+            "label": "Placebo-controlled",
+            "popup_title": "Placebo-Controlled",
+            "popup_text": "A \"placebo-controlled\" study is one in which one group receives the actual product while another receives an inactive look-alike, or placebo. This method allows researchers to distinguish the product's physical effects from the psychological impact of a participant's belief that the product is working."
+          }
+        },
+        "attr_blind": {
+          "type": "attribute",
+          "settings": {
+            "label": "Double-blind",
+            "popup_title": "Double-Blind",
+            "popup_text": "\"Double-blind\" means that in a clinical study, neither participants nor researchers know who receives which product, preventing bias and ensuring objective results."
+          }
+        },
+        "attr_random": {
+          "type": "attribute",
+          "settings": {
+            "label": "Randomized",
+            "popup_title": "Randomized",
+            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups (experimental or placebo) based on chance to compare outcome results fairly and minimize bias."
+          }
+        }
+      },
+      "block_order": ["attr_duration", "attr_participants", "attr_placebo", "attr_blind", "attr_random"],
+      "settings": {
+        "anchor": "study-1",
+        "title": "Study 1 Overview",
+        "show_image_mobile": true,
+        "background_heading": "Study Background",
+        "background_text": "[Placeholder — one or two sentences on what this study evaluated and how. Replace with real, cited study details before publishing.]*",
+        "attributes_heading": "Study Attributes"
+      }
+    },
+    "study_1_results": {
+      "type": "clinical-results-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "value": "XX%",
+            "text": "saw a positive impact on [marker 1]*†"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "value": "XX%",
+            "text": "saw a positive impact on [marker 2]*†"
+          }
+        },
+        "info_1": {
+          "type": "info_button",
+          "settings": {
+            "label": "What are [marker 1] levels",
+            "popup_title": "[Marker 1] Levels",
+            "popup_text": "<p>[Placeholder — explain what this marker is and why it is measured.]</p>"
+          }
+        },
+        "info_2": {
+          "type": "info_button",
+          "settings": {
+            "label": "What are [marker 2] levels",
+            "popup_title": "[Marker 2] Levels",
+            "popup_text": "<p>[Placeholder — explain what this marker is and why it is measured.]</p>"
+          }
+        }
+      },
+      "block_order": ["stat_1", "stat_2", "info_1", "info_2"],
+      "settings": {
+        "heading": "The Results",
+        "badge_text": "MYO + D-CHIRO INOSITOL",
+        "big_stat": "XX%",
+        "big_stat_caption": "of participants reported [outcome] after [duration]*†"
+      }
+    },
+    "footnote_1": {
+      "type": "clinical-footnote",
+      "settings": {
+        "text": "<p>†Based on a [duration], randomized, double-blind, placebo-controlled clinical study, when taken daily.</p>",
+        "align": "center",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12
+      }
+    },
+    "study_2_overview": {
+      "type": "study-overview-table",
+      "blocks": {
+        "attr_duration": {
+          "type": "attribute",
+          "settings": {
+            "label": "[X] months"
+          }
+        },
+        "attr_participants": {
+          "type": "attribute",
+          "settings": {
+            "label": "[XXX] participants"
+          }
+        },
+        "attr_placebo": {
+          "type": "attribute",
+          "settings": {
+            "label": "Placebo-controlled",
+            "popup_title": "Placebo-Controlled",
+            "popup_text": "A \"placebo-controlled\" study is one in which one group receives the actual product while another receives an inactive look-alike, or placebo. This method allows researchers to distinguish the product's physical effects from the psychological impact of a participant's belief that the product is working."
+          }
+        },
+        "attr_blind": {
+          "type": "attribute",
+          "settings": {
+            "label": "Double-blind",
+            "popup_title": "Double-Blind",
+            "popup_text": "\"Double-blind\" means that in a clinical study, neither participants nor researchers know who receives which product, preventing bias and ensuring objective results."
+          }
+        },
+        "attr_random": {
+          "type": "attribute",
+          "settings": {
+            "label": "Randomized",
+            "popup_title": "Randomized",
+            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups (experimental or placebo) based on chance to compare outcome results fairly and minimize bias."
+          }
+        }
+      },
+      "block_order": ["attr_duration", "attr_participants", "attr_placebo", "attr_blind", "attr_random"],
+      "settings": {
+        "anchor": "study-2",
+        "title": "Study 2 Overview",
+        "show_image_mobile": false,
+        "background_heading": "Study Background",
+        "background_text": "[Placeholder — one or two sentences on what this study evaluated and how. Replace with real, cited study details before publishing.]*",
+        "attributes_heading": "Study Attributes"
+      }
+    },
+    "study_2_results": {
+      "type": "score-cards-slider",
+      "blocks": {
+        "card_1": {
+          "type": "score_card",
+          "settings": {
+            "title": "[Marker 1] Levels",
+            "subtitle": "[Full marker name]",
+            "percentage": 61,
+            "caption": "of participants reported a positive impact on [marker 1]*‡",
+            "button_label": "What are [Marker 1] Levels",
+            "popup_stat_text": "of participants reported a positive impact on [marker 1] after [duration] in our clinical study*‡",
+            "popup_info_text": "[Placeholder — explain what this marker is and why it is measured.]"
+          }
+        },
+        "card_2": {
+          "type": "score_card",
+          "settings": {
+            "title": "[Marker 2] Levels",
+            "subtitle": "[Full marker name]",
+            "percentage": 76,
+            "caption": "of participants reported a positive impact on [marker 2]*‡",
+            "button_label": "What are [Marker 2] Levels",
+            "popup_stat_text": "of participants reported a positive impact on [marker 2] after [duration] in our clinical study*‡",
+            "popup_info_text": "[Placeholder — explain what this marker is and why it is measured.]"
+          }
+        },
+        "card_3": {
+          "type": "score_card",
+          "settings": {
+            "title": "[Marker 3] Levels",
+            "subtitle": "[Full marker name]",
+            "percentage": 44,
+            "caption": "of participants reported a positive impact on [marker 3]*‡",
+            "button_label": "What are [Marker 3] Levels",
+            "popup_stat_text": "of participants reported a positive impact on [marker 3] after [duration] in our clinical study*‡",
+            "popup_info_text": "[Placeholder — explain what this marker is and why it is measured.]"
+          }
+        }
+      },
+      "block_order": ["card_1", "card_2", "card_3"],
+      "settings": {
+        "heading": "The Results",
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+      }
+    },
+    "footnote_2": {
+      "type": "clinical-footnote",
+      "settings": {
+        "text": "<p>‡Based on a [duration], randomized, double-blind, placebo-controlled clinical study, when taken daily.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
+        "align": "left",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "study_header",
+    "study_1_overview",
+    "study_1_results",
+    "footnote_1",
+    "study_2_overview",
+    "study_2_results",
+    "footnote_2"
+  ]
+}
