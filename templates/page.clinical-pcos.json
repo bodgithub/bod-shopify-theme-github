@@ -49,7 +49,7 @@
       ],
       "settings": {
         "heading": "Inositol for PCOS:\nThe Studies",
-        "subtext": "PCOS is a metabolic condition. Around 80% of women with PCOS have insulin resistance. When cells stop responding to insulin, the body makes more of it — and high insulin pushes the ovaries toward androgen production and disrupts ovulation. That's why every study below starts with insulin. Here they are, laid out straight.",
+        "subtext": "Most PCOS symptoms trace back to one thing: insulin. When your body stops responding to it properly, it makes more — and too much insulin pushes your ovaries to make more testosterone, which disrupts ovulation. That's why every study below starts with insulin. Here's what the research found, in plain language.",
         "image": "shopify://shop_images/White_Powder_small_f8c0a904-3c7a-46b4-a5e8-f142a0215040.jpg",
         "mobile_image_height": 120,
         "bg_color": "#f2eeea",
@@ -76,7 +76,7 @@
           "settings": {
             "label": "Placebo-controlled",
             "popup_title": "Placebo-Controlled",
-            "popup_text": "A \"placebo-controlled\" study is one in which one group receives the actual compound while another receives an inactive look-alike, or placebo. This lets researchers separate the compound's physical effects from the effect of believing it works. In this study, the placebo group received folic acid alone."
+            "popup_text": "One group gets the real thing. The other gets a look-alike dummy — a placebo, here plain folic acid. Comparing the two shows what the compound actually does, beyond the effect of believing it works."
           }
         },
         "attr_blind": {
@@ -84,7 +84,7 @@
           "settings": {
             "label": "Double-blind",
             "popup_title": "Double-Blind",
-            "popup_text": "\"Double-blind\" means neither participants nor researchers know who receives which product, preventing bias and ensuring objective results."
+            "popup_text": "Neither the women nor the researchers knew who was taking what until the study ended. That keeps hope and bias from skewing the results."
           }
         },
         "attr_random": {
@@ -92,7 +92,7 @@
           "settings": {
             "label": "Randomized",
             "popup_title": "Randomized",
-            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups (experimental or placebo) based on chance, to compare outcomes fairly and minimize bias."
+            "popup_text": "Who got the real thing was decided by chance, like a coin flip. That keeps the two groups fair to compare."
           }
         }
       },
@@ -108,7 +108,7 @@
         "image": "shopify://shop_images/Bodology-Inositol-for-Hormones-and-PCOS_2d341bb3-7787-4df3-81ca-d5e2f600f510.jpg",
         "show_image_mobile": true,
         "background_heading": "Study Background",
-        "background_text": "An independent randomized, double-blind, placebo-controlled trial of myo-inositol in 42 women with PCOS. Researchers tracked ovulation, insulin response, testosterone, triglycerides, and blood pressure against placebo (Costantino et al., 2009).†",
+        "background_text": "The gold standard of research: 42 women with PCOS were randomly split into two groups. One took myo-inositol, the other a placebo — and nobody, not even the researchers, knew who had which until the end. They tracked ovulation, insulin, testosterone, blood fats, and blood pressure (Costantino et al., 2009).†",
         "attributes_heading": "Study Attributes",
         "card_bg": "#FFFFFF",
         "title_bg": "#e4e8f4",
@@ -131,21 +131,21 @@
           "type": "stat_card",
           "settings": {
             "value": "+80%",
-            "text": "improvement in whole-body insulin sensitivity (index 2.80 → 5.05)*†"
+            "text": "better response to insulin by the end of the study — meaning the body needed less insulin to keep blood sugar steady*†"
           }
         },
         "stat_testosterone": {
           "type": "stat_card",
           "settings": {
             "value": "−65%",
-            "text": "average reduction in total testosterone (99.5 → 34.8 ng/dL)*†"
+            "text": "average drop in total testosterone, one of the main hormones measured in PCOS (99.5 → 34.8 ng/dL)*†"
           }
         },
         "stat_2": {
           "type": "stat_card",
           "settings": {
             "value": "−51%",
-            "text": "average reduction in triglycerides (195 → 95 mg/dL)*†"
+            "text": "average drop in triglycerides — the main fat circulating in your blood (195 → 95 mg/dL)*†"
           }
         },
         "info_1": {
@@ -153,7 +153,7 @@
           "settings": {
             "label": "What is insulin sensitivity",
             "popup_title": "Insulin Sensitivity",
-            "popup_text": "<p>Insulin sensitivity describes how efficiently your cells respond to insulin, the hormone that moves glucose out of your blood and into your cells. Higher sensitivity means your body needs less insulin to keep blood sugar steady. This study measured it with the composite whole-body insulin sensitivity index (ISI).</p>"
+            "popup_text": "<p>Insulin's job is to move sugar out of your blood and into your cells for energy. Insulin sensitivity is how well your cells listen to it — the better they listen, the less insulin your body needs and the steadier your blood sugar. In this study it was measured with a standard index, which rose from 2.80 to 5.05.</p>"
           }
         },
         "info_2": {
@@ -161,7 +161,7 @@
           "settings": {
             "label": "What are triglycerides",
             "popup_title": "Triglycerides",
-            "popup_text": "<p>Triglycerides are the main form of fat circulating in your blood. A blood test measures them to assess metabolic health.</p>"
+            "popup_text": "<p>Triglycerides are the main type of fat in your blood. A standard blood test measures them as one marker of metabolic health.</p>"
           }
         }
       },
@@ -176,7 +176,7 @@
         "heading": "Study 1 — The Results",
         "badge_text": "MYO-INOSITOL",
         "big_stat": "70%",
-        "big_stat_caption": "of women taking myo-inositol ovulated during the study (16 of 23) — versus 21% on placebo (4 of 19)*†",
+        "big_stat_caption": "of the women taking myo-inositol ovulated during the study (16 of 23) — versus 21% of the placebo group (4 of 19)*†",
         "bg_color": "#F2EEEA",
         "text_color": "#1a2874",
         "accent_color": "#3447af",
@@ -228,7 +228,7 @@
           "settings": {
             "label": "40:1 ratio",
             "popup_title": "The 40:1 Ratio",
-            "popup_text": "40:1 is the physiological ratio of myo-inositol to D-chiro-inositol in blood plasma. This study tested the two inositols combined in that 40:1 ratio — the same ratio used in Bodology."
+            "popup_text": "Your blood naturally holds about 40 parts myo-inositol to 1 part D-chiro-inositol. This study tested that exact balance — the same one in every scoop of Bodology."
           }
         },
         "attr_placebo": {
@@ -236,7 +236,7 @@
           "settings": {
             "label": "Placebo-controlled",
             "popup_title": "Placebo-Controlled",
-            "popup_text": "A \"placebo-controlled\" study is one in which one group receives the actual compound while another receives an inactive look-alike, or placebo. In this study, the placebo group received folic acid alone."
+            "popup_text": "One group gets the real thing. The other gets a look-alike dummy — a placebo, here plain folic acid. Comparing the two shows what the compound actually does, beyond the effect of believing it works."
           }
         },
         "attr_random": {
@@ -244,7 +244,7 @@
           "settings": {
             "label": "Randomized",
             "popup_title": "Randomized",
-            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups (experimental or placebo) based on chance, to compare outcomes fairly and minimize bias."
+            "popup_text": "Who got the real thing was decided by chance, like a coin flip. That keeps the two groups fair to compare."
           }
         },
         "attr_insulin": {
@@ -252,7 +252,7 @@
           "settings": {
             "label": "−47% fasting insulin*",
             "popup_title": "Fasting Insulin, −47%",
-            "popup_text": "Average fasting insulin fell from 20.19 to 10.74 μU/mL over the six months — with no significant change in the placebo group. Fasting insulin measures how much insulin your body needs to keep blood sugar steady after an overnight fast.*"
+            "popup_text": "Fasting insulin — the insulin in your blood after an overnight fast — roughly halved over the six months (20.19 → 10.74 μU/mL). The placebo group didn't change.*"
           }
         },
         "attr_homa": {
@@ -260,7 +260,7 @@
           "settings": {
             "label": "−42% HOMA index*",
             "popup_title": "HOMA Index, −42%",
-            "popup_text": "The HOMA index estimates insulin resistance from fasting glucose and insulin. It fell from 3.38 to 1.97 on average over the six months — with no significant change in the placebo group.*"
+            "popup_text": "HOMA is a standard score doctors use to estimate insulin resistance from a simple blood test. Lower is better. It fell 42% on average (3.38 → 1.97) — and didn't budge on placebo.*"
           }
         }
       },
@@ -279,7 +279,7 @@
         "image": "shopify://shop_images/Bodology_Inositol_Homones_Pair_7256ca96-eb2d-46ae-9931-5582a0597f42.png",
         "show_image_mobile": false,
         "background_heading": "Study Background",
-        "background_text": "An independent randomized, placebo-controlled trial of myo- plus D-chiro-inositol in the physiological 40:1 ratio — the same ratio used in Bodology — taken as 550 mg myo + 13.8 mg D-chiro twice daily for six months by 46 young overweight women with PCOS (Benelli et al., 2016).‡",
+        "background_text": "46 young women with PCOS, randomly split: half took the two inositols in the same 40:1 ratio as Bodology, half took a placebo, for six months. 40:1 isn't a marketing number — it's the balance your body naturally keeps the two inositols in (Benelli et al., 2016).‡",
         "attributes_heading": "Study Attributes",
         "card_bg": "#FFFFFF",
         "title_bg": "#e4e8f4",
@@ -305,12 +305,12 @@
             "subtitle": "Average reduction",
             "percentage": 18,
             "value_label": "−18%",
-            "caption": "average reduction in free testosterone after 6 months (0.76 → 0.62 ng/dL)*‡",
+            "caption": "average drop in free testosterone — the active form — after 6 months*‡",
             "button_label": "What is free testosterone",
             "popup_heading": "Free Testosterone",
             "popup_stat": "−18%",
-            "popup_stat_text": "average reduction in free testosterone after 6 months on 40:1 inositol — with no significant change in the placebo group*‡",
-            "popup_info_text": "Free testosterone is the unbound, biologically active fraction of testosterone in the blood. It's one of the markers used to assess androgen levels in women with PCOS."
+            "popup_stat_text": "average drop in free testosterone after 6 months on 40:1 inositol — with no real change in the placebo group*‡",
+            "popup_info_text": "Free testosterone is the part of your testosterone that's actually active in the body. It's one of the main things doctors measure in PCOS. Here it fell from 0.76 to 0.62 ng/dL on average."
           }
         },
         "card_2": {
@@ -320,12 +320,12 @@
             "subtitle": "Average increase",
             "percentage": 49,
             "value_label": "+49%",
-            "caption": "average increase in SHBG after 6 months (24.11 → 35.85 nmol/L)*‡",
+            "caption": "average rise in SHBG — the protein that mops up excess hormones — after 6 months*‡",
             "button_label": "What is SHBG",
             "popup_heading": "SHBG",
             "popup_stat": "+49%",
-            "popup_stat_text": "average increase in SHBG after 6 months on 40:1 inositol — with no significant change in the placebo group*‡",
-            "popup_info_text": "Sex Hormone Binding Globulin (SHBG) binds hormones — including testosterone — in the blood. Higher SHBG means less free androgen circulating. In the same group, 17-beta-estradiol also rose significantly (47.06 → 107.42 pg/mL on average)."
+            "popup_stat_text": "average rise in SHBG after 6 months on 40:1 inositol — with no real change in the placebo group*‡",
+            "popup_info_text": "SHBG is a protein that binds spare hormones — including testosterone — so they can't act on the body. More SHBG means less active testosterone in circulation. Estradiol, a key cycle hormone, also more than doubled in the same group."
           }
         },
         "card_3": {
@@ -335,12 +335,12 @@
             "subtitle": "Luteinizing hormone",
             "percentage": 32,
             "value_label": "−32%",
-            "caption": "average reduction in luteinizing hormone after 6 months (12.5 → 8.5 mIU/mL)*‡",
+            "caption": "average drop in LH — the hormone that fires the signal to release an egg — after 6 months*‡",
             "button_label": "What are LH levels",
             "popup_heading": "Luteinizing Hormone (LH)",
             "popup_stat": "−32%",
-            "popup_stat_text": "average reduction in LH after 6 months on 40:1 inositol — with no significant change in the placebo group*‡",
-            "popup_info_text": "Luteinizing hormone (LH) is the hormone that triggers ovulation. In many women with PCOS it runs chronically elevated; it's measured in blood tests to assess how the ovulatory cycle is functioning."
+            "popup_stat_text": "average drop in LH after 6 months on 40:1 inositol — with no real change in the placebo group*‡",
+            "popup_info_text": "LH is the hormone that fires the signal to release an egg. In many women with PCOS it runs constantly high, which scrambles that signal. This study measured it to track how the cycle machinery was working. Here it fell from 12.5 to 8.5 mIU/mL on average."
           }
         }
       },
@@ -403,7 +403,7 @@
           "settings": {
             "label": "7 ratios compared",
             "popup_title": "Seven Ratios, Head-to-Head",
-            "popup_text": "Groups received D-chiro-inositol alone, or myo- to D-chiro-inositol ratios of 1:3.5, 2.5:1, 5:1, 20:1, 40:1, and 80:1 — same total dose (2 g twice daily), same duration. This design isolates one question: which ratio works best?"
+            "popup_text": "Groups got everything from pure D-chiro-inositol up to an 80:1 blend. Same total amount (2 g twice a day), same three months — so any difference in results comes down to the ratio."
           }
         },
         "attr_random": {
@@ -411,7 +411,7 @@
           "settings": {
             "label": "Randomized",
             "popup_title": "Randomized",
-            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups based on chance, to compare outcomes fairly and minimize bias."
+            "popup_text": "Who got which blend was decided by chance, like a coin flip. That keeps the groups fair to compare."
           }
         },
         "attr_ratio": {
@@ -419,7 +419,7 @@
           "settings": {
             "label": "40:1 won",
             "popup_title": "The 40:1 Ratio",
-            "popup_text": "40:1 is the physiological ratio of myo-inositol to D-chiro-inositol in blood plasma — and the ratio used in Bodology. In this trial it outperformed every other ratio tested: the balance between the two inositols is what matters."
+            "popup_text": "40:1 is the balance your body naturally keeps the two inositols in — and the ratio in Bodology. In this trial it beat every other mix tested. The balance is what mattered, not more of one or the other."
           }
         }
       },
@@ -436,7 +436,7 @@
         "image": "shopify://shop_images/White_Powder_small_f8c0a904-3c7a-46b4-a5e8-f142a0215040.jpg",
         "show_image_mobile": true,
         "background_heading": "Study Background",
-        "background_text": "An independent randomized trial that put seven different myo- to D-chiro-inositol ratios head-to-head: 56 women with PCOS took 2 g twice daily for 3 months. The question wasn't whether inositol works — it was which ratio works best (Nordio et al., 2019).§",
+        "background_text": "This one asked a different question: not \"does inositol work?\" but \"which mix works best?\" 56 women with PCOS were split across seven different myo-to-D-chiro blends for three months — same amount, same length, only the ratio changed (Nordio et al., 2019).§",
         "attributes_heading": "Study Attributes",
         "card_bg": "#FFFFFF",
         "title_bg": "#e4e8f4",
@@ -459,14 +459,14 @@
           "type": "stat_card",
           "settings": {
             "value": "40:1",
-            "text": "of seven ratios tested, produced the strongest results across progesterone, LH, SHBG, estradiol, and free testosterone*§"
+            "text": "of the seven blends tested, came out on top for every hormone the researchers measured*§"
           }
         },
         "stat_2": {
           "type": "stat_card",
           "settings": {
             "value": "1 month",
-            "text": "how quickly the 40:1 group's progesterone rise — the marker of restored ovulation — became statistically significant*§"
+            "text": "how quickly progesterone — the hormone that confirms ovulation happened — started rising in the 40:1 group*§"
           }
         },
         "info_1": {
@@ -474,7 +474,7 @@
           "settings": {
             "label": "Why progesterone",
             "popup_title": "Progesterone — the Ovulation Marker",
-            "popup_text": "<p>Progesterone rises only after an egg is released, so a mid-cycle blood test for progesterone is how researchers confirm ovulation actually happened. In this trial, the 40:1 group's progesterone rise was significant from the first month.</p>"
+            "popup_text": "<p>Progesterone only rises after an egg has been released — so a blood test for it is how researchers prove ovulation actually happened, no guesswork. In the 40:1 group it was rising significantly by the end of month one.</p>"
           }
         },
         "info_2": {
@@ -482,7 +482,7 @@
           "settings": {
             "label": "What is SHBG",
             "popup_title": "SHBG",
-            "popup_text": "<p>Sex Hormone Binding Globulin (SHBG) is a protein that binds hormones — including testosterone — in the blood. Higher SHBG means less free androgen circulating. In this trial, SHBG and estradiol rose significantly with the 40:1 ratio.</p>"
+            "popup_text": "<p>SHBG is a protein that binds spare hormones — including testosterone — so they can't act on the body. More SHBG means less active testosterone in circulation. In this trial, SHBG and estradiol both rose most with the 40:1 blend.</p>"
           }
         }
       },
@@ -496,7 +496,7 @@
         "heading": "Study 3 — The Results",
         "badge_text": "40:1 VS EVERY OTHER RATIO",
         "big_stat": "5 / 8",
-        "big_stat_caption": "women on the 40:1 ratio had their period return within 3 months — the strongest result of all seven ratios tested*§",
+        "big_stat_caption": "women on the 40:1 ratio had their period come back within 3 months — the strongest result of all seven blends tested*§",
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
         "accent_color": "#3447af",
@@ -534,7 +534,7 @@
           "settings": {
             "label": "2.3× ovulation*",
             "popup_title": "Ovulation, Pooled",
-            "popup_text": "Across the pooled trials, women on inositol were 2.3 times as likely to ovulate as women on placebo (RR 2.3; 95% CI 1.1–4.7).*"
+            "popup_text": "Across all ten trials combined, women taking inositol were 2.3 times as likely to ovulate as women taking placebo (95% CI 1.1–4.7).*"
           }
         },
         "attr_cycles": {
@@ -542,7 +542,7 @@
           "settings": {
             "label": "6.8× cycle frequency*",
             "popup_title": "Menstrual Cycle Frequency, Pooled",
-            "popup_text": "Menstrual cycles were 6.8 times more frequent with inositol than placebo (RR 6.8; 95% CI 2.8–16.6) — and this result had zero statistical heterogeneity: every one of the ten trials pointed the same way.*"
+            "popup_text": "Periods came 6.8 times more frequently on inositol than on placebo (95% CI 2.8–16.6) — and every single one of the ten trials pointed the same direction. That level of agreement is rare in supplement research.*"
           }
         }
       },
@@ -554,11 +554,11 @@
       ],
       "settings": {
         "anchor": "meta",
-        "title": "The bigger picture — the meta-analysis",
+        "title": "The bigger picture — ten trials, combined",
         "image": "shopify://shop_images/Bodology_Inositol_Drink_413b52fc-9d9c-4764-8260-07d839ce32c0.png",
         "show_image_mobile": true,
         "background_heading": "Beyond single trials",
-        "background_text": "A meta-analysis in BJOG — one of the world's leading obstetrics and gynaecology journals — pooled ten randomized trials of inositol in PCOS: 362 women on inositol, 179 on placebo, 60 on metformin. Ovulation and menstrual cycle frequency both significantly improved versus placebo (Pundir et al., 2018).¶*",
+        "background_text": "Zoom out. Researchers pooled ten separate trials — 601 women in total — to ask whether the results hold up across all of them. They do: women taking inositol were more than twice as likely to ovulate, and their periods came far more regularly, than women on placebo (Pundir et al., 2018).¶*",
         "attributes_heading": "The Numbers",
         "card_bg": "#FFFFFF",
         "title_bg": "#e4e8f4",
@@ -620,7 +620,7 @@
         "anchor": "protocol",
         "title": "The PCOS Protocol",
         "badge_text": "Protocol guide free with every subscription",
-        "intro": "<p>Study 3 ran three months; Study 2 ran six. Change in these trials came from consistent daily use over months, not days. That's why the protocol runs 12 weeks — about the length of the shortest trial above.</p>",
+        "intro": "<p>Nothing in these studies happened in a week. The shortest trial ran three months of daily use — so that's what the protocol is: 12 weeks, every day, measured properly.</p>",
         "show_image_mobile": true,
         "product": "",
         "use_first_selling_plan": true,
