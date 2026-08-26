@@ -35,12 +35,13 @@
         "heading": "Inositol:\nThe Studies",
         "subtext": "We didn't invent the science. Here are two randomized, placebo-controlled trials of inositol in women with PCOS — what they measured, and what they found.",
         "image": "shopify://shop_images/Bodology-Inositol-Empowered-2_b274647e-5a99-4977-b196-7420f3e7cb27.jpg",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "divider_color": "#3447AF",
-        "content_indent": 12,
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "divider_color": "#3447af",
+        "content_indent": 5,
         "padding_top": 40,
-        "padding_bottom": 0
+        "padding_bottom": 0,
+        "mobile_image_height": 120
       }
     },
     "study_1_overview": {
@@ -93,15 +94,20 @@
         "background_heading": "Study Background",
         "background_text": "An independent randomized, double-blind, placebo-controlled trial of myo-inositol in 42 women with PCOS. Researchers tracked ovulation, insulin response, testosterone, triglycerides, and blood pressure against placebo (Costantino et al., 2009).†",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
+        "card_bg": "#ffffff",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
         "margin_top_desktop": 96,
-        "margin_top_mobile": 20
+        "margin_top_mobile": 20,
+        "section_bg": "#f2eeea",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "study_1_results": {
@@ -150,11 +156,11 @@
         "badge_text": "MYO-INOSITOL",
         "big_stat": "70%",
         "big_stat_caption": "of women taking myo-inositol ovulated during the study (16 of 23) — versus 21% on placebo (4 of 19)*†",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "accent_color": "#3447AF",
-        "button_bg": "#E4E8F4",
-        "button_hover_text": "#F2EEEA",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "accent_color": "#3447af",
+        "button_bg": "#e4e8f4",
+        "button_hover_text": "#f2eeea",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
         "padding_top_desktop": 100,
@@ -168,8 +174,8 @@
       "settings": {
         "text": "<p>†Study 1: Costantino D, Minozzi G, Minozzi E, Guaraldi C. Metabolic and hormonal effects of myo-inositol in women with polycystic ovary syndrome: a double-blind trial. Eur Rev Med Pharmacol Sci. 2009;13(2):105–110. PubMed PMID: 19499845. This was an independent study of myo-inositol, not of Bodology.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
         "align": "center",
-        "bg_color": "#F2EEEA",
-        "text_color": "#313131",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
         "font_size_mobile": 10,
         "font_size_desktop": 12,
         "page_width": 1300,
@@ -235,15 +241,20 @@
         "background_heading": "Study Background",
         "background_text": "An independent randomized, placebo-controlled trial of myo- plus D-chiro-inositol in the physiological 40:1 ratio — the same ratio used in Bodology — taken as 550 mg myo + 13.8 mg D-chiro twice daily for six months by 46 young overweight women with PCOS (Benelli et al., 2016).‡",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
+        "card_bg": "#ffffff",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
         "margin_top_desktop": 96,
-        "margin_top_mobile": 20
+        "margin_top_mobile": 20,
+        "section_bg": "#f2eeea",
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "study_2_results": {
@@ -300,13 +311,17 @@
       "settings": {
         "heading": "The Results",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "accent_color": "#3447AF",
-        "card_hover_bg": "#E4E8F4",
-        "track_color": "#D9DFF0",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "accent_color": "#3447af",
+        "card_hover_bg": "#e4e8f4",
+        "track_color": "#d9dff0",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
-        "page_width": 1300
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "footnote_2": {
@@ -314,13 +329,13 @@
       "settings": {
         "text": "<p>‡Study 2: Benelli E, Del Ghianda S, Di Cosmo C, Tonacchera M. A Combined Therapy with Myo-Inositol and D-Chiro-Inositol Improves Endocrine Parameters and Insulin Resistance in PCOS Young Overweight Women. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083. Group averages; individual results vary. This was an independent study of myo- and D-chiro-inositol in a 40:1 ratio, not of Bodology, and the daily amounts studied differ from Bodology's serving.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
         "align": "left",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
         "font_size_mobile": 10,
         "font_size_desktop": 12,
         "page_width": 1300,
         "padding_top": 16,
-        "padding_bottom": 40
+        "padding_bottom": 16
       }
     }
   },
