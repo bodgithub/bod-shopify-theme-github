@@ -17,7 +17,9 @@
   #shopify-section-{{ section.id }} .sot {
     width: 100%;
     position: relative;
-    margin-top: {{ s.margin_top_mobile }}px;
+    background: {{ s.section_bg }};
+    padding-top: {{ s.padding_top_mobile }}px;
+    padding-bottom: {{ s.padding_bottom_mobile }}px;
     scroll-margin-top: 96px;
     font-family: "tenon", sans-serif;
     color: {{ s.text_color }};
@@ -178,7 +180,10 @@
   }
 
   @media screen and (min-width: 750px) {
-    #shopify-section-{{ section.id }} .sot { margin-top: {{ s.margin_top_desktop }}px; }
+    #shopify-section-{{ section.id }} .sot {
+      padding-top: {{ s.padding_top_desktop }}px;
+      padding-bottom: {{ s.padding_bottom_desktop }}px;
+    }
     #shopify-section-{{ section.id }} .sot__card { border-radius: 16px; }
     #shopify-section-{{ section.id }} .sot__title { font-size: 48px; }
     #shopify-section-{{ section.id }} .sot__content { padding: 40px 56px; }
@@ -350,9 +355,12 @@
     { "type": "color", "id": "chip_hover_text", "label": "Chip hover text", "default": "#D9DFF0" },
     { "type": "color_background", "id": "overlay_color", "label": "Popup overlay", "default": "rgba(242, 238, 234, 0.87)" },
     { "type": "header", "content": "Layout" },
+    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#F2EEEA" },
     { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
-    { "type": "range", "id": "margin_top_desktop", "label": "Top margin (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 96 },
-    { "type": "range", "id": "margin_top_mobile", "label": "Top margin (mobile)", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 20 }
+    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 30 }
   ],
   "blocks": [
     {

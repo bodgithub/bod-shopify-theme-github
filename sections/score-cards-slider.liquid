@@ -17,10 +17,12 @@
   #shopify-section-{{ section.id }} .scs {
     width: 100%;
     background: {{ s.bg_color }};
+    padding-top: {{ s.padding_top_mobile }}px;
+    padding-bottom: {{ s.padding_bottom_mobile }}px;
     font-family: "tenon", sans-serif;
     color: {{ s.text_color }};
   }
-  #shopify-section-{{ section.id }} .scs__inner { width: 100%; margin-top: 32px; padding-bottom: 8px; }
+  #shopify-section-{{ section.id }} .scs__inner { width: 100%; }
   #shopify-section-{{ section.id }} .scs__heading {
     text-align: center;
     font-size: 28px;
@@ -239,7 +241,10 @@
   #shopify-section-{{ section.id }} .scs__dialog-close:active { transform: scale(.8); }
 
   @media screen and (min-width: 750px) {
-    #shopify-section-{{ section.id }} .scs__inner { margin: 48px 0 20px; }
+    #shopify-section-{{ section.id }} .scs {
+      padding-top: {{ s.padding_top_desktop }}px;
+      padding-bottom: {{ s.padding_bottom_desktop }}px;
+    }
     #shopify-section-{{ section.id }} .scs__heading { font-size: 48px; }
     #shopify-section-{{ section.id }} .scs__card-title { background: transparent; border-bottom: 0; padding: 10px; font-size: 24px; }
     #shopify-section-{{ section.id }} .scs__card-sub { font-size: 20px; }
@@ -454,7 +459,11 @@
     { "type": "color", "id": "track_color", "label": "Progress track", "default": "#D9DFF0" },
     { "type": "color_background", "id": "overlay_color", "label": "Popup overlay", "default": "rgba(242, 238, 234, 0.87)" },
     { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 }
+    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
+    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 }
   ],
   "blocks": [
     {
