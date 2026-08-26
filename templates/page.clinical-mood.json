@@ -56,11 +56,142 @@
         "link_5"
       ],
       "settings": {
-        "heading": "Bodology for Mood:\nThe Studies",
-        "subtext": "Mood and metabolism are wired together. The evidence below is a chain with two links: metabolic health shapes mood, and inositol supports metabolic health. Then the direct mood trials — reported straight, because the mood evidence is earlier-stage than the metabolic evidence.*",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "divider_color": "#3447AF"
+        "heading": "Your metabolism + your mind: The Studies",
+        "subtext": "Mood and metabolism are wired together. Women with PCOS have three to six times the odds of moderate or severe depression and anxiety. This page isn't about our products. It's about a link that's well established in the research and almost never mentioned in the appointment.",
+        "image": "shopify://shop_images/Bodology_Inositol_Homones_PCOS_Upset_2_c8e229f3-2d37-4813-98e9-a9d14f31a473.png",
+        "mobile_image_height": 175,
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "divider_color": "#3447af",
+        "content_indent": 12,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "link_1_metabolic": {
+      "type": "study-overview-table",
+      "blocks": {
+        "attr_adults": {
+          "type": "attribute",
+          "settings": {
+            "label": "601 adults",
+            "popup_title": "",
+            "popup_text": ""
+          }
+        },
+        "attr_years": {
+          "type": "attribute",
+          "settings": {
+            "label": "9-year follow-up",
+            "popup_title": "",
+            "popup_text": ""
+          }
+        },
+        "attr_journal": {
+          "type": "attribute",
+          "settings": {
+            "label": "Am J Psychiatry",
+            "popup_title": "Where It Was Published",
+            "popup_text": "Led by researchers at Stanford School of Medicine and published in the American Journal of Psychiatry — one of the field's most established journals."
+          }
+        },
+        "attr_risk": {
+          "type": "attribute",
+          "settings": {
+            "label": "2.7× risk",
+            "popup_title": "The Prediabetes Finding",
+            "popup_text": "Participants who newly developed prediabetes within the first two years of the study had 2.66 times the risk of developing depression over the follow-up period (95% CI 1.13–6.27)."
+          }
+        },
+        "attr_observational": {
+          "type": "attribute",
+          "settings": {
+            "label": "Observational",
+            "popup_title": "What This Study Can and Can't Say",
+            "popup_text": "This was a cohort study: it followed people over time and measured risk. It shows that insulin resistance predicts who develops low mood — not that one causes the other, and no supplement was tested in it. It's the 'why metabolism matters' link, not a product claim."
+          }
+        }
+      },
+      "block_order": [
+        "attr_adults",
+        "attr_years",
+        "attr_journal",
+        "attr_risk",
+        "attr_observational"
+      ],
+      "settings": {
+        "anchor": "link-1",
+        "title": "Link 1 — Metabolic health shapes mood",
+        "show_image_mobile": true,
+        "background_heading": "The Stanford-Led Study",
+        "background_text": "Watson et al., 2021: Stanford researchers followed 601 adults with no history of depression or anxiety for nine years. Those who started with markers of insulin resistance were significantly more likely to develop depression — a high triglyceride-to-HDL ratio carried an 89% higher risk, and newly developing prediabetes carried 2.7 times the risk. Mood isn't separate from metabolism.¹",
+        "attributes_heading": "Study Attributes",
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "link_2_inositol": {
+      "type": "study-overview-table",
+      "blocks": {
+        "attr_insulin": {
+          "type": "attribute",
+          "settings": {
+            "label": "−47% fasting insulin*",
+            "popup_title": "Fasting Insulin, −47%",
+            "popup_text": "In a randomized, placebo-controlled 6-month trial of the 40:1 blend in 46 women with PCOS, average fasting insulin fell from 20.19 to 10.74 μU/mL — with no significant change on placebo (Benelli et al., 2016).*"
+          }
+        },
+        "attr_homa": {
+          "type": "attribute",
+          "settings": {
+            "label": "−42% HOMA index*",
+            "popup_title": "HOMA Index, −42%",
+            "popup_text": "The HOMA index estimates insulin resistance from fasting glucose and insulin — the same kind of marker the Stanford-led study used to predict mood risk. In Benelli 2016 it fell 42% on average over 6 months on the 40:1 blend, with no significant change on placebo.*"
+          }
+        },
+        "attr_serotonin": {
+          "type": "attribute",
+          "settings": {
+            "label": "Serotonin second messenger",
+            "popup_title": "The Brain Mechanism",
+            "popup_text": "Inositol is part of the second-messenger system that serotonin receptors use to pass signals inside brain cells. That mechanism is why researchers began testing it for mood in the first place — the trials below took it from theory to placebo-controlled testing."
+          }
+        }
+      },
+      "block_order": [
+        "attr_insulin",
+        "attr_homa",
+        "attr_serotonin"
+      ],
+      "settings": {
+        "anchor": "link-2",
+        "title": "Link 2 — Inositol supports insulin & serotonin signalling",
+        "show_image_mobile": true,
+        "background_heading": "The Evidence",
+        "background_text": "Inositol sits on both sides of the mood–metabolism link. On the metabolic side, randomized trials show it improves insulin handling: fasting insulin fell 47% and the HOMA insulin-resistance index 42% over 6 months on the 40:1 blend (Benelli, 2016²), with post-meal insulin improving within 3 months (Nordio, 2019³). And in the brain, inositol is a second messenger in serotonin signalling — the pathway the direct mood trials below were built on.*",
+        "attributes_heading": "The Numbers",
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "study_1_overview": {
@@ -69,13 +200,17 @@
         "attr_duration": {
           "type": "attribute",
           "settings": {
-            "label": "4 weeks"
+            "label": "4 weeks",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_participants": {
           "type": "attribute",
           "settings": {
-            "label": "28 participants"
+            "label": "28 participants",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_placebo": {
@@ -117,12 +252,18 @@
         "background_heading": "Study Background",
         "background_text": "An independent double-blind, placebo-controlled trial: 12 g of inositol daily (n = 13) versus placebo (n = 15) for 4 weeks, in patients with low mood. The rationale: spinal-fluid inositol had been reported lower than normal in this group (Levine et al., 1995).†",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "study_1_results": {
@@ -170,12 +311,17 @@
         "badge_text": "INOSITOL VS PLACEBO",
         "big_stat": "12 g",
         "big_stat_caption": "daily inositol produced significantly greater improvement on the Hamilton Rating Scale than placebo at 4 weeks*†",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "accent_color": "#3447AF",
-        "button_bg": "#E4E8F4",
-        "button_hover_text": "#F2EEEA",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "accent_color": "#3447af",
+        "button_bg": "#e4e8f4",
+        "button_hover_text": "#f2eeea",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "page_width": 1300,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "footnote_1": {
@@ -183,8 +329,13 @@
       "settings": {
         "text": "<p>†Study 1: Levine J, Barak Y, Gonzalves M, Szor H, Elizur A, Kofman O, Belmaker RH. Double-blind, controlled trial of inositol treatment of depression. Am J Psychiatry. 1995;152(5):792–794. DOI: 10.1176/ajp.152.5.792. Small trial; the authors called replication \"crucial.\" Study population was patients in psychiatric care — this is independent research on inositol, not on Bodology, and not a claim about treating any condition.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
         "align": "center",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "page_width": 1300,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "study_2_overview": {
@@ -193,13 +344,17 @@
         "attr_trials": {
           "type": "attribute",
           "settings": {
-            "label": "11 randomized trials"
+            "label": "11 randomized trials",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_participants": {
           "type": "attribute",
           "settings": {
-            "label": "312 participants"
+            "label": "312 participants",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_meta": {
@@ -232,12 +387,18 @@
         "background_heading": "Study Background",
         "background_text": "A meta-analysis pooling the double-blind randomized trials of inositol for mood and anxiety to 2013: seven mood trials (n = 242) and four anxiety trials (n = 70). Pooled results did not reach statistical significance overall; inositol showed marginally more responders than placebo (p = 0.06), with the strongest signal in premenstrual mood symptoms (p = 0.07). Translation: early and promising in specific groups, not yet proven overall. We'd rather tell you that than oversell it (Mukai et al., 2014).‡",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "footnote_2": {
@@ -245,8 +406,13 @@
       "settings": {
         "text": "<p>‡Study 2: Mukai T, Kishi T, Matsuda Y, Iwata N. A meta-analysis of inositol for depression and anxiety disorders. Hum Psychopharmacol. 2014;29(1):55–63. DOI: 10.1002/hup.2369. Trial doses in the pooled studies were higher than a standard Bodology serving. All studies cited are independent research on inositol, not on Bodology.</p><p>¹ Watson KT, Simard JF, Henderson VW, Nutkiewicz L, Lamers F, Nasca C, Rasgon N, Penninx BWJH. Incident Major Depressive Disorder Predicted by Three Measures of Insulin Resistance: A Dutch Cohort Study. Am J Psychiatry. 2021;178(10):914–920. DOI: 10.1176/appi.ajp.2021.20101479. Observational cohort; shows prediction, not causation; no supplement was tested.</p><p>² Benelli E, et al. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083.</p><p>³ Nordio M, Basciani S, Camajani E. Eur Rev Med Pharmacol Sci. 2019;23(12):5512–5521. DOI: 10.26355/eurrev_201906_18223.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. If you're struggling with your mental health, please talk to your doctor — a supplement is not a substitute for care.</p>",
         "align": "left",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "page_width": 1300,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "protocol": {
@@ -281,124 +447,25 @@
         "title": "The Mood Protocol",
         "badge_text": "Protocol guide free with every subscription",
         "intro": "<p>Study 1 saw a significant difference at four weeks of daily use. The protocol runs 12 weeks — three times that window — to give consistent daily use time to show up.</p>",
+        "show_image_mobile": true,
+        "product": "",
+        "use_first_selling_plan": true,
+        "selling_plan_id": "",
         "button_label": "Start the 12-week protocol",
+        "show_price": true,
+        "note": "Subscription renews every 6 weeks. Pause or cancel anytime.",
         "section_bg": "#F2EEEA",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "button_bg": "#3447AF",
-        "button_text_color": "#F2EEEA"
-      }
-    },
-    "link_1_metabolic": {
-      "type": "study-overview-table",
-      "blocks": {
-        "attr_adults": {
-          "type": "attribute",
-          "settings": {
-            "label": "601 adults"
-          }
-        },
-        "attr_years": {
-          "type": "attribute",
-          "settings": {
-            "label": "9-year follow-up"
-          }
-        },
-        "attr_journal": {
-          "type": "attribute",
-          "settings": {
-            "label": "Am J Psychiatry",
-            "popup_title": "Where It Was Published",
-            "popup_text": "Led by researchers at Stanford School of Medicine and published in the American Journal of Psychiatry — one of the field's most established journals."
-          }
-        },
-        "attr_risk": {
-          "type": "attribute",
-          "settings": {
-            "label": "2.7× risk",
-            "popup_title": "The Prediabetes Finding",
-            "popup_text": "Participants who newly developed prediabetes within the first two years of the study had 2.66 times the risk of developing depression over the follow-up period (95% CI 1.13–6.27)."
-          }
-        },
-        "attr_observational": {
-          "type": "attribute",
-          "settings": {
-            "label": "Observational",
-            "popup_title": "What This Study Can and Can't Say",
-            "popup_text": "This was a cohort study: it followed people over time and measured risk. It shows that insulin resistance predicts who develops low mood — not that one causes the other, and no supplement was tested in it. It's the 'why metabolism matters' link, not a product claim."
-          }
-        }
-      },
-      "block_order": [
-        "attr_adults",
-        "attr_years",
-        "attr_journal",
-        "attr_risk",
-        "attr_observational"
-      ],
-      "settings": {
-        "anchor": "link-1",
-        "title": "Link 1 — Metabolic health shapes mood",
-        "show_image_mobile": true,
-        "background_heading": "The Stanford-Led Study",
-        "background_text": "Watson et al., 2021: Stanford researchers followed 601 adults with no history of depression or anxiety for nine years. Those who started with markers of insulin resistance were significantly more likely to develop depression — a high triglyceride-to-HDL ratio carried an 89% higher risk, and newly developing prediabetes carried 2.7 times the risk. Mood isn't separate from metabolism.¹",
-        "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
-      }
-    },
-    "link_2_inositol": {
-      "type": "study-overview-table",
-      "blocks": {
-        "attr_insulin": {
-          "type": "attribute",
-          "settings": {
-            "label": "−47% fasting insulin*",
-            "popup_title": "Fasting Insulin, −47%",
-            "popup_text": "In a randomized, placebo-controlled 6-month trial of the 40:1 blend in 46 women with PCOS, average fasting insulin fell from 20.19 to 10.74 μU/mL — with no significant change on placebo (Benelli et al., 2016).*"
-          }
-        },
-        "attr_homa": {
-          "type": "attribute",
-          "settings": {
-            "label": "−42% HOMA index*",
-            "popup_title": "HOMA Index, −42%",
-            "popup_text": "The HOMA index estimates insulin resistance from fasting glucose and insulin — the same kind of marker the Stanford-led study used to predict mood risk. In Benelli 2016 it fell 42% on average over 6 months on the 40:1 blend, with no significant change on placebo.*"
-          }
-        },
-        "attr_serotonin": {
-          "type": "attribute",
-          "settings": {
-            "label": "Serotonin second messenger",
-            "popup_title": "The Brain Mechanism",
-            "popup_text": "Inositol is part of the second-messenger system that serotonin receptors use to pass signals inside brain cells. That mechanism is why researchers began testing it for mood in the first place — the trials below took it from theory to placebo-controlled testing."
-          }
-        }
-      },
-      "block_order": [
-        "attr_insulin",
-        "attr_homa",
-        "attr_serotonin"
-      ],
-      "settings": {
-        "anchor": "link-2",
-        "title": "Link 2 — Inositol supports insulin & serotonin signalling",
-        "show_image_mobile": true,
-        "background_heading": "The Evidence",
-        "background_text": "Inositol sits on both sides of the mood–metabolism link. On the metabolic side, randomized trials show it improves insulin handling: fasting insulin fell 47% and the HOMA insulin-resistance index 42% over 6 months on the 40:1 blend (Benelli, 2016²), with post-meal insulin improving within 3 months (Nordio, 2019³). And in the brain, inositol is a second messenger in serotonin signalling — the pathway the direct mood trials below were built on.*",
-        "attributes_heading": "The Numbers",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "button_bg": "#3447af",
+        "button_text_color": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 48
       }
     }
   },
