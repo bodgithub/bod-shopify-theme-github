@@ -221,12 +221,20 @@
       position: sticky;
       top: 110px;
     }
+    {% if s.image != blank %}
     #shopify-section-{{ section.id }} .crs__grid {
       display: grid;
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       align-items: start;
       gap: 40px;
     }
+    {% else %}
+    #shopify-section-{{ section.id }} .crs__grid {
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    {% endif %}
     #shopify-section-{{ section.id }} .crs__card { justify-content: flex-start; }
     #shopify-section-{{ section.id }} .crs__card-inner { gap: 20px; }
     #shopify-section-{{ section.id }} .crs__card-num { font-size: 56px; }
@@ -243,13 +251,11 @@
       <h2 class="crs__heading">{{ s.heading }}</h2>
     {%- endif -%}
 
-    <div class="crs__img-mobile">
-      {%- if s.image != blank -%}
+    {%- if s.image != blank -%}
+      <div class="crs__img-mobile">
         {{ s.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: s.image.alt | default: s.heading }}
-      {%- else -%}
-        {{ 'lifestyle-1' | placeholder_svg_tag }}
-      {%- endif -%}
-    </div>
+      </div>
+    {%- endif -%}
 
     <div class="crs__grid">
       <div class="crs__col">
@@ -289,13 +295,11 @@
         {%- endif -%}
       </div>
 
-      <div class="crs__img-desktop">
-        {%- if s.image != blank -%}
+      {%- if s.image != blank -%}
+        <div class="crs__img-desktop">
           {{ s.image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: s.image.alt | default: s.heading }}
-        {%- else -%}
-          {{ 'lifestyle-1' | placeholder_svg_tag }}
-        {%- endif -%}
-      </div>
+        </div>
+      {%- endif -%}
     </div>
   </div>
 

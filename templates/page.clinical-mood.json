@@ -243,7 +243,7 @@
     "footnote_2": {
       "type": "clinical-footnote",
       "settings": {
-        "text": "<p>‡Study 2: Mukai T, Kishi T, Matsuda Y, Iwata N. A meta-analysis of inositol for depression and anxiety disorders. Hum Psychopharmacol. 2014;29(1):55–63. DOI: 10.1002/hup.2369. Trial doses in the pooled studies were higher than a standard Bodology serving. All studies cited are independent research on inositol, not on Bodology.</p><p>¹ Watson KT, Simard JF, Henderson VW, Nutkiewicz L, Lamers F, Nasca C, Rasgon N, Penninx BWJH. Incident Major Depressive Disorder Predicted by Three Measures of Insulin Resistance: A Dutch Cohort Study. Am J Psychiatry. 2021;178(10):914–920. DOI: 10.1176/appi.ajp.2021.20101479. Observational cohort; shows prediction, not causation; no supplement was tested.</p><p>² Benelli E, et al. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083.</p><p>³ Nordio M, Basciani S, Camajani E. Eur Rev Med Pharmacol Sci. 2019;23(12):5512–5521. DOI: 10.26355/eurrev_201906_18223.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. If you're struggling with your mental health, please talk to your doctor — a supplement is not a substitute for care.</p>",
+        "text": "<p>‡Study 2: Mukai T, Kishi T, Matsuda Y, Iwata N. A meta-analysis of inositol for depression and anxiety disorders. Hum Psychopharmacol. 2014;29(1):55–63. DOI: 10.1002/hup.2369. Trial doses in the pooled studies were higher than a standard Bodology serving. All studies cited are independent research on inositol, not on Bodology.</p><p>¹ Watson KT, Simard JF, Henderson VW, Nutkiewicz L, Lamers F, Nasca C, Rasgon N, Penninx BWJH. Incident Major Depressive Disorder Predicted by Three Measures of Insulin Resistance: A Dutch Cohort Study. Am J Psychiatry. 2021;178(10):914–920. DOI: 10.1176/appi.ajp.2021.20101479. Observational cohort; shows prediction, not causation; no supplement was tested.</p><p>² Benelli E, et al. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083.</p><p>³ Nordio M, Basciani S, Camajani E. Eur Rev Med Pharmacol Sci. 2019;23(12):5512–5521. DOI: 10.26355/eurrev_201906_18223.</p><p>⁴ Cooney LG, Lee I, Sammel MD, Dokras A. High prevalence of moderate and severe depressive and anxiety symptoms in polycystic ovary syndrome: a systematic review and meta-analysis. Hum Reprod. 2017;32(5):1075–1091. DOI: 10.1093/humrep/dex044. All included studies were cross-sectional — they show the two conditions occur together, not that one causes the other. The authors note that age, obesity, hyperandrogenism and insulin resistance don't fully explain the association.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. If you're struggling with your mental health, please talk to your doctor — a supplement is not a substitute for care.</p>",
         "align": "left",
         "bg_color": "#F2EEEA",
         "text_color": "#1A2874"
@@ -400,11 +400,138 @@
         "chip_hover_text": "#D9DFF0",
         "overlay_color": "rgba(242, 238, 234, 0.87)"
       }
+    },
+    "link_1_pcos": {
+      "type": "study-overview-table",
+      "blocks": {
+        "attr_studies": {
+          "type": "attribute",
+          "settings": {
+            "label": "30 studies"
+          }
+        },
+        "attr_women": {
+          "type": "attribute",
+          "settings": {
+            "label": "6,908 women"
+          }
+        },
+        "attr_journal": {
+          "type": "attribute",
+          "settings": {
+            "label": "Hum Reprod",
+            "popup_title": "Where It Was Published",
+            "popup_text": "Published in Human Reproduction — one of the world's leading reproductive-medicine journals — by researchers at the University of Pennsylvania. No funding was used and no conflicts of interest were declared."
+          }
+        },
+        "attr_bmi": {
+          "type": "attribute",
+          "settings": {
+            "label": "Independent of BMI",
+            "popup_title": "It Isn't Because of Your Weight",
+            "popup_text": "When women were matched for BMI, women with PCOS still had over 3× the odds of depressive symptoms (OR 3.25) and over 6× the odds of anxiety symptoms (OR 6.30). The authors note that age, obesity, hyperandrogenism and insulin resistance don't fully explain the association."
+          }
+        },
+        "attr_cross": {
+          "type": "attribute",
+          "settings": {
+            "label": "Cross-sectional",
+            "popup_title": "What This Study Can and Can't Say",
+            "popup_text": "All 30 included studies were cross-sectional — they show the two conditions occur together, not that one causes the other. And no supplement was tested in them."
+          }
+        }
+      },
+      "block_order": [
+        "attr_studies",
+        "attr_women",
+        "attr_journal",
+        "attr_bmi",
+        "attr_cross"
+      ],
+      "settings": {
+        "anchor": "link-1-pcos",
+        "title": "Link 1 — The PCOS-specific study",
+        "show_image_mobile": true,
+        "background_heading": "The PCOS-Specific Study",
+        "background_text": "Cooney et al., 2017, in Human Reproduction: a meta-analysis of 30 studies covering 3,050 women with PCOS and 3,858 without, across 10 countries. Women with PCOS had roughly four times the odds of moderate or severe depressive symptoms, and over six times the odds of moderate or severe anxiety symptoms. When women were matched for BMI, the elevated odds held. The authors recommend that clinicians screen women with PCOS for both.⁴",
+        "attributes_heading": "Study Attributes",
+        "card_bg": "#F2EEEA",
+        "title_bg": "#E4E8F4",
+        "border_color": "#3447AF",
+        "text_color": "#1A2874",
+        "chip_hover_text": "#D9DFF0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)"
+      }
+    },
+    "link_1_stats": {
+      "type": "clinical-results-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "value": "6.5×",
+            "text": "the odds of moderate-to-severe anxiety symptoms in women with PCOS versus women without*⁴"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "value": "2.7×",
+            "text": "the risk of developing depression in adults who newly developed prediabetes — none had any history of depression (Stanford-led, 9 years)*¹"
+          }
+        },
+        "stat_3": {
+          "type": "stat_card",
+          "settings": {
+            "value": "+89%",
+            "text": "higher risk of future depression with a high triglyceride-to-HDL ratio — a standard insulin-resistance marker*¹"
+          }
+        },
+        "info_1": {
+          "type": "info_button",
+          "settings": {
+            "label": "Why BMI matching matters",
+            "popup_title": "It Isn't Because of Your Weight",
+            "popup_text": "<p>In the BMI-matched analysis, women with PCOS still had over 3× the odds of depressive symptoms and over 6× the odds of anxiety symptoms. Age, obesity, hyperandrogenism and insulin resistance don't fully explain the association — the link runs deeper than the scale.</p>"
+          }
+        },
+        "info_2": {
+          "type": "info_button",
+          "settings": {
+            "label": "Association vs causation",
+            "popup_title": "What These Numbers Mean",
+            "popup_text": "<p>Both studies measure association and risk, not cause and effect. The PCOS meta-analysis is cross-sectional — it shows the two occur together. The Stanford-led cohort shows insulin resistance predicts who develops low mood. Neither tested a supplement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "info_1",
+        "info_2"
+      ],
+      "settings": {
+        "heading": "Link 1 — The biggest numbers",
+        "badge_text": "MOOD × METABOLISM",
+        "big_stat": "4×",
+        "big_stat_caption": "the odds of moderate-to-severe depressive symptoms in women with PCOS — and the odds held when women were matched for BMI*⁴",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874",
+        "accent_color": "#3447AF",
+        "button_bg": "#E4E8F4",
+        "button_hover_text": "#F2EEEA",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40
+      }
     }
   },
   "order": [
     "study_header",
     "link_1_metabolic",
+    "link_1_pcos",
+    "link_1_stats",
     "link_2_inositol",
     "study_1_overview",
     "study_1_results",
