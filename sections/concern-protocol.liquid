@@ -1,0 +1,272 @@
+{%- comment -%}
+  BODOLOGY · Concern Protocol
+  Bottom-of-page module for the clinical pages: a bordered card in the
+  study-overview style presenting the 12-week protocol for a concern.
+  Left: title, intro, checklist bullets (blocks), "free with
+  subscription" badge, and an add-to-cart button that adds the chosen
+  product WITH its subscription selling plan (auto-detects the first
+  selling plan, or paste a specific selling plan ID).
+  Right: image (protocol guide / product), hidden on mobile optionally.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign anchor = s.anchor | remove: '#' | default: section.id
+  assign product = s.product
+  assign variant = product.selected_or_first_available_variant
+  assign plan_id = blank
+  if s.selling_plan_id != blank
+    assign plan_id = s.selling_plan_id | strip
+  elsif s.use_first_selling_plan and variant.selling_plan_allocations.size > 0
+    assign plan_id = variant.selling_plan_allocations.first.selling_plan.id
+  endif
+  assign plan_id_num = plan_id | plus: 0
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .cpr {
+    width: 100%;
+    position: relative;
+    margin: 40px 0 {{ s.margin_bottom }}px;
+    scroll-margin-top: 96px;
+    font-family: "tenon", sans-serif;
+    color: {{ s.text_color }};
+    background: {{ s.section_bg }};
+  }
+  #shopify-section-{{ section.id }} .cpr__pw {
+    max-width: {{ s.page_width }}px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  #shopify-section-{{ section.id }} .cpr__card {
+    width: 100%;
+    position: relative;
+    border: 1px solid {{ s.border_color }};
+    border-radius: 16px;
+    overflow: hidden;
+    background: {{ s.card_bg }};
+  }
+  #shopify-section-{{ section.id }} .cpr__title {
+    background: {{ s.title_bg }};
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    padding: 8px 16px;
+    border-bottom: 1px solid {{ s.border_color }};
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .cpr__body { display: flex; flex-direction: column; }
+  #shopify-section-{{ section.id }} .cpr__content { padding: 20px 16px 28px; }
+  #shopify-section-{{ section.id }} .cpr__badge {
+    display: inline-block;
+    border: 1px solid {{ s.border_color }};
+    border-radius: 999px;
+    background: {{ s.title_bg }};
+    color: {{ s.text_color }};
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+  #shopify-section-{{ section.id }} .cpr__intro { font-size: 15px; line-height: 1.6; }
+  #shopify-section-{{ section.id }} .cpr__intro p { margin: 0 0 10px; }
+  #shopify-section-{{ section.id }} .cpr__intro p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .cpr__bullets { list-style: none; margin: 18px 0 0; padding: 0; }
+  #shopify-section-{{ section.id }} .cpr__bullet {
+    position: relative;
+    padding: 9px 0 9px 32px;
+    border-top: 1px solid {{ s.border_color }}40;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  #shopify-section-{{ section.id }} .cpr__bullet:last-child { border-bottom: 1px solid {{ s.border_color }}40; }
+  #shopify-section-{{ section.id }} .cpr__bullet svg {
+    position: absolute;
+    left: 2px;
+    top: 12px;
+    width: 18px;
+    height: 18px;
+  }
+  #shopify-section-{{ section.id }} .cpr__cta { margin-top: 22px; }
+  #shopify-section-{{ section.id }} .cpr__btn {
+    display: inline-block;
+    width: 100%;
+    padding: 15px 28px;
+    border-radius: 999px;
+    border: 1px solid {{ s.border_color }};
+    background: {{ s.button_bg }};
+    color: {{ s.button_text_color }};
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: opacity .3s;
+  }
+  #shopify-section-{{ section.id }} .cpr__btn:hover { opacity: .85; }
+  #shopify-section-{{ section.id }} .cpr__btn[disabled] { opacity: .5; cursor: not-allowed; }
+  #shopify-section-{{ section.id }} .cpr__note {
+    margin: 10px 0 0;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    opacity: .8;
+  }
+  #shopify-section-{{ section.id }} .cpr__img { display: none; }
+  #shopify-section-{{ section.id }} .cpr__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  {%- if s.show_image_mobile and s.image != blank -%}
+  #shopify-section-{{ section.id }} .cpr__img { display: block; }
+  #shopify-section-{{ section.id }} .cpr__img img { max-height: 260px; }
+  {%- endif -%}
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .cpr__title { font-size: 40px; padding: 10px 16px; }
+    #shopify-section-{{ section.id }} .cpr__body { flex-direction: row; }
+    #shopify-section-{{ section.id }} .cpr__content { width: {% if s.image != blank %}62%{% else %}100%{% endif %}; padding: 40px 48px; }
+    #shopify-section-{{ section.id }} .cpr__intro { font-size: 17px; }
+    #shopify-section-{{ section.id }} .cpr__bullet { font-size: 16px; padding: 12px 0 12px 34px; }
+    #shopify-section-{{ section.id }} .cpr__bullet svg { top: 15px; width: 20px; height: 20px; }
+    #shopify-section-{{ section.id }} .cpr__btn { width: auto; min-width: 320px; }
+    #shopify-section-{{ section.id }} .cpr__note { text-align: left; }
+    {%- if s.image != blank -%}
+    #shopify-section-{{ section.id }} .cpr__img {
+      display: block;
+      width: 38%;
+      border-left: 1px solid {{ s.border_color }};
+    }
+    #shopify-section-{{ section.id }} .cpr__img img { max-height: none; height: 100%; }
+    {%- endif -%}
+  }
+{% endstyle %}
+
+<div id="{{ anchor }}" class="cpr">
+  <div class="cpr__pw">
+    <div class="cpr__card">
+      {%- if s.title != blank -%}
+        <h2 class="cpr__title">{{ s.title }}</h2>
+      {%- endif -%}
+      <div class="cpr__body">
+        <div class="cpr__content">
+          {%- if s.badge_text != blank -%}
+            <p class="cpr__badge">{{ s.badge_text }}</p>
+          {%- endif -%}
+          {%- if s.intro != blank -%}
+            <div class="cpr__intro">{{ s.intro }}</div>
+          {%- endif -%}
+          {%- if section.blocks.size > 0 -%}
+            <ul class="cpr__bullets">
+              {%- for block in section.blocks -%}
+                <li class="cpr__bullet" {{ block.shopify_attributes }}>
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="11" stroke="{{ s.border_color }}" stroke-width="1.4"/>
+                    <path d="M7 12.5l3.2 3.2L17 9" stroke="{{ s.border_color }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {{ block.settings.text }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          <div class="cpr__cta">
+            {%- if product != blank and variant != blank -%}
+              <form method="post" action="{{ routes.cart_add_url }}">
+                <input type="hidden" name="id" value="{{ variant.id }}">
+                {%- if plan_id != blank -%}
+                  <input type="hidden" name="selling_plan" value="{{ plan_id }}">
+                {%- endif -%}
+                <button type="submit" class="cpr__btn" {% unless variant.available %}disabled{% endunless %}>
+                  {%- if variant.available -%}
+                    {{ s.button_label }}
+                    {%- if s.show_price -%}
+                      {%- if plan_id != blank and variant.selling_plan_allocations.size > 0 -%}
+                        {%- for alloc in variant.selling_plan_allocations -%}
+                          {%- if alloc.selling_plan.id == plan_id_num -%}
+                            &nbsp;·&nbsp;{{ alloc.price | money }}
+                            {%- break -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- else -%}
+                        &nbsp;·&nbsp;{{ variant.price | money }}
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- else -%}
+                    Sold out
+                  {%- endif -%}
+                </button>
+              </form>
+            {%- else -%}
+              <button type="button" class="cpr__btn" disabled>{{ s.button_label }}</button>
+              {%- if request.design_mode -%}
+                <p class="cpr__note">Pick a product in the section settings to activate this button.</p>
+              {%- endif -%}
+            {%- endif -%}
+            {%- if s.note != blank -%}
+              <p class="cpr__note">{{ s.note }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+        {%- if s.image != blank -%}
+          <div class="cpr__img">
+            {{ s.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: s.image.alt | default: s.title }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Concern protocol",
+  "tag": "section",
+  "class": "section-concern-protocol",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Anchor ID (without #)", "default": "protocol" },
+    { "type": "text", "id": "title", "label": "Title", "default": "The 12-Week Protocol" },
+    { "type": "text", "id": "badge_text", "label": "Badge", "default": "Protocol guide free with every subscription" },
+    { "type": "richtext", "id": "intro", "label": "Intro text", "default": "<p>The studies above measured change over 12 weeks to 6 months. That's why the protocol runs 12 weeks — the shortest window the research actually covers.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Image (guide / product)" },
+    { "type": "checkbox", "id": "show_image_mobile", "label": "Show image on mobile", "default": true },
+    { "type": "header", "content": "Add to cart" },
+    { "type": "product", "id": "product", "label": "Product to add" },
+    { "type": "checkbox", "id": "use_first_selling_plan", "label": "Add as subscription (first selling plan)", "default": true, "info": "Adds the product with its first subscription plan. Untick for a one-time purchase." },
+    { "type": "text", "id": "selling_plan_id", "label": "Specific selling plan ID (optional)", "info": "Overrides the auto-detected plan. Find IDs in your subscription app." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Start the 12-week protocol" },
+    { "type": "checkbox", "id": "show_price", "label": "Show price in button", "default": true },
+    { "type": "text", "id": "note", "label": "Small print under button", "default": "Subscription renews every 6 weeks. Pause or cancel anytime." },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_background", "id": "section_bg", "label": "Section background", "default": "#fdf4e7" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#fdf4e7" },
+    { "type": "color", "id": "title_bg", "label": "Title bar / badge background", "default": "#dedbcc" },
+    { "type": "color", "id": "border_color", "label": "Borders", "default": "#57665c" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#313131" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#57665c" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#fdf4e7" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
+    { "type": "range", "id": "margin_bottom", "label": "Bottom margin", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 60 }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Checklist item",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "2 scoops daily — 4,000 mg myo + 100 mg D-chiro, the 40:1 ratio" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Concern protocol",
+      "blocks": [
+        { "type": "bullet" },
+        { "type": "bullet", "settings": { "text": "Unflavoured — mixes into water, coffee, or smoothies" } },
+        { "type": "bullet", "settings": { "text": "The 12-week protocol guide arrives free with your subscription" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

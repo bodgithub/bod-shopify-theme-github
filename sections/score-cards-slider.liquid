@@ -294,7 +294,7 @@
                   stroke="{{ s.accent_color }}"
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                 ></path>
-                <text x="50%" y="60%" fill="{{ s.accent_color }}" font-size="0.625rem" text-anchor="middle" font-weight="500">{{ pct }}%</text>
+                <text x="50%" y="60%" fill="{{ s.accent_color }}" font-size="0.625rem" text-anchor="middle" font-weight="500">{% if block.settings.value_label != blank %}{{ block.settings.value_label }}{% else %}{{ pct }}%{% endif %}</text>
               </svg>
               {%- if block.settings.caption != blank -%}
                 <p class="scs__card-caption">{{ block.settings.caption }}</p>
@@ -461,6 +461,7 @@
         { "type": "text", "id": "title", "label": "Title", "default": "[Marker] Levels" },
         { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "[Full marker name]" },
         { "type": "range", "id": "percentage", "label": "Percentage", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
+        { "type": "text", "id": "value_label", "label": "Gauge label override", "info": "Optional. Text shown inside the circle instead of the percentage — e.g. \"−18.9%\". The gauge fill still uses the percentage above." },
         { "type": "text", "id": "caption", "label": "Caption", "default": "of participants reported [outcome]*‡" },
         { "type": "text", "id": "button_label", "label": "Button label", "default": "What are [Marker] Levels" },
         { "type": "header", "content": "Popup" },
