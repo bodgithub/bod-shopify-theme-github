@@ -12,21 +12,58 @@
     "study_header": {
       "type": "clinical-study-header",
       "blocks": {
-        "link_1": { "type": "anchor_link", "settings": { "label": "Study 1 Results", "anchor": "study-1" } },
-        "link_2": { "type": "anchor_link", "settings": { "label": "Study 2 Results", "anchor": "study-2" } },
-        "link_3": { "type": "anchor_link", "settings": { "label": "Study 3 Results", "anchor": "study-3" } },
-        "link_4": { "type": "anchor_link", "settings": { "label": "The 12-Week Protocol", "anchor": "protocol" } }
+        "link_1": {
+          "type": "anchor_link",
+          "settings": {
+            "label": "Study 1 Results",
+            "anchor": "study-1"
+          }
+        },
+        "link_2": {
+          "type": "anchor_link",
+          "settings": {
+            "label": "Study 2 Results",
+            "anchor": "study-2"
+          }
+        },
+        "link_3": {
+          "type": "anchor_link",
+          "settings": {
+            "label": "Study 3 Results",
+            "anchor": "study-3"
+          }
+        },
+        "link_4": {
+          "type": "anchor_link",
+          "settings": {
+            "label": "The 12-Week Protocol",
+            "anchor": "protocol"
+          }
+        }
       },
-      "block_order": ["link_1", "link_2", "link_3", "link_4"],
+      "block_order": [
+        "link_1",
+        "link_2",
+        "link_3",
+        "link_4"
+      ],
       "settings": {
         "heading": "Bodology for PCOS:\nThe Studies",
-        "subtext": "Insulin resistance sits underneath most PCOS symptoms. When cells stop responding to insulin, the body makes more of it — and high insulin pushes the ovaries toward androgen production and disrupts ovulation. That's why every study below starts with insulin. Here they are, laid out straight."
+        "subtext": "Insulin resistance sits underneath most PCOS symptoms. When cells stop responding to insulin, the body makes more of it — and high insulin pushes the ovaries toward androgen production and disrupts ovulation. That's why every study below starts with insulin. Here they are, laid out straight.",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874",
+        "divider_color": "#3447AF"
       }
     },
     "study_1_overview": {
       "type": "study-overview-table",
       "blocks": {
-        "attr_participants": { "type": "attribute", "settings": { "label": "42 women with PCOS" } },
+        "attr_participants": {
+          "type": "attribute",
+          "settings": {
+            "label": "42 women with PCOS"
+          }
+        },
         "attr_placebo": {
           "type": "attribute",
           "settings": {
@@ -52,21 +89,44 @@
           }
         }
       },
-      "block_order": ["attr_participants", "attr_placebo", "attr_blind", "attr_random"],
+      "block_order": [
+        "attr_participants",
+        "attr_placebo",
+        "attr_blind",
+        "attr_random"
+      ],
       "settings": {
         "anchor": "study-1",
         "title": "Study 1 Overview",
         "show_image_mobile": true,
         "background_heading": "Study Background",
         "background_text": "An independent randomized, double-blind, placebo-controlled trial of myo-inositol in 42 women with PCOS. Researchers tracked ovulation, insulin response, testosterone, triglycerides, and blood pressure against placebo (Costantino et al., 2009).†",
-        "attributes_heading": "Study Attributes"
+        "attributes_heading": "Study Attributes",
+        "card_bg": "#F2EEEA",
+        "title_bg": "#E4E8F4",
+        "border_color": "#3447AF",
+        "text_color": "#1A2874",
+        "chip_hover_text": "#D9DFF0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)"
       }
     },
     "study_1_results": {
       "type": "clinical-results-stats",
       "blocks": {
-        "stat_1": { "type": "stat_card", "settings": { "value": "+80%", "text": "improvement in whole-body insulin sensitivity (index 2.80 → 5.05)*†" } },
-        "stat_2": { "type": "stat_card", "settings": { "value": "−51%", "text": "average reduction in triglycerides (195 → 95 mg/dL)*†" } },
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "value": "+80%",
+            "text": "improvement in whole-body insulin sensitivity (index 2.80 → 5.05)*†"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "value": "−51%",
+            "text": "average reduction in triglycerides (195 → 95 mg/dL)*†"
+          }
+        },
         "info_1": {
           "type": "info_button",
           "settings": {
@@ -84,26 +144,49 @@
           }
         }
       },
-      "block_order": ["stat_1", "stat_2", "info_1", "info_2"],
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "info_1",
+        "info_2"
+      ],
       "settings": {
         "heading": "Study 1 — The Results",
         "badge_text": "MYO-INOSITOL",
         "big_stat": "70%",
-        "big_stat_caption": "of women taking myo-inositol ovulated during the study (16 of 23) — versus 21% on placebo (4 of 19)*†"
+        "big_stat_caption": "of women taking myo-inositol ovulated during the study (16 of 23) — versus 21% on placebo (4 of 19)*†",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874",
+        "accent_color": "#3447AF",
+        "button_bg": "#E4E8F4",
+        "button_hover_text": "#F2EEEA",
+        "overlay_color": "rgba(242, 238, 234, 0.87)"
       }
     },
     "footnote_1": {
       "type": "clinical-footnote",
       "settings": {
         "text": "<p>†Study 1: Costantino D, Minozzi G, Minozzi E, Guaraldi C. Metabolic and hormonal effects of myo-inositol in women with polycystic ovary syndrome: a double-blind trial. Eur Rev Med Pharmacol Sci. 2009;13(2):105–110. PubMed PMID: 19499845. This was an independent study of myo-inositol, not of Bodology.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
-        "align": "center"
+        "align": "center",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874"
       }
     },
     "study_2_overview": {
       "type": "study-overview-table",
       "blocks": {
-        "attr_duration": { "type": "attribute", "settings": { "label": "6 months" } },
-        "attr_participants": { "type": "attribute", "settings": { "label": "46 women with PCOS" } },
+        "attr_duration": {
+          "type": "attribute",
+          "settings": {
+            "label": "6 months"
+          }
+        },
+        "attr_participants": {
+          "type": "attribute",
+          "settings": {
+            "label": "46 women with PCOS"
+          }
+        },
         "attr_ratio": {
           "type": "attribute",
           "settings": {
@@ -129,14 +212,26 @@
           }
         }
       },
-      "block_order": ["attr_duration", "attr_participants", "attr_ratio", "attr_placebo", "attr_random"],
+      "block_order": [
+        "attr_duration",
+        "attr_participants",
+        "attr_ratio",
+        "attr_placebo",
+        "attr_random"
+      ],
       "settings": {
         "anchor": "study-2",
         "title": "Study 2 Overview",
         "show_image_mobile": false,
         "background_heading": "Study Background",
         "background_text": "An independent randomized, placebo-controlled trial of myo- plus D-chiro-inositol in the physiological 40:1 ratio — the same ratio used in Bodology — taken as 550 mg myo + 13.8 mg D-chiro twice daily for six months by 46 young overweight women with PCOS (Benelli et al., 2016).‡",
-        "attributes_heading": "Study Attributes"
+        "attributes_heading": "Study Attributes",
+        "card_bg": "#F2EEEA",
+        "title_bg": "#E4E8F4",
+        "border_color": "#3447AF",
+        "text_color": "#1A2874",
+        "chip_hover_text": "#D9DFF0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)"
       }
     },
     "study_2_results": {
@@ -188,23 +283,45 @@
           }
         }
       },
-      "block_order": ["card_1", "card_2", "card_3"],
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3"
+      ],
       "settings": {
-        "heading": "Study 2 — The Results"
+        "heading": "Study 2 — The Results",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874",
+        "accent_color": "#3447AF",
+        "card_hover_bg": "#E4E8F4",
+        "track_color": "#D9DFF0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)"
       }
     },
     "footnote_2": {
       "type": "clinical-footnote",
       "settings": {
         "text": "<p>‡Study 2: Benelli E, Del Ghianda S, Di Cosmo C, Tonacchera M. A Combined Therapy with Myo-Inositol and D-Chiro-Inositol Improves Endocrine Parameters and Insulin Resistance in PCOS Young Overweight Women. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083. Group averages; individual results vary. This was an independent study; the daily amounts studied differ from Bodology's serving.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
-        "align": "center"
+        "align": "center",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874"
       }
     },
     "study_3_overview": {
       "type": "study-overview-table",
       "blocks": {
-        "attr_duration": { "type": "attribute", "settings": { "label": "3 months" } },
-        "attr_participants": { "type": "attribute", "settings": { "label": "56 women with PCOS" } },
+        "attr_duration": {
+          "type": "attribute",
+          "settings": {
+            "label": "3 months"
+          }
+        },
+        "attr_participants": {
+          "type": "attribute",
+          "settings": {
+            "label": "56 women with PCOS"
+          }
+        },
         "attr_ratios": {
           "type": "attribute",
           "settings": {
@@ -230,21 +347,45 @@
           }
         }
       },
-      "block_order": ["attr_duration", "attr_participants", "attr_ratios", "attr_random", "attr_ratio"],
+      "block_order": [
+        "attr_duration",
+        "attr_participants",
+        "attr_ratios",
+        "attr_random",
+        "attr_ratio"
+      ],
       "settings": {
         "anchor": "study-3",
         "title": "Study 3 Overview",
         "show_image_mobile": true,
         "background_heading": "Study Background",
         "background_text": "An independent randomized trial that put seven different myo- to D-chiro-inositol ratios head-to-head: 56 women with PCOS took 2 g twice daily for 3 months. The question wasn't whether inositol works — it was which ratio works best (Nordio et al., 2019).§",
-        "attributes_heading": "Study Attributes"
+        "attributes_heading": "Study Attributes",
+        "card_bg": "#F2EEEA",
+        "title_bg": "#E4E8F4",
+        "border_color": "#3447AF",
+        "text_color": "#1A2874",
+        "chip_hover_text": "#D9DFF0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)"
       }
     },
     "study_3_results": {
       "type": "clinical-results-stats",
       "blocks": {
-        "stat_1": { "type": "stat_card", "settings": { "value": "40:1", "text": "of seven ratios tested, produced the strongest results across progesterone, LH, SHBG, estradiol, and free testosterone*§" } },
-        "stat_2": { "type": "stat_card", "settings": { "value": "0 / 8", "text": "women on D-chiro-inositol alone had menses return — increasing D-chiro made results worse, not better*§" } },
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "value": "40:1",
+            "text": "of seven ratios tested, produced the strongest results across progesterone, LH, SHBG, estradiol, and free testosterone*§"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "value": "0 / 8",
+            "text": "women on D-chiro-inositol alone had menses return — increasing D-chiro made results worse, not better*§"
+          }
+        },
         "info_1": {
           "type": "info_button",
           "settings": {
@@ -262,35 +403,74 @@
           }
         }
       },
-      "block_order": ["stat_1", "stat_2", "info_1", "info_2"],
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "info_1",
+        "info_2"
+      ],
       "settings": {
         "heading": "Study 3 — The Results",
         "badge_text": "40:1 VS EVERY OTHER RATIO",
         "big_stat": "5 / 8",
-        "big_stat_caption": "women on the 40:1 ratio had their period return within 3 months — versus 0 of 8 on D-chiro-inositol alone*§"
+        "big_stat_caption": "women on the 40:1 ratio had their period return within 3 months — versus 0 of 8 on D-chiro-inositol alone*§",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874",
+        "accent_color": "#3447AF",
+        "button_bg": "#E4E8F4",
+        "button_hover_text": "#F2EEEA",
+        "overlay_color": "rgba(242, 238, 234, 0.87)"
       }
     },
     "footnote_3": {
       "type": "clinical-footnote",
       "settings": {
         "text": "<p>§Study 3: Nordio M, Basciani S, Camajani E. The 40:1 myo-inositol/D-chiro-inositol plasma ratio is able to restore ovulation in PCOS patients: comparison with other ratios. Eur Rev Med Pharmacol Sci. 2019;23(12):5512–5521. DOI: 10.26355/eurrev_201906_18223. Menses figures from Table II; progesterone and hormone findings per the published figures. Small groups (8 per ratio); this was an independent study, not of Bodology.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
-        "align": "center"
+        "align": "center",
+        "bg_color": "#F2EEEA",
+        "text_color": "#1A2874"
       }
     },
     "protocol": {
       "type": "concern-protocol",
       "blocks": {
-        "b1": { "type": "bullet", "settings": { "text": "2 scoops daily — 4,000 mg myo + 100 mg D-chiro, the 40:1 ratio from Studies 2 and 3" } },
-        "b2": { "type": "bullet", "settings": { "text": "Unflavoured — mixes into water, coffee, or smoothies" } },
-        "b3": { "type": "bullet", "settings": { "text": "The 12-week PCOS protocol guide arrives free with your subscription" } }
+        "b1": {
+          "type": "bullet",
+          "settings": {
+            "text": "2 scoops daily — 4,000 mg myo + 100 mg D-chiro, the 40:1 ratio from Studies 2 and 3"
+          }
+        },
+        "b2": {
+          "type": "bullet",
+          "settings": {
+            "text": "Unflavoured — mixes into water, coffee, or smoothies"
+          }
+        },
+        "b3": {
+          "type": "bullet",
+          "settings": {
+            "text": "The 12-week PCOS protocol guide arrives free with your subscription"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ],
       "settings": {
         "anchor": "protocol",
         "title": "The PCOS Protocol",
         "badge_text": "Protocol guide free with every subscription",
         "intro": "<p>The trials above ran 12 weeks to 6 months — meaningful change in these studies took a full cycle of consistent, daily use. That's why the protocol runs 12 weeks: it's the shortest window the research actually covers.</p>",
-        "button_label": "Start the 12-week protocol"
+        "button_label": "Start the 12-week protocol",
+        "section_bg": "#F2EEEA",
+        "card_bg": "#F2EEEA",
+        "title_bg": "#E4E8F4",
+        "border_color": "#3447AF",
+        "text_color": "#1A2874",
+        "button_bg": "#3447AF",
+        "button_text_color": "#F2EEEA"
       }
     }
   },
