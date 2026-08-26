@@ -39,7 +39,6 @@
   #shopify-section-{{ section.id }} .crs__img-mobile img,
   #shopify-section-{{ section.id }} .crs__img-mobile svg { width: 100%; height: auto; display: block; }
   #shopify-section-{{ section.id }} .crs__grid {
-    margin-top: 40px;
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -187,6 +186,7 @@
       padding: {{ s.padding_top_desktop }}px 0 {{ s.padding_bottom_desktop }}px;
     }
     #shopify-section-{{ section.id }} .crs__heading { font-size: 48px; }
+    #shopify-section-{{ section.id }} .crs__grid { margin-top: 40px; }
     #shopify-section-{{ section.id }} .crs__bigstat { display: block; }
     #shopify-section-{{ section.id }} .crs__card { padding: 24px; justify-content: center; }
     #shopify-section-{{ section.id }} .crs__card-inner { gap: 24px; }
