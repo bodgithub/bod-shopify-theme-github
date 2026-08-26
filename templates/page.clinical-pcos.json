@@ -48,11 +48,16 @@
         "link_4"
       ],
       "settings": {
-        "heading": "Bodology for PCOS:\nThe Studies",
-        "subtext": "Insulin resistance sits underneath most PCOS symptoms. When cells stop responding to insulin, the body makes more of it — and high insulin pushes the ovaries toward androgen production and disrupts ovulation. That's why every study below starts with insulin. Here they are, laid out straight.",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "divider_color": "#3447AF"
+        "heading": "Inositol for PCOS:\nThe Studies",
+        "subtext": "PCOS is a metabolic condition. Around 80% of women with PCOS have insulin resistance. When cells stop responding to insulin, the body makes more of it — and high insulin pushes the ovaries toward androgen production and disrupts ovulation. That's why every study below starts with insulin. Here they are, laid out straight.",
+        "image": "shopify://shop_images/Bodology_Inositol_Homones_Pair_7256ca96-eb2d-46ae-9931-5582a0597f42.png",
+        "mobile_image_height": 175,
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "divider_color": "#3447af",
+        "content_indent": 12,
+        "padding_top": 40,
+        "padding_bottom": 0
       }
     },
     "study_1_overview": {
@@ -61,7 +66,9 @@
         "attr_participants": {
           "type": "attribute",
           "settings": {
-            "label": "42 women with PCOS"
+            "label": "42 women with PCOS",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_placebo": {
@@ -102,12 +109,18 @@
         "background_heading": "Study Background",
         "background_text": "An independent randomized, double-blind, placebo-controlled trial of myo-inositol in 42 women with PCOS. Researchers tracked ovulation, insulin response, testosterone, triglycerides, and blood pressure against placebo (Costantino et al., 2009).†",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "study_1_results": {
@@ -118,6 +131,13 @@
           "settings": {
             "value": "+80%",
             "text": "improvement in whole-body insulin sensitivity (index 2.80 → 5.05)*†"
+          }
+        },
+        "stat_testosterone": {
+          "type": "stat_card",
+          "settings": {
+            "value": "−65%",
+            "text": "average reduction in total testosterone (99.5 → 34.8 ng/dL)*†"
           }
         },
         "stat_2": {
@@ -142,13 +162,6 @@
             "popup_title": "Triglycerides",
             "popup_text": "<p>Triglycerides are the main form of fat circulating in your blood. A blood test measures them to assess metabolic health.</p>"
           }
-        },
-        "stat_testosterone": {
-          "type": "stat_card",
-          "settings": {
-            "value": "−65%",
-            "text": "average reduction in total testosterone (99.5 → 34.8 ng/dL)*†"
-          }
         }
       },
       "block_order": [
@@ -163,12 +176,17 @@
         "badge_text": "MYO-INOSITOL",
         "big_stat": "70%",
         "big_stat_caption": "of women taking myo-inositol ovulated during the study (16 of 23) — versus 21% on placebo (4 of 19)*†",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "accent_color": "#3447AF",
-        "button_bg": "#E4E8F4",
-        "button_hover_text": "#F2EEEA",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "accent_color": "#3447af",
+        "button_bg": "#e4e8f4",
+        "button_hover_text": "#f2eeea",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "page_width": 1300,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "footnote_1": {
@@ -176,8 +194,13 @@
       "settings": {
         "text": "<p>†Study 1: Costantino D, Minozzi G, Minozzi E, Guaraldi C. Metabolic and hormonal effects of myo-inositol in women with polycystic ovary syndrome: a double-blind trial. Eur Rev Med Pharmacol Sci. 2009;13(2):105–110. PubMed PMID: 19499845. This was an independent study of myo-inositol, not of Bodology.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
         "align": "center",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "page_width": 1300,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "study_2_overview": {
@@ -186,13 +209,17 @@
         "attr_duration": {
           "type": "attribute",
           "settings": {
-            "label": "6 months"
+            "label": "6 months",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_participants": {
           "type": "attribute",
           "settings": {
-            "label": "46 women with PCOS"
+            "label": "46 women with PCOS",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_ratio": {
@@ -252,12 +279,18 @@
         "background_heading": "Study Background",
         "background_text": "An independent randomized, placebo-controlled trial of myo- plus D-chiro-inositol in the physiological 40:1 ratio — the same ratio used in Bodology — taken as 550 mg myo + 13.8 mg D-chiro twice daily for six months by 46 young overweight women with PCOS (Benelli et al., 2016).‡",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "study_2_results": {
@@ -316,12 +349,18 @@
       ],
       "settings": {
         "heading": "Study 2 — The Hormone Results",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "accent_color": "#3447AF",
-        "card_hover_bg": "#E4E8F4",
-        "track_color": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "accent_color": "#3447af",
+        "card_hover_bg": "#e4e8f4",
+        "track_color": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "footnote_2": {
@@ -329,8 +368,13 @@
       "settings": {
         "text": "<p>‡Study 2: Benelli E, Del Ghianda S, Di Cosmo C, Tonacchera M. A Combined Therapy with Myo-Inositol and D-Chiro-Inositol Improves Endocrine Parameters and Insulin Resistance in PCOS Young Overweight Women. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083. Group averages; individual results vary. This was an independent study; the daily amounts studied differ from Bodology's serving.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
         "align": "center",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "page_width": 1300,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "study_3_overview": {
@@ -339,13 +383,17 @@
         "attr_duration": {
           "type": "attribute",
           "settings": {
-            "label": "3 months"
+            "label": "3 months",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_participants": {
           "type": "attribute",
           "settings": {
-            "label": "56 women with PCOS"
+            "label": "56 women with PCOS",
+            "popup_title": "",
+            "popup_text": ""
           }
         },
         "attr_ratios": {
@@ -387,12 +435,18 @@
         "background_heading": "Study Background",
         "background_text": "An independent randomized trial that put seven different myo- to D-chiro-inositol ratios head-to-head: 56 women with PCOS took 2 g twice daily for 3 months. The question wasn't whether inositol works — it was which ratio works best (Nordio et al., 2019).§",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "study_3_results": {
@@ -408,7 +462,7 @@
         "stat_2": {
           "type": "stat_card",
           "settings": {
-            "value": "Month 1",
+            "value": "1 month",
             "text": "how quickly the 40:1 group's progesterone rise — the marker of restored ovulation — became statistically significant*§"
           }
         },
@@ -440,12 +494,80 @@
         "badge_text": "40:1 VS EVERY OTHER RATIO",
         "big_stat": "5 / 8",
         "big_stat_caption": "women on the 40:1 ratio had their period return within 3 months — the strongest result of all seven ratios tested*§",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874",
-        "accent_color": "#3447AF",
-        "button_bg": "#E4E8F4",
-        "button_hover_text": "#F2EEEA",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "accent_color": "#3447af",
+        "button_bg": "#e4e8f4",
+        "button_hover_text": "#f2eeea",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "page_width": 1300,
+        "padding_top_desktop": 100,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
+      }
+    },
+    "pundir_meta": {
+      "type": "study-overview-table",
+      "blocks": {
+        "attr_trials": {
+          "type": "attribute",
+          "settings": {
+            "label": "10 randomized trials",
+            "popup_title": "",
+            "popup_text": ""
+          }
+        },
+        "attr_women": {
+          "type": "attribute",
+          "settings": {
+            "label": "601 women",
+            "popup_title": "",
+            "popup_text": ""
+          }
+        },
+        "attr_ovulation": {
+          "type": "attribute",
+          "settings": {
+            "label": "2.3× ovulation*",
+            "popup_title": "Ovulation, Pooled",
+            "popup_text": "Across the pooled trials, women on inositol were 2.3 times as likely to ovulate as women on placebo (RR 2.3; 95% CI 1.1–4.7).*"
+          }
+        },
+        "attr_cycles": {
+          "type": "attribute",
+          "settings": {
+            "label": "6.8× cycle frequency*",
+            "popup_title": "Menstrual Cycle Frequency, Pooled",
+            "popup_text": "Menstrual cycles were 6.8 times more frequent with inositol than placebo (RR 6.8; 95% CI 2.8–16.6) — and this result had zero statistical heterogeneity: every one of the ten trials pointed the same way.*"
+          }
+        }
+      },
+      "block_order": [
+        "attr_trials",
+        "attr_women",
+        "attr_ovulation",
+        "attr_cycles"
+      ],
+      "settings": {
+        "anchor": "meta",
+        "title": "The bigger picture — the meta-analysis",
+        "show_image_mobile": false,
+        "background_heading": "Beyond single trials",
+        "background_text": "A meta-analysis in BJOG — one of the world's leading obstetrics and gynaecology journals — pooled ten randomized trials of inositol in PCOS: 362 women on inositol, 179 on placebo, 60 on metformin. Ovulation and menstrual cycle frequency both significantly improved versus placebo (Pundir et al., 2018).¶*",
+        "attributes_heading": "The Numbers",
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "chip_hover_text": "#d9dff0",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "section_bg": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
       }
     },
     "footnote_3": {
@@ -453,8 +575,13 @@
       "settings": {
         "text": "<p>§Study 3: Nordio M, Basciani S, Camajani E. The 40:1 myo-inositol/D-chiro-inositol plasma ratio is able to restore ovulation in PCOS patients: comparison with other ratios. Eur Rev Med Pharmacol Sci. 2019;23(12):5512–5521. DOI: 10.26355/eurrev_201906_18223. Menses figures from Table II; progesterone and hormone findings per the published figures. Small groups (8 per ratio); this was an independent study, not of Bodology.</p><p>¶Pundir J, et al. Inositol treatment of anovulation in women with polycystic ovary syndrome: a meta-analysis of randomised trials. BJOG. 2018;125(3):299–308. DOI: 10.1111/1471-0528.14754.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
         "align": "center",
-        "bg_color": "#F2EEEA",
-        "text_color": "#1A2874"
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "page_width": 1300,
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     },
     "protocol": {
@@ -489,67 +616,25 @@
         "title": "The PCOS Protocol",
         "badge_text": "Protocol guide free with every subscription",
         "intro": "<p>Study 3 ran three months; Study 2 ran six. Change in these trials came from consistent daily use over months, not days. That's why the protocol runs 12 weeks — about the length of the shortest trial above.</p>",
+        "show_image_mobile": true,
+        "product": "",
+        "use_first_selling_plan": true,
+        "selling_plan_id": "",
         "button_label": "Start the 12-week protocol",
+        "show_price": true,
+        "note": "Subscription renews every 6 weeks. Pause or cancel anytime.",
         "section_bg": "#F2EEEA",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "button_bg": "#3447AF",
-        "button_text_color": "#F2EEEA"
-      }
-    },
-    "pundir_meta": {
-      "type": "study-overview-table",
-      "blocks": {
-        "attr_trials": {
-          "type": "attribute",
-          "settings": {
-            "label": "10 randomized trials"
-          }
-        },
-        "attr_women": {
-          "type": "attribute",
-          "settings": {
-            "label": "601 women"
-          }
-        },
-        "attr_ovulation": {
-          "type": "attribute",
-          "settings": {
-            "label": "2.3× ovulation*",
-            "popup_title": "Ovulation, Pooled",
-            "popup_text": "Across the pooled trials, women on inositol were 2.3 times as likely to ovulate as women on placebo (RR 2.3; 95% CI 1.1–4.7).*"
-          }
-        },
-        "attr_cycles": {
-          "type": "attribute",
-          "settings": {
-            "label": "6.8× cycle frequency*",
-            "popup_title": "Menstrual Cycle Frequency, Pooled",
-            "popup_text": "Menstrual cycles were 6.8 times more frequent with inositol than placebo (RR 6.8; 95% CI 2.8–16.6) — and this result had zero statistical heterogeneity: every one of the ten trials pointed the same way.*"
-          }
-        }
-      },
-      "block_order": [
-        "attr_trials",
-        "attr_women",
-        "attr_ovulation",
-        "attr_cycles"
-      ],
-      "settings": {
-        "anchor": "meta",
-        "title": "The bigger picture — the meta-analysis",
-        "show_image_mobile": false,
-        "background_heading": "Beyond single trials",
-        "background_text": "A meta-analysis in BJOG — one of the world's leading obstetrics and gynaecology journals — pooled ten randomized trials of inositol in PCOS: 362 women on inositol, 179 on placebo, 60 on metformin. Ovulation and menstrual cycle frequency both significantly improved versus placebo (Pundir et al., 2018).¶*",
-        "attributes_heading": "The Numbers",
-        "card_bg": "#F2EEEA",
-        "title_bg": "#E4E8F4",
-        "border_color": "#3447AF",
-        "text_color": "#1A2874",
-        "chip_hover_text": "#D9DFF0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)"
+        "card_bg": "#f2eeea",
+        "title_bg": "#e4e8f4",
+        "border_color": "#3447af",
+        "text_color": "#1a2874",
+        "button_bg": "#3447af",
+        "button_text_color": "#f2eeea",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 48
       }
     }
   },
