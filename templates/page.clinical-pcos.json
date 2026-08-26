@@ -49,7 +49,7 @@
       ],
       "settings": {
         "heading": "Inositol for PCOS:\nThe Studies",
-        "subtext": "Most PCOS symptoms trace back to one thing: insulin. When your body stops responding to it properly, it makes more — and too much insulin pushes your ovaries to make more testosterone, which disrupts ovulation. That's why every study below starts with insulin. Here's what the research found, in plain language.",
+        "subtext": "PCOS is a metabolic condition. Around 80% of women with PCOS have insulin resistance. When cells stop responding to insulin, the body makes more of it — and high insulin pushes the ovaries toward androgen production and disrupts ovulation. That's why every study below starts with insulin. Here they are, laid out straight.",
         "image": "shopify://shop_images/White_Powder_small_f8c0a904-3c7a-46b4-a5e8-f142a0215040.jpg",
         "mobile_image_height": 120,
         "bg_color": "#f2eeea",
@@ -131,14 +131,14 @@
           "type": "stat_card",
           "settings": {
             "value": "+80%",
-            "text": "better response to insulin by the end of the study — meaning the body needed less insulin to keep blood sugar steady*†"
+            "text": "improvement in whole-body insulin sensitivity (index 2.80 → 5.05)*†"
           }
         },
         "stat_testosterone": {
           "type": "stat_card",
           "settings": {
             "value": "−65%",
-            "text": "average drop in total testosterone, one of the main hormones measured in PCOS (99.5 → 34.8 ng/dL)*†"
+            "text": "average reduction in total testosterone (99.5 → 34.8 ng/dL)*†"
           }
         },
         "stat_2": {
@@ -529,28 +529,19 @@
             "popup_text": ""
           }
         },
-        "attr_ovulation": {
+        "attr_journal": {
           "type": "attribute",
           "settings": {
-            "label": "2.3× ovulation*",
-            "popup_title": "Ovulation, Pooled",
-            "popup_text": "Across all ten trials combined, women taking inositol were 2.3 times as likely to ovulate as women taking placebo (95% CI 1.1–4.7).*"
-          }
-        },
-        "attr_cycles": {
-          "type": "attribute",
-          "settings": {
-            "label": "6.8× cycle frequency*",
-            "popup_title": "Menstrual Cycle Frequency, Pooled",
-            "popup_text": "Periods came 6.8 times more frequently on inositol than on placebo (95% CI 2.8–16.6) — and every single one of the ten trials pointed the same direction. That level of agreement is rare in supplement research.*"
+            "label": "Published in BJOG",
+            "popup_title": "Why the Journal Matters",
+            "popup_text": "BJOG is one of the world's leading obstetrics and gynaecology journals. Peer review at this level is a meaningful quality bar — much of the supplement literature never clears it."
           }
         }
       },
       "block_order": [
         "attr_trials",
         "attr_women",
-        "attr_ovulation",
-        "attr_cycles"
+        "attr_journal"
       ],
       "settings": {
         "anchor": "meta",
@@ -641,6 +632,64 @@
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 48
       }
+    },
+    "pundir_results": {
+      "type": "clinical-results-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat_card",
+          "settings": {
+            "value": "6.8×",
+            "text": "more frequent periods on inositol than on placebo (95% CI 2.8–16.6)*¶"
+          }
+        },
+        "stat_2": {
+          "type": "stat_card",
+          "settings": {
+            "value": "10 / 10",
+            "text": "trials pointed the same direction on cycle frequency — rare agreement in supplement research*¶"
+          }
+        },
+        "info_1": {
+          "type": "info_button",
+          "settings": {
+            "label": "What is a meta-analysis",
+            "popup_title": "What a Meta-Analysis Is",
+            "popup_text": "<p>A meta-analysis pools many separate trials into one answer, so no single study's quirks can skew the picture. It's the strongest kind of evidence for an overall effect.</p>"
+          }
+        },
+        "info_2": {
+          "type": "info_button",
+          "settings": {
+            "label": "What does 2.3× mean",
+            "popup_title": "Reading the Numbers",
+            "popup_text": "<p>Across all ten trials combined, women taking inositol were 2.3 times as likely to ovulate as women taking placebo (95% CI 1.1–4.7). The cycle result means periods came 6.8 times more frequently than on placebo.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "info_1",
+        "info_2"
+      ],
+      "settings": {
+        "heading": "Ten trials — The Results",
+        "badge_text": "TEN TRIALS, POOLED",
+        "big_stat": "2.3×",
+        "big_stat_caption": "the likelihood of ovulating on inositol versus placebo, pooled across all ten trials*¶",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "accent_color": "#3447af",
+        "button_bg": "#e4e8f4",
+        "button_hover_text": "#f2eeea",
+        "overlay_color": "rgba(242, 238, 234, 0.87)",
+        "page_width": 1300,
+        "padding_top_desktop": 12,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30
+      }
     }
   },
   "order": [
@@ -654,6 +703,7 @@
     "study_3_overview",
     "study_3_results",
     "pundir_meta",
+    "pundir_results",
     "footnote_3",
     "protocol"
   ]

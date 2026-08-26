@@ -92,7 +92,7 @@
           "settings": {
             "label": "CGM-tracked",
             "popup_title": "Continuous Glucose Monitors",
-            "popup_text": "Every participant wore a continuous glucose monitor (CGM), so researchers saw real blood sugar curves after real meals — not lab questionnaires. Two cohorts (UK and US) produced directionally consistent results."
+            "popup_text": "Everyone wore a continuous glucose monitor — a small sensor that tracks blood sugar around the clock — so researchers saw real responses to real meals, not lab questionnaires. Two separate groups (UK and US) showed the same pattern."
           }
         },
         "attr_population": {
@@ -100,7 +100,7 @@
           "settings": {
             "label": "Healthy adults",
             "popup_title": "Who Was Studied",
-            "popup_text": "This study was in healthy adults — not specifically women with PCOS. It maps how blood sugar dips drive hunger in the general population."
+            "popup_text": "This study was in healthy adults, not specifically women with PCOS. It maps how blood sugar crashes drive hunger in everyone."
           }
         }
       },
@@ -115,7 +115,7 @@
         "title": "Link 1 — Blood sugar dips make you hungry",
         "show_image_mobile": true,
         "background_heading": "The Study",
-        "background_text": "Wyatt et al., 2021, in Nature Metabolism: 1,070 people wore glucose monitors through 8,624 standardised meals and 71,715 freely-chosen ones. The size of the blood sugar dip 2–3 hours after a meal predicted hunger better than the spike did. Bigger dips meant more hunger (r = 0.16), a shorter wait until the next meal, more calories at 3–4 hours (r = 0.19), and more calories over the whole next day (r = 0.27) — all p < 0.001. The spike isn't the problem. The crash is.¹",
+        "background_text": "1,070 people wore blood sugar monitors while eating over 71,000 real meals. The finding: it's not the sugar spike after a meal that makes you hungry — it's the crash that follows 2–3 hours later. The bigger the crash, the hungrier people got, the sooner they ate again, and the more they ate over the whole next day (Wyatt et al., 2021, Nature Metabolism).¹",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -139,7 +139,7 @@
           "settings": {
             "label": "−47% fasting insulin*",
             "popup_title": "Fasting Insulin, −47%",
-            "popup_text": "In a randomized, placebo-controlled 6-month trial of the 40:1 blend in 46 women with PCOS, average fasting insulin fell from 20.19 to 10.74 μU/mL — with no significant change on placebo (Benelli et al., 2016).*"
+            "popup_text": "Fasting insulin — the insulin in your blood after an overnight fast — roughly halved over the six months (20.19 → 10.74 μU/mL). The placebo group didn't change.*"
           }
         },
         "attr_postmeal": {
@@ -147,7 +147,7 @@
           "settings": {
             "label": "Post-meal insulin ↓*",
             "popup_title": "Post-Meal Insulin",
-            "popup_text": "In a randomized head-to-head ratio trial, post-meal (postprandial) insulin improved significantly from baseline after 3 months of inositol (Nordio et al., 2019). Post-meal is exactly the 2–3 hour window where Wyatt's blood sugar dips predict hunger.*"
+            "popup_text": "In a trial comparing seven inositol blends, insulin measured after meals improved significantly within three months (Nordio, 2019). After meals is exactly the 2–3 hour window where the hunger-driving crashes happen.*"
           }
         },
         "attr_homa": {
@@ -155,7 +155,7 @@
           "settings": {
             "label": "−42% HOMA index*",
             "popup_title": "HOMA Index, −42%",
-            "popup_text": "The HOMA index estimates insulin resistance from fasting glucose and insulin. In Benelli 2016, it fell 42% on average over 6 months on the 40:1 blend (3.38 → 1.97) — with no significant change on placebo.*"
+            "popup_text": "HOMA is a standard score doctors use to estimate insulin resistance from a simple blood test. Lower is better. It fell 42% on average (3.38 → 1.97) — and didn't budge on placebo.*"
           }
         }
       },
@@ -169,7 +169,7 @@
         "title": "Link 2 — Inositol supports insulin & glucose handling",
         "show_image_mobile": true,
         "background_heading": "The Evidence",
-        "background_text": "Across the randomized trials on this page and our PCOS page, inositol consistently improved how the body handles insulin: fasting insulin fell 47% and the HOMA insulin-resistance index fell 42% over 6 months on the 40:1 blend (Benelli, 2016²) — and in a head-to-head ratio trial, both fasting and post-meal insulin improved after 3 months (Nordio, 2019³). Post-meal is the exact window where the hunger-driving dips happen.*",
+        "background_text": "So if crashes drive hunger, what steadies them? In the trials on this site, inositol consistently improved how the body handles insulin: fasting insulin roughly halved over six months on the 40:1 blend (Benelli, 2016²), and in a separate trial, insulin measured after meals improved within three months (Nordio, 2019³) — exactly the window where the hunger-driving crash happens.*",
         "attributes_heading": "The Numbers",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -209,7 +209,7 @@
           "settings": {
             "label": "3 arms",
             "popup_title": "Three Groups, Same Diet",
-            "popup_text": "Group 1: diet alone (n = 21). Group 2: diet + 4 g myo-inositol daily (n = 10). Group 3: diet + myo and D-chiro-inositol in the 40:1 ratio (n = 12). Everyone followed the same calorie-controlled diet and took 400 µg folic acid daily."
+            "popup_text": "Group 1: diet alone. Group 2: the same diet plus 4 g myo-inositol a day. Group 3: the same diet plus the 40:1 myo + D-chiro blend. Everyone ate the same way — so any difference between groups comes from the inositol."
           }
         },
         "attr_random": {
@@ -217,7 +217,7 @@
           "settings": {
             "label": "Randomized",
             "popup_title": "Randomized",
-            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups based on chance, to compare outcomes fairly and minimize bias."
+            "popup_text": "Who got which was decided by chance, like a coin flip. That keeps the groups fair to compare."
           }
         },
         "attr_ratio": {
@@ -225,7 +225,7 @@
           "settings": {
             "label": "40:1 ratio",
             "popup_title": "The 40:1 Ratio",
-            "popup_text": "40:1 is the physiological ratio of myo-inositol to D-chiro-inositol in blood plasma — the same ratio used in Bodology. Group 3 took 1.1 g myo + 27.6 mg D-chiro daily."
+            "popup_text": "Your blood naturally holds about 40 parts myo-inositol to 1 part D-chiro-inositol — the same balance used in Bodology. Group 3 took 1.1 g myo + 27.6 mg D-chiro daily."
           }
         }
       },
@@ -241,7 +241,7 @@
         "title": "Study 1 — Fat down, muscle kept",
         "show_image_mobile": true,
         "background_heading": "Study Background",
-        "background_text": "An independent randomized trial asking a precise question: does adding inositol to a diet change what kind of weight you lose? 43 overweight women with PCOS followed the same calorie-controlled diet for 6 months — alone, with myo-inositol, or with the 40:1 myo + D-chiro blend (Le Donne et al., 2019).⁴",
+        "background_text": "A precise question: does adding inositol to a diet change what kind of weight you lose? 43 women with PCOS followed the same calorie-controlled diet for six months — one group diet only, one with myo-inositol added, one with the 40:1 blend added (Le Donne et al., 2019).⁴",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -267,12 +267,12 @@
             "subtitle": "Group 1 (n = 21)",
             "percentage": 14,
             "value_label": "−14%",
-            "caption": "fat-mass reduction over 6 months — but lean mass fell 6.2%*⁴",
+            "caption": "of body fat lost over 6 months — but muscle went down too (−6.2% lean mass)*⁴",
             "button_label": "See the numbers",
             "popup_heading": "Diet Alone",
             "popup_stat": "−14%",
             "popup_stat_text": "fat mass (38.2% → 33.5% of body weight, p = 0.000) — while lean mass fell 6.2%*⁴",
-            "popup_info_text": "Losing lean mass alongside fat lowers resting metabolism, which makes regaining weight more likely. This is the pattern the inositol groups avoided."
+            "popup_info_text": "Losing muscle along with fat slows your metabolism — which is exactly what makes the weight come back. This is the pattern the inositol groups avoided."
           }
         },
         "card_2": {
@@ -282,12 +282,12 @@
             "subtitle": "Group 2 (n = 10)",
             "percentage": 17,
             "value_label": "−16.9%",
-            "caption": "fat-mass reduction — and lean mass rose 7.1%*⁴",
+            "caption": "of body fat lost — and muscle went up 7.1%*⁴",
             "button_label": "See the numbers",
             "popup_heading": "Diet + 4 g Myo-Inositol",
             "popup_stat": "−16.9%",
             "popup_stat_text": "fat mass (42.8% → 36.6% of body weight, p = 0.007) — while lean mass increased 7.1% (p = 0.015)*⁴",
-            "popup_info_text": "The only group to meaningfully gain lean mass while losing fat. Muscle is metabolically active tissue — keeping it makes weight loss easier to sustain."
+            "popup_info_text": "The only group to actually gain muscle while losing fat. Muscle burns energy around the clock, so keeping it makes weight loss easier to keep."
           }
         },
         "card_3": {
@@ -297,12 +297,12 @@
             "subtitle": "Group 3 (n = 12)",
             "percentage": 19,
             "value_label": "−18.9%",
-            "caption": "fat-mass reduction — 35% more than diet alone — with lean mass preserved*⁴",
+            "caption": "of body fat lost — 35% more than diet alone, with muscle preserved*⁴",
             "button_label": "See the numbers",
             "popup_heading": "Diet + Myo & D-Chiro (40:1)",
             "popup_stat": "−18.9%",
             "popup_stat_text": "fat mass (39% → 32.8% of body weight, p = 0.008) — the largest fat loss of the three groups, with lean mass preserved (+0.2%, p = 0.032)*⁴",
-            "popup_info_text": "Every woman in this group also regained menstrual regularity by 6 months — the clearest sign the change was metabolic, not just caloric."
+            "popup_info_text": "Every woman in this group also got her regular cycle back by six months — a sign the change was metabolic, not just fewer calories."
           }
         }
       },
@@ -334,14 +334,14 @@
           "type": "stat_card",
           "settings": {
             "value": "+7.1%",
-            "text": "lean mass gained with diet + myo-inositol — while diet alone lost 6.2% lean mass*⁴"
+            "text": "muscle gained with diet + myo-inositol — while the diet-only group lost 6.2% of theirs*⁴"
           }
         },
         "stat_2": {
           "type": "stat_card",
           "settings": {
             "value": "100%",
-            "text": "of the 40:1 group regained menstrual regularity by 6 months (75% were irregular at baseline)*⁴"
+            "text": "of the 40:1 group had regular cycles again by 6 months (75% started irregular)*⁴"
           }
         },
         "info_1": {
@@ -349,7 +349,7 @@
           "settings": {
             "label": "Why lean mass matters",
             "popup_title": "Why Lean Mass Matters",
-            "popup_text": "<p>Muscle is metabolically active tissue and a major site of glucose disposal. Losing it during weight loss lowers your daily energy burn and worsens the fat-to-muscle ratio — a pattern linked to insulin resistance. Preserving it is what makes weight loss stick.</p>"
+            "popup_text": "<p>Muscle burns energy even when you're doing nothing, and it's where most of your blood sugar gets used. Lose muscle while dieting and your body burns less all day — which is how weight creeps back. Keep it, and the loss is easier to hold.</p>"
           }
         },
         "info_2": {
@@ -357,7 +357,7 @@
           "settings": {
             "label": "What is fat mass",
             "popup_title": "Fat Mass vs. Weight",
-            "popup_text": "<p>The scale weighs everything — fat, muscle, water. Fat mass (measured here by bioelectrical impedance) tells you what portion of your body is fat. Two people can lose the same weight and end up in very different metabolic places depending on how much of it was fat versus muscle.</p>"
+            "popup_text": "<p>The scale weighs everything — fat, muscle, water. Fat mass is just the fat part. Two people can lose the same weight and end up in very different places depending on how much of it was fat versus muscle.</p>"
           }
         }
       },
@@ -393,7 +393,7 @@
           "settings": {
             "label": "40–60% lean mass",
             "popup_title": "Lean Mass Loss on GLP-1s",
-            "popup_text": "In some GLP-1 trials, 40–60% of total weight lost was lean mass rather than fat; other studies report around 15% or less. Lean mass includes muscle — the tissue that keeps resting metabolism up (Neeland et al., 2024, Diabetes, Obesity and Metabolism).⁵"
+            "popup_text": "In some GLP-1 trials, 40–60% of the total weight lost was lean mass — which includes muscle, the tissue that keeps your metabolism up. Other studies report around 15% or less (Neeland et al., 2024, Diabetes, Obesity and Metabolism).⁵"
           }
         },
         "attr_regain": {
@@ -401,7 +401,7 @@
           "settings": {
             "label": "⅔ regained after stopping",
             "popup_title": "Weight Regain After Stopping",
-            "popup_text": "In the STEP 1 trial extension, participants lost an average 17.3% of body weight on semaglutide, then regained 11.6 percentage points — roughly two-thirds of it — within a year of stopping (Wilding et al., 2022).⁶"
+            "popup_text": "In the STEP 1 follow-up, people lost an average 17.3% of their body weight on semaglutide — then regained roughly two-thirds of it within a year of stopping (Wilding et al., 2022).⁶"
           }
         }
       },
@@ -414,7 +414,7 @@
         "title": "A note on GLP-1 medications",
         "show_image_mobile": true,
         "background_heading": "What the research shows",
-        "background_text": "GLP-1 medications (semaglutide and similar) produce large weight loss — and body-composition research reports that in some trials, 40–60% of the weight lost is lean mass, not fat.⁵ In the STEP 1 extension, participants regained about two-thirds of lost weight within a year of stopping.⁶ Inositol is not a GLP-1 and its effects are far smaller — but in the trial above, its fat loss came with lean mass preserved or increased. Different tools for different situations; talk to your doctor about what's right for you.",
+        "background_text": "GLP-1 medications (like semaglutide) produce big weight loss — but studies report that in some trials, 40–60% of the weight lost is muscle, not fat.⁵ And within a year of stopping, people regained about two-thirds of what they lost.⁶ Inositol is not a GLP-1 and its effects are far smaller — but in the trial above, the fat loss came with muscle kept or gained. Different tools for different jobs; talk to your doctor about what's right for you.",
         "attributes_heading": "The Numbers",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -446,7 +446,7 @@
           "settings": {
             "label": "Meta-analysis",
             "popup_title": "What a Meta-Analysis Is",
-            "popup_text": "A meta-analysis pools the results of many independent trials into a single estimate. It's the strongest form of evidence for an overall effect, because no single study's quirks can dominate."
+            "popup_text": "A meta-analysis pools many separate trials into one answer, so no single study's quirks can skew the picture. It's the strongest kind of evidence for an overall effect."
           }
         },
         "attr_bmi": {
@@ -454,7 +454,7 @@
           "settings": {
             "label": "BMI significantly reduced*",
             "popup_title": "The Pooled Result",
-            "popup_text": "Across 15 controlled trials, inositol supplementation significantly reduced BMI versus control (weighted mean difference −0.41 kg/m²; 95% CI −0.78 to −0.04; p = 0.028).*"
+            "popup_text": "Across the 15 trials, BMI fell by 0.41 kg/m² on average versus control (95% CI −0.78 to −0.04). Modest, real, and consistent with the body-composition results above.*"
           }
         }
       },
@@ -468,7 +468,7 @@
         "title": "Study 2 — BMI down across 15 trials",
         "show_image_mobile": false,
         "background_heading": "Study Background",
-        "background_text": "A systematic review pooling 15 controlled clinical trials of inositol supplementation. Overall, inositol significantly reduced BMI versus control — and the effect was strongest in women with PCOS and people with overweight, with myo-inositol the strongest of the inositol types (Zarezadeh et al., 2022).⁷*",
+        "background_text": "Zoom out. A review pooled 15 separate trials of inositol. Overall, BMI came down significantly versus control — with the strongest effect in women with PCOS and people carrying extra weight, and myo-inositol the strongest type (Zarezadeh et al., 2022).⁷*",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -508,7 +508,7 @@
           "settings": {
             "label": "Waist-to-hip ratio ↓*",
             "popup_title": "Waist-to-Hip Ratio",
-            "popup_text": "Pooled across the trials, inositol reduced waist-to-hip ratio by 0.02 on average versus control (95% CI −0.04 to −0.001). Waist-to-hip ratio compares fat stored at your middle against your hips — a marker of the abdominal fat pattern most linked to insulin resistance.*"
+            "popup_text": "Waist-to-hip ratio compares the fat at your middle to your hips. Belly-first fat storage is the pattern most tied to insulin resistance — and this ratio fell by 0.02 on average versus control (95% CI −0.04 to −0.001).*"
           }
         },
         "attr_waist": {
@@ -516,7 +516,7 @@
           "settings": {
             "label": "−2.4 cm waist*",
             "popup_title": "Waist Circumference",
-            "popup_text": "Waist circumference fell by 2.36 cm on average versus control (95% CI −4.39 to −0.33), alongside a BMI reduction of 0.57 kg/m² (95% CI −1.10 to −0.03).*"
+            "popup_text": "Waists came in by 2.36 cm on average versus control, and BMI fell by 0.57 kg/m² (95% CI −1.10 to −0.03).*"
           }
         },
         "attr_grade": {
@@ -524,7 +524,7 @@
           "settings": {
             "label": "GRADE-assessed",
             "popup_title": "How Certain Is This?",
-            "popup_text": "This review graded its own evidence. The insulin-resistance and lipid results carry moderate-to-high certainty; the body-measurement results (waist, hips, BMI) carry low certainty with high variation between trials. Real, but modest — we'd rather tell you that than oversell it."
+            "popup_text": "This review graded its own evidence. The insulin and blood-fat results earn moderate-to-high confidence; the tape-measure results (waist, hips, BMI) earn low confidence with big differences between trials. Real, but modest — we'd rather tell you that than oversell it."
           }
         }
       },
@@ -540,7 +540,7 @@
         "title": "Study 3 — Waist & hips, pooled",
         "show_image_mobile": false,
         "background_heading": "Study Background",
-        "background_text": "A 2025 GRADE-assessed systematic review pooling 18 randomized controlled trials (898 participants) of inositol supplementation. Alongside the metabolic improvements — glucose −7.25 mg/dL, insulin −4.74 μU/mL, HOMA-IR −1.21, all at moderate certainty — the body measurements moved too: waist-to-hip ratio, waist circumference, and BMI all significantly reduced versus control (Delavar et al., 2025).⁸*",
+        "background_text": "The newest and biggest review: 18 trials, 898 people, graded for evidence quality. Alongside better insulin numbers, the tape measure moved too — waist size, waist-to-hip ratio, and BMI all came down versus control (Delavar et al., 2025).⁸*",
         "attributes_heading": "The Numbers",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -559,7 +559,7 @@
     "footnotes": {
       "type": "clinical-footnote",
       "settings": {
-        "text": "<p>¹ Wyatt P, Berry SE, et al. Postprandial glycaemic dips predict appetite and energy intake in healthy individuals. Nat Metab. 2021;3(4):523–529. DOI: 10.1038/s42255-021-00383-x. Healthy adults, not a PCOS population; an observational finding about hunger, not an inositol study.</p><p>² Benelli E, et al. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083.</p><p>³ Nordio M, Basciani S, Camajani E. Eur Rev Med Pharmacol Sci. 2019;23(12):5512–5521. DOI: 10.26355/eurrev_201906_18223.</p><p>⁴ Le Donne M, Metro D, Alibrandi A, Papa M, Benvenga S. Effects of three treatment modalities (diet, myoinositol or myoinositol associated with D-chiro-inositol) on clinical and body composition outcomes in women with polycystic ovary syndrome. Eur Rev Med Pharmacol Sci. 2019;23(5):2293–2301. DOI: 10.26355/eurrev_201903_17278. Group averages; \"35% more fat loss\" is the relative difference between the −18.9% and −14% fat-mass reductions. Small groups; independent study, not of Bodology; supplement amounts differ from Bodology's serving.</p><p>⁵ Neeland IJ, Linge J, Birkenfeld AL. Diabetes Obes Metab. 2024;26(Suppl 4):16–27. DOI: 10.1111/dom.15728.</p><p>⁶ Wilding JPH, et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: the STEP 1 trial extension. Diabetes Obes Metab. 2022;24(8):1553–1564. DOI: 10.1111/dom.14725.</p><p>⁷ Zarezadeh M, et al. Inositol supplementation and body mass index: a systematic review and meta-analysis of randomized clinical trials. Obes Sci Pract. 2022;8(3):387–397. DOI: 10.1002/osp4.569.</p><p>⁸ Delavar MA, Mirabi P, Rosenkranz SK, Alibabaei-Omran F, Ahmadi N, Ghorbani Z. Inositol supplementation efficacy in improving key cardiometabolic and anthropometric indices: a GRADE-assessed systematic review and meta-analysis of randomized controlled trials. Diabetol Metab Syndr. 2025;17(1):411. DOI: 10.1186/s13098-025-01980-6. The authors rate the body-measurement evidence as low certainty with high between-trial variation.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Inositol is a dietary supplement, not a weight-loss drug, and works best alongside diet and exercise.</p>",
+        "text": "<p>¹ Wyatt P, Berry SE, et al. Postprandial glycaemic dips predict appetite and energy intake in healthy individuals. Nat Metab. 2021;3(4):523–529. DOI: 10.1038/s42255-021-00383-x. Healthy adults, not a PCOS population; an observational finding about hunger, not an inositol study. Correlations: hunger at 2–3 h r = 0.16; time to next meal r = −0.14; calories at 3–4 h r = 0.19; calories over 24 h r = 0.27; all p < 0.001.</p><p>² Benelli E, et al. Int J Endocrinol. 2016;2016:3204083. DOI: 10.1155/2016/3204083.</p><p>³ Nordio M, Basciani S, Camajani E. Eur Rev Med Pharmacol Sci. 2019;23(12):5512–5521. DOI: 10.26355/eurrev_201906_18223.</p><p>⁴ Le Donne M, Metro D, Alibrandi A, Papa M, Benvenga S. Effects of three treatment modalities (diet, myoinositol or myoinositol associated with D-chiro-inositol) on clinical and body composition outcomes in women with polycystic ovary syndrome. Eur Rev Med Pharmacol Sci. 2019;23(5):2293–2301. DOI: 10.26355/eurrev_201903_17278. Group averages; \"35% more fat loss\" is the relative difference between the −18.9% and −14% fat-mass reductions. Small groups; independent study, not of Bodology; supplement amounts differ from Bodology's serving.</p><p>⁵ Neeland IJ, Linge J, Birkenfeld AL. Diabetes Obes Metab. 2024;26(Suppl 4):16–27. DOI: 10.1111/dom.15728.</p><p>⁶ Wilding JPH, et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: the STEP 1 trial extension. Diabetes Obes Metab. 2022;24(8):1553–1564. DOI: 10.1111/dom.14725.</p><p>⁷ Zarezadeh M, et al. Inositol supplementation and body mass index: a systematic review and meta-analysis of randomized clinical trials. Obes Sci Pract. 2022;8(3):387–397. DOI: 10.1002/osp4.569.</p><p>⁸ Delavar MA, Mirabi P, Rosenkranz SK, Alibabaei-Omran F, Ahmadi N, Ghorbani Z. Inositol supplementation efficacy in improving key cardiometabolic and anthropometric indices: a GRADE-assessed systematic review and meta-analysis of randomized controlled trials. Diabetol Metab Syndr. 2025;17(1):411. DOI: 10.1186/s13098-025-01980-6. The authors rate the body-measurement evidence as low certainty with high between-trial variation.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Inositol is a dietary supplement, not a weight-loss drug, and works best alongside diet and exercise.</p>",
         "align": "left",
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
@@ -601,7 +601,7 @@
         "anchor": "protocol",
         "title": "The Weight Protocol",
         "badge_text": "Protocol guide free with every subscription",
-        "intro": "<p>Study 1 measured change at three and six months of daily use alongside the same consistent diet. That's why the protocol runs 12 weeks — about the first window where the research measured change.</p>",
+        "intro": "<p>Nothing here happened in a week. Study 1 took its first measurements after three months of daily use. That's the protocol: 12 weeks, every day, alongside eating consistently.</p>",
         "show_image_mobile": true,
         "product": "",
         "use_first_selling_plan": true,
