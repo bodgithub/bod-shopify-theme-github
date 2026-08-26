@@ -73,12 +73,14 @@
     height: 0;
     border-top: 1px solid {{ s.divider_color }};
   }
+  #shopify-section-{{ section.id }} .csh__content { position: relative; z-index: 1; }
   #shopify-section-{{ section.id }} .csh__image {
     display: none;
     position: absolute;
     top: 0;
     right: 0;
     height: 100%;
+    width: 30vw;
     max-width: 480px;
   }
   #shopify-section-{{ section.id }} .csh__image img {
@@ -101,6 +103,10 @@
   @media screen and (min-width: 990px) {
     #shopify-section-{{ section.id }} .csh__sub { font-size: 18px; }
     #shopify-section-{{ section.id }} .csh__link { font-size: 30px; }
+    {% if s.image != blank %}
+    #shopify-section-{{ section.id }} .csh__content { width: 60%; margin-left: {{ s.content_indent }}%; }
+    #shopify-section-{{ section.id }} .csh__image { display: block; }
+    {% endif %}
   }
   @media screen and (min-width: 1200px) {
     #shopify-section-{{ section.id }} .csh__content {
@@ -108,9 +114,6 @@
       margin-left: {{ s.content_indent }}%;
     }
     #shopify-section-{{ section.id }} .csh__sub { font-size: 20px; max-width: none; }
-    {% if s.image != blank %}
-    #shopify-section-{{ section.id }} .csh__image { display: block; }
-    {% endif %}
   }
 {% endstyle %}
 
@@ -181,7 +184,7 @@
   "settings": [
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Bodology:\nThe Studies", "info": "Line breaks are kept." },
     { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Transparency comes first. Here is the research behind what we make, laid out study by study." },
-    { "type": "image_picker", "id": "image", "label": "Right-side image (desktop ≥1200px only)" },
+    { "type": "image_picker", "id": "image", "label": "Right-side image (desktop only)" },
     { "type": "header", "content": "Colors" },
     { "type": "color", "id": "bg_color", "label": "Background", "default": "#F2EEEA" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#1A2874" },

@@ -50,26 +50,29 @@
     align-items: center;
     border: 1px solid {{ s.accent_color }};
     border-radius: 6px;
-    padding: 4px 16px;
-    font-size: 16px;
+    padding: 4px 14px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
     font-weight: 500;
     text-transform: uppercase;
     color: {{ s.accent_color }};
     margin: 0;
   }
   #shopify-section-{{ section.id }} .crs__bignum {
-    margin: 16px 0 0;
+    margin: 12px 0 0;
     color: {{ s.accent_color }};
-    font-size: 148px;
-    line-height: 135px;
+    font-size: 64px;
+    line-height: 1.05;
     font-weight: 500;
   }
   #shopify-section-{{ section.id }} .crs__bigcaption {
-    margin: 16px 0 0;
-    font-size: 30px;
+    margin: 12px 0 0;
+    font-size: 20px;
+    line-height: 1.35;
     font-weight: 500;
     letter-spacing: 0.3px;
     color: {{ s.text_color }};
+    max-width: 34ch;
   }
   #shopify-section-{{ section.id }} .crs__cards { display: flex; flex-direction: column; gap: 16px; }
   #shopify-section-{{ section.id }} .crs__card {
@@ -187,8 +190,9 @@
     #shopify-section-{{ section.id }} .crs__bigstat { display: block; }
     #shopify-section-{{ section.id }} .crs__card { padding: 24px; justify-content: center; }
     #shopify-section-{{ section.id }} .crs__card-inner { gap: 24px; }
-    #shopify-section-{{ section.id }} .crs__card-num { font-size: 83px; }
-    #shopify-section-{{ section.id }} .crs__card-text { font-size: 24px; line-height: 1.6; }
+    #shopify-section-{{ section.id }} .crs__bignum { font-size: 76px; }
+    #shopify-section-{{ section.id }} .crs__card-num { font-size: 48px; }
+    #shopify-section-{{ section.id }} .crs__card-text { font-size: 18px; line-height: 1.4; }
     #shopify-section-{{ section.id }} .crs__info-btn { font-size: 18px; padding: 10px 20px; }
     #shopify-section-{{ section.id }} .crs__info-btn .crs__plus {
       display: inline-block;
@@ -212,16 +216,24 @@
   }
   @media screen and (min-width: 990px) {
     #shopify-section-{{ section.id }} .crs__img-mobile { display: none; }
-    #shopify-section-{{ section.id }} .crs__img-desktop { display: block; }
+    #shopify-section-{{ section.id }} .crs__img-desktop {
+      display: block;
+      position: sticky;
+      top: 110px;
+    }
     #shopify-section-{{ section.id }} .crs__grid {
       display: grid;
-      grid-template-columns: 60% 40%;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
       align-items: start;
-      gap: 48px;
+      gap: 40px;
     }
     #shopify-section-{{ section.id }} .crs__card { justify-content: flex-start; }
-    #shopify-section-{{ section.id }} .crs__card-num { font-size: 100px; }
-    #shopify-section-{{ section.id }} .crs__card-text { font-size: 34px; }
+    #shopify-section-{{ section.id }} .crs__card-inner { gap: 20px; }
+    #shopify-section-{{ section.id }} .crs__card-num { font-size: 56px; }
+    #shopify-section-{{ section.id }} .crs__card-text { font-size: 19px; line-height: 1.4; }
+    #shopify-section-{{ section.id }} .crs__bignum { font-size: 92px; }
+    #shopify-section-{{ section.id }} .crs__bigcaption { font-size: 22px; }
+    #shopify-section-{{ section.id }} .crs__info-btn { width: auto; padding: 10px 24px; }
   }
 {% endstyle %}
 
