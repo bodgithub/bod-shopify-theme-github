@@ -100,7 +100,7 @@
           "settings": {
             "label": "2.7× risk",
             "popup_title": "The Prediabetes Finding",
-            "popup_text": "Participants who newly developed prediabetes within the first two years of the study had 2.66 times the risk of developing depression over the follow-up period (95% CI 1.13–6.27)."
+            "popup_text": "People who newly developed prediabetes — blood sugar creeping above normal, but not yet diabetes — within the study's first two years had 2.66 times the risk of developing depression over the follow-up (95% CI 1.13–6.27)."
           }
         },
         "attr_observational": {
@@ -124,7 +124,7 @@
         "title": "Link 1 — Metabolic health shapes mood",
         "show_image_mobile": true,
         "background_heading": "The Stanford-Led Study",
-        "background_text": "Watson et al., 2021: Stanford researchers followed 601 adults with no history of depression or anxiety for nine years. Those who started with markers of insulin resistance were significantly more likely to develop depression — a high triglyceride-to-HDL ratio carried an 89% higher risk, and newly developing prediabetes carried 2.7 times the risk. Mood isn't separate from metabolism.¹",
+        "background_text": "Stanford researchers followed 601 adults — none of whom had ever had depression or anxiety — for nine years. The ones whose blood showed early signs of insulin resistance were far more likely to develop depression later: one common marker carried an 89% higher risk, and newly developing prediabetes carried 2.7 times the risk. Mood isn't separate from metabolism (Watson et al., 2021).¹",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -148,7 +148,7 @@
           "settings": {
             "label": "−47% fasting insulin*",
             "popup_title": "Fasting Insulin, −47%",
-            "popup_text": "In a randomized, placebo-controlled 6-month trial of the 40:1 blend in 46 women with PCOS, average fasting insulin fell from 20.19 to 10.74 μU/mL — with no significant change on placebo (Benelli et al., 2016).*"
+            "popup_text": "Fasting insulin — the insulin in your blood after an overnight fast — roughly halved over the six months (20.19 → 10.74 μU/mL). The placebo group didn't change.*"
           }
         },
         "attr_homa": {
@@ -156,7 +156,7 @@
           "settings": {
             "label": "−42% HOMA index*",
             "popup_title": "HOMA Index, −42%",
-            "popup_text": "The HOMA index estimates insulin resistance from fasting glucose and insulin — the same kind of marker the Stanford-led study used to predict mood risk. In Benelli 2016 it fell 42% on average over 6 months on the 40:1 blend, with no significant change on placebo.*"
+            "popup_text": "HOMA is a standard score doctors use to estimate insulin resistance from a simple blood test — the same kind of marker the Stanford-led study used to predict mood risk. Lower is better. It fell 42% on average, and didn't budge on placebo.*"
           }
         },
         "attr_serotonin": {
@@ -164,7 +164,7 @@
           "settings": {
             "label": "Serotonin second messenger",
             "popup_title": "The Brain Mechanism",
-            "popup_text": "Inositol is part of the second-messenger system that serotonin receptors use to pass signals inside brain cells. That mechanism is why researchers began testing it for mood in the first place — the trials below took it from theory to placebo-controlled testing."
+            "popup_text": "Serotonin is one of the brain's main mood messengers. When it docks onto a brain cell, inositol is part of the relay that passes the message inside. That's the mechanism — the trials below took it from theory to placebo-controlled testing."
           }
         }
       },
@@ -178,7 +178,7 @@
         "title": "Link 2 — Inositol supports insulin & serotonin signalling",
         "show_image_mobile": true,
         "background_heading": "The Evidence",
-        "background_text": "Inositol sits on both sides of the mood–metabolism link. On the metabolic side, randomized trials show it improves insulin handling: fasting insulin fell 47% and the HOMA insulin-resistance index 42% over 6 months on the 40:1 blend (Benelli, 2016²), with post-meal insulin improving within 3 months (Nordio, 2019³). And in the brain, inositol is a second messenger in serotonin signalling — the pathway the direct mood trials below were built on.*",
+        "background_text": "Inositol sits on both sides of the mood–metabolism link. On the metabolic side: fasting insulin roughly halved over six months on the 40:1 blend in a placebo-controlled trial (Benelli, 2016²), and insulin after meals improved within three months in another (Nordio, 2019³). And in the brain, inositol helps carry serotonin's signal inside brain cells — which is exactly why researchers started testing it for mood.*",
         "attributes_heading": "The Numbers",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -218,7 +218,7 @@
           "settings": {
             "label": "Placebo-controlled",
             "popup_title": "Placebo-Controlled",
-            "popup_text": "A \"placebo-controlled\" study is one in which one group receives the actual compound while another receives an inactive look-alike, or placebo. This lets researchers separate the compound's physical effects from the effect of believing it works."
+            "popup_text": "One group gets the real thing. The other gets a look-alike dummy — a placebo. Comparing the two shows what the compound actually does, beyond the effect of believing it works."
           }
         },
         "attr_blind": {
@@ -226,7 +226,7 @@
           "settings": {
             "label": "Double-blind",
             "popup_title": "Double-Blind",
-            "popup_text": "\"Double-blind\" means neither participants nor researchers know who receives which product, preventing bias and ensuring objective results."
+            "popup_text": "Neither the participants nor the researchers knew who was taking what until the study ended. That keeps hope and bias from skewing the results."
           }
         },
         "attr_journal": {
@@ -250,7 +250,7 @@
         "title": "Study 1 — Significant at four weeks",
         "show_image_mobile": true,
         "background_heading": "Study Background",
-        "background_text": "An independent double-blind, placebo-controlled trial: 12 g of inositol daily (n = 13) versus placebo (n = 15) for 4 weeks, in patients with low mood. The rationale: spinal-fluid inositol had been reported lower than normal in this group (Levine et al., 1995).†",
+        "background_text": "28 people with low mood were randomly split: 13 took 12 g of inositol daily, 15 took a placebo, for four weeks — and nobody knew who had which. The reason researchers tried it at all: inositol levels in spinal fluid had been found lower than normal in this group (Levine et al., 1995).†",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -273,7 +273,7 @@
           "type": "stat_card",
           "settings": {
             "value": "4 wks",
-            "text": "to a statistically significant difference versus placebo on the Hamilton scale*†"
+            "text": "to a measurable difference versus placebo on the standard mood scale*†"
           }
         },
         "stat_2": {
@@ -288,7 +288,7 @@
           "settings": {
             "label": "What is the Hamilton scale",
             "popup_title": "The Hamilton Rating Scale",
-            "popup_text": "<p>The Hamilton Depression Rating Scale (HDRS) is the standard clinician-rated scale used in research to score low-mood symptoms. In this trial, overall improvement on the scale was significantly greater with inositol than placebo at week 4.</p>"
+            "popup_text": "<p>The Hamilton scale is the standard questionnaire clinicians use in research to score low mood. In this trial, improvement on it was significantly greater with inositol than with placebo at week four.</p>"
           }
         },
         "info_2": {
@@ -310,7 +310,7 @@
         "heading": "Study 1 — The Results",
         "badge_text": "INOSITOL VS PLACEBO",
         "big_stat": "12 g",
-        "big_stat_caption": "daily inositol produced significantly greater improvement on the Hamilton Rating Scale than placebo at 4 weeks*†",
+        "big_stat_caption": "of inositol daily led to significantly greater mood improvement than placebo at four weeks, on the standard clinical scale*†",
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
         "accent_color": "#3447af",
@@ -362,7 +362,7 @@
           "settings": {
             "label": "Meta-analysis",
             "popup_title": "What a Meta-Analysis Is",
-            "popup_text": "A meta-analysis pools the results of many independent trials into a single estimate — the strongest form of evidence for an overall effect. This one pooled every double-blind randomized inositol mood trial to 2013."
+            "popup_text": "A meta-analysis pools many separate trials into one answer, so no single study's quirks can skew the picture. This one pooled every double-blind randomized inositol mood trial to 2013."
           }
         },
         "attr_honest": {
@@ -370,7 +370,7 @@
           "settings": {
             "label": "Mixed results",
             "popup_title": "What \"Mixed\" Means Here",
-            "popup_text": "Pooled across all trials, inositol's effect on mood did not reach statistical significance. It showed marginally more responders than placebo (p = 0.06), with the strongest signal in premenstrual mood symptoms (p = 0.07). Early and promising in specific groups — not yet proven overall."
+            "popup_text": "Pooled across all trials, inositol's effect on mood didn't reach statistical proof. It showed marginally more responders than placebo (p = 0.06), with the strongest signal in premenstrual mood symptoms (p = 0.07). Early and promising in specific groups — not yet proven overall."
           }
         }
       },
@@ -385,7 +385,7 @@
         "title": "Study 2 — The honest meta-analysis",
         "show_image_mobile": false,
         "background_heading": "Study Background",
-        "background_text": "A meta-analysis pooling the double-blind randomized trials of inositol for mood and anxiety to 2013: seven mood trials (n = 242) and four anxiety trials (n = 70). Pooled results did not reach statistical significance overall; inositol showed marginally more responders than placebo (p = 0.06), with the strongest signal in premenstrual mood symptoms (p = 0.07). Translation: early and promising in specific groups, not yet proven overall. We'd rather tell you that than oversell it (Mukai et al., 2014).‡",
+        "background_text": "Researchers pooled every proper double-blind trial of inositol for mood and anxiety up to 2013 — eleven trials, 312 people. The straight answer: combined, the results didn't reach statistical proof. Slightly more people responded on inositol than placebo, and the strongest signal was in premenstrual mood symptoms — promising in specific groups, not yet proven overall. We'd rather tell you that than oversell it (Mukai et al., 2014).‡",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -446,7 +446,7 @@
         "anchor": "protocol",
         "title": "The Mood Protocol",
         "badge_text": "Protocol guide free with every subscription",
-        "intro": "<p>Study 1 saw a significant difference at four weeks of daily use. The protocol runs 12 weeks — three times that window — to give consistent daily use time to show up.</p>",
+        "intro": "<p>Study 1 measured a difference at four weeks of daily use. The protocol runs 12 weeks — three times that window — because consistency is what these trials actually tested.</p>",
         "show_image_mobile": true,
         "product": "",
         "use_first_selling_plan": true,
@@ -557,7 +557,7 @@
           "type": "stat_card",
           "settings": {
             "value": "+89%",
-            "text": "higher risk of future depression with a high triglyceride-to-HDL ratio — a standard insulin-resistance marker*¹"
+            "text": "higher risk of future depression in adults with a common blood marker of insulin resistance (a high triglyceride-to-HDL ratio)*¹"
           }
         },
         "info_1": {

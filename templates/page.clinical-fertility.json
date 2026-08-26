@@ -73,7 +73,7 @@
           "settings": {
             "label": "Placebo-controlled",
             "popup_title": "Placebo-Controlled",
-            "popup_text": "A \"placebo-controlled\" study is one in which one group receives the actual compound while another receives an inactive look-alike, or placebo. In this study, the placebo group received folic acid alone."
+            "popup_text": "One group gets the real thing. The other gets a look-alike dummy — a placebo, here plain folic acid. Comparing the two shows what the compound actually does, beyond the effect of believing it works."
           }
         },
         "attr_blind": {
@@ -81,7 +81,7 @@
           "settings": {
             "label": "Double-blind",
             "popup_title": "Double-Blind",
-            "popup_text": "\"Double-blind\" means neither participants nor researchers know who receives which product, preventing bias and ensuring objective results. This is the only blinded, placebo-controlled ovulation figure on this page — which is why it leads."
+            "popup_text": "Neither the women nor the researchers knew who was taking what until the study ended. That keeps hope and bias from skewing the results. This is the only blinded, placebo-controlled ovulation figure on this page — which is why it leads."
           }
         },
         "attr_random": {
@@ -89,7 +89,7 @@
           "settings": {
             "label": "Randomized",
             "popup_title": "Randomized",
-            "popup_text": "Part of a gold-standard study, \"randomization\" means assigning participants to groups based on chance, to compare outcomes fairly and minimize bias."
+            "popup_text": "Who got the real thing was decided by chance, like a coin flip. That keeps the two groups fair to compare."
           }
         }
       },
@@ -104,7 +104,7 @@
         "title": "Study 1 — 70% ovulated vs 21%",
         "show_image_mobile": true,
         "background_heading": "Study Background",
-        "background_text": "An independent randomized, double-blind, placebo-controlled trial of myo-inositol in 42 women with PCOS — the strongest study design there is, applied directly to ovulation (Costantino et al., 2009).†",
+        "background_text": "The gold standard of research, applied directly to ovulation: 42 women with PCOS were randomly split — one group took myo-inositol, the other a placebo, and nobody, not even the researchers, knew who had which until the end (Costantino et al., 2009).†",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -142,7 +142,7 @@
           "settings": {
             "label": "What is myo-inositol",
             "popup_title": "Myo-Inositol",
-            "popup_text": "<p>Myo-inositol is the most abundant inositol in the body and is highly concentrated in the ovary, where it acts as a second messenger in insulin and FSH signalling — the pathways that mature and release an egg.</p>"
+            "popup_text": "<p>Myo-inositol is the most common form of inositol in your body, and it's concentrated in the ovary — where it helps carry the signals that mature and release an egg.</p>"
           }
         },
         "info_2": {
@@ -150,7 +150,7 @@
           "settings": {
             "label": "Why insulin matters here",
             "popup_title": "Insulin and Ovulation",
-            "popup_text": "<p>High circulating insulin pushes the ovary toward androgen production and disrupts follicle maturation. Improving how the body handles insulin is the mechanism by which inositol is thought to support ovulatory function. In this trial, insulin sensitivity also improved significantly alongside ovulation.</p>"
+            "popup_text": "<p>Too much insulin pushes the ovaries to make more testosterone and muddles the signals that mature an egg. Helping the body handle insulin better is how inositol is thought to support ovulation. In this trial, insulin response improved right alongside it.</p>"
           }
         }
       },
@@ -219,7 +219,7 @@
           "settings": {
             "label": "Meta-analysis",
             "popup_title": "What a Meta-Analysis Is",
-            "popup_text": "A meta-analysis pools the results of many independent trials into a single estimate — the strongest form of evidence for an overall effect. This one pooled 362 women on inositol, 179 on placebo, and 60 on metformin."
+            "popup_text": "A meta-analysis pools many separate trials into one answer, so no single study's quirks can skew the picture. This one pooled 362 women on inositol, 179 on placebo, and 60 on metformin."
           }
         }
       },
@@ -234,7 +234,7 @@
         "title": "Study 2 — Ten trials, one direction",
         "show_image_mobile": false,
         "background_heading": "Study Background",
-        "background_text": "A meta-analysis in BJOG pooling ten randomized trials of inositol for ovulation: 362 women on inositol, 179 on placebo, 60 on metformin. The authors are honest about the gap — evidence for pregnancy and live-birth rates is still lacking — and so are we (Pundir et al., 2018).‡",
+        "background_text": "Zoom out. Researchers pooled ten separate trials — 601 women in total — to ask whether the ovulation results hold up across all of them. They do. The authors are honest about the gap — proof for pregnancy and live-birth rates is still lacking — and so are we (Pundir et al., 2018).‡",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -257,14 +257,14 @@
           "type": "stat_card",
           "settings": {
             "value": "6.8×",
-            "text": "more frequent menstrual cycles versus placebo (RR 6.8; 95% CI 2.8–16.6)*‡"
+            "text": "more frequent periods on inositol than on placebo*‡"
           }
         },
         "stat_2": {
           "type": "stat_card",
           "settings": {
             "value": "10 / 10",
-            "text": "trials pointed the same direction on cycle frequency — zero statistical heterogeneity, which is rare*‡"
+            "text": "trials pointed the same direction on cycle frequency — rare agreement in supplement research*‡"
           }
         },
         "info_1": {
@@ -272,7 +272,7 @@
           "settings": {
             "label": "What is relative risk",
             "popup_title": "Relative Risk (RR)",
-            "popup_text": "<p>Relative risk compares how often something happens in one group versus another. RR 2.3 for ovulation means women on inositol were 2.3 times as likely to ovulate as women on placebo across the pooled trials.</p>"
+            "popup_text": "<p>Relative risk compares how often something happens in one group versus another. Here: women on inositol were 2.3 times as likely to ovulate as women on placebo (95% CI 1.1–4.7), and periods came 6.8 times more frequently (95% CI 2.8–16.6).</p>"
           }
         },
         "info_2": {
@@ -280,7 +280,7 @@
           "settings": {
             "label": "What is heterogeneity",
             "popup_title": "Heterogeneity",
-            "popup_text": "<p>Heterogeneity measures how much the trials in a meta-analysis disagree with each other. The menstrual-cycle result had zero heterogeneity — every one of the ten trials pointed the same way. That level of consistency is rare in supplement research.</p>"
+            "popup_text": "<p>Heterogeneity measures how much the trials in a pooled analysis disagree with each other. On cycle frequency it was zero — every one of the ten trials pointed the same way. That level of agreement is rare in supplement research.</p>"
           }
         }
       },
@@ -294,7 +294,7 @@
         "heading": "Study 2 — The Results",
         "badge_text": "TEN TRIALS, POOLED",
         "big_stat": "2.3×",
-        "big_stat_caption": "the likelihood of ovulation on inositol versus placebo (RR 2.3; 95% CI 1.1–4.7)*‡",
+        "big_stat_caption": "the likelihood of ovulating on inositol versus placebo, pooled across all ten trials*‡",
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
         "accent_color": "#3447af",
@@ -335,7 +335,7 @@
           "settings": {
             "label": "Randomized",
             "popup_title": "Randomized",
-            "popup_text": "Participants were assigned to myo-inositol plus folic acid, or folic acid alone, by chance — to compare outcomes fairly."
+            "popup_text": "Who got the inositol was decided by chance, like a coin flip. That keeps the two groups fair to compare."
           }
         },
         "attr_open": {
@@ -343,7 +343,7 @@
           "settings": {
             "label": "Open-label",
             "popup_title": "Open-Label — Read This",
-            "popup_text": "\"Open-label\" means participants and clinicians knew who was taking inositol — a weaker design than double-blind. This trial also wasn't limited to women with PCOS, and it used myo-inositol alone rather than the 40:1 blend. We show it because the outcomes matter; we label it because the design does too."
+            "popup_text": "\"Open-label\" means everyone knew who was taking what — a weaker design than double-blind. This trial also wasn't limited to women with PCOS, and it used myo-inositol alone rather than the 40:1 blend. We show it because the outcomes matter; we label it because the design does too."
           }
         }
       },
@@ -357,7 +357,7 @@
         "title": "Study 3 — Egg quality & pregnancy",
         "show_image_mobile": true,
         "background_heading": "Study Background",
-        "background_text": "A randomized open study of 149 women undergoing ICSI (a form of IVF), comparing myo-inositol plus folic acid against folic acid alone. Egg quality, embryo grade, and clinical pregnancy rate all significantly favoured the inositol group (Brusco & Mariani, 2013).§",
+        "background_text": "149 women going through ICSI (a form of IVF) were randomly split: half added myo-inositol to their folic acid, half took folic acid alone. Egg quality, embryo grade, and pregnancy rate all came out better in the inositol group (Brusco & Mariani, 2013).§",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -383,12 +383,12 @@
             "subtitle": "Good-to-excellent oocytes",
             "percentage": 50,
             "value_label": "50%",
-            "caption": "of women on inositol had good-to-excellent oocyte quality — versus 31% on folic acid alone (p = 0.02)*§",
+            "caption": "of women on inositol had good-to-excellent egg quality — versus 31% without it (p = 0.02)*§",
             "button_label": "What is oocyte quality",
             "popup_heading": "Oocyte (Egg) Quality",
             "popup_stat": "50% vs 31%",
             "popup_stat_text": "of women had good-to-excellent oocyte quality with inositol versus folic acid alone (p = 0.02)*§",
-            "popup_info_text": "Inositol is a natural component of follicular fluid — the environment the egg matures in — and higher follicular inositol levels correlate with better-developed eggs. Grade A embryo transfers were also significantly more frequent in the inositol group (p = 0.02)."
+            "popup_info_text": "Inositol is naturally part of the fluid an egg matures in, and higher levels there go hand-in-hand with better-developed eggs. Top-grade embryo transfers were also significantly more common in the inositol group."
           }
         },
         "card_2": {
@@ -398,12 +398,12 @@
             "subtitle": "Rate per group",
             "percentage": 62,
             "value_label": "62%",
-            "caption": "clinical pregnancy rate with inositol — versus 43% on folic acid alone (p = 0.02)*§",
+            "caption": "clinical pregnancy rate with inositol — versus 43% without it (p = 0.02)*§",
             "button_label": "What this means",
             "popup_heading": "Clinical Pregnancy Rate",
             "popup_stat": "62% vs 43%",
             "popup_stat_text": "clinical pregnancy rate with inositol versus folic acid alone (p = 0.02)*§",
-            "popup_info_text": "A clinical pregnancy is one confirmed by ultrasound, not just a blood test. Remember the design caveats: open-label, mixed population, myo-inositol only — a promising result, not a promise."
+            "popup_info_text": "A clinical pregnancy is one confirmed on ultrasound, not just a blood test. Keep the design caveats in mind: open-label, mixed population, myo-inositol only — a promising result, not a promise."
           }
         }
       },
@@ -440,7 +440,7 @@
           "settings": {
             "label": "Randomized",
             "popup_title": "Randomized",
-            "popup_text": "Participants were assigned to the 40:1 blend or D-chiro-inositol alone by chance, to compare outcomes fairly."
+            "popup_text": "Who got which was decided by chance, like a coin flip. That keeps the groups fair to compare."
           }
         },
         "attr_design": {
@@ -448,7 +448,7 @@
           "settings": {
             "label": "40:1 vs D-chiro alone",
             "popup_title": "The Comparison",
-            "popup_text": "1.1 g myo-inositol + 27.6 mg D-chiro-inositol (the physiological 40:1 ratio — the same ratio used in Bodology) versus 500 mg D-chiro-inositol alone. Only the 40:1 combination improved oocyte quality, embryo quality, and pregnancy rates."
+            "popup_text": "1.1 g myo + 27.6 mg D-chiro — the same natural 40:1 balance used in Bodology — against 500 mg D-chiro-inositol alone. Only the 40:1 blend moved the results."
           }
         }
       },
@@ -462,7 +462,7 @@
         "title": "Study 4 — The 40:1 blend in IVF",
         "show_image_mobile": false,
         "background_heading": "Study Background",
-        "background_text": "A randomized controlled trial in women with PCOS undergoing IVF, testing the ratio question directly: the 40:1 myo + D-chiro blend against D-chiro-inositol alone. Only the combined 40:1 therapy improved oocyte quality, embryo quality, and pregnancy rates (Colazingari et al., 2013).¶",
+        "background_text": "Women with PCOS going through IVF were randomly given either the 40:1 blend or D-chiro-inositol on its own. Only the 40:1 blend improved egg quality, embryo quality, and pregnancy rates — the balance is what mattered (Colazingari et al., 2013).¶",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -523,7 +523,7 @@
         "anchor": "protocol",
         "title": "The Fertility Protocol",
         "badge_text": "Protocol guide free with every subscription",
-        "intro": "<p>Ovulation research measures change over months of consistent daily use, not days. That's why the protocol runs 12 weeks — a full quarter of daily use before you judge the change.</p>",
+        "intro": "<p>Nothing in ovulation research happens in a week — these trials ran months of daily use. That's the protocol: 12 weeks, every day, before you judge the change.</p>",
         "button_label": "Start the 12-week protocol",
         "section_bg": "#f2eeea",
         "card_bg": "#f2eeea",
