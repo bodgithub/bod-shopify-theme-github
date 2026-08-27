@@ -200,7 +200,7 @@
         "title": "Link 1 — The PCOS-specific study",
         "show_image_mobile": true,
         "background_heading": "The PCOS-Specific Study",
-        "background_text": "Cooney et al., 2017, in Human Reproduction: a meta-analysis of 30 studies covering 3,050 women with PCOS and 3,858 without, across 10 countries. Women with PCOS had roughly four times the odds of moderate or severe depressive symptoms, and over six times the odds of moderate or severe anxiety symptoms. When women were matched for BMI, the elevated odds held. The authors recommend that clinicians screen women with PCOS for both.⁴",
+        "background_text": "Researchers pooled 30 studies — 6,908 women across 10 countries. Women with PCOS had about four times the odds of serious low-mood symptoms, and over six times the odds of serious anxiety. Matching women for BMI didn't change it (Cooney et al., 2017).⁴",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -223,21 +223,21 @@
           "type": "stat_card",
           "settings": {
             "value": "6.5×",
-            "text": "the odds of moderate-to-severe anxiety symptoms in women with PCOS versus women without*⁴"
+            "text": "the odds of serious anxiety symptoms with PCOS*⁴"
           }
         },
         "stat_2": {
           "type": "stat_card",
           "settings": {
             "value": "2.7×",
-            "text": "the risk of developing depression in adults who newly developed prediabetes — none had any history of depression (Stanford-led, 9 years)*¹"
+            "text": "the depression risk after newly developing prediabetes*¹"
           }
         },
         "stat_3": {
           "type": "stat_card",
           "settings": {
             "value": "+89%",
-            "text": "higher risk of future depression in adults with a common blood marker of insulin resistance (a high triglyceride-to-HDL ratio)*¹"
+            "text": "higher depression risk with one insulin-resistance blood marker*¹"
           }
         },
         "info_1": {
@@ -268,7 +268,7 @@
         "heading": "Link 1 — The biggest numbers",
         "badge_text": "MOOD × METABOLISM",
         "big_stat": "4×",
-        "big_stat_caption": "the odds of moderate-to-severe depressive symptoms in women with PCOS — and the odds held when women were matched for BMI*⁴",
+        "big_stat_caption": "the odds of serious low-mood symptoms with PCOS — even matched for BMI*⁴",
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
         "accent_color": "#3447af",
@@ -609,6 +609,20 @@
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 48
       }
+    },
+    "link_1_sources": {
+      "type": "clinical-footnote",
+      "settings": {
+        "text": "<p>⁴ PCOS meta-analysis: Cooney et al., 2017, Human Reproduction · ¹ Stanford-led cohort: Watson et al., 2021, American Journal of Psychiatry. Full citations at the bottom of the page.</p>",
+        "align": "center",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "page_width": 1300,
+        "padding_top": 0,
+        "padding_bottom": 16
+      }
     }
   },
   "order": [
@@ -616,6 +630,7 @@
     "link_1_metabolic",
     "link_1_pcos",
     "link_1_stats",
+    "link_1_sources",
     "link_2_inositol",
     "study_1_overview",
     "study_1_results",
