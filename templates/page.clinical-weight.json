@@ -273,21 +273,6 @@
             "popup_info_text": "Losing muscle along with fat slows your metabolism — which is exactly what makes the weight come back. This is the pattern the inositol groups avoided."
           }
         },
-        "card_2": {
-          "type": "score_card",
-          "settings": {
-            "title": "Diet + Myo",
-            "subtitle": "Group 2 (n = 10)",
-            "percentage": 17,
-            "value_label": "−16.9%",
-            "caption": "of body fat lost — and muscle went up 7.1%*⁴",
-            "button_label": "See the numbers",
-            "popup_heading": "Diet + 4 g Myo-Inositol",
-            "popup_stat": "−16.9%",
-            "popup_stat_text": "fat mass (42.8% → 36.6% of body weight, p = 0.007) — while lean mass increased 7.1% (p = 0.015)*⁴",
-            "popup_info_text": "The only group to actually gain muscle while losing fat. Muscle burns energy around the clock, so keeping it makes weight loss easier to keep."
-          }
-        },
         "card_3": {
           "type": "score_card",
           "settings": {
@@ -295,7 +280,7 @@
             "subtitle": "Group 3 (n = 12)",
             "percentage": 19,
             "value_label": "−18.9%",
-            "caption": "of body fat lost — 35% more than diet alone, with muscle preserved*⁴",
+            "caption": "of body fat lost — 35% more than diet alone in group 3, while muscle went up by 7.1% in the myo-inositol group*⁴",
             "button_label": "See the numbers",
             "popup_heading": "Diet + Myo & D-Chiro (40:1)",
             "popup_stat": "−18.9%",
@@ -306,11 +291,10 @@
       },
       "block_order": [
         "card_1",
-        "card_2",
         "card_3"
       ],
       "settings": {
-        "heading": "Study 1 — Fat mass lost after 6 months",
+        "heading": "Study 3 — Fat mass lost after 6 months",
         "disclaimer": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
@@ -319,7 +303,7 @@
         "track_color": "#d9dff0",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
-        "padding_top_desktop": 60,
+        "padding_top_desktop": 0,
         "padding_bottom_desktop": 60,
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 32
@@ -377,7 +361,7 @@
         "button_hover_text": "#f2eeea",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
-        "padding_top_desktop": 100,
+        "padding_top_desktop": 0,
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 30,
         "padding_bottom_mobile": 30
