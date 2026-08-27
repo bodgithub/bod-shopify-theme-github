@@ -73,6 +73,110 @@
   .thb-product-detail .product-form__input {
     border-color: rgba({{ accent_rgb }}, 0.45);
   }
+
+  {%- if s.restyle_sections -%}
+  /* --- Landing sections in the clinical look --- */
+
+  /* Collapsible content accordions -> white outlined cards */
+  .collapsible-content .accordion,
+  .collapsible-content-2 .accordion {
+    border: 1px solid {{ s.accent }};
+    border-radius: {{ s.block_radius }}px;
+    background: {{ s.card_bg }};
+    margin-bottom: 10px;
+    padding: 0 18px;
+    overflow: hidden;
+  }
+  .collapsible-content .accordion + .accordion,
+  .collapsible-content-2 .accordion + .accordion { border-top: 1px solid {{ s.accent }}; }
+
+  /* Multicolumn cards */
+  .multicolumn__column,
+  .eli-card {
+    background: {{ s.card_bg }};
+    border: 1px solid {{ s.accent }};
+    border-radius: {{ s.block_radius }}px;
+    padding: 20px;
+    box-shadow: none;
+  }
+  .multicolumn__image img { border-radius: calc({{ s.block_radius }}px - 6px); }
+  .eli-kicker { color: {{ s.accent }}; }
+
+  /* Toggle boxes (carousel boxes) */
+  .toggle-box,
+  .toggle-box--content {
+    background: {{ s.card_bg }};
+    border-color: {{ s.accent }};
+    border-radius: {{ s.block_radius }}px;
+    box-shadow: none;
+  }
+  .toggle-box--image img { border-radius: calc({{ s.block_radius }}px - 6px); }
+
+  /* Testimonial carousel */
+  .testimonial-block .block-inner,
+  .testimonial-block {
+    background: {{ s.card_bg }};
+    border: 1px solid {{ s.accent }};
+    border-radius: {{ s.block_radius }}px;
+    box-shadow: none;
+  }
+  .testimonial-block .block-inner { border: 0; background: transparent; }
+  .testimonial-carousel .carousel-controls .prev,
+  .testimonial-carousel .carousel-controls .next {
+    border: 1px solid {{ s.accent }};
+    border-radius: 50%;
+    color: {{ s.accent }};
+    background: {{ s.tint }};
+  }
+  .expert-image img { border-radius: 50%; border: 1px solid {{ s.accent }}; }
+
+  /* Scrolling images strip */
+  .scrolling-images--image img,
+  .scrolling-images--item img { border-radius: {{ s.block_radius }}px; }
+
+  /* Rich text: badges and kickers */
+  .inline-badge {
+    background: {{ s.tint }};
+    color: {{ s.accent }};
+    border: 1px solid {{ s.accent }};
+    border-radius: 999px;
+  }
+  .rich-text .subheading,
+  .subheading { color: {{ s.accent }}; }
+
+  /* Video section */
+  .video-section--container video,
+  .video-section--container iframe,
+  .video-section--inner img {
+    border-radius: {{ s.block_radius }}px;
+    border: 1px solid rgba({{ accent_rgb }}, 0.45);
+  }
+
+  /* Featured blog cards */
+  .articles .featured-image,
+  .articles .featured-image img { border-radius: {{ s.block_radius }}px; }
+  .articles .featured-image { border: 1px solid rgba({{ accent_rgb }}, 0.45); overflow: hidden; }
+  .articles .post-meta, .articles .post-excerpt { color: {{ s.text_color }}; }
+
+  /* Community videos */
+  .vcg__card {
+    background: {{ s.card_bg }};
+    border: 1px solid {{ s.accent }};
+    border-radius: {{ s.block_radius }}px;
+    box-shadow: none;
+    overflow: hidden;
+  }
+  .vcg__media, .vcg__media img, .vcg__media video { border-radius: calc({{ s.block_radius }}px - 6px); }
+  .vcg__eyebrow { color: {{ s.accent }}; }
+  .vcg__dots button { border: 1px solid {{ s.accent }}; }
+
+  /* Image-with-text benefits rows */
+  .benefit-item { border-color: {{ s.accent }}; }
+  .benefits-block { color: {{ s.text_color }}; }
+
+  /* Generic dividers */
+  hr { border-color: rgba({{ accent_rgb }}, 0.3); }
+  {%- endif -%}
 </style>
 
 {%- if s.spacer_desktop > 0 or s.spacer_mobile > 0 -%}
@@ -106,6 +210,7 @@
     { "type": "header", "content": "Extras" },
     { "type": "checkbox", "id": "outline_accordions", "label": "Outline accordions as white cards", "default": true },
     { "type": "checkbox", "id": "outline_gallery", "label": "Round + outline gallery images", "default": true },
+    { "type": "checkbox", "id": "restyle_sections", "label": "Restyle landing sections (cards, testimonials, videos, blog)", "default": true },
     { "type": "header", "content": "Spacer", "info": "Optional vertical space rendered where this section sits — lets it stand in for a spacer section." },
     { "type": "range", "id": "spacer_desktop", "label": "Space (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
     { "type": "range", "id": "spacer_mobile", "label": "Space (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 }
