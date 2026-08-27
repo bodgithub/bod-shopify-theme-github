@@ -173,7 +173,7 @@
         "page_width": 1300,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 36,
-        "padding_top_mobile": 30,
+        "padding_top_mobile": 24,
         "padding_bottom_mobile": 30
       }
     },
@@ -309,7 +309,7 @@
         "page_width": 1300,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 36,
-        "padding_top_mobile": 30,
+        "padding_top_mobile": 22,
         "padding_bottom_mobile": 30
       }
     },
@@ -432,7 +432,7 @@
         "page_width": 1300,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 60,
-        "padding_top_mobile": 32,
+        "padding_top_mobile": 22,
         "padding_bottom_mobile": 32
       }
     },
@@ -472,7 +472,8 @@
       "settings": {
         "anchor": "study-4",
         "title": "Study 4 — The 40:1 blend in IVF",
-        "show_image_mobile": false,
+        "image": "shopify://shop_images/Pregnant_stomach.png",
+        "show_image_mobile": true,
         "background_heading": "Study Background",
         "background_text": "Women with PCOS going through IVF were randomly given either the 40:1 blend or D-chiro-inositol on its own. Only the 40:1 blend improved egg quality, embryo quality, and pregnancy rates — the balance is what mattered (Colazingari et al., 2013).¶",
         "attributes_heading": "Study Attributes",
