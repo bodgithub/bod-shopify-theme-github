@@ -36,7 +36,7 @@
         "link_4": {
           "type": "anchor_link",
           "settings": {
-            "label": "Studies 2 & 3 — The meta-analyses",
+            "label": "Studies 2 — Inositol & BMI",
             "anchor": "study-2"
           }
         },
@@ -56,19 +56,19 @@
         "link_5"
       ],
       "settings": {
-        "heading": "Why the diet works for everyone except you. Inositol: The Studies",
+        "eyebrow": "Why the diet works for everyone except you.",
+        "heading": "Inositol for weight: The studies",
         "subtext": "Weight is metabolic before it's behavioural. When cells respond poorly to insulin, the body stores more and burns less — and blood sugar crashes drive hunger. The evidence below is a chain with two links: dips make you eat more, and inositol supports how your body handles glucose and insulin.*",
         "image": "shopify://shop_images/Waist.png",
         "mobile_image_height": 120,
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
         "divider_color": "#3447af",
+        "pill_bg": "#e4e8f4",
+        "pill_text": "#1a2874",
         "content_indent": 5,
         "padding_top": 40,
-        "padding_bottom": 0,
-        "eyebrow": "Inositol for weight: The studies",
-        "pill_bg": "#e4e8f4",
-        "pill_text": "#1a2874"
+        "padding_bottom": 0
       }
     },
     "link_1_hunger": {
@@ -418,6 +418,7 @@
       "settings": {
         "anchor": "glp1",
         "title": "A note on GLP-1 medications",
+        "image": "shopify://shop_images/GLP.png",
         "show_image_mobile": true,
         "background_heading": "What the research shows",
         "background_text": "GLP-1 medications (like semaglutide) produce big weight loss — but studies report that in some trials, 40–60% of the weight lost is muscle, not fat.⁵ And within a year of stopping, people regained about two-thirds of what they lost.⁶ Inositol is not a GLP-1 and its effects are far smaller — but in the trial above, the fat loss came with muscle kept or gained. Different tools for different jobs; talk to your doctor about what's right for you.",
@@ -472,82 +473,11 @@
       "settings": {
         "anchor": "study-2",
         "title": "Study 2 — BMI down across 15 trials",
+        "image": "shopify://shop_images/BMI_2.png",
         "show_image_mobile": false,
         "background_heading": "Study Background",
         "background_text": "Zoom out. A review pooled 15 separate trials of inositol. Overall, BMI came down significantly versus control — with the strongest effect in women with PCOS and people carrying extra weight, and myo-inositol the strongest type (Zarezadeh et al., 2022).⁷*",
         "attributes_heading": "Study Attributes",
-        "card_bg": "#ffffff",
-        "title_bg": "#e4e8f4",
-        "border_color": "#3447af",
-        "text_color": "#1a2874",
-        "chip_hover_text": "#d9dff0",
-        "overlay_color": "rgba(242, 238, 234, 0.87)",
-        "section_bg": "#f2eeea",
-        "page_width": 1300,
-        "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
-        "padding_top_mobile": 30,
-        "padding_bottom_mobile": 30
-      }
-    },
-    "study_3_waist": {
-      "type": "study-overview-table",
-      "blocks": {
-        "attr_trials": {
-          "type": "attribute",
-          "settings": {
-            "label": "18 randomized trials",
-            "popup_title": "",
-            "popup_text": ""
-          }
-        },
-        "attr_people": {
-          "type": "attribute",
-          "settings": {
-            "label": "898 participants",
-            "popup_title": "",
-            "popup_text": ""
-          }
-        },
-        "attr_whr": {
-          "type": "attribute",
-          "settings": {
-            "label": "Waist-to-hip ratio ↓*",
-            "popup_title": "Waist-to-Hip Ratio",
-            "popup_text": "Waist-to-hip ratio compares the fat at your middle to your hips. Belly-first fat storage is the pattern most tied to insulin resistance — and this ratio fell by 0.02 on average versus control (95% CI −0.04 to −0.001).*"
-          }
-        },
-        "attr_waist": {
-          "type": "attribute",
-          "settings": {
-            "label": "−2.4 cm waist*",
-            "popup_title": "Waist Circumference",
-            "popup_text": "Waists came in by 2.36 cm on average versus control, and BMI fell by 0.57 kg/m² (95% CI −1.10 to −0.03).*"
-          }
-        },
-        "attr_grade": {
-          "type": "attribute",
-          "settings": {
-            "label": "GRADE-assessed",
-            "popup_title": "How Certain Is This?",
-            "popup_text": "This review graded its own evidence. The insulin and blood-fat results earn moderate-to-high confidence; the tape-measure results (waist, hips, BMI) earn low confidence with big differences between trials. Real, but modest — we'd rather tell you that than oversell it."
-          }
-        }
-      },
-      "block_order": [
-        "attr_trials",
-        "attr_people",
-        "attr_whr",
-        "attr_waist",
-        "attr_grade"
-      ],
-      "settings": {
-        "anchor": "study-3",
-        "title": "Study 3 — Waist & hips, pooled",
-        "show_image_mobile": false,
-        "background_heading": "Study Background",
-        "background_text": "The newest and biggest review: 18 trials, 898 people, graded for evidence quality. Alongside better insulin numbers, the tape measure moved too — waist size, waist-to-hip ratio, and BMI all came down versus control (Delavar et al., 2025).⁸*",
-        "attributes_heading": "The Numbers",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
         "border_color": "#3447af",
@@ -639,7 +569,6 @@
     "why_it_matters",
     "glp1_note",
     "study_2_overview",
-    "study_3_waist",
     "footnotes",
     "protocol"
   ]
