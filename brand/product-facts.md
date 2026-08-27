@@ -7,9 +7,17 @@
 
 ## Ingredients & dose
 - Myo-Inositol to D-Chiro-Inositol ratio: **40:1** (verified across multiple brand docs — safe to state).
-- Standard daily dose: **4,000mg Myo-Inositol + 100mg D-Chiro-Inositol per day = 2 scoops.**
-- Per scoop: ~2,000mg Myo + 50mg D-Chiro. (A 1-scoop/day lower dose is also referenced in
-  the PCOS protocol: 2,000mg Myo + 50mg D-Chiro.)
+- **ONE SERVING = 2 scoops = 4,000mg Myo-Inositol + 100mg D-Chiro-Inositol = 4.1g per day.**
+  This is the full clinically studied daily dose, taken as a single serving.
+- Per scoop: 2,000mg Myo + 50mg D-Chiro. A scoop is half a serving — never describe one scoop
+  as "a serving."
+- ⚠️ **SERVING DEFINITION IS A DIFFERENTIATOR — do not soften it.** We define one serving as the
+  full 4.1g daily dose. Many competitors define a serving as half that, which makes their tub
+  look like it lasts twice as long as it does at the studied dose. Honest dose counting is one of
+  the three proof pillars (see positioning-and-pdp.md) and is the basis of the Wholesome Story
+  arithmetic argument. Always state servings at the full 4.1g.
+- A 1-scoop/day (2,000mg Myo + 50mg D-Chiro) lower dose is referenced in the PCOS protocol.
+  That is a HALF dose, not a serving. TODO: confirm whether this protocol is still live.
 - Proprietary blend name: **InoSync™** — D-Chiro-Inositol is derived from carob (most
   competitors use corn). Carob is grown in Spain per the strategy doc.
   TODO: confirm exact InoSync™ trademark usage/registration status before printing ™ on-page.
@@ -25,17 +33,11 @@
 ## Sourcing, quality & certifications
 - Made in the USA in a GMP- and FDA-compliant facility.
 - Vegan, gluten-free, non-GMO, pharmacopoeial grade.
-- Third-party tested. COA available (B2B/clinic-facing; a redacted version is needed for distribution).
+- Third-party tested. **Batch COA is published and live** — safe to claim "we publish the lab report"
+  and to link from any page. TODO: record the public COA URL here so pages link one consistent target.
 - NOT NSF certified — do NOT claim or imply NSF certification.
 - Packaging: described as sustainable / 0 plastic. TODO: confirm current packaging claim is still accurate.
 
-## What it's for (compliant framing only — see compliance.md)
-Inositol is clinically studied to SUPPORT (structure/function only, each needs the FDA disclaimer):
-menstrual cycle regularity*, hormonal balance*, glucose metabolism*, healthy blood sugar already
-in the normal range*, appetite/craving regulation*, healthy insulin function*, body composition
-(with diet and exercise)*, mood support and stress resilience*.
-Note: the doctor-approved internal list also includes "PCOS symptom management" and "weight loss" —
-these are higher-risk; see compliance.md before using either on-page.
 
 ## Trust factors
 - Expert-backed: medical advisor Dr. Anita Wąsik, PhD; contributors Hillary Wright, MEd, RD, LDN
@@ -44,16 +46,23 @@ these are higher-risk; see compliance.md before using either on-page.
 - Rating: 4.8 stars. TODO: confirm current rating + review count before printing.
 - Free delivery. TODO: confirm threshold/terms.
 
-## Pricing & guarantee — DO NOT HARDCODE YET (conflicting sources)
-- One-time vs. subscription pricing exists; subscription is cheaper. Subscription cadence ~6 weeks.
-- Conflicting figures across docs:
-  - Product Details box: $50 one-time / $45 sub
-  - Competitor table (same doc): 30 days $45 / $38.25 sub; 45 days $65 / $52 sub
-  - Ad copy: "$38/month"
-  TODO: get the single authoritative price for each SKU + sub before any price appears on a page.
-- First-order discount: 10% off, code BALANCE10. TODO: confirm still live.
-- Guarantee: Product Info says 60-day money-back; Meta strategy says 30-day risk-free.
-  TODO: confirm which is current before stating a guarantee anywhere.
+## Pricing — CONFIRMED (Aug 2026, Jasmin). Recheck monthly.
+| SKU | One-time | Subscription | Per day (one-time / sub) |
+|---|---|---|---|
+| 30-day | $45.00 | $39.60 | $1.50 / $1.32 |
+| 45-day | $65.00 | $52.00 | $1.44 / $1.16 |
+| 90-day bundle | — (sub only) | $98.00 / quarter | $1.09 |
+
+- Subscription is cheaper on every SKU. Subscription cadence ~6 weeks on the 30/45-day SKUs.
+- **90-day bundle = SUBSCRIPTION ONLY.** $98 billed every 3 months. It is 2 × 45-day tubs at $49
+  each = 90-day supply. Equivalent to **$32.67/month** or **$1.09/day**.
+  ⚠️ Lead with **$32.67/month** — it is the lowest monthly figure we can truthfully quote.
+  Do NOT write "$49/month": $49 is the per-tub price, not a monthly rate.
+- ⚠️ When comparing against a competitor, state which of our prices you are using. Quoting our
+  SUB price against a competitor's ONE-TIME price is not a like-for-like comparison.
+- Discounts: SEVERAL discount codes are in use. Do NOT hardcode a code or a percentage — the
+  brief must name the specific code and value for that page/campaign.
+- Guarantee: **60-day money-back.** (Confirmed; supersedes the 30-day figure in older Meta docs.)
 
 ## FDA disclaimer (use verbatim on all claims)
 "*These statements have not been evaluated by the Food and Drug Administration. This product is

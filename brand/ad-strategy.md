@@ -40,14 +40,16 @@ PCOS/PMOS · Hormones · Fertility · Metabolism · Mood.
 - Single ingredient, no fillers, no flavoring. Made in USA, GMP + FDA-compliant facility, third-party tested.
 - Expert-backed (Dr. Anita Wąsik; Hillary Wright; Tina Kozman). Lived-experience founder brand.
 
-## Offers — present consistently on every page (FRAMING confirmed; NUMBERS see product-facts.md TODO)
-- First-order discount: 10% off, code BALANCE10. (Confirm still live.)
+## Offers — present consistently on every page (prices now CONFIRMED — see product-facts.md)
+- Discounts: SEVERAL codes are in use. Do NOT hardcode a code or percentage — the page brief
+  must name the specific code and value for that campaign.
 - One-time vs. subscription: subscription is cheaper and ships on a ~6-week cadence (aligns to reorder).
-- Risk reversal / money-back guarantee: EXISTS but the term conflicts in our docs (30-day vs 60-day) —
-  do NOT state a number until confirmed (product-facts.md).
+- Risk reversal / money-back guarantee: **60-day money-back** (confirmed Aug 2026; supersedes the
+  30-day figure that appeared in older Meta strategy docs).
 - Free delivery (confirm terms).
-- TODO: bundle offer — "buy one get one free" appears only as a formatting EXAMPLE in our email
-  checklist, not a confirmed live offer. Do not present a bundle until confirmed.
+- Bundle: **CONFIRMED — 90-day bundle, $98 billed quarterly, subscription only.** 2 × 45-day tubs
+  at $49 each. Quote as **$32.67/month** ($1.09/day). Never "$49/month". The earlier "do not present
+  a bundle" hold is lifted. Bundle creative sells "90 days is when it works," never low commitment.
 ⚠️ Pull every price/guarantee number from product-facts.md, never from this file or memory.
 
 ## Platform feel (must carry to the page)
@@ -57,13 +59,6 @@ PCOS/PMOS · Hormones · Fertility · Metabolism · Mood.
   human, neutral backgrounds, focus on the feeling. Pages should feel like a continuation of that —
   not a polished corporate landing page.
 
-## AD-COMPLIANCE (page copy must be ad-safe, not just FDA-safe)
-Any claim that would get an ad disapproved on Meta/TikTok is also banned on the page. In particular:
-- No drug comparisons (Metformin/SSRIs) — disapproval risk AND off-brand.
-- No "treat/cure/reverse/prevent [disease]," no guaranteed outcomes, no diagnosing the reader,
-  no before/after extremes, no "miracle."
-- No personal-attribute targeting language ("are you struggling with PCOS?") framed as assumed fact.
-Keep page copy within compliance.md. Flag borderline lines for review.
 
 ## Dead angles (tested and dropped)
 TODO: I don't have a verified list of hooks/claims we've tested and retired. Add them here as we

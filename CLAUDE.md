@@ -14,7 +14,6 @@ Myo + D-Chiro Inositol powder. This repo is for building/editing the theme and w
 ## Read these before writing or building (in this order)
 - `/brand/brand-voice.md` — how Bodology sounds. Read before writing ANY copy.
 - `/brand/product-facts.md` — the only source of truth for product claims, dose, ratio, price.
-- `/brand/compliance.md` — allowed vs. banned health claims. Every external line must pass this.
 - `/brand/ad-strategy.md` — READ THIS before building any landing page or paid-traffic page.
 
 ## When writing page copy
