@@ -15,36 +15,29 @@
         "link_1": {
           "type": "anchor_link",
           "settings": {
-            "label": "Link 1 — Metabolic health & mood",
-            "anchor": "link-1"
+            "label": "Study 1 — Metabolic health & mood",
+            "anchor": "study-1"
           }
         },
         "link_2": {
           "type": "anchor_link",
           "settings": {
-            "label": "Link 2 — Inositol & insulin",
-            "anchor": "link-2"
+            "label": "Study 2 — Inositol & insulin",
+            "anchor": "study-2"
           }
         },
         "link_3": {
           "type": "anchor_link",
           "settings": {
-            "label": "Study 1 — The 4-week trial",
-            "anchor": "study-1"
+            "label": "Study 3 — The 4-week trial",
+            "anchor": "study-3"
           }
         },
         "link_4": {
           "type": "anchor_link",
           "settings": {
-            "label": "Study 2 — The meta-analysis",
-            "anchor": "study-2"
-          }
-        },
-        "link_5": {
-          "type": "anchor_link",
-          "settings": {
-            "label": "The 12-Week Protocol",
-            "anchor": "protocol"
+            "label": "Study 4 — The meta-analysis",
+            "anchor": "study-4"
           }
         }
       },
@@ -52,8 +45,7 @@
         "link_1",
         "link_2",
         "link_3",
-        "link_4",
-        "link_5"
+        "link_4"
       ],
       "settings": {
         "eyebrow": "Your metabolism and your mind",
@@ -123,9 +115,9 @@
         "attr_observational"
       ],
       "settings": {
-        "anchor": "link-1",
-        "title": "Link 1 — Metabolic health shapes mood",
-        "image": "shopify://shop_images/Mood_copy.jpg",
+        "anchor": "study-1",
+        "title": "Study 1 — Metabolic health shapes mood",
+        "image": "shopify://shop_images/pmdd.png",
         "show_image_mobile": true,
         "background_heading": "The Stanford-Led Study",
         "background_text": "Stanford researchers followed 601 adults — none of whom had ever had depression or anxiety — for nine years. The ones whose blood showed early signs of insulin resistance were far more likely to develop depression later: one common marker carried an 89% higher risk, and newly developing prediabetes carried 2.7 times the risk. Mood isn't separate from metabolism (Watson et al., 2021).¹",
@@ -196,8 +188,9 @@
         "attr_cross"
       ],
       "settings": {
-        "anchor": "link-1-pcos",
-        "title": "Link 1 — The PCOS-specific study",
+        "anchor": "study-2",
+        "title": "Study 2 — The PCOS-specific study",
+        "image": "shopify://shop_images/Relief.png",
         "show_image_mobile": true,
         "background_heading": "The PCOS-Specific Study",
         "background_text": "Researchers pooled 30 studies — 6,908 women across 10 countries. Women with PCOS had about four times the odds of serious low-mood symptoms, and over six times the odds of serious anxiety. Matching women for BMI didn't change it (Cooney et al., 2017).⁴",
@@ -265,7 +258,7 @@
         "info_2"
       ],
       "settings": {
-        "heading": "Link 1 — The biggest numbers",
+        "heading": "The biggest numbers",
         "badge_text": "MOOD × METABOLISM",
         "big_stat": "4×",
         "big_stat_caption": "the odds of serious low-mood symptoms with PCOS — even matched for BMI*⁴",
@@ -280,6 +273,20 @@
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 30,
         "padding_bottom_mobile": 30
+      }
+    },
+    "link_1_sources": {
+      "type": "clinical-footnote",
+      "settings": {
+        "text": "<p>⁴ PCOS meta-analysis: Cooney et al., 2017, Human Reproduction · ¹ Stanford-led cohort: Watson et al., 2021, American Journal of Psychiatry. Full citations at the bottom of the page.</p>",
+        "align": "center",
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "font_size_mobile": 10,
+        "font_size_desktop": 12,
+        "page_width": 1300,
+        "padding_top": 0,
+        "padding_bottom": 16
       }
     },
     "link_2_inositol": {
@@ -316,8 +323,9 @@
         "attr_serotonin"
       ],
       "settings": {
-        "anchor": "link-2",
-        "title": "Link 2 — Inositol supports insulin & serotonin signalling",
+        "anchor": "study-3",
+        "title": "Study 3 — Inositol supports insulin & serotonin signalling",
+        "image": "shopify://shop_images/White_Powder_small_f8c0a904-3c7a-46b4-a5e8-f142a0215040.jpg",
         "show_image_mobile": true,
         "background_heading": "The Evidence",
         "background_text": "Inositol sits on both sides of the mood–metabolism link. On the metabolic side: fasting insulin roughly halved over six months on the 40:1 blend in a placebo-controlled trial (Benelli, 2016²), and insulin after meals improved within three months in another (Nordio, 2019³). And in the brain, inositol helps carry serotonin's signal inside brain cells — which is exactly why researchers started testing it for mood.*",
@@ -388,8 +396,9 @@
         "attr_journal"
       ],
       "settings": {
-        "anchor": "study-1",
-        "title": "Study 1 — Significant at four weeks",
+        "anchor": "study-4",
+        "title": "Study 4 — Significant at four weeks",
+        "image": "shopify://shop_images/Screenshot_2026-08-26_at_9.06.56_PM.png",
         "show_image_mobile": true,
         "background_heading": "Study Background",
         "background_text": "28 people with low mood were randomly split: 13 took 12 g of inositol daily, 15 took a placebo, for four weeks — and nobody knew who had which. The reason researchers tried it at all: inositol levels in spinal fluid had been found lower than normal in this group (Levine et al., 1995).†",
@@ -449,7 +458,7 @@
         "info_2"
       ],
       "settings": {
-        "heading": "Study 1 — The Results",
+        "heading": "Study 4 — The Results",
         "badge_text": "INOSITOL VS PLACEBO",
         "big_stat": "12 g",
         "big_stat_caption": "of inositol daily led to significantly greater mood improvement than placebo at four weeks, on the standard clinical scale*†",
@@ -460,8 +469,8 @@
         "button_hover_text": "#f2eeea",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 36,
         "padding_top_mobile": 30,
         "padding_bottom_mobile": 30
       }
@@ -523,8 +532,9 @@
         "attr_honest"
       ],
       "settings": {
-        "anchor": "study-2",
-        "title": "Study 2 — The honest meta-analysis",
+        "anchor": "study-5",
+        "title": "Study 5 — The honest meta-analysis",
+        "image": "shopify://shop_images/Relief.png",
         "show_image_mobile": false,
         "background_heading": "Study Background",
         "background_text": "Researchers pooled every proper double-blind trial of inositol for mood and anxiety up to 2013 — eleven trials, 312 people. The straight answer: combined, the results didn't reach statistical proof. Slightly more people responded on inositol than placebo, and the strongest signal was in premenstrual mood symptoms — promising in specific groups, not yet proven overall. We'd rather tell you that than oversell it (Mukai et al., 2014).‡",
@@ -538,7 +548,7 @@
         "section_bg": "#f2eeea",
         "page_width": 1300,
         "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
+        "padding_bottom_desktop": 36,
         "padding_top_mobile": 30,
         "padding_bottom_mobile": 30
       }
@@ -584,6 +594,7 @@
         "b2",
         "b3"
       ],
+      "disabled": true,
       "settings": {
         "anchor": "protocol",
         "title": "The Mood Protocol",
@@ -608,20 +619,6 @@
         "padding_bottom_desktop": 80,
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 48
-      }
-    },
-    "link_1_sources": {
-      "type": "clinical-footnote",
-      "settings": {
-        "text": "<p>⁴ PCOS meta-analysis: Cooney et al., 2017, Human Reproduction · ¹ Stanford-led cohort: Watson et al., 2021, American Journal of Psychiatry. Full citations at the bottom of the page.</p>",
-        "align": "center",
-        "bg_color": "#f2eeea",
-        "text_color": "#1a2874",
-        "font_size_mobile": 10,
-        "font_size_desktop": 12,
-        "page_width": 1300,
-        "padding_top": 0,
-        "padding_bottom": 16
       }
     }
   },
