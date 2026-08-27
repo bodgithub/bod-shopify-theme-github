@@ -108,6 +108,7 @@
       "settings": {
         "anchor": "study-1",
         "title": "Study 1 — 70% ovulated vs 21%",
+        "image": "shopify://shop_images/Test.png",
         "show_image_mobile": true,
         "background_heading": "Study Background",
         "background_text": "The gold standard of research, applied directly to ovulation: 42 women with PCOS were randomly split — one group took myo-inositol, the other a placebo, and nobody, not even the researchers, knew who had which until the end (Costantino et al., 2009).†",
@@ -178,8 +179,8 @@
         "button_hover_text": "#f2eeea",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 36,
         "padding_top_mobile": 30,
         "padding_bottom_mobile": 30
       }
@@ -313,8 +314,8 @@
         "button_hover_text": "#f2eeea",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
-        "padding_top_desktop": 100,
-        "padding_bottom_desktop": 0,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 36,
         "padding_top_mobile": 30,
         "padding_bottom_mobile": 30
       }
@@ -435,7 +436,7 @@
         "track_color": "#d9dff0",
         "overlay_color": "rgba(242, 238, 234, 0.87)",
         "page_width": 1300,
-        "padding_top_desktop": 60,
+        "padding_top_desktop": 0,
         "padding_bottom_desktop": 60,
         "padding_top_mobile": 32,
         "padding_bottom_mobile": 32
@@ -536,6 +537,7 @@
         "b2",
         "b3"
       ],
+      "disabled": true,
       "settings": {
         "anchor": "protocol",
         "title": "The Fertility Protocol",
