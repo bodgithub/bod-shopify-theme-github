@@ -104,16 +104,6 @@
         "disable_bottom_spacing": true
       }
     },
-    "spacer_fcdpRG": {
-      "type": "spacer",
-      "name": "Spacer",
-      "settings": {
-        "spacer_mobile": 15,
-        "spacer_desktop": 0,
-        "border_separator": false,
-        "border_separator_full": false
-      }
-    },
     "custom_liquid_WV46gi": {
       "type": "custom-liquid",
       "name": "Custom liquid",
@@ -2542,16 +2532,17 @@
         "accent": "#3447af",
         "accent_hover": "#25318c",
         "tint": "#e4e8f4",
-        "card_bg": "#ffffff"
+        "card_bg": "#ffffff",
+        "spacer_mobile": 15,
+        "spacer_desktop": 0
       }
     }
   },
   "order": [
-    "clinical_style",
     "gpt_product_seo_DWikHm",
     "image_with_text_overlay_T3rmDc",
-    "spacer_fcdpRG",
     "custom_liquid_WV46gi",
+    "clinical_style",
     "main-product",
     "1768505899436dba61",
     "community_videos_gi9WUU",

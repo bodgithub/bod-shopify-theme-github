@@ -75,6 +75,15 @@
   }
 </style>
 
+{%- if s.spacer_desktop > 0 or s.spacer_mobile > 0 -%}
+<div style="height: {{ s.spacer_mobile }}px;" class="clinical-style-spacer"></div>
+<style>
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .clinical-style-spacer { height: {{ s.spacer_desktop }}px !important; }
+  }
+</style>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "Clinical product style",
@@ -96,7 +105,10 @@
     { "type": "range", "id": "input_radius", "label": "Input corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 12 },
     { "type": "header", "content": "Extras" },
     { "type": "checkbox", "id": "outline_accordions", "label": "Outline accordions as white cards", "default": true },
-    { "type": "checkbox", "id": "outline_gallery", "label": "Round + outline gallery images", "default": true }
+    { "type": "checkbox", "id": "outline_gallery", "label": "Round + outline gallery images", "default": true },
+    { "type": "header", "content": "Spacer", "info": "Optional vertical space rendered where this section sits — lets it stand in for a spacer section." },
+    { "type": "range", "id": "spacer_desktop", "label": "Space (desktop)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 },
+    { "type": "range", "id": "spacer_mobile", "label": "Space (mobile)", "min": 0, "max": 100, "step": 5, "unit": "px", "default": 0 }
   ],
   "presets": [{ "name": "Clinical product style" }]
 }
