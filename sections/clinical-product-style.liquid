@@ -1,0 +1,103 @@
+{%- comment -%}
+  BODOLOGY · Clinical Product Style
+  Drop-in restyler: add this section to a product template and the whole
+  page takes on the clinical-pages look (cream background, navy text,
+  blue outlines, tinted pills, white cards) by overriding the theme's
+  CSS custom properties — no shared product code is modified. Remove the
+  section (or use a template without it) and the page is stock again.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign accent_rgb = s.accent | color_to_rgb | remove: 'rgb(' | remove: ')'
+  assign text_rgb = s.text_color | color_to_rgb | remove: 'rgb(' | remove: ')'
+  assign bg_rgb = s.bg_color | color_to_rgb | remove: 'rgb(' | remove: ')'
+-%}
+
+<style>
+  :root {
+    --bg-body: {{ s.bg_color }};
+    --bg-body-rgb: {{ bg_rgb }};
+    --color-body: {{ s.text_color }};
+    --color-body-rgb: {{ text_rgb }};
+    --color-heading: {{ s.heading_color }};
+    --color-heading-rgb: {{ s.heading_color | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    --color-accent: {{ s.accent }};
+    --color-accent-hover: {{ s.accent_hover }};
+    --color-accent-rgb: {{ accent_rgb }};
+    --color-border: rgba({{ accent_rgb }}, 0.45);
+    --color-form-border: {{ s.accent }};
+    --button-border-radius: {{ s.button_radius }}px;
+    --block-border-radius: {{ s.block_radius }}px;
+    --input-border-radius: {{ s.input_radius }}px;
+  }
+  body {
+    background: {{ s.bg_color }};
+    color: {{ s.text_color }};
+  }
+
+  {%- if s.outline_accordions -%}
+  .thb-product-detail .product__accordion.accordion {
+    border: 1px solid {{ s.accent }};
+    border-radius: {{ s.block_radius }}px;
+    background: {{ s.card_bg }};
+    margin-bottom: 10px;
+    padding: 0 18px;
+    overflow: hidden;
+  }
+  .thb-product-detail .product__accordion.accordion + .product__accordion.accordion { border-top: 1px solid {{ s.accent }}; }
+  {%- endif -%}
+
+  {%- if s.outline_gallery -%}
+  .thb-product-detail .product-gallery-container img,
+  .thb-product-detail .product-gallery-container video,
+  .thb-product-detail .product-gallery-container .media {
+    border-radius: {{ s.block_radius }}px;
+  }
+  .thb-product-detail .product-gallery-container .media,
+  .thb-product-detail .product-gallery-container > div img {
+    border: 1px solid rgba({{ accent_rgb }}, 0.45);
+  }
+  {%- endif -%}
+
+  .cro-badge-row__pill {
+    background: {{ s.tint }};
+    color: {{ s.accent }};
+    border: 1px solid {{ s.accent }};
+    border-radius: 999px;
+  }
+
+  .thb-product-detail input.qty,
+  .thb-product-detail .quantity,
+  .thb-product-detail select,
+  .thb-product-detail .product-form__input {
+    border-color: rgba({{ accent_rgb }}, 0.45);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Clinical product style",
+  "tag": "div",
+  "class": "section-clinical-product-style",
+  "settings": [
+    { "type": "paragraph", "content": "Restyles this product template in the clinical-pages look. Remove this section to restore the theme's default styling. The header and footer keep their global styles." },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg_color", "label": "Page background", "default": "#f2eeea" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#1a2874" },
+    { "type": "color", "id": "accent", "label": "Accent (buttons, outlines)", "default": "#3447af" },
+    { "type": "color", "id": "accent_hover", "label": "Accent hover", "default": "#25318c" },
+    { "type": "color", "id": "tint", "label": "Pill / tint background", "default": "#e4e8f4" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "header", "content": "Shape" },
+    { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 30 },
+    { "type": "range", "id": "block_radius", "label": "Card corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 16 },
+    { "type": "range", "id": "input_radius", "label": "Input corner radius", "min": 0, "max": 24, "step": 2, "unit": "px", "default": 12 },
+    { "type": "header", "content": "Extras" },
+    { "type": "checkbox", "id": "outline_accordions", "label": "Outline accordions as white cards", "default": true },
+    { "type": "checkbox", "id": "outline_gallery", "label": "Round + outline gallery images", "default": true }
+  ],
+  "presets": [{ "name": "Clinical product style" }]
+}
+{% endschema %}
