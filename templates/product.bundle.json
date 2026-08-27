@@ -95,6 +95,7 @@
         "space_h3QWPp",
         "benefits_b3bkkE"
       ],
+      "disabled": true,
       "name": "Image with text overlay",
       "settings": {
         "image": "shopify://shop_images/Bodology-Hormone-Desktop-Banner-7.jpg",
@@ -118,6 +119,27 @@
       "name": "Custom liquid",
       "settings": {
         "custom_liquid": "{{ 'cro-enhancements.css' | asset_url | stylesheet_tag }}{{ 'cro-enhancements.js' | asset_url | script_tag }}<div id=\"bodology-inositol\"></div>"
+      }
+    },
+    "clinical_style": {
+      "type": "clinical-product-style",
+      "disabled": true,
+      "settings": {
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "heading_color": "#1a2874",
+        "accent": "#3447af",
+        "accent_hover": "#25318c",
+        "tint": "#e4e8f4",
+        "card_bg": "#ffffff",
+        "button_radius": 30,
+        "block_radius": 16,
+        "input_radius": 12,
+        "outline_accordions": true,
+        "outline_gallery": true,
+        "restyle_sections": true,
+        "spacer_desktop": 0,
+        "spacer_mobile": 15
       }
     },
     "main-product": {
@@ -2531,20 +2553,6 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
-    },
-    "clinical_style": {
-      "type": "clinical-product-style",
-      "settings": {
-        "bg_color": "#f2eeea",
-        "text_color": "#1a2874",
-        "heading_color": "#1a2874",
-        "accent": "#3447af",
-        "accent_hover": "#25318c",
-        "tint": "#e4e8f4",
-        "card_bg": "#ffffff",
-        "spacer_mobile": 15,
-        "spacer_desktop": 0
-      }
     }
   },
   "order": [
