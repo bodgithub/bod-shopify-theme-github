@@ -2535,7 +2535,15 @@
     },
     "clinical_style": {
       "type": "clinical-product-style",
-      "settings": {}
+      "settings": {
+        "bg_color": "#f2eeea",
+        "text_color": "#1a2874",
+        "heading_color": "#1a2874",
+        "accent": "#3447af",
+        "accent_hover": "#25318c",
+        "tint": "#e4e8f4",
+        "card_bg": "#ffffff"
+      }
     }
   },
   "order": [
