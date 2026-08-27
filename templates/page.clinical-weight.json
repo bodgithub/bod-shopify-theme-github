@@ -15,36 +15,29 @@
         "link_1": {
           "type": "anchor_link",
           "settings": {
-            "label": "Link 1 — Blood sugar & hunger",
-            "anchor": "link-1"
+            "label": "Study 1 — Blood sugar & hunger",
+            "anchor": "study-1"
           }
         },
         "link_2": {
           "type": "anchor_link",
           "settings": {
-            "label": "Link 2 — Inositol & insulin",
-            "anchor": "link-2"
+            "label": "Study 2 — Inositol & insulin",
+            "anchor": "study-2"
           }
         },
         "link_3": {
           "type": "anchor_link",
           "settings": {
-            "label": "Study 1 — Body composition",
-            "anchor": "study-1"
+            "label": "Study 3 — Body composition",
+            "anchor": "study-3"
           }
         },
         "link_4": {
           "type": "anchor_link",
           "settings": {
-            "label": "Studies 2 — Inositol & BMI",
-            "anchor": "study-2"
-          }
-        },
-        "link_5": {
-          "type": "anchor_link",
-          "settings": {
-            "label": "The 12-Week Protocol",
-            "anchor": "protocol"
+            "label": "Studies 4 — Inositol & BMI",
+            "anchor": "study-4"
           }
         }
       },
@@ -52,15 +45,14 @@
         "link_1",
         "link_2",
         "link_3",
-        "link_4",
-        "link_5"
+        "link_4"
       ],
       "settings": {
         "eyebrow": "Why the diet works for everyone except you.",
         "heading": "Inositol for weight: The studies",
         "subtext": "Weight is metabolic before it's behavioural. When cells respond poorly to insulin, the body stores more and burns less — and blood sugar crashes drive hunger. The evidence below is a chain with two links: dips make you eat more, and inositol supports how your body handles glucose and insulin.*",
         "image": "shopify://shop_images/Screenshot_2026-08-26_at_9.13.59_PM.png",
-        "mobile_image_height": 120,
+        "mobile_image_height": 175,
         "bg_color": "#f2eeea",
         "text_color": "#1a2874",
         "divider_color": "#3447af",
@@ -114,8 +106,8 @@
         "attr_population"
       ],
       "settings": {
-        "anchor": "link-1",
-        "title": "Link 1 — Blood sugar dips make you hungry",
+        "anchor": "study-1",
+        "title": "Study 1 — Blood sugar dips make you hungry",
         "image": "shopify://shop_images/Chocolate.jpg",
         "show_image_mobile": true,
         "background_heading": "The Study",
@@ -169,8 +161,8 @@
         "attr_homa"
       ],
       "settings": {
-        "anchor": "link-2",
-        "title": "Link 2 — Inositol supports insulin & glucose handling",
+        "anchor": "study-2",
+        "title": "Study 2 — Inositol supports insulin & glucose handling",
         "image": "shopify://shop_images/White_Powder_small_f8c0a904-3c7a-46b4-a5e8-f142a0215040.jpg",
         "show_image_mobile": true,
         "background_heading": "The Evidence",
@@ -242,8 +234,8 @@
         "attr_ratio"
       ],
       "settings": {
-        "anchor": "study-1",
-        "title": "Study 1 — Fat down, muscle kept",
+        "anchor": "study-3",
+        "title": "Study 3 — Fat down, muscle kept",
         "image": "shopify://shop_images/Screenshot_2026-08-26_at_9.13.59_PM.png",
         "show_image_mobile": true,
         "background_heading": "Study Background",
@@ -471,8 +463,8 @@
         "attr_bmi"
       ],
       "settings": {
-        "anchor": "study-2",
-        "title": "Study 2 — BMI down across 15 trials",
+        "anchor": "study-4",
+        "title": "Study 4 — BMI down across 15 trials",
         "image": "shopify://shop_images/BMI_2.png",
         "show_image_mobile": true,
         "background_heading": "Study Background",

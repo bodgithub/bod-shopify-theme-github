@@ -32,20 +32,12 @@
             "label": "Studies 3 & 4 — IVF & egg quality",
             "anchor": "study-3"
           }
-        },
-        "link_4": {
-          "type": "anchor_link",
-          "settings": {
-            "label": "The 12-Week Protocol",
-            "anchor": "protocol"
-          }
         }
       },
       "block_order": [
         "link_1",
         "link_2",
-        "link_3",
-        "link_4"
+        "link_3"
       ],
       "settings": {
         "eyebrow": "Ovulation is a metabolic event",
@@ -244,9 +236,10 @@
       "settings": {
         "anchor": "study-2",
         "title": "Study 2 — Ten trials, one direction",
-        "show_image_mobile": false,
+        "image": "shopify://shop_images/Screenshot_2026-08-26_at_9.13.59_PM.png",
+        "show_image_mobile": true,
         "background_heading": "Study Background",
-        "background_text": "Zoom out. Researchers pooled ten separate trials — 601 women in total — to ask whether the ovulation results hold up across all of them. They do. The authors are honest about the gap — proof for pregnancy and live-birth rates is still lacking — and so are we (Pundir et al., 2018).‡",
+        "background_text": "Zoom out. Researchers pooled ten separate trials — 601 women in total — to ask whether the ovulation results hold up across all of them. They do. (Pundir et al., 2018).‡",
         "attributes_heading": "Study Attributes",
         "card_bg": "#ffffff",
         "title_bg": "#e4e8f4",
@@ -370,6 +363,7 @@
       "settings": {
         "anchor": "study-3",
         "title": "Study 3 — Egg quality & pregnancy",
+        "image": "shopify://shop_images/bubbles.png",
         "show_image_mobile": true,
         "background_heading": "Study Background",
         "background_text": "149 women going through ICSI (a form of IVF) were randomly split: half added myo-inositol to their folic acid, half took folic acid alone. Egg quality, embryo grade, and pregnancy rate all came out better in the inositol group (Brusco & Mariani, 2013).§",
