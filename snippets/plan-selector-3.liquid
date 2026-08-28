@@ -296,7 +296,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var addingLabel = {{ s.adding_label | default: 'Adding…' | json }};
   function isSub(){ return root.classList.contains('is-sub'); }
   // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day.
-  // Fri/Sat that lands on Monday, which reads as a long wait, so show a delivery window instead.
+  // After the Fri cutoff and all day Sat that lands on Monday, which reads as a long wait,
+  // so show a delivery window instead. Fri before the cutoff still ships same day.
   var shipEl = root.querySelector('[data-p3-shipdate]');
   var shipPreEl = root.querySelector('[data-p3-shipprefix]');
   var shipWeekendText = {{ s.shipping_weekend_text | json }};
@@ -305,7 +306,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
     catch(e){ sd = new Date(); }
     var sdDay = sd.getDay();
-    if(shipPreEl && shipWeekendText && (sdDay === 5 || sdDay === 6)){
+    if(shipPreEl && shipWeekendText && ((sdDay === 5 && sd.getHours() >= 14) || sdDay === 6)){
       shipPreEl.textContent = shipWeekendText;
       shipEl.textContent = '';
     } else {
