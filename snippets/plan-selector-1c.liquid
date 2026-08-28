@@ -362,6 +362,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var shipEl = root.querySelector('[data-ps1c-shipdate]');
   var shipPreEl = root.querySelector('[data-ps1c-shipprefix]');
   var shipWeekendText = {{ s.shipping_weekend_text | json }};
+  var shipWeekendHighlight = {{ s.shipping_weekend_highlight | json }};
   if(shipEl){
     var sd;
     try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
@@ -369,7 +370,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     var sdDay = sd.getDay();
     if(shipPreEl && shipWeekendText && ((sdDay === 5 && sd.getHours() >= 14) || sdDay === 6)){
       shipPreEl.textContent = shipWeekendText;
-      shipEl.textContent = '';
+      shipEl.textContent = shipWeekendHighlight || '';
     } else {
       if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
       while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
