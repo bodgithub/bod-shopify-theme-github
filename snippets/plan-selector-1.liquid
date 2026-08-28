@@ -236,7 +236,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   </div>
   {%- endif -%}
   {%- if s.shipping_prefix != blank -%}
-  <div class="ps-ship"><span class="ps-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="ps-ship__date" data-ps1-shipdate></span></span></div>
+  <div class="ps-ship"><span class="ps-ship__dot"></span><span><span data-ps1-shipprefix>{{ s.shipping_prefix }}</span> <span class="ps-ship__date" data-ps1-shipdate></span></span></div>
   {%- endif -%}
   <button type="button" class="ps-cta" data-ps1-submit>
     <span class="spin"></span>
@@ -311,16 +311,25 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   }
   function selected(){ return root.querySelector('[data-ps1-card].is-selected'); }
   function syncSub(){ if(!sub) return; var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps1-name') : ''; }
-  // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day
+  // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day.
+  // Fri/Sat that lands on Monday, which reads as a long wait, so show a delivery window instead.
   var shipEl = root.querySelector('[data-ps1-shipdate]');
+  var shipPreEl = root.querySelector('[data-ps1-shipprefix]');
+  var shipWeekendText = {{ s.shipping_weekend_text | json }};
   if(shipEl){
     var sd;
     try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
     catch(e){ sd = new Date(); }
-    if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
-    while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
-    try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
-    catch(e){ shipEl.textContent = sd.toDateString(); }
+    var sdDay = sd.getDay();
+    if(shipPreEl && shipWeekendText && (sdDay === 5 || sdDay === 6)){
+      shipPreEl.textContent = shipWeekendText;
+      shipEl.textContent = '';
+    } else {
+      if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
+      while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
+      try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
+      catch(e){ shipEl.textContent = sd.toDateString(); }
+    }
   }
   // subscribe toggle mirrors card selection: on = subscription card, off = one-time card
   var tick = root.querySelector('[data-ps1-subtick]');

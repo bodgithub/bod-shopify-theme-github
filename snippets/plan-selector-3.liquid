@@ -219,7 +219,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   </button>
 
   {%- if s.shipping_prefix != blank -%}
-  <div class="p3-ship"><span class="p3-ship__dot"></span><span>{{ s.shipping_prefix }} <span class="p3-ship__date" data-p3-shipdate></span></span></div>
+  <div class="p3-ship"><span class="p3-ship__dot"></span><span><span data-p3-shipprefix>{{ s.shipping_prefix }}</span> <span class="p3-ship__date" data-p3-shipdate></span></span></div>
   {%- endif -%}
 
   <button type="button" class="p3-cta" data-p3-submit><span data-p3-cta-label></span></button>
@@ -295,16 +295,25 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   if(oneSuffix && oneSuffix.charAt(0) !== ' '){ oneSuffix = ' ' + oneSuffix; }
   var addingLabel = {{ s.adding_label | default: 'Adding…' | json }};
   function isSub(){ return root.classList.contains('is-sub'); }
-  // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day
+  // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day.
+  // Fri/Sat that lands on Monday, which reads as a long wait, so show a delivery window instead.
   var shipEl = root.querySelector('[data-p3-shipdate]');
+  var shipPreEl = root.querySelector('[data-p3-shipprefix]');
+  var shipWeekendText = {{ s.shipping_weekend_text | json }};
   if(shipEl){
     var sd;
     try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
     catch(e){ sd = new Date(); }
-    if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
-    while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
-    try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
-    catch(e){ shipEl.textContent = sd.toDateString(); }
+    var sdDay = sd.getDay();
+    if(shipPreEl && shipWeekendText && (sdDay === 5 || sdDay === 6)){
+      shipPreEl.textContent = shipWeekendText;
+      shipEl.textContent = '';
+    } else {
+      if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
+      while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
+      try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
+      catch(e){ shipEl.textContent = sd.toDateString(); }
+    }
   }
   function selected(){ return root.querySelector('[data-p3-card].is-selected'); }
   function showErr(msg){ var sp = err.querySelector('span'); if(sp && msg) sp.textContent = msg; err.classList.add('is-shown'); }
