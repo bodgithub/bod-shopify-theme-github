@@ -229,41 +229,201 @@
   "name": "Concern protocol",
   "tag": "section",
   "class": "section-concern-protocol",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
   "settings": [
-    { "type": "text", "id": "anchor", "label": "Anchor ID (without #)", "default": "protocol" },
-    { "type": "text", "id": "title", "label": "Title", "default": "The 12-Week Protocol" },
-    { "type": "text", "id": "badge_text", "label": "Badge", "default": "Protocol guide free with every subscription" },
-    { "type": "richtext", "id": "intro", "label": "Intro text", "default": "<p>The studies above measured change over 12 weeks to 6 months. That's why the protocol runs 12 weeks — the shortest window the research actually covers.</p>" },
-    { "type": "image_picker", "id": "image", "label": "Image (guide / product)" },
-    { "type": "checkbox", "id": "show_image_mobile", "label": "Show image on mobile", "default": true },
-    { "type": "header", "content": "Add to cart" },
-    { "type": "product", "id": "product", "label": "Product to add" },
-    { "type": "checkbox", "id": "use_first_selling_plan", "label": "Add as subscription (first selling plan)", "default": true, "info": "Adds the product with its first subscription plan. Untick for a one-time purchase." },
-    { "type": "text", "id": "selling_plan_id", "label": "Specific selling plan ID (optional)", "info": "Overrides the auto-detected plan. Find IDs in your subscription app." },
-    { "type": "text", "id": "button_label", "label": "Button label", "default": "Start the 12-week protocol" },
-    { "type": "checkbox", "id": "show_price", "label": "Show price in button", "default": true },
-    { "type": "text", "id": "note", "label": "Small print under button", "default": "Subscription renews every 6 weeks. Pause or cancel anytime." },
-    { "type": "header", "content": "Colors" },
-    { "type": "color_background", "id": "section_bg", "label": "Section background", "default": "#F2EEEA" },
-    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#F2EEEA" },
-    { "type": "color", "id": "title_bg", "label": "Title bar / badge background", "default": "#E4E8F4" },
-    { "type": "color", "id": "border_color", "label": "Borders", "default": "#3447AF" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A2874" },
-    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#3447AF" },
-    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#F2EEEA" },
-    { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
-    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 80 },
-    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 48 }
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (without #)",
+      "default": "protocol"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The 12-Week Protocol"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge",
+      "default": "Protocol guide free with every subscription"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro text",
+      "default": "<p>The studies above measured change over 12 weeks to 6 months. That's why the protocol runs 12 weeks — the shortest window the research actually covers.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (guide / product)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_mobile",
+      "label": "Show image on mobile",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Add to cart"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product to add"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_first_selling_plan",
+      "label": "Add as subscription (first selling plan)",
+      "default": true,
+      "info": "Adds the product with its first subscription plan. Untick for a one-time purchase."
+    },
+    {
+      "type": "text",
+      "id": "selling_plan_id",
+      "label": "Specific selling plan ID (optional)",
+      "info": "Overrides the auto-detected plan. Find IDs in your subscription app."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Start the 12-week protocol"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price in button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Small print under button",
+      "default": "Subscription renews every 6 weeks. Pause or cancel anytime."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "title_bg",
+      "label": "Title bar / badge background",
+      "default": "#E4E8F4"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Borders",
+      "default": "#3447AF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1A2874"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#3447AF"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    }
   ],
   "blocks": [
     {
       "type": "bullet",
       "name": "Checklist item",
       "settings": [
-        { "type": "text", "id": "text", "label": "Text", "default": "2 scoops daily — 4,000 mg myo + 100 mg D-chiro, the 40:1 ratio" }
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "2 scoops daily — 4,000 mg myo + 100 mg D-chiro, the 40:1 ratio"
+        }
       ]
     }
   ],
@@ -271,9 +431,21 @@
     {
       "name": "Concern protocol",
       "blocks": [
-        { "type": "bullet" },
-        { "type": "bullet", "settings": { "text": "Unflavoured — mixes into water, coffee, or smoothies" } },
-        { "type": "bullet", "settings": { "text": "The 12-week protocol guide arrives free with your subscription" } }
+        {
+          "type": "bullet"
+        },
+        {
+          "type": "bullet",
+          "settings": {
+            "text": "Unflavoured — mixes into water, coffee, or smoothies"
+          }
+        },
+        {
+          "type": "bullet",
+          "settings": {
+            "text": "The 12-week protocol guide arrives free with your subscription"
+          }
+        }
       ]
     }
   ]

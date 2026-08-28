@@ -340,39 +340,188 @@
   "name": "Study overview table",
   "tag": "section",
   "class": "section-study-overview-table",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
   "settings": [
-    { "type": "text", "id": "anchor", "label": "Anchor ID (without #)", "default": "study-1", "info": "Used by the header's anchor links." },
-    { "type": "text", "id": "title", "label": "Table title", "default": "Study 1 Overview" },
-    { "type": "image_picker", "id": "image", "label": "Left image column" },
-    { "type": "checkbox", "id": "show_image_mobile", "label": "Show image column on mobile", "default": true },
-    { "type": "text", "id": "background_heading", "label": "First heading", "default": "Study Background" },
-    { "type": "textarea", "id": "background_text", "label": "First text", "default": "[Placeholder — describe the study design and what it set out to measure. Replace with real, cited study details before publishing.]*" },
-    { "type": "text", "id": "attributes_heading", "label": "Second heading", "default": "Study Attributes" },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#F2EEEA" },
-    { "type": "color", "id": "title_bg", "label": "Title bar / popup background", "default": "#E4E8F4" },
-    { "type": "color", "id": "border_color", "label": "Borders", "default": "#3447AF" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A2874" },
-    { "type": "color", "id": "chip_hover_text", "label": "Chip hover text", "default": "#D9DFF0" },
-    { "type": "color_background", "id": "overlay_color", "label": "Popup overlay", "default": "rgba(242, 238, 234, 0.87)" },
-    { "type": "header", "content": "Layout" },
-    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#F2EEEA" },
-    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
-    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 30 },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 30 }
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID (without #)",
+      "default": "study-1",
+      "info": "Used by the header's anchor links."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Table title",
+      "default": "Study 1 Overview"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Left image column"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image_mobile",
+      "label": "Show image column on mobile",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "background_heading",
+      "label": "First heading",
+      "default": "Study Background"
+    },
+    {
+      "type": "textarea",
+      "id": "background_text",
+      "label": "First text",
+      "default": "[Placeholder — describe the study design and what it set out to measure. Replace with real, cited study details before publishing.]*"
+    },
+    {
+      "type": "text",
+      "id": "attributes_heading",
+      "label": "Second heading",
+      "default": "Study Attributes"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "title_bg",
+      "label": "Title bar / popup background",
+      "default": "#E4E8F4"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Borders",
+      "default": "#3447AF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1A2874"
+    },
+    {
+      "type": "color",
+      "id": "chip_hover_text",
+      "label": "Chip hover text",
+      "default": "#D9DFF0"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_color",
+      "label": "Popup overlay",
+      "default": "rgba(242, 238, 234, 0.87)"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 30
+    }
   ],
   "blocks": [
     {
       "type": "attribute",
       "name": "Study attribute",
       "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "3 months" },
-        { "type": "image_picker", "id": "icon", "label": "Icon" },
-        { "type": "header", "content": "Popup (optional)", "info": "Fill these to turn the chip into a button that opens a lightbox." },
-        { "type": "text", "id": "popup_title", "label": "Popup title" },
-        { "type": "textarea", "id": "popup_text", "label": "Popup text" }
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "3 months"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "header",
+          "content": "Popup (optional)",
+          "info": "Fill these to turn the chip into a button that opens a lightbox."
+        },
+        {
+          "type": "text",
+          "id": "popup_title",
+          "label": "Popup title"
+        },
+        {
+          "type": "textarea",
+          "id": "popup_text",
+          "label": "Popup text"
+        }
       ]
     }
   ],
@@ -380,8 +529,18 @@
     {
       "name": "Study overview table",
       "blocks": [
-        { "type": "attribute", "settings": { "label": "3 months" } },
-        { "type": "attribute", "settings": { "label": "100 participants" } },
+        {
+          "type": "attribute",
+          "settings": {
+            "label": "3 months"
+          }
+        },
+        {
+          "type": "attribute",
+          "settings": {
+            "label": "100 participants"
+          }
+        },
         {
           "type": "attribute",
           "settings": {

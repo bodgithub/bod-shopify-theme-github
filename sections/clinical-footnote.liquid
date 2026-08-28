@@ -44,26 +44,103 @@
   "name": "Clinical footnote",
   "tag": "section",
   "class": "section-clinical-footnote",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
   "settings": [
-    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>†Based on a [duration], randomized, double-blind, placebo-controlled clinical study, when taken daily.</p>" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>†Based on a [duration], randomized, double-blind, placebo-controlled clinical study, when taken daily.</p>"
+    },
     {
       "type": "select",
       "id": "align",
       "label": "Alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        }
       ],
       "default": "center"
     },
-    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F2EEEA" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A2874" },
-    { "type": "range", "id": "font_size_mobile", "label": "Font size (mobile)", "min": 8, "max": 18, "step": 1, "unit": "px", "default": 10 },
-    { "type": "range", "id": "font_size_desktop", "label": "Font size (desktop)", "min": 8, "max": 20, "step": 1, "unit": "px", "default": 12 },
-    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
-    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 16 },
-    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 16 }
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1A2874"
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 8,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "font_size_desktop",
+      "label": "Font size (desktop)",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    }
   ],
-  "presets": [{ "name": "Clinical footnote" }]
+  "presets": [
+    {
+      "name": "Clinical footnote"
+    }
+  ]
 }
 {% endschema %}

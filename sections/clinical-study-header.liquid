@@ -216,31 +216,143 @@
   "name": "Clinical study header",
   "tag": "section",
   "class": "section-clinical-study-header",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
   "settings": [
-    { "type": "text", "id": "eyebrow", "label": "Pill label", "default": "Inositol: The studies", "info": "Small pill above the title on desktop; sits on the hero image on mobile. Leave blank to hide." },
-    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Bodology:\nThe Studies", "info": "Line breaks are kept." },
-    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Transparency comes first. Here is the research behind what we make, laid out study by study." },
-    { "type": "image_picker", "id": "image", "label": "Hero image", "info": "Full-width cropped strip at the top on mobile; pinned to the right edge on desktop. Set the crop with the image's focal point." },
-    { "type": "range", "id": "mobile_image_height", "label": "Mobile image height", "min": 100, "max": 320, "step": 5, "unit": "px", "default": 175 },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F2EEEA" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A2874" },
-    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1b3def" },
-    { "type": "color", "id": "divider_color", "label": "Link divider lines", "default": "#3447AF" },
-    { "type": "color", "id": "pill_bg", "label": "Pill background", "default": "#e4e8f4" },
-    { "type": "color", "id": "pill_text", "label": "Pill text", "default": "#1a2874" },
-    { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "content_indent", "label": "Content left indent (desktop)", "min": 0, "max": 20, "step": 1, "unit": "%", "default": 12 },
-    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 },
-    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 }
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Pill label",
+      "default": "Inositol: The studies",
+      "info": "Small pill above the title on desktop; sits on the hero image on mobile. Leave blank to hide."
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Bodology:\nThe Studies",
+      "info": "Line breaks are kept."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Transparency comes first. Here is the research behind what we make, laid out study by study."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image",
+      "info": "Full-width cropped strip at the top on mobile; pinned to the right edge on desktop. Set the crop with the image's focal point."
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_height",
+      "label": "Mobile image height",
+      "min": 100,
+      "max": 320,
+      "step": 5,
+      "unit": "px",
+      "default": 175
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1A2874"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Link divider lines",
+      "default": "#3447AF"
+    },
+    {
+      "type": "color",
+      "id": "pill_bg",
+      "label": "Pill background",
+      "default": "#e4e8f4"
+    },
+    {
+      "type": "color",
+      "id": "pill_text",
+      "label": "Pill text",
+      "default": "#1a2874"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_indent",
+      "label": "Content left indent (desktop)",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "unit": "%",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
   ],
   "blocks": [
     {
       "type": "anchor_link",
       "name": "Anchor link",
       "settings": [
-        { "type": "text", "id": "label", "label": "Label", "default": "Study 1 Results" },
-        { "type": "text", "id": "anchor", "label": "Anchor ID (without #)", "default": "study-1", "info": "Must match the Anchor ID set on the target section." }
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Study 1 Results"
+        },
+        {
+          "type": "text",
+          "id": "anchor",
+          "label": "Anchor ID (without #)",
+          "default": "study-1",
+          "info": "Must match the Anchor ID set on the target section."
+        }
       ]
     }
   ],
@@ -248,8 +360,20 @@
     {
       "name": "Clinical study header",
       "blocks": [
-        { "type": "anchor_link", "settings": { "label": "Study 1 Results", "anchor": "study-1" } },
-        { "type": "anchor_link", "settings": { "label": "Study 2 Results", "anchor": "study-2" } }
+        {
+          "type": "anchor_link",
+          "settings": {
+            "label": "Study 1 Results",
+            "anchor": "study-1"
+          }
+        },
+        {
+          "type": "anchor_link",
+          "settings": {
+            "label": "Study 2 Results",
+            "anchor": "study-2"
+          }
+        }
       ]
     }
   ]

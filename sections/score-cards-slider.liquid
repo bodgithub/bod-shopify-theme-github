@@ -448,39 +448,194 @@
   "name": "Score cards slider",
   "tag": "section",
   "class": "section-score-cards-slider",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "The Results" },
-    { "type": "textarea", "id": "disclaimer", "label": "Popup disclaimer", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "bg_color", "label": "Background", "default": "#F2EEEA" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#1A2874" },
-    { "type": "color", "id": "accent_color", "label": "Accent (borders, progress, popup header)", "default": "#3447AF" },
-    { "type": "color", "id": "card_hover_bg", "label": "Card hover / popup background", "default": "#E4E8F4" },
-    { "type": "color", "id": "track_color", "label": "Progress track", "default": "#D9DFF0" },
-    { "type": "color_background", "id": "overlay_color", "label": "Popup overlay", "default": "rgba(242, 238, 234, 0.87)" },
-    { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
-    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Results"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Popup disclaimer",
+      "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1A2874"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (borders, progress, popup header)",
+      "default": "#3447AF"
+    },
+    {
+      "type": "color",
+      "id": "card_hover_bg",
+      "label": "Card hover / popup background",
+      "default": "#E4E8F4"
+    },
+    {
+      "type": "color",
+      "id": "track_color",
+      "label": "Progress track",
+      "default": "#D9DFF0"
+    },
+    {
+      "type": "color_background",
+      "id": "overlay_color",
+      "label": "Popup overlay",
+      "default": "rgba(242, 238, 234, 0.87)"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
   ],
   "blocks": [
     {
       "type": "score_card",
       "name": "Score card",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title", "default": "[Marker] Levels" },
-        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "[Full marker name]" },
-        { "type": "range", "id": "percentage", "label": "Percentage", "min": 0, "max": 100, "step": 1, "unit": "%", "default": 50 },
-        { "type": "text", "id": "value_label", "label": "Gauge label override", "info": "Optional. Text shown inside the circle instead of the percentage — e.g. \"−18.9%\". The gauge fill still uses the percentage above." },
-        { "type": "text", "id": "caption", "label": "Caption", "default": "of participants reported [outcome]*‡" },
-        { "type": "text", "id": "button_label", "label": "Button label", "default": "What are [Marker] Levels" },
-        { "type": "header", "content": "Popup" },
-        { "type": "text", "id": "popup_heading", "label": "Popup heading", "info": "Defaults to the card title if empty." },
-        { "type": "text", "id": "popup_stat", "label": "Popup stat value", "info": "Defaults to the percentage if empty." },
-        { "type": "textarea", "id": "popup_stat_text", "label": "Popup stat text", "default": "of participants reported [outcome] after [duration] in our clinical study*‡" },
-        { "type": "textarea", "id": "popup_info_text", "label": "Popup info text", "default": "[Placeholder — explain what this marker is and why it is measured.]" }
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "[Marker] Levels"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "[Full marker name]"
+        },
+        {
+          "type": "range",
+          "id": "percentage",
+          "label": "Percentage",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        },
+        {
+          "type": "text",
+          "id": "value_label",
+          "label": "Gauge label override",
+          "info": "Optional. Text shown inside the circle instead of the percentage — e.g. \"−18.9%\". The gauge fill still uses the percentage above."
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "of participants reported [outcome]*‡"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "What are [Marker] Levels"
+        },
+        {
+          "type": "header",
+          "content": "Popup"
+        },
+        {
+          "type": "text",
+          "id": "popup_heading",
+          "label": "Popup heading",
+          "info": "Defaults to the card title if empty."
+        },
+        {
+          "type": "text",
+          "id": "popup_stat",
+          "label": "Popup stat value",
+          "info": "Defaults to the percentage if empty."
+        },
+        {
+          "type": "textarea",
+          "id": "popup_stat_text",
+          "label": "Popup stat text",
+          "default": "of participants reported [outcome] after [duration] in our clinical study*‡"
+        },
+        {
+          "type": "textarea",
+          "id": "popup_info_text",
+          "label": "Popup info text",
+          "default": "[Placeholder — explain what this marker is and why it is measured.]"
+        }
       ]
     }
   ],
@@ -488,9 +643,24 @@
     {
       "name": "Score cards slider",
       "blocks": [
-        { "type": "score_card", "settings": { "percentage": 61 } },
-        { "type": "score_card", "settings": { "percentage": 76 } },
-        { "type": "score_card", "settings": { "percentage": 44 } }
+        {
+          "type": "score_card",
+          "settings": {
+            "percentage": 61
+          }
+        },
+        {
+          "type": "score_card",
+          "settings": {
+            "percentage": 76
+          }
+        },
+        {
+          "type": "score_card",
+          "settings": {
+            "percentage": 44
+          }
+        }
       ]
     }
   ]
