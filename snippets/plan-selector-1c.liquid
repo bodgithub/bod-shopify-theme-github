@@ -39,7 +39,7 @@
   display:flex; flex-direction:column; gap:14px; max-width:{{ s.max_width | default: 560 }}px; margin:0 auto;
 }
 #ps1c-{{ uid }} .bod-pc1c *,#ps1c-{{ uid }} .bod-pc1c *::before,#ps1c-{{ uid }} .bod-pc1c *::after{box-sizing:border-box;}
-#ps1c-{{ uid }} .ps-h{font-weight:600; font-size:clamp(18px,3vw,22px); letter-spacing:-0.02em; color:var(--ps-ink); margin:0 0 2px;}
+#ps1c-{{ uid }} .ps-h{font-weight:600; font-size:{% if s.heading_size != blank and s.heading_size > 0 %}{{ s.heading_size }}px{% else %}clamp(18px,3vw,22px){% endif %}; letter-spacing:-0.02em; color:var(--ps-ink); margin:{% if s.heading_tight %}-10px 0 -8px{% else %}0 0 2px{% endif %};}
 #ps1c-{{ uid }} .pc-card{position:relative; border-radius:14px; cursor:pointer; background:#fff; border:1.5px solid #E2E2E2; transition:border-color .18s,box-shadow .18s; overflow:hidden;}
 #ps1c-{{ uid }} .pc-card:hover{border-color:rgba(27,61,239,0.45);}
 #ps1c-{{ uid }} .pc-card.is-selected{border:0; background:var(--ps-grad-border); padding:var(--ps-bw); overflow:visible;}
@@ -411,10 +411,13 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     else { gbImg.hidden = true; gbImg.removeAttribute('src'); if(gbSvg){ gbSvg.style.display = ''; } }
   }
   function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
+  function announce(c){
+    try{ document.dispatchEvent(new CustomEvent('ps1c:select',{detail:{uid:'{{ uid }}',p:c.getAttribute('data-ps1c-p'),name:c.getAttribute('data-ps1c-name')||''}})); }catch(e){}
+  }
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
     c.classList.add('is-selected'); c.setAttribute('aria-checked','true');
-    err.classList.remove('is-shown'); syncSub(); syncTick(); syncGiftBan();
+    err.classList.remove('is-shown'); syncSub(); syncTick(); syncGiftBan(); announce(c);
   }
   cards.forEach(function(c){
     c.addEventListener('click', function(){ select(c); });
@@ -464,6 +467,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     });
   }
   syncSub(); syncTick(); syncGiftBan();
+  var c0 = selected(); if(c0){ announce(c0); }
   cta.addEventListener('click', function(){
     var c = selected();
     if(!c){ showErr(); return; }

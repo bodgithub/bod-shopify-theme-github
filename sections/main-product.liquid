@@ -854,6 +854,9 @@
         { "type": "color", "id": "modal_bg", "label": "Lightbox background", "default": "#FFFFFF" },
         { "type": "color", "id": "modal_border", "label": "Lightbox border (1px)", "info": "Leave unset for no border." },
         { "type": "color_background", "id": "modal_overlay", "label": "Lightbox overlay", "default": "rgba(21,23,30,0.5)" },
+        { "type": "header", "content": "Heading style" },
+        { "type": "range", "id": "heading_size", "label": "Heading size (0 = default large)", "min": 0, "max": 24, "step": 0.5, "unit": "px", "default": 0 },
+        { "type": "checkbox", "id": "heading_tight", "label": "Tighten space around heading", "default": false },
         { "type": "header", "content": "One-time purchase" },
         { "type": "text", "id": "ot_name", "label": "Name", "default": "One-Time Purchase" },
         { "type": "text", "id": "ot_price", "label": "Price", "default": "$65" },
@@ -2277,7 +2280,7 @@
     },
     {
       "type": "comparison_table",
-      "name": "Collapsible row — comparison table",
+      "name": "Comparison table row",
       "settings": [
         { "type": "text", "id": "heading", "label": "Heading", "default": "Compare to market leaders", "info": "Leave blank to hide the whole row." },
         { "type": "checkbox", "id": "open", "label": "Open by default", "default": false },
