@@ -513,8 +513,8 @@
           "settings": {
             "border_width": 2,
             "max_width": 560,
-            "sub_first": false,
-            "bundle_position": "last",
+            "sub_first": true,
+            "bundle_position": "first",
             "default_option": "sub",
             "heading": "Choose your supply:",
             "accent_color": "#1b3def",
@@ -526,11 +526,11 @@
             "sub_claim": "Save up to 25% by subscribing",
             "shipping_prefix": "Fast FREE shipping — Ships by",
             "gift_display": "banner",
-            "giftban_bg": "#eef1fb",
-            "giftban_title_color": "#14307c",
+            "giftban_bg": "#e3e7ff",
+            "giftban_title_color": "#1a2874",
             "giftban_text_color": "#4b5d90",
-            "giftban_radius": 8,
-            "giftban_border": "#c1d0ff",
+            "giftban_radius": 10,
+            "giftban_border": "#3447af",
             "giftban_cust_label": "Customize",
             "ot_name": "One-Time Purchase",
             "ot_price": "$65",
@@ -589,7 +589,11 @@
             "c3_variant": "48915264241883",
             "c4_label": "Weight",
             "c4_desc": "Metabolic & appetite",
-            "c4_variant": "48915264209115"
+            "c4_variant": "48915264209115",
+            "giftban_title_size": 15,
+            "modal_bg": "#e3e7ff",
+            "modal_border": "#3447af",
+            "modal_overlay": "rgba(242, 238, 234, 0.87)"
           }
         },
         "separator_4aEqyn": {
