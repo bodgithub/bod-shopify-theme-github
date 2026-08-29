@@ -191,7 +191,7 @@
         "custom_liquid_dqLCJY": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"padding:10px; background: #e4e8f4;margin-top:10px;border:1px #3458b0 solid; border-radius:10px; display:inline-block;\"><div style=\"font-size:1em;\"><b>45 servings</b></div></div>\n\n\n<div style=\"padding:10px; background: #e3e7ff;margin-top:10px;border:1px #3458b0 solid; border-radius:10px; \"><div style=\"padding-bottom:7px; font-size:0.9em;\"><b>45 servings · one scoop daily · dissolves clear</b></div>\n<div style=\"font-size:0.8em; color:#51669d;\">Naturally mildly sweet — that's the inositol, not added sweetener.</div></div>\n\n<div style=\"padding:10px; background: #e3e7ff;margin-top:10px;border:1px #3458b0 solid; border-radius:10px; \"><div style=\"padding-bottom:7px; font-size:0.9em;\"><b>45 servings · one scoop daily · dissolves clear</b></div>\n<div style=\"font-size:0.8em; color:#51669d;\">Naturally mildly sweet — that's the inositol, not added sweetener.</div></div>"
+            "custom_liquid": "<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>45 servings</b></div></div>\n\n<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>Full clinical dose</b></div></div>\n\n<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>Dissolves clear</b></div></div>"
           }
         },
         "custom_liquid_fA4mt9": {
@@ -511,12 +511,12 @@
         "plan_selector_1c_kJbRfd": {
           "type": "plan_selector_1c",
           "settings": {
-            "border_width": 5,
+            "border_width": 2,
             "max_width": 560,
             "sub_first": false,
             "bundle_position": "last",
             "default_option": "sub",
-            "heading": "",
+            "heading": "Choose your supply:",
             "accent_color": "#1b3def",
             "title_color": "#14307c",
             "deep_color": "#0e2160",
