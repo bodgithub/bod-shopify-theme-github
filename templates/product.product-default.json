@@ -124,13 +124,6 @@
         "border_separator_full": false
       }
     },
-    "custom_liquid_WV46gi": {
-      "type": "custom-liquid",
-      "name": "Custom liquid",
-      "settings": {
-        "custom_liquid": "{{ 'cro-enhancements.css' | asset_url | stylesheet_tag }}{{ 'cro-enhancements.js' | asset_url | script_tag }}<div id=\"bodology-inositol\"></div>"
-      }
-    },
     "main-product": {
       "type": "main-product",
       "blocks": {
@@ -191,7 +184,7 @@
         "custom_liquid_dqLCJY": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>45 servings</b></div></div>\n\n<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>Full clinical dose</b></div></div>\n\n<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>Dissolves clear</b></div></div>"
+            "custom_liquid": "<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>45 servings</b></div></div>\n\n<div style=\"padding:10px; background: #e3e7ff; margin:20px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>Full clinical dose*</b></div></div>\n\n<div style=\"padding:10px; background: #e3e7ff; margin:10px 5px 0px 0px;border:1px solid #3447af; border-radius:10px; display:inline-block;\"><div style=\"font-size:0.95em;\"><b>Dissolves clear</b></div></div>"
           }
         },
         "custom_liquid_fA4mt9": {
@@ -589,11 +582,7 @@
             "c3_variant": "48915264241883",
             "c4_label": "Weight",
             "c4_desc": "Metabolic & appetite",
-            "c4_variant": "48915264209115",
-            "giftban_title_size": 15,
-            "modal_bg": "#e3e7ff",
-            "modal_border": "#3447af",
-            "modal_overlay": "rgba(242, 238, 234, 0.87)"
+            "c4_variant": "48915264209115"
           }
         },
         "separator_4aEqyn": {
@@ -2559,7 +2548,6 @@
     "gpt_product_seo_DWikHm",
     "image_with_text_overlay_T3rmDc",
     "spacer_fcdpRG",
-    "custom_liquid_WV46gi",
     "main-product",
     "1768505899436dba61",
     "community_videos_gi9WUU",
