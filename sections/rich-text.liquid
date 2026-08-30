@@ -24,7 +24,7 @@
 		assign transparent = true
 	endif
 -%}
-<div class="row" style="background-color:{{ section.settings.bgcolor }};">
+<div class="row" style="background-color:{{ section.settings.bgcolor }};margin-top:{{ section.settings.margin_top | default: 0 }}px;margin-bottom:{{ section.settings.margin_bottom | default: 0 }}px;">
 	<div class="small-12 columns">
 		<div class="rich-text rich-text--transparent-{{ transparent }} text-{{ text_alignment }} text-position-{{ text_position }} text-width-{{ text_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --solid-button-background: {{ color_text }}; --bg-body: {{ color_bg }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};">
 			<div class="rich-text__inner">
@@ -76,176 +76,42 @@
 </div>
 
 {% schema %}
-  {
-    "name": "Rich text",
-		"class": "section-rich-text",
-    "settings": [
-			{
-				"type": "select",
-				"id": "text_width",
-				"label": "Content width",
-				"options": [
-					{
-						"value": "small",
-						"label": "Small"
-					},
-					{
-						"value": "medium",
-						"label": "Medium"
-					},
-					{
-						"value": "large",
-						"label": "Large"
-					},
-					{
-						"value": "xlarge",
-						"label": "Extra large"
-					},
-					{
-						"value": "grid",
-						"label": "Grid"
-					}
-				],
-				"default": "medium"
-			},
-			{
-				"type": "select",
-				"id": "text_position",
-				"label": "Content position",
-				"options": [
-					{
-						"value": "left",
-						"label": "Left"
-					},
-					{
-						"value": "center",
-						"label": "Center"
-					},
-					{
-						"value": "right",
-						"label": "Right"
-					}
-				],
-				"default": "center"
-			},
-			{
-				"type": "select",
-				"id": "text_alignment",
-				"label": "Content alignment",
-				"options": [
-					{
-						"value": "left",
-						"label": "Left"
-					},
-					{
-						"value": "center",
-						"label": "Center"
-					},
-					{
-						"value": "right",
-						"label": "Right"
-					}
-				],
-				"default": "center"
-			},
-			{
-	      "type": "header",
-	      "content": "Colors"
-	    },
-			{
-        "type": "color",
-        "id": "color_bg",
-        "label": "Background",
-        "default": "transparent"
-      },
-      			{
-        "type": "color",
-        "id": "bgcolor",
-        "label": "Background Color",
-        "default": "transparent"
-      },
-			{
-        "type": "color_background",
-        "id": "color_heading",
-        "label": "Heading",
-        "default": "#1a1c1d"
-      },
-			{
-        "type": "color",
-        "id": "color_text",
-        "label": "Text",
-        "default": "#2c2d2e"
-      },
-			{
-        "type": "color",
-        "id": "color_links",
-        "label": "Links",
-        "default": "#2c2d2e"
-      },
-			{
-	      "type": "header",
-	      "content": "Spacing"
-	    },
-			{
-				"type": "checkbox",
-				"id": "disable_top_spacing",
-				"default": false,
-				"label": "Remove top spacing"
-			},
-			{
-				"type": "checkbox",
-				"id": "disable_bottom_spacing",
-				"default": false,
-				"label": "Remove bottom spacing"
-			}
-    ],
-		"blocks": [
-			{
-				"type": "badge",
-				"name": "Badge",
-				"settings": [
-					{
-						"type": "text",
-						"id": "text",
-						"label": "Text",
-						"default": "Badge heading"
-					},
-					{
-		        "type": "color",
-		        "id": "color_bg",
-		        "label": "Background",
-		        "default": "#3f72e5"
-		      },
-					{
-		        "type": "color",
-		        "id": "color_text",
-		        "label": "Text",
-		        "default": "#ffffff"
-		      }
-				]
-			},
-			{
-				"type": "image",
-				"name": "Image",
-				"settings": [
-					{
-						"type": "image_picker",
-						"id": "image",
-						"label": "Image"
-					},
-                  {
-      "type": "range",
-  "id": "image_width",
-  "label": "Image width (%)",
-  "default": 100,
-  "min": 10,
-  "max": 100,
-  "step": 10
-    },
-                  {
+{
+  "name": "Rich text",
+  "class": "section-rich-text",
+  "settings": [
+    {
       "type": "select",
-      "id": "image_alignment",
-      "label": "Image alignment",
+      "id": "text_width",
+      "label": "Content width",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "xlarge",
+          "label": "Extra large"
+        },
+        {
+          "value": "grid",
+          "label": "Grid"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Content position",
       "options": [
         {
           "value": "left",
@@ -261,196 +127,350 @@
         }
       ],
       "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "bgcolor",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color_background",
+      "id": "color_heading",
+      "label": "Heading",
+      "default": "#1a1c1d"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "color",
+      "id": "color_links",
+      "label": "Links",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
     }
-				]
-			},
-			{
-				"type": "subheading",
-				"name": "Subheading",
-				"settings": [
-					{
-						"type": "text",
-						"id": "text",
-						"label": "Text",
-						"default": "Subheading for this section"
-					}
-				]
-			},
-			{
-				"type": "heading",
-				"name": "Heading",
-				"settings": [
-					{
-						"type": "html",
-						"id": "text",
-						"label": "Text",
-						"info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
-					},
-					{
-						"type": "select",
-						"id": "marker_style",
-						"options": [
-							{
-								"value": "style1",
-								"label": "Basic"
-							},
-							{
-								"value": "style2",
-								"label": "Double"
-							},
-							{
-								"value": "style3",
-								"label": "Squiggle"
-							},
-							{
-								"value": "style4",
-								"label": "Zigzag"
-							}
-						],
-						"default": "style1",
-						"label": "Marker"
-					},
-					{
-		        "type": "select",
-		        "id": "size",
-		        "label": "Size",
-		        "options": [
-		          {
-		            "value": "h1",
-		            "label": "Extra Large"
-		          },
-							{
-		            "value": "h2",
-		            "label": "Large"
-		          },
-							{
-		            "value": "h3",
-		            "label": "Medium"
-		          },
-							{
-		            "value": "h4",
-		            "label": "Small"
-		          }
-		        ],
-		        "default": "h3"
-		      },
-					{
-			      "type": "header",
-			      "content": "Colors"
-			    },
-					{
-						"type": "color",
-						"id": "marker_color",
-						"label": "Marker",
-						"default": "#FD6262"
-					}
-				]
-			},
-      {
-        "type": "text",
-        "name": "Text",
-        "settings": [
-					{
-						"type": "richtext",
-						"id": "text",
-						"label": "Content",
-						"default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
-					},
-					{
-						"type": "liquid",
-						"id": "custom_liquid",
-						"label": "Custom liquid",
-						"info": "Add app snippets or other Liquid code to create advanced customizations."
-					},
-					{
-		        "type": "select",
-		        "id": "size",
-		        "label": "Size",
-		        "options": [
-							{
-		            "value": "text-size-large",
-		            "label": "Large"
-		          },
-							{
-		            "value": "text-size-regular",
-		            "label": "Medium"
-		          },
-							{
-		            "value": "text-size-small",
-		            "label": "Small"
-		          }
-		        ],
-		        "default": "text-size-regular"
-		      }
-        ]
-      },
-			{
-        "type": "button",
-        "name": "Button",
-        "settings": [
-					{
-						"id": "link_label",
-						"type": "text",
-						"label": "Label",
-						"default": "Learn More",
-						"info": "Leave the label blank to hide the button."
-					},
-					{
-						"id": "link",
-						"type": "url",
-						"label": "Link"
-					}
-        ]
-      },
-			{
-        "type": "text-button",
-        "name": "Link",
-        "settings": [
-					{
-						"id": "link_label",
-						"type": "text",
-						"label": "Label",
-						"default": "Learn More",
-						"info": "Leave the label blank to hide the button."
-					},
-					{
-						"id": "link",
-						"type": "url",
-						"label": "Link"
-					}
-        ]
-      },
-			{
-				"type": "custom_liquid",
-				"name": "Custom liquid",
-				"settings": [
-					{
-						"type": "liquid",
-						"id": "custom_liquid",
-						"label": "Custom liquid",
-						"info": "Add app snippets or other Liquid code to create advanced customizations."
-					}
-				]
-			}
-    ],
-    "presets": [
-      {
-        "name": "Rich text",
-				"blocks": [
-					{
-						"type": "subheading"
-					},
-	        {
-	          "type": "heading"
-	        },
-	        {
-	          "type": "text"
-	        },
-	        {
-	          "type": "button"
-	        }
-	      ]
-      }
-    ]
-  }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Badge heading"
+        },
+        {
+          "type": "color",
+          "id": "color_bg",
+          "label": "Background",
+          "default": "#3f72e5"
+        },
+        {
+          "type": "color",
+          "id": "color_text",
+          "label": "Text",
+          "default": "#ffffff"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Image width (%)",
+          "default": 100,
+          "min": 10,
+          "max": 100,
+          "step": 10
+        },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "Image alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Subheading for this section"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "html",
+          "id": "text",
+          "label": "Text",
+          "info": "Wrap your text between | to add animated markers. For example: Animated |marker| will underline marker text."
+        },
+        {
+          "type": "select",
+          "id": "marker_style",
+          "options": [
+            {
+              "value": "style1",
+              "label": "Basic"
+            },
+            {
+              "value": "style2",
+              "label": "Double"
+            },
+            {
+              "value": "style3",
+              "label": "Squiggle"
+            },
+            {
+              "value": "style4",
+              "label": "Zigzag"
+            }
+          ],
+          "default": "style1",
+          "label": "Marker"
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            {
+              "value": "h1",
+              "label": "Extra Large"
+            },
+            {
+              "value": "h2",
+              "label": "Large"
+            },
+            {
+              "value": "h3",
+              "label": "Medium"
+            },
+            {
+              "value": "h4",
+              "label": "Small"
+            }
+          ],
+          "default": "h3"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "marker_color",
+          "label": "Marker",
+          "default": "#FD6262"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Content",
+          "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        },
+        {
+          "type": "select",
+          "id": "size",
+          "label": "Size",
+          "options": [
+            {
+              "value": "text-size-large",
+              "label": "Large"
+            },
+            {
+              "value": "text-size-regular",
+              "label": "Medium"
+            },
+            {
+              "value": "text-size-small",
+              "label": "Small"
+            }
+          ],
+          "default": "text-size-regular"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "id": "link_label",
+          "type": "text",
+          "label": "Label",
+          "default": "Learn More",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "text-button",
+      "name": "Link",
+      "settings": [
+        {
+          "id": "link_label",
+          "type": "text",
+          "label": "Label",
+          "default": "Learn More",
+          "info": "Leave the label blank to hide the button."
+        },
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid",
+          "info": "Add app snippets or other Liquid code to create advanced customizations."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text",
+      "blocks": [
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
 {% endschema %}
