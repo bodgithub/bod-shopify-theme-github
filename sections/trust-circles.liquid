@@ -37,7 +37,7 @@
     gap: 20px 10px;
   }
   #shopify-section-{{ section.id }} .tc__item {
-    flex: 0 0 calc(50% - 5px);
+    flex: 0 0 calc(33.333% - 7px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,6 +129,9 @@
     text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font-family: inherit;
   }
 
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .tc__item--hm { display: none; }
+  }
   @media screen and (min-width: 750px) {
     #shopify-section-{{ section.id }} .tc__item { flex: 0 0 calc(25% - 8px); }
   }
@@ -141,7 +144,7 @@
     {%- endif -%}
     <div class="tc__grid">
       {%- for block in section.blocks -%}
-        <div class="tc__item" {{ block.shopify_attributes }}>
+        <div class="tc__item{% if block.settings.hide_mobile %} tc__item--hm{% endif %}" {{ block.shopify_attributes }}>
           <span class="tc__outer">{% if block.settings.tip != blank %}<button type="button" class="tc__i" data-tc-open="{{ block.id }}" aria-label="More about {{ block.settings.title | escape }}">i</button>{% endif %}<span class="tc__inner">
             <svg viewBox="0 0 24 24" aria-hidden="true">{% render 'trust-strip-icon', icon: block.settings.icon %}</svg>
           </span></span>
@@ -466,6 +469,12 @@
           "id": "tip",
           "label": "Info popup text",
           "info": "Optional — adds a small i that opens a popup."
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
         }
       ]
     }
