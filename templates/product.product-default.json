@@ -1587,7 +1587,7 @@
             "items": "Cutting carbs\nIntense exercise\nDieting",
             "item_columns": 1,
             "bottom_text": "",
-            "lightbox_text": "<h5><strong>You tried discipline</strong></h5><h5><strong>Cutting carbs </strong></h5><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken — you were reducing the load on a system that still couldn't respond. That's the plateau you hit.</p><p><strong>Intense exercise</strong><br/><br/>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem. When the message isn't getting through, training harder doesn't make it get through.</p><p><strong>Dieting</strong><br/><br/>High insulin tells your body to store fat and stop releasing it. You were working against a signal, not a calorie deficit — same effort, different result. <strong>And then you were told to try harder.</strong></p>",
+            "lightbox_text": "<h4><strong>Cutting carbs </strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken.</p><h4><strong>Intense exercise</strong></h4><p>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem.</p><h4><strong>Dieting</strong></h4><p>High insulin tells your body to store fat, and can make you hungry when you shouldn't be. You had to work twice as hard for half the result — that's a hormone problem, not a discipline problem.</p>",
             "card_bg": ""
           }
         },
@@ -1601,7 +1601,7 @@
             "items": "Berberine\nAll-in-one hormone elexirs\nSpearmint tea",
             "item_columns": 1,
             "bottom_text": "",
-            "lightbox_text": "",
+            "lightbox_text": "<h4><strong>Berberine </strong></h4><p>Works through AMPK, a completely different pathway. If three months gave you modest results, that's why. It doesn't touch insulin, the real issue.</p><h4><strong>All-in-one hormone elexirs</strong></h4><p>Chasteberry, a dusting of six other things, and rarely a meaningful dose of any of them. Most work on androgens — which are downstream of insulin.</p><h4><strong>Spearmint tea</strong></h4><p>Has some real anti-androgen data behind it, and it's not a waste of time. But it acts on the symptom your insulin is producing, not on the cause.</p>",
             "card_bg": ""
           }
         },
@@ -1612,10 +1612,10 @@
             "title": "Tracking",
             "icon": "none",
             "icon_svg": "",
-            "items": "Ovulation strips\nCycle tracking apps\nWearables & CGMs",
+            "items": "Ovulation strips\nCycle syncing apps\nWearables & CGMs",
             "item_columns": 1,
             "bottom_text": "",
-            "lightbox_text": "",
+            "lightbox_text": "<h4><strong>Ovulation strips </strong></h4><p>You tested every morning. But a strip can only tell you whether ovulation happened — it can't make it happen.</p><h4><strong>Cycle syncing apps</strong></h4><p>Logging, charting, waiting for a pattern. The app assumes a cycle that's already working. It can't effect a cycle that isn't arriving.</p><h4><strong>Wearables & CGMs</strong></h4><p>It's genuinely useful information. But watching your glucose or cortisol spike in real time doesn't fix why it's spiking.</p>",
             "card_bg": ""
           }
         },
@@ -1629,7 +1629,7 @@
             "items": "The pill\nMetformin\n\"Just lose weight\"",
             "item_columns": 1,
             "bottom_text": "",
-            "lightbox_text": "",
+            "lightbox_text": "<h4><strong>The pill </strong></h4><p>It might look like it regulates your cycle. It doesn't. It replaces your cycle with a withdrawal bleed and pauses ovulation entirely — the underlying problem remains, and now it's harder to see. Many women find that out when they come off it.</p><h4><strong>Metformin</strong></h4><p>It works, and it works for a lot of women. It mainly reduces glucose output from your liver — a different organ and a different mechanism. It doesn't address the inositol conversion, which is why the two are often used together rather than instead of each other.</p><p></p><h4><strong>\"Just lose weight\"</strong></h4><p>The advice that ignores the reason it's hard. High insulin actively works against fat loss, so this asks you to fix the symptom while the cause keeps running. It was never a plan. It was the absence of one.</p>",
             "card_bg": ""
           }
         },
@@ -1665,9 +1665,9 @@
         "section_bg": "#f2eeea",
         "card_bg": "#ebeeff",
         "card_border": "",
-        "hover_bg": "#1A2874",
-        "hover_title_color": "#FFFFFF",
-        "hover_text_color": "#FFFFFF",
+        "hover_bg": "#1a2874",
+        "hover_title_color": "#ffffff",
+        "hover_text_color": "#ffffff",
         "hover_icon_color": "",
         "title_color": "#1a2874",
         "icon_color": "#1b3def",
