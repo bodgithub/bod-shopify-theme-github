@@ -1,0 +1,546 @@
+{%- comment -%}
+  BODOLOGY · Trust circles
+  Circular-badge version of the trust strip: each icon sits in a
+  bordered circle with a larger halo circle behind it (double-border
+  look), title + sub-label in small type beneath. Optional info
+  tooltip per badge opens a clinical-styled popup. Icons come from
+  snippets/trust-strip-icon.liquid. Every color and size is a setting.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign inner = s.circle_size | minus: 16
+  assign icon = inner | times: 0.5 | round
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .tc {
+    width: 100%;
+    background: {{ s.section_bg }};
+    margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
+    padding: {{ s.padding_top }}px 16px {{ s.padding_bottom }}px;
+    font-family: "tenon", sans-serif;
+  }
+  #shopify-section-{{ section.id }} .tc__pw { max-width: {{ s.max_width }}px; margin: 0 auto; }
+  #shopify-section-{{ section.id }} .tc__headline {
+    text-align: center;
+    font-size: {{ s.headline_size }}px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: {{ s.headline_color }};
+    margin: 0 0 22px;
+  }
+  #shopify-section-{{ section.id }} .tc__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 10px;
+  }
+  #shopify-section-{{ section.id }} .tc__item {
+    flex: 0 0 calc(50% - 5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .tc__outer {
+    width: {{ s.circle_size }}px;
+    height: {{ s.circle_size }}px;
+    border-radius: 50%;
+    background: {{ s.outer_bg }};
+    {% if s.outer_border != blank %}border: 1px solid {{ s.outer_border }};{% endif %}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  #shopify-section-{{ section.id }} .tc__inner {
+    width: {{ inner }}px;
+    height: {{ inner }}px;
+    border-radius: 50%;
+    background: {{ s.circle_bg }};
+    border: 1px solid {{ s.circle_border }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .tc__inner svg {
+    width: {{ icon }}px;
+    height: {{ icon }}px;
+    fill: none;
+    stroke: {{ s.icon_color }};
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #shopify-section-{{ section.id }} .tc__title {
+    font-size: {{ s.title_size }}px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: {{ s.title_color }};
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  #shopify-section-{{ section.id }} .tc__i {
+    width: 13px; height: 13px; border-radius: 50%;
+    border: 1px solid {{ s.title_color }};
+    color: {{ s.title_color }};
+    background: transparent;
+    font-size: 9px; font-weight: 600; line-height: 1;
+    display: inline-grid; place-items: center;
+    cursor: pointer; padding: 0; font-family: inherit;
+  }
+  #shopify-section-{{ section.id }} .tc__i:hover { background: {{ s.title_color }}; color: #fff; }
+  #shopify-section-{{ section.id }} .tc__sub {
+    font-size: {{ s.sub_size }}px;
+    line-height: 1.35;
+    color: {{ s.sub_color }};
+    margin-top: 2px;
+  }
+  #shopify-section-{{ section.id }} .tc-overlay {
+    display: none; position: fixed; inset: 0; z-index: 21;
+    background: rgba(242, 238, 234, 0.87);
+  }
+  #shopify-section-{{ section.id }} .tc-popup {
+    display: none; position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); z-index: 2222;
+    background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px;
+    overflow: hidden; padding: 28px 24px; width: 96%; max-width: 560px;
+    font-family: "tenon", sans-serif;
+  }
+  #shopify-section-{{ section.id }} .tc-overlay.is-open,
+  #shopify-section-{{ section.id }} .tc-popup.is-open { display: block; }
+  #shopify-section-{{ section.id }} .tc-popup__t {
+    color: #1a2874; margin: 0 0 10px; text-align: center;
+    font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25;
+  }
+  #shopify-section-{{ section.id }} .tc-popup__b { color: #1a2874; text-align: center; font-size: 14px; line-height: 1.6; }
+  #shopify-section-{{ section.id }} .tc-popup__b p { margin: 0 0 8px; }
+  #shopify-section-{{ section.id }} .tc-popup__close {
+    display: block; margin: 14px auto 0; color: #1a2874; font-size: 14px;
+    text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font-family: inherit;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .tc__item { flex: 0 0 calc(25% - 8px); }
+  }
+{% endstyle %}
+
+<div class="tc" data-tc>
+  <div class="tc__pw">
+    {%- if s.headline != blank -%}
+      <h2 class="tc__headline">{{ s.headline }}</h2>
+    {%- endif -%}
+    <div class="tc__grid">
+      {%- for block in section.blocks -%}
+        <div class="tc__item" {{ block.shopify_attributes }}>
+          <span class="tc__outer"><span class="tc__inner">
+            <svg viewBox="0 0 24 24" aria-hidden="true">{% render 'trust-strip-icon', icon: block.settings.icon %}</svg>
+          </span></span>
+          {%- if block.settings.title != blank -%}
+            <span class="tc__title">{{ block.settings.title }}{% if block.settings.tip != blank %}<button type="button" class="tc__i" data-tc-open="{{ block.id }}" aria-label="More about {{ block.settings.title | escape }}">i</button>{% endif %}</span>
+          {%- endif -%}
+          {%- if block.settings.sub != blank -%}
+            <span class="tc__sub">{{ block.settings.sub }}</span>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="tc-overlay" data-tc-overlay></div>
+  {%- for block in section.blocks -%}
+    {%- if block.settings.tip != blank -%}
+      <div class="tc-popup" data-tc-popup="{{ block.id }}" role="dialog" aria-modal="true">
+        <h3 class="tc-popup__t">{{ block.settings.title }}</h3>
+        <div class="tc-popup__b">{{ block.settings.tip }}</div>
+        <button type="button" class="tc-popup__close" data-tc-close>Close</button>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+<script>
+  (function () {
+    function init() {
+      var root = document.getElementById('shopify-section-{{ section.id }}');
+      if (!root || root.dataset.tcInit === 'true') return;
+      root.dataset.tcInit = 'true';
+      var overlay = root.querySelector('[data-tc-overlay]');
+      var popups = root.querySelectorAll('[data-tc-popup]');
+      function closeAll(){ if(overlay) overlay.classList.remove('is-open'); popups.forEach(function(p){ p.classList.remove('is-open'); }); }
+      root.querySelectorAll('[data-tc-open]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var t = root.querySelector('[data-tc-popup="' + btn.getAttribute('data-tc-open') + '"]');
+          if (t && overlay) { overlay.classList.add('is-open'); t.classList.add('is-open'); }
+        });
+      });
+      if (overlay) overlay.addEventListener('click', closeAll);
+      root.querySelectorAll('[data-tc-close]').forEach(function (b) { b.addEventListener('click', closeAll); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+    if (typeof window.Shopify !== 'undefined' && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function (e) {
+        if (e.detail && e.detail.sectionId === '{{ section.id }}') { var r = document.getElementById('shopify-section-{{ section.id }}'); if (r) r.dataset.tcInit = ''; init(); }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Trust circles",
+  "tag": "section",
+  "class": "section-trust-circles",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Every batch, independently verified"
+    },
+    {
+      "type": "range",
+      "id": "headline_size",
+      "label": "Headline size",
+      "min": 12,
+      "max": 34,
+      "step": 1,
+      "unit": "px",
+      "default": 21
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color_background",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#f2eeea",
+      "info": "Solid color or gradient."
+    },
+    {
+      "type": "color",
+      "id": "headline_color",
+      "label": "Headline",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "outer_bg",
+      "label": "Outer circle",
+      "default": "#e3e7ff"
+    },
+    {
+      "type": "color",
+      "id": "outer_border",
+      "label": "Outer circle border",
+      "info": "Leave unset for no border."
+    },
+    {
+      "type": "color",
+      "id": "circle_bg",
+      "label": "Inner circle",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "circle_border",
+      "label": "Inner circle border",
+      "default": "#3447af"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icons",
+      "default": "#3447af"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Badge titles",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Badge sub-labels",
+      "default": "#42579e"
+    },
+    {
+      "type": "header",
+      "content": "Sizes"
+    },
+    {
+      "type": "range",
+      "id": "circle_size",
+      "label": "Circle size",
+      "min": 56,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 88
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "sub_size",
+      "label": "Sub-label size",
+      "min": 8,
+      "max": 15,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 480,
+      "max": 1300,
+      "step": 20,
+      "unit": "px",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "check",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Third Party Tested"
+        },
+        {
+          "type": "text",
+          "id": "sub",
+          "label": "Sub-label"
+        },
+        {
+          "type": "richtext",
+          "id": "tip",
+          "label": "Info popup text",
+          "info": "Optional — adds a small i that opens a popup."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust circles",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "expert",
+            "title": "Expert Reviewed",
+            "sub": "RD • MS • PhD",
+            "tip": "<p>Bodology's formula and label are reviewed by qualified professionals — including a <strong>Registered Dietitian (RD)</strong> and advisors holding <strong>MS and PhD</strong> credentials — so the ingredients, doses, and claims are accurate and responsibly stated.</p>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "flask",
+            "title": "Third Party Tested",
+            "sub": "ISO/IEC 17025 Accredited Labs",
+            "tip": "<p>Bodology is tested independently — we don't grade our own work. Every production batch is sent to <strong>Certified Laboratories</strong>, an ISO/IEC 17025-accredited testing lab, and analyzed against written specifications before it can be sold. ISO/IEC 17025 is the international standard for laboratory competence and data integrity.</p>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "fingerprint",
+            "title": "Identity Verified",
+            "sub": "HPLC Analytical Testing",
+            "tip": "<p>We use <strong>HPLC analytical testing</strong> to confirm the identity of each active — verifying that what's in the tub is genuinely myo-inositol and D-chiro-inositol, not a substitute or mislabeled material.</p>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "chart",
+            "title": "Potency Confirmed",
+            "sub": "Myo & D-Chiro Inositol Verified",
+            "tip": "<p>HPLC confirms that each batch contains <strong>myo-inositol and D-chiro-inositol at the labeled amounts</strong> — and that the 40:1 ratio is correct in the finished powder, not only in the formula. Because the two are isomers, HPLC separates and measures each one individually.</p>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "shield",
+            "title": "Heavy Metal Tested",
+            "sub": "Arsenic • Cadmium • Mercury • Lead",
+            "tip": "<p>Every batch is tested for heavy metals by <strong>ICP-MS</strong> — arsenic, cadmium, mercury, and lead — and must fall within established safety limits before release. ICP-MS detects these metals down to trace levels, well below the limits set for dietary supplements.</p>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "microbe",
+            "title": "Microbial Safety Tested",
+            "sub": "USP <61> & USP <62>",
+            "tip": "<p>Every batch is screened for microbial safety: total aerobic count, total yeast and mold, and the absence of specified pathogens — <strong>E. coli, Salmonella, Staphylococcus aureus, and Pseudomonas aeruginosa</strong>. A batch only ships if it meets every limit.</p>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "ratio",
+            "title": "Clinically Studied Ratio",
+            "sub": "40:1 Myo : D-Chiro",
+            "tip": "<p>The <strong>40:1 ratio</strong> of myo-inositol to D-chiro-inositol is the ratio used in published clinical research. We confirm this ratio in the finished powder by HPLC, so it matches the studied formulation.</p>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "icon": "pin",
+            "title": "Blended in the USA",
+            "sub": "Final Manufacturing & Packaging",
+            "tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
