@@ -27,7 +27,7 @@
   margin: 0 0 16px;
 }
 #tc-{{ uid }} .tc__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 8px; }
-#tc-{{ uid }} .tc__item { flex: 0 0 calc(25% - 6px); display: flex; flex-direction: column; align-items: center; text-align: center; }
+#tc-{{ uid }} .tc__item { flex: 0 0 calc(25% - 6px); max-width: 100px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 #tc-{{ uid }} .tc__outer {
   width: {{ s.circle_size | default: 88 }}px; height: {{ s.circle_size | default: 88 }}px;
   position: relative; border-radius: 50%; background: {{ s.outer_bg | default: '#e3e7ff' }};
@@ -41,7 +41,7 @@
   display: flex; align-items: center; justify-content: center;
 }
 #tc-{{ uid }} .tc__inner svg { width: {{ icon_px }}px; height: {{ icon_px }}px; fill: none; stroke: {{ s.icon_color | default: '#3447af' }}; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-#tc-{{ uid }} .tc__title { font-size: {{ s.title_size | default: 12 }}px; font-weight: 600; line-height: 1.3; color: {{ s.title_color | default: '#1a2874' }}; display: inline-flex; align-items: center; gap: 4px; }
+#tc-{{ uid }} .tc__title { padding-bottom: 3px; font-size: {{ s.title_size | default: 12 }}px; font-weight: 600; line-height: 1.3; color: {{ s.title_color | default: '#1a2874' }}; display: inline-flex; align-items: center; gap: 4px; }
 #tc-{{ uid }} .tc__i { position: absolute; top: 5px; right: 10px; z-index: 2; width: 17px; height: 17px; border-radius: 50%; border: 1px solid {{ s.circle_border | default: '#3447af' }}; color: {{ s.circle_border | default: '#3447af' }}; background: {{ s.circle_bg | default: '#ffffff' }}; font-size: 10px; font-weight: 600; line-height: 1; display: inline-grid; place-items: center; cursor: pointer; padding: 0; font-family: inherit; }
 #tc-{{ uid }} .tc__i:hover { background: {{ s.circle_border | default: '#3447af' }}; color: #fff; }
 #tc-{{ uid }} .tc__sub { font-size: {{ s.sub_size | default: 10 }}px; line-height: 1.35; color: {{ s.sub_color | default: '#42579e' }}; margin-top: 1px; }

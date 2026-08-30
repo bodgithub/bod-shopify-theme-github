@@ -38,6 +38,7 @@
   }
   #shopify-section-{{ section.id }} .tc__item {
     flex: 0 0 calc(33.333% - 7px);
+    max-width: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,6 +76,7 @@
     stroke-linejoin: round;
   }
   #shopify-section-{{ section.id }} .tc__title {
+    padding-bottom: 3px;
     font-size: {{ s.title_size }}px;
     font-weight: 600;
     line-height: 1.3;
