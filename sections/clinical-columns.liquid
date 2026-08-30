@@ -45,7 +45,7 @@
     gap: 18px;
   }
   #shopify-section-{{ section.id }} .clc__card {
-    background: {{ s.card_bg }};
+    background: var(--clc-card-bg, {{ s.card_bg }});
     {% if s.card_border != blank %}border: 1px solid {{ s.card_border }};{% endif %}
     border-radius: {{ s.card_radius }}px;
     padding: 28px 22px 30px;
@@ -93,9 +93,13 @@
     color: {{ s.text_color }};
     max-width: 92%;
   }
-  #shopify-section-{{ section.id }} .clc__items li { break-inside: avoid; }
+  #shopify-section-{{ section.id }} .clc__items li { break-inside: avoid; line-height: 1em; padding: 0.45em 0; }
+  {%- if s.hover_bg != blank -%}
+  #shopify-section-{{ section.id }} .clc__card { transition: background .18s, transform .15s; }
+  #shopify-section-{{ section.id }} .clc__card:hover { background: {{ s.hover_bg }}; }
+  {%- endif -%}
   {%- if s.enable_lightbox -%}
-  #shopify-section-{{ section.id }} .clc__card--clickable { cursor: pointer; transition: transform .15s; }
+  #shopify-section-{{ section.id }} .clc__card--clickable { cursor: pointer; transition: background .18s, transform .15s; }
   #shopify-section-{{ section.id }} .clc__card--clickable:hover { transform: translateY(-2px); }
   {%- endif -%}
   #shopify-section-{{ section.id }} .clc-overlay { display: none; position: fixed; inset: 0; z-index: 21; background: rgba(242, 238, 234, 0.87); }
@@ -133,7 +137,7 @@
           assign bs = block.settings
           assign glyph = bs.icon | default: 'none'
         -%}
-        <div class="clc__card{% if s.enable_lightbox and bs.lightbox_text != blank %} clc__card--clickable{% endif %}" {% if bs.card_bg != blank %}style="background: {{ bs.card_bg }};"{% endif %}{% if s.enable_lightbox and bs.lightbox_text != blank %} data-clc-open="{{ block.id }}" role="button" tabindex="0"{% endif %} {{ block.shopify_attributes }}>
+        <div class="clc__card{% if s.enable_lightbox and bs.lightbox_text != blank %} clc__card--clickable{% endif %}" {% if bs.card_bg != blank %}style="--clc-card-bg: {{ bs.card_bg }};"{% endif %}{% if s.enable_lightbox and bs.lightbox_text != blank %} data-clc-open="{{ block.id }}" role="button" tabindex="0"{% endif %} {{ block.shopify_attributes }}>
           {%- if bs.top_icon != blank -%}
             <div class="clc__topicon">{{ bs.top_icon | image_url: width: 128 | image_tag: alt: '', loading: 'lazy' }}</div>
           {%- endif -%}
@@ -270,6 +274,12 @@
       "id": "card_border",
       "label": "Module border",
       "info": "Leave unset for no border."
+    },
+    {
+      "type": "color",
+      "id": "hover_bg",
+      "label": "Module hover color",
+      "info": "Leave unset for no hover color."
     },
     {
       "type": "color",
