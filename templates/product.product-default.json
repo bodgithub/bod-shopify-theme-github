@@ -1580,20 +1580,24 @@
         "column_QMMNY3": {
           "type": "column",
           "settings": {
+            "top_icon_svg": "",
             "title": "Discipline",
             "icon": "none",
+            "icon_svg": "",
             "items": "Cutting carbs\nIntense exercise\nDieting",
             "item_columns": 1,
             "bottom_text": "",
-            "lightbox_text": "<p><strong>Cutting carbs</strong><br/><br/>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken — you were reducing the load on a system that still couldn't respond. That's the plateau you hit.</p><p><strong>Intense exercise</strong><br/><br/>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem. When the message isn't getting through, training harder doesn't make it get through.</p><p><strong>Dieting</strong><br/><br/>High insulin tells your body to store fat and stop releasing it. You were working against a signal, not a calorie deficit — same effort, different result. <strong>And then you were told to try harder.</strong></p>",
+            "lightbox_text": "<h5><strong>You tried discipline</strong></h5><h5><strong>Cutting carbs </strong></h5><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken — you were reducing the load on a system that still couldn't respond. That's the plateau you hit.</p><p><strong>Intense exercise</strong><br/><br/>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem. When the message isn't getting through, training harder doesn't make it get through.</p><p><strong>Dieting</strong><br/><br/>High insulin tells your body to store fat and stop releasing it. You were working against a signal, not a calorie deficit — same effort, different result. <strong>And then you were told to try harder.</strong></p>",
             "card_bg": ""
           }
         },
         "column_b8LAeX": {
           "type": "column",
           "settings": {
+            "top_icon_svg": "",
             "title": "Supplements",
             "icon": "none",
+            "icon_svg": "",
             "items": "Berberine\nAll-in-one hormone elexirs\nSpearmint tea",
             "item_columns": 1,
             "bottom_text": "",
@@ -1604,8 +1608,10 @@
         "column_C6R4bc": {
           "type": "column",
           "settings": {
+            "top_icon_svg": "",
             "title": "Tracking",
             "icon": "none",
+            "icon_svg": "",
             "items": "Ovulation strips\nCycle tracking apps\nWearables & CGMs",
             "item_columns": 1,
             "bottom_text": "",
@@ -1616,8 +1622,10 @@
         "column_kXJYKW": {
           "type": "column",
           "settings": {
+            "top_icon_svg": "",
             "title": "What they said",
             "icon": "none",
+            "icon_svg": "",
             "items": "The pill\nMetformin\n\"Just lose weight\"",
             "item_columns": 1,
             "bottom_text": "",
@@ -1629,8 +1637,10 @@
           "type": "column",
           "disabled": true,
           "settings": {
+            "top_icon_svg": "",
             "title": "High intensity workouts",
             "icon": "none",
+            "icon_svg": "",
             "items": "Dieting\nBerberine\nMetformin\nThe pill\n\"Discipline\"\nIntense exercise\nCutting carbs\nAll-in-one elixirs",
             "item_columns": 3,
             "bottom_text": "",
@@ -1655,8 +1665,12 @@
         "section_bg": "#f2eeea",
         "card_bg": "#ebeeff",
         "card_border": "",
-        "hover_bg": "#3447AF",
+        "hover_bg": "#1A2874",
+        "hover_title_color": "#FFFFFF",
+        "hover_text_color": "#FFFFFF",
+        "hover_icon_color": "",
         "title_color": "#1a2874",
+        "icon_color": "#1b3def",
         "text_color": "#1a2874",
         "title_size": 22,
         "text_size": 15,
