@@ -283,6 +283,29 @@
       {% render 'social-share', share_label: true, share_title: product.title, share_permalink: product.url, share_image: product.featured_image %}
   {%- when 'collapsible_tab' -%}
     {%- if block.settings.heading != blank -%}
+    {%- liquid
+      assign tab_line = block.settings.acc_line_color
+      assign tab_text = block.settings.acc_text_color
+      assign tab_case = block.settings.acc_title_case | default: 'default'
+    -%}
+    {%- if tab_line != blank or tab_text != blank or tab_case != 'default' -%}
+    <style>
+      {%- if tab_line != blank %}
+      collapsible-row:has(> #Details-{{ block.id }}-{{ section.id }}) { border-color: {{ tab_line }}; }
+      {%- endif -%}
+      {%- if tab_text != blank %}
+      #Details-{{ block.id }}-{{ section.id }} summary,
+      #ProductAccordion-{{ block.id }}-{{ section.id }} { color: {{ tab_text }}; }
+      {%- endif -%}
+      {%- if tab_case == 'uppercase' %}
+      #Details-{{ block.id }}-{{ section.id }} summary { text-transform: uppercase; letter-spacing: 0.03em; }
+      {%- endif -%}
+      {%- if tab_case == 'sentence' %}
+      #Details-{{ block.id }}-{{ section.id }} summary { text-transform: lowercase; }
+      #Details-{{ block.id }}-{{ section.id }} summary::first-letter { text-transform: uppercase; }
+      {%- endif %}
+    </style>
+    {%- endif -%}
     <collapsible-row class="product__accordion accordion" {{ block.shopify_attributes }}>
       <details id="Details-{{ block.id }}-{{ section.id }}" {% if block.settings.open %}open{% endif %}>
         <summary>
