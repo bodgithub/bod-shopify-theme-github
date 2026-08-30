@@ -51,6 +51,18 @@
     padding: 28px 22px 30px;
     text-align: center;
   }
+  #shopify-section-{{ section.id }} .clc__topicon {
+    width: {{ s.top_icon_size }}px;
+    height: {{ s.top_icon_size }}px;
+    margin: 0 auto 12px;
+  }
+  #shopify-section-{{ section.id }} .clc__topicon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  #shopify-section-{{ section.id }} .clc__bottom {
+    margin-top: 14px;
+    font-size: {{ s.text_size | times: 0.93 | round }}px;
+    line-height: 1.5;
+    color: {{ s.text_color }};
+  }
   #shopify-section-{{ section.id }} .clc__title {
     display: flex;
     align-items: center;
@@ -91,7 +103,7 @@
     #shopify-section-{{ section.id }} .clc__grid { grid-template-columns: repeat({% if cols > 1 %}2{% else %}1{% endif %}, 1fr); }
   }
   @media screen and (min-width: 990px) {
-    #shopify-section-{{ section.id }} .clc__grid { grid-template-columns: repeat({{ cols | at_least: 1 }}, 1fr); }
+    #shopify-section-{{ section.id }} .clc__grid { grid-template-columns: repeat({% if s.columns_desktop > 0 %}{{ s.columns_desktop }}{% else %}{{ cols | at_least: 1 }}{% endif %}, 1fr); }
   }
 {% endstyle %}
 
@@ -107,6 +119,9 @@
           assign glyph = bs.icon | default: 'none'
         -%}
         <div class="clc__card" {% if bs.card_bg != blank %}style="background: {{ bs.card_bg }};"{% endif %} {{ block.shopify_attributes }}>
+          {%- if bs.top_icon != blank -%}
+            <div class="clc__topicon">{{ bs.top_icon | image_url: width: 128 | image_tag: alt: '', loading: 'lazy' }}</div>
+          {%- endif -%}
           {%- if bs.title != blank -%}
             <h3 class="clc__title">
               {%- capture glyph_html -%}
@@ -132,6 +147,9 @@
               {%- endfor -%}
             </ul>
           {%- endif -%}
+          {%- if bs.bottom_text != blank -%}
+            <div class="clc__bottom">{{ bs.bottom_text }}</div>
+          {%- endif -%}
         </div>
       {%- endfor -%}
     </div>
@@ -143,50 +161,246 @@
   "name": "Clinical columns",
   "tag": "section",
   "class": "section-clinical-columns",
-  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
   "max_blocks": 5,
   "settings": [
-    { "type": "text", "id": "heading", "label": "Section heading", "info": "Optional — leave blank to hide." },
-    { "type": "range", "id": "heading_size", "label": "Section heading size", "min": 16, "max": 48, "step": 1, "unit": "px", "default": 28 },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "section_bg", "label": "Section background", "default": "#f2eeea" },
-    { "type": "color", "id": "card_bg", "label": "Module background", "default": "#ffffff" },
-    { "type": "color", "id": "card_border", "label": "Module border", "info": "Leave unset for no border." },
-    { "type": "color", "id": "title_color", "label": "Title & icons", "default": "#1b3def" },
-    { "type": "color", "id": "text_color", "label": "List text", "default": "#1a2874" },
-    { "type": "header", "content": "Sizes" },
-    { "type": "range", "id": "title_size", "label": "Module title size", "min": 14, "max": 36, "step": 1, "unit": "px", "default": 22 },
-    { "type": "range", "id": "text_size", "label": "List text size", "min": 11, "max": 20, "step": 1, "unit": "px", "default": 15 },
-    { "type": "range", "id": "card_radius", "label": "Module corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 20 },
-    { "type": "header", "content": "Layout" },
-    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
-    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 60 },
-    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 },
-    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "info": "Optional — leave blank to hide."
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Section heading size",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section background",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Module background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Module border",
+      "info": "Leave unset for no border."
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title & icons",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "List text",
+      "default": "#1a2874"
+    },
+    {
+      "type": "header",
+      "content": "Sizes"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Module title size",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "List text size",
+      "min": 11,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "top_icon_size",
+      "label": "Top icon size",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Module corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 0,
+      "info": "0 = one column per module. Set a number to wrap extra modules onto new rows."
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    }
   ],
   "blocks": [
     {
       "type": "column",
       "name": "Column",
       "settings": [
-        { "type": "text", "id": "title", "label": "Title", "default": "Always" },
+        {
+          "type": "image_picker",
+          "id": "top_icon",
+          "label": "Icon above the title",
+          "info": "Transparent PNG or SVG, ~128 × 128px."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Always"
+        },
         {
           "type": "select",
           "id": "icon",
           "label": "Icons beside the title",
           "default": "none",
           "options": [
-            { "value": "none", "label": "None" },
-            { "value": "check", "label": "Check" },
-            { "value": "cross", "label": "Cross" },
-            { "value": "image", "label": "Custom image" }
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "check",
+              "label": "Check"
+            },
+            {
+              "value": "cross",
+              "label": "Cross"
+            },
+            {
+              "value": "image",
+              "label": "Custom image"
+            }
           ]
         },
-        { "type": "image_picker", "id": "icon_image", "label": "Custom icon image" },
-        { "type": "textarea", "id": "items", "label": "List items (one per line)" },
-        { "type": "range", "id": "item_columns", "label": "List columns inside the module", "min": 1, "max": 3, "step": 1, "default": 1 },
-        { "type": "color", "id": "card_bg", "label": "Module background override", "info": "Leave unset to use the section's module background." }
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Custom icon image"
+        },
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "List items (one per line)"
+        },
+        {
+          "type": "range",
+          "id": "item_columns",
+          "label": "List columns inside the module",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 1
+        },
+        {
+          "type": "inline_richtext",
+          "id": "bottom_text",
+          "label": "Bottom line",
+          "info": "Small line under the list. Italics render in the Instrument serif."
+        },
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Module background override",
+          "info": "Leave unset to use the section's module background."
+        }
       ]
     }
   ],
