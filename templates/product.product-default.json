@@ -1421,6 +1421,12 @@
       ],
       "settings": {
         "enable_sticky_add_to_cart": false,
+        "reviews_lightbox": true,
+        "rl_title": "Customer reviews",
+        "rl_bg": "#e3e7ff",
+        "rl_border": "#3447af",
+        "rl_text": "#1a2874",
+        "rl_overlay": "rgba(242, 238, 234, 0.87)",
         "accordion_line_color": "#3447af",
         "accordion_text_color": "#1a2874",
         "accordion_title_transform": "default",
@@ -1448,8 +1454,68 @@
         "display_captions": false,
         "hide_variants": true,
         "lightbox": false,
-        "enable_video_looping": true,
-        "reviews_lightbox": true
+        "enable_video_looping": true
+      }
+    },
+    "image_icon_cards_YkrA9X": {
+      "type": "image-icon-cards",
+      "blocks": {
+        "item_V6CWtt": {
+          "type": "item",
+          "settings": {
+            "text": "stir into your morning coffee"
+          }
+        },
+        "item_KiVeqt": {
+          "type": "item",
+          "settings": {
+            "text": "blend into a smoothie"
+          }
+        },
+        "item_qncJYH": {
+          "type": "item",
+          "settings": {
+            "text": "mix into plain water"
+          }
+        },
+        "item_6G7N4W": {
+          "type": "item",
+          "settings": {
+            "text": "any time you'll remember it daily"
+          }
+        }
+      },
+      "block_order": [
+        "item_V6CWtt",
+        "item_KiVeqt",
+        "item_qncJYH",
+        "item_6G7N4W"
+      ],
+      "disabled": true,
+      "name": "Image + icon cards",
+      "settings": {
+        "heading": "how to make it stick:",
+        "subheading": "2 scoops <em>every day</em>, any time.",
+        "image_radius": 16,
+        "background": "linear-gradient(180deg, rgba(215, 221, 245, 1), rgba(227, 231, 255, 1) 100%)",
+        "heading_color": "#1a2874",
+        "sub_color": "#1a2874",
+        "card_bg": "#ffffff",
+        "card_border": "#3447af",
+        "card_text_color": "#1a2874",
+        "footnote_color": "#1a2874",
+        "heading_size": 44,
+        "sub_size": 20,
+        "card_text_size": 15,
+        "footnote_size": 14,
+        "icon_size": 34,
+        "card_radius": 12,
+        "footnote": "<p><strong>*unflavored</strong> — it disappears into whatever you're drinking.</p>",
+        "page_width": 1300,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 64,
+        "padding_top_mobile": 36,
+        "padding_bottom_mobile": 36
       }
     },
     "1768505899436dba61": {
@@ -2714,6 +2780,7 @@
     "image_with_text_overlay_T3rmDc",
     "spacer_fcdpRG",
     "main-product",
+    "image_icon_cards_YkrA9X",
     "1768505899436dba61",
     "community_videos_gi9WUU",
     "image_with_text_overlay_yexKYW",

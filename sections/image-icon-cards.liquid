@@ -16,8 +16,6 @@
   #shopify-section-{{ section.id }} .iic {
     width: 100%;
     background: {{ s.background }};
-    margin-top: {{ s.margin_top }}px;
-    margin-bottom: {{ s.margin_bottom }}px;
     padding: {{ s.padding_top_mobile }}px 0 {{ s.padding_bottom_mobile }}px;
     font-family: "tenon", sans-serif;
   }
@@ -192,8 +190,6 @@
     { "type": "richtext", "id": "footnote", "label": "Footnote text", "default": "<p><strong>*unflavored</strong> — it disappears into whatever you're drinking.</p>" },
     { "type": "header", "content": "Layout" },
     { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
-    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
-    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 36 },
