@@ -122,7 +122,15 @@
   #shopify-section-{{ section.id }} .clc-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2222; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px; max-height: 85dvh; overflow-y: auto; font-family: "tenon", sans-serif; }
   #shopify-section-{{ section.id }} .clc-overlay.is-open, #shopify-section-{{ section.id }} .clc-popup.is-open { display: block; }
   #shopify-section-{{ section.id }} .clc-popup__t { color: #1a2874; margin: 0 0 20px; text-align: center; font-size: 20px; font-weight: 400; line-height: 1.25; }
-  #shopify-section-{{ section.id }} .clc-popup__b { color: #1a2874; font-size: 12px; line-height: 1.6; text-align: center; }
+  #shopify-section-{{ section.id }} .clc-popup__b { color: {{ s.text_color }}; font-size: 12px; line-height: 1.6; text-align: center; }
+  #shopify-section-{{ section.id }} .clc-popup__b h1,
+  #shopify-section-{{ section.id }} .clc-popup__b h2,
+  #shopify-section-{{ section.id }} .clc-popup__b h3,
+  #shopify-section-{{ section.id }} .clc-popup__b h4,
+  #shopify-section-{{ section.id }} .clc-popup__b h5,
+  #shopify-section-{{ section.id }} .clc-popup__b h6 { color: {{ s.text_color }}; font-family: "tenon", sans-serif; margin: 0 0 10px; }
+  #shopify-section-{{ section.id }} .clc-popup__b p,
+  #shopify-section-{{ section.id }} .clc-popup__b li { color: {{ s.text_color }}; }
   @media screen and (min-width: 750px) {
     #shopify-section-{{ section.id }} .clc-popup__t { font-size: 36px; }
     #shopify-section-{{ section.id }} .clc-popup__b { font-size: 18px; padding: 0 24px; }
@@ -197,8 +205,7 @@
   <div class="clc-overlay" data-clc-overlay></div>
   {%- for block in section.blocks limit: 5 -%}
     {%- if block.settings.lightbox_text != blank -%}
-      <div class="clc-popup" data-clc-popup="{{ block.id }}" role="dialog" aria-modal="true">
-        {%- if block.settings.title != blank -%}<h3 class="clc-popup__t">{{ block.settings.title }}</h3>{%- endif -%}
+      <div class="clc-popup" data-clc-popup="{{ block.id }}" role="dialog" aria-modal="true" aria-label="{{ block.settings.title | escape }}">
         <div class="clc-popup__b">{{ block.settings.lightbox_text }}</div>
         <button type="button" class="clc-popup__close" data-clc-close>Close</button>
       </div>
