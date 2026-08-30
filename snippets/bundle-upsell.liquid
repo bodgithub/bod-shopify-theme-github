@@ -9,6 +9,8 @@
 {%- assign bu_border = s.border_color | default: '#3447af' -%}
 {%- assign bu_title = s.title_color | default: '#1a2874' -%}
 {%- assign bu_text = s.text_color | default: '#1a2874' -%}
+{%- assign bu_btn_border = s.btn_border_color | default: bu_border -%}
+{%- assign bu_btn_text = s.btn_text_color | default: bu_btn_border -%}
 
 <style>
 #bu-{{ uid }}{
@@ -35,12 +37,12 @@
 #bu-{{ uid }} .bu-price__per{font-size:12px; color:{{ bu_text | color_modify: 'alpha', 0.75 }};}
 #bu-{{ uid }} .bu-btn{
   flex:0 0 auto; cursor:pointer; font-family:inherit;
-  font-size:14px; font-weight:600; color:{{ bu_border }};
-  background:transparent; border:1px solid {{ bu_border }};
+  font-size:14px; font-weight:600; color:{{ bu_btn_text }};
+  background:{% if s.btn_bg_color != blank %}{{ s.btn_bg_color }}{% else %}transparent{% endif %}; border:1px solid {{ bu_btn_border }};
   border-radius:999px; padding:7px 20px;
   transition:background .18s,color .18s;
 }
-#bu-{{ uid }} .bu-btn:hover{background:{{ bu_border }}; color:#fff;}
+#bu-{{ uid }} .bu-btn:hover{background:{{ bu_btn_border }}; color:#fff;}
 #bu-{{ uid }} .bu-btn.is-loading{pointer-events:none; opacity:.6;}
 #bu-{{ uid }} .bu-err{display:none; font-size:12px; color:#B42318; margin-top:6px;}
 #bu-{{ uid }} .bu-err.is-shown{display:block;}
