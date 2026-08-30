@@ -1568,7 +1568,7 @@
         "color_heading": "#1A2874",
         "color_text": "#1a2874",
         "color_links": "#2c2d2e",
-        "margin_top": 0,
+        "margin_top": 60,
         "margin_bottom": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
@@ -1580,9 +1580,9 @@
         "column_QMMNY3": {
           "type": "column",
           "settings": {
-            "title": "The Pill",
+            "title": "Discipline",
             "icon": "none",
-            "items": "",
+            "items": "Cutting carbs\nIntense exercise\nDieting",
             "item_columns": 1,
             "bottom_text": "",
             "lightbox_text": "",
@@ -1592,9 +1592,9 @@
         "column_b8LAeX": {
           "type": "column",
           "settings": {
-            "title": "Metformin",
+            "title": "Supplements",
             "icon": "none",
-            "items": "",
+            "items": "Berberine\nAll-in-one hormone elexirs\nSpearmint tea\nRegular myo-inositol",
             "item_columns": 1,
             "bottom_text": "",
             "lightbox_text": "",
@@ -1604,9 +1604,9 @@
         "column_C6R4bc": {
           "type": "column",
           "settings": {
-            "title": "Berberine",
+            "title": "Tracking",
             "icon": "none",
-            "items": "",
+            "items": "Ovulation strips\nCycle tracking apps\nWearables & CGMs",
             "item_columns": 1,
             "bottom_text": "",
             "lightbox_text": "",
@@ -1616,9 +1616,9 @@
         "column_kXJYKW": {
           "type": "column",
           "settings": {
-            "title": "Cutting carbs",
+            "title": "Traditional solutions",
             "icon": "none",
-            "items": "",
+            "items": "The pill\nMetformin\n\"Just lose weight\"",
             "item_columns": 1,
             "bottom_text": "",
             "lightbox_text": "",
@@ -1627,6 +1627,7 @@
         },
         "column_ebLJLk": {
           "type": "column",
+          "disabled": true,
           "settings": {
             "title": "High intensity workouts",
             "icon": "none",
@@ -1652,7 +1653,7 @@
         "heading_size": 28,
         "enable_lightbox": false,
         "section_bg": "#f2eeea",
-        "card_bg": "rgba(0,0,0,0)",
+        "card_bg": "#EBEEFF",
         "card_border": "",
         "title_color": "#1a2874",
         "text_color": "#1a2874",
