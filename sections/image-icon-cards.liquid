@@ -1,0 +1,220 @@
+{%- comment -%}
+  BODOLOGY · Image + Icon Cards
+  "How to..." banner: big centered heading + subheading (inline italics
+  auto-render in Instrument Serif via the theme's global em/i rule),
+  then image beside a grid of small outlined icon cards on desktop —
+  image banner on top with a two-column card grid on mobile — and a
+  centered footnote under everything. Background accepts a solid color
+  or a gradient. Separate desktop / mobile images.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .iic {
+    width: 100%;
+    background: {{ s.background }};
+    padding: {{ s.padding_top_mobile }}px 0 {{ s.padding_bottom_mobile }}px;
+    font-family: "tenon", sans-serif;
+  }
+  #shopify-section-{{ section.id }} .iic__pw {
+    max-width: {{ s.page_width }}px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  #shopify-section-{{ section.id }} .iic__heading {
+    text-align: center;
+    font-size: {{ s.heading_size | times: 0.62 | round }}px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: {{ s.heading_color }};
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .iic__sub {
+    text-align: center;
+    font-size: {{ s.sub_size | times: 0.85 | round }}px;
+    line-height: 1.4;
+    color: {{ s.sub_color }};
+    margin: 8px 0 0;
+  }
+  #shopify-section-{{ section.id }} .iic__row {
+    margin-top: 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  #shopify-section-{{ section.id }} .iic__media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: {{ s.image_radius }}px;
+  }
+  #shopify-section-{{ section.id }} .iic__media--desktop { display: none; }
+  #shopify-section-{{ section.id }} .iic__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-content: center;
+  }
+  #shopify-section-{{ section.id }} .iic__card {
+    background: {{ s.card_bg }};
+    {% if s.card_border != blank %}border: 1px solid {{ s.card_border }};{% endif %}
+    border-radius: {{ s.card_radius }}px;
+    padding: 18px 14px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+  }
+  #shopify-section-{{ section.id }} .iic__icon {
+    width: {{ s.icon_size }}px;
+    height: {{ s.icon_size }}px;
+    flex: 0 0 auto;
+  }
+  #shopify-section-{{ section.id }} .iic__icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  #shopify-section-{{ section.id }} .iic__card-text {
+    font-size: {{ s.card_text_size | times: 0.93 | round }}px;
+    line-height: 1.35;
+    color: {{ s.card_text_color }};
+  }
+  #shopify-section-{{ section.id }} .iic__footnote {
+    text-align: center;
+    font-size: {{ s.footnote_size }}px;
+    line-height: 1.5;
+    color: {{ s.footnote_color }};
+    margin-top: 26px;
+  }
+  #shopify-section-{{ section.id }} .iic__footnote p { margin: 0 0 6px; }
+  #shopify-section-{{ section.id }} .iic__footnote p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .iic__footnote a { color: inherit; text-decoration: underline; }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .iic {
+      padding: {{ s.padding_top_desktop }}px 0 {{ s.padding_bottom_desktop }}px;
+    }
+    #shopify-section-{{ section.id }} .iic__heading { font-size: {{ s.heading_size }}px; }
+    #shopify-section-{{ section.id }} .iic__sub { font-size: {{ s.sub_size }}px; }
+    #shopify-section-{{ section.id }} .iic__row {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 36px;
+      align-items: center;
+    }
+    #shopify-section-{{ section.id }} .iic__media--mobile { display: none; }
+    #shopify-section-{{ section.id }} .iic__media--desktop { display: block; }
+    #shopify-section-{{ section.id }} .iic__cards { gap: 18px; }
+    #shopify-section-{{ section.id }} .iic__card { padding: 24px 18px; }
+    #shopify-section-{{ section.id }} .iic__card-text { font-size: {{ s.card_text_size }}px; }
+  }
+{% endstyle %}
+
+<div class="iic">
+  <div class="iic__pw">
+    {%- if s.heading != blank -%}
+      <h2 class="iic__heading">{{ s.heading }}</h2>
+    {%- endif -%}
+    {%- if s.subheading != blank -%}
+      <p class="iic__sub">{{ s.subheading }}</p>
+    {%- endif -%}
+    <div class="iic__row">
+      {%- if s.desktop_image != blank or s.mobile_image != blank -%}
+        <div class="iic__media">
+          {%- if s.desktop_image != blank -%}
+            <div class="iic__media--desktop">{{ s.desktop_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: s.desktop_image.alt | default: '' }}</div>
+          {%- endif -%}
+          {%- liquid
+            assign mob = s.mobile_image | default: s.desktop_image
+          -%}
+          {%- if mob != blank -%}
+            <div class="iic__media--mobile">{{ mob | image_url: width: 1200 | image_tag: loading: 'lazy', alt: mob.alt | default: '' }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <div class="iic__cards">
+          {%- for block in section.blocks -%}
+            <div class="iic__card" {{ block.shopify_attributes }}>
+              {%- if block.settings.icon != blank -%}
+                <span class="iic__icon">{{ block.settings.icon | image_url: width: 96 | image_tag: alt: '', loading: 'lazy' }}</span>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <span class="iic__card-text">{{ block.settings.text }}</span>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if s.footnote != blank -%}
+      <div class="iic__footnote">{{ s.footnote }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Image + icon cards",
+  "tag": "section",
+  "class": "section-image-icon-cards",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "max_blocks": 6,
+  "settings": [
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "how to make it stick:", "info": "Italics render in the Instrument serif automatically." },
+    { "type": "inline_richtext", "id": "subheading", "label": "Subheading", "default": "2 scoops <em>every day</em>, any time." },
+    { "type": "header", "content": "Images" },
+    { "type": "image_picker", "id": "desktop_image", "label": "Desktop image", "info": "Sits beside the cards. Recommended 1000 × 1200px (portrait), under 500KB." },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image", "info": "Full-width banner above the cards. Recommended 1200 × 800px (landscape). Falls back to the desktop image if unset." },
+    { "type": "range", "id": "image_radius", "label": "Image corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color_background", "id": "background", "label": "Section background", "default": "linear-gradient(180deg, #d7ddf5 0%, #e3e7ff 100%)", "info": "Solid color or gradient." },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1a2874" },
+    { "type": "color", "id": "sub_color", "label": "Subheading", "default": "#1a2874" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#3447af", "info": "Leave unset for no border." },
+    { "type": "color", "id": "card_text_color", "label": "Card text", "default": "#1a2874" },
+    { "type": "color", "id": "footnote_color", "label": "Footnote", "default": "#1a2874" },
+    { "type": "header", "content": "Sizes" },
+    { "type": "range", "id": "heading_size", "label": "Heading size (desktop)", "min": 24, "max": 64, "step": 1, "unit": "px", "default": 44 },
+    { "type": "range", "id": "sub_size", "label": "Subheading size (desktop)", "min": 14, "max": 30, "step": 1, "unit": "px", "default": 20 },
+    { "type": "range", "id": "card_text_size", "label": "Card text size (desktop)", "min": 12, "max": 20, "step": 1, "unit": "px", "default": 15 },
+    { "type": "range", "id": "footnote_size", "label": "Footnote size", "min": 11, "max": 18, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "icon_size", "label": "Icon size", "min": 20, "max": 64, "step": 2, "unit": "px", "default": 34 },
+    { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 28, "step": 2, "unit": "px", "default": 14 },
+    { "type": "header", "content": "Footnote" },
+    { "type": "richtext", "id": "footnote", "label": "Footnote text", "default": "<p><strong>*unflavored</strong> — it disappears into whatever you're drinking.</p>" },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
+    { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 36 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Padding bottom (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Card",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon", "info": "Small line icon, transparent PNG or SVG, ~96 × 96px." },
+        { "type": "inline_richtext", "id": "text", "label": "Text", "default": "stir into your morning coffee" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image + icon cards",
+      "blocks": [
+        { "type": "item", "settings": { "text": "stir into your morning coffee" } },
+        { "type": "item", "settings": { "text": "blend into a smoothie" } },
+        { "type": "item", "settings": { "text": "mix into plain water" } },
+        { "type": "item", "settings": { "text": "any time you'll remember it daily" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
