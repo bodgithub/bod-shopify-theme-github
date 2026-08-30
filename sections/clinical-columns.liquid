@@ -32,13 +32,20 @@
   }
   #shopify-section-{{ section.id }} .clc__heading {
     text-align: center;
-    font-size: {{ s.heading_size }}px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin: 0 0 24px;
-    padding: 10px 16px;
+    {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px; line-height: 1.2;{% endif %}
+    margin: 0;
+    padding: 0 16px;
     color: {{ s.title_color }};
   }
+  #shopify-section-{{ section.id }} .clc__subheading {
+    text-align: center;
+    font-size: {{ s.sub_size }}px;
+    line-height: 1.5;
+    color: {{ s.text_color }};
+    margin: 0 0 24px;
+    padding: {{ s.sub_pad_top }}px 16px {{ s.sub_pad_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .clc__heading + .clc__grid { margin-top: 24px; }
   #shopify-section-{{ section.id }} .clc__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -164,7 +171,10 @@
 <div class="clc">
   <div class="clc__pw">
     {%- if s.heading != blank -%}
-      <h2 class="clc__heading">{{ s.heading }}</h2>
+      <h2 class="clc__heading h1">{{ s.heading }}</h2>
+    {%- endif -%}
+    {%- if s.subheading != blank -%}
+      <p class="clc__subheading">{{ s.subheading }}</p>
     {%- endif -%}
     <div class="clc__grid">
       {%- for block in section.blocks limit: 5 -%}
@@ -272,20 +282,56 @@
   "max_blocks": 5,
   "settings": [
     {
-      "type": "text",
+      "type": "inline_richtext",
       "id": "heading",
       "label": "Section heading",
-      "info": "Optional — leave blank to hide."
+      "info": "Styled like the theme's H1 (italics render in the Instrument serif). Optional."
     },
     {
       "type": "range",
       "id": "heading_size",
-      "label": "Section heading size",
-      "min": 16,
+      "label": "Heading size (0 = theme H1 size)",
+      "min": 0,
       "max": 48,
       "step": 1,
       "unit": "px",
-      "default": 28
+      "default": 0
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "info": "Shown under the heading. Optional."
+    },
+    {
+      "type": "range",
+      "id": "sub_size",
+      "label": "Subheading size",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "sub_pad_top",
+      "label": "Subheading padding top",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "sub_pad_bottom",
+      "label": "Subheading padding bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24
     },
     {
       "type": "checkbox",
