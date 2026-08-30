@@ -106,16 +106,20 @@
     display: none; position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -50%); z-index: 2222;
     background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px;
-    overflow: hidden; padding: 28px 24px; width: 96%; max-width: 560px;
+    overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px;
     font-family: "tenon", sans-serif;
   }
   #shopify-section-{{ section.id }} .tc-overlay.is-open,
   #shopify-section-{{ section.id }} .tc-popup.is-open { display: block; }
   #shopify-section-{{ section.id }} .tc-popup__t {
-    color: #1a2874; margin: 0 0 10px; text-align: center;
-    font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25;
+    color: #1a2874; margin: 0 0 20px; text-align: center;
+    font-size: 20px; font-weight: 400; line-height: 1.25;
   }
-  #shopify-section-{{ section.id }} .tc-popup__b { color: #1a2874; text-align: center; font-size: 14px; line-height: 1.6; }
+  #shopify-section-{{ section.id }} .tc-popup__b { color: #1a2874; text-align: center; font-size: 12px; line-height: 1.6; }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .tc-popup__t { font-size: 36px; }
+    #shopify-section-{{ section.id }} .tc-popup__b { font-size: 18px; padding: 0 24px; }
+  }
   #shopify-section-{{ section.id }} .tc-popup__b p { margin: 0 0 8px; }
   #shopify-section-{{ section.id }} .tc-popup__close {
     display: block; margin: 14px auto 0; color: #1a2874; font-size: 14px;

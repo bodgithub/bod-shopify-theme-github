@@ -21,9 +21,9 @@
 .bod-rl__x{position:absolute; top:10px; right:10px; width:28px; height:28px; display:grid; place-items:center; border:none; background:transparent; color:{{ section.settings.rl_text | default: '#1a2874' }}; cursor:pointer; border-radius:8px; z-index:2;}
 .bod-rl__x:hover{background:rgba(0,0,0,0.06);}
 .bod-rl__x svg{width:15px; height:15px;}
-.bod-rl__t{flex:0 0 auto; font-size:19px; font-weight:600; letter-spacing:-0.02em; line-height:1.25; color:{{ section.settings.rl_text | default: '#1a2874' }}; margin:0; padding:18px 44px 12px 20px; border-bottom:1px solid {{ section.settings.rl_border | default: '#3447af' | color_modify: 'alpha', 0.35 }};}
+.bod-rl__t{flex:0 0 auto; font-size:20px; font-weight:400; line-height:1.25; text-align:center; color:{{ section.settings.rl_text | default: '#1a2874' }}; margin:0; padding:20px 44px 14px; border-bottom:1px solid {{ section.settings.rl_border | default: '#3447af' | color_modify: 'alpha', 0.35 }};}
 .bod-rl__body{flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:14px 20px 20px;}
-@media (max-width:749px){.bod-rl__t{font-size:17px;}}
+@media (min-width:750px){.bod-rl__t{font-size:36px;}}
 .bod-rl__body .junip-product-review-count,
 .bod-rl__body [class*="review-count"],
 .bod-rl__body [class*="review_count"]{display:none !important;}
