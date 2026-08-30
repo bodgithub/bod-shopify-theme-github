@@ -1470,8 +1470,9 @@
         },
         "text_7XEpLn": {
           "type": "text",
+          "disabled": true,
           "settings": {
-            "text": "<p>You've done the reading, spent the money, and given each one a fair go. Here's what was actually happening.</p>",
+            "text": "<h4>It wasn't that they didn't work. It's that they weren't working on the problem.</h4><p>Here's what was actually happening.</p>",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
@@ -1504,6 +1505,87 @@
         "color_links": "#2c2d2e",
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
+      }
+    },
+    "clinical_columns_TMq9hH": {
+      "type": "clinical-columns",
+      "blocks": {
+        "column_QMMNY3": {
+          "type": "column",
+          "settings": {
+            "title": "The Pill",
+            "icon": "none",
+            "items": "",
+            "item_columns": 1,
+            "card_bg": ""
+          }
+        },
+        "column_b8LAeX": {
+          "type": "column",
+          "settings": {
+            "title": "Metformin",
+            "icon": "none",
+            "items": "",
+            "item_columns": 1,
+            "card_bg": ""
+          }
+        },
+        "column_C6R4bc": {
+          "type": "column",
+          "settings": {
+            "title": "Berberine",
+            "icon": "none",
+            "items": "",
+            "item_columns": 1,
+            "card_bg": ""
+          }
+        },
+        "column_kXJYKW": {
+          "type": "column",
+          "settings": {
+            "title": "Cutting carbs",
+            "icon": "none",
+            "items": "",
+            "item_columns": 1,
+            "card_bg": ""
+          }
+        },
+        "column_ebLJLk": {
+          "type": "column",
+          "settings": {
+            "title": "High intensity workouts",
+            "icon": "none",
+            "items": "Dieting\nBerberine\nMetformin\nThe pill\n\"Discipline\"\nIntense exercise\nCutting carbs\nAll-in-one elixirs",
+            "item_columns": 3,
+            "card_bg": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_QMMNY3",
+        "column_b8LAeX",
+        "column_C6R4bc",
+        "column_kXJYKW",
+        "column_ebLJLk"
+      ],
+      "disabled": true,
+      "name": "Clinical columns",
+      "settings": {
+        "heading": "Here's what was actually happening.",
+        "heading_size": 28,
+        "section_bg": "#f2eeea",
+        "card_bg": "rgba(0,0,0,0)",
+        "card_border": "",
+        "title_color": "#1A2874",
+        "text_color": "#1a2874",
+        "title_size": 22,
+        "text_size": 15,
+        "card_radius": 20,
+        "page_width": 1300,
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32
       }
     },
     "image_icon_cards_YkrA9X": {
@@ -1567,87 +1649,6 @@
         "padding_bottom_desktop": 64,
         "padding_top_mobile": 36,
         "padding_bottom_mobile": 36
-      }
-    },
-    "clinical_columns_TMq9hH": {
-      "type": "clinical-columns",
-      "blocks": {
-        "column_QMMNY3": {
-          "type": "column",
-          "settings": {
-            "title": "The Pill",
-            "icon": "none",
-            "items": "",
-            "item_columns": 1,
-            "card_bg": ""
-          }
-        },
-        "column_b8LAeX": {
-          "type": "column",
-          "settings": {
-            "title": "Metformin",
-            "icon": "none",
-            "items": "",
-            "item_columns": 1,
-            "card_bg": ""
-          }
-        },
-        "column_C6R4bc": {
-          "type": "column",
-          "settings": {
-            "title": "Berberine",
-            "icon": "none",
-            "items": "",
-            "item_columns": 1,
-            "card_bg": ""
-          }
-        },
-        "column_kXJYKW": {
-          "type": "column",
-          "settings": {
-            "title": "Cutting carbs",
-            "icon": "none",
-            "items": "",
-            "item_columns": 1,
-            "card_bg": ""
-          }
-        },
-        "column_ebLJLk": {
-          "type": "column",
-          "settings": {
-            "title": "High intensity workouts",
-            "icon": "check",
-            "items": "Dieting\nBerberine\nMetformin\nThe pill\n\"Discipline\"\nIntense exercise\nCutting carbs\nAll-in-one elixirs",
-            "item_columns": 3,
-            "card_bg": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_QMMNY3",
-        "column_b8LAeX",
-        "column_C6R4bc",
-        "column_kXJYKW",
-        "column_ebLJLk"
-      ],
-      "disabled": true,
-      "name": "Clinical columns",
-      "settings": {
-        "heading": "It was never a willpower problem",
-        "heading_size": 28,
-        "section_bg": "#f2eeea",
-        "card_bg": "rgba(0,0,0,0)",
-        "card_border": "",
-        "title_color": "#1A2874",
-        "text_color": "#1a2874",
-        "title_size": 22,
-        "text_size": 15,
-        "card_radius": 20,
-        "page_width": 1300,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 60,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32
       }
     },
     "image_icon_cards_XGzzR4": {
@@ -2834,8 +2835,8 @@
     "spacer_fcdpRG",
     "main-product",
     "rich_text_NAUjXc",
-    "image_icon_cards_YkrA9X",
     "clinical_columns_TMq9hH",
+    "image_icon_cards_YkrA9X",
     "image_icon_cards_XGzzR4",
     "1768505899436dba61",
     "community_videos_gi9WUU",
