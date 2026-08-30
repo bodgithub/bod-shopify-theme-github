@@ -164,7 +164,7 @@
             "row_gap": 8,
             "icon_size": 16,
             "font_weight": "400",
-            "text_color": "#1A2874",
+            "text_color": "#1a2874",
             "circle_color": "#fbfaf9",
             "tick_color": "#06ae5a",
             "i1_text": "D-chiro-inositol from real carob pods, not a lab.",
@@ -1134,7 +1134,10 @@
             "open": false,
             "content": "<p>Hormones don’t operate in isolation. They respond to metabolic signals, especially how your body processes glucose and insulin.</p><p>When metabolic function is supported, the body is better able to regulate ovulation, energy, mood, and hormone signaling. When it’s impaired, symptoms like irregular cycles, cravings, fatigue, and mood swings often appear, even when blood work looks “normal.”</p><p>Bodology® Inositol is designed to support metabolic pathways that influence hormonal balance at the root.</p>",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "",
+            "acc_line_color": "",
+            "acc_text_color": "",
+            "acc_title_case": "default"
           }
         },
         "collapsible_tab_KhBe7c": {
@@ -1144,7 +1147,10 @@
             "open": false,
             "content": "<p>Inositol helps your body respond to insulin, the silent driver behind PCOS, fertility struggles, mood shifts, and blood sugar crashes.</p><p>When taken consistently, inositol has been clinically studied to support:</p><ul><li>Healthy ovulation and cycle regularity*</li><li>Hormone balance associated with PCOS*</li><li>Insulin sensitivity and healthy blood sugar levels†</li><li>Metabolic function linked to appetite regulation and weight balance†  </li><li>Sleep and energy regulation*</li><li>Neurotransmitter signaling linked to mood and emotional balance*</li></ul>",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "",
+            "acc_line_color": "",
+            "acc_text_color": "",
+            "acc_title_case": "default"
           }
         },
         "collapsible_tab_KixfDF": {
@@ -1155,7 +1161,10 @@
             "open": false,
             "content": "<p>We created Bodology™ Inositol Powder to give women a cleaner, simpler choice. Unlike mass brands or male-led supplements, Bodology™ is female-led, <a href=\"/pages/meet-our-experts\" target=\"_blank\" title=\"Meet Our Experts\">practitioner-backed</a> and built by women who’ve lived through PCOS, fertility struggles, and hormonal imbalances.</p><p>That's why we don’t add fillers or extras that interfere with other supplements or prenatals and why every ingredient is intentional, including our carob-sourced D-Chiro Inositol for its natural origin, bioavailability, antioxidant profile, and smoother taste. </p>",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "",
+            "acc_line_color": "",
+            "acc_text_color": "",
+            "acc_title_case": "default"
           }
         },
         "collapsible_tab_Qq4nP6": {
@@ -1165,7 +1174,10 @@
             "open": false,
             "content": "<ul><li>No fillers, rice flour, binders, or additives</li><li>No artificial sweeteners or flavors</li><li>No added sugar</li><li>No gluten, dairy, or soy</li><li>No GMO ingredients</li><li>No hormones</li><li>No ingredients from animal origin</li></ul>",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "",
+            "acc_line_color": "",
+            "acc_text_color": "",
+            "acc_title_case": "default"
           }
         },
         "collapsible_tab_LHBcDr": {
@@ -1175,7 +1187,10 @@
             "open": false,
             "content": "<p>Naturally and gently sweet, with no added flavors.</p><p>Bodology® Inositol dissolves easily into water, smoothies, or coffee without grit or aftertaste, making daily consistency simple.</p>",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "",
+            "acc_line_color": "",
+            "acc_text_color": "",
+            "acc_title_case": "default"
           }
         },
         "collapsible_tab_w8UWx4": {
@@ -1185,7 +1200,10 @@
             "open": false,
             "content": "<p>Take <strong>2 scoops (4g) daily</strong>.</p><p>Mix into hot or cold liquids, blend into smoothies, or sprinkle onto food.<br/><br/>Morning or evening both work, consistency matters more than timing.</p><p>Most people begin with daily use and continue as part of their ongoing metabolic support routine.</p>",
             "page": "",
-            "custom_liquid": ""
+            "custom_liquid": "",
+            "acc_line_color": "",
+            "acc_text_color": "",
+            "acc_title_case": "default"
           }
         },
         "bundle_upsell_main": {
@@ -1201,7 +1219,7 @@
             "plan": "7141621979",
             "qty": 2,
             "button_label": "Add",
-            "border_color": "#3447AF",
+            "border_color": "#3447af",
             "btn_border_color": "#3447af",
             "btn_text_color": "",
             "btn_bg_color": "",
@@ -1209,11 +1227,12 @@
             "text_color": "#1a2874",
             "price_color": "#1a2874",
             "compare_color": "#9aa0b5",
-            "bg_color": "#EBEEFF",
+            "bg_color": "#ebeeff",
             "radius": 14,
             "image_size": 76,
             "max_width": 560,
-            "margin_top": 14
+            "margin_top": 14,
+            "margin_bottom": 22
           }
         },
         "experts_LiL7KV": {
@@ -1402,8 +1421,8 @@
       ],
       "settings": {
         "enable_sticky_add_to_cart": false,
-        "accordion_line_color": "#3447AF",
-        "accordion_text_color": "#1A2874",
+        "accordion_line_color": "#3447af",
+        "accordion_text_color": "#1a2874",
         "accordion_title_transform": "default",
         "enable_top_sticky_bar": false,
         "top_bar_title": "",
