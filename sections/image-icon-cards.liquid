@@ -16,13 +16,33 @@
   #shopify-section-{{ section.id }} .iic {
     width: 100%;
     background: {{ s.background }};
+    margin-top: {{ s.margin_top }}px;
+    margin-bottom: {{ s.margin_bottom }}px;
     padding: {{ s.padding_top_mobile }}px 0 {{ s.padding_bottom_mobile }}px;
     font-family: "tenon", sans-serif;
+    position: relative;
+    overflow: hidden;
   }
+  #shopify-section-{{ section.id }} .iic__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .iic__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+  }
+  #shopify-section-{{ section.id }} .iic__bg--desktop { display: none; }
   #shopify-section-{{ section.id }} .iic__pw {
     max-width: {{ s.page_width }}px;
     margin: 0 auto;
     padding: 0 16px;
+    position: relative;
+    z-index: 1;
   }
   #shopify-section-{{ section.id }} .iic__heading {
     text-align: center;
@@ -108,6 +128,17 @@
     }
     #shopify-section-{{ section.id }} .iic__media--mobile { display: none; }
     #shopify-section-{{ section.id }} .iic__media--desktop { display: block; }
+    #shopify-section-{{ section.id }} .iic__bg--mobile { display: none; }
+    #shopify-section-{{ section.id }} .iic__bg--desktop { display: block; }
+    {%- if s.image_as_background -%}
+    #shopify-section-{{ section.id }} .iic { min-height: {{ s.bg_min_height }}px; }
+    #shopify-section-{{ section.id }} .iic__row { display: flex; flex-direction: column; }
+    {%- if s.bg_content_position == 'right' -%}
+    #shopify-section-{{ section.id }} .iic__cards { width: 55%; margin-left: auto; }
+    {%- elsif s.bg_content_position == 'left' -%}
+    #shopify-section-{{ section.id }} .iic__cards { width: 55%; margin-right: auto; }
+    {%- endif -%}
+    {%- endif -%}
     #shopify-section-{{ section.id }} .iic__cards { gap: 18px; }
     #shopify-section-{{ section.id }} .iic__card { padding: 24px 18px; }
     #shopify-section-{{ section.id }} .iic__card-text { font-size: {{ s.card_text_size }}px; }
@@ -115,6 +146,17 @@
 {% endstyle %}
 
 <div class="iic">
+  {%- if s.image_as_background -%}
+    {%- if s.desktop_image != blank -%}
+      <div class="iic__bg iic__bg--desktop">{{ s.desktop_image | image_url: width: 2400 | image_tag: loading: 'lazy', alt: '' }}</div>
+    {%- endif -%}
+    {%- liquid
+      assign bgmob = s.mobile_image | default: s.desktop_image
+    -%}
+    {%- if bgmob != blank -%}
+      <div class="iic__bg iic__bg--mobile">{{ bgmob | image_url: width: 1200 | image_tag: loading: 'lazy', alt: '' }}</div>
+    {%- endif -%}
+  {%- endif -%}
   <div class="iic__pw">
     {%- if s.heading != blank -%}
       <h2 class="iic__heading">{{ s.heading }}</h2>
@@ -123,6 +165,7 @@
       <p class="iic__sub">{{ s.subheading }}</p>
     {%- endif -%}
     <div class="iic__row">
+      {%- unless s.image_as_background -%}
       {%- if s.desktop_image != blank or s.mobile_image != blank -%}
         <div class="iic__media">
           {%- if s.desktop_image != blank -%}
@@ -136,6 +179,7 @@
           {%- endif -%}
         </div>
       {%- endif -%}
+      {%- endunless -%}
       {%- if section.blocks.size > 0 -%}
         <div class="iic__cards">
           {%- for block in section.blocks -%}
@@ -171,6 +215,9 @@
     { "type": "image_picker", "id": "desktop_image", "label": "Desktop image", "info": "Sits beside the cards. Recommended 1000 × 1200px (portrait), under 500KB." },
     { "type": "image_picker", "id": "mobile_image", "label": "Mobile image", "info": "Full-width banner above the cards. Recommended 1200 × 800px (landscape). Falls back to the desktop image if unset." },
     { "type": "range", "id": "image_radius", "label": "Image corner radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 16 },
+    { "type": "checkbox", "id": "image_as_background", "label": "Use image as full-width background", "default": false, "info": "The image fills the whole section behind the content. Use a wide desktop image (~2400 × 1200px) and a tall mobile one (~1080 × 1600px)." },
+    { "type": "select", "id": "bg_content_position", "label": "Cards position in background mode", "default": "right", "options": [ { "value": "right", "label": "Right half" }, { "value": "left", "label": "Left half" }, { "value": "full", "label": "Full width" } ] },
+    { "type": "range", "id": "bg_min_height", "label": "Min height in background mode (desktop)", "min": 320, "max": 900, "step": 20, "unit": "px", "default": 480 },
     { "type": "header", "content": "Colors" },
     { "type": "color_background", "id": "background", "label": "Section background", "default": "linear-gradient(180deg, #d7ddf5 0%, #e3e7ff 100%)", "info": "Solid color or gradient." },
     { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1a2874" },
@@ -190,6 +237,8 @@
     { "type": "richtext", "id": "footnote", "label": "Footnote text", "default": "<p><strong>*unflavored</strong> — it disappears into whatever you're drinking.</p>" },
     { "type": "header", "content": "Layout" },
     { "type": "range", "id": "page_width", "label": "Max content width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "default": 1300 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "padding_top_desktop", "label": "Padding top (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "padding_bottom_desktop", "label": "Padding bottom (desktop)", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "padding_top_mobile", "label": "Padding top (mobile)", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 36 },
