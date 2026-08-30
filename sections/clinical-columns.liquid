@@ -94,6 +94,17 @@
     max-width: 92%;
   }
   #shopify-section-{{ section.id }} .clc__items li { break-inside: avoid; }
+  {%- if s.enable_lightbox -%}
+  #shopify-section-{{ section.id }} .clc__card--clickable { cursor: pointer; transition: transform .15s; }
+  #shopify-section-{{ section.id }} .clc__card--clickable:hover { transform: translateY(-2px); }
+  {%- endif -%}
+  #shopify-section-{{ section.id }} .clc-overlay { display: none; position: fixed; inset: 0; z-index: 21; background: rgba(242, 238, 234, 0.87); }
+  #shopify-section-{{ section.id }} .clc-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2222; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 28px 24px; width: 96%; max-width: 620px; max-height: 85dvh; overflow-y: auto; font-family: "tenon", sans-serif; }
+  #shopify-section-{{ section.id }} .clc-overlay.is-open, #shopify-section-{{ section.id }} .clc-popup.is-open { display: block; }
+  #shopify-section-{{ section.id }} .clc-popup__t { color: #1a2874; margin: 0 0 10px; text-align: center; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+  #shopify-section-{{ section.id }} .clc-popup__b { color: #1a2874; font-size: 14px; line-height: 1.6; }
+  #shopify-section-{{ section.id }} .clc-popup__b p { margin: 0 0 8px; }
+  #shopify-section-{{ section.id }} .clc-popup__close { display: block; margin: 14px auto 0; color: #1a2874; font-size: 14px; text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font-family: inherit; }
 
   @media screen and (min-width: 750px) {
     #shopify-section-{{ section.id }} .clc {
@@ -118,7 +129,7 @@
           assign bs = block.settings
           assign glyph = bs.icon | default: 'none'
         -%}
-        <div class="clc__card" {% if bs.card_bg != blank %}style="background: {{ bs.card_bg }};"{% endif %} {{ block.shopify_attributes }}>
+        <div class="clc__card{% if s.enable_lightbox and bs.lightbox_text != blank %} clc__card--clickable{% endif %}" {% if bs.card_bg != blank %}style="background: {{ bs.card_bg }};"{% endif %}{% if s.enable_lightbox and bs.lightbox_text != blank %} data-clc-open="{{ block.id }}" role="button" tabindex="0"{% endif %} {{ block.shopify_attributes }}>
           {%- if bs.top_icon != blank -%}
             <div class="clc__topicon">{{ bs.top_icon | image_url: width: 128 | image_tag: alt: '', loading: 'lazy' }}</div>
           {%- endif -%}
@@ -154,7 +165,48 @@
       {%- endfor -%}
     </div>
   </div>
+  {%- if s.enable_lightbox -%}
+  <div class="clc-overlay" data-clc-overlay></div>
+  {%- for block in section.blocks limit: 5 -%}
+    {%- if block.settings.lightbox_text != blank -%}
+      <div class="clc-popup" data-clc-popup="{{ block.id }}" role="dialog" aria-modal="true">
+        {%- if block.settings.title != blank -%}<h3 class="clc-popup__t">{{ block.settings.title }}</h3>{%- endif -%}
+        <div class="clc-popup__b">{{ block.settings.lightbox_text }}</div>
+        <button type="button" class="clc-popup__close" data-clc-close>Close</button>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- endif -%}
 </div>
+
+{%- if s.enable_lightbox -%}
+<script>
+  (function () {
+    function init() {
+      var root = document.getElementById('shopify-section-{{ section.id }}');
+      if (!root || root.dataset.clcInit === 'true') return;
+      root.dataset.clcInit = 'true';
+      var overlay = root.querySelector('[data-clc-overlay]');
+      var popups = root.querySelectorAll('[data-clc-popup]');
+      function closeAll(){ if(overlay) overlay.classList.remove('is-open'); popups.forEach(function(p){ p.classList.remove('is-open'); }); }
+      root.querySelectorAll('[data-clc-open]').forEach(function (card) {
+        function open(){ var t = root.querySelector('[data-clc-popup="' + card.getAttribute('data-clc-open') + '"]'); if (t && overlay) { overlay.classList.add('is-open'); t.classList.add('is-open'); } }
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      });
+      if (overlay) overlay.addEventListener('click', closeAll);
+      root.querySelectorAll('[data-clc-close]').forEach(function (b) { b.addEventListener('click', closeAll); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+    if (typeof window.Shopify !== 'undefined' && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function (e) {
+        if (e.detail && e.detail.sectionId === '{{ section.id }}') { var r = document.getElementById('shopify-section-{{ section.id }}'); if (r) r.dataset.clcInit = ''; init(); }
+      });
+    }
+  })();
+</script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -185,6 +237,13 @@
       "step": 1,
       "unit": "px",
       "default": 28
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_lightbox",
+      "label": "Open a lightbox when a module is clicked",
+      "default": false,
+      "info": "Modules with lightbox text become clickable and open a popup."
     },
     {
       "type": "header",
@@ -394,6 +453,12 @@
           "id": "bottom_text",
           "label": "Bottom line",
           "info": "Small line under the list. Italics render in the Instrument serif."
+        },
+        {
+          "type": "richtext",
+          "id": "lightbox_text",
+          "label": "Lightbox text",
+          "info": "Shown in the popup when the module is clicked (needs the section's lightbox toggle on)."
         },
         {
           "type": "color",
