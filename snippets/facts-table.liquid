@@ -1,0 +1,61 @@
+{%- comment -%}
+  Bodology · Facts Table (product-info BLOCK, type facts_table)
+  Supplement-facts style card: header line, up to six rows of
+  label / right-aligned value, optional small note under the label,
+  optional divider above a row. Navy text, blue border, no fill by
+  default. Params: s = block.settings, uid = block.id.
+{%- endcomment -%}
+
+{%- assign ft_text = s.text_color | default: '#1a2874' -%}
+{%- assign ft_border = s.border_color | default: '#3447af' -%}
+
+<style>
+#facts-{{ uid }}{
+  font-family:"tenon","Helvetica Neue",Arial,sans-serif;
+  color:{{ ft_text }};
+  border:1px solid {{ ft_border }};
+  border-radius:{{ s.radius | default: 12 }}px;
+  {% if s.bg_color != blank %}background:{{ s.bg_color }};{% endif %}
+  max-width:{{ s.max_width | default: 560 }}px;
+  margin:{{ s.margin_top | default: 14 }}px auto 0;
+  padding:12px 16px;
+  box-sizing:border-box;
+}
+#facts-{{ uid }} *{box-sizing:border-box;}
+#facts-{{ uid }} .ft-head{
+  font-size:{{ s.header_size | default: 13 }}px;
+  font-weight:600;
+  padding:2px 0 10px;
+  border-bottom:1px solid {{ ft_border | color_modify: 'alpha', 0.35 }};
+}
+#facts-{{ uid }} .ft-row{display:flex; align-items:baseline; justify-content:space-between; gap:14px; padding:9px 0 0;}
+#facts-{{ uid }} .ft-row--divided{border-top:1px solid {{ ft_border | color_modify: 'alpha', 0.35 }}; margin-top:10px; padding-top:10px;}
+#facts-{{ uid }} .ft-label{font-size:{{ s.label_size | default: 14 }}px; font-weight:600; line-height:1.3;}
+#facts-{{ uid }} .ft-value{font-size:{{ s.label_size | default: 14 }}px; font-weight:600; white-space:nowrap; text-align:right;}
+#facts-{{ uid }} .ft-note{font-size:{{ s.note_size | default: 12 }}px; font-weight:400; color:{{ ft_text | color_modify: 'alpha', 0.75 }}; line-height:1.35; padding:1px 0 3px;}
+#facts-{{ uid }} .ft-row:last-of-type,
+#facts-{{ uid }} .ft-note:last-child{padding-bottom:2px;}
+</style>
+
+<div id="facts-{{ uid }}">
+  {%- if s.header_text != blank -%}
+    <div class="ft-head">{{ s.header_text }}</div>
+  {%- endif -%}
+  {%- for i in (1..6) -%}
+    {%- liquid
+      assign lk = 'r' | append: i | append: '_label'
+      assign vk = 'r' | append: i | append: '_value'
+      assign nk = 'r' | append: i | append: '_note'
+      assign dk = 'r' | append: i | append: '_divider'
+    -%}
+    {%- if s[lk] != blank -%}
+      <div class="ft-row{% if s[dk] %} ft-row--divided{% endif %}">
+        <span class="ft-label">{{ s[lk] }}</span>
+        <span class="ft-value">{{ s[vk] }}</span>
+      </div>
+      {%- if s[nk] != blank -%}
+        <div class="ft-note">{{ s[nk] }}</div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+</div>

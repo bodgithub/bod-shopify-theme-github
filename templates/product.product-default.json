@@ -1276,6 +1276,25 @@
             "b8_sub": "Processed in our American facility",
             "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
           }
+        },
+        "facts_table_main": {
+          "type": "facts_table",
+          "settings": {
+            "header_text": "Per serving (2 scoops, 4g)",
+            "r1_label": "Myo-inositol",
+            "r1_value": "3,600 mg",
+            "r1_note": "Receives the insulin signal",
+            "r2_label": "D-chiro-inositol",
+            "r2_value": "90 mg",
+            "r2_note": "From carob pods, not synthetic",
+            "r3_label": "Ratio",
+            "r3_value": "40:1",
+            "r3_divider": true,
+            "r4_label": "Everything else",
+            "r4_value": "Nothing",
+            "text_color": "#1a2874",
+            "border_color": "#3447af"
+          }
         }
       },
       "block_order": [
@@ -1293,6 +1312,7 @@
         "plan_selector_1b_74XUkN",
         "separator_BCNXC9",
         "plan_selector_1c_kJbRfd",
+        "facts_table_main",
         "separator_4aEqyn",
         "plan_selector_1c_dLHPcF",
         "separator_QkyWGb",
