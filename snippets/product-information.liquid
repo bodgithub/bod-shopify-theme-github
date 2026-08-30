@@ -1,4 +1,27 @@
 {%- assign product_form_id = 'product-form-' | append: section.id -%}
+{%- liquid
+  assign acc_line = section.settings.accordion_line_color
+  assign acc_text = section.settings.accordion_text_color
+  assign acc_tt = section.settings.accordion_title_transform | default: 'default'
+-%}
+{%- if acc_line != blank or acc_text != blank or acc_tt != 'default' -%}
+<style>
+{%- if acc_line != blank %}
+#shopify-section-{{ section.id }} .product__accordion.accordion { border-color: {{ acc_line }}; }
+{%- endif -%}
+{%- if acc_text != blank %}
+#shopify-section-{{ section.id }} .product__accordion.accordion summary,
+#shopify-section-{{ section.id }} .product__accordion .accordion__content { color: {{ acc_text }}; }
+{%- endif -%}
+{%- if acc_tt == 'uppercase' %}
+#shopify-section-{{ section.id }} .product__accordion.accordion summary { text-transform: uppercase; letter-spacing: 0.03em; }
+{%- endif -%}
+{%- if acc_tt == 'sentence' %}
+#shopify-section-{{ section.id }} .product__accordion.accordion summary { text-transform: lowercase; }
+#shopify-section-{{ section.id }} .product__accordion.accordion summary::first-letter { text-transform: uppercase; }
+{%- endif %}
+</style>
+{%- endif -%}
 {% for block in section.blocks %}
   {%- case block.type -%}
   {%- when '@app' -%}
