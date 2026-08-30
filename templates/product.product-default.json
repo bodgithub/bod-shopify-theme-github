@@ -1276,6 +1276,69 @@
             "p6_quote": ""
           }
         },
+        "trust_circles_Ln9WVk": {
+          "type": "trust_circles",
+          "settings": {
+            "headline": "Every batch, independently verified",
+            "headline_size": 16,
+            "section_bg": "",
+            "headline_color": "#1a2874",
+            "outer_bg": "#e3e7ff",
+            "outer_border": "",
+            "circle_bg": "#ffffff",
+            "circle_border": "#3447af",
+            "icon_color": "#3447af",
+            "title_color": "#1a2874",
+            "sub_color": "#42579e",
+            "circle_size": 72,
+            "title_size": 12,
+            "sub_size": 10,
+            "margin_top": 16,
+            "margin_bottom": 0,
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "b1_enable": true,
+            "b1_icon": "expert",
+            "b1_title": "Expert Reviewed",
+            "b1_sub": "RD • MS • PhD",
+            "b1_tip": "<p>Bodology's formula and label are reviewed by qualified professionals — including a <strong>Registered Dietitian (RD)</strong> and advisors holding <strong>MS and PhD</strong> credentials — so the ingredients, doses, and claims are accurate and responsibly stated.</p>",
+            "b2_enable": true,
+            "b2_icon": "flask",
+            "b2_title": "Third Party Tested",
+            "b2_sub": "",
+            "b2_tip": "<p>Bodology is tested independently — we don't grade our own work. Every production batch is sent to <strong>Certified Laboratories</strong>, an ISO/IEC 17025-accredited testing lab, and analyzed against written specifications before it can be sold. ISO/IEC 17025 is the international standard for laboratory competence and data integrity.</p>",
+            "b3_enable": false,
+            "b3_icon": "fingerprint",
+            "b3_title": "Identity Verified",
+            "b3_sub": "HPLC Analytical Testing",
+            "b3_tip": "<p>We use <strong>HPLC analytical testing</strong> to confirm the identity of each active — verifying that what's in the tub is genuinely myo-inositol and D-chiro-inositol, not a substitute or mislabeled material.</p>",
+            "b4_enable": true,
+            "b4_icon": "chart",
+            "b4_title": "Potency Confirmed",
+            "b4_sub": "",
+            "b4_tip": "<p>HPLC confirms that each batch contains <strong>myo-inositol and D-chiro-inositol at the labeled amounts</strong> — and that the 40:1 ratio is correct in the finished powder, not only in the formula. Because the two are isomers, HPLC separates and measures each one individually.</p>",
+            "b5_enable": true,
+            "b5_icon": "shield",
+            "b5_title": "Heavy Metal Tested",
+            "b5_sub": "",
+            "b5_tip": "<p>Every batch is tested for heavy metals by <strong>ICP-MS</strong> — arsenic, cadmium, mercury, and lead — and must fall within established safety limits before release. ICP-MS detects these metals down to trace levels, well below the limits set for dietary supplements.</p>",
+            "b6_enable": true,
+            "b6_icon": "microbe",
+            "b6_title": "Microbial Safety Tested",
+            "b6_sub": "",
+            "b6_tip": "<p>Every batch is screened for microbial safety: total aerobic count, total yeast and mold, and the absence of specified pathogens — <strong>E. coli, Salmonella, Staphylococcus aureus, and Pseudomonas aeruginosa</strong>. A batch only ships if it meets every limit.</p>",
+            "b7_enable": true,
+            "b7_icon": "ratio",
+            "b7_title": "Clinically Studied Ratio",
+            "b7_sub": "",
+            "b7_tip": "<p>The <strong>40:1 ratio</strong> of myo-inositol to D-chiro-inositol is the ratio used in published clinical research. We confirm this ratio in the finished powder by HPLC, so it matches the studied formulation.</p>",
+            "b8_enable": true,
+            "b8_icon": "pin",
+            "b8_title": "Blended in the USA",
+            "b8_sub": "",
+            "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
+          }
+        },
         "experts_8AwtYf": {
           "type": "experts",
           "disabled": true,
@@ -1320,6 +1383,7 @@
         },
         "trust_strip_4eNVaA": {
           "type": "trust_strip",
+          "disabled": true,
           "settings": {
             "headline": "Every batch, independently verified",
             "headline_size": 17,
@@ -1412,6 +1476,7 @@
         "collapsible_tab_w8UWx4",
         "bundle_upsell_main",
         "experts_LiL7KV",
+        "trust_circles_Ln9WVk",
         "experts_8AwtYf",
         "trust_strip_4eNVaA"
       ],
@@ -1498,11 +1563,13 @@
         "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#F2EEEA",
-        "bgcolor": "#F2EEEA",
+        "color_bg": "#f2eeea",
+        "bgcolor": "#f2eeea",
         "color_heading": "#1A2874",
-        "color_text": "#1A2874",
+        "color_text": "#1a2874",
         "color_links": "#2c2d2e",
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
@@ -1517,6 +1584,8 @@
             "icon": "none",
             "items": "",
             "item_columns": 1,
+            "bottom_text": "",
+            "lightbox_text": "",
             "card_bg": ""
           }
         },
@@ -1527,6 +1596,8 @@
             "icon": "none",
             "items": "",
             "item_columns": 1,
+            "bottom_text": "",
+            "lightbox_text": "",
             "card_bg": ""
           }
         },
@@ -1537,6 +1608,8 @@
             "icon": "none",
             "items": "",
             "item_columns": 1,
+            "bottom_text": "",
+            "lightbox_text": "",
             "card_bg": ""
           }
         },
@@ -1547,6 +1620,8 @@
             "icon": "none",
             "items": "",
             "item_columns": 1,
+            "bottom_text": "",
+            "lightbox_text": "",
             "card_bg": ""
           }
         },
@@ -1557,6 +1632,8 @@
             "icon": "none",
             "items": "Dieting\nBerberine\nMetformin\nThe pill\n\"Discipline\"\nIntense exercise\nCutting carbs\nAll-in-one elixirs",
             "item_columns": 3,
+            "bottom_text": "",
+            "lightbox_text": "",
             "card_bg": ""
           }
         }
@@ -1573,14 +1650,17 @@
       "settings": {
         "heading": "Here's what was actually happening.",
         "heading_size": 28,
+        "enable_lightbox": false,
         "section_bg": "#f2eeea",
         "card_bg": "rgba(0,0,0,0)",
         "card_border": "",
-        "title_color": "#1A2874",
+        "title_color": "#1a2874",
         "text_color": "#1a2874",
         "title_size": 22,
         "text_size": 15,
+        "top_icon_size": 40,
         "card_radius": 20,
+        "columns_desktop": 0,
         "page_width": 1300,
         "padding_top_desktop": 0,
         "padding_bottom_desktop": 60,
@@ -1628,6 +1708,9 @@
         "heading": "how to make it stick:",
         "subheading": "2 scoops <em>every day</em>, any time.",
         "image_radius": 16,
+        "image_as_background": false,
+        "bg_content_position": "right",
+        "bg_min_height": 480,
         "background": "linear-gradient(180deg, rgba(215, 221, 245, 1), rgba(227, 231, 255, 1) 100%)",
         "heading_color": "#1a2874",
         "sub_color": "#1a2874",
@@ -1692,6 +1775,9 @@
         "subheading": "2 scoops <em>every day</em>, any time.",
         "desktop_image": "shopify://shop_images/Stir-in.jpg",
         "image_radius": 16,
+        "image_as_background": false,
+        "bg_content_position": "right",
+        "bg_min_height": 480,
         "background": "linear-gradient(180deg, rgba(215, 221, 245, 1), rgba(227, 231, 255, 1) 100%)",
         "heading_color": "#1a2874",
         "sub_color": "#1a2874",
@@ -2291,6 +2377,8 @@
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
@@ -2801,6 +2889,8 @@
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
