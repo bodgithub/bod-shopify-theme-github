@@ -1582,7 +1582,7 @@
           "settings": {
             "top_icon_svg": "",
             "title": "Discipline",
-            "icon": "none",
+            "icon": "check",
             "icon_svg": "",
             "items": "Cutting carbs\nIntense exercise\nDieting",
             "item_columns": 1,
@@ -1596,7 +1596,7 @@
           "settings": {
             "top_icon_svg": "",
             "title": "Supplements",
-            "icon": "none",
+            "icon": "check",
             "icon_svg": "",
             "items": "Berberine\nAll-in-one hormone elexirs\nSpearmint tea",
             "item_columns": 1,
@@ -1610,7 +1610,7 @@
           "settings": {
             "top_icon_svg": "",
             "title": "Tracking",
-            "icon": "none",
+            "icon": "check",
             "icon_svg": "",
             "items": "Ovulation strips\nCycle syncing apps\nWearables & CGMs",
             "item_columns": 1,
@@ -1624,7 +1624,7 @@
           "settings": {
             "top_icon_svg": "",
             "title": "What they said",
-            "icon": "none",
+            "icon": "check",
             "icon_svg": "",
             "items": "The pill\nMetformin\n\"Just lose weight\"",
             "item_columns": 1,
@@ -1659,7 +1659,7 @@
       "disabled": true,
       "name": "Clinical columns",
       "settings": {
-        "heading": "Tap to see was actually happening.",
+        "heading": "",
         "heading_size": 16,
         "enable_lightbox": true,
         "section_bg": "#f2eeea",
@@ -1678,6 +1678,7 @@
         "card_radius": 20,
         "footer_text": "<p>It wasn't that they didn't work. It's that they weren't working on the problem: <em>insulin</em> <em>resistance</em>.</p>",
         "footer_size": 28,
+        "footer_pad_top": 14,
         "footer_pad": 15,
         "columns_desktop": 0,
         "page_width": 1300,
