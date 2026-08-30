@@ -1,0 +1,117 @@
+{%- comment -%}
+  Bodology · Trust circles (product-info BLOCK, type trust_circles)
+  Flat-settings variant of sections/trust-circles.liquid for use inside
+  the product information column: double-circle icon badges with title,
+  sub-label, and optional clinical-styled info popup per badge (b1–b8).
+  Params: s = block.settings, uid = block.id.
+{%- endcomment -%}
+
+{%- liquid
+  assign inner = s.circle_size | default: 88 | minus: 16
+  assign icon_px = inner | times: 0.5 | round
+-%}
+
+<style>
+#tc-{{ uid }} {
+  background: {{ s.section_bg | default: 'transparent' }};
+  margin: {{ s.margin_top | default: 16 }}px 0 {{ s.margin_bottom | default: 0 }}px;
+  padding: {{ s.padding_top | default: 0 }}px 0 {{ s.padding_bottom | default: 0 }}px;
+  font-family: "tenon", sans-serif;
+}
+#tc-{{ uid }} .tc__headline {
+  text-align: center;
+  font-size: {{ s.headline_size | default: 16 }}px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: {{ s.headline_color | default: '#1a2874' }};
+  margin: 0 0 16px;
+}
+#tc-{{ uid }} .tc__grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px 8px; }
+#tc-{{ uid }} .tc__item { flex: 0 0 calc(25% - 6px); display: flex; flex-direction: column; align-items: center; text-align: center; }
+#tc-{{ uid }} .tc__outer {
+  width: {{ s.circle_size | default: 88 }}px; height: {{ s.circle_size | default: 88 }}px;
+  border-radius: 50%; background: {{ s.outer_bg | default: '#e3e7ff' }};
+  {% if s.outer_border != blank %}border: 1px solid {{ s.outer_border }};{% endif %}
+  display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
+}
+#tc-{{ uid }} .tc__inner {
+  width: {{ inner }}px; height: {{ inner }}px; border-radius: 50%;
+  background: {{ s.circle_bg | default: '#ffffff' }};
+  border: 1px solid {{ s.circle_border | default: '#3447af' }};
+  display: flex; align-items: center; justify-content: center;
+}
+#tc-{{ uid }} .tc__inner svg { width: {{ icon_px }}px; height: {{ icon_px }}px; fill: none; stroke: {{ s.icon_color | default: '#3447af' }}; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+#tc-{{ uid }} .tc__title { font-size: {{ s.title_size | default: 12 }}px; font-weight: 600; line-height: 1.3; color: {{ s.title_color | default: '#1a2874' }}; display: inline-flex; align-items: center; gap: 4px; }
+#tc-{{ uid }} .tc__i { width: 13px; height: 13px; border-radius: 50%; border: 1px solid {{ s.title_color | default: '#1a2874' }}; color: {{ s.title_color | default: '#1a2874' }}; background: transparent; font-size: 9px; font-weight: 600; line-height: 1; display: inline-grid; place-items: center; cursor: pointer; padding: 0; font-family: inherit; }
+#tc-{{ uid }} .tc__i:hover { background: {{ s.title_color | default: '#1a2874' }}; color: #fff; }
+#tc-{{ uid }} .tc__sub { font-size: {{ s.sub_size | default: 10 }}px; line-height: 1.35; color: {{ s.sub_color | default: '#42579e' }}; margin-top: 1px; }
+#tc-{{ uid }} .tc-overlay { display: none; position: fixed; inset: 0; z-index: 21; background: rgba(242, 238, 234, 0.87); }
+#tc-{{ uid }} .tc-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2222; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 28px 24px; width: 96%; max-width: 560px; font-family: "tenon", sans-serif; }
+#tc-{{ uid }} .tc-overlay.is-open, #tc-{{ uid }} .tc-popup.is-open { display: block; }
+#tc-{{ uid }} .tc-popup__t { color: #1a2874; margin: 0 0 10px; text-align: center; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+#tc-{{ uid }} .tc-popup__b { color: #1a2874; text-align: center; font-size: 14px; line-height: 1.6; }
+#tc-{{ uid }} .tc-popup__b p { margin: 0 0 8px; }
+#tc-{{ uid }} .tc-popup__close { display: block; margin: 14px auto 0; color: #1a2874; font-size: 14px; text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font-family: inherit; }
+@media (max-width: 749px) {
+  #tc-{{ uid }} .tc__item { flex: 0 0 calc(50% - 4px); }
+}
+</style>
+
+<div id="tc-{{ uid }}">
+  {%- if s.headline != blank -%}<h3 class="tc__headline">{{ s.headline }}</h3>{%- endif -%}
+  <div class="tc__grid">
+    {%- for i in (1..8) -%}
+      {%- liquid
+        assign ek = 'b' | append: i | append: '_enable'
+        assign ik = 'b' | append: i | append: '_icon'
+        assign tk = 'b' | append: i | append: '_title'
+        assign sk = 'b' | append: i | append: '_sub'
+        assign pk = 'b' | append: i | append: '_tip'
+      -%}
+      {%- if s[ek] and s[tk] != blank -%}
+        <div class="tc__item">
+          <span class="tc__outer"><span class="tc__inner">
+            <svg viewBox="0 0 24 24" aria-hidden="true">{% render 'trust-strip-icon', icon: s[ik] %}</svg>
+          </span></span>
+          <span class="tc__title">{{ s[tk] }}{% if s[pk] != blank %}<button type="button" class="tc__i" data-tc-open="{{ i }}" aria-label="More about {{ s[tk] | escape }}">i</button>{% endif %}</span>
+          {%- if s[sk] != blank -%}<span class="tc__sub">{{ s[sk] }}</span>{%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <div class="tc-overlay" data-tc-overlay></div>
+  {%- for i in (1..8) -%}
+    {%- liquid
+      assign ek = 'b' | append: i | append: '_enable'
+      assign tk = 'b' | append: i | append: '_title'
+      assign pk = 'b' | append: i | append: '_tip'
+    -%}
+    {%- if s[ek] and s[pk] != blank -%}
+      <div class="tc-popup" data-tc-popup="{{ i }}" role="dialog" aria-modal="true">
+        <h3 class="tc-popup__t">{{ s[tk] }}</h3>
+        <div class="tc-popup__b">{{ s[pk] }}</div>
+        <button type="button" class="tc-popup__close" data-tc-close>Close</button>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('tc-{{ uid }}');
+  if(!root || root.dataset.tcBound) return;
+  root.dataset.tcBound = '1';
+  var overlay = root.querySelector('[data-tc-overlay]');
+  var popups = root.querySelectorAll('[data-tc-popup]');
+  function closeAll(){ if(overlay) overlay.classList.remove('is-open'); popups.forEach(function(p){ p.classList.remove('is-open'); }); }
+  root.querySelectorAll('[data-tc-open]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var t = root.querySelector('[data-tc-popup="' + btn.getAttribute('data-tc-open') + '"]');
+      if(t && overlay){ overlay.classList.add('is-open'); t.classList.add('is-open'); }
+    });
+  });
+  if(overlay) overlay.addEventListener('click', closeAll);
+  root.querySelectorAll('[data-tc-close]').forEach(function(b){ b.addEventListener('click', closeAll); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeAll(); });
+})();
+</script>
