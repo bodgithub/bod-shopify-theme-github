@@ -1301,43 +1301,50 @@
             "b1_icon": "expert",
             "b1_title": "Expert Reviewed",
             "b1_sub": "RD • MS • PhD",
+            "b1_hide_mobile": false,
             "b1_tip": "<p>Bodology's formula and label are reviewed by qualified professionals — including a <strong>Registered Dietitian (RD)</strong> and advisors holding <strong>MS and PhD</strong> credentials — so the ingredients, doses, and claims are accurate and responsibly stated.</p>",
             "b2_enable": true,
             "b2_icon": "flask",
             "b2_title": "Third Party Tested",
             "b2_sub": "",
+            "b2_hide_mobile": false,
             "b2_tip": "<p>Bodology is tested independently — we don't grade our own work. Every production batch is sent to <strong>Certified Laboratories</strong>, an ISO/IEC 17025-accredited testing lab, and analyzed against written specifications before it can be sold. ISO/IEC 17025 is the international standard for laboratory competence and data integrity.</p>",
             "b3_enable": false,
             "b3_icon": "fingerprint",
             "b3_title": "Identity Verified",
             "b3_sub": "HPLC Analytical Testing",
+            "b3_hide_mobile": false,
             "b3_tip": "<p>We use <strong>HPLC analytical testing</strong> to confirm the identity of each active — verifying that what's in the tub is genuinely myo-inositol and D-chiro-inositol, not a substitute or mislabeled material.</p>",
             "b4_enable": true,
             "b4_icon": "chart",
             "b4_title": "Potency Confirmed",
             "b4_sub": "",
+            "b4_hide_mobile": true,
             "b4_tip": "<p>HPLC confirms that each batch contains <strong>myo-inositol and D-chiro-inositol at the labeled amounts</strong> — and that the 40:1 ratio is correct in the finished powder, not only in the formula. Because the two are isomers, HPLC separates and measures each one individually.</p>",
             "b5_enable": true,
             "b5_icon": "shield",
             "b5_title": "Heavy Metal Tested",
             "b5_sub": "",
+            "b5_hide_mobile": false,
             "b5_tip": "<p>Every batch is tested for heavy metals by <strong>ICP-MS</strong> — arsenic, cadmium, mercury, and lead — and must fall within established safety limits before release. ICP-MS detects these metals down to trace levels, well below the limits set for dietary supplements.</p>",
             "b6_enable": true,
             "b6_icon": "microbe",
             "b6_title": "Microbial Safety Tested",
             "b6_sub": "",
+            "b6_hide_mobile": false,
             "b6_tip": "<p>Every batch is screened for microbial safety: total aerobic count, total yeast and mold, and the absence of specified pathogens — <strong>E. coli, Salmonella, Staphylococcus aureus, and Pseudomonas aeruginosa</strong>. A batch only ships if it meets every limit.</p>",
             "b7_enable": true,
             "b7_icon": "ratio",
             "b7_title": "Clinically Studied Ratio",
             "b7_sub": "",
+            "b7_hide_mobile": false,
             "b7_tip": "<p>The <strong>40:1 ratio</strong> of myo-inositol to D-chiro-inositol is the ratio used in published clinical research. We confirm this ratio in the finished powder by HPLC, so it matches the studied formulation.</p>",
             "b8_enable": true,
             "b8_icon": "pin",
             "b8_title": "Blended in the USA",
             "b8_sub": "",
-            "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>",
-            "b4_hide_mobile": true
+            "b8_hide_mobile": false,
+            "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
           }
         },
         "experts_8AwtYf": {
@@ -1523,58 +1530,6 @@
         "enable_video_looping": true
       }
     },
-    "rich_text_NAUjXc": {
-      "type": "rich-text",
-      "blocks": {
-        "text_JEkqWR": {
-          "type": "text",
-          "settings": {
-            "text": "<h1>You tried <em>everything</em></h1>",
-            "custom_liquid": "",
-            "size": "text-size-regular"
-          }
-        },
-        "text_7XEpLn": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<h4>It wasn't that they didn't work. It's that they weren't working on the problem.</h4><p>Here's what was actually happening.</p>",
-            "custom_liquid": "",
-            "size": "text-size-regular"
-          }
-        },
-        "text_GPQpeY": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Every diet you've tried was aimed at the wrong thing.</p><p>There's a step inside your cells where insulin's message gets passed along. In PCOS, that step is broken. Not sluggish, not weak — broken. So the message arrives and nothing happens, and your body compensates by producing more insulin, which is what drives the weight, the cravings and the androgens.<br/><br/><br/><br/>Nobody explained this to you because women's metabolic health has been under-researched for forty years. That's the gap we're working in.</p>",
-            "custom_liquid": "",
-            "size": "text-size-regular"
-          }
-        }
-      },
-      "block_order": [
-        "text_JEkqWR",
-        "text_7XEpLn",
-        "text_GPQpeY"
-      ],
-      "disabled": true,
-      "name": "Rich text",
-      "settings": {
-        "text_width": "medium",
-        "text_position": "center",
-        "text_alignment": "center",
-        "color_bg": "#f2eeea",
-        "bgcolor": "#f2eeea",
-        "color_heading": "#1A2874",
-        "color_text": "#1a2874",
-        "color_links": "#2c2d2e",
-        "margin_top": 60,
-        "margin_bottom": 0,
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": true
-      }
-    },
     "clinical_columns_TMq9hH": {
       "type": "clinical-columns",
       "blocks": {
@@ -1657,11 +1612,15 @@
         "column_kXJYKW",
         "column_ebLJLk"
       ],
-      "disabled": true,
       "name": "Clinical columns",
       "settings": {
-        "heading": "",
+        "heading": "You've tried <em>everything</em>",
         "heading_size": 0,
+        "heading_pad_bottom": 12,
+        "subheading": "",
+        "sub_size": 18,
+        "sub_pad_top": 8,
+        "sub_pad_bottom": 24,
         "enable_lightbox": true,
         "section_bg": "#f2eeea",
         "card_bg": "#ebeeff",
@@ -1683,10 +1642,11 @@
         "footer_pad": 15,
         "columns_desktop": 0,
         "page_width": 1300,
-        "padding_top_desktop": 0,
-        "padding_bottom_desktop": 60,
-        "padding_top_mobile": 32,
-        "padding_bottom_mobile": 32
+        "margin_top": 44,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 50,
+        "padding_bottom_mobile": 50
       }
     },
     "image_icon_cards_YkrA9X": {
@@ -2219,6 +2179,7 @@
         "custom_html_Gq37Qr",
         "space_Qa8Qwn"
       ],
+      "disabled": true,
       "name": "Image with text overlay",
       "settings": {
         "image": "shopify://shop_images/Mood-Desktop-Banner-7.jpg",
@@ -2398,6 +2359,10 @@
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
+        "pad_custom": false,
+        "pad_top": 60,
+        "pad_bottom": 60,
+        "full_bleed": false,
         "margin_top": 0,
         "margin_bottom": 0,
         "disable_top_spacing": false,
@@ -2910,6 +2875,10 @@
         "color_heading": "#1B3DEF",
         "color_text": "#1b3def",
         "color_links": "#1b3def",
+        "pad_custom": false,
+        "pad_top": 60,
+        "pad_bottom": 60,
+        "full_bleed": false,
         "margin_top": 0,
         "margin_bottom": 0,
         "disable_top_spacing": false,
@@ -2945,7 +2914,6 @@
     "image_with_text_overlay_T3rmDc",
     "spacer_fcdpRG",
     "main-product",
-    "rich_text_NAUjXc",
     "clinical_columns_TMq9hH",
     "image_icon_cards_YkrA9X",
     "image_icon_cards_XGzzR4",
