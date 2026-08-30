@@ -4318,6 +4318,156 @@
       ]
     },
     {
+      "type": "bundle_upsell",
+      "name": "Bundle upsell",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Bundle + Save 25%"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Two tubs, billed every 12 weeks — save 25% on every order."
+        },
+        {
+          "type": "header",
+          "content": "Price"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "$98"
+        },
+        {
+          "type": "text",
+          "id": "compare",
+          "label": "Compare-at price"
+        },
+        {
+          "type": "text",
+          "id": "price_per",
+          "label": "Suffix (e.g. every 12 weeks)"
+        },
+        {
+          "type": "header",
+          "content": "Add to cart"
+        },
+        {
+          "type": "text",
+          "id": "variant",
+          "label": "Product variant ID"
+        },
+        {
+          "type": "text",
+          "id": "plan",
+          "label": "Selling plan ID",
+          "info": "Leave blank for a one-time purchase."
+        },
+        {
+          "type": "number",
+          "id": "qty",
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Add"
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border & button",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "price_color",
+          "label": "Price",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "compare_color",
+          "label": "Compare-at price",
+          "default": "#9aa0b5"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background",
+          "info": "Leave unset for no fill."
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "image_size",
+          "label": "Image size",
+          "min": 48,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 76
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 320,
+          "max": 760,
+          "step": 20,
+          "unit": "px",
+          "default": 560
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Space above",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 14
+        }
+      ]
+    },
+    {
       "type": "plan_selector_2",
       "name": "Plan selector 2",
       "settings": [

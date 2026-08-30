@@ -1,0 +1,111 @@
+{%- comment -%}
+  Bodology · Bundle Upsell (product-info BLOCK, type bundle_upsell)
+  Compact upsell card: image left; title, text, price + compare, and an
+  outlined "Add" pill right. The button adds the configured variant
+  (with optional selling plan + quantity) straight to the cart and opens
+  the cart drawer. Params: s = block.settings, uid = block.id.
+{%- endcomment -%}
+
+{%- assign bu_border = s.border_color | default: '#3447af' -%}
+{%- assign bu_title = s.title_color | default: '#1a2874' -%}
+{%- assign bu_text = s.text_color | default: '#1a2874' -%}
+
+<style>
+#bu-{{ uid }}{
+  font-family:"tenon","Helvetica Neue",Arial,sans-serif;
+  display:flex; align-items:center; gap:14px;
+  border:1px solid {{ bu_border }};
+  border-radius:{{ s.radius | default: 14 }}px;
+  {% if s.bg_color != blank %}background:{{ s.bg_color }};{% endif %}
+  max-width:{{ s.max_width | default: 560 }}px;
+  margin:{{ s.margin_top | default: 14 }}px auto 0;
+  padding:14px;
+  box-sizing:border-box;
+}
+#bu-{{ uid }} *{box-sizing:border-box;}
+#bu-{{ uid }} .bu-img{flex:0 0 {{ s.image_size | default: 76 }}px; width:{{ s.image_size | default: 76 }}px; height:{{ s.image_size | default: 76 }}px; border-radius:10px; overflow:hidden;}
+#bu-{{ uid }} .bu-img img{width:100%; height:100%; object-fit:cover; display:block;}
+#bu-{{ uid }} .bu-body{flex:1 1 auto; min-width:0;}
+#bu-{{ uid }} .bu-title{font-size:15px; font-weight:700; color:{{ bu_title }}; margin:0 0 3px; line-height:1.3;}
+#bu-{{ uid }} .bu-text{font-size:13px; color:{{ bu_text }}; line-height:1.45; margin:0 0 8px;}
+#bu-{{ uid }} .bu-row{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+#bu-{{ uid }} .bu-price{display:flex; align-items:baseline; gap:7px; flex-wrap:wrap;}
+#bu-{{ uid }} .bu-price__now{font-size:15px; font-weight:700; color:{{ s.price_color | default: '#1a2874' }};}
+#bu-{{ uid }} .bu-price__was{font-size:13px; color:{{ s.compare_color | default: '#9aa0b5' }}; text-decoration:line-through;}
+#bu-{{ uid }} .bu-price__per{font-size:12px; color:{{ bu_text | color_modify: 'alpha', 0.75 }};}
+#bu-{{ uid }} .bu-btn{
+  flex:0 0 auto; cursor:pointer; font-family:inherit;
+  font-size:14px; font-weight:600; color:{{ bu_border }};
+  background:transparent; border:1px solid {{ bu_border }};
+  border-radius:999px; padding:7px 20px;
+  transition:background .18s,color .18s;
+}
+#bu-{{ uid }} .bu-btn:hover{background:{{ bu_border }}; color:#fff;}
+#bu-{{ uid }} .bu-btn.is-loading{pointer-events:none; opacity:.6;}
+#bu-{{ uid }} .bu-err{display:none; font-size:12px; color:#B42318; margin-top:6px;}
+#bu-{{ uid }} .bu-err.is-shown{display:block;}
+</style>
+
+<div id="bu-{{ uid }}">
+  {%- if s.image != blank -%}
+    <div class="bu-img">{{ s.image | image_url: width: 200 | image_tag: alt: s.title | default: 'Bundle', loading: 'lazy' }}</div>
+  {%- endif -%}
+  <div class="bu-body">
+    {%- if s.title != blank -%}<p class="bu-title">{{ s.title }}</p>{%- endif -%}
+    {%- if s.text != blank -%}<p class="bu-text">{{ s.text }}</p>{%- endif -%}
+    <div class="bu-row">
+      <span class="bu-price">
+        {%- if s.price != blank -%}<span class="bu-price__now">{{ s.price }}</span>{%- endif -%}
+        {%- if s.compare != blank -%}<span class="bu-price__was">{{ s.compare }}</span>{%- endif -%}
+        {%- if s.price_per != blank -%}<span class="bu-price__per">{{ s.price_per }}</span>{%- endif -%}
+      </span>
+      <button type="button" class="bu-btn" data-bu-add>{{ s.button_label | default: 'Add' }}</button>
+    </div>
+    <div class="bu-err" data-bu-err>Could not add to cart</div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('bu-{{ uid }}');
+  if(!root || root.dataset.buBound) return;
+  root.dataset.buBound = '1';
+  var btn = root.querySelector('[data-bu-add]');
+  var err = root.querySelector('[data-bu-err]');
+  var cartUrl = {{ routes.cart_url | json }};
+  var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+  function renderAndOpenCart(response){
+    try {
+      [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+        { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+        { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+      ].forEach(function(sc){
+        if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+        var host = document.getElementById(sc.id);
+        var el = host.querySelector(sc.selector) || host;
+        var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+        if(frag) el.innerHTML = frag.innerHTML;
+        if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+        if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+      });
+    } catch(e){}
+    var drawer = document.getElementById('Cart-Drawer');
+    if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+    else { window.location = cartUrl; }
+  }
+  btn.addEventListener('click', function(){
+    var variant = {{ s.variant | json }};
+    var plan = {{ s.plan | json }};
+    var qty = parseInt({{ s.qty | default: 1 | json }}, 10) || 1;
+    if(!variant){ err.textContent = 'Set a variant ID in the theme editor.'; err.classList.add('is-shown'); return; }
+    err.classList.remove('is-shown');
+    btn.classList.add('is-loading');
+    var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
+    if(plan){ item.selling_plan = plan; }
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: [item], sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(response){ if(response && response.status){ throw response; } btn.classList.remove('is-loading'); renderAndOpenCart(response); })
+    .catch(function(e){ btn.classList.remove('is-loading'); err.textContent = (e && (e.description || e.message)) || 'Could not add to cart'; err.classList.add('is-shown'); });
+  });
+})();
+</script>
