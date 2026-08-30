@@ -155,6 +155,13 @@
 #ps1c-{{ uid }} .ps-error{display:none; align-items:center; gap:8px; font-size:13px; color:#B42318; background:#FEF3F2; border:1px solid #FDA29B; border-radius:9px; padding:10px 13px; margin-top:2px;}
 #ps1c-{{ uid }} .ps-error.is-shown{display:flex;}
 #ps1c-{{ uid }} .ps-error svg{flex:0 0 auto; width:16px; height:16px;}
+#ps1c-{{ uid }} .ps-guar{display:flex; align-items:center; justify-content:center; gap:7px; font-size:12.5px; color:var(--ps-ink); margin-top:-2px;}
+#ps1c-{{ uid }} .ps-guar__t{font-weight:600;}
+#ps1c-{{ uid }} .ps-guar__i{width:16px; height:16px; border-radius:50%; border:1px solid var(--ps-ink); color:var(--ps-ink); background:transparent; font-size:10px; font-weight:600; line-height:1; display:grid; place-items:center; cursor:pointer; padding:0; font-family:inherit;}
+#ps1c-{{ uid }} .ps-guar__i:hover{background:var(--ps-ink); color:#fff;}
+#ps1c-{{ uid }} .ps-modal__body{font-size:13px; line-height:1.6; color:var(--ps-ink); margin:0 0 4px;}
+#ps1c-{{ uid }} .ps-modal__body p{margin:0 0 10px;}
+#ps1c-{{ uid }} a.ps-modal__done{display:block; text-align:center; text-decoration:none;}
 @media (max-width:749px){#ps1c-{{ uid }} .pc-title{font-size:17px;}#ps1c-{{ uid }} .pc-price__now{font-size:17px;}}
 </style>
 
@@ -306,6 +313,23 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
     <span>Please choose a plan first</span>
   </div>
+  {%- if s.guar_enable -%}
+  <div class="ps-guar">
+    <span class="ps-guar__t">{{ s.guar_text | default: '60-day risk-free guarantee' }}</span>
+    <button type="button" class="ps-guar__i" data-ps1c-guar-open aria-label="About our guarantee">i</button>
+  </div>
+  <div class="ps-modal" data-ps1c-guar hidden>
+    <div class="ps-modal__ov" data-ps1c-guar-close></div>
+    <div class="ps-modal__box" role="dialog" aria-modal="true" aria-label="{{ s.guar_popup_title | default: '60-Day Happiness Guarantee' | escape }}">
+      <button type="button" class="ps-modal__x" data-ps1c-guar-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h3 class="ps-modal__t">{{ s.guar_popup_title | default: '60-Day Happiness Guarantee' }}</h3>
+      <div class="ps-modal__body">{{ s.guar_popup_text }}</div>
+      {%- if s.guar_policy_url != blank -%}
+      <a class="ps-modal__done" href="{{ s.guar_policy_url }}">{{ s.guar_policy_label | default: 'Read the full policy' }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- endif -%}
   {%- if s.proto_enable -%}
   <div class="ps-modal" data-ps1c-proto hidden>
     <div class="ps-modal__ov" data-ps1c-modal-close></div>
@@ -479,6 +503,15 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
         updateOpenBtns();
       });
     });
+  }
+  var guar = root.querySelector('[data-ps1c-guar]');
+  if(guar){
+    var gOpen = root.querySelector('[data-ps1c-guar-open]');
+    var openG = function(){ guar.hidden = false; document.documentElement.style.overflow = 'hidden'; };
+    var closeG = function(){ guar.hidden = true; document.documentElement.style.overflow = ''; };
+    if(gOpen){ gOpen.addEventListener('click', function(e){ e.stopPropagation(); openG(); }); }
+    [].slice.call(guar.querySelectorAll('[data-ps1c-guar-close]')).forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); closeG(); }); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !guar.hidden){ closeG(); } });
   }
   syncSub(); syncTick(); syncGiftBan();
   var c0 = selected(); if(c0){ announce(c0); }
