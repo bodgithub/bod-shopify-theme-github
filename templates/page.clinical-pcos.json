@@ -9,53 +9,6 @@
  */
 {
   "sections": {
-    "study_header": {
-      "type": "clinical-study-header",
-      "blocks": {
-        "link_1": {
-          "type": "anchor_link",
-          "settings": {
-            "label": "Study 1 — Ovulation",
-            "anchor": "study-1"
-          }
-        },
-        "link_2": {
-          "type": "anchor_link",
-          "settings": {
-            "label": "Study 2 — Insulin & hormones",
-            "anchor": "study-2"
-          }
-        },
-        "link_3": {
-          "type": "anchor_link",
-          "settings": {
-            "label": "Study 3 — The 40:1 ratio",
-            "anchor": "study-3"
-          }
-        }
-      },
-      "block_order": [
-        "link_1",
-        "link_2",
-        "link_3"
-      ],
-      "settings": {
-        "eyebrow": "It might not have started with your ovaries",
-        "heading": "Inositol for PCOS (PMOS):\nThe Studies",
-        "subtext": "PCOS is a metabolic condition. Around 80% of women with PCOS have insulin resistance. When cells stop responding to insulin, the body makes more of it — and high insulin pushes the ovaries toward androgen production and disrupts ovulation.",
-        "image": "shopify://shop_images/Cramps_73fb3263-3eeb-4b15-90f6-959eb08e9bbc.png",
-        "mobile_image_height": 175,
-        "bg_color": "#f2eeea",
-        "text_color": "#1a2874",
-        "divider_color": "#3447af",
-        "pill_bg": "#e3e7ff",
-        "pill_text": "#1a2874",
-        "content_indent": 5,
-        "padding_top": 40,
-        "padding_bottom": 0,
-        "heading_color": "#1b3def"
-      }
-    },
     "study_1_overview": {
       "type": "study-overview-table",
       "blocks": {
@@ -689,7 +642,6 @@
     }
   },
   "order": [
-    "study_header",
     "study_1_overview",
     "study_1_results",
     "footnote_1",
