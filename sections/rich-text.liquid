@@ -24,9 +24,9 @@
 		assign transparent = true
 	endif
 -%}
-<div class="row" style="background-color:{{ section.settings.bgcolor }};margin-top:{{ section.settings.margin_top | default: 0 }}px;margin-bottom:{{ section.settings.margin_bottom | default: 0 }}px;">
+<div class="row{% if section.settings.full_bleed %} collapse{% endif %}" style="background-color:{% if section.settings.full_bleed and section.settings.bgcolor == blank %}{{ section.settings.color_bg }}{% else %}{{ section.settings.bgcolor }}{% endif %};margin-top:{{ section.settings.margin_top | default: 0 }}px;margin-bottom:{{ section.settings.margin_bottom | default: 0 }}px;">
 	<div class="small-12 columns">
-		<div class="rich-text rich-text--transparent-{{ transparent }} text-{{ text_alignment }} text-position-{{ text_position }} text-width-{{ text_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --solid-button-background: {{ color_text }}; --bg-body: {{ color_bg }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};">
+		<div class="rich-text rich-text--transparent-{{ transparent }} text-{{ text_alignment }} text-position-{{ text_position }} text-width-{{ text_width }} section-spacing-padding{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style="{% if section.settings.pad_custom %}padding-top: {{ section.settings.pad_top | default: 60 }}px; padding-bottom: {{ section.settings.pad_bottom | default: 60 }}px; {% endif %}--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --solid-button-background: {{ color_text }}; --bg-body: {{ color_bg }}; --color-accent: {{ color_links }}; --color-accent-rgb: {{ color_links.rgb | replace: ' ' , ',' }};">
 			<div class="rich-text__inner">
 				{% for block in section.blocks %}
 					{%- case block.type -%}
@@ -185,6 +185,40 @@
     {
       "type": "header",
       "content": "Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "pad_custom",
+      "label": "Custom top/bottom padding",
+      "default": false,
+      "info": "Overrides the theme's fixed section padding."
+    },
+    {
+      "type": "range",
+      "id": "pad_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "checkbox",
+      "id": "full_bleed",
+      "label": "Extend background to screen edges",
+      "default": false,
+      "info": "Removes the side gutters so the colored padding reaches the edges (fixes the white gap on mobile)."
     },
     {
       "type": "range",
