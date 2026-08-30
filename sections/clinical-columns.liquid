@@ -19,6 +19,7 @@
 {% style %}
   #shopify-section-{{ section.id }} .clc {
     width: 100%;
+    margin-top: {{ s.margin_top }}px;
     background: {{ s.section_bg }};
     padding-top: {{ s.padding_top_mobile }}px;
     padding-bottom: {{ s.padding_bottom_mobile }}px;
@@ -34,7 +35,7 @@
     text-align: center;
     {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px; line-height: 1.2;{% endif %}
     margin: 0;
-    padding: 0 16px;
+    padding: 0 16px {{ s.heading_pad_bottom }}px;
     color: {{ s.title_color }};
   }
   #shopify-section-{{ section.id }} .clc__subheading {
@@ -298,6 +299,16 @@
       "default": 0
     },
     {
+      "type": "range",
+      "id": "heading_pad_bottom",
+      "label": "Heading padding bottom",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
       "type": "inline_richtext",
       "id": "subheading",
       "label": "Subheading",
@@ -512,6 +523,16 @@
       "step": 20,
       "unit": "px",
       "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin above section",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "range",
