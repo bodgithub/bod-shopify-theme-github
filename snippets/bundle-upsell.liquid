@@ -20,7 +20,7 @@
   border-radius:{{ s.radius | default: 14 }}px;
   {% if s.bg_color != blank %}background:{{ s.bg_color }};{% endif %}
   max-width:{{ s.max_width | default: 560 }}px;
-  margin:{{ s.margin_top | default: 14 }}px auto 0;
+  margin:{{ s.margin_top | default: 14 }}px auto {{ s.margin_bottom | default: 0 }}px;
   padding:14px;
   box-sizing:border-box;
 }
