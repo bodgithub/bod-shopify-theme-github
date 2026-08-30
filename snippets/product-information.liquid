@@ -4,6 +4,64 @@
   assign acc_text = section.settings.accordion_text_color
   assign acc_tt = section.settings.accordion_title_transform | default: 'default'
 -%}
+{%- if section.settings.reviews_lightbox -%}
+<div class="bod-rl" data-bod-rl hidden>
+  <div class="bod-rl__ov" data-bod-rl-close></div>
+  <div class="bod-rl__box" role="dialog" aria-modal="true" aria-label="{{ section.settings.rl_title | default: 'Customer reviews' | escape }}">
+    <button type="button" class="bod-rl__x" data-bod-rl-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h3 class="bod-rl__t">{{ section.settings.rl_title | default: 'Customer reviews' }}</h3>
+    <div class="bod-rl__body" data-bod-rl-body></div>
+  </div>
+</div>
+<style>
+.bod-rl{position:fixed; inset:0; z-index:2147483000; display:flex; align-items:center; justify-content:center; padding:18px;}
+.bod-rl[hidden]{display:none;}
+.bod-rl__ov{position:absolute; inset:0; background:{{ section.settings.rl_overlay | default: 'rgba(242, 238, 234, 0.87)' }};}
+.bod-rl__box{position:relative; display:flex; flex-direction:column; width:min(760px, 96vw); max-height:calc(100dvh - 36px); background:{{ section.settings.rl_bg | default: '#e3e7ff' }}; border:1px solid {{ section.settings.rl_border | default: '#3447af' }}; border-radius:16px; overflow:hidden; font-family:"tenon","Helvetica Neue",Arial,sans-serif;}
+.bod-rl__x{position:absolute; top:10px; right:10px; width:28px; height:28px; display:grid; place-items:center; border:none; background:transparent; color:{{ section.settings.rl_text | default: '#1a2874' }}; cursor:pointer; border-radius:8px; z-index:2;}
+.bod-rl__x:hover{background:rgba(0,0,0,0.06);}
+.bod-rl__x svg{width:15px; height:15px;}
+.bod-rl__t{flex:0 0 auto; font-size:19px; font-weight:600; letter-spacing:-0.02em; line-height:1.25; color:{{ section.settings.rl_text | default: '#1a2874' }}; margin:0; padding:18px 44px 12px 20px; border-bottom:1px solid {{ section.settings.rl_border | default: '#3447af' | color_modify: 'alpha', 0.35 }};}
+.bod-rl__body{flex:1 1 auto; overflow-y:auto; -webkit-overflow-scrolling:touch; padding:14px 20px 20px;}
+@media (max-width:749px){.bod-rl__t{font-size:17px;}}
+</style>
+<script>
+(function(){
+  if(window.__bodRlBound) return; window.__bodRlBound = 1;
+  var rl = document.querySelector('[data-bod-rl]');
+  if(!rl) return;
+  var body = rl.querySelector('[data-bod-rl-body]');
+  var moved = null, ph = null;
+  var SEL = ['#junip-reviews','[class*="junip-product-review"]','junip-product-review-widget','.junip-product-review','.bodology-junip-reviews'];
+  function findTarget(){
+    var i, el;
+    for(i=0;i<SEL.length;i++){ try{ el = document.querySelector(SEL[i]); }catch(e){ el = null; } if(el) return el; }
+    var c = document.querySelectorAll('[class*="junip"], [id*="junip"]');
+    for(i=0;i<c.length;i++){ if(c[i].tagName !== 'SCRIPT' && c[i].tagName !== 'STYLE') return c[i]; }
+    return null;
+  }
+  function openWith(t){
+    if(!moved){ ph = document.createComment('bod-rl-home'); t.parentNode.insertBefore(ph, t); body.appendChild(t); moved = t; }
+    rl.hidden = false; document.documentElement.style.overflow = 'hidden';
+  }
+  function close(){
+    rl.hidden = true; document.documentElement.style.overflow = '';
+    if(moved && ph && ph.parentNode){ ph.parentNode.insertBefore(moved, ph); ph.parentNode.removeChild(ph); }
+    moved = null; ph = null;
+  }
+  document.addEventListener('click', function(e){
+    if(!e.target.closest) return;
+    if(!e.target.closest('.bod-stars')) return;
+    var t = findTarget();
+    if(!t) return; /* widget not loaded yet — fall through to the scroll behavior */
+    e.preventDefault(); e.stopPropagation();
+    openWith(t);
+  }, true);
+  [].slice.call(rl.querySelectorAll('[data-bod-rl-close]')).forEach(function(b){ b.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !rl.hidden) close(); });
+})();
+</script>
+{%- endif -%}
 {%- if acc_line != blank or acc_text != blank or acc_tt != 'default' -%}
 <style>
 {%- if acc_line != blank %}
