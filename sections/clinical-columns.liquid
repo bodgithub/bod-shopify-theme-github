@@ -153,7 +153,7 @@
       padding-top: {{ s.padding_top_desktop }}px;
       padding-bottom: {{ s.padding_bottom_desktop }}px;
     }
-    #shopify-section-{{ section.id }} .clc__footer { padding: {{ s.footer_pad }}% {{ s.footer_pad }}% 0; }
+    #shopify-section-{{ section.id }} .clc__footer { padding: {{ s.footer_pad_top }}px {{ s.footer_pad }}% 0; }
     #shopify-section-{{ section.id }} .clc__grid { grid-template-columns: repeat({% if cols > 1 %}2{% else %}1{% endif %}, 1fr); }
   }
   @media screen and (min-width: 990px) {
@@ -424,14 +424,24 @@
     },
     {
       "type": "range",
+      "id": "footer_pad_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
       "id": "footer_pad",
-      "label": "Padding top & sides (desktop)",
+      "label": "Padding sides (desktop)",
       "min": 0,
       "max": 20,
       "step": 1,
       "unit": "%",
       "default": 0,
-      "info": "One value applied to the top and evenly to both sides, desktop only."
+      "info": "One value applied evenly to both sides, desktop only."
     },
     {
       "type": "header",
