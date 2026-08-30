@@ -166,7 +166,7 @@
             "font_weight": "400",
             "text_color": "#0a175a",
             "circle_color": "#fbfaf9",
-            "tick_color": "#06AE5A",
+            "tick_color": "#06ae5a",
             "i1_text": "D-chiro-inositol from real carob pods, not a lab.",
             "i1_sup": "",
             "i2_text": "The full 4g clinical dose — not a capsule-sized fraction.",
@@ -545,6 +545,12 @@
             "card_border_color": "#3447af",
             "card_flat": true,
             "card_selected_bg": "#e3e7ff",
+            "guar_enable": true,
+            "guar_text": "60-day risk-free guarantee",
+            "guar_popup_title": "60-Day Happiness Guarantee",
+            "guar_popup_text": "<p>If your first order doesn't meet your expectations, email us within 60 days of receiving it and we'll make it right — a refund, an exchange, or another resolution.</p><p>The short version of the fine print: it covers your first order, up to one unit's value, with one resolution per order. Original shipping isn't refunded.</p><p>Questions? support@bodology.co</p>",
+            "guar_policy_label": "Read the full policy",
+            "guar_policy_url": "/policies/refund-policy",
             "heading_tight": true,
             "ot_name": "One-Time Purchase",
             "ot_price": "$65",
@@ -603,13 +609,46 @@
             "c3_variant": "48915264241883",
             "c4_label": "Weight",
             "c4_desc": "Metabolic & appetite",
-            "c4_variant": "48915264209115",
-            "guar_enable": true,
-            "guar_text": "60-day risk-free guarantee",
-            "guar_popup_title": "60-Day Happiness Guarantee",
-            "guar_popup_text": "<p>If your first order doesn't meet your expectations, email us within 60 days of receiving it and we'll make it right — a refund, an exchange, or another resolution.</p><p>The short version of the fine print: it covers your first order, up to one unit's value, with one resolution per order. Original shipping isn't refunded.</p><p>Questions? support@bodology.co</p>",
-            "guar_policy_label": "Read the full policy",
-            "guar_policy_url": "/policies/refund-policy"
+            "c4_variant": "48915264209115"
+          }
+        },
+        "facts_table_main": {
+          "type": "facts_table",
+          "settings": {
+            "header_text": "Per serving (2 scoops, 4g)",
+            "r1_label": "Myo-inositol",
+            "r1_value": "3,600 mg",
+            "r1_note": "Receives the insulin signal",
+            "r1_divider": false,
+            "r2_label": "D-chiro-inositol",
+            "r2_value": "90 mg",
+            "r2_note": "From carob pods, not synthetic",
+            "r2_divider": false,
+            "r3_label": "Ratio",
+            "r3_value": "40:1",
+            "r3_note": "",
+            "r3_divider": true,
+            "r4_label": "Everything else",
+            "r4_value": "Nothing",
+            "r4_note": "",
+            "r4_divider": false,
+            "r5_label": "",
+            "r5_value": "",
+            "r5_note": "",
+            "r5_divider": false,
+            "r6_label": "",
+            "r6_value": "",
+            "r6_note": "",
+            "r6_divider": false,
+            "text_color": "#1a2874",
+            "border_color": "#3447af",
+            "bg_color": "",
+            "radius": 12,
+            "header_size": 13,
+            "label_size": 14,
+            "note_size": 12,
+            "max_width": 560,
+            "margin_top": 14
           }
         },
         "separator_4aEqyn": {
@@ -653,6 +692,12 @@
             "card_border_color": "",
             "card_flat": false,
             "card_selected_bg": "#e3e7ff",
+            "guar_enable": false,
+            "guar_text": "60-day risk-free guarantee",
+            "guar_popup_title": "60-Day Happiness Guarantee",
+            "guar_popup_text": "",
+            "guar_policy_label": "Read the full policy",
+            "guar_policy_url": "",
             "heading_tight": false,
             "ot_name": "One-Time Purchase",
             "ot_price": "$65",
@@ -755,6 +800,12 @@
             "card_border_color": "",
             "card_flat": false,
             "card_selected_bg": "#e3e7ff",
+            "guar_enable": false,
+            "guar_text": "60-day risk-free guarantee",
+            "guar_popup_title": "60-Day Happiness Guarantee",
+            "guar_popup_text": "",
+            "guar_policy_label": "Read the full policy",
+            "guar_policy_url": "",
             "heading_tight": false,
             "ot_name": "One-Time Purchase",
             "ot_price": "$65",
@@ -1060,13 +1111,6 @@
             "side_panel_3_page": ""
           }
         },
-        "custom_liquid_YGHAge": {
-          "type": "custom_liquid",
-          "name": "Free shipping + product pills",
-          "settings": {
-            "custom_liquid": "<div style=\"text-align:center;\">\n\n60-day risk-free guarantee\n\n</div>"
-          }
-        },
         "custom_liquid_8bY9Ux": {
           "type": "custom_liquid",
           "name": "More Features",
@@ -1282,25 +1326,6 @@
             "b8_sub": "Processed in our American facility",
             "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
           }
-        },
-        "facts_table_main": {
-          "type": "facts_table",
-          "settings": {
-            "header_text": "Per serving (2 scoops, 4g)",
-            "r1_label": "Myo-inositol",
-            "r1_value": "3,600 mg",
-            "r1_note": "Receives the insulin signal",
-            "r2_label": "D-chiro-inositol",
-            "r2_value": "90 mg",
-            "r2_note": "From carob pods, not synthetic",
-            "r3_label": "Ratio",
-            "r3_value": "40:1",
-            "r3_divider": true,
-            "r4_label": "Everything else",
-            "r4_value": "Nothing",
-            "text_color": "#1a2874",
-            "border_color": "#3447af"
-          }
         }
       },
       "block_order": [
@@ -1329,7 +1354,6 @@
         "custom_liquid_Aai6fh",
         "buy_buttons_3FBywE",
         "side_panel_NGJTtJ",
-        "custom_liquid_YGHAge",
         "custom_liquid_8bY9Ux",
         "custom_liquid_ERkmyy",
         "collapsible_tab_KVBdNK",
