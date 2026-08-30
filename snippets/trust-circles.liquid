@@ -30,7 +30,7 @@
 #tc-{{ uid }} .tc__item { flex: 0 0 calc(25% - 6px); display: flex; flex-direction: column; align-items: center; text-align: center; }
 #tc-{{ uid }} .tc__outer {
   width: {{ s.circle_size | default: 88 }}px; height: {{ s.circle_size | default: 88 }}px;
-  border-radius: 50%; background: {{ s.outer_bg | default: '#e3e7ff' }};
+  position: relative; border-radius: 50%; background: {{ s.outer_bg | default: '#e3e7ff' }};
   {% if s.outer_border != blank %}border: 1px solid {{ s.outer_border }};{% endif %}
   display: flex; align-items: center; justify-content: center; margin-bottom: 8px;
 }
@@ -42,8 +42,8 @@
 }
 #tc-{{ uid }} .tc__inner svg { width: {{ icon_px }}px; height: {{ icon_px }}px; fill: none; stroke: {{ s.icon_color | default: '#3447af' }}; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 #tc-{{ uid }} .tc__title { font-size: {{ s.title_size | default: 12 }}px; font-weight: 600; line-height: 1.3; color: {{ s.title_color | default: '#1a2874' }}; display: inline-flex; align-items: center; gap: 4px; }
-#tc-{{ uid }} .tc__i { width: 13px; height: 13px; border-radius: 50%; border: 1px solid {{ s.title_color | default: '#1a2874' }}; color: {{ s.title_color | default: '#1a2874' }}; background: transparent; font-size: 9px; font-weight: 600; line-height: 1; display: inline-grid; place-items: center; cursor: pointer; padding: 0; font-family: inherit; }
-#tc-{{ uid }} .tc__i:hover { background: {{ s.title_color | default: '#1a2874' }}; color: #fff; }
+#tc-{{ uid }} .tc__i { position: absolute; top: 1px; left: 1px; z-index: 2; width: 17px; height: 17px; border-radius: 50%; border: 1px solid {{ s.circle_border | default: '#3447af' }}; color: {{ s.circle_border | default: '#3447af' }}; background: {{ s.circle_bg | default: '#ffffff' }}; font-size: 10px; font-weight: 600; line-height: 1; display: inline-grid; place-items: center; cursor: pointer; padding: 0; font-family: inherit; }
+#tc-{{ uid }} .tc__i:hover { background: {{ s.circle_border | default: '#3447af' }}; color: #fff; }
 #tc-{{ uid }} .tc__sub { font-size: {{ s.sub_size | default: 10 }}px; line-height: 1.35; color: {{ s.sub_color | default: '#42579e' }}; margin-top: 1px; }
 #tc-{{ uid }} .tc-overlay { display: none; position: fixed; inset: 0; z-index: 21; background: rgba(242, 238, 234, 0.87); }
 #tc-{{ uid }} .tc-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2222; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px; font-family: "tenon", sans-serif; }
@@ -74,10 +74,10 @@
       -%}
       {%- if s[ek] and s[tk] != blank -%}
         <div class="tc__item">
-          <span class="tc__outer"><span class="tc__inner">
+          <span class="tc__outer">{% if s[pk] != blank %}<button type="button" class="tc__i" data-tc-open="{{ i }}" aria-label="More about {{ s[tk] | escape }}">i</button>{% endif %}<span class="tc__inner">
             <svg viewBox="0 0 24 24" aria-hidden="true">{% render 'trust-strip-icon', icon: s[ik] %}</svg>
           </span></span>
-          <span class="tc__title">{{ s[tk] }}{% if s[pk] != blank %}<button type="button" class="tc__i" data-tc-open="{{ i }}" aria-label="More about {{ s[tk] | escape }}">i</button>{% endif %}</span>
+          <span class="tc__title">{{ s[tk] }}</span>
           {%- if s[sk] != blank -%}<span class="tc__sub">{{ s[sk] }}</span>{%- endif -%}
         </div>
       {%- endif -%}

@@ -46,6 +46,7 @@
   #shopify-section-{{ section.id }} .tc__outer {
     width: {{ s.circle_size }}px;
     height: {{ s.circle_size }}px;
+    position: relative;
     border-radius: 50%;
     background: {{ s.outer_bg }};
     {% if s.outer_border != blank %}border: 1px solid {{ s.outer_border }};{% endif %}
@@ -83,15 +84,16 @@
     gap: 5px;
   }
   #shopify-section-{{ section.id }} .tc__i {
-    width: 13px; height: 13px; border-radius: 50%;
-    border: 1px solid {{ s.title_color }};
-    color: {{ s.title_color }};
-    background: transparent;
-    font-size: 9px; font-weight: 600; line-height: 1;
+    position: absolute; top: 2px; left: 2px; z-index: 2;
+    width: 18px; height: 18px; border-radius: 50%;
+    border: 1px solid {{ s.circle_border }};
+    color: {{ s.circle_border }};
+    background: {{ s.circle_bg }};
+    font-size: 10px; font-weight: 600; line-height: 1;
     display: inline-grid; place-items: center;
     cursor: pointer; padding: 0; font-family: inherit;
   }
-  #shopify-section-{{ section.id }} .tc__i:hover { background: {{ s.title_color }}; color: #fff; }
+  #shopify-section-{{ section.id }} .tc__i:hover { background: {{ s.circle_border }}; color: #fff; }
   #shopify-section-{{ section.id }} .tc__sub {
     font-size: {{ s.sub_size }}px;
     line-height: 1.35;
@@ -139,11 +141,11 @@
     <div class="tc__grid">
       {%- for block in section.blocks -%}
         <div class="tc__item" {{ block.shopify_attributes }}>
-          <span class="tc__outer"><span class="tc__inner">
+          <span class="tc__outer">{% if block.settings.tip != blank %}<button type="button" class="tc__i" data-tc-open="{{ block.id }}" aria-label="More about {{ block.settings.title | escape }}">i</button>{% endif %}<span class="tc__inner">
             <svg viewBox="0 0 24 24" aria-hidden="true">{% render 'trust-strip-icon', icon: block.settings.icon %}</svg>
           </span></span>
           {%- if block.settings.title != blank -%}
-            <span class="tc__title">{{ block.settings.title }}{% if block.settings.tip != blank %}<button type="button" class="tc__i" data-tc-open="{{ block.id }}" aria-label="More about {{ block.settings.title | escape }}">i</button>{% endif %}</span>
+            <span class="tc__title">{{ block.settings.title }}</span>
           {%- endif -%}
           {%- if block.settings.sub != blank -%}
             <span class="tc__sub">{{ block.settings.sub }}</span>
