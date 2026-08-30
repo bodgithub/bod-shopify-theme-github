@@ -56,7 +56,13 @@
     height: {{ s.top_icon_size }}px;
     margin: 0 auto 12px;
   }
+  #shopify-section-{{ section.id }} .clc__topicon { color: {{ s.icon_color }}; }
   #shopify-section-{{ section.id }} .clc__topicon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  #shopify-section-{{ section.id }} .clc__topicon svg { width: 100%; height: 100%; display: block; }
+  #shopify-section-{{ section.id }} .clc__topicon svg [stroke]:not([stroke="none"]) { stroke: currentColor; }
+  #shopify-section-{{ section.id }} .clc__topicon svg [fill]:not([fill="none"]) { fill: currentColor; }
+  #shopify-section-{{ section.id }} .clc__glyph svg [stroke]:not([stroke="none"]) { stroke: currentColor; }
+  #shopify-section-{{ section.id }} .clc__glyph svg [fill]:not([fill="none"]) { fill: currentColor; }
   #shopify-section-{{ section.id }} .clc__bottom {
     margin-top: 14px;
     font-size: {{ s.text_size | times: 0.93 | round }}px;
@@ -98,6 +104,16 @@
   #shopify-section-{{ section.id }} .clc__card { transition: background .18s, transform .15s; }
   #shopify-section-{{ section.id }} .clc__card:hover { background: {{ s.hover_bg }}; }
   {%- endif -%}
+  {%- if s.hover_title_color != blank -%}
+  #shopify-section-{{ section.id }} .clc__card:hover .clc__title { color: {{ s.hover_title_color }}; }
+  {%- endif -%}
+  {%- if s.hover_text_color != blank -%}
+  #shopify-section-{{ section.id }} .clc__card:hover .clc__items,
+  #shopify-section-{{ section.id }} .clc__card:hover .clc__bottom { color: {{ s.hover_text_color }}; }
+  {%- endif -%}
+  {%- if s.hover_icon_color != blank -%}
+  #shopify-section-{{ section.id }} .clc__card:hover .clc__topicon { color: {{ s.hover_icon_color }}; }
+  {%- endif -%}
   {%- if s.enable_lightbox -%}
   #shopify-section-{{ section.id }} .clc__card--clickable { cursor: pointer; transition: background .18s, transform .15s; }
   #shopify-section-{{ section.id }} .clc__card--clickable:hover { transform: translateY(-2px); }
@@ -138,7 +154,9 @@
           assign glyph = bs.icon | default: 'none'
         -%}
         <div class="clc__card{% if s.enable_lightbox and bs.lightbox_text != blank %} clc__card--clickable{% endif %}" {% if bs.card_bg != blank %}style="--clc-card-bg: {{ bs.card_bg }};"{% endif %}{% if s.enable_lightbox and bs.lightbox_text != blank %} data-clc-open="{{ block.id }}" role="button" tabindex="0"{% endif %} {{ block.shopify_attributes }}>
-          {%- if bs.top_icon != blank -%}
+          {%- if bs.top_icon_svg != blank -%}
+            <div class="clc__topicon" aria-hidden="true">{{ bs.top_icon_svg }}</div>
+          {%- elsif bs.top_icon != blank -%}
             <div class="clc__topicon">{{ bs.top_icon | image_url: width: 128 | image_tag: alt: '', loading: 'lazy' }}</div>
           {%- endif -%}
           {%- if bs.title != blank -%}
@@ -150,6 +168,8 @@
                   <span class="clc__glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
                 {%- elsif glyph == 'image' and bs.icon_image != blank -%}
                   <span class="clc__glyph">{{ bs.icon_image | image_url: width: 64 | image_tag: alt: '', loading: 'lazy' }}</span>
+                {%- elsif glyph == 'svg' and bs.icon_svg != blank -%}
+                  <span class="clc__glyph" aria-hidden="true">{{ bs.icon_svg }}</span>
                 {%- endif -%}
               {%- endcapture -%}
               {{ glyph_html }}<span>{{ bs.title }}</span>{{ glyph_html }}
@@ -283,8 +303,32 @@
     },
     {
       "type": "color",
+      "id": "hover_title_color",
+      "label": "Title hover color",
+      "info": "Leave unset for no change on hover."
+    },
+    {
+      "type": "color",
+      "id": "hover_text_color",
+      "label": "Text hover color",
+      "info": "Leave unset for no change on hover."
+    },
+    {
+      "type": "color",
+      "id": "hover_icon_color",
+      "label": "Icon hover color",
+      "info": "Applies to pasted SVG icons. Leave unset for no change."
+    },
+    {
+      "type": "color",
       "id": "title_color",
       "label": "Title & icons",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Top icons (SVG)",
       "default": "#1b3def"
     },
     {
@@ -414,6 +458,12 @@
           "info": "Transparent PNG or SVG, ~128 × 128px."
         },
         {
+          "type": "textarea",
+          "id": "top_icon_svg",
+          "label": "Or paste SVG code for the top icon",
+          "info": "Inline <svg> markup; recolorable via the icon color settings. Takes priority over the image."
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "Title",
@@ -440,6 +490,10 @@
             {
               "value": "image",
               "label": "Custom image"
+            },
+            {
+              "value": "svg",
+              "label": "Custom SVG (paste below)"
             }
           ]
         },
@@ -447,6 +501,12 @@
           "type": "image_picker",
           "id": "icon_image",
           "label": "Custom icon image"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_svg",
+          "label": "Custom SVG for title glyphs",
+          "info": "Used when Icons beside the title is set to Custom SVG."
         },
         {
           "type": "textarea",
