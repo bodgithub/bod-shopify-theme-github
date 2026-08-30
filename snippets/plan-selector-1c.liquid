@@ -170,6 +170,8 @@
 #ps1c-{{ uid }} .ps-modal__body p{margin:0 0 10px;}
 #ps1c-{{ uid }} .ps-modal__body a{color:var(--ps-blue); text-decoration:underline;}
 #ps1c-{{ uid }} a.ps-modal__done{display:block; text-align:center; text-decoration:none;}
+#ps1c-{{ uid }} .ps-modal__links{display:flex; justify-content:center; gap:26px; margin-top:16px;}
+#ps1c-{{ uid }} .ps-modal__link{color:var(--ps-ink); font-size:14px; text-decoration:underline; cursor:pointer; background:none; border:0; padding:0; font-family:inherit;}
 @media (max-width:749px){#ps1c-{{ uid }} .pc-title{font-size:17px;}#ps1c-{{ uid }} .pc-price__now{font-size:17px;}}
 </style>
 
@@ -332,9 +334,12 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       <button type="button" class="ps-modal__x" data-ps1c-guar-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       <h3 class="ps-modal__t">{{ s.guar_popup_title | default: '60-Day Happiness Guarantee' }}</h3>
       <div class="ps-modal__body">{{ s.guar_popup_text }}</div>
-      {%- if s.guar_policy_url != blank -%}
-      <a class="ps-modal__done" href="{{ s.guar_policy_url }}">{{ s.guar_policy_label | default: 'Read the full policy' }}</a>
-      {%- endif -%}
+      <div class="ps-modal__links">
+        {%- if s.guar_policy_url != blank -%}
+        <a class="ps-modal__link" href="{{ s.guar_policy_url }}">{{ s.guar_policy_label | default: 'Read full policy' }}</a>
+        {%- endif -%}
+        <button type="button" class="ps-modal__link" data-ps1c-guar-close>Close</button>
+      </div>
     </div>
   </div>
   {%- endif -%}
