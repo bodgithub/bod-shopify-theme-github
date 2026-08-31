@@ -52,6 +52,7 @@
 #ps1c-{{ uid }} .pc-card:hover .pc-card__in{background:{{ s.card_selected_bg | default: '#E3E7FF' | color_modify: 'alpha', 0.45 }}; box-shadow:inset 0 0 0 1px {{ s.card_border_color | default: '#E2E2E2' }};}
 #ps1c-{{ uid }} .pc-card.is-selected{border:1px solid {{ s.card_border_color | default: '#E2E2E2' }}; background:{{ s.card_selected_bg | default: '#E3E7FF' }}; padding:0; overflow:hidden;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-card__in{background:{{ s.card_selected_bg | default: '#E3E7FF' }}; border-radius:12px; box-shadow:inset 0 0 0 1px {{ s.card_border_color | default: '#E2E2E2' }};}
+#ps1c-{{ uid }} .ps-cta{border-radius:999px;}
 {%- endif -%}
 #ps1c-{{ uid }} .pc-ribbon{position:absolute; top:0; right:0; z-index:2; background:#fff; color:var(--ps-blue); border-bottom:1px solid {{ acc }}; border-left:1px solid {{ acc }}; font-size:10px; font-weight:500; letter-spacing:0.02em; text-transform:uppercase; padding:4px 11px; border-bottom-left-radius:13px; border-top-right-radius:10px; white-space:nowrap; display:none;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-ribbon{display:block;}
