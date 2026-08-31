@@ -1,0 +1,58 @@
+{%- comment -%}
+  Bodology · COA popup content (rendered inside the trust-circles popup)
+  Certificate of Analysis summary: header meta, three result tables
+  (actives / microbiology / heavy metals), footnote. Sentence case,
+  hairline row rules only, 3 columns max. Colors follow the popup
+  standard (navy on #e3e7ff).
+{%- endcomment -%}
+
+<style>
+  .coa { text-align: left; color: #1a2874; }
+  .coa__eyebrow { text-align: center; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 6px; opacity: .8; }
+  .coa__meta { text-align: center; font-size: 12px; line-height: 1.55; margin: 0 0 10px; }
+  .coa__pass { text-align: center; font-size: 13px; font-weight: 600; margin: 0 0 18px; }
+  .coa__h { font-size: 12px; font-weight: 600; margin: 18px 0 6px; }
+  .coa table { width: 100%; border-collapse: collapse; font-size: 12px; line-height: 1.4; }
+  .coa td { padding: 7px 8px 7px 0; border-top: 1px solid rgba(52, 71, 175, 0.25); vertical-align: top; }
+  .coa td:last-child { text-align: right; font-weight: 600; white-space: nowrap; padding-right: 0; }
+  .coa small { display: block; font-size: 11px; opacity: .75; font-weight: 400; }
+  .coa__foot { font-size: 11px; line-height: 1.55; opacity: .8; margin: 18px 0 0; }
+  @media (min-width: 750px) {
+    .coa__meta { font-size: 13px; }
+    .coa table { font-size: 13px; }
+    .coa small { font-size: 12px; }
+    .coa__foot { font-size: 12px; }
+  }
+</style>
+
+<div class="coa">
+  <p class="coa__eyebrow">Third-party laboratory analysis</p>
+  <p class="coa__meta">From: Certified Group — Tustin, CA<br>ISO/IEC 17025:2017 accredited laboratory<br>Report no. 26-327053 · issued Jun 24, 2026</p>
+  <p class="coa__meta">Sample: Bodology inositol powder<br>Batch / lot: 06TFP26-235 · Lab no. 001<br>Received Jun 12, 2026 · 25.0 °C</p>
+  <p class="coa__pass">Pass — released · QA spec BDL-QS-01</p>
+
+  <p class="coa__h">A · Actives — label verification · HPLC · SOP 3.1.132</p>
+  <table>
+    <tr><td>Myo-inositol</td><td>4006 mg / 4.10 g<small>label claim 4000 mg / 4.10 g</small></td><td>Pass</td></tr>
+    <tr><td>D-chiro-inositol</td><td>100 mg / 4.10 g<small>label claim 100 mg / 4.10 g</small></td><td>Pass</td></tr>
+  </table>
+
+  <p class="coa__h">B · Microbiology · USP 2021 / 2022 · USPC12 bundle completed</p>
+  <table>
+    <tr><td>Total aerobic microbial count<small>mod. USP 2021</small></td><td>340 CFU/g<small>spec ≤ 10,000 CFU/g</small></td><td>Pass</td></tr>
+    <tr><td>Coliform count<small>Petrifilm, AOAC 991.14</small></td><td>Not detected<small>spec &lt;10 CFU/g</small></td><td>Pass</td></tr>
+    <tr><td>Yeast count<small>USP 2021</small></td><td>Not detected<small>spec &lt;10 CFU/g</small></td><td>Pass</td></tr>
+    <tr><td>Mold count<small>USP 2021</small></td><td>Not detected<small>spec &lt;10 CFU/g</small></td><td>Pass</td></tr>
+    <tr><td>Pathogen screen<small>P. aeruginosa (USP 62); E. coli, Salmonella spp., S. aureus (mod. USP 2022)</small></td><td>Absent<small>spec absent</small></td><td>Pass</td></tr>
+  </table>
+
+  <p class="coa__h">C · Heavy metals · HMS35 · ICP-MS · BCM-30011</p>
+  <table>
+    <tr><td>Arsenic (As)</td><td>Not detected<small>spec &lt;0.015 ppm</small></td><td>Pass</td></tr>
+    <tr><td>Cadmium (Cd)</td><td>Not detected<small>spec &lt;0.015 ppm</small></td><td>Pass</td></tr>
+    <tr><td>Lead (Pb)</td><td>Not detected<small>spec &lt;0.015 ppm</small></td><td>Pass</td></tr>
+    <tr><td>Mercury (Hg)</td><td>Not detected<small>spec &lt;0.00038 ppm</small></td><td>Pass</td></tr>
+  </table>
+
+  <p class="coa__foot">"Not detected" means no result at the method's limit of quantitation. Specifications are Bodology release limits (QA spec BDL-QS-01). Sample temperature on receipt 25.0 °C; no remarks recorded. Certified Group — Tustin is accredited to ISO/IEC 17025:2017 and is not an FDA drug-registered facility; results relate only to the items tested. Personal identifiers — client contact and signatory names — are withheld from this public copy.</p>
+</div>

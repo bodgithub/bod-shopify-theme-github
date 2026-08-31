@@ -46,7 +46,8 @@
 #tc-{{ uid }} .tc__i:hover { background: {{ s.circle_border | default: '#3447af' }}; color: #fff; }
 #tc-{{ uid }} .tc__sub { font-size: {{ s.sub_size | default: 10 }}px; line-height: 1.35; color: {{ s.sub_color | default: '#42579e' }}; margin-top: 1px; }
 #tc-{{ uid }} .tc-overlay { display: none; position: fixed; inset: 0; z-index: 21; background: rgba(242, 238, 234, 0.87); }
-#tc-{{ uid }} .tc-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2222; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px; font-family: "tenon", sans-serif; }
+#tc-{{ uid }} .tc-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2222; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; max-height: 85dvh; overflow-y: auto; padding: 32px 24px; width: 96%; max-width: 700px; font-family: "tenon", sans-serif; }
+#tc-{{ uid }} .tc__coa { display: block; margin: 16px auto 0; color: {{ s.title_color | default: '#1a2874' }}; font-size: 14px; text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font-family: inherit; }
 #tc-{{ uid }} .tc-overlay.is-open, #tc-{{ uid }} .tc-popup.is-open { display: block; }
 #tc-{{ uid }} .tc-popup__t { color: #1a2874; margin: 0 0 20px; text-align: center; font-size: 20px; font-weight: 400; line-height: 1.25; }
 #tc-{{ uid }} .tc-popup__b { color: #1a2874; text-align: center; font-size: 12px; line-height: 1.6; }
@@ -88,7 +89,17 @@
       {%- endif -%}
     {%- endfor -%}
   </div>
+  {%- if s.coa_enable -%}
+  <button type="button" class="tc__coa" data-tc-open="coa">{{ s.coa_link_text | default: 'Read our COA' }}</button>
+  {%- endif -%}
   <div class="tc-overlay" data-tc-overlay></div>
+  {%- if s.coa_enable -%}
+  <div class="tc-popup" data-tc-popup="coa" role="dialog" aria-modal="true" aria-label="Certificate of Analysis">
+    <h3 class="tc-popup__t">Certificate of Analysis</h3>
+    {% render 'coa-content' %}
+    <button type="button" class="tc-popup__close" data-tc-close>Close</button>
+  </div>
+  {%- endif -%}
   {%- for i in (1..8) -%}
     {%- liquid
       assign ek = 'b' | append: i | append: '_enable'

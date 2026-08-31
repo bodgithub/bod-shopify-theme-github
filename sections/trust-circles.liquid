@@ -110,7 +110,7 @@
     display: none; position: fixed; top: 50%; left: 50%;
     transform: translate(-50%, -50%); z-index: 2222;
     background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px;
-    overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px;
+    overflow: hidden; max-height: 85dvh; overflow-y: auto; padding: 32px 24px; width: 96%; max-width: 700px;
     font-family: "tenon", sans-serif;
   }
   #shopify-section-{{ section.id }} .tc-overlay.is-open,
@@ -126,6 +126,11 @@
   }
   #shopify-section-{{ section.id }} .tc-popup__b p { margin: 0 0 8px; }
   #shopify-section-{{ section.id }} .tc-popup__b h1,   #shopify-section-{{ section.id }} .tc-popup__b h2,   #shopify-section-{{ section.id }} .tc-popup__b h3,   #shopify-section-{{ section.id }} .tc-popup__b h4,   #shopify-section-{{ section.id }} .tc-popup__b h5,   #shopify-section-{{ section.id }} .tc-popup__b h6 { color: #1a2874; font-family: "tenon", sans-serif; }
+  #shopify-section-{{ section.id }} .tc__coa {
+    display: block; margin: 16px auto 0; color: {{ s.title_color }};
+    font-size: 14px; text-decoration: underline; cursor: pointer;
+    background: none; border: 0; padding: 0; font-family: inherit;
+  }
   #shopify-section-{{ section.id }} .tc-popup__close {
     display: block; margin: 14px auto 0; color: #1a2874; font-size: 14px;
     text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font-family: inherit;
@@ -160,7 +165,17 @@
       {%- endfor -%}
     </div>
   </div>
+  {%- if s.coa_enable -%}
+  <button type="button" class="tc__coa" data-tc-open="coa">{{ s.coa_link_text | default: 'Read our COA' }}</button>
+  {%- endif -%}
   <div class="tc-overlay" data-tc-overlay></div>
+  {%- if s.coa_enable -%}
+  <div class="tc-popup" data-tc-popup="coa" role="dialog" aria-modal="true" aria-label="Certificate of Analysis">
+    <h3 class="tc-popup__t">Certificate of Analysis</h3>
+    {% render 'coa-content' %}
+    <button type="button" class="tc-popup__close" data-tc-close>Close</button>
+  </div>
+  {%- endif -%}
   {%- for block in section.blocks -%}
     {%- if block.settings.tip != blank -%}
       <div class="tc-popup" data-tc-popup="{{ block.id }}" role="dialog" aria-modal="true">
@@ -229,6 +244,18 @@
       "step": 1,
       "unit": "px",
       "default": 21
+    },
+    {
+      "type": "checkbox",
+      "id": "coa_enable",
+      "label": "Show 'Read our COA' link + popup",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "coa_link_text",
+      "label": "COA link text",
+      "default": "Read our COA"
     },
     {
       "type": "header",
