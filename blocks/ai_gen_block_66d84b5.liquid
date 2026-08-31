@@ -48,6 +48,7 @@
     align-items: center;
     gap: {{ block.settings.text_spacing }}px;
     white-space: nowrap;
+    padding-right: {{ block.settings.text_spacing }}px;
   }
 
   .ai-text-carousel-item-{{ ai_gen_id }} {
@@ -98,154 +99,26 @@
   class="ai-text-carousel-{{ ai_gen_id }}"
   {{ block.shopify_attributes }}
 >
+  {%- capture track_content -%}
+    {%- for i in (1..6) -%}
+      {%- assign text_key = 'text_' | append: i -%}
+      {%- assign item_text = block.settings[text_key] -%}
+      {%- if item_text != blank -%}
+        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ item_text | strip }}</span>
+        {%- if block.settings.show_separator -%}
+          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endcapture -%}
   <div class="ai-text-carousel-wrapper-{{ ai_gen_id }}">
-    <div class="ai-text-carousel-track-{{ ai_gen_id }}">
-      {% if block.settings.text_1 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_2 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_3 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_4 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_5 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_6 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-    </div>
-
-    <div class="ai-text-carousel-track-{{ ai_gen_id }}" aria-hidden="true">
-      {% if block.settings.text_1 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_1 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_2 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_2 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_3 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_3 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_4 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_4 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_5 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_5 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-
-      {% if block.settings.text_6 != blank %}
-        <span class="ai-text-carousel-item-{{ ai_gen_id }}">{{ block.settings.text_6 | strip }}</span>
-        {% if block.settings.show_separator %}
-          <span class="ai-text-carousel-separator-{{ ai_gen_id }}">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </span>
-        {% endif %}
-      {% endif %}
-    </div>
+    <div class="ai-text-carousel-track-{{ ai_gen_id }}">{{ track_content }}</div>
+    <div class="ai-text-carousel-track-{{ ai_gen_id }}" aria-hidden="true">{{ track_content }}</div>
   </div>
 </text-carousel-{{ ai_gen_id }}>
 
