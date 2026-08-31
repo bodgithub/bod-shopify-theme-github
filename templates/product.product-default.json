@@ -1281,6 +1281,8 @@
           "settings": {
             "headline": "Every batch, independently verified",
             "headline_size": 16,
+            "coa_enable": true,
+            "coa_link_text": "Read our COA",
             "section_bg": "",
             "headline_color": "#1a2874",
             "outer_bg": "#e3e7ff",
@@ -1344,8 +1346,7 @@
             "b8_title": "Blended in the USA",
             "b8_sub": "",
             "b8_hide_mobile": false,
-            "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>",
-            "coa_enable": true
+            "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
           }
         },
         "experts_8AwtYf": {
@@ -1637,7 +1638,7 @@
         "text_size": 15,
         "top_icon_size": 40,
         "card_radius": 20,
-        "footer_text": "<p>It wasn't that they didn't work. It's that they weren't working on the problem: <em>insulin</em> <em>resistance</em>.</p>",
+        "footer_text": "<p>It wasn't that they didn't work. It's that they weren't working on the problem: <em>insulin</em> <em>resistance.</em></p>",
         "footer_size": 26,
         "footer_pad_top": 14,
         "footer_pad": 15,
@@ -2075,7 +2076,7 @@
       "name": "Community Videos",
       "settings": {
         "eyebrow": "",
-        "title": "Real stories from our community",
+        "title": "Women like you who tried everything else first",
         "heading_style": "custom",
         "headline_width": 560,
         "card_style": "gradient",
