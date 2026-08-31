@@ -1639,6 +1639,7 @@
         "top_icon_size": 40,
         "card_radius": 20,
         "footer_text": "<p>It wasn't that they didn't work. It's that they weren't working on the problem: <em>insulin</em> <em>resistance.</em></p>",
+        "footer_star": true,
         "footer_size": 26,
         "footer_pad_top": 14,
         "footer_pad": 15,
@@ -1648,8 +1649,7 @@
         "padding_top_desktop": 80,
         "padding_bottom_desktop": 80,
         "padding_top_mobile": 50,
-        "padding_bottom_mobile": 50,
-        "footer_star": true
+        "padding_bottom_mobile": 50
       }
     },
     "image_icon_cards_YkrA9X": {
@@ -1818,28 +1818,6 @@
           },
           "blocks": {}
         },
-        "ai_gen_block_94a518d_Q7B8W4": {
-          "type": "ai_gen_block_94a518d",
-          "disabled": true,
-          "settings": {
-            "step_1_text": "LESS INSULIN",
-            "step_2_text": "LESS BLOOD SUGAR CHAOS",
-            "step_3_text": "MORE BALANCE",
-            "text_size": 20,
-            "text_weight": "700",
-            "letter_spacing": 1,
-            "text_color": "#1b3def",
-            "arrow_size": 32,
-            "arrow_thickness": 1.5,
-            "arrow_color": "#1b3def",
-            "spacing": 20,
-            "padding": 40,
-            "desktop_width_percent": 100,
-            "background_color": "#ffffff",
-            "border_radius": 10
-          },
-          "blocks": {}
-        },
         "ai_gen_block_23be19a_U47bUD": {
           "type": "ai_gen_block_23be19a",
           "disabled": true,
@@ -1929,77 +1907,12 @@
             "rating_6": 0
           },
           "blocks": {}
-        },
-        "video_testimonials_hover_bod1": {
-          "type": "video_testimonials_hover",
-          "disabled": true,
-          "settings": {
-            "heading": "Real stories from our community",
-            "subheading": "",
-            "text_alignment": "center",
-            "container_width": 1200,
-            "columns": 3,
-            "card_gap": 22,
-            "video_border_radius": 16,
-            "padding_top": 50,
-            "padding_bottom": 50,
-            "background_color": "#ffffff",
-            "heading_color": "#1b3def",
-            "text_color": "#2c2d2e",
-            "name_color": "#14163a",
-            "hover_overlay_color": "#0b1b66",
-            "hover_text_color": "#ffffff",
-            "topic_bg": "#eef1fb",
-            "topic_text": "#1b3def",
-            "play_bg": "#ffffff",
-            "play_icon": "#1b3def",
-            "heading_size": 42,
-            "subheading_size": 16,
-            "quote_size": 16,
-            "name_size": 14,
-            "video_1": "shopify://files/videos/Krstina Testimonial 2.mp4",
-            "quote_1": "Supporting my body on my fertility journey",
-            "author_1": "Krstina Perez",
-            "author_title_1": "Verified customer @krstinaperez",
-            "topic_1": "Fertility",
-            "author_image_1": "shopify://shop_images/Screenshot_2026-01-15_at_15.15.24.png",
-            "video_2": "shopify://files/videos/Ashley Testimonial_490c3d0a-49f2-49bd-83d2-5e7e23b973e5.mp4",
-            "quote_2": "Living with endometriosis, supporting my metabolism",
-            "author_2": "Ashley Moya",
-            "author_title_2": "Verified customer @ashleymoya7",
-            "topic_2": "Endometriosis",
-            "video_3": "shopify://files/videos/Kylie Testimonial - 1.mp4",
-            "quote_3": "More emotional steadiness, less PMDD overwhelm",
-            "author_3": "Kylie Spencer",
-            "author_title_3": "Verified customer @kyliespencerhealth",
-            "topic_3": "Mood & PMDD",
-            "author_image_3": "shopify://shop_images/Kylie_Profile_Picture.jpg",
-            "video_4": "shopify://files/videos/Lauren Testimonial.mp4",
-            "quote_4": "It has been life changing for my cycles, skin and mood",
-            "author_4": "Lauren Elam",
-            "author_title_4": "Verified customer @larslavishlife",
-            "topic_4": "Cycles & skin",
-            "author_image_4": "shopify://shop_images/Screenshot_2026-01-15_at_16.30.10.png",
-            "video_5": "shopify://files/videos/Baylee Review_ef1487ba-ac0e-4aee-aef8-6d35d5ae0ebe.mp4",
-            "quote_5": "Supporting cravings and weight through metabolism",
-            "author_5": "Baylee Alisson",
-            "author_title_5": "Verified customer @strongbybayleeallison",
-            "topic_5": "Cravings & weight",
-            "author_image_5": "shopify://shop_images/Baylee_Profile_Picture_91306933-682a-4bee-b216-9576bcc32ab6.webp",
-            "quote_6": "",
-            "author_6": "",
-            "author_title_6": "",
-            "topic_6": ""
-          },
-          "blocks": {}
         }
       },
       "block_order": [
         "ai_gen_block_66d84b5_zDxjMN",
-        "ai_gen_block_94a518d_Q7B8W4",
         "ai_gen_block_23be19a_U47bUD",
-        "ai_gen_block_e5ed95a_KhkA73",
-        "video_testimonials_hover_bod1"
+        "ai_gen_block_e5ed95a_KhkA73"
       ],
       "settings": {}
     },
