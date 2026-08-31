@@ -1,0 +1,478 @@
+{%- comment -%}
+  Bodology · Offer spotlight
+  Heading (italics -> Instrument serif accent, <s> -> accent strikethrough),
+  subheading, then a white card: left half eyebrow badge / title / big
+  price / billing line / pill CTA, right half a checklist. Optional row of
+  short star testimonials below. Clinical palette by default.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .osp {
+    background: {{ s.bg }};
+    color: {{ s.text_color }};
+    padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px;
+    margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .osp__pw {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  #shopify-section-{{ section.id }} .osp__heading {
+    text-align: center;
+    color: {{ s.heading_color }};
+    margin: 0;
+    {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %}
+    line-height: 1.15;
+    font-weight: 400;
+  }
+  #shopify-section-{{ section.id }} .osp__heading em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ section.id }} .osp__heading s {
+    color: {{ s.accent_color }};
+    text-decoration-thickness: 2px;
+  }
+  #shopify-section-{{ section.id }} .osp__subheading {
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 12px 0 0;
+  }
+  #shopify-section-{{ section.id }} .osp__card {
+    background: {{ s.card_bg }};
+    border: 1px solid {{ s.card_border }};
+    border-radius: 18px;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+  }
+  #shopify-section-{{ section.id }} .osp__left {
+    padding: 44px 44px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #shopify-section-{{ section.id }} .osp__right {
+    padding: 44px 44px 40px;
+    border-left: 1px solid {{ s.card_border }};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #shopify-section-{{ section.id }} .osp__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: var(--font-body-bold-weight, 500);
+    letter-spacing: 0.02em;
+    color: {{ s.accent_color }};
+    margin: 0 0 14px;
+  }
+  #shopify-section-{{ section.id }} .osp__eyebrow svg { width: 15px; height: 15px; display: block; }
+  #shopify-section-{{ section.id }} .osp__title {
+    margin: 0;
+    font-size: {{ s.title_size }}px;
+    line-height: 1.15;
+    font-weight: 400;
+    color: {{ s.text_color }};
+  }
+  #shopify-section-{{ section.id }} .osp__price {
+    margin: 34px 0 0;
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+  }
+  #shopify-section-{{ section.id }} .osp__price-num {
+    font-size: {{ s.price_size }}px;
+    line-height: 1;
+    color: {{ s.text_color }};
+  }
+  #shopify-section-{{ section.id }} .osp__price-unit { font-size: 17px; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ section.id }} .osp__price-sub {
+    margin: 12px 0 0;
+    font-size: 13.5px;
+    line-height: 1.5;
+    opacity: .85;
+  }
+  #shopify-section-{{ section.id }} .osp__btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 42px;
+    border-radius: 999px;
+    background: {{ s.button_bg }};
+    color: {{ s.button_text }};
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    transition: transform .14s, filter .14s;
+  }
+  #shopify-section-{{ section.id }} .osp__btn:hover { transform: translateY(-1px); filter: brightness(1.06); }
+  #shopify-section-{{ section.id }} .osp__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: {{ s.item_size }}px;
+    line-height: 1.5;
+  }
+  #shopify-section-{{ section.id }} .osp__list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 0;
+  }
+  #shopify-section-{{ section.id }} .osp__list svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    margin-top: 2px;
+    color: {{ s.accent_color }};
+  }
+  #shopify-section-{{ section.id }} .osp__quotes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 48px;
+  }
+  #shopify-section-{{ section.id }} .osp__quote { text-align: center; }
+  #shopify-section-{{ section.id }} .osp__stars {
+    color: {{ s.accent_color }};
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin: 0 0 10px;
+  }
+  #shopify-section-{{ section.id }} .osp__quote-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .osp__card { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .osp__left { padding: 30px 24px 26px; }
+    #shopify-section-{{ section.id }} .osp__right { padding: 6px 24px 30px; border-left: 0; }
+    #shopify-section-{{ section.id }} .osp__btn { width: 100%; }
+    #shopify-section-{{ section.id }} .osp__quotes { grid-template-columns: 1fr; gap: 26px; margin-top: 36px; }
+    #shopify-section-{{ section.id }} .osp__price-num { font-size: {{ s.price_size | times: 0.8 | round }}px; }
+  }
+{% endstyle %}
+
+<div class="osp">
+  <div class="osp__pw">
+    {%- if s.heading != blank -%}
+      <h2 class="osp__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</h2>
+    {%- endif -%}
+    {%- if s.subheading != blank -%}
+      <p class="osp__subheading">{{ s.subheading }}</p>
+    {%- endif -%}
+
+    <div class="osp__card">
+      <div class="osp__left">
+        {%- if s.eyebrow != blank -%}
+          <p class="osp__eyebrow">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="7"></circle><polyline points="4.8 8.4 7 10.6 11.2 5.6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+            <span>{{ s.eyebrow }}</span>
+          </p>
+        {%- endif -%}
+        {%- if s.title != blank -%}
+          <h3 class="osp__title">{{ s.title }}</h3>
+        {%- endif -%}
+        {%- if s.price != blank -%}
+          <div class="osp__price">
+            <span class="osp__price-num">{{ s.price }}</span>
+            {%- if s.price_unit != blank -%}<span class="osp__price-unit">{{ s.price_unit }}</span>{%- endif -%}
+          </div>
+        {%- endif -%}
+        {%- if s.price_sub != blank -%}
+          <p class="osp__price-sub">{{ s.price_sub }}</p>
+        {%- endif -%}
+        {%- if s.button_label != blank -%}
+          <a class="osp__btn" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}</a>
+        {%- endif -%}
+      </div>
+      <div class="osp__right">
+        <ul class="osp__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'item' and block.settings.text != blank -%}
+              <li {{ block.shopify_attributes }}>
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="7"></circle><polyline points="4.8 8.4 7 10.6 11.2 5.6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+    {%- assign has_quotes = false -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'testimonial' and block.settings.text != blank -%}{%- assign has_quotes = true -%}{%- endif -%}
+    {%- endfor -%}
+    {%- if has_quotes -%}
+      <div class="osp__quotes">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'testimonial' and block.settings.text != blank -%}
+            <div class="osp__quote" {{ block.shopify_attributes }}>
+              <p class="osp__stars" aria-label="{{ block.settings.stars }} stars">{% for i in (1..5) %}{% if i <= block.settings.stars %}&#9733;{% else %}&#9734;{% endif %}{% endfor %}</p>
+              <p class="osp__quote-text">{{ block.settings.text }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Offer spotlight",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your full metabolic dose for <em>$1.09 a day</em>",
+      "info": "Italics render in the Instrument serif and use the accent color."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "The 90-day bundle is our lowest price per day."
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 0,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "info": "0 uses the theme H1 size."
+    },
+    {
+      "type": "header",
+      "content": "Card"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow badge",
+      "default": "60-day money-back guarantee"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "The 90-Day Bundle"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Big price",
+      "default": "$1.09"
+    },
+    {
+      "type": "text",
+      "id": "price_unit",
+      "label": "Price unit",
+      "default": "/day"
+    },
+    {
+      "type": "text",
+      "id": "price_sub",
+      "label": "Billing line",
+      "default": "$32.67 a month — billed $98 every 3 months as a subscription."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Start the 90-day bundle"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border and divider",
+      "default": "#d9d9e8"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent",
+      "default": "#1b3def",
+      "info": "Heading italics and strikethrough, eyebrow, checks, and stars."
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Sizes and spacing"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 18,
+      "max": 44,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "label": "Big price size",
+      "min": 28,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "item_size",
+      "label": "Checklist text size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Checklist item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Full clinical daily dose"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Quote"
+        },
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [
+    {
+      "name": "Offer spotlight",
+      "blocks": [
+        { "type": "item", "settings": { "text": "4,000mg myo + 100mg D-chiro — the full clinical daily dose" } },
+        { "type": "item", "settings": { "text": "40:1 clinically studied ratio" } },
+        { "type": "item", "settings": { "text": "90-day supply: two 45-day tubs" } },
+        { "type": "item", "settings": { "text": "Unflavored powder — dissolves clear in water or coffee" } },
+        { "type": "item", "settings": { "text": "Third-party tested, COA published" } },
+        { "type": "item", "settings": { "text": "Subscription price on every delivery" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
