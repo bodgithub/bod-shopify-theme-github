@@ -75,8 +75,17 @@
     margin-top: 14px;
     font-size: {{ s.text_size | times: 0.93 | round }}px;
     line-height: 1.5;
-    color: {{ s.text_color }};
+    color: {% if s.bottom_text_color != blank %}{{ s.bottom_text_color }}{% else %}{{ s.text_color }}{% endif %};
   }
+  #shopify-section-{{ section.id }} .clc__barrow {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.15em;
+    margin-left: 6px;
+    transition: transform .18s ease;
+  }
+  #shopify-section-{{ section.id }} .clc__card:hover .clc__barrow { transform: translateX(4px); }
   #shopify-section-{{ section.id }} .clc__title {
     display: flex;
     align-items: center;
@@ -220,7 +229,7 @@
             </ul>
           {%- endif -%}
           {%- if bs.bottom_text != blank -%}
-            <div class="clc__bottom">{{ bs.bottom_text }}</div>
+            <div class="clc__bottom">{{ bs.bottom_text }}{% if s.bottom_arrow %}<svg class="clc__barrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>{% endif %}</div>
           {%- endif -%}
         </div>
       {%- endfor -%}
@@ -417,6 +426,19 @@
       "id": "text_color",
       "label": "List text",
       "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "bottom_text_color",
+      "label": "Bottom line",
+      "info": "Leave empty to match the list text. On hover it follows the hover text color."
+    },
+    {
+      "type": "checkbox",
+      "id": "bottom_arrow",
+      "label": "Arrow after bottom line",
+      "default": false,
+      "info": "Small line arrow that nudges right when the column is hovered."
     },
     {
       "type": "header",
