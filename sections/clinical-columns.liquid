@@ -118,6 +118,9 @@
   #shopify-section-{{ section.id }} .clc__footer p { margin: 0 0 6px; }
   #shopify-section-{{ section.id }} .clc__footer p:last-child { margin-bottom: 0; }
   #shopify-section-{{ section.id }} .clc__footer a { color: inherit; text-decoration: underline; }
+  {%- if s.footer_star -%}
+  #shopify-section-{{ section.id }} .clc__footer p:last-child::after { content: '*'; font-size: 0.6em; vertical-align: super; line-height: 0; margin-left: 1px; }
+  {%- endif -%}
   {%- if s.hover_bg != blank -%}
   #shopify-section-{{ section.id }} .clc__card { transition: background .18s, transform .15s; }
   #shopify-section-{{ section.id }} .clc__card:hover { background: {{ s.hover_bg }}; }
@@ -468,6 +471,12 @@
       "id": "footer_text",
       "label": "Text",
       "info": "Shown centered under the modules. Italics render in the Instrument serif."
+    },
+    {
+      "type": "checkbox",
+      "id": "footer_star",
+      "label": "Add a small superscript * at the end",
+      "default": false
     },
     {
       "type": "range",
