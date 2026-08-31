@@ -260,7 +260,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     -%}
     {%- unless P == 'bd' and card_name == blank -%}
     <div class="pc-card{% if P == ps1c_default %} is-selected{% endif %}" role="radio" aria-checked="{% if P == ps1c_default %}true{% else %}false{% endif %}" tabindex="0"
-         data-ps1c-card data-ps1c-p="{{ P }}" data-ps1c-name="{{ card_name | escape }}" data-ps1c-variant="{{ card_variant }}" data-ps1c-plan="{{ card_plan }}"{% if requires_plan %} data-ps1c-requires-plan="1"{% endif %} data-ps1c-qty="{{ card_qty }}" data-ps1c-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1c-gift-title="{{ gift_name | escape }}" data-ps1c-gift-sub="{{ gift_bsub | escape }}" data-ps1c-gift-cross="{{ gift_crossout | escape }}" data-ps1c-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
+         data-ps1c-card data-ps1c-p="{{ P }}" data-ps1c-name="{{ card_name | escape }}" data-ps1c-price="{{ card_price | escape }}" data-ps1c-variant="{{ card_variant }}" data-ps1c-plan="{{ card_plan }}"{% if requires_plan %} data-ps1c-requires-plan="1"{% endif %} data-ps1c-qty="{{ card_qty }}" data-ps1c-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1c-gift-title="{{ gift_name | escape }}" data-ps1c-gift-sub="{{ gift_bsub | escape }}" data-ps1c-gift-cross="{{ gift_crossout | escape }}" data-ps1c-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         {%- if card_ribbon != blank -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
         <div class="pc-pad">
@@ -410,7 +410,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     else { window.location = cartUrl; }
   }
   function selected(){ return root.querySelector('[data-ps1c-card].is-selected'); }
-  function syncSub(){ if(!sub) return; var c = selected(); sub.textContent = c ? '· ' + c.getAttribute('data-ps1c-name') : ''; }
+  var ctaPrice = {% if s.cta_price %}true{% else %}false{% endif %};
+  function syncSub(){ if(!sub) return; var c = selected(); if(!c){ sub.textContent = ''; return; } sub.textContent = ctaPrice ? ('— ' + (c.getAttribute('data-ps1c-price') || '')) : ('· ' + c.getAttribute('data-ps1c-name')); }
   // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day.
   // After the Fri cutoff and all day Sat that lands on Monday, which reads as a long wait,
   // so show a delivery window instead. Fri before the cutoff still ships same day.
