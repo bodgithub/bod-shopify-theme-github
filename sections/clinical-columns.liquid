@@ -86,6 +86,7 @@
     transition: transform .18s ease;
   }
   #shopify-section-{{ section.id }} .clc__card:hover .clc__barrow { transform: translateX(4px); }
+  #shopify-section-{{ section.id }} .clc__card:hover .clc__barrow--q { transform: translateY(-2px) rotate(10deg); }
   #shopify-section-{{ section.id }} .clc__title {
     display: flex;
     align-items: center;
@@ -229,7 +230,7 @@
             </ul>
           {%- endif -%}
           {%- if bs.bottom_text != blank -%}
-            <div class="clc__bottom">{{ bs.bottom_text }}{% if s.bottom_arrow %}<svg class="clc__barrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>{% endif %}</div>
+            <div class="clc__bottom">{{ bs.bottom_text }}{% if s.bottom_glyph == 'arrow' or s.bottom_arrow %}<svg class="clc__barrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>{% elsif s.bottom_glyph == 'question' %}<svg class="clc__barrow clc__barrow--q" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.6 9a3.4 3.4 0 1 1 5.9 2.3c-.9.9-2.5 1.4-2.5 3.2"></path><line x1="12" y1="18.2" x2="12" y2="18.21"></line></svg>{% endif %}</div>
           {%- endif -%}
         </div>
       {%- endfor -%}
@@ -434,11 +435,16 @@
       "info": "Leave empty to match the list text. On hover it follows the hover text color."
     },
     {
-      "type": "checkbox",
-      "id": "bottom_arrow",
-      "label": "Arrow after bottom line",
-      "default": false,
-      "info": "Small line arrow that nudges right when the column is hovered."
+      "type": "select",
+      "id": "bottom_glyph",
+      "label": "Symbol after bottom line",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "arrow", "label": "Arrow" },
+        { "value": "question", "label": "Question mark" }
+      ],
+      "default": "none",
+      "info": "Small line symbol that animates when the column is hovered."
     },
     {
       "type": "header",
