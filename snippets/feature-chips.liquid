@@ -1,0 +1,58 @@
+{%- comment -%}
+  Bodology · Feature chips block (product information)
+  Row of small rounded chips under the plan selector. The first chip can
+  show the serving count and follows the selected plan via the ps1c:select
+  event (30 servings on 1-Month, otherwise the default). On mobile all
+  chips fit on one row.
+{%- endcomment -%}
+
+<style>
+  #fchips-{{ uid }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: {{ s.margin_top | default: 20 }}px;
+  }
+  #fchips-{{ uid }} .fc__chip {
+    padding: 10px;
+    background: {{ s.bg | default: '#e3e7ff' }};
+    border: 1px solid {{ s.border_color | default: '#3447af' }};
+    border-radius: 10px;
+    font-size: 0.95em;
+    font-weight: 700;
+    {% if s.text_color != blank %}color: {{ s.text_color }};{% endif %}
+  }
+  @media screen and (max-width: 749px) {
+    #fchips-{{ uid }} { flex-wrap: nowrap; }
+    #fchips-{{ uid }} .fc__chip {
+      flex: 1 1 0;
+      min-width: 0;
+      text-align: center;
+      padding: 9px 4px;
+      font-size: clamp(10.5px, 3.3vw, 14px);
+      white-space: nowrap;
+    }
+  }
+</style>
+
+<div id="fchips-{{ uid }}">
+  {%- if s.show_servings -%}
+    <div class="fc__chip" data-bod-servings data-base="{{ s.servings_default | default: '45 servings' | escape }}" data-alt="{{ s.servings_alt | default: '30 servings' | escape }}">{{ s.servings_default | default: '45 servings' }}</div>
+  {%- endif -%}
+  {%- if s.chip_1 != blank -%}<div class="fc__chip">{{ s.chip_1 }}</div>{%- endif -%}
+  {%- if s.chip_2 != blank -%}<div class="fc__chip">{{ s.chip_2 }}</div>{%- endif -%}
+  {%- if s.chip_3 != blank -%}<div class="fc__chip">{{ s.chip_3 }}</div>{%- endif -%}
+</div>
+
+{%- if s.show_servings -%}
+<script>
+(function(){
+  var el = document.querySelector('#fchips-{{ uid }} [data-bod-servings]');
+  if(!el) return;
+  document.addEventListener('ps1c:select', function(e){
+    var n = (e.detail && e.detail.name) || '';
+    el.textContent = n.indexOf('1-Month') > -1 ? el.dataset.alt : el.dataset.base;
+  });
+})();
+</script>
+{%- endif -%}
