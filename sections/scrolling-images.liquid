@@ -8,6 +8,7 @@
   assign disable_top_spacing = section.settings.disable_top_spacing
   assign disable_bottom_spacing = section.settings.disable_bottom_spacing
   assign size = section.blocks.size | plus: 0
+  assign static_mode = section.settings.static_mode
 -%}
 <div class="scrolling-images section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" id="scrolling-images-{{ section.id }}">
 
@@ -67,6 +68,68 @@
     }
     /* If you prefer a different shape, change the line above to:
        66.666% (3:2), 75% (4:3), 56.25% (16:9), etc. */
+
+    {%- if static_mode -%}
+    /* Static row mode: manual scroll, rounded cards, edge fade + arrow */
+    #scrolling-images-{{ section.id }} { position: relative; }
+    #scrolling-images-{{ section.id }} .scrolling-images--inner {
+      animation: none !important;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    #scrolling-images-{{ section.id }} .scrolling-images--inner::-webkit-scrollbar { display: none; }
+    #scrolling-images-{{ section.id }} .scrolling-images--inner > div { animation: none !important; }
+    #scrolling-images-{{ section.id }} .scrolling-images--image { border-radius: 14px; overflow: hidden; }
+    #scrolling-images-{{ section.id }} .scrolling-images--heading {
+      font-size: 16px;
+      font-weight: var(--font-body-bold-weight, 500);
+      color: {{ section.settings.static_heading_color }};
+      margin: 14px 0 5px;
+    }
+    #scrolling-images-{{ section.id }} .scrolling-images--desc,
+    #scrolling-images-{{ section.id }} .scrolling-images--desc p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: {{ section.settings.static_text_color }};
+    }
+    #scrolling-images-{{ section.id }} .si-fade {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      background: linear-gradient(to left, rgb({{ section.settings.static_fade.rgb | replace: ' ', ',' }}), rgba({{ section.settings.static_fade.rgb | replace: ' ', ',' }}, 0));
+      pointer-events: none;
+      z-index: 2;
+    }
+    #scrolling-images-{{ section.id }} .si-arrow {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid {{ section.settings.static_arrow_color }};
+      color: {{ section.settings.static_arrow_color }};
+      background: transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: opacity .2s;
+    }
+    #scrolling-images-{{ section.id }} .si-arrow svg { width: 18px; height: 18px; display: block; }
+    #scrolling-images-{{ section.id }} .si-arrow.is-done { opacity: 0; pointer-events: none; }
+    @media screen and (max-width: 749px) {
+      #scrolling-images-{{ section.id }} .si-fade { width: 90px; }
+      #scrolling-images-{{ section.id }} .si-arrow { width: 38px; height: 38px; right: 10px; }
+    }
+    {%- endif -%}
   </style>
 
   <div class="scrolling-images--inner scrolling-images--{{ image_alignment }} direction-{{ direction }} scrolling-images--spacing-{{ column_spacing }}" style="--marquee-speed: {{ speed }}">
@@ -122,8 +185,35 @@
         {%- endfor -%}
       </div>
     {% endcapture %}
-    {{ scrolling_text }}{{ scrolling_text }}
+    {{ scrolling_text }}{% unless static_mode %}{{ scrolling_text }}{% endunless %}
   </div>
+  {%- if static_mode -%}
+    <div class="si-fade" aria-hidden="true"></div>
+    <button type="button" class="si-arrow" aria-label="Scroll right">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
+    </button>
+    <script>
+    (function(){
+      var root = document.getElementById('scrolling-images-{{ section.id }}');
+      if(!root) return;
+      var inner = root.querySelector('.scrolling-images--inner');
+      var arrow = root.querySelector('.si-arrow');
+      if(!inner || !arrow) return;
+      function step(){
+        var item = inner.querySelector('.scrolling-images--item');
+        return item ? item.getBoundingClientRect().width + 24 : 300;
+      }
+      arrow.addEventListener('click', function(){ inner.scrollBy({ left: step(), behavior: 'smooth' }); });
+      function check(){
+        var done = inner.scrollLeft + inner.clientWidth >= inner.scrollWidth - 10;
+        arrow.classList.toggle('is-done', done);
+      }
+      inner.addEventListener('scroll', check, { passive: true });
+      window.addEventListener('resize', check);
+      check();
+    })();
+    </script>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -188,6 +278,12 @@
         "default": "20s",
         "label": "Speed"
       },
+      { "type": "header", "content": "Static row mode" },
+      { "type": "checkbox", "id": "static_mode", "default": false, "label": "Static row (no auto-scroll)", "info": "Rounded cards scrolled by swipe or the arrow, with an edge fade." },
+      { "type": "color", "id": "static_fade", "label": "Edge fade color", "default": "#f2eeea", "info": "Match the section background." },
+      { "type": "color", "id": "static_arrow_color", "label": "Arrow color", "default": "#1b3def" },
+      { "type": "color", "id": "static_heading_color", "label": "Card heading color", "default": "#1a2874" },
+      { "type": "color", "id": "static_text_color", "label": "Card text color", "default": "#1a2874" },
       { "type": "header", "content": "Spacing" },
       { "type": "checkbox", "id": "disable_top_spacing", "default": false, "label": "Remove top spacing" },
       { "type": "checkbox", "id": "disable_bottom_spacing", "default": false, "label": "Remove bottom spacing" }
