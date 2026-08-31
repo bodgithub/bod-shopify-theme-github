@@ -19,7 +19,7 @@
     border: 1px solid {{ s.border_color | default: '#3447af' }};
     border-radius: 10px;
     font-size: 0.95em;
-    font-weight: 700;
+    font-weight: var(--font-body-bold-weight, 500);
     {% if s.text_color != blank %}color: {{ s.text_color }};{% endif %}
   }
   @media screen and (max-width: 749px) {
