@@ -127,6 +127,8 @@
     <div {{ block.shopify_attributes }}>{%- render 'facts-table', s: block.settings, uid: block.id -%}</div>
   {%- when 'feature_chips' -%}
     <div {{ block.shopify_attributes }}>{%- render 'feature-chips', s: block.settings, uid: block.id -%}</div>
+  {%- when 'quote' -%}
+    <div {{ block.shopify_attributes }}>{%- render 'quote-block', s: block.settings, uid: block.id -%}</div>
   {%- when 'bundle_upsell' -%}
     <div {{ block.shopify_attributes }}>{%- render 'bundle-upsell', s: block.settings, uid: block.id -%}</div>
   {%- when 'trust_circles' -%}

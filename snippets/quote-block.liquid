@@ -1,0 +1,71 @@
+{%- comment -%}
+  Bodology · Quote block (product information)
+  One quote in the quote-grid style: optional stars (bod-stars, product
+  block styling), quote text with serif italics in the accent color,
+  bordered round avatar, name and role. Optional card mode with its own
+  background and border. Params: s = block.settings, uid = block.id.
+{%- endcomment -%}
+
+<style>
+  #qb-{{ uid }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    color: {{ s.text_color | default: '#1a2874' }};
+    margin: {{ s.margin_top | default: 0 }}px 0 {{ s.margin_bottom | default: 0 }}px;
+    {% if s.card_mode %}
+    background: {{ s.card_bg | default: '#ffffff' }};
+    border: 1px solid {{ s.card_border | default: '#3447af' }};
+    border-radius: 16px;
+    padding: 22px 20px;
+    {% endif %}
+  }
+  #qb-{{ uid }} .qb__stars { flex-basis: 100%; display: flex; justify-content: flex-start; }
+  #qb-{{ uid }} .qb__text {
+    flex: 1 1 200px;
+    font-size: {{ s.quote_size | default: 13 }}px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  #qb-{{ uid }} .qb__text p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  #qb-{{ uid }} .qb__text em { color: {{ s.accent_color | default: '#1b3def' }}; }
+  #qb-{{ uid }} .qb__who {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+    text-align: left;
+  }
+  #qb-{{ uid }} .qb__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid {{ s.text_color | default: '#1a2874' }};
+    object-fit: cover;
+    display: block;
+  }
+  #qb-{{ uid }} .qb__name { font-size: {{ s.quote_size | default: 13 }}px; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
+  #qb-{{ uid }} .qb__role { font-size: {{ s.quote_size | default: 13 | times: 0.95 | round }}px; margin: 0; opacity: .85; }
+</style>
+
+<div id="qb-{{ uid }}">
+  {%- if s.stars > 0 -%}
+    <div class="qb__stars">{% render 'bod-stars', rating: s.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: uid %}</div>
+  {%- endif -%}
+  {%- if s.text != blank -%}
+    <div class="qb__text">&ldquo;{{ s.text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
+  {%- endif -%}
+  {%- if s.name != blank or s.image != blank -%}
+    <div class="qb__who">
+      {%- if s.image != blank -%}
+        <img class="qb__avatar" src="{{ s.image | image_url: width: 88 }}" alt="{{ s.name | escape }}" width="44" height="44" loading="lazy">
+      {%- endif -%}
+      <div>
+        {%- if s.name != blank -%}<p class="qb__name">{{ s.name }}</p>{%- endif -%}
+        {%- if s.role != blank -%}<p class="qb__role">{{ s.role }}</p>{%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
