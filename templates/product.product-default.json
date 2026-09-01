@@ -2409,6 +2409,7 @@
         "stage_jgigcJ": {
           "type": "stage",
           "settings": {
+            "image": "shopify://shop_images/Woman-holding-stomach.png",
             "chip": "Weeks 1–2",
             "title": "Your body adjusts",
             "text": "Inositol builds up with daily use. Most women feel nothing yet — that's normal, not a sign it isn't working.*",
@@ -2419,6 +2420,7 @@
         "stage_hzQ9Fx": {
           "type": "stage",
           "settings": {
+            "image": "shopify://shop_images/Relief.png",
             "chip": "Weeks 3–6",
             "title": "Consistency compounds",
             "text": "Take it at the same time every day. This is where mood and stress resilience support begins for many women.*",
@@ -2462,9 +2464,9 @@
         "max_width": 1240,
         "pad_top": 48,
         "pad_bottom": 56,
-        "heading": "<h2>Your <em>inositol</em> journey</h2>",
+        "heading": "<h2>Your inositol <em>journey</em></h2>",
         "heading_color": "#1a2874",
-        "heading_accent": "#4F63D4",
+        "heading_accent": "#4f63d4",
         "label_color": "#1a2874",
         "uptitle_color": "#1a2874",
         "text_color": "#1a2874",
@@ -2569,8 +2571,8 @@
       ],
       "custom_css": [],
       "settings": {
-        "bg_grad_top": "#F3EEEA",
-        "bg_grad_bottom": "#FBFAF9",
+        "bg_grad_top": "#f3eeea",
+        "bg_grad_bottom": "#fbfaf9",
         "testimonial_source": "blocks",
         "heading": "<h1>Trusted by <em>experts</em></h1>",
         "text": "",
