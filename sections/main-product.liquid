@@ -34,6 +34,11 @@
       grid-template-columns: minmax(40%, 700px) {{ section.settings.desktop_info_width | default: 462 }}px !important;
     }
   }
+  {%- if section.settings.bg_grad_bottom != blank -%}
+  #shopify-section-{{ section.id }} {
+    background: linear-gradient(180deg, {% if section.settings.bg_grad_top != blank %}{{ section.settings.bg_grad_top }}{% else %}rgba(0,0,0,0){% endif %} 0%, {{ section.settings.bg_grad_bottom }} 100%);
+  }
+  {%- endif -%}
 {%- endstyle -%}
 <div class="thb-product-detail product">
   <div class="row">
@@ -227,6 +232,22 @@
   "tag": "section",
   "class": "product-section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Section background"
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_top",
+      "label": "Gradient top",
+      "info": "Leave empty for transparent."
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_bottom",
+      "label": "Gradient bottom",
+      "info": "Set to give the whole section a top-to-bottom gradient background. Empty = unchanged."
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_add_to_cart",
