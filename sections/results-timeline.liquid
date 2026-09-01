@@ -22,7 +22,7 @@
 #rt-{{ uid }} .rt-track{display:grid; grid-template-columns:repeat({{ n }},1fr); column-gap:26px;}
 #rt-{{ uid }} .rt-img{aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:{{ section.settings.img_placeholder }};}
 #rt-{{ uid }} .rt-img img{width:100%; height:100%; object-fit:cover; display:block;}
-#rt-{{ uid }} .rt-seg{position:relative; height:7px; margin:20px 0 20px;}
+#rt-{{ uid }} .rt-seg{position:relative; height:7px; margin:16px 0 14px;}
 #rt-{{ uid }} .rt-seg::before{content:''; position:absolute; top:3px; left:-13px; right:-13px; height:1px; background:{{ section.settings.line_color }};}
 #rt-{{ uid }} .rt-stage:first-child .rt-seg::before{left:0;}
 #rt-{{ uid }} .rt-stage:last-child .rt-seg::before{right:0;}
@@ -30,8 +30,20 @@
 #rt-{{ uid }} .rt-stage:first-child .rt-seg::after{transform:none;}
 #rt-{{ uid }} .rt-enddot{display:none;}
 #rt-{{ uid }} .rt-stage:last-child .rt-enddot{display:block; position:absolute; top:0; right:0; width:7px; height:7px; border-radius:50%; background:{{ section.settings.dot_color }}; transform:translateX(50%);}
-#rt-{{ uid }} .rt-label{font-size:17px; font-weight:400; color:{{ section.settings.label_color }}; margin:0 0 12px;}
-#rt-{{ uid }} .rt-up{font-size:12.5px; font-weight:500; letter-spacing:0.09em; text-transform:uppercase; color:{{ section.settings.uptitle_color }}; margin:0 0 13px;}
+#rt-{{ uid }} .rt-label{font-size:17px; font-weight:600; color:{{ section.settings.label_color }}; margin:0 0 6px;}
+#rt-{{ uid }} .rt-up{font-size:12.5px; font-weight:500; letter-spacing:0.09em; text-transform:uppercase; color:{{ section.settings.uptitle_color }}; margin:0 0 8px;}
+#rt-{{ uid }} .rt-sub{font-size:11.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin:14px 0 5px;}
+#rt-{{ uid }} .rt-sub--studies{color:{{ section.settings.studies_title_color | default: '#1b3def' }};}
+#rt-{{ uid }} .rt-sub--cust{color:{{ section.settings.customers_title_color | default: '#1b3def' }};}
+#rt-{{ uid }} .rt-quote{display:flex; align-items:center; flex-wrap:wrap; gap:10px; margin-top:14px;}
+#rt-{{ uid }} .rt-quote__stars{flex-basis:100%; display:flex;}
+#rt-{{ uid }} .rt-quote__text{flex:1 1 160px; font-size:13px; line-height:1.55; margin:0; color:{{ section.settings.text_color }};}
+#rt-{{ uid }} .rt-quote__text p{margin:0; font-size:inherit; line-height:inherit; color:inherit;}
+#rt-{{ uid }} .rt-quote__text em{color:{{ section.settings.heading_accent | default: '#1b3def' }};}
+#rt-{{ uid }} .rt-quote__who{display:flex; align-items:center; gap:8px; flex:0 0 auto; text-align:left;}
+#rt-{{ uid }} .rt-quote__avatar{width:38px; height:38px; border-radius:50%; border:1px solid {{ section.settings.text_color }}; object-fit:cover; display:block;}
+#rt-{{ uid }} .rt-quote__name{font-size:12.5px; font-weight:var(--font-body-bold-weight, 500); margin:0; color:{{ section.settings.text_color }};}
+#rt-{{ uid }} .rt-quote__role{font-size:12px; margin:0; opacity:.85; color:{{ section.settings.text_color }};}
 #rt-{{ uid }} .rt-d{font-size:14.5px; line-height:1.6; color:{{ section.settings.text_color }}; margin:0;}
 #rt-{{ uid }} .rt-stage-btn{display:flex; align-items:center; justify-content:center; gap:10px; width:100%; border:0; cursor:pointer; border-radius:12px; padding:13px 18px; margin-top:16px; font-family:inherit; font-size:14px; font-weight:600; color:#fff; background:linear-gradient(140deg,#1B3DEF 0%,#3358FF 52%,#5C78FF 100%); box-shadow:0 10px 26px rgba(27,61,239,0.26); text-decoration:none; text-align:center; transition:filter .16s,transform .12s,box-shadow .14s;}
 #rt-{{ uid }} .rt-stage-btn:hover{filter:brightness(1.06); transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34);}
@@ -80,6 +92,33 @@
         {%- if block.settings.chip != blank -%}<p class="rt-label">{{ block.settings.chip }}</p>{%- endif -%}
         {%- if block.settings.title != blank -%}<h3 class="rt-up">{{ block.settings.title }}</h3>{%- endif -%}
         {%- if block.settings.text != blank -%}<p class="rt-d">{{ block.settings.text }}</p>{%- endif -%}
+        {%- if block.settings.studies_text != blank -%}
+          <p class="rt-sub rt-sub--studies">{{ section.settings.studies_label | default: 'What the studies show' }}</p>
+          <p class="rt-d">{{ block.settings.studies_text }}</p>
+        {%- endif -%}
+        {%- if block.settings.customers_text != blank -%}
+          <p class="rt-sub rt-sub--cust">{{ section.settings.customers_label | default: 'What our customers report:' }}</p>
+          <p class="rt-d">{{ block.settings.customers_text }}</p>
+        {%- endif -%}
+        {%- if block.settings.quote_text != blank -%}
+          <div class="rt-quote">
+            {%- if block.settings.quote_stars > 0 -%}
+              <div class="rt-quote__stars">{% render 'bod-stars', rating: block.settings.quote_stars, count: 1, link: false, show_label: false, style: 'chunky', size: 13, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
+            {%- endif -%}
+            <div class="rt-quote__text">&ldquo;{{ block.settings.quote_text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
+            {%- if block.settings.quote_name != blank or block.settings.quote_image != blank -%}
+              <div class="rt-quote__who">
+                {%- if block.settings.quote_image != blank -%}
+                  <img class="rt-quote__avatar" src="{{ block.settings.quote_image | image_url: width: 76 }}" alt="{{ block.settings.quote_name | escape }}" width="38" height="38" loading="lazy">
+                {%- endif -%}
+                <div>
+                  {%- if block.settings.quote_name != blank -%}<p class="rt-quote__name">{{ block.settings.quote_name }}</p>{%- endif -%}
+                  {%- if block.settings.quote_role != blank -%}<p class="rt-quote__role">{{ block.settings.quote_role }}</p>{%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
         {%- if block.settings.btn_label != blank and block.settings.btn_link != blank -%}<a class="rt-stage-btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>{%- endif -%}
       </div>
       {%- endfor -%}
@@ -234,6 +273,30 @@
       "default": "#1a2874"
     },
     {
+      "type": "text",
+      "id": "studies_label",
+      "label": "Studies subheading",
+      "default": "What the studies show"
+    },
+    {
+      "type": "color",
+      "id": "studies_title_color",
+      "label": "Studies subheading color",
+      "default": "#1b3def"
+    },
+    {
+      "type": "text",
+      "id": "customers_label",
+      "label": "Customers subheading",
+      "default": "What our customers report:"
+    },
+    {
+      "type": "color",
+      "id": "customers_title_color",
+      "label": "Customers subheading color",
+      "default": "#1b3def"
+    },
+    {
       "type": "color",
       "id": "text_color",
       "label": "Stage text",
@@ -347,6 +410,48 @@
           "id": "text",
           "label": "Text",
           "default": "What happens in this window."
+        },
+        {
+          "type": "textarea",
+          "id": "studies_text",
+          "label": "Studies text",
+          "info": "Shown under the studies subheading."
+        },
+        {
+          "type": "textarea",
+          "id": "customers_text",
+          "label": "Customers text",
+          "info": "Shown under the customers subheading."
+        },
+        {
+          "type": "range",
+          "id": "quote_stars",
+          "label": "Quote stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "quote_text",
+          "label": "Quote",
+          "info": "Quotation marks added automatically."
+        },
+        {
+          "type": "image_picker",
+          "id": "quote_image",
+          "label": "Quote avatar"
+        },
+        {
+          "type": "text",
+          "id": "quote_name",
+          "label": "Quote name"
+        },
+        {
+          "type": "text",
+          "id": "quote_role",
+          "label": "Quote role"
         },
         {
           "type": "text",
