@@ -14,7 +14,7 @@
 <style>
   #shopify-section-{{ section.id }} .si-heading {
     text-align: center;
-    color: {{ section.settings.heading_color }};
+    color: {{ section.settings.heading_color }} !important;
     margin: 0 auto;
     padding: {{ section.settings.heading_pad_top | default: 0 }}px 20px {{ section.settings.heading_pad_bottom }}px;
     line-height: 1.15;
@@ -22,7 +22,10 @@
     max-width: 100%;
   }
   #shopify-section-{{ section.id }} .si-heading em { font-style: italic; }
-  #shopify-section-{{ section.id }} .si-heading p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .si-heading p { margin: 0; font-size: inherit; line-height: inherit; color: {{ section.settings.heading_color }} !important; }
+  /* the carousel's own section-spacing top margin would sit between the
+     heading and the images — the heading paddings control that gap instead */
+  #shopify-section-{{ section.id }} .scrolling-images.section-spacing { margin-top: 0; }
   @media screen and (min-width: 750px) {
     #shopify-section-{{ section.id }} .si-heading {
       min-width: {{ section.settings.heading_min_width }}px;

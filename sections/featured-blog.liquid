@@ -35,6 +35,21 @@
 	endif
 
 -%}
+{%- if section.settings.section_bg != blank or section.settings.card_bg != blank -%}
+<style>
+	{%- if section.settings.section_bg != blank -%}
+	#shopify-section-{{ section.id }} { background: {{ section.settings.section_bg }}; }
+	{%- endif -%}
+	{%- if section.settings.card_bg != blank -%}
+	#shopify-section-{{ section.id }} .blog-post {
+		background: {{ section.settings.card_bg }};
+		border-radius: var(--block-border-radius, 16px);
+		overflow: hidden;
+	}
+	#shopify-section-{{ section.id }} .blog-post .blog-post-info { padding: 0 18px 18px; }
+	{%- endif -%}
+</style>
+{%- endif -%}
 <div class="row">
 	<div class="small-12 columns">
 		<div class="blog-posts{% if mobile_swipe %} swipe-on-mobile{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
@@ -72,6 +87,18 @@
     "name": "Blog posts",
   "class": "section-featured-blog",
     "settings": [
+      {
+        "type": "color",
+        "id": "section_bg",
+        "label": "Section background",
+        "info": "Leave empty for the page background."
+      },
+      {
+        "type": "color",
+        "id": "card_bg",
+        "label": "Card background",
+        "info": "Leave empty for no card fill. Adds rounded corners and inner padding."
+      },
       {
         "type": "text",
         "id": "heading",
