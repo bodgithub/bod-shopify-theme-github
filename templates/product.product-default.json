@@ -1892,11 +1892,12 @@
       "blocks": {
         "quote_mpnDLK": {
           "type": "quote",
+          "disabled": true,
           "settings": {
             "stars": 5,
-            "text": "<p>I have tried different inositols and absolutely love this one. I can tell the difference it does to my body! Has helped with my cravings and pcos! Highly recommend to anyone!</p>",
-            "image": "shopify://shop_images/profile_pic.png",
-            "name": "Esther E.",
+            "text": "<p>I have gone more than 3 months without my period. I started taking bodology inositol on 07/22/2026 the day after I received the product, and just 2 weeks and a few days later on 08/08/26 <strong>I got my menstrual period.</strong> I couldn’t believe it. This is an incredible product...</p>",
+            "image": "shopify://shop_images/profile_pic_2.png",
+            "name": "Angeli C.",
             "role": "Verified buyer"
           }
         },
@@ -1904,16 +1905,39 @@
           "type": "quote",
           "settings": {
             "stars": 5,
-            "text": "<p>My doctor suggested adding it to my plan after noticing my insulin levels were high (HOMA-IR 3.8)... helped stabilize my insulin levels, improved my energy and eased several of my PCOS symptoms.</p>",
+            "text": "<p>My doctor suggested adding it to my plan after noticing my insulin levels were high (HOMA-IR 3.8)... helped stabilize my insulin levels, improved my energy and eased several of my <strong>PCOS symptoms</strong>.</p>",
             "image": "shopify://shop_images/profile_pic_3.png",
             "name": "Ewa S.",
+            "role": "Verified buyer"
+          }
+        },
+        "quote_VtXtAX": {
+          "type": "quote",
+          "disabled": true,
+          "settings": {
+            "stars": 5,
+            "text": "<p>It feels good to feel good again. <strong>Food noise</strong> has gone down, less afternoon crashes, period is back.</p>",
+            "image": "shopify://shop_images/profile_pic.png",
+            "name": "Lilianna",
+            "role": "Verified buyer"
+          }
+        },
+        "quote_tktejL": {
+          "type": "quote",
+          "settings": {
+            "stars": 5,
+            "text": "<p>It helps balance out cravings and keeps insulin in check, supports my PCOS and Hormones during <strong>perimenopause</strong>. I love that its flavorless.</p>",
+            "image": "shopify://shop_images/profile_pic.png",
+            "name": "Lisa F.",
             "role": "Verified buyer"
           }
         }
       },
       "block_order": [
         "quote_mpnDLK",
-        "quote_G79qtA"
+        "quote_G79qtA",
+        "quote_VtXtAX",
+        "quote_tktejL"
       ],
       "name": "Quote grid",
       "settings": {
