@@ -22,6 +22,18 @@
 -%}
 <div class="row">
 	<div class="small-12 columns">
+		{%- if section.settings.paint_bg and has_bg -%}
+		<style>
+			#shopify-section-{{ section.id }} .collapsible-content--has-bg {
+				background: var(--color-bg, #f5f5f5);
+				padding: 25px;
+				border-radius: var(--block-border-radius, 16px);
+			}
+			@media only screen and (min-width: 1068px) {
+				#shopify-section-{{ section.id }} .collapsible-content--has-bg { padding: 55px; }
+			}
+		</style>
+		{%- endif -%}
 		<div class="collapsible-content {% if has_bg -%}collapsible-content--has-bg{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}"style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --color-links: {{ color_links }}; --color-border: {{ color_border }};">
 			{% render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style %}
 			<div class="collapsible-content__inner">
@@ -110,6 +122,13 @@
         "id": "color_bg",
         "label": "Background",
         "default": "transparent"
+      },
+			{
+        "type": "checkbox",
+        "id": "paint_bg",
+        "label": "Show background color",
+        "default": false,
+        "info": "The theme's background rule for this section was disabled globally; turn this on to paint the color above (adds card padding and rounded corners)."
       },
 			{
         "type": "color",
