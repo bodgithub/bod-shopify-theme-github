@@ -104,7 +104,7 @@
   }
   #shopify-section-{{ section.id }} .qg__name { font-size: {{ s.quote_size | times: 1.0 | round }}px; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
   #shopify-section-{{ section.id }} .qg__role { font-size: {{ s.quote_size | times: 0.95 | round }}px; margin: 0; opacity: .85; }
-  #shopify-section-{{ section.id }} .qg__stars { flex-basis: 100%; display: flex; justify-content: center; }
+  #shopify-section-{{ section.id }} .qg__stars { flex-basis: 100%; display: flex; justify-content: flex-start; }
   {%- if s.card_mode -%}
   #shopify-section-{{ section.id }} .qg__quote {
     background: {{ s.quote_card_bg }};
@@ -130,7 +130,7 @@
         {%- for block in section.blocks -%}
           <div class="qg__quote" {{ block.shopify_attributes }}>
             {%- if block.settings.stars > 0 -%}
-              <div class="qg__stars">{% render 'bod-stars', rating: block.settings.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'center', uid: block.id %}</div>
+              <div class="qg__stars">{% render 'bod-stars', rating: block.settings.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
             {%- endif -%}
             {%- if block.settings.text != blank -%}
               <div class="qg__quote-text">&ldquo;{{ block.settings.text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
