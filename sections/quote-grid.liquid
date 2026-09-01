@@ -98,11 +98,22 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
+    border: 1px solid {{ s.text_color }};
     object-fit: cover;
     display: block;
   }
   #shopify-section-{{ section.id }} .qg__name { font-size: {{ s.quote_size | times: 1.0 | round }}px; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
   #shopify-section-{{ section.id }} .qg__role { font-size: {{ s.quote_size | times: 0.95 | round }}px; margin: 0; opacity: .85; }
+  #shopify-section-{{ section.id }} .qg__stars { flex-basis: 100%; display: flex; justify-content: center; }
+  {%- if s.card_mode -%}
+  #shopify-section-{{ section.id }} .qg__quote {
+    background: {{ s.quote_card_bg }};
+    border: 1px solid {{ s.quote_card_border }};
+    border-radius: 16px;
+    padding: 26px 22px;
+    align-content: flex-start;
+  }
+  {%- endif -%}
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} .qg__grid { grid-template-columns: 1fr; gap: 26px; }
   }
@@ -118,6 +129,9 @@
       <div class="qg__grid">
         {%- for block in section.blocks -%}
           <div class="qg__quote" {{ block.shopify_attributes }}>
+            {%- if block.settings.stars > 0 -%}
+              <div class="qg__stars">{% render 'bod-stars', rating: block.settings.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'center', uid: block.id %}</div>
+            {%- endif -%}
             {%- if block.settings.text != blank -%}
               <div class="qg__quote-text">&ldquo;{{ block.settings.text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
             {%- endif -%}
@@ -175,9 +189,18 @@
       "id": "heading_align",
       "label": "Headline alignment",
       "options": [
-        { "value": "left", "label": "Left" },
-        { "value": "center", "label": "Center" },
-        { "value": "right", "label": "Right" }
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
       ],
       "default": "center"
     },
@@ -236,7 +259,36 @@
       "step": 1,
       "unit": "%",
       "default": 0,
-      "info": "Squeezes the quotes in from both sides — useful for a single centered quote."
+      "info": "Squeezes the quotes in from both sides \u2014 useful for a single centered quote."
+    },
+    {
+      "type": "header",
+      "content": "Cards and stars"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_mode",
+      "label": "Show quotes as cards",
+      "default": false,
+      "info": "Each quote gets its own background and border, carousel-card style."
+    },
+    {
+      "type": "color",
+      "id": "quote_card_bg",
+      "label": "Quote card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "quote_card_border",
+      "label": "Quote card border",
+      "default": "#3447af"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Stars",
+      "default": "#ddbd6d"
     },
     {
       "type": "header",
@@ -355,6 +407,16 @@
       "name": "Quote",
       "settings": [
         {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "info": "0 hides the stars."
+        },
+        {
           "type": "richtext",
           "id": "text",
           "label": "Quote",
@@ -384,8 +446,12 @@
     {
       "name": "Quote grid",
       "blocks": [
-        { "type": "quote" },
-        { "type": "quote" }
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
       ]
     }
   ]
