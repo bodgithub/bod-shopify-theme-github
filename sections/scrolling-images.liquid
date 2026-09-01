@@ -10,6 +10,27 @@
   assign size = section.blocks.size | plus: 0
   assign static_mode = section.settings.static_mode
 -%}
+{%- if section.settings.heading != blank -%}
+<style>
+  #shopify-section-{{ section.id }} .si-heading {
+    text-align: center;
+    color: {{ section.settings.heading_color }};
+    margin: 0 auto;
+    padding: 0 20px {{ section.settings.heading_pad_bottom }}px;
+    line-height: 1.15;
+    font-weight: 400;
+    max-width: 100%;
+  }
+  #shopify-section-{{ section.id }} .si-heading em { font-style: italic; }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .si-heading {
+      min-width: {{ section.settings.heading_min_width }}px;
+      max-width: {{ section.settings.heading_max_width }}px;
+    }
+  }
+</style>
+<h2 class="si-heading h1">{{ section.settings.heading }}</h2>
+{%- endif -%}
 <div class="scrolling-images section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" id="scrolling-images-{{ section.id }}">
 
   <!-- Scoped fixes: make text wrap and standardize image frame -->
@@ -253,6 +274,12 @@
     "name": "Scrolling images",
     "class": "section-scrolling-images",
     "settings": [
+      { "type": "header", "content": "Heading" },
+      { "type": "inline_richtext", "id": "heading", "label": "Heading", "info": "Shown above the carousel in the theme H1 style. Italics render in the Instrument serif." },
+      { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#1b3def" },
+      { "type": "range", "id": "heading_min_width", "label": "Heading min width (desktop)", "min": 0, "max": 900, "step": 20, "unit": "px", "default": 0 },
+      { "type": "range", "id": "heading_max_width", "label": "Heading max width (desktop)", "min": 300, "max": 1200, "step": 20, "unit": "px", "default": 760, "info": "Full width on mobile." },
+      { "type": "range", "id": "heading_pad_bottom", "label": "Padding below heading", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 32 },
       {
         "type": "select",
         "id": "image_ratio",
