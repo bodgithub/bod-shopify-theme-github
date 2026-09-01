@@ -128,7 +128,7 @@
   }
   {%- if s.hover_bg != blank -%}
   #shopify-section-{{ section.id }} .clg__cell--col { transition: background .18s, transform .15s; }
-  #shopify-section-{{ section.id }} .clg__cell--col:hover { background: {{ s.hover_bg | color_modify: 'alpha', 0.5 }}; }
+  #shopify-section-{{ section.id }} .clg__cell--col:hover { background: {{ s.hover_bg }}; }
   {%- if s.hover_text_color != blank -%}
   #shopify-section-{{ section.id }} .clg__cell--col:hover,
   #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__title,
