@@ -1,0 +1,491 @@
+{%- comment -%}
+  Bodology · Inositol science
+  Heading + subheading, then a bordered diagram panel with step-flow
+  columns (label, steps with arrows, frosted result chip) and a caption,
+  then closing text. Columns are blocks; step lines support prefixes:
+  "!" renders in the accent color with an x mark, "~" renders dimmed.
+  Same framework as Why Inositol: contained card toggle, background
+  image with blur + overlay, margins/paddings. Clinical palette.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign col_count = 0
+  for block in section.blocks
+    if block.type == 'column'
+      assign col_count = col_count | plus: 1
+    endif
+  endfor
+  if col_count < 1
+    assign col_count = 1
+  endif
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .ins {
+    background: {{ s.page_bg }};
+    color: {{ s.text_color }};
+    padding: {{ s.pad_top }}px {% if s.contained %}20px{% else %}0{% endif %} {{ s.pad_bottom }}px;
+    margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .ins__card {
+    position: relative;
+    overflow: hidden;
+    {% if s.contained %}
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    border-radius: 24px;
+    {% endif %}
+  }
+  {% if s.bg_image != blank %}
+  #shopify-section-{{ section.id }} .ins__bg {
+    position: absolute;
+    inset: -{{ s.bg_blur | times: 0.5 | plus: 10 }}px;
+    background-image: url('{{ s.bg_image | image_url: width: 2200 }}');
+    background-size: cover;
+    background-position: center;
+    filter: blur({{ s.bg_blur | times: 0.4 }}px);
+  }
+  #shopify-section-{{ section.id }} .ins__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: {{ s.overlay_color }};
+    opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
+  }
+  {% endif %}
+  #shopify-section-{{ section.id }} .ins__in {
+    position: relative;
+    z-index: 1;
+    padding: 40px 24px;
+    {% unless s.contained %}
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    {% endunless %}
+  }
+  #shopify-section-{{ section.id }} .ins__heading {
+    text-align: center;
+    color: {{ s.heading_color }};
+    margin: 0;
+    {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %}
+    line-height: 1.15;
+    font-weight: 400;
+  }
+  #shopify-section-{{ section.id }} .ins__heading p,
+  #shopify-section-{{ section.id }} .ins__heading :is(h1, h2, h3, h4, h5, h6) { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .ins__sub {
+    text-align: center;
+    color: {{ s.sub_color }};
+    font-size: {{ s.sub_size }}px;
+    line-height: 1.55;
+    max-width: 680px;
+    margin: 14px auto 0;
+  }
+  #shopify-section-{{ section.id }} .ins__sub p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .ins__panel {
+    background: {{ s.panel_bg }};
+    border: 1px solid {{ s.panel_border }};
+    border-radius: 18px;
+    margin: 30px auto 0;
+    max-width: 760px;
+    padding: 30px 22px 20px;
+  }
+  #shopify-section-{{ section.id }} .ins__cols {
+    display: grid;
+    grid-template-columns: repeat({{ col_count }}, 1fr);
+  }
+  #shopify-section-{{ section.id }} .ins__col { padding: 0 18px; text-align: center; }
+  #shopify-section-{{ section.id }} .ins__col + .ins__col { border-left: 1px solid {{ s.panel_border }}; }
+  #shopify-section-{{ section.id }} .ins__label {
+    font-size: 11.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: {{ s.label_color }};
+    margin: 0 0 22px;
+  }
+  #shopify-section-{{ section.id }} .ins__step { font-size: {{ s.step_size }}px; line-height: 1.45; margin: 0; color: {{ s.text_color }}; }
+  #shopify-section-{{ section.id }} .ins__step--accent { color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ section.id }} .ins__step--dim { color: {{ s.dim_color }}; }
+  #shopify-section-{{ section.id }} .ins__arrow { font-size: 13px; line-height: 1; margin: 10px 0; color: {{ s.dim_color }}; }
+  #shopify-section-{{ section.id }} .ins__chip {
+    display: block;
+    margin: 22px 0 6px;
+    padding: 13px 14px;
+    border-radius: 10px;
+    font-size: {{ s.step_size }}px;
+    font-weight: var(--font-body-bold-weight, 500);
+    line-height: 1.35;
+    border: 1px solid;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+  #shopify-section-{{ section.id }} .ins__caption {
+    text-align: center;
+    font-size: 12.5px;
+    color: {{ s.dim_color }};
+    margin: 18px 0 0;
+  }
+  #shopify-section-{{ section.id }} .ins__bottom {
+    text-align: center;
+    color: {{ s.sub_color }};
+    font-size: {{ s.sub_size }}px;
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 28px auto 0;
+  }
+  #shopify-section-{{ section.id }} .ins__bottom p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .ins__cols { grid-template-columns: 1fr; }
+    #shopify-section-{{ section.id }} .ins__col + .ins__col { border-left: 0; border-top: 1px solid {{ s.panel_border }}; margin-top: 26px; padding-top: 26px; }
+  }
+{% endstyle %}
+
+<div class="ins">
+  <div class="ins__card">
+    {%- if s.bg_image != blank -%}<div class="ins__bg" aria-hidden="true"></div>{%- endif -%}
+    <div class="ins__in">
+      {%- if s.heading != blank -%}
+        <div class="ins__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</div>
+      {%- endif -%}
+      {%- if s.subheading != blank -%}
+        <div class="ins__sub">{{ s.subheading }}</div>
+      {%- endif -%}
+
+      <div class="ins__panel">
+        <div class="ins__cols">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'column' -%}
+              <div class="ins__col" {{ block.shopify_attributes }}>
+                {%- if block.settings.label != blank -%}<p class="ins__label">{{ block.settings.label }}</p>{%- endif -%}
+                {%- assign lines = block.settings.steps | newline_to_br | split: '<br />' -%}
+                {%- assign printed = 0 -%}
+                {%- for line in lines -%}
+                  {%- assign t = line | strip -%}
+                  {%- if t != blank -%}
+                    {%- if printed > 0 -%}<p class="ins__arrow" aria-hidden="true">&darr;</p>{%- endif -%}
+                    {%- if t.first == '!' -%}
+                      <p class="ins__step ins__step--accent">&#10005; {{ t | remove_first: '!' | strip }}</p>
+                    {%- elsif t.first == '~' -%}
+                      <p class="ins__step ins__step--dim">{{ t | remove_first: '~' | strip }}</p>
+                    {%- else -%}
+                      <p class="ins__step">{{ t }}</p>
+                    {%- endif -%}
+                    {%- assign printed = printed | plus: 1 -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if block.settings.chip != blank -%}
+                  <span class="ins__chip" style="color: {{ block.settings.chip_text }}; border-color: {{ block.settings.chip_border }}; background: {{ block.settings.chip_bg }};">{{ block.settings.chip }}</span>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+        {%- if s.caption != blank -%}<p class="ins__caption">{{ s.caption }}</p>{%- endif -%}
+      </div>
+
+      {%- if s.bottom_text != blank -%}
+        <div class="ins__bottom">{{ s.bottom_text }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Inositol science",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contained",
+      "label": "Contained card",
+      "default": true,
+      "info": "On: rounded card with the background image inside it. Off: full width."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 700,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 980
+    },
+    {
+      "type": "header",
+      "content": "Copy"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Your cells stopped hearing insulin</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>When you eat, insulin tells your cells to take the sugar out of your blood and use it for energy. <strong>Inositol is what carries that message inside the cell.</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption under diagram",
+      "default": "Same knock. One of them gets answered."
+    },
+    {
+      "type": "richtext",
+      "id": "bottom_text",
+      "label": "Closing text",
+      "default": "<p>So your body knocks louder. More insulin, then more again. <strong>And high insulin does two things at once &mdash; it holds onto fat, and it pushes your ovaries to make more testosterone.</strong></p>"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "page_bg",
+      "label": "Section background",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "bg_blur",
+      "label": "Image blur",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Image overlay",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 45
+    },
+    {
+      "type": "color",
+      "id": "panel_bg",
+      "label": "Diagram panel",
+      "default": "#fbfaf9"
+    },
+    {
+      "type": "color",
+      "id": "panel_border",
+      "label": "Panel border and dividers",
+      "default": "#d9d9e8"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "sub_color",
+      "label": "Subheading and closing text",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Steps",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent step (! lines)",
+      "default": "#3447af"
+    },
+    {
+      "type": "color",
+      "id": "dim_color",
+      "label": "Dimmed steps and arrows",
+      "default": "#9aa0b5"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Column labels",
+      "default": "#8a8fa8"
+    },
+    {
+      "type": "header",
+      "content": "Sizes"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "info": "0 uses the theme H1 size."
+    },
+    {
+      "type": "range",
+      "id": "sub_size",
+      "label": "Subheading and closing size",
+      "min": 13,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "step_size",
+      "label": "Step text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pad_top",
+      "label": "Padding above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom",
+      "label": "Padding below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Flow column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Column label",
+          "default": "With enough inositol"
+        },
+        {
+          "type": "textarea",
+          "id": "steps",
+          "label": "Steps",
+          "info": "One per line, arrows added between. Start a line with ! for the accent x-step, ~ for a dimmed step.",
+          "default": "insulin knocks\nthe message gets through\nyour cell opens its doors"
+        },
+        {
+          "type": "text",
+          "id": "chip",
+          "label": "Result chip",
+          "default": "Sugar goes in. You get energy."
+        },
+        {
+          "type": "color",
+          "id": "chip_text",
+          "label": "Chip text",
+          "default": "#1b3def"
+        },
+        {
+          "type": "color",
+          "id": "chip_border",
+          "label": "Chip border",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "chip_bg",
+          "label": "Chip background",
+          "default": "rgba(227,231,255,0.55)",
+          "info": "Semi-transparent colors keep the frosted look."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Inositol science",
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "label": "With enough inositol",
+            "steps": "insulin knocks\nthe message gets through\nyour cell opens its doors",
+            "chip": "Sugar goes in. You get energy.",
+            "chip_text": "#1b3def",
+            "chip_border": "#3447af",
+            "chip_bg": "rgba(227,231,255,0.55)"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "label": "When you're running low",
+            "steps": "insulin knocks\n!the message fades\n~the doors stay closed",
+            "chip": "Sugar stays in your blood.",
+            "chip_text": "#1a2874",
+            "chip_border": "#9aa0b5",
+            "chip_bg": "rgba(255,255,255,0.45)"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
