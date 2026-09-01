@@ -59,8 +59,11 @@
         <div class="testimonial-carousel">
           <div class="testimonial-wrapper">
             {% if section.settings.testimonial_source == 'blocks' %}
+              {% assign slide_index = 0 %}
               {% for block in section.blocks %}
-                <div class="testimonial-block" data-index="{{ forloop.index0 }}">
+                {% if block.type != 'testimonial' %}{% continue %}{% endif %}
+                <div class="testimonial-block" data-index="{{ slide_index }}">
+                  {% assign slide_index = slide_index | plus: 1 %}
                   <div class="block-inner">
                     <div class="expert-image">
                       {% if block.settings.image %}
