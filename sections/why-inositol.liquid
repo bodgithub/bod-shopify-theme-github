@@ -105,6 +105,13 @@
   #shopify-section-{{ section.id }} .wi__foot p { margin: 0; font-size: inherit; color: inherit; }
   #shopify-section-{{ section.id }} .wi__foot--right { margin-top: 22px; text-align: center; }
   #shopify-section-{{ section.id }} .wi__foot--full { grid-column: 1 / -1; text-align: center; }
+  #shopify-section-{{ section.id }} .wi__stats-title {
+    font-size: 13px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    opacity: .85;
+  }
   #shopify-section-{{ section.id }} .wi__stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -183,6 +190,7 @@
           <img class="wi__right-img" src="{{ s.right_image | image_url: width: 1200 }}" alt="{{ s.right_image.alt | escape }}" loading="lazy">
         {%- else -%}
         {%- if stat_count > 0 -%}
+          {%- if s.stats_title != blank -%}<p class="wi__stats-title">{{ s.stats_title }}</p>{%- endif -%}
           <div class="wi__stats">
             {%- for block in section.blocks -%}
               {%- if block.type == 'stat' -%}
@@ -301,6 +309,12 @@
         }
       ],
       "default": "stats"
+    },
+    {
+      "type": "text",
+      "id": "stats_title",
+      "label": "Title above stats",
+      "default": "Inositol studies show:"
     },
     {
       "type": "image_picker",

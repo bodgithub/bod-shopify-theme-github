@@ -21,6 +21,13 @@
   endif
 -%}
 
+{%- if section.settings.bg_grad_bottom != blank -%}
+<style>
+  #shopify-section-{{ section.id }} {
+    background: linear-gradient(180deg, {% if section.settings.bg_grad_top != blank %}{{ section.settings.bg_grad_top }}{% else %}rgba(0,0,0,0){% endif %} 0%, {{ section.settings.bg_grad_bottom }} 100%);
+  }
+</style>
+{%- endif -%}
 {%- if disable_top_spacing or disable_bottom_spacing -%}
 <style>
   #shopify-section-{{ section.id }} .testimonials-exert {
@@ -211,13 +218,35 @@
   "name": "Testimonial Carousel B",
   "settings": [
     {
+      "type": "header",
+      "content": "Section background"
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_top",
+      "label": "Gradient top",
+      "info": "Leave empty for transparent."
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_bottom",
+      "label": "Gradient bottom",
+      "info": "Set to give the section a top-to-bottom gradient background. Empty = unchanged."
+    },
+    {
       "type": "select",
       "id": "testimonial_source",
       "label": "Testimonial source",
       "default": "blocks",
       "options": [
-        { "value": "blocks", "label": "Manual Blocks" },
-        { "value": "metaobject", "label": "Metaobjects (Experts)" }
+        {
+          "value": "blocks",
+          "label": "Manual Blocks"
+        },
+        {
+          "value": "metaobject",
+          "label": "Metaobjects (Experts)"
+        }
       ]
     },
     {
@@ -242,83 +271,196 @@
       "label": "Text size",
       "default": "medium",
       "options": [
-        { "value": "small", "label": "Small" },
-        { "value": "medium", "label": "Medium" },
-        { "value": "large", "label": "Large" }
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
       ]
     },
     {
       "type": "select",
       "id": "font_family",
       "options": [
-        { "value": "body", "label": "Body" },
-        { "value": "heading", "label": "Heading" }
+        {
+          "value": "body",
+          "label": "Body"
+        },
+        {
+          "value": "heading",
+          "label": "Heading"
+        }
       ],
       "default": "heading",
       "label": "Font family"
     },
-    { "type": "header", "content": "Colors" },
-    { "type": "color", "id": "color_bg", "label": "Background", "default": "#F5F5F5" },
-    { "type": "color", "id": "color_bg_card", "label": "Card Background", "default": "#F5F5F5" },
-    { "type": "color", "id": "color_border_card", "label": "Card Border", "default": "#F5F5F5" },
-    { "type": "color", "id": "color_heading", "label": "Heading", "default": "#1a1c1d" },
-    { "type": "color", "id": "color_text2", "label": "Sub heading", "default": "#2c2d2e" },
-    { "type": "color", "id": "color_text", "label": "Text", "default": "#2c2d2e" },
-    { "type": "header", "content": "Spacing" },
-    { "type": "checkbox", "id": "disable_top_spacing", "default": false, "label": "Remove top spacing" },
-    { "type": "checkbox", "id": "disable_bottom_spacing", "default": false, "label": "Remove bottom spacing" },
-    { "type": "range", "id": "columns_desktop", "label": "Columns on Desktop", "min": 2, "max": 6, "step": 1, "default": 2 },
-    { "type": "range", "id": "columns_tablet", "label": "Columns on Tablet", "min": 1, "max": 4, "step": 1, "default": 2 },
-    { "type": "range", "id": "columns_mobile", "label": "Columns on Mobile", "min": 1, "max": 1, "step": 1, "default": 1 },
-{
-  "type": "checkbox",
-  "id": "show_button",
-  "label": "Show heading button",
-  "default": false
-},
-{
-  "type": "text",
-  "id": "button_text",
-  "label": "Button text",
-  "default": "Learn more"
-},
-{
-  "type": "url",
-  "id": "button_url",
-  "label": "Button URL"
-},
-{
-  "type": "checkbox",
-  "id": "experts_popup",
-  "default": false,
-  "label": "Button opens experts popup",
-  "info": "Instead of linking, the button opens a popup listing the Expert blocks added to this section."
-},
-{
-  "type": "text",
-  "id": "experts_title",
-  "label": "Experts popup title",
-  "default": "Meet our experts"
-}
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_card",
+      "label": "Card Background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "color_border_card",
+      "label": "Card Border",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading",
+      "default": "#1a1c1d"
+    },
+    {
+      "type": "color",
+      "id": "color_text2",
+      "label": "Sub heading",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text",
+      "default": "#2c2d2e"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_top_spacing",
+      "default": false,
+      "label": "Remove top spacing"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_bottom_spacing",
+      "default": false,
+      "label": "Remove bottom spacing"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns on Desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns on Tablet",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_mobile",
+      "label": "Columns on Mobile",
+      "min": 1,
+      "max": 1,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show heading button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "experts_popup",
+      "default": false,
+      "label": "Button opens experts popup",
+      "info": "Instead of linking, the button opens a popup listing the Expert blocks added to this section."
+    },
+    {
+      "type": "text",
+      "id": "experts_title",
+      "label": "Experts popup title",
+      "default": "Meet our experts"
+    }
   ],
   "blocks": [
     {
       "type": "expert",
       "name": "Expert (popup)",
       "settings": [
-        { "type": "text", "id": "name", "label": "Name" },
-        { "type": "text", "id": "title", "label": "Title" },
-        { "type": "richtext", "id": "blurb", "label": "Blurb" }
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "blurb",
+          "label": "Blurb"
+        }
       ]
     },
     {
       "type": "testimonial",
       "name": "Testimonial Block",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "name", "label": "Name" },
-        { "type": "text", "id": "role", "label": "Role/Position" },
-        { "type": "richtext", "id": "quote", "label": "Testimonial Quote" }
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role/Position"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Testimonial Quote"
+        }
       ]
     }
   ],
@@ -326,8 +468,12 @@
     {
       "name": "Testimonial Carousel",
       "blocks": [
-        { "type": "testimonial" },
-        { "type": "testimonial" }
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
       ]
     }
   ]
