@@ -122,8 +122,14 @@
   }
   #shopify-section-{{ section.id }} .clg__btn:hover { background: {{ s.accent_color }}; color: #ffffff; }
   @media screen and (max-width: 749px) {
+    {% if s.mobile_two_col %}
+    #shopify-section-{{ section.id }} .clg__grid { grid-template-columns: repeat(2, 1fr); }
+    #shopify-section-{{ section.id }} .clg__grid .clg__cell { padding: 22px 10px 26px; border-left: 1px solid {{ s.line_color }}; }
+    #shopify-section-{{ section.id }} .clg__grid .clg__cell:nth-child(2n + 1) { border-left: 0; }
+    {% else %}
     #shopify-section-{{ section.id }} .clg__grid { grid-template-columns: 1fr; }
     #shopify-section-{{ section.id }} .clg__cell { border-left: 0; padding: 28px 4px 32px; }
+    {% endif %}
     #shopify-section-{{ section.id }} .clg__title { font-size: {{ s.title_size | times: 0.82 | round }}px; }
   }
   {%- if s.hover_bg != blank -%}
@@ -349,6 +355,13 @@
       "max": 4,
       "step": 1,
       "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_two_col",
+      "label": "2 columns on mobile",
+      "default": false,
+      "info": "Show the columns two across on mobile instead of stacked."
     },
     {
       "type": "select",
