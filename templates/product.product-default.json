@@ -1093,49 +1093,42 @@
             "gift_width": 95
           }
         },
-        "custom_liquid_Aai6fh": {
-          "type": "custom_liquid",
-          "name": "Spacer 15px",
+        "quote_7QKz6a": {
+          "type": "quote",
           "settings": {
-            "custom_liquid": "<div style=\"height:15px;\"></div>"
+            "stars": 5,
+            "text": "<p>I haven't had any GI issues at all from taking it like I have with other brands.</p>",
+            "image": "shopify://shop_images/Profile_pic_4.png",
+            "name": "Kristina A.",
+            "role": "Verified buyer",
+            "card_mode": true,
+            "card_bg": "rgba(0,0,0,0)",
+            "card_border": "rgba(0,0,0,0)",
+            "text_color": "#1a2874",
+            "accent_color": "#1b3def",
+            "star_color": "#ddbd6d",
+            "quote_size": 13,
+            "margin_top": 14,
+            "margin_bottom": 0
           }
         },
-        "buy_buttons_3FBywE": {
-          "type": "buy_buttons",
-          "disabled": true,
+        "quote_HPUw7c": {
+          "type": "quote",
           "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
-          }
-        },
-        "side_panel_NGJTtJ": {
-          "type": "side_panel",
-          "disabled": true,
-          "settings": {
-            "side_panel_1_label": "Choosing my scoop",
-            "side_panel_1_icon": "question_mark",
-            "side_panel_1_page": "which-size-is-right-for-me",
-            "side_panel_2_label": "Clinical-Grade Supplement",
-            "side_panel_2_icon": "clipboard",
-            "side_panel_2_page": "what-we-mean-by-clinical-grade",
-            "side_panel_3_label": "",
-            "side_panel_3_icon": "none",
-            "side_panel_3_page": ""
-          }
-        },
-        "custom_liquid_8bY9Ux": {
-          "type": "custom_liquid",
-          "name": "More Features",
-          "disabled": true,
-          "settings": {
-            "custom_liquid": "<div style=\"display: flex; justify-content: space-between; font-family: Arial, sans-serif; font-size: 14px; color: #000;\">\n    \n    <!-- Left Column -->\n    <div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_certificate.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Practioner Approved</span>\n        </div>\n       \n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_check-circle.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>2,050mg Per Scoop</span>\n        </div>\n\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon-carob-3.png?v=1758397755\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Carob-Derived Formula</span>\n        </div>\n    </div>\n\n    <!-- Right Column (Repeating Content) -->\n    <div>\n        <div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_scales.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>40:1 Ratio</span>\n          \n        </div>\n        \n    \n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/icon_plant.png?v=1728384861\" \n                 alt=\"Checkmark\" \n                 style=\"width: 18px; margin-right: 8px;\">\n            <span>Third Party Tested</span>\n        </div>\n<div style=\"display: flex; align-items: center; padding-bottom: 20px;\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0712/4166/2683/files/Icon_USA_Flag.png?v=1740876469\" \n                 alt=\"Checkmark\" \n                 style=\"width: 20px; margin-right: 8px;\">\n            <span>Blended in the USA</span>\n        \n    </div> </div>\n\n</div>"
-          }
-        },
-        "custom_liquid_ERkmyy": {
-          "type": "custom_liquid",
-          "name": "Spacer 15px",
-          "settings": {
-            "custom_liquid": "<div style=\"height:15px;\"></div>"
+            "stars": 5,
+            "text": "<p>I have tried different inositols and absolutelt love this one.</p>",
+            "image": "shopify://shop_images/Profile_pic_4.png",
+            "name": "Esther E.",
+            "role": "Verified buyer",
+            "card_mode": true,
+            "card_bg": "rgba(0,0,0,0)",
+            "card_border": "rgba(0,0,0,0)",
+            "text_color": "#1a2874",
+            "accent_color": "#1b3def",
+            "star_color": "#ddbd6d",
+            "quote_size": 13,
+            "margin_top": 0,
+            "margin_bottom": 24
           }
         },
         "collapsible_tab_KVBdNK": {
@@ -1157,20 +1150,6 @@
             "heading": "What Bodology® Inositol supports",
             "open": false,
             "content": "<p>Inositol helps your body respond to insulin, the silent driver behind PCOS, fertility struggles, mood shifts, and blood sugar crashes.</p><p>When taken consistently, inositol has been clinically studied to support:</p><ul><li>Healthy ovulation and cycle regularity*</li><li>Hormone balance associated with PCOS*</li><li>Insulin sensitivity and healthy blood sugar levels†</li><li>Metabolic function linked to appetite regulation and weight balance†  </li><li>Sleep and energy regulation*</li><li>Neurotransmitter signaling linked to mood and emotional balance*</li></ul>",
-            "page": "",
-            "custom_liquid": "",
-            "acc_line_color": "",
-            "acc_text_color": "",
-            "acc_title_case": "default"
-          }
-        },
-        "collapsible_tab_KixfDF": {
-          "type": "collapsible_tab",
-          "disabled": true,
-          "settings": {
-            "heading": "WHY WE MADE IT",
-            "open": false,
-            "content": "<p>We created Bodology™ Inositol Powder to give women a cleaner, simpler choice. Unlike mass brands or male-led supplements, Bodology™ is female-led, <a href=\"/pages/meet-our-experts\" target=\"_blank\" title=\"Meet Our Experts\">practitioner-backed</a> and built by women who’ve lived through PCOS, fertility struggles, and hormonal imbalances.</p><p>That's why we don’t add fillers or extras that interfere with other supplements or prenatals and why every ingredient is intentional, including our carob-sourced D-Chiro Inositol for its natural origin, bioavailability, antioxidant profile, and smoother taste. </p>",
             "page": "",
             "custom_liquid": "",
             "acc_line_color": "",
@@ -1488,14 +1467,10 @@
         "plan_selector_3_bQR8PU",
         "plan_selector_fe7ApL",
         "plan_selector_2_mfAqxA",
-        "custom_liquid_Aai6fh",
-        "buy_buttons_3FBywE",
-        "side_panel_NGJTtJ",
-        "custom_liquid_8bY9Ux",
-        "custom_liquid_ERkmyy",
+        "quote_7QKz6a",
+        "quote_HPUw7c",
         "collapsible_tab_KVBdNK",
         "collapsible_tab_KhBe7c",
-        "collapsible_tab_KixfDF",
         "collapsible_tab_Qq4nP6",
         "collapsible_tab_LHBcDr",
         "collapsible_tab_w8UWx4",
