@@ -1,0 +1,487 @@
+{%- comment -%}
+  Bodology · Why Inositol
+  Two-column card: left column built from blocks (text, accordions with
+  capsule chips, small-print footer), right column a 2-up stat grid with
+  cross hairlines and a pill CTA. "Contained" toggle wraps everything in
+  a rounded card (background image inside the card); off = full width
+  (image spans the section). Background image blur 0–80. Clinical
+  palette on navy by default; every color and size editable.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign stat_count = 0
+  for block in section.blocks
+    if block.type == 'stat'
+      assign stat_count = stat_count | plus: 1
+    endif
+  endfor
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .wi {
+    background: {{ s.page_bg }};
+    padding: {{ s.pad_top }}px {% if s.contained %}20px{% else %}0{% endif %} {{ s.pad_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .wi__card {
+    position: relative;
+    overflow: hidden;
+    background: {{ s.card_bg }};
+    color: {{ s.text_color }};
+    {% if s.contained %}
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    border-radius: 24px;
+    {% endif %}
+  }
+  {% if s.bg_image != blank %}
+  #shopify-section-{{ section.id }} .wi__bg {
+    position: absolute;
+    inset: -{{ s.bg_blur | times: 0.5 | plus: 10 }}px;
+    background-image: url('{{ s.bg_image | image_url: width: 2200 }}');
+    background-size: cover;
+    background-position: center;
+    filter: blur({{ s.bg_blur | times: 0.4 }}px);
+  }
+  #shopify-section-{{ section.id }} .wi__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: {{ s.overlay_color }};
+    opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
+  }
+  {% endif %}
+  #shopify-section-{{ section.id }} .wi__in {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    padding: 64px 56px;
+    {% unless s.contained %}
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    {% endunless %}
+  }
+  #shopify-section-{{ section.id }} .wi__text { font-size: {{ s.body_size }}px; line-height: 1.55; }
+  #shopify-section-{{ section.id }} .wi__text p { margin: 0 0 10px; font-size: inherit; line-height: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .wi__text p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .wi__block { margin-bottom: 26px; }
+  #shopify-section-{{ section.id }} .wi__block:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .wi__acc {
+    border-top: 1px solid {{ s.line_color }};
+    border-bottom: 1px solid {{ s.line_color }};
+  }
+  #shopify-section-{{ section.id }} .wi__acc + .wi__acc { border-top: 0; margin-top: -26px; }
+  #shopify-section-{{ section.id }} .wi__acc summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+    padding: 16px 0;
+    font-size: 13px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+  #shopify-section-{{ section.id }} .wi__acc summary::-webkit-details-marker { display: none; }
+  #shopify-section-{{ section.id }} .wi__acc summary svg { width: 14px; height: 14px; flex: 0 0 auto; transition: transform .2s; }
+  #shopify-section-{{ section.id }} .wi__acc[open] summary svg { transform: rotate(180deg); }
+  #shopify-section-{{ section.id }} .wi__acc-body { padding: 2px 0 20px; }
+  #shopify-section-{{ section.id }} .wi__chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  #shopify-section-{{ section.id }} .wi__chip {
+    border: 1px solid {{ s.line_color }};
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: {{ s.body_size | times: 0.95 | round }}px;
+    line-height: 1.3;
+  }
+  #shopify-section-{{ section.id }} .wi__acc-text { margin-top: 14px; font-size: {{ s.body_size }}px; line-height: 1.55; }
+  #shopify-section-{{ section.id }} .wi__acc-text p { margin: 0 0 8px; font-size: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .wi__acc-text p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .wi__foot { font-size: {{ s.body_size | times: 0.82 | round }}px; line-height: 1.55; opacity: .75; }
+  #shopify-section-{{ section.id }} .wi__foot p { margin: 0; font-size: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .wi__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  #shopify-section-{{ section.id }} .wi__stat { padding: 8px 26px 26px 0; }
+  #shopify-section-{{ section.id }} .wi__stat:nth-child(2n) { padding-left: 26px; padding-right: 0; border-left: 1px solid {{ s.line_color }}; }
+  {% if stat_count > 2 %}
+  #shopify-section-{{ section.id }} .wi__stat:nth-child(-n+2) { border-bottom: 1px solid {{ s.line_color }}; }
+  #shopify-section-{{ section.id }} .wi__stat:nth-child(n+3) { padding-top: 26px; padding-bottom: 8px; }
+  {% endif %}
+  #shopify-section-{{ section.id }} .wi__stat-v { font-size: {{ s.stat_size }}px; line-height: 1.1; font-weight: 400; margin: 0 0 10px; color: {{ s.stat_color }}; }
+  #shopify-section-{{ section.id }} .wi__stat-t { font-size: {{ s.body_size | times: 0.95 | round }}px; line-height: 1.5; margin: 0; }
+  #shopify-section-{{ section.id }} .wi__stat-t p { margin: 0; font-size: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .wi__right-img { width: 100%; height: auto; border-radius: 16px; display: block; }
+  #shopify-section-{{ section.id }} .wi__cta-row { text-align: center; margin-top: 34px; }
+  #shopify-section-{{ section.id }} .wi__cta {
+    display: inline-block;
+    min-width: 240px;
+    padding: 15px 40px;
+    border-radius: 999px;
+    background: {{ s.cta_bg }};
+    color: {{ s.cta_text_color }};
+    font-size: 13.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    transition: filter .15s, transform .12s;
+  }
+  #shopify-section-{{ section.id }} .wi__cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  @media screen and (max-width: 899px) {
+    #shopify-section-{{ section.id }} .wi__in { grid-template-columns: 1fr; gap: 40px; padding: 40px 24px; }
+  }
+{% endstyle %}
+
+<div class="wi">
+  <div class="wi__card">
+    {%- if s.bg_image != blank -%}<div class="wi__bg" aria-hidden="true"></div>{%- endif -%}
+    <div class="wi__in">
+      <div class="wi__left">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'text' -%}
+              <div class="wi__block wi__text" {{ block.shopify_attributes }}{% if block.settings.size > 0 %} style="font-size: {{ block.settings.size }}px; line-height: 1.3;"{% endif %}>{{ block.settings.text }}</div>
+            {%- when 'accordion' -%}
+              <details class="wi__block wi__acc"{% if block.settings.open %} open{% endif %} {{ block.shopify_attributes }}>
+                <summary>
+                  <span>{{ block.settings.title }}</span>
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 8 11 13 6"></polyline></svg>
+                </summary>
+                <div class="wi__acc-body">
+                  {%- if block.settings.chips != blank -%}
+                    <div class="wi__chips">
+                      {%- assign chip_lines = block.settings.chips | newline_to_br | split: '<br />' -%}
+                      {%- for line in chip_lines -%}
+                        {%- assign t = line | strip -%}
+                        {%- if t != blank -%}<span class="wi__chip">{{ t }}</span>{%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <div class="wi__acc-text">{{ block.settings.text }}</div>
+                  {%- endif -%}
+                </div>
+              </details>
+            {%- when 'footer' -%}
+              <div class="wi__block wi__foot" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
+      <div class="wi__right">
+        {%- if s.right_mode == 'image' and s.right_image != blank -%}
+          <img class="wi__right-img" src="{{ s.right_image | image_url: width: 1200 }}" alt="{{ s.right_image.alt | escape }}" loading="lazy">
+        {%- else -%}
+        {%- if stat_count > 0 -%}
+          <div class="wi__stats">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'stat' -%}
+                <div class="wi__stat" {{ block.shopify_attributes }}>
+                  <p class="wi__stat-v">{{ block.settings.value }}</p>
+                  <div class="wi__stat-t">{{ block.settings.text }}</div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+        {%- endif -%}
+        {%- if s.cta_label != blank -%}
+          <div class="wi__cta-row">
+            <a class="wi__cta" href="{{ s.cta_link | default: '#' }}">{{ s.cta_label }}</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Inositol",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contained",
+      "label": "Contained card",
+      "default": true,
+      "info": "On: rounded card with the background (and image) inside it. Off: full width."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 800,
+      "max": 1440,
+      "step": 20,
+      "unit": "px",
+      "default": 1240
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "page_bg",
+      "label": "Section background",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#1a2874"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "bg_blur",
+      "label": "Image blur",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Image overlay",
+      "default": "#1a2874"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Right column"
+    },
+    {
+      "type": "select",
+      "id": "right_mode",
+      "label": "Right column content",
+      "options": [
+        { "value": "stats", "label": "Stat grid" },
+        { "value": "image", "label": "Image" }
+      ],
+      "default": "stats"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right image",
+      "info": "Shown when the right column is set to Image."
+    },
+    {
+      "type": "header",
+      "content": "Colors and sizes"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Lines and chip borders",
+      "default": "rgba(255,255,255,0.45)"
+    },
+    {
+      "type": "color",
+      "id": "stat_color",
+      "label": "Stat numbers",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "label": "Body text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "stat_size",
+      "label": "Stat number size",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "cta_bg",
+      "label": "Button",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "cta_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pad_top",
+      "label": "Padding above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom",
+      "label": "Padding below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Why inositol?</p>",
+          "info": "Italics render in the Instrument serif."
+        },
+        {
+          "type": "range",
+          "id": "size",
+          "label": "Text size",
+          "min": 0,
+          "max": 48,
+          "step": 1,
+          "unit": "px",
+          "default": 0,
+          "info": "0 uses the section body size. Set higher for a heading block."
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "What's inside"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        },
+        {
+          "type": "textarea",
+          "id": "chips",
+          "label": "Capsules",
+          "info": "One per line — each renders as a small outlined capsule.",
+          "default": "4,000mg myo-inositol\n100mg D-chiro-inositol\n40:1 ratio\nNo fillers\nVegan\nGluten-free"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "info": "Optional — shown under the capsules."
+        }
+      ]
+    },
+    {
+      "type": "footer",
+      "name": "Footer (small print)",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "40:1"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>the myo- to D-chiro-inositol ratio used in clinical research</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 16,
+  "presets": [
+    {
+      "name": "Why Inositol",
+      "blocks": [
+        { "type": "text", "settings": { "text": "<p>Why inositol?<br>Real doses, backed by clinical research.*</p>", "size": 30 } },
+        { "type": "text", "settings": { "text": "<p>Bodology delivers the full clinically studied daily dose — 4,000mg myo-inositol and 100mg D-chiro-inositol at the 40:1 ratio used in research — in one unflavored serving.*</p>" } },
+        { "type": "accordion", "settings": { "title": "What's inside" } },
+        { "type": "footer" },
+        { "type": "stat", "settings": { "value": "40:1", "text": "<p>the <strong>myo- to D-chiro</strong> ratio used in clinical research</p>" } },
+        { "type": "stat", "settings": { "value": "4,100mg", "text": "<p>the full clinically studied <strong>daily dose</strong>, in one serving</p>" } },
+        { "type": "stat", "settings": { "value": "0", "text": "<p><strong>fillers, flavors, or other actives</strong> — one ingredient blend</p>" } },
+        { "type": "stat", "settings": { "value": "60-day", "text": "<p><strong>money-back guarantee</strong> on your first order</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
