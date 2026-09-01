@@ -128,14 +128,21 @@
   }
   {%- if s.hover_bg != blank -%}
   #shopify-section-{{ section.id }} .clg__cell--col { transition: background .18s, transform .15s; }
-  #shopify-section-{{ section.id }} .clg__cell--col:hover { background: {{ s.hover_bg }}; }
+  #shopify-section-{{ section.id }} .clg__cell--col:hover,
+  #shopify-section-{{ section.id }} .clg__grid:not(:hover) .clg__cell--first { background: {{ s.hover_bg }}; }
   {%- if s.hover_text_color != blank -%}
   #shopify-section-{{ section.id }} .clg__cell--col:hover,
   #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__title,
-  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__count,
-  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__items { color: {{ s.hover_text_color }} !important; }
+  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__items,
+  #shopify-section-{{ section.id }} .clg__grid:not(:hover) .clg__cell--first,
+  #shopify-section-{{ section.id }} .clg__grid:not(:hover) .clg__cell--first .clg__title,
+  #shopify-section-{{ section.id }} .clg__grid:not(:hover) .clg__cell--first .clg__items { color: {{ s.hover_text_color }} !important; }
   {%- endif -%}
   {%- endif -%}
+  #shopify-section-{{ section.id }} .clg__count svg,
+  #shopify-section-{{ section.id }} .clg__count img { transition: transform .18s ease; }
+  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__count svg,
+  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__count img { transform: translateX(4px); }
   #shopify-section-{{ section.id }} .clg__cell--clickable { cursor: pointer; }
   #shopify-section-{{ section.id }} .clg__footer {
     text-align: center;
@@ -197,7 +204,7 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'column' -%}
-            <div class="clg__cell clg__cell--col{% if s.enable_lightbox and block.settings.lightbox_text != blank %} clg__cell--clickable{% endif %}"{% if s.enable_lightbox and block.settings.lightbox_text != blank %} data-clg-open="{{ block.id }}" role="button" tabindex="0"{% endif %} {{ block.shopify_attributes }}>
+            <div class="clg__cell clg__cell--col{% if forloop.first %} clg__cell--first{% endif %}{% if s.enable_lightbox and block.settings.lightbox_text != blank %} clg__cell--clickable{% endif %}"{% if s.enable_lightbox and block.settings.lightbox_text != blank %} data-clg-open="{{ block.id }}" role="button" tabindex="0"{% endif %} {{ block.shopify_attributes }}>
               {%- if block.settings.title != blank -%}
                 <h3 class="clg__title">{{ block.settings.title }}</h3>
               {%- endif -%}
