@@ -22,6 +22,7 @@
   #shopify-section-{{ section.id }} .wi {
     background: {{ s.page_bg }};
     padding: {{ s.pad_top }}px {% if s.contained %}20px{% else %}0{% endif %} {{ s.pad_bottom }}px;
+    margin: {{ s.margin_top | default: 0 }}px 0 {{ s.margin_bottom | default: 0 }}px;
   }
   #shopify-section-{{ section.id }} .wi__card {
     position: relative;
@@ -367,7 +368,8 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "default": 40
+      "default": 0,
+      "info": "Inside the section background."
     },
     {
       "type": "range",
@@ -377,7 +379,28 @@
       "max": 120,
       "step": 4,
       "unit": "px",
-      "default": 40
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "info": "Outside the section background."
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
     }
   ],
   "blocks": [
