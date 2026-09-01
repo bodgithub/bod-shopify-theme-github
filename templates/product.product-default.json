@@ -1510,6 +1510,8 @@
         ".amount {display: none;}"
       ],
       "settings": {
+        "bg_grad_top": "#FBFAF9",
+        "bg_grad_bottom": "#F3EEEA",
         "enable_sticky_add_to_cart": false,
         "reviews_lightbox": true,
         "rl_title": "Customer reviews",
@@ -1736,17 +1738,17 @@
         "footer_pad": 15,
         "footer_star": true,
         "bg": "#f2eeea",
-        "bg_grad_top": "#FBFAF9",
-        "bg_grad_bottom": "#f2eeea",
+        "bg_grad_top": "#F3EEEA",
+        "bg_grad_bottom": "#F3EEEA",
         "text_color": "#1a2874",
         "heading_color": "#1a2874",
         "accent_color": "#4f63d4",
         "line_color": "#1a2874",
         "title_size": 28,
         "item_size": 15,
-        "padding_top": 64,
+        "padding_top": 80,
         "padding_bottom": 64,
-        "margin_top": 50,
+        "margin_top": 0,
         "margin_bottom": 0
       }
     },
