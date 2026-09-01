@@ -49,8 +49,8 @@
   #shopify-section-{{ section.id }} .clc__heading + .clc__grid { margin-top: 24px; }
   #shopify-section-{{ section.id }} .clc__grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: {% if s.mobile_two_col %}repeat(2, 1fr){% else %}1fr{% endif %};
+    gap: {% if s.mobile_two_col %}12px{% else %}18px{% endif %};
   }
   #shopify-section-{{ section.id }} .clc__card {
     background: var(--clc-card-bg, {{ s.card_bg }});
@@ -550,6 +550,13 @@
       "step": 1,
       "default": 0,
       "info": "0 = one column per module. Set a number to wrap extra modules onto new rows."
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_two_col",
+      "label": "2 columns on mobile",
+      "default": false,
+      "info": "Show the modules in a 2-column grid on mobile instead of stacked."
     },
     {
       "type": "range",
