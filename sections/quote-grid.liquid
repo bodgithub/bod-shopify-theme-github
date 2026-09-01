@@ -1,0 +1,393 @@
+{%- comment -%}
+  Bodology · Quote grid
+  1–4 quotes in the category-grid style (quote text, round avatar, name,
+  role), in a grid with a columns-per-row setting. Optional rich text
+  headline (left/center/right, accent color on italics). Same background
+  framework as Why Inositol: contained card toggle, background image with
+  blur + overlay, side padding, margins/paddings. Clinical palette.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .qg {
+    background: {{ s.page_bg }};
+    padding: {{ s.pad_top }}px {% if s.contained %}20px{% else %}0{% endif %} {{ s.pad_bottom }}px;
+    margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .qg__card {
+    position: relative;
+    overflow: hidden;
+    background: {{ s.card_bg }};
+    color: {{ s.text_color }};
+    {% if s.contained %}
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    border-radius: 24px;
+    {% endif %}
+  }
+  {% if s.bg_image != blank %}
+  #shopify-section-{{ section.id }} .qg__bg {
+    position: absolute;
+    inset: -{{ s.bg_blur | times: 0.5 | plus: 10 }}px;
+    background-image: url('{{ s.bg_image | image_url: width: 2200 }}');
+    background-size: cover;
+    background-position: center;
+    filter: blur({{ s.bg_blur | times: 0.4 }}px);
+  }
+  #shopify-section-{{ section.id }} .qg__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: {{ s.overlay_color }};
+    opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
+  }
+  {% endif %}
+  #shopify-section-{{ section.id }} .qg__in {
+    position: relative;
+    z-index: 1;
+    padding: 40px 24px;
+    {% unless s.contained %}
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    {% endunless %}
+  }
+  #shopify-section-{{ section.id }} .qg__heading {
+    text-align: {{ s.heading_align }};
+    color: {{ s.heading_color }};
+    margin: 0 0 30px;
+    {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %}
+    line-height: 1.15;
+    font-weight: 400;
+  }
+  #shopify-section-{{ section.id }} .qg__heading :is(h1, h2, h3, h4, h5, h6, p) { margin: 0; line-height: inherit; color: inherit; {% if s.heading_size > 0 %}font-size: inherit !important;{% endif %} }
+  #shopify-section-{{ section.id }} .qg__heading em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ section.id }} .qg__grid {
+    display: grid;
+    grid-template-columns: repeat({{ s.columns }}, 1fr);
+    gap: {{ s.grid_gap }}px;
+  }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .qg__grid { padding: 0 {{ s.side_pad }}%; }
+  }
+  #shopify-section-{{ section.id }} .qg__quote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  #shopify-section-{{ section.id }} .qg__quote-text {
+    flex: 1 1 220px;
+    font-size: {{ s.quote_size }}px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .qg__quote-text p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .qg__quote-text em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ section.id }} .qg__who {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+    text-align: left;
+  }
+  #shopify-section-{{ section.id }} .qg__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .qg__name { font-size: {{ s.quote_size | times: 1.0 | round }}px; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
+  #shopify-section-{{ section.id }} .qg__role { font-size: {{ s.quote_size | times: 0.95 | round }}px; margin: 0; opacity: .85; }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .qg__grid { grid-template-columns: 1fr; gap: 26px; }
+  }
+{% endstyle %}
+
+<div class="qg">
+  <div class="qg__card">
+    {%- if s.bg_image != blank -%}<div class="qg__bg" aria-hidden="true"></div>{%- endif -%}
+    <div class="qg__in">
+      {%- if s.heading != blank -%}
+        <div class="qg__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</div>
+      {%- endif -%}
+      <div class="qg__grid">
+        {%- for block in section.blocks -%}
+          <div class="qg__quote" {{ block.shopify_attributes }}>
+            {%- if block.settings.text != blank -%}
+              <div class="qg__quote-text">&ldquo;{{ block.settings.text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
+            {%- endif -%}
+            {%- if block.settings.name != blank or block.settings.image != blank -%}
+              <div class="qg__who">
+                {%- if block.settings.image != blank -%}
+                  <img class="qg__avatar" src="{{ block.settings.image | image_url: width: 88 }}" alt="{{ block.settings.name | escape }}" width="44" height="44" loading="lazy">
+                {%- endif -%}
+                <div>
+                  {%- if block.settings.name != blank -%}<p class="qg__name">{{ block.settings.name }}</p>{%- endif -%}
+                  {%- if block.settings.role != blank -%}<p class="qg__role">{{ block.settings.role }}</p>{%- endif -%}
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quote grid",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "contained",
+      "label": "Contained card",
+      "default": false,
+      "info": "On: rounded card with the background image inside it. Off: full width."
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 600,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1100
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Headline",
+      "info": "Italics render in the Instrument serif and use the highlight color."
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Headline alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Headline size",
+      "min": 0,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "info": "0 uses the theme H1 size."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headline color",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Highlight color (italics)",
+      "default": "#1b3def"
+    },
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns per row (desktop)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "label": "Gap between quotes",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "side_pad",
+      "label": "Side padding (desktop)",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "%",
+      "default": 0,
+      "info": "Squeezes the quotes in from both sides — useful for a single centered quote."
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1a2874"
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "label": "Quote text size",
+      "min": 11,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "page_bg",
+      "label": "Section background",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "bg_blur",
+      "label": "Image blur",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Image overlay",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "pad_top",
+      "label": "Padding above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom",
+      "label": "Padding below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Quote",
+          "default": "<p>The most powerful approach I've seen in my career.</p>",
+          "info": "Quotation marks are added automatically. Italics use the highlight color."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Quote grid",
+      "blocks": [
+        { "type": "quote" },
+        { "type": "quote" }
+      ]
+    }
+  ]
+}
+{% endschema %}
