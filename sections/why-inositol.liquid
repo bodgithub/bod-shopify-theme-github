@@ -103,6 +103,8 @@
   #shopify-section-{{ section.id }} .wi__acc-text p:last-child { margin-bottom: 0; }
   #shopify-section-{{ section.id }} .wi__foot { font-size: {{ s.body_size | times: 0.82 | round }}px; line-height: 1.55; opacity: .75; }
   #shopify-section-{{ section.id }} .wi__foot p { margin: 0; font-size: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .wi__foot--right { margin-top: 22px; text-align: center; }
+  #shopify-section-{{ section.id }} .wi__foot--full { grid-column: 1 / -1; text-align: center; }
   #shopify-section-{{ section.id }} .wi__stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -169,7 +171,10 @@
                 </div>
               </details>
             {%- when 'footer' -%}
+              {%- assign fpos = block.settings.position | default: 'left' -%}
+              {%- if fpos == 'left' -%}
               <div class="wi__block wi__foot" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+              {%- endif -%}
           {%- endcase -%}
         {%- endfor -%}
       </div>
@@ -195,7 +200,17 @@
             <a class="wi__cta" href="{{ s.cta_link | default: '#' }}">{{ s.cta_label }}</a>
           </div>
         {%- endif -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'footer' and block.settings.position == 'right' -%}
+            <div class="wi__foot wi__foot--right" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- endif -%}
+        {%- endfor -%}
       </div>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'footer' and block.settings.position == 'full' -%}
+          <div class="wi__foot wi__foot--full" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+        {%- endif -%}
+      {%- endfor -%}
     </div>
   </div>
 </div>
@@ -276,8 +291,14 @@
       "id": "right_mode",
       "label": "Right column content",
       "options": [
-        { "value": "stats", "label": "Stat grid" },
-        { "value": "image", "label": "Image" }
+        {
+          "value": "stats",
+          "label": "Stat grid"
+        },
+        {
+          "value": "image",
+          "label": "Image"
+        }
       ],
       "default": "stats"
     },
@@ -448,14 +469,14 @@
           "type": "textarea",
           "id": "chips",
           "label": "Capsules",
-          "info": "One per line — each renders as a small outlined capsule.",
+          "info": "One per line \u2014 each renders as a small outlined capsule.",
           "default": "4,000mg myo-inositol\n100mg D-chiro-inositol\n40:1 ratio\nNo fillers\nVegan\nGluten-free"
         },
         {
           "type": "richtext",
           "id": "text",
           "label": "Text",
-          "info": "Optional — shown under the capsules."
+          "info": "Optional \u2014 shown under the capsules."
         }
       ]
     },
@@ -463,6 +484,26 @@
       "type": "footer",
       "name": "Footer (small print)",
       "settings": [
+        {
+          "type": "select",
+          "id": "position",
+          "label": "Position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left column"
+            },
+            {
+              "value": "right",
+              "label": "Right column (under stats/button)"
+            },
+            {
+              "value": "full",
+              "label": "Full row below both columns"
+            }
+          ],
+          "default": "left"
+        },
         {
           "type": "richtext",
           "id": "text",
@@ -495,14 +536,56 @@
     {
       "name": "Why Inositol",
       "blocks": [
-        { "type": "text", "settings": { "text": "<p>Why inositol?<br>Real doses, backed by clinical research.*</p>", "size": 30 } },
-        { "type": "text", "settings": { "text": "<p>Bodology delivers the full clinically studied daily dose — 4,000mg myo-inositol and 100mg D-chiro-inositol at the 40:1 ratio used in research — in one unflavored serving.*</p>" } },
-        { "type": "accordion", "settings": { "title": "What's inside" } },
-        { "type": "footer" },
-        { "type": "stat", "settings": { "value": "40:1", "text": "<p>the <strong>myo- to D-chiro</strong> ratio used in clinical research</p>" } },
-        { "type": "stat", "settings": { "value": "4,100mg", "text": "<p>the full clinically studied <strong>daily dose</strong>, in one serving</p>" } },
-        { "type": "stat", "settings": { "value": "0", "text": "<p><strong>fillers, flavors, or other actives</strong> — one ingredient blend</p>" } },
-        { "type": "stat", "settings": { "value": "60-day", "text": "<p><strong>money-back guarantee</strong> on your first order</p>" } }
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Why inositol?<br>Real doses, backed by clinical research.*</p>",
+            "size": 30
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bodology delivers the full clinically studied daily dose \u2014 4,000mg myo-inositol and 100mg D-chiro-inositol at the 40:1 ratio used in research \u2014 in one unflavored serving.*</p>"
+          }
+        },
+        {
+          "type": "accordion",
+          "settings": {
+            "title": "What's inside"
+          }
+        },
+        {
+          "type": "footer"
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "40:1",
+            "text": "<p>the <strong>myo- to D-chiro</strong> ratio used in clinical research</p>"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "4,100mg",
+            "text": "<p>the full clinically studied <strong>daily dose</strong>, in one serving</p>"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "0",
+            "text": "<p><strong>fillers, flavors, or other actives</strong> \u2014 one ingredient blend</p>"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "60-day",
+            "text": "<p><strong>money-back guarantee</strong> on your first order</p>"
+          }
+        }
       ]
     }
   ]
