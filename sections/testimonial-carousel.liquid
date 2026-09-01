@@ -44,9 +44,13 @@
             <p>{{ section.settings.text }}</p>
           {% endif %}
 {% if section.settings.show_button %}
+  {%- if section.settings.experts_popup -%}
+  <button type="button" class="button desktop-only" data-tc-experts-open>{{ section.settings.button_text }}</button>
+  {%- else -%}
   <a href="{{ section.settings.button_url }}" class="button desktop-only">
     {{ section.settings.button_text }}
   </a>
+  {%- endif -%}
 {% endif %}
           
         </div>
@@ -100,14 +104,104 @@
         </div>
 
         {% if section.settings.show_button %}
+  {%- if section.settings.experts_popup -%}
+  <button type="button" class="button mobile-only" data-tc-experts-open>{{ section.settings.button_text }}</button>
+  {%- else -%}
   <a href="{{ section.settings.button_url }}" class="button mobile-only">
     {{ section.settings.button_text }}
   </a>
+  {%- endif -%}
 {% endif %}
       </div>
     </div>
   </div>
 </div>
+
+{%- if section.settings.experts_popup -%}
+<style>
+  #tc-exp-{{ section.id }} { position: fixed; inset: 0; z-index: 2147482998; display: none; }
+  #tc-exp-{{ section.id }}.is-open { display: block; }
+  #tc-exp-{{ section.id }} .tc-exp__overlay { position: absolute; inset: 0; background: rgba(242, 238, 234, 0.87); }
+  #tc-exp-{{ section.id }} .tc-exp__box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2147483000;
+    width: 96%;
+    max-width: 700px;
+    max-height: 85dvh;
+    overflow-y: auto;
+    background: #e3e7ff;
+    border: 1px solid #3447af;
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    color: #1a2874;
+    font-family: "tenon", sans-serif;
+  }
+  #tc-exp-{{ section.id }} .tc-exp__title { font-size: 20px; font-weight: 400; line-height: 1.2; margin: 0 0 20px; color: #1a2874; }
+  #tc-exp-{{ section.id }} .tc-exp__name { font-size: 15px; font-weight: var(--font-body-bold-weight, 500); margin: 0 0 2px; color: #1a2874; }
+  #tc-exp-{{ section.id }} .tc-exp__role { font-size: 12px; opacity: .8; margin: 0 0 8px; }
+  #tc-exp-{{ section.id }} .tc-exp__blurb { font-size: 12px; line-height: 1.6; margin: 0; padding-bottom: 26px; }
+  #tc-exp-{{ section.id }} .tc-exp__blurb p { margin: 0 0 8px; font-size: inherit; line-height: inherit; color: inherit; }
+  #tc-exp-{{ section.id }} .tc-exp__blurb p:last-child { margin-bottom: 0; }
+  #tc-exp-{{ section.id }} .tc-exp__item:last-of-type .tc-exp__blurb { padding-bottom: 0; }
+  #tc-exp-{{ section.id }} .tc-exp__close {
+    display: block;
+    margin: 22px auto 0;
+    color: #1a2874;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: inherit;
+  }
+  @media screen and (min-width: 750px) {
+    #tc-exp-{{ section.id }} .tc-exp__box { padding: 32px; }
+    #tc-exp-{{ section.id }} .tc-exp__title { font-size: 36px; }
+    #tc-exp-{{ section.id }} .tc-exp__name { font-size: 18px; }
+    #tc-exp-{{ section.id }} .tc-exp__role { font-size: 14px; }
+    #tc-exp-{{ section.id }} .tc-exp__blurb { font-size: 18px; }
+  }
+</style>
+<div id="tc-exp-{{ section.id }}" role="dialog" aria-modal="true" aria-label="{{ section.settings.experts_title | escape }}" hidden>
+  <div class="tc-exp__overlay" data-tc-exp-close></div>
+  <div class="tc-exp__box">
+    {%- if section.settings.experts_title != blank -%}
+      <h3 class="tc-exp__title">{{ section.settings.experts_title }}</h3>
+    {%- endif -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'expert' -%}
+        <div class="tc-exp__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.name != blank -%}<p class="tc-exp__name">{{ block.settings.name }}</p>{%- endif -%}
+          {%- if block.settings.title != blank -%}<p class="tc-exp__role">{{ block.settings.title }}</p>{%- endif -%}
+          {%- if block.settings.blurb != blank -%}<div class="tc-exp__blurb">{{ block.settings.blurb }}</div>{%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+    <button type="button" class="tc-exp__close" data-tc-exp-close>Close</button>
+  </div>
+</div>
+<script>
+(function(){
+  var pop = document.getElementById('tc-exp-{{ section.id }}');
+  var root = document.getElementById('shopify-section-{{ section.id }}');
+  if(!pop || !root) return;
+  function open(){ pop.hidden = false; pop.classList.add('is-open'); document.documentElement.style.overflow = 'hidden'; }
+  function close(){ pop.classList.remove('is-open'); pop.hidden = true; document.documentElement.style.overflow = ''; }
+  [].slice.call(root.querySelectorAll('[data-tc-experts-open]')).forEach(function(b){
+    b.addEventListener('click', function(e){ e.preventDefault(); open(); });
+  });
+  [].slice.call(pop.querySelectorAll('[data-tc-exp-close]')).forEach(function(b){
+    b.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && pop.classList.contains('is-open')) close(); });
+})();
+</script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -189,9 +283,31 @@
   "type": "url",
   "id": "button_url",
   "label": "Button URL"
+},
+{
+  "type": "checkbox",
+  "id": "experts_popup",
+  "default": false,
+  "label": "Button opens experts popup",
+  "info": "Instead of linking, the button opens a popup listing the Expert blocks added to this section."
+},
+{
+  "type": "text",
+  "id": "experts_title",
+  "label": "Experts popup title",
+  "default": "Meet our experts"
 }
   ],
   "blocks": [
+    {
+      "type": "expert",
+      "name": "Expert (popup)",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "blurb", "label": "Blurb" }
+      ]
+    },
     {
       "type": "testimonial",
       "name": "Testimonial Block",
