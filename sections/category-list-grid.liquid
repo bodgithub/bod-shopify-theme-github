@@ -13,7 +13,7 @@
 
 {% style %}
   #shopify-section-{{ section.id }} .clg {
-    background: {{ s.bg }};
+    background: {% if s.bg_grad_bottom != blank %}linear-gradient(180deg, {% if s.bg_grad_top != blank %}{{ s.bg_grad_top }}{% else %}rgba(0,0,0,0){% endif %} 0%, {{ s.bg_grad_bottom }} 100%){% else %}{{ s.bg }}{% endif %};
     color: {{ s.text_color }};
     padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px;
     margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
@@ -466,6 +466,18 @@
       "id": "bg",
       "label": "Background",
       "default": "#f2eeea"
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_top",
+      "label": "Gradient top",
+      "info": "Leave empty for transparent."
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_bottom",
+      "label": "Gradient bottom",
+      "info": "Set to switch the background to a top-to-bottom gradient."
     },
     {
       "type": "color",
