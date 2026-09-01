@@ -86,12 +86,13 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    margin-top: 12px;
+    margin-top: 20px;
     font-size: 12px;
     letter-spacing: 0.02em;
     color: {{ s.accent_color }};
   }
-  #shopify-section-{{ section.id }} .clg__count svg { width: 10px; height: 12px; display: block; }
+  #shopify-section-{{ section.id }} .clg__count svg { width: 13px; height: 13px; display: block; }
+  #shopify-section-{{ section.id }} .clg__count img { width: 14px; height: 14px; object-fit: contain; display: block; }
   #shopify-section-{{ section.id }} .clg__items {
     list-style: none;
     margin: 26px 0 0;
@@ -125,6 +126,46 @@
     #shopify-section-{{ section.id }} .clg__cell { border-left: 0; padding: 28px 4px 32px; }
     #shopify-section-{{ section.id }} .clg__title { font-size: {{ s.title_size | times: 0.82 | round }}px; }
   }
+  {%- if s.hover_bg != blank -%}
+  #shopify-section-{{ section.id }} .clg__cell--col { transition: background .18s, transform .15s; }
+  #shopify-section-{{ section.id }} .clg__cell--col:hover { background: {{ s.hover_bg | color_modify: 'alpha', 0.5 }}; }
+  {%- if s.hover_text_color != blank -%}
+  #shopify-section-{{ section.id }} .clg__cell--col:hover,
+  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__title,
+  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__count,
+  #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__items { color: {{ s.hover_text_color }} !important; }
+  {%- endif -%}
+  {%- endif -%}
+  #shopify-section-{{ section.id }} .clg__cell--clickable { cursor: pointer; }
+  #shopify-section-{{ section.id }} .clg__footer {
+    text-align: center;
+    font-size: {{ s.footer_size | default: 15 }}px;
+    line-height: 1.6;
+    color: {{ s.text_color }};
+    margin-top: 22px;
+  }
+  #shopify-section-{{ section.id }} .clg__footer p { margin: 0 0 6px; }
+  #shopify-section-{{ section.id }} .clg__footer p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .clg__footer a { color: inherit; text-decoration: underline; }
+  {%- if s.footer_star -%}
+  #shopify-section-{{ section.id }} .clg__footer p:last-child::after { content: '*'; font-size: 0.6em; vertical-align: super; line-height: 0; margin-left: 1px; }
+  {%- endif -%}
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .clg__footer { padding: {{ s.footer_pad_top | default: 0 }}px {{ s.footer_pad | default: 0 }}% 0; }
+  }
+  {%- if s.enable_lightbox -%}
+  #shopify-section-{{ section.id }} .clg-overlay { display: none; position: fixed; inset: 0; z-index: 2147482998; background: rgba(242, 238, 234, 0.87); }
+  #shopify-section-{{ section.id }} .clg-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2147483000; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px; max-height: 85dvh; overflow-y: auto; font-family: "tenon", sans-serif; }
+  #shopify-section-{{ section.id }} .clg-overlay.is-open, #shopify-section-{{ section.id }} .clg-popup.is-open { display: block; }
+  #shopify-section-{{ section.id }} .clg-popup__b { color: {{ s.text_color }}; font-size: 12px; line-height: 1.6; text-align: center; }
+  #shopify-section-{{ section.id }} .clg-popup__b :is(h1, h2, h3, h4, h5, h6) { color: {{ s.text_color }}; font-family: "tenon", sans-serif; margin: 0 0 10px; }
+  #shopify-section-{{ section.id }} .clg-popup__b p, #shopify-section-{{ section.id }} .clg-popup__b li { color: {{ s.text_color }}; }
+  #shopify-section-{{ section.id }} .clg-popup__b p { margin: 0; padding-bottom: 26px; }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .clg-popup__b { font-size: 18px; padding: 0 24px; }
+  }
+  #shopify-section-{{ section.id }} .clg-popup__close { display: block; margin: 14px auto 0; color: #1a2874; font-size: 14px; text-decoration: underline; cursor: pointer; background: none; border: 0; padding: 0; font-family: inherit; }
+  {%- endif -%}
 {% endstyle %}
 
 <div class="clg">
@@ -156,17 +197,9 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'column' -%}
-            <div class="clg__cell" {{ block.shopify_attributes }}>
+            <div class="clg__cell clg__cell--col{% if s.enable_lightbox and block.settings.lightbox_text != blank %} clg__cell--clickable{% endif %}"{% if s.enable_lightbox and block.settings.lightbox_text != blank %} data-clg-open="{{ block.id }}" role="button" tabindex="0"{% endif %} {{ block.shopify_attributes }}>
               {%- if block.settings.title != blank -%}
                 <h3 class="clg__title">{{ block.settings.title }}</h3>
-              {%- endif -%}
-              {%- if block.settings.count_text != blank -%}
-                <div class="clg__count">
-                  {%- if s.show_count_icon -%}
-                    <svg viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><rect x="0" y="0" width="4" height="12" rx="1"></rect><rect x="6" y="0" width="4" height="12" rx="1"></rect></svg>
-                  {%- endif -%}
-                  <span>{{ block.settings.count_text }}</span>
-                </div>
               {%- endif -%}
               {%- if block.settings.items != blank -%}
                 <ul class="clg__items">
@@ -183,6 +216,16 @@
                   {%- endfor -%}
                 </ul>
               {%- endif -%}
+              {%- if block.settings.count_text != blank -%}
+                <div class="clg__count">
+                  {%- if s.count_icon == 'arrow' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
+                  {%- elsif s.count_icon == 'image' and s.count_icon_image != blank -%}
+                    <img src="{{ s.count_icon_image | image_url: width: 56 }}" alt="" loading="lazy">
+                  {%- endif -%}
+                  <span>{{ block.settings.count_text }}</span>
+                </div>
+              {%- endif -%}
             </div>
           {%- when 'highlight' -%}
             <div class="clg__cell" style="background: {{ block.settings.bg }};" {{ block.shopify_attributes }}>
@@ -195,8 +238,51 @@
         {%- endcase -%}
       {%- endfor -%}
     </div>
+    {%- if s.footer_text != blank -%}
+      <div class="clg__footer">{{ s.footer_text }}</div>
+    {%- endif -%}
   </div>
+  {%- if s.enable_lightbox -%}
+  <div class="clg-overlay" data-clg-overlay></div>
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'column' and block.settings.lightbox_text != blank -%}
+      <div class="clg-popup" data-clg-popup="{{ block.id }}" role="dialog" aria-modal="true" aria-label="{{ block.settings.title | escape }}">
+        <div class="clg-popup__b">{{ block.settings.lightbox_text }}</div>
+        <button type="button" class="clg-popup__close" data-clg-close>Close</button>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- endif -%}
 </div>
+
+{%- if s.enable_lightbox -%}
+<script>
+  (function () {
+    function init() {
+      var root = document.getElementById('shopify-section-{{ section.id }}');
+      if (!root || root.dataset.clgInit === 'true') return;
+      root.dataset.clgInit = 'true';
+      var overlay = root.querySelector('[data-clg-overlay]');
+      var popups = root.querySelectorAll('[data-clg-popup]');
+      function closeAll(){ if(overlay) overlay.classList.remove('is-open'); popups.forEach(function(p){ p.classList.remove('is-open'); }); }
+      root.querySelectorAll('[data-clg-open]').forEach(function (card) {
+        function open(){ var t = root.querySelector('[data-clg-popup="' + card.getAttribute('data-clg-open') + '"]'); if (t && overlay) { overlay.classList.add('is-open'); t.classList.add('is-open'); } }
+        card.addEventListener('click', open);
+        card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+      });
+      if (overlay) overlay.addEventListener('click', closeAll);
+      root.querySelectorAll('[data-clg-close]').forEach(function (b) { b.addEventListener('click', closeAll); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAll(); });
+    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); } else { init(); }
+    if (typeof window.Shopify !== 'undefined' && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function (e) {
+        if (e.detail && e.detail.sectionId === '{{ section.id }}') { var r = document.getElementById('shopify-section-{{ section.id }}'); if (r) r.dataset.clgInit = ''; init(); }
+      });
+    }
+  })();
+</script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -258,10 +344,98 @@
       "default": 3
     },
     {
+      "type": "select",
+      "id": "count_icon",
+      "label": "Count label icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "arrow",
+          "label": "Arrow"
+        },
+        {
+          "value": "image",
+          "label": "Uploaded image"
+        }
+      ],
+      "default": "arrow"
+    },
+    {
+      "type": "image_picker",
+      "id": "count_icon_image",
+      "label": "Count icon image",
+      "info": "Used when the icon is set to Uploaded image."
+    },
+    {
+      "type": "header",
+      "content": "Hover and popup"
+    },
+    {
+      "type": "color",
+      "id": "hover_bg",
+      "label": "Column hover",
+      "info": "Applied at 50% opacity. Leave empty for no hover effect."
+    },
+    {
+      "type": "color",
+      "id": "hover_text_color",
+      "label": "Column hover text"
+    },
+    {
       "type": "checkbox",
-      "id": "show_count_icon",
-      "label": "Icon before count label",
-      "default": true
+      "id": "enable_lightbox",
+      "label": "Open a popup on click",
+      "default": false,
+      "info": "Columns with popup text become clickable and open the standard popup."
+    },
+    {
+      "type": "header",
+      "content": "Footer"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_text",
+      "label": "Footer text",
+      "info": "Shown centered below the columns."
+    },
+    {
+      "type": "range",
+      "id": "footer_size",
+      "label": "Footer text size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "footer_pad_top",
+      "label": "Footer padding top (desktop)",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "footer_pad",
+      "label": "Footer padding sides (desktop)",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "footer_star",
+      "label": "Superscript * at the end",
+      "default": false
     },
     {
       "type": "header",
@@ -386,6 +560,12 @@
           "label": "Items",
           "info": "One per line. Start a line with ~ to dim it.",
           "default": "Thyroxine (T4) Free\nTestosterone, Total\nAnti-Mullerian Hormone\n~Thyroid-Stimulating Hormone (TSH)"
+        },
+        {
+          "type": "richtext",
+          "id": "lightbox_text",
+          "label": "Popup text",
+          "info": "Shown in the popup when clicked (needs the popup toggle on)."
         }
       ]
     },
@@ -430,9 +610,15 @@
     {
       "name": "Category list grid",
       "blocks": [
-        { "type": "column" },
-        { "type": "column" },
-        { "type": "column" }
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        }
       ]
     }
   ]
