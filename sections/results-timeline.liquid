@@ -15,8 +15,9 @@
 #rt-{{ uid }}{background:{% if section.settings.bg_grad_bottom != blank %}linear-gradient(180deg, {% if section.settings.bg_grad_top != blank %}{{ section.settings.bg_grad_top }}{% else %}rgba(0,0,0,0){% endif %} 0%, {{ section.settings.bg_grad_bottom }} 100%){% else %}{{ section.settings.bg_color }}{% endif %}; padding:{{ section.settings.pad_top }}px 20px {{ section.settings.pad_bottom }}px;}
 #rt-{{ uid }} .rt-wrap{max-width:{{ section.settings.max_width }}px; margin:0 auto; font-family:"tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;}
 #rt-{{ uid }} .rt-h{font-family:"tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size:clamp(26px,3.6vw,34px); font-weight:400; letter-spacing:-0.01em; line-height:1.25; color:{{ section.settings.heading_color }}; margin:0 0 28px; text-align:left;}
-#rt-{{ uid }} .rt-h p{margin:0; font-size:inherit; line-height:inherit; color:inherit;}
-#rt-{{ uid }} .rt-h em{color:{{ section.settings.heading_accent | default: '#1b3def' }};}
+#rt-{{ uid }} .rt-h :is(h1,h2,h3,h4,h5,h6,p){margin:0; line-height:inherit; color:{{ section.settings.heading_color }} !important;}
+#rt-{{ uid }} .rt-h p{font-size:inherit;}
+#rt-{{ uid }} .rt-h em{color:{{ section.settings.heading_accent | default: '#1b3def' }} !important;}
 #rt-{{ uid }} .rt-tabs{display:none;}
 #rt-{{ uid }} .rt-track{display:grid; grid-template-columns:repeat({{ n }},1fr); column-gap:26px;}
 #rt-{{ uid }} .rt-img{aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:{{ section.settings.img_placeholder }};}
