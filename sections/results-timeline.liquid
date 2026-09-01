@@ -93,11 +93,11 @@
         {%- if block.settings.title != blank -%}<h3 class="rt-up">{{ block.settings.title }}</h3>{%- endif -%}
         {%- if block.settings.text != blank -%}<p class="rt-d">{{ block.settings.text }}</p>{%- endif -%}
         {%- if block.settings.studies_text != blank -%}
-          <p class="rt-sub rt-sub--studies">{{ section.settings.studies_label | default: 'What the studies show' }}</p>
+          <p class="rt-sub rt-sub--studies">{{ block.settings.studies_label | default: 'What the studies show' }}</p>
           <p class="rt-d">{{ block.settings.studies_text }}</p>
         {%- endif -%}
         {%- if block.settings.customers_text != blank -%}
-          <p class="rt-sub rt-sub--cust">{{ section.settings.customers_label | default: 'What our customers report:' }}</p>
+          <p class="rt-sub rt-sub--cust">{{ block.settings.customers_label | default: 'What our customers report:' }}</p>
           <p class="rt-d">{{ block.settings.customers_text }}</p>
         {%- endif -%}
         {%- if block.settings.quote_text != blank -%}
@@ -273,22 +273,10 @@
       "default": "#1a2874"
     },
     {
-      "type": "text",
-      "id": "studies_label",
-      "label": "Studies subheading",
-      "default": "What the studies show"
-    },
-    {
       "type": "color",
       "id": "studies_title_color",
       "label": "Studies subheading color",
       "default": "#1b3def"
-    },
-    {
-      "type": "text",
-      "id": "customers_label",
-      "label": "Customers subheading",
-      "default": "What our customers report:"
     },
     {
       "type": "color",
@@ -412,10 +400,22 @@
           "default": "What happens in this window."
         },
         {
+          "type": "text",
+          "id": "studies_label",
+          "label": "Studies subheading",
+          "default": "What the studies show"
+        },
+        {
           "type": "textarea",
           "id": "studies_text",
           "label": "Studies text",
           "info": "Shown under the studies subheading."
+        },
+        {
+          "type": "text",
+          "id": "customers_label",
+          "label": "Customers subheading",
+          "default": "What our customers report:"
         },
         {
           "type": "textarea",
