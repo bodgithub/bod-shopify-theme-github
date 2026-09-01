@@ -16,7 +16,7 @@
     text-align: center;
     color: {{ section.settings.heading_color }};
     margin: 0 auto;
-    padding: 0 20px {{ section.settings.heading_pad_bottom }}px;
+    padding: {{ section.settings.heading_pad_top | default: 0 }}px 20px {{ section.settings.heading_pad_bottom }}px;
     line-height: 1.15;
     font-weight: 400;
     max-width: 100%;
@@ -280,6 +280,7 @@
       { "type": "color", "id": "heading_color", "label": "Heading color", "default": "#1b3def" },
       { "type": "range", "id": "heading_min_width", "label": "Heading min width (desktop)", "min": 0, "max": 900, "step": 20, "unit": "px", "default": 0 },
       { "type": "range", "id": "heading_max_width", "label": "Heading max width (desktop)", "min": 300, "max": 1200, "step": 20, "unit": "px", "default": 760, "info": "Full width on mobile." },
+      { "type": "range", "id": "heading_pad_top", "label": "Padding above heading", "min": 0, "max": 120, "step": 2, "unit": "px", "default": 0 },
       { "type": "range", "id": "heading_pad_bottom", "label": "Padding below heading", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 32 },
       {
         "type": "select",
