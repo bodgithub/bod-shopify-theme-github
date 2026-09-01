@@ -24,10 +24,12 @@
   #shopify-section-{{ section.id }} .si-heading em { font-style: italic; }
   #shopify-section-{{ section.id }} .si-heading :is(h1, h2, h3, h4, h5, h6, p) {
     margin: 0;
-    font-size: inherit;
     line-height: inherit;
-    font-weight: inherit;
     color: {{ section.settings.heading_color }} !important;
+    {% if section.settings.heading_size > 0 %}
+    /* explicit px size wins over the richtext heading level */
+    font-size: inherit !important;
+    {% endif %}
   }
   /* the carousel's own section-spacing top margin would sit between the
      heading and the images — the heading paddings control that gap instead */
