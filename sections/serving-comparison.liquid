@@ -1,0 +1,314 @@
+{%- comment -%}
+  Bodology · Serving comparison
+  "Did you know?" banner: rich text lead, circular product image with a
+  label, an equals sign, then a repeated icon grid (capsule shape by
+  default, or an uploaded image) with its own label. Optional background
+  image, all colors editable. Clinical palette by default.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign count = s.icon_count | default: 8
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .svc {
+    position: relative;
+    background: {{ s.bg_color }};
+    color: {{ s.text_color }};
+    padding: {{ s.pad_top }}px 20px {{ s.pad_bottom }}px;
+    overflow: hidden;
+  }
+  {% if s.bg_image != blank %}
+  #shopify-section-{{ section.id }} .svc__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('{{ s.bg_image | image_url: width: 2200 }}');
+    background-size: cover;
+    background-position: center;
+  }
+  #shopify-section-{{ section.id }} .svc__bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: {{ s.overlay_color }};
+    opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
+  }
+  {% endif %}
+  #shopify-section-{{ section.id }} .svc__row {
+    position: relative;
+    z-index: 1;
+    max-width: {{ s.max_width }}px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .svc__lead {
+    font-size: {{ s.lead_size }}px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    max-width: 260px;
+  }
+  #shopify-section-{{ section.id }} .svc__lead p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .svc__col { text-align: center; }
+  #shopify-section-{{ section.id }} .svc__circle {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: {{ s.circle_bg }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  #shopify-section-{{ section.id }} .svc__circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .svc__label {
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    margin: 12px 0 0;
+  }
+  #shopify-section-{{ section.id }} .svc__eq {
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1;
+    color: {{ s.equals_color }};
+  }
+  #shopify-section-{{ section.id }} .svc__icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: {{ s.icon_size | times: 9 | plus: 80 }}px;
+    margin: 0 auto;
+  }
+  #shopify-section-{{ section.id }} .svc__icon {
+    width: {{ s.icon_size }}px;
+    height: {{ s.icon_size }}px;
+    color: {{ s.icon_color }};
+  }
+  #shopify-section-{{ section.id }} .svc__icon svg { width: 100%; height: 100%; display: block; }
+  #shopify-section-{{ section.id }} .svc__icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .svc__row { flex-direction: column; gap: 22px; }
+    #shopify-section-{{ section.id }} .svc__lead { max-width: 100%; text-align: center; }
+    #shopify-section-{{ section.id }} .svc__eq { font-size: 34px; }
+  }
+{% endstyle %}
+
+<div class="svc">
+  {%- if s.bg_image != blank -%}<div class="svc__bg" aria-hidden="true"></div>{%- endif -%}
+  <div class="svc__row">
+    {%- if s.lead != blank -%}
+      <div class="svc__lead">{{ s.lead }}</div>
+    {%- endif -%}
+
+    <div class="svc__col">
+      <div class="svc__circle">
+        {%- if s.product_image != blank -%}
+          <img src="{{ s.product_image | image_url: width: 192 }}" alt="{{ s.product_label | escape }}" loading="lazy">
+        {%- endif -%}
+      </div>
+      {%- if s.product_label != blank -%}<p class="svc__label">{{ s.product_label }}</p>{%- endif -%}
+    </div>
+
+    <div class="svc__eq" aria-hidden="true">=</div>
+
+    <div class="svc__col">
+      <div class="svc__icons">
+        {%- for i in (1..count) -%}
+          <span class="svc__icon">
+            {%- if s.icon_image != blank -%}
+              <img src="{{ s.icon_image | image_url: width: 96 }}" alt="" loading="lazy">
+            {%- else -%}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" aria-hidden="true"><g transform="rotate(-45 12 12)"><rect x="4.5" y="8.5" width="15" height="7" rx="3.5"></rect><line x1="12" y1="8.5" x2="12" y2="15.5"></line></g></svg>
+            {%- endif -%}
+          </span>
+        {%- endfor -%}
+      </div>
+      {%- if s.them_label != blank -%}<p class="svc__label">{{ s.them_label }}</p>{%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Serving comparison",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "lead",
+      "label": "Lead text",
+      "default": "<p>Did you know?</p>",
+      "info": "Italics render in the Instrument serif."
+    },
+    {
+      "type": "range",
+      "id": "lead_size",
+      "label": "Lead text size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Our side"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image",
+      "info": "Shown in a circle."
+    },
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "Label",
+      "default": "1 serving of Bodology"
+    },
+    {
+      "type": "header",
+      "content": "Their side"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Icon image",
+      "info": "Optional — replaces the default capsule shape."
+    },
+    {
+      "type": "range",
+      "id": "icon_count",
+      "label": "Number of icons",
+      "min": 1,
+      "max": 24,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "text",
+      "id": "them_label",
+      "label": "Label",
+      "default": "8+ capsules of a typical 500mg inositol"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Image overlay",
+      "default": "#1a2874"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "equals_color",
+      "label": "Equals sign",
+      "default": "#1b3def"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Capsule icons",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "circle_bg",
+      "label": "Product circle",
+      "default": "#e3e7ff"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 700,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 1100
+    },
+    {
+      "type": "range",
+      "id": "pad_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Serving comparison"
+    }
+  ]
+}
+{% endschema %}
