@@ -69,6 +69,27 @@
     /* If you prefer a different shape, change the line above to:
        66.666% (3:2), 75% (4:3), 56.25% (16:9), etc. */
 
+    /* Edge fades: above the track (track is z-index 10) */
+    #scrolling-images-{{ section.id }} .si-fade {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 150px;
+      pointer-events: none;
+      z-index: 20;
+    }
+    #scrolling-images-{{ section.id }} .si-fade--r {
+      right: 0;
+      background: linear-gradient(to left, rgb({{ section.settings.static_fade.rgb | replace: ' ', ',' }}), rgba({{ section.settings.static_fade.rgb | replace: ' ', ',' }}, 0));
+    }
+    #scrolling-images-{{ section.id }} .si-fade--l {
+      left: 0;
+      background: linear-gradient(to right, rgb({{ section.settings.static_fade.rgb | replace: ' ', ',' }}), rgba({{ section.settings.static_fade.rgb | replace: ' ', ',' }}, 0));
+    }
+    @media screen and (max-width: 749px) {
+      #scrolling-images-{{ section.id }} .si-fade { width: 80px; }
+    }
+
     {%- if static_mode -%}
     /* Static row mode: manual scroll, rounded cards, edge fade + arrow */
     #scrolling-images-{{ section.id }} { position: relative; }
@@ -80,36 +101,40 @@
       scrollbar-width: none;
     }
     #scrolling-images-{{ section.id }} .scrolling-images--inner::-webkit-scrollbar { display: none; }
-    #scrolling-images-{{ section.id }} .scrolling-images--inner > div { animation: none !important; }
+    #scrolling-images-{{ section.id }} .scrolling-images--inner > div {
+      animation: none !important;
+      gap: {{ section.settings.static_gap }}px;
+      align-items: flex-start;
+    }
+    #scrolling-images-{{ section.id }} .scrolling-images--item {
+      margin: 0 !important;
+      min-width: {{ section.settings.static_card_width }}px !important;
+      max-width: {{ section.settings.static_card_width }}px !important;
+    }
     #scrolling-images-{{ section.id }} .scrolling-images--image { border-radius: 14px; overflow: hidden; }
+    #scrolling-images-{{ section.id }} .scrolling-images--content { margin-top: 14px; }
     #scrolling-images-{{ section.id }} .scrolling-images--heading {
-      font-size: 16px;
-      font-weight: var(--font-body-bold-weight, 500);
-      color: {{ section.settings.static_heading_color }};
-      margin: 14px 0 5px;
+      font-size: 17px !important;
+      font-weight: var(--font-body-bold-weight, 500) !important;
+      line-height: 1.35;
+      letter-spacing: 0;
+      text-transform: none;
+      color: {{ section.settings.static_heading_color }} !important;
+      margin: 0 0 5px !important;
     }
     #scrolling-images-{{ section.id }} .scrolling-images--desc,
     #scrolling-images-{{ section.id }} .scrolling-images--desc p {
       font-size: 14px;
       line-height: 1.5;
       color: {{ section.settings.static_text_color }};
-    }
-    #scrolling-images-{{ section.id }} .si-fade {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 150px;
-      background: linear-gradient(to left, rgb({{ section.settings.static_fade.rgb | replace: ' ', ',' }}), rgba({{ section.settings.static_fade.rgb | replace: ' ', ',' }}, 0));
-      pointer-events: none;
-      z-index: 2;
+      margin: 0;
     }
     #scrolling-images-{{ section.id }} .si-arrow {
       position: absolute;
       right: 18px;
       top: 50%;
       transform: translateY(-50%);
-      z-index: 3;
+      z-index: 21;
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -126,7 +151,10 @@
     #scrolling-images-{{ section.id }} .si-arrow svg { width: 18px; height: 18px; display: block; }
     #scrolling-images-{{ section.id }} .si-arrow.is-done { opacity: 0; pointer-events: none; }
     @media screen and (max-width: 749px) {
-      #scrolling-images-{{ section.id }} .si-fade { width: 90px; }
+      #scrolling-images-{{ section.id }} .scrolling-images--item {
+        min-width: {{ section.settings.static_card_width | times: 0.78 | round }}px !important;
+        max-width: {{ section.settings.static_card_width | times: 0.78 | round }}px !important;
+      }
       #scrolling-images-{{ section.id }} .si-arrow { width: 38px; height: 38px; right: 10px; }
     }
     {%- endif -%}
@@ -187,8 +215,12 @@
     {% endcapture %}
     {{ scrolling_text }}{% unless static_mode %}{{ scrolling_text }}{% endunless %}
   </div>
+  {%- if static_mode == false and section.settings.edge_fade -%}
+    <div class="si-fade si-fade--l" aria-hidden="true"></div>
+    <div class="si-fade si-fade--r" aria-hidden="true"></div>
+  {%- endif -%}
   {%- if static_mode -%}
-    <div class="si-fade" aria-hidden="true"></div>
+    <div class="si-fade si-fade--r" aria-hidden="true"></div>
     <button type="button" class="si-arrow" aria-label="Scroll right">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"></line><polyline points="13 6 19 12 13 18"></polyline></svg>
     </button>
@@ -278,9 +310,13 @@
         "default": "20s",
         "label": "Speed"
       },
+      { "type": "header", "content": "Edge fades" },
+      { "type": "color", "id": "static_fade", "label": "Fade color", "default": "#f2eeea", "info": "Match the section background. Used in both modes." },
+      { "type": "checkbox", "id": "edge_fade", "default": false, "label": "Fades on auto-scroll (both sides)" },
       { "type": "header", "content": "Static row mode" },
-      { "type": "checkbox", "id": "static_mode", "default": false, "label": "Static row (no auto-scroll)", "info": "Rounded cards scrolled by swipe or the arrow, with an edge fade." },
-      { "type": "color", "id": "static_fade", "label": "Edge fade color", "default": "#f2eeea", "info": "Match the section background." },
+      { "type": "checkbox", "id": "static_mode", "default": false, "label": "Static row (no auto-scroll)", "info": "Rounded cards scrolled by swipe or the arrow, with a right edge fade." },
+      { "type": "range", "id": "static_card_width", "label": "Card width", "min": 200, "max": 360, "step": 10, "unit": "px", "default": 280 },
+      { "type": "range", "id": "static_gap", "label": "Card spacing", "min": 12, "max": 48, "step": 2, "unit": "px", "default": 28 },
       { "type": "color", "id": "static_arrow_color", "label": "Arrow color", "default": "#1b3def" },
       { "type": "color", "id": "static_heading_color", "label": "Card heading color", "default": "#1a2874" },
       { "type": "color", "id": "static_text_color", "label": "Card text color", "default": "#1a2874" },
