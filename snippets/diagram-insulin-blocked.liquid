@@ -1,0 +1,44 @@
+<style>
+.insulin-blocked{position:relative;width:306px;height:197px;overflow:hidden;background:linear-gradient(180deg,#EDEFFF,#E2E6FF);font:10px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#3447AF;--t:6s;--tg:3.2s;--ga:.5;--gs:9px}
+.insulin-blocked *{box-sizing:border-box;margin:0}
+.insulin-blocked>*{position:absolute}
+.insulin-blocked .band{box-sizing:border-box;background:linear-gradient(90deg,rgba(255,255,255,.11),#FFF,rgba(255,255,255,.11));height:97px;width:305px;top:1px;left:0}
+.insulin-blocked .band>*{position:absolute}
+.insulin-blocked .bar{left:6px;width:14px;border-radius:3px;background:linear-gradient(180deg,rgba(52,71,175,.65),#3447AF,rgba(52,71,175,.65))}
+.insulin-blocked .line{left:0;right:0;top:98px;height:1.5px;z-index:1;background:repeating-linear-gradient(90deg,rgba(52,71,175,.62) 0 4px,transparent 4px 8px)}
+.insulin-blocked .lbl{position:absolute;line-height:1.2}
+.insulin-blocked .sug{width:15px;height:15px;border-radius:50%;background:#FFF;border:1px solid #3447AF}
+.insulin-blocked .ins{width:12px;height:12px;border-radius:50%;background:#2A3BB5}
+.insulin-blocked .glut{width:26px;height:26px;border-radius:50%;background:rgba(120,140,230,.32);display:grid;place-items:center}
+.insulin-blocked .glut .sug{width:13px;height:13px}
+.insulin-blocked .gate{left:146px;top:80px;width:26px;height:36px;border-radius:9px;background:#F2F4FF;border:1px solid #3447AF;display:grid;place-items:center;z-index:3;animation:insulin-blocked-glow var(--tg) ease-out infinite}
+.insulin-blocked .gate .core{width:11px;height:11px;border-radius:50%;background:#2A3BB5}
+.insulin-blocked .gate .x{font-size:15px;color:rgba(52,71,175,.6);text-transform:none}
+@keyframes insulin-blocked-glow{0%{box-shadow:0 0 0 0 rgba(208,86,74,var(--ga))}70%{box-shadow:0 0 0 var(--gs) rgba(208,86,74,0)}100%{box-shadow:0 0 0 0 rgba(208,86,74,0)}}
+@media (prefers-reduced-motion:reduce){.insulin-blocked .gate,.insulin-blocked .gate .core,.insulin-blocked .lift,.insulin-blocked .wait{animation:none}}
+.insulin-blocked .bar-w{box-sizing:border-box;background:linear-gradient(180deg,rgba(255,255,255,.65),#FFF,rgba(255,255,255,.65));border:.5px solid rgba(52,71,175,.35)}
+</style>
+<div class="insulin-blocked" role="img" aria-label="Insulin cannot bind to the receptor, so glucose stays in the blood">
+<div class="band"><div class="lbl" style="left:26px;top:37px;font-weight:700">In the<br>blood</div><div class="lbl" style="left:122px;top:14px;font-size:9px">Glucose</div><div class="lbl" style="left:231px;top:45px;font-size:9px">Insulin</div>
+<div class="ins" style="left:178px;top:70px"></div>
+<div class="ins" style="left:247px;top:15px"></div>
+<div class="ins" style="left:108px;top:50px"></div>
+<div class="sug" style="left:82px;top:31px"></div>
+<div class="sug" style="left:85px;top:20px"></div>
+<div class="sug" style="left:188px;top:8px"></div>
+<div class="sug" style="left:144px;top:35px"></div>
+<div class="sug" style="left:153px;top:40px"></div>
+<div class="ins" style="left:227px;top:26px"></div>
+<div class="sug" style="left:43px;top:72px"></div>
+</div>
+<div class="bar bar-w" style="top:10px;height:80px"></div><div class="bar" style="top:107px;height:80px"></div>
+<div class="line"></div>
+<div class="lbl" style="left:178px;top:103px;font-size:9px">Insulin<br>receptor</div>
+<div class="lbl" style="left:26px;top:136px;font-weight:700">Inside<br>the cell</div>
+<div class="lbl" style="left:233px;top:147px;font-size:9px">Gult4</div>
+<div class="gate"><div class="x">✕</div></div>
+<div class="glut" style="left:170px;top:164px"></div>
+<div class="glut" style="left:197px;top:144px"></div>
+<div class="glut" style="left:209px;top:156px"></div>
+<div class="glut" style="left:243px;top:164px"></div>
+</div>

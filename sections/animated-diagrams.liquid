@@ -1,0 +1,306 @@
+{%- comment -%}
+  Bodology · Animated diagrams
+  One or two animated diagram cards (the insulin receptor embeds, or a
+  custom embed) centered over two lines of looping background text — the
+  top line scrolls left, the bottom line scrolls right. Cards sit side by
+  side on desktop and stack on mobile, each with an editable container
+  background and a bold caption. Clinical palette.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign line1_items = s.line1 | split: ','
+  assign line2_items = s.line2 | split: ','
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .adg {
+    position: relative;
+    overflow: hidden;
+    background: {{ s.bg }};
+    padding: {{ s.pad_top }}px 0 {{ s.pad_bottom }}px;
+    margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} .adg__marquee {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .adg__row { overflow: hidden; white-space: nowrap; }
+  #shopify-section-{{ section.id }} .adg__track {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+  }
+  #shopify-section-{{ section.id }} .adg__row--l .adg__track { animation: adg-left-{{ section.id }} {{ s.marquee_speed }}s linear infinite; }
+  #shopify-section-{{ section.id }} .adg__row--r .adg__track { animation: adg-right-{{ section.id }} {{ s.marquee_speed }}s linear infinite; }
+  @keyframes adg-left-{{ section.id }} { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes adg-right-{{ section.id }} { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .adg__track { animation: none !important; }
+  }
+  #shopify-section-{{ section.id }} .adg__item {
+    font-size: {{ s.marquee_size }}px;
+    color: {{ s.marquee_color }};
+    padding: 0 14px;
+  }
+  #shopify-section-{{ section.id }} .adg__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: {{ s.marquee_color }};
+    opacity: .6;
+    flex: 0 0 auto;
+  }
+  #shopify-section-{{ section.id }} .adg__cards {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+  }
+  #shopify-section-{{ section.id }} .adg__card {
+    border: 1px solid {{ s.card_border }};
+    border-radius: 18px;
+    padding: {{ s.card_pad }}px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  #shopify-section-{{ section.id }} .adg__caption {
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+  }
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .adg__cards { flex-direction: column; align-items: center; gap: 22px; }
+  }
+{% endstyle %}
+
+<div class="adg">
+  <div class="adg__marquee" aria-hidden="true">
+    {%- if s.line1 != blank -%}
+      <div class="adg__row adg__row--l"><div class="adg__track">
+        {%- for copy in (1..2) -%}
+          {%- for item in line1_items -%}<span class="adg__item">{{ item | strip }}</span><span class="adg__dot"></span>{%- endfor -%}
+        {%- endfor -%}
+      </div></div>
+    {%- endif -%}
+    {%- if s.line2 != blank -%}
+      <div class="adg__row adg__row--r"><div class="adg__track">
+        {%- for copy in (1..2) -%}
+          {%- for item in line2_items -%}<span class="adg__item">{{ item | strip }}</span><span class="adg__dot"></span>{%- endfor -%}
+        {%- endfor -%}
+      </div></div>
+    {%- endif -%}
+  </div>
+
+  <div class="adg__cards">
+    {%- for block in section.blocks -%}
+      <div class="adg__card" style="background: {{ block.settings.container_bg }};" {{ block.shopify_attributes }}>
+        {%- case block.settings.diagram -%}
+          {%- when 'working' -%}
+            {% render 'diagram-insulin-working' %}
+          {%- when 'blocked' -%}
+            {% render 'diagram-insulin-blocked' %}
+          {%- when 'custom' -%}
+            {{ block.settings.custom_html }}
+        {%- endcase -%}
+        {%- if block.settings.caption != blank -%}
+          <p class="adg__caption" style="font-size: {{ block.settings.caption_size }}px; color: {{ block.settings.caption_color }};">{{ block.settings.caption }}</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Animated diagrams",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background text"
+    },
+    {
+      "type": "text",
+      "id": "line1",
+      "label": "Top line (scrolls left)",
+      "info": "Separate items with commas.",
+      "default": "Energy crashes, Cravings, Irregular cycles, Mood swings, Bloating, Brain fog, Restless sleep"
+    },
+    {
+      "type": "text",
+      "id": "line2",
+      "label": "Bottom line (scrolls right)",
+      "info": "Separate items with commas.",
+      "default": "Afternoon slumps, Stubborn weight, Hormonal acne, Low energy, Sugar cravings, Poor focus"
+    },
+    {
+      "type": "color",
+      "id": "marquee_color",
+      "label": "Background text color",
+      "default": "#9aa0b5"
+    },
+    {
+      "type": "range",
+      "id": "marquee_size",
+      "label": "Background text size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "marquee_speed",
+      "label": "Scroll duration",
+      "min": 20,
+      "max": 90,
+      "step": 5,
+      "unit": "s",
+      "default": 50,
+      "info": "Higher = slower."
+    },
+    {
+      "type": "header",
+      "content": "Colors and spacing"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Section background",
+      "default": "#f2eeea"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Diagram container border",
+      "default": "#d9d9e8"
+    },
+    {
+      "type": "range",
+      "id": "card_pad",
+      "label": "Padding around diagrams",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "pad_top",
+      "label": "Padding above",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "pad_bottom",
+      "label": "Padding below",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin below",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "diagram",
+      "name": "Diagram",
+      "settings": [
+        {
+          "type": "select",
+          "id": "diagram",
+          "label": "Diagram",
+          "options": [
+            { "value": "working", "label": "Insulin receptor — working" },
+            { "value": "blocked", "label": "Insulin receptor — blocked" },
+            { "value": "custom", "label": "Custom embed code" }
+          ],
+          "default": "working"
+        },
+        {
+          "type": "html",
+          "id": "custom_html",
+          "label": "Custom embed code",
+          "info": "Used when the diagram is set to Custom."
+        },
+        {
+          "type": "color",
+          "id": "container_bg",
+          "label": "Container background",
+          "default": "#fbfaf9"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption (bold, below diagram)"
+        },
+        {
+          "type": "range",
+          "id": "caption_size",
+          "label": "Caption size",
+          "min": 11,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "color",
+          "id": "caption_color",
+          "label": "Caption color",
+          "default": "#1a2874"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2,
+  "presets": [
+    {
+      "name": "Animated diagrams",
+      "blocks": [
+        { "type": "diagram", "settings": { "diagram": "working", "caption": "With enough inositol, the message gets through." } },
+        { "type": "diagram", "settings": { "diagram": "blocked", "caption": "Running low, the signal is blocked." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
