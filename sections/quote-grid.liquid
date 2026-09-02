@@ -79,6 +79,7 @@
     flex-wrap: wrap;
     gap: 18px;
   }
+  #shopify-section-{{ section.id }} .qg__qtitle { flex-basis: 100%; font-size: 15px; font-weight: 600; margin: 0; }
   #shopify-section-{{ section.id }} .qg__quote-text {
     flex: 1 1 220px;
     font-size: {{ s.quote_size }}px;
@@ -131,6 +132,9 @@
           <div class="qg__quote" {{ block.shopify_attributes }}>
             {%- if block.settings.stars > 0 -%}
               <div class="qg__stars">{% render 'bod-stars', rating: block.settings.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <p class="qg__qtitle">{{ block.settings.title }}</p>
             {%- endif -%}
             {%- if block.settings.text != blank -%}
               <div class="qg__quote-text">&ldquo;{{ block.settings.text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
@@ -415,6 +419,12 @@
           "step": 1,
           "default": 5,
           "info": "0 hides the stars."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "info": "Shown in bold above the quote. Empty = hidden."
         },
         {
           "type": "richtext",
