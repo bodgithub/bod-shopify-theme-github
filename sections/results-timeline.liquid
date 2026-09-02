@@ -100,25 +100,33 @@
           {%- if block.settings.customers_label != blank -%}<p class="rt-sub rt-sub--cust">{{ block.settings.customers_label }}</p>{%- endif -%}
           <p class="rt-d">{{ block.settings.customers_text }}</p>
         {%- endif -%}
-        {%- if block.settings.quote_text != blank -%}
-          <div class="rt-quote">
-            {%- if block.settings.quote_stars > 0 -%}
-              <div class="rt-quote__stars">{% render 'bod-stars', rating: block.settings.quote_stars, count: 1, link: false, show_label: false, style: 'chunky', size: 13, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
-            {%- endif -%}
-            <div class="rt-quote__text">&ldquo;{{ block.settings.quote_text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
-            {%- if block.settings.quote_name != blank or block.settings.quote_image != blank -%}
-              <div class="rt-quote__who">
-                {%- if block.settings.quote_image != blank -%}
-                  <img class="rt-quote__avatar" src="{{ block.settings.quote_image | image_url: width: 76 }}" alt="{{ block.settings.quote_name | escape }}" width="38" height="38" loading="lazy">
-                {%- endif -%}
-                <div>
-                  {%- if block.settings.quote_name != blank -%}<p class="rt-quote__name">{{ block.settings.quote_name }}</p>{%- endif -%}
-                  {%- if block.settings.quote_role != blank -%}<p class="rt-quote__role">{{ block.settings.quote_role }}</p>{%- endif -%}
+        {%- assign quote_suffixes = ',_2,_3' | split: ',' -%}
+        {%- for suf in quote_suffixes -%}
+          {%- assign qt_key = 'quote_text' | append: suf -%}
+          {%- if block.settings[qt_key] != blank -%}
+            {%- assign qs_key = 'quote_stars' | append: suf -%}
+            {%- assign qi_key = 'quote_image' | append: suf -%}
+            {%- assign qn_key = 'quote_name' | append: suf -%}
+            {%- assign qr_key = 'quote_role' | append: suf -%}
+            <div class="rt-quote">
+              {%- if block.settings[qs_key] > 0 -%}
+                <div class="rt-quote__stars">{% render 'bod-stars', rating: block.settings[qs_key], count: 1, link: false, show_label: false, style: 'chunky', size: 13, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
+              {%- endif -%}
+              <div class="rt-quote__text">&ldquo;{{ block.settings[qt_key] | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
+              {%- if block.settings[qn_key] != blank or block.settings[qi_key] != blank -%}
+                <div class="rt-quote__who">
+                  {%- if block.settings[qi_key] != blank -%}
+                    <img class="rt-quote__avatar" src="{{ block.settings[qi_key] | image_url: width: 76 }}" alt="{{ block.settings[qn_key] | escape }}" width="38" height="38" loading="lazy">
+                  {%- endif -%}
+                  <div>
+                    {%- if block.settings[qn_key] != blank -%}<p class="rt-quote__name">{{ block.settings[qn_key] }}</p>{%- endif -%}
+                    {%- if block.settings[qr_key] != blank -%}<p class="rt-quote__role">{{ block.settings[qr_key] }}</p>{%- endif -%}
+                  </div>
                 </div>
-              </div>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
         {%- if block.settings.btn_label != blank and block.settings.btn_link != blank -%}<a class="rt-stage-btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>{%- endif -%}
       </div>
       {%- endfor -%}
@@ -452,6 +460,64 @@
           "type": "text",
           "id": "quote_role",
           "label": "Quote role"
+        },
+        {
+          "type": "range",
+          "id": "quote_stars_2",
+          "label": "Quote 2 stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "quote_text_2",
+          "label": "Quote 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "quote_image_2",
+          "label": "Quote 2 avatar"
+        },
+        {
+          "type": "text",
+          "id": "quote_name_2",
+          "label": "Quote 2 name"
+        },
+        {
+          "type": "text",
+          "id": "quote_role_2",
+          "label": "Quote 2 role"
+        },
+        {
+          "type": "range",
+          "id": "quote_stars_3",
+          "label": "Quote 3 stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "richtext",
+          "id": "quote_text_3",
+          "label": "Quote 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "quote_image_3",
+          "label": "Quote 3 avatar"
+        },
+        {
+          "type": "text",
+          "id": "quote_name_3",
+          "label": "Quote 3 name"
+        },
+        {
+          "type": "text",
+          "id": "quote_role_3",
+          "label": "Quote 3 role"
         },
         {
           "type": "text",
