@@ -20,7 +20,10 @@
 #rt-{{ uid }} .rt-h em{color:{{ section.settings.heading_accent | default: '#1b3def' }} !important;}
 #rt-{{ uid }} .rt-tabs{display:none;}
 #rt-{{ uid }} .rt-track{display:grid; grid-template-columns:repeat({{ n }},1fr); column-gap:26px;}
-#rt-{{ uid }} .rt-img{aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:{{ section.settings.img_placeholder }};}
+#rt-{{ uid }} .rt-img{aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:{{ section.settings.img_placeholder }}; position:relative;}
+#rt-{{ uid }} .rt-img__ov{position:absolute; left:0; right:0; bottom:0; padding:42px 14px 12px; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, var(--ov-grad) 100%);}
+#rt-{{ uid }} .rt-img__ov .rt-label{color:var(--ov-text); margin:0 0 2px;}
+#rt-{{ uid }} .rt-img__ov .rt-ovtext{font-size:13px; line-height:1.45; font-weight:600; color:var(--ov-text); margin:0;}
 #rt-{{ uid }} .rt-img img{width:100%; height:100%; object-fit:cover; display:block;}
 #rt-{{ uid }} .rt-seg{position:relative; height:7px; margin:16px 0 14px;}
 #rt-{{ uid }} .rt-seg::before{content:''; position:absolute; top:3px; left:-13px; right:-13px; height:1px; background:{{ section.settings.line_color }};}
@@ -88,12 +91,18 @@
           {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title | escape }}
           {%- endif -%}
+          {%- if section.settings.overlay_mode -%}
+            <div class="rt-img__ov" style="--ov-grad: {{ block.settings.overlay_grad | default: '#1a2874' | color_modify: 'alpha', 0.85 }}; --ov-text: {{ block.settings.overlay_text | default: '#ffffff' }};">
+              {%- if block.settings.chip != blank -%}<p class="rt-label">{{ block.settings.chip }}</p>{%- endif -%}
+              {%- if block.settings.studies_text != blank -%}<p class="rt-ovtext">{{ block.settings.studies_text }}</p>{%- endif -%}
+            </div>
+          {%- endif -%}
         </div>
         <div class="rt-seg" aria-hidden="true"><span class="rt-enddot"></span></div>
-        {%- if block.settings.chip != blank -%}<p class="rt-label">{{ block.settings.chip }}</p>{%- endif -%}
+        {%- unless section.settings.overlay_mode -%}{%- if block.settings.chip != blank -%}<p class="rt-label">{{ block.settings.chip }}</p>{%- endif -%}{%- endunless -%}
         {%- if block.settings.title != blank -%}<h3 class="rt-up">{{ block.settings.title }}</h3>{%- endif -%}
         {%- if block.settings.text != blank -%}<p class="rt-d">{{ block.settings.text }}</p>{%- endif -%}
-        {%- if block.settings.studies_text != blank -%}
+        {%- if block.settings.studies_text != blank and section.settings.overlay_mode != true -%}
           {%- if block.settings.studies_label != blank -%}<p class="rt-sub rt-sub--studies">{{ block.settings.studies_label }}</p>{%- endif -%}
           <p class="rt-d rt-d--studies">{{ block.settings.studies_text }}</p>
         {%- endif -%}
@@ -252,6 +261,13 @@
       "label": "Heading",
       "default": "<p>When to expect results</p>",
       "info": "Italics render in the Instrument serif and use the highlight color."
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_mode",
+      "label": "Label and studies text on the image",
+      "default": false,
+      "info": "Moves each stage's label and studies text onto the bottom of its image, over a readability gradient."
     },
     {
       "type": "header",
@@ -419,6 +435,19 @@
           "id": "studies_text",
           "label": "Studies text",
           "info": "Shown under the studies subheading."
+        },
+        {
+          "type": "color",
+          "id": "overlay_grad",
+          "label": "Image gradient color",
+          "default": "#1a2874",
+          "info": "Bottom of the readability gradient when the on-image toggle is on."
+        },
+        {
+          "type": "color",
+          "id": "overlay_text",
+          "label": "On-image text color",
+          "default": "#ffffff"
         },
         {
           "type": "text",
