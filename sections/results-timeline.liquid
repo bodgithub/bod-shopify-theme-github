@@ -44,6 +44,27 @@
 #rt-{{ uid }} .rt-quote__text{flex:1 1 160px; font-size:13px; line-height:1.55; margin:0; color:{{ section.settings.text_color }};}
 #rt-{{ uid }} .rt-quote__text p{margin:0; font-size:inherit; line-height:inherit; color:inherit;}
 #rt-{{ uid }} .rt-quote__text em{color:{{ section.settings.heading_accent | default: '#1b3def' }};}
+#rt-{{ uid }} .rt-qbub{position:relative; display:inline-flex; align-items:center; gap:8px; margin-top:14px; background:#e3e7ff; border:1px solid #3447af; border-radius:14px 14px 14px 4px; padding:10px 16px 10px 12px; cursor:pointer; font-family:inherit; font-size:12.5px; color:#1a2874; transition:transform .15s, box-shadow .15s;}
+#rt-{{ uid }} .rt-qbub:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(26,40,116,0.18);}
+#rt-{{ uid }} .rt-qbub svg{width:15px; height:15px; flex:0 0 auto; color:#1b3def;}
+#rt-{{ uid }} .rt-qbub__count{position:absolute; top:-7px; right:-7px; min-width:18px; height:18px; border-radius:999px; background:#1b3def; color:#fff; font-size:10px; font-weight:600; display:flex; align-items:center; justify-content:center; padding:0 4px;}
+#rt-{{ uid }} .rt-qpop-overlay{display:none; position:fixed; inset:0; z-index:2147482998; background:rgba(242,238,234,0.87);}
+#rt-{{ uid }} .rt-qpop{display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2147483000; background:#e3e7ff; border:1px solid #3447af; border-radius:16px; padding:32px 24px; width:96%; max-width:700px; max-height:85dvh; overflow-y:auto; font-family:"tenon",sans-serif; text-align:center; color:#1a2874;}
+#rt-{{ uid }} .rt-qpop-overlay.is-open, #rt-{{ uid }} .rt-qpop.is-open{display:block;}
+#rt-{{ uid }} .rt-qpop__t{font-size:20px; font-weight:400; line-height:1.2; margin:0 0 20px; color:#1a2874;}
+#rt-{{ uid }} .rt-qpop__q{padding-bottom:24px;}
+#rt-{{ uid }} .rt-qpop__q:last-of-type{padding-bottom:0;}
+#rt-{{ uid }} .rt-qpop__stars{display:flex; justify-content:center; margin-bottom:8px;}
+#rt-{{ uid }} .rt-qpop__text{font-size:12px; line-height:1.6; margin:0 0 10px;}
+#rt-{{ uid }} .rt-qpop__who{display:flex; align-items:center; justify-content:center; gap:8px; text-align:left;}
+#rt-{{ uid }} .rt-qpop__who img{width:38px; height:38px; border-radius:50%; border:1px solid #1a2874; object-fit:cover; display:block;}
+#rt-{{ uid }} .rt-qpop__name{font-size:12.5px; font-weight:var(--font-body-bold-weight, 500); margin:0;}
+#rt-{{ uid }} .rt-qpop__role{font-size:12px; margin:0; opacity:.85;}
+#rt-{{ uid }} .rt-qpop__close{display:block; margin:18px auto 0; color:#1a2874; font-size:14px; text-decoration:underline; cursor:pointer; background:none; border:0; padding:0; font-family:inherit;}
+@media (min-width:750px){
+#rt-{{ uid }} .rt-qpop__t{font-size:36px;}
+#rt-{{ uid }} .rt-qpop__text{font-size:18px;}
+}
 #rt-{{ uid }} .rt-quote__text.is-clamped{display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;}
 #rt-{{ uid }} .rt-quote__more{flex-basis:100%; text-align:left; background:none; border:0; padding:0; margin:0; font-family:inherit; font-size:12.5px; text-decoration:underline; color:{{ section.settings.text_color }}; cursor:pointer;}
 #rt-{{ uid }} .rt-quote__who{display:flex; align-items:center; gap:8px; flex:0 0 auto; text-align:left;}
@@ -113,6 +134,22 @@
           <p class="rt-d">{{ block.settings.customers_text }}</p>
         {%- endif -%}
         {%- assign quote_suffixes = ',_2,_3' | split: ',' -%}
+        {%- if section.settings.quotes_popup -%}
+          {%- assign q_count = 0 -%}
+          {%- for suf in quote_suffixes -%}
+            {%- assign qt_key = 'quote_text' | append: suf -%}
+            {%- if block.settings[qt_key] != blank -%}{%- assign q_count = q_count | plus: 1 -%}{%- endif -%}
+          {%- endfor -%}
+          {%- if q_count > 0 -%}
+            {%- assign teaser_words = block.settings.quote_text | strip_html | split: ' ' -%}
+            <button type="button" class="rt-qbub" data-rtq-open="{{ block.id }}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.9 8.9 0 0 1-3.2-.6L4 20.5l1.3-4A8.1 8.1 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3.2 8.4 8.4 0 0 1 21 11.5z"></path></svg>
+              <span>&ldquo;{{ teaser_words | slice: 0, 3 | join: ' ' }}&hellip;&rdquo;</span>
+              <span class="rt-qbub__count">{{ q_count }}</span>
+            </button>
+          {%- endif -%}
+        {%- endif -%}
+        {%- unless section.settings.quotes_popup -%}
         {%- for suf in quote_suffixes -%}
           {%- assign qt_key = 'quote_text' | append: suf -%}
           {%- if block.settings[qt_key] != blank -%}
@@ -140,10 +177,55 @@
             </div>
           {%- endif -%}
         {%- endfor -%}
+        {%- endunless -%}
         {%- if block.settings.btn_label != blank and block.settings.btn_link != blank -%}<a class="rt-stage-btn" href="{{ block.settings.btn_link }}">{{ block.settings.btn_label }}</a>{%- endif -%}
       </div>
       {%- endfor -%}
     </div>
+
+    {%- if section.settings.quotes_popup -%}
+      <div class="rt-qpop-overlay" data-rtq-overlay></div>
+      {%- for block in section.blocks -%}
+        {%- assign has_q = false -%}
+        {%- assign quote_suffixes = ',_2,_3' | split: ',' -%}
+        {%- for suf in quote_suffixes -%}
+          {%- assign qt_key = 'quote_text' | append: suf -%}
+          {%- if block.settings[qt_key] != blank -%}{%- assign has_q = true -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if has_q -%}
+          <div class="rt-qpop" data-rtq-popup="{{ block.id }}" role="dialog" aria-modal="true" aria-label="{{ block.settings.chip | escape }}">
+            {%- if block.settings.chip != blank -%}<p class="rt-qpop__t">{{ block.settings.chip }}</p>{%- endif -%}
+            {%- for suf in quote_suffixes -%}
+              {%- assign qt_key = 'quote_text' | append: suf -%}
+              {%- if block.settings[qt_key] != blank -%}
+                {%- assign qs_key = 'quote_stars' | append: suf -%}
+                {%- assign qi_key = 'quote_image' | append: suf -%}
+                {%- assign qn_key = 'quote_name' | append: suf -%}
+                {%- assign qr_key = 'quote_role' | append: suf -%}
+                <div class="rt-qpop__q">
+                  {%- if block.settings[qs_key] > 0 -%}
+                    <div class="rt-qpop__stars">{% render 'bod-stars', rating: block.settings[qs_key], count: 1, link: false, show_label: false, style: 'chunky', size: 14, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'center', uid: block.id %}</div>
+                  {%- endif -%}
+                  <p class="rt-qpop__text">&ldquo;{{ block.settings[qt_key] | remove: '<p>' | remove: '</p>' }}&rdquo;</p>
+                  {%- if block.settings[qn_key] != blank or block.settings[qi_key] != blank -%}
+                    <div class="rt-qpop__who">
+                      {%- if block.settings[qi_key] != blank -%}
+                        <img src="{{ block.settings[qi_key] | image_url: width: 76 }}" alt="{{ block.settings[qn_key] | escape }}" width="38" height="38" loading="lazy">
+                      {%- endif -%}
+                      <div>
+                        {%- if block.settings[qn_key] != blank -%}<p class="rt-qpop__name">{{ block.settings[qn_key] }}</p>{%- endif -%}
+                        {%- if block.settings[qr_key] != blank -%}<p class="rt-qpop__role">{{ block.settings[qr_key] }}</p>{%- endif -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+            <button type="button" class="rt-qpop__close" data-rtq-close>Close</button>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
 
     {%- if section.settings.cta_label != blank and section.settings.cta_link != blank -%}
     <div class="rt-cta-row">
@@ -192,6 +274,18 @@
       setActive(best);
     });
   }, { passive: true });
+  var qOverlay = root.querySelector('[data-rtq-overlay]');
+  var qPopups = [].slice.call(root.querySelectorAll('[data-rtq-popup]'));
+  function qCloseAll(){ if(qOverlay) qOverlay.classList.remove('is-open'); qPopups.forEach(function(p){ p.classList.remove('is-open'); }); }
+  root.querySelectorAll('[data-rtq-open]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = root.querySelector('[data-rtq-popup="' + b.getAttribute('data-rtq-open') + '"]');
+      if(t && qOverlay){ qOverlay.classList.add('is-open'); t.classList.add('is-open'); }
+    });
+  });
+  if(qOverlay) qOverlay.addEventListener('click', qCloseAll);
+  root.querySelectorAll('[data-rtq-close]').forEach(function(b){ b.addEventListener('click', qCloseAll); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') qCloseAll(); });
   root.querySelectorAll('.rt-quote').forEach(function(q){
     var t = q.querySelector('[data-rt-qtext]');
     var btn = q.querySelector('[data-rt-qmore]');
@@ -281,6 +375,13 @@
       "label": "Label and studies text on the image",
       "default": false,
       "info": "Moves each stage's label and studies text onto the bottom of its image, over a readability gradient."
+    },
+    {
+      "type": "checkbox",
+      "id": "quotes_popup",
+      "label": "Quotes as message bubble",
+      "default": false,
+      "info": "Replaces each stage's inline quotes with a small message bubble (first words + count) that opens all of them in a popup."
     },
     {
       "type": "header",
