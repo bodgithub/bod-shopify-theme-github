@@ -44,6 +44,8 @@
 #rt-{{ uid }} .rt-quote__text{flex:1 1 160px; font-size:13px; line-height:1.55; margin:0; color:{{ section.settings.text_color }};}
 #rt-{{ uid }} .rt-quote__text p{margin:0; font-size:inherit; line-height:inherit; color:inherit;}
 #rt-{{ uid }} .rt-quote__text em{color:{{ section.settings.heading_accent | default: '#1b3def' }};}
+#rt-{{ uid }} .rt-quote__text.is-clamped{display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;}
+#rt-{{ uid }} .rt-quote__more{flex-basis:100%; text-align:left; background:none; border:0; padding:0; margin:0; font-family:inherit; font-size:12.5px; text-decoration:underline; color:{{ section.settings.text_color }}; cursor:pointer;}
 #rt-{{ uid }} .rt-quote__who{display:flex; align-items:center; gap:8px; flex:0 0 auto; text-align:left;}
 #rt-{{ uid }} .rt-quote__avatar{width:38px; height:38px; border-radius:50%; border:1px solid {{ section.settings.text_color }}; object-fit:cover; display:block;}
 #rt-{{ uid }} .rt-quote__name{font-size:12.5px; font-weight:var(--font-body-bold-weight, 500); margin:0; color:{{ section.settings.text_color }};}
@@ -122,7 +124,8 @@
               {%- if block.settings[qs_key] > 0 -%}
                 <div class="rt-quote__stars">{% render 'bod-stars', rating: block.settings[qs_key], count: 1, link: false, show_label: false, style: 'chunky', size: 13, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
               {%- endif -%}
-              <div class="rt-quote__text">&ldquo;{{ block.settings[qt_key] | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
+              <div class="rt-quote__text is-clamped" data-rt-qtext>&ldquo;{{ block.settings[qt_key] | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
+              <button type="button" class="rt-quote__more" data-rt-qmore hidden>Read more</button>
               {%- if block.settings[qn_key] != blank or block.settings[qi_key] != blank -%}
                 <div class="rt-quote__who">
                   {%- if block.settings[qi_key] != blank -%}
@@ -189,6 +192,16 @@
       setActive(best);
     });
   }, { passive: true });
+  root.querySelectorAll('.rt-quote').forEach(function(q){
+    var t = q.querySelector('[data-rt-qtext]');
+    var btn = q.querySelector('[data-rt-qmore]');
+    if(!t || !btn) return;
+    if(t.scrollHeight > t.clientHeight + 2){ btn.hidden = false; }
+    btn.addEventListener('click', function(){
+      var clamped = t.classList.toggle('is-clamped');
+      btn.textContent = clamped ? 'Read more' : 'Read less';
+    });
+  });
 })();
 </script>
 
