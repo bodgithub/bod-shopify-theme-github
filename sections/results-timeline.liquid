@@ -48,6 +48,12 @@
 #rt-{{ uid }} .rt-qbub:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(26,40,116,0.18);}
 #rt-{{ uid }} .rt-qbub svg{width:15px; height:15px; flex:0 0 auto; color:#1b3def;}
 #rt-{{ uid }} .rt-qbub__count{position:absolute; top:-7px; right:-7px; min-width:18px; height:18px; border-radius:999px; background:#1b3def; color:#fff; font-size:10px; font-weight:600; display:flex; align-items:center; justify-content:center; padding:0 4px;}
+#rt-{{ uid }} .rt-qfaces{display:inline-flex; align-items:center; gap:10px; margin-top:14px; background:none; border:0; padding:0; cursor:pointer; font-family:inherit;}
+#rt-{{ uid }} .rt-qfaces__stack{display:inline-flex; align-items:center;}
+#rt-{{ uid }} .rt-qfaces__stack img, #rt-{{ uid }} .rt-qfaces__ph{width:28px; height:28px; border-radius:50%; border:1.5px solid {{ section.settings.bg_color | default: '#f2eeea' }}; object-fit:cover; display:inline-flex; align-items:center; justify-content:center; margin-left:-9px; background:#e3e7ff; color:#1a2874; font-size:12px; font-weight:600;}
+#rt-{{ uid }} .rt-qfaces__stack img:first-child, #rt-{{ uid }} .rt-qfaces__ph:first-child{margin-left:0;}
+#rt-{{ uid }} .rt-qfaces__link{font-size:12.5px; color:#1a2874; text-decoration:underline; transition:color .15s;}
+#rt-{{ uid }} .rt-qfaces:hover .rt-qfaces__link{color:#1b3def;}
 #rt-{{ uid }} .rt-qpop-overlay{display:none; position:fixed; inset:0; z-index:2147482998; background:rgba(242,238,234,0.87);}
 #rt-{{ uid }} .rt-qpop{display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:2147483000; background:#e3e7ff; border:1px solid #3447af; border-radius:16px; padding:32px 24px; width:96%; max-width:700px; max-height:85dvh; overflow-y:auto; font-family:"tenon",sans-serif; text-align:center; color:#1a2874;}
 #rt-{{ uid }} .rt-qpop-overlay.is-open, #rt-{{ uid }} .rt-qpop.is-open{display:block;}
@@ -134,22 +140,42 @@
           <p class="rt-d">{{ block.settings.customers_text }}</p>
         {%- endif -%}
         {%- assign quote_suffixes = ',_2,_3' | split: ',' -%}
-        {%- if section.settings.quotes_popup -%}
+        {%- if section.settings.quotes_display == 'bubble' or section.settings.quotes_display == 'avatars' -%}
           {%- assign q_count = 0 -%}
           {%- for suf in quote_suffixes -%}
             {%- assign qt_key = 'quote_text' | append: suf -%}
             {%- if block.settings[qt_key] != blank -%}{%- assign q_count = q_count | plus: 1 -%}{%- endif -%}
           {%- endfor -%}
           {%- if q_count > 0 -%}
-            {%- assign teaser_words = block.settings.quote_text | strip_html | split: ' ' -%}
-            <button type="button" class="rt-qbub" data-rtq-open="{{ block.id }}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.9 8.9 0 0 1-3.2-.6L4 20.5l1.3-4A8.1 8.1 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3.2 8.4 8.4 0 0 1 21 11.5z"></path></svg>
-              <span>&ldquo;{{ teaser_words | slice: 0, 3 | join: ' ' }}&hellip;&rdquo;</span>
-              <span class="rt-qbub__count">{{ q_count }}</span>
-            </button>
+            {%- if section.settings.quotes_display == 'avatars' -%}
+              <button type="button" class="rt-qfaces" data-rtq-open="{{ block.id }}" aria-label="{{ section.settings.reviews_link_label | default: 'Read reviews' | escape }}">
+                <span class="rt-qfaces__stack">
+                  {%- for suf in quote_suffixes -%}
+                    {%- assign qt_key = 'quote_text' | append: suf -%}
+                    {%- if block.settings[qt_key] != blank -%}
+                      {%- assign qi_key = 'quote_image' | append: suf -%}
+                      {%- assign qn_key = 'quote_name' | append: suf -%}
+                      {%- if block.settings[qi_key] != blank -%}
+                        <img src="{{ block.settings[qi_key] | image_url: width: 64 }}" alt="" loading="lazy">
+                      {%- else -%}
+                        <span class="rt-qfaces__ph">{{ block.settings[qn_key] | default: '?' | slice: 0, 1 | upcase }}</span>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </span>
+                <span class="rt-qfaces__link">{{ section.settings.reviews_link_label | default: 'Read reviews' }} ({{ q_count }})</span>
+              </button>
+            {%- else -%}
+              {%- assign teaser_words = block.settings.quote_text | strip_html | split: ' ' -%}
+              <button type="button" class="rt-qbub" data-rtq-open="{{ block.id }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.9 8.9 0 0 1-3.2-.6L4 20.5l1.3-4A8.1 8.1 0 0 1 4 11.5 8.4 8.4 0 0 1 12.5 3.2 8.4 8.4 0 0 1 21 11.5z"></path></svg>
+                <span>&ldquo;{{ teaser_words | slice: 0, 3 | join: ' ' }}&hellip;&rdquo;</span>
+                <span class="rt-qbub__count">{{ q_count }}</span>
+              </button>
+            {%- endif -%}
           {%- endif -%}
         {%- endif -%}
-        {%- unless section.settings.quotes_popup -%}
+        {%- unless section.settings.quotes_display == 'bubble' or section.settings.quotes_display == 'avatars' -%}
         {%- for suf in quote_suffixes -%}
           {%- assign qt_key = 'quote_text' | append: suf -%}
           {%- if block.settings[qt_key] != blank -%}
@@ -183,7 +209,7 @@
       {%- endfor -%}
     </div>
 
-    {%- if section.settings.quotes_popup -%}
+    {%- if section.settings.quotes_display == 'bubble' or section.settings.quotes_display == 'avatars' -%}
       <div class="rt-qpop-overlay" data-rtq-overlay></div>
       {%- for block in section.blocks -%}
         {%- assign has_q = false -%}
@@ -377,11 +403,31 @@
       "info": "Moves each stage's label and studies text onto the bottom of its image, over a readability gradient."
     },
     {
-      "type": "checkbox",
-      "id": "quotes_popup",
-      "label": "Quotes as message bubble",
-      "default": false,
-      "info": "Replaces each stage's inline quotes with a small message bubble (first words + count) that opens all of them in a popup."
+      "type": "select",
+      "id": "quotes_display",
+      "label": "Stage quotes display",
+      "options": [
+        {
+          "value": "inline",
+          "label": "Inline (under each stage)"
+        },
+        {
+          "value": "bubble",
+          "label": "Message bubble + popup"
+        },
+        {
+          "value": "avatars",
+          "label": "Stacked faces + popup"
+        }
+      ],
+      "default": "inline",
+      "info": "Bubble and faces modes open all of a stage's quotes in a popup."
+    },
+    {
+      "type": "text",
+      "id": "reviews_link_label",
+      "label": "Faces link text",
+      "default": "Read reviews"
     },
     {
       "type": "header",
