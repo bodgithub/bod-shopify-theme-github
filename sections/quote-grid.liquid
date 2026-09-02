@@ -74,14 +74,21 @@
   }
   #shopify-section-{{ section.id }} .qg__quote {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 22px;
   }
-  #shopify-section-{{ section.id }} .qg__qtitle { flex-basis: 100%; font-size: 15px; font-weight: 600; margin: 0 0 -10px; }
+  #shopify-section-{{ section.id }} .qg__unit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .qg__qtitle { font-size: 15px; font-weight: 600; margin: 0; max-width: 100%; }
   #shopify-section-{{ section.id }} .qg__quote-text {
-    flex: 1 1 220px;
+    max-width: 100%;
     font-size: {{ s.quote_size }}px;
     line-height: 1.55;
     margin: 0;
@@ -91,8 +98,8 @@
   #shopify-section-{{ section.id }} .qg__who {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 10px;
-    flex: 0 0 auto;
     text-align: left;
   }
   #shopify-section-{{ section.id }} .qg__avatar {
@@ -105,7 +112,7 @@
   }
   #shopify-section-{{ section.id }} .qg__name { font-size: {{ s.quote_size | times: 1.0 | round }}px; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
   #shopify-section-{{ section.id }} .qg__role { font-size: {{ s.quote_size | times: 0.95 | round }}px; margin: 0; opacity: .85; }
-  #shopify-section-{{ section.id }} .qg__stars { flex-basis: 100%; display: flex; justify-content: flex-start; }
+  #shopify-section-{{ section.id }} .qg__stars { display: flex; justify-content: flex-start; }
   {%- if s.card_mode -%}
   #shopify-section-{{ section.id }} .qg__quote {
     background: {{ s.quote_card_bg }};
@@ -130,26 +137,37 @@
       <div class="qg__grid">
         {%- for block in section.blocks -%}
           <div class="qg__quote" {{ block.shopify_attributes }}>
-            {%- if block.settings.stars > 0 -%}
-              <div class="qg__stars">{% render 'bod-stars', rating: block.settings.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
-            {%- endif -%}
-            {%- if block.settings.title != blank -%}
-              <p class="qg__qtitle">{{ block.settings.title }}</p>
-            {%- endif -%}
-            {%- if block.settings.text != blank -%}
-              <div class="qg__quote-text">&ldquo;{{ block.settings.text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
-            {%- endif -%}
-            {%- if block.settings.name != blank or block.settings.image != blank -%}
-              <div class="qg__who">
-                {%- if block.settings.image != blank -%}
-                  <img class="qg__avatar" src="{{ block.settings.image | image_url: width: 88 }}" alt="{{ block.settings.name | escape }}" width="44" height="44" loading="lazy">
-                {%- endif -%}
-                <div>
-                  {%- if block.settings.name != blank -%}<p class="qg__name">{{ block.settings.name }}</p>{%- endif -%}
-                  {%- if block.settings.role != blank -%}<p class="qg__role">{{ block.settings.role }}</p>{%- endif -%}
+            {%- assign q_suffixes = ',_2' | split: ',' -%}
+            {%- for suf in q_suffixes -%}
+              {%- assign k_text = 'text' | append: suf -%}
+              {%- if block.settings[k_text] != blank -%}
+                {%- assign k_stars = 'stars' | append: suf -%}
+                {%- assign k_title = 'title' | append: suf -%}
+                {%- assign k_image = 'image' | append: suf -%}
+                {%- assign k_name = 'name' | append: suf -%}
+                {%- assign k_role = 'role' | append: suf -%}
+                <div class="qg__unit">
+                  {%- if block.settings[k_stars] > 0 -%}
+                    <div class="qg__stars">{% render 'bod-stars', rating: block.settings[k_stars], count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
+                  {%- endif -%}
+                  {%- if block.settings[k_title] != blank -%}
+                    <p class="qg__qtitle">{{ block.settings[k_title] }}</p>
+                  {%- endif -%}
+                  <div class="qg__quote-text">&ldquo;{{ block.settings[k_text] | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
+                  {%- if block.settings[k_name] != blank or block.settings[k_image] != blank -%}
+                    <div class="qg__who">
+                      {%- if block.settings[k_image] != blank -%}
+                        <img class="qg__avatar" src="{{ block.settings[k_image] | image_url: width: 88 }}" alt="{{ block.settings[k_name] | escape }}" width="44" height="44" loading="lazy">
+                      {%- endif -%}
+                      <div>
+                        {%- if block.settings[k_name] != blank -%}<p class="qg__name">{{ block.settings[k_name] }}</p>{%- endif -%}
+                        {%- if block.settings[k_role] != blank -%}<p class="qg__role">{{ block.settings[k_role] }}</p>{%- endif -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
                 </div>
-              </div>
-            {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
           </div>
         {%- endfor -%}
       </div>
@@ -446,6 +464,44 @@
         {
           "type": "text",
           "id": "role",
+          "label": "Role"
+        },
+        {
+          "type": "header",
+          "content": "Second quote (optional)"
+        },
+        {
+          "type": "range",
+          "id": "stars_2",
+          "label": "Stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "Title"
+        },
+        {
+          "type": "richtext",
+          "id": "text_2",
+          "label": "Quote"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name_2",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role_2",
           "label": "Role"
         }
       ]
