@@ -32,6 +32,7 @@
 #rt-{{ uid }} .rt-stage:last-child .rt-enddot{display:block; position:absolute; top:0; right:0; width:7px; height:7px; border-radius:50%; background:{{ section.settings.dot_color }}; transform:translateX(50%);}
 #rt-{{ uid }} .rt-label{font-size:17px; font-weight:600; color:{{ section.settings.label_color }}; margin:0 0 6px;}
 #rt-{{ uid }} .rt-up{font-size:12.5px; font-weight:500; letter-spacing:0.09em; text-transform:uppercase; color:{{ section.settings.uptitle_color }}; margin:0 0 8px;}
+#rt-{{ uid }} .rt-d--studies{font-weight:600;}
 #rt-{{ uid }} .rt-sub{font-size:11.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin:14px 0 5px;}
 #rt-{{ uid }} .rt-sub--studies{color:{{ section.settings.studies_title_color | default: '#1b3def' }};}
 #rt-{{ uid }} .rt-sub--cust{color:{{ section.settings.customers_title_color | default: '#1b3def' }};}
@@ -94,7 +95,7 @@
         {%- if block.settings.text != blank -%}<p class="rt-d">{{ block.settings.text }}</p>{%- endif -%}
         {%- if block.settings.studies_text != blank -%}
           {%- if block.settings.studies_label != blank -%}<p class="rt-sub rt-sub--studies">{{ block.settings.studies_label }}</p>{%- endif -%}
-          <p class="rt-d">{{ block.settings.studies_text }}</p>
+          <p class="rt-d rt-d--studies">{{ block.settings.studies_text }}</p>
         {%- endif -%}
         {%- if block.settings.customers_text != blank -%}
           {%- if block.settings.customers_label != blank -%}<p class="rt-sub rt-sub--cust">{{ block.settings.customers_label }}</p>{%- endif -%}
