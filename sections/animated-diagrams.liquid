@@ -17,7 +17,7 @@
   #shopify-section-{{ section.id }} .adg {
     position: relative;
     overflow: hidden;
-    background: {{ s.bg }};
+    background: {% if s.bg_grad_bottom != blank %}linear-gradient(180deg, {% if s.bg_grad_top != blank %}{{ s.bg_grad_top }}{% else %}rgba(0,0,0,0){% endif %} 0%, {{ s.bg_grad_bottom }} 100%){% else %}{{ s.bg }}{% endif %};
     padding: {{ s.pad_top }}px 0 {{ s.pad_bottom }}px;
     margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
   }
@@ -118,7 +118,7 @@
 
   <div class="adg__cards">
     {%- for block in section.blocks -%}
-      <div class="adg__card" style="background: {% if block.settings.container_bg != blank %}{{ block.settings.container_bg }}{% else %}{{ s.card_bg | default: '#fbfaf9' }}{% endif %};" {{ block.shopify_attributes }}>
+      <div class="adg__card" style="background: {% if block.settings.container_bg != blank %}{{ block.settings.container_bg }}{% elsif s.card_grad_bottom != blank %}linear-gradient(180deg, {% if s.card_grad_top != blank %}{{ s.card_grad_top }}{% else %}rgba(0,0,0,0){% endif %} 0%, {{ s.card_grad_bottom }} 100%){% else %}{{ s.card_bg | default: '#fbfaf9' }}{% endif %};" {{ block.shopify_attributes }}>
         {%- case block.settings.diagram -%}
           {%- when 'working' -%}
             <div class="adg__fig">{% render 'diagram-insulin-working' %}</div>
@@ -196,10 +196,34 @@
     },
     {
       "type": "color",
+      "id": "bg_grad_top",
+      "label": "Section gradient top",
+      "info": "Leave empty for transparent."
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_bottom",
+      "label": "Section gradient bottom",
+      "info": "Set to switch the section background to a gradient."
+    },
+    {
+      "type": "color",
       "id": "card_bg",
       "label": "Diagram container background",
       "default": "#fbfaf9",
       "info": "Each block can override this with its own color."
+    },
+    {
+      "type": "color",
+      "id": "card_grad_top",
+      "label": "Container gradient top",
+      "info": "Leave empty for transparent."
+    },
+    {
+      "type": "color",
+      "id": "card_grad_bottom",
+      "label": "Container gradient bottom",
+      "info": "Set to give the containers a gradient. A block's own color still wins."
     },
     {
       "type": "range",
