@@ -1,5 +1,5 @@
 <style>
-.insulin-works{position:relative;width:306px;height:197px;overflow:hidden;background:linear-gradient(180deg,#EDEFFF,#E2E6FF);font:10px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#3447AF;--t:6s;--tg:2.6s;--ga:.85;--gs:18px}
+.insulin-works{position:relative;width:306px;height:197px;overflow:hidden;background:transparent;font:10px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#3447AF;--t:6s;--tg:2.6s;--ga:.85;--gs:18px}
 .insulin-works *{box-sizing:border-box;margin:0}
 .insulin-works>*{position:absolute}
 .insulin-works .band{left:0;top:99px;width:305px;height:97px;background:linear-gradient(90deg,rgba(255,255,255,.11),#FFF,rgba(255,255,255,.11))}
@@ -13,7 +13,6 @@
 .insulin-works .glut .sug{width:13px;height:13px}
 .insulin-works .gate{left:146px;top:80px;width:26px;height:36px;border-radius:9px;background:#F2F4FF;border:1px solid #3447AF;display:grid;place-items:center;z-index:3;animation:insulin-works-glow var(--tg) ease-out infinite}
 .insulin-works .gate .core{width:11px;height:11px;border-radius:50%;background:#2A3BB5;animation:insulin-works-enter var(--t) ease-in-out infinite}
-.insulin-works .gate .x{font-size:15px;color:rgba(52,71,175,.6);text-transform:none}
 @keyframes insulin-works-glow{0%{box-shadow:0 0 0 0 rgba(111,191,139,var(--ga))}70%{box-shadow:0 0 0 var(--gs) rgba(111,191,139,0)}100%{box-shadow:0 0 0 0 rgba(111,191,139,0)}}
 @keyframes insulin-works-enter{0%{transform:translateY(-44px);opacity:0}10%{opacity:1}20%{transform:translateY(-2px)}25%{transform:translateY(0)}92%{transform:translateY(0);opacity:1}100%{transform:translateY(0);opacity:0}}
 .insulin-works .lift{animation:insulin-works-lift var(--t) cubic-bezier(.45,.05,.35,1) infinite}

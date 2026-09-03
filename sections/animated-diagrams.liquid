@@ -75,6 +75,9 @@
     flex-direction: column;
     align-items: center;
     gap: 14px;
+    width: {{ 306 | times: s.diagram_scale | divided_by: 100 | plus: s.card_pad | plus: s.card_pad | plus: 2 }}px;
+    max-width: 100%;
+    flex: 0 0 auto;
   }
   #shopify-section-{{ section.id }} .adg__fig {
     width: {{ 306 | times: s.diagram_scale | divided_by: 100 }}px;
@@ -87,6 +90,8 @@
     text-align: center;
     line-height: 1.4;
     margin: 0;
+    width: 100%;
+    overflow-wrap: break-word;
   }
   @media screen and (max-width: 749px) {
     #shopify-section-{{ section.id }} .adg__cards { flex-direction: column; align-items: center; gap: 22px; }
