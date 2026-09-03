@@ -1714,7 +1714,7 @@
         "footer_star": true,
         "bg": "#f2eeea",
         "bg_grad_top": "#f3eeea",
-        "bg_grad_bottom": "#f3eeea",
+        "bg_grad_bottom": "#F2EEEA",
         "text_color": "#1a2874",
         "heading_color": "#1a2874",
         "accent_color": "#4f63d4",
@@ -1723,6 +1723,55 @@
         "item_size": 15,
         "padding_top": 80,
         "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "animated_diagrams_JBYjkn": {
+      "type": "animated-diagrams",
+      "blocks": {
+        "diagram_fe3yGL": {
+          "type": "diagram",
+          "settings": {
+            "diagram": "working",
+            "custom_html": "",
+            "container_bg": "",
+            "caption": "When cells respond to insulin, glucose is transported into the cell and used for energy.",
+            "caption_size": 13,
+            "caption_color": "#1a2874"
+          }
+        },
+        "diagram_XJLRxY": {
+          "type": "diagram",
+          "settings": {
+            "diagram": "blocked",
+            "custom_html": "",
+            "container_bg": "",
+            "caption": "When cells stop responding to insulin, glucose stays in the blood and insulin keeps rising.",
+            "caption_size": 13,
+            "caption_color": "#1a2874"
+          }
+        }
+      },
+      "block_order": [
+        "diagram_fe3yGL",
+        "diagram_XJLRxY"
+      ],
+      "disabled": true,
+      "name": "Animated diagrams",
+      "settings": {
+        "line1": "Energy crashes, Cravings, Irregular cycles, Mood swings, Bloating, Brain fog, Restless sleep",
+        "line2": "Afternoon slumps, Stubborn weight, Hormonal acne, Low energy, Sugar cravings, Poor focus",
+        "marquee_color": "#3447AF",
+        "marquee_size": 28,
+        "marquee_speed": 50,
+        "bg": "#E3E7FF",
+        "card_bg": "#EDEFFF",
+        "diagram_scale": 75,
+        "card_border": "#3447AF",
+        "card_pad": 24,
+        "pad_top": 0,
+        "pad_bottom": 64,
         "margin_top": 0,
         "margin_bottom": 0
       }
@@ -3152,6 +3201,7 @@
     "main-product",
     "clinical_columns_TMq9hH",
     "category_list_grid_NDqtGH",
+    "animated_diagrams_JBYjkn",
     "inositol_science_86gMmR",
     "why_inositol_DgbUrB",
     "quote_grid_wLJirf",
