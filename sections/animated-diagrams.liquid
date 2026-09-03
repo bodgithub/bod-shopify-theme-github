@@ -76,6 +76,12 @@
     align-items: center;
     gap: 14px;
   }
+  #shopify-section-{{ section.id }} .adg__fig {
+    width: {{ 306 | times: s.diagram_scale | divided_by: 100 }}px;
+    height: {{ 197 | times: s.diagram_scale | divided_by: 100 }}px;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .adg__fig > * { transform: scale({{ s.diagram_scale | divided_by: 100.0 }}); transform-origin: top left; }
   #shopify-section-{{ section.id }} .adg__caption {
     font-weight: 600;
     text-align: center;
@@ -107,12 +113,12 @@
 
   <div class="adg__cards">
     {%- for block in section.blocks -%}
-      <div class="adg__card" style="background: {{ block.settings.container_bg }};" {{ block.shopify_attributes }}>
+      <div class="adg__card" style="background: {% if block.settings.container_bg != blank %}{{ block.settings.container_bg }}{% else %}{{ s.card_bg | default: '#fbfaf9' }}{% endif %};" {{ block.shopify_attributes }}>
         {%- case block.settings.diagram -%}
           {%- when 'working' -%}
-            {% render 'diagram-insulin-working' %}
+            <div class="adg__fig">{% render 'diagram-insulin-working' %}</div>
           {%- when 'blocked' -%}
-            {% render 'diagram-insulin-blocked' %}
+            <div class="adg__fig">{% render 'diagram-insulin-blocked' %}</div>
           {%- when 'custom' -%}
             {{ block.settings.custom_html }}
         {%- endcase -%}
@@ -185,6 +191,24 @@
     },
     {
       "type": "color",
+      "id": "card_bg",
+      "label": "Diagram container background",
+      "default": "#fbfaf9",
+      "info": "Each block can override this with its own color."
+    },
+    {
+      "type": "range",
+      "id": "diagram_scale",
+      "label": "Diagram size",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "info": "Scales the built-in diagrams (and their containers) down."
+    },
+    {
+      "type": "color",
       "id": "card_border",
       "label": "Diagram container border",
       "default": "#d9d9e8"
@@ -250,9 +274,18 @@
           "id": "diagram",
           "label": "Diagram",
           "options": [
-            { "value": "working", "label": "Insulin receptor — working" },
-            { "value": "blocked", "label": "Insulin receptor — blocked" },
-            { "value": "custom", "label": "Custom embed code" }
+            {
+              "value": "working",
+              "label": "Insulin receptor \u2014 working"
+            },
+            {
+              "value": "blocked",
+              "label": "Insulin receptor \u2014 blocked"
+            },
+            {
+              "value": "custom",
+              "label": "Custom embed code"
+            }
           ],
           "default": "working"
         },
@@ -297,8 +330,20 @@
     {
       "name": "Animated diagrams",
       "blocks": [
-        { "type": "diagram", "settings": { "diagram": "working", "caption": "With enough inositol, the message gets through." } },
-        { "type": "diagram", "settings": { "diagram": "blocked", "caption": "Running low, the signal is blocked." } }
+        {
+          "type": "diagram",
+          "settings": {
+            "diagram": "working",
+            "caption": "With enough inositol, the message gets through."
+          }
+        },
+        {
+          "type": "diagram",
+          "settings": {
+            "diagram": "blocked",
+            "caption": "Running low, the signal is blocked."
+          }
+        }
       ]
     }
   ]
