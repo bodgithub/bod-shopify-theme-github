@@ -148,7 +148,7 @@
                 {%- assign k_role = 'role' | append: suf -%}
                 <div class="qg__unit">
                   {%- if block.settings[k_stars] > 0 -%}
-                    <div class="qg__stars">{% render 'bod-stars', rating: block.settings[k_stars], count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
+                    <div class="qg__stars">{% render 'bod-stars', ignore_product: true, rating: block.settings[k_stars], count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
                   {%- endif -%}
                   {%- if block.settings[k_title] != blank -%}
                     <p class="qg__qtitle">{{ block.settings[k_title] }}</p>

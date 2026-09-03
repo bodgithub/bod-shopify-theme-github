@@ -20,6 +20,10 @@
     block_attrs   pass block.shopify_attributes for theme-editor selection
 {%- endcomment -%}
 {%- liquid
+  if ignore_product == true
+    assign bs_rating = rating
+    assign bs_count = count
+  else
   assign bs_rating = ''
   assign bs_meta = product.metafields.junip.rating_average
   if bs_meta.value != blank
@@ -56,6 +60,7 @@
   endif
   if bs_count == blank
     assign bs_count = count
+  endif
   endif
 
   assign bs_rating_f = bs_rating | plus: 0.0

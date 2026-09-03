@@ -185,7 +185,7 @@
             {%- assign qr_key = 'quote_role' | append: suf -%}
             <div class="rt-quote">
               {%- if block.settings[qs_key] > 0 -%}
-                <div class="rt-quote__stars">{% render 'bod-stars', rating: block.settings[qs_key], count: 1, link: false, show_label: false, style: 'chunky', size: 13, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
+                <div class="rt-quote__stars">{% render 'bod-stars', ignore_product: true, rating: block.settings[qs_key], count: 1, link: false, show_label: false, style: 'chunky', size: 13, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: block.id %}</div>
               {%- endif -%}
               <div class="rt-quote__text is-clamped" data-rt-qtext>&ldquo;{{ block.settings[qt_key] | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
               <button type="button" class="rt-quote__more" data-rt-qmore hidden>Read more</button>
@@ -230,7 +230,7 @@
                 {%- assign qr_key = 'quote_role' | append: suf -%}
                 <div class="rt-qpop__q">
                   {%- if block.settings[qs_key] > 0 -%}
-                    <div class="rt-qpop__stars">{% render 'bod-stars', rating: block.settings[qs_key], count: 1, link: false, show_label: false, style: 'chunky', size: 14, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'center', uid: block.id %}</div>
+                    <div class="rt-qpop__stars">{% render 'bod-stars', ignore_product: true, rating: block.settings[qs_key], count: 1, link: false, show_label: false, style: 'chunky', size: 14, gap: 2, round: 0, color_on: '#ddbd6d', color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'center', uid: block.id %}</div>
                   {%- endif -%}
                   <p class="rt-qpop__text">&ldquo;{{ block.settings[qt_key] | remove: '<p>' | remove: '</p>' }}&rdquo;</p>
                   {%- if block.settings[qn_key] != blank or block.settings[qi_key] != blank -%}

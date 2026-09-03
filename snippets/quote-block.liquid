@@ -52,7 +52,7 @@
 
 <div id="qb-{{ uid }}">
   {%- if s.stars > 0 -%}
-    <div class="qb__stars">{% render 'bod-stars', rating: s.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: uid %}</div>
+    <div class="qb__stars">{% render 'bod-stars', ignore_product: true, rating: s.stars, count: 1, link: false, show_label: false, style: 'chunky', size: 15, gap: 2, round: 0, color_on: s.star_color, color_off: '#e6e6e6', margin_top: 0, margin_bottom: 0, alignment: 'left', uid: uid %}</div>
   {%- endif -%}
   {%- if s.text != blank -%}
     <div class="qb__text">&ldquo;{{ s.text | remove: '<p>' | remove: '</p>' }}&rdquo;</div>
