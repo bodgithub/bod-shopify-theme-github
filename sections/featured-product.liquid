@@ -86,6 +86,13 @@
   <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'product-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+{%- if section.settings.bg_grad_bottom != blank -%}
+<style>
+  #shopify-section-{{ section.id }} {
+    background: linear-gradient(180deg, {% if section.settings.bg_grad_top != blank %}{{ section.settings.bg_grad_top }}{% else %}rgba(0,0,0,0){% endif %} 0%, {{ section.settings.bg_grad_bottom }} 100%);
+  }
+</style>
+{%- endif -%}
 <div class="thb-product-detail featured-product product section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}">
   <div class="row">
 		<div class="small-12 columns">
@@ -175,6 +182,88 @@
     ]
   },
   "settings": [
+    {
+      "type": "color",
+      "id": "bg_grad_top",
+      "label": "Gradient top",
+      "info": "Leave empty for transparent."
+    },
+    {
+      "type": "color",
+      "id": "bg_grad_bottom",
+      "label": "Gradient bottom",
+      "info": "Set to give the whole section a top-to-bottom gradient background. Empty = unchanged."
+    },
+    {
+      "type": "checkbox",
+      "id": "reviews_lightbox",
+      "label": "Open reviews in a lightbox",
+      "default": false,
+      "info": "When on, clicking the star rating opens the reviews in a popup instead of scrolling to the bottom of the page. Turn off to restore the scroll behavior."
+    },
+    {
+      "type": "text",
+      "id": "rl_title",
+      "label": "Lightbox title",
+      "default": "Customer reviews"
+    },
+    {
+      "type": "color",
+      "id": "rl_bg",
+      "label": "Lightbox background",
+      "default": "#e3e7ff"
+    },
+    {
+      "type": "color",
+      "id": "rl_border",
+      "label": "Lightbox border",
+      "default": "#3447af"
+    },
+    {
+      "type": "color",
+      "id": "rl_text",
+      "label": "Lightbox title text",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color_background",
+      "id": "rl_overlay",
+      "label": "Lightbox overlay",
+      "default": "rgba(242, 238, 234, 0.87)"
+    },
+    {
+      "type": "color",
+      "id": "accordion_line_color",
+      "label": "Accordion lines",
+      "info": "Leave unset for the theme default."
+    },
+    {
+      "type": "color",
+      "id": "accordion_text_color",
+      "label": "Accordion text",
+      "info": "Leave unset for the theme default."
+    },
+    {
+      "type": "select",
+      "id": "accordion_title_transform",
+      "label": "Accordion title case",
+      "default": "default",
+      "options": [
+        {
+          "value": "default",
+          "label": "As typed"
+        },
+        {
+          "value": "sentence",
+          "label": "Sentence case"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        }
+      ],
+      "info": "Sentence case lowercases the title then capitalizes the first letter \u2014 acronyms like FAQ will lowercase too."
+    },
     {
       "type": "text",
       "id": "heading",
@@ -6281,6 +6370,1803 @@
           "label": "Info tooltip",
           "info": "Use 'manufactured in the United States' only if actives are all/virtually-all US-sourced.",
           "default": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
+        }
+      ]
+    },
+    {
+      "type": "bod_stars",
+      "name": "Star rating (custom)",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Stars"
+        },
+        {
+          "type": "select",
+          "id": "star_style",
+          "label": "Star style",
+          "default": "chunky",
+          "info": "Chunky matches the current brand mark.",
+          "options": [
+            {
+              "value": "bold",
+              "label": "Bold"
+            },
+            {
+              "value": "chunky",
+              "label": "Chunky"
+            },
+            {
+              "value": "balanced",
+              "label": "Balanced"
+            },
+            {
+              "value": "classic",
+              "label": "Classic (sharp)"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "star_size",
+          "label": "Star size",
+          "min": 10,
+          "max": 40,
+          "step": 1,
+          "default": 19,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "star_gap",
+          "label": "Space between stars",
+          "min": 0,
+          "max": 14,
+          "step": 1,
+          "default": 2,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "star_round",
+          "label": "Corner rounding",
+          "min": 0,
+          "max": 3,
+          "step": 0.5,
+          "default": 0
+        },
+        {
+          "type": "color",
+          "id": "color_on",
+          "label": "Filled star",
+          "default": "#FFCD53"
+        },
+        {
+          "type": "color",
+          "id": "color_off",
+          "label": "Empty star",
+          "default": "#E1E1E1"
+        },
+        {
+          "type": "header",
+          "content": "Label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_label",
+          "label": "Show \"X.X Stars (Read Reviews)\"",
+          "default": true
+        },
+        {
+          "type": "color",
+          "id": "label_color",
+          "label": "Text colour",
+          "default": "#1A1A1A"
+        },
+        {
+          "type": "range",
+          "id": "label_size",
+          "label": "Text size",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "default": 14,
+          "unit": "px"
+        },
+        {
+          "type": "select",
+          "id": "label_weight",
+          "label": "Text weight",
+          "default": "600",
+          "options": [
+            {
+              "value": "400",
+              "label": "Regular"
+            },
+            {
+              "value": "500",
+              "label": "Medium"
+            },
+            {
+              "value": "600",
+              "label": "Semibold"
+            },
+            {
+              "value": "700",
+              "label": "Bold"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "label_gap",
+          "label": "Space before text",
+          "min": 0,
+          "max": 24,
+          "step": 1,
+          "default": 8,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Layout"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Top spacing",
+          "min": 0,
+          "max": 40,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Bottom spacing",
+          "min": 0,
+          "max": 40,
+          "step": 2,
+          "default": 12,
+          "unit": "px"
+        }
+      ]
+    },
+    {
+      "type": "feature_chips",
+      "name": "Feature chips",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_servings",
+          "label": "Show servings chip",
+          "default": true,
+          "info": "First chip shows the serving count and updates with the selected plan."
+        },
+        {
+          "type": "text",
+          "id": "servings_default",
+          "label": "Servings text",
+          "default": "45 servings"
+        },
+        {
+          "type": "text",
+          "id": "servings_alt",
+          "label": "Servings text (1-Month plan)",
+          "default": "30 servings"
+        },
+        {
+          "type": "text",
+          "id": "chip_1",
+          "label": "Chip 1",
+          "default": "Full clinical dose*"
+        },
+        {
+          "type": "text",
+          "id": "chip_2",
+          "label": "Chip 2",
+          "default": "Dissolves clear"
+        },
+        {
+          "type": "text",
+          "id": "chip_3",
+          "label": "Chip 3"
+        },
+        {
+          "type": "color",
+          "id": "bg",
+          "label": "Background",
+          "default": "#e3e7ff"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "info": "Leave empty to inherit the page text color."
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 20
+        }
+      ]
+    },
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Stars",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 5,
+          "info": "0 hides the stars."
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Quote",
+          "info": "Quotation marks are added automatically. Italics render in the serif and use the highlight color."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role"
+        },
+        {
+          "type": "checkbox",
+          "id": "card_mode",
+          "label": "Show as card",
+          "default": false,
+          "info": "Self-contained card with its own background and border."
+        },
+        {
+          "type": "color",
+          "id": "card_bg",
+          "label": "Card background",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "card_border",
+          "label": "Card border",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Highlight (italics)",
+          "default": "#1b3def"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Stars color",
+          "default": "#ddbd6d"
+        },
+        {
+          "type": "range",
+          "id": "quote_size",
+          "label": "Text size",
+          "min": 11,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 13
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "bundle_upsell",
+      "name": "Bundle upsell",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Bundle + Save 25%"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Two tubs, billed every 12 weeks \u2014 save 25% on every order."
+        },
+        {
+          "type": "header",
+          "content": "Price"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "$98"
+        },
+        {
+          "type": "text",
+          "id": "compare",
+          "label": "Compare-at price"
+        },
+        {
+          "type": "text",
+          "id": "price_per",
+          "label": "Suffix (e.g. every 12 weeks)"
+        },
+        {
+          "type": "header",
+          "content": "Add to cart"
+        },
+        {
+          "type": "text",
+          "id": "variant",
+          "label": "Product variant ID"
+        },
+        {
+          "type": "text",
+          "id": "plan",
+          "label": "Selling plan ID",
+          "info": "Leave blank for a one-time purchase."
+        },
+        {
+          "type": "number",
+          "id": "qty",
+          "label": "Quantity",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Add"
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Card outline",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "btn_border_color",
+          "label": "Button outline",
+          "info": "Leave unset to follow the card outline."
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button text",
+          "info": "Leave unset to follow the button outline."
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_color",
+          "label": "Button background",
+          "info": "Leave unset for transparent."
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "price_color",
+          "label": "Price",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "compare_color",
+          "label": "Compare-at price",
+          "default": "#9aa0b5"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background",
+          "info": "Leave unset for no fill."
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "image_size",
+          "label": "Image size",
+          "min": 48,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 76
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 320,
+          "max": 760,
+          "step": 20,
+          "unit": "px",
+          "default": 560
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Space above",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Space below",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        }
+      ]
+    },
+    {
+      "type": "trust_circles",
+      "name": "Trust circles",
+      "settings": [
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline",
+          "default": "Every batch, independently verified"
+        },
+        {
+          "type": "range",
+          "id": "headline_size",
+          "label": "Headline size",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "checkbox",
+          "id": "coa_enable",
+          "label": "Show 'Read our COA' link + popup",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "coa_link_text",
+          "label": "COA link text",
+          "default": "Read our COA"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color_background",
+          "id": "section_bg",
+          "label": "Background",
+          "info": "Leave unset for transparent."
+        },
+        {
+          "type": "color",
+          "id": "headline_color",
+          "label": "Headline",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "outer_bg",
+          "label": "Outer circle",
+          "default": "#e3e7ff"
+        },
+        {
+          "type": "color",
+          "id": "outer_border",
+          "label": "Outer circle border",
+          "info": "Leave unset for no border."
+        },
+        {
+          "type": "color",
+          "id": "circle_bg",
+          "label": "Inner circle",
+          "default": "#ffffff"
+        },
+        {
+          "type": "color",
+          "id": "circle_border",
+          "label": "Inner circle border",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icons",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Badge titles",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "sub_color",
+          "label": "Badge sub-labels",
+          "default": "#42579e"
+        },
+        {
+          "type": "header",
+          "content": "Sizes & spacing"
+        },
+        {
+          "type": "range",
+          "id": "circle_size",
+          "label": "Circle size",
+          "min": 48,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 72
+        },
+        {
+          "type": "range",
+          "id": "title_size",
+          "label": "Title size",
+          "min": 9,
+          "max": 16,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "sub_size",
+          "label": "Sub-label size",
+          "min": 8,
+          "max": 14,
+          "step": 1,
+          "unit": "px",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin bottom",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding bottom",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Badge 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "b1_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b1_icon",
+          "label": "Icon",
+          "default": "expert",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b1_title",
+          "label": "Title",
+          "default": "Expert Reviewed"
+        },
+        {
+          "type": "text",
+          "id": "b1_sub",
+          "label": "Sub-label",
+          "default": "RD \u2022 MS \u2022 PhD"
+        },
+        {
+          "type": "checkbox",
+          "id": "b1_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b1_tip",
+          "label": "Info popup text",
+          "default": "<p>Bodology's formula and label are reviewed by qualified professionals \u2014 including a <strong>Registered Dietitian (RD)</strong> and advisors holding <strong>MS and PhD</strong> credentials \u2014 so the ingredients, doses, and claims are accurate and responsibly stated.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "b2_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b2_icon",
+          "label": "Icon",
+          "default": "flask",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b2_title",
+          "label": "Title",
+          "default": "Third Party Tested"
+        },
+        {
+          "type": "text",
+          "id": "b2_sub",
+          "label": "Sub-label",
+          "default": "ISO/IEC 17025 Accredited Labs"
+        },
+        {
+          "type": "checkbox",
+          "id": "b2_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b2_tip",
+          "label": "Info popup text",
+          "default": "<p>Bodology is tested independently \u2014 we don't grade our own work. Every production batch is sent to <strong>Certified Laboratories</strong>, an ISO/IEC 17025-accredited testing lab, and analyzed against written specifications before it can be sold. ISO/IEC 17025 is the international standard for laboratory competence and data integrity.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "b3_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b3_icon",
+          "label": "Icon",
+          "default": "fingerprint",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b3_title",
+          "label": "Title",
+          "default": "Identity Verified"
+        },
+        {
+          "type": "text",
+          "id": "b3_sub",
+          "label": "Sub-label",
+          "default": "HPLC Analytical Testing"
+        },
+        {
+          "type": "checkbox",
+          "id": "b3_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b3_tip",
+          "label": "Info popup text",
+          "default": "<p>We use <strong>HPLC analytical testing</strong> to confirm the identity of each active \u2014 verifying that what's in the tub is genuinely myo-inositol and D-chiro-inositol, not a substitute or mislabeled material.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "b4_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b4_icon",
+          "label": "Icon",
+          "default": "chart",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b4_title",
+          "label": "Title",
+          "default": "Potency Confirmed"
+        },
+        {
+          "type": "text",
+          "id": "b4_sub",
+          "label": "Sub-label",
+          "default": "Myo & D-Chiro Inositol Verified"
+        },
+        {
+          "type": "checkbox",
+          "id": "b4_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b4_tip",
+          "label": "Info popup text",
+          "default": "<p>HPLC confirms that each batch contains <strong>myo-inositol and D-chiro-inositol at the labeled amounts</strong> \u2014 and that the 40:1 ratio is correct in the finished powder, not only in the formula. Because the two are isomers, HPLC separates and measures each one individually.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 5"
+        },
+        {
+          "type": "checkbox",
+          "id": "b5_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b5_icon",
+          "label": "Icon",
+          "default": "shield",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b5_title",
+          "label": "Title",
+          "default": "Heavy Metal Tested"
+        },
+        {
+          "type": "text",
+          "id": "b5_sub",
+          "label": "Sub-label",
+          "default": "Arsenic \u2022 Cadmium \u2022 Mercury \u2022 Lead"
+        },
+        {
+          "type": "checkbox",
+          "id": "b5_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b5_tip",
+          "label": "Info popup text",
+          "default": "<p>Every batch is tested for heavy metals by <strong>ICP-MS</strong> \u2014 arsenic, cadmium, mercury, and lead \u2014 and must fall within established safety limits before release. ICP-MS detects these metals down to trace levels, well below the limits set for dietary supplements.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 6"
+        },
+        {
+          "type": "checkbox",
+          "id": "b6_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b6_icon",
+          "label": "Icon",
+          "default": "microbe",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b6_title",
+          "label": "Title",
+          "default": "Microbial Safety Tested"
+        },
+        {
+          "type": "text",
+          "id": "b6_sub",
+          "label": "Sub-label",
+          "default": "USP <61> & USP <62>"
+        },
+        {
+          "type": "checkbox",
+          "id": "b6_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b6_tip",
+          "label": "Info popup text",
+          "default": "<p>Every batch is screened for microbial safety: total aerobic count, total yeast and mold, and the absence of specified pathogens \u2014 <strong>E. coli, Salmonella, Staphylococcus aureus, and Pseudomonas aeruginosa</strong>. A batch only ships if it meets every limit.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 7"
+        },
+        {
+          "type": "checkbox",
+          "id": "b7_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b7_icon",
+          "label": "Icon",
+          "default": "ratio",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b7_title",
+          "label": "Title",
+          "default": "Clinically Studied Ratio"
+        },
+        {
+          "type": "text",
+          "id": "b7_sub",
+          "label": "Sub-label",
+          "default": "40:1 Myo : D-Chiro"
+        },
+        {
+          "type": "checkbox",
+          "id": "b7_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b7_tip",
+          "label": "Info popup text",
+          "default": "<p>The <strong>40:1 ratio</strong> of myo-inositol to D-chiro-inositol is the ratio used in published clinical research. We confirm this ratio in the finished powder by HPLC, so it matches the studied formulation.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Badge 8"
+        },
+        {
+          "type": "checkbox",
+          "id": "b8_enable",
+          "label": "Show badge",
+          "default": true
+        },
+        {
+          "type": "select",
+          "id": "b8_icon",
+          "label": "Icon",
+          "default": "pin",
+          "options": [
+            {
+              "value": "expert",
+              "label": "Expert (people check)"
+            },
+            {
+              "value": "flask",
+              "label": "Lab flask"
+            },
+            {
+              "value": "fingerprint",
+              "label": "Fingerprint"
+            },
+            {
+              "value": "chart",
+              "label": "Potency chart"
+            },
+            {
+              "value": "shield",
+              "label": "Shield check"
+            },
+            {
+              "value": "microbe",
+              "label": "Microbe"
+            },
+            {
+              "value": "ratio",
+              "label": "Ratio bars"
+            },
+            {
+              "value": "pin",
+              "label": "Location pin"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "check",
+              "label": "Check circle"
+            },
+            {
+              "value": "beaker",
+              "label": "Beaker"
+            },
+            {
+              "value": "droplet",
+              "label": "Droplet"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "lock",
+              "label": "Lock"
+            },
+            {
+              "value": "globe",
+              "label": "Globe"
+            },
+            {
+              "value": "award",
+              "label": "Award medal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "b8_title",
+          "label": "Title",
+          "default": "Blended in the USA"
+        },
+        {
+          "type": "text",
+          "id": "b8_sub",
+          "label": "Sub-label",
+          "default": "Final Manufacturing & Packaging"
+        },
+        {
+          "type": "checkbox",
+          "id": "b8_hide_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "richtext",
+          "id": "b8_tip",
+          "label": "Info popup text",
+          "default": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
+        }
+      ]
+    },
+    {
+      "type": "facts_table",
+      "name": "Facts table",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header_text",
+          "label": "Header line",
+          "default": "Per serving (2 scoops, 4g)"
+        },
+        {
+          "type": "header",
+          "content": "Row 1"
+        },
+        {
+          "type": "text",
+          "id": "r1_label",
+          "label": "Label",
+          "default": "Myo-inositol"
+        },
+        {
+          "type": "text",
+          "id": "r1_value",
+          "label": "Value (right-aligned)",
+          "default": "3,600 mg"
+        },
+        {
+          "type": "text",
+          "id": "r1_note",
+          "label": "Note under the label",
+          "default": "Receives the insulin signal"
+        },
+        {
+          "type": "checkbox",
+          "id": "r1_divider",
+          "label": "Divider line above this row",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Row 2"
+        },
+        {
+          "type": "text",
+          "id": "r2_label",
+          "label": "Label",
+          "default": "D-chiro-inositol"
+        },
+        {
+          "type": "text",
+          "id": "r2_value",
+          "label": "Value (right-aligned)",
+          "default": "90 mg"
+        },
+        {
+          "type": "text",
+          "id": "r2_note",
+          "label": "Note under the label",
+          "default": "From carob pods, not synthetic"
+        },
+        {
+          "type": "checkbox",
+          "id": "r2_divider",
+          "label": "Divider line above this row",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Row 3"
+        },
+        {
+          "type": "text",
+          "id": "r3_label",
+          "label": "Label",
+          "default": "Ratio"
+        },
+        {
+          "type": "text",
+          "id": "r3_value",
+          "label": "Value (right-aligned)",
+          "default": "40:1"
+        },
+        {
+          "type": "text",
+          "id": "r3_note",
+          "label": "Note under the label"
+        },
+        {
+          "type": "checkbox",
+          "id": "r3_divider",
+          "label": "Divider line above this row",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Row 4"
+        },
+        {
+          "type": "text",
+          "id": "r4_label",
+          "label": "Label",
+          "default": "Everything else"
+        },
+        {
+          "type": "text",
+          "id": "r4_value",
+          "label": "Value (right-aligned)",
+          "default": "Nothing"
+        },
+        {
+          "type": "text",
+          "id": "r4_note",
+          "label": "Note under the label"
+        },
+        {
+          "type": "checkbox",
+          "id": "r4_divider",
+          "label": "Divider line above this row",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Row 5"
+        },
+        {
+          "type": "text",
+          "id": "r5_label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "r5_value",
+          "label": "Value (right-aligned)"
+        },
+        {
+          "type": "text",
+          "id": "r5_note",
+          "label": "Note under the label"
+        },
+        {
+          "type": "checkbox",
+          "id": "r5_divider",
+          "label": "Divider line above this row",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Row 6"
+        },
+        {
+          "type": "text",
+          "id": "r6_label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "r6_value",
+          "label": "Value (right-aligned)"
+        },
+        {
+          "type": "text",
+          "id": "r6_note",
+          "label": "Note under the label"
+        },
+        {
+          "type": "checkbox",
+          "id": "r6_divider",
+          "label": "Divider line above this row",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text",
+          "default": "#1a2874"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border & dividers",
+          "default": "#3447af"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Background",
+          "info": "Leave unset for no fill."
+        },
+        {
+          "type": "range",
+          "id": "radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "header_size",
+          "label": "Header size",
+          "min": 10,
+          "max": 18,
+          "step": 1,
+          "unit": "px",
+          "default": 13
+        },
+        {
+          "type": "range",
+          "id": "label_size",
+          "label": "Label/value size",
+          "min": 11,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "note_size",
+          "label": "Note size",
+          "min": 9,
+          "max": 16,
+          "step": 1,
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "label": "Max width",
+          "min": 320,
+          "max": 760,
+          "step": 20,
+          "unit": "px",
+          "default": 560
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Space above",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 14
         }
       ]
     }
