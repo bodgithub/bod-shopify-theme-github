@@ -102,6 +102,28 @@
 			    <div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
 						<div class="product-image-container">
 			        <product-slider id="Product-Slider" class="product-images static-dots" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
+{%- liquid
+									assign custom_gallery_count = 0
+									for gi_i in (1..6)
+										assign gi_key = 'gallery_image_' | append: gi_i
+										if section.settings[gi_key] != blank
+											assign custom_gallery_count = custom_gallery_count | plus: 1
+										endif
+									endfor
+								-%}
+								{%- if custom_gallery_count > 0 -%}
+									{%- for gi_i in (1..6) -%}
+										{%- assign gi_key = 'gallery_image_' | append: gi_i -%}
+										{%- assign gi = section.settings[gi_key] -%}
+										{%- if gi != blank -%}
+											<div class="product-images__slide{% if forloop.first %} is-active{% endif %}">
+												<div class="product-single__media product-single__media-image aspect-ratio aspect-ratio--{{ media_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: gi.aspect_ratio | times: 100 }}%;">
+													{{ gi | image_url: width: 1600 | image_tag: loading: 'lazy', alt: gi.alt | escape }}
+												</div>
+											</div>
+										{%- endif -%}
+									{%- endfor -%}
+								{%- else -%}
 								{%- if featured_media != null -%}
 		              {%- liquid
 										assign image_index = image_index | plus: 1
@@ -122,13 +144,16 @@
                     {%- render 'product-media', product: product, section: section, forloop: forloop, media: media, sizes: sizes, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants, display_captions: display_captions -%}
 									{%- endunless -%}
 			          {%- endfor -%}
-								{%- if product.media.size > 1 -%}
+								{%- endif -%}
+								{%- assign gallery_slide_count = product.media.size -%}
+								{%- if custom_gallery_count > 0 -%}{%- assign gallery_slide_count = custom_gallery_count -%}{%- endif -%}
+								{%- if gallery_slide_count > 1 -%}
 								<div class="flickity-nav flickity-prev" tabindex="0">{%- render 'svg-icons' with 'carousel-prev' -%}</div>
 								<div class="flickity-nav flickity-next" tabindex="0">{%- render 'svg-icons' with 'carousel-next' -%}</div>
 								{%- endif -%}
 			        </product-slider>
 							<scroll-shadow>
-								<div id="Product-Thumbnails" class="product-thumbnail-container" data-hide-variants="{{ hide_variants }}">
+								<div id="Product-Thumbnails" class="product-thumbnail-container" data-hide-variants="{{ hide_variants }}"{% if custom_gallery_count > 0 %} style="display:none;"{% endif %}>
 									{%- if featured_media != null -%}
 										{%- render 'product-thumbnail', product: product, media: featured_media, forloop: false, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants -%}
 									{%- endif -%}
@@ -418,6 +443,44 @@
       "id": "disable_bottom_spacing",
       "default": false,
       "label": "Remove bottom spacing"
+    },
+    {
+      "type": "header",
+      "content": "Gallery override"
+    },
+    {
+      "type": "paragraph",
+      "content": "When any image below is set, the gallery shows these instead of the product's media."
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_1",
+      "label": "Gallery image 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_2",
+      "label": "Gallery image 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_3",
+      "label": "Gallery image 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_4",
+      "label": "Gallery image 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_5",
+      "label": "Gallery image 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "gallery_image_6",
+      "label": "Gallery image 6"
     }
   ],
   "blocks": [
@@ -4014,6 +4077,18 @@
           "type": "image_picker",
           "id": "c4_image",
           "label": "Concern 4 photo (replaces default icon)"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_sub",
+          "label": "Hide the subscription card",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_ot",
+          "label": "Hide the one-time card",
+          "default": false
         }
       ]
     },

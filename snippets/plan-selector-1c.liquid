@@ -214,6 +214,12 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 
       assign k = P | append: '_name'
       assign card_name = s[k]
+      if P == 'sub' and s.hide_sub
+        continue
+      endif
+      if P == 'ot' and s.hide_ot
+        continue
+      endif
       if card_name == blank and P == 'sub'
         assign card_name = 'Subscribe & Save'
       elsif card_name == blank and P == 'ot'
