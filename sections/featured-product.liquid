@@ -101,7 +101,7 @@
 				<div class="product-gallery-sticky">
 			    <div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
 						<div class="product-image-container">
-			        <product-slider id="Product-Slider" class="product-images static-dots" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
+			        <product-slider id="Product-Slider" class="product-images static-dots{% if section.settings.carousel_arrow_style == 'semicircle' %} product-images--semicircle-arrows{% endif %}" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
 {%- liquid
 									assign custom_gallery_count = 0
 									for gi_i in (1..6)
@@ -116,7 +116,7 @@
 										{%- assign gi_key = 'gallery_image_' | append: gi_i -%}
 										{%- assign gi = section.settings[gi_key] -%}
 										{%- if gi != blank -%}
-											<div class="product-images__slide{% if forloop.first %} is-active{% endif %}">
+											<div class="product-images__slide is-active">
 												<div class="product-single__media product-single__media-image aspect-ratio aspect-ratio--{{ media_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: gi.aspect_ratio | times: 100 }}%;">
 													{{ gi | image_url: width: 1600 | image_tag: loading: 'lazy', alt: gi.alt | escape }}
 												</div>
@@ -148,8 +148,8 @@
 								{%- assign gallery_slide_count = product.media.size -%}
 								{%- if custom_gallery_count > 0 -%}{%- assign gallery_slide_count = custom_gallery_count -%}{%- endif -%}
 								{%- if gallery_slide_count > 1 -%}
-								<div class="flickity-nav flickity-prev" tabindex="0">{%- render 'svg-icons' with 'carousel-prev' -%}</div>
-								<div class="flickity-nav flickity-next" tabindex="0">{%- render 'svg-icons' with 'carousel-next' -%}</div>
+								<div class="flickity-nav flickity-prev" tabindex="0">{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-prev' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-prev' -%}{%- endif -%}</div>
+								<div class="flickity-nav flickity-next" tabindex="0">{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-next' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-next' -%}{%- endif -%}</div>
 								{%- endif -%}
 			        </product-slider>
 							<scroll-shadow>
@@ -207,6 +207,23 @@
     ]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "carousel_arrow_style",
+      "label": "Carousel arrow style",
+      "info": "Semi-circle attaches rounded arrows to the left and right image edges; they turn blue on hover.",
+      "default": "circle",
+      "options": [
+        {
+          "value": "circle",
+          "label": "Circle (default)"
+        },
+        {
+          "value": "semicircle",
+          "label": "Semi-circle on edges"
+        }
+      ]
+    },
     {
       "type": "color",
       "id": "bg_grad_top",
