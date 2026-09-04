@@ -66,12 +66,12 @@
             "icon_size": 28,
             "border_size": 1,
             "border_color": "#1b3def",
-            "benefit_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
-            "icon_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.icon.value }}",
-            "benefit_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.benefit.value }}",
-            "icon_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.icon.value }}",
-            "benefit_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.benefit.value }}",
-            "icon_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.icon.value }}",
+            "benefit_1": "",
+            "icon_1": "",
+            "benefit_2": "",
+            "icon_2": "",
+            "benefit_3": "",
+            "icon_3": "",
             "benefit_4": "",
             "benefit_5": ""
           }
