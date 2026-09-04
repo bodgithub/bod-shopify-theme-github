@@ -552,7 +552,8 @@
       "custom_css": [
         ".product-title {display: none;}",
         ".amount {display: none;}",
-        "@media only screen and (min-width: 1068px) {.product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px; }}"
+        "@media only screen and (min-width: 1068px) {.product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px; }}",
+        ".product-grid-container {padding-top: 30px;}"
       ],
       "settings": {
         "bg_grad_top": "#fbfaf9",

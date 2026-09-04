@@ -98,6 +98,9 @@
 #ps1c-{{ uid }} .ps-giftban__t{display:block; font-size:{{ s.giftban_title_size | default: 13.5 }}px; font-weight:600; color:{{ gb_tc }};}
 #ps1c-{{ uid }} .ps-giftban__x{font-size:12px; color:#9aa0b5; text-decoration:line-through;}
 #ps1c-{{ uid }} .ps-giftban__s{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:1px;}
+#ps1c-{{ uid }} .ps-giftban__focus{display:block; font-size:12px; color:{{ gb_sc }}; margin-top:2px;}
+#ps1c-{{ uid }} .ps-giftban__focus[hidden]{display:none;}
+#ps1c-{{ uid }} .ps-giftban__focus strong{color:{{ gb_tc }}; font-weight:600;}
 #ps1c-{{ uid }} .ps-giftban__cust{background:none; border:0; padding:0; margin:0; font:inherit; color:inherit; text-decoration:underline; cursor:pointer;}
 #ps1c-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
 #ps1c-{{ uid }} .ps-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--ps-blue); display:inline-block; animation:ps1cpulse-{{ uid }} 1.8s ease-out infinite;}
@@ -326,6 +329,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <span class="ps-giftban__txt">
       <span class="ps-giftban__trow"><strong class="ps-giftban__t" data-ps1c-giftban-title></strong><span class="ps-giftban__x" data-ps1c-giftban-cross hidden></span></span>
       <span class="ps-giftban__s" data-ps1c-giftban-line><span data-ps1c-giftban-sub></span>{% if s.proto_enable %}<span data-ps1c-giftban-sep> · </span><button type="button" class="ps-giftban__cust" data-ps1c-proto-open>{{ s.giftban_cust_label | default: 'Customize' }}</button>{% endif %}</span>
+      {% if s.proto_enable %}<span class="ps-giftban__focus" data-ps1c-giftban-focus hidden><strong>{{ s.giftban_focus_label | default: 'Personalized for:' }}</strong> <span data-ps1c-giftban-focus-list></span></span>{% endif %}
     </span>
   </div>
   {%- endif -%}
@@ -509,7 +513,15 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   if(proto){
     var sup = proto.querySelector('[data-ps1c-proto-sup]');
     var openProto = function(){ proto.hidden = false; document.documentElement.style.overflow = 'hidden'; };
-    var closeProto = function(){ proto.hidden = true; document.documentElement.style.overflow = ''; };
+    var gbFocus = root.querySelector('[data-ps1c-giftban-focus]');
+    var gbFocusList = root.querySelector('[data-ps1c-giftban-focus-list]');
+    var syncGiftFocus = function(){
+      if(!gbFocus || !gbFocusList) return;
+      var f = protoFocus();
+      gbFocusList.textContent = f;
+      gbFocus.hidden = !f;
+    };
+    var closeProto = function(){ proto.hidden = true; document.documentElement.style.overflow = ''; syncGiftFocus(); };
     var openBtns = [].slice.call(root.querySelectorAll('[data-ps1c-proto-open]'));
     openBtns.forEach(function(b){
       b.addEventListener('click', function(e){ e.stopPropagation(); openProto(); });
