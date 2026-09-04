@@ -74,6 +74,9 @@
 #shopify-section-{{ section.id }} .product__accordion.accordion summary,
 #shopify-section-{{ section.id }} .product__accordion .accordion__content { color: {{ acc_text }}; }
 {%- endif -%}
+{%- if acc_tt == 'typed' %}
+#shopify-section-{{ section.id }} .product__accordion.accordion summary { text-transform: none; }
+{%- endif -%}
 {%- if acc_tt == 'uppercase' %}
 #shopify-section-{{ section.id }} .product__accordion.accordion summary { text-transform: uppercase; letter-spacing: 0.03em; }
 {%- endif -%}
@@ -363,6 +366,9 @@
       {%- if tab_text != blank %}
       #Details-{{ block.id }}-{{ section.id }} summary,
       #ProductAccordion-{{ block.id }}-{{ section.id }} { color: {{ tab_text }}; }
+      {%- endif -%}
+      {%- if tab_case == 'typed' %}
+      #Details-{{ block.id }}-{{ section.id }} summary { text-transform: none; }
       {%- endif -%}
       {%- if tab_case == 'uppercase' %}
       #Details-{{ block.id }}-{{ section.id }} summary { text-transform: uppercase; letter-spacing: 0.03em; }
