@@ -20,6 +20,21 @@
 		assign has_bg = false
 	endif
 -%}
+{%- assign title_case = section.settings.title_case | default: 'default' -%}
+{%- if title_case != 'default' -%}
+<style>
+{%- if title_case == 'typed' %}
+#shopify-section-{{ section.id }} .accordion summary { text-transform: none; }
+{%- endif -%}
+{%- if title_case == 'uppercase' %}
+#shopify-section-{{ section.id }} .accordion summary { text-transform: uppercase; letter-spacing: 0.03em; }
+{%- endif -%}
+{%- if title_case == 'sentence' %}
+#shopify-section-{{ section.id }} .accordion summary { text-transform: lowercase; }
+#shopify-section-{{ section.id }} .accordion summary::first-letter { text-transform: uppercase; }
+{%- endif %}
+</style>
+{%- endif -%}
 <div class="row" style="background-color:{{ section.settings.bgcolor }}">
 	<div class="small-12 columns">
 		<div class="collapsible-content-2 {% if has_bg -%}collapsible-content--has-bg{% endif %} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}"style="--color-bg: {{ color_bg }}; --color-heading: {{ color_heading }}; --color-text: {{ color_text }}; --color-links: {{ color_links }}; --color-border: {{ color_border }};">
@@ -127,6 +142,19 @@
 				"id": "description",
 				"label": "Description",
 				"default": "<p>Add a short description for this section</p>"
+			},
+			{
+				"type": "select",
+				"id": "title_case",
+				"label": "Row heading case",
+				"default": "default",
+				"info": "Product pages show accordion headings in caps by default. Choose 'As typed' to show them exactly as entered. 'Sentence case' lowercases everything after the first letter, including acronyms like PCOS.",
+				"options": [
+					{ "value": "default", "label": "Theme default" },
+					{ "value": "typed", "label": "As typed" },
+					{ "value": "sentence", "label": "Sentence case" },
+					{ "value": "uppercase", "label": "UPPERCASE" }
+				]
 			},
 			{
         "type": "header",
