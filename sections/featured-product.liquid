@@ -1458,11 +1458,6 @@
           "label": "Heading"
         },
         {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
           "type": "checkbox",
           "id": "open",
           "default": false,
@@ -1483,6 +1478,41 @@
           "id": "custom_liquid",
           "label": "Custom liquid",
           "info": "Add app snippets or other Liquid code to create advanced customizations. For product description, you can use {{ product.description }}"
+        },
+        {
+          "type": "header",
+          "content": "Style",
+          "info": "Overrides the section-level Accordion style for this tab only."
+        },
+        {
+          "type": "color",
+          "id": "acc_line_color",
+          "label": "Lines"
+        },
+        {
+          "type": "color",
+          "id": "acc_text_color",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "id": "acc_title_case",
+          "label": "Title case",
+          "default": "default",
+          "options": [
+            {
+              "value": "default",
+              "label": "As typed"
+            },
+            {
+              "value": "sentence",
+              "label": "Sentence case"
+            },
+            {
+              "value": "uppercase",
+              "label": "UPPERCASE"
+            }
+          ]
         }
       ]
     },
@@ -3353,6 +3383,13 @@
           "default": false
         },
         {
+          "type": "checkbox",
+          "id": "cta_price",
+          "label": "Show selected plan price on button",
+          "default": false,
+          "info": "Replaces the plan name with an em dash and the selected plan's price."
+        },
+        {
           "type": "header",
           "content": "Subscribe toggle & shipping"
         },
@@ -3377,7 +3414,8 @@
         {
           "type": "text",
           "id": "shipping_weekend_text",
-          "label": "Fri-after-2pm/Sat line (replaces the whole line; blank = use the sh...",
+          "label": "Fri-after-2pm/Sat line (replaces whole line)",
+          "info": "Leave blank to use the ship date.",
           "default": "Fast FREE shipping \u2014 Arrives in"
         },
         {
@@ -3449,6 +3487,127 @@
           "id": "giftban_cust_label",
           "label": "Customize link label",
           "default": "Customize"
+        },
+        {
+          "type": "range",
+          "id": "giftban_title_size",
+          "label": "Banner title size",
+          "min": 11,
+          "max": 18,
+          "step": 0.5,
+          "unit": "px",
+          "default": 13.5
+        },
+        {
+          "type": "header",
+          "content": "Personalize lightbox style"
+        },
+        {
+          "type": "color",
+          "id": "modal_bg",
+          "label": "Lightbox background",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "modal_border",
+          "label": "Lightbox border (1px)",
+          "info": "Leave unset for no border."
+        },
+        {
+          "type": "color_background",
+          "id": "modal_overlay",
+          "label": "Lightbox overlay",
+          "default": "rgba(21,23,30,0.5)"
+        },
+        {
+          "type": "header",
+          "content": "Heading style"
+        },
+        {
+          "type": "range",
+          "id": "heading_size",
+          "label": "Heading size (0 = default large)",
+          "min": 0,
+          "max": 24,
+          "step": 0.5,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "heading_lh",
+          "label": "Heading line height (0 = default)",
+          "min": 0,
+          "max": 3,
+          "step": 0.1,
+          "default": 0
+        },
+        {
+          "type": "header",
+          "content": "Plan card style"
+        },
+        {
+          "type": "color",
+          "id": "card_border_color",
+          "label": "Card border",
+          "info": "Leave unset for the default grey."
+        },
+        {
+          "type": "checkbox",
+          "id": "card_flat",
+          "label": "Flat selected card (no gradient)",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "card_selected_bg",
+          "label": "Selected card background",
+          "default": "#E3E7FF"
+        },
+        {
+          "type": "header",
+          "content": "Guarantee row"
+        },
+        {
+          "type": "checkbox",
+          "id": "guar_enable",
+          "label": "Show guarantee row under CTA",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "guar_text",
+          "label": "Row text",
+          "default": "60-day risk-free guarantee"
+        },
+        {
+          "type": "text",
+          "id": "guar_popup_title",
+          "label": "Popup title",
+          "default": "60-Day Happiness Guarantee"
+        },
+        {
+          "type": "richtext",
+          "id": "guar_popup_text",
+          "label": "Popup text"
+        },
+        {
+          "type": "text",
+          "id": "guar_policy_label",
+          "label": "Policy button label",
+          "default": "Read the full policy"
+        },
+        {
+          "type": "url",
+          "id": "guar_policy_url",
+          "label": "Policy link"
+        },
+        {
+          "type": "checkbox",
+          "id": "heading_tight",
+          "label": "Tighten space around heading",
+          "default": false
         },
         {
           "type": "header",
