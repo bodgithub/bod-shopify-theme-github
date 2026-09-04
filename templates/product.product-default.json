@@ -2642,7 +2642,7 @@
       "custom_css": [],
       "settings": {
         "bg_grad_top": "#f3eeea",
-        "bg_grad_bottom": "#fbfaf9",
+        "bg_grad_bottom": "#FFFFFF",
         "testimonial_source": "blocks",
         "heading": "<h1>Trusted by <em>experts</em></h1>",
         "text": "",
@@ -2753,6 +2753,7 @@
         "image_XD69kQ",
         "image_w9NdKi"
       ],
+      "disabled": true,
       "custom_css": [
         "p {text-align: center; color: #7a7a98; font-size: 0.8em;}",
         "h3,h4,h5,h6 {text-align: center; text-transform: uppercase;}",
@@ -2854,6 +2855,7 @@
         "column_FT4bTV",
         "column_86pe8K"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "heading_pad_top": 0,
@@ -3004,12 +3006,13 @@
         "color_text": "#FFFFFF",
         "color_links": "#1b3def",
         "color_border": "#FFFFFF",
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
     "featured_blog_GjYBE8": {
       "type": "featured-blog",
+      "disabled": true,
       "name": "Blog posts",
       "settings": {
         "section_bg": "#ffffff",
@@ -3025,11 +3028,11 @@
         "mobile_swipe": true,
         "image_ratio": "landscape",
         "show_date": false,
-        "show_excerpt": true,
+        "show_excerpt": false,
         "show_read_more": false,
         "show_view_all": false,
         "marker_color": "#fd6262",
-        "disable_top_spacing": false,
+        "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
     },
