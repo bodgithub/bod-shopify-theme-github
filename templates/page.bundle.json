@@ -551,7 +551,8 @@
         ".product-title {display: none;}",
         ".amount {display: none;}",
         "@media only screen and (min-width: 1068px) {.product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px; }}",
-        "@media only screen and (min-width: 1068px) {.thb-product-detail {padding-top: 30px;}}"
+        "@media only screen and (min-width: 1068px) {.thb-product-detail {padding-top: 30px;}}",
+        "@media only screen and (max-width: 1067px) {.product-grid-container .product-images--semicircle-arrows.flickity-enabled.is-draggable .flickity-viewport {height: 380px !important; } .thb-product-detail {padding-top: 15px; }}"
       ],
       "settings": {
         "carousel_arrow_style": "semicircle",
