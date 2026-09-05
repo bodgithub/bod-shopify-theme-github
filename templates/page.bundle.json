@@ -526,9 +526,16 @@
             "b8_hide_mobile": false,
             "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
           }
+        },
+        "bundle_page_css": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n.product-title {display: none;}\n.amount {display: none;}\n@media only screen and (min-width: 1068px) {\n  .product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px;}\n  .thb-product-detail {padding-top: 30px;}\n}\n@media only screen and (max-width: 1067px) {\n  .thb-product-detail {padding-top: 15px;}\n  .product-grid-container .product-images--semicircle-arrows.flickity-enabled.is-draggable .flickity-viewport {height: 380px !important;}\n  .product-grid-container .product-images--semicircle-arrows .product-images__slide .product-single__media-image {height: 380px !important; padding-bottom: 0 !important; min-height: 0 !important;}\n  .product-grid-container .product-images--semicircle-arrows .product-images__slide .product-single__media-image img {position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;}\n}\n</style>"
+          }
         }
       },
       "block_order": [
+        "bundle_page_css",
         "custom_liquid_WPt4Yc",
         "bod_stars_TkJMcg",
         "text_3mziH8",
@@ -547,13 +554,7 @@
         "experts_LiL7KV",
         "trust_circles_Ln9WVk"
       ],
-      "custom_css": [
-        ".product-title {display: none;}",
-        ".amount {display: none;}",
-        "@media only screen and (min-width: 1068px) {.product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px; }}",
-        "@media only screen and (min-width: 1068px) {.thb-product-detail {padding-top: 30px;}}",
-        "@media only screen and (max-width: 1067px) {.product-grid-container .product-images--semicircle-arrows.flickity-enabled.is-draggable .flickity-viewport {height: 380px !important; } .product-grid-container .product-images--semicircle-arrows .product-images__slide .product-single__media-image {height: 380px !important; padding-bottom: 0 !important; --padding-bottom: 0; min-height: 0 !important; } .product-grid-container .product-images--semicircle-arrows .product-images__slide .product-single__media-image img {position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; } .thb-product-detail {padding-top: 15px; }}"
-      ],
+      "custom_css": [],
       "settings": {
         "carousel_arrow_style": "semicircle",
         "bg_grad_top": "#fbfaf9",
