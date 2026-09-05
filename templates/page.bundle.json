@@ -118,7 +118,7 @@
           "type": "custom_liquid",
           "name": "Product Title",
           "settings": {
-            "custom_liquid": "<div style=\"margin-top:-5px;\"><h1 style=\"font-weight:500 !important; color:#1a2874;\">Myo + D-Chiro Inositol Powder</h1></div>"
+            "custom_liquid": "<div style=\"margin-top:-5px;\"><h1 style=\"font-weight:500 !important; color:#1a2874;\">The 90-Day Bundle: Myo + D-Chiro Inositol Powder</h1></div>"
           }
         },
         "bod_stars_TkJMcg": {
@@ -140,10 +140,17 @@
             "margin_bottom": 16
           }
         },
+        "text_3mziH8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Inositol, done properly. This bundle gives you 90 days of the full daily dose, so you can stay consistent without running out.<br/></p>",
+            "text_style": "style_vendor"
+          }
+        },
         "benefit_list_kPEzGr": {
           "type": "benefit_list",
           "settings": {
-            "para_text": "Inositol, done properly. For hormones, mood, fertility and metabolic health.",
+            "para_text": "",
             "para_size": 16,
             "para_weight": "400",
             "para_color": "",
@@ -156,13 +163,13 @@
             "tick_color": "#06ae5a",
             "i1_text": "D-chiro-inositol from real carob pods, not a lab.",
             "i1_sup": "",
-            "i2_text": "The full 4g clinical dose — not a capsule-sized fraction.",
+            "i2_text": "90 servings of the full 4g clinical dose — not a capsule-sized fraction.",
             "i2_sup": "",
             "i3_text": "No fillers, no flow agents, no added vitamins or herbs.",
             "i3_sup": "",
             "i4_text": "Optimal 40:1 ratio for women's health.",
             "i4_sup": "*",
-            "i5_text": "",
+            "i5_text": "$98 for 90 days · Just $33/month",
             "i5_sup": "",
             "i6_text": "",
             "i6_sup": ""
@@ -524,6 +531,7 @@
       "block_order": [
         "custom_liquid_WPt4Yc",
         "bod_stars_TkJMcg",
+        "text_3mziH8",
         "benefit_list_kPEzGr",
         "custom_liquid_dqLCJY",
         "custom_liquid_fA4mt9",
