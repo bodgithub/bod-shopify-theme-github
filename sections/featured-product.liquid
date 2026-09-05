@@ -117,9 +117,19 @@
 										{%- assign gi_key = 'gallery_image_' | append: gi_i -%}
 										{%- assign gi = section.settings[gi_key] -%}
 										{%- if gi != blank -%}
-											<div class="product-images__slide is-active">
-												<div class="product-single__media product-single__media-image aspect-ratio aspect-ratio--{{ media_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: gi.aspect_ratio | times: 100 }}%;">
-													{{ gi | image_url: width: 1600 | image_tag: loading: 'lazy', alt: gi.alt | escape }}
+											{%- liquid
+												assign gi_ratio = 1
+												if media_aspect_ratio == 'adapt'
+													assign gi_ratio = gi.aspect_ratio
+												elsif media_aspect_ratio == 'portrait'
+													assign gi_ratio = 1 | divided_by: 1.25
+												elsif media_aspect_ratio == 'landscape'
+													assign gi_ratio = 1 | divided_by: 0.75
+												endif
+											-%}
+											<div id="Slide-{{ section.id }}-gi{{ gi_i }}" class="product-images__slide is-active" data-media-id="{{ section.id }}-gi{{ gi_i }}">
+												<div class="product-single__media product-single__media-image aspect-ratio aspect-ratio--{{ media_aspect_ratio }}" style="--padding-bottom: {{ 1 | divided_by: gi_ratio | times: 100 }}%;">
+													{%- render 'responsive-image', image: gi, sizes: sizes -%}
 												</div>
 											</div>
 										{%- endif -%}
@@ -154,7 +164,24 @@
 								{%- endif -%}
 			        </product-slider>
 							<scroll-shadow>
-								<div id="Product-Thumbnails" class="product-thumbnail-container" data-hide-variants="{{ hide_variants }}"{% if custom_gallery_count > 0 %} style="display:none;"{% endif %}>
+								<div id="Product-Thumbnails" class="product-thumbnail-container" data-hide-variants="{{ hide_variants }}">
+									{%- if custom_gallery_count > 0 -%}
+										{%- liquid
+											assign thumb_sizes = '160x160'
+											if section.settings.media_layout == 'stacked'
+												assign thumb_sizes = '300x300,600x600'
+											endif
+										-%}
+										{%- for gi_i in (1..6) -%}
+											{%- assign gi_key = 'gallery_image_' | append: gi_i -%}
+											{%- assign gi = section.settings[gi_key] -%}
+											{%- if gi != blank -%}
+												<div id="Thumb-{{ section.id }}-gi{{ gi_i }}" class="product-thumbnail is-active{% if gi_i == 1 %} is-initial-selected{% endif %}">
+													{%- render 'responsive-image', image: gi, sizes: thumb_sizes -%}
+												</div>
+											{%- endif -%}
+										{%- endfor -%}
+									{%- else -%}
 									{%- if featured_media != null -%}
 										{%- render 'product-thumbnail', product: product, media: featured_media, forloop: false, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants -%}
 									{%- endif -%}
@@ -163,6 +190,7 @@
                     {%- render 'product-thumbnail', product: product, media: media, forloop: forloop, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants -%}
 										{%- endunless -%}
 									{%- endfor -%}
+									{%- endif -%}
 								</div>
 							</scroll-shadow>
 						</div>

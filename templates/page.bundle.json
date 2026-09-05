@@ -530,7 +530,7 @@
         "bundle_page_css": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<style>\n.product-title {display: none;}\n.amount {display: none;}\n@media only screen and (min-width: 1068px) {\n  .product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px;}\n  .thb-product-detail {padding-top: 30px;}\n}\n@media only screen and (max-width: 1067px) {\n  .thb-product-detail {padding-top: 15px;}\n  .product-grid-container .product-images--semicircle-arrows.flickity-enabled.is-draggable .flickity-viewport {height: 380px !important;}\n  .product-grid-container .product-images--semicircle-arrows .product-images__slide .product-single__media-image {height: 380px !important; padding-bottom: 0 !important; min-height: 0 !important;}\n  .product-grid-container .product-images--semicircle-arrows .product-images__slide .product-single__media-image img {position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;}\n}\n</style>"
+            "custom_liquid": "<style>\n.product-title {display: none;}\n.amount {display: none;}\n@media only screen and (min-width: 1068px) {\n  .product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px;}\n  .thb-product-detail {padding-top: 30px;}\n}\n@media only screen and (max-width: 1067px) {\n  .thb-product-detail {padding-top: 15px;}\n}\n</style>"
           }
         }
       },
