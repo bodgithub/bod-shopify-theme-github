@@ -41,7 +41,7 @@
         "text_WiQefq": {
           "type": "text",
           "settings": {
-            "text": "<p>Cravings, mood swings, PCOS, and TTC challenges aren\u2019t separate issues. They\u2019re metabolic signals.</p>",
+            "text": "<p>Cravings, mood swings, PCOS, and TTC challenges aren’t separate issues. They’re metabolic signals.</p>",
             "description_color": "#2c2d2e",
             "description_size": "small"
           }
@@ -114,6 +114,12 @@
     "featured_product_bundle": {
       "type": "featured-product",
       "blocks": {
+        "bundle_page_css": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n.product-title {display: none;}\n.amount {display: none;}\n@media only screen and (min-width: 1068px) {\n  .product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px;}\n  .thb-product-detail {padding-top: 30px;}\n}\n@media only screen and (max-width: 1067px) {\n  .thb-product-detail {padding-top: 15px;}\n}\n</style>"
+          }
+        },
         "custom_liquid_WPt4Yc": {
           "type": "custom_liquid",
           "name": "Product Title",
@@ -163,13 +169,13 @@
             "tick_color": "#06ae5a",
             "i1_text": "D-chiro-inositol from real carob pods, not a lab.",
             "i1_sup": "",
-            "i2_text": "90 servings of the full 4g clinical dose \u2014 not a capsule-sized fraction.",
+            "i2_text": "90 servings of the full 4g clinical dose — not a capsule-sized fraction.",
             "i2_sup": "",
             "i3_text": "No fillers, no flow agents, no added vitamins or herbs.",
             "i3_sup": "",
             "i4_text": "Optimal 40:1 ratio for women's health.",
             "i4_sup": "*",
-            "i5_text": "$98 for 90 days \u00b7 Just $33/month",
+            "i5_text": "$98 for 90 days · Just $33/month",
             "i5_sup": "",
             "i6_text": "",
             "i6_sup": ""
@@ -182,7 +188,7 @@
             "servings_default": "90 servings",
             "servings_alt": "90 servings",
             "chip_1": "Full clinical dose*",
-            "chip_2": "Only $33 per month",
+            "chip_2": "Only $33 / month",
             "chip_3": "",
             "bg": "#e3e7ff",
             "border_color": "#3447af",
@@ -214,8 +220,8 @@
             "cta_price": true,
             "subtick_enable": false,
             "sub_claim": "Save up to 25% by subscribing",
-            "shipping_prefix": "Fast FREE shipping \u2014 Ships by",
-            "shipping_weekend_text": "Fast FREE shipping \u2014 Arrives in",
+            "shipping_prefix": "Fast FREE shipping — Ships by",
+            "shipping_weekend_text": "Fast FREE shipping — Arrives in",
             "shipping_weekend_highlight": "3-5 days",
             "gift_display": "banner",
             "giftban_bg": "#f3eeea",
@@ -236,7 +242,7 @@
             "guar_enable": true,
             "guar_text": "60-day money-back guarantee",
             "guar_popup_title": "60-Day Money-Back Guarantee",
-            "guar_popup_text": "<p>If your first order doesn't meet your expectations, email us within 60 days of receiving it and we'll make it right \u2014 a refund, an exchange, or another resolution. Questions? Email support@bodology.co.</p>",
+            "guar_popup_text": "<p>If your first order doesn't meet your expectations, email us within 60 days of receiving it and we'll make it right — a refund, an exchange, or another resolution. Questions? Email support@bodology.co.</p>",
             "guar_policy_label": "Read full policy",
             "guar_policy_url": "/policies/refund-policy",
             "heading_tight": true,
@@ -269,7 +275,7 @@
             "bd_compare": "$130.00",
             "bd_price_per": "",
             "bd_serving": "$1.09 / day",
-            "bd_benefits": "Two 6-week tubs \u2014 a 90-day supply\n$32.67 a month, billed every 12 weeks\n25% off every order\nEasy cancel or skip, anytime",
+            "bd_benefits": "3 month supply of Bodology® Inositol\nBilled every 3 months, equivalent to $32.67 / month\n25% off every order\nEasy cancel or skip, anytime",
             "bd_variant": "46444646269147",
             "bd_plan": "7141621979",
             "bd_qty": 2,
@@ -340,12 +346,18 @@
             "margin_bottom": 24
           }
         },
+        "single_unit_link": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"text-align:center; margin:4px 0 20px;\"><a href=\"/products/myo-d-chiro-inositol-powder\" style=\"color:#1b3def; font-size:14px; text-decoration:underline;\">Prefer a single tub? Shop one-off or single-tub subscriptions &rarr;</a></div>"
+          }
+        },
         "collapsible_tab_KVBdNK": {
           "type": "collapsible_tab",
           "settings": {
             "heading": "Why metabolism comes first",
             "open": false,
-            "content": "<p>Hormones don\u2019t operate in isolation. They respond to metabolic signals, especially how your body processes glucose and insulin.</p><p>When metabolic function is supported, the body is better able to regulate ovulation, energy, mood, and hormone signaling. When it\u2019s impaired, symptoms like irregular cycles, cravings, fatigue, and mood swings often appear, even when blood work looks \u201cnormal.\u201d</p><p>Bodology\u00ae Inositol is designed to support metabolic pathways that influence hormonal balance at the root.</p>",
+            "content": "<p>Hormones don’t operate in isolation. They respond to metabolic signals, especially how your body processes glucose and insulin.</p><p>When metabolic function is supported, the body is better able to regulate ovulation, energy, mood, and hormone signaling. When it’s impaired, symptoms like irregular cycles, cravings, fatigue, and mood swings often appear, even when blood work looks “normal.”</p><p>Bodology® Inositol is designed to support metabolic pathways that influence hormonal balance at the root.</p>",
             "page": "",
             "custom_liquid": "",
             "acc_line_color": "",
@@ -356,9 +368,9 @@
         "collapsible_tab_KhBe7c": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "What Bodology\u00ae Inositol supports",
+            "heading": "What Bodology® Inositol supports",
             "open": false,
-            "content": "<p>Inositol helps your body respond to insulin, the silent driver behind PCOS, fertility struggles, mood shifts, and blood sugar crashes.</p><p>When taken consistently, inositol has been clinically studied to support:</p><ul><li>Healthy ovulation and cycle regularity*</li><li>Hormone balance associated with PCOS*</li><li>Insulin sensitivity and healthy blood sugar levels\u2020</li><li>Metabolic function linked to appetite regulation and weight balance\u2020  </li><li>Sleep and energy regulation*</li><li>Neurotransmitter signaling linked to mood and emotional balance*</li></ul>",
+            "content": "<p>Inositol helps your body respond to insulin, the silent driver behind PCOS, fertility struggles, mood shifts, and blood sugar crashes.</p><p>When taken consistently, inositol has been clinically studied to support:</p><ul><li>Healthy ovulation and cycle regularity*</li><li>Hormone balance associated with PCOS*</li><li>Insulin sensitivity and healthy blood sugar levels†</li><li>Metabolic function linked to appetite regulation and weight balance†  </li><li>Sleep and energy regulation*</li><li>Neurotransmitter signaling linked to mood and emotional balance*</li></ul>",
             "page": "",
             "custom_liquid": "",
             "acc_line_color": "",
@@ -384,7 +396,7 @@
           "settings": {
             "heading": "How it tastes",
             "open": false,
-            "content": "<p>Naturally and gently sweet, with no added flavors.</p><p>Bodology\u00ae Inositol dissolves easily into water, smoothies, or coffee without grit or aftertaste, making daily consistency simple.</p>",
+            "content": "<p>Naturally and gently sweet, with no added flavors.</p><p>Bodology® Inositol dissolves easily into water, smoothies, or coffee without grit or aftertaste, making daily consistency simple.</p>",
             "page": "",
             "custom_liquid": "",
             "acc_line_color": "",
@@ -403,12 +415,6 @@
             "acc_line_color": "",
             "acc_text_color": "",
             "acc_title_case": "default"
-          }
-        },
-        "single_unit_link": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"text-align:center; margin:4px 0 20px;\"><a href=\"/products/myo-d-chiro-inositol-powder\" style=\"color:#1b3def; font-size:14px; text-decoration:underline;\">Prefer a single tub? Shop one-off or single-tub subscriptions &rarr;</a></div>"
           }
         },
         "experts_LiL7KV": {
@@ -434,16 +440,16 @@
             "p1_quote": "\"I use Inositol to promote regular cycles, weight and hormonal balance.\"",
             "p2_photo": "shopify://shop_images/Hillary-Bodology-Square-f2eee9.jpg",
             "p2_name": "Hillary Wright",
-            "p2_role": "RD \u00b7 Boston IVF",
+            "p2_role": "RD · Boston IVF",
             "p2_quote": "\"I use Myo + D-Chiro Inositol to support women on their fertility journey.\"",
             "p3_photo": "shopify://shop_images/Leslie-Bodology-Square-Cream2.png",
             "p3_name": "Leslie Kutcha",
             "p3_role": "FDN-P",
-            "p3_quote": "\"Bodology\u00ae Inositol is a simple, well-tolerated daily foundation I trust.\"",
+            "p3_quote": "\"Bodology® Inositol is a simple, well-tolerated daily foundation I trust.\"",
             "p4_photo": "shopify://shop_images/Tina-Bodology-Square-f2eee9.jpg",
             "p4_name": "Tina Kozman",
             "p4_role": "CNP",
-            "p4_quote": "\"Bodology\u00ae Inositol is an exceptional supplement.\"",
+            "p4_quote": "\"Bodology® Inositol is an exceptional supplement.\"",
             "p5_name": "",
             "p5_role": "",
             "p5_quote": "",
@@ -480,39 +486,39 @@
             "b1_enable": true,
             "b1_icon": "expert",
             "b1_title": "Expert Reviewed",
-            "b1_sub": "RD \u2022 MS \u2022 PhD",
+            "b1_sub": "RD • MS • PhD",
             "b1_hide_mobile": false,
-            "b1_tip": "<p>Bodology's formula and label are reviewed by qualified professionals \u2014 including a <strong>Registered Dietitian (RD)</strong> and advisors holding <strong>MS and PhD</strong> credentials \u2014 so the ingredients, doses, and claims are accurate and responsibly stated.</p>",
+            "b1_tip": "<p>Bodology's formula and label are reviewed by qualified professionals — including a <strong>Registered Dietitian (RD)</strong> and advisors holding <strong>MS and PhD</strong> credentials — so the ingredients, doses, and claims are accurate and responsibly stated.</p>",
             "b2_enable": true,
             "b2_icon": "flask",
             "b2_title": "Third Party Tested",
             "b2_sub": "",
             "b2_hide_mobile": false,
-            "b2_tip": "<p>Bodology is tested independently \u2014 we don't grade our own work. Every production batch is sent to <strong>Certified Laboratories</strong>, an ISO/IEC 17025-accredited testing lab, and analyzed against written specifications before it can be sold. ISO/IEC 17025 is the international standard for laboratory competence and data integrity.</p>",
+            "b2_tip": "<p>Bodology is tested independently — we don't grade our own work. Every production batch is sent to <strong>Certified Laboratories</strong>, an ISO/IEC 17025-accredited testing lab, and analyzed against written specifications before it can be sold. ISO/IEC 17025 is the international standard for laboratory competence and data integrity.</p>",
             "b3_enable": false,
             "b3_icon": "fingerprint",
             "b3_title": "Identity Verified",
             "b3_sub": "HPLC Analytical Testing",
             "b3_hide_mobile": false,
-            "b3_tip": "<p>We use <strong>HPLC analytical testing</strong> to confirm the identity of each active \u2014 verifying that what's in the tub is genuinely myo-inositol and D-chiro-inositol, not a substitute or mislabeled material.</p>",
+            "b3_tip": "<p>We use <strong>HPLC analytical testing</strong> to confirm the identity of each active — verifying that what's in the tub is genuinely myo-inositol and D-chiro-inositol, not a substitute or mislabeled material.</p>",
             "b4_enable": true,
             "b4_icon": "chart",
             "b4_title": "Potency Confirmed",
             "b4_sub": "",
             "b4_hide_mobile": true,
-            "b4_tip": "<p>HPLC confirms that each batch contains <strong>myo-inositol and D-chiro-inositol at the labeled amounts</strong> \u2014 and that the 40:1 ratio is correct in the finished powder, not only in the formula. Because the two are isomers, HPLC separates and measures each one individually.</p>",
+            "b4_tip": "<p>HPLC confirms that each batch contains <strong>myo-inositol and D-chiro-inositol at the labeled amounts</strong> — and that the 40:1 ratio is correct in the finished powder, not only in the formula. Because the two are isomers, HPLC separates and measures each one individually.</p>",
             "b5_enable": true,
             "b5_icon": "shield",
             "b5_title": "Heavy Metal Tested",
             "b5_sub": "",
             "b5_hide_mobile": false,
-            "b5_tip": "<p>Every batch is tested for heavy metals by <strong>ICP-MS</strong> \u2014 arsenic, cadmium, mercury, and lead \u2014 and must fall within established safety limits before release. ICP-MS detects these metals down to trace levels, well below the limits set for dietary supplements.</p>",
+            "b5_tip": "<p>Every batch is tested for heavy metals by <strong>ICP-MS</strong> — arsenic, cadmium, mercury, and lead — and must fall within established safety limits before release. ICP-MS detects these metals down to trace levels, well below the limits set for dietary supplements.</p>",
             "b6_enable": true,
             "b6_icon": "microbe",
             "b6_title": "Microbial Safety Tested",
             "b6_sub": "",
             "b6_hide_mobile": false,
-            "b6_tip": "<p>Every batch is screened for microbial safety: total aerobic count, total yeast and mold, and the absence of specified pathogens \u2014 <strong>E. coli, Salmonella, Staphylococcus aureus, and Pseudomonas aeruginosa</strong>. A batch only ships if it meets every limit.</p>",
+            "b6_tip": "<p>Every batch is screened for microbial safety: total aerobic count, total yeast and mold, and the absence of specified pathogens — <strong>E. coli, Salmonella, Staphylococcus aureus, and Pseudomonas aeruginosa</strong>. A batch only ships if it meets every limit.</p>",
             "b7_enable": true,
             "b7_icon": "ratio",
             "b7_title": "Clinically Studied Ratio",
@@ -525,12 +531,6 @@
             "b8_sub": "",
             "b8_hide_mobile": false,
             "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
-          }
-        },
-        "bundle_page_css": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<style>\n.product-title {display: none;}\n.amount {display: none;}\n@media only screen and (min-width: 1068px) {\n  .product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important; padding-top: 30px;}\n  .thb-product-detail {padding-top: 30px;}\n}\n@media only screen and (max-width: 1067px) {\n  .thb-product-detail {padding-top: 15px;}\n}\n</style>"
           }
         }
       },
@@ -545,17 +545,18 @@
         "plan_selector_1c_kJbRfd",
         "quote_7QKz6a",
         "quote_HPUw7c",
+        "single_unit_link",
         "collapsible_tab_KVBdNK",
         "collapsible_tab_KhBe7c",
         "collapsible_tab_Qq4nP6",
         "collapsible_tab_LHBcDr",
         "collapsible_tab_w8UWx4",
-        "single_unit_link",
         "experts_LiL7KV",
         "trust_circles_Ln9WVk"
       ],
       "custom_css": [],
       "settings": {
+        "media_layout": "stacked",
         "carousel_arrow_style": "semicircle",
         "bg_grad_top": "#fbfaf9",
         "bg_grad_bottom": "#f3eeea",
@@ -587,7 +588,6 @@
         "gallery_image_3": "shopify://shop_images/Review-3.jpg",
         "gallery_image_4": "shopify://shop_images/Review-3_f75504ff-847a-4af7-81cd-360dfa30aa21.jpg",
         "gallery_image_5": "shopify://shop_images/Supplement-facts_02b9e35e-4bd4-4b86-8191-99a584e04296.png",
-        "media_layout": "stacked",
         "gallery_image_6": "shopify://shop_images/Stir-in.jpg"
       }
     },
@@ -604,7 +604,7 @@
             "items": "Cutting carbs\nIntense exercise\nDieting",
             "item_columns": 1,
             "bottom_text": "<span style=\"text-decoration:underline\">The problem</span>",
-            "lightbox_text": "<h4><em>The problem was never your effort</em><em><strong>.</strong></em></h4><h4><strong>Cutting carbs </strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken.</p><h4><strong>Intense exercise</strong></h4><p>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem.</p><h4><strong>Dieting</strong></h4><p>High insulin tells your body to store fat, and can make you hungry when you shouldn't be. You had to work twice as hard for half the result \u2014 that's a hormone problem, not a discipline problem.</p>",
+            "lightbox_text": "<h4><em>The problem was never your effort</em><em><strong>.</strong></em></h4><h4><strong>Cutting carbs </strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken.</p><h4><strong>Intense exercise</strong></h4><p>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem.</p><h4><strong>Dieting</strong></h4><p>High insulin tells your body to store fat, and can make you hungry when you shouldn't be. You had to work twice as hard for half the result — that's a hormone problem, not a discipline problem.</p>",
             "card_bg": ""
           }
         },
@@ -618,7 +618,7 @@
             "items": "Berberine\nAll-in-one hormone elixirs\nSpearmint tea",
             "item_columns": 1,
             "bottom_text": "<span style=\"text-decoration:underline\">The problem</span>",
-            "lightbox_text": "<h4><em>They can work, just on the wrong thing.</em></h4><h4><strong>Berberine </strong></h4><p>Works through AMPK, a completely different pathway. If three months gave you modest results, that's why. It doesn't touch insulin, the real issue.</p><h4><strong>All-in-one hormone elixirs</strong></h4><p>Chasteberry, a dusting of six other things, and rarely a meaningful dose of any of them. Most work on androgens \u2014 which are downstream of insulin.</p><h4><strong>Spearmint tea</strong></h4><p>Has some real anti-androgen data behind it, and it's not a waste of time. But it acts on the symptom your insulin is producing, not on the cause.</p>",
+            "lightbox_text": "<h4><em>They can work, just on the wrong thing.</em></h4><h4><strong>Berberine </strong></h4><p>Works through AMPK, a completely different pathway. If three months gave you modest results, that's why. It doesn't touch insulin, the real issue.</p><h4><strong>All-in-one hormone elixirs</strong></h4><p>Chasteberry, a dusting of six other things, and rarely a meaningful dose of any of them. Most work on androgens — which are downstream of insulin.</p><h4><strong>Spearmint tea</strong></h4><p>Has some real anti-androgen data behind it, and it's not a waste of time. But it acts on the symptom your insulin is producing, not on the cause.</p>",
             "card_bg": ""
           }
         },
@@ -632,7 +632,7 @@
             "items": "Ovulation strips\nCycle tracking apps\nWearables & CGMs",
             "item_columns": 1,
             "bottom_text": "<span style=\"text-decoration:underline\">The problem</span>",
-            "lightbox_text": "<h4><em>Measuring doesn't change it.</em></h4><h4><strong>Ovulation strips </strong></h4><p>You tested every morning. But a strip can only tell you whether ovulation happened \u2014 it can't make it happen.</p><h4><strong>Cycle syncing apps</strong></h4><p>Logging, charting, waiting for a pattern. The app assumes a cycle that's already working. It can't effect a cycle that isn't arriving.</p><h4><strong>Wearables & CGMs</strong></h4><p>It's genuinely useful information. But watching your glucose or cortisol spike in real time doesn't fix why it's spiking.</p>",
+            "lightbox_text": "<h4><em>Measuring doesn't change it.</em></h4><h4><strong>Ovulation strips </strong></h4><p>You tested every morning. But a strip can only tell you whether ovulation happened — it can't make it happen.</p><h4><strong>Cycle syncing apps</strong></h4><p>Logging, charting, waiting for a pattern. The app assumes a cycle that's already working. It can't effect a cycle that isn't arriving.</p><h4><strong>Wearables & CGMs</strong></h4><p>It's genuinely useful information. But watching your glucose or cortisol spike in real time doesn't fix why it's spiking.</p>",
             "card_bg": ""
           }
         },
@@ -646,7 +646,7 @@
             "items": "The pill\nMetformin\n\"Just lose weight\"",
             "item_columns": 1,
             "bottom_text": "<span style=\"text-decoration:underline\">The problem</span>",
-            "lightbox_text": "<h4><em>You were given management, not answers.</em></h4><h4><strong>The pill </strong></h4><p>It replaces your cycle with a withdrawal bleed and pauses ovulation entirely \u2014 the underlying problem remains, and now it's harder to see. Many women find that out when they come off it.</p><h4><strong>Metformin</strong></h4><p>It works mainly by reducing glucose output from your liver. Inositol works by supporting insulin-signaling pathways your cells use to manage glucose. Studies have found comparable outcomes for some PCOS-related measures, with inositol generally better tolerated.*</p><h4><strong>\"Just lose weight\"</strong></h4><p>The advice that ignores the reason it's hard. High insulin actively works against fat loss, so this asks you to fix the symptom while the cause keeps running.</p>",
+            "lightbox_text": "<h4><em>You were given management, not answers.</em></h4><h4><strong>The pill </strong></h4><p>It replaces your cycle with a withdrawal bleed and pauses ovulation entirely — the underlying problem remains, and now it's harder to see. Many women find that out when they come off it.</p><h4><strong>Metformin</strong></h4><p>It works mainly by reducing glucose output from your liver. Inositol works by supporting insulin-signaling pathways your cells use to manage glucose. Studies have found comparable outcomes for some PCOS-related measures, with inositol generally better tolerated.*</p><h4><strong>\"Just lose weight\"</strong></h4><p>The advice that ignores the reason it's hard. High insulin actively works against fat loss, so this asks you to fix the symptom while the cause keeps running.</p>",
             "card_bg": ""
           }
         },
@@ -724,7 +724,7 @@
             "title": "Discipline",
             "count_text": "THE PROBLEM",
             "items": "Cutting carbs\nIntense exercise\n~Dieting",
-            "lightbox_text": "<h4></h4><h4><strong>Cutting carbs </strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken.</p><h4><strong>Intense exercise</strong></h4><p>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem.</p><h4><strong>Dieting</strong></h4><p>High insulin tells your body to store fat, and can make you hungry when you shouldn't be. You had to work twice as hard for half the result \u2014 that's a hormone problem, not a discipline problem.</p>"
+            "lightbox_text": "<h4></h4><h4><strong>Cutting carbs </strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken.</p><h4><strong>Intense exercise</strong></h4><p>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem.</p><h4><strong>Dieting</strong></h4><p>High insulin tells your body to store fat, and can make you hungry when you shouldn't be. You had to work twice as hard for half the result — that's a hormone problem, not a discipline problem.</p>"
           }
         },
         "column_JqccRw": {
@@ -733,7 +733,7 @@
             "title": "Supplements",
             "count_text": "THE PROBLEM",
             "items": "Berberine\nAll-in-one hormone elixirs\n~Spearmint tea",
-            "lightbox_text": "<h4></h4><h4><strong>Berberine </strong></h4><p>Works through AMPK, a completely different pathway. If three months gave you modest results, that's why. It doesn't touch insulin, the real issue.</p><h4><strong>All-in-one hormone elixirs</strong></h4><p>Chasteberry, a dusting of six other things, and rarely a meaningful dose of any of them. Most work on androgens \u2014 which are downstream of insulin.</p><h4><strong>Spearmint tea</strong></h4><p>Has some real anti-androgen data behind it, and it's not a waste of time. But it acts on the symptom your insulin is producing, not on the cause.</p>"
+            "lightbox_text": "<h4></h4><h4><strong>Berberine </strong></h4><p>Works through AMPK, a completely different pathway. If three months gave you modest results, that's why. It doesn't touch insulin, the real issue.</p><h4><strong>All-in-one hormone elixirs</strong></h4><p>Chasteberry, a dusting of six other things, and rarely a meaningful dose of any of them. Most work on androgens — which are downstream of insulin.</p><h4><strong>Spearmint tea</strong></h4><p>Has some real anti-androgen data behind it, and it's not a waste of time. But it acts on the symptom your insulin is producing, not on the cause.</p>"
           }
         },
         "column_8jAMWU": {
@@ -742,7 +742,7 @@
             "title": "Tracking",
             "count_text": "THE PROBLEM",
             "items": "Ovulation strips\nCycle tracking apps\n~Wearables & CGMs",
-            "lightbox_text": "<h4></h4><h4><strong>Ovulation strips </strong></h4><p>You tested every morning. But a strip can only tell you whether ovulation happened \u2014 it can't make it happen.</p><h4><strong>Cycle syncing apps</strong></h4><p>Logging, charting, waiting for a pattern. The app assumes a cycle that's already working. It can't effect a cycle that isn't arriving.</p><h4><strong>Wearables & CGMs</strong></h4><p>It's genuinely useful information. But watching your glucose or cortisol spike in real time doesn't fix why it's spiking.</p>"
+            "lightbox_text": "<h4></h4><h4><strong>Ovulation strips </strong></h4><p>You tested every morning. But a strip can only tell you whether ovulation happened — it can't make it happen.</p><h4><strong>Cycle syncing apps</strong></h4><p>Logging, charting, waiting for a pattern. The app assumes a cycle that's already working. It can't effect a cycle that isn't arriving.</p><h4><strong>Wearables & CGMs</strong></h4><p>It's genuinely useful information. But watching your glucose or cortisol spike in real time doesn't fix why it's spiking.</p>"
           }
         },
         "column_dTWyQ3": {
@@ -751,7 +751,7 @@
             "title": "What they said",
             "count_text": "THE PROBLEM",
             "items": "The pill\nMetformin\n~\"Just lose weight\"",
-            "lightbox_text": "<h4></h4><h4><strong>The pill </strong></h4><p>It replaces your cycle with a withdrawal bleed and pauses ovulation entirely \u2014 the underlying problem remains.</p><h4><strong>Metformin</strong></h4><p>It primarily reduces glucose production by your liver, with a secondary effect on insulin sensitivity. But gastrointestinal side effects can make it difficult for some people to tolerate long term.*</p><h4><strong>\"Just lose weight\"</strong></h4><p>The advice that ignores the reason it's hard. High insulin actively works against fat loss, so this asks you to fix the symptom while the cause keeps running.</p>"
+            "lightbox_text": "<h4></h4><h4><strong>The pill </strong></h4><p>It replaces your cycle with a withdrawal bleed and pauses ovulation entirely — the underlying problem remains.</p><h4><strong>Metformin</strong></h4><p>It primarily reduces glucose production by your liver, with a secondary effect on insulin sensitivity. But gastrointestinal side effects can make it difficult for some people to tolerate long term.*</p><h4><strong>\"Just lose weight\"</strong></h4><p>The advice that ignores the reason it's hard. High insulin actively works against fat loss, so this asks you to fix the symptom while the cause keeps running.</p>"
           }
         }
       },
@@ -885,7 +885,7 @@
         "heading": "<p>Your cells stopped hearing insulin</p>",
         "subheading": "<p>When you eat, insulin tells your cells to take the sugar out of your blood and use it for energy. <strong>Inositol is what carries that message inside the cell.</strong></p>",
         "caption": "Same knock. One of them gets answered.",
-        "bottom_text": "<p>So your body knocks louder. More insulin, then more again. <strong>And high insulin does two things at once \u2014 it holds onto fat, and it pushes your ovaries to make more testosterone.</strong></p>",
+        "bottom_text": "<p>So your body knocks louder. More insulin, then more again. <strong>And high insulin does two things at once — it holds onto fat, and it pushes your ovaries to make more testosterone.</strong></p>",
         "page_bg": "#f2eeea",
         "bg_blur": 40,
         "overlay_color": "#f2eeea",
@@ -913,14 +913,14 @@
         "text_JCbbfq": {
           "type": "text",
           "settings": {
-            "text": "<p>Why Bodology\u00ae inositol?</p><p>Real doses, backed by clinical research.*</p>",
+            "text": "<p>Why Bodology® inositol?</p><p>Real doses, backed by clinical research.*</p>",
             "size": 30
           }
         },
         "text_cHr3qn": {
           "type": "text",
           "settings": {
-            "text": "<p>Bodology\u00ae delivers the full clinically studied daily dose \u2014 4,000mg myo-inositol and 100mg D-chiro-inositol at the 40:1 ratio used in research \u2014 in one unflavored serving.*</p>",
+            "text": "<p>Bodology® delivers the full clinically studied daily dose — 4,000mg myo-inositol and 100mg D-chiro-inositol at the 40:1 ratio used in research — in one unflavored serving.*</p>",
             "size": 0
           }
         },
@@ -965,7 +965,7 @@
           "type": "footer",
           "settings": {
             "position": "right",
-            "text": "<p>*These statements have not been evaluated by the FDA. These studies did not use Bodology\u00ae Inositol specifically. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>"
+            "text": "<p>*These statements have not been evaluated by the FDA. These studies did not use Bodology® Inositol specifically. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>"
           }
         }
       },
@@ -1016,9 +1016,9 @@
           "settings": {
             "stars": 5,
             "title": "",
-            "text": "<p>I have gone more than 3 months without my period. I started taking bodology inositol on 07/22/2026 the day after I received the product, and just 2 weeks and a few days later on 08/08/26 <strong>I got my menstrual period.</strong> I couldn\u2019t believe it. This is an incredible product...</p>",
+            "text": "<p>I have gone more than 3 months without my period. I started taking bodology inositol on 07/22/2026 the day after I received the product, and just 2 weeks and a few days later on 08/08/26 <strong>I got my menstrual period.</strong> I couldn’t believe it. This is an incredible product...</p>",
             "image": "shopify://shop_images/profile_pic_2.png",
-            "name": "Angeli\u00a0C.",
+            "name": "Angeli C.",
             "role": "Verified buyer",
             "stars_2": 5,
             "title_2": "",
@@ -1169,7 +1169,7 @@
         "footnote_size": 14,
         "icon_size": 34,
         "card_radius": 14,
-        "footnote": "<p><strong>*unflavored</strong> \u2014 it disappears into whatever you're drinking.</p>",
+        "footnote": "<p><strong>*unflavored</strong> — it disappears into whatever you're drinking.</p>",
         "page_width": 1300,
         "margin_top": 0,
         "margin_bottom": 0,
@@ -1220,7 +1220,7 @@
             "avatar_2": "shopify://shop_images/Keira_Profile_Picture.jpg",
             "avatar_3": "shopify://shop_images/Leslie-Bodology-Square_d5ff9a1a-2e34-485c-8a41-8099e22be7ea.png",
             "headline": "Loved by 100,000+ women",
-            "description": "<p>Real stories, real results from women supporting their hormones and metabolism with Bodology\u00ae Inositol.</p>",
+            "description": "<p>Real stories, real results from women supporting their hormones and metabolism with Bodology® Inositol.</p>",
             "cta_text": "View customer reviews",
             "cta_link": "#reviews",
             "border_radius": 16,
@@ -1425,11 +1425,11 @@
           "type": "stage",
           "settings": {
             "image": "shopify://shop_images/Stir-in.jpg",
-            "chip": "Weeks 1\u20132",
+            "chip": "Weeks 1–2",
             "title": "",
             "text": "",
             "studies_label": "",
-            "studies_text": "Getting the habit right is what makes weeks 6\u201312 work.",
+            "studies_text": "Getting the habit right is what makes weeks 6–12 work.",
             "overlay_grad": "#1a2874",
             "overlay_text": "#ffffff",
             "customers_label": "Customers report:",
@@ -1457,7 +1457,7 @@
           "type": "stage",
           "settings": {
             "image": "shopify://shop_images/Bodology_Inositol_Results_Smile_11638a8f-c8d3-4360-9a8a-b1c21351c7be.png",
-            "chip": "Weeks 3\u20136",
+            "chip": "Weeks 3–6",
             "title": "",
             "text": "",
             "studies_label": "",
@@ -1474,7 +1474,7 @@
             "quote_stars_2": 3,
             "quote_text_2": "<p>I have been using this just under a month. I have noticed some differences regarding appetite control and less snacking urges.</p>",
             "quote_image_2": "shopify://shop_images/Profile_pic_4.png",
-            "quote_name_2": "Breanne\u00a0O.",
+            "quote_name_2": "Breanne O.",
             "quote_role_2": "Verified buyer",
             "quote_stars_3": 5,
             "quote_text_3": "<p>I have PCOS (PMOS) and have irregular cycles, in the last few months I have gone more than 3 months without my period. I started taking Bodology inositol on 07/22/2026 the day after I received the product, and just 2 weeks and a few days later on 08/08/26 I got my menstrual period. I couldn't believe it, but it happened. This is an incredible product, and so easy to take daily.</p>",
@@ -1490,7 +1490,7 @@
           "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Relief.png",
-            "chip": "Weeks 3\u20136",
+            "chip": "Weeks 3–6",
             "title": "",
             "text": "",
             "studies_label": "",
@@ -1520,7 +1520,7 @@
           "type": "stage",
           "settings": {
             "image": "shopify://shop_images/Bodology-Inositol-Empowered-2_f4e75ba5-b9b5-4b5c-a608-708cd3ea6ef6.png",
-            "chip": "Weeks 6\u201312",
+            "chip": "Weeks 6–12",
             "title": "",
             "text": "",
             "studies_label": "",
@@ -1560,9 +1560,9 @@
             "overlay_grad": "#1a2874",
             "overlay_text": "#ffffff",
             "customers_label": "Customers report:",
-            "customers_text": "The slowest changes show up here \u2014 and the early ones hold.",
+            "customers_text": "The slowest changes show up here — and the early ones hold.",
             "quote_stars": 5,
-            "quote_text": "<p>I started using Bodology's inositol powder several months ago... I've had fewer sugar cravings, even during my luteal phase, more stable blood sugar levels, and fewer afternoon energy crashes. My menstrual cycles have also become much easier, with little to no PMS\u2014an incredible relief! This product is truly a game-changer... I absolutely love it!</p>",
+            "quote_text": "<p>I started using Bodology's inositol powder several months ago... I've had fewer sugar cravings, even during my luteal phase, more stable blood sugar levels, and fewer afternoon energy crashes. My menstrual cycles have also become much easier, with little to no PMS—an incredible relief! This product is truly a game-changer... I absolutely love it!</p>",
             "quote_image": "shopify://shop_images/profile_pic_3.png",
             "quote_name": "Keira K.",
             "quote_role": "Verified buyer",
@@ -1668,7 +1668,7 @@
           "settings": {
             "name": "Tina Kozman, CNP",
             "title": "Metabolic Health Coach",
-            "blurb": "<p>Tina Kozman is a Certified Nutrition Practitioner, Life Coach, and Certified Metabolic Coach specializing in thyroid conditions, hormone imbalances, and sustainable weight loss. As Bodology\u2019s in-house metabolic health expert, Tina helps women understand the root causes behind hormonal and metabolic challenges\u2014like insulin resistance and muscle loss\u2014while guiding them toward natural, lasting solutions such as inositol supplementation. Her science-backed, compassionate approach empowers individuals to take control of their metabolic health and feel confident in their bodies again.</p>"
+            "blurb": "<p>Tina Kozman is a Certified Nutrition Practitioner, Life Coach, and Certified Metabolic Coach specializing in thyroid conditions, hormone imbalances, and sustainable weight loss. As Bodology’s in-house metabolic health expert, Tina helps women understand the root causes behind hormonal and metabolic challenges—like insulin resistance and muscle loss—while guiding them toward natural, lasting solutions such as inositol supplementation. Her science-backed, compassionate approach empowers individuals to take control of their metabolic health and feel confident in their bodies again.</p>"
           }
         },
         "expert_2": {
@@ -1676,7 +1676,7 @@
           "settings": {
             "name": "Dr. Anita W., Ph.D",
             "title": "Natural Medicine Practitioner",
-            "blurb": "<p>Dr. Anita W\u0105sik, PhD, DipHM, is a renowned Biomedical Scientist and Medical Herbalist, with deep roots in academic research and herbal medicine. Her expertise in holistic health and women\u2019s well-being offers unique insight into evidence-based approaches to metabolic support, including inositol for weight and hormone balance. Dr. Anita is committed to objective, research-driven advice and holds no monetary ties to Bodology products.</p>"
+            "blurb": "<p>Dr. Anita Wąsik, PhD, DipHM, is a renowned Biomedical Scientist and Medical Herbalist, with deep roots in academic research and herbal medicine. Her expertise in holistic health and women’s well-being offers unique insight into evidence-based approaches to metabolic support, including inositol for weight and hormone balance. Dr. Anita is committed to objective, research-driven advice and holds no monetary ties to Bodology products.</p>"
           }
         },
         "expert_3": {
@@ -1684,7 +1684,7 @@
           "settings": {
             "name": "Leslie Kutcha, FDNP",
             "title": "Functional Diagnostic Nutrition Practitioner",
-            "blurb": "<p>With over 100,000 followers across TikTok and Instagram, Leslie Kutcha is a widely respected voice in women\u2019s health and founder of Nourished With Leslie. A Certified Functional Diagnostic Nutrition Practitioner (FDNP), Certified Strength and Conditioning Specialist (CSCS), and Certified Personal Trainer (CPT) with a B.S. in Nutrition, Leslie specializes in women\u2019s hormone health, gut dysfunction, and fertility support, using advanced lab testing and personalized protocols to uncover the root causes of imbalance. At Bodology, Leslie advises on clinical messaging and educational content\u2014ensuring our science is both accessible and actionable.</p>"
+            "blurb": "<p>With over 100,000 followers across TikTok and Instagram, Leslie Kutcha is a widely respected voice in women’s health and founder of Nourished With Leslie. A Certified Functional Diagnostic Nutrition Practitioner (FDNP), Certified Strength and Conditioning Specialist (CSCS), and Certified Personal Trainer (CPT) with a B.S. in Nutrition, Leslie specializes in women’s hormone health, gut dysfunction, and fertility support, using advanced lab testing and personalized protocols to uncover the root causes of imbalance. At Bodology, Leslie advises on clinical messaging and educational content—ensuring our science is both accessible and actionable.</p>"
           }
         },
         "expert_4": {
@@ -1692,7 +1692,7 @@
           "settings": {
             "name": "Hillary Wright, RD",
             "title": "Director of Nutrition at Boston IVF",
-            "blurb": "<p>Hillary Wright is the Director of Nutrition at the Wellness Center at Boston IVF, one of the nation\u2019s oldest and largest fertility clinics. With over three decades of experience as a registered and licensed dietitian, Hillary plays a crucial role in helping countless individuals and couples navigate their fertility journeys through optimal nutrition and metabolic health. Hillary\u2019s influence extends to her authorship of three groundbreaking books: \u201cThe PCOS Diet Plan,\u201d \u201cThe Prediabetes Diet Plan,\u201d and \u201cThe Menopause Diet Plan.\u201d These publications, coupled with her clinical experience, have solidified Hillary\u2019s reputation as an expert in the intricate relationship between nutrition, metabolic health, and fertility.</p>"
+            "blurb": "<p>Hillary Wright is the Director of Nutrition at the Wellness Center at Boston IVF, one of the nation’s oldest and largest fertility clinics. With over three decades of experience as a registered and licensed dietitian, Hillary plays a crucial role in helping countless individuals and couples navigate their fertility journeys through optimal nutrition and metabolic health. Hillary’s influence extends to her authorship of three groundbreaking books: “The PCOS Diet Plan,” “The Prediabetes Diet Plan,” and “The Menopause Diet Plan.” These publications, coupled with her clinical experience, have solidified Hillary’s reputation as an expert in the intricate relationship between nutrition, metabolic health, and fertility.</p>"
           }
         }
       },
@@ -1950,7 +1950,7 @@
           "settings": {
             "heading": "How long before I notice anything?",
             "open": false,
-            "content": "<p>The afternoon energy crashes usually shifts first, often within the first two weeks. Steadier energy and quieter cravings tend to follow.</p><p>That's because when your insulin signal is low, glucose stays in your blood instead of reaching your cells \u2014 so you're tired despite having eaten. As the signalling improves, that fuel actually gets used.</p><p>Cycles take longer because insulin has to come down before your androgens fall, then follicles develop. Most studies runs 12 weeks because that's how long ovulation and testosterone realistically need. Stop at four weeks and you haven't given it a fair go.</p><p></p>",
+            "content": "<p>The afternoon energy crashes usually shifts first, often within the first two weeks. Steadier energy and quieter cravings tend to follow.</p><p>That's because when your insulin signal is low, glucose stays in your blood instead of reaching your cells — so you're tired despite having eaten. As the signalling improves, that fuel actually gets used.</p><p>Cycles take longer because insulin has to come down before your androgens fall, then follicles develop. Most studies runs 12 weeks because that's how long ovulation and testosterone realistically need. Stop at four weeks and you haven't given it a fair go.</p><p></p>",
             "page": ""
           }
         },
@@ -1959,7 +1959,7 @@
           "settings": {
             "heading": "Why isn't there vitamin D or folate in this?",
             "open": false,
-            "content": "<p>Because you're probably already taking them.</p><p>Vitamin D should be dosed to your own blood levels, with it's cofactors K2 and magnesium alongside it \u2014 not a fixed amount somebody guessed at. Folate is already in your B-complex or prenatal, usually at a deliberate dose.</p><p>Add a second source of either and you've lost track of your total dose. We'd rather do one thing at the right dose and leave the rest of your routine to you.</p>",
+            "content": "<p>Because you're probably already taking them.</p><p>Vitamin D should be dosed to your own blood levels, with it's cofactors K2 and magnesium alongside it — not a fixed amount somebody guessed at. Folate is already in your B-complex or prenatal, usually at a deliberate dose.</p><p>Add a second source of either and you've lost track of your total dose. We'd rather do one thing at the right dose and leave the rest of your routine to you.</p>",
             "page": ""
           }
         },
@@ -1978,7 +1978,7 @@
           "settings": {
             "heading": "What makes Bodology different from other inositol supplements?",
             "open": false,
-            "content": "<p>We\u2019re a female-led, <a href=\"/pages/meet-our-experts\" target=\"_blank\" title=\"Meet Our Experts\">practitioner-backed</a> brand that formulates clean, high-quality inositol based on science and real-world experience. Unlike mass brands or male-led supplement companies, we design with hormonal health, fertility, and women\u2019s lived experiences in mind. While others provide <a href=\"/blogs/bodytalks/which-is-better-inositol-powder-or-pills\" target=\"_blank\" title=\"Which is Better: Inositol Powder Or Pills?\">capsules</a> that underdose or add ingredients like DIM or folate (which may not suit PCOS or TTC), our blend is clean, bioavailable, and practitioner-trusted.</p><p></p>",
+            "content": "<p>We’re a female-led, <a href=\"/pages/meet-our-experts\" target=\"_blank\" title=\"Meet Our Experts\">practitioner-backed</a> brand that formulates clean, high-quality inositol based on science and real-world experience. Unlike mass brands or male-led supplement companies, we design with hormonal health, fertility, and women’s lived experiences in mind. While others provide <a href=\"/blogs/bodytalks/which-is-better-inositol-powder-or-pills\" target=\"_blank\" title=\"Which is Better: Inositol Powder Or Pills?\">capsules</a> that underdose or add ingredients like DIM or folate (which may not suit PCOS or TTC), our blend is clean, bioavailable, and practitioner-trusted.</p><p></p>",
             "page": ""
           }
         },
@@ -1987,7 +1987,7 @@
           "settings": {
             "heading": "How is this different from berberine?",
             "open": false,
-            "content": "<p>They work in different places.<br/><br/>Berberine acts through AMPK \u2014 an energy-sensing pathway. Inositol works on insulin signalling itself: the message that tells your cells to take glucose in.<br/><br/>If berberine gave you something and then plateaued, that's usually why. It isn't a weaker version of this. It's aimed at a different part of the system. Plenty of women take both.</p>",
+            "content": "<p>They work in different places.<br/><br/>Berberine acts through AMPK — an energy-sensing pathway. Inositol works on insulin signalling itself: the message that tells your cells to take glucose in.<br/><br/>If berberine gave you something and then plateaued, that's usually why. It isn't a weaker version of this. It's aimed at a different part of the system. Plenty of women take both.</p>",
             "page": ""
           }
         },
@@ -2005,7 +2005,7 @@
           "settings": {
             "heading": "What does it taste like? Does it actually dissolve?",
             "open": false,
-            "content": "<p>Gently sweet on its own \u2014 that's the inositol and carob sourced d-chiro, not added sweetener. There's nothing else in the tub to taste.<br/><br/>It dissolves clear, with no grit and no aftertaste, because there are no fillers or flow agents to leave residue. Water, coffee, a smoothie, whatever you already drink. <br/><br/>Some women skip the liquid and take it straight off the scoop.</p>",
+            "content": "<p>Gently sweet on its own — that's the inositol and carob sourced d-chiro, not added sweetener. There's nothing else in the tub to taste.<br/><br/>It dissolves clear, with no grit and no aftertaste, because there are no fillers or flow agents to leave residue. Water, coffee, a smoothie, whatever you already drink. <br/><br/>Some women skip the liquid and take it straight off the scoop.</p>",
             "page": ""
           }
         },
@@ -2014,7 +2014,7 @@
           "settings": {
             "heading": "Can I take it with metformin, my prenatal, or a GLP-1?",
             "open": false,
-            "content": "<p>Generally yes. Inositol isn't a hormone and it doesn't block anything \u2014 it's a compound your body already produces and uses, taken at a higher amount.</p><p>Metformin works mainly on glucose output from the liver, so it addresses a different part of the picture. That's why the two are often used alongside each other rather than as alternatives. The same applies to prenatals and GLP-1s.</p><p>If you're taking prescription medication, run it past your doctor first.</p>",
+            "content": "<p>Generally yes. Inositol isn't a hormone and it doesn't block anything — it's a compound your body already produces and uses, taken at a higher amount.</p><p>Metformin works mainly on glucose output from the liver, so it addresses a different part of the picture. That's why the two are often used alongside each other rather than as alternatives. The same applies to prenatals and GLP-1s.</p><p>If you're taking prescription medication, run it past your doctor first.</p>",
             "page": ""
           }
         },
@@ -2023,7 +2023,7 @@
           "settings": {
             "heading": "Do I need a PCOS diagnosis for this to make sense?",
             "open": false,
-            "content": "<p>No. Inositol works on insulin signalling, and insulin resistance often develops years before anyone puts a name to it.</p><p>If you're tired after meals, reaching for something sweet mid-afternoon, or finding that real effort returns less than it should \u2014 the mechanism applies whether or not it's written on a chart.</p><p>Worth knowing which tests catch it: fasting insulin and HOMA-IR. Fasting glucose tends to stay normal until much later, because your pancreas compensates by producing more insulin. That compensation is the problem \u2014 and it's the reason so many women are told everything looks fine.</p><h3></h3>",
+            "content": "<p>No. Inositol works on insulin signalling, and insulin resistance often develops years before anyone puts a name to it.</p><p>If you're tired after meals, reaching for something sweet mid-afternoon, or finding that real effort returns less than it should — the mechanism applies whether or not it's written on a chart.</p><p>Worth knowing which tests catch it: fasting insulin and HOMA-IR. Fasting glucose tends to stay normal until much later, because your pancreas compensates by producing more insulin. That compensation is the problem — and it's the reason so many women are told everything looks fine.</p><h3></h3>",
             "page": ""
           }
         },
@@ -2041,7 +2041,7 @@
           "settings": {
             "heading": "What if it doesn't work for me?",
             "open": false,
-            "content": "<p>You have 60 days. If it isn't doing anything for you, email us and we'll refund you \u2014 no phone call, no back-and-forth, no attempt to talk you out of it.</p>",
+            "content": "<p>You have 60 days. If it isn't doing anything for you, email us and we'll refund you — no phone call, no back-and-forth, no attempt to talk you out of it.</p>",
             "page": ""
           }
         }
