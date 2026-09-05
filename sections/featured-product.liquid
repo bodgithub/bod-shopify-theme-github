@@ -34,6 +34,7 @@
 
 -%}
 {{- 'featured-product.css' | asset_url | stylesheet_tag -}}
+{%- if section.settings.media_layout == 'stacked' -%}{{ 'product.css' | asset_url | stylesheet_tag }}{%- endif -%}
 
 {%- assign side_panels = section.blocks | where: "type", "side_panel" -%}
 {%- if side_panels.size > 0 -%}
@@ -97,7 +98,7 @@
   <div class="row">
 		<div class="small-12 columns">
 			{% render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style %}
-			<div class="product-grid-container">
+			<div class="product-grid-container{% if section.settings.media_layout == 'stacked' %} product-media-layout--stacked{% endif %}">
 				<div class="product-gallery-sticky">
 			    <div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
 						<div class="product-image-container">
@@ -207,6 +208,23 @@
     ]
   },
   "settings": [
+    {
+      "type": "select",
+      "id": "media_layout",
+      "label": "Media layout",
+      "info": "Carousel: one image with thumbnails. Stacked: a large hero image with a grid of the remaining images below (no carousel). Thumbnail position only applies to Carousel.",
+      "default": "carousel",
+      "options": [
+        {
+          "value": "carousel",
+          "label": "Carousel + thumbnails"
+        },
+        {
+          "value": "stacked",
+          "label": "Stacked (large image + grid)"
+        }
+      ]
+    },
     {
       "type": "select",
       "id": "carousel_arrow_style",
