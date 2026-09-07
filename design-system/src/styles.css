@@ -1,0 +1,791 @@
+/* Bodology design system — component styles. Tenon loads from Adobe Fonts (site-wide on the live theme). */
+@import url("https://use.typekit.net/sjq1yng.css");
+/*
+  Bodology design tokens — extracted from the live Shopify theme.
+  Sources: config/settings_data.json, assets/app.css, snippets/trust-strip.liquid,
+  sections/clinical-*.liquid, snippets/bod-stars.liquid.
+*/
+:root {
+  /* Color — inks */
+  --bod-blue: #1b3def;          /* brand blue: headings, accents, links */
+  --bod-ink: #1a2874;           /* body text navy */
+  --bod-ink-deep: #14307c;      /* trust-strip titles, deep navy */
+  --bod-ink-sub: #42579e;       /* muted sub-labels */
+  --bod-accent: #3447af;        /* clinical accent: stat numbers, borders, dividers */
+  --bod-price-ink: #2c2d2e;     /* price text */
+
+  /* Color — surfaces */
+  --bod-cream: #fbfaf9;         /* page background */
+  --bod-cream-warm: #f2eeea;    /* clinical section background */
+  --bod-cream-header: #f3eeea;  /* header background */
+  --bod-periwinkle: #e3e7ff;    /* clinical box / popup / pill background */
+  --bod-periwinkle-light: #b4c0ff;
+  --bod-white: #ffffff;
+
+  /* Color — signals */
+  --bod-star-gold: #ffcd53;
+  --bod-star-off: #e1e1e1;
+  --bod-sale: #c62a32;
+
+  /* Gradients */
+  --bod-grad-button: linear-gradient(105deg, #0f2ed0, #0a95ef);
+  --bod-grad-button-hover: linear-gradient(45deg, #0f2ed0, #0a95ef);
+  --bod-grad-border: linear-gradient(135deg, #6e8bf2 0%, #1b3def 46%, #0e2160 100%);
+  --bod-grad-navy: radial-gradient(140% 165% at 18% 10%, #2e54c8 0%, #1e3fa8 30%, #14307c 65%, #0e2160 100%);
+
+  /* Lines & overlays */
+  --bod-hairline: rgba(20, 40, 120, 0.12);
+  --bod-overlay: rgba(242, 238, 234, 0.87); /* cream lightbox overlay */
+
+  /* Radii */
+  --bod-radius-block: 10px;   /* content blocks */
+  --bod-radius-card: 16px;    /* clinical cards, popups, study tables */
+  --bod-radius-image: 24px;   /* framed imagery */
+  --bod-radius-pill: 999px;   /* buttons, pills */
+
+  /* Shadows */
+  --bod-shadow-card: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --bod-shadow-frame: 0 14px 36px rgba(8, 18, 62, 0.16);
+  --bod-shadow-pop: 0 16px 40px rgba(8, 18, 62, 0.22);
+
+  /* Type */
+  --bod-font: "tenon", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+.bod-root,
+[class^="bod-"] {
+  box-sizing: border-box;
+  font-family: var(--bod-font);
+}
+[class^="bod-"] *,
+[class^="bod-"] *::before,
+[class^="bod-"] *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Button ---------- */
+.bod-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 50px;
+  padding: 17px 30px;
+  border: 0;
+  border-radius: var(--bod-radius-pill);
+  background: var(--bod-grad-button);
+  color: #fff;
+  font-family: var(--bod-font);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  appearance: none;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    color 0.25s cubic-bezier(0.104, 0.204, 0.492, 1),
+    background-color 0.25s cubic-bezier(0.104, 0.204, 0.492, 1);
+}
+.bod-btn:hover {
+  background: var(--bod-grad-button-hover);
+  transform: scale(1.05);
+}
+.bod-btn--outline {
+  background: var(--bod-periwinkle);
+  border: 1px solid var(--bod-accent);
+  color: var(--bod-accent);
+  font-weight: 600;
+  height: auto;
+  padding: 10px 24px;
+}
+.bod-btn--outline:hover {
+  background: var(--bod-accent);
+  color: var(--bod-cream-warm);
+  transform: none;
+}
+.bod-btn--white {
+  background: #fff;
+  color: var(--bod-blue);
+}
+.bod-btn--white:hover {
+  background: #f0f0f0;
+  color: var(--bod-blue);
+}
+.bod-btn--medium {
+  height: 40px;
+  padding: 10px 24px;
+  font-size: 13px;
+}
+.bod-btn--small {
+  height: 32px;
+  padding: 5px 20px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.bod-btn--full {
+  width: 100%;
+}
+
+/* ---------- Pill ---------- */
+.bod-pill {
+  display: inline-block;
+  padding: 5px 14px;
+  border: 1px solid var(--bod-accent);
+  border-radius: var(--bod-radius-pill);
+  background: var(--bod-periwinkle);
+  color: var(--bod-ink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+.bod-pill--badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 4px 14px;
+  background: transparent;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--bod-accent);
+}
+
+/* ---------- SectionHeading ---------- */
+.bod-sh {
+  text-align: center;
+  color: var(--bod-ink);
+}
+.bod-sh--left {
+  text-align: left;
+}
+.bod-sh__eyebrow {
+  margin: 0 0 14px;
+}
+.bod-sh__title {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--bod-blue);
+}
+.bod-sh--ink .bod-sh__title {
+  color: var(--bod-ink);
+}
+.bod-sh__sub {
+  margin: 8px auto 0;
+  max-width: 575px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--bod-ink);
+}
+.bod-sh--left .bod-sh__sub {
+  margin-left: 0;
+}
+
+/* ---------- StarRating ---------- */
+.bod-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+.bod-stars__svg {
+  display: block;
+  height: 19px;
+}
+.bod-stars__on {
+  fill: var(--bod-star-gold);
+}
+.bod-stars__off {
+  fill: var(--bod-star-off);
+}
+.bod-stars__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bod-ink);
+}
+.bod-stars__cta {
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+/* ---------- Price ---------- */
+.bod-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--bod-price-ink);
+  font-size: 20px;
+}
+.bod-price del {
+  color: var(--bod-ink-sub);
+  font-size: 0.85em;
+}
+.bod-price ins {
+  text-decoration: none;
+  font-weight: 500;
+}
+.bod-price__unit {
+  font-size: 12px;
+  color: var(--bod-ink-sub);
+}
+.bod-price__badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: var(--bod-sale);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- Footnote ---------- */
+.bod-footnote {
+  background: var(--bod-cream-warm);
+  color: var(--bod-ink);
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.bod-footnote--left {
+  text-align: left;
+}
+.bod-footnote p {
+  margin: 0 0 8px;
+}
+.bod-footnote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- TrustStrip ---------- */
+.bod-ts {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.bod-ts__frame {
+  background: var(--bod-grad-border);
+  padding: 6px;
+  border-radius: 14px;
+  box-shadow: var(--bod-shadow-frame);
+}
+.bod-ts__card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.bod-ts--solid .bod-ts__frame {
+  background: transparent;
+  padding: 0;
+  border-radius: 12px;
+  box-shadow: 0 14px 36px rgba(8, 18, 62, 0.22);
+}
+.bod-ts--solid .bod-ts__card {
+  background: var(--bod-grad-navy);
+  border-radius: 12px;
+}
+.bod-ts__head {
+  padding: 18px 20px 15px;
+  border-bottom: 1px solid var(--bod-hairline);
+}
+.bod-ts__title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: -0.02em;
+  line-height: 1.16;
+  color: var(--bod-ink-deep);
+}
+.bod-ts--solid .bod-ts__head {
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+.bod-ts--solid .bod-ts__title {
+  color: #fff;
+}
+.bod-ts__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.bod-ts--cols-2 .bod-ts__grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+.bod-ts__cell {
+  position: relative;
+  padding: 18px 16px 16px;
+  border-right: 1px solid var(--bod-hairline);
+  border-bottom: 1px solid var(--bod-hairline);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 10px;
+}
+.bod-ts__cell:nth-child(4n) {
+  border-right: 0;
+}
+.bod-ts__cell:nth-child(n + 5) {
+  border-bottom: 0;
+}
+.bod-ts--solid .bod-ts__cell {
+  border-right-color: rgba(255, 255, 255, 0.16);
+  border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+.bod-ts__ic {
+  width: 30px;
+  height: 30px;
+  display: block;
+  fill: none;
+  stroke: var(--bod-blue);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bod-ts--solid .bod-ts__ic {
+  stroke: #fff;
+}
+.bod-ts__txt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 14px;
+}
+.bod-ts__t {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.22;
+  color: var(--bod-ink-deep);
+  letter-spacing: -0.01em;
+}
+.bod-ts__s {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--bod-ink-sub);
+  line-height: 1.45;
+}
+.bod-ts--solid .bod-ts__t {
+  color: #fff;
+}
+.bod-ts--solid .bod-ts__s {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+/* ---------- FaqAccordion ---------- */
+.bod-faq {
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--bod-ink);
+}
+.bod-faq__item {
+  border-top: 1px solid var(--bod-hairline);
+}
+.bod-faq__item:last-child {
+  border-bottom: 1px solid var(--bod-hairline);
+}
+.bod-faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 4px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--bod-ink);
+}
+.bod-faq__q::-webkit-details-marker {
+  display: none;
+}
+.bod-faq__plus {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  font-weight: 300;
+  color: var(--bod-blue);
+}
+.bod-faq__item[open] .bod-faq__plus {
+  transform: rotate(45deg);
+}
+.bod-faq__a {
+  padding: 0 4px 18px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.bod-faq__a p {
+  margin: 0 0 10px;
+}
+.bod-faq__a p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- BuyBox ---------- */
+.bod-buy {
+  max-width: 420px;
+  background: #fff;
+  border: 1px solid var(--bod-hairline);
+  border-radius: var(--bod-radius-block);
+  padding: 24px;
+  color: var(--bod-ink);
+  box-shadow: var(--bod-shadow-card);
+}
+.bod-buy__title {
+  margin: 0 0 6px;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--bod-blue);
+}
+.bod-buy__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 10px 0;
+}
+.bod-buy__plans {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+.bod-buy__plan {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--bod-hairline);
+  border-radius: var(--bod-radius-block);
+  cursor: pointer;
+  background: #fff;
+}
+.bod-buy__plan--selected {
+  border-color: var(--bod-blue);
+  background: var(--bod-periwinkle);
+}
+.bod-buy__radio {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--bod-accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+.bod-buy__plan--selected .bod-buy__radio::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--bod-blue);
+}
+.bod-buy__plan-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bod-buy__plan-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.bod-buy__plan-note {
+  font-size: 12px;
+  color: var(--bod-ink-sub);
+}
+.bod-buy__plan-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--bod-price-ink);
+}
+.bod-buy__save {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: var(--bod-radius-pill);
+  background: var(--bod-blue);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.bod-buy__cta {
+  margin-top: 16px;
+}
+.bod-buy__note {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--bod-ink-sub);
+}
+
+/* ---------- Lightbox ---------- */
+.bod-lb__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147482998;
+  background: var(--bod-overlay);
+}
+.bod-lb {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2147483000;
+  background: var(--bod-periwinkle);
+  border: 1px solid var(--bod-accent);
+  border-radius: var(--bod-radius-card);
+  overflow: hidden;
+  padding: 32px 0;
+  width: 96%;
+  max-width: 700px;
+}
+.bod-lb__title {
+  margin: 0;
+  padding: 0 24px 20px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--bod-ink);
+}
+.bod-lb__body {
+  margin: 0;
+  padding: 0 48px 16px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--bod-ink);
+}
+.bod-lb__body p {
+  margin: 0 0 10px;
+}
+.bod-lb__close-wrap {
+  text-align: center;
+  margin: 0;
+}
+.bod-lb__close {
+  color: var(--bod-ink);
+  font-size: 14px;
+  font-family: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+/* ---------- InfoButton ---------- */
+.bod-info-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 24px;
+  border-radius: var(--bod-radius-pill);
+  border: 1px solid var(--bod-accent);
+  background: var(--bod-periwinkle);
+  color: var(--bod-accent);
+  font-size: 18px;
+  font-family: var(--bod-font);
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.bod-info-btn:hover {
+  background: var(--bod-accent);
+  color: var(--bod-cream-warm);
+}
+.bod-info-btn__plus {
+  display: inline-block;
+  margin-left: 4px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 21px;
+  font-weight: 300;
+}
+
+/* ---------- BigStat ---------- */
+.bod-bigstat {
+  color: var(--bod-ink);
+}
+.bod-bigstat__num {
+  margin: 12px 0 0;
+  color: var(--bod-accent);
+  font-size: 92px;
+  line-height: 1.05;
+  font-weight: 500;
+}
+.bod-bigstat__caption {
+  margin: 12px 0 0;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  max-width: 34ch;
+}
+
+/* ---------- StatCard ---------- */
+.bod-statcard {
+  border: 1px solid color-mix(in srgb, var(--bod-accent) 70%, transparent);
+  border-radius: var(--bod-radius-card);
+  padding: 24px;
+  box-shadow: var(--bod-shadow-card);
+  display: flex;
+  align-items: center;
+  background: transparent;
+}
+.bod-statcard__inner {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.bod-statcard__num {
+  color: var(--bod-accent);
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.bod-statcard__text {
+  font-size: 19px;
+  line-height: 1.4;
+  margin: 0;
+  color: var(--bod-ink);
+}
+
+/* ---------- ClinicalHeader ---------- */
+.bod-ch {
+  position: relative;
+  width: 100%;
+  background: var(--bod-cream-warm);
+  color: var(--bod-ink);
+  padding: 40px 0;
+  overflow: hidden;
+}
+.bod-ch__content {
+  padding: 40px 16px 56px;
+  max-width: 48rem;
+}
+.bod-ch__pill {
+  margin: 0 0 14px;
+}
+.bod-ch__heading {
+  margin: 0;
+  padding: 0;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--bod-blue);
+  white-space: pre-line;
+}
+.bod-ch__sub {
+  margin: 12px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+  max-width: 575px;
+}
+.bod-ch__links {
+  width: 100%;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.bod-ch__link-item {
+  width: 100%;
+  padding: 8px 0;
+  position: relative;
+  border-top: 1px solid var(--bod-accent);
+}
+.bod-ch__links::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-top: 1px solid var(--bod-accent);
+}
+.bod-ch__link {
+  display: inline-block;
+  width: 100%;
+  font-size: 30px;
+  color: inherit;
+  text-decoration: none;
+}
+.bod-ch__arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+.bod-ch__arrow svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- StudyCard ---------- */
+.bod-study {
+  border: 1px solid var(--bod-accent);
+  border-radius: var(--bod-radius-card);
+  background: #fff;
+  overflow: hidden;
+  max-width: 760px;
+  color: var(--bod-ink);
+}
+.bod-study__titlebar {
+  background: var(--bod-periwinkle);
+  font-size: 24px;
+  font-weight: 400;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--bod-accent);
+}
+.bod-study__body {
+  padding: 20px;
+}
+.bod-study__subtitle {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.bod-study__text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.bod-study__divider {
+  border: 0;
+  border-top: 1px solid var(--bod-accent);
+  margin: 16px 0;
+}
+.bod-study__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.bod-study__chip {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  border: 1px solid var(--bod-accent);
+  background: transparent;
+  color: var(--bod-ink);
+  font-family: inherit;
+}
