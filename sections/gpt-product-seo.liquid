@@ -1,129 +1,68 @@
+{%- comment -%}
+  Product rating for structured data. Reads the live Junip rating (falls back to the
+  Shopify reviews metafield), rounds to one decimal, and attaches it to the ProductGroup
+  that Shopify already outputs via {{ product | structured_data }} in main-product.liquid,
+  by sharing that node's @id. No second Product entity is created, so there is only one
+  price source on the page. Google requires ratingCount for AggregateRating to be valid;
+  it is machine-readable only and is never rendered on the page.
+{%- endcomment -%}
+{%- liquid
+  assign seo_rating = ''
+  assign seo_meta = product.metafields.junip.rating_average
+  if seo_meta.value != blank
+    assign seo_rating = seo_meta.value
+  elsif seo_meta != blank
+    assign seo_rating = seo_meta
+  endif
+  if seo_rating == blank
+    assign seo_meta = product.metafields.reviews.rating
+    if seo_meta.value.rating != blank
+      assign seo_rating = seo_meta.value.rating
+    elsif seo_meta.value != blank
+      assign seo_rating = seo_meta.value
+    endif
+  endif
+
+  assign seo_count = ''
+  assign seo_meta = product.metafields.junip.rating_count
+  if seo_meta.value != blank
+    assign seo_count = seo_meta.value
+  elsif seo_meta != blank
+    assign seo_count = seo_meta
+  endif
+  if seo_count == blank
+    assign seo_meta = product.metafields.reviews.rating_count
+    if seo_meta.value != blank
+      assign seo_count = seo_meta.value
+    elsif seo_meta != blank
+      assign seo_count = seo_meta
+    endif
+  endif
+
+  assign seo_rating_f = seo_rating | plus: 0.0 | at_most: 5.0
+  assign seo_count_i = seo_count | plus: 0
+  assign seo_rating_display = seo_rating_f | times: 10 | round | divided_by: 10.0
+-%}
+{%- if product != blank and seo_rating_f > 0 and seo_count_i > 0 -%}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@id": "/products/{{ product.handle }}#product",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ seo_rating_display }}",
+    "bestRating": "5",
+    "ratingCount": "{{ seo_count_i }}"
+  }
+}
+</script>
+{%- endif -%}
+
 <!-- JSON-LD Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Product",
-      "name": "Myo + D-Chiro Inositol Powder",
-      "@id": "https://bodology.co/products/myo-d-chiro-inositol-powder#product",
-      "image": "https://bodology.co/cdn/shop/files/Bodology-Inositol-1a-90-scoops-2.png?v=1751301997",
-      "description": "Clinically studied 40:1 Myo + D-Chiro Inositol powder to support metabolic health, hormone balance, and fertility. Trusted by practitioners.",
-      "brand": {
-        "@type": "Brand",
-        "name": "Bodology"
-      },
-      "sku": "1-MDCI",
-      "gtin": "199284309265",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://bodology.co/products/myo-d-chiro-inositol-powder"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://bodology.co/products/myo-d-chiro-inositol-powder",
-        "@id": "https://bodology.co/products/myo-d-chiro-inositol-powder#offer",
-        "priceCurrency": "USD",
-        "price": "65.00",
-        "availability": "https://schema.org/InStock",
-        "priceSpecification": [
-          {
-            "@type": "UnitPriceSpecification",
-            "price": 65.00,
-            "priceCurrency": "USD",
-            "name": "One-time purchase"
-          },
-          {
-            "@type": "UnitPriceSpecification",
-            "price": 52.00,
-            "priceCurrency": "USD",
-            "name": "Subscribe & Save"
-          },
-          {
-            "@type": "UnitPriceSpecification",
-            "price": 41.60,
-            "priceCurrency": "USD",
-            "name": "Subscribe + Affiliate Code (20% off)"
-          }
-        ],
-        "shippingDetails": [
-          {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "0.00",
-              "currency": "USD"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "US"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
-                "unitCode": "d"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 2,
-                "maxValue": 5,
-                "unitCode": "d"
-              }
-            },
-            "shippingLabel": "Standard Shipping"
-          },
-          {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": "5.00",
-              "currency": "USD"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "US"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
-                "unitCode": "d"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 2,
-                "maxValue": 3,
-                "unitCode": "d"
-              }
-            },
-            "shippingLabel": "Express Shipping"
-          }
-        ]
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 60,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn",
-        "returnShippingFeesAmount": {
-          "@type": "MonetaryAmount",
-          "value": "0.00",
-          "currency": "USD"
-        }
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "120"
-      }
-    },
     {
       "@type": "FAQPage",
       "name": "Bodology Inositol Product FAQs",
