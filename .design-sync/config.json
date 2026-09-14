@@ -1,0 +1,17 @@
+{
+  "shape": "package",
+  "pkg": "@bodology/design-system",
+  "globalName": "BodologyDS",
+  "buildCmd": "cd design-system && npm run build",
+  "cssEntry": "src/styles.css",
+  "runtimeFontPrefixes": ["tenon"],
+  "docsDir": "docs",
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "Lightbox": { "cardMode": "single", "viewport": "760x560" },
+    "TrustStrip": { "cardMode": "column" },
+    "ClinicalHeader": { "cardMode": "column" },
+    "StudyCard": { "cardMode": "column" },
+    "BuyBox": { "cardMode": "column" }
+  }
+}
