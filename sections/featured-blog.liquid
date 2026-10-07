@@ -73,7 +73,7 @@
 					{% assign placeholder_array = "1,2,3,4,5,6" | split: ',' %}
 					{% for item in placeholder_array limit: post_limit %}
 						<div class="small-12 {{ columns_class }} columns">
-							{% render 'blog-post', article: false, show_date: show_date, show_excerpt: show_excerpt, image_ratio: image_ratio, show_read_more, show_read_more %}
+							{% render 'blog-post', article: false, show_date: show_date, show_excerpt: show_excerpt, image_ratio: image_ratio %}
 			      </div>
 					{% endfor %}
 		    {% endif %}
@@ -261,3 +261,15 @@
   }
 
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'blog-post', article: false, show_date: show_date, show_excerpt:
+    show_excerpt, image_ratio: image_ratio, show_read_more, show_read_more %}"
+  to: "{% render 'blog-post', article: false, show_date: show_date, show_excerpt:
+    show_excerpt, image_ratio: image_ratio %}"
+  position: 3556..3672
+{% endcomment %}

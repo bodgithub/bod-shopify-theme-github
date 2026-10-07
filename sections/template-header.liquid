@@ -90,7 +90,7 @@
 									{%- if link_collection != blank -%}
 										<a href="{{ link_collection.url }}" title="{{ link_collection.title | escape }}" class="template-header--subcollection {{ class }}">
 											{%- if link_collection.featured_image -%}
-												{%- render 'responsive-image', image: link_collection.featured_image | image_url, sizes: '42x42,84x84' -%}
+												{%- render 'responsive-image', image: link_collection.featured_image, sizes: '42x42,84x84' -%}
 											{%- endif -%}
 											<span>{{ link_collection.title }}</span>
 										</a>
@@ -165,3 +165,15 @@
     ]
   }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'responsive-image', image: link_collection.featured_image | image_url,
+    sizes: '42x42,84x84' -%}"
+  to: "{%- render 'responsive-image', image: link_collection.featured_image, sizes:
+    '42x42,84x84' -%}"
+  position: 4342..4436
+{% endcomment %}
