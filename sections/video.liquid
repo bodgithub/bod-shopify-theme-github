@@ -28,7 +28,7 @@
 							assign sizes = '1600x'
 						endif
 					-%}
-					{%- capture bod_video -%}{{ video_hosted | video_tag: autoplay: video_autoplay, loop: true, controls: false, muted: video_autoplay, image_size: sizes }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
+					{%- capture bod_video -%}{{ video_hosted | video_tag: autoplay: video_autoplay, loop: true, controls: false, muted: video_autoplay, image_size: sizes }}{%- endcapture -%}{%- assign bod_video = bod_video | replace: '<img ', '<img alt="" ' -%}{%- if section.settings.captions != blank -%}{%- capture bod_track -%}<track kind="captions" src="{{ section.settings.captions }}" srclang="{{ section.settings.captions_lang | default: 'en' }}" label="{{ section.settings.captions_label | default: 'English' }}" default></video>{%- endcapture -%}{%- assign bod_video = bod_video | replace: '</video>', bod_track -%}{%- endif -%}{{ bod_video }}
 					{%- if video_autoplay -%}
 					<button type="button" class="video-section__toggle" data-video-toggle aria-pressed="false" aria-label="Pause video">
 						<svg class="video-section__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
@@ -138,6 +138,24 @@
 			  "id": "video_hosted",
 			  "label": "Shopify-hosted video",
 				"info": "Overrides the Video URL setting."
+			},
+			{
+				"type": "text",
+				"id": "captions",
+				"label": "Captions file (.vtt URL)",
+				"info": "Upload the WebVTT file in Content > Files and paste its URL. Needed if the video has speech and captions aren't burned in."
+			},
+			{
+				"type": "text",
+				"id": "captions_lang",
+				"label": "Captions language code",
+				"default": "en"
+			},
+			{
+				"type": "text",
+				"id": "captions_label",
+				"label": "Captions label",
+				"default": "English"
 			},
 			{
 				"type": "checkbox",

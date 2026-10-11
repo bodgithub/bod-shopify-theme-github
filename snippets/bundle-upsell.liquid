@@ -50,7 +50,10 @@
 
 <div id="bu-{{ uid }}">
   {%- if s.image != blank -%}
-    <div class="bu-img">{{ s.image | image_url: width: 200 | image_tag: alt: s.image.alt | default: s.title | default: 'Bundle', loading: 'lazy' }}</div>
+    {%- assign bu_alt = s.image.alt | default: s.title | default: 'Bundle' | strip -%}
+    {%- capture bu_img -%}{{ s.image | image_url: width: 200 | image_tag: alt: bu_alt, loading: 'lazy' }}{%- endcapture -%}
+    {%- unless bu_img contains 'alt=' -%}{%- assign bu_img = bu_img | replace: '<img ', '<img alt="" ' -%}{%- endunless -%}
+    <div class="bu-img">{{ bu_img }}</div>
   {%- endif -%}
   <div class="bu-body">
     {%- if s.title != blank -%}<p class="bu-title">{{ s.title }}</p>{%- endif -%}

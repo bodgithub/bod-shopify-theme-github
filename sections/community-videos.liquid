@@ -161,7 +161,9 @@
             {%- if block.settings.video != blank -%}
               {%- assign mp4 = block.settings.video.sources | where: 'format', 'mp4' -%}
               {%- assign vsrc = mp4.first.url | default: block.settings.video.sources.first.url -%}
-              <video class="vcg__video" data-video preload="none" playsinline controls src="{{ vsrc }}"></video>
+              <video class="vcg__video" data-video preload="none" playsinline controls src="{{ vsrc }}"{% if block.settings.captions != blank %} data-captions="{{ block.settings.captions }}"{% endif %}>
+                {%- if block.settings.captions != blank -%}<track kind="captions" src="{{ block.settings.captions }}" srclang="{{ block.settings.captions_lang | default: 'en' }}" label="{{ block.settings.captions_label | default: 'English' }}" default>{%- endif -%}
+              </video>
               <button type="button" class="vcg__play" data-play aria-label="Play {{ block.settings.name | escape }}" style="pointer-events:auto; border:0; cursor:pointer;">
                 <svg viewBox="0 0 24 24"><path d="M7 4 L20 12 L7 20 Z"/></svg>
               </button>
@@ -219,7 +221,7 @@
 
   /* video lightbox */
   var modal;
-  function openModal(src){
+  function openModal(src, captions){
     if(!src) return;
     if(!modal){
       modal=document.createElement('div'); modal.className='vcg-modal';
@@ -227,7 +229,10 @@
       document.body.appendChild(modal);
       modal.addEventListener('click',function(e){ if(e.target===modal || e.target.closest('.vcg-modal__x')){ closeModal(); } });
     }
-    var v=modal.querySelector('video'); v.src=src; modal.classList.add('is-open'); var p=v.play(); if(p&&p.catch)p.catch(function(){});
+    var v=modal.querySelector('video');
+    var old=v.querySelector('track'); if(old) old.remove();
+    if(captions){ var t=document.createElement('track'); t.kind='captions'; t.src=captions; t.srclang='en'; t.label='English'; t.default=true; v.appendChild(t); }
+    v.src=src; modal.classList.add('is-open'); var p=v.play(); if(p&&p.catch)p.catch(function(){});
   }
   function closeModal(){ if(!modal) return; var v=modal.querySelector('video'); v.pause(); v.removeAttribute('src'); v.load(); modal.classList.remove('is-open'); }
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
@@ -362,6 +367,9 @@
         { "type": "textarea", "id": "quote", "label": "Quote" },
         { "type": "text", "id": "tag", "label": "Tags (comma-separated, for filter chips)", "info": "Add one or more, e.g. HORMONES, MOOD. Each becomes a filter chip; the card shows under all of its tags.", "default": "MOOD" },
         { "type": "video", "id": "video", "label": "Video (from your library)", "info": "Plays inline in the card on click." },
+        { "type": "text", "id": "captions", "label": "Captions file (.vtt URL)", "info": "Upload the WebVTT file in Content > Files and paste its URL. Required for videos with speech (WCAG 1.2.2) unless captions are burned in." },
+        { "type": "text", "id": "captions_lang", "label": "Captions language code", "default": "en" },
+        { "type": "text", "id": "captions_label", "label": "Captions label", "default": "English" },
         { "type": "url", "id": "video_url", "label": "…or external video link (optional)" }
       ]
     }
