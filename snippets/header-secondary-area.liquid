@@ -36,7 +36,7 @@
 	{%- if shop.customer_accounts_enabled -%}
 		{% comment %} Account: blue outline person icon {% endcomment %}
     	<a class="thb-secondary-area-item thb-secondary-myaccount" href="{{ profile_link | escape }}" title="{{ 'sections.header.my_account' | t }}" aria-label="My account" {% if request.path contains '/blog' or request.path contains '/pages/bodology' %} style="display:none;" {% endif %}>
-      		<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b3def" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c1.2-3.7 3.9-5.2 6.5-5.2s5.3 1.5 6.5 5.2"/></svg>
+      		<span class="thb-secondary-item-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1b3def" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.6"/><path d="M5.5 20c1.2-3.7 3.9-5.2 6.5-5.2s5.3 1.5 6.5 5.2"/></svg></span>
     	</a>
   	{%- endif -%}
 
@@ -55,20 +55,24 @@
 {% comment %} .bod-nav-cta intentionally has no overrides: the theme .button styles apply, so it matches the homepage hero banner button exactly (gradient, size, radius, font). {% endcomment %}
 .thb-header-right .thb-secondary-area-item.thb-secondary-myaccount{padding-right:3px;}
 .thb-header-right .thb-secondary-area-item.thb-secondary-cart{padding-left:3px;}
-/* Round hover target drawn behind the account/cart icons; layout and icon positions unchanged */
-.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount,
-.thb-header-right .thb-secondary-area-item.thb-secondary-cart{position:relative;z-index:0;}
-.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount::before,
-.thb-header-right .thb-secondary-area-item.thb-secondary-cart::before{
+/* Round hover tint drawn behind the account/cart icons, centred on the icon itself */
+.thb-header-right .thb-secondary-myaccount .thb-secondary-item-icon,
+.thb-header-right .thb-secondary-cart .thb-secondary-item-icon{
+  position:relative;z-index:0;display:flex;align-items:center;justify-content:center;
+  width:22px;height:22px;transform:none !important;
+}
+.thb-header-right .thb-secondary-myaccount .thb-secondary-item-icon svg,
+.thb-header-right .thb-secondary-cart .thb-secondary-item-icon svg{display:block;}
+.thb-header-right .thb-secondary-myaccount .thb-secondary-item-icon::before,
+.thb-header-right .thb-secondary-cart .thb-secondary-item-icon::before{
   content:"";position:absolute;z-index:-1;left:50%;top:50%;width:38px;height:38px;
   margin:-19px 0 0 -19px;border-radius:50%;background:rgba(27,61,239,0.08);
   opacity:0;transform:scale(0.85);transition:opacity .2s ease,transform .2s ease;
 }
-.thb-header-right .thb-secondary-area-item.thb-secondary-cart::before{margin-top:-17px;}
-.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount:hover::before,
-.thb-header-right .thb-secondary-area-item.thb-secondary-cart:hover::before,
-.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount:focus-visible::before,
-.thb-header-right .thb-secondary-area-item.thb-secondary-cart:focus-visible::before{opacity:1;transform:scale(1);}
+.thb-header-right .thb-secondary-myaccount:hover .thb-secondary-item-icon::before,
+.thb-header-right .thb-secondary-cart:hover .thb-secondary-item-icon::before,
+.thb-header-right .thb-secondary-myaccount:focus-visible .thb-secondary-item-icon::before,
+.thb-header-right .thb-secondary-cart:focus-visible .thb-secondary-item-icon::before{opacity:1;transform:scale(1);}
 .thb-secondary-area .thb-item-count:empty{display:none !important;}
 </style>
 <a class="button desktop-only bod-nav-cta" href="{{ section.settings.button_url | default: '/products/myo-d-chiro-inositol-powder' }}"
