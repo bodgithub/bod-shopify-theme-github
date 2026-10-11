@@ -20,7 +20,7 @@
 			<div class="video-section--inner">
 				{% render 'section-header', section_heading: section_heading, section_description: section_description, marker_color: marker_color, marker_style: marker_style %}
 			</div>
-			<div class="video-section--container video-aspect--{{ aspect_ratio }}">
+			<div class="video-section--container video-aspect--{{ aspect_ratio }}" data-video-section>
 				{%- if video_hosted != blank -%}
 					{%- liquid
 						assign sizes = '1280x'
@@ -29,6 +29,12 @@
 						endif
 					-%}
 					{%- capture bod_video -%}{{ video_hosted | video_tag: autoplay: video_autoplay, loop: true, controls: false, muted: video_autoplay, image_size: sizes }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
+					{%- if video_autoplay -%}
+					<button type="button" class="video-section__toggle" data-video-toggle aria-pressed="false" aria-label="Pause video">
+						<svg class="video-section__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+						<svg class="video-section__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l10-6.5z"/></svg>
+					</button>
+					{%- endif -%}
 				{%- elsif video != blank -%}
 					{%- if video.type == 'youtube' -%}
 						<iframe data-src="https://www.youtube.com/embed/{{ video.id }}?loop=1{%- if video_autoplay -%}&autoplay=1&mute=1{%- endif -%}&playlist={{ video.id }}&iv_load_policy=3&disablekb=1&controls=1&playsinline=1" frameborder="0" class="lazyload" allow="autoplay; encrypted-media" allowfullscreen title="{{ section.settings.heading | escape }}" tabindex="-1"></iframe>
@@ -40,6 +46,34 @@
 		</div>
 	</div>
 </div>
+{%- if video_hosted != blank and video_autoplay -%}
+<script>
+(function(){
+  var root = document.querySelector('#shopify-section-{{ section.id }} [data-video-section]');
+  if(!root || root.dataset.bodVideoBound) return;
+  root.dataset.bodVideoBound = '1';
+  var video = root.querySelector('video'), btn = root.querySelector('[data-video-toggle]');
+  if(!video || !btn) return;
+  function setState(paused){
+    btn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+    btn.setAttribute('aria-label', paused ? 'Play video' : 'Pause video');
+    root.classList.toggle('is-paused', paused);
+  }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  function respectMotion(){
+    if(reduce && reduce.matches){ video.removeAttribute('autoplay'); video.pause(); setState(true); }
+  }
+  respectMotion();
+  if(reduce && reduce.addEventListener){ reduce.addEventListener('change', respectMotion); }
+  btn.addEventListener('click', function(){
+    if(video.paused){ var p = video.play(); if(p && p.catch){ p.catch(function(){}); } } else { video.pause(); }
+  });
+  video.addEventListener('play', function(){ setState(false); });
+  video.addEventListener('pause', function(){ setState(true); });
+  setState(video.paused);
+})();
+</script>
+{%- endif -%}
 {% schema %}
   {
     "name": "Video",

@@ -34,3 +34,38 @@
     height: 100%;
     z-index: 1;
     object-fit: cover; }
+
+/* Pause / play control for autoplaying background video (WCAG 2.2.2) */
+.video-section__toggle {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: #1a2874;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18); }
+  .video-section__toggle svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor; }
+  .video-section__toggle .video-section__icon--play {
+    display: none; }
+  .is-paused .video-section__toggle .video-section__icon--play {
+    display: block; }
+  .is-paused .video-section__toggle .video-section__icon--pause {
+    display: none; }
+  .video-section__toggle:hover {
+    background: #fff; }
+  .video-section__toggle:focus-visible {
+    outline: 3px solid #1b3def;
+    outline-offset: 2px; }
