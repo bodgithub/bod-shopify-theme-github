@@ -209,7 +209,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       endif
     -%}
     {%- unless card_name == blank -%}
-    <div class="pc-card{% if is_sel %} is-selected{% endif %}" role="radio" aria-checked="{% if is_sel %}true{% else %}false{% endif %}" tabindex="0"
+    <div class="pc-card{% if is_sel %} is-selected{% endif %}" role="radio" aria-checked="{% if is_sel %}true{% else %}false{% endif %}" tabindex="{% if is_sel %}0{% else %}-1{% endif %}"
          data-ps1b-card data-ps1b-mode="{{ mode }}" data-ps1b-pair="{{ pair }}" data-ps1b-name="{{ card_name | escape }}" data-ps1b-variant="{{ card_variant }}" data-ps1b-plan="{{ card_plan }}"{% if mode == 'sub' %} data-ps1b-requires-plan="1"{% endif %} data-ps1b-qty="{{ card_qty }}" data-ps1b-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1b-gift-title="{{ gift_name | escape }}" data-ps1b-gift-sub="{{ gift_bsub | escape }}" data-ps1b-gift-cross="{{ gift_crossout | escape }}" data-ps1b-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         <div class="pc-pad">

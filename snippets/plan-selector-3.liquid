@@ -166,7 +166,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       {%- assign badge_k = pk | append: '_badge' -%}{%- assign rnd_k = pk | append: '_roundel' -%}
       {%- assign gtxt_k = pk | append: '_gift_text' -%}{%- assign gstk_k = pk | append: '_gift_strike' -%}{%- assign gvar_k = pk | append: '_gift_variant' -%}
       {%- if s[tier_k] != blank -%}
-      <div class="p3-card{% if p3_default == pk %} is-selected{% endif %}" role="radio" aria-checked="{% if p3_default == pk %}true{% else %}false{% endif %}" tabindex="0"
+      <div class="p3-card{% if p3_default == pk %} is-selected{% endif %}" role="radio" aria-checked="{% if p3_default == pk %}true{% else %}false{% endif %}" tabindex="{% if p3_default == pk %}0{% else %}-1{% endif %}"
            data-p3-card data-p3-name="{{ s[tier_k] | escape }}" data-p3-variant="{{ s[var_k] }}" data-p3-qty="{{ s[qty_k] | default: 1 }}" data-p3-plan="{{ s[plan_k] }}" data-p3-gift="{{ s[gvar_k] }}"
            data-p3-subprice="{{ s[subp_k] | escape }}" data-p3-oneprice="{{ s[onep_k] | escape }}" data-p3-subfreq="{{ s[freq_k] | escape }}">
         <div class="p3-card__in">

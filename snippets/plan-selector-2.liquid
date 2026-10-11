@@ -93,7 +93,7 @@
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
   {%- for opt in ps2_order -%}
     {%- if opt == 'ot' -%}
-    <div class="pc-card{% if ps2_default == 'ot' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps2_default == 'ot' %}true{% else %}false{% endif %}" tabindex="0"
+    <div class="pc-card{% if ps2_default == 'ot' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps2_default == 'ot' %}true{% else %}false{% endif %}" tabindex="{% if ps2_default == 'ot' %}0{% else %}-1{% endif %}"
          data-ps2-card data-ps2-name="{{ s.ot_name | default: 'One-Time Purchase' | escape }}" data-ps2-variant="{{ s.ot_variant }}" data-ps2-plan="" data-ps2-qty="{{ s.ot_qty | default: 1 }}" data-ps2-gift="">
       <div class="pc-card__in">
         <div class="pc-pad">
@@ -114,7 +114,7 @@
       </div>
     </div>
     {%- else -%}
-    <div class="pc-card{% if ps2_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps2_default == 'sub' %}true{% else %}false{% endif %}" tabindex="0"
+    <div class="pc-card{% if ps2_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if ps2_default == 'sub' %}true{% else %}false{% endif %}" tabindex="{% if ps2_default == 'sub' %}0{% else %}-1{% endif %}"
          data-ps2-card data-ps2-name="{{ s.sub_name | default: 'Subscribe & Save' | escape }}" data-ps2-variant="{{ s.sub_variant }}" data-ps2-plan="{{ s.sub_plan }}" data-ps2-requires-plan="1" data-ps2-qty="{{ s.sub_qty | default: 1 }}" data-ps2-gift="{{ s.gift_variant }}">
       <div class="pc-card__in">
         {%- if s.sub_ribbon != blank -%}<span class="pc-ribbon">{{ s.sub_ribbon }}</span>{%- endif -%}

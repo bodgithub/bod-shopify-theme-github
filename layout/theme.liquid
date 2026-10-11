@@ -141,6 +141,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	{{ 'product.js' | asset_url | script_tag }}
 	{{ 'slideshow.js' | asset_url | script_tag }}
 	{{ 'app.js' | asset_url | script_tag }}
+	<script src="{{ 'bod-a11y.js' | asset_url }}" defer="defer"></script>
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
 	{%- if settings.free_shipping -%}

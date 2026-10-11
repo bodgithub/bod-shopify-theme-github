@@ -190,7 +190,7 @@
     {%- assign first = forloop.first -%}
     {%- if style == 'expanded' -%}
     {%- comment -%} ───────── STYLE C ───────── {%- endcomment -%}
-    <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+    <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="{% if first %}0{% else %}-1{% endif %}"
          data-ps-card data-ps-name="{{ block.settings.name | escape }}" data-ps-variant="{{ block.settings.variant_id }}" data-ps-plan="{{ block.settings.selling_plan_id }}" data-ps-qty="{{ block.settings.quantity | default: 1 }}" {{ block.shopify_attributes }}>
       <div class="pc-card__in">
         {%- if block.settings.banner_label != blank and block.settings.banner_type != 'none' -%}<span class="pc-ribbon">{{ block.settings.banner_label }}</span>{%- endif -%}
@@ -238,7 +238,7 @@
     </div>
     {%- else -%}
     {%- comment -%} ───────── STYLE A / B ───────── {%- endcomment -%}
-    <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+    <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="{% if first %}0{% else %}-1{% endif %}"
          data-ps-card data-ps-name="{{ block.settings.name | escape }}" data-ps-variant="{{ block.settings.variant_id }}" data-ps-plan="{{ block.settings.selling_plan_id }}" data-ps-qty="{{ block.settings.quantity | default: 1 }}" {{ block.shopify_attributes }}>
       <div class="ps-card__frame">
         {%- if block.settings.banner_type != 'none' and block.settings.banner_label != blank -%}

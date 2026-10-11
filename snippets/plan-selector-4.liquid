@@ -57,7 +57,7 @@
   {%- if s.supply_label != blank -%}<p class="p4-lab">{{ s.supply_label }}</p>{%- endif -%}
   <hr class="p4-hr">
 
-  <div class="p4-opt{% if p4_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if p4_default == 'sub' %}true{% else %}false{% endif %}" tabindex="0"
+  <div class="p4-opt{% if p4_default == 'sub' %} is-selected{% endif %}" role="radio" aria-checked="{% if p4_default == 'sub' %}true{% else %}false{% endif %}" tabindex="{% if p4_default == 'sub' %}0{% else %}-1{% endif %}"
        data-p4-opt data-p4-name="{{ s.sub_title | default: 'Subscribe & Save' | escape }}" data-p4-variant="{{ s.sub_variant }}" data-p4-qty="{{ s.sub_qty | default: 1 }}" data-p4-plan="{{ s.sub_plan }}" data-p4-requires-plan="1">
     <div class="p4-row">
       <span class="p4-radio"></span>
@@ -76,7 +76,7 @@
 
   <hr class="p4-hr">
 
-  <div class="p4-opt{% if p4_default == 'one' %} is-selected{% endif %}" role="radio" aria-checked="{% if p4_default == 'one' %}true{% else %}false{% endif %}" tabindex="0"
+  <div class="p4-opt{% if p4_default == 'one' %} is-selected{% endif %}" role="radio" aria-checked="{% if p4_default == 'one' %}true{% else %}false{% endif %}" tabindex="{% if p4_default == 'one' %}0{% else %}-1{% endif %}"
        data-p4-opt data-p4-name="{{ s.ot_title | default: 'One time purchase' | escape }}" data-p4-variant="{{ s.ot_variant }}" data-p4-qty="{{ s.ot_qty | default: 1 }}" data-p4-plan="">
     <div class="p4-row">
       <span class="p4-radio"></span>

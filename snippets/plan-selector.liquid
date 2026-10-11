@@ -210,7 +210,7 @@
     {%- assign first = false -%}
     {%- if i == ps_default -%}{%- assign first = true -%}{%- endif -%}
     {%- if style == 'expanded' -%}
-    <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+    <div class="pc-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="{% if first %}0{% else %}-1{% endif %}"
          data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}" data-ps-hero="{{ s[hik] }}">
       <div class="pc-card__in">
         {%- if s[blk] != blank and s[btk] != 'none' -%}<span class="pc-ribbon">{{ s[blk] }}</span>{%- endif -%}
@@ -294,7 +294,7 @@
       </div>
     </div>
     {%- else -%}
-    <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="0"
+    <div class="ps-card{% if first %} is-selected{% endif %}" role="radio" aria-checked="{% if first %}true{% else %}false{% endif %}" tabindex="{% if first %}0{% else %}-1{% endif %}"
          data-ps-card data-ps-name="{{ s[nk] | escape }}" data-ps-variant="{{ s[vk] }}" data-ps-plan="{{ s[plk] }}" data-ps-qty="{{ s[qk] | default: 1 }}" data-ps-giftadd="{{ s[gaddk] }}" data-ps-hero="{{ s[hik] }}">
       <div class="ps-card__frame">
         {%- if s[btk] != 'none' and s[blk] != blank -%}
