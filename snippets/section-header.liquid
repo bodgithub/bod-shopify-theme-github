@@ -2,9 +2,21 @@
 <div class="section-header">
 	<div class="section-header--content">
 		{%- if section_heading -%}
+			{%- comment -%}
+				Rich-text headings may already contain a heading tag. A heading tag can't sit inside the <h3>
+				wrapper (the parser splits it into an empty <h3> plus a stray <h1>), so render those in a
+				<div> instead and demote any <h1> to <h2 class="h1"> so pages keep exactly one H1.
+			{%- endcomment -%}
+			{%- assign sh_heading = section_heading | replace: '<h1>', '<h2 class="h1">' | replace: '<h1 ', '<h2 class="h1" ' | replace: '</h1>', '</h2>' -%}
+			{%- if sh_heading contains '<h' -%}
+			<div class="section-header--title">
+				{% render 'animated-marker-heading', heading: sh_heading, style: marker_style, color: marker_color %}
+			</div>
+			{%- else -%}
 			<h3 class="section-header--title">
-				{% render 'animated-marker-heading', heading: section_heading, style: marker_style, color: marker_color %}
+				{% render 'animated-marker-heading', heading: sh_heading, style: marker_style, color: marker_color %}
 			</h3>
+			{%- endif -%}
 		{%- endif -%}
 		{%- if section_description != blank -%}
 			<div class="section-header--description rte">

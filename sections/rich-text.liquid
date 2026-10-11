@@ -54,8 +54,14 @@
 							-%}
 							<h3 class="{{ block.settings.size }} {{ heading_class }}" {{ block.shopify_attributes }}>{% render 'animated-marker-heading', heading: text, style: marker_style, color: marker_color %}</h3>
 						{%- when 'text' -%}
+							{%- liquid
+								assign rt_text = block.settings.text
+								if section.settings.demote_h1
+									assign rt_text = rt_text | replace: '<h1>', '<h2 class="h1">' | replace: '<h1 ', '<h2 class="h1" ' | replace: '</h1>', '</h2>'
+								endif
+							-%}
 							<div class="rte {{ block.settings.size }}" {{ block.shopify_attributes }}>
-								{{ block.settings.text }}
+								{{ rt_text }}
 								{{ block.settings.custom_liquid }}
 							</div>
 						{%- when 'button' -%}
@@ -80,6 +86,13 @@
   "name": "Rich text",
   "class": "section-rich-text",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "demote_h1",
+      "label": "Render H1 as H2 (keeps the H1 size)",
+      "info": "Turn on when this section is not the page's main heading. Each page should have exactly one H1.",
+      "default": false
+    },
     {
       "type": "select",
       "id": "text_width",

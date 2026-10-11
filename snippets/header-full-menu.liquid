@@ -30,7 +30,7 @@
 				endfor
 			-%}
 		  <li role="none" class="{% if has_sub_menu or has_mega_menu %}menu-item-has-children{% endif %}{% if has_mega_menu %} menu-item-has-megamenu{% endif %}{% if link.active %} active{% endif %}" {% if has_sub_menu %}data-item-title="{{ link.title | escape }}"{% endif %}>
-		    <a role="menuitem" href="{{ link.url }}"{%- if link.active %} aria-current="page"{% endif -%}>
+		    <a role="menuitem" href="{{ link.url }}"{%- if link.active %} aria-current="page"{% endif -%}{%- if has_sub_menu or has_mega_menu %} aria-haspopup="true" aria-expanded="false"{% endif -%}>
 					{{- link.title -}}
 					{%- if has_sub_menu or has_mega_menu -%}{%- render 'svg-icons' with 'thb-dropdown-bottom' -%}{%- endif -%}
 				</a>
@@ -50,7 +50,7 @@
 
 							-%}
 			        <li class="{%- if l.active %}active{% endif %}{% if has_sub_menu %} menu-item-has-children{%- endif -%}" role="none" {% if has_sub_menu %}data-item-title="{{ l.title | escape }}"{% endif %}>
-			          <a href="{{ l.url }}" role="menuitem">
+			          <a href="{{ l.url }}" role="menuitem"{% if has_sub_menu %} aria-haspopup="true" aria-expanded="false"{% endif %}>
 									{{- l.title -}}
 									{%- if has_sub_menu -%}{%- render 'svg-icons' with 'thb-dropdown-right' -%}{%- endif -%}
 								</a>

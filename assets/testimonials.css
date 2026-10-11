@@ -78,7 +78,8 @@
   color: /*var(--color-text, var(--color-body, #2c2d2e));*/ #1b3def;
   text-align: center;
   overflow: hidden; }
-  .testimonials--heading h1 {
+  .testimonials--heading h1,
+  .testimonials--heading .h1 {
     margin: 0 auto;
     text-align: center;
   color: var(--color-text, var(--color-body, #2c2d2e));}

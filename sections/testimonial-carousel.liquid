@@ -46,7 +46,8 @@
       <div class="testimonials-exert">
         {%- if section_heading -%}
         <div class="testimonials--headings">
-          <h1>{{ section_heading }}</h1>
+          {%- assign tc_heading = section_heading | replace: '<h1>', '<h2 class="h1">' | replace: '<h1 ', '<h2 class="h1" ' | replace: '</h1>', '</h2>' -%}
+          {%- if tc_heading contains '<h' -%}{{ tc_heading }}{%- else -%}<h2 class="h1">{{ tc_heading }}</h2>{%- endif -%}
           {% if section.settings.text != blank %}
             <p>{{ section.settings.text }}</p>
           {% endif %}

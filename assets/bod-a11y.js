@@ -204,9 +204,28 @@
     el.click();
   });
 
+  /* ------------------------------------------------------------------ */
+  /* 4. Desktop navigation dropdowns                                     */
+  /*    The sub-menus open on :hover / :focus-within (CSS). Mirror that   */
+  /*    state on the trigger's aria-expanded so it is exposed to AT.      */
+  /* ------------------------------------------------------------------ */
+  function initMenuDropdowns() {
+    Array.prototype.forEach.call(document.querySelectorAll('.thb-full-menu li.menu-item-has-children'), function (li) {
+      if (li.__bodMenu) return;
+      li.__bodMenu = true;
+      var trigger = li.querySelector(':scope > a[aria-haspopup]');
+      if (!trigger) return;
+      var set = function (open) { trigger.setAttribute('aria-expanded', open ? 'true' : 'false'); };
+      li.addEventListener('mouseenter', function () { set(true); });
+      li.addEventListener('mouseleave', function () { set(li.contains(document.activeElement)); });
+      li.addEventListener('focusin', function () { set(true); });
+      li.addEventListener('focusout', function (e) { if (!li.contains(e.relatedTarget)) set(false); });
+    });
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () { initGroups(); initPanels(); });
+    document.addEventListener('DOMContentLoaded', function () { initGroups(); initPanels(); initMenuDropdowns(); });
   } else {
-    initGroups(); initPanels();
+    initGroups(); initPanels(); initMenuDropdowns();
   }
 })();

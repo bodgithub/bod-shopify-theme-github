@@ -59,3 +59,16 @@
   opacity: 1;
   text-decoration: underline;
 }
+
+/* Junip review-distribution bars (third-party widget): the clickable rows render
+   20px tall at a 22px pitch, under the 24px minimum target size (WCAG 2.5.8). */
+.junip-product-review-bar-wrapper[role="button"] {
+  min-height: 24px;
+  box-sizing: border-box;
+  align-items: center;
+}
+.junip-product-review-bar-wrapper[role="button"]:focus-visible {
+  outline: 2px solid #1b3def;
+  outline-offset: 2px;
+}
+

@@ -216,6 +216,7 @@
       ],
       "name": "Rich text",
       "settings": {
+        "demote_h1": true,
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
@@ -634,7 +635,7 @@
           "type": "custom_liquid",
           "name": "Product Title",
           "settings": {
-            "custom_liquid": "<div style=\"margin-top:-5px;\"><h1 style=\"font-weight:500 !important; color:#1a2874;\">Myo + D-Chiro Inositol Powder</h1></div>"
+            "custom_liquid": "<div style=\"margin-top:-5px;\"><h2 class=\"h1\" style=\"font-weight:500 !important; color:#1a2874;\">Myo + D-Chiro Inositol Powder</h2></div>"
           }
         },
         "bod_stars_TkJMcg": {
@@ -1285,6 +1286,7 @@
       ],
       "name": "Rich text",
       "settings": {
+        "demote_h1": true,
         "text_width": "large",
         "text_position": "center",
         "text_alignment": "center",
