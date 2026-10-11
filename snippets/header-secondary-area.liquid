@@ -53,8 +53,34 @@
 {% comment %}Add the Button to the Right, styled like the plan selector CTA, visible only on desktop {% endcomment %}
 <style>
 {% comment %} .bod-nav-cta intentionally has no overrides: the theme .button styles apply, so it matches the homepage hero banner button exactly (gradient, size, radius, font). {% endcomment %}
-.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount{padding-right:3px;}
-.thb-header-right .thb-secondary-area-item.thb-secondary-cart{padding-left:3px;}
+/* Account + cart icons sit in round outline buttons that fill on hover/focus */
+.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount,
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart{
+  width:40px;height:40px;flex:0 0 40px;padding:0;margin-left:8px;
+  border-radius:50%;border:1px solid rgba(27,61,239,0.4);background:transparent;
+  justify-content:center;align-items:center;
+  transition:background .2s ease,border-color .2s ease;
+}
+.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount:hover,
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart:hover,
+.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount:focus-visible,
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart:focus-visible{
+  background:#1b3def;border-color:#1b3def;
+}
+.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount:hover svg,
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart:hover svg,
+.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount:focus-visible svg,
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart:focus-visible svg{stroke:#fff;}
+.thb-header-right .thb-secondary-area-item.thb-secondary-myaccount:focus-visible,
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart:focus-visible{outline:2px solid #1b3def;outline-offset:3px;}
+.thb-header-right .thb-secondary-area-item.thb-secondary-cart .thb-secondary-item-icon{transform:none;display:flex;}
+.thb-header-right .thb-secondary-cart .thb-item-count{
+  top:-11px;right:-11px;width:18px;height:18px;
+  background:#1b3def;color:#fff;border:2px solid var(--color-header-bg,#f3eeea);
+  transition:background .2s ease,color .2s ease;
+}
+.thb-header-right .thb-secondary-cart:hover .thb-item-count,
+.thb-header-right .thb-secondary-cart:focus-visible .thb-item-count{background:#fff;color:#1b3def;border-color:#1b3def;}
 .thb-secondary-area .thb-item-count:empty{display:none !important;}
 </style>
 <a class="button desktop-only bod-nav-cta" href="{{ section.settings.button_url | default: '/products/myo-d-chiro-inositol-powder' }}"
