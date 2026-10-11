@@ -141,8 +141,13 @@
       panel.setAttribute('inert', '');
       if (!isDialog) return;
       setBackgroundInert(false);
-      if (opener && document.contains(opener) && typeof opener.focus === 'function') opener.focus({ preventScroll: true });
+      // Deferred: the theme's own Escape handler (one per <side-panel-close>) focuses
+      // the header cart link after this runs; restoring last wins, so wait a tick.
+      var target = opener;
       opener = null;
+      setTimeout(function () {
+        if (!isOpen && target && document.contains(target) && typeof target.focus === 'function') target.focus({ preventScroll: true });
+      }, 0);
     }
     function sync() { panel.classList.contains('active') ? onOpen() : onClose(); }
 
