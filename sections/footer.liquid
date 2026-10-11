@@ -216,6 +216,9 @@
           &copy; {{ 'now' | date: '%Y' }}
           {{ shop.name }}, {{ copyright_text }}
           {{ powered_by_link }}
+          {%- if section.settings.accessibility_link != blank and section.settings.accessibility_link_label != blank %}
+            &middot; <a href="{{ section.settings.accessibility_link }}" class="footer-accessibility-link">{{ section.settings.accessibility_link_label }}</a>
+          {%- endif %}
         </p>
         {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
           <div class="footer--follow-on-shop">
@@ -244,6 +247,23 @@
       "id": "copyright_text",
       "label": "Additional copyright text",
       "default": "All rights reserved."
+    },
+    {
+      "type": "header",
+      "content": "Accessibility statement link"
+    },
+    {
+      "type": "url",
+      "id": "accessibility_link",
+      "label": "Link",
+      "default": "/pages/accessibility",
+      "info": "Shown after the copyright line. Create the page in Online Store > Pages with the handle 'accessibility' and the 'accessibility' template."
+    },
+    {
+      "type": "text",
+      "id": "accessibility_link_label",
+      "label": "Link text",
+      "default": "Accessibility"
     },
     {
       "type": "checkbox",

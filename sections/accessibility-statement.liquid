@@ -1,0 +1,159 @@
+{%- comment -%}
+  Bodology · Accessibility statement (page section)
+  Used by templates/page.accessibility.json. Create a page in Shopify admin
+  (Online Store > Pages) with the handle "accessibility" and pick the
+  "accessibility" template; the footer links to /pages/accessibility.
+  Wording lives in the section settings so it can be edited without code.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign heading = s.heading | default: page.title
+  assign email = s.contact_email | default: 'jasmin@bodology.co'
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .a11y-statement { max-width: 760px; margin: 0 auto; padding: 40px 0 60px; }
+  #shopify-section-{{ section.id }} .a11y-statement h1 { margin-bottom: 0.75em; }
+  #shopify-section-{{ section.id }} .a11y-statement h2 { font-size: 1.5rem; margin: 1.6em 0 0.5em; }
+  #shopify-section-{{ section.id }} .a11y-statement p { margin: 0 0 1em; }
+  #shopify-section-{{ section.id }} .a11y-statement .a11y-statement__meta { font-size: 0.9375rem; }
+  #shopify-section-{{ section.id }} .a11y-statement a { text-decoration: underline; text-underline-offset: 2px; }
+</style>
+
+<div class="row">
+  <div class="small-12 columns">
+    <div class="a11y-statement rte">
+      <h1>{{ heading }}</h1>
+
+      {%- if s.intro != blank -%}{{ s.intro }}{%- endif -%}
+
+      <h2>{{ s.standard_heading | default: 'The standard we work to' }}</h2>
+      {{ s.standard_text }}
+
+      <h2>{{ s.reviewed_heading | default: 'Last reviewed' }}</h2>
+      <p class="a11y-statement__meta">
+        {{ s.reviewed_text | default: 'We last reviewed this store on' }} <strong>{{ s.last_reviewed }}</strong>.
+        {{ s.reviewed_method }}
+      </p>
+
+      {%- if s.third_party_text != blank -%}
+      <h2>{{ s.third_party_heading | default: 'Where we still have work to do' }}</h2>
+      {{ s.third_party_text }}
+      {%- endif -%}
+
+      <h2>{{ s.contact_heading | default: 'Found a barrier?' }}</h2>
+      <p>
+        {{ s.contact_text }}
+        <a href="mailto:{{ email }}">{{ email }}</a>.
+        {{ s.contact_detail }}
+      </p>
+      <p><strong>{{ s.response_promise }}</strong></p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Accessibility statement",
+  "tag": "section",
+  "class": "section section-accessibility-statement",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading (H1)",
+      "default": "Accessibility at Bodology"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>Every customer should be able to read about inositol, choose a plan and check out, whatever tools they use to browse. If something on this site gets in the way, we want to know.</p>"
+    },
+    {
+      "type": "text",
+      "id": "standard_heading",
+      "label": "Standard heading",
+      "default": "The standard we work to"
+    },
+    {
+      "type": "richtext",
+      "id": "standard_text",
+      "label": "Standard text",
+      "default": "<p>bodology.co is built to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA. In practice that means the store works with a keyboard alone, controls and images have names a screen reader can announce, text colours meet the minimum contrast, focus is always visible, and video has a pause control.</p>"
+    },
+    {
+      "type": "text",
+      "id": "reviewed_heading",
+      "label": "Reviewed heading",
+      "default": "Last reviewed"
+    },
+    {
+      "type": "text",
+      "id": "reviewed_text",
+      "label": "Reviewed lead-in",
+      "default": "We last reviewed this store on"
+    },
+    {
+      "type": "text",
+      "id": "last_reviewed",
+      "label": "Date last reviewed",
+      "default": "11 October 2026"
+    },
+    {
+      "type": "text",
+      "id": "reviewed_method",
+      "label": "How it was reviewed",
+      "default": "The review combined automated testing (axe-core, WCAG 2.2 A and AA rules) with manual keyboard and screen reader checks of the home page, product page and cart."
+    },
+    {
+      "type": "text",
+      "id": "third_party_heading",
+      "label": "Third-party heading",
+      "default": "Where we still have work to do"
+    },
+    {
+      "type": "richtext",
+      "id": "third_party_text",
+      "label": "Third-party text",
+      "default": "<p>Some parts of the store are run by third-party apps: customer reviews, the email sign-up form, subscription management and the checkout. We hold those providers to the same standard and raise issues with them, but we can't change their code ourselves.</p>"
+    },
+    {
+      "type": "text",
+      "id": "contact_heading",
+      "label": "Contact heading",
+      "default": "Found a barrier?"
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "label": "Contact lead-in",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "jasmin@bodology.co"
+    },
+    {
+      "type": "text",
+      "id": "contact_detail",
+      "label": "What to include",
+      "default": "Tell us which page you were on, what you were trying to do, and the browser or assistive technology you use."
+    },
+    {
+      "type": "text",
+      "id": "response_promise",
+      "label": "Response promise",
+      "default": "We reply to every accessibility report within 3 business days and tell you what we're doing about it."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Accessibility statement"
+    }
+  ]
+}
+{% endschema %}
