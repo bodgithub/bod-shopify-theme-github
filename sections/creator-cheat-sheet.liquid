@@ -257,11 +257,11 @@
                   {%- if vid != blank -%}
                     {%- if link != blank -%}
                       <a class="ccs__vtile" href="{{ link }}" target="_blank" rel="noopener" aria-label="Watch on TikTok or Instagram">
-                        {{ vid | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                        {%- capture bod_video -%}{{ vid | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
                       </a>
                     {%- else -%}
                       <div class="ccs__vtile">
-                        {{ vid | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+                        {%- capture bod_video -%}{{ vid | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
                       </div>
                     {%- endif -%}
                   {%- else -%}

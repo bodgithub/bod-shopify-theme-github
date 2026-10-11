@@ -149,7 +149,7 @@
 							endif
 						-%}
 						<div class="slideshow__slide-video-bg" data-provider="hosted" data-video-id="{{ video.id }}">
-							{{ video | video_tag: autoplay: autoplay, loop: true, controls: false, muted: true }}
+							{%- capture bod_video -%}{{ video | video_tag: autoplay: autoplay, loop: true, controls: false, muted: true }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
 						</div>
 					{%- endif -%}
 					<div class="slideshow__slide-overlay" style="background: {{ block.settings.overlay_gradient }}"></div>

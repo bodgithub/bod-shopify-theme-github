@@ -42,7 +42,7 @@
           <div class="collapsible-header-wrapper">
 			{% if section.settings.header_image %}
   <div class="collapsible-header-image">
-    <img src="{{ section.settings.header_image | img_url: 'master' }}" alt="Header Image">
+    <img src="{{ section.settings.header_image | img_url: 'master' }}" alt="{{ section.settings.header_image.alt | escape }}">
   </div>
 {% endif %}
           </div> 

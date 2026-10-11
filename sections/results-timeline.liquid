@@ -118,7 +118,10 @@
       <div class="rt-stage" data-rt-stage {{ block.shopify_attributes }}>
         <div class="rt-img">
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title | escape }}
+            {%- assign rt_alt = block.settings.title | default: block.settings.image.alt | strip -%}
+            {%- capture rt_img -%}{{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: rt_alt }}{%- endcapture -%}
+            {%- unless rt_img contains 'alt=' -%}{%- assign rt_img = rt_img | replace: '<img ', '<img alt="" ' -%}{%- endunless -%}
+            {{ rt_img }}
           {%- endif -%}
           {%- if section.settings.overlay_mode -%}
             <div class="rt-img__ov" style="--ov-grad: {{ block.settings.overlay_grad | default: '#1a2874' | color_modify: 'alpha', 0.85 }}; --ov-text: {{ block.settings.overlay_text | default: '#ffffff' }};">

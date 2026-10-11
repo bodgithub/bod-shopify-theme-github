@@ -46,8 +46,20 @@
         <figure class="toggle-box--image aspect-ratio aspect-ratio--{{ image_ratio }}" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
 
           
+          {%- liquid
+            assign image_link_label = block.settings.heading | strip_html | strip
+            if image_link_label == blank
+              assign image_link_label = block.settings.image.alt | strip
+            endif
+            if image_link_label == blank
+              assign image_link_label = block.settings.link_label | strip
+            endif
+          -%}
+
+
+          
           {%- if block.settings.image_link != blank -%}
-          <a href="{{ block.settings.image_link }}">
+          <a href="{{ block.settings.image_link }}"{% if image_link_label != blank %} aria-label="{{ image_link_label | escape }}"{% endif %}>
           {%- endif -%}
           {%- if block.settings.image -%}
             {%- liquid

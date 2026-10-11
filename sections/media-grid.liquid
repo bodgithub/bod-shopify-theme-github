@@ -39,7 +39,7 @@
 				<div class="media-grid--bg">
 					{%- if use_video -%}
 						{%- if video_hosted != blank -%}
-							{{ video_hosted | video_tag: autoplay: true, loop: true, controls: false, muted: true, image_size: '1280x' }}
+							{%- capture bod_video -%}{{ video_hosted | video_tag: autoplay: true, loop: true, controls: false, muted: true, image_size: '1280x' }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
 						{%- endif -%}
 					{%- elsif image != blank -%}
 						{%- liquid

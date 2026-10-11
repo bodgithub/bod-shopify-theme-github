@@ -65,7 +65,7 @@
             {%- endif -%}
           {%- endif -%}
         {%- else -%}
-          {{ video_hosted | video_tag: autoplay: true, loop: true, controls: false, muted: true }}
+          {%- capture bod_video -%}{{ video_hosted | video_tag: autoplay: true, loop: true, controls: false, muted: true }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
         {%- endif -%}
       </div>
       <div
@@ -136,7 +136,7 @@
                           ></iframe>
                         {%- endif -%}
                       {%- else -%}
-                        {{ video_hosted | video_tag: autoplay: false, loop: false, controls: true }}
+                        {%- capture bod_video -%}{{ video_hosted | video_tag: autoplay: false, loop: false, controls: true }}{%- endcapture -%}{{ bod_video | replace: '<img ', '<img alt="" ' }}
                       {%- endif -%}
                     </div>
                   </div>

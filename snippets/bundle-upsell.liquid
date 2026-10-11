@@ -50,7 +50,7 @@
 
 <div id="bu-{{ uid }}">
   {%- if s.image != blank -%}
-    <div class="bu-img">{{ s.image | image_url: width: 200 | image_tag: alt: s.title | default: 'Bundle', loading: 'lazy' }}</div>
+    <div class="bu-img">{{ s.image | image_url: width: 200 | image_tag: alt: s.image.alt | default: s.title | default: 'Bundle', loading: 'lazy' }}</div>
   {%- endif -%}
   <div class="bu-body">
     {%- if s.title != blank -%}<p class="bu-title">{{ s.title }}</p>{%- endif -%}
