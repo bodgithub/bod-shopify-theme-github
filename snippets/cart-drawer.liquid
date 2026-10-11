@@ -52,7 +52,8 @@
 #Cart-Drawer .product-cart-item-price ins{order:1;text-decoration:none;font-size:15px;font-weight:700;color:var(--bod-ink);}
 #Cart-Drawer .product-cart-item-price ins.is-free{color:var(--bod-blue);text-transform:uppercase;letter-spacing:0.02em;}
 #Cart-Drawer .product-cart-item-price .unit-price{display:none;}
-#Cart-Drawer .product-cart-item .remove{position:absolute;top:16px;right:20px;color:var(--bod-muted);opacity:.55;width:18px;height:18px;display:flex;align-items:center;justify-content:center;}
+#Cart-Drawer .product-cart-item .remove{position:absolute;top:13px;right:17px;color:var(--bod-muted);opacity:.55;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;margin:0;cursor:pointer;border-radius:6px;}
+#Cart-Drawer .product-cart-item .remove:focus-visible{opacity:1;outline:2px solid var(--bod-blue);outline-offset:1px;}
 #Cart-Drawer .product-cart-item .remove:hover{opacity:1;color:var(--bod-blue);}
 #Cart-Drawer .product-cart-item .remove svg{width:15px;height:15px;}
 #Cart-Drawer .bod-upgrade{grid-area:upg;margin:12px 0 0;width:100%;border:0;cursor:pointer;border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;color:#fff;background:var(--bod-grad);display:flex;align-items:center;justify-content:center;gap:8px;line-height:1;transition:filter .15s,transform .12s;box-shadow:0 6px 16px rgba(27,61,239,0.22);}
@@ -212,7 +213,7 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
                           
 
                       
-							<a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&amp;quantity=0" class="remove" data-index="{{ item.index | plus: 1 }}" data-key="{{ item.key | escape }}">{% render 'svg-icons' with 'trash' %}</a>
+							<button type="button" class="remove" data-index="{{ item.index | plus: 1 }}" data-key="{{ item.key | escape }}" aria-label="Remove {{ item.product.title | escape }}">{% render 'svg-icons' with 'trash' %}</button>
 						
                
                       </div>
@@ -333,7 +334,8 @@ body.open-cc #wrapper .click-capture{z-index:10000 !important;}
           {% endif %}
 					<div class="cart-drawer-buttons">
 						<form class="bod-discount" data-bod-discount novalidate>
-							<input type="text" name="discount" placeholder="YOURCODE" autocomplete="off" spellcheck="false">
+							<label for="CartDrawerDiscount" class="visually-hidden">Discount code</label>
+							<input type="text" id="CartDrawerDiscount" name="discount" placeholder="YOURCODE" autocomplete="off" spellcheck="false">
 							<button type="submit">Apply</button>
 						</form>
 						<div class="bod-discount-msg" style="display:none;"></div>
