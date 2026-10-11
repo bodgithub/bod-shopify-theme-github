@@ -190,6 +190,20 @@
 
   function initPanels() { Array.prototype.forEach.call(document.querySelectorAll('.side-panel'), initPanel); }
 
+  /* ------------------------------------------------------------------ */
+  /* 3. Non-native buttons                                               */
+  /*    Elements marked data-bod-key-click (carousel arrows rendered as  */
+  /*    <div role="button">, product thumbnails) activate on Enter/Space */
+  /*    exactly like a click.                                            */
+  /* ------------------------------------------------------------------ */
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+    var el = e.target;
+    if (!el || !el.hasAttribute || !el.hasAttribute('data-bod-key-click')) return;
+    e.preventDefault();
+    el.click();
+  });
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () { initGroups(); initPanels(); });
   } else {

@@ -108,8 +108,9 @@
           </div>
 
           <div class="carousel-controls">
-            <button class="prev">{% render 'svg-icons' with 'thb-caret-left' %}</button>
-            <button class="next">{% render 'svg-icons' with 'thb-caret-right' %}</button>
+            <button type="button" class="prev" aria-label="Previous slide">{% render 'svg-icons' with 'thb-caret-left' %}</button>
+            <button type="button" class="next" aria-label="Next slide">{% render 'svg-icons' with 'thb-caret-right' %}</button>
+            <span class="visually-hidden" aria-live="polite" data-tc-status></span>
           </div>
         </div>
 
@@ -519,6 +520,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector('.prev').disabled = index <= 0;
     document.querySelector('.next').disabled = index >= total - visible;
+
+    const status = carousel.querySelector('[data-tc-status]');
+    if (status) status.textContent = `Slide ${index + 1} of ${total}`;
   }
 
   // Toggle “top”/“bottom” classes and hide/show quote area

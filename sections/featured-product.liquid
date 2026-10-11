@@ -159,8 +159,8 @@
 								{%- assign gallery_slide_count = product.media.size -%}
 								{%- if custom_gallery_count > 0 -%}{%- assign gallery_slide_count = custom_gallery_count -%}{%- endif -%}
 								{%- if gallery_slide_count > 1 -%}
-								<div class="flickity-nav flickity-prev" tabindex="0">{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-prev' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-prev' -%}{%- endif -%}</div>
-								<div class="flickity-nav flickity-next" tabindex="0">{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-next' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-next' -%}{%- endif -%}</div>
+								<div class="flickity-nav flickity-prev" tabindex="0" role="button" aria-label="Previous slide" data-bod-key-click>{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-prev' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-prev' -%}{%- endif -%}</div>
+								<div class="flickity-nav flickity-next" tabindex="0" role="button" aria-label="Next slide" data-bod-key-click>{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-next' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-next' -%}{%- endif -%}</div>
 								{%- endif -%}
 			        </product-slider>
 							<scroll-shadow>

@@ -57,8 +57,8 @@
 									{%- endunless -%}
 			          {%- endfor -%}
 								{%- if product.media.size > 1 -%}
-								<div class="flickity-nav flickity-prev" tabindex="0">{%- render 'svg-icons' with 'carousel-prev' -%}</div>
-								<div class="flickity-nav flickity-next" tabindex="0">{%- render 'svg-icons' with 'carousel-next' -%}</div>
+								<div class="flickity-nav flickity-prev" tabindex="0" role="button" aria-label="Previous slide" data-bod-key-click>{%- render 'svg-icons' with 'carousel-prev' -%}</div>
+								<div class="flickity-nav flickity-next" tabindex="0" role="button" aria-label="Next slide" data-bod-key-click>{%- render 'svg-icons' with 'carousel-next' -%}</div>
 								{%- endif -%}
 			        </product-slider>
 							<scroll-shadow>

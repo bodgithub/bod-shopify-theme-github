@@ -44,6 +44,10 @@
 <div
   id="Thumb-{{ section.id }}-{{ media.id }}"
   class="product-thumbnail{% if is_active %} is-active{% endif %}{% if variant_images contains media.src %} product-images__slide-item--variant{% endif %}{% if is_selected %} is-initial-selected{% endif %}"
+  role="button"
+  tabindex="0"
+  data-bod-key-click
+  aria-label="Show {% if media.alt != blank %}{{ media.alt | escape }}{% else %}{{ product.title | escape }} {{ media.media_type | replace: '_', ' ' }}{% endif %}"
   {% if image_set %}
     data-set-name="{{ image_set_group }}"
     data-group="{{ image_set_full }}"

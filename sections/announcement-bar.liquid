@@ -70,8 +70,8 @@
 							</div>
 						{%- endfor -%}
 						{%- if section.blocks.size > 1 -%}
-						<div class="flickity-nav flickity-prev" tabindex="0">{% render 'svg-icons' with 'thb-caret-left' %}</div>
-						<div class="flickity-nav flickity-next" tabindex="0">{% render 'svg-icons' with 'thb-caret-right' %}</div>
+						<div class="flickity-nav flickity-prev" tabindex="0" role="button" aria-label="Previous slide" data-bod-key-click>{% render 'svg-icons' with 'thb-caret-left' %}</div>
+						<div class="flickity-nav flickity-next" tabindex="0" role="button" aria-label="Next slide" data-bod-key-click>{% render 'svg-icons' with 'thb-caret-right' %}</div>
 						{%- endif -%}
 					</slide-show>
 				{%- endif -%}
