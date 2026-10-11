@@ -411,6 +411,10 @@
   .star-rating span {
     font-size: 0.75rem;
     margin-left: 8px; }
+  .product-card .star-rating span {
+    /* footer.css has a global .column { color: white } rule that leaks into the
+       collection grid's li.column and turned the rating number white (1.04:1) */
+    color: var(--color-body, #2c2d2e); }
 
 .rating {
   display: inline-block;
