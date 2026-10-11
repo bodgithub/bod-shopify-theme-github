@@ -17,7 +17,6 @@
   #shopify-section-{{ section.id }} .a11y-statement h1 { margin-bottom: 0.75em; }
   #shopify-section-{{ section.id }} .a11y-statement h2 { font-size: 1.5rem; margin: 1.6em 0 0.5em; }
   #shopify-section-{{ section.id }} .a11y-statement p { margin: 0 0 1em; }
-  #shopify-section-{{ section.id }} .a11y-statement .a11y-statement__meta { font-size: 0.9375rem; }
   #shopify-section-{{ section.id }} .a11y-statement a { text-decoration: underline; text-underline-offset: 2px; }
 </style>
 
@@ -32,7 +31,7 @@
       {{ s.standard_text }}
 
       <h2>{{ s.reviewed_heading | default: 'Last reviewed' }}</h2>
-      <p class="a11y-statement__meta">
+      <p>
         {{ s.reviewed_text | default: 'We last reviewed this store on' }} <strong>{{ s.last_reviewed }}</strong>.
         {{ s.reviewed_method }}
       </p>
