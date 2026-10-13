@@ -1,0 +1,741 @@
+{%- comment -%}
+  BODOLOGY · Clinical study carousel
+  Condensed, swipeable version of the clinical study landing pages
+  (study-overview-table + clinical-results-stats), one study per card.
+  Same design language: cream background, tenon, bordered rounded cards
+  with a tinted title bar, outlined badge, giant accent stat, attribute
+  chips. Each card links to the published study and to the full
+  breakdown page. Disclaimer sits under the track on every render.
+  Mobile: one card per view. Tablet: two. Desktop: three.
+  Arrows + dots; scroll-snap; keyboard-reachable; reduced-motion aware.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign studies = section.blocks | where: 'type', 'study'
+  assign gap = 16
+-%}
+
+{% style %}
+  #shopify-section-{{ section.id }} .csc {
+    background: {{ s.bg_color }};
+    padding: {{ s.padding_top_mobile }}px 0 {{ s.padding_bottom_mobile }}px;
+    font-family: "tenon", sans-serif;
+    color: {{ s.text_color }};
+    scroll-margin-top: 96px;
+  }
+  #shopify-section-{{ section.id }} .csc__pw {
+    max-width: {{ s.page_width }}px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  #shopify-section-{{ section.id }} .csc__head { text-align: center; margin-bottom: 24px; }
+  #shopify-section-{{ section.id }} .csc__eyebrow {
+    display: inline-block;
+    background: {{ s.title_bg }};
+    color: {{ s.text_color }};
+    border: 1px solid {{ s.accent_color }};
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 0 0 14px;
+  }
+  #shopify-section-{{ section.id }} .csc__heading {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+    color: {{ s.heading_color }};
+  }
+  #shopify-section-{{ section.id }} .csc__subtext {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 12px auto 0;
+    max-width: 62ch;
+  }
+
+  #shopify-section-{{ section.id }} .csc__track {
+    display: flex;
+    gap: {{ gap }}px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0;
+  }
+  #shopify-section-{{ section.id }} .csc__track::-webkit-scrollbar { display: none; }
+  #shopify-section-{{ section.id }} .csc__track:focus-visible {
+    outline: 2px solid {{ s.accent_color }};
+    outline-offset: 4px;
+  }
+  #shopify-section-{{ section.id }} .csc__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+    display: flex;
+  }
+  #shopify-section-{{ section.id }} .csc__card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid {{ s.accent_color }};
+    border-radius: 16px;
+    overflow: hidden;
+    background: {{ s.card_bg }};
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  }
+  #shopify-section-{{ section.id }} .csc__title {
+    background: {{ s.title_bg }};
+    border-bottom: 1px solid {{ s.accent_color }};
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    padding: 12px 16px;
+    text-align: center;
+    color: {{ s.text_color }};
+  }
+  #shopify-section-{{ section.id }} .csc__body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 20px 18px 22px;
+  }
+  #shopify-section-{{ section.id }} .csc__badge {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    border: 1px solid {{ s.accent_color }};
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: {{ s.accent_color }};
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .csc__bignum {
+    margin: 12px 0 0;
+    color: {{ s.accent_color }};
+    font-size: 56px;
+    line-height: 1.05;
+    font-weight: 500;
+  }
+  #shopify-section-{{ section.id }} .csc__bigcaption {
+    margin: 8px 0 0;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
+  #shopify-section-{{ section.id }} .csc__stat2 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 16px 0 0;
+    padding: 12px 14px;
+    border: 1px solid {{ s.accent_color }}b3;
+    border-radius: 12px;
+  }
+  #shopify-section-{{ section.id }} .csc__stat2-num {
+    color: {{ s.accent_color }};
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 500;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .csc__stat2-text { margin: 0; font-size: 14px; line-height: 1.4; }
+  #shopify-section-{{ section.id }} .csc__bg {
+    margin: 16px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  #shopify-section-{{ section.id }} .csc__chips {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 14px 0 0;
+    padding: 0;
+  }
+  #shopify-section-{{ section.id }} .csc__chip {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    border: 1px solid {{ s.accent_color }};
+    color: inherit;
+    background: transparent;
+  }
+  #shopify-section-{{ section.id }} .csc__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 20px;
+  }
+  #shopify-section-{{ section.id }} .csc__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    border: 1px solid {{ s.accent_color }};
+    background: {{ s.title_bg }};
+    color: {{ s.accent_color }};
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .3s, color .3s;
+  }
+  #shopify-section-{{ section.id }} .csc__link:hover,
+  #shopify-section-{{ section.id }} .csc__link:focus-visible {
+    background: {{ s.accent_color }};
+    color: {{ s.bg_color }};
+  }
+  #shopify-section-{{ section.id }} .csc__link--ghost { background: transparent; }
+  #shopify-section-{{ section.id }} .csc__link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+  #shopify-section-{{ section.id }} .csc__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+  }
+  #shopify-section-{{ section.id }} .csc__arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid {{ s.accent_color }};
+    background: transparent;
+    color: {{ s.accent_color }};
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color .3s, color .3s, opacity .3s;
+  }
+  #shopify-section-{{ section.id }} .csc__arrow svg { width: 18px; height: 18px; }
+  #shopify-section-{{ section.id }} .csc__arrow:hover,
+  #shopify-section-{{ section.id }} .csc__arrow:focus-visible {
+    background: {{ s.accent_color }};
+    color: {{ s.bg_color }};
+  }
+  #shopify-section-{{ section.id }} .csc__arrow[disabled] { opacity: .35; cursor: default; }
+  #shopify-section-{{ section.id }} .csc__arrow[disabled]:hover { background: transparent; color: {{ s.accent_color }}; }
+  #shopify-section-{{ section.id }} .csc__dots {
+    display: flex;
+    column-gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #shopify-section-{{ section.id }} .csc__dot {
+    height: 14px;
+    width: 14px;
+    border: 1px solid {{ s.accent_color }};
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    font-size: 0;
+  }
+  #shopify-section-{{ section.id }} .csc__dot[aria-selected="true"] { background: {{ s.accent_color }}; }
+  #shopify-section-{{ section.id }} .csc__dot:focus-visible { outline: 2px solid {{ s.accent_color }}; outline-offset: 2px; }
+
+  #shopify-section-{{ section.id }} .csc__disclaimer {
+    margin: 28px auto 0;
+    max-width: 80ch;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  #shopify-section-{{ section.id }} .csc__disclaimer p { margin: 0 0 8px; }
+  #shopify-section-{{ section.id }} .csc__disclaimer p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ section.id }} .csc__disclaimer a { color: inherit; }
+  #shopify-section-{{ section.id }} .csc__cta-wrap { text-align: center; margin-top: 24px; }
+  #shopify-section-{{ section.id }} .csc__cta {
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: 1px solid {{ s.accent_color }};
+    background: {{ s.accent_color }};
+    color: {{ s.bg_color }};
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .3s, color .3s;
+  }
+  #shopify-section-{{ section.id }} .csc__cta:hover,
+  #shopify-section-{{ section.id }} .csc__cta:focus-visible {
+    background: {{ s.title_bg }};
+    color: {{ s.accent_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .csc {
+      padding: {{ s.padding_top_desktop }}px 0 {{ s.padding_bottom_desktop }}px;
+    }
+    #shopify-section-{{ section.id }} .csc__heading { font-size: 44px; }
+    #shopify-section-{{ section.id }} .csc__subtext { font-size: 17px; }
+    #shopify-section-{{ section.id }} .csc__slide { flex-basis: calc((100% - {{ gap }}px) / 2); }
+    #shopify-section-{{ section.id }} .csc__title { font-size: 20px; }
+    #shopify-section-{{ section.id }} .csc__bignum { font-size: 64px; }
+    #shopify-section-{{ section.id }} .csc__disclaimer { font-size: 13px; }
+  }
+  @media screen and (min-width: 1100px) {
+    #shopify-section-{{ section.id }} .csc__slide { flex-basis: calc((100% - {{ gap | times: 2 }}px) / 3); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .csc__track { scroll-behavior: auto; }
+  }
+{% endstyle %}
+
+<section class="csc" id="{{ s.anchor | remove: '#' | default: section.id }}" aria-labelledby="csc-heading-{{ section.id }}">
+  <div class="csc__pw">
+    <header class="csc__head">
+      {%- if s.eyebrow != blank -%}
+        <p class="csc__eyebrow">{{ s.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="csc__heading" id="csc-heading-{{ section.id }}">{{ s.heading }}</h2>
+      {%- if s.subtext != blank -%}
+        <p class="csc__subtext">{{ s.subtext }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if studies.size > 0 -%}
+      <div
+        class="csc__track"
+        data-csc-track
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="{{ s.heading | strip_html | escape }}"
+        tabindex="0"
+      >
+        {%- for block in studies -%}
+          {%- assign b = block.settings -%}
+          <div
+            class="csc__slide"
+            data-csc-slide
+            role="group"
+            aria-roledescription="slide"
+            aria-label="Study {{ forloop.index }} of {{ studies.size }}"
+            {{ block.shopify_attributes }}
+          >
+            <article class="csc__card">
+              {%- if b.title != blank -%}
+                <h3 class="csc__title">{{ b.title }}</h3>
+              {%- endif -%}
+              <div class="csc__body">
+                {%- if b.badge_text != blank -%}
+                  <p class="csc__badge">{{ b.badge_text }}</p>
+                {%- endif -%}
+                {%- if b.big_stat != blank -%}
+                  <p class="csc__bignum">{{ b.big_stat }}</p>
+                {%- endif -%}
+                {%- if b.big_stat_caption != blank -%}
+                  <p class="csc__bigcaption">{{ b.big_stat_caption }}</p>
+                {%- endif -%}
+                {%- if b.stat2_value != blank and b.stat2_text != blank -%}
+                  <div class="csc__stat2">
+                    <span class="csc__stat2-num">{{ b.stat2_value }}</span>
+                    <p class="csc__stat2-text">{{ b.stat2_text }}</p>
+                  </div>
+                {%- endif -%}
+                {%- if b.background_text != blank -%}
+                  <p class="csc__bg">{{ b.background_text }}</p>
+                {%- endif -%}
+                {%- if b.attributes != blank -%}
+                  {%- assign chips = b.attributes | split: ',' -%}
+                  <ul class="csc__chips" aria-label="Study attributes">
+                    {%- for chip in chips -%}
+                      {%- assign chip_text = chip | strip -%}
+                      {%- if chip_text != blank -%}
+                        <li class="csc__chip">{{ chip_text }}</li>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+                {%- if b.study_url != blank or b.page_url != blank -%}
+                  <div class="csc__links">
+                    {%- if b.study_url != blank -%}
+                      <a class="csc__link" href="{{ b.study_url }}" target="_blank" rel="noopener">
+                        {{ b.study_label | default: 'Read the study' }}
+                        <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M3 1h8v8M11 1 1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <span class="visually-hidden">(opens in a new tab)</span>
+                      </a>
+                    {%- endif -%}
+                    {%- if b.page_url != blank -%}
+                      <a class="csc__link csc__link--ghost" href="{{ b.page_url }}">{{ b.page_label | default: 'See the full breakdown' }}</a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </article>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if studies.size > 1 -%}
+        <div class="csc__controls">
+          <button type="button" class="csc__arrow" data-csc-prev aria-label="Previous study">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ol class="csc__dots" data-csc-dots>
+            {%- for block in studies -%}
+              <li>
+                <button
+                  type="button"
+                  class="csc__dot"
+                  aria-label="Go to study {{ forloop.index }} of {{ studies.size }}"
+                  data-csc-dot="{{ forloop.index0 }}"
+                  {% if forloop.first %}aria-selected="true"{% endif %}
+                >{{ forloop.index }}</button>
+              </li>
+            {%- endfor -%}
+          </ol>
+          <button type="button" class="csc__arrow" data-csc-next aria-label="Next study">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if s.disclaimer != blank -%}
+      <div class="csc__disclaimer">{{ s.disclaimer }}</div>
+    {%- endif -%}
+
+    {%- if s.cta_label != blank and s.cta_url != blank -%}
+      <p class="csc__cta-wrap">
+        <a class="csc__cta" href="{{ s.cta_url }}">{{ s.cta_label }}</a>
+      </p>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    function initSection() {
+      var root = document.getElementById('shopify-section-{{ section.id }}');
+      if (!root || root.dataset.cscInit === 'true') return;
+      root.dataset.cscInit = 'true';
+
+      var track = root.querySelector('[data-csc-track]');
+      if (!track) return;
+      var slides = track.querySelectorAll('[data-csc-slide]');
+      var dots = root.querySelectorAll('[data-csc-dot]');
+      var prev = root.querySelector('[data-csc-prev]');
+      var next = root.querySelector('[data-csc-next]');
+      if (slides.length < 2) return;
+
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var gap = {{ gap }};
+
+      function slideWidth() { return slides[0].offsetWidth + gap; }
+      function perView() { return Math.max(1, Math.round((track.clientWidth + gap) / slideWidth())); }
+      function maxIndex() { return Math.max(0, slides.length - perView()); }
+      function current() { return Math.min(Math.round(track.scrollLeft / slideWidth()), slides.length - 1); }
+
+      function goTo(i) {
+        i = Math.max(0, Math.min(i, slides.length - 1));
+        track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: reduce ? 'auto' : 'smooth' });
+      }
+      function render() {
+        var i = current();
+        dots.forEach(function (d, j) {
+          if (j === i) d.setAttribute('aria-selected', 'true');
+          else d.removeAttribute('aria-selected');
+        });
+        if (prev) prev.disabled = i <= 0;
+        if (next) next.disabled = i >= maxIndex();
+      }
+
+      if (prev) prev.addEventListener('click', function () { goTo(current() - 1); });
+      if (next) next.addEventListener('click', function () { goTo(current() + 1); });
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          goTo(parseInt(dot.getAttribute('data-csc-dot'), 10));
+        });
+      });
+      track.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current() + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current() - 1); }
+      });
+
+      var ticking = false;
+      track.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () { ticking = false; render(); });
+      }, { passive: true });
+      window.addEventListener('resize', render);
+      render();
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSection);
+    } else {
+      initSection();
+    }
+    if (typeof window.Shopify !== 'undefined' && window.Shopify.designMode) {
+      document.addEventListener('shopify:section:load', function (e) {
+        if (e.detail && e.detail.sectionId === '{{ section.id }}') {
+          var root = document.getElementById('shopify-section-{{ section.id }}');
+          if (root) root.dataset.cscInit = '';
+          initSection();
+        }
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Clinical study carousel",
+  "tag": "section",
+  "class": "section-clinical-study-carousel",
+  "disabled_on": {
+    "groups": ["header", "footer", "aside"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor ID",
+      "info": "Optional. Lets links jump straight to this section, e.g. studies."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The research"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What the studies found"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer (always shown)",
+      "info": "Keep the FDA line and the 'independent research, not of Bodology' line here.",
+      "default": "<p>These are independent, published studies of inositol. They did not use Bodology® Inositol, and they are not a promise of what you'll experience.</p><p>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Read the studies in full"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background",
+      "default": "#F2EEEA"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1A2874"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#1B3DEF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent (stats, borders, buttons)",
+      "default": "#3447AF"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "title_bg",
+      "label": "Card title bar / pill background",
+      "default": "#E3E7FF"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "page_width",
+      "label": "Max content width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "study",
+      "name": "Study",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card title",
+          "default": "Study 1 — [Outcome]"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge",
+          "default": "MYO + D-CHIRO INOSITOL"
+        },
+        {
+          "type": "text",
+          "id": "big_stat",
+          "label": "Big stat",
+          "default": "XX%"
+        },
+        {
+          "type": "text",
+          "id": "big_stat_caption",
+          "label": "Big stat caption",
+          "default": "of participants reported [outcome]*†"
+        },
+        {
+          "type": "text",
+          "id": "stat2_value",
+          "label": "Second stat (optional)"
+        },
+        {
+          "type": "text",
+          "id": "stat2_text",
+          "label": "Second stat text"
+        },
+        {
+          "type": "textarea",
+          "id": "background_text",
+          "label": "Study background",
+          "default": "[Who was studied, how, and by whom (Author et al., year).]†"
+        },
+        {
+          "type": "text",
+          "id": "attributes",
+          "label": "Attribute chips",
+          "info": "Comma-separated, e.g. 42 women with PCOS, Double-blind, Randomized",
+          "default": "Randomized, Placebo-controlled"
+        },
+        {
+          "type": "header",
+          "content": "Links"
+        },
+        {
+          "type": "url",
+          "id": "study_url",
+          "label": "Published study link",
+          "info": "PubMed or DOI link. Opens in a new tab."
+        },
+        {
+          "type": "text",
+          "id": "study_label",
+          "label": "Study link label",
+          "default": "Read the study"
+        },
+        {
+          "type": "url",
+          "id": "page_url",
+          "label": "Full breakdown link",
+          "info": "Usually the clinical study page, with the study's anchor."
+        },
+        {
+          "type": "text",
+          "id": "page_label",
+          "label": "Full breakdown label",
+          "default": "See the full breakdown"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clinical study carousel",
+      "blocks": [
+        { "type": "study" },
+        { "type": "study" },
+        { "type": "study" }
+      ]
+    }
+  ]
+}
+{% endschema %}
