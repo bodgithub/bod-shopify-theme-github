@@ -124,6 +124,15 @@
     function initialFocusTarget() {
       return panel.querySelector('[id$="Heading"][tabindex="-1"]') || focusables()[0] || panel;
     }
+    // App overlays (Klaviyo sign-up popups, chat widgets) mount on <body>, outside
+    // the theme's #wrapper. They must stay usable while the drawer is open, so
+    // focus inside them is never pulled back into the dialog.
+    function isExternalOverlay(el) {
+      if (!el || el === document.body || el === document.documentElement) return false;
+      var wrapper = document.getElementById('wrapper');
+      if (wrapper && !wrapper.contains(el)) return true;
+      return !!(el.closest && el.closest('.klaviyo-form, [class*="klaviyo"], [class*="kl-private"], [id^="klaviyo"], .needsclick'));
+    }
     function onOpen() {
       if (isOpen) return;
       isOpen = true;
@@ -132,7 +141,7 @@
       opener = (lastOutsideFocus && document.contains(lastOutsideFocus)) ? lastOutsideFocus : document.getElementById('cart-drawer-toggle');
       setBackgroundInert(true);
       setTimeout(function () {
-        if (isOpen && !panel.contains(document.activeElement)) initialFocusTarget().focus({ preventScroll: true });
+        if (isOpen && !panel.contains(document.activeElement) && !isExternalOverlay(document.activeElement)) initialFocusTarget().focus({ preventScroll: true });
       }, 60);
     }
     function onClose() {
@@ -159,6 +168,7 @@
         new MutationObserver(function () {
           if (!isOpen) return;
           var a = document.activeElement;
+          if (isExternalOverlay(a)) return;
           if (!a || a === document.body || !panel.contains(a)) initialFocusTarget().focus({ preventScroll: true });
         }).observe(panel, { childList: true });
       }
@@ -166,6 +176,7 @@
     if (isDialog) {
       panel.addEventListener('keydown', function (e) {
         if (!isOpen || e.key !== 'Tab') return;
+        if (isExternalOverlay(document.activeElement)) return;
         var f = focusables();
         if (!f.length) { e.preventDefault(); initialFocusTarget().focus(); return; }
         var first = f[0], last = f[f.length - 1], a = document.activeElement;
@@ -175,7 +186,7 @@
       });
       // Focus that escapes the dialog (e.g. via a browser shortcut) is pulled back in.
       document.addEventListener('focusin', function (e) {
-        if (isOpen && !panel.contains(e.target) && e.target !== document.body) initialFocusTarget().focus({ preventScroll: true });
+        if (isOpen && !panel.contains(e.target) && e.target !== document.body && !isExternalOverlay(e.target)) initialFocusTarget().focus({ preventScroll: true });
       });
     }
     sync();
