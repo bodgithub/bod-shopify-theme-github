@@ -1,594 +1,167 @@
+{%- comment -%}
+  Bodology cart drawer.
+  Liquid emits one JSON blob (cart + per-line metafields + theme settings) and an
+  empty root. assets/cart-drawer.js builds the cart state from it and renders the
+  chosen design (A/B/C). Every price and % the drawer shows comes from the cart
+  object Shopify returns - nothing is hardcoded here.
 
+  The #Cart-Drawer element, .cart-drawer class and <side-panel-close> wrapper are
+  relied on by the theme's CartDrawer class (assets/app.js), which refetches this
+  section after add-to-cart and replaces #Cart-Drawer's children. The JS watches
+  for that and re-renders from the fresh JSON.
+{%- endcomment -%}
 {%- if settings.cart_drawer -%}
 {%- liquid
-	assign free_shipping = settings.free_shipping
-	assign free_shipping_minimum = settings.free_shipping_minimum | times: 100
-	assign total = cart.total_price
-	assign shadow_class = 'has-shadow--' | append: settings.block_shadows
+  assign shadow_class = 'has-shadow--' | append: settings.block_shadows
+  assign protocol = settings.bcd_protocol_product
+  assign free_shipping_minimum = settings.free_shipping_minimum | default: '0' | times: 100
+  assign empty_url = settings.bcd_empty_url | default: routes.all_products_collection_url
 -%}
-{%- comment -%} Bodology cart drawer styling {%- endcomment -%}
-<style>
-#Cart-Drawer{--bod-blue:#1b3def;--bod-ink:#1a1a14;--bod-muted:#6a6e7a;--bod-line:rgba(20,40,120,0.12);--bod-sand:#f7f5f1;--bod-grad:linear-gradient(110deg,#0e2160 0%,#1b3def 62%,#0a95ef 130%);color:var(--bod-ink);}
-#Cart-Drawer *{box-sizing:border-box;}
-#Cart-Drawer .side-panel-header{padding:12px 22px 8px;}
-#Cart-Drawer .side-panel-header > div{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:0 !important;padding:5px !important;}
-#Cart-Drawer .side-panel-header .h6{font-size:14px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--bod-ink);margin:0;}
-#Cart-Drawer .side-panel-header .h6 sup{font-size:10px;font-weight:700;color:var(--bod-blue);top:-0.5em;margin-left:2px;}
-#Cart-Drawer .side-panel-close{cursor:pointer;color:var(--bod-ink);opacity:.65;display:flex;}
-#Cart-Drawer .side-panel-close:hover{opacity:1;}
-#Cart-Drawer .side-panel-close svg{width:15px;height:15px;}
-#Cart-Drawer .side-panel-close__button{display:flex;align-items:center;justify-content:center;background:none;border:0;padding:6px;margin:-6px;cursor:pointer;color:inherit;border-radius:6px;}
-#Cart-Drawer .side-panel-close__button:focus-visible{outline:2px solid var(--bod-blue);outline-offset:2px;}
-#Cart-Drawer .side-panel-header .h6:focus{outline:none;}
-#Cart-Drawer .side-panel-header .h6:focus-visible{outline:2px solid var(--bod-blue);outline-offset:4px;border-radius:2px;}
-#Cart-Drawer .side-panel-content{padding:0;}
-#Cart-Drawer .free-shipping{display:flex;flex-direction:column-reverse;gap:8px;padding:6px 22px 16px;margin:0;}
-#Cart-Drawer .free-shipping--bar{height:9px;border-radius:999px;background:var(--bod-line);overflow:hidden;}
-#Cart-Drawer .free-shipping--percentage{background:var(--bod-grad);border-radius:999px;}
-#Cart-Drawer .free-shipping--text{text-align:center;font-size:12.5px;font-weight:600;color:var(--bod-ink);line-height:1.3;}
-#Cart-Drawer .free-shipping--text-full{color:var(--bod-blue);}
-#Cart-Drawer .product-cart-item--container{padding:0;display:flex;flex-direction:column;}
-#Cart-Drawer .product-cart-item--container > .free-shipping{order:0;}
-#Cart-Drawer .product-cart-item{order:1;}
-#Cart-Drawer .product-cart-item.is-gift{order:2;}
-#Cart-Drawer .product-cart-item .quantity.cart-update,#Cart-Drawer .product-cart-item quantity-selector.quantity{display:none !important;}
-#Cart-Drawer .product-cart-item{position:relative;display:grid;grid-template-columns:72px minmax(0,1fr) auto;grid-template-areas:"img info price" "upg upg upg";column-gap:14px;align-items:start;padding:18px 22px;margin:0;border-bottom:1px solid var(--bod-line);border-top:0;}
-#Cart-Drawer .product-cart-item-image{grid-area:img;width:72px;height:72px;}
-#Cart-Drawer .product-cart-item-image img{width:72px;height:72px;object-fit:cover;border-radius:12px;background:var(--bod-sand);}
-#Cart-Drawer .product-cart-item-info{grid-area:info;display:flex;flex-direction:column;gap:6px;min-width:0;padding:0;}
-#Cart-Drawer .cart-product-link{font-size:14.5px;font-weight:700;line-height:1.22;color:var(--bod-ink);text-decoration:none;padding-right:24px;}
-#Cart-Drawer .product-cart-item-info > .price{display:none;}
-#Cart-Drawer .selling-plan,#Cart-Drawer .product-cart-item-options{font-size:12.5px;color:var(--bod-muted);opacity:1;line-height:1.3;margin:0;}
-#Cart-Drawer .properties{margin:0;}
-#Cart-Drawer .quantity.cart-update{position:relative;display:inline-flex !important;align-items:center;justify-content:flex-start;gap:0;border:0;border-radius:999px;padding:2px;width:auto;max-width:none;height:34px;margin-top:3px;background:#fff;}
-#Cart-Drawer .quantity.cart-update button{position:static !important;inset:auto !important;transform:none !important;flex:0 0 28px;width:28px !important;height:28px !important;min-width:28px;border:0;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--bod-ink);border-radius:50%;padding:0;margin:0;}
-#Cart-Drawer .quantity.cart-update button:hover{background:var(--bod-sand);}
-#Cart-Drawer .quantity.cart-update button svg{width:11px;height:11px;}
-#Cart-Drawer .quantity.cart-update input{position:static !important;inset:auto !important;flex:0 0 34px;width:34px !important;min-width:34px;height:auto !important;border:0;text-align:center;font-size:14px;font-weight:600;background:transparent;padding:0;margin:0;-moz-appearance:textfield;}
-#Cart-Drawer .quantity.cart-update input::-webkit-outer-spin-button,#Cart-Drawer .quantity.cart-update input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
-#Cart-Drawer .product-cart-item-price{grid-area:price;align-self:end;text-align:right;padding:0;}
-#Cart-Drawer .product-cart-item-price .price{display:flex;flex-direction:row;align-items:baseline;gap:6px;justify-content:flex-end;}
-#Cart-Drawer .product-cart-item-price del{order:2;font-size:13px;color:#676b79;text-decoration:line-through;}
-#Cart-Drawer .product-cart-item-price ins{order:1;text-decoration:none;font-size:15px;font-weight:700;color:var(--bod-ink);}
-#Cart-Drawer .product-cart-item-price ins.is-free{color:var(--bod-blue);text-transform:uppercase;letter-spacing:0.02em;}
-#Cart-Drawer .product-cart-item-price .unit-price{display:none;}
-#Cart-Drawer .product-cart-item .remove{position:absolute;top:13px;right:17px;color:var(--bod-muted);opacity:.55;width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:none;border:0;padding:0;margin:0;cursor:pointer;border-radius:6px;}
-#Cart-Drawer .product-cart-item .remove:focus-visible{opacity:1;outline:2px solid var(--bod-blue);outline-offset:1px;}
-#Cart-Drawer .product-cart-item .remove:hover{opacity:1;color:var(--bod-blue);}
-#Cart-Drawer .product-cart-item .remove svg{width:15px;height:15px;}
-#Cart-Drawer .bod-upgrade{grid-area:upg;margin:12px 0 0;width:100%;border:0;cursor:pointer;border-radius:10px;padding:11px 14px;font-size:13px;font-weight:700;color:#fff;background:var(--bod-grad);display:flex;align-items:center;justify-content:center;gap:8px;line-height:1;transition:filter .15s,transform .12s;box-shadow:0 6px 16px rgba(27,61,239,0.22);}
-#Cart-Drawer .bod-upgrade:hover{filter:brightness(1.08);}
-#Cart-Drawer .bod-upgrade:active{transform:translateY(1px);}
-#Cart-Drawer .bod-upgrade.is-loading{opacity:.55;pointer-events:none;}
-#Cart-Drawer .bod-upgrade svg{width:14px;height:14px;flex:0 0 auto;}
-#Cart-Drawer .side-panel-footer{padding:0;border-top:1px solid var(--bod-line);}
-#Cart-Drawer .cart-drawer-footer{padding:18px 22px 80px;}
-#Cart-Drawer .collaterals{width:100%;margin:0 0 14px;border:0;}
-#Cart-Drawer .collaterals th,#Cart-Drawer .collaterals td{border:0;padding:2px 0;}
-#Cart-Drawer .cart-total th{font-size:15px;font-weight:700;text-align:left;color:var(--bod-ink);vertical-align:top;}
-#Cart-Drawer .cart-total td{text-align:right;font-size:18px;font-weight:700;color:var(--bod-ink);vertical-align:top;}
-#Cart-Drawer .cart-policy-text{font-size:11px;font-weight:400;color:var(--bod-muted);margin:3px 0 0;}
-#Cart-Drawer .cart-discount th{font-size:13px;font-weight:600;color:var(--bod-blue);text-align:left;}
-#Cart-Drawer .cart-discount td{font-size:13px;color:var(--bod-blue);text-align:right;}
-#Cart-Drawer .cart-drawer-buttons{display:flex;flex-direction:column;gap:10px;margin:0;}
-#Cart-Drawer .cart-drawer-buttons form{margin:0;width:100%;}
-#Cart-Drawer .cart-drawer-buttons .button{width:100%;margin:0 !important;border-radius:12px !important;padding:16px 22px !important;font-size:16px !important;font-weight:700 !important;letter-spacing:0;text-transform:none;border:0 !important;}
-#Cart-Drawer .cart-drawer-buttons .button.checkout,#Cart-Drawer .cart-drawer-buttons .button.accent{background:var(--bod-grad) !important;color:#fff !important;box-shadow:0 10px 26px rgba(27,61,239,0.26);}
-#Cart-Drawer .cart-drawer-buttons .button.checkout:hover{filter:brightness(1.06);}
-#Cart-Drawer .cart-drawer-buttons .button:not(.checkout):not(.accent){background:#fff !important;color:var(--bod-blue) !important;border:1px solid var(--bod-line) !important;}
-#Cart-Drawer .cart-drawer__empty-cart .button.accent2{background:var(--bod-grad) !important;color:#fff !important;border-radius:12px !important;}
-#Cart-Drawer .bod-discount{display:flex;gap:8px;width:100%;margin:0;}
-#Cart-Drawer .bod-discount input{flex:1 1 auto;min-width:0;border:1px solid var(--bod-line);border-radius:10px;padding:12px 14px;font-size:14px;color:var(--bod-ink);background:#fff;}
-#Cart-Drawer .bod-discount input::placeholder{color:#b0b4c0;opacity:1;}
-#Cart-Drawer .bod-discount input:focus{outline:none;border-color:var(--bod-blue);}
-#Cart-Drawer .bod-discount button{flex:0 0 auto;border:0;cursor:pointer;border-radius:10px;padding:0 18px;font-size:14px;font-weight:700;color:var(--bod-blue);background:var(--bod-sand);}
-#Cart-Drawer .bod-discount button:hover{background:#edf0fb;}
-#Cart-Drawer .bod-discount.is-loading{opacity:.6;pointer-events:none;}
-#Cart-Drawer .bod-discount-msg{font-size:12px;color:#b42318;margin:6px 0 2px;}
-#Cart-Drawer .discounts:empty{display:none;}
-#Cart-Drawer .bod-ships{font-size:11.5px;color:var(--bod-muted);margin:5px 0 0;line-height:1.3;}
-#Cart-Drawer .bod-roundel{order:0;background:var(--bod-grad);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:3px 8px;line-height:1;white-space:nowrap;align-self:center;}
-#Cart-Drawer{z-index:10001 !important;}
-body.open-cc #wrapper .click-capture{z-index:10000 !important;}
-</style>
-<div class="side-panel cart-drawer {{ shadow_class }}" id="Cart-Drawer" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="CartDrawerHeading">
-	<div class="side-panel-inner">
-		<div class="side-panel-header">
-			<div>
-				<h2 class="h6" id="CartDrawerHeading" tabindex="-1">Your cart</h2>
-				<side-panel-close class="side-panel-close"><button type="button" class="side-panel-close__button" aria-label="Close cart">{%- render 'svg-icons' with 'close' -%}</button></side-panel-close>
-			</div>
-		</div>
-		<div class="side-panel-content">
-			{%- if cart != empty -%}
-				<div class="product-cart-item--container">
-					{%- liquid
-						if free_shipping and settings.free_shipping_minimum != blank
-							render 'free-shipping', free_shipping_minimum: free_shipping_minimum, total: total
-						endif
-					-%}
-					{% for item in cart.items %}
-					<div class="product-cart-item{% if item.properties['_gift'] %} is-gift{% endif %}{% if item.selling_plan_allocation %} no-qty{% endif %}" id="CartDrawerItem-{{ item.index | plus: 1 }}">
-						<div class="product-cart-item-image">
-							{% if item.image %}
-								{%- render 'responsive-image', image: item.image, sizes: '168x0', priority: 'low' -%}
-							{% else %}
-								<div class="thb-placeholder" style="width: 100px;">
-									{{ 'product-1' | placeholder_svg_tag }}
-								</div>
-							{% endif %}
-							<div class="loading-overlay">
-								{% render 'svg-icons' with 'thb-loading' %}
-							</div>
-						</div>
-						<div class="product-cart-item-info">
-							<a href="{{ item.url }}" title="{{ item.product.title | escape }}" class="cart-product-link">{%- if item.selling_plan_allocation -%}{{ item.selling_plan_allocation.selling_plan.name }}{%- else -%}{{ item.product.title }}{%- endif -%}</a>
-							<span class="price">
-								{%- assign sub_full = 0 -%}{%- if item.selling_plan_allocation -%}{%- assign sub_full = item.variant.price | times: item.quantity -%}{%- endif -%}{%- if item.final_line_price == 0 -%}{%- assign strike = 0 -%}{%- if item.original_line_price > 0 -%}{%- assign strike = item.original_line_price -%}{%- elsif item.variant.compare_at_price > item.variant.price -%}{%- assign strike = item.variant.compare_at_price | times: item.quantity -%}{%- endif -%}{%- if strike > 0 -%}<del><span class="amount">{{ strike | money }}</span></del>{%- endif -%}<ins class="is-free"><span class="amount">Free</span></ins>{%- elsif sub_full > item.final_line_price -%}{%- assign bod_pct = sub_full | minus: item.final_line_price | times: 100.0 | divided_by: sub_full | round -%}<span class="bod-roundel">-{{ bod_pct }}%</span><del><span class="amount">{{ sub_full | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- elsif item.original_line_price != item.final_line_price -%}<del><span class="amount">{{ item.original_line_price | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- else -%}<ins><span class="amount">{{ item.original_line_price | money }}</span></ins>{%- endif -%}
-								{%- if item.variant.available and item.unit_price_measurement -%}
-									<small class="unit-price">
-										{{ item.variant.unit_price | money }}
-										<span class="unit-price-separator">/</span>
-										{%- if item.variant.unit_price_measurement.reference_value != 1 -%}
-										{{- item.variant.unit_price_measurement.reference_value -}}
-										{%- endif -%}
-										{{ item.variant.unit_price_measurement.reference_unit }}
-									</small>
-								{%- endif -%}
-							</span>
-
-
-
-
-
-                
-							{% if item.selling_plan_allocation %}
-							<div class="properties">
-								<span class="selling-plan">{{ item.product.title }}</span>
-							</div>
-							{%- assign spid = item.selling_plan_allocation.selling_plan.id -%}
-							{%- assign spn = item.selling_plan_allocation.selling_plan.name | downcase -%}
-							{%- if spid == 5755961563 or spn contains '6 week' or spn contains '6-week' -%}<div class="bod-ships">Ships every 6 weeks &bull; Cancel anytime</div>
-							{%- elsif spid == 7141621979 or spn contains '3 month' or spn contains '3-month' -%}<div class="bod-ships">Ships every 3 months &bull; Cancel anytime</div>
-							{%- endif -%}
-							{% endif %}
-							{% unless item.variant.title contains 'Default' or item.selling_plan_allocation %}
-								<div class="product-cart-item-options">
-									{% for option in item.product.options %}
-										{{ item.variant.options[forloop.index0] }}{% if forloop.last != true %}, {% endif %}
-									{% endfor %}
-								</div>
-							{% endunless %}
-							{%- for property in item.properties -%}
-								{%- assign property_first_char = property.first | slice: 0 -%}
-								{%- if property.last != blank and property_first_char != '_' -%}
-									<div class="product-cart-item-options">
-										<span>{{ property.first }}: </span>
-											{%- if property.last contains '/uploads/' -%}
-												<a href="{{ property.last }}" class="link" target="_blank">
-													{{ property.last | split: '/' | last }}
-												</a>
-											{%- else -%}
-												{{ property.last }}
-											{%- endif -%}
-											<br/>
-									</div>
-								{%- endif -%}
-							{%- endfor -%}
-							{%- if item.discounts != blank -%}
-							<ul class="discounts" role="list">
-								{%- for discount in item.discounts -%}
-									{%- if discount.amount > 0 -%}
-									<li class="discounts__discount">
-										{%- render 'svg-icons' with 'discount' -%}
-										{{ discount.title }} (-{{ discount.amount | money }})
-									</li>
-									{%- endif -%}
-								{%- endfor -%}
-							</ul>
-							{%- endif -%}
-							<quantity-selector class="quantity cart-update small-qty" data-id="{{ item.key | escape }}">
-							 <button class="minus" type="button" aria-label="{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}">{% render 'svg-icons' with 'minus' %}</button>
-							 <input
-							 type="number"
-							 name="updates[]"
-							 id="updates_{{ item.key }}"
-							 value="{{ item.quantity }}"
-							 min="{{ item.variant.quantity_rule.min }}"
-							 {% if item.variant.quantity_rule.max != null %}
-		           max="{{ item.variant.quantity_rule.max }}"
-							 {% elsif item.variant.inventory_management != null and item.variant.inventory_quantity > 0 %}
-							 max="{{ item.variant.inventory_quantity }}"
-		           {% endif %}
-							 step="{{ item.variant.quantity_rule.increment }}"
-							 class="qty"
-							 data-index="{{ item.index | plus: 1 }}"
-							 aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
-							 >
-							 <button class="plus" type="button" aria-label="{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}">{% render 'svg-icons' with 'plus' %}</button>
-							
-                              
-                            </quantity-selector>
-
-                          
-
-                      
-							<button type="button" class="remove" data-index="{{ item.index | plus: 1 }}" data-key="{{ item.key | escape }}" aria-label="Remove {{ item.product.title | escape }}">{% render 'svg-icons' with 'trash' %}</button>
-						
-               
-                      </div>
-
-                    
-						{%- unless item.selling_plan_allocation -%}{%- if item.variant.id == 46444657279195 -%}<button type="button" class="bod-upgrade bod-switch6w" data-line-key="{{ item.key | escape }}" data-line-variant="{{ item.variant.id }}" data-add-variant="46444646269147" data-add-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Subscribe to 6-week supply for 15% off</span></button>{%- elsif item.variant.id == 46444646269147 -%}<button type="button" class="bod-upgrade" data-line-key="{{ item.key | escape }}" data-plan="5755961563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg><span>Save an Extra 15% Instantly</span></button>{%- endif -%}{%- endunless -%}
-						<div class="product-cart-item-price">
-							<span class="price">
-							{%- assign sub_full = 0 -%}{%- if item.selling_plan_allocation -%}{%- assign sub_full = item.variant.price | times: item.quantity -%}{%- endif -%}{%- if item.final_line_price == 0 -%}{%- assign strike = 0 -%}{%- if item.original_line_price > 0 -%}{%- assign strike = item.original_line_price -%}{%- elsif item.variant.compare_at_price > item.variant.price -%}{%- assign strike = item.variant.compare_at_price | times: item.quantity -%}{%- endif -%}{%- if strike > 0 -%}<del><span class="amount">{{ strike | money }}</span></del>{%- endif -%}<ins class="is-free"><span class="amount">Free</span></ins>{%- elsif sub_full > item.final_line_price -%}{%- assign bod_pct = sub_full | minus: item.final_line_price | times: 100.0 | divided_by: sub_full | round -%}<span class="bod-roundel">-{{ bod_pct }}%</span><del><span class="amount">{{ sub_full | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- elsif item.original_line_price != item.final_line_price -%}<del><span class="amount">{{ item.original_line_price | money }}</span></del><ins><span class="amount">{{ item.final_line_price | money }}</span></ins>{%- else -%}<ins><span class="amount">{{ item.original_line_price | money }}</span></ins>{%- endif -%}
-							{%- if item.variant.available and item.unit_price_measurement -%}
-								<small class="unit-price">
-									{{ item.variant.unit_price | money }}
-									<span class="unit-price-separator">/</span>
-									{%- if item.variant.unit_price_measurement.reference_value != 1 -%}
-									{{- item.variant.unit_price_measurement.reference_value -}}
-									{%- endif -%}
-									{{ item.variant.unit_price_measurement.reference_unit }}
-								</small>
-                              
-							{%- endif -%}
-							</span>
-                           
-                      
-						</div>
-					</div>
-                  
-					{% endfor %}
-
-              
-                                    
-
-              
-
-				</div>
-			{%- else -%}
-				<div class="cart-drawer__empty-cart">
-					{% render 'svg-icons' with 'thb-empty-cart' %}
-					<p>{{ 'general.cart_drawer.cart_empty' | t }}</p>
-					<a class="button accent2" href="/products/myo-d-chiro-inositol-powder"><span>{{ 'general.cart_drawer.start_shopping' | t }}</span></a>
-				</div>
-			{%- endif -%}
-			{%- if settings.cart_recommendations and cart != empty -%}
-			<product-recommendations class="complementary-products" data-url="{{ routes.product_recommendations_url }}?section_id=cart-drawer&product_id={{ cart.items[0].product_id }}&limit=4">
-			  {% if recommendations.performed and recommendations.products_count > 0 %}
-					<div class="complementary-products--heading">{{ 'general.cart_drawer.you_may_also_like' | t }}</div>
-					<scroll-shadow>
-				    <div class="complementary-products--inner">
-				      {% for recommendation in recommendations.products %}
-				        {% render 'product-card-small' product_small: recommendation %}
-				      {% endfor %}
-				    </div>
-					</scroll-shadow>
-			  {% endif %}
-			</product-recommendations>
-			{%- endif -%}
-		</div>
-		{%- if cart != empty -%}
-			<div class="side-panel-footer">
-				<div class="cart-drawer-footer">
-					<table class="collaterals">
-						<tbody>
-							{%- if cart.cart_level_discount_applications.size > 0 -%}
-								{%- for discount in cart.cart_level_discount_applications -%}
-									<tr class="cart-discount">
-										<th>{{ discount.title }}</th>
-										<td>
-											<span class="price">
-												<span class="amount">
-												{% if settings.currency_code_enabled %}
-												-{{ discount.total_allocated_amount | money_with_currency }}
-												{% else %}
-												-{{ discount.total_allocated_amount | money }}
-												{% endif %}
-											 </span>
-											</span>
-										</td>
-									</tr>
-								{%- endfor -%}
-							{%- endif -%}
-							<tr class="cart-total">
- 								<th>
-									Subtotal
-								</th>
-								<td>
-									<span class="price">
-										<span class="amount">
-										 {% if settings.currency_code_enabled %}
-											{{ cart.total_price | money_with_currency }}
-										 {% else %}
-											{{ cart.total_price | money }}
-										 {% endif %}
-									 </span>
-								 </span>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					{%- if settings.cart_drawer_notes -%}
-					<button type="button" class="order-note-toggle" id="order-note-toggle" aria-controls="mini-cart-note">{{ 'general.cart_drawer.add_order_note' | t }}</button>
-					<div class="order-note-toggle__content" id="mini-cart-note">
-						<label for="mini-cart__notes">{{ 'general.cart_drawer.add_order_note' | t }}</label>
-						<textarea name="note" id="mini-cart__notes" rows="5">{{ cart.note }}</textarea>
-						<button class="button full"><span>{{ 'general.cart_drawer.save' | t }}</span></button>
-						<div class="order-note-toggle__content-overlay"></div>
-					</div>
-					{%- endif -%}
-					{% if settings.cart_terms_conditions_enable %}
-            <div class="cart-drawer-terms">
-              <input type="checkbox" id="CartDrawerTerms" required>
-              <label for="CartDrawerTerms">
-                {% if settings.cart_terms_conditions_page != blank %}
-                  {{ 'sections.cart.terms_html' | t: url: settings.cart_terms_conditions_page.url }}
-                {% else %}
-                  {{ 'sections.cart.terms' | t }}
-                {% endif %}
-              </label>
-            </div>
-          {% endif %}
-					<div class="cart-drawer-buttons">
-						<form class="bod-discount" data-bod-discount novalidate>
-							<label for="CartDrawerDiscount" class="visually-hidden">Discount code</label>
-							<input type="text" id="CartDrawerDiscount" name="discount" placeholder="YOURCODE" autocomplete="off" spellcheck="false">
-							<button type="submit">Apply</button>
-						</form>
-						<div class="bod-discount-msg" style="display:none;"></div>
-						{%- if settings.cart_drawer_checkout_button -%}
-						<form action="{{ routes.cart_url }}" method="post" novalidate>
-							<button type="submit" class="button accent checkout full" name="checkout" title="{{ 'general.cart_drawer.checkout' | t | escape }}"><span>{{ 'general.cart_drawer.checkout' | t }}</span></button>
-						</form>
-						{%- endif -%}
-					</div>
-				</div>
-			</div>
-		{%- endif -%}
-	</div>
-</div>
-
-{%- comment -%} Bodology cart drawer: subscription upgrade {%- endcomment -%}
-<script>
-(function(){
-  if(window.__bodCartDrawerBound) return; window.__bodCartDrawerBound = true;
-  function root(){ return (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/'; }
-  function repl(sections, name, selector){
-    if(!sections || !sections[name]) return;
-    var frag = new DOMParser().parseFromString(sections[name], 'text/html').querySelector(selector);
-    if(!frag) return;
-    if(selector === '.cart-drawer'){ var host = document.getElementById('Cart-Drawer'); if(host) host.innerHTML = frag.innerHTML; }
-    else { var tgt = document.querySelector(selector); if(tgt) tgt.innerHTML = frag.innerHTML; }
+<div class="side-panel cart-drawer bod-cart {{ shadow_class }}" id="Cart-Drawer" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="CartDrawerHeading" data-design="{{ settings.bcd_design | default: 'a' }}" style="--bcd-primary:{{ settings.bcd_color_primary | default: '#2238E6' }};--bcd-navy:{{ settings.bcd_color_navy | default: '#121A5C' }};--bcd-green:{{ settings.bcd_color_green | default: '#0B7A45' }};--bcd-green-bg:{{ settings.bcd_color_green_bg | default: '#E7F5EC' }};--bcd-text:{{ settings.bcd_color_text | default: '#12142B' }};--bcd-muted:{{ settings.bcd_color_muted | default: '#5A5E78' }};">
+<script type="application/json" data-bod-cart-data>
+{
+  "cart": {{ cart | json }},
+  "lines": [
+  {%- for item in cart.items -%}
+    {%- liquid
+      assign is_protocol = false
+      if protocol != blank and item.product.id == protocol.id
+        assign is_protocol = true
+      endif
+      assign is_gift = false
+      if item.properties['_gift'] != blank
+        assign is_gift = true
+      endif
+      assign display_name = item.product.metafields.bodology.cart_display_name.value
+      assign qualifies = item.product.metafields.bodology.qualifies_for_protocol.value
+      assign hide_badge = item.product.metafields.bodology.hide_discount_badge.value
+      assign upsell_plan = item.variant.metafields.bodology.upsell_selling_plan_id.value
+      assign upsell_variant = item.variant.metafields.bodology.upsell_target_variant.value
+    -%}
+    {
+      "key": {{ item.key | json }},
+      "product_id": {{ item.product.id | json }},
+      "variant_id": {{ item.variant.id | json }},
+      "title": {{ item.product.title | json }},
+      "variant_title": {{ item.variant.title | json }},
+      "display_name": {{ display_name | json }},
+      "url": {{ item.url | json }},
+      "image": {% if item.image %}{{ item.image | image_url: width: 168 | json }}{% else %}null{% endif %},
+      "image_alt": {{ item.image.alt | default: item.product.title | json }},
+      "list_unit": {{ item.variant.price | json }},
+      "compare_at_unit": {{ item.variant.compare_at_price | json }},
+      "is_protocol": {{ is_protocol | json }},
+      "is_gift": {{ is_gift | json }},
+      "qualifies_for_protocol": {{ qualifies | json }},
+      "hide_badge": {{ hide_badge | json }},
+      "upsell_plan_id": {{ upsell_plan | json }},
+      "upsell_variant_id": {% if upsell_variant != blank %}{{ upsell_variant.id | json }}{% else %}null{% endif %},
+      "plan": {% if item.selling_plan_allocation %}{
+        "id": {{ item.selling_plan_allocation.selling_plan.id | json }},
+        "name": {{ item.selling_plan_allocation.selling_plan.name | json }},
+        "price": {{ item.selling_plan_allocation.price | json }},
+        "compare_at_price": {{ item.selling_plan_allocation.compare_at_price | json }},
+        "per_delivery_price": {{ item.selling_plan_allocation.per_delivery_price | json }}
+      }{% else %}null{% endif %},
+      "plan_options": [
+        {%- for alloc in item.variant.selling_plan_allocations -%}
+        {
+          "id": {{ alloc.selling_plan.id | json }},
+          "name": {{ alloc.selling_plan.name | json }},
+          "price": {{ alloc.price | json }},
+          "compare_at_price": {{ alloc.compare_at_price | json }}
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }{% unless forloop.last %},{% endunless %}
+  {%- endfor -%}
+  ],
+  "protocol": {% if protocol != blank %}{
+    "id": {{ protocol.id | json }},
+    "title": {{ protocol.title | json }},
+    "url": {{ protocol.url | json }},
+    "image": {% if protocol.featured_image %}{{ protocol.featured_image | image_url: width: 168 | json }}{% else %}null{% endif %},
+    "variant_id": {{ protocol.selected_or_first_available_variant.id | json }},
+    "variant_ids": {{ protocol.variants | map: 'id' | json }}
+  }{% else %}null{% endif %},
+  "settings": {
+    "design": {{ settings.bcd_design | default: 'a' | json }},
+    "code_field": {{ settings.bcd_code_field | default: 'collapsed' | json }},
+    "code_banner": {{ settings.bcd_code_banner | default: '{code} applied: {percent}% off your first order' | json }},
+    "code_banner_mixed": {{ settings.bcd_code_banner_mixed | default: '{code} applied' | json }},
+    "code_label": {{ settings.bcd_code_label | default: 'Discount code' | json }},
+    "code_other_label": {{ settings.bcd_code_other_label | default: 'Have a different code?' | json }},
+    "code_another_label": {{ settings.bcd_code_another_label | default: 'Got another code? Enter it here' | json }},
+    "code_placeholder": {{ settings.bcd_code_placeholder | default: 'Enter code' | json }},
+    "code_apply_label": {{ settings.bcd_code_apply_label | default: 'Apply' | json }},
+    "code_change_label": {{ settings.bcd_code_change_label | default: 'Change' | json }},
+    "code_applied_line": {{ settings.bcd_code_applied_line | default: '{code} applied: −{amount}' | json }},
+    "invalid_code_text": {{ settings.bcd_invalid_code_text | default: "That code isn't valid." | json }},
+    "plan_subtitle": {{ settings.bcd_plan_subtitle | default: 'Ships every {interval} · cancel anytime' | json }},
+    "renewal_text": {{ settings.bcd_renewal_text | default: 'Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.' | json }},
+    "plan_intervals": {{ settings.bcd_plan_intervals | default: '6331924699: 4 weeks|5755961563: 6 weeks|7141621979: 3 months' | json }},
+    "oneoff_subtitle": {{ settings.bcd_oneoff_subtitle | default: 'One-time purchase' | json }},
+    "badge_text": {{ settings.bcd_badge_text | default: '{percent}% OFF' | json }},
+    "qty_text": {{ settings.bcd_qty_text | default: 'Qty {qty}' | json }},
+    "free_label": {{ settings.bcd_free_label | default: 'FREE' | json }},
+    "protocol_value": {{ settings.bcd_protocol_value | default: '49.00' | json }},
+    "protocol_variant": {{ settings.bcd_protocol_variant | json }},
+    "protocol_line_free": {{ settings.bcd_protocol_line_free | default: 'Included with your subscription · emailed after purchase' | json }},
+    "protocol_line_locked": {{ settings.bcd_protocol_line_locked | default: 'Free with any subscription · emailed after purchase' | json }},
+    "protocol_nudge": {{ settings.bcd_protocol_nudge | json }},
+    "protocol_nudge_text": {{ settings.bcd_protocol_nudge_text | default: 'Add your free {protocol} ({value} value)' | json }},
+    "protocol_nudge_button": {{ settings.bcd_protocol_nudge_button | default: 'Add' | json }},
+    "shipping_unlocked": {{ settings.bcd_shipping_unlocked | default: 'Free shipping unlocked' | json }},
+    "shipping_remaining": {{ settings.bcd_shipping_remaining | default: 'Spend {amount} more for free shipping' | json }},
+    "protocol_unlocked": {{ settings.bcd_protocol_unlocked | default: 'Free protocol unlocked' | json }},
+    "protocol_locked": {{ settings.bcd_protocol_locked | default: 'Subscribe to unlock the free protocol' | json }},
+    "upsell": {{ settings.bcd_upsell | json }},
+    "upsell_text": {{ settings.bcd_upsell_text | default: 'Switch to {target}: save {percent}%{protocol_text}' | json }},
+    "upsell_protocol_text": {{ settings.bcd_upsell_protocol_text | default: ' and get the protocol free' | json }},
+    "upsell_map": {{ settings.bcd_upsell_map | default: '46444657279195: 6331924699|46444646269147: 5755961563' | json }},
+    "label_subtotal": {{ settings.bcd_label_subtotal | default: 'Subtotal' | json }},
+    "label_subscribe_save": {{ settings.bcd_label_subscribe_save | default: 'Subscribe & save' | json }},
+    "label_code_row": {{ settings.bcd_label_code_row | default: '{code} ({percent}% off)' | json }},
+    "label_code_prefix": {{ settings.bcd_label_code_prefix | default: 'Code' | json }},
+    "label_protocol_row": {{ settings.bcd_label_protocol_row | default: 'Free protocol with subscription' | json }},
+    "label_shipping": {{ settings.bcd_label_shipping | default: 'Shipping' | json }},
+    "label_total": {{ settings.bcd_label_total | default: 'Total today' | json }},
+    "label_savings_heading": {{ settings.bcd_label_savings_heading | default: 'YOUR SAVINGS' | json }},
+    "label_total_saved": {{ settings.bcd_label_total_saved | default: 'Total saved today' | json }},
+    "savings_strip": {{ settings.bcd_savings_strip | json }},
+    "savings_text": {{ settings.bcd_savings_text | default: "You're saving {amount} today" | json }},
+    "b_heading": {{ settings.bcd_b_heading | default: 'YOUR FIRST ORDER' | json }},
+    "b_heading_oneoff": {{ settings.bcd_b_heading_oneoff | default: 'YOUR ORDER' | json }},
+    "b_save_pill": {{ settings.bcd_b_save_pill | default: 'You save {amount}' | json }},
+    "b_coupon_text": {{ settings.bcd_b_coupon_text | default: '{percent}% off applied' | json }},
+    "checkout_text": {{ settings.bcd_checkout_text | default: 'Secure checkout · {total}' | json }},
+    "checkout_text_b": {{ settings.bcd_checkout_text_b | default: 'Checkout' | json }},
+    "checkout_text_c": {{ settings.bcd_checkout_text_c | default: 'Checkout securely' | json }},
+    "trust": {{ settings.bcd_trust | json }},
+    "trust_1": {{ settings.bcd_trust_1 | default: '3rd-party tested' | json }},
+    "trust_2": {{ settings.bcd_trust_2 | default: 'Free US shipping' | json }},
+    "trust_3": {{ settings.bcd_trust_3 | default: 'Cancel anytime' | json }},
+    "title": {{ settings.bcd_title | default: 'Your cart' | json }},
+    "empty_text": {{ settings.bcd_empty_text | default: 'Your cart is currently empty.' | json }},
+    "empty_cta": {{ settings.bcd_empty_cta | default: 'Start shopping' | json }},
+    "empty_url": {{ empty_url | json }},
+    "free_shipping": {{ settings.free_shipping | json }},
+    "free_shipping_minimum": {{ free_shipping_minimum | json }},
+    "terms_enabled": {{ settings.cart_terms_conditions_enable | json }},
+    "terms_html": {% if settings.cart_terms_conditions_enable %}{% if settings.cart_terms_conditions_page != blank %}{{ 'sections.cart.terms_html' | t: url: settings.cart_terms_conditions_page.url | json }}{% else %}{{ 'sections.cart.terms' | t | json }}{% endif %}{% else %}null{% endif %},
+    "terms_required_text": {{ 'sections.cart.terms_confirm' | t | json }}
+  },
+  "money_format": {{ shop.money_format | json }},
+  "routes": {
+    "root": {{ routes.root_url | json }},
+    "cart": {{ routes.cart_url | json }}
   }
-  /* The 3-month plan (7141621979) is only ever sold as 2 units on one line.
-     Apps re-evaluating the cart can split that into 2x qty-1 lines; repair it. */
-  var bodNormBusy = false, bodNormAttempts = 0;
-  function bodNormalize(){
-    if(bodNormBusy || bodNormAttempts >= 3) return; bodNormBusy = true;
-    fetch(root()+'cart.js', { headers:{'Accept':'application/json'} })
-    .then(function(r){ return r.json(); })
-    .then(function(cart){
-      var ones = (cart.items||[]).filter(function(i){
-        return i.selling_plan_allocation && i.selling_plan_allocation.selling_plan && i.selling_plan_allocation.selling_plan.id == 7141621979 && i.quantity == 1;
-      });
-      if(!ones.length){ bodNormBusy = false; bodNormAttempts = 0; return; }
-      bodNormAttempts++;
-      var ops = [];
-      for(var k = 0; k + 1 < ones.length; k += 2){ ops.push({ id: ones[k+1].key, quantity: 0 }); ops.push({ id: ones[k].key, quantity: 2 }); }
-      if(ones.length % 2){ ops.push({ id: ones[ones.length-1].key, quantity: 2 }); }
-      var chain = Promise.resolve();
-      ops.forEach(function(op){ chain = chain.then(function(){ return fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(op) }); }); });
-      chain
-      .then(function(){ return fetch(root()+'?sections=cart-drawer,cart-bubble'); })
-      .then(function(r){ return r.json(); })
-      .then(function(sections){
-        repl(sections,'cart-drawer','.cart-drawer'); repl(sections,'cart-bubble','.thb-item-count');
-        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
-        bodNormBusy = false;
-        document.dispatchEvent(new CustomEvent('cart:refresh'));
-      })
-      .catch(function(){ bodNormBusy = false; });
-    })
-    .catch(function(){ bodNormBusy = false; });
-  }
-  document.addEventListener('cart:refresh', function(){ bodNormalize(); });
-  bodNormalize();
-  /* The theme's own cart updates (e.g. removing a line) re-render the drawer
-     without dispatching cart:refresh — watch the drawer and repair after any
-     re-render. bodNormalize is a no-op when nothing is split, so the rewrite
-     it triggers doesn't loop. */
-  var bodDrawerHost = document.getElementById('Cart-Drawer');
-  if(bodDrawerHost && window.MutationObserver){
-    var bodNormT = null;
-    new MutationObserver(function(){
-      if(bodNormBusy) return;
-      clearTimeout(bodNormT);
-      bodNormT = setTimeout(bodNormalize, 250);
-    }).observe(bodDrawerHost, { childList: true, subtree: true });
-  }
-  /* remove lines by their key, not their line number — apps rebuilding the
-     cart can reorder lines, and a stale line number then deletes the wrong item */
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('#Cart-Drawer .product-cart-item .remove'); if(!a) return;
-    var k = a.getAttribute('data-key'); if(!k) return;
-    e.preventDefault(); e.stopPropagation();
-    fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({ id: k, quantity: 0, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
-    .then(function(r){ return r.json(); })
-    .then(function(res){
-      if(res && res.sections){ repl(res.sections,'cart-drawer','.cart-drawer'); repl(res.sections,'cart-bubble','.thb-item-count'); }
-      if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
-      document.dispatchEvent(new CustomEvent('cart:refresh'));
-    })
-    .catch(function(){});
-  }, true);
-  document.addEventListener('click', function(e){
-    var btn = e.target.closest('.bod-upgrade'); if(!btn) return;
-    if(btn.classList.contains('bod-switch6w')) return;
-    e.preventDefault();
-    if(btn.classList.contains('is-loading')) return;
-    var key = btn.getAttribute('data-line-key'), plan = btn.getAttribute('data-plan');
-    if(!key || !plan) return;
-    btn.classList.add('is-loading');
-    var qty = parseInt(btn.getAttribute('data-qty') || '0', 10);
-    var addVariant = parseInt(btn.getAttribute('data-add-variant') || '0', 10);
-    var oldPlan = parseInt(btn.getAttribute('data-old-plan') || '0', 10);
-    var oldQty = parseInt(btn.getAttribute('data-old-qty') || '1', 10);
-    var gift = btn.getAttribute('data-giftadd');
-    var gname = btn.getAttribute('data-giftname') || 'your plan';
-    var sectionsArgs = { sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname };
-    function postJson(path, body){
-      return fetch(root()+path, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify(body) })
-        .then(function(r){ return r.json(); });
-    }
-    function render(res){
-      try {
-        if(res && res.sections){
-          repl(res.sections, 'cart-drawer', '.cart-drawer');
-          repl(res.sections, 'cart-bubble', '.thb-item-count');
-        }
-        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
-        document.dispatchEvent(new CustomEvent('cart:refresh'));
-      } catch(err){}
-    }
-    function renderTruth(){
-      return fetch(root()+'?sections=cart-drawer,cart-bubble')
-        .then(function(r){ return r.json(); })
-        .then(function(s){ render({ sections: s }); })
-        .catch(function(){});
-    }
-    /* the plan being upgraded may already have brought its free gift along —
-       don't add a second one */
-    function maybeGift(cartItems, sections){
-      if(!gift){ return Promise.resolve({ sections: sections }); }
-      var gid = parseInt(gift, 10);
-      var has = (cartItems || []).some(function(i){ return i.variant_id === gid && i.properties && i.properties['_gift']; });
-      if(has){ return Promise.resolve({ sections: sections }); }
-      var body = { items:[{ id: gid, quantity: 1, properties: { '_gift': 'Free with ' + gname } }] };
-      body.sections = sectionsArgs.sections; body.sections_url = sectionsArgs.sections_url;
-      return postJson('cart/add.js', body)
-        .then(function(res2){ return (res2 && res2.sections) ? res2 : { sections: sections }; })
-        .catch(function(){ return { sections: sections }; });
-    }
-    var flow;
-    if(qty > 0 && addVariant){
-      /* cart/change with selling_plan + quantity together is unreliable (the plan
-         applies but the quantity doesn't) — replace the line with a fresh add,
-         which is proven to produce one qty-N line */
-      flow = postJson('cart/change.js', { id: key, quantity: 0 })
-        .then(function(cart){
-          if(!cart || cart.status){ throw cart; }
-          return postJson('cart/add.js', Object.assign({ items:[{ id: addVariant, quantity: qty, selling_plan: parseInt(plan, 10), properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } }] }, sectionsArgs))
-            .then(function(res){
-              if(!res || res.status){
-                /* add failed after we removed the line — put the original back */
-                var restore = { items:[{ id: addVariant, quantity: oldQty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } }] };
-                if(oldPlan){ restore.items[0].selling_plan = oldPlan; }
-                return postJson('cart/add.js', restore).then(function(){ throw res; }, function(){ throw res; });
-              }
-              return maybeGift(cart.items, res.sections);
-            });
-        });
-    } else {
-      flow = postJson('cart/change.js', Object.assign({ id: key, selling_plan: plan }, sectionsArgs))
-        .then(function(res){
-          if(!res || res.status){ throw res; }
-          return maybeGift(res.items, res.sections);
-        });
-    }
-    flow.then(render).catch(function(){ btn.classList.remove('is-loading'); renderTruth(); });
-  });
-  document.addEventListener('click', function(e){
-    var b = e.target.closest('.bod-switch6w'); if(!b) return;
-    e.preventDefault();
-    if(b.classList.contains('is-loading')) return;
-    var key = b.getAttribute('data-line-key');
-    var addVariant = b.getAttribute('data-add-variant');
-    var addPlan = b.getAttribute('data-add-plan');
-    if(!key || !addVariant) return;
-    b.classList.add('is-loading');
-    var addItem = { id: parseInt(addVariant, 10), quantity: 1, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
-    if(addPlan){ addItem.selling_plan = parseInt(addPlan, 10); }
-    // 1) add the 6-week supply subscription
-    fetch(root()+'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({ items:[addItem] }) })
-    .then(function(r){ if(!r.ok){ throw new Error('add failed'); } return r.json(); })
-    // 2) re-read the cart and remove the one-time line by its CURRENT key —
-    //    apps (e.g. subscriptions) can rebuild the cart on add, changing line keys
-    .then(function(){ return fetch(root()+'cart.js', { headers:{'Accept':'application/json'} }); })
-    .then(function(r){ return r.json(); })
-    .then(function(cart){
-      var lineVariant = parseInt(b.getAttribute('data-line-variant') || '0', 10);
-      var target = null;
-      (cart.items||[]).forEach(function(i){ if(!target && i.key === key){ target = i; } });
-      if(!target){ (cart.items||[]).forEach(function(i){ if(!target && i.variant_id === lineVariant && !i.selling_plan_allocation){ target = i; } }); }
-      if(!target){
-        // nothing left to remove — just re-render the drawer truthfully
-        return fetch(root()+'?sections=cart-drawer,cart-bubble').then(function(r){ return r.json(); }).then(function(s){ return { sections: s }; });
-      }
-      return fetch(root()+'cart/change.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({ id: target.key, quantity: 0, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
-      .then(function(r){ return r.json(); })
-      .then(function(res){
-        if(res && res.sections){ return res; }
-        // remove failed — still show the real cart state
-        return fetch(root()+'?sections=cart-drawer,cart-bubble').then(function(r){ return r.json(); }).then(function(s){ return { sections: s }; });
-      });
-    })
-    .then(function(res){
-      try {
-        repl(res.sections, 'cart-drawer', '.cart-drawer');
-        repl(res.sections, 'cart-bubble', '.thb-item-count');
-        if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
-        document.dispatchEvent(new CustomEvent('cart:refresh'));
-      } catch(err){}
-    })
-    .catch(function(){ b.classList.remove('is-loading'); });
-  });
-  document.addEventListener('submit', function(e){
-    var form = e.target.closest('[data-bod-discount]'); if(!form) return;
-    e.preventDefault();
-    var input = form.querySelector('input[name="discount"]'); var code = (input.value||'').trim(); if(!code) return;
-    form.classList.add('is-loading');
-    function discountUpdate(codes){
-      return fetch(root()+'cart/update.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({ discount: codes, sections:['cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
-      .then(function(r){ return r.json(); });
-    }
-    function render(sections){
-      repl(sections,'cart-drawer','.cart-drawer'); repl(sections,'cart-bubble','.thb-item-count');
-      if(typeof CartDrawer !== 'undefined'){ new CartDrawer(); }
-      document.dispatchEvent(new CustomEvent('cart:refresh'));
-    }
-    /* keep any codes that already apply, then add the new one on top */
-    fetch(root()+'cart.js', { headers:{'Accept':'application/json'} })
-    .then(function(r){ return r.json(); })
-    .then(function(cart){
-      var existing = (cart.discount_codes || []).filter(function(dc){ return dc.applicable; }).map(function(dc){ return dc.code; })
-        .filter(function(c){ return c.toLowerCase() !== code.toLowerCase(); });
-      return discountUpdate(existing.concat([code]).join(','))
-      .then(function(res){
-        var entry = (res.discount_codes || []).filter(function(dc){ return (dc.code||'').toLowerCase() === code.toLowerCase(); })[0];
-        if(entry && entry.applicable){
-          render((res.sections) || {});
-          return;
-        }
-        /* code exists but can't apply to this cart \u2014 drop it again and say so */
-        return discountUpdate(existing.join(','))
-        .then(function(res2){ render((res2 && res2.sections) || {}); })
-        .catch(function(){})
-        .then(function(){
-          var m = document.querySelector('#Cart-Drawer .bod-discount-msg');
-          if(m){ m.textContent = 'That code isn\u2019t valid for this cart.'; m.style.display = 'block'; }
-        });
-      });
-    })
-    .catch(function(){ form.classList.remove('is-loading'); });
-  });
-})();
+}
 </script>
-
+<div class="side-panel-inner bod-cart__root" data-bod-cart-root>
+  <div class="side-panel-header"><div><h2 class="h6" id="CartDrawerHeading" tabindex="-1">{{ settings.bcd_title | default: 'Your cart' }}</h2>
+  <side-panel-close class="side-panel-close"><button type="button" class="side-panel-close__button" aria-label="Close cart">{%- render 'svg-icons' with 'close' -%}</button></side-panel-close></div></div>
+  <noscript><div class="bod-cart__noscript"><a class="button" href="{{ routes.cart_url }}">{{ 'general.cart_drawer.checkout' | t }}</a></div></noscript>
+</div>
+</div>
 {%- endif -%}

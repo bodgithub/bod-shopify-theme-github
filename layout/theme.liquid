@@ -51,6 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	{{ 'app.css' | asset_url | stylesheet_tag }}
 	{{ 'product-grid.css' | asset_url | stylesheet_tag }}
 	{{ 'bod-stars.css' | asset_url | stylesheet_tag }}
+	{%- if settings.cart_drawer -%}{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}{%- endif -%}
 	<script src="{{ 'bod-stars.js' | asset_url }}" defer></script>
 
 	{% render 'head-variables' %}
@@ -141,6 +142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	{{ 'product.js' | asset_url | script_tag }}
 	{{ 'slideshow.js' | asset_url | script_tag }}
 	{{ 'app.js' | asset_url | script_tag }}
+	{%- if settings.cart_drawer -%}<script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>{%- endif -%}
 	<script src="{{ 'bod-a11y.js' | asset_url }}" defer="defer"></script>
 	<script type="module" src="{{ 'scroll-shadow.js' | asset_url }}" defer="defer"></script>
 	<script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>

@@ -1418,6 +1418,12 @@
       },
       {
         "type": "text",
+        "id": "bcd_label_code_prefix",
+        "label": "Design C: word before the code chip",
+        "default": "Code"
+      },
+      {
+        "type": "text",
         "id": "bcd_label_protocol_row",
         "label": "Free protocol row label",
         "default": "Free protocol with subscription"
@@ -1490,6 +1496,12 @@
         "label": "Checkout button text",
         "default": "Secure checkout · {total}",
         "info": "Tokens: {total}. Design B always shows 'Checkout' left and the total right."
+      },
+      {
+        "type": "text",
+        "id": "bcd_checkout_text_b",
+        "label": "Design B: checkout button left text",
+        "default": "Checkout"
       },
       {
         "type": "text",

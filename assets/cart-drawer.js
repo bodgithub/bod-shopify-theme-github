@@ -1,0 +1,648 @@
+/*
+  Bodology cart drawer — one data model, three designs (A/B/C).
+
+  Data in:  the JSON blob snippets/cart-drawer.liquid emits inside #Cart-Drawer
+            (cart object as /cart.js returns it + per-line metafields + settings).
+  Render:   buildState() turns it into one state object; renderA/B/C turn that
+            into HTML. Every price and % comes from Shopify's own numbers:
+              line price after everything = original_line_price - total_discount
+              effective %                 = 1 - that / (list price × qty)
+            so the drawer matches checkout by construction.
+  Refresh:  the theme's CartDrawer class (app.js) and this file both replace
+            #Cart-Drawer's children with a freshly rendered section after any
+            cart change; a MutationObserver re-renders from the new JSON.
+*/
+(function () {
+  'use strict';
+  if (window.__bodCartDrawer) { return; }
+  window.__bodCartDrawer = true;
+
+  var HOST_ID = 'Cart-Drawer';
+  var LS_OVERRIDE = 'bod_cart_design';
+  var LS_SPLIT = 'bod_cart_design_split';
+  var SECTIONS = ['cart-drawer', 'cart-bubble'];
+  /* Plans that are only ever sold as N units on ONE line. Apps re-evaluating the
+     cart can split them into N qty-1 lines; bodNormalize repairs that. */
+  var BUNDLE_PLANS = { '7141621979': 2 };
+
+  var pending = { error: null, open: false, code: '' };
+  var splitAttrWritten = false;
+  var rendering = false;
+  var normBusy = false, normAttempts = 0;
+  var chosen = null; /* { design: 'a'|'b'|'c', source: 'override'|'split'|'setting' } */
+
+  /* ---------- utilities ---------- */
+  function host() { return document.getElementById(HOST_ID); }
+  function rootUrl() { return (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/'; }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function tpl(str, map) {
+    return String(str || '').replace(/\{(\w+)\}/g, function (m, k) { return Object.prototype.hasOwnProperty.call(map, k) ? map[k] : m; });
+  }
+  function uniq(arr) { return arr.filter(function (v, i, a) { return a.indexOf(v) === i; }); }
+  function sum(arr, fn) { return arr.reduce(function (t, x) { return t + (fn(x) || 0); }, 0); }
+  function parseMap(text) {
+    var map = {};
+    String(text || '').split(/[\n|]/).forEach(function (line) {
+      var m = line.match(/^\s*([^:]+?)\s*:\s*(.+?)\s*$/);
+      if (m) { map[m[1]] = m[2]; }
+    });
+    return map;
+  }
+  var ls = {
+    get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
+    set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} },
+    remove: function (k) { try { window.localStorage.removeItem(k); } catch (e) {} }
+  };
+  function money(cents, fmt) {
+    fmt = fmt || '${{amount}}';
+    var v = (Number(cents) || 0) / 100;
+    function num(dec, thou, deci) {
+      var parts = Math.abs(v).toFixed(dec).split('.');
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thou);
+      return (v < 0 ? '-' : '') + parts.join(deci);
+    }
+    var m = fmt.match(/\{\{\s*(\w+)\s*\}\}/);
+    var out;
+    switch (m ? m[1] : 'amount') {
+      case 'amount_no_decimals': out = num(0, ',', '.'); break;
+      case 'amount_with_comma_separator': out = num(2, '.', ','); break;
+      case 'amount_no_decimals_with_comma_separator': out = num(0, '.', ','); break;
+      case 'amount_with_apostrophe_separator': out = num(2, "'", '.'); break;
+      default: out = num(2, ',', '.');
+    }
+    return fmt.replace(/\{\{\s*\w+\s*\}\}/, out).replace(/<[^>]*>/g, '');
+  }
+  function shortPlan(name) { return String(name || '').replace(/^\s*subscription\s*:\s*/i, '').trim(); }
+  function intervalFromName(name) {
+    var m = String(name || '').match(/(\d+)\s*[- ]?\s*(week|month|year)s?/i);
+    if (!m) { return shortPlan(name); }
+    var n = parseInt(m[1], 10);
+    return n + ' ' + m[2].toLowerCase() + (n > 1 ? 's' : '');
+  }
+
+  /* ---------- data ---------- */
+  function readData() {
+    var h = host(); if (!h) { return null; }
+    var el = h.querySelector('script[data-bod-cart-data]'); if (!el) { return null; }
+    try { return JSON.parse(el.textContent); } catch (e) { return null; }
+  }
+
+  function handleUrlOverride() {
+    var p;
+    try { p = new URLSearchParams(window.location.search).get('cart_design'); } catch (e) { p = null; }
+    if (!p) { return; }
+    p = p.toLowerCase();
+    if (p === 'reset') { ls.remove(LS_OVERRIDE); ls.remove(LS_SPLIT); }
+    else if (/^[abc]$/.test(p)) { ls.set(LS_OVERRIDE, p); }
+  }
+  function chooseDesign(setting) {
+    var o = ls.get(LS_OVERRIDE);
+    if (o && /^[abc]$/.test(o)) { return { design: o, source: 'override' }; }
+    if (setting === 'random') {
+      var s = ls.get(LS_SPLIT);
+      if (!s || !/^[abc]$/.test(s)) { s = 'abc'.charAt(Math.floor(Math.random() * 3)); ls.set(LS_SPLIT, s); }
+      return { design: s, source: 'split' };
+    }
+    return { design: /^[abc]$/.test(setting || '') ? setting : 'a', source: 'setting' };
+  }
+
+  function buildState(data) {
+    var S = data.settings || {};
+    var cart = data.cart || { items: [] };
+    var fmt = data.money_format;
+    var intervals = parseMap(S.plan_intervals);
+    var upsellMap = parseMap(S.upsell_map);
+    var codes = (cart.discount_codes || []).filter(function (c) { return c.applicable; }).map(function (c) { return c.code; });
+    var codeSet = {};
+    codes.forEach(function (c) { codeSet[String(c).toLowerCase()] = true; });
+    var cartLevel = cart.cart_level_discount_applications || [];
+    var codeTotal = sum(cartLevel, function (d) { return d.total_allocated_amount; });
+    var protocolValue = Math.round(parseFloat(S.protocol_value || '49') * 100) || 4900;
+    var protocolIds = (data.protocol && data.protocol.variant_ids || []).map(String);
+    var byKey = {};
+    (cart.items || []).forEach(function (i) { byKey[i.key] = i; });
+
+    var lines = [];
+    (data.lines || []).forEach(function (meta, idx) {
+      var item = byKey[meta.key] || (cart.items || [])[idx];
+      if (!item) { return; }
+      var qty = item.quantity;
+      var isProtocol = !!meta.is_protocol || protocolIds.indexOf(String(meta.variant_id)) >= 0;
+      var type = isProtocol ? 'protocol' : (item.selling_plan_allocation ? 'subscription' : 'oneoff');
+      var listUnit = isProtocol ? protocolValue : (meta.list_unit || item.original_price);
+      var list = listUnit * qty;
+      var orig = item.original_line_price;
+      var disc = item.total_discount || 0;
+      var first = orig - disc;
+      var codeShare = 0, productDisc = 0;
+      (item.discounts || []).forEach(function (d) {
+        if (codeSet[String(d.title || '').toLowerCase()]) { codeShare += d.amount || 0; } else { productDisc += d.amount || 0; }
+      });
+      var pct = list > 0 ? Math.round((1 - first / list) * 100) : 0;
+      if (pct < 0) { pct = 0; }
+      var plan = null;
+      if (item.selling_plan_allocation) {
+        var sp = item.selling_plan_allocation;
+        var pid = String(sp.selling_plan.id);
+        var pname = sp.selling_plan.name || '';
+        plan = {
+          id: pid, name: pname, short: shortPlan(pname),
+          interval: intervals[pid] || intervalFromName(pname),
+          unit: sp.price, renewal: sp.price * qty,
+          pct: listUnit > 0 ? Math.round((1 - sp.price / listUnit) * 100) : 0
+        };
+      }
+      var upsell = null;
+      if (type === 'oneoff' && S.upsell) {
+        var tid = String(meta.upsell_plan_id || upsellMap[String(meta.variant_id)] || '');
+        var opt = (meta.plan_options || []).filter(function (o) { return String(o.id) === tid; })[0];
+        if (opt) {
+          upsell = {
+            planId: tid, name: shortPlan(opt.name),
+            pct: listUnit > 0 ? Math.round((1 - opt.price / listUnit) * 100) : 0,
+            variantId: meta.upsell_variant_id ? String(meta.upsell_variant_id) : null
+          };
+        }
+      }
+      lines.push({
+        key: item.key, qty: qty, type: type,
+        title: meta.display_name || meta.title, productTitle: meta.title,
+        image: meta.image, imageAlt: meta.image_alt, url: meta.url,
+        variantId: String(meta.variant_id),
+        listUnit: listUnit, list: list, orig: orig, disc: disc, first: first,
+        codeShare: codeShare, productDisc: productDisc, pct: pct, plan: plan, upsell: upsell,
+        hideBadge: !!meta.hide_badge, isFree: first === 0 && orig > 0,
+        qualifies: meta.qualifies_for_protocol !== false, isGift: !!meta.is_gift
+      });
+    });
+
+    var subs = lines.filter(function (l) { return l.type === 'subscription'; });
+    var oneoffs = lines.filter(function (l) { return l.type === 'oneoff'; });
+    var protos = lines.filter(function (l) { return l.type === 'protocol'; });
+    var eligible = subs.some(function (l) { return l.qualifies; });
+    var baseSet = subs.length ? subs : oneoffs;
+    var pcts = uniq(baseSet.map(function (l) { return l.pct; }));
+    var bannerPct = pcts.length === 1 ? pcts[0] : null;
+    var planPcts = uniq(subs.map(function (l) { return l.plan.pct; }));
+    var listTotal = sum(lines, function (l) { return l.list; });
+    var total = cart.total_price || 0;
+    var saved = Math.max(0, listTotal - total);
+    var freeMin = parseInt(S.free_shipping_minimum, 10) || 0;
+    var freeShipOn = !!S.free_shipping && freeMin > 0;
+    var freeShip = freeShipOn && total >= freeMin;
+
+    return {
+      S: S, cart: cart, fmt: fmt, lines: lines, subs: subs, oneoffs: oneoffs, protos: protos,
+      count: cart.item_count || 0, empty: !lines.length,
+      codes: codes, hasCode: codes.length > 0, codeName: codes.join(' + '),
+      codeTotal: codeTotal, bannerPct: bannerPct,
+      eligible: eligible, protocolInCart: protos.length > 0,
+      protocolFree: protos.some(function (l) { return l.isFree; }),
+      protocol: data.protocol || null,
+      listTotal: listTotal, total: total, saved: saved,
+      subSave: sum(subs, function (l) { return l.list - l.orig; }),
+      protoSave: sum(protos, function (l) { return l.productDisc; }),
+      planPct: planPcts.length === 1 ? planPcts[0] : null,
+      freeShipOn: freeShipOn, freeShip: freeShip, freeMin: freeMin,
+      shipRemaining: Math.max(0, freeMin - total),
+      shipProgress: freeShipOn ? Math.min(1, total / freeMin) : 1,
+      money: function (c) { return money(c, fmt); },
+      cartUrl: (data.routes && data.routes.cart) || '/cart'
+    };
+  }
+
+  /* ---------- shared partials ---------- */
+  var ICON = {
+    close: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>',
+    check: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+    trash: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>',
+    tag: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8L3 12z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg>',
+    lock: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>',
+    truck: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>',
+    loop: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0114-5.3M20 12a8 8 0 01-14 5.3M18 3v4h-4M6 21v-4h4"/></svg>',
+    swap: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>'
+  };
+
+  function header(st, withCount) {
+    return '<div class="bod-cart__header"><h2 class="bod-cart__title" id="CartDrawerHeading" tabindex="-1">' + esc(st.S.title) +
+      (withCount ? ' <span class="bod-cart__count">(' + st.count + ')</span>' : '') + '</h2>' +
+      '<side-panel-close class="side-panel-close"><button type="button" class="side-panel-close__button bod-cart__close" aria-label="Close cart">' + ICON.close + '</button></side-panel-close></div>';
+  }
+  function emptyState(st) {
+    return '<div class="bod-cart__empty"><p>' + esc(st.S.empty_text) + '</p><a class="bod-cart__btn bod-cart__btn--primary" href="' + esc(st.S.empty_url || '/') + '">' + esc(st.S.empty_cta) + '</a></div>';
+  }
+  function bannerText(st) {
+    if (!st.hasCode) { return ''; }
+    return st.bannerPct === null
+      ? tpl(st.S.code_banner_mixed, { code: st.codeName })
+      : tpl(st.S.code_banner, { code: st.codeName, percent: st.bannerPct });
+  }
+  function codeRowLabel(st) {
+    return st.bannerPct === null ? st.codeName : tpl(st.S.label_code_row, { code: st.codeName, percent: st.bannerPct });
+  }
+  function subtitle(st, l) {
+    if (l.type === 'protocol') { return l.isFree ? st.S.protocol_line_free : st.S.protocol_line_locked; }
+    if (l.type === 'subscription') { return tpl(st.S.plan_subtitle, { interval: l.plan.interval, plan: l.plan.short }); }
+    return st.S.oneoff_subtitle;
+  }
+  function renewalText(st, l) {
+    return tpl(st.S.renewal_text, { interval: l.plan.interval, renewal_price: st.money(l.plan.renewal), plan: l.plan.short });
+  }
+  function badge(st, l) {
+    if (l.type === 'protocol' || l.hideBadge || l.pct <= 0) { return ''; }
+    return '<span class="bod-cart__badge">' + esc(tpl(st.S.badge_text, { percent: l.pct })) + '</span>';
+  }
+  function qtyLabel(st, l) {
+    return l.qty > 1 ? '<span class="bod-cart__qty">' + esc(tpl(st.S.qty_text, { qty: l.qty })) + '</span>' : '';
+  }
+  function removeBtn(l) {
+    return '<button type="button" class="bod-cart__remove" data-bod-action="remove" data-key="' + esc(l.key) + '" aria-label="Remove ' + esc(l.productTitle) + '">' + ICON.trash + '</button>';
+  }
+  function image(l, size) {
+    if (!l.image) { return '<div class="bod-cart__img bod-cart__img--empty" style="width:' + size + 'px;height:' + size + 'px"></div>'; }
+    return '<img class="bod-cart__img" src="' + esc(l.image) + '" width="' + size + '" height="' + size + '" alt="' + esc(l.imageAlt) + '" loading="lazy">';
+  }
+  function upsellRow(st, l) {
+    if (!l.upsell) { return ''; }
+    var unlocks = !st.eligible && !!st.protocol;
+    var text = tpl(st.S.upsell_text, { target: l.upsell.name, percent: l.upsell.pct, protocol_text: unlocks ? st.S.upsell_protocol_text : '' });
+    return '<button type="button" class="bod-cart__upsell" data-bod-action="swap" data-key="' + esc(l.key) + '" data-plan="' + esc(l.upsell.planId) +
+      '" data-line-variant="' + esc(l.variantId) + '"' + (l.upsell.variantId ? ' data-variant="' + esc(l.upsell.variantId) + '"' : '') + '>' + ICON.swap + '<span>' + esc(text) + '</span></button>';
+  }
+  function protocolNudge(st) {
+    if (!st.S.protocol_nudge || !st.protocol || !st.eligible || st.protocolInCart) { return ''; }
+    var text = tpl(st.S.protocol_nudge_text, { protocol: st.protocol.title, value: st.money(Math.round(parseFloat(st.S.protocol_value || '49') * 100)) });
+    return '<div class="bod-cart__nudge">' + (st.protocol.image ? '<img class="bod-cart__img" src="' + esc(st.protocol.image) + '" width="48" height="48" alt="" loading="lazy">' : '') +
+      '<div class="bod-cart__nudge-text">' + esc(text) + '</div><button type="button" class="bod-cart__btn bod-cart__btn--outline" data-bod-action="add-protocol">' + esc(st.S.protocol_nudge_button) + '</button></div>';
+  }
+  function priceCells(st, l) {
+    if (l.type === 'protocol' && l.isFree) {
+      return '<span class="bod-cart__price bod-cart__price--free">' + esc(st.S.free_label) + '</span><span class="bod-cart__strike">' + esc(st.money(l.list)) + '</span>';
+    }
+    var out = '<span class="bod-cart__price">' + esc(st.money(l.first)) + '</span>';
+    if (l.first < l.list) { out += '<span class="bod-cart__strike">' + esc(st.money(l.list)) + '</span>'; }
+    return out;
+  }
+  function codeField(st, variant) {
+    var S = st.S, mode = S.code_field || 'collapsed';
+    if (mode === 'hidden') { return ''; }
+    var err = pending.error, value = pending.code || '';
+    var msg = err ? '<div class="bod-cart__code-msg is-error" role="alert">' + esc(err) + '</div>' : '<div class="bod-cart__code-msg" role="status" aria-live="polite"></div>';
+    var input = function (extra) {
+      return '<input id="BodCartCode" name="discount" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="' + esc(S.code_placeholder) + '" value="' + esc(value) + '"' + (extra || '') + '>';
+    };
+    var applyBtn = '<button type="submit" class="bod-cart__btn bod-cart__code-apply">' + esc(S.code_apply_label) + '</button>';
+
+    if (variant === 'b') {
+      if (st.hasCode && !pending.open) {
+        return '<form class="bod-cart__code bod-cart__code--b is-applied" data-bod-code novalidate><label for="BodCartCode">' + esc(S.code_label) + '</label>' +
+          '<div class="bod-cart__code-row"><input id="BodCartCode" name="discount" type="text" value="' + esc(st.codeName) + '" readonly aria-describedby="BodCartCodeApplied">' +
+          '<button type="button" class="bod-cart__btn bod-cart__btn--outline bod-cart__code-change" data-bod-action="change-code">' + esc(S.code_change_label) + '</button></div>' +
+          '<div class="bod-cart__code-applied" id="BodCartCodeApplied">' + esc(tpl(S.code_applied_line, { code: st.codeName, amount: st.money(st.codeTotal) })) + '</div>' + msg + '</form>';
+      }
+      return '<form class="bod-cart__code bod-cart__code--b" data-bod-code novalidate><label for="BodCartCode">' + esc(S.code_label) + '</label><div class="bod-cart__code-row">' + input() + applyBtn + '</div>' + msg + '</form>';
+    }
+    if (variant === 'c') {
+      return '<form class="bod-cart__code bod-cart__code--c" data-bod-code novalidate><label for="BodCartCode">' + esc(S.code_another_label) + '</label><div class="bod-cart__code-row">' + input() + applyBtn + '</div>' + msg + '</form>';
+    }
+    /* design A: collapsed behind a link once a code is applied */
+    var collapsed = mode === 'collapsed' && st.hasCode && !pending.open && !err;
+    var form = '<form class="bod-cart__code bod-cart__code--a" data-bod-code novalidate id="BodCartCodeWrap"' + (collapsed ? ' hidden' : '') + '><label for="BodCartCode" class="visually-hidden">' + esc(S.code_label) + '</label><div class="bod-cart__code-row">' + input() + applyBtn + '</div>' + msg + '</form>';
+    var link = collapsed ? '<button type="button" class="bod-cart__code-toggle" data-bod-action="toggle-code" aria-expanded="false" aria-controls="BodCartCodeWrap">' + esc(S.code_other_label) + '</button>' : '';
+    return link + form;
+  }
+  function termsBox(st) {
+    if (!st.S.terms_enabled || !st.S.terms_html) { return ''; }
+    return '<div class="bod-cart__terms"><input type="checkbox" id="CartDrawerTerms" required><label for="CartDrawerTerms">' + st.S.terms_html + '</label></div>';
+  }
+  function checkoutForm(st, inner, extraClass) {
+    return '<form action="' + esc(st.cartUrl) + '" method="post" novalidate class="bod-cart__checkout-form" data-bod-checkout>' +
+      '<button type="submit" name="checkout" class="button checkout bod-cart__checkout ' + (extraClass || '') + '">' + inner + '</button></form>';
+  }
+  function trustInline(st) {
+    if (!st.S.trust) { return ''; }
+    return '<div class="bod-cart__trust bod-cart__trust--inline"><span>' + esc(st.S.trust_1) + '</span><span>·</span><span>' + esc(st.S.trust_2) + '</span><span>·</span><span>' + esc(st.S.trust_3) + '</span></div>';
+  }
+  function trustIcons(st) {
+    if (!st.S.trust) { return ''; }
+    return '<div class="bod-cart__trust bod-cart__trust--icons"><div>' + ICON.lock + esc(st.S.trust_1) + '</div><div>' + ICON.truck + esc(st.S.trust_2) + '</div><div>' + ICON.loop + esc(st.S.trust_3) + '</div></div>';
+  }
+  function shippingValue(st) {
+    if (!st.freeShipOn) { return ''; }
+    return '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(st.S.label_shipping) + '</span><span class="' + (st.freeShip ? 'bod-cart__green' : 'bod-cart__muted') + '">' + esc(st.freeShip ? st.S.free_label : tpl(st.S.shipping_remaining, { amount: st.money(st.shipRemaining) })) + '</span></div>';
+  }
+  function subSaveLabel(st) {
+    return esc(st.S.label_subscribe_save) + (st.planPct !== null ? ' (' + st.planPct + '%)' : '');
+  }
+
+  /* ---------- design A: code applied banner ---------- */
+  function renderA(st) {
+    var S = st.S, h = header(st, true);
+    if (st.empty) { return h + emptyState(st); }
+    var out = h;
+    if (st.hasCode) {
+      out += '<div class="bod-cart__banner"><div class="bod-cart__banner-icon">' + ICON.check + '</div><div class="bod-cart__banner-text">' + esc(bannerText(st)) + '</div></div>';
+    }
+    if (st.freeShipOn || st.protocol) {
+      var fill = ((st.freeShip ? 1 : st.shipProgress) + (st.eligible ? 1 : 0)) / 2 * 100;
+      out += '<div class="bod-cart__progress"><div class="bod-cart__progress-labels"><span>' +
+        esc(st.freeShip ? S.shipping_unlocked : tpl(S.shipping_remaining, { amount: st.money(st.shipRemaining) })) + '</span><span>' +
+        esc(st.eligible ? S.protocol_unlocked : S.protocol_locked) + '</span></div><div class="bod-cart__progress-bar"><div class="bod-cart__progress-fill" style="width:' + Math.round(fill) + '%"></div></div></div>';
+    }
+    out += '<div class="bod-cart__body">';
+    st.lines.forEach(function (l) {
+      out += '<div class="bod-cart__line bod-cart__line--' + l.type + '" data-key="' + esc(l.key) + '">' + image(l, 84) +
+        '<div class="bod-cart__line-main"><div class="bod-cart__line-top"><div class="bod-cart__line-title">' + esc(l.title) + '</div>' + removeBtn(l) + '</div>' +
+        '<div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' +
+        '<div class="bod-cart__line-price">' + priceCells(st, l) + badge(st, l) + qtyLabel(st, l) + '</div>' +
+        (l.type === 'subscription' ? '<div class="bod-cart__renewal">' + esc(renewalText(st, l)) + '</div>' : '') +
+        upsellRow(st, l) + '</div></div>';
+    });
+    out += protocolNudge(st) + '</div>';
+    out += '<div class="bod-cart__footer bod-cart__footer--a"><div class="bod-cart__rows">' +
+      '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(S.label_subtotal) + '</span><span>' + esc(st.money(st.listTotal)) + '</span></div>';
+    if (st.subSave > 0) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + subSaveLabel(st) + '</span><span class="bod-cart__green">−' + esc(st.money(st.subSave)) + '</span></div>'; }
+    if (st.hasCode) { out += '<div class="bod-cart__row"><span class="bod-cart__green bod-cart__with-icon">' + ICON.tag + esc(codeRowLabel(st)) + '</span><span class="bod-cart__green">−' + esc(st.money(st.codeTotal)) + '</span></div>'; }
+    if (st.protoSave > 0) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(S.label_protocol_row) + '</span><span class="bod-cart__green">−' + esc(st.money(st.protoSave)) + '</span></div>'; }
+    out += shippingValue(st) + '</div>' +
+      '<div class="bod-cart__total"><span>' + esc(S.label_total) + '</span><span class="bod-cart__total-amount">' + esc(st.money(st.total)) + '</span></div>';
+    if (S.savings_strip && st.saved > 0) { out += '<div class="bod-cart__strip">' + esc(tpl(S.savings_text, { amount: st.money(st.saved) })) + '</div>'; }
+    out += termsBox(st) + checkoutForm(st, ICON.lock + '<span>' + esc(tpl(S.checkout_text, { total: st.money(st.total) })) + '</span>', 'bod-cart__checkout--a') +
+      codeField(st, 'a') + trustInline(st) + '</div>';
+    return out;
+  }
+
+  /* ---------- design B: savings hero ---------- */
+  function renderB(st) {
+    var S = st.S, h = header(st, false);
+    if (st.empty) { return h + emptyState(st); }
+    var names = st.lines.map(function (l) { return l.title; });
+    var summary = names.join(' + ') + (st.freeShip ? ' + shipping' : '') + '.';
+    var out = h + '<div class="bod-cart__hero"><div class="bod-cart__hero-eyebrow">' + esc(st.subs.length ? S.b_heading : S.b_heading_oneoff) + '</div>' +
+      '<div class="bod-cart__hero-prices"><span class="bod-cart__hero-total">' + esc(st.money(st.total)) + '</span>' + (st.saved > 0 ? '<span class="bod-cart__hero-strike">' + esc(st.money(st.listTotal)) + '</span>' : '') + '</div>' +
+      '<div class="bod-cart__hero-summary">' + esc(summary) + (st.saved > 0 ? ' <span class="bod-cart__pill">' + esc(tpl(S.b_save_pill, { amount: st.money(st.saved) })) + '</span>' : '') + '</div>';
+    if (st.hasCode) {
+      out += '<div class="bod-cart__ticket"><div class="bod-cart__ticket-code">' + ICON.check + '<span>' + esc(st.codeName) + '</span></div><span class="bod-cart__ticket-right">' +
+        esc(st.bannerPct === null ? tpl(S.code_banner_mixed, { code: '' }).trim() : tpl(S.b_coupon_text, { percent: st.bannerPct })) + '</span></div>';
+    }
+    out += '</div><div class="bod-cart__body">';
+    st.lines.forEach(function (l) {
+      out += '<div class="bod-cart__line bod-cart__line--' + l.type + '" data-key="' + esc(l.key) + '">' + image(l, 72) +
+        '<div class="bod-cart__line-main"><div class="bod-cart__line-title">' + esc(l.title) + '</div><div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' +
+        (l.type === 'subscription' ? '<div class="bod-cart__renewal">' + esc(renewalText(st, l)) + '</div>' : '') + qtyLabel(st, l) + upsellRow(st, l) + '</div>' +
+        '<div class="bod-cart__line-right">' + priceCells(st, l) + badge(st, l) + removeBtn(l) + '</div></div>';
+    });
+    out += protocolNudge(st) + codeField(st, 'b') + '</div>';
+    out += '<div class="bod-cart__footer bod-cart__footer--b">' + termsBox(st) +
+      checkoutForm(st, '<span>' + esc(S.checkout_text_b) + '</span><span>' + esc(st.money(st.total)) + '</span>', 'bod-cart__checkout--b') + trustIcons(st) + '</div>';
+    return out;
+  }
+
+  /* ---------- design C: receipt breakdown ---------- */
+  function renderC(st) {
+    var S = st.S;
+    var out = st.hasCode ? '<div class="bod-cart__topbar">' + esc(bannerText(st)) + '</div>' : '';
+    out += header(st, false);
+    if (st.empty) { return out + emptyState(st); }
+    out += '<div class="bod-cart__body">';
+    st.lines.forEach(function (l) {
+      var title = l.type === 'subscription' ? l.title + ' · ' + l.plan.short : l.title;
+      out += '<div class="bod-cart__line bod-cart__line--' + l.type + '" data-key="' + esc(l.key) + '">' + image(l, 64) +
+        '<div class="bod-cart__line-main"><div class="bod-cart__line-title">' + esc(title) + '</div><div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' + qtyLabel(st, l) + upsellRow(st, l) + '</div>' +
+        '<div class="bod-cart__line-right"><span class="bod-cart__price bod-cart__price--list">' + esc(st.money(l.list)) + '</span>' + removeBtn(l) + '</div></div>';
+    });
+    out += protocolNudge(st);
+    out += '<div class="bod-cart__savings"><div class="bod-cart__savings-heading">' + esc(S.label_savings_heading) + '</div>';
+    if (st.subSave > 0) { out += '<div class="bod-cart__row"><span>' + subSaveLabel(st) + '</span><span class="bod-cart__green">−' + esc(st.money(st.subSave)) + '</span></div>'; }
+    if (st.hasCode) { out += '<div class="bod-cart__row"><span class="bod-cart__with-icon">' + esc(S.label_code_prefix) + ' <span class="bod-cart__chip">' + esc(st.codeName) + '</span>' + (st.bannerPct !== null ? ' (' + st.bannerPct + '%)' : '') + '</span><span class="bod-cart__green">−' + esc(st.money(st.codeTotal)) + '</span></div>'; }
+    if (st.protoSave > 0) { out += '<div class="bod-cart__row"><span>' + esc(S.label_protocol_row) + '</span><span class="bod-cart__green">−' + esc(st.money(st.protoSave)) + '</span></div>'; }
+    if (st.freeShip) { out += '<div class="bod-cart__row"><span>' + esc(S.label_shipping) + '</span><span class="bod-cart__green">' + esc(S.free_label) + '</span></div>'; }
+    if (st.saved > 0) { out += '<div class="bod-cart__saved-box"><span>' + esc(S.label_total_saved) + '</span><span class="bod-cart__saved-amount">' + esc(st.money(st.saved)) + '</span></div>'; }
+    out += '</div>' + codeField(st, 'c') + '</div>';
+    out += '<div class="bod-cart__footer bod-cart__footer--c"><div class="bod-cart__total"><span>' + esc(S.label_total) + '</span><span class="bod-cart__total-right">' +
+      (st.saved > 0 ? '<span class="bod-cart__strike">' + esc(st.money(st.listTotal)) + '</span>' : '') + '<span class="bod-cart__total-amount">' + esc(st.money(st.total)) + '</span></span></div>';
+    st.subs.forEach(function (l) { out += '<div class="bod-cart__renewal bod-cart__renewal--right">' + esc(renewalText(st, l)) + '</div>'; });
+    out += termsBox(st) + checkoutForm(st, ICON.lock + '<span>' + esc(S.checkout_text_c) + '</span>', 'bod-cart__checkout--c') + '</div>';
+    return out;
+  }
+
+  var RENDER = { a: renderA, b: renderB, c: renderC };
+
+  /* ---------- render ---------- */
+  function render() {
+    var h = host(); if (!h) { return; }
+    var data = readData(); if (!data) { return; }
+    var root = h.querySelector('[data-bod-cart-root]'); if (!root) { return; }
+    if (!chosen) { chosen = chooseDesign(data.settings && data.settings.design); }
+    var st = buildState(data);
+    rendering = true;
+    h.setAttribute('data-design', chosen.design);
+    root.innerHTML = RENDER[chosen.design](st);
+    rendering = false;
+    pending.error = null; pending.open = false; pending.code = '';
+    writeSplitAttribute(st);
+    bodNormalize(st);
+    document.dispatchEvent(new CustomEvent('bod-cart:rendered', { detail: { design: chosen.design, state: st } }));
+  }
+  function writeSplitAttribute(st) {
+    if (chosen.source !== 'split' || splitAttrWritten || st.empty) { return; }
+    var current = st.cart.attributes && st.cart.attributes._cart_design;
+    if (current === chosen.design) { return; }
+    splitAttrWritten = true;
+    post('cart/update.js', { attributes: { _cart_design: chosen.design } }).catch(function () {});
+  }
+
+  /* ---------- cart requests ---------- */
+  function post(path, body) {
+    return fetch(rootUrl() + path, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(body)
+    }).then(function (r) { return r.json().then(function (j) { j.__ok = r.ok; return j; }); });
+  }
+  function withSections(body) { body.sections = SECTIONS; body.sections_url = window.location.pathname; return body; }
+  function getCart() { return fetch(rootUrl() + 'cart.js', { headers: { 'Accept': 'application/json' } }).then(function (r) { return r.json(); }); }
+  function applySections(res) {
+    var sections = res && res.sections;
+    if (!sections || !sections['cart-drawer']) { return refreshTruth(); }
+    var h = host();
+    if (h) {
+      var frag = new DOMParser().parseFromString(sections['cart-drawer'], 'text/html').querySelector('.cart-drawer');
+      if (frag) { h.innerHTML = frag.innerHTML; } /* observer -> render() */
+    }
+    if (sections['cart-bubble']) {
+      var b = document.querySelector('.thb-item-count');
+      var nb = new DOMParser().parseFromString(sections['cart-bubble'], 'text/html').querySelector('.thb-item-count');
+      if (b && nb) { b.innerHTML = nb.innerHTML; }
+    }
+    return Promise.resolve();
+  }
+  function refreshTruth() {
+    return fetch(rootUrl() + '?sections=' + SECTIONS.join(','))
+      .then(function (r) { return r.json(); })
+      .then(function (s) { return applySections({ sections: s }); })
+      .catch(function () {});
+  }
+  function setBusy(el, on) {
+    var h = host(); if (h) { h.classList.toggle('is-busy', !!on); }
+    if (el) { el.classList.toggle('is-loading', !!on); el.querySelectorAll('button').forEach(function (b) { b.disabled = !!on; }); }
+  }
+
+  function removeLine(key) {
+    setBusy(null, true);
+    post('cart/change.js', withSections({ id: key, quantity: 0 })).then(applySections).catch(refreshTruth).then(function () { setBusy(null, false); });
+  }
+  function protocolVariantId(data) {
+    var S = data.settings || {};
+    return parseInt(S.protocol_variant, 10) || (data.protocol && data.protocol.variant_id) || null;
+  }
+  function addProtocol() {
+    var data = readData(); if (!data || !data.protocol) { return; }
+    var vid = protocolVariantId(data); if (!vid) { return; }
+    setBusy(null, true);
+    post('cart/add.js', withSections({ items: [{ id: vid, quantity: 1, properties: { _gift: 'Free with your subscription' } }] }))
+      .then(applySections).catch(refreshTruth).then(function () { setBusy(null, false); });
+  }
+  /* after a one-off becomes a subscription, bring the free protocol along if it isn't there */
+  function maybeAddProtocol(items, fallback) {
+    var data = readData();
+    if (!data || !data.protocol || !(data.settings && data.settings.protocol_nudge)) { return Promise.resolve(fallback); }
+    var ids = (data.protocol.variant_ids || []).map(String);
+    var has = (items || []).some(function (i) { return ids.indexOf(String(i.variant_id)) >= 0; });
+    if (has) { return Promise.resolve(fallback); }
+    var vid = protocolVariantId(data); if (!vid) { return Promise.resolve(fallback); }
+    return post('cart/add.js', withSections({ items: [{ id: vid, quantity: 1, properties: { _gift: 'Free with your subscription' } }] }))
+      .then(function (r2) { return (r2 && r2.sections) ? r2 : fallback; })
+      .catch(function () { return fallback; });
+  }
+  function swapLine(btn) {
+    var key = btn.getAttribute('data-key'), plan = parseInt(btn.getAttribute('data-plan'), 10);
+    var variant = btn.getAttribute('data-variant'), lineVariant = btn.getAttribute('data-line-variant');
+    if (!key || !plan) { return; }
+    setBusy(btn, true);
+    var flow;
+    if (!variant || variant === lineVariant) {
+      flow = post('cart/change.js', withSections({ id: key, selling_plan: plan }))
+        .then(function (res) { if (!res.__ok || res.status) { throw res; } return maybeAddProtocol(res.items, res); });
+    } else {
+      /* cross-variant swap: add the target first, then remove the one-off by its CURRENT key */
+      var item = { id: parseInt(variant, 10), quantity: 1, selling_plan: plan, properties: { _li: Date.now().toString(36) } };
+      flow = post('cart/add.js', { items: [item] })
+        .then(function (r) { if (!r.__ok || r.status) { throw r; } return getCart(); })
+        .then(function (cart) {
+          var target = (cart.items || []).filter(function (i) { return i.key === key; })[0];
+          if (!target) { return getCart().then(function (c2) { return maybeAddProtocol(c2.items, null); }); }
+          return post('cart/change.js', withSections({ id: target.key, quantity: 0 }))
+            .then(function (res) { return maybeAddProtocol(res.items, res); });
+        });
+    }
+    flow.then(applySections).catch(function () { return refreshTruth(); }).then(function () { setBusy(null, false); });
+  }
+
+  function applyCode(form) {
+    var input = form.querySelector('input[name="discount"]');
+    var code = (input && input.value || '').trim();
+    if (!code) { return; }
+    var data = readData(); var S = (data && data.settings) || {};
+    setBusy(form, true);
+    function tryCodes(list) { return post('cart/update.js', withSections({ discount: list.join(',') })); }
+    function ok(res) {
+      return (res.discount_codes || []).some(function (c) { return String(c.code).toLowerCase() === code.toLowerCase() && c.applicable; });
+    }
+    function done(res) { pending.error = null; pending.open = false; pending.code = ''; return applySections(res); }
+    function fail(res) { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return applySections(res); }
+    getCart().then(function (cart) {
+      var existing = (cart.discount_codes || []).filter(function (c) { return c.applicable && String(c.code).toLowerCase() !== code.toLowerCase(); }).map(function (c) { return c.code; });
+      /* keep codes that already apply and add the new one on top; if they don't
+         combine, try the new code on its own; otherwise put things back and say so */
+      return tryCodes(existing.concat([code])).then(function (res) {
+        if (ok(res)) { return done(res); }
+        if (!existing.length) { return fail(res); }
+        return tryCodes([code]).then(function (res2) {
+          if (ok(res2)) { return done(res2); }
+          return tryCodes(existing).then(fail, fail);
+        });
+      });
+    }).catch(function () { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return refreshTruth(); })
+      .then(function () { setBusy(null, false); });
+  }
+
+  /* 3-Month Plan repair (carried over): the plan is only ever sold as 2 units on one line. */
+  function bodNormalize(st) {
+    if (normBusy || normAttempts >= 3) { return; }
+    var split = (st.cart.items || []).filter(function (i) {
+      var sp = i.selling_plan_allocation && i.selling_plan_allocation.selling_plan;
+      return sp && BUNDLE_PLANS[String(sp.id)] && i.quantity < BUNDLE_PLANS[String(sp.id)];
+    });
+    if (!split.length) { normAttempts = 0; return; }
+    normBusy = true; normAttempts++;
+    var ops = [];
+    var byPlan = {};
+    split.forEach(function (i) { var id = String(i.selling_plan_allocation.selling_plan.id); (byPlan[id] = byPlan[id] || []).push(i); });
+    Object.keys(byPlan).forEach(function (id) {
+      var want = BUNDLE_PLANS[id], ones = byPlan[id];
+      for (var k = 0; k + 1 < ones.length; k += 2) { ops.push({ id: ones[k + 1].key, quantity: 0 }); ops.push({ id: ones[k].key, quantity: want }); }
+      if (ones.length % 2) { ops.push({ id: ones[ones.length - 1].key, quantity: want }); }
+    });
+    var chain = Promise.resolve();
+    ops.forEach(function (op) { chain = chain.then(function () { return post('cart/change.js', op); }); });
+    chain.then(refreshTruth).catch(function () {}).then(function () { normBusy = false; });
+  }
+
+  /* ---------- events ---------- */
+  document.addEventListener('click', function (e) {
+    var h = host(); if (!h || !h.contains(e.target)) { return; }
+    var el = e.target.closest('[data-bod-action]'); if (!el) { return; }
+    var action = el.getAttribute('data-bod-action');
+    e.preventDefault();
+    if (action === 'remove') { removeLine(el.getAttribute('data-key')); }
+    else if (action === 'swap') { swapLine(el); }
+    else if (action === 'add-protocol') { addProtocol(); }
+    else if (action === 'toggle-code') {
+      var wrap = document.getElementById('BodCartCodeWrap');
+      if (wrap) { wrap.hidden = false; el.setAttribute('aria-expanded', 'true'); el.hidden = true; var inp = wrap.querySelector('input'); if (inp) { inp.focus(); } }
+    }
+    else if (action === 'change-code') {
+      var form = el.closest('form[data-bod-code]'); if (!form) { return; }
+      var input = form.querySelector('input[name="discount"]');
+      form.classList.remove('is-applied');
+      input.readOnly = false; input.value = ''; input.focus();
+      var applied = form.querySelector('.bod-cart__code-applied'); if (applied) { applied.remove(); }
+      var data = readData(); var label = (data && data.settings && data.settings.code_apply_label) || 'Apply';
+      el.outerHTML = '<button type="submit" class="bod-cart__btn bod-cart__code-apply">' + esc(label) + '</button>';
+    }
+  }, true);
+
+  document.addEventListener('submit', function (e) {
+    var form = e.target;
+    if (form.matches && form.matches('form[data-bod-code]')) { e.preventDefault(); applyCode(form); return; }
+    if (form.matches && form.matches('form[data-bod-checkout]')) {
+      var terms = document.getElementById('CartDrawerTerms');
+      if (terms && !terms.checked) {
+        var data = readData();
+        terms.setCustomValidity((data && data.settings && data.settings.terms_required_text) || 'Please agree to the terms');
+        terms.reportValidity(); terms.focus(); e.preventDefault();
+      } else if (terms) { terms.setCustomValidity(''); }
+    }
+  }, true);
+  document.addEventListener('change', function (e) {
+    if (e.target && e.target.id === 'CartDrawerTerms') { e.target.setCustomValidity(''); }
+  });
+
+  /* ---------- boot ---------- */
+  function boot() {
+    var h = host(); if (!h) { return; }
+    handleUrlOverride();
+    render();
+    if (window.MutationObserver) {
+      var t = null;
+      new MutationObserver(function () {
+        if (rendering) { return; }
+        clearTimeout(t); t = setTimeout(render, 0);
+      }).observe(h, { childList: true });
+    }
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', boot); } else { boot(); }
+})();
