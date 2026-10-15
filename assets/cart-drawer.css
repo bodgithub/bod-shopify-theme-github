@@ -6,7 +6,7 @@
 #Cart-Drawer {
   --bcd-line: #E4E5EE;
   --bcd-strike: var(--bcd-muted);
-  --bcd-mobile-bottom-gap: 40px; /* room for the Klaviyo teaser on phones */
+  --bcd-mobile-bottom-gap: 24px; /* room for the Klaviyo teaser on phones */
   --bcd-footer-bg: #FAFAFD;
   --bcd-hero-muted: #B9C2FF;
   --bcd-hero-dash: #8FA0FF;
@@ -187,5 +187,7 @@ body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
 @media (max-width: 480px) {
   #Cart-Drawer { max-width: none; }
   #Cart-Drawer .bod-cart__footer { padding-bottom: calc(20px + var(--bcd-mobile-bottom-gap) + env(safe-area-inset-bottom, 0px)); }
+  /* the 'different code' link keeps its 44px tap target but no visible space above it */
+  #Cart-Drawer .bod-cart__code-toggle { margin: -14px 0 -8px; }
   #Cart-Drawer .bod-cart__hero-total { font-size: 38px; }
 }
