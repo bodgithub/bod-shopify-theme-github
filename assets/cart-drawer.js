@@ -21,9 +21,6 @@
   var LS_OVERRIDE = 'bod_cart_design';
   var LS_SPLIT = 'bod_cart_design_split';
   var SECTIONS = ['cart-drawer', 'cart-bubble'];
-  /* Plans that are only ever sold as N units on ONE line. Apps re-evaluating the
-     cart can split them into N qty-1 lines; bodNormalize repairs that. */
-  var BUNDLE_PLANS = { '7141621979': 2 };
 
   /* Fallbacks for any theme setting left blank. The theme editor normally fills
      these from settings_schema.json; this just keeps the drawer sane without them. */
@@ -97,7 +94,6 @@
 
   var pending = { error: null, open: false, code: '' };
   var splitAttrWritten = false;
-  var normBusy = false, normAttempts = 0;
   var chosen = null; /* { design: 'a'|'b'|'c', source: 'override'|'split'|'setting' } */
 
   /* ---------- utilities ---------- */
@@ -255,7 +251,7 @@
         }
       }
       lines.push({
-        key: item.key, qty: qty, type: type,
+        key: item.key, keys: [item.key], qty: qty, type: type,
         title: meta.display_name || meta.title, productTitle: meta.title,
         image: meta.image, imageAlt: meta.image_alt, url: meta.url,
         variantId: String(meta.variant_id),
@@ -266,6 +262,26 @@
       });
     });
 
+    /* Shopify splits a multi-unit subscription line (e.g. the 3-Month Plan's two
+       tubs) into separate lines when the Buy X Get Y protocol discount applies.
+       The customer bought one plan, so show one row: merge lines with the same
+       variant + selling plan. */
+    var merged = [], byPlan = {};
+    lines.forEach(function (l) {
+      var k = l.type === 'subscription' && !l.isGift ? l.variantId + '|' + l.plan.id : null;
+      if (k && byPlan[k]) {
+        var m = byPlan[k];
+        m.keys.push(l.key); m.qty += l.qty; m.list += l.list; m.orig += l.orig; m.disc += l.disc; m.first += l.first;
+        m.codeShare += l.codeShare; m.productDisc += l.productDisc;
+        m.plan.renewal = m.plan.unit * m.qty;
+        m.pct = m.list > 0 ? Math.max(0, Math.round((1 - m.first / m.list) * 100)) : 0;
+        m.isFree = m.first === 0 && m.orig > 0;
+        return;
+      }
+      if (k) { byPlan[k] = l; }
+      merged.push(l);
+    });
+    lines = merged;
     /* protocol lines last, everything else in cart order */
     lines = lines.filter(function (l) { return l.type !== 'protocol'; }).concat(lines.filter(function (l) { return l.type === 'protocol'; }));
     var subs = lines.filter(function (l) { return l.type === 'subscription'; });
@@ -348,7 +364,7 @@
     return l.qty > 1 ? '<span class="bod-cart__qty">' + esc(tpl(st.S.qty_text, { qty: l.qty })) + '</span>' : '';
   }
   function removeBtn(l) {
-    return '<button type="button" class="bod-cart__remove" data-bod-action="remove" data-key="' + esc(l.key) + '" aria-label="Remove ' + esc(l.productTitle) + '">' + ICON.trash + '</button>';
+    return '<button type="button" class="bod-cart__remove" data-bod-action="remove" data-key="' + esc(l.keys.join(',')) + '" aria-label="Remove ' + esc(l.productTitle) + '">' + ICON.trash + '</button>';
   }
   function image(l, size) {
     if (!l.image) { return '<div class="bod-cart__img bod-cart__img--empty" style="width:' + size + 'px;height:' + size + 'px"></div>'; }
@@ -536,7 +552,6 @@
     root.innerHTML = RENDER[chosen.design](st);
     pending.error = null; pending.open = false; pending.code = '';
     writeSplitAttribute(st);
-    bodNormalize(st);
     document.dispatchEvent(new CustomEvent('bod-cart:rendered', { detail: { design: chosen.design, state: st } }));
   }
   function writeSplitAttribute(st) {
@@ -581,9 +596,17 @@
     if (el) { el.classList.toggle('is-loading', !!on); el.querySelectorAll('button').forEach(function (b) { b.disabled = !!on; }); }
   }
 
-  function removeLine(key) {
+  function removeLine(keyList) {
+    var keys = String(keyList || '').split(',').filter(Boolean);
+    if (!keys.length) { return; }
     setBusy(null, true);
-    post('cart/change.js', withSections({ id: key, quantity: 0 })).then(applySections).catch(refreshTruth).then(function () { setBusy(null, false); });
+    var chain = Promise.resolve(null);
+    keys.forEach(function (k, idx) {
+      chain = chain.then(function () {
+        return idx === keys.length - 1 ? post('cart/change.js', withSections({ id: k, quantity: 0 })) : post('cart/change.js', { id: k, quantity: 0 });
+      });
+    });
+    chain.then(applySections).catch(refreshTruth).then(function () { setBusy(null, false); });
   }
   function protocolVariantId(data) {
     var S = withDefaults(data.settings || {});
@@ -660,28 +683,6 @@
       });
     }).catch(function () { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return refreshTruth(); })
       .then(function () { setBusy(null, false); });
-  }
-
-  /* 3-Month Plan repair (carried over): the plan is only ever sold as 2 units on one line. */
-  function bodNormalize(st) {
-    if (normBusy || normAttempts >= 3) { return; }
-    var split = (st.cart.items || []).filter(function (i) {
-      var sp = i.selling_plan_allocation && i.selling_plan_allocation.selling_plan;
-      return sp && BUNDLE_PLANS[String(sp.id)] && i.quantity < BUNDLE_PLANS[String(sp.id)];
-    });
-    if (!split.length) { normAttempts = 0; return; }
-    normBusy = true; normAttempts++;
-    var ops = [];
-    var byPlan = {};
-    split.forEach(function (i) { var id = String(i.selling_plan_allocation.selling_plan.id); (byPlan[id] = byPlan[id] || []).push(i); });
-    Object.keys(byPlan).forEach(function (id) {
-      var want = BUNDLE_PLANS[id], ones = byPlan[id];
-      for (var k = 0; k + 1 < ones.length; k += 2) { ops.push({ id: ones[k + 1].key, quantity: 0 }); ops.push({ id: ones[k].key, quantity: want }); }
-      if (ones.length % 2) { ops.push({ id: ones[ones.length - 1].key, quantity: want }); }
-    });
-    var chain = Promise.resolve();
-    ops.forEach(function (op) { chain = chain.then(function () { return post('cart/change.js', op); }); });
-    chain.then(refreshTruth).catch(function () {}).then(function () { normBusy = false; });
   }
 
   /* ---------- events ---------- */
