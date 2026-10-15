@@ -115,6 +115,7 @@ One code can only hit one plan's target exactly, because the same % applies acro
 - The 3-Month Plan (selling plan 7141621979) is always two tubs on one line. If an app splits it into two single lines, the drawer repairs it (`BUNDLE_PLANS` in `assets/cart-drawer.js`).
 - The free protocol is made free by the native Buy X Get Y discount "FREE Protocol With Subscription". It needs the protocol in the cart and any subscription line. Never make the protocol a $0 product.
 - The drawer never reads its layout from `config/settings_data.json` directly; the theme editor writes your values there and Liquid passes them through.
+- Text fallbacks for blank settings live in `DEFAULTS` at the top of `assets/cart-drawer.js`, not in Liquid. Shopify's GitHub sync silently rejects any Liquid file that has a `{token}` inside a quoted string, so never write `| default: '{code} applied'` in a `.liquid` file.
 
 ### Merging dev to main
 
