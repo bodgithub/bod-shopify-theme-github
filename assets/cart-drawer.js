@@ -186,10 +186,15 @@
     var fmt = data.money_format;
     var intervals = parseMap(S.plan_intervals);
     var upsellMap = parseMap(S.upsell_map);
-    var codes = (cart.discount_codes || []).filter(function (c) { return c.applicable; }).map(function (c) { return c.code; });
+    var cartLevel = cart.cart_level_discount_applications || [];
+    /* /cart.js has discount_codes[]; Liquid's cart | json does not, so fall back to
+       the cart-level applications of type discount_code (only codes that actually
+       apply ever appear there, which is exactly the set we want) */
+    var codes = cart.discount_codes
+      ? cart.discount_codes.filter(function (c) { return c.applicable; }).map(function (c) { return c.code; })
+      : uniq(cartLevel.filter(function (d) { return d.type === 'discount_code'; }).map(function (d) { return d.title; }));
     var codeSet = {};
     codes.forEach(function (c) { codeSet[String(c).toLowerCase()] = true; });
-    var cartLevel = cart.cart_level_discount_applications || [];
     var codeTotal = sum(cartLevel, function (d) { return d.total_allocated_amount; });
     var protocolValue = Math.round(parseFloat(S.protocol_value || '49') * 100) || 4900;
     var protocolIds = (data.protocol && data.protocol.variant_ids || []).map(String);
@@ -201,7 +206,9 @@
       var item = byKey[meta.key] || (cart.items || [])[idx];
       if (!item) { return; }
       var qty = item.quantity;
-      var isProtocol = !!meta.is_protocol || protocolIds.indexOf(String(meta.variant_id)) >= 0;
+      /* protocol = the picked protocol product; until that setting is filled in,
+         fall back to the free-gift line the product page adds (_gift property) */
+      var isProtocol = !!meta.is_protocol || protocolIds.indexOf(String(meta.variant_id)) >= 0 || (!data.protocol && !!meta.is_gift);
       var type = isProtocol ? 'protocol' : (item.selling_plan_allocation ? 'subscription' : 'oneoff');
       var listUnit = isProtocol ? protocolValue : (meta.list_unit || item.original_price);
       var list = listUnit * qty;
