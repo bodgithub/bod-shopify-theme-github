@@ -50,10 +50,15 @@
 | SKU | One-time | Subscription | Per day (one-time / sub) |
 |---|---|---|---|
 | 30-day | $45.00 | $39.60 | $1.50 / $1.32 |
-| 45-day | $65.00 | $52.00 | $1.44 / $1.16 |
+| 45-day | $65.00 | $55.25 | $1.44 / $1.23 |
 | 90-day bundle | — (sub only) | $98.00 / quarter | $1.09 |
 
-- Subscription is cheaper on every SKU. Subscription cadence ~6 weeks on the 30/45-day SKUs.
+- Subscription is cheaper on every SKU. Subscribe & save per plan (live Oct 2026, CAN CHANGE —
+  check the live selling plan before quoting): 1-Month Plan 12% (renews every 4 weeks),
+  6-Week Plan 15% (renews every 6 weeks), 3-Month Plan 24.62% (renews every 3 months).
+- Interval wording: "4 weeks", "6 weeks", "3 months". Never call the 4-week plan "monthly".
+- Discount codes are first-order only and change often. Check the code's live % in Shopify
+  before quoting it in copy.
 - **90-day bundle = SUBSCRIPTION ONLY.** $98 billed every 3 months. It is 2 × 45-day tubs at $49
   each = 90-day supply. Equivalent to **$32.67/month** or **$1.09/day**.
   ⚠️ Lead with **$32.67/month** — it is the lowest monthly figure we can truthfully quote.

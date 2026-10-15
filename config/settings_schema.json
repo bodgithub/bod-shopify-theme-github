@@ -1107,6 +1107,494 @@
     ]
   },
   {
+    "name": "Cart drawer (Bodology)",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Controls the Bodology slide-out cart. Every number in the drawer comes from live cart data; these settings only control layout and wording. Tokens in curly braces are replaced at render time and are listed under each field."
+      },
+      {
+        "type": "header",
+        "content": "Design"
+      },
+      {
+        "type": "select",
+        "id": "bcd_design",
+        "label": "Cart design",
+        "default": "a",
+        "options": [
+          {
+            "value": "a",
+            "label": "A — Code applied banner"
+          },
+          {
+            "value": "b",
+            "label": "B — Savings hero"
+          },
+          {
+            "value": "c",
+            "label": "C — Receipt breakdown"
+          },
+          {
+            "value": "random",
+            "label": "Random split (A/B/C, 33% each, saved on the order as _cart_design)"
+          }
+        ],
+        "info": "Preview any design in your own browser with ?cart_design=a, b or c on any page URL. ?cart_design=reset clears the override."
+      },
+      {
+        "type": "header",
+        "content": "Discount code field"
+      },
+      {
+        "type": "select",
+        "id": "bcd_code_field",
+        "label": "Code field",
+        "default": "collapsed",
+        "options": [
+          {
+            "value": "always",
+            "label": "Always open"
+          },
+          {
+            "value": "collapsed",
+            "label": "Collapsed behind a link once a code is applied"
+          },
+          {
+            "value": "hidden",
+            "label": "Hidden"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_banner",
+        "label": "Applied-code banner text",
+        "default": "{code} applied: {percent}% off your first order",
+        "info": "Tokens: {code} = the applied code, {percent} = the TOTAL first-order % it produces on the subscription lines (or the one-off lines when there are no subscriptions)."
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_banner_mixed",
+        "label": "Mixed-cart banner text",
+        "default": "{code} applied",
+        "info": "Used when the lines in the cart end up with different effective percentages, so no single % is true. Tokens: {code}."
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_label",
+        "label": "Code field label",
+        "default": "Discount code"
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_other_label",
+        "label": "Design A: 'different code' link text",
+        "default": "Have a different code?"
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_another_label",
+        "label": "Design C: code field label",
+        "default": "Got another code? Enter it here"
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_placeholder",
+        "label": "Code field placeholder",
+        "default": "Enter code"
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_apply_label",
+        "label": "Apply button text",
+        "default": "Apply"
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_change_label",
+        "label": "Design B: change button text",
+        "default": "Change"
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_applied_line",
+        "label": "Design B: applied line under the field",
+        "default": "{code} applied: −{amount}",
+        "info": "Tokens: {code}, {amount} = the code's total discount on this order."
+      },
+      {
+        "type": "text",
+        "id": "bcd_invalid_code_text",
+        "label": "Invalid-code error text",
+        "default": "That code isn't valid."
+      },
+      {
+        "type": "header",
+        "content": "Line items"
+      },
+      {
+        "type": "text",
+        "id": "bcd_plan_subtitle",
+        "label": "Subscription line subtitle",
+        "default": "Ships every {interval} · cancel anytime",
+        "info": "Tokens: {interval} (from the plan intervals list below), {plan} = selling plan name."
+      },
+      {
+        "type": "text",
+        "id": "bcd_renewal_text",
+        "label": "Renewal line (under every subscription line)",
+        "default": "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
+        "info": "Tokens: {interval}, {renewal_price} = the plan's normal subscribe & save price × quantity with no code, {plan}."
+      },
+      {
+        "type": "textarea",
+        "id": "bcd_plan_intervals",
+        "label": "Plan intervals",
+        "default": "6331924699: 4 weeks\n5755961563: 6 weeks\n7141621979: 3 months",
+        "info": "One per line: selling plan ID, a colon, then the wording used for {interval}. Find plan IDs in Recharge → Plans, or in the product's selling plan groups. A plan not listed here falls back to its own name."
+      },
+      {
+        "type": "text",
+        "id": "bcd_oneoff_subtitle",
+        "label": "One-off line subtitle",
+        "default": "One-time purchase"
+      },
+      {
+        "type": "text",
+        "id": "bcd_badge_text",
+        "label": "Discount badge text",
+        "default": "{percent}% OFF",
+        "info": "Tokens: {percent} = the line's TRUE effective first-order % (subscribe & save plus any code, combined). Hidden when it would read 0%."
+      },
+      {
+        "type": "text",
+        "id": "bcd_qty_text",
+        "label": "Quantity label (shown when quantity is above 1)",
+        "default": "Qty {qty}"
+      },
+      {
+        "type": "text",
+        "id": "bcd_free_label",
+        "label": "Free price label",
+        "default": "FREE"
+      },
+      {
+        "type": "header",
+        "content": "Free protocol"
+      },
+      {
+        "type": "product",
+        "id": "bcd_protocol_product",
+        "label": "Protocol product",
+        "info": "Every variant of this product is treated as the protocol. It is freed by the native Buy X Get Y discount in Shopify admin; the drawer only displays what Shopify applies."
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_value",
+        "label": "Protocol display value",
+        "default": "49.00",
+        "info": "Shown struck through next to FREE, and counted in 'You're saving'. Enter the number only."
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_variant",
+        "label": "Protocol variant ID to add from the drawer",
+        "info": "Used by the 'add your free protocol' row. Leave blank to add the product's first available variant."
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_line_free",
+        "label": "Protocol subtitle when free",
+        "default": "Included with your subscription · emailed after purchase"
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_line_locked",
+        "label": "Protocol subtitle when not free",
+        "default": "Free with any subscription · emailed after purchase"
+      },
+      {
+        "type": "checkbox",
+        "id": "bcd_protocol_nudge",
+        "label": "Show 'add your free protocol' row when a subscription is in the cart but the protocol isn't",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_nudge_text",
+        "label": "Add-protocol row text",
+        "default": "Add your free {protocol} ({value} value)",
+        "info": "Tokens: {protocol} = product title, {value} = display value."
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_nudge_button",
+        "label": "Add-protocol button text",
+        "default": "Add"
+      },
+      {
+        "type": "header",
+        "content": "Progress bar (design A)"
+      },
+      {
+        "type": "text",
+        "id": "bcd_shipping_unlocked",
+        "label": "Free shipping unlocked text",
+        "default": "Free shipping unlocked"
+      },
+      {
+        "type": "text",
+        "id": "bcd_shipping_remaining",
+        "label": "Free shipping remaining text",
+        "default": "Spend {amount} more for free shipping",
+        "info": "Tokens: {amount}. The threshold is the 'Free shipping minimum amount' in the Cart Drawer settings."
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_unlocked",
+        "label": "Free protocol unlocked text",
+        "default": "Free protocol unlocked"
+      },
+      {
+        "type": "text",
+        "id": "bcd_protocol_locked",
+        "label": "Free protocol locked text",
+        "default": "Subscribe to unlock the free protocol"
+      },
+      {
+        "type": "header",
+        "content": "One-off upsell row"
+      },
+      {
+        "type": "checkbox",
+        "id": "bcd_upsell",
+        "label": "Show the switch-to-subscription row on one-off lines",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bcd_upsell_text",
+        "label": "Upsell row text",
+        "default": "Switch to {target}: save {percent}%{protocol_text}",
+        "info": "Tokens: {target} = target plan name, {percent} = the plan's subscribe & save % for this variant, {protocol_text} = the text below when the swap unlocks the free protocol, otherwise empty."
+      },
+      {
+        "type": "text",
+        "id": "bcd_upsell_protocol_text",
+        "label": "Upsell protocol suffix",
+        "default": " and get the protocol free"
+      },
+      {
+        "type": "textarea",
+        "id": "bcd_upsell_map",
+        "label": "Upsell targets (fallback)",
+        "default": "46444657279195: 6331924699\n46444646269147: 5755961563",
+        "info": "One per line: one-off variant ID, a colon, then the selling plan ID to switch it to. The variant metafield bodology.upsell_selling_plan_id overrides this when set."
+      },
+      {
+        "type": "header",
+        "content": "Summary and checkout"
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_subtotal",
+        "label": "Subtotal label",
+        "default": "Subtotal"
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_subscribe_save",
+        "label": "Subscribe & save row label",
+        "default": "Subscribe & save",
+        "info": "The plan % is appended automatically when every subscription line has the same %."
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_code_row",
+        "label": "Code row label",
+        "default": "{code} ({percent}% off)",
+        "info": "Tokens: {code}, {percent} = same total % as the banner. Falls back to just {code} in mixed carts."
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_protocol_row",
+        "label": "Free protocol row label",
+        "default": "Free protocol with subscription"
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_shipping",
+        "label": "Shipping label",
+        "default": "Shipping"
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_total",
+        "label": "Total label",
+        "default": "Total today"
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_savings_heading",
+        "label": "Design C: savings box heading",
+        "default": "YOUR SAVINGS"
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_total_saved",
+        "label": "Design C: total saved label",
+        "default": "Total saved today"
+      },
+      {
+        "type": "checkbox",
+        "id": "bcd_savings_strip",
+        "label": "Show savings strip",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bcd_savings_text",
+        "label": "Savings strip text",
+        "default": "You're saving {amount} today",
+        "info": "Tokens: {amount} = list prices (including the protocol's display value when it's free) minus total today."
+      },
+      {
+        "type": "text",
+        "id": "bcd_b_heading",
+        "label": "Design B: hero heading",
+        "default": "YOUR FIRST ORDER"
+      },
+      {
+        "type": "text",
+        "id": "bcd_b_heading_oneoff",
+        "label": "Design B: hero heading for one-off-only carts",
+        "default": "YOUR ORDER"
+      },
+      {
+        "type": "text",
+        "id": "bcd_b_save_pill",
+        "label": "Design B: save pill text",
+        "default": "You save {amount}"
+      },
+      {
+        "type": "text",
+        "id": "bcd_b_coupon_text",
+        "label": "Design B: coupon ticket text",
+        "default": "{percent}% off applied",
+        "info": "Tokens: {percent}. Mixed carts show 'applied'."
+      },
+      {
+        "type": "text",
+        "id": "bcd_checkout_text",
+        "label": "Checkout button text",
+        "default": "Secure checkout · {total}",
+        "info": "Tokens: {total}. Design B always shows 'Checkout' left and the total right."
+      },
+      {
+        "type": "text",
+        "id": "bcd_checkout_text_c",
+        "label": "Design C: checkout button text",
+        "default": "Checkout securely"
+      },
+      {
+        "type": "header",
+        "content": "Trust row"
+      },
+      {
+        "type": "checkbox",
+        "id": "bcd_trust",
+        "label": "Show trust row",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "bcd_trust_1",
+        "label": "Trust item 1",
+        "default": "3rd-party tested"
+      },
+      {
+        "type": "text",
+        "id": "bcd_trust_2",
+        "label": "Trust item 2",
+        "default": "Free US shipping"
+      },
+      {
+        "type": "text",
+        "id": "bcd_trust_3",
+        "label": "Trust item 3",
+        "default": "Cancel anytime"
+      },
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "text",
+        "id": "bcd_title",
+        "label": "Drawer title",
+        "default": "Your cart"
+      },
+      {
+        "type": "text",
+        "id": "bcd_empty_text",
+        "label": "Empty cart text",
+        "default": "Your cart is currently empty."
+      },
+      {
+        "type": "text",
+        "id": "bcd_empty_cta",
+        "label": "Empty cart button text",
+        "default": "Start shopping"
+      },
+      {
+        "type": "url",
+        "id": "bcd_empty_url",
+        "label": "Empty cart button link"
+      },
+      {
+        "type": "header",
+        "content": "Colours"
+      },
+      {
+        "type": "color",
+        "id": "bcd_color_primary",
+        "label": "Primary (buttons, badges)",
+        "default": "#2238E6"
+      },
+      {
+        "type": "color",
+        "id": "bcd_color_navy",
+        "label": "Navy (design B hero, design C apply button)",
+        "default": "#121A5C"
+      },
+      {
+        "type": "color",
+        "id": "bcd_color_green",
+        "label": "Savings green",
+        "default": "#0B7A45"
+      },
+      {
+        "type": "color",
+        "id": "bcd_color_green_bg",
+        "label": "Savings background",
+        "default": "#E7F5EC"
+      },
+      {
+        "type": "color",
+        "id": "bcd_color_text",
+        "label": "Text",
+        "default": "#12142B"
+      },
+      {
+        "type": "color",
+        "id": "bcd_color_muted",
+        "label": "Muted text",
+        "default": "#5A5E78"
+      }
+    ]
+  },
+  {
     "name": "Search Drawer",
     "settings": [
       {
