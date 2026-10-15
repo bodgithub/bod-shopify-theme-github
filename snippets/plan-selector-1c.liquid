@@ -156,8 +156,10 @@
 }
 #ps1c-{{ uid }} .ps-proto__sup{font-size:11.5px; color:var(--ps-ink-2); margin:9px 0 0;}
 #ps1c-{{ uid }} .ps-proto__sup strong{color:var(--ps-blue); font-weight:600;}
-#ps1c-{{ uid }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-family:var(--ps-sans); font-weight:var(--font-body-medium-weight, 400); letter-spacing:var(--button-letter-spacing, 0.02em); font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
-#ps1c-{{ uid }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
+/* matches the cart drawer's checkout button: lock icon, 56px, bold 18px, tight radius; keeps the gradient, hovers to the cart's solid navy with no lift */
+#ps1c-{{ uid }} .ps-cta{width:100%; min-height:56px; border:0; cursor:pointer; border-radius:10px; padding:0 22px; font-family:var(--ps-sans); font-weight:800; letter-spacing:0; font-size:18px; line-height:1; color:#fff; background:var(--ps-grad-banner); box-shadow:none; display:flex; align-items:center; justify-content:center; gap:10px; transform:none; transition:background .15s ease, color .15s ease;}
+#ps1c-{{ uid }} .ps-cta:hover, #ps1c-{{ uid }} .ps-cta:focus-visible{background:#121A5C; color:#fff; transform:none; box-shadow:none; filter:none;}
+#ps1c-{{ uid }} .ps-cta__lock{width:18px; height:18px; flex-shrink:0; display:block;}
 #ps1c-{{ uid }} .ps-cta__sub{font-weight:400; font-size:inherit; letter-spacing:inherit; opacity:.82; white-space:nowrap;}
 #ps1c-{{ uid }} .ps-cta.is-loading{pointer-events:none; opacity:.85; background:#3a4a8f;}
 #ps1c-{{ uid }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:ps1cspin-{{ uid }} .7s linear infinite; display:none;}
@@ -185,7 +187,7 @@
 #ps1c-{{ uid }} .ps-concern__t{font-size:15px; line-height:1.35; color:#14307C;}
 #ps1c-{{ uid }} .ps-concern__d{font-size:15px; line-height:1.35; color:#14307C;}
 #ps1c-{{ uid }} .ps-proto__sup{font-size:15px; line-height:1.5; color:#14307C;}
-#ps1c-{{ uid }} .ps-cta{border-radius:999px;}
+#ps1c-{{ uid }} .ps-cta{border-radius:10px;}
 #ps1c-{{ uid }} .ps-ship{margin-top:0; font-size:14px;}
 #ps1c-{{ uid }} .ps-guar{font-size:15px;}
 {%- endif -%}
@@ -339,6 +341,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   {%- endif -%}
   <button type="button" class="ps-cta" data-ps1c-submit>
     <span class="spin"></span>
+    <svg class="ps-cta__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
     <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
     {% unless s.cta_static %}<span class="ps-cta__sub" data-ps1c-sub></span>{% endunless %}
   </button>
