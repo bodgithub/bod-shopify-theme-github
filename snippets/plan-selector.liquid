@@ -101,8 +101,10 @@
 #ps-{{ uid }} .pc-benes li{position:relative; padding-left:26px; font-size:14px; line-height:1.4; color:#2c2d26;}
 #ps-{{ uid }} .pc-benes svg{position:absolute; left:0; top:2px; width:15px; height:15px;}
 /* CTA */
-#ps-{{ uid }} .ps-cta{width:100%; border:0; cursor:pointer; border-radius:12px; padding:17px 22px; font-family:var(--ps-sans); font-weight:var(--font-body-medium-weight, 400); letter-spacing:var(--button-letter-spacing, 0.02em); font-size:16px; color:#fff; background:var(--ps-grad-banner); box-shadow:0 10px 26px rgba(27,61,239,0.26); display:flex; align-items:center; justify-content:center; gap:10px; transition:transform .14s,box-shadow .14s,filter .14s;}
-#ps-{{ uid }} .ps-cta:hover{transform:translateY(-1px); box-shadow:0 14px 32px rgba(27,61,239,0.34); filter:brightness(1.04);}
+/* matches the cart drawer's checkout button: lock icon, 56px, bold 18px, tight radius; keeps the gradient, hovers to the cart's solid navy with no lift */
+#ps-{{ uid }} .ps-cta{width:100%; min-height:56px; border:0; cursor:pointer; border-radius:10px; padding:0 22px; font-family:var(--ps-sans); font-weight:800; letter-spacing:0; font-size:18px; line-height:1; color:#fff; background:var(--ps-grad-banner); box-shadow:none; display:flex; align-items:center; justify-content:center; gap:10px; transform:none; transition:background .15s ease, color .15s ease;}
+#ps-{{ uid }} .ps-cta:hover, #ps-{{ uid }} .ps-cta:focus-visible{background:#121A5C; color:#fff; transform:none; box-shadow:none; filter:none;}
+#ps-{{ uid }} .ps-cta__lock{width:18px; height:18px; flex-shrink:0; display:block;}
 #ps-{{ uid }} .ps-cta__sub{font-family:var(--ps-mono); font-weight:400; font-size:10px; letter-spacing:0.08em; opacity:.82; white-space:nowrap;}
 #ps-{{ uid }} .ps-cta.is-loading{pointer-events:none; opacity:.85; background:#3a4a8f;}
 #ps-{{ uid }} .ps-cta .spin{width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:psspin .7s linear infinite; display:none;}
@@ -348,6 +350,7 @@
   {%- if s.p3_name != blank and s.p3_variant != blank or s.p3_name != blank and request.design_mode -%}<a href="#" class="ps-onetime" data-ps-onetime data-variant="{{ s.p3_variant }}" data-qty="{{ s.p3_qty | default: 1 }}">{{ s.p3_name }}{% if s.p3_price != blank %} {{ s.p3_price }}{% endif %}</a>{%- endif -%}
   <button class="ps-cta" type="button" data-ps-submit>
     <span class="spin"></span>
+    <svg class="ps-cta__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
     <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
     <span class="ps-cta__sub" data-ps-sub></span>
   </button>
