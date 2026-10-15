@@ -4,7 +4,8 @@
 
 #Cart-Drawer {
   --bcd-line: #E4E5EE;
-  --bcd-strike: #8A8DA3;
+  --bcd-strike: var(--bcd-muted);
+  --bcd-mobile-bottom-gap: 72px; /* room for the Klaviyo teaser on phones */
   --bcd-footer-bg: #FAFAFD;
   --bcd-hero-muted: #B9C2FF;
   --bcd-hero-dash: #8FA0FF;
@@ -115,6 +116,8 @@
 #Cart-Drawer .bod-cart__checkout-form { margin: 0; }
 #Cart-Drawer .bod-cart__checkout { width: 100%; height: 56px; border-radius: var(--bcd-radius); background: var(--bcd-primary); color: #fff; font-size: 18px; padding: 0 22px; }
 #Cart-Drawer .bod-cart__checkout:hover { background: var(--bcd-navy); color: #fff; }
+#Cart-Drawer .bod-cart__checkout, #Cart-Drawer .bod-cart__checkout:hover, #Cart-Drawer .bod-cart__checkout:focus, #Cart-Drawer .bod-cart__checkout:active { transform: none !important; transition: background-color .15s ease, color .15s ease !important; animation: none !important; box-shadow: none !important; }
+#Cart-Drawer .bod-cart__checkout > span { transform: none !important; transition: none !important; }
 #Cart-Drawer .bod-cart__checkout--b, #Cart-Drawer .bod-cart__checkout--c { height: 58px; }
 #Cart-Drawer .bod-cart__checkout--b { justify-content: space-between; }
 #Cart-Drawer .bod-cart__terms { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--bcd-muted); }
@@ -179,5 +182,6 @@
 
 @media (max-width: 480px) {
   #Cart-Drawer { max-width: none; }
+  #Cart-Drawer .bod-cart__footer { padding-bottom: calc(20px + var(--bcd-mobile-bottom-gap) + env(safe-area-inset-bottom, 0px)); }
   #Cart-Drawer .bod-cart__hero-total { font-size: 38px; }
 }

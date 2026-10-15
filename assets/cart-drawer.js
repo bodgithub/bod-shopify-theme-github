@@ -35,7 +35,7 @@
     code_label: "Discount code",
     code_other_label: "Have a different code?",
     code_another_label: "Got another code? Enter it here",
-    code_placeholder: "Enter code",
+    code_placeholder: "Promo or coupon code",
     code_apply_label: "Apply",
     code_change_label: "Change",
     code_applied_line: "{code} applied: \u2212{amount}",
@@ -97,7 +97,6 @@
 
   var pending = { error: null, open: false, code: '' };
   var splitAttrWritten = false;
-  var rendering = false;
   var normBusy = false, normAttempts = 0;
   var chosen = null; /* { design: 'a'|'b'|'c', source: 'override'|'split'|'setting' } */
 
@@ -187,15 +186,25 @@
     var intervals = parseMap(S.plan_intervals);
     var upsellMap = parseMap(S.upsell_map);
     var cartLevel = cart.cart_level_discount_applications || [];
-    /* /cart.js has discount_codes[]; Liquid's cart | json does not, so fall back to
-       the cart-level applications of type discount_code (only codes that actually
-       apply ever appear there, which is exactly the set we want) */
+    /* Applied codes. /cart.js has discount_codes[]; Liquid's cart | json does not, so
+       collect every discount application of type discount_code, order-level
+       (cart_level_discount_applications) and product-level (line allocations). Only
+       codes that actually apply appear there, which is exactly the set we want. */
+    var codeApps = cartLevel.filter(function (d) { return d.type === 'discount_code'; });
+    var otherOrder = cartLevel.filter(function (d) { return d.type !== 'discount_code'; });
+    (cart.items || []).forEach(function (i) {
+      (i.line_level_discount_allocations || []).forEach(function (al) {
+        var app = al.discount_application;
+        if (app && app.type === 'discount_code') { codeApps.push({ title: app.title, total_allocated_amount: al.amount, _line: true }); }
+      });
+    });
     var codes = cart.discount_codes
       ? cart.discount_codes.filter(function (c) { return c.applicable; }).map(function (c) { return c.code; })
-      : uniq(cartLevel.filter(function (d) { return d.type === 'discount_code'; }).map(function (d) { return d.title; }));
+      : uniq(codeApps.map(function (d) { return d.title; }));
     var codeSet = {};
     codes.forEach(function (c) { codeSet[String(c).toLowerCase()] = true; });
-    var codeTotal = sum(cartLevel, function (d) { return d.total_allocated_amount; });
+    var codeTotal = sum(codeApps, function (d) { return d.total_allocated_amount; });
+    var otherOrderRows = otherOrder.filter(function (d) { return d.total_allocated_amount > 0; }).map(function (d) { return { title: d.title, amount: d.total_allocated_amount }; });
     var protocolValue = Math.round(parseFloat(S.protocol_value || '49') * 100) || 4900;
     var protocolIds = (data.protocol && data.protocol.variant_ids || []).map(String);
     var byKey = {};
@@ -278,7 +287,7 @@
       S: S, cart: cart, fmt: fmt, lines: lines, subs: subs, oneoffs: oneoffs, protos: protos,
       count: cart.item_count || 0, empty: !lines.length,
       codes: codes, hasCode: codes.length > 0, codeName: codes.join(' + '),
-      codeTotal: codeTotal, bannerPct: bannerPct,
+      codeTotal: codeTotal, otherOrderRows: otherOrderRows, bannerPct: bannerPct,
       eligible: eligible, protocolInCart: protos.length > 0,
       protocolFree: protos.some(function (l) { return l.isFree; }),
       protocol: data.protocol || null,
@@ -426,11 +435,14 @@
     if (st.hasCode) {
       out += '<div class="bod-cart__banner"><div class="bod-cart__banner-icon">' + ICON.check + '</div><div class="bod-cart__banner-text">' + esc(bannerText(st)) + '</div></div>';
     }
-    if (st.freeShipOn || st.protocol) {
-      var fill = ((st.freeShip ? 1 : st.shipProgress) + (st.eligible ? 1 : 0)) / 2 * 100;
-      out += '<div class="bod-cart__progress"><div class="bod-cart__progress-labels"><span>' +
-        esc(st.freeShip ? S.shipping_unlocked : tpl(S.shipping_remaining, { amount: st.money(st.shipRemaining) })) + '</span><span>' +
-        esc(st.eligible ? S.protocol_unlocked : S.protocol_locked) + '</span></div><div class="bod-cart__progress-bar"><div class="bod-cart__progress-fill" style="width:' + Math.round(fill) + '%"></div></div></div>';
+    var hasProtocolFeature = !!st.protocol || st.protocolInCart;
+    if (st.freeShipOn || hasProtocolFeature) {
+      var parts = [], labels = [];
+      if (st.freeShipOn) { parts.push(st.freeShip ? 1 : st.shipProgress); labels.push(esc(st.freeShip ? S.shipping_unlocked : tpl(S.shipping_remaining, { amount: st.money(st.shipRemaining) }))); }
+      if (hasProtocolFeature) { parts.push(st.eligible ? 1 : 0); labels.push(esc(st.eligible ? S.protocol_unlocked : S.protocol_locked)); }
+      var fill = sum(parts, function (x) { return x; }) / parts.length * 100;
+      out += '<div class="bod-cart__progress"><div class="bod-cart__progress-labels"><span>' + labels.join('</span><span>') + '</span></div>' +
+        '<div class="bod-cart__progress-bar"><div class="bod-cart__progress-fill" style="width:' + Math.round(fill) + '%"></div></div></div>';
     }
     out += '<div class="bod-cart__body">';
     st.lines.forEach(function (l) {
@@ -446,6 +458,7 @@
       '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(S.label_subtotal) + '</span><span>' + esc(st.money(st.listTotal)) + '</span></div>';
     if (st.subSave > 0) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + subSaveLabel(st) + '</span><span class="bod-cart__green">−' + esc(st.money(st.subSave)) + '</span></div>'; }
     if (st.hasCode) { out += '<div class="bod-cart__row"><span class="bod-cart__green bod-cart__with-icon">' + ICON.tag + esc(codeRowLabel(st)) + '</span><span class="bod-cart__green">−' + esc(st.money(st.codeTotal)) + '</span></div>'; }
+    st.otherOrderRows.forEach(function (r) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(r.title) + '</span><span class="bod-cart__green">−' + esc(st.money(r.amount)) + '</span></div>'; });
     if (st.protoSave > 0) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(S.label_protocol_row) + '</span><span class="bod-cart__green">−' + esc(st.money(st.protoSave)) + '</span></div>'; }
     out += shippingValue(st) + '</div>' +
       '<div class="bod-cart__total"><span>' + esc(S.label_total) + '</span><span class="bod-cart__total-amount">' + esc(st.money(st.total)) + '</span></div>';
@@ -498,6 +511,7 @@
     out += '<div class="bod-cart__savings"><div class="bod-cart__savings-heading">' + esc(S.label_savings_heading) + '</div>';
     if (st.subSave > 0) { out += '<div class="bod-cart__row"><span>' + subSaveLabel(st) + '</span><span class="bod-cart__green">−' + esc(st.money(st.subSave)) + '</span></div>'; }
     if (st.hasCode) { out += '<div class="bod-cart__row"><span class="bod-cart__with-icon">' + esc(S.label_code_prefix) + ' <span class="bod-cart__chip">' + esc(st.codeName) + '</span>' + (st.bannerPct !== null ? ' (' + st.bannerPct + '%)' : '') + '</span><span class="bod-cart__green">−' + esc(st.money(st.codeTotal)) + '</span></div>'; }
+    st.otherOrderRows.forEach(function (r) { out += '<div class="bod-cart__row"><span>' + esc(r.title) + '</span><span class="bod-cart__green">−' + esc(st.money(r.amount)) + '</span></div>'; });
     if (st.protoSave > 0) { out += '<div class="bod-cart__row"><span>' + esc(S.label_protocol_row) + '</span><span class="bod-cart__green">−' + esc(st.money(st.protoSave)) + '</span></div>'; }
     if (st.freeShip) { out += '<div class="bod-cart__row"><span>' + esc(S.label_shipping) + '</span><span class="bod-cart__green">' + esc(S.free_label) + '</span></div>'; }
     if (st.saved > 0) { out += '<div class="bod-cart__saved-box"><span>' + esc(S.label_total_saved) + '</span><span class="bod-cart__saved-amount">' + esc(st.money(st.saved)) + '</span></div>'; }
@@ -518,10 +532,8 @@
     var root = h.querySelector('[data-bod-cart-root]'); if (!root) { return; }
     if (!chosen) { chosen = chooseDesign(data.settings && data.settings.design); }
     var st = buildState(data);
-    rendering = true;
     h.setAttribute('data-design', chosen.design);
     root.innerHTML = RENDER[chosen.design](st);
-    rendering = false;
     pending.error = null; pending.open = false; pending.code = '';
     writeSplitAttribute(st);
     bodNormalize(st);
@@ -638,9 +650,11 @@
          combine, try the new code on its own; otherwise put things back and say so */
       return tryCodes(existing.concat([code])).then(function (res) {
         if (ok(res)) { return done(res); }
-        if (!existing.length) { return fail(res); }
-        return tryCodes([code]).then(function (res2) {
+        var tryAlone = existing.length ? tryCodes([code]) : Promise.resolve(res);
+        return tryAlone.then(function (res2) {
           if (ok(res2)) { return done(res2); }
+          /* put the cart back exactly as it was; this also detaches the rejected
+             code so checkout doesn't show its own 'code isn't valid' error */
           return tryCodes(existing).then(fail, fail);
         });
       });
@@ -718,7 +732,6 @@
     if (window.MutationObserver) {
       var t = null;
       new MutationObserver(function () {
-        if (rendering) { return; }
         clearTimeout(t); t = setTimeout(render, 0);
       }).observe(h, { childList: true });
     }
