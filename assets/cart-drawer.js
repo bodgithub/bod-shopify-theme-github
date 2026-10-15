@@ -25,6 +25,76 @@
      cart can split them into N qty-1 lines; bodNormalize repairs that. */
   var BUNDLE_PLANS = { '7141621979': 2 };
 
+  /* Fallbacks for any theme setting left blank. The theme editor normally fills
+     these from settings_schema.json; this just keeps the drawer sane without them. */
+  var DEFAULTS = {
+    design: "a",
+    code_field: "collapsed",
+    code_banner: "{code} applied: {percent}% off your first order",
+    code_banner_mixed: "{code} applied",
+    code_label: "Discount code",
+    code_other_label: "Have a different code?",
+    code_another_label: "Got another code? Enter it here",
+    code_placeholder: "Enter code",
+    code_apply_label: "Apply",
+    code_change_label: "Change",
+    code_applied_line: "{code} applied: \u2212{amount}",
+    invalid_code_text: "That code isn't valid.",
+    plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
+    renewal_text: "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
+    plan_intervals: "6331924699: 4 weeks\n5755961563: 6 weeks\n7141621979: 3 months",
+    oneoff_subtitle: "One-time purchase",
+    badge_text: "{percent}% OFF",
+    qty_text: "Qty {qty}",
+    free_label: "FREE",
+    protocol_value: "49.00",
+    protocol_line_free: "Included with your subscription \u00b7 emailed after purchase",
+    protocol_line_locked: "Free with any subscription \u00b7 emailed after purchase",
+    protocol_nudge_text: "Add your free {protocol} ({value} value)",
+    protocol_nudge_button: "Add",
+    shipping_unlocked: "Free shipping unlocked",
+    shipping_remaining: "Spend {amount} more for free shipping",
+    protocol_unlocked: "Free protocol unlocked",
+    protocol_locked: "Subscribe to unlock the free protocol",
+    upsell_text: "Switch to {target}: save {percent}%{protocol_text}",
+    upsell_protocol_text: " and get the protocol free",
+    upsell_map: "46444657279195: 6331924699\n46444646269147: 5755961563",
+    label_subtotal: "Subtotal",
+    label_subscribe_save: "Subscribe & save",
+    label_code_row: "{code} ({percent}% off)",
+    label_code_prefix: "Code",
+    label_protocol_row: "Free protocol with subscription",
+    label_shipping: "Shipping",
+    label_total: "Total today",
+    label_savings_heading: "YOUR SAVINGS",
+    label_total_saved: "Total saved today",
+    savings_text: "You're saving {amount} today",
+    b_heading: "YOUR FIRST ORDER",
+    b_heading_oneoff: "YOUR ORDER",
+    b_save_pill: "You save {amount}",
+    b_coupon_text: "{percent}% off applied",
+    checkout_text: "Secure checkout \u00b7 {total}",
+    checkout_text_b: "Checkout",
+    checkout_text_c: "Checkout securely",
+    trust_1: "3rd-party tested",
+    trust_2: "Free US shipping",
+    trust_3: "Cancel anytime",
+    title: "Your cart",
+    empty_text: "Your cart is currently empty.",
+    empty_cta: "Start shopping"
+  };
+  function withDefaults(settings) {
+    var out = {}; var k;
+    for (k in DEFAULTS) { if (Object.prototype.hasOwnProperty.call(DEFAULTS, k)) { out[k] = DEFAULTS[k]; } }
+    for (k in settings) {
+      if (!Object.prototype.hasOwnProperty.call(settings, k)) { continue; }
+      var v = settings[k];
+      if (v === null || v === undefined || (typeof v === 'string' && v.trim() === '' && typeof DEFAULTS[k] === 'string')) { continue; }
+      out[k] = v;
+    }
+    return out;
+  }
+
   var pending = { error: null, open: false, code: '' };
   var splitAttrWritten = false;
   var rendering = false;
@@ -111,7 +181,7 @@
   }
 
   function buildState(data) {
-    var S = data.settings || {};
+    var S = withDefaults(data.settings || {});
     var cart = data.cart || { items: [] };
     var fmt = data.money_format;
     var intervals = parseMap(S.plan_intervals);
@@ -497,7 +567,7 @@
     post('cart/change.js', withSections({ id: key, quantity: 0 })).then(applySections).catch(refreshTruth).then(function () { setBusy(null, false); });
   }
   function protocolVariantId(data) {
-    var S = data.settings || {};
+    var S = withDefaults(data.settings || {});
     return parseInt(S.protocol_variant, 10) || (data.protocol && data.protocol.variant_id) || null;
   }
   function addProtocol() {
@@ -547,7 +617,7 @@
     var input = form.querySelector('input[name="discount"]');
     var code = (input && input.value || '').trim();
     if (!code) { return; }
-    var data = readData(); var S = (data && data.settings) || {};
+    var data = readData(); var S = withDefaults((data && data.settings) || {});
     setBusy(form, true);
     function tryCodes(list) { return post('cart/update.js', withSections({ discount: list.join(',') })); }
     function ok(res) {
@@ -612,7 +682,7 @@
       form.classList.remove('is-applied');
       input.readOnly = false; input.value = ''; input.focus();
       var applied = form.querySelector('.bod-cart__code-applied'); if (applied) { applied.remove(); }
-      var data = readData(); var label = (data && data.settings && data.settings.code_apply_label) || 'Apply';
+      var data = readData(); var label = withDefaults((data && data.settings) || {}).code_apply_label;
       el.outerHTML = '<button type="submit" class="bod-cart__btn bod-cart__code-apply">' + esc(label) + '</button>';
     }
   }, true);
