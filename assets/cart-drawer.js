@@ -1,3 +1,4 @@
+/* bod cart drawer build 2026-10-15.3 */
 /*
   Bodology cart drawer — one data model, three designs (A/B/C).
 
