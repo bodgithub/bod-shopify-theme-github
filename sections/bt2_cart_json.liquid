@@ -1,0 +1,8 @@
+{%- liquid
+  assign shadow_class = 'has-shadow--' | append: settings.block_shadows
+  assign protocol = settings.bcd_protocol_product
+  assign free_shipping_minimum = settings.free_shipping_minimum | default: '0' | times: 100
+  assign empty_url = settings.bcd_empty_url | default: routes.all_products_collection_url
+-%}
+<div>  "cart": {{ cart | json }},
+</div>

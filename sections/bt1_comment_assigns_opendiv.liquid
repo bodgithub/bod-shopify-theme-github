@@ -1,0 +1,20 @@
+{%- comment -%}
+  Bodology cart drawer.
+  Liquid emits one JSON blob (cart + per-line metafields + theme settings) and an
+  empty root. assets/cart-drawer.js builds the cart state from it and renders the
+  chosen design (A/B/C). Every price and % the drawer shows comes from the cart
+  object Shopify returns - nothing is hardcoded here.
+
+  The #Cart-Drawer element, .cart-drawer class and <side-panel-close> wrapper are
+  relied on by the theme's CartDrawer class (assets/app.js), which refetches this
+  section after add-to-cart and replaces #Cart-Drawer's children. The JS watches
+  for that and re-renders from the fresh JSON.
+{%- endcomment -%}
+{%- liquid
+  assign shadow_class = 'has-shadow--' | append: settings.block_shadows
+  assign protocol = settings.bcd_protocol_product
+  assign free_shipping_minimum = settings.free_shipping_minimum | default: '0' | times: 100
+  assign empty_url = settings.bcd_empty_url | default: routes.all_products_collection_url
+-%}
+<div class="side-panel cart-drawer bod-cart {{ shadow_class }}" id="Cart-Drawer" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="CartDrawerHeading" data-design="{{ settings.bcd_design | default: 'a' }}" style="--bcd-primary:{{ settings.bcd_color_primary | default: '#2238E6' }};--bcd-navy:{{ settings.bcd_color_navy | default: '#121A5C' }};--bcd-green:{{ settings.bcd_color_green | default: '#0B7A45' }};--bcd-green-bg:{{ settings.bcd_color_green_bg | default: '#E7F5EC' }};--bcd-text:{{ settings.bcd_color_text | default: '#12142B' }};--bcd-muted:{{ settings.bcd_color_muted | default: '#5A5E78' }};">
+</div>

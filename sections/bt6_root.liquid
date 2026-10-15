@@ -1,0 +1,12 @@
+{%- liquid
+  assign shadow_class = 'has-shadow--' | append: settings.block_shadows
+  assign protocol = settings.bcd_protocol_product
+  assign free_shipping_minimum = settings.free_shipping_minimum | default: '0' | times: 100
+  assign empty_url = settings.bcd_empty_url | default: routes.all_products_collection_url
+-%}
+<div><div class="side-panel-inner bod-cart__root" data-bod-cart-root>
+  <div class="side-panel-header"><div><h2 class="h6" id="CartDrawerHeading" tabindex="-1">{{ settings.bcd_title | default: 'Your cart' }}</h2>
+  <side-panel-close class="side-panel-close"><button type="button" class="side-panel-close__button" aria-label="Close cart">{%- render 'svg-icons' with 'close' -%}</button></side-panel-close></div></div>
+  <noscript><div class="bod-cart__noscript"><a class="button" href="{{ routes.cart_url }}">{{ 'general.cart_drawer.checkout' | t }}</a></div></noscript>
+</div>
+</div></div>
