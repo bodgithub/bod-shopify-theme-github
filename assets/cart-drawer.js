@@ -180,6 +180,8 @@
       });
     });
 
+    /* protocol lines last, everything else in cart order */
+    lines = lines.filter(function (l) { return l.type !== 'protocol'; }).concat(lines.filter(function (l) { return l.type === 'protocol'; }));
     var subs = lines.filter(function (l) { return l.type === 'subscription'; });
     var oneoffs = lines.filter(function (l) { return l.type === 'oneoff'; });
     var protos = lines.filter(function (l) { return l.type === 'protocol'; });
@@ -380,7 +382,7 @@
   function renderB(st) {
     var S = st.S, h = header(st, false);
     if (st.empty) { return h + emptyState(st); }
-    var names = st.lines.map(function (l) { return l.title; });
+    var names = uniq(st.lines.map(function (l) { return l.title; }));
     var summary = names.join(' + ') + (st.freeShip ? ' + shipping' : '') + '.';
     var out = h + '<div class="bod-cart__hero"><div class="bod-cart__hero-eyebrow">' + esc(st.subs.length ? S.b_heading : S.b_heading_oneoff) + '</div>' +
       '<div class="bod-cart__hero-prices"><span class="bod-cart__hero-total">' + esc(st.money(st.total)) + '</span>' + (st.saved > 0 ? '<span class="bod-cart__hero-strike">' + esc(st.money(st.listTotal)) + '</span>' : '') + '</div>' +
