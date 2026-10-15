@@ -107,7 +107,17 @@
     btn.classList.add('is-loading');
     var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(plan){ item.selling_plan = plan; }
-    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: [item], sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    var giftVariant = parseInt({{ s.gift_variant | default: '' | json }}, 10) || 0;
+    var giftName = {{ s.title | default: 'your plan' | json }};
+    /* bring the free protocol along (same _gift shape the plan selector uses) unless one is already in the cart */
+    var needGift = giftVariant && plan ? fetch(addBase + 'cart.js', { headers:{'Accept':'application/json'} }).then(function(r){ return r.json(); })
+      .then(function(cart){ return !(cart.items || []).some(function(i){ return (i.properties && i.properties['_gift']) || i.variant_id === giftVariant; }); })
+      .catch(function(){ return false; }) : Promise.resolve(false);
+    needGift.then(function(addGift){
+      var items = [item];
+      if(addGift){ items.push({ id: giftVariant, quantity: 1, properties: { '_gift': 'Free with ' + giftName } }); }
+      return fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) });
+    })
     .then(function(r){ return r.json(); })
     .then(function(response){ if(response && response.status){ throw response; } btn.classList.remove('is-loading'); renderAndOpenCart(response); })
     .catch(function(e){ btn.classList.remove('is-loading'); err.textContent = (e && (e.description || e.message)) || 'Could not add to cart'; err.classList.add('is-shown'); });
