@@ -18,6 +18,9 @@
   flex-direction: column;
 }
 #Cart-Drawer *, #Cart-Drawer *::before, #Cart-Drawer *::after { box-sizing: border-box; }
+/* sit above the sticky header and mobile navigation (the theme's own .side-panel z-index of 90 is below them) */
+#Cart-Drawer { z-index: 10001 !important; }
+body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
 #Cart-Drawer .bod-cart__root {
   display: flex;
   flex-direction: column;
