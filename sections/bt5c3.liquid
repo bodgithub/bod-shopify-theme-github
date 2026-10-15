@@ -1,0 +1,17 @@
+{%- liquid
+  assign shadow_class = 'has-shadow--' | append: settings.block_shadows
+  assign protocol = settings.bcd_protocol_product
+  assign free_shipping_minimum = settings.free_shipping_minimum | default: '0' | times: 100
+  assign empty_url = settings.bcd_empty_url | default: routes.all_products_collection_url
+-%}
+<div data-chunk="3">
+    "shipping_remaining": {{ settings.bcd_shipping_remaining | default: 'Spend {amount} more for free shipping' | json }},
+    "protocol_unlocked": {{ settings.bcd_protocol_unlocked | default: 'Free protocol unlocked' | json }},
+    "protocol_locked": {{ settings.bcd_protocol_locked | default: 'Subscribe to unlock the free protocol' | json }},
+    "upsell": {{ settings.bcd_upsell | json }},
+    "upsell_text": {{ settings.bcd_upsell_text | default: 'Switch to {target}: save {percent}%{protocol_text}' | json }},
+    "upsell_protocol_text": {{ settings.bcd_upsell_protocol_text | default: ' and get the protocol free' | json }},
+    "upsell_map": {{ settings.bcd_upsell_map | default: '46444657279195: 6331924699|46444646269147: 5755961563' | json }},
+    "label_subtotal": {{ settings.bcd_label_subtotal | default: 'Subtotal' | json }},
+    "label_subscribe_save": {{ settings.bcd_label_subscribe_save | default: 'Subscribe & save' | json }},
+</div>

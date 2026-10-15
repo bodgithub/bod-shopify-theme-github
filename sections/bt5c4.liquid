@@ -1,0 +1,17 @@
+{%- liquid
+  assign shadow_class = 'has-shadow--' | append: settings.block_shadows
+  assign protocol = settings.bcd_protocol_product
+  assign free_shipping_minimum = settings.free_shipping_minimum | default: '0' | times: 100
+  assign empty_url = settings.bcd_empty_url | default: routes.all_products_collection_url
+-%}
+<div data-chunk="4">
+    "label_code_row": {{ settings.bcd_label_code_row | default: '{code} ({percent}% off)' | json }},
+    "label_code_prefix": {{ settings.bcd_label_code_prefix | default: 'Code' | json }},
+    "label_protocol_row": {{ settings.bcd_label_protocol_row | default: 'Free protocol with subscription' | json }},
+    "label_shipping": {{ settings.bcd_label_shipping | default: 'Shipping' | json }},
+    "label_total": {{ settings.bcd_label_total | default: 'Total today' | json }},
+    "label_savings_heading": {{ settings.bcd_label_savings_heading | default: 'YOUR SAVINGS' | json }},
+    "label_total_saved": {{ settings.bcd_label_total_saved | default: 'Total saved today' | json }},
+    "savings_strip": {{ settings.bcd_savings_strip | json }},
+    "savings_text": {{ settings.bcd_savings_text | default: "You're saving {amount} today" | json }},
+</div>
