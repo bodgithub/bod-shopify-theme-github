@@ -57,6 +57,7 @@
     upsell_text: "Switch to {target}: save {percent}%{protocol_text}",
     upsell_protocol_text: " and get the protocol free",
     upsell_map: "46444657279195: 6331924699\n46444646269147: 5755961563",
+    bundle_plans: "7141621979: 2",
     label_subtotal: "Subtotal",
     label_subscribe_save: "Subscribe & save",
     label_code_row: "{code} ({percent}% off)",
@@ -553,6 +554,7 @@
     root.innerHTML = RENDER[chosen.design](st);
     pending.error = null; pending.open = false; pending.code = '';
     writeSplitAttribute(st);
+    enforceBundles(st);
     document.dispatchEvent(new CustomEvent('bod-cart:rendered', { detail: { design: chosen.design, state: st } }));
   }
   function writeSplitAttribute(st) {
@@ -601,13 +603,45 @@
     var keys = String(keyList || '').split(',').filter(Boolean);
     if (!keys.length) { return; }
     setBusy(null, true);
-    var chain = Promise.resolve(null);
-    keys.forEach(function (k, idx) {
-      chain = chain.then(function () {
-        return idx === keys.length - 1 ? post('cart/change.js', withSections({ id: k, quantity: 0 })) : post('cart/change.js', { id: k, quantity: 0 });
+    /* one atomic update by line position: every line of the row goes to 0 together,
+       plus any other line that is the same variant + selling plan (a split bundle
+       must never leave half of itself behind) */
+    getCart().then(function (cart) {
+      var items = cart.items || [];
+      var sig = {};
+      items.forEach(function (i) {
+        if (keys.indexOf(i.key) >= 0 && i.selling_plan_allocation) { sig[i.variant_id + '|' + i.selling_plan_allocation.selling_plan.id] = true; }
       });
+      var updates = items.map(function (i) {
+        var mine = keys.indexOf(i.key) >= 0 || (i.selling_plan_allocation && sig[i.variant_id + '|' + i.selling_plan_allocation.selling_plan.id]);
+        return mine ? 0 : i.quantity;
+      });
+      return post('cart/update.js', withSections({ updates: updates }));
+    }).then(applySections).catch(refreshTruth).then(function () { setBusy(null, false); });
+  }
+  /* A bundle plan (e.g. the 3-Month Plan = 2 tubs) must never sit in the cart below
+     its full quantity, whatever the cart page or an app did to it. */
+  var bundleFixes = 0;
+  function enforceBundles(st) {
+    if (bundleFixes >= 3) { return; }
+    var sizes = parseMap(st.S.bundle_plans);
+    var byPlan = {};
+    (st.cart.items || []).forEach(function (i) {
+      var sp = i.selling_plan_allocation && i.selling_plan_allocation.selling_plan;
+      if (!sp || !sizes[String(sp.id)]) { return; }
+      var k = String(sp.id);
+      byPlan[k] = byPlan[k] || { total: 0, first: null };
+      byPlan[k].total += i.quantity;
+      if (!byPlan[k].first) { byPlan[k].first = i; }
     });
-    chain.then(applySections).catch(refreshTruth).then(function () { setBusy(null, false); });
+    var fix = null;
+    Object.keys(byPlan).forEach(function (k) {
+      var want = parseInt(sizes[k], 10) || 0, have = byPlan[k].total;
+      if (!fix && want > 0 && have > 0 && have < want) { fix = { key: byPlan[k].first.key, quantity: byPlan[k].first.quantity + (want - have) }; }
+    });
+    if (!fix) { return; }
+    bundleFixes++;
+    post('cart/change.js', withSections({ id: fix.key, quantity: fix.quantity })).then(applySections).catch(function () {});
   }
   function protocolVariantId(data) {
     var S = withDefaults(data.settings || {});

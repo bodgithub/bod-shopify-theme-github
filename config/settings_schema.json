@@ -1393,6 +1393,13 @@
         "info": "One per line: one-off variant ID, a colon, then the selling plan ID to switch it to. The variant metafield bodology.upsell_selling_plan_id overrides this when set."
       },
       {
+        "type": "textarea",
+        "id": "bcd_bundle_plans",
+        "label": "Bundle plans (units per plan)",
+        "default": "7141621979: 2",
+        "info": "One per line: selling plan ID, a colon, then how many units the plan always ships as. The drawer shows these as one row, removes all units together, and tops the quantity back up if anything leaves the cart with fewer."
+      },
+      {
         "type": "header",
         "content": "Summary and checkout"
       },
