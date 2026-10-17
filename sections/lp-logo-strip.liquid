@@ -1,0 +1,110 @@
+{%- comment -%}
+  BODOLOGY · LP logo strip
+  Mirrors ARMRA's "AS FEATURED IN" row: small uppercase title and a row of
+  logos (blocks). Desktop: evenly spaced row. Mobile: slow auto-scrolling
+  loop (CSS) or a wrapped grid (setting). Renders nothing if no logo has
+  an image, so it can sit in the template until logos exist.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign has_logos = false
+  for block in section.blocks
+    if block.settings.image != blank
+      assign has_logos = true
+    endif
+  endfor
+  assign n = section.blocks.size | at_least: 1
+  assign dur = n | times: 3 | at_least: 10
+-%}
+
+{%- if has_logos or request.design_mode -%}
+<style>
+  #shopify-section-{{ sid }} .lpl { background: {{ s.bg }}; color: {{ s.text_color }}; padding: {{ s.pad_mobile }}px 0; overflow: hidden; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  #shopify-section-{{ sid }} .lpl__wrap { max-width: {{ s.page_width }}px; margin: 0 auto; padding: 0 16px; }
+  #shopify-section-{{ sid }} .lpl__t { margin: 0 0 16px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  #shopify-section-{{ sid }} .lpl__track { display: flex; width: max-content; animation: lpl-{{ sid }} {{ dur }}s linear infinite; }
+  #shopify-section-{{ sid }} .lpl__set { display: flex; align-items: center; gap: 36px; padding-right: 36px; }
+  #shopify-section-{{ sid }} .lpl__item { flex: 0 0 auto; height: {{ s.logo_height_mobile }}px; display: flex; align-items: center; }
+  #shopify-section-{{ sid }} .lpl__item img { height: 100%; width: auto; max-width: 160px; object-fit: contain; display: block; {% if s.grayscale %}filter: grayscale(1); opacity: .75;{% endif %} }
+  #shopify-section-{{ sid }} .lpl__item a { display: block; height: 100%; }
+  #shopify-section-{{ sid }} .lpl--grid .lpl__track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+  #shopify-section-{{ sid }} .lpl--grid .lpl__set { flex-wrap: wrap; justify-content: center; padding: 0; gap: 20px 28px; }
+  #shopify-section-{{ sid }} .lpl--grid .lpl__set--dup { display: none; }
+  @keyframes lpl-{{ sid }} { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ sid }} .lpl__track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+    #shopify-section-{{ sid }} .lpl__set--dup { display: none; }
+  }
+  @media (min-width: 900px) {
+    #shopify-section-{{ sid }} .lpl { padding: {{ s.pad }}px 0; }
+    #shopify-section-{{ sid }} .lpl__track { animation: none; width: auto; }
+    #shopify-section-{{ sid }} .lpl__set { width: 100%; justify-content: space-between; padding: 0; gap: 32px; }
+    #shopify-section-{{ sid }} .lpl__set--dup { display: none; }
+    #shopify-section-{{ sid }} .lpl__item { height: {{ s.logo_height }}px; }
+    #shopify-section-{{ sid }} .lpl__item img { max-width: 200px; }
+  }
+</style>
+
+{%- capture items -%}
+  {%- for block in section.blocks -%}
+    {%- if block.settings.image != blank -%}
+      <div class="lpl__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" target="_blank" rel="noopener">{%- endif -%}
+        {%- assign img_alt = block.settings.alt | default: block.settings.image.alt | default: 'Logo' -%}
+        {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: img_alt }}
+        {%- if block.settings.link != blank -%}</a>{%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+<section class="lpl {% if s.mobile_layout == 'grid' %}lpl--grid{% endif %}" aria-label="{{ s.title | default: 'Logos' | escape }}">
+  <div class="lpl__wrap">
+    {%- if s.title != blank -%}<p class="lpl__t">{{ s.title }}</p>{%- endif -%}
+    {%- if has_logos -%}
+      <div class="lpl__track">
+        <div class="lpl__set">{{ items }}</div>
+        <div class="lpl__set lpl__set--dup" aria-hidden="true">{{ items }}</div>
+      </div>
+    {%- elsif request.design_mode -%}
+      <p style="text-align:center;font-size:13px;opacity:.7;margin:0;">Add logo blocks with images. This section is hidden on the live page until at least one logo has an image.</p>
+    {%- endif -%}
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "LP · Logo strip",
+  "tag": "div",
+  "class": "section-lp-logo-strip",
+  "max_blocks": 12,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "As featured in" },
+    { "type": "select", "id": "mobile_layout", "label": "Mobile layout", "options": [ { "value": "scroll", "label": "Auto-scroll" }, { "value": "grid", "label": "Wrapped grid" } ], "default": "scroll" },
+    { "type": "checkbox", "id": "grayscale", "label": "Grey out logos", "default": true },
+    { "type": "range", "id": "logo_height", "min": 16, "max": 80, "step": 2, "unit": "px", "label": "Logo height (desktop)", "default": 32 },
+    { "type": "range", "id": "logo_height_mobile", "min": 14, "max": 60, "step": 2, "unit": "px", "label": "Logo height (mobile)", "default": 24 },
+    { "type": "range", "id": "page_width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "label": "Content width", "default": 1200 },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Title colour", "default": "#1a2874" },
+    { "type": "range", "id": "pad", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Vertical padding (desktop)", "default": 44 },
+    { "type": "range", "id": "pad_mobile", "min": 0, "max": 80, "step": 4, "unit": "px", "label": "Vertical padding (mobile)", "default": 28 }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Logo image" },
+        { "type": "text", "id": "alt", "label": "Publication name (alt text)" },
+        { "type": "url", "id": "link", "label": "Link (optional)" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · Logo strip", "blocks": [ { "type": "logo" }, { "type": "logo" }, { "type": "logo" }, { "type": "logo" } ] } ]
+}
+{% endschema %}

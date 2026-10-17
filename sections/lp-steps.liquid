@@ -1,0 +1,120 @@
+{%- comment -%}
+  BODOLOGY · LP steps
+  Mirrors ARMRA's "[ HOW TO ] Effortless Routine. Countless Benefits." dark
+  panel: bracketed eyebrow, two-line heading, then three numbered cards
+  (image, 01/02/03, title, text). Desktop: three columns. Mobile: swipe
+  row or stacked (setting). Steps are blocks.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign n = section.blocks.size | at_least: 1
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .lps { background: {{ s.bg }}; color: {{ s.text_color }}; padding: {{ s.pad_top_mobile }}px 0 {{ s.pad_bottom_mobile }}px; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  #shopify-section-{{ sid }} .lps__wrap { max-width: {{ s.page_width }}px; margin: 0 auto; padding: 0 16px; }
+  #shopify-section-{{ sid }} .lps__eyebrow { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: {{ s.accent }}; text-align: {{ s.align }}; }
+  #shopify-section-{{ sid }} .lps__h { margin: 0 0 28px; font-size: {{ s.h_size_mobile }}px; line-height: 1.1; font-weight: 400; letter-spacing: -0.01em; color: {{ s.heading_color }}; white-space: pre-line; text-align: {{ s.align }}; }
+  #shopify-section-{{ sid }} .lps__h em { font-style: italic; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lps__grid { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; margin: 0 -16px; padding: 2px 16px 16px; scrollbar-width: none; }
+  #shopify-section-{{ sid }} .lps__grid::-webkit-scrollbar { display: none; }
+  #shopify-section-{{ sid }} .lps--stack .lps__grid { flex-direction: column; overflow: visible; margin: 0; padding: 0; gap: 18px; }
+  #shopify-section-{{ sid }} .lps__card { flex: 0 0 80%; scroll-snap-align: start; background: {{ s.card_bg }}; border: 1px solid {{ s.card_border }}; border-radius: {{ s.card_radius }}px; overflow: hidden; display: flex; flex-direction: column; }
+  #shopify-section-{{ sid }} .lps--stack .lps__card { flex: 1 1 auto; }
+  #shopify-section-{{ sid }} .lps__img { aspect-ratio: {{ s.img_ratio }}; background: {{ s.img_bg }}; overflow: hidden; }
+  #shopify-section-{{ sid }} .lps__img img, #shopify-section-{{ sid }} .lps__img svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ sid }} .lps__body { padding: 18px 18px 22px; }
+  #shopify-section-{{ sid }} .lps__num { display: block; font-size: 13px; font-weight: 700; letter-spacing: .14em; color: {{ s.accent }}; margin: 0 0 8px; }
+  #shopify-section-{{ sid }} .lps__t { margin: 0 0 8px; font-size: 19px; line-height: 1.25; font-weight: 600; color: {{ s.heading_color }}; }
+  #shopify-section-{{ sid }} .lps__p { margin: 0; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ sid }} .lps__p p { margin: 0 0 6px; }
+  #shopify-section-{{ sid }} .lps__p strong { font-weight: 600; }
+  #shopify-section-{{ sid }} .lps__foot { margin: 16px 0 0; font-size: 12px; line-height: 1.5; opacity: .75; text-align: {{ s.align }}; }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ sid }} .lps { padding: {{ s.pad_top }}px 0 {{ s.pad_bottom }}px; }
+    #shopify-section-{{ sid }} .lps__wrap { padding: 0 24px; }
+    #shopify-section-{{ sid }} .lps__h { font-size: {{ s.h_size }}px; margin-bottom: 40px; }
+    #shopify-section-{{ sid }} .lps__grid, #shopify-section-{{ sid }} .lps--stack .lps__grid { display: grid; grid-template-columns: repeat({{ n | at_most: 4 }}, minmax(0, 1fr)); gap: 24px; overflow: visible; margin: 0; padding: 0; }
+    #shopify-section-{{ sid }} .lps__card { flex: 1 1 auto; }
+    #shopify-section-{{ sid }} .lps__body { padding: 22px 22px 26px; }
+    #shopify-section-{{ sid }} .lps__t { font-size: 21px; }
+  }
+</style>
+
+<section class="lps {% if s.mobile_layout == 'stack' %}lps--stack{% endif %}">
+  <div class="lps__wrap">
+    {%- if s.eyebrow != blank -%}<p class="lps__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+    {%- if s.heading != blank -%}<h2 class="lps__h">{{ s.heading }}</h2>{%- endif -%}
+    <div class="lps__grid">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <article class="lps__card" {{ block.shopify_attributes }}>
+          <div class="lps__img">
+            {%- if b.image != blank -%}
+              {%- assign img_alt = b.image.alt | default: b.title -%}
+              {{ b.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '360, 540, 720, 900', sizes: '(min-width: 768px) 33vw, 80vw', alt: img_alt }}
+            {%- else -%}
+              {{ 'image' | placeholder_svg_tag }}
+            {%- endif -%}
+          </div>
+          <div class="lps__body">
+            {%- if s.show_numbers -%}<span class="lps__num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{%- endif -%}
+            {%- if b.title != blank -%}<h3 class="lps__t">{{ b.title }}</h3>{%- endif -%}
+            {%- if b.text != blank -%}<div class="lps__p">{{ b.text }}</div>{%- endif -%}
+          </div>
+        </article>
+      {%- endfor -%}
+    </div>
+    {%- if s.footnote != blank -%}<div class="lps__foot">{{ s.footnote }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LP · Steps",
+  "tag": "div",
+  "class": "section-lp-steps",
+  "max_blocks": 4,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "[ HOW TO TAKE IT ]" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Press Enter to force a line break.", "default": "Two scoops a day.\nThat's the whole routine." },
+    { "type": "checkbox", "id": "show_numbers", "label": "Show 01 / 02 / 03", "default": true },
+    { "type": "select", "id": "align", "label": "Heading alignment", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Centre" } ], "default": "left" },
+    { "type": "select", "id": "mobile_layout", "label": "Mobile layout", "options": [ { "value": "swipe", "label": "Swipe row" }, { "value": "stack", "label": "Stacked" } ], "default": "swipe" },
+    { "type": "richtext", "id": "footnote", "label": "Footnote (optional)" },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "page_width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "label": "Content width", "default": 1240 },
+    { "type": "range", "id": "h_size", "min": 28, "max": 64, "step": 2, "unit": "px", "label": "Heading size (desktop)", "default": 42 },
+    { "type": "range", "id": "h_size_mobile", "min": 22, "max": 44, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 30 },
+    { "type": "select", "id": "img_ratio", "label": "Image shape", "options": [ { "value": "1 / 1", "label": "Square" }, { "value": "4 / 3", "label": "Landscape 4:3" }, { "value": "4 / 5", "label": "Portrait 4:5" } ], "default": "4 / 3" },
+    { "type": "range", "id": "card_radius", "min": 0, "max": 32, "step": 2, "unit": "px", "label": "Card corner radius", "default": 16 },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#1a2874" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#22318a" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "rgba(255,255,255,0.12)" },
+    { "type": "color", "id": "img_bg", "label": "Image placeholder", "default": "#2c3c9c" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#e3e7ff" },
+    { "type": "color", "id": "accent", "label": "Accent (eyebrow, numbers)", "default": "#b4c0ff" },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Top padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_top_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding (mobile)", "default": 48 },
+    { "type": "range", "id": "pad_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding (mobile)", "default": 40 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Step title" },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>One or two short sentences.</p>" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · Steps", "blocks": [ { "type": "step" }, { "type": "step" }, { "type": "step" } ] } ]
+}
+{% endschema %}

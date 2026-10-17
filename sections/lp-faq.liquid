@@ -1,0 +1,127 @@
+{%- comment -%}
+  BODOLOGY · LP FAQ
+  Mirrors ARMRA's landing accordion: heading on the left with an optional
+  image under it, questions on the right. Native <details>/<summary> so it
+  works without JS and is keyboard accessible; "one open at a time" is a
+  setting. Mobile: heading, then questions, image hidden (setting).
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .lpq { background: {{ s.bg }}; color: {{ s.text_color }}; padding: {{ s.pad_top_mobile }}px 0 {{ s.pad_bottom_mobile }}px; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  #shopify-section-{{ sid }} .lpq__wrap { max-width: {{ s.page_width }}px; margin: 0 auto; padding: 0 16px; display: flex; flex-direction: column; gap: 22px; }
+  #shopify-section-{{ sid }} .lpq__eyebrow { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpq__h { margin: 0; font-size: {{ s.h_size_mobile }}px; line-height: 1.1; font-weight: 400; letter-spacing: -0.01em; color: {{ s.heading_color }}; white-space: pre-line; }
+  #shopify-section-{{ sid }} .lpq__h em { font-style: italic; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpq__intro { margin: 12px 0 0; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ sid }} .lpq__img { display: {% if s.image_mobile %}block{% else %}none{% endif %}; margin-top: 18px; border-radius: {{ s.img_radius }}px; overflow: hidden; aspect-ratio: 4 / 3; background: #e3e7ff; }
+  #shopify-section-{{ sid }} .lpq__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ sid }} .lpq__list { border-top: 1px solid {{ s.line }}; }
+  #shopify-section-{{ sid }} .lpq__item { border-bottom: 1px solid {{ s.line }}; }
+  #shopify-section-{{ sid }} .lpq__sum { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; font-size: 16px; line-height: 1.35; font-weight: 600; color: {{ s.heading_color }}; }
+  #shopify-section-{{ sid }} .lpq__sum::-webkit-details-marker { display: none; }
+  #shopify-section-{{ sid }} .lpq__sum:focus-visible { outline: 2px solid {{ s.accent }}; outline-offset: 2px; border-radius: 4px; }
+  #shopify-section-{{ sid }} .lpq__ico { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid {{ s.accent }}; color: {{ s.accent }}; display: inline-flex; align-items: center; justify-content: center; transition: transform .2s ease; }
+  #shopify-section-{{ sid }} .lpq__ico svg { width: 12px; height: 12px; }
+  #shopify-section-{{ sid }} .lpq__item[open] .lpq__ico { transform: rotate(45deg); }
+  #shopify-section-{{ sid }} .lpq__a { padding: 0 44px 18px 0; font-size: 15px; line-height: 1.55; }
+  #shopify-section-{{ sid }} .lpq__a p { margin: 0 0 10px; }
+  #shopify-section-{{ sid }} .lpq__a p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ sid }} .lpq__a ul { margin: 0 0 10px 18px; padding: 0; }
+  #shopify-section-{{ sid }} .lpq__a a { color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpq__a strong { font-weight: 600; }
+
+  @media (min-width: 900px) {
+    #shopify-section-{{ sid }} .lpq { padding: {{ s.pad_top }}px 0 {{ s.pad_bottom }}px; }
+    #shopify-section-{{ sid }} .lpq__wrap { flex-direction: row; align-items: flex-start; gap: 64px; padding: 0 24px; }
+    #shopify-section-{{ sid }} .lpq__left { flex: 0 0 38%; position: sticky; top: 90px; }
+    #shopify-section-{{ sid }} .lpq__list { flex: 1 1 auto; }
+    #shopify-section-{{ sid }} .lpq__h { font-size: {{ s.h_size }}px; }
+    #shopify-section-{{ sid }} .lpq__img { display: block; margin-top: 26px; }
+    #shopify-section-{{ sid }} .lpq__sum { font-size: 18px; padding: 20px 0; }
+    #shopify-section-{{ sid }} .lpq__a { font-size: 16px; padding-bottom: 22px; }
+  }
+</style>
+
+<section class="lpq">
+  <div class="lpq__wrap">
+    <div class="lpq__left">
+      {%- if s.eyebrow != blank -%}<p class="lpq__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+      {%- if s.heading != blank -%}<h2 class="lpq__h">{{ s.heading }}</h2>{%- endif -%}
+      {%- if s.intro != blank -%}<div class="lpq__intro">{{ s.intro }}</div>{%- endif -%}
+      {%- if s.image != blank -%}
+        {%- assign img_alt = s.image.alt | default: '' -%}
+        <div class="lpq__img">{{ s.image | image_url: width: 900 | image_tag: loading: 'lazy', widths: '400, 600, 900', sizes: '(min-width: 900px) 36vw, 100vw', alt: img_alt }}</div>
+      {%- endif -%}
+    </div>
+    <div class="lpq__list" data-lpq-list>
+      {%- for block in section.blocks -%}
+        <details class="lpq__item" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary class="lpq__sum">
+            <span>{{ block.settings.question }}</span>
+            <span class="lpq__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+          </summary>
+          <div class="lpq__a">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- if s.one_open -%}
+<script>
+  (function () {
+    var root = document.currentScript.closest('.shopify-section'); if (!root) { return; }
+    var items = root.querySelectorAll('details.lpq__item');
+    items.forEach(function (d) { d.addEventListener('toggle', function () { if (d.open) { items.forEach(function (o) { if (o !== d) { o.open = false; } }); } }); });
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "LP · FAQ",
+  "tag": "div",
+  "class": "section-lp-faq",
+  "max_blocks": 16,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (optional)" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Press Enter to force a line break.", "default": "Questions,\nanswered" },
+    { "type": "richtext", "id": "intro", "label": "Short intro (optional)" },
+    { "type": "image_picker", "id": "image", "label": "Image under the heading (optional)" },
+    { "type": "checkbox", "id": "image_mobile", "label": "Show image on mobile", "default": false },
+    { "type": "checkbox", "id": "one_open", "label": "Only one question open at a time", "default": true },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "page_width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "label": "Content width", "default": 1240 },
+    { "type": "range", "id": "h_size", "min": 28, "max": 64, "step": 2, "unit": "px", "label": "Heading size (desktop)", "default": 42 },
+    { "type": "range", "id": "h_size_mobile", "min": 22, "max": 44, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 30 },
+    { "type": "range", "id": "img_radius", "min": 0, "max": 32, "step": 2, "unit": "px", "label": "Image corner radius", "default": 16 },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "heading_color", "label": "Headings and questions", "default": "#1a2874" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1b3def" },
+    { "type": "color", "id": "line", "label": "Divider lines", "default": "#d9d4cf" },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Top padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_top_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding (mobile)", "default": 48 },
+    { "type": "range", "id": "pad_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding (mobile)", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "A common question?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>A short, direct answer.</p>" },
+        { "type": "checkbox", "id": "open", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · FAQ", "blocks": [ { "type": "question" }, { "type": "question" }, { "type": "question" } ] } ]
+}
+{% endschema %}

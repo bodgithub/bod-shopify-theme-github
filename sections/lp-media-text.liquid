@@ -1,0 +1,170 @@
+{%- comment -%}
+  BODOLOGY · LP media + text
+  Mirrors ARMRA's "How Colostrum Works" / "Simplify Your Routine" panels:
+  a coloured (optionally image-backed) band with a heading, a paragraph,
+  a list of check-marked points (blocks) and a video or image on the
+  other side. Media can sit left or right on desktop; on mobile the media
+  goes on top. Video: Shopify-hosted file, muted autoplay loop with a
+  play/pause button, poster falls back to the image.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign has_video = false
+  if s.video != blank
+    assign has_video = true
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .lpm { position: relative; background: {{ s.bg }}; color: {{ s.text_color }}; padding: {{ s.pad_top_mobile }}px 0 {{ s.pad_bottom_mobile }}px; overflow: hidden; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  {%- if s.bg_image != blank -%}
+  #shopify-section-{{ sid }} .lpm::before { content: ''; position: absolute; inset: 0; background: url('{{ s.bg_image | image_url: width: 2000 }}') center / cover no-repeat; opacity: {{ s.bg_image_opacity | divided_by: 100.0 }}; pointer-events: none; }
+  {%- endif -%}
+  #shopify-section-{{ sid }} .lpm__wrap { position: relative; max-width: {{ s.page_width }}px; margin: 0 auto; padding: 0 16px; display: flex; flex-direction: column; gap: 24px; }
+  #shopify-section-{{ sid }} .lpm__media { position: relative; border-radius: {{ s.media_radius }}px; overflow: hidden; background: #e9e5e2; aspect-ratio: {{ s.media_ratio }}; }
+  #shopify-section-{{ sid }} .lpm__media img, #shopify-section-{{ sid }} .lpm__media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ sid }} .lpm__play { position: absolute; right: 12px; bottom: 12px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: rgba(255,255,255,.9); color: #1a2874; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+  #shopify-section-{{ sid }} .lpm__play svg { width: 16px; height: 16px; }
+  #shopify-section-{{ sid }} .lpm__play .ico-pause { display: none; }
+  #shopify-section-{{ sid }} .lpm__play[aria-pressed="true"] .ico-pause { display: block; }
+  #shopify-section-{{ sid }} .lpm__play[aria-pressed="true"] .ico-play { display: none; }
+  #shopify-section-{{ sid }} .lpm__eyebrow { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpm__h { margin: 0 0 14px; font-size: {{ s.h_size_mobile }}px; line-height: 1.1; font-weight: 400; letter-spacing: -0.01em; color: {{ s.heading_color }}; white-space: pre-line; }
+  #shopify-section-{{ sid }} .lpm__h em { font-style: italic; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpm__p { font-size: 16px; line-height: 1.55; margin: 0 0 18px; }
+  #shopify-section-{{ sid }} .lpm__p p { margin: 0 0 8px; }
+  #shopify-section-{{ sid }} .lpm__p strong { font-weight: 600; }
+  #shopify-section-{{ sid }} .lpm__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  #shopify-section-{{ sid }} .lpm__li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.45; }
+  #shopify-section-{{ sid }} .lpm__li strong { font-weight: 600; }
+  #shopify-section-{{ sid }} .lpm__tick { flex: 0 0 auto; width: 22px; height: 22px; border-radius: 50%; background: {{ s.tick_bg }}; color: {{ s.tick_color }}; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
+  #shopify-section-{{ sid }} .lpm__tick svg { width: 12px; height: 12px; }
+  #shopify-section-{{ sid }} .lpm__cta { display: inline-flex; align-items: center; justify-content: center; margin-top: 22px; min-height: 48px; padding: 12px 26px; border-radius: 40px; background: {{ s.cta_bg }}; color: {{ s.cta_text_color }}; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; }
+  #shopify-section-{{ sid }} .lpm__foot { margin: 16px 0 0; font-size: 12px; line-height: 1.5; opacity: .75; }
+
+  @media (min-width: 900px) {
+    #shopify-section-{{ sid }} .lpm { padding: {{ s.pad_top }}px 0 {{ s.pad_bottom }}px; }
+    #shopify-section-{{ sid }} .lpm__wrap { flex-direction: {% if s.media_side == 'left' %}row{% else %}row-reverse{% endif %}; align-items: center; gap: 56px; padding: 0 24px; }
+    #shopify-section-{{ sid }} .lpm__media { flex: 0 0 {{ s.media_width }}%; aspect-ratio: {{ s.media_ratio_desktop }}; }
+    #shopify-section-{{ sid }} .lpm__content { flex: 1 1 auto; max-width: 36em; }
+    #shopify-section-{{ sid }} .lpm__h { font-size: {{ s.h_size }}px; }
+    #shopify-section-{{ sid }} .lpm__p { font-size: 17px; }
+    #shopify-section-{{ sid }} .lpm__li { font-size: 16px; }
+  }
+</style>
+
+<section class="lpm">
+  <div class="lpm__wrap">
+    {%- if has_video or s.image != blank -%}
+    <div class="lpm__media">
+      {%- if has_video -%}
+        {%- assign poster = s.image | default: s.video.preview_image -%}
+        <video data-lpm-video playsinline muted loop {% if s.autoplay %}autoplay{% endif %} preload="metadata" {% if poster != blank %}poster="{{ poster | image_url: width: 1200 }}"{% endif %} aria-label="{{ s.video_label | escape }}">
+          {%- for source in s.video.sources -%}
+            {%- if source.format == 'mp4' -%}<source src="{{ source.url }}" type="{{ source.mime_type }}">{%- endif -%}
+          {%- endfor -%}
+        </video>
+        <button type="button" class="lpm__play" data-lpm-toggle aria-pressed="{% if s.autoplay %}true{% else %}false{% endif %}" aria-label="Play or pause video">
+          <svg class="ico-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>
+          <svg class="ico-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4.5h4v15H6zm8 0h4v15h-4z"/></svg>
+        </button>
+      {%- else -%}
+        {%- assign img_alt = s.image.alt | default: s.heading -%}
+        {{ s.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '480, 720, 960, 1200, 1400', sizes: '(min-width: 900px) 50vw, 100vw', alt: img_alt }}
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+    <div class="lpm__content">
+      {%- if s.eyebrow != blank -%}<p class="lpm__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+      {%- if s.heading != blank -%}<h2 class="lpm__h">{{ s.heading }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<div class="lpm__p">{{ s.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ul class="lpm__list">
+          {%- for block in section.blocks -%}
+            <li class="lpm__li" {{ block.shopify_attributes }}>
+              <span class="lpm__tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+              <span>{% if block.settings.lead != blank %}<strong>{{ block.settings.lead }}</strong> {% endif %}{{ block.settings.text }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+      {%- if s.cta_label != blank -%}<a class="lpm__cta" href="{{ s.cta_link | default: '#shopify-section-main-product' }}">{{ s.cta_label }}</a>{%- endif -%}
+      {%- if s.footnote != blank -%}<div class="lpm__foot">{{ s.footnote }}</div>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- if has_video -%}
+<script>
+  (function () {
+    var root = document.currentScript.closest('.shopify-section'); if (!root) { return; }
+    var v = root.querySelector('[data-lpm-video]'), b = root.querySelector('[data-lpm-toggle]'); if (!v || !b) { return; }
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); b.setAttribute('aria-pressed', 'false'); }
+    b.addEventListener('click', function () { if (v.paused) { v.play(); b.setAttribute('aria-pressed', 'true'); } else { v.pause(); b.setAttribute('aria-pressed', 'false'); } });
+    if ('IntersectionObserver' in window && !reduce && v.hasAttribute('autoplay')) {
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { v.play().catch(function(){}); } else { v.pause(); } }); }, { threshold: .25 }).observe(v);
+    }
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "LP · Media + text",
+  "tag": "div",
+  "class": "section-lp-media-text",
+  "max_blocks": 6,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (optional)" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Press Enter to force a line break.", "default": "How inositol works" },
+    { "type": "richtext", "id": "text", "label": "Paragraph" },
+    { "type": "text", "id": "cta_label", "label": "Button label (optional)" },
+    { "type": "url", "id": "cta_link", "label": "Button link", "info": "Leave empty to scroll to the product section." },
+    { "type": "richtext", "id": "footnote", "label": "Footnote (optional)" },
+    { "type": "header", "content": "Media" },
+    { "type": "video", "id": "video", "label": "Video (optional, muted loop)" },
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay video", "default": true },
+    { "type": "text", "id": "video_label", "label": "Video description for screen readers", "default": "Product video" },
+    { "type": "image_picker", "id": "image", "label": "Image (or video poster)" },
+    { "type": "select", "id": "media_side", "label": "Media position (desktop)", "options": [ { "value": "left", "label": "Left" }, { "value": "right", "label": "Right" } ], "default": "right" },
+    { "type": "range", "id": "media_width", "min": 36, "max": 60, "step": 2, "unit": "%", "label": "Media width (desktop)", "default": 48 },
+    { "type": "select", "id": "media_ratio", "label": "Media shape (mobile)", "options": [ { "value": "1 / 1", "label": "Square" }, { "value": "4 / 3", "label": "Landscape 4:3" }, { "value": "4 / 5", "label": "Portrait 4:5" }, { "value": "16 / 9", "label": "Wide 16:9" } ], "default": "4 / 3" },
+    { "type": "select", "id": "media_ratio_desktop", "label": "Media shape (desktop)", "options": [ { "value": "1 / 1", "label": "Square" }, { "value": "4 / 3", "label": "Landscape 4:3" }, { "value": "4 / 5", "label": "Portrait 4:5" }, { "value": "3 / 4", "label": "Portrait 3:4" } ], "default": "4 / 5" },
+    { "type": "range", "id": "media_radius", "min": 0, "max": 40, "step": 2, "unit": "px", "label": "Media corner radius", "default": 18 },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "page_width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "label": "Content width", "default": 1240 },
+    { "type": "range", "id": "h_size", "min": 28, "max": 64, "step": 2, "unit": "px", "label": "Heading size (desktop)", "default": 42 },
+    { "type": "range", "id": "h_size_mobile", "min": 22, "max": 44, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 30 },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#f3eeea" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background texture (optional)" },
+    { "type": "range", "id": "bg_image_opacity", "min": 5, "max": 100, "step": 5, "unit": "%", "label": "Background texture opacity", "default": 30 },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1a2874" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1b3def" },
+    { "type": "color", "id": "tick_bg", "label": "Tick circle", "default": "#1b3def" },
+    { "type": "color", "id": "tick_color", "label": "Tick mark", "default": "#ffffff" },
+    { "type": "color", "id": "cta_bg", "label": "Button background", "default": "#1b3def" },
+    { "type": "color", "id": "cta_text_color", "label": "Button text", "default": "#ffffff" },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Top padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_top_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding (mobile)", "default": 44 },
+    { "type": "range", "id": "pad_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding (mobile)", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Check point",
+      "settings": [
+        { "type": "text", "id": "lead", "label": "Bold lead-in (optional)" },
+        { "type": "text", "id": "text", "label": "Text", "default": "A short, specific point." }
+      ]
+    }
+  ],
+  "presets": [ { "name": "LP · Media + text", "blocks": [ { "type": "point" }, { "type": "point" }, { "type": "point" } ] } ]
+}
+{% endschema %}

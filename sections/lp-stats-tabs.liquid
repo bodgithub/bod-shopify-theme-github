@@ -1,0 +1,192 @@
+{%- comment -%}
+  BODOLOGY · LP stats tabs
+  Mirrors ARMRA's "[ SCIENCE & RESULTS ] Transformational Results" tabbed
+  card: pill tabs across the top, then a card with big stat numbers on
+  the left and an image + description on the right. Blocks: a "tab" block
+  starts a new panel (title, image, description, footnote); each "stat"
+  block after it belongs to that panel (value, text). Tabs are real
+  buttons with arrow-key support; on mobile they scroll horizontally and
+  the stats stack above the image.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .lpst { background: {{ s.bg }}; color: {{ s.text_color }}; padding: {{ s.pad_top_mobile }}px 0 {{ s.pad_bottom_mobile }}px; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  #shopify-section-{{ sid }} .lpst__wrap { max-width: {{ s.page_width }}px; margin: 0 auto; padding: 0 16px; }
+  #shopify-section-{{ sid }} .lpst__eyebrow { margin: 0 0 10px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpst__h { margin: 0 auto 22px; max-width: 18em; text-align: center; font-size: {{ s.h_size_mobile }}px; line-height: 1.1; font-weight: 400; letter-spacing: -0.01em; color: {{ s.heading_color }}; white-space: pre-line; }
+  #shopify-section-{{ sid }} .lpst__h em { font-style: italic; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpst__tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px 18px; padding: 2px 16px; justify-content: flex-start; }
+  #shopify-section-{{ sid }} .lpst__tabs::-webkit-scrollbar { display: none; }
+  #shopify-section-{{ sid }} .lpst__tab { flex: 0 0 auto; appearance: none; cursor: pointer; border: 1.5px solid {{ s.tab_border }}; background: {{ s.tab_bg }}; color: {{ s.tab_text }}; border-radius: 999px; padding: 10px 18px; font: inherit; font-size: 14px; font-weight: 600; letter-spacing: .02em; line-height: 1; transition: background .15s ease, color .15s ease; }
+  #shopify-section-{{ sid }} .lpst__tab[aria-selected="true"] { background: {{ s.tab_active_bg }}; color: {{ s.tab_active_text }}; border-color: {{ s.tab_active_bg }}; }
+  #shopify-section-{{ sid }} .lpst__tab:focus-visible { outline: 2px solid {{ s.accent }}; outline-offset: 2px; }
+  #shopify-section-{{ sid }} .lpst__panel { display: none; background: {{ s.card_bg }}; border: 1px solid {{ s.card_border }}; border-radius: {{ s.card_radius }}px; overflow: hidden; }
+  #shopify-section-{{ sid }} .lpst__panel[data-active] { display: flex; flex-direction: column; }
+  #shopify-section-{{ sid }} .lpst__stats { padding: 22px 18px 6px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 14px; }
+  #shopify-section-{{ sid }} .lpst__stat { border-left: 2px solid {{ s.stat_line }}; padding-left: 12px; }
+  #shopify-section-{{ sid }} .lpst__num { display: block; font-size: {{ s.stat_size_mobile }}px; line-height: 1; font-weight: 500; letter-spacing: -0.02em; color: {{ s.stat_color }}; margin: 0 0 6px; }
+  #shopify-section-{{ sid }} .lpst__lbl { display: block; font-size: 13px; line-height: 1.4; }
+  #shopify-section-{{ sid }} .lpst__side { padding: 16px 18px 22px; display: flex; flex-direction: column; gap: 14px; }
+  #shopify-section-{{ sid }} .lpst__img { border-radius: 12px; overflow: hidden; aspect-ratio: 4 / 3; background: #e3e7ff; }
+  #shopify-section-{{ sid }} .lpst__img img, #shopify-section-{{ sid }} .lpst__img svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ sid }} .lpst__desc { font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ sid }} .lpst__desc p { margin: 0 0 8px; }
+  #shopify-section-{{ sid }} .lpst__desc strong { font-weight: 600; }
+  #shopify-section-{{ sid }} .lpst__note { font-size: 11px; line-height: 1.5; opacity: .75; }
+  #shopify-section-{{ sid }} .lpst__note p { margin: 0 0 4px; }
+  #shopify-section-{{ sid }} .lpst__foot { margin: 16px auto 0; max-width: 60em; text-align: center; font-size: 12px; line-height: 1.5; opacity: .75; }
+
+  @media (min-width: 900px) {
+    #shopify-section-{{ sid }} .lpst { padding: {{ s.pad_top }}px 0 {{ s.pad_bottom }}px; }
+    #shopify-section-{{ sid }} .lpst__wrap { padding: 0 24px; }
+    #shopify-section-{{ sid }} .lpst__h { font-size: {{ s.h_size }}px; margin-bottom: 30px; }
+    #shopify-section-{{ sid }} .lpst__tabs { justify-content: center; margin: 0 0 26px; padding: 0; overflow: visible; }
+    #shopify-section-{{ sid }} .lpst__tab { padding: 12px 24px; font-size: 15px; }
+    #shopify-section-{{ sid }} .lpst__panel[data-active] { flex-direction: row; align-items: stretch; }
+    #shopify-section-{{ sid }} .lpst__stats { flex: 1 1 52%; padding: 40px 36px; gap: 30px 24px; align-content: center; }
+    #shopify-section-{{ sid }} .lpst__num { font-size: {{ s.stat_size }}px; }
+    #shopify-section-{{ sid }} .lpst__lbl { font-size: 14px; }
+    #shopify-section-{{ sid }} .lpst__side { flex: 0 0 48%; padding: 28px 28px 28px 0; }
+    #shopify-section-{{ sid }} .lpst__img { aspect-ratio: 16 / 10; }
+  }
+</style>
+
+{%- assign tab_i = 0 -%}
+{%- capture tabs -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'tab' -%}
+      {%- assign tab_i = tab_i | plus: 1 -%}
+      <button type="button" class="lpst__tab" role="tab" id="lpst-tab-{{ sid }}-{{ tab_i }}" aria-controls="lpst-panel-{{ sid }}-{{ tab_i }}" aria-selected="{% if tab_i == 1 %}true{% else %}false{% endif %}" tabindex="{% if tab_i == 1 %}0{% else %}-1{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.title }}</button>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+<section class="lpst">
+  <div class="lpst__wrap">
+    {%- if s.eyebrow != blank -%}<p class="lpst__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+    {%- if s.heading != blank -%}<h2 class="lpst__h">{{ s.heading }}</h2>{%- endif -%}
+    {%- if tab_i > 1 -%}<div class="lpst__tabs" role="tablist" aria-label="{{ s.heading | strip_html | escape }}">{{ tabs }}</div>{%- endif -%}
+
+    {%- assign tab_i = 0 -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'tab' -%}
+        {%- assign b = block.settings -%}
+        {%- assign tab_i = tab_i | plus: 1 -%}
+        {%- assign after = forloop.index -%}
+        <div class="lpst__panel" role="tabpanel" id="lpst-panel-{{ sid }}-{{ tab_i }}" aria-labelledby="lpst-tab-{{ sid }}-{{ tab_i }}" {% if tab_i == 1 %}data-active{% endif %}>
+          <div class="lpst__stats">
+            {%- for sb in section.blocks offset: after -%}
+              {%- if sb.type == 'tab' -%}{%- break -%}{%- endif -%}
+              <div class="lpst__stat" {{ sb.shopify_attributes }}>
+                <span class="lpst__num">{{ sb.settings.value }}</span>
+                <span class="lpst__lbl">{{ sb.settings.text }}</span>
+              </div>
+            {%- endfor -%}
+          </div>
+          <div class="lpst__side">
+            {%- if b.image != blank -%}
+              {%- assign img_alt = b.image.alt | default: b.title -%}
+              <div class="lpst__img">{{ b.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '400, 600, 800, 1000', sizes: '(min-width: 900px) 40vw, 100vw', alt: img_alt }}</div>
+            {%- endif -%}
+            {%- if b.description != blank -%}<div class="lpst__desc">{{ b.description }}</div>{%- endif -%}
+            {%- if b.note != blank -%}<div class="lpst__note">{{ b.note }}</div>{%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if s.footnote != blank -%}<div class="lpst__foot">{{ s.footnote }}</div>{%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.currentScript.closest('.shopify-section'); if (!root) { return; }
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+    var panels = Array.prototype.slice.call(root.querySelectorAll('[role="tabpanel"]'));
+    if (!tabs.length) { return; }
+    function activate(i) {
+      tabs.forEach(function (t, k) { var on = k === i; t.setAttribute('aria-selected', on ? 'true' : 'false'); t.tabIndex = on ? 0 : -1; });
+      panels.forEach(function (p, k) { if (k === i) { p.setAttribute('data-active', ''); } else { p.removeAttribute('data-active'); } });
+      tabs[i].scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { activate(i); });
+      t.addEventListener('keydown', function (e) {
+        var n = i;
+        if (e.key === 'ArrowRight') { n = (i + 1) % tabs.length; } else if (e.key === 'ArrowLeft') { n = (i - 1 + tabs.length) % tabs.length; } else if (e.key === 'Home') { n = 0; } else if (e.key === 'End') { n = tabs.length - 1; } else { return; }
+        e.preventDefault(); activate(n); tabs[n].focus();
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "LP · Stats tabs",
+  "tag": "div",
+  "class": "section-lp-stats-tabs",
+  "max_blocks": 24,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "[ THE STUDIES ]" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Press Enter to force a line break.", "default": "What the clinical trials measured" },
+    { "type": "richtext", "id": "footnote", "label": "Footnote under the card", "info": "Keep the study citations and the FDA disclaimer here." },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "page_width", "min": 900, "max": 1500, "step": 20, "unit": "px", "label": "Content width", "default": 1200 },
+    { "type": "range", "id": "h_size", "min": 28, "max": 64, "step": 2, "unit": "px", "label": "Heading size (desktop)", "default": 42 },
+    { "type": "range", "id": "h_size_mobile", "min": 22, "max": 44, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 30 },
+    { "type": "range", "id": "stat_size", "min": 32, "max": 80, "step": 2, "unit": "px", "label": "Stat number size (desktop)", "default": 52 },
+    { "type": "range", "id": "stat_size_mobile", "min": 26, "max": 56, "step": 2, "unit": "px", "label": "Stat number size (mobile)", "default": 36 },
+    { "type": "range", "id": "card_radius", "min": 0, "max": 32, "step": 2, "unit": "px", "label": "Card corner radius", "default": 18 },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#f3eeea" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#e3e7ff" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1a2874" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1b3def" },
+    { "type": "color", "id": "stat_color", "label": "Stat numbers", "default": "#1b3def" },
+    { "type": "color", "id": "stat_line", "label": "Stat left line", "default": "#e3e7ff" },
+    { "type": "color", "id": "tab_bg", "label": "Tab background", "default": "#ffffff" },
+    { "type": "color", "id": "tab_border", "label": "Tab border", "default": "#3447af" },
+    { "type": "color", "id": "tab_text", "label": "Tab text", "default": "#1a2874" },
+    { "type": "color", "id": "tab_active_bg", "label": "Active tab background", "default": "#1b3def" },
+    { "type": "color", "id": "tab_active_text", "label": "Active tab text", "default": "#ffffff" },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Top padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_top_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding (mobile)", "default": 48 },
+    { "type": "range", "id": "pad_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding (mobile)", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab (starts a panel)",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tab label", "default": "Cycles" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "richtext", "id": "description", "label": "Description" },
+        { "type": "richtext", "id": "note", "label": "Small print for this tab (study, size, design)" }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Stat (in the panel above)",
+      "settings": [
+        { "type": "text", "id": "value", "label": "Number", "default": "70%" },
+        { "type": "text", "id": "text", "label": "What it measured", "default": "of women ovulated on myo-inositol*" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP · Stats tabs",
+      "blocks": [ { "type": "tab" }, { "type": "stat" }, { "type": "stat" }, { "type": "tab" }, { "type": "stat" }, { "type": "stat" } ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,102 @@
+{%- comment -%}
+  BODOLOGY · LP ribbon
+  The ARMRA word marquee ("IMMUNITY · GUT · ENERGY …" / "NO SUGAR · NO
+  GLUTEN …"): a slim band that scrolls a loop of short uppercase words with
+  a separator mark between them. Words are blocks. Pure CSS animation;
+  pauses on hover and stops entirely for prefers-reduced-motion (becomes a
+  centred wrapped list). Used twice on the LP1 page.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign n = section.blocks.size
+  assign dur = n | times: s.seconds_per_item | at_least: 8
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .lpr { background: {{ s.bg }}; color: {{ s.text_color }}; overflow: hidden; border-top: 1px solid {{ s.line_color }}; border-bottom: 1px solid {{ s.line_color }}; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  #shopify-section-{{ sid }} .lpr__track { display: flex; width: max-content; animation: lpr-{{ sid }} {{ dur }}s linear infinite; }
+  #shopify-section-{{ sid }} .lpr:hover .lpr__track { animation-play-state: paused; }
+  #shopify-section-{{ sid }} .lpr__set { display: flex; align-items: center; flex: 0 0 auto; }
+  #shopify-section-{{ sid }} .lpr__item { display: inline-flex; align-items: center; gap: {{ s.gap_mobile }}px; padding: {{ s.pad_mobile }}px 0 {{ s.pad_mobile }}px {{ s.gap_mobile }}px; font-size: {{ s.size_mobile }}px; font-weight: {{ s.weight }}; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+  #shopify-section-{{ sid }} .lpr__sep { color: {{ s.sep_color }}; font-size: .8em; }
+  #shopify-section-{{ sid }} .lpr__item img { height: 1.1em; width: auto; display: block; }
+  @keyframes lpr-{{ sid }} { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (min-width: 768px) {
+    #shopify-section-{{ sid }} .lpr__item { font-size: {{ s.size }}px; gap: {{ s.gap }}px; padding: {{ s.pad }}px 0 {{ s.pad }}px {{ s.gap }}px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ sid }} .lpr__track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+    #shopify-section-{{ sid }} .lpr__set { flex-wrap: wrap; justify-content: center; }
+    #shopify-section-{{ sid }} .lpr__set--dup { display: none; }
+  }
+</style>
+
+{%- capture items -%}
+  {%- for block in section.blocks -%}
+    <span class="lpr__item" {{ block.shopify_attributes }}>
+      {%- if block.settings.icon != blank -%}{{ block.settings.icon | image_url: width: 80 | image_tag: alt: '', loading: 'lazy' }}{%- endif -%}
+      <span>{{ block.settings.text }}</span>
+      <span class="lpr__sep" aria-hidden="true">{{ s.separator }}</span>
+    </span>
+  {%- endfor -%}
+{%- endcapture -%}
+
+<div class="lpr" role="marquee" aria-label="{{ s.aria_label | escape }}">
+  {%- if n > 0 -%}
+  <div class="lpr__track">
+    <div class="lpr__set">{{ items }}</div>
+    <div class="lpr__set lpr__set--dup" aria-hidden="true">{{ items }}</div>
+  </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "LP · Word ribbon",
+  "tag": "div",
+  "class": "section-lp-ribbon",
+  "max_blocks": 16,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "aria_label", "label": "Screen-reader label", "default": "What inositol supports" },
+    { "type": "text", "id": "separator", "label": "Separator mark", "default": "✦" },
+    { "type": "range", "id": "seconds_per_item", "min": 1, "max": 6, "step": 0.5, "unit": "s", "label": "Speed (seconds per word)", "default": 2.5 },
+    { "type": "select", "id": "weight", "label": "Weight", "options": [ { "value": "500", "label": "Medium" }, { "value": "600", "label": "Semibold" }, { "value": "700", "label": "Bold" } ], "default": "600" },
+    { "type": "range", "id": "size", "min": 11, "max": 22, "step": 1, "unit": "px", "label": "Text size (desktop)", "default": 14 },
+    { "type": "range", "id": "size_mobile", "min": 10, "max": 18, "step": 1, "unit": "px", "label": "Text size (mobile)", "default": 12 },
+    { "type": "range", "id": "pad", "min": 6, "max": 24, "step": 1, "unit": "px", "label": "Vertical padding (desktop)", "default": 12 },
+    { "type": "range", "id": "pad_mobile", "min": 6, "max": 20, "step": 1, "unit": "px", "label": "Vertical padding (mobile)", "default": 10 },
+    { "type": "range", "id": "gap", "min": 8, "max": 40, "step": 2, "unit": "px", "label": "Gap between words (desktop)", "default": 22 },
+    { "type": "range", "id": "gap_mobile", "min": 8, "max": 30, "step": 2, "unit": "px", "label": "Gap between words (mobile)", "default": 16 },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#1a2874" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "sep_color", "label": "Separator", "default": "#b4c0ff" },
+    { "type": "color", "id": "line_color", "label": "Top and bottom line", "default": "rgba(0,0,0,0)" }
+  ],
+  "blocks": [
+    {
+      "type": "word",
+      "name": "Word",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Cycles" },
+        { "type": "image_picker", "id": "icon", "label": "Small icon (optional)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP · Word ribbon",
+      "blocks": [
+        { "type": "word", "settings": { "text": "Cycles" } },
+        { "type": "word", "settings": { "text": "Cravings" } },
+        { "type": "word", "settings": { "text": "Mood" } },
+        { "type": "word", "settings": { "text": "Energy" } },
+        { "type": "word", "settings": { "text": "Fertility" } },
+        { "type": "word", "settings": { "text": "Metabolism" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

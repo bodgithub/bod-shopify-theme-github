@@ -1,0 +1,101 @@
+{%- comment -%}
+  BODOLOGY · LP founder quote
+  Mirrors ARMRA's signature section: full-width soft background, a round
+  founder photo, a large centred quote, name and title, and an optional
+  signature image. Everything is a setting.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .lpf { position: relative; background: {{ s.bg }}; color: {{ s.text_color }}; padding: {{ s.pad_top_mobile }}px 16px {{ s.pad_bottom_mobile }}px; overflow: hidden; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  {%- if s.bg_image != blank -%}
+  #shopify-section-{{ sid }} .lpf::before { content: ''; position: absolute; inset: 0; background: url('{{ s.bg_image | image_url: width: 2000 }}') center / cover no-repeat; opacity: {{ s.bg_image_opacity | divided_by: 100.0 }}; pointer-events: none; }
+  {%- endif -%}
+  #shopify-section-{{ sid }} .lpf__wrap { position: relative; max-width: {{ s.max_width }}px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+  #shopify-section-{{ sid }} .lpf__photo { width: {{ s.photo_size_mobile }}px; height: {{ s.photo_size_mobile }}px; border-radius: 50%; overflow: hidden; background: #e3e7ff; border: {{ s.photo_border_w }}px solid {{ s.photo_border }}; }
+  #shopify-section-{{ sid }} .lpf__photo img, #shopify-section-{{ sid }} .lpf__photo svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ sid }} .lpf__eyebrow { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpf__q { margin: 0; font-size: {{ s.q_size_mobile }}px; line-height: 1.35; font-weight: {{ s.q_weight }}; letter-spacing: -0.005em; color: {{ s.quote_color }}; }
+  #shopify-section-{{ sid }} .lpf__q p { margin: 0 0 .6em; }
+  #shopify-section-{{ sid }} .lpf__q p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ sid }} .lpf__q strong { font-weight: 600; }
+  #shopify-section-{{ sid }} .lpf__q em { font-style: italic; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpf__who { margin: 4px 0 0; }
+  #shopify-section-{{ sid }} .lpf__name { display: block; font-size: 16px; font-weight: 600; }
+  #shopify-section-{{ sid }} .lpf__role { display: block; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; opacity: .8; margin-top: 2px; }
+  #shopify-section-{{ sid }} .lpf__sig img { height: {{ s.sig_height }}px; width: auto; display: block; opacity: .9; }
+  @media (min-width: 768px) {
+    #shopify-section-{{ sid }} .lpf { padding: {{ s.pad_top }}px 24px {{ s.pad_bottom }}px; }
+    #shopify-section-{{ sid }} .lpf__wrap { gap: 22px; }
+    #shopify-section-{{ sid }} .lpf__photo { width: {{ s.photo_size }}px; height: {{ s.photo_size }}px; }
+    #shopify-section-{{ sid }} .lpf__q { font-size: {{ s.q_size }}px; }
+  }
+</style>
+
+<section class="lpf">
+  <div class="lpf__wrap">
+    {%- if s.photo != blank or request.design_mode -%}
+      <div class="lpf__photo">
+        {%- if s.photo != blank -%}
+          {%- assign img_alt = s.name | default: 'Founder' -%}
+          {{ s.photo | image_url: width: 600 | image_tag: loading: 'lazy', widths: '200, 300, 400, 600', sizes: '220px', alt: img_alt }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if s.eyebrow != blank -%}<p class="lpf__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+    {%- if s.quote != blank -%}<blockquote class="lpf__q">{{ s.quote }}</blockquote>{%- endif -%}
+    {%- if s.name != blank or s.role != blank -%}
+      <p class="lpf__who">
+        {%- if s.name != blank -%}<span class="lpf__name">{{ s.name }}</span>{%- endif -%}
+        {%- if s.role != blank -%}<span class="lpf__role">{{ s.role }}</span>{%- endif -%}
+      </p>
+    {%- endif -%}
+    {%- if s.signature != blank -%}
+      <div class="lpf__sig">{{ s.signature | image_url: width: 500 | image_tag: loading: 'lazy', alt: '' }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LP · Founder quote",
+  "tag": "div",
+  "class": "section-lp-founder-quote",
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "image_picker", "id": "photo", "label": "Founder photo" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (optional)", "default": "From the founder" },
+    { "type": "richtext", "id": "quote", "label": "Quote", "default": "<p>\"I built Bodology because I was tired of being told everything looked normal.\"</p>" },
+    { "type": "text", "id": "name", "label": "Name", "default": "Jasmin" },
+    { "type": "text", "id": "role", "label": "Title", "default": "Founder, Bodology" },
+    { "type": "image_picker", "id": "signature", "label": "Signature image (optional)" },
+    { "type": "range", "id": "sig_height", "min": 24, "max": 100, "step": 2, "unit": "px", "label": "Signature height", "default": 48 },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "max_width", "min": 560, "max": 1100, "step": 20, "unit": "px", "label": "Text width", "default": 860 },
+    { "type": "range", "id": "q_size", "min": 18, "max": 40, "step": 1, "unit": "px", "label": "Quote size (desktop)", "default": 26 },
+    { "type": "range", "id": "q_size_mobile", "min": 16, "max": 30, "step": 1, "unit": "px", "label": "Quote size (mobile)", "default": 19 },
+    { "type": "select", "id": "q_weight", "label": "Quote weight", "options": [ { "value": "300", "label": "Light" }, { "value": "400", "label": "Regular" }, { "value": "500", "label": "Medium" } ], "default": "400" },
+    { "type": "range", "id": "photo_size", "min": 100, "max": 260, "step": 10, "unit": "px", "label": "Photo size (desktop)", "default": 180 },
+    { "type": "range", "id": "photo_size_mobile", "min": 80, "max": 200, "step": 10, "unit": "px", "label": "Photo size (mobile)", "default": 130 },
+    { "type": "range", "id": "photo_border_w", "min": 0, "max": 8, "step": 1, "unit": "px", "label": "Photo ring width", "default": 0 },
+    { "type": "color", "id": "photo_border", "label": "Photo ring colour", "default": "#1b3def" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#f3eeea" },
+    { "type": "image_picker", "id": "bg_image", "label": "Background texture (optional)" },
+    { "type": "range", "id": "bg_image_opacity", "min": 5, "max": 100, "step": 5, "unit": "%", "label": "Background texture opacity", "default": 30 },
+    { "type": "color", "id": "quote_color", "label": "Quote", "default": "#1a2874" },
+    { "type": "color", "id": "text_color", "label": "Name and title", "default": "#1a2874" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1b3def" },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Top padding (desktop)", "default": 96 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding (desktop)", "default": 96 },
+    { "type": "range", "id": "pad_top_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding (mobile)", "default": 56 },
+    { "type": "range", "id": "pad_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding (mobile)", "default": 56 }
+  ],
+  "presets": [ { "name": "LP · Founder quote" } ]
+}
+{% endschema %}

@@ -1,0 +1,133 @@
+{%- comment -%}
+  BODOLOGY · LP numbered reasons
+  Mirrors ARMRA's "5 Reasons To Drop Everything" block: a two-line heading,
+  then numbered reasons each with a round image, a numbered title and a
+  short paragraph. Desktop: a row of cards (up to 5). Mobile: a horizontal
+  swipe row with the next card peeking, or a stacked list (setting).
+  Reasons are blocks.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign n = section.blocks.size | at_least: 1
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .lpn { background: {{ s.bg }}; color: {{ s.text_color }}; padding: {{ s.pad_top_mobile }}px 0 {{ s.pad_bottom_mobile }}px; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  #shopify-section-{{ sid }} .lpn__wrap { max-width: {{ s.page_width }}px; margin: 0 auto; padding: 0 16px; }
+  #shopify-section-{{ sid }} .lpn__eyebrow { margin: 0 0 10px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: {{ s.accent }}; text-align: center; }
+  #shopify-section-{{ sid }} .lpn__h { margin: 0 auto 28px; max-width: 16em; text-align: center; font-size: {{ s.h_size_mobile }}px; line-height: 1.1; font-weight: 400; letter-spacing: -0.01em; color: {{ s.heading_color }}; white-space: pre-line; }
+  #shopify-section-{{ sid }} .lpn__h em { font-style: italic; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .lpn__grid { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 4px 16px 18px; margin: 0 -16px; scrollbar-width: none; }
+  #shopify-section-{{ sid }} .lpn__grid::-webkit-scrollbar { display: none; }
+  #shopify-section-{{ sid }} .lpn--stack .lpn__grid { flex-direction: column; overflow: visible; margin: 0; padding: 0; gap: 26px; }
+  #shopify-section-{{ sid }} .lpn__item { flex: 0 0 78%; scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  #shopify-section-{{ sid }} .lpn--stack .lpn__item { flex: 1 1 auto; flex-direction: row; text-align: left; align-items: flex-start; gap: 16px; }
+  #shopify-section-{{ sid }} .lpn__imgwrap { position: relative; width: {{ s.img_size_mobile }}px; height: {{ s.img_size_mobile }}px; flex: 0 0 auto; }
+  #shopify-section-{{ sid }} .lpn__img { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: {{ s.img_bg }}; border: {{ s.img_border_w }}px solid {{ s.img_border }}; }
+  #shopify-section-{{ sid }} .lpn__img img, #shopify-section-{{ sid }} .lpn__img svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #shopify-section-{{ sid }} .lpn__num { position: absolute; top: 2px; left: 2px; min-width: 34px; height: 34px; padding: 0 8px; border-radius: 999px; background: {{ s.num_bg }}; color: {{ s.num_color }}; font-size: 13px; font-weight: 700; letter-spacing: .04em; display: inline-flex; align-items: center; justify-content: center; }
+  #shopify-section-{{ sid }} .lpn__t { margin: 14px 0 6px; font-size: 18px; line-height: 1.25; font-weight: 600; color: {{ s.heading_color }}; }
+  #shopify-section-{{ sid }} .lpn--stack .lpn__t { margin-top: 2px; }
+  #shopify-section-{{ sid }} .lpn__p { margin: 0; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ sid }} .lpn__p p { margin: 0 0 6px; }
+  #shopify-section-{{ sid }} .lpn__p strong { font-weight: 600; }
+  #shopify-section-{{ sid }} .lpn__foot { margin: 18px auto 0; max-width: 56em; text-align: center; font-size: 12px; line-height: 1.5; opacity: .75; }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ sid }} .lpn { padding: {{ s.pad_top }}px 0 {{ s.pad_bottom }}px; }
+    #shopify-section-{{ sid }} .lpn__wrap { padding: 0 24px; }
+    #shopify-section-{{ sid }} .lpn__h { font-size: {{ s.h_size }}px; margin-bottom: 44px; }
+    #shopify-section-{{ sid }} .lpn__grid, #shopify-section-{{ sid }} .lpn--stack .lpn__grid { display: grid; grid-template-columns: repeat({% if n > 3 %}3{% else %}{{ n }}{% endif %}, minmax(0, 1fr)); gap: 36px 28px; overflow: visible; margin: 0; padding: 0; }
+    #shopify-section-{{ sid }} .lpn__item, #shopify-section-{{ sid }} .lpn--stack .lpn__item { flex: 1 1 auto; flex-direction: column; text-align: center; align-items: center; }
+    #shopify-section-{{ sid }} .lpn__imgwrap { width: {{ s.img_size }}px; height: {{ s.img_size }}px; }
+    #shopify-section-{{ sid }} .lpn__t { font-size: 20px; margin-top: 18px; }
+    #shopify-section-{{ sid }} .lpn--stack .lpn__t { margin-top: 18px; }
+  }
+  @media (min-width: 1100px) {
+    #shopify-section-{{ sid }} .lpn__grid, #shopify-section-{{ sid }} .lpn--stack .lpn__grid { grid-template-columns: repeat({{ n | at_most: 5 }}, minmax(0, 1fr)); gap: 32px 22px; }
+  }
+</style>
+
+<section class="lpn {% if s.mobile_layout == 'stack' %}lpn--stack{% endif %}">
+  <div class="lpn__wrap">
+    {%- if s.eyebrow != blank -%}<p class="lpn__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+    {%- if s.heading != blank -%}<h2 class="lpn__h">{{ s.heading }}</h2>{%- endif -%}
+    <div class="lpn__grid">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <article class="lpn__item" {{ block.shopify_attributes }}>
+          <div class="lpn__imgwrap">
+            <div class="lpn__img">
+              {%- if b.image != blank -%}
+                {%- assign img_alt = b.image.alt | default: b.title -%}
+                {{ b.image | image_url: width: 600 | image_tag: loading: 'lazy', widths: '240, 360, 480, 600', sizes: '(min-width: 768px) 240px, 160px', alt: img_alt }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag }}
+              {%- endif -%}
+            </div>
+            {%- if s.show_numbers -%}<span class="lpn__num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>{%- endif -%}
+          </div>
+          {%- if b.title != blank -%}<h3 class="lpn__t">{% if s.number_in_title %}{{ forloop.index }}. {% endif %}{{ b.title }}</h3>{%- endif -%}
+          {%- if b.text != blank -%}<div class="lpn__p">{{ b.text }}</div>{%- endif -%}
+        </article>
+      {%- endfor -%}
+    </div>
+    {%- if s.footnote != blank -%}<div class="lpn__foot">{{ s.footnote }}</div>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "LP · Numbered reasons",
+  "tag": "div",
+  "class": "section-lp-numbered-reasons",
+  "max_blocks": 6,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow (optional)" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "info": "Press Enter to force a line break.", "default": "5 reasons to start\nwith inositol" },
+    { "type": "checkbox", "id": "show_numbers", "label": "Show number badge on the image", "default": true },
+    { "type": "checkbox", "id": "number_in_title", "label": "Prefix titles with the number", "default": true },
+    { "type": "select", "id": "mobile_layout", "label": "Mobile layout", "options": [ { "value": "swipe", "label": "Swipe row" }, { "value": "stack", "label": "Stacked list" } ], "default": "swipe" },
+    { "type": "richtext", "id": "footnote", "label": "Footnote (optional)" },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "page_width", "min": 1000, "max": 1600, "step": 20, "unit": "px", "label": "Content width", "default": 1300 },
+    { "type": "range", "id": "h_size", "min": 28, "max": 64, "step": 2, "unit": "px", "label": "Heading size (desktop)", "default": 44 },
+    { "type": "range", "id": "h_size_mobile", "min": 22, "max": 44, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 30 },
+    { "type": "range", "id": "img_size", "min": 120, "max": 320, "step": 10, "unit": "px", "label": "Image size (desktop)", "default": 220 },
+    { "type": "range", "id": "img_size_mobile", "min": 90, "max": 260, "step": 10, "unit": "px", "label": "Image size (mobile)", "default": 180 },
+    { "type": "range", "id": "img_border_w", "min": 0, "max": 8, "step": 1, "unit": "px", "label": "Image ring width", "default": 0 },
+    { "type": "color", "id": "img_border", "label": "Image ring colour", "default": "#1b3def" },
+    { "type": "color", "id": "img_bg", "label": "Image placeholder", "default": "#e3e7ff" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#1a2874" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1b3def" },
+    { "type": "color", "id": "num_bg", "label": "Number badge background", "default": "#1b3def" },
+    { "type": "color", "id": "num_color", "label": "Number badge text", "default": "#ffffff" },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Top padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding (desktop)", "default": 88 },
+    { "type": "range", "id": "pad_top_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding (mobile)", "default": 52 },
+    { "type": "range", "id": "pad_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding (mobile)", "default": 44 }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Round image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "A reason" },
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>One or two short sentences.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP · Numbered reasons",
+      "blocks": [ { "type": "reason" }, { "type": "reason" }, { "type": "reason" }, { "type": "reason" }, { "type": "reason" } ]
+    }
+  ]
+}
+{% endschema %}
