@@ -10,7 +10,7 @@
   section after add-to-cart and replaces #Cart-Drawer's children. The JS watches
   for that and re-renders from the fresh JSON.
 {%- endcomment -%}
-{%- comment -%} build 2026-10-20.1 {%- endcomment -%}
+{%- comment -%} build 2026-10-20.2 {%- endcomment -%}
 {%- if settings.cart_drawer -%}
 {%- liquid
   assign shadow_class = 'has-shadow--' | append: settings.block_shadows
@@ -98,6 +98,9 @@
     "code_change_label": {{ settings.bcd_code_change_label | json }},
     "code_applied_line": {{ settings.bcd_code_applied_line | json }},
     "invalid_code_text": {{ settings.bcd_invalid_code_text | json }},
+    "code_rules": {{ settings.bcd_code_rules | json }},
+    "code_held_text": {{ settings.bcd_code_held_text | json }},
+    "code_beaten_text": {{ settings.bcd_code_beaten_text | json }},
     "plan_subtitle": {{ settings.bcd_plan_subtitle | json }},
     "renewal_text": {{ settings.bcd_renewal_text | json }},
     "plan_intervals": {{ settings.bcd_plan_intervals | json }},
