@@ -1,4 +1,4 @@
-/* bod cart drawer build 2026-10-20.1 */
+/* bod cart drawer build 2026-10-20.2 */
 /*
   Bodology cart drawer — one data model, three designs (A/B/C).
 
@@ -25,6 +25,7 @@
   var HOST_ID = 'Cart-Drawer';
   var LS_OVERRIDE = 'bod_cart_design';
   var LS_SPLIT = 'bod_cart_design_split';
+  var LS_CODE = 'bod_cart_code'; /* a family code typed before anything in the cart qualified */
   var SECTIONS = ['cart-drawer', 'cart-bubble'];
 
   /* Fallbacks for any theme setting left blank. The theme editor normally fills
@@ -42,6 +43,9 @@
     code_change_label: "Change",
     code_applied_line: "{code} applied: \u2212{amount}",
     invalid_code_text: "That code isn't valid.",
+    code_rules: "MY20 -> MY20 : plan 6331924699\nMY20 -> MY20- : plan 5755961563\nMY20 -> -MY20 : one-time 46444646269147",
+    code_held_text: "{code} is saved. It applies as soon as a qualifying item is in your cart.",
+    code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
     renewal_text: "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
     plan_intervals: "6331924699: 4 weeks\n5755961563: 6 weeks\n7141621979: 3 months",
@@ -126,6 +130,49 @@
     });
     return map;
   }
+  /* Code families. One code the customer types (the alias) stands for several real
+     Shopify codes, each tied to a selling plan or a one-time variant, e.g.
+       MY20 -> MY20  : plan 6331924699
+       MY20 -> MY20- : plan 5755961563
+       MY20 -> -MY20 : one-time 46444646269147
+     Conditions: "plan <selling plan id>", "subscription" (any plan),
+     "one-time [variant id]", "any". Codes compare case-insensitively. The drawer
+     applies whichever real codes the cart qualifies for and shows only the alias. */
+  function lower(s) { return String(s || '').trim().toLowerCase(); }
+  function parseRules(text) {
+    var rules = [];
+    String(text || '').split(/\n/).forEach(function (line) {
+      var m = line.match(/^\s*(\S+)\s*(?:->|=>|→)\s*(\S+)\s*:\s*([a-z\-]+)\s*(\S+)?\s*$/i);
+      if (!m) { return; }
+      rules.push({ alias: m[1], code: m[2], kind: m[3].toLowerCase().replace(/[^a-z]/g, ''), id: m[4] ? String(m[4]) : null });
+    });
+    return rules;
+  }
+  function aliasFor(rules, code) {
+    var c = lower(code);
+    for (var i = 0; i < rules.length; i++) { if (lower(rules[i].alias) === c || lower(rules[i].code) === c) { return rules[i].alias; } }
+    return null;
+  }
+  function familyCodes(rules, alias) {
+    return uniq(rules.filter(function (r) { return lower(r.alias) === lower(alias); }).map(function (r) { return r.code; }));
+  }
+  function ruleMatches(r, l) {
+    if (l.type === 'protocol') { return false; }
+    if (r.kind === 'any') { return true; }
+    if (r.kind === 'plan') { return l.type === 'subscription' && String(l.plan.id) === r.id; }
+    if (r.kind === 'subscription') { return l.type === 'subscription'; }
+    if (r.kind === 'onetime') { return l.type === 'oneoff' && (!r.id || String(l.variantId) === r.id); }
+    return false;
+  }
+  function desiredCodes(rules, alias, lines) {
+    return uniq(rules.filter(function (r) {
+      return lower(r.alias) === lower(alias) && lines.some(function (l) { return ruleMatches(r, l); });
+    }).map(function (r) { return r.code; }));
+  }
+  function sameCodes(a, b) {
+    var x = uniq(a.map(lower)).sort(), y = uniq(b.map(lower)).sort();
+    return x.length === y.length && x.every(function (v, i) { return v === y[i]; });
+  }
   var ls = {
     get: function (k) { try { return window.localStorage.getItem(k); } catch (e) { return null; } },
     set: function (k, v) { try { window.localStorage.setItem(k, v); } catch (e) {} },
@@ -208,6 +255,9 @@
       : uniq(codeApps.map(function (d) { return d.title; }));
     var codeSet = {};
     codes.forEach(function (c) { codeSet[String(c).toLowerCase()] = true; });
+    /* what the customer sees: a family member shows as its alias (MY20-, -MY20 -> MY20) */
+    var rules = parseRules(S.code_rules);
+    var codeNames = uniq(codes.map(function (c) { return aliasFor(rules, c) || c; }));
     var codeTotal = sum(codeApps, function (d) { return d.total_allocated_amount; });
     var otherOrderRows = otherOrder.filter(function (d) { return d.total_allocated_amount > 0; }).map(function (d) { return { title: d.title, amount: d.total_allocated_amount }; });
     var protocolValue = Math.round(parseFloat(S.protocol_value || '49') * 100) || 4900;
@@ -320,7 +370,7 @@
     return {
       S: S, cart: cart, fmt: fmt, lines: lines, subs: subs, oneoffs: oneoffs, protos: protos,
       count: cart.item_count || 0, empty: !lines.length,
-      codes: codes, hasCode: codes.length > 0, codeName: codes.join(' + '),
+      codes: codes, hasCode: codes.length > 0, codeName: codeNames.join(' + '), rules: rules,
       codeTotal: codeTotal, otherOrderRows: otherOrderRows, bannerPct: bannerPct,
       eligible: eligible, protocolInCart: protos.length > 0,
       protocolFree: protocolFree,
@@ -410,7 +460,8 @@
     var S = st.S, mode = S.code_field || 'collapsed';
     if (mode === 'hidden') { return ''; }
     var err = pending.error, value = pending.code || '';
-    var msg = err ? '<div class="bod-cart__code-msg is-error" role="alert">' + esc(err) + '</div>' : '<div class="bod-cart__code-msg" role="status" aria-live="polite"></div>';
+    var note = err ? '' : heldNote(st);
+    var msg = err ? '<div class="bod-cart__code-msg is-error" role="alert">' + esc(err) + '</div>' : '<div class="bod-cart__code-msg' + (note ? ' is-note' : '') + '" role="status" aria-live="polite">' + esc(note) + '</div>';
     var input = function (extra) {
       return '<input id="BodCartCode" name="discount" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="' + esc(S.code_placeholder) + '" value="' + esc(value) + '"' + (extra || '') + '>';
     };
@@ -492,6 +543,27 @@
   }
   function savingsText(st) {
     return tpl(st.protocolFree ? st.S.savings_text_protocol : st.S.savings_text, { amount: st.money(st.saved) });
+  }
+  /* A family code typed while nothing in the cart qualified is held (localStorage)
+     and applied the moment a qualifying line arrives. */
+  function heldAlias(st) {
+    var held = ls.get(LS_CODE); if (!held) { return null; }
+    var alias = aliasFor(st.rules, held); if (!alias) { ls.remove(LS_CODE); return null; }
+    var fam = familyCodes(st.rules, alias).map(lower);
+    if (st.codes.some(function (c) { return fam.indexOf(lower(c)) >= 0; })) { return null; }
+    return alias;
+  }
+  function heldNote(st) {
+    var alias = heldAlias(st); if (!alias) { return ''; }
+    var unmatched = st.subs.filter(function (l) {
+      return !st.rules.some(function (r) { return lower(r.alias) === lower(alias) && ruleMatches(r, l); });
+    });
+    /* only subscription lines the code has no rule for, each already plan-discounted: the bundle case */
+    if (!st.oneoffs.length && st.subs.length && unmatched.length === st.subs.length && unmatched.every(function (l) { return l.plan.pct > 0; })) {
+      var top = Math.max.apply(null, unmatched.map(function (l) { return l.plan.pct; }));
+      return tpl(st.S.code_beaten_text, { code: alias, percent: top });
+    }
+    return tpl(st.S.code_held_text, { code: alias });
   }
 
   /* ---------- design A: code applied banner ---------- */
@@ -598,6 +670,7 @@
     pending.error = null; pending.open = false; pending.code = '';
     writeSplitAttribute(st);
     enforceBundles(st);
+    reconcileCodes(st, consumeCartJson());
     document.dispatchEvent(new CustomEvent('bod-cart:rendered', { detail: { design: chosen.design, state: st } }));
   }
   function writeSplitAttribute(st) {
@@ -616,7 +689,12 @@
   }
   function withSections(body) { body.sections = SECTIONS; body.sections_url = window.location.pathname; return body; }
   function getCart() { return fetch(rootUrl() + 'cart.js', { headers: { 'Accept': 'application/json' } }).then(function (r) { return r.json(); }); }
+  /* the cart JSON a mutation returned, handed to the next render so the code
+     reconcile can read discount_codes without another request */
+  var lastCartJson = null;
+  function consumeCartJson() { var c = lastCartJson; lastCartJson = null; return c; }
   function applySections(res) {
+    if (res && res.discount_codes) { lastCartJson = res; }
     var sections = res && res.sections;
     if (!sections || !sections['cart-drawer']) { return refreshTruth(); }
     var h = host();
@@ -733,18 +811,79 @@
     flow.then(applySections).catch(function () { return refreshTruth(); }).then(function () { setBusy(null, false); });
   }
 
+  /* Keep the real codes in step with the cart: every render, work out which family
+     codes the lines qualify for and swap them in or out. Memory lives in the cart
+     itself (an attached code names its family) or, while nothing qualifies, in
+     localStorage. Only writes when the attached set would change. */
+  var reconcile = { busy: false, count: 0, since: 0, first: true };
+  function reconcileCodes(st, cartJson) {
+    if (!st.rules.length || st.empty || reconcile.busy) { return; }
+    var now = Date.now();
+    if (now - reconcile.since > 15000) { reconcile.since = now; reconcile.count = 0; }
+    if (reconcile.count >= 4) { return; }
+    var held = ls.get(LS_CODE);
+    var familyApplied = st.codes.some(function (c) { return !!aliasFor(st.rules, c); });
+    var need = reconcile.first || !!held || familyApplied || !!(cartJson && cartJson.discount_codes);
+    reconcile.first = false;
+    if (!need) { return; }
+    function settle(cart) {
+      var attached = (cart.discount_codes || []).map(function (c) { return String(c.code); });
+      var alias = null;
+      attached.forEach(function (c) { if (!alias) { alias = aliasFor(st.rules, c); } });
+      if (!alias && held) { alias = aliasFor(st.rules, held); }
+      if (!alias) { return; }
+      var fam = familyCodes(st.rules, alias).map(lower);
+      var keep = attached.filter(function (c) { return fam.indexOf(lower(c)) < 0; });
+      var want = desiredCodes(st.rules, alias, st.lines);
+      var target = keep.concat(want);
+      function remember() { if (want.length) { ls.remove(LS_CODE); } else { ls.set(LS_CODE, alias); } }
+      if (sameCodes(target, attached)) { remember(); return; }
+      reconcile.busy = true; reconcile.count++;
+      post('cart/update.js', withSections({ discount: target.join(',') }))
+        .then(function (res) { remember(); return applySections(res); })
+        .catch(refreshTruth)
+        .then(function () { reconcile.busy = false; });
+    }
+    if (cartJson && cartJson.discount_codes) { settle(cartJson); } else { getCart().then(settle).catch(function () {}); }
+  }
+
   function applyCode(form) {
     var input = form.querySelector('input[name="discount"]');
     var code = (input && input.value || '').trim();
     if (!code) { return; }
     var data = readData(); var S = withDefaults((data && data.settings) || {});
-    setBusy(form, true);
+    var st = data ? buildState(data) : null;
+    var alias = st ? aliasFor(st.rules, code) : null;
     function tryCodes(list) { return post('cart/update.js', withSections({ discount: list.join(',') })); }
-    function ok(res) {
-      return (res.discount_codes || []).some(function (c) { return String(c.code).toLowerCase() === code.toLowerCase() && c.applicable; });
+    function applicable(res, c) {
+      return (res.discount_codes || []).some(function (d) { return lower(d.code) === lower(c) && d.applicable; });
     }
+    function ok(res) { return applicable(res, code); }
     function done(res) { pending.error = null; pending.open = false; pending.code = ''; return applySections(res); }
     function fail(res) { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return applySections(res); }
+    if (alias) {
+      var want = desiredCodes(st.rules, alias, st.lines);
+      var fam = familyCodes(st.rules, alias).map(lower);
+      if (!want.length) {
+        /* nothing in the cart qualifies yet: hold the code and say so */
+        ls.set(LS_CODE, alias);
+        pending.error = null; pending.open = true; pending.code = '';
+        render();
+        return;
+      }
+      setBusy(form, true);
+      getCart().then(function (cart) {
+        var existing = (cart.discount_codes || []).filter(function (c) { return c.applicable && fam.indexOf(lower(c.code)) < 0; }).map(function (c) { return c.code; });
+        return tryCodes(existing.concat(want)).then(function (res) {
+          var all = want.every(function (w) { return applicable(res, w); });
+          if (all) { ls.remove(LS_CODE); return done(res); }
+          return tryCodes(existing).then(fail, fail);
+        });
+      }).catch(function () { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return refreshTruth(); })
+        .then(function () { setBusy(null, false); });
+      return;
+    }
+    setBusy(form, true);
     getCart().then(function (cart) {
       var existing = (cart.discount_codes || []).filter(function (c) { return c.applicable && String(c.code).toLowerCase() !== code.toLowerCase(); }).map(function (c) { return c.code; });
       /* keep codes that already apply and add the new one on top; if they don't

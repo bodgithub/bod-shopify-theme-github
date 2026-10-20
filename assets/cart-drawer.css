@@ -144,6 +144,7 @@ body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
 #Cart-Drawer .bod-cart__code-msg { font-size: 13px; font-weight: 600; min-height: 0; }
 #Cart-Drawer .bod-cart__code-msg:empty { display: none; }
 #Cart-Drawer .bod-cart__code-msg.is-error { color: #B42318; }
+#Cart-Drawer .bod-cart__code-msg.is-note { color: var(--bcd-muted); font-weight: 500; margin-top: 6px; }
 #Cart-Drawer .bod-cart__code.is-loading { opacity: .6; }
 #Cart-Drawer .bod-cart__code-toggle { background: none; border: 0; padding: 0; min-height: 44px; text-align: center; font-size: 13px; font-weight: 600; color: var(--bcd-muted); text-decoration: underline; text-underline-offset: 3px; }
 

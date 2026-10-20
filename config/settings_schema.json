@@ -1230,6 +1230,27 @@
         "default": "That code isn't valid."
       },
       {
+        "type": "textarea",
+        "id": "bcd_code_rules",
+        "label": "Code families (one typed code = several real codes)",
+        "default": "MY20 -> MY20 : plan 6331924699\nMY20 -> MY20- : plan 5755961563\nMY20 -> -MY20 : one-time 46444646269147",
+        "info": "One rule per line: TYPED -> REAL : condition. Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any. The drawer applies the real codes the cart qualifies for and shows only the typed code. Lines with no rule (e.g. the bundle plan) get nothing."
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_held_text",
+        "label": "Family code held (nothing qualifies yet)",
+        "default": "{code} is saved. It applies as soon as a qualifying item is in your cart.",
+        "info": "Tokens: {code}"
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_beaten_text",
+        "label": "Family code held, cart is only a plan with a bigger discount",
+        "default": "Your bundle is already {percent}% off, which beats {code}.",
+        "info": "Tokens: {code}, {percent} = that plan's own discount"
+      },
+      {
         "type": "header",
         "content": "Line items"
       },
