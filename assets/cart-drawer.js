@@ -1,4 +1,4 @@
-/* bod cart drawer build 2026-10-20.5 */
+/* bod cart drawer build 2026-10-21.1-dev */
 /*
   Bodology cart drawer — one data model, three designs (A/B/C).
 
@@ -43,7 +43,7 @@
     code_change_label: "Change",
     code_applied_line: "{code} applied: \u2212{amount}",
     invalid_code_text: "That code isn't valid.",
-    code_rules: "TRY20 -> TRY20 : one-time\nTRY20 -> -TRY20 : plan 6331924699\nTRY20 -> TRY20- : plan 5755961563",
+    code_rules: "MY20 -> MY20 : plan 6331924699\nMY20 -> MY20- : plan 5755961563\nMY20 -> -MY20 : one-time",
     code_held_text: "{code} is saved. It applies as soon as a qualifying item is in your cart.",
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
@@ -132,9 +132,9 @@
   }
   /* Code families. One code the customer types (the alias) stands for several real
      Shopify codes, each tied to a selling plan or a one-time variant, e.g.
-       TRY20 -> TRY20  : one-time
-       TRY20 -> -TRY20 : plan 6331924699
-       TRY20 -> TRY20- : plan 5755961563
+       MY20 -> MY20  : plan 6331924699
+       MY20 -> MY20- : plan 5755961563
+       MY20 -> -MY20 : one-time
      Conditions: "plan <selling plan id>", "subscription" (any plan),
      "one-time [variant id]", "any". Codes compare case-insensitively. The drawer
      applies whichever real codes the cart qualifies for and shows only the alias. */
@@ -890,7 +890,11 @@
           var alone = existing.length ? tryCodes(want) : Promise.resolve(res);
           return alone.then(function (res2) {
             if (all(res2)) { ls.remove(LS_CODE); return done(res2); }
-            return tryCodes(existing).then(fail, fail);
+            /* family unusable (e.g. its codes are switched off): try the typed code as itself */
+            return tryCodes(existing.concat([code])).then(function (res3) {
+              if (ok(res3)) { ls.remove(LS_CODE); return done(res3); }
+              return tryCodes(existing).then(fail, fail);
+            });
           });
         });
       }).catch(function () { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return refreshTruth(); })
