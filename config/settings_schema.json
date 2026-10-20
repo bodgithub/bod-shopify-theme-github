@@ -1421,7 +1421,14 @@
         "id": "bcd_label_code_row",
         "label": "Code row label",
         "default": "{code} ({percent}% off)",
-        "info": "Tokens: {code}, {percent} = same total % as the banner. Falls back to just {code} in mixed carts."
+        "info": "Row for a code applied to one-time lines. Tokens: {code}, {percent} = code amount over those lines' list price."
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_combined_row",
+        "label": "Code + subscription row label",
+        "default": "{code} + subscription ({percent}% off)",
+        "info": "One row for the plan saving and the code together on subscription lines. Tokens: {code}, {percent} = combined amount over the lines' list price."
       },
       {
         "type": "text",
@@ -1434,6 +1441,13 @@
         "id": "bcd_label_protocol_row",
         "label": "Free protocol row label",
         "default": "Free protocol with subscription"
+      },
+      {
+        "type": "text",
+        "id": "bcd_label_included",
+        "label": "Free protocol row value",
+        "default": "Included",
+        "info": "Shown instead of a minus amount when the protocol is free."
       },
       {
         "type": "text",
@@ -1470,7 +1484,14 @@
         "id": "bcd_savings_text",
         "label": "Savings strip text",
         "default": "You're saving {amount} today",
-        "info": "Tokens: {amount} = list prices (including the protocol's display value when it's free) minus total today."
+        "info": "Tokens: {amount} = product list prices minus total today. A free protocol is not counted in the amount."
+      },
+      {
+        "type": "text",
+        "id": "bcd_savings_text_protocol",
+        "label": "Savings strip text when the protocol is free",
+        "default": "You're saving {amount} + a free protocol",
+        "info": "Tokens: {amount} = product list prices minus total today."
       },
       {
         "type": "text",

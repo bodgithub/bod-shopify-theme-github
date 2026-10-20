@@ -1,4 +1,4 @@
-/* bod cart drawer build 2026-10-15.3 */
+/* bod cart drawer build 2026-10-20.1 */
 /*
   Bodology cart drawer — one data model, three designs (A/B/C).
 
@@ -9,6 +9,10 @@
               line price after everything = original_line_price - total_discount
               effective %                 = 1 - that / (list price × qty)
             so the drawer matches checkout by construction.
+  Summary:  subtotal = product list prices (a free protocol is "Included", not
+            a value line). One row per discount type: a code on subscription
+            lines merges with the plan saving into one row whose % is the
+            combined amount over list; a code on one-time lines gets its own row.
   Refresh:  the theme's CartDrawer class (app.js) and this file both replace
             #Cart-Drawer's children with a freshly rendered section after any
             cart change; a MutationObserver re-renders from the new JSON.
@@ -61,13 +65,16 @@
     label_subtotal: "Subtotal",
     label_subscribe_save: "Subscribe & save",
     label_code_row: "{code} ({percent}% off)",
+    label_combined_row: "{code} + subscription ({percent}% off)",
     label_code_prefix: "Code",
     label_protocol_row: "Free protocol with subscription",
+    label_included: "Included",
     label_shipping: "Shipping",
     label_total: "Total today",
     label_savings_heading: "YOUR SAVINGS",
     label_total_saved: "Total saved today",
     savings_text: "You're saving {amount} today",
+    savings_text_protocol: "You're saving {amount} + a free protocol",
     b_heading: "YOUR FIRST ORDER",
     b_heading_oneoff: "YOUR ORDER",
     b_save_pill: "You save {amount}",
@@ -290,13 +297,22 @@
     var oneoffs = lines.filter(function (l) { return l.type === 'oneoff'; });
     var protos = lines.filter(function (l) { return l.type === 'protocol'; });
     var eligible = subs.some(function (l) { return l.qualifies; });
-    var baseSet = subs.length ? subs : oneoffs;
-    var pcts = uniq(baseSet.map(function (l) { return l.pct; }));
+    /* banner %: the one effective first-order % when every product line agrees */
+    var products = subs.concat(oneoffs);
+    var pcts = uniq(products.map(function (l) { return l.pct; }));
     var bannerPct = pcts.length === 1 ? pcts[0] : null;
     var planPcts = uniq(subs.map(function (l) { return l.plan.pct; }));
     var listTotal = sum(lines, function (l) { return l.list; });
+    var protocolFree = protos.some(function (l) { return l.isFree; });
+    /* subtotal = the products at list price; a free protocol is "Included", not a value line */
+    var subtotal = sum(lines, function (l) { return (l.type === 'protocol' && l.isFree) ? 0 : l.list; });
     var total = cart.total_price || 0;
-    var saved = Math.max(0, listTotal - total);
+    var saved = Math.max(0, subtotal - total);
+    var subList = sum(subs, function (l) { return l.list; });
+    var subSave = sum(subs, function (l) { return l.list - l.orig; });
+    var subCode = sum(subs, function (l) { return l.codeShare; });
+    var oneList = sum(oneoffs, function (l) { return l.list; });
+    var oneCode = sum(oneoffs, function (l) { return l.codeShare; });
     var freeMin = parseInt(S.free_shipping_minimum, 10) || 0;
     var freeShipOn = !!S.free_shipping && freeMin > 0;
     var freeShip = freeShipOn && total >= freeMin;
@@ -307,10 +323,10 @@
       codes: codes, hasCode: codes.length > 0, codeName: codes.join(' + '),
       codeTotal: codeTotal, otherOrderRows: otherOrderRows, bannerPct: bannerPct,
       eligible: eligible, protocolInCart: protos.length > 0,
-      protocolFree: protos.some(function (l) { return l.isFree; }),
+      protocolFree: protocolFree,
       protocol: data.protocol || null,
-      listTotal: listTotal, total: total, saved: saved,
-      subSave: sum(subs, function (l) { return l.list - l.orig; }),
+      listTotal: listTotal, subtotal: subtotal, total: total, saved: saved,
+      subList: subList, subSave: subSave, subCode: subCode, oneList: oneList, oneCode: oneCode,
       protoSave: sum(protos, function (l) { return l.productDisc; }),
       planPct: planPcts.length === 1 ? planPcts[0] : null,
       freeShipOn: freeShipOn, freeShip: freeShip, freeMin: freeMin,
@@ -346,9 +362,6 @@
     return st.bannerPct === null
       ? tpl(st.S.code_banner_mixed, { code: st.codeName })
       : tpl(st.S.code_banner, { code: st.codeName, percent: st.bannerPct });
-  }
-  function codeRowLabel(st) {
-    return st.bannerPct === null ? st.codeName : tpl(st.S.label_code_row, { code: st.codeName, percent: st.bannerPct });
   }
   function subtitle(st, l) {
     if (l.type === 'protocol') { return l.isFree ? st.S.protocol_line_free : st.S.protocol_line_locked; }
@@ -442,7 +455,43 @@
     return '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(st.S.label_shipping) + '</span><span class="' + (st.freeShip ? 'bod-cart__green' : 'bod-cart__muted') + '">' + esc(st.freeShip ? st.S.free_label : tpl(st.S.shipping_remaining, { amount: st.money(st.shipRemaining) })) + '</span></div>';
   }
   function subSaveLabel(st) {
-    return esc(st.S.label_subscribe_save) + (st.planPct !== null ? ' (' + st.planPct + '%)' : '');
+    return st.S.label_subscribe_save + (st.planPct !== null ? ' (' + st.planPct + '%)' : '');
+  }
+  /* Summary rows, one per discount type, every figure from the cart object:
+       code on subscription lines -> merged with the plan saving into one row
+       code on one-time lines     -> its own row
+       free protocol              -> "Included", never a minus amount */
+  function summaryRows(st) {
+    var S = st.S, rows = [];
+    if (st.subs.length) {
+      if (st.hasCode && st.subCode > 0) {
+        var combined = st.subSave + st.subCode;
+        var pc = st.subList > 0 ? Math.round(combined / st.subList * 100) : 0;
+        rows.push({ label: tpl(S.label_combined_row, { code: st.codeName, percent: pc }), amount: combined, code: true });
+      } else if (st.subSave > 0) {
+        rows.push({ label: subSaveLabel(st), amount: st.subSave });
+      }
+    }
+    if (st.hasCode && st.oneCode > 0) {
+      var pc1 = st.oneList > 0 ? Math.round(st.oneCode / st.oneList * 100) : 0;
+      rows.push({ label: tpl(S.label_code_row, { code: st.codeName, percent: pc1 }), amount: st.oneCode, code: true });
+    }
+    st.otherOrderRows.forEach(function (r) { rows.push({ label: r.title, amount: r.amount }); });
+    if (st.protocolFree) { rows.push({ label: S.label_protocol_row, text: S.label_included }); }
+    else if (st.protoSave > 0) { rows.push({ label: S.label_protocol_row, amount: st.protoSave }); }
+    return rows;
+  }
+  function summaryRowHtml(st, r, muted) {
+    var left = r.code
+      ? '<span class="bod-cart__green bod-cart__with-icon">' + ICON.tag + esc(r.label) + '</span>'
+      : '<span class="' + (muted ? 'bod-cart__muted' : '') + '">' + esc(r.label) + '</span>';
+    var right = r.text !== undefined
+      ? '<span class="bod-cart__green">' + esc(r.text) + '</span>'
+      : '<span class="bod-cart__green">−' + esc(st.money(r.amount)) + '</span>';
+    return '<div class="bod-cart__row">' + left + right + '</div>';
+  }
+  function savingsText(st) {
+    return tpl(st.protocolFree ? st.S.savings_text_protocol : st.S.savings_text, { amount: st.money(st.saved) });
   }
 
   /* ---------- design A: code applied banner ---------- */
@@ -473,14 +522,11 @@
     });
     out += protocolNudge(st) + '</div>';
     out += '<div class="bod-cart__footer bod-cart__footer--a"><div class="bod-cart__rows">' +
-      '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(S.label_subtotal) + '</span><span>' + esc(st.money(st.listTotal)) + '</span></div>';
-    if (st.subSave > 0) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + subSaveLabel(st) + '</span><span class="bod-cart__green">−' + esc(st.money(st.subSave)) + '</span></div>'; }
-    if (st.hasCode) { out += '<div class="bod-cart__row"><span class="bod-cart__green bod-cart__with-icon">' + ICON.tag + esc(codeRowLabel(st)) + '</span><span class="bod-cart__green">−' + esc(st.money(st.codeTotal)) + '</span></div>'; }
-    st.otherOrderRows.forEach(function (r) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(r.title) + '</span><span class="bod-cart__green">−' + esc(st.money(r.amount)) + '</span></div>'; });
-    if (st.protoSave > 0) { out += '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(S.label_protocol_row) + '</span><span class="bod-cart__green">−' + esc(st.money(st.protoSave)) + '</span></div>'; }
+      '<div class="bod-cart__row"><span class="bod-cart__muted">' + esc(S.label_subtotal) + '</span><span>' + esc(st.money(st.subtotal)) + '</span></div>';
+    summaryRows(st).forEach(function (r) { out += summaryRowHtml(st, r, true); });
     out += shippingValue(st) + '</div>' +
       '<div class="bod-cart__total"><span>' + esc(S.label_total) + '</span><span class="bod-cart__total-amount">' + esc(st.money(st.total)) + '</span></div>';
-    if (S.savings_strip && st.saved > 0) { out += '<div class="bod-cart__strip">' + esc(tpl(S.savings_text, { amount: st.money(st.saved) })) + '</div>'; }
+    if (S.savings_strip && st.saved > 0) { out += '<div class="bod-cart__strip">' + esc(savingsText(st)) + '</div>'; }
     out += termsBox(st) + checkoutForm(st, ICON.lock + '<span>' + esc(tpl(S.checkout_text, { total: st.money(st.total) })) + '</span>', 'bod-cart__checkout--a') +
       codeField(st, 'a') + trustInline(st) + '</div>';
     return out;
@@ -493,7 +539,7 @@
     var names = uniq(st.lines.map(function (l) { return l.title; }));
     var summary = names.join(' + ') + (st.freeShip ? ' + shipping' : '') + '.';
     var out = h + '<div class="bod-cart__hero"><div class="bod-cart__hero-eyebrow">' + esc(st.subs.length ? S.b_heading : S.b_heading_oneoff) + '</div>' +
-      '<div class="bod-cart__hero-prices"><span class="bod-cart__hero-total">' + esc(st.money(st.total)) + '</span>' + (st.saved > 0 ? '<span class="bod-cart__hero-strike">' + esc(st.money(st.listTotal)) + '</span>' : '') + '</div>' +
+      '<div class="bod-cart__hero-prices"><span class="bod-cart__hero-total">' + esc(st.money(st.total)) + '</span>' + (st.saved > 0 ? '<span class="bod-cart__hero-strike">' + esc(st.money(st.subtotal)) + '</span>' : '') + '</div>' +
       '<div class="bod-cart__hero-summary">' + esc(summary) + (st.saved > 0 ? ' <span class="bod-cart__pill">' + esc(tpl(S.b_save_pill, { amount: st.money(st.saved) })) + '</span>' : '') + '</div>';
     if (st.hasCode) {
       out += '<div class="bod-cart__ticket"><div class="bod-cart__ticket-code">' + ICON.check + '<span>' + esc(st.codeName) + '</span></div><span class="bod-cart__ticket-right">' +
@@ -527,15 +573,12 @@
     });
     out += protocolNudge(st);
     out += '<div class="bod-cart__savings"><div class="bod-cart__savings-heading">' + esc(S.label_savings_heading) + '</div>';
-    if (st.subSave > 0) { out += '<div class="bod-cart__row"><span>' + subSaveLabel(st) + '</span><span class="bod-cart__green">−' + esc(st.money(st.subSave)) + '</span></div>'; }
-    if (st.hasCode) { out += '<div class="bod-cart__row"><span class="bod-cart__with-icon">' + esc(S.label_code_prefix) + ' <span class="bod-cart__chip">' + esc(st.codeName) + '</span>' + (st.bannerPct !== null ? ' (' + st.bannerPct + '%)' : '') + '</span><span class="bod-cart__green">−' + esc(st.money(st.codeTotal)) + '</span></div>'; }
-    st.otherOrderRows.forEach(function (r) { out += '<div class="bod-cart__row"><span>' + esc(r.title) + '</span><span class="bod-cart__green">−' + esc(st.money(r.amount)) + '</span></div>'; });
-    if (st.protoSave > 0) { out += '<div class="bod-cart__row"><span>' + esc(S.label_protocol_row) + '</span><span class="bod-cart__green">−' + esc(st.money(st.protoSave)) + '</span></div>'; }
+    summaryRows(st).forEach(function (r) { out += summaryRowHtml(st, r, false); });
     if (st.freeShip) { out += '<div class="bod-cart__row"><span>' + esc(S.label_shipping) + '</span><span class="bod-cart__green">' + esc(S.free_label) + '</span></div>'; }
     if (st.saved > 0) { out += '<div class="bod-cart__saved-box"><span>' + esc(S.label_total_saved) + '</span><span class="bod-cart__saved-amount">' + esc(st.money(st.saved)) + '</span></div>'; }
     out += '</div>' + codeField(st, 'c') + '</div>';
     out += '<div class="bod-cart__footer bod-cart__footer--c"><div class="bod-cart__total"><span>' + esc(S.label_total) + '</span><span class="bod-cart__total-right">' +
-      (st.saved > 0 ? '<span class="bod-cart__strike">' + esc(st.money(st.listTotal)) + '</span>' : '') + '<span class="bod-cart__total-amount">' + esc(st.money(st.total)) + '</span></span></div>';
+      (st.saved > 0 ? '<span class="bod-cart__strike">' + esc(st.money(st.subtotal)) + '</span>' : '') + '<span class="bod-cart__total-amount">' + esc(st.money(st.total)) + '</span></span></div>';
     st.subs.forEach(function (l) { out += '<div class="bod-cart__renewal bod-cart__renewal--right">' + esc(renewalText(st, l)) + '</div>'; });
     out += termsBox(st) + checkoutForm(st, ICON.lock + '<span>' + esc(S.checkout_text_c) + '</span>', 'bod-cart__checkout--c') + '</div>';
     return out;
