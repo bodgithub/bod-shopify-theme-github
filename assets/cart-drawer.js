@@ -1,4 +1,4 @@
-/* bod cart drawer build 2026-10-21.1-dev */
+/* bod cart drawer build 2026-10-21.2-dev */
 /*
   Bodology cart drawer — one data model, three designs (A/B/C).
 
@@ -818,7 +818,7 @@
      codes the lines qualify for and swap them in or out. Memory lives in the cart
      itself (an attached code names its family) or, while nothing qualifies, in
      localStorage. Only writes when the attached set would change. */
-  var reconcile = { busy: false, count: 0, since: 0, first: true };
+  var reconcile = { busy: false, count: 0, since: 0, first: true, skip: {} };
   function reconcileCodes(st, cartJson) {
     if (!st.rules.length || st.empty || reconcile.busy) { return; }
     var now = Date.now();
@@ -841,16 +841,21 @@
       var target = keep.concat(want);
       function remember() { if (want.length) { ls.remove(LS_CODE); } else { ls.set(LS_CODE, alias); } }
       if (sameCodes(target, attached)) { remember(); return; }
+      if (reconcile.skip[lower(alias)]) { return; }
       reconcile.busy = true; reconcile.count++;
+      function allOk(res) { return want.every(function (w) { return codeApplicable(res, w); }); }
       post('cart/update.js', withSections({ discount: target.join(',') }))
         .then(function (res) {
-          /* the family wins over a code it can't combine with (e.g. an order-level
-             code attached earlier): retry with the family alone */
-          var allOk = want.every(function (w) { return codeApplicable(res, w); });
-          if (!allOk && want.length && keep.length) {
-            return post('cart/update.js', withSections({ discount: want.join(',') })).then(function (res2) { remember(); return applySections(res2); });
-          }
-          remember(); return applySections(res);
+          if (allOk(res)) { remember(); return applySections(res); }
+          /* the family wins over a code it can't combine with: retry with the family alone */
+          var retry = (want.length && keep.length) ? post('cart/update.js', withSections({ discount: want.join(',') })) : Promise.resolve(res);
+          return retry.then(function (res2) {
+            if (allOk(res2)) { remember(); return applySections(res2); }
+            /* the family cannot be applied to this cart (e.g. its codes are switched off):
+               put the codes back exactly as they were and stop trying for this family */
+            reconcile.skip[lower(alias)] = true;
+            return post('cart/update.js', withSections({ discount: attached.join(',') })).then(applySections);
+          });
         })
         .catch(refreshTruth)
         .then(function () { reconcile.busy = false; });
