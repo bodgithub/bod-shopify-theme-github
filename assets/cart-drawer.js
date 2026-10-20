@@ -1,4 +1,4 @@
-/* bod cart drawer build 2026-10-20.4 */
+/* bod cart drawer build 2026-10-20.5 */
 /*
   Bodology cart drawer — one data model, three designs (A/B/C).
 
@@ -43,7 +43,7 @@
     code_change_label: "Change",
     code_applied_line: "{code} applied: \u2212{amount}",
     invalid_code_text: "That code isn't valid.",
-    code_rules: "TRY20 -> TRY20 : plan 6331924699\nTRY20 -> TRY20- : plan 5755961563\nTRY20 -> -TRY20 : one-time",
+    code_rules: "TRY20 -> TRY20 : one-time\nTRY20 -> -TRY20 : plan 6331924699\nTRY20 -> TRY20- : plan 5755961563",
     code_held_text: "{code} is saved. It applies as soon as a qualifying item is in your cart.",
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
@@ -132,9 +132,9 @@
   }
   /* Code families. One code the customer types (the alias) stands for several real
      Shopify codes, each tied to a selling plan or a one-time variant, e.g.
-       TRY20 -> TRY20  : plan 6331924699
+       TRY20 -> TRY20  : one-time
+       TRY20 -> -TRY20 : plan 6331924699
        TRY20 -> TRY20- : plan 5755961563
-       TRY20 -> -TRY20 : one-time
      Conditions: "plan <selling plan id>", "subscription" (any plan),
      "one-time [variant id]", "any". Codes compare case-insensitively. The drawer
      applies whichever real codes the cart qualifies for and shows only the alias. */
