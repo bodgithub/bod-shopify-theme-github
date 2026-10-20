@@ -1,4 +1,4 @@
-/* bod cart drawer build 2026-10-20.2 */
+/* bod cart drawer build 2026-10-20.3 */
 /*
   Bodology cart drawer — one data model, three designs (A/B/C).
 
@@ -168,6 +168,9 @@
     return uniq(rules.filter(function (r) {
       return lower(r.alias) === lower(alias) && lines.some(function (l) { return ruleMatches(r, l); });
     }).map(function (r) { return r.code; }));
+  }
+  function codeApplicable(res, c) {
+    return ((res && res.discount_codes) || []).some(function (d) { return lower(d.code) === lower(c) && d.applicable; });
   }
   function sameCodes(a, b) {
     var x = uniq(a.map(lower)).sort(), y = uniq(b.map(lower)).sort();
@@ -840,7 +843,15 @@
       if (sameCodes(target, attached)) { remember(); return; }
       reconcile.busy = true; reconcile.count++;
       post('cart/update.js', withSections({ discount: target.join(',') }))
-        .then(function (res) { remember(); return applySections(res); })
+        .then(function (res) {
+          /* the family wins over a code it can't combine with (e.g. an order-level
+             code attached earlier): retry with the family alone */
+          var allOk = want.every(function (w) { return codeApplicable(res, w); });
+          if (!allOk && want.length && keep.length) {
+            return post('cart/update.js', withSections({ discount: want.join(',') })).then(function (res2) { remember(); return applySections(res2); });
+          }
+          remember(); return applySections(res);
+        })
         .catch(refreshTruth)
         .then(function () { reconcile.busy = false; });
     }
@@ -855,9 +866,7 @@
     var st = data ? buildState(data) : null;
     var alias = st ? aliasFor(st.rules, code) : null;
     function tryCodes(list) { return post('cart/update.js', withSections({ discount: list.join(',') })); }
-    function applicable(res, c) {
-      return (res.discount_codes || []).some(function (d) { return lower(d.code) === lower(c) && d.applicable; });
-    }
+    var applicable = codeApplicable;
     function ok(res) { return applicable(res, code); }
     function done(res) { pending.error = null; pending.open = false; pending.code = ''; return applySections(res); }
     function fail(res) { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return applySections(res); }
@@ -874,10 +883,15 @@
       setBusy(form, true);
       getCart().then(function (cart) {
         var existing = (cart.discount_codes || []).filter(function (c) { return c.applicable && fam.indexOf(lower(c.code)) < 0; }).map(function (c) { return c.code; });
+        function all(res) { return want.every(function (w) { return applicable(res, w); }); }
         return tryCodes(existing.concat(want)).then(function (res) {
-          var all = want.every(function (w) { return applicable(res, w); });
-          if (all) { ls.remove(LS_CODE); return done(res); }
-          return tryCodes(existing).then(fail, fail);
+          if (all(res)) { ls.remove(LS_CODE); return done(res); }
+          /* the typed family wins over a code it can't combine with: try it alone */
+          var alone = existing.length ? tryCodes(want) : Promise.resolve(res);
+          return alone.then(function (res2) {
+            if (all(res2)) { ls.remove(LS_CODE); return done(res2); }
+            return tryCodes(existing).then(fail, fail);
+          });
         });
       }).catch(function () { pending.error = S.invalid_code_text || "That code isn't valid."; pending.open = true; pending.code = code; return refreshTruth(); })
         .then(function () { setBusy(null, false); });
