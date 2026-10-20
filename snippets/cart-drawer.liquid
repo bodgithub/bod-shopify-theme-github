@@ -10,7 +10,7 @@
   section after add-to-cart and replaces #Cart-Drawer's children. The JS watches
   for that and re-renders from the fresh JSON.
 {%- endcomment -%}
-{%- comment -%} build 2026-10-15.4 {%- endcomment -%}
+{%- comment -%} build 2026-10-20.1 {%- endcomment -%}
 {%- if settings.cart_drawer -%}
 {%- liquid
   assign shadow_class = 'has-shadow--' | append: settings.block_shadows
@@ -124,14 +124,17 @@
     "label_subtotal": {{ settings.bcd_label_subtotal | json }},
     "label_subscribe_save": {{ settings.bcd_label_subscribe_save | json }},
     "label_code_row": {{ settings.bcd_label_code_row | json }},
+    "label_combined_row": {{ settings.bcd_label_combined_row | json }},
     "label_code_prefix": {{ settings.bcd_label_code_prefix | json }},
     "label_protocol_row": {{ settings.bcd_label_protocol_row | json }},
+    "label_included": {{ settings.bcd_label_included | json }},
     "label_shipping": {{ settings.bcd_label_shipping | json }},
     "label_total": {{ settings.bcd_label_total | json }},
     "label_savings_heading": {{ settings.bcd_label_savings_heading | json }},
     "label_total_saved": {{ settings.bcd_label_total_saved | json }},
     "savings_strip": {{ settings.bcd_savings_strip | json }},
     "savings_text": {{ settings.bcd_savings_text | json }},
+    "savings_text_protocol": {{ settings.bcd_savings_text_protocol | json }},
     "b_heading": {{ settings.bcd_b_heading | json }},
     "b_heading_oneoff": {{ settings.bcd_b_heading_oneoff | json }},
     "b_save_pill": {{ settings.bcd_b_save_pill | json }},
