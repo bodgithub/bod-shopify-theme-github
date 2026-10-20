@@ -1,0 +1,128 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "spacer_PUgq9i": {
+      "type": "spacer",
+      "name": "Spacer",
+      "settings": {
+        "spacer_mobile": 20,
+        "spacer_desktop": 35,
+        "border_separator": false,
+        "border_separator_full": false
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "subscription_help": {
+      "type": "subscription-help",
+      "name": "Subscription help (short)",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "text": "<p><strong>Log in</strong> at <a href=\"https://bodology.co/account\">bodology.co/account</a>.</p>",
+            "image": "shopify://shop_images/Screenshot_2026-07-03_at_2.33.46_PM.png",
+            "image_alt": "Bodology account login screen",
+            "image_caption": "log in"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "text": "<p>Open <strong>Subscriptions</strong> in the left menu.</p>",
+            "image": "shopify://shop_images/Screenshot_2026-07-03_at_2.34.11_PM.png",
+            "image_alt": "Subscriptions option in the account menu",
+            "image_caption": "Subscriptions menu"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "text": "<p>Select your subscription (or <strong>Edit options</strong>), then <strong>Cancel this subscription</strong>.</p>",
+            "image": "shopify://shop_images/Screenshot_2026-07-03_at_2.34.18_PM.png",
+            "image_alt": "Edit options button",
+            "image_caption": "Edit options, then Cancel this subscription",
+            "image_2": "shopify://shop_images/Screenshot_2026-07-03_at_2.34.26_PM.png",
+            "image_alt_2": "Cancel this subscription button"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "text": "<p>Skip or answer the two optional questions, then <strong>Confirm cancellation</strong>.</p>",
+            "image": "shopify://shop_images/Screenshot_2026-07-03_at_2.40.52_PM.png",
+            "image_alt": "Optional question screen",
+            "image_caption": "Next, then Confirm cancellation",
+            "image_2": "shopify://shop_images/Screenshot_2026-07-03_at_2.41.30_PM.png",
+            "image_alt_2": "Confirm cancellation button"
+          }
+        },
+        "note_1": {
+          "type": "note",
+          "settings": {
+            "text": "<p><strong>To stop your next order, cancel before your next charge date.</strong> It's shown in your account and in the reminder email we send 3 days before each renewal.</p>"
+          }
+        },
+        "note_2": {
+          "type": "note",
+          "settings": {
+            "text": "<p>An order that has already processed still ships. Nothing after it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "note_1",
+        "note_2"
+      ],
+      "settings": {
+        "heading": "Cancel or change your subscription",
+        "lead": "<p>No fees. No phone call. About a minute in your account.</p>",
+        "btn_label": "Manage my subscription",
+        "btn_link": "https://bodology.co/account",
+        "btn_sub": "Log in, then open Subscriptions.",
+        "steps_title": "To cancel",
+        "done_text": "<p><strong>You'll see a confirmation on screen and get an email.</strong> No further charges, no further orders.</p>",
+        "notes_title": "Good to know",
+        "help_text": "<p><strong>Prefer we do it?</strong> Email <a href=\"mailto:support@bodology.co\">support@bodology.co</a>. We'll cancel it and confirm in writing.</p>",
+        "change_text": "<p><strong>Don't want to cancel?</strong> In <a href=\"https://bodology.co/account\">Subscriptions</a> you can skip a delivery, change frequency, swap products, or update your address or payment.</p>",
+        "show_shots": true,
+        "shots_label": "Show me the screens",
+        "max_width": 640,
+        "h_size": 34,
+        "h_size_mobile": 28,
+        "heading_color": "#16161a",
+        "text_color": "#16161a",
+        "muted_color": "#666666",
+        "accent": "#1b3def",
+        "line_color": "#d4daf7",
+        "note_bg": "#eef1ff",
+        "btn_bg": "#1b3def",
+        "btn_text": "#ffffff",
+        "pad_top": 40,
+        "pad_bottom": 80,
+        "pad_top_mobile": 24,
+        "pad_bottom_mobile": 56
+      }
+    }
+  },
+  "order": [
+    "spacer_PUgq9i",
+    "main",
+    "subscription_help"
+  ]
+}

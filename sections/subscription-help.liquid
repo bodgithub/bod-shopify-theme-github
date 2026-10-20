@@ -1,0 +1,175 @@
+{%- comment -%}
+  BODOLOGY · Subscription help (short)
+  Compact replacement for the pasted-HTML "How to cancel your subscription"
+  page. One column, max 640px: heading, one-line lead, the account button,
+  a numbered list of steps (blocks), a short "good to know" list (blocks),
+  the email-us line and the "you don't have to cancel" line. Screenshots
+  are tucked into a collapsed "Show me the screens" panel so the page stays
+  short. Everything is an editor setting; mobile-first.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign sid = section.id
+  assign has_shots = false
+  for block in section.blocks
+    if block.type == 'step' and block.settings.image != blank
+      assign has_shots = true
+    endif
+  endfor
+-%}
+
+<style>
+  #shopify-section-{{ sid }} .sh { max-width: {{ s.max_width }}px; margin: 0 auto; padding: {{ s.pad_top_mobile }}px 20px {{ s.pad_bottom_mobile }}px; color: {{ s.text_color }}; line-height: 1.5; font-family: "tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+  #shopify-section-{{ sid }} .sh * { box-sizing: border-box; }
+  #shopify-section-{{ sid }} .sh a { color: {{ s.accent }}; text-decoration: underline; text-underline-offset: 2px; }
+  #shopify-section-{{ sid }} .sh__h { margin: 0 0 8px; font-size: {{ s.h_size_mobile }}px; line-height: 1.12; font-weight: 600; letter-spacing: -0.015em; color: {{ s.heading_color }}; }
+  #shopify-section-{{ sid }} .sh__lead { margin: 0 0 18px; font-size: 17px; line-height: 1.5; }
+  #shopify-section-{{ sid }} .sh__lead p { margin: 0; }
+  #shopify-section-{{ sid }} .sh__btn { display: inline-flex; align-items: center; justify-content: center; width: 100%; min-height: 50px; padding: 13px 26px; border-radius: 999px; background: {{ s.btn_bg }}; color: {{ s.btn_text }} !important; text-decoration: none !important; font-size: 16px; font-weight: 600; box-shadow: 0 6px 18px rgba(15, 46, 208, .22); transition: transform .15s ease; }
+  #shopify-section-{{ sid }} .sh__btn:hover { transform: translateY(-1px); }
+  #shopify-section-{{ sid }} .sh__btn:focus-visible { outline: 3px solid rgba(27, 61, 239, .4); outline-offset: 2px; }
+  #shopify-section-{{ sid }} .sh__btnsub { margin: 10px 0 0; font-size: 13px; color: {{ s.muted_color }}; }
+  #shopify-section-{{ sid }} .sh__t { margin: 28px 0 10px; font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .sh__steps { list-style: none; margin: 0; padding: 0; counter-reset: sh; }
+  #shopify-section-{{ sid }} .sh__step { position: relative; padding: 0 0 0 40px; margin: 0 0 12px; font-size: 16px; line-height: 1.5; counter-increment: sh; }
+  #shopify-section-{{ sid }} .sh__step::before { content: counter(sh); position: absolute; left: 0; top: 0; width: 28px; height: 28px; border-radius: 50%; background: {{ s.accent }}; color: #fff; font-size: 14px; font-weight: 700; line-height: 28px; text-align: center; }
+  #shopify-section-{{ sid }} .sh__step p { margin: 0; }
+  #shopify-section-{{ sid }} .sh__step strong, #shopify-section-{{ sid }} .sh strong { font-weight: 700; }
+  #shopify-section-{{ sid }} .sh__done { margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; background: {{ s.note_bg }}; font-size: 15px; }
+  #shopify-section-{{ sid }} .sh__done p { margin: 0; }
+  #shopify-section-{{ sid }} .sh__notes { list-style: none; margin: 0; padding: 0; }
+  #shopify-section-{{ sid }} .sh__note { position: relative; padding-left: 18px; margin: 0 0 8px; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ sid }} .sh__note::before { content: ''; position: absolute; left: 2px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: {{ s.accent }}; }
+  #shopify-section-{{ sid }} .sh__note p { margin: 0; }
+  #shopify-section-{{ sid }} .sh__line { margin: 14px 0 0; padding: 14px 16px; border-radius: 12px; border: 1px solid {{ s.line_color }}; border-left: 4px solid {{ s.accent }}; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ sid }} .sh__line p { margin: 0; }
+  #shopify-section-{{ sid }} .sh__shots { margin: 22px 0 0; border: 1px solid {{ s.line_color }}; border-radius: 12px; }
+  #shopify-section-{{ sid }} .sh__shots summary { list-style: none; cursor: pointer; padding: 12px 16px; font-size: 14px; font-weight: 600; color: {{ s.accent }}; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  #shopify-section-{{ sid }} .sh__shots summary::-webkit-details-marker { display: none; }
+  #shopify-section-{{ sid }} .sh__shots summary::after { content: '+'; font-size: 18px; line-height: 1; }
+  #shopify-section-{{ sid }} .sh__shots[open] summary::after { content: '–'; }
+  #shopify-section-{{ sid }} .sh__grid { display: grid; grid-template-columns: 1fr; gap: 12px; padding: 0 16px 16px; }
+  #shopify-section-{{ sid }} .sh__shot { font-size: 13px; color: {{ s.muted_color }}; }
+  #shopify-section-{{ sid }} .sh__shot img { display: block; width: 100%; height: auto; border: 1px solid #e8e8ef; border-radius: 8px; margin-bottom: 6px; background: #fff; }
+  #shopify-section-{{ sid }} .sh__shot img + img { margin-top: 8px; }
+  @media (min-width: 640px) {
+    #shopify-section-{{ sid }} .sh { padding: {{ s.pad_top }}px 24px {{ s.pad_bottom }}px; }
+    #shopify-section-{{ sid }} .sh__h { font-size: {{ s.h_size }}px; }
+    #shopify-section-{{ sid }} .sh__btn { width: auto; min-width: 260px; }
+    #shopify-section-{{ sid }} .sh__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) { #shopify-section-{{ sid }} .sh__btn { transition: none; } }
+</style>
+
+<div class="sh">
+  {%- if s.heading != blank -%}<h1 class="sh__h">{{ s.heading }}</h1>{%- endif -%}
+  {%- if s.lead != blank -%}<div class="sh__lead">{{ s.lead }}</div>{%- endif -%}
+  {%- if s.btn_label != blank -%}
+    <a class="sh__btn" href="{{ s.btn_link | default: '/account' }}">{{ s.btn_label }}</a>
+    {%- if s.btn_sub != blank -%}<p class="sh__btnsub">{{ s.btn_sub }}</p>{%- endif -%}
+  {%- endif -%}
+
+  {%- assign steps = section.blocks | where: 'type', 'step' -%}
+  {%- if steps.size > 0 -%}
+    {%- if s.steps_title != blank -%}<h2 class="sh__t">{{ s.steps_title }}</h2>{%- endif -%}
+    <ol class="sh__steps">
+      {%- for block in steps -%}
+        <li class="sh__step" {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+      {%- endfor -%}
+    </ol>
+    {%- if s.done_text != blank -%}<div class="sh__done">{{ s.done_text }}</div>{%- endif -%}
+  {%- endif -%}
+
+  {%- assign notes = section.blocks | where: 'type', 'note' -%}
+  {%- if notes.size > 0 -%}
+    {%- if s.notes_title != blank -%}<h2 class="sh__t">{{ s.notes_title }}</h2>{%- endif -%}
+    <ul class="sh__notes">
+      {%- for block in notes -%}
+        <li class="sh__note" {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+  {%- if s.help_text != blank -%}<div class="sh__line">{{ s.help_text }}</div>{%- endif -%}
+  {%- if s.change_text != blank -%}<div class="sh__line">{{ s.change_text }}</div>{%- endif -%}
+
+  {%- if s.show_shots and has_shots -%}
+    <details class="sh__shots">
+      <summary>{{ s.shots_label | default: 'Show me the screens' }}</summary>
+      <div class="sh__grid">
+        {%- for block in steps -%}
+          {%- if block.settings.image != blank -%}
+            <figure class="sh__shot" style="margin:0;">
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.image_alt }}
+              {%- if block.settings.image_2 != blank -%}{{ block.settings.image_2 | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.image_alt_2 }}{%- endif -%}
+              <figcaption>Step {{ forloop.index }}{% if block.settings.image_caption != blank %}: {{ block.settings.image_caption }}{% endif %}</figcaption>
+            </figure>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </details>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Subscription help (short)",
+  "tag": "section",
+  "class": "section-subscription-help",
+  "max_blocks": 12,
+  "disabled_on": { "groups": ["header", "footer", "aside"] },
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Cancel or change your subscription" },
+    { "type": "richtext", "id": "lead", "label": "One-line lead", "default": "<p>No fees. No phone call. About a minute in your account.</p>" },
+    { "type": "text", "id": "btn_label", "label": "Button label", "default": "Manage my subscription" },
+    { "type": "url", "id": "btn_link", "label": "Button link", "info": "Defaults to /account." },
+    { "type": "text", "id": "btn_sub", "label": "Small text under the button", "default": "Log in, then open Subscriptions." },
+    { "type": "text", "id": "steps_title", "label": "Steps title", "default": "To cancel" },
+    { "type": "richtext", "id": "done_text", "label": "What happens after the last step", "default": "<p><strong>You'll see a confirmation on screen and get an email.</strong> No further charges, no further orders.</p>" },
+    { "type": "text", "id": "notes_title", "label": "Notes title", "default": "Good to know" },
+    { "type": "richtext", "id": "help_text", "label": "Email-us line", "default": "<p><strong>Prefer we do it?</strong> Email <a href=\"mailto:support@bodology.co\">support@bodology.co</a>. We'll cancel it and confirm in writing.</p>" },
+    { "type": "richtext", "id": "change_text", "label": "You-don't-have-to-cancel line", "default": "<p><strong>Don't want to cancel?</strong> In <a href=\"/account\">Subscriptions</a> you can skip a delivery, change frequency, swap products, or update your address or payment.</p>" },
+    { "type": "checkbox", "id": "show_shots", "label": "Show the collapsed screenshots panel", "default": true, "info": "Uses the images on the step blocks. Hidden if no step has an image." },
+    { "type": "text", "id": "shots_label", "label": "Screenshots panel label", "default": "Show me the screens" },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "max_width", "min": 480, "max": 900, "step": 20, "unit": "px", "label": "Max width", "default": 640 },
+    { "type": "range", "id": "h_size", "min": 24, "max": 48, "step": 1, "unit": "px", "label": "Heading size (desktop)", "default": 34 },
+    { "type": "range", "id": "h_size_mobile", "min": 22, "max": 40, "step": 1, "unit": "px", "label": "Heading size (mobile)", "default": 28 },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#16161a" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#16161a" },
+    { "type": "color", "id": "muted_color", "label": "Small text", "default": "#666666" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#1b3def" },
+    { "type": "color", "id": "line_color", "label": "Box borders", "default": "#d4daf7" },
+    { "type": "color", "id": "note_bg", "label": "Confirmation box background", "default": "#eef1ff" },
+    { "type": "color", "id": "btn_bg", "label": "Button background", "default": "#1b3def" },
+    { "type": "color", "id": "btn_text", "label": "Button text", "default": "#ffffff" },
+    { "type": "range", "id": "pad_top", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Top padding (desktop)", "default": 40 },
+    { "type": "range", "id": "pad_bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "label": "Bottom padding (desktop)", "default": 80 },
+    { "type": "range", "id": "pad_top_mobile", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Top padding (mobile)", "default": 24 },
+    { "type": "range", "id": "pad_bottom_mobile", "min": 0, "max": 120, "step": 4, "unit": "px", "label": "Bottom padding (mobile)", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Step text", "default": "<p>Do this.</p>" },
+        { "type": "image_picker", "id": "image", "label": "Screenshot (optional)" },
+        { "type": "text", "id": "image_alt", "label": "Screenshot alt text" },
+        { "type": "image_picker", "id": "image_2", "label": "Second screenshot (optional)" },
+        { "type": "text", "id": "image_alt_2", "label": "Second screenshot alt text" },
+        { "type": "text", "id": "image_caption", "label": "Caption (optional)" }
+      ]
+    },
+    {
+      "type": "note",
+      "name": "Good-to-know note",
+      "settings": [
+        { "type": "richtext", "id": "text", "label": "Text", "default": "<p>A short, specific note.</p>" }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Subscription help (short)", "blocks": [ { "type": "step" }, { "type": "step" }, { "type": "step" }, { "type": "note" } ] } ]
+}
+{% endschema %}
