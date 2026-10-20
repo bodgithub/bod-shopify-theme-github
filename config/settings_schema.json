@@ -1233,7 +1233,7 @@
         "type": "textarea",
         "id": "bcd_code_rules",
         "label": "Code families (one typed code = several real codes)",
-        "default": "MY20 -> MY20 : plan 6331924699\nMY20 -> MY20- : plan 5755961563\nMY20 -> -MY20 : one-time 46444646269147",
+        "default": "TRY20 -> TRY20 : plan 6331924699\nTRY20 -> TRY20- : plan 5755961563\nTRY20 -> -TRY20 : one-time",
         "info": "One rule per line: TYPED -> REAL : condition. Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any. The drawer applies the real codes the cart qualifies for and shows only the typed code. Lines with no rule (e.g. the bundle plan) get nothing."
       },
       {
