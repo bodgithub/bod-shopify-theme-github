@@ -11,6 +11,31 @@
   "type": "header",
   "name": "Header group",
   "sections": {
+    "promo-bar": {
+      "type": "promo-bar",
+      "settings": {
+        "enabled": true,
+        "code": "TRY20",
+        "percent": "20",
+        "text": "[percent]% off your first order with code [code] [countdown]",
+        "text_mobile": "[percent]% off with [code] [countdown]",
+        "link": "shopify://products/myo-d-chiro-inositol-powder",
+        "end_date": "2026-10-31",
+        "end_time": "23:59",
+        "timezone": "America/New_York",
+        "fallback_end_text": "Ends October 31",
+        "days_label": "Ends in [n] days",
+        "day_label": "Ends tomorrow",
+        "hours_label": "Ends in [h]h [m]m",
+        "copied_label": "Copied",
+        "uppercase": false,
+        "dismissible": false,
+        "size": 14,
+        "size_mobile": 12,
+        "color_bg": "#1b3def",
+        "color_text": "#ffffff"
+      }
+    },
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
@@ -223,6 +248,7 @@
     }
   },
   "order": [
+    "promo-bar",
     "announcement-bar",
     "header-secondary-menu",
     "header",
