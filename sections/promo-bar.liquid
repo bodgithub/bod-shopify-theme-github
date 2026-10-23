@@ -171,10 +171,10 @@
     { "type": "text", "id": "percent", "label": "Percent off", "default": "20", "info": "Fills [percent] in the text. Check the live discount before changing." },
     { "type": "text", "id": "text", "label": "Text", "default": "[percent]% off your first order with code [code] [countdown]", "info": "Tokens: [code], [percent], [countdown]." },
     { "type": "text", "id": "text_mobile", "label": "Text on phones (optional)", "default": "[percent]% off with [code] [countdown]", "info": "Leave empty to use the text above." },
-    { "type": "select", "id": "click_action", "label": "When the bar is clicked", "default": "link", "options": [
+    { "type": "select", "id": "click_action", "label": "When the bar is clicked", "default": "klaviyo", "options": [
       { "value": "link", "label": "Go to the link" }, { "value": "klaviyo", "label": "Open a Klaviyo form" }, { "value": "none", "label": "Nothing" } ] },
     { "type": "url", "id": "link", "label": "Link", "info": "Used when the click action is \"Go to the link\". Usually the product page." },
-    { "type": "text", "id": "klaviyo_form_id", "label": "Klaviyo form ID", "info": "Used when the click action is \"Open a Klaviyo form\". The ID from the form's custom trigger snippet, e.g. Tmac3m." },
+    { "type": "text", "id": "klaviyo_form_id", "label": "Klaviyo form ID", "default": "Tmac3m", "info": "Used when the click action is \"Open a Klaviyo form\". The ID from the form's custom trigger snippet, e.g. Tmac3m." },
     { "type": "checkbox", "id": "new_customers_only", "label": "New customers only", "default": true, "info": "Hidden for logged-in customers who have ordered, and for browsers that have visited an account or order page. Pair with a customer-segment restriction on the discount itself; the storefront cannot recognise a logged-out returning customer." },
     { "type": "header", "content": "End time", "info": "The countdown reads this in the chosen time zone and the bar hides itself once it has passed." },
     { "type": "text", "id": "end_date", "label": "End date (YYYY-MM-DD)", "default": "2026-10-31" },
