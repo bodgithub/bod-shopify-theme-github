@@ -19,7 +19,7 @@
         "code": "TRY20",
         "percent": "20",
         "text": "[percent]% off your first order [countdown]",
-        "text_mobile": "[percent]% off with [code] [countdown]",
+        "text_mobile": "[percent]% off your first order [countdown]",
         "link": "shopify://products/myo-d-chiro-inositol-powder",
         "new_customers_only": true,
         "end_date": "2026-10-31",
@@ -35,7 +35,9 @@
         "size": 14,
         "size_mobile": 12,
         "color_bg": "#3447AF",
-        "color_text": "#E1E7FA"
+        "color_text": "#E1E7FA",
+        "click_action": "klaviyo",
+        "klaviyo_form_id": "Tmac3m"
       }
     },
     "announcement-bar": {
