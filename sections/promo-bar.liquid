@@ -26,8 +26,30 @@
   assign count_html = '<span class="pbar__count" data-pbar-count>' | append: s.fallback_end_text | append: '</span>'
   assign text = text | replace: '[code]', code_html | replace: '[countdown]', count_html
   assign text_mobile = text_mobile | replace: '[code]', code_html | replace: '[countdown]', count_html
+
+  comment
+    New customers only: a logged-in customer with an order never sees the bar (Liquid, instant).
+    Logged-out returning customers cannot be known server-side; the browser remembers them
+    once they visit their account or an order page (localStorage flag set below), best effort.
+  endcomment
+  assign returning = false
+  if customer and customer.orders_count > 0
+    assign returning = true
+  endif
+  if template.directory == 'customers'
+    if template.name == 'account' or template.name == 'order'
+      assign returning = true
+    endif
+  endif
+  assign show = true
+  if s.new_customers_only and customer and customer.orders_count > 0
+    assign show = false
+  endif
 -%}
-{%- if s.enabled and code != blank -%}
+{%- if s.new_customers_only and returning -%}
+<script>try { localStorage.setItem('bod_returning', '1'); } catch (e) {}</script>
+{%- endif -%}
+{%- if s.enabled and code != blank and show -%}
 <style>
   #shopify-section-{{ sid }} .pbar { background: {{ bg }}; color: {{ fg }}; font-size: {{ s.size }}px; line-height: 1.3; text-align: center; position: relative; z-index: 2; }
   #shopify-section-{{ sid }} .pbar[hidden] { display: none; }
@@ -57,7 +79,7 @@
 </style>
 <div class="pbar" data-pbar role="region" aria-label="Current offer"
      data-end-date="{{ s.end_date | strip }}" data-end-time="{{ s.end_time | strip | default: '23:59' }}" data-tz="{{ s.timezone }}"
-     data-days="{{ s.days_label | escape }}" data-day="{{ s.day_label | escape }}" data-hours="{{ s.hours_label | escape }}" data-dismiss-key="pbar-{{ sid }}-{{ code | downcase }}">
+     data-days="{{ s.days_label | escape }}" data-day="{{ s.day_label | escape }}" data-hours="{{ s.hours_label | escape }}" data-dismiss-key="pbar-{{ sid }}-{{ code | downcase }}" data-new-only="{{ s.new_customers_only }}">
   <div class="pbar__inner">
     {%- if s.link != blank -%}<a class="pbar__text pbar__text--desktop" href="{{ s.link }}">{{ text }}</a><a class="pbar__text pbar__text--mobile" href="{{ s.link }}">{{ text_mobile }}</a>
     {%- else -%}<span class="pbar__text pbar__text--desktop">{{ text }}</span><span class="pbar__text pbar__text--mobile">{{ text_mobile }}</span>{%- endif -%}
@@ -89,7 +111,13 @@
   }
   var end = endInstant();
   var key = root.getAttribute('data-dismiss-key');
-  function dismissed() { try { return sessionStorage.getItem(key) === '1'; } catch (e) { return false; } }
+  function dismissed() {
+    try {
+      if (sessionStorage.getItem(key) === '1') { return true; }
+      if (root.getAttribute('data-new-only') === 'true' && localStorage.getItem('bod_returning') === '1') { return true; } /* remembered returning customer */
+    } catch (e) {}
+    return false;
+  }
   function hide() { root.hidden = true; }
   function tick() {
     if (end === null) { return; }
@@ -132,6 +160,7 @@
     { "type": "text", "id": "text", "label": "Text", "default": "[percent]% off your first order with code [code] [countdown]", "info": "Tokens: [code], [percent], [countdown]." },
     { "type": "text", "id": "text_mobile", "label": "Text on phones (optional)", "default": "[percent]% off with [code] [countdown]", "info": "Leave empty to use the text above." },
     { "type": "url", "id": "link", "label": "Link", "info": "Usually the product page." },
+    { "type": "checkbox", "id": "new_customers_only", "label": "New customers only", "default": true, "info": "Hidden for logged-in customers who have ordered, and for browsers that have visited an account or order page. Pair with a customer-segment restriction on the discount itself; the storefront cannot recognise a logged-out returning customer." },
     { "type": "header", "content": "End time", "info": "The countdown reads this in the chosen time zone and the bar hides itself once it has passed." },
     { "type": "text", "id": "end_date", "label": "End date (YYYY-MM-DD)", "default": "2026-10-31" },
     { "type": "text", "id": "end_time", "label": "End time (24h, HH:MM)", "default": "23:59" },
