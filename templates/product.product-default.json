@@ -539,11 +539,11 @@
             "shipping_weekend_text": "Fast FREE shipping — Arrives in",
             "shipping_weekend_highlight": "3-5 days",
             "gift_display": "banner",
-            "giftban_bg": "#E7F5EC",
-            "giftban_title_color": "#0B7A45",
-            "giftban_text_color": "#0B7A45",
+            "giftban_bg": "#e7f5ec",
+            "giftban_title_color": "#0b7a45",
+            "giftban_text_color": "#0b7a45",
             "giftban_radius": 10,
-            "giftban_border": "#0B7A45",
+            "giftban_border": "#0b7a45",
             "giftban_cust_label": "Customize",
             "giftban_title_size": 15,
             "modal_bg": "#e3e7ff",
@@ -1214,6 +1214,7 @@
             "variant": "46444646269147",
             "plan": "7141621979",
             "qty": 2,
+            "gift_variant": "48915264143579",
             "button_label": "Add",
             "border_color": "#3447af",
             "btn_border_color": "#3447af",
@@ -2261,6 +2262,9 @@
             "quote": "It has been life changing for my cycles, skin and mood.",
             "tag": "CYCLES, FERTILITY",
             "video": "shopify://files/videos/Lauren Testimonial.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
             "video_url": ""
           }
         },
@@ -2273,6 +2277,9 @@
             "quote": "Living with endometriosis, supporting my metabolism.",
             "tag": "ENDOMETRIOSIS, FERTILITY",
             "video": "shopify://files/videos/Ashley Testimonial_490c3d0a-49f2-49bd-83d2-5e7e23b973e5.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
             "video_url": ""
           }
         },
@@ -2285,6 +2292,9 @@
             "quote": "Supporting cravings and weight through metabolism.",
             "tag": "METABOLISM, PCOS",
             "video": "shopify://files/videos/Baylee Review_ef1487ba-ac0e-4aee-aef8-6d35d5ae0ebe.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
             "video_url": ""
           }
         },
@@ -2297,6 +2307,9 @@
             "quote": "More emotional steadiness, less PMDD overwhelm.",
             "tag": "PMDD, CYCLES",
             "video": "shopify://files/videos/Kylie Testimonial - 1.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
             "video_url": ""
           }
         },
@@ -2309,6 +2322,9 @@
             "quote": "Supporting my body on my fertility journey.",
             "tag": "FERTILITY, PCOS",
             "video": "shopify://files/videos/Krstina Testimonial 2.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
             "video_url": ""
           }
         }
@@ -2902,6 +2918,15 @@
             "page": ""
           }
         },
+        "collapsible_tab_H9cWGH": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Does this product contain corn?",
+            "open": false,
+            "content": "<p><strong>Our myo-inositol is derived from non-GMO corn, but no corn remains in the finished product.<br/><br/></strong>The myo-inositol is extracted from the corn, and the corn itself is left behind. If you have a corn sensitivity, we’d still recommend being mindful and checking with your doctor before you start.<br/><br/>Much of the corn grown today is genetically modified, so we only source from non-GMO corn. Corn is currently the most established source of myo-inositol, and we’ve chosen the highest-quality supply we could find.<br/><br/><strong>Our D-chiro-inositol is different. It comes from carob pods, where D-chiro occurs in higher amounts than anywhere else in nature.</strong> D-chiro does a lot of the heavy lifting on estrogen and androgen balance, so where it comes from matters.<br/><br/>Most brands make their D-chiro by converting myo-inositol from corn in a lab. We extract ours from carob instead. That keeps it as close to the source as possible. It’s also why our powder is naturally sweet and soft in texture, without any added flavor.</p>",
+            "page": ""
+          }
+        },
         "collapsible_tab_KdyDNX": {
           "type": "collapsible_tab",
           "settings": {
@@ -2988,6 +3013,7 @@
       "block_order": [
         "collapsible_tab_hW7crK",
         "collapsible_tab_a3zDiF",
+        "collapsible_tab_H9cWGH",
         "collapsible_tab_KdyDNX",
         "collapsible_tab_aTQyqe",
         "collapsible_tab_ceQNA8",
@@ -3050,6 +3076,9 @@
         "full_width": true,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Video 2_V2_Small.mov",
+        "captions": "",
+        "captions_lang": "en",
+        "captions_label": "English",
         "video_autoplay": true,
         "aspect_ratio": "4-3",
         "marker_color": "#ffffff",
@@ -3088,6 +3117,7 @@
         "custom_liquid_iYFCAJ"
       ],
       "settings": {
+        "demote_h1": false,
         "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
