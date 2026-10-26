@@ -75,11 +75,35 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
+    },
+    "179304813920d1e429": {
+      "type": "apps",
+      "blocks": {
+        "junip_junip_reviews_BThikd": {
+          "type": "shopify://apps/junip/blocks/junip-reviews/dc14f5a8-ed15-41b1-ad08-cfba23f9789b",
+          "settings": {
+            "layout": "list",
+            "reviewsType": "all",
+            "showSummary": true,
+            "showMediaGallery": false,
+            "reviewsCount": 10,
+            "containerClass": ""
+          }
+        }
+      },
+      "block_order": [
+        "junip_junip_reviews_BThikd"
+      ],
+      "custom_css": [
+        ".junip-product-review-count {display: none !important;}"
+      ],
+      "settings": {}
     }
   },
   "order": [
     "spacer_PUgq9i",
     "main",
-    "1728927113bb2612d3"
+    "1728927113bb2612d3",
+    "179304813920d1e429"
   ]
 }
