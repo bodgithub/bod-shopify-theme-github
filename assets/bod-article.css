@@ -1,0 +1,31 @@
+/* Bodology blog article overrides (loaded after article.css by sections/main-article.liquid).
+   Title block: blue card, pale title and date; body copy navy with bold words in brand blue. */
+
+/* Title block */
+.blog-post-detail .post-title-wrapper { background: #3447af; }                 /* a featured image still sits on top of this */
+.blog-post-detail .post-title-wrapper--has-img-false { border-radius: 10px; }
+.blog-post-detail .post-title-wrapper .entry-title,
+.blog-post-detail .post-title-wrapper .author-title { color: #d6dcf5; }
+
+/* Body copy and headings */
+.blog-post-detail .post-content,
+.blog-post-detail .post-content p,
+.blog-post-detail .post-content li,
+.blog-post-detail .post-content blockquote,
+.blog-post-detail .post-content h1,
+.blog-post-detail .post-content h2,
+.blog-post-detail .post-content h3,
+.blog-post-detail .post-content h4,
+.blog-post-detail .post-content h5,
+.blog-post-detail .post-content h6 { color: #1a2874; }
+
+/* Bold words stand out in brand blue (links keep their own colour) */
+.blog-post-detail .post-content strong,
+.blog-post-detail .post-content b { color: #4d61cf; }
+
+/* Section headings */
+.blog-post-detail .post-content h3 { text-transform: none; }   /* sentence case as written; the theme forced uppercase */
+.blog-post-detail .post-content h2 { font-size: 32px; line-height: 1.15; }
+@media only screen and (min-width: 768px) {
+  .blog-post-detail .post-content h2 { font-size: 41px; }
+}
