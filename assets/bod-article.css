@@ -2,8 +2,8 @@
    Title block: blue card, pale title and date; body copy navy with bold words in brand blue. */
 
 /* Title block */
-.blog-post-detail .post-title-wrapper { background: #3447af; border-radius: 10px; }   /* a featured image still sits on top of this */
-.blog-post-detail .post-title-wrapper--has-img-false { border-radius: 10px; }
+.blog-post-detail .post-title-wrapper { background: #3447af; border-radius: 19px; }   /* a featured image still sits on top of this */
+.blog-post-detail .post-title-wrapper--has-img-false { border-radius: 19px; }
 /* with a featured image the theme removes the title padding on desktop; give the blue block room again */
 .blog-post-detail .post-title-wrapper--has-img-true .post-title { padding: 28px 32px 32px; }
 @media only screen and (min-width: 768px) {
