@@ -1254,8 +1254,8 @@
         "type": "textarea",
         "id": "bcd_code_blocks",
         "label": "Code blocks (a code that must not apply with certain items)",
-        "default": "TRY20 : plan 7141621979",
-        "info": "One per line: CODE : condition. Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any. The drawer refuses the code, removes it if it arrived through a link, and explains why. The checkout page's own code field is not covered."
+        "default": "* : plan 7141621979",
+        "info": "One per line: CODE : condition (CODE can be * for every code). Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any. The drawer refuses the code, removes it if it arrived through a link, and explains why. The checkout page's own code field is not covered."
       },
       {
         "type": "text",

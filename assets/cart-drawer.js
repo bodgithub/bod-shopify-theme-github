@@ -46,7 +46,7 @@
     code_rules: "",
     code_held_text: "{code} is saved. It applies as soon as a qualifying item is in your cart.",
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
-    code_blocks: "TRY20 : plan 7141621979",
+    code_blocks: "* : plan 7141621979",
     code_blocked_text: "{code} doesn't apply to the bundle, which is already {percent}% off.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
     renewal_text: "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
@@ -189,7 +189,7 @@
   function blockingLines(blocks, code, lines) {
     var hits = [];
     blocks.forEach(function (b) {
-      if (lower(b.code) !== lower(code)) { return; }
+      if (b.code !== '*' && lower(b.code) !== lower(code)) { return; } /* "*" = every code */
       lines.forEach(function (l) { if (ruleMatches(b, l) && hits.indexOf(l) < 0) { hits.push(l); } });
     });
     return hits;
