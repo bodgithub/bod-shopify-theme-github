@@ -388,6 +388,21 @@
         });
       };
 
+      // Reading progress bar along the left of the contents list (fills as you read the article)
+      const tocList = tocElement;
+      let progressTick = false;
+      function updateProgress() {
+        progressTick = false;
+        const rect = articleContentElement.getBoundingClientRect();
+        const start = rect.top + window.scrollY - window.innerHeight * 0.35;
+        const length = Math.max(1, rect.height - window.innerHeight * 0.4);
+        const p = Math.min(1, Math.max(0, (window.scrollY - start) / length));
+        tocList.style.setProperty('--toc-progress', (p * 100).toFixed(1) + '%');
+      }
+      window.addEventListener('scroll', function () { if (!progressTick) { progressTick = true; window.requestAnimationFrame(updateProgress); } }, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+
       const observer = new IntersectionObserver(observerCallback, observerOptions);
 
       // Observe each heading

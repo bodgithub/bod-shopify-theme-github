@@ -229,3 +229,11 @@
   #table-of-contents .toc-box { border: 1px solid #d6dcf5; border-radius: 12px; padding: 12px 16px; }
   #table-of-contents .toc-box summary h3 { margin: 0; }
 }
+
+/* ---------- Reading progress bar beside the contents list ---------- */
+.table-of-contents ul { position: relative; padding-left: 0; }
+.table-of-contents ul::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: #d6dcf5; border-radius: 2px; }
+.table-of-contents ul::after { content: ""; position: absolute; left: 0; top: 0; width: 2px; height: var(--toc-progress, 0%); background: #3447af; border-radius: 2px; transition: height .15s linear; }
+.table-of-contents li { border-left: 0; padding-left: 14px; }
+.table-of-contents li.active-toc-item { border-left: 0; }
+@media (prefers-reduced-motion: reduce) { .table-of-contents ul::after { transition: none; } }
