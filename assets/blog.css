@@ -166,3 +166,23 @@
   gap: 10px;              /* Adds spacing between the tags */
 }
 
+
+/* Bodology: category tags on the blog listing. Unselected: 30% #B9C2F5, regular weight.
+   Hover: navy button look with pale text, button weight. Selected: accent. Same size as the buttons throughout. */
+.page-header--tags a {
+  font-size: 1rem;
+  font-weight: 400;
+  background: rgba(185, 194, 245, 0.3);
+  color: #1a2874;
+}
+.page-header--tags a:hover,
+.page-header--tags a:focus-visible {
+  font-weight: 500;
+  background: #1a2874;
+  color: #b9c2f5;
+}
+.page-header--tags a.active {
+  font-weight: 500;
+  background: #3447af;
+  color: #fff;
+}
