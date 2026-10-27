@@ -159,7 +159,7 @@
 
 /* ---------- Callouts: "At a glance", "Article bios", and the old gradient h4 boxes ---------- */
 .blog-post-detail .post-content .at-a-glance { background: #eef1ff; border: 0; border-radius: 12px; padding: 24px 26px; margin: 28px 0 36px; }
-.blog-post-detail .post-content .at-a-glance h3 { margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.02em; color: #4d61cf; text-transform: lowercase; }
+.blog-post-detail .post-content .at-a-glance h3 { margin: 0 0 12px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: 0; color: #3447af; text-transform: lowercase; }
 .blog-post-detail .post-content .at-a-glance h3::first-letter { text-transform: uppercase; }
 .blog-post-detail .post-content .at-a-glance p, .blog-post-detail .post-content .at-a-glance li { font-size: 16px; line-height: 1.6; color: #1a2874; }
 .blog-post-detail .post-content .at-a-glance li p { margin: 0; }
