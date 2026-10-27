@@ -4413,3 +4413,5 @@ h2 {
 .image-with-text-overlay .customer-reviews--content .text-button svg { color: #1a2874; }
 .image-with-text-overlay .customer-reviews--block { width: 100%; text-align: center; }
 .image-with-text-overlay .customer-reviews--content { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+/* Navbar dropdown links keep #3447af while the top-level nav and footer use the header/footer settings */
+.thb-full-menu ul ul a, .thb-full-menu .sub-menu a, .thb-full-menu .dropdown a, .thb-full-menu .megamenu a { color: #3447af; }
