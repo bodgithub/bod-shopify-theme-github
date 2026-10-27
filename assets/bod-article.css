@@ -20,7 +20,9 @@
 }
 .blog-post-detail .post-title-wrapper--has-img-true .post-title {
   background: #3447af; border-radius: 19px; padding: 28px 28px 32px;
+  width: 100%; max-width: none; margin: 0;   /* same width as the image below it at every column width */
 }
+.blog-post-detail .post-title-wrapper--has-img-true .featured-image { width: 100%; }
 @media only screen and (min-width: 768px) {
   .blog-post-detail .post-title-wrapper--has-img-true .post-title { padding: 40px 48px 44px; }
 }
