@@ -161,12 +161,7 @@
                   assign bod_reviewer_title = article.metafields.custom.experts.value.seo_title
                 endif
               -%}
-              <div class="post-byline">
-                {%- if bod_writer != blank -%}<span>Written by {{ bod_writer }}</span>{%- endif -%}
-                {%- if bod_reviewer != blank -%}<span>Reviewed by {{ bod_reviewer }}{% if bod_reviewer_title != blank %}, {{ bod_reviewer_title }}{% endif %}</span>{%- endif -%}
-                <span>Updated {{ article.updated_at | date: "%b %-d, %Y" }}</span>
-                <span>{{ bod_minutes }} min read</span>
-              </div>
+              <div class="post-byline">Updated {{ article.updated_at | date: "%b %-d, %Y" }}</div>
               {%- liquid
                 if article_show_sharing
                   render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.featured_image
