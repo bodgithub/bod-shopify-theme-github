@@ -46,6 +46,8 @@
     code_rules: "MY20 -> MY20 : plan 6331924699\nMY20 -> MY20- : plan 5755961563\nMY20 -> -MY20 : one-time",
     code_held_text: "{code} is saved. It applies as soon as a qualifying item is in your cart.",
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
+    code_blocks: "TRY20 : plan 7141621979",
+    code_blocked_text: "{code} doesn't apply to the bundle, which is already {percent}% off.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
     renewal_text: "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
     plan_intervals: "6331924699: 4 weeks\n5755961563: 6 weeks\n7141621979: 3 months",
@@ -105,7 +107,7 @@
     return out;
   }
 
-  var pending = { error: null, open: false, code: '' };
+  var pending = { error: null, open: false, code: '', blocked: null };
   var splitAttrWritten = false;
   var chosen = null; /* { design: 'a'|'b'|'c', source: 'override'|'split'|'setting' } */
 
@@ -171,6 +173,30 @@
   }
   function codeApplicable(res, c) {
     return ((res && res.discount_codes) || []).some(function (d) { return lower(d.code) === lower(c) && d.applicable; });
+  }
+  /* Code blocks: a code that must never apply while a matching line is in the cart, e.g.
+       TRY20 : plan 7141621979
+     Same conditions as code families. The drawer refuses to apply the code, removes it if
+     it arrived attached (ad link), and says why. Checkout's own code field is not covered. */
+  function parseBlocks(text) {
+    var out = [];
+    String(text || '').split(/\n/).forEach(function (line) {
+      var m = line.match(/^\s*(\S+)\s*:\s*([a-z\-]+)\s*(\S+)?\s*$/i);
+      if (m) { out.push({ code: m[1], kind: m[2].toLowerCase().replace(/[^a-z]/g, ''), id: m[3] ? String(m[3]) : null }); }
+    });
+    return out;
+  }
+  function blockingLines(blocks, code, lines) {
+    var hits = [];
+    blocks.forEach(function (b) {
+      if (lower(b.code) !== lower(code)) { return; }
+      lines.forEach(function (l) { if (ruleMatches(b, l) && hits.indexOf(l) < 0) { hits.push(l); } });
+    });
+    return hits;
+  }
+  function blockedPercent(hits) {
+    var pcts = hits.map(function (l) { return l.plan ? l.plan.pct : l.pct; }).filter(function (n) { return n > 0; });
+    return pcts.length ? Math.max.apply(null, pcts) : 0;
   }
   function sameCodes(a, b) {
     var x = uniq(a.map(lower)).sort(), y = uniq(b.map(lower)).sort();
@@ -260,6 +286,7 @@
     codes.forEach(function (c) { codeSet[String(c).toLowerCase()] = true; });
     /* what the customer sees: a family member shows as its alias (MY20-, -MY20 -> MY20) */
     var rules = parseRules(S.code_rules);
+    var blocks = parseBlocks(S.code_blocks);
     var codeNames = uniq(codes.map(function (c) { return aliasFor(rules, c) || c; }));
     var codeTotal = sum(codeApps, function (d) { return d.total_allocated_amount; });
     var otherOrderRows = otherOrder.filter(function (d) { return d.total_allocated_amount > 0; }).map(function (d) { return { title: d.title, amount: d.total_allocated_amount }; });
@@ -373,7 +400,7 @@
     return {
       S: S, cart: cart, fmt: fmt, lines: lines, subs: subs, oneoffs: oneoffs, protos: protos,
       count: cart.item_count || 0, empty: !lines.length,
-      codes: codes, hasCode: codes.length > 0, codeName: codeNames.join(' + '), rules: rules,
+      codes: codes, hasCode: codes.length > 0, codeName: codeNames.join(' + '), rules: rules, blocks: blocks,
       codeTotal: codeTotal, otherOrderRows: otherOrderRows, bannerPct: bannerPct,
       eligible: eligible, protocolInCart: protos.length > 0,
       protocolFree: protocolFree,
@@ -463,7 +490,7 @@
     var S = st.S, mode = S.code_field || 'collapsed';
     if (mode === 'hidden') { return ''; }
     var err = pending.error, value = pending.code || '';
-    var note = err ? '' : heldNote(st);
+    var note = err ? '' : (blockedNote(st) || heldNote(st));
     var msg = err ? '<div class="bod-cart__code-msg is-error" role="alert">' + esc(err) + '</div>' : '<div class="bod-cart__code-msg' + (note ? ' is-note' : '') + '" role="status" aria-live="polite">' + esc(note) + '</div>';
     var input = function (extra) {
       return '<input id="BodCartCode" name="discount" type="text" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" placeholder="' + esc(S.code_placeholder) + '" value="' + esc(value) + '"' + (extra || '') + '>';
@@ -555,6 +582,10 @@
     var fam = familyCodes(st.rules, alias).map(lower);
     if (st.codes.some(function (c) { return fam.indexOf(lower(c)) >= 0; })) { return null; }
     return alias;
+  }
+  function blockedNote(st) {
+    var b = pending.blocked; if (!b) { return ''; }
+    return tpl(st.S.code_blocked_text, { code: b.code, percent: b.percent });
   }
   function heldNote(st) {
     var alias = heldAlias(st); if (!alias) { return ''; }
@@ -670,7 +701,7 @@
     var st = buildState(data);
     h.setAttribute('data-design', chosen.design);
     root.innerHTML = RENDER[chosen.design](st);
-    pending.error = null; pending.open = false; pending.code = '';
+    pending.error = null; pending.open = false; pending.code = ''; pending.blocked = null;
     writeSplitAttribute(st);
     enforceBundles(st);
     reconcileCodes(st, consumeCartJson());
@@ -819,8 +850,33 @@
      itself (an attached code names its family) or, while nothing qualifies, in
      localStorage. Only writes when the attached set would change. */
   var reconcile = { busy: false, count: 0, since: 0, first: true, skip: {} };
+  var unblocked = {}; /* blocked codes already removed this page view, so we never loop */
+  function stripBlocked(st, cart) {
+    var attached = (cart.discount_codes || []).map(function (c) { return String(c.code); });
+    var keep = [], hit = null;
+    attached.forEach(function (c) {
+      var lines = blockingLines(st.blocks, c, st.lines);
+      if (lines.length && !unblocked[lower(c)]) { hit = { code: c, percent: blockedPercent(lines) }; unblocked[lower(c)] = true; } else { keep.push(c); }
+    });
+    if (!hit) { return false; }
+    reconcile.busy = true;
+    post('cart/update.js', withSections({ discount: keep.join(',') }))
+      .then(function (res) { pending.blocked = hit; return applySections(res); })
+      .catch(refreshTruth)
+      .then(function () { reconcile.busy = false; });
+    return true;
+  }
   function reconcileCodes(st, cartJson) {
-    if (!st.rules.length || st.empty || reconcile.busy) { return; }
+    if (st.empty || reconcile.busy) { return; }
+    if (st.blocks.length && st.codes.length) {
+      /* a blocked code is applying right now: the cart JSON (or one fetch) tells us the full attached set */
+      var blockedNow = st.codes.some(function (c) { return blockingLines(st.blocks, c, st.lines).length > 0; });
+      if (blockedNow) {
+        if (cartJson && cartJson.discount_codes) { if (stripBlocked(st, cartJson)) { return; } }
+        else { getCart().then(function (cart) { stripBlocked(st, cart); }).catch(function () {}); return; }
+      }
+    }
+    if (!st.rules.length) { return; }
     var now = Date.now();
     if (now - reconcile.since > 15000) { reconcile.since = now; reconcile.count = 0; }
     if (reconcile.count >= 4) { return; }
@@ -869,6 +925,13 @@
     if (!code) { return; }
     var data = readData(); var S = withDefaults((data && data.settings) || {});
     var st = data ? buildState(data) : null;
+    var blockedLines = st ? blockingLines(st.blocks, code, st.lines) : [];
+    if (blockedLines.length) {
+      pending.blocked = { code: code, percent: blockedPercent(blockedLines) };
+      pending.error = null; pending.open = true; pending.code = '';
+      render();
+      return;
+    }
     var alias = st ? aliasFor(st.rules, code) : null;
     function tryCodes(list) { return post('cart/update.js', withSections({ discount: list.join(',') })); }
     var applicable = codeApplicable;
