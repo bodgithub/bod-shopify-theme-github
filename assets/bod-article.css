@@ -118,7 +118,7 @@
 .blog-post-detail .post-content td[style*="#eef1ff"] > :last-child { margin-bottom: 0 !important; }
 
 /* ---------- Byline in the title card ---------- */
-.blog-post-detail .post-byline { margin-top: 14px; font-size: 14px; line-height: 1.4; color: #d6dcf5; }
+.blog-post-detail .post-byline { margin-top: 0; font-size: 14px; line-height: 1.4; color: #d6dcf5; }
 
 /* ---------- Contents box: open on desktop, collapsible on phones ---------- */
 #table-of-contents .toc-box summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
