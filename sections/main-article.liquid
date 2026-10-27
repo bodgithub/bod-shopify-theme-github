@@ -186,6 +186,17 @@
   {{ updated_content }}
 </div>
           <!-- End of Updated Content Processing -->
+          {%- if section.settings.show_next_step -%}
+          <aside class="post-next page-content-width">
+            <div class="post-next__text">
+              {%- if section.settings.next_step_eyebrow != blank -%}<span class="post-next__eyebrow">{{ section.settings.next_step_eyebrow }}</span>{%- endif -%}
+              <h2 class="post-next__heading">{{ section.settings.next_step_heading }}</h2>
+              {%- if section.settings.next_step_text != blank -%}<p>{{ section.settings.next_step_text }}</p>{%- endif -%}
+              <a class="button post-next__button" href="{{ section.settings.next_step_url | default: '/products/myo-d-chiro-inositol-powder' }}">{{ section.settings.next_step_button | default: 'Shop inositol' }}</a>
+            </div>
+            {%- if section.settings.next_step_image != blank -%}<div class="post-next__img">{{ section.settings.next_step_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.next_step_heading }}</div>{%- endif -%}
+          </aside>
+          {%- endif -%}
           {%- if section.settings.show_related -%}
             {%- liquid
               assign bod_related_handles = ''
@@ -227,17 +238,6 @@
               </div>
             </aside>
             {%- endif -%}
-          {%- endif -%}
-          {%- if section.settings.show_next_step -%}
-          <aside class="post-next page-content-width">
-            <div class="post-next__text">
-              {%- if section.settings.next_step_eyebrow != blank -%}<span class="post-next__eyebrow">{{ section.settings.next_step_eyebrow }}</span>{%- endif -%}
-              <h2 class="post-next__heading">{{ section.settings.next_step_heading }}</h2>
-              {%- if section.settings.next_step_text != blank -%}<p>{{ section.settings.next_step_text }}</p>{%- endif -%}
-              <a class="button post-next__button" href="{{ section.settings.next_step_url | default: '/products/myo-d-chiro-inositol-powder' }}">{{ section.settings.next_step_button | default: 'Shop inositol' }}</a>
-            </div>
-            {%- if section.settings.next_step_image != blank -%}<div class="post-next__img">{{ section.settings.next_step_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.next_step_heading }}</div>{%- endif -%}
-          </aside>
           {%- endif -%}
 
           {% endif %}

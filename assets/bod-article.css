@@ -236,3 +236,8 @@
 .table-of-contents li { border-left: 0; padding-left: 14px; }
 .table-of-contents li.active-toc-item { border-left: 0; }
 @media (prefers-reduced-motion: reduce) { .table-of-contents ul::after { transition: none; } }
+/* End of article, hims-style: next-step card, then one related grid as the last block */
+.blog-post-detail .post-next { margin-top: 48px; }
+.blog-post-detail .post-related { margin-top: 56px; padding-top: 32px; border-top: 1px solid #d6dcf5; }
+.blog-post-detail .post-related__heading { font-size: 24px; margin-bottom: 20px; }
+.blog-post-detail .post-related__title { font-size: 17px; }
