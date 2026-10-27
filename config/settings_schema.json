@@ -1251,6 +1251,20 @@
         "info": "Tokens: {code}, {percent} = that plan's own discount"
       },
       {
+        "type": "textarea",
+        "id": "bcd_code_blocks",
+        "label": "Code blocks (a code that must not apply with certain items)",
+        "default": "TRY20 : plan 7141621979",
+        "info": "One per line: CODE : condition. Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any. The drawer refuses the code, removes it if it arrived through a link, and explains why. The checkout page's own code field is not covered."
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_blocked_text",
+        "label": "Code blocked message",
+        "default": "{code} doesn't apply to the bundle, which is already {percent}% off.",
+        "info": "Tokens: {code}, {percent} = the blocking line's own discount"
+      },
+      {
         "type": "header",
         "content": "Line items"
       },
