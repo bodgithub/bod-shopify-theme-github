@@ -294,3 +294,14 @@
 .footer .row {
   flex-flow: row wrap!important;
 }
+
+/* Bodology footer: navy ground, everything white. Blue logo and social icons are turned white with a filter, so the existing files keep working. */
+#shopify-section-footer .footer, #shopify-section-footer .footer a, #shopify-section-footer .footer h4, #shopify-section-footer .footer .widget-title,
+#shopify-section-footer .footer p, #shopify-section-footer .footer .widget, #shopify-section-footer .footer .disclaimers, #shopify-section-footer .footer .copyright { color: #fff; }
+#shopify-section-footer .footer a:hover, #shopify-section-footer .footer a:focus-visible { color: #b9c2f5; }
+#shopify-section-footer .footer img[src*="Bodology_Logo"], #shopify-section-footer .footer img[src*="TikTok_Icon"], #shopify-section-footer .footer img[src*="IG-Icon"] { filter: brightness(0) invert(1); }
+#shopify-section-footer .footer .disclaimers { border-color: rgba(255,255,255,0.6) !important; }
+#shopify-section-footer .footer input[type="email"], #shopify-section-footer .footer input[type="text"] { background: transparent; color: #fff; border-color: rgba(255,255,255,0.7); }
+#shopify-section-footer .footer input::placeholder { color: rgba(255,255,255,0.75); }
+#shopify-section-footer .footer button svg, #shopify-section-footer .footer button svg path { stroke: #fff; }
+#shopify-section-footer .footer .shopify-localization-form select, #shopify-section-footer .footer .shopify-localization-form .select-arrow svg path { color: #fff; stroke: #fff; }
