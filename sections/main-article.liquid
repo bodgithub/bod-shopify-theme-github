@@ -97,10 +97,11 @@
   </div> 
         {% endif %}
     
-    <h3>Contents</h3>
-    <ul>
-     
-    </ul>
+    <details class="toc-box" id="toc-box">
+      <summary><h3>In this article</h3></summary>
+      <ul>
+      </ul>
+    </details>
   </div>
   
 </div>
@@ -142,9 +143,30 @@
                 {% endif %}
               </div>
               {% endif %}
-           <div class="author-title" style="padding-bottom:10px;">Published: {{ article.published_at | date: "%m/%d/%Y" }}</div>
-
               <h1 class="entry-title h1">{{ article.title }}</h1>
+              {%- liquid
+                assign bod_words = article.content | strip_html | split: ' ' | size
+                assign bod_minutes = bod_words | divided_by: 200 | at_least: 1
+                assign bod_writer = ''
+                if article.metafields.custom.blogauthor.value != blank
+                  assign bod_writer = article.metafields.custom.blogauthor.value.short_name
+                elsif article.metafields.custom.ambassador.value != blank
+                  assign bod_writer = article.metafields.custom.ambassador.value.short_name
+                elsif article.author != blank
+                  assign bod_writer = article.author
+                endif
+                assign bod_reviewer = ''
+                if article.metafields.custom.experts.value != blank
+                  assign bod_reviewer = article.metafields.custom.experts.value.expert_name
+                  assign bod_reviewer_title = article.metafields.custom.experts.value.seo_title
+                endif
+              -%}
+              <div class="post-byline">
+                {%- if bod_writer != blank -%}<span>Written by {{ bod_writer }}</span>{%- endif -%}
+                {%- if bod_reviewer != blank -%}<span>Reviewed by {{ bod_reviewer }}{% if bod_reviewer_title != blank %}, {{ bod_reviewer_title }}{% endif %}</span>{%- endif -%}
+                <span>Updated {{ article.updated_at | date: "%b %-d, %Y" }}</span>
+                <span>{{ bod_minutes }} min read</span>
+              </div>
               {%- liquid
                 if article_show_sharing
                   render 'social-share', share_label: true, share_title: article.title, share_permalink: article.url, share_image: article.featured_image
@@ -169,6 +191,59 @@
   {{ updated_content }}
 </div>
           <!-- End of Updated Content Processing -->
+          {%- if section.settings.show_related -%}
+            {%- liquid
+              assign bod_related_handles = ''
+              assign bod_related_count = 0
+              for tag in article.tags
+                for a in blog.articles
+                  if bod_related_count >= 3
+                    break
+                  endif
+                  if a.id == article.id
+                    continue
+                  endif
+                  unless a.tags contains tag
+                    continue
+                  endunless
+                  assign key = '|' | append: a.handle | append: '|'
+                  if bod_related_handles contains key
+                    continue
+                  endif
+                  assign bod_related_handles = bod_related_handles | append: key
+                  assign bod_related_count = bod_related_count | plus: 1
+                endfor
+              endfor
+            -%}
+            {%- if bod_related_count > 0 -%}
+            <aside class="post-related page-content-width" aria-labelledby="post-related-heading">
+              <h2 id="post-related-heading" class="post-related__heading">{{ section.settings.related_heading | default: 'Keep reading' }}</h2>
+              <div class="post-related__grid">
+                {%- for a in blog.articles -%}
+                  {%- assign key = '|' | append: a.handle | append: '|' -%}
+                  {%- if bod_related_handles contains key -%}
+                  <a class="post-related__card" href="{{ a.url }}">
+                    {%- if a.image -%}<div class="post-related__img">{%- render 'responsive-image', image: a.image, sizes: '380x240' -%}</div>{%- endif -%}
+                    {%- if a.tags.size > 0 -%}<span class="post-related__tag">{{ a.tags.first }}</span>{%- endif -%}
+                    <span class="post-related__title">{{ a.title }}</span>
+                  </a>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </aside>
+            {%- endif -%}
+          {%- endif -%}
+          {%- if section.settings.show_next_step -%}
+          <aside class="post-next page-content-width">
+            <div class="post-next__text">
+              {%- if section.settings.next_step_eyebrow != blank -%}<span class="post-next__eyebrow">{{ section.settings.next_step_eyebrow }}</span>{%- endif -%}
+              <h2 class="post-next__heading">{{ section.settings.next_step_heading }}</h2>
+              {%- if section.settings.next_step_text != blank -%}<p>{{ section.settings.next_step_text }}</p>{%- endif -%}
+              <a class="button post-next__button" href="{{ section.settings.next_step_url | default: '/products/myo-d-chiro-inositol-powder' }}">{{ section.settings.next_step_button | default: 'Shop inositol' }}</a>
+            </div>
+            {%- if section.settings.next_step_image != blank -%}<div class="post-next__img">{{ section.settings.next_step_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: section.settings.next_step_heading }}</div>{%- endif -%}
+          </aside>
+          {%- endif -%}
 
           {% endif %}
           {% if block.type == 'tags' %}
@@ -233,6 +308,8 @@
     // Select the blog content container
     const articleContentElement = document.querySelector('.post-content');
     const tocElement = document.querySelector('#table-of-contents ul');
+    const tocBox = document.getElementById('toc-box');
+    if (tocBox && window.matchMedia('(min-width: 901px)').matches) { tocBox.open = true; }
 
     if (articleContentElement && tocElement) {
       let articleContent = articleContentElement.innerHTML;
@@ -359,6 +436,16 @@
 				"label": "Show sharing buttons",
 				"default": true
 			},
+			{ "type": "header", "content": "Closing block" },
+			{ "type": "checkbox", "id": "show_related", "label": "Show related reading (3 articles sharing a tag)", "default": true },
+			{ "type": "text", "id": "related_heading", "label": "Related reading heading", "default": "Keep reading" },
+			{ "type": "checkbox", "id": "show_next_step", "label": "Show the next-step product card", "default": true },
+			{ "type": "text", "id": "next_step_eyebrow", "label": "Next step eyebrow", "default": "Next step" },
+			{ "type": "text", "id": "next_step_heading", "label": "Next step heading", "default": "Ready to try Myo + D-Chiro Inositol?" },
+			{ "type": "text", "id": "next_step_text", "label": "Next step text", "default": "One 4.1g daily serving at the 40:1 ratio. Third-party tested. 60-day money-back guarantee." },
+			{ "type": "text", "id": "next_step_button", "label": "Next step button", "default": "Shop inositol" },
+			{ "type": "url", "id": "next_step_url", "label": "Next step link" },
+			{ "type": "image_picker", "id": "next_step_image", "label": "Next step image" },
 			{
 				"type": "paragraph",
 				"content": "If you include a link in social media posts, the page’s featured image will be shown as the preview image. [Learn more](https://help.shopify.com/en/manual/online-store/images/showing-social-media-thumbnail-images)."
