@@ -129,21 +129,6 @@
 			{%- render 'social-links', show_label: false -%}
 		{%- endif -%}
 		<div class="thb-mobile-menu-footer">
-  {%- if shop.customer_accounts_enabled -%}
-  {%- liquid
-    if customer
-      assign mm_account_url = routes.account_url
-      assign mm_account_text = 'sections.header.my_account' | t
-    else
-      assign mm_account_url = routes.account_login_url
-      assign mm_account_text = 'sections.header.login' | t
-    endif
-  -%}
-  <!-- LOG IN / MY ACCOUNT (mobile drawer, right under Shop Now) -->
-  <div class="mobile-menu__account">
-    <a class="mobile-menu__account-link" href="{{ mm_account_url | escape }}" title="{{ mm_account_text | escape }}" role="menuitem">{%- render 'svg-icons' with 'myaccount' -%}<span>{{ mm_account_text }}</span></a>
-  </div>
-  {%- endif -%}
 			{%- if shop.customer_accounts_enabled -%}
 				{%- if customer -%}
 				  {%- assign profile_link = routes.account_url -%}
@@ -161,6 +146,22 @@
 			<div class="no-js-hidden">
 				{%- render 'localization', id: 'MobileMenuLocalization', show_language_switcher: header_settings.show_language_switcher, show_currency_switcher: header_settings.show_currency_switcher, open_top: true -%}
 			</div>
+  {%- if shop.customer_accounts_enabled -%}
+  {%- liquid
+    if customer
+      assign mm_account_url = routes.account_url
+      assign mm_account_text = 'sections.header.my_account' | t
+    else
+      assign mm_account_url = routes.account_login_url
+      assign mm_account_text = 'sections.header.login' | t
+    endif
+  -%}
+  <!-- LOG IN / MY ACCOUNT (mobile drawer, right under Shop Now) -->
+  <div class="mobile-menu__account">
+    <a class="mobile-menu__account-link" href="{{ mm_account_url | escape }}" title="{{ mm_account_text | escape }}" role="menuitem">{%- render 'svg-icons' with 'myaccount' -%}<span>{{ mm_account_text }}</span></a>
+  </div>
+  {%- endif -%}
+
 		</div>
 	</div>
 </nav>
