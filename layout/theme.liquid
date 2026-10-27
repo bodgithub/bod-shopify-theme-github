@@ -51,6 +51,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	{{ 'app.css' | asset_url | stylesheet_tag }}
 	{{ 'product-grid.css' | asset_url | stylesheet_tag }}
 	{{ 'bod-stars.css' | asset_url | stylesheet_tag }}
+	{{ 'bod-site.css' | asset_url | stylesheet_tag }}
 	{%- if settings.cart_drawer -%}{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}{%- endif -%}
 	<script src="{{ 'bod-stars.js' | asset_url }}" defer></script>
 
