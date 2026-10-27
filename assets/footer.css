@@ -309,3 +309,5 @@
 .footer, .footer * { border-color: rgba(255,255,255,0.35); }
 .footer .copyright, .footer .copyright a, .footer .footer-bottom, .footer .footer-bottom a, .footer small { color: #fff; }
 .footer h2, .footer h3, .footer h4, .footer h5, .footer .h4 { color: #fff; }
+/* Policy links in the custom block match the copyright / accessibility line size */
+.footer #disclaimer, .footer #disclaimer a, .footer .footer-accessibility-link { font-size: 0.9375rem; }
