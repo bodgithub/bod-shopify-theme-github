@@ -4411,4 +4411,5 @@ h2 {
 /* Hero reviews line under the stars: body colour, arrow included */
 .image-with-text-overlay .customer-reviews--content .text-button,
 .image-with-text-overlay .customer-reviews--content .text-button svg { color: #1a2874; }
-.image-with-text-overlay .customer-reviews--content { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.image-with-text-overlay .customer-reviews--block { width: 100%; text-align: center; }
+.image-with-text-overlay .customer-reviews--content { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
