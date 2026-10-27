@@ -4417,3 +4417,6 @@ h2 {
 .image-with-text-overlay .customer-reviews--content p:empty { display: none; }
 /* Navbar dropdown links keep #3447af while the top-level nav and footer use the header/footer settings */
 .thb-full-menu ul ul a, .thb-full-menu .sub-menu a, .thb-full-menu .dropdown a, .thb-full-menu .megamenu a { color: #3447af; }
+/* Junip "Leave a review" button (injected by the app) follows the site buttons */
+.junip-review-btn, a.junip-review-btn { background: #1a2874 !important; background-image: none !important; color: #b9c2f5 !important; border: 0 !important; border-radius: var(--button-border-radius, 40px) !important; font-weight: 500 !important; }
+.junip-review-btn:hover, .junip-review-btn:focus-visible { background: #3447af !important; color: #fff !important; }
