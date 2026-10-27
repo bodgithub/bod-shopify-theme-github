@@ -178,3 +178,5 @@ scroll-behavior: smooth;}
  @media only screen and (max-width: 768px) {
 .metafield-multi_line_text_field { font-size:1.1rem;}
  .testimonials--testimonial-content p {line-height: 1.1;}}
+/* Bodology: expert names in the carousel cards use the card's "text 2" colour (brand blue) */
+.testimonials-main-section .testimonial h5, .testimonials-main-section h5 { color: var(--color-text2, #4d61cf); }
