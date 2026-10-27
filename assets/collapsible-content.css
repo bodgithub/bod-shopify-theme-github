@@ -168,3 +168,8 @@ font-size: 1.5rem; }
 
 
 
+
+/* Bodology: questions on a painted (dark navy) background - bold pale-blue questions, answers stay white even when bolded */
+.collapsible-content--has-bg .accordion summary { font-weight: 700; }
+.collapsible-content--has-bg .accordion__content strong,
+.collapsible-content--has-bg .accordion__content b { color: inherit; }
