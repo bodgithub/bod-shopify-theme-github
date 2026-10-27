@@ -11,6 +11,21 @@
       role="menuitem"
     >Shop Now</a>
   </li>
+  {%- if shop.customer_accounts_enabled -%}
+  {%- liquid
+    if customer
+      assign mm_account_url = routes.account_url
+      assign mm_account_text = 'sections.header.my_account' | t
+    else
+      assign mm_account_url = routes.account_login_url
+      assign mm_account_text = 'sections.header.login' | t
+    endif
+  -%}
+  <!-- LOG IN / MY ACCOUNT (mobile drawer, right under Shop Now) -->
+  <li class="mobile-menu__account">
+    <a class="mobile-menu__account-link" href="{{ mm_account_url | escape }}" title="{{ mm_account_text | escape }}" role="menuitem">{%- render 'svg-icons' with 'myaccount' -%}<span>{{ mm_account_text }}</span></a>
+  </li>
+  {%- endif -%}
 			{%- for link in header_settings.menu.links -%}
 				{%- liquid
 					assign parent_index = forloop.index
