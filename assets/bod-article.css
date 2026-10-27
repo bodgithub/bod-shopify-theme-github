@@ -1,39 +1,72 @@
 /* Bodology blog article overrides (loaded after article.css by sections/main-article.liquid).
-   Title block: blue card, pale title and date; body copy navy with bold words in brand blue. */
+   Reading experience: a single 720px column, 18px body copy, calm heading scale.
+   Title block: blue card with pale title and date; hero image as its own block below it. */
 
-/* Title block */
-.blog-post-detail .post-title-wrapper { background: #3447af; border-radius: 19px; }   /* a featured image still sits on top of this */
-.blog-post-detail .post-title-wrapper--has-img-false { border-radius: 19px; }
-/* with a featured image the theme removes the title padding on desktop; give the blue block room again */
-.blog-post-detail .post-title-wrapper--has-img-true .post-title { padding: 28px 32px 32px; }
-@media only screen and (min-width: 768px) {
-  .blog-post-detail .post-title-wrapper--has-img-true .post-title { padding: 36px 44px 40px; }
-}
+/* ---------- Title block ---------- */
+.blog-post-detail .post-title-wrapper { background: #3447af; border-radius: 19px; }
 .blog-post-detail .post-title-wrapper .entry-title,
 .blog-post-detail .post-title-wrapper .author-title { color: #d6dcf5; }
+.blog-post-detail .post-title-wrapper .entry-title { font-size: 2.25rem; line-height: 1.15; }
+@media only screen and (min-width: 768px) {
+  .blog-post-detail .post-title-wrapper .entry-title { font-size: 3rem; }
+}
 
-/* Body copy and headings */
+/* No image: the wrapper is the card */
+.blog-post-detail .post-title-wrapper--has-img-false { border-radius: 19px; }
+
+/* With an image: the wrapper goes transparent, the title becomes the card, the image follows as its own block */
+.blog-post-detail .post-title-wrapper--has-img-true {
+  background: transparent; border-radius: 0; overflow: visible; display: flex; flex-direction: column; gap: 24px;
+}
+.blog-post-detail .post-title-wrapper--has-img-true .post-title {
+  background: #3447af; border-radius: 19px; padding: 28px 28px 32px;
+}
+@media only screen and (min-width: 768px) {
+  .blog-post-detail .post-title-wrapper--has-img-true .post-title { padding: 40px 48px 44px; }
+}
+.blog-post-detail .post-title-wrapper--has-img-true .featured-image { margin: 0; max-height: none; }
+.blog-post-detail .post-title-wrapper--has-img-true .featured-image img,
+.blog-post-detail .featured-image img {
+  display: block; width: 100%; max-height: 480px; object-fit: cover; border-radius: 19px;
+}
+
+/* ---------- Reading column ---------- */
+.blog-post-detail .post-content { max-width: 720px; margin-left: auto; margin-right: auto; }
+
+/* ---------- Body copy ---------- */
 .blog-post-detail .post-content,
 .blog-post-detail .post-content p,
 .blog-post-detail .post-content li,
-.blog-post-detail .post-content blockquote,
+.blog-post-detail .post-content blockquote { color: #1a2874; font-size: 17px; line-height: 1.7; }
+@media only screen and (min-width: 768px) {
+  .blog-post-detail .post-content,
+  .blog-post-detail .post-content p,
+  .blog-post-detail .post-content li,
+  .blog-post-detail .post-content blockquote { font-size: 18px; }
+}
+.blog-post-detail .post-content p { margin: 0 0 22px; }
+.blog-post-detail .post-content ul, .blog-post-detail .post-content ol { margin: 0 0 22px; padding-left: 24px; }
+.blog-post-detail .post-content li { margin-bottom: 8px; }
+.blog-post-detail .post-content strong, .blog-post-detail .post-content b { color: #4d61cf; }
+.blog-post-detail .post-content a:not(.button) { color: #4d61cf; text-decoration: underline; text-underline-offset: 3px; }
+.blog-post-detail .post-content img { max-width: 100%; height: auto; border-radius: 12px; }
+
+/* ---------- Headings ---------- */
 .blog-post-detail .post-content h1,
 .blog-post-detail .post-content h2,
 .blog-post-detail .post-content h3,
 .blog-post-detail .post-content h4,
 .blog-post-detail .post-content h5,
-.blog-post-detail .post-content h6 { color: #1a2874; }
-
-/* Bold words stand out in brand blue (links keep their own colour) */
-.blog-post-detail .post-content strong,
-.blog-post-detail .post-content b { color: #4d61cf; }
-
-/* Section headings */
-.blog-post-detail .post-content h3 { text-transform: none; }   /* sentence case as written; the theme forced uppercase */
-.blog-post-detail .post-content h2 { font-size: 32px; line-height: 1.15; }
+.blog-post-detail .post-content h6 { color: #3447af; text-transform: none; letter-spacing: 0; }
+.blog-post-detail .post-content h2 { font-size: 28px; line-height: 1.2; margin: 44px 0 14px; }
+.blog-post-detail .post-content h3 { font-size: 22px; line-height: 1.3; margin: 32px 0 10px; }
+.blog-post-detail .post-content h4 { font-size: 19px; line-height: 1.35; margin: 26px 0 8px; }
 @media only screen and (min-width: 768px) {
-  .blog-post-detail .post-content h2 { font-size: 41px; }
+  .blog-post-detail .post-content h2 { font-size: 32px; margin-top: 52px; }
+  .blog-post-detail .post-content h3 { font-size: 24px; }
 }
+.blog-post-detail .post-content p + h2,
+.blog-post-detail .post-content p + h3 { margin-top: 44px; }
 
 /* ---------- Bodology note callout ----------
    Two forms are styled the same way:
@@ -44,8 +77,8 @@
 .blog-post-detail .post-content td[style*="#EEF1FF"],
 .blog-post-detail .post-content td[style*="#eef1ff"] {
   display: block; box-sizing: border-box; width: 100% !important; max-width: 100%;
-  background: #eef1ff !important; border: 0 !important; border-radius: 10px;
-  padding: 24px 26px !important; margin: 28px 0;
+  background: #eef1ff !important; border: 0 !important; border-radius: 12px;
+  padding: 24px 26px !important; margin: 32px 0;
 }
 .blog-post-detail .post-content table:has(td[style*="#EEF1FF"]),
 .blog-post-detail .post-content table:has(td[style*="#eef1ff"]) {
@@ -53,8 +86,6 @@
 }
 .blog-post-detail .post-content table:has(td[style*="#EEF1FF"]) tr,
 .blog-post-detail .post-content table:has(td[style*="#eef1ff"]) tr { display: block; }
-
-/* eyebrow / heading */
 .blog-post-detail .post-content .bod-note__label {
   margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #4d61cf;
 }
@@ -67,7 +98,6 @@
   font-family: inherit !important; font-size: 20px !important; line-height: 1.3; font-weight: 700;
   color: #1a2874 !important; text-transform: none; letter-spacing: 0;
 }
-/* body text */
 .blog-post-detail .post-content .bod-note p,
 .blog-post-detail .post-content td[style*="#EEF1FF"] p,
 .blog-post-detail .post-content td[style*="#eef1ff"] p { margin: 0 0 10px !important; }
@@ -76,7 +106,6 @@
 .blog-post-detail .post-content td[style*="#eef1ff"] p span {
   font-family: inherit !important; font-size: 16px !important; line-height: 1.6; color: #1a2874 !important;
 }
-/* sign-off line */
 .blog-post-detail .post-content .bod-note__sign,
 .blog-post-detail .post-content td[style*="#EEF1FF"] i span,
 .blog-post-detail .post-content td[style*="#eef1ff"] i span {
