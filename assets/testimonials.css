@@ -178,5 +178,6 @@ scroll-behavior: smooth;}
  @media only screen and (max-width: 768px) {
 .metafield-multi_line_text_field { font-size:1.1rem;}
  .testimonials--testimonial-content p {line-height: 1.1;}}
-/* Bodology: expert names in the carousel cards use the card's "text 2" colour (brand blue) */
-.testimonials-main-section .testimonial h5, .testimonials-main-section h5 { color: var(--color-text2, #4d61cf); }
+/* Bodology: expert name + role in the carousel cards match the product page experts block */
+.testimonials-main-section .testi-content h5 { color: #1a2874; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; margin: 0 0 4px; text-transform: none; }
+.testimonials-main-section .testi-content h6 { color: #3447af; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin: 0; line-height: 1.4; }
