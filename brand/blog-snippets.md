@@ -18,3 +18,17 @@ The styling lives in `assets/bod-article.css`, so the HTML stays plain.
 Rules: heading in sentence case (acronyms stay capitals), no inline styles, bold words inside the
 paragraphs turn brand blue automatically. Notes pasted from Word (a table with a lavender cell) are
 restyled by the same stylesheet, but their capitalised headings have to be retyped by hand.
+
+## Sources (end of science articles)
+
+```html
+<div class="bod-sources">
+  <h2>Sources</h2>
+  <ol>
+    <li>Author A, Author B. Title of the study. <em>Journal</em>. Year;Vol(Issue):pages. <a href="https://doi.org/..." target="_blank" rel="noopener">doi link</a></li>
+    <li>…</li>
+  </ol>
+</div>
+```
+
+Small type, muted colour, a rule above. Keep the inline citations in the text as they are.
