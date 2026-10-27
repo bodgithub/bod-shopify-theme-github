@@ -192,3 +192,8 @@ body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
   #Cart-Drawer .bod-cart__code-toggle { margin: -14px 0 -8px; }
   #Cart-Drawer .bod-cart__hero-total { font-size: 38px; }
 }
+
+/* Buttons follow the site palette: navy, pale label, #3447af on hover */
+#Cart-Drawer .bod-cart__checkout, #Cart-Drawer .bod-cart__btn--primary { background: #1a2874; color: #b9c2f5; font-weight: 500; }
+#Cart-Drawer .bod-cart__checkout:hover, #Cart-Drawer .bod-cart__checkout:focus-visible,
+#Cart-Drawer .bod-cart__btn--primary:hover, #Cart-Drawer .bod-cart__btn--primary:focus-visible { background: #3447af; border-color: #3447af; color: #fff; }

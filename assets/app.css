@@ -4408,3 +4408,7 @@ h2 {
    Headings #3447af, body #1a2874, bold words and links in body copy #4d61cf. */
 .rte strong, .rte b, .post-content strong, .post-content b { color: #4d61cf; }
 .rte a:not(.button), .post-content a:not(.button) { color: #4d61cf; }
+/* Hero reviews line under the stars: body colour, arrow included */
+.image-with-text-overlay .customer-reviews--content .text-button,
+.image-with-text-overlay .customer-reviews--content .text-button svg { color: #1a2874; }
+.image-with-text-overlay .customer-reviews--content { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }

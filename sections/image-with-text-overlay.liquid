@@ -116,7 +116,7 @@
 							{%- when 'customer_reviews' -%}
 								<div {{ block.shopify_attributes }} class="customer-reviews--block" >
 									<div class="customer-reviews--content">
-										<div class="star-rating" style="--star-rating: {{ block.settings.stars }}; transform:scale({{ block.settings.scale }})"></div>
+										{%- if block.settings.stars != blank -%}{%- render 'bod-stars', rating: block.settings.stars, count: 1, style: 'chunky', size: 19, gap: 2, color_on: '#ddbd6d', color_off: '#e6e6e6', show_label: false, link: false, margin_bottom: 0, uid: block.id -%}{%- endif -%}
 										<a title="{{ block.settings.heading }}" class="text-button text-button--has-icon" role="link" style="font-size:{{ block.settings.font_size }}!important; margin-left:5px;" href="{{ block.settings.link }}" {% if block.settings.link == blank %}aria-disabled="true"{% endif %} >{{ block.settings.heading }}<span style="margin-left:6px;">{% render 'svg-icons' with 'thb-caret-right' %}</span></a>
 										<p>{{ block.settings.text | newline_to_br }}</p>
 									</div>
