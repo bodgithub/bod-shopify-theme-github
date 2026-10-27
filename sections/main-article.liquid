@@ -29,6 +29,7 @@
     </div>
     
 {{ 'article.css' | asset_url | stylesheet_tag }}
+{{ 'bod-article.css' | asset_url | stylesheet_tag }}
 {%- render 'article-navigation', article_show_nav: article_show_nav, article_show_sharing: article_show_sharing -%}
 <div class="blog-post-detail--wrapper section-spacing-bottom">
   <div class="row">
