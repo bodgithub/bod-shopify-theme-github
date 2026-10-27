@@ -1,0 +1,10 @@
+/* Bodology site-wide overrides (loaded after app.css by layout/theme.liquid). */
+
+/* Home banner button: solid #3447AF on hover and keyboard focus (the theme hover is a blue gradient) */
+.image-with-text-overlay .button:hover,
+.image-with-text-overlay .button:focus-visible {
+  background: #3447af !important;
+  background-image: none !important;
+  border-color: #3447af !important;
+  color: #fff !important;
+}
