@@ -2933,8 +2933,9 @@ input[type="submit"] {
   height: 50px;
   font-weight: var(--font-body-medium-weight, 400);
   letter-spacing: var(--button-letter-spacing, 0.02em);
-  background: linear-gradient(105deg, #0f2ed0, #0a95ef); /*#f2eee9; linear-gradient(45deg, #1b3def, #a02127  );  var(--solid-button-background, var(--color-accent));*/
-  color: #fff; /*#1b3def; var(--solid-button-label, #fff);*/
+  background: var(--solid-button-background, #1A2874);
+  color: var(--solid-button-label, #B9C2F5);
+  font-weight: 500;
   /*border: 1px solid #e7dccd;*/
   border-radius: var(--button-border-radius, 6px);
   text-align: center;
@@ -2966,8 +2967,9 @@ input[type="submit"] {
   @media screen and (hover: hover) {
     .button:hover,
     input[type="submit"]:hover {
-      background: linear-gradient(45deg, #0f2ed0, #0a95ef);/*var(--solid-button-background-hover, var(--color-accent));*/
-      color: var(--solid-button-label, #fff); } }
+      background: #3447af;
+      border-color: #3447af;
+      color: #fff; } }
   .button.loading span,
   [loading="true"] .button span,
   input[type="submit"].loading span,
@@ -3052,8 +3054,8 @@ input[type="submit"] {
   
         .button.accent,
   input[type="submit"].accent {
-    background: background: linear-gradient(55deg, #0f2ed0, #0a95ef); /*  #1b3def; /* background: linear-gradient(55deg, #0f2ed0, #0a95ef) linear-gradient(45deg, #1b3def, #a02127); var(--color-accent);*/
-    color: #f2eee9;/*var(--solid-button-label, #fff);*/
+    background: var(--solid-button-background, #1A2874); /* was a gradient; see git history. ( #a02127); var(--color-accent);*/
+    color: var(--solid-button-label, #B9C2F5);
   text-decoration: none;}
     .button.accent .spinner-path,
     input[type="submit"].accent .spinner-path {
@@ -3061,7 +3063,8 @@ input[type="submit"] {
     @media screen and (hover: hover) {
       .button.accent:hover,
       input[type="submit"].accent:hover {
-        background: #1b3def; /*linear-gradient(105deg, #0f2ed0, #0a95ef); var(--color-accent-hover, var(--color-accent));*/
+        background: #3447af;
+        border-color: #3447af;
       color: #fff;} }
   .button[disabled],
   input[type="submit"][disabled] {
@@ -4400,3 +4403,8 @@ h2 {
   z-index: 9999 !important;
 }
 
+
+/* ===== Bodology palette (2026-10-27) =====
+   Headings #3447af, body #1a2874, bold words and links in body copy #4d61cf. */
+.rte strong, .rte b, .post-content strong, .post-content b { color: #4d61cf; }
+.rte a:not(.button), .post-content a:not(.button) { color: #4d61cf; }
