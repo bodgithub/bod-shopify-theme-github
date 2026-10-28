@@ -199,3 +199,5 @@ body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
 #Cart-Drawer .bod-cart__btn--primary:hover, #Cart-Drawer .bod-cart__btn--primary:focus-visible { background: #3447af; border-color: #3447af; color: #fff; }
 #Cart-Drawer .bod-cart__code-apply { background: #1a2874; color: #b9c2f5; font-weight: 500; border-color: #1a2874; }
 #Cart-Drawer .bod-cart__code-apply:hover, #Cart-Drawer .bod-cart__code-apply:focus-visible { background: #3447af; border-color: #3447af; color: #fff; }
+/* Discount roundel matches the plan selector pills: lavender fill, navy text and hairline */
+#Cart-Drawer .bod-cart__badge { background: #e3e7ff; color: #14307c; border: 0.4px solid #14307c; font-weight: 700; font-size: 11px; padding: 4px 11px; border-radius: 999px; }
