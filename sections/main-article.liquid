@@ -339,9 +339,12 @@
       boxes.forEach(function (box) {
         if (box.closest('details')) { return; }
         var heading = box.querySelector('h1, h2, h3, h4, .bod-note__label');
-        var title = heading ? heading.textContent.trim() : 'Bodology note';
+        /* the toggle's label is the note's own subject: drop a leading "Bodology —" / "Bodology note:" */
+        var raw = heading ? heading.textContent.replace(/\s+/g, ' ').trim() : '';
+        raw = raw.replace(/^bodology(\s*®)?(\s+note)?\s*[\u2014\u2013:\-|]+\s*/i, '');
+        var title = sentenceCase(raw) || 'Bodology note';
         var details = document.createElement('details'); details.className = 'bod-note-acc';
-        var summary = document.createElement('summary'); summary.textContent = sentenceCase(title) || title;
+        var summary = document.createElement('summary'); summary.textContent = title;
         var body = document.createElement('div'); body.className = 'bod-note-acc__body';
         Array.from(box.childNodes).forEach(function (n) { if (n !== heading) { body.appendChild(n); } });
         details.appendChild(summary); details.appendChild(body);
