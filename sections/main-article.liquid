@@ -352,6 +352,31 @@
       }
       root.querySelectorAll('h1, h2, h3, h4, h5, h6, summary').forEach(fixCaps);
 
+      // 3. FAQ sections: each question heading + its answer becomes a toggle, same look as the notes
+      root.querySelectorAll('h2, h3').forEach(function (faqHead) {
+        if (!/frequently asked questions|\bfaqs?\b/i.test(faqHead.textContent)) { return; }
+        var level = parseInt(faqHead.tagName.charAt(1), 10);
+        var qTags = level === 2 ? ['H3', 'H4'] : ['H4'];
+        var node = faqHead.nextElementSibling;
+        while (node && !(node.tagName === faqHead.tagName) && !(node.tagName.charAt(0) === 'H' && parseInt(node.tagName.charAt(1), 10) <= level)) {
+          if (qTags.indexOf(node.tagName) >= 0 && node.textContent.trim()) {
+            var q = node; var answer = [];
+            var n = q.nextElementSibling;
+            while (n && qTags.indexOf(n.tagName) < 0 && !(n.tagName.charAt(0) === 'H' && parseInt(n.tagName.charAt(1), 10) <= level)) { answer.push(n); n = n.nextElementSibling; }
+            if (answer.length) {
+              var det = document.createElement('details'); det.className = 'bod-note-acc bod-faq';
+              var sum = document.createElement('summary'); sum.textContent = sentenceCase(q.textContent.replace(/\s+/g, ' ').trim());
+              var bodyEl = document.createElement('div'); bodyEl.className = 'bod-note-acc__body';
+              answer.forEach(function (a) { bodyEl.appendChild(a); });
+              det.appendChild(sum); det.appendChild(bodyEl);
+              q.replaceWith(det);
+              node = det;
+            }
+          }
+          node = node.nextElementSibling;
+        }
+      });
+
       var boxes = root.querySelectorAll('td[style*="#EEF1FF"], td[style*="#eef1ff"], .bod-note');
       boxes.forEach(function (box) {
         if (box.closest('details')) { return; }
