@@ -134,10 +134,16 @@
 @media only screen and (min-width: 768px) { .blog-post-detail .post-content > p:first-of-type { font-size: 20px; } }
 .blog-post-detail .post-content h2 + h3 { margin-top: 14px; }
 .blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) {
-  margin: 32px 0; padding: 6px 0 6px 22px; border-left: 4px solid #b9c2f5;
-  font-family: inherit; font-style: normal; font-weight: 500; font-size: 22px; line-height: 1.45; color: #3447af;
+  margin: 32px 0; padding: 22px 26px; border: 0; border-radius: 19px;
+  background: #3447af; color: #d6dcf5;
+  font-family: inherit; font-style: normal; font-weight: 400; font-size: inherit; line-height: 1.7;
 }
-.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) p { font: inherit; color: inherit; margin: 0; }
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) p,
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) li,
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) span { font-size: inherit !important; color: #d6dcf5 !important; margin: 0; }
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) p + p { margin-top: 6px; }
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) strong,
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) b { color: #fff; }
 
 /* ---------- Pasted-HTML hygiene ---------- */
 .blog-post-detail .post-content p span[style*="font-size"],
