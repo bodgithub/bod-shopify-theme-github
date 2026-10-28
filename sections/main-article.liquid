@@ -354,10 +354,13 @@
     })(articleContentElement);
 
     // ---- Bodology: body images are thumbnails that open full-size in a lightbox ----------------
+    // Click handling is delegated to the content container, so it survives the innerHTML rewrite below.
     (function thumbnails(root) {
       if (!root) { return; }
+      function isImageLink(a) { return a && /\.(jpe?g|png|webp|gif|avif)(\?|$)/i.test(a.getAttribute('href') || ''); }
       var imgs = Array.from(root.querySelectorAll('img')).filter(function (img) {
-        if (img.closest('.at-a-glance, .bod-note-acc, .bod-note, a, button, blockquote')) { return false; }
+        if (img.closest('.at-a-glance, .bod-note-acc, .bod-note, button, blockquote.tiktok-embed, blockquote[data-video-id], .bod-thumb')) { return false; }
+        var a = img.closest('a'); if (a && !isImageLink(a)) { return false; }
         var w = img.getAttribute('width'); if (w && parseInt(w, 10) < 120) { return false; }
         return true;
       });
@@ -366,18 +369,25 @@
       lb.innerHTML = '<div class="bod-lb__back" data-lb-close></div><figure class="bod-lb__fig"><button type="button" class="bod-lb__close" data-lb-close aria-label="Close">&times;</button><img class="bod-lb__img" alt=""><figcaption class="bod-lb__cap"></figcaption></figure>';
       document.body.appendChild(lb);
       var lbImg = lb.querySelector('.bod-lb__img'), lbCap = lb.querySelector('.bod-lb__cap'), lastFocus = null;
-      function open(img, caption) {
-        lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt || ''; lbCap.textContent = caption || ''; lbCap.hidden = !caption;
+      function open(src, alt, caption) {
+        lbImg.src = src; lbImg.alt = alt || ''; lbCap.textContent = caption || ''; lbCap.hidden = !caption;
         lastFocus = document.activeElement; lb.hidden = false; document.body.classList.add('bod-lb-open'); lb.querySelector('.bod-lb__close').focus();
       }
       function close() { lb.hidden = true; document.body.classList.remove('bod-lb-open'); lbImg.removeAttribute('src'); if (lastFocus && lastFocus.focus) { lastFocus.focus(); } }
       lb.addEventListener('click', function (e) { if (e.target.closest('[data-lb-close]')) { close(); } });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) { close(); } });
       imgs.forEach(function (img) {
+        var a = img.closest('a'); var full = a ? a.getAttribute('href') : (img.currentSrc || img.getAttribute('src'));
         var fig = img.closest('figure'); var cap = fig && fig.querySelector('figcaption') ? fig.querySelector('figcaption').textContent.trim() : '';
-        var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'bod-thumb'; btn.setAttribute('aria-label', 'Open image' + (img.alt ? ': ' + img.alt : ''));
-        img.parentNode.insertBefore(btn, img); btn.appendChild(img);
-        btn.addEventListener('click', function () { open(img, cap); });
+        var btn = document.createElement('button'); btn.type = 'button'; btn.className = 'bod-thumb';
+        btn.setAttribute('aria-label', 'Open image' + (img.alt ? ': ' + img.alt : '')); btn.setAttribute('data-full', full); if (cap) { btn.setAttribute('data-cap', cap); }
+        var target = a || img; target.parentNode.insertBefore(btn, target); btn.appendChild(img); if (a) { a.remove(); }
+      });
+      root.addEventListener('click', function (e) {
+        var btn = e.target.closest('.bod-thumb'); if (!btn) { return; }
+        e.preventDefault();
+        var img = btn.querySelector('img');
+        open(btn.getAttribute('data-full') || (img && img.src), img ? img.alt : '', btn.getAttribute('data-cap') || '');
       });
     })(articleContentElement);
 
