@@ -393,6 +393,13 @@
       boxes.forEach(function (box) {
         if (box.closest('details')) { return; }
         var heading = box.querySelector('h1, h2, h3, h4, .bod-note__label');
+        if (!heading) { /* Word notes often carry the title as a bold paragraph instead of a heading */
+          var firstP = Array.from(box.querySelectorAll('p')).find(function (pp) { return pp.textContent.trim().length > 0; });
+          if (firstP) {
+            var bold = firstP.querySelector('b, strong');
+            if (bold && bold.textContent.trim() === firstP.textContent.trim()) { heading = firstP; }
+          }
+        }
         /* the toggle's label is the note's own subject: drop a leading "Bodology —" / "Bodology note:" */
         var raw = heading ? heading.textContent.replace(/\s+/g, ' ').trim() : '';
         raw = raw.replace(/^bodology(\s*®)?(\s+note)?\s*[\u2014\u2013:\-|]+\s*/i, '');
