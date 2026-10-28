@@ -417,12 +417,14 @@
       // Update the content in the DOM
       articleContentElement.innerHTML = updatedContent;
 
-      // Collect all headings
-      const headings = Array.from(articleContentElement.querySelectorAll('h2, h3'));
+      // Collect all headings (not the ones inside quotations or note cards)
+      const headings = Array.from(articleContentElement.querySelectorAll('h2, h3'))
+        .filter((h) => !h.closest('blockquote, .at-a-glance, .bod-note-acc, .bod-note') && h.textContent.trim().length > 0);
       const totalHeadings = headings.length;
+      const hasH2 = headings.some((h) => h.tagName.toLowerCase() === 'h2');
 
-      // Determine TOC strategy
-      const showSubheadings = totalHeadings <= 10;
+      // TOC strategy: h3s are the top level when an article has no h2s; otherwise they are sub-items, shown unless the list gets long
+      const showSubheadings = !hasH2 || totalHeadings <= 12;
 
       // Generate the TOC
       const tocItems = {};
@@ -430,7 +432,7 @@
         if (heading.tagName.toLowerCase() === 'h2' || (showSubheadings && heading.tagName.toLowerCase() === 'h3')) {
           const id = heading.id;
           const text = heading.textContent.trim();
-          const isSubheading = heading.tagName.toLowerCase() === 'h3';
+          const isSubheading = hasH2 && heading.tagName.toLowerCase() === 'h3';
 
           // Create TOC list item
           const listItem = document.createElement('li');
