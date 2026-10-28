@@ -325,3 +325,18 @@ body.bod-lb-open { overflow: hidden; }
 .blog-post-detail .post-related__card:hover .post-related__title { text-decoration: none; color: inherit; }
 .blog-post-detail .post-related__card:focus-visible { outline: 2px solid #3447af; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .blog-post-detail .post-related__card { transition: none; } .blog-post-detail .post-related__card:hover { transform: none; } }
+
+/* ---------- Formula card (brand/blog-snippets.md: <div class="bod-formula">) ---------- */
+.blog-post-detail .post-content .bod-formula { background: #eef1ff; border-radius: 16px; padding: 28px 28px 26px; margin: 36px 0; }
+.blog-post-detail .post-content .bod-formula h2, .blog-post-detail .post-content .bod-formula h3 { margin: 0 0 10px !important; font-size: 24px; line-height: 1.2; color: #3447af; }
+.blog-post-detail .post-content .bod-formula > p { font-size: 16px; line-height: 1.6; color: #1a2874; margin: 0 0 16px; }
+.blog-post-detail .post-content .bod-formula ul { list-style: none; margin: 0 0 18px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; }
+@media only screen and (max-width: 560px) { .blog-post-detail .post-content .bod-formula ul { grid-template-columns: 1fr; } }
+.blog-post-detail .post-content .bod-formula li { position: relative; padding-left: 26px; margin: 0; font-size: 15px; line-height: 1.45; color: #1a2874; }
+.blog-post-detail .post-content .bod-formula li::before { content: ""; position: absolute; left: 0; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: #3447af; }
+.blog-post-detail .post-content .bod-formula li::after { content: ""; position: absolute; left: 5px; top: 6px; width: 6px; height: 3px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg); }
+.blog-post-detail .post-content .bod-formula .bod-formula__note { font-size: 13px; line-height: 1.5; color: #42579e; margin: 0 0 18px; }
+.blog-post-detail .post-content .bod-formula .bod-formula__cta { margin: 0; }
+.blog-post-detail .post-content .bod-formula .bod-formula__cta a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 40px; background: #1a2874; color: #b9c2f5 !important; font-weight: 500; font-size: 16px; text-decoration: none; }
+.blog-post-detail .post-content .bod-formula .bod-formula__cta a:hover, .blog-post-detail .post-content .bod-formula .bod-formula__cta a:focus-visible { background: #3447af; color: #fff !important; }
+.blog-post-detail .post-content .bod-formula .bod-formula__cta strong { color: inherit; }

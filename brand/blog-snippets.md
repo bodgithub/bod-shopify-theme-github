@@ -32,3 +32,26 @@ restyled by the same stylesheet, but their capitalised headings have to be retyp
 ```
 
 Small type, muted colour, a rule above. Keep the inline citations in the text as they are.
+
+## Formula card (product spec block inside an article)
+
+```html
+<div class="bod-formula">
+  <h3>The formula behind the story</h3>
+  <p><strong>Bodology® Inositol</strong>: the 40:1 Myo and D-Chiro blend.</p>
+  <ul>
+    <li>40:1 Myo to D-Chiro Inositol ratio</li>
+    <li>D-chiro sourced from non-GMO carob extract</li>
+    <li>Pharmacopoeial grade</li>
+    <li>Third-party tested</li>
+    <li>Non-GMO, vegan, gluten-free</li>
+    <li>Unflavoured powder for accurate dosing</li>
+    <li>Made in the USA</li>
+  </ul>
+  <p class="bod-formula__note">Clinically studied to support … (keep the asterisk; the FDA line follows the card).</p>
+  <p class="bod-formula__cta"><a href="https://bodology.co/products/myo-d-chiro-inositol-powder">Shop Bodology Inositol</a></p>
+</div>
+```
+
+Only facts from `brand/product-facts.md` go in the list. The card renders as a lavender panel with a two-column
+check list and a navy button.
