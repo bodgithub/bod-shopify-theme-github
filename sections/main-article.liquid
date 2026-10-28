@@ -220,6 +220,23 @@
                   assign bod_related_count = bod_related_count | plus: 1
                 endfor
               endfor
+              comment
+                Top up with the newest articles when fewer than three share a tag (or the article has no tags)
+              endcomment
+              for a in blog.articles
+                if bod_related_count >= 3
+                  break
+                endif
+                if a.id == article.id
+                  continue
+                endif
+                assign key = '|' | append: a.handle | append: '|'
+                if bod_related_handles contains key
+                  continue
+                endif
+                assign bod_related_handles = bod_related_handles | append: key
+                assign bod_related_count = bod_related_count | plus: 1
+              endfor
             -%}
             {%- if bod_related_count > 0 -%}
             <aside class="post-related page-content-width" aria-labelledby="post-related-heading">
