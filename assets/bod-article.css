@@ -295,3 +295,5 @@
 .bod-lb__close:hover, .bod-lb__close:focus-visible { background: #b9c2f5; outline: none; }
 body.bod-lb-open { overflow: hidden; }
 @media only screen and (max-width: 640px) { .bod-lb { padding: 12px; } .bod-lb__close { top: 6px; right: 6px; } .blog-post-detail .post-content .bod-thumb img { max-width: 160px; max-height: 160px; } }
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]),
+.blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) *:not(strong):not(b):not(a) { color: #d6dcf5 !important; }
