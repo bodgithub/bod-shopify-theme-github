@@ -299,7 +299,7 @@
 .footer, .footer a, .footer h4, .footer .widget-title,
 .footer p, .footer .widget, .footer .disclaimers, .footer .copyright { color: #fff; }
 .footer a:hover, .footer a:focus-visible { color: #b9c2f5; }
-.footer img[src*="Bodology_Logo"], .footer img[src*="TikTok_Icon"], .footer img[src*="IG-Icon"] { filter: brightness(0) invert(1); }
+.footer img[src*="TikTok_Icon"], .footer img[src*="IG-Icon"] { filter: brightness(0) invert(1); }  /* icons only; the logo is the real white file */
 .footer .disclaimers { border-color: rgba(255,255,255,0.6) !important; }
 .footer input[type="email"], .footer input[type="text"] { background: transparent; color: #fff; border-color: rgba(255,255,255,0.7); }
 .footer input::placeholder { color: rgba(255,255,255,0.75); }
