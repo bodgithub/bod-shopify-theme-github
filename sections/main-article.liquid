@@ -359,7 +359,19 @@
         var qTags = level === 2 ? ['H3', 'H4'] : ['H4'];
         var node = faqHead.nextElementSibling;
         while (node && !(node.tagName === faqHead.tagName) && !(node.tagName.charAt(0) === 'H' && parseInt(node.tagName.charAt(1), 10) <= level)) {
-          if (qTags.indexOf(node.tagName) >= 0 && node.textContent.trim()) {
+          /* shape B: <p><strong>Question</strong><br>answer…</p> */
+          if (node.tagName === 'P' && node.firstElementChild && node.firstElementChild.tagName === 'STRONG' && node.firstElementChild.nextSibling && node.firstElementChild.nextSibling.nodeName === 'BR') {
+            var strongQ = node.firstElementChild; var br = strongQ.nextSibling;
+            var detB = document.createElement('details'); detB.className = 'bod-note-acc bod-faq';
+            var sumB = document.createElement('summary'); sumB.textContent = sentenceCase(strongQ.textContent.replace(/\s+/g, ' ').trim());
+            var bodyB = document.createElement('div'); bodyB.className = 'bod-note-acc__body';
+            var pB = document.createElement('p');
+            var rest = Array.from(node.childNodes).filter(function (c) { return c !== strongQ && c !== br; });
+            rest.forEach(function (c) { pB.appendChild(c); });
+            bodyB.appendChild(pB); detB.appendChild(sumB); detB.appendChild(bodyB);
+            node.replaceWith(detB); node = detB;
+          }
+          else if (qTags.indexOf(node.tagName) >= 0 && node.textContent.trim()) {
             var q = node; var answer = [];
             var n = q.nextElementSibling;
             while (n && qTags.indexOf(n.tagName) < 0 && !(n.tagName.charAt(0) === 'H' && parseInt(n.tagName.charAt(1), 10) <= level)) { answer.push(n); n = n.nextElementSibling; }
