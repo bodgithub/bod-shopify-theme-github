@@ -271,3 +271,21 @@
 .blog-post-detail .post-content .bod-note-acc__body p { margin: 0 0 12px !important; }
 .blog-post-detail .post-content .bod-note-acc__body > :last-child { margin-bottom: 0 !important; }
 .blog-post-detail .post-content .bod-note-acc__body i span, .blog-post-detail .post-content .bod-note-acc__body .bod-note__sign { font-size: 13px !important; color: #42579e !important; }
+
+/* ---------- Body images: thumbnails that open in a lightbox (banner and bio portraits excluded) ---------- */
+.blog-post-detail .post-content .bod-thumb { display: inline-block; vertical-align: top; margin: 8px 12px 16px 0; padding: 0; border: 0; background: none; cursor: zoom-in; border-radius: 12px; overflow: hidden; line-height: 0; }
+.blog-post-detail .post-content .bod-thumb img { display: block; width: auto; max-width: 240px; max-height: 240px; height: auto; border-radius: 12px; transition: transform .2s ease; }
+.blog-post-detail .post-content .bod-thumb:hover img, .blog-post-detail .post-content .bod-thumb:focus-visible img { transform: scale(1.03); }
+.blog-post-detail .post-content .bod-thumb:focus-visible { outline: 2px solid #3447af; outline-offset: 3px; }
+.blog-post-detail .post-content figure .bod-thumb { margin: 0; }
+.bod-lb { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.bod-lb[hidden] { display: none; }
+.bod-lb__back { position: absolute; inset: 0; background: rgba(26, 40, 116, 0.82); cursor: zoom-out; }
+.bod-lb__fig { position: relative; margin: 0; max-width: min(1100px, 100%); max-height: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.bod-lb__img { max-width: 100%; max-height: calc(100vh - 110px); border-radius: 14px; background: #fff; }
+.bod-lb__cap { color: #d6dcf5; font-size: 14px; text-align: center; max-width: 720px; }
+.bod-lb__cap[hidden] { display: none; }
+.bod-lb__close { position: absolute; top: -14px; right: -14px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: #fff; color: #1a2874; font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+.bod-lb__close:hover, .bod-lb__close:focus-visible { background: #b9c2f5; outline: none; }
+body.bod-lb-open { overflow: hidden; }
+@media only screen and (max-width: 640px) { .bod-lb { padding: 12px; } .bod-lb__close { top: 6px; right: 6px; } .blog-post-detail .post-content .bod-thumb img { max-width: 160px; max-height: 160px; } }
