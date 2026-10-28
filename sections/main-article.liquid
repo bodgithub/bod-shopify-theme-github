@@ -306,6 +306,50 @@
     const tocBox = document.getElementById('toc-box');
     if (tocBox && window.matchMedia('(min-width: 901px)').matches) { tocBox.open = true; }
 
+    // ---- Bodology: one voice for pasted content -------------------------------------------
+    // 1. Headings typed in CAPITALS become sentence case (acronyms and the brand name kept).
+    // 2. "Bodology note" boxes (Word tables with a lavender cell, or .bod-note) become accordions.
+    (function normaliseArticle(root) {
+      if (!root) { return; }
+      var KEEP = ['PMDD','PCOS','PMOS','PMS','FDA','GLP-1','GLP1','IVF','GABA','ADHD','BMI','TSH','AMH','FSH','LH','DHEA','SHBG','OCD','PTSD','UK','US','USA','DNA','RNA','COA','GMP','NSF','RD','CNP','FDNP','FAQ','FAQS','ADHD','IR','I','A1C','HRT','IUD','IBS','PMID','DOI'];
+      var SPECIAL = { 'BODOLOGY': 'Bodology', 'BODOLOGY®': 'Bodology®', 'TIKTOK': 'TikTok', 'D-CHIRO': 'D-Chiro', 'D-CHIRO-INOSITOL': 'D-Chiro-Inositol', 'MYO': 'Myo', 'PHD': 'PhD', 'HBA1C': 'HbA1c', 'GLP-1S': 'GLP-1s' };
+      function sentenceCase(text) {
+        var t = text.replace(/\s+/g, ' ').trim();
+        var letters = t.replace(/[^A-Za-z]/g, '');
+        if (letters.length < 4 || letters !== letters.toUpperCase()) { return text; } /* not an all-caps string: leave it */
+        var words = t.split(' ').map(function (w) {
+          var core = w.replace(/[^A-Za-z0-9\-®]/g, '');
+          if (SPECIAL[core]) { return w.replace(core, SPECIAL[core]); }
+          if (KEEP.indexOf(core) >= 0) { return w; }
+          return w.toLowerCase();
+        });
+        var out = words.join(' ');
+        out = out.replace(/^(\W*)([a-z])/, function (m, a, b) { return a + b.toUpperCase(); });
+        out = out.replace(/([.!?]\s+)([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); });
+        return out;
+      }
+      function fixCaps(el) {
+        if (el.children.length === 1 && el.children[0].tagName === 'STRONG') { el = el.children[0]; }
+        if (el.children.length === 0) { var fixed = sentenceCase(el.textContent); if (fixed !== el.textContent) { el.textContent = fixed; } }
+        else { Array.from(el.childNodes).forEach(function (n) { if (n.nodeType === 3) { var f = sentenceCase(n.nodeValue); if (f !== n.nodeValue) { n.nodeValue = f; } } else if (n.nodeType === 1) { fixCaps(n); } }); }
+      }
+      root.querySelectorAll('h1, h2, h3, h4, h5, h6, summary').forEach(fixCaps);
+
+      var boxes = root.querySelectorAll('td[style*="#EEF1FF"], td[style*="#eef1ff"], .bod-note');
+      boxes.forEach(function (box) {
+        if (box.closest('details')) { return; }
+        var heading = box.querySelector('h1, h2, h3, h4, .bod-note__label');
+        var title = heading ? heading.textContent.trim() : 'Bodology note';
+        var details = document.createElement('details'); details.className = 'bod-note-acc';
+        var summary = document.createElement('summary'); summary.textContent = sentenceCase(title) || title;
+        var body = document.createElement('div'); body.className = 'bod-note-acc__body';
+        Array.from(box.childNodes).forEach(function (n) { if (n !== heading) { body.appendChild(n); } });
+        details.appendChild(summary); details.appendChild(body);
+        var table = box.closest('table');
+        (table || box).replaceWith(details);
+      });
+    })(articleContentElement);
+
     if (articleContentElement && tocElement) {
       let articleContent = articleContentElement.innerHTML;
 

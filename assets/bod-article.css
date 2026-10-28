@@ -160,8 +160,7 @@
 
 /* ---------- Callouts: "At a glance", "Article bios", and the old gradient h4 boxes ---------- */
 .blog-post-detail .post-content .at-a-glance { background: #eef1ff; border: 0; border-radius: 12px; padding: 24px 26px; margin: 28px 0 36px; }
-.blog-post-detail .post-content .at-a-glance h3 { margin: 0 0 12px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: 0; color: #3447af; text-transform: lowercase; }
-.blog-post-detail .post-content .at-a-glance h3::first-letter { text-transform: uppercase; }
+.blog-post-detail .post-content .at-a-glance h3 { margin: 0 0 12px; font-size: 22px; line-height: 1.25; font-weight: 700; letter-spacing: 0; color: #3447af; text-transform: none; }
 .blog-post-detail .post-content .at-a-glance p, .blog-post-detail .post-content .at-a-glance li { font-size: 16px; line-height: 1.6; color: #1a2874; }
 .blog-post-detail .post-content .at-a-glance li p { margin: 0; }
 .blog-post-detail .post-content .at-a-glance ul { margin: 8px 0 0; }
@@ -258,3 +257,17 @@
 .blog-post-detail .post-content h2 span, .blog-post-detail .post-content h3 span, .blog-post-detail .post-content h4 span { font-size: inherit !important; color: inherit !important; font-weight: inherit !important; }
 .blog-post-detail .post-content strong span, .blog-post-detail .post-content b span { font-weight: inherit; }
 .blog-post-detail .post-content p:empty, .blog-post-detail .post-content p > br:only-child { display: none; }
+
+/* ---------- Bodology note accordions (built from the pasted note boxes by the article script) ---------- */
+.blog-post-detail .post-content .bod-note-acc { background: #eef1ff; border-radius: 12px; margin: 28px 0; padding: 0; overflow: hidden; }
+.blog-post-detail .post-content .bod-note-acc > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-size: 17px; line-height: 1.35; font-weight: 600; color: #1a2874; }
+.blog-post-detail .post-content .bod-note-acc > summary::-webkit-details-marker { display: none; }
+.blog-post-detail .post-content .bod-note-acc > summary::after { content: ""; flex: 0 0 auto; width: 10px; height: 10px; border-right: 2px solid #3447af; border-bottom: 2px solid #3447af; transform: rotate(45deg); margin-right: 4px; transition: transform .2s; }
+.blog-post-detail .post-content .bod-note-acc[open] > summary::after { transform: rotate(225deg); }
+.blog-post-detail .post-content .bod-note-acc > summary:hover { color: #3447af; }
+.blog-post-detail .post-content .bod-note-acc > summary:focus-visible { outline: 2px solid #3447af; outline-offset: -4px; border-radius: 12px; }
+.blog-post-detail .post-content .bod-note-acc__body { padding: 0 22px 20px; }
+.blog-post-detail .post-content .bod-note-acc__body p, .blog-post-detail .post-content .bod-note-acc__body li, .blog-post-detail .post-content .bod-note-acc__body span { font-size: 16px !important; line-height: 1.6 !important; color: #1a2874 !important; font-style: normal !important; }
+.blog-post-detail .post-content .bod-note-acc__body p { margin: 0 0 12px !important; }
+.blog-post-detail .post-content .bod-note-acc__body > :last-child { margin-bottom: 0 !important; }
+.blog-post-detail .post-content .bod-note-acc__body i span, .blog-post-detail .post-content .bod-note-acc__body .bod-note__sign { font-size: 13px !important; color: #42579e !important; }
