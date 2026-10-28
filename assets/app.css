@@ -2933,8 +2933,8 @@ input[type="submit"] {
   height: 50px;
   font-weight: var(--font-body-medium-weight, 400);
   letter-spacing: var(--button-letter-spacing, 0.02em);
-  background: var(--solid-button-background, #1A2874);
-  color: var(--solid-button-label, #B9C2F5);
+  background: var(--solid-button-background, #3447af);
+  color: var(--solid-button-label, #ffffff);
   font-weight: 500;
   /*border: 1px solid #e7dccd;*/
   border-radius: var(--button-border-radius, 6px);
@@ -2967,9 +2967,9 @@ input[type="submit"] {
   @media screen and (hover: hover) {
     .button:hover,
     input[type="submit"]:hover {
-      background: #3447af;
-      border-color: #3447af;
-      color: #fff; } }
+      background: #1a2874;
+      border-color: #1a2874;
+      color: #b9c2f5; } }
   .button.loading span,
   [loading="true"] .button span,
   input[type="submit"].loading span,
@@ -3054,8 +3054,8 @@ input[type="submit"] {
   
         .button.accent,
   input[type="submit"].accent {
-    background: var(--solid-button-background, #1A2874); /* was a gradient; see git history. ( #a02127); var(--color-accent);*/
-    color: var(--solid-button-label, #B9C2F5);
+    background: var(--solid-button-background, #3447af); /* was a gradient; see git history. ( #a02127); var(--color-accent);*/
+    color: var(--solid-button-label, #ffffff);
   text-decoration: none;}
     .button.accent .spinner-path,
     input[type="submit"].accent .spinner-path {
@@ -3063,9 +3063,9 @@ input[type="submit"] {
     @media screen and (hover: hover) {
       .button.accent:hover,
       input[type="submit"].accent:hover {
-        background: #3447af;
-        border-color: #3447af;
-      color: #fff;} }
+        background: #1a2874;
+        border-color: #1a2874;
+      color: #b9c2f5;} }
   .button[disabled],
   input[type="submit"][disabled] {
     background: rgba(var(--color-body-rgb), 0.4);
@@ -4418,5 +4418,5 @@ h2 {
 /* Navbar dropdown links keep #3447af while the top-level nav and footer use the header/footer settings */
 .thb-full-menu ul ul a, .thb-full-menu .sub-menu a, .thb-full-menu .dropdown a, .thb-full-menu .megamenu a { color: #3447af; }
 /* Junip "Leave a review" button (injected by the app) follows the site buttons */
-.junip-review-btn, a.junip-review-btn { background: #1a2874 !important; background-image: none !important; color: #b9c2f5 !important; border: 0 !important; border-radius: var(--button-border-radius, 40px) !important; font-weight: 500 !important; }
-.junip-review-btn:hover, .junip-review-btn:focus-visible { background: #3447af !important; color: #fff !important; }
+.junip-review-btn, a.junip-review-btn { background: #3447af !important; background-image: none !important; color: #ffffff !important; border: 0 !important; border-radius: var(--button-border-radius, 40px) !important; font-weight: 500 !important; }
+.junip-review-btn:hover, .junip-review-btn:focus-visible { background: #1a2874 !important; color: #b9c2f5 !important; }

@@ -3,8 +3,8 @@
 /* Home banner button: solid #3447AF on hover and keyboard focus (the theme hover is a blue gradient) */
 .image-with-text-overlay .button:hover,
 .image-with-text-overlay .button:focus-visible {
-  background: #3447af !important;
+  background: #1a2874 !important;
   background-image: none !important;
-  border-color: #3447af !important;
-  color: #fff !important;
+  border-color: #1a2874 !important;
+  color: #b9c2f5 !important;
 }

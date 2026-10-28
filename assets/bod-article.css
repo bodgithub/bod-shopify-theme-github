@@ -337,8 +337,8 @@ body.bod-lb-open { overflow: hidden; }
 .blog-post-detail .post-content .bod-formula li::after { content: ""; position: absolute; left: 5px; top: 6px; width: 6px; height: 3px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg); }
 .blog-post-detail .post-content .bod-formula .bod-formula__note { font-size: 13px; line-height: 1.5; color: #42579e; margin: 0 0 18px; }
 .blog-post-detail .post-content .bod-formula .bod-formula__cta { margin: 0; }
-.blog-post-detail .post-content .bod-formula .bod-formula__cta a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 40px; background: #1a2874; color: #b9c2f5 !important; font-weight: 500; font-size: 16px; text-decoration: none; }
-.blog-post-detail .post-content .bod-formula .bod-formula__cta a:hover, .blog-post-detail .post-content .bod-formula .bod-formula__cta a:focus-visible { background: #3447af; color: #fff !important; }
+.blog-post-detail .post-content .bod-formula .bod-formula__cta a { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 40px; background: #3447af; color: #ffffff !important; font-weight: 500; font-size: 16px; text-decoration: none; }
+.blog-post-detail .post-content .bod-formula .bod-formula__cta a:hover, .blog-post-detail .post-content .bod-formula .bod-formula__cta a:focus-visible { background: #1a2874; color: #b9c2f5 !important; }
 .blog-post-detail .post-content .bod-formula .bod-formula__cta strong { color: inherit; }
 /* FAQ toggles sit tighter than the notes */
 .blog-post-detail .post-content .bod-faq { margin: 10px 0; }
