@@ -304,3 +304,24 @@ body.bod-lb-open { overflow: hidden; }
 .blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) h2,
 .blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) h3,
 .blog-post-detail .post-content blockquote:not(.tiktok-embed):not([data-video-id]) h4 { line-height: 1.5; }
+
+/* ---------- Small print (h6 / .tiny-text disclaimers) ---------- */
+.blog-post-detail .post-content h6, .blog-post-detail .post-content .tiny-text,
+.blog-post-detail .post-content h6 span, .blog-post-detail .post-content .tiny-text span { font-size: 13px !important; line-height: 1.5 !important; font-weight: 400; color: #42579e !important; margin: 12px 0 0; letter-spacing: 0; }
+.blog-post-detail .post-content hr { border: 0; border-top: 1px solid #d6dcf5; margin: 28px 0; }
+
+/* ---------- Keep reading: colour blocks with the headline inside, no photos ---------- */
+.blog-post-detail .post-related__img { display: none; }
+.blog-post-detail .post-related__card { padding: 22px 22px 24px; min-height: 170px; border-radius: 16px; justify-content: flex-end; gap: 10px; transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease; }
+.blog-post-detail .post-related__card:nth-child(3n+1) { background: #1a2874; color: #d6dcf5; }
+.blog-post-detail .post-related__card:nth-child(3n+2) { background: #3447af; color: #fff; }
+.blog-post-detail .post-related__card:nth-child(3n+3) { background: #eef1ff; color: #1a2874; }
+.blog-post-detail .post-related__card .post-related__tag { color: inherit; opacity: .8; }
+.blog-post-detail .post-related__card .post-related__title { font-size: 18px; line-height: 1.3; color: inherit; }
+.blog-post-detail .post-related__card:hover, .blog-post-detail .post-related__card:focus-visible { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(26, 40, 116, 0.18); }
+.blog-post-detail .post-related__card:nth-child(3n+1):hover { background: #3447af; color: #fff; }
+.blog-post-detail .post-related__card:nth-child(3n+2):hover { background: #4d61cf; color: #fff; }
+.blog-post-detail .post-related__card:nth-child(3n+3):hover { background: #b9c2f5; color: #1a2874; }
+.blog-post-detail .post-related__card:hover .post-related__title { text-decoration: none; color: inherit; }
+.blog-post-detail .post-related__card:focus-visible { outline: 2px solid #3447af; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .blog-post-detail .post-related__card { transition: none; } .blog-post-detail .post-related__card:hover { transform: none; } }
