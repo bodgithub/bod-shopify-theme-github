@@ -199,7 +199,7 @@
 #ps1c-{{ uid }} .pc-pill{font-size:9.5px; padding:2px 6px; letter-spacing:0;}
 }
 {%- if s.card_flat -%}
-#ps1c-{{ uid }} .pc-ribbon{top:auto; bottom:0; right:0; border-bottom:0; border-top:1px solid {{ acc }}; border-left:1px solid {{ acc }}; border-radius:0; padding:4px 11px;}
+#ps1c-{{ uid }} .pc-ribbon{top:auto; bottom:0; right:0; border-bottom:0; border-top:1px solid {{ s.card_border_color | default: acc }}; border-left:1px solid {{ s.card_border_color | default: acc }}; border-radius:0; padding:4px 11px; background:{{ s.card_border_color | default: acc }}; color:#fff;}
 #ps1c-{{ uid }} .ps-giftban{margin-bottom:0;}
 #ps1c-{{ uid }} .ps-modal__s{font-size:15px; line-height:1.5; color:#14307C;}
 #ps1c-{{ uid }} .ps-concern__t{font-size:15px; line-height:1.35; color:#14307C;}
