@@ -189,7 +189,15 @@
 #ps1c-{{ uid }} a.ps-modal__done{display:block; text-align:center; text-decoration:none;}
 #ps1c-{{ uid }} .ps-modal__links{display:flex; justify-content:center; gap:26px; margin-top:16px;}
 #ps1c-{{ uid }} .ps-modal__link{color:var(--ps-ink); font-size:14px; text-decoration:underline; cursor:pointer; background:none; border:0; padding:0; font-family:inherit;}
-@media (max-width:749px){#ps1c-{{ uid }} .pc-title{font-size:17px;}#ps1c-{{ uid }} .pc-price__now{font-size:17px;}}
+@media (max-width:749px){
+#ps1c-{{ uid }} .pc-title{font-size:17px; white-space:nowrap;}
+#ps1c-{{ uid }} .pc-price__now{font-size:17px;}
+/* keep the save pill on the title line on phones: smaller pill, tighter gaps, 16px checkbox; pricing column untouched */
+#ps1c-{{ uid }} .pc-titlerow{gap:6px;}
+#ps1c-{{ uid }} .pc-check{width:16px; height:16px;}
+#ps1c-{{ uid }} .pc-check svg{width:10px; height:10px;}
+#ps1c-{{ uid }} .pc-pill{font-size:9.5px; padding:2px 6px; letter-spacing:0;}
+}
 {%- if s.card_flat -%}
 #ps1c-{{ uid }} .pc-ribbon{top:auto; bottom:0; right:0; border-bottom:0; border-top:1px solid {{ acc }}; border-left:1px solid {{ acc }}; border-radius:0; padding:4px 11px;}
 #ps1c-{{ uid }} .ps-giftban{margin-bottom:0;}
