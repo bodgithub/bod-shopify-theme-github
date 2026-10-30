@@ -516,7 +516,9 @@
         "plan_selector_1c_kJbRfd": {
           "type": "plan_selector_1c",
           "settings": {
-            "border_width": 5,
+            "border_width": 3,
+            "card_flat": true,
+            "card_border_color": "#3447af",
             "max_width": 560,
             "sub_first": false,
             "bundle_position": "last",
