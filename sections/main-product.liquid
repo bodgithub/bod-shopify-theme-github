@@ -3469,7 +3469,8 @@
         {
           "type": "range",
           "id": "border_width",
-          "label": "Gradient border width",
+          "label": "Selected card border width",
+          "info": "Gradient width on the default style; solid border width of the selected card on the flat style.",
           "min": 2,
           "max": 12,
           "step": 1,
@@ -3741,8 +3742,18 @@
         {
           "type": "checkbox",
           "id": "card_flat",
-          "label": "Flat selected card (no gradient)",
+          "label": "Flat cards (solid border, square corners, checkbox, no fill)",
           "default": false
+        },
+        {
+          "type": "range",
+          "id": "card_border_width",
+          "label": "Card border width (unselected, flat style)",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "unit": "px",
+          "default": 1
         },
         {
           "type": "color",
