@@ -16,7 +16,8 @@
           "type": "subheading",
           "settings": {
             "text": "<p>{{ metaobjects.problem.fertility.category_title.value }}</p>",
-            "text_color": "#1a2874"
+            "text_color": "#1a2874",
+            "pill_match": true
           }
         },
         "heading_FGRE4D": {
