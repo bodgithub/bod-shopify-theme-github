@@ -46,6 +46,8 @@
     code_rules: "",
     code_held_text: "{code} is saved. It applies as soon as a qualifying item is in your cart.",
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
+    sub_only_codes: "",
+    code_sub_only_text: "{code} only works on subscriptions. Switch to Subscribe & Save and it will be applied automatically.",
     code_blocks: "* : plan 7141621979",
     code_blocked_text: "{code} doesn't apply to the bundle, which is already {percent}% off.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
@@ -149,6 +151,19 @@
       rules.push({ alias: m[1], code: m[2], kind: m[3].toLowerCase().replace(/[^a-z]/g, ''), id: m[4] ? String(m[4]) : null });
     });
     return rules;
+  }
+  /* Subscription-only codes: one code per line (or comma-separated). Each becomes the rule
+       CODE -> CODE : subscription
+     so the drawer holds it while the cart is one-time only, says so, and applies it the
+     moment a line switches to a subscription. */
+  function subOnlyRules(text) {
+    return String(text || '').split(/[\n,|]/).map(function (c) { return c.trim(); }).filter(Boolean).map(function (c) {
+      return { alias: c, code: c, kind: 'subscription', id: null };
+    });
+  }
+  function subOnlyAlias(rules, alias) {
+    var mine = rules.filter(function (r) { return lower(r.alias) === lower(alias); });
+    return mine.length > 0 && mine.every(function (r) { return r.kind === 'subscription' || r.kind === 'plan'; });
   }
   function aliasFor(rules, code) {
     var c = lower(code);
@@ -285,7 +300,7 @@
     var codeSet = {};
     codes.forEach(function (c) { codeSet[String(c).toLowerCase()] = true; });
     /* what the customer sees: a family member shows as its alias (MY20-, -MY20 -> MY20) */
-    var rules = parseRules(S.code_rules);
+    var rules = parseRules(S.code_rules).concat(subOnlyRules(S.sub_only_codes));
     var blocks = parseBlocks(S.code_blocks);
     var codeNames = uniq(codes.map(function (c) { return aliasFor(rules, c) || c; }));
     var codeTotal = sum(codeApps, function (d) { return d.total_allocated_amount; });
@@ -597,6 +612,7 @@
       var top = Math.max.apply(null, unmatched.map(function (l) { return l.plan.pct; }));
       return tpl(st.S.code_beaten_text, { code: alias, percent: top });
     }
+    if (subOnlyAlias(st.rules, alias)) { return tpl(st.S.code_sub_only_text, { code: alias }); }
     return tpl(st.S.code_held_text, { code: alias });
   }
 

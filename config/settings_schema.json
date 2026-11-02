@@ -1252,6 +1252,20 @@
       },
       {
         "type": "textarea",
+        "id": "bcd_sub_only_codes",
+        "label": "Subscription-only codes",
+        "default": "",
+        "info": "One code per line. When one of these is entered while the cart has no subscription, the drawer holds it, shows the message below, and applies it automatically once a line is switched to a subscription."
+      },
+      {
+        "type": "text",
+        "id": "bcd_code_sub_only_text",
+        "label": "Subscription-only code held (cart is one-time only)",
+        "default": "{code} only works on subscriptions. Switch to Subscribe & Save and it will be applied automatically.",
+        "info": "Tokens: {code}"
+      },
+      {
+        "type": "textarea",
         "id": "bcd_code_blocks",
         "label": "Code blocks (a code that must not apply with certain items)",
         "default": "* : plan 7141621979",
