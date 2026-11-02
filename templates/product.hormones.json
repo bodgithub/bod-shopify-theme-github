@@ -3244,109 +3244,6 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
-    },
-    "quote_grid_reviews_concern": {
-      "type": "quote-grid",
-      "blocks": {
-        "quote_c1": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "Simple & effective",
-            "text": "<p>Grateful for a product that treats root cause as opposed to systematic defence. Great for balancing my hormones and easing my cravings.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Sarah M.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c2": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "New obsession unlocked!",
-            "text": "<p>My sugar cravings have gone way down, and I feel so much more balanced overall with my PCOS and insulin resistance.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Jodi Y.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c3": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "Tastes good and supporting my PCOS",
-            "text": "<p>Actually tastes really good and natural. Supporting my PCOS symptoms so far so good.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Hailey J.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c4": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "Amazing!",
-            "text": "<p>I have tried different inositols and absolutely love this one. I can tell the difference it does to my body! Has helped with my cravings and pcos!</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Esther E.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "quote_c1",
-        "quote_c2",
-        "quote_c3",
-        "quote_c4"
-      ],
-      "name": "Quote grid",
-      "settings": {
-        "contained": false,
-        "max_width": 1160,
-        "heading": "",
-        "heading_align": "center",
-        "heading_size": 0,
-        "heading_color": "#1a2874",
-        "accent_color": "#1b3def",
-        "columns": 2,
-        "grid_gap": 40,
-        "side_pad": 0,
-        "card_mode": false,
-        "quote_card_bg": "#ffffff",
-        "quote_card_border": "#3447af",
-        "star_color": "#ddbd6d",
-        "text_color": "#1a2874",
-        "quote_size": 15,
-        "page_bg": "#f2eeea",
-        "card_bg": "#f3eeea",
-        "bg_blur": 0,
-        "overlay_color": "#f2eeea",
-        "overlay_opacity": 40,
-        "pad_top": 0,
-        "pad_bottom": 36,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
     }
   },
   "order": [
@@ -3373,7 +3270,6 @@
     "featured_blog_GjYBE8",
     "video_pdBgr8",
     "rich_text_yXby9z",
-    "quote_grid_reviews_concern",
     "17289436895cc28ff7"
   ]
 }

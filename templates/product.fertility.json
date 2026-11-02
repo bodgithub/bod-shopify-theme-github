@@ -3245,109 +3245,6 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
-    },
-    "quote_grid_reviews_concern": {
-      "type": "quote-grid",
-      "blocks": {
-        "quote_c1": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "",
-            "text": "<p>I’m pretty sure it has contributed to my period coming back and ovulation happening. Also a lot of my cravings have gone away.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Jessica O.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c2": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "Works great for PCOS/PMOS",
-            "text": "<p>Finally got my cycle back!</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Faith C.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c3": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "I’ve loved using Inositol so far",
-            "text": "<p>I’ve loved using the Inositol powder by Bodology! Highly recommend for girlys who need help with regularity and help with just feeling normal again.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Nkayla R.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c4": {
-          "type": "quote",
-          "settings": {
-            "stars": 4,
-            "title": "Love this supplement!",
-            "text": "<p>After taking it consistently, I noticed a huge improvement in my cycle, energy, and overall energy! Will be purchasing again!</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Tera M.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "quote_c1",
-        "quote_c2",
-        "quote_c3",
-        "quote_c4"
-      ],
-      "name": "Quote grid",
-      "settings": {
-        "contained": false,
-        "max_width": 1160,
-        "heading": "",
-        "heading_align": "center",
-        "heading_size": 0,
-        "heading_color": "#1a2874",
-        "accent_color": "#1b3def",
-        "columns": 2,
-        "grid_gap": 40,
-        "side_pad": 0,
-        "card_mode": false,
-        "quote_card_bg": "#ffffff",
-        "quote_card_border": "#3447af",
-        "star_color": "#ddbd6d",
-        "text_color": "#1a2874",
-        "quote_size": 15,
-        "page_bg": "#f2eeea",
-        "card_bg": "#f3eeea",
-        "bg_blur": 0,
-        "overlay_color": "#f2eeea",
-        "overlay_opacity": 40,
-        "pad_top": 0,
-        "pad_bottom": 36,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
     }
   },
   "order": [
@@ -3374,7 +3271,6 @@
     "featured_blog_GjYBE8",
     "video_pdBgr8",
     "rich_text_yXby9z",
-    "quote_grid_reviews_concern",
     "17289436895cc28ff7"
   ]
 }

@@ -3245,109 +3245,6 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
-    },
-    "quote_grid_reviews_concern": {
-      "type": "quote-grid",
-      "blocks": {
-        "quote_c1": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "Well tolerated and tons of benefits!",
-            "text": "<p>I’m not experiencing ANY side effects except reduced food noise, reduced bloating, and a peppy mood!! Such a weight lifted off my shoulders. I feel better.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Sarah P.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c2": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "Helped improve my sleep",
-            "text": "<p>I've been using the Inositol powder for around a month now and really enjoy it. I haven't had any GI issues at all from taking it like I have with other brands. I've been getting better sleep since starting this powder and am very happy about that.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Kristina A.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c3": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "Energy and moods",
-            "text": "<p>This has helped my moods and energy levels significantly.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Kaitlyn B.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        },
-        "quote_c4": {
-          "type": "quote",
-          "settings": {
-            "stars": 5,
-            "title": "I tried Bodology’s inositol",
-            "text": "<p>It dissolves easily, has no weird taste, and has made a huge difference to my cycles, energy, mood, and hormonal balance.</p>",
-            "image": "shopify://shop_images/profile_pic_3.png",
-            "name": "Tia P.",
-            "role": "Verified buyer",
-            "stars_2": 5,
-            "title_2": "",
-            "text_2": "",
-            "name_2": "",
-            "role_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "quote_c1",
-        "quote_c2",
-        "quote_c3",
-        "quote_c4"
-      ],
-      "name": "Quote grid",
-      "settings": {
-        "contained": false,
-        "max_width": 1160,
-        "heading": "",
-        "heading_align": "center",
-        "heading_size": 0,
-        "heading_color": "#1a2874",
-        "accent_color": "#1b3def",
-        "columns": 2,
-        "grid_gap": 40,
-        "side_pad": 0,
-        "card_mode": false,
-        "quote_card_bg": "#ffffff",
-        "quote_card_border": "#3447af",
-        "star_color": "#ddbd6d",
-        "text_color": "#1a2874",
-        "quote_size": 15,
-        "page_bg": "#f2eeea",
-        "card_bg": "#f3eeea",
-        "bg_blur": 0,
-        "overlay_color": "#f2eeea",
-        "overlay_opacity": 40,
-        "pad_top": 0,
-        "pad_bottom": 36,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
     }
   },
   "order": [
@@ -3374,7 +3271,6 @@
     "featured_blog_GjYBE8",
     "video_pdBgr8",
     "rich_text_yXby9z",
-    "quote_grid_reviews_concern",
     "17289436895cc28ff7"
   ]
 }
