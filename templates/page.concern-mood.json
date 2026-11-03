@@ -47,9 +47,10 @@
         "benefits_MfjQJR": {
           "type": "benefits",
           "settings": {
-            "benefits-title": "{{ product.metafields.custom.problem_category.value.benefits_intro.value }}",
+            "benefits-title": "",
             "icon_size": 25,
             "border_size": 1,
+            "text_color": "#1a2874",
             "border_color": "#1b3def",
             "benefit_1": "{{ metaobjects.problem['mood-anxiety'].benefit_1.value.benefit.value }}",
             "icon_1": "{{ metaobjects.problem['mood-anxiety'].benefit_1.value.icon.value }}",
@@ -60,8 +61,7 @@
             "benefit_4": "{{ metaobjects.problem['mood-anxiety'].benefit_4.value.benefit.value }}",
             "icon_4": "{{ metaobjects.problem['mood-anxiety'].benefit_4.value.icon.value }}",
             "benefit_5": "{{ metaobjects.problem['mood-anxiety'].benefit_5.value.benefit.value }}",
-            "icon_5": "{{ metaobjects.problem['mood-anxiety'].benefit_5.value.icon.value }}",
-            "text_color": "#1a2874"
+            "icon_5": "{{ metaobjects.problem['mood-anxiety'].benefit_5.value.icon.value }}"
           }
         },
         "button_rBDtc7": {
@@ -94,106 +94,6 @@
         "text_alignment": "left",
         "text_color": "#1a2874",
         "overlay_color": "#2c2d2e",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "image_with_text_overlay_T3rmDc": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "space_GXftQ9": {
-          "type": "space",
-          "settings": {
-            "height": 50
-          }
-        },
-        "subheading_PpxNFH": {
-          "type": "subheading",
-          "settings": {
-            "text": "<p>WHY INOSITOL</p>",
-            "text_color": "#1a2874"
-          }
-        },
-        "heading_xiV3aM": {
-          "type": "heading",
-          "settings": {
-            "text": "<h1>Balanced hormones begin with <em>metabolic</em> health</h1>",
-            "heading_color": "#3447af",
-            "heading_size": "h1-large"
-          }
-        },
-        "text_WiQefq": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Cravings, mood swings, PCOS, and TTC challenges aren’t separate issues. They’re metabolic signals.</p>",
-            "description_color": "#1a2874",
-            "description_size": "small"
-          }
-        },
-        "benefits_d8eRbc": {
-          "type": "benefits",
-          "settings": {
-            "benefits-title": "",
-            "icon_size": 28,
-            "border_size": 1,
-            "border_color": "#1b3def",
-            "benefit_1": "That's where inositol comes in.",
-            "icon_1": "shopify://shop_images/icon_check-circle.png",
-            "benefit_2": "",
-            "benefit_3": "",
-            "benefit_4": "",
-            "benefit_5": ""
-          }
-        },
-        "space_h3QWPp": {
-          "type": "space",
-          "settings": {
-            "height": 50
-          }
-        },
-        "benefits_b3bkkE": {
-          "type": "benefits",
-          "disabled": true,
-          "settings": {
-            "benefits-title": "",
-            "icon_size": 28,
-            "border_size": 1,
-            "border_color": "#1b3def",
-            "benefit_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
-            "icon_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.icon.value }}",
-            "benefit_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.benefit.value }}",
-            "icon_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.icon.value }}",
-            "benefit_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.benefit.value }}",
-            "icon_3": "{{ product.metafields.custom.problem_category.value.benefit_3.value.icon.value }}",
-            "benefit_4": "",
-            "benefit_5": ""
-          }
-        }
-      },
-      "block_order": [
-        "space_GXftQ9",
-        "subheading_PpxNFH",
-        "heading_xiV3aM",
-        "text_WiQefq",
-        "benefits_d8eRbc",
-        "space_h3QWPp",
-        "benefits_b3bkkE"
-      ],
-      "disabled": true,
-      "name": "Image with text overlay",
-      "settings": {
-        "image": "shopify://shop_images/Bodology-Hormone-Desktop-Banner-7.jpg",
-        "mobile_image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-7.jpg",
-        "image_parallax": false,
-        "desktop_height": "desktop-height-750",
-        "mobile_height": "mobile-height-auto",
-        "full_width": true,
-        "content_width": "small",
-        "content_position": "middle-left",
-        "text_alignment": "left",
-        "text_color": "#1a2874",
-        "overlay_color": "#000000",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
@@ -638,7 +538,6 @@
             "heading_lh": 2.5,
             "card_border_color": "#3447af",
             "card_flat": true,
-            "card_border_width": 1,
             "card_selected_bg": "#e3e7ff",
             "guar_enable": true,
             "guar_text": "60-day money-back guarantee",
@@ -790,7 +689,6 @@
             "heading_lh": 0,
             "card_border_color": "",
             "card_flat": false,
-            "card_border_width": 1,
             "card_selected_bg": "#e3e7ff",
             "guar_enable": false,
             "guar_text": "60-day risk-free guarantee",
@@ -902,7 +800,6 @@
             "heading_lh": 0,
             "card_border_color": "",
             "card_flat": false,
-            "card_border_width": 1,
             "card_selected_bg": "#e3e7ff",
             "guar_enable": false,
             "guar_text": "60-day risk-free guarantee",
@@ -1302,7 +1199,6 @@
             "variant": "46444646269147",
             "plan": "7141621979",
             "qty": 2,
-            "gift_variant": "48915264143579",
             "button_label": "Add",
             "border_color": "#3447af",
             "btn_border_color": "#3447af",
@@ -1580,6 +1476,8 @@
         ".amount {display: none;}"
       ],
       "settings": {
+        "media_layout": "stacked",
+        "carousel_arrow_style": "semicircle",
         "bg_grad_top": "#fbfaf9",
         "bg_grad_bottom": "#f3eeea",
         "reviews_lightbox": true,
@@ -1591,18 +1489,16 @@
         "accordion_line_color": "#3447af",
         "accordion_text_color": "#1a2874",
         "accordion_title_transform": "typed",
+        "heading": "",
+        "description": "",
+        "product": "myo-d-chiro-inositol-powder",
         "show_taxes_included": false,
-        "media_layout": "stacked",
         "thumbnail_position": "bottom",
         "media_aspect_ratio": "square",
-        "carousel_arrow_style": "semicircle",
         "display_captions": false,
         "hide_variants": true,
         "lightbox": false,
-        "enable_video_looping": true,
-        "product": "myo-d-chiro-inositol-powder",
-        "heading": "",
-        "description": ""
+        "enable_video_looping": true
       }
     },
     "clinical_columns_TMq9hH": {
@@ -3238,7 +3134,6 @@
   "order": [
     "gpt_problem_seo_kPxd7C",
     "image_with_text_overlay_zjqnjJ",
-    "image_with_text_overlay_T3rmDc",
     "spacer_fcdpRG",
     "featured_product_concern",
     "clinical_columns_TMq9hH",

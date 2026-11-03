@@ -46,7 +46,7 @@
         "benefits_MfjQJR": {
           "type": "benefits",
           "settings": {
-            "benefits-title": "{{ product.metafields.custom.problem_category.value.benefits_intro.value }}",
+            "benefits-title": "",
             "icon_size": 25,
             "border_size": 1,
             "border_color": "#1b3def",
@@ -165,6 +165,11 @@
             "style": "expanded",
             "border_width": 5,
             "max_width": 720,
+            "swap_plans": true,
+            "default_plan": "2",
+            "plan_url_sync": true,
+            "p1_hero_image": 5,
+            "p2_hero_image": 1,
             "accent_color": "#1b3def",
             "title_color": "#14307c",
             "deep_color": "#0e2160",
@@ -175,10 +180,6 @@
             "gifts_label": "What you get:",
             "gift_width": 95,
             "p1_name": "3-Month Supply",
-            "plan_url_sync": true,
-            "default_plan": "2",
-            "swap_plans": true,
-            "p1_hero_image": 5,
             "p1_cadence": "Ships every 3 months · Cancel anytime",
             "p1_price": "$49",
             "p1_compare": "$65",
@@ -209,7 +210,6 @@
             "p1_gift3_crossout": "$49",
             "p1_gift3_sub": "",
             "p2_name": "6-Week Supply",
-            "p2_hero_image": 1,
             "p2_cadence": "Ships every 6 weeks · cancel anytime",
             "p2_price": "$55",
             "p2_compare": "$65",
@@ -247,7 +247,6 @@
             "color_picker": false,
             "color_picker_use_variants": false,
             "variant_is_disabled": false,
-            "sizing_guide_variant": "Size",
             "sizing_guide_text": "Sizing guide",
             "sizing_guide_icon": "ruler",
             "sizing_guide_page": ""
@@ -269,8 +268,7 @@
           "type": "buy_buttons",
           "disabled": true,
           "settings": {
-            "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
+            "show_dynamic_checkout": false
           }
         },
         "side_panel_NGJTtJ": {
@@ -570,18 +568,18 @@
         ".amount {display: none;}"
       ],
       "settings": {
+        "media_layout": "stacked",
+        "carousel_arrow_style": "semicircle",
+        "heading": "",
+        "description": "",
+        "product": "myo-d-chiro-inositol-powder",
         "show_taxes_included": false,
         "thumbnail_position": "bottom",
-        "carousel_arrow_style": "semicircle",
-        "media_layout": "stacked",
         "media_aspect_ratio": "square",
         "display_captions": false,
         "hide_variants": true,
         "lightbox": false,
-        "enable_video_looping": true,
-        "product": "myo-d-chiro-inositol-powder",
-        "heading": "",
-        "description": ""
+        "enable_video_looping": true
       }
     },
     "1768505899436dba61": {
@@ -1401,7 +1399,7 @@
         "text_9b6n8V": {
           "type": "text",
           "settings": {
-            "text": "{{ product.metafields.custom.problem_category.value.benefits_disclaimer | metafield_tag }}",
+            "text": "{{ page.metafields.custom.problem_category.value.benefits_disclaimer | metafield_tag }}",
             "custom_liquid": "",
             "size": "text-size-regular"
           }
