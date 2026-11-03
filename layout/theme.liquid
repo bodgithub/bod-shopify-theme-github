@@ -13,25 +13,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 	<meta name="theme-color" content="{{ settings.color_body_bg }}">
-	{%- comment -%} Retired concern pages (/pages/hormones etc.) forward to their ?view= concern page, and point their canonical there so search and AI tools index the new page. {%- endcomment -%}
-	{%- liquid
-	  assign legacy_view = ''
-	  if request.page_type == 'page' and request.design_mode == false
-	    case page.handle
-	      when 'hormones'
-	        assign legacy_view = 'hormones'
-	      when 'pcos'
-	        assign legacy_view = 'pcos'
-	      when 'fertility'
-	        assign legacy_view = 'fertility'
-	      when 'anxiety'
-	        assign legacy_view = 'mood'
-	    endcase
-	  endif
-	  if legacy_view != blank
-	    assign legacy_url = request.origin | append: '/products/myo-d-chiro-inositol-powder?view=' | append: legacy_view
-	  endif
-	-%}
 	{%- comment -%} Per-view SEO overrides for the concern product views (added 2026-11-03). The ?view= templates share the product's global title/description; this gives each concern view its own search-led title and description in <title> and the meta description. Social/OG tags: see snippets/social-meta-tags.liquid, which carries the same map. {%- endcomment -%}
 	{%- liquid
 	  assign bod_view_title = ''
@@ -64,13 +45,7 @@
 	    assign bod_page_description = bod_view_description
 	  endif
 	-%}
-	{%- if legacy_view != blank -%}
-	<script>(function(){var q=location.search.replace(/^\?/,'');location.replace({{ legacy_url | json }}+(q?'&'+q:'')+location.hash);})();</script>
-	<meta http-equiv="refresh" content="0; url={{ legacy_url }}">
-	<link rel="canonical" href="{{ legacy_url }}">
-	{%- else -%}
 	<link rel="canonical" href="{{ canonical_url }}">
-	{%- endif -%}
 	<link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
     <link rel="stylesheet" href="https://use.typekit.net/sjq1yng.css">
   <meta name="facebook-domain-verification" content="tl2op5gh4xlxtpkwy4wcyalujhb718" />
