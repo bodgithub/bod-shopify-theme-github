@@ -15,6 +15,30 @@
   endif
 %}
 
+
+{%- comment -%} Per-view SEO overrides for the concern product views (added 2026-11-03): keep og:/twitter: title and description in step with the <title>/meta-description overrides in layout/theme.liquid. {%- endcomment -%}
+{%- liquid
+  if request.page_type == 'product'
+    case template.suffix
+      when 'pcos'
+        assign og_title = "Inositol for PCOS: 40:1 Myo & D-Chiro – Bodology®"
+        assign og_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support hormones in PCOS, blood sugar and insulin function."
+      when 'fertility'
+        assign og_title = "Inositol for Fertility: 40:1 Myo & D-Chiro – Bodology®"
+        assign og_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support conception, balanced hormones and ovarian health."
+      when 'hormones'
+        assign og_title = "Inositol for Hormones: 40:1 Myo & D-Chiro – Bodology®"
+        assign og_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support hormone balance, cycles and ovarian health."
+      when 'mood'
+        assign og_title = "Inositol for Anxiety & Mood: 40:1 Myo & D-Chiro – Bodology®"
+        assign og_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support a calmer mood, ease anxiety and restful sleep."
+      when 'metabolism'
+        assign og_title = "Inositol for Metabolism: 40:1 Myo & D-Chiro – Bodology®"
+        assign og_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support metabolism, blood sugar and insulin function."
+    endcase
+  endif
+-%}
+
 <meta property="og:site_name" content="{{ shop.name }}">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">

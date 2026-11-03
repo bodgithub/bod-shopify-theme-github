@@ -32,6 +32,38 @@
 	    assign legacy_url = request.origin | append: '/products/myo-d-chiro-inositol-powder?view=' | append: legacy_view
 	  endif
 	-%}
+	{%- comment -%} Per-view SEO overrides for the concern product views (added 2026-11-03). The ?view= templates share the product's global title/description; this gives each concern view its own search-led title and description in <title> and the meta description. Social/OG tags: see snippets/social-meta-tags.liquid, which carries the same map. {%- endcomment -%}
+	{%- liquid
+	  assign bod_view_title = ''
+	  assign bod_view_description = ''
+	  if request.page_type == 'product'
+	    case template.suffix
+	      when 'pcos'
+	        assign bod_view_title = "Inositol for PCOS: 40:1 Myo & D-Chiro – Bodology®"
+	        assign bod_view_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support hormones in PCOS, blood sugar and insulin function."
+	      when 'fertility'
+	        assign bod_view_title = "Inositol for Fertility: 40:1 Myo & D-Chiro – Bodology®"
+	        assign bod_view_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support conception, balanced hormones and ovarian health."
+	      when 'hormones'
+	        assign bod_view_title = "Inositol for Hormones: 40:1 Myo & D-Chiro – Bodology®"
+	        assign bod_view_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support hormone balance, cycles and ovarian health."
+	      when 'mood'
+	        assign bod_view_title = "Inositol for Anxiety & Mood: 40:1 Myo & D-Chiro – Bodology®"
+	        assign bod_view_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support a calmer mood, ease anxiety and restful sleep."
+	      when 'metabolism'
+	        assign bod_view_title = "Inositol for Metabolism: 40:1 Myo & D-Chiro – Bodology®"
+	        assign bod_view_description = "Pure, unflavored Myo & D-Chiro Inositol powder in the body's optimal 40:1 ratio, formulated to support metabolism, blood sugar and insulin function."
+	    endcase
+	  endif
+	  assign bod_page_title = page_title
+	  if bod_view_title != blank
+	    assign bod_page_title = bod_view_title
+	  endif
+	  assign bod_page_description = page_description
+	  if bod_view_description != blank
+	    assign bod_page_description = bod_view_description
+	  endif
+	-%}
 	{%- if legacy_view != blank -%}
 	<script>(function(){var q=location.search.replace(/^\?/,'');location.replace({{ legacy_url | json }}+(q?'&'+q:'')+location.hash);})();</script>
 	<meta http-equiv="refresh" content="0; url={{ legacy_url }}">
@@ -60,11 +92,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   
 	<title>
-	{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+	{{ bod_page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless bod_page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
 	</title>
 
-	{% if page_description %}
-	<meta name="description" content="{{ page_description | escape }}">
+	{% if bod_page_description %}
+	<meta name="description" content="{{ bod_page_description | escape }}">
 	{% endif %}
 
 	{%- unless settings.heading_font.system? and settings.body_font.system? -%}
