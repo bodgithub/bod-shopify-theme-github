@@ -69,7 +69,7 @@
 {
   "@context": "http://schema.org/",
   "@id": "/products/{{ product.handle }}#product",
-  "image": "{{ product.featured_image | image_url: width: 1200 }}"
+  "image": "https:{{ product.featured_image | image_url: width: 1200 }}"
 }
 </script>
 {%- endif -%}
