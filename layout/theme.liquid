@@ -18,8 +18,10 @@
 	  assign legacy_view = ''
 	  if request.page_type == 'page' and request.design_mode == false
 	    case page.handle
-	      when 'hormones', 'pcos'
+	      when 'hormones'
 	        assign legacy_view = 'hormones'
+	      when 'pcos'
+	        assign legacy_view = 'pcos'
 	      when 'fertility'
 	        assign legacy_view = 'fertility'
 	      when 'anxiety'
