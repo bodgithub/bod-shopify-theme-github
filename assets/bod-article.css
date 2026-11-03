@@ -12,7 +12,16 @@
 }
 
 /* No image: the wrapper is the card */
-.blog-post-detail .post-title-wrapper--has-img-false { border-radius: 19px; }
+.blog-post-detail .post-title-wrapper--has-img-false {
+  border-radius: 19px; min-height: 0; text-align: left; justify-content: flex-start; align-items: stretch;
+}
+/* same title card spacing as articles with an image */
+.blog-post-detail .post-title-wrapper--has-img-false .post-title {
+  width: 100%; max-width: none; margin: 0; padding: 28px 28px 32px;
+}
+@media only screen and (min-width: 768px) {
+  .blog-post-detail .post-title-wrapper--has-img-false .post-title { padding: 40px 48px 44px; }
+}
 
 /* With an image: the wrapper goes transparent, the title becomes the card, the image follows as its own block */
 .blog-post-detail .post-title-wrapper--has-img-true {
