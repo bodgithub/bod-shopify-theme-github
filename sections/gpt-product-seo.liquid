@@ -57,6 +57,22 @@
 }
 </script>
 {%- endif -%}
+{%- comment -%}
+  Top-level image for the ProductGroup. Shopify's {{ product | structured_data }} filter
+  (main-product.liquid) puts an image inside each hasVariant node but none at the top level
+  of the ProductGroup, so search/AI tools fall back to prominent on-page gallery images.
+  This block shares the ProductGroup's @id — the same merge pattern as the aggregateRating
+  block above — and nominates the featured image (the pack shot) at the top level.
+{%- endcomment -%}
+{%- if product != blank and product.featured_image != blank -%}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@id": "/products/{{ product.handle }}#product",
+  "image": "{{ product.featured_image | image_url: width: 1200 }}"
+}
+</script>
+{%- endif -%}
 
 <!-- JSON-LD Schema -->
 <script type="application/ld+json">
