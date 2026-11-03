@@ -565,7 +565,8 @@
       ],
       "custom_css": [
         ".product-title {display: none;}",
-        ".amount {display: none;}"
+        ".amount {display: none;}",
+        "@media only screen and (min-width: 1068px) {.product-grid-container {grid-template-columns: minmax(40%, 700px) 462px !important;}}"
       ],
       "settings": {
         "media_layout": "stacked",
