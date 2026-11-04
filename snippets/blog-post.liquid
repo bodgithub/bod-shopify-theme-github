@@ -39,12 +39,21 @@
 -%}
 {%- if article -%}
 
-<div class="blog-post text-{{ article_content_alignment }} blog-post--content-spacing-{{ info_spacing }} blog-post--border-{{ article_card_border }} {{ article_card_shadow_class }}">
+<div class="blog-post text-{{ article_content_alignment }} blog-post--content-spacing-{{ info_spacing }} blog-post--border-{{ article_card_border }} {{ article_card_shadow_class }}{% unless article.image %} blog-post--text-card{% endunless %}">
 	<figure class="featured-image">
 		<div class="aspect-ratio" style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;">
 			<a href="{{ article.url }}" class="featured-image-link" title="{{ article.title | escape }}">
 				{%- if article.image -%}
 					{%- render 'responsive-image', image: article.image, sizes: image_sizes -%}
+				{%- else -%}
+					{%- liquid
+						if card_index != blank
+							assign text_card = card_index | modulo: 3
+						else
+							assign text_card = article.id | modulo: 3
+						endif
+					-%}
+					<div class="blog-post__text-card blog-post__text-card--{{ text_card }}"><span>{{ article.title }}</span></div>
 				{%- endif -%}
 			</a>
 		</div>

@@ -186,3 +186,18 @@
   background: #3447af;
   color: #fff;
 }
+
+/* Bodology: articles without a featured image show the title on a colour block
+   (same three colours as "Keep reading" on articles); the title below is then hidden. */
+.blog-post .featured-image-link .blog-post__text-card {
+  position: absolute; inset: 0; display: flex; align-items: flex-end;
+  padding: 24px 24px 26px; border-radius: var(--block-border-radius, 16px);
+  transition: background-color .2s ease; }
+.blog-post__text-card span { font-size: 22px; line-height: 1.25; font-weight: 500; }
+.blog-post__text-card--0 { background: #1a2874; color: #d6dcf5; }
+.blog-post__text-card--1 { background: #3447af; color: #fff; }
+.blog-post__text-card--2 { background: #eef1ff; color: #1a2874; }
+.blog-post .featured-image-link:hover .blog-post__text-card--0 { background: #3447af; color: #fff; }
+.blog-post .featured-image-link:hover .blog-post__text-card--1 { background: #4d61cf; }
+.blog-post .featured-image-link:hover .blog-post__text-card--2 { background: #b9c2f5; }
+.blog-post--text-card .blog-post-info h4 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
