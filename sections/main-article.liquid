@@ -13,7 +13,7 @@
 
     <div class="mobile-only-TOC">
   
-          <div class="post-title-wrapper mobile post-title-wrapper--has-img-{{- has_image }} post-title-wrapper--border-{{ article_card_border }}" id="post-title-wrapper">
+          <div class="post-title-wrapper mobile post-title-wrapper--has-img-{% if article.image %}true{% else %}false{% endif %} post-title-wrapper--border-{{ article_card_border }}" id="post-title-wrapper">
             <div class="post-title">
             
               <h1 class="entry-title h1">{{ article.title }}</h1>
