@@ -13,7 +13,7 @@
 				{{ description }}
 			</div>
 			{%- endif -%}
-			{% if show_category_list %}
+			{% if show_category_list and blog.all_tags.size > 0 %}
 			<div class="page-header--tags">
 				<scroll-shadow>
 					<div class="blog-header__tags--inner">

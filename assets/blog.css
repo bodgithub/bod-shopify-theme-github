@@ -191,11 +191,15 @@
    (white text on the three darker blues); the block is the whole card. */
 .blog-post--text-card .featured-image { margin-bottom: 0; }
 .blog-post--text-card .blog-post-info { display: none; }
+/* sized from the card's own width; on narrow cards (tablet) a long title grows the card instead of spilling out */
+.blog-post--text-card .featured-image { container-type: inline-size; }
+.blog-post--text-card .aspect-ratio { padding-bottom: 0 !important; height: auto; }
+.blog-post--text-card .featured-image-link { height: auto; padding-bottom: 0; overflow: visible; }
 .blog-post .featured-image-link .blog-post__text-card {
-  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 18px;
-  padding: 28px; border-radius: var(--block-border-radius, 16px); color: #fff;
+  aspect-ratio: 1 / 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 18px;
+  padding: clamp(20px, 7cqi, 28px); border-radius: var(--block-border-radius, 16px); color: #fff;
   transition: background-color .2s ease; }
-.blog-post__text-card-title { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; font-weight: 500; letter-spacing: -0.01em; }
+.blog-post__text-card-title { font-size: clamp(24px, 10.5cqi, 44px); line-height: 1.1; font-weight: 500; letter-spacing: -0.01em; }
 .blog-post__text-card .text-button { font-size: 1rem; }
 .blog-post__text-card--0 { background: #1a2874; }
 .blog-post__text-card--1 { background: #3447af; }
