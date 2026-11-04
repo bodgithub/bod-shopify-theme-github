@@ -187,17 +187,21 @@
   color: #fff;
 }
 
-/* Bodology: articles without a featured image show the title on a colour block
-   (same three colours as "Keep reading" on articles); the title below is then hidden. */
+/* Bodology: articles without a featured image show the title and "Read more" on a colour block
+   (white text on the three darker blues); the block is the whole card. */
+.blog-post--text-card .featured-image { margin-bottom: 0; }
+.blog-post--text-card .blog-post-info { display: none; }
 .blog-post .featured-image-link .blog-post__text-card {
-  position: absolute; inset: 0; display: flex; align-items: flex-end;
-  padding: 24px 24px 26px; border-radius: var(--block-border-radius, 16px);
+  position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 18px;
+  padding: 28px; border-radius: var(--block-border-radius, 16px); color: #fff;
   transition: background-color .2s ease; }
-.blog-post__text-card span { font-size: 22px; line-height: 1.25; font-weight: 500; }
-.blog-post__text-card--0 { background: #1a2874; color: #d6dcf5; }
-.blog-post__text-card--1 { background: #3447af; color: #fff; }
-.blog-post__text-card--2 { background: #eef1ff; color: #1a2874; }
-.blog-post .featured-image-link:hover .blog-post__text-card--0 { background: #3447af; color: #fff; }
+.blog-post__text-card-title { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.1; font-weight: 500; letter-spacing: -0.01em; }
+.blog-post__text-card .text-button { font-size: 1rem; }
+.blog-post__text-card--0 { background: #1a2874; }
+.blog-post__text-card--1 { background: #3447af; }
+.blog-post__text-card--2 { background: #42579e; }
+.blog-post .featured-image-link:hover .blog-post__text-card--0 { background: #3447af; }
 .blog-post .featured-image-link:hover .blog-post__text-card--1 { background: #4d61cf; }
-.blog-post .featured-image-link:hover .blog-post__text-card--2 { background: #b9c2f5; }
-.blog-post--text-card .blog-post-info h4 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.blog-post .featured-image-link:hover .blog-post__text-card--2 { background: #3447af; }
+@media (hover: hover) {
+  .blog-post .featured-image-link:hover .blog-post__text-card .text-button svg { animation: text-button-arrow 0.35s linear forwards 1; } }

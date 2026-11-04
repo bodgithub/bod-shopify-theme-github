@@ -53,7 +53,12 @@
 							assign text_card = article.id | modulo: 3
 						endif
 					-%}
-					<div class="blog-post__text-card blog-post__text-card--{{ text_card }}"><span>{{ article.title }}</span></div>
+					<div class="blog-post__text-card blog-post__text-card--{{ text_card }}">
+						<span class="blog-post__text-card-title">{{ article.title }}</span>
+						{%- if show_read_more -%}
+						<span class="text-button text-button--has-icon white">{{ read_more }} <span>{% render 'svg-icons' with 'thb-caret-right' %}</span></span>
+						{%- endif -%}
+					</div>
 				{%- endif -%}
 			</a>
 		</div>
