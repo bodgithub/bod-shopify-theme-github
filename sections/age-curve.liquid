@@ -115,7 +115,18 @@
   if(!svg || pts.length < 2) return;
   var NS = 'http://www.w3.org/2000/svg';
   function el(tag, attrs, text){ var e = document.createElementNS(NS, tag); for(var k in attrs){ e.setAttribute(k, attrs[k]); } if(text != null){ e.textContent = text; } return e; }
-  var W = 640, H = 400, padL = 44, padR = 24, padT = 56, padB = 58;
+  var defs = svg.querySelector('defs');
+  var lastMode = null;
+  function draw(){
+  // Under 480px the card is narrow, so a 640-unit viewBox shrinks every label to ~6px.
+  // Use a compact viewBox there (fewer units across = larger text at the same pixel width).
+  var compact = card.getBoundingClientRect().width < 480;
+  var mode = compact ? 'compact' : 'wide';
+  if(mode === lastMode) return;
+  lastMode = mode;
+  while(svg.lastChild && svg.lastChild !== defs){ svg.removeChild(svg.lastChild); }
+  var W = compact ? 380 : 640, H = compact ? 330 : 400, padL = compact ? 40 : 44, padR = compact ? 14 : 24, padT = compact ? 52 : 56, padB = compact ? 54 : 58;
+  svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
   var suffix = svg.getAttribute('data-suffix') || '';
   var ymaxAttr = parseFloat(svg.getAttribute('data-ymax')) || 0;
   var maxV = Math.max.apply(null, pts.map(function(p){ return p.value; }));
@@ -151,7 +162,7 @@
   var ci = parseInt(svg.getAttribute('data-callout-index'), 10);
   if(isNaN(ci) || ci < 0 || ci >= pts.length){ ci = pts.length - 1; }
   if(style === 'bars'){
-    var bw = Math.min(110, innerW / pts.length * 0.55);
+    var bw = Math.min(compact ? 70 : 110, innerW / pts.length * 0.55);
     P.forEach(function(pt, i){
       svg.appendChild(el('rect', { x: pt[0] - bw / 2, y: pt[1], width: bw, height: Math.max(2, base - pt[1]), rx: 10, 'class': 'ac__bar' + (i === ci ? ' ac__bar--hi' : '') }));
       if(i !== ci){ svg.appendChild(el('text', { x: pt[0], y: pt[1] - 10, 'class': 'ac__val' }, pts[i].value + suffix)); }
@@ -175,7 +186,7 @@
   }
   var ct = svg.getAttribute('data-callout-text');
   if(ct){
-    var cw = Math.min(220, Math.max(96, ct.length * 6.6 + 24)), ch = 28;
+    var cw = Math.min(compact ? 200 : 220, Math.max(96, ct.length * 6.6 + 24)), ch = 28;
     var cx = Math.min(Math.max(P[ci][0], padL + cw / 2), W - padR - cw / 2), cy = P[ci][1] - 22;
     svg.appendChild(el('rect', { x: cx - cw / 2, y: cy - ch, width: cw, height: ch, rx: 14, 'class': 'ac__callout-bg' }));
     svg.appendChild(el('text', { x: cx, y: cy - 9, 'class': 'ac__callout-text' }, ct));
@@ -183,6 +194,9 @@
     svg.appendChild(el('text', { x: P[ci][0], y: P[ci][1] - 12, 'class': 'ac__val' }, pts[ci].value + suffix));
   }
   card.classList.add('is-drawn');
+  }
+  draw();
+  var t; window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(draw, 150); });
 })();
 </script>
 

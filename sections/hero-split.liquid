@@ -1,0 +1,149 @@
+{%- comment -%}
+  Bodology · Hero split
+  Two halves: a solid colour panel with the copy on one side and a
+  full-bleed image on the other (image on top on mobile). No pill or badge:
+  eyebrow text, headline with an italic accent, short paragraph, optional
+  check-list blocks, one button and a small guarantee line under it.
+  Every colour and spacing value is a setting, so a page can change its own
+  copy of this section without touching any other page.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign uid = section.id
+  assign img = s.image
+  assign mimg = s.mobile_image | default: s.image
+-%}
+
+{% style %}
+  #shopify-section-{{ uid }} .hs { background: {{ s.panel_bg }}; color: {{ s.text_color }}; }
+  #shopify-section-{{ uid }} .hs__grid { display: grid; grid-template-columns: 1fr; }
+  #shopify-section-{{ uid }} .hs__media { position: relative; overflow: hidden; background: {{ s.image_bg }}; }
+  #shopify-section-{{ uid }} .hs__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: {{ s.image_focus }}; }
+  #shopify-section-{{ uid }} .hs__media--mobile { aspect-ratio: {{ s.mobile_ratio }}; }
+  #shopify-section-{{ uid }} .hs__media--desktop { display: none; }
+  #shopify-section-{{ uid }} .hs__panel { display: flex; align-items: center; padding: {{ s.pad_mobile }}px 20px {{ s.pad_mobile | plus: 8 }}px; }
+  #shopify-section-{{ uid }} .hs__copy { width: 100%; max-width: {{ s.content_width }}px; margin: 0 auto; }
+  #shopify-section-{{ uid }} .hs__eyebrow { margin: 0 0 12px; font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .hs__heading { margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.72 | round }}px;{% endif %} }
+  #shopify-section-{{ uid }} .hs__heading em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .hs__text { margin: 16px 0 0; font-size: {{ s.body_size | times: 0.94 | round }}px; line-height: 1.55; }
+  #shopify-section-{{ uid }} .hs__text p { margin: 0 0 10px; }
+  #shopify-section-{{ uid }} .hs__text p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ uid }} .hs__text strong { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .hs__list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 9px; }
+  #shopify-section-{{ uid }} .hs__item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.4; }
+  #shopify-section-{{ uid }} .hs__check { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 1px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: {{ s.check_bg }}; color: {{ s.check_color }}; }
+  #shopify-section-{{ uid }} .hs__check svg { width: 11px; height: 11px; }
+  #shopify-section-{{ uid }} .hs__cta { margin-top: 24px; }
+  #shopify-section-{{ uid }} .hs__btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px 28px; border-radius: {{ s.button_radius }}px;
+    background: {{ s.button_bg }}; color: {{ s.button_text }}; text-decoration: none; font-size: 15px; font-weight: var(--font-body-bold-weight, 500); letter-spacing: .01em;
+    transition: background .15s, transform .14s;
+  }
+  #shopify-section-{{ uid }} .hs__btn:hover { background: {{ s.button_hover }}; transform: translateY(-1px); }
+  #shopify-section-{{ uid }} .hs__btn svg { width: 16px; height: 16px; }
+  #shopify-section-{{ uid }} .hs__note { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 12px 0 0; font-size: 13.5px; opacity: .9; }
+  #shopify-section-{{ uid }} .hs__note svg { width: 15px; height: 15px; color: {{ s.accent_color }}; flex: 0 0 auto; }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ uid }} .hs__btn { width: auto; min-width: 280px; }
+    #shopify-section-{{ uid }} .hs__note { justify-content: flex-start; }
+  }
+  @media screen and (min-width: 900px) {
+    #shopify-section-{{ uid }} .hs__grid { grid-template-columns: {{ s.panel_share }}fr {{ 100 | minus: s.panel_share }}fr; min-height: {{ s.min_height }}px; }
+    #shopify-section-{{ uid }} .hs__media--mobile { display: none; }
+    #shopify-section-{{ uid }} .hs__media--desktop { display: block; min-height: {{ s.min_height }}px; {% if s.image_side == 'left' %}order: 1;{% else %}order: 2;{% endif %} }
+    #shopify-section-{{ uid }} .hs__media--desktop img { position: absolute; inset: 0; }
+    #shopify-section-{{ uid }} .hs__panel { padding: {{ s.pad_desktop }}px clamp(24px, 6vw, 88px); {% if s.image_side == 'left' %}order: 2;{% else %}order: 1;{% endif %} }
+    #shopify-section-{{ uid }} .hs__copy { margin: 0; {% if s.image_side == 'left' %}margin-right: auto;{% else %}margin-left: auto;{% endif %} }
+    #shopify-section-{{ uid }} .hs__heading { {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %} }
+    #shopify-section-{{ uid }} .hs__text { font-size: {{ s.body_size }}px; }
+    #shopify-section-{{ uid }} .hs__item { font-size: 16px; }
+  }
+{% endstyle %}
+
+{%- capture check_icon -%}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="3 8.5 6.5 12 13 4.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>{%- endcapture -%}
+
+<div class="hs">{% if s.anchor_id != blank %}<span id="{{ s.anchor_id }}" style="position:relative;top:-90px;display:block"></span>{% endif %}
+  <div class="hs__grid">
+    {%- if mimg != blank -%}
+      <div class="hs__media hs__media--mobile">{{ mimg | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '480, 720, 960, 1200', sizes: '100vw', alt: mimg.alt | default: s.heading | strip_html }}</div>
+    {%- endif -%}
+    <div class="hs__panel">
+      <div class="hs__copy">
+        {%- if s.eyebrow != blank -%}<p class="hs__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+        {%- if s.heading != blank -%}<h1 class="hs__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</h1>{%- endif -%}
+        {%- if s.text != blank -%}<div class="hs__text">{{ s.text }}</div>{%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="hs__list">
+            {%- for block in section.blocks -%}
+              {%- if block.settings.text != blank -%}
+                <li class="hs__item" {{ block.shopify_attributes }}><span class="hs__check">{{ check_icon }}</span><span>{{ block.settings.text }}</span></li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if s.button_label != blank -%}
+          <div class="hs__cta">
+            <a class="hs__btn" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}{% if s.button_arrow %}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endif %}</a>
+            {%- if s.note != blank -%}<p class="hs__note">{{ check_icon }}<span>{{ s.note }}</span></p>{%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+    {%- if img != blank -%}
+      <div class="hs__media hs__media--desktop">{{ img | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '800, 1200, 1600, 1800', sizes: '(min-width: 900px) 55vw, 100vw', alt: img.alt | default: s.heading | strip_html }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero split",
+  "tag": "section",
+  "class": "section-hero-split",
+  "settings": [
+    { "type": "header", "content": "Copy" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Insulin after 40" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "You deserve more than <em>“everything looks normal.”</em>", "info": "Italics render in the accent colour." },
+    { "type": "range", "id": "heading_size", "label": "Heading size (px, 0 = theme H1)", "min": 0, "max": 72, "step": 2, "default": 0 },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Waking at 3am. Weight around your middle. Labs that say you’re fine. <strong>Your blood sugar can look normal while your insulin climbs.</strong></p>" },
+    { "type": "range", "id": "body_size", "label": "Text size", "min": 14, "max": 20, "step": 1, "default": 17 },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "See the Black Friday bundle" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "checkbox", "id": "button_arrow", "label": "Show arrow", "default": true },
+    { "type": "text", "id": "note", "label": "Line under the button", "default": "60-day money-back guarantee" },
+    { "type": "header", "content": "Image" },
+    { "type": "image_picker", "id": "image", "label": "Image (desktop)" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Image (mobile)", "info": "Falls back to the desktop image." },
+    { "type": "select", "id": "image_side", "label": "Image side (desktop)", "default": "right", "options": [ { "value": "right", "label": "Right" }, { "value": "left", "label": "Left" } ] },
+    { "type": "select", "id": "image_focus", "label": "Image focus", "default": "center center", "options": [ { "value": "center center", "label": "Centre" }, { "value": "center top", "label": "Top" }, { "value": "left center", "label": "Left" }, { "value": "right center", "label": "Right" } ] },
+    { "type": "select", "id": "mobile_ratio", "label": "Mobile image ratio", "default": "4 / 3", "options": [ { "value": "1 / 1", "label": "Square" }, { "value": "4 / 3", "label": "4:3" }, { "value": "3 / 2", "label": "3:2" }, { "value": "16 / 9", "label": "16:9" } ] },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "panel_share", "label": "Copy panel width (desktop, %)", "min": 35, "max": 60, "step": 1, "default": 46 },
+    { "type": "range", "id": "min_height", "label": "Min height (desktop)", "min": 420, "max": 800, "step": 20, "unit": "px", "default": 580 },
+    { "type": "range", "id": "content_width", "label": "Copy max width", "min": 400, "max": 720, "step": 20, "unit": "px", "default": 560 },
+    { "type": "range", "id": "pad_desktop", "label": "Panel padding top/bottom (desktop)", "min": 24, "max": 120, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "pad_mobile", "label": "Panel padding top/bottom (mobile)", "min": 16, "max": 80, "step": 4, "unit": "px", "default": 32 },
+    { "type": "text", "id": "anchor_id", "label": "Anchor id", "info": "For in-page links, e.g. top" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "panel_bg", "label": "Panel background", "default": "#e3e7ff" },
+    { "type": "color", "id": "image_bg", "label": "Behind the image", "default": "#e3e7ff" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#1a2874" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "accent_color", "label": "Accent (italics, eyebrow)", "default": "#3447af" },
+    { "type": "color", "id": "check_bg", "label": "Check circle", "default": "#1a2874" },
+    { "type": "color", "id": "check_color", "label": "Check mark", "default": "#ffffff" },
+    { "type": "color", "id": "button_bg", "label": "Button", "default": "#1b3def" },
+    { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#1a2874" },
+    { "type": "color", "id": "button_text", "label": "Button text", "default": "#ffffff" },
+    { "type": "range", "id": "button_radius", "label": "Button radius", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 30 }
+  ],
+  "blocks": [
+    { "type": "benefit", "name": "Check line", "limit": 5, "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "The full 4g clinical dose in two scoops" } ] }
+  ],
+  "presets": [ { "name": "Hero split", "blocks": [ { "type": "benefit" }, { "type": "benefit", "settings": { "text": "D-chiro-inositol from carob pods, not a lab" } }, { "type": "benefit", "settings": { "text": "60-day money-back guarantee" } } ] } ]
+}
+{% endschema %}
