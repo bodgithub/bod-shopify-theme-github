@@ -3225,6 +3225,21 @@
             "them3_text": ""
           }
         },
+        "row_taste": {
+          "type": "row",
+          "settings": {
+            "label": "Taste",
+            "info": "The gentle sweetness comes naturally from the carob-sourced D-chiro. Nothing is flavoured or sweetened, the powder is light and dissolves cleanly, with no grit or aftertaste.",
+            "us_value": "text",
+            "us_text": "Gently sweet, disappears into coffee",
+            "them1_value": "text",
+            "them1_text": "Often flavoured or gritty",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
         "row_fillers": {
           "type": "row",
           "settings": {
@@ -3291,6 +3306,7 @@
         "row_ratio",
         "row_dose",
         "row_form",
+        "row_taste",
         "row_fillers",
         "row_source",
         "row_coa",
