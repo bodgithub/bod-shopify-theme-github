@@ -1,0 +1,141 @@
+{%- comment -%}
+  Bodology · Yes or no
+  Short objection-handling list: a question, a YES / NO badge and a one-line
+  answer. Each row is a block. Mobile first.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign uid = section.id
+-%}
+
+{% style %}
+  #shopify-section-{{ uid }} .yn {
+    background: {{ s.bg }};
+    color: {{ s.text_color }};
+    padding: {{ s.padding_top | times: 0.7 | round }}px 0 {{ s.padding_bottom | times: 0.7 | round }}px;
+    margin: {{ s.margin_top }}px 0 {{ s.margin_bottom }}px;
+  }
+  #shopify-section-{{ uid }} .yn__pw { max-width: {{ s.max_width }}px; margin: 0 auto; padding: 0 16px; }
+  #shopify-section-{{ uid }} .yn__eyebrow { text-align: center; margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .yn__heading { text-align: center; margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
+  #shopify-section-{{ uid }} .yn__heading em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .yn__sub { text-align: center; margin: 10px auto 0; max-width: 560px; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ uid }} .yn__list { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  #shopify-section-{{ uid }} .yn__row {
+    background: {{ s.card_bg }}; border: 1px solid {{ s.card_border }}; border-radius: {{ s.card_radius }}px; padding: 16px 16px;
+    display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; align-items: start;
+  }
+  #shopify-section-{{ uid }} .yn__q { margin: 0; font-size: 16px; line-height: 1.35; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .yn__badge {
+    display: inline-flex; align-items: center; justify-content: center; min-width: 54px; padding: 5px 12px; border-radius: 999px;
+    font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: var(--font-body-bold-weight, 500); white-space: nowrap;
+  }
+  #shopify-section-{{ uid }} .yn__badge--yes { background: {{ s.yes_bg }}; color: {{ s.yes_text }}; }
+  #shopify-section-{{ uid }} .yn__badge--no { background: transparent; color: {{ s.no_text }}; border: 1.5px solid {{ s.no_text }}; }
+  #shopify-section-{{ uid }} .yn__badge--other { background: {{ s.other_bg }}; color: {{ s.other_text }}; }
+  #shopify-section-{{ uid }} .yn__a { grid-column: 1 / -1; margin: 0; font-size: 14.5px; line-height: 1.55; opacity: .92; }
+  #shopify-section-{{ uid }} .yn__a strong { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .yn__cta { text-align: center; margin-top: 24px; }
+  #shopify-section-{{ uid }} .yn__btn {
+    display: inline-block; padding: 14px 30px; border-radius: {{ s.button_radius }}px; background: {{ s.button_bg }}; color: {{ s.button_text }};
+    text-decoration: none; font-size: 15px; transition: background .15s, transform .14s;
+  }
+  #shopify-section-{{ uid }} .yn__btn:hover { background: {{ s.button_hover }}; transform: translateY(-1px); }
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ uid }} .yn { padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px; }
+    #shopify-section-{{ uid }} .yn__pw { padding: 0 20px; }
+    #shopify-section-{{ uid }} .yn__heading { {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %} }
+    #shopify-section-{{ uid }} .yn__row { grid-template-columns: auto 1fr; grid-template-areas: "badge q" "badge a"; padding: 18px 22px; gap: 4px 18px; align-items: center; }
+    #shopify-section-{{ uid }} .yn__badge { grid-area: badge; align-self: start; margin-top: 2px; }
+    #shopify-section-{{ uid }} .yn__q { grid-area: q; font-size: 17px; }
+    #shopify-section-{{ uid }} .yn__a { grid-area: a; }
+  }
+{% endstyle %}
+
+{% if s.anchor_id != blank %}<span id="{{ s.anchor_id }}" style="position:relative;top:-90px;display:block"></span>{% endif %}
+<div class="yn">
+  <div class="yn__pw">
+    {%- if s.eyebrow != blank -%}<p class="yn__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+    {%- if s.heading != blank -%}<h2 class="yn__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</h2>{%- endif -%}
+    {%- if s.subheading != blank -%}<p class="yn__sub">{{ s.subheading }}</p>{%- endif -%}
+    <ul class="yn__list">
+      {%- for block in section.blocks -%}
+        {%- assign b = block.settings -%}
+        <li class="yn__row" {{ block.shopify_attributes }}>
+          <p class="yn__q">{{ b.question }}</p>
+          <span class="yn__badge yn__badge--{{ b.answer }}">{% case b.answer %}{% when 'yes' %}{{ s.yes_label }}{% when 'no' %}{{ s.no_label }}{% else %}{{ b.other_label | default: s.other_label }}{% endcase %}</span>
+          {%- if b.text != blank -%}<p class="yn__a">{{ b.text }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if s.button_label != blank -%}
+      <div class="yn__cta"><a class="yn__btn" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}</a></div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Yes or no",
+  "tag": "section",
+  "class": "section-yes-no",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Keep it simple" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Yes or <em>no?</em>" },
+    { "type": "range", "id": "heading_size", "label": "Heading size (px, 0 = theme H1)", "min": 0, "max": 64, "step": 2, "default": 0 },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "yes_label", "label": "Yes badge", "default": "Yes" },
+    { "type": "text", "id": "no_label", "label": "No badge", "default": "No" },
+    { "type": "text", "id": "other_label", "label": "Other badge default", "default": "It depends" },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#f2eeea" },
+    { "type": "color", "id": "card_bg", "label": "Row background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Row border", "default": "#d9d2c9" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#3447af" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#3447af" },
+    { "type": "color", "id": "yes_bg", "label": "Yes badge background", "default": "#1a2874" },
+    { "type": "color", "id": "yes_text", "label": "Yes badge text", "default": "#B9C2F5" },
+    { "type": "color", "id": "no_text", "label": "No badge outline/text", "default": "#1a2874" },
+    { "type": "color", "id": "other_bg", "label": "Other badge background", "default": "#e3e7ff" },
+    { "type": "color", "id": "other_text", "label": "Other badge text", "default": "#1a2874" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#1A2874" },
+    { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#3447af" },
+    { "type": "color", "id": "button_text", "label": "Button text", "default": "#B9C2F5" },
+    { "type": "header", "content": "Shape & spacing" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 600, "max": 1100, "step": 20, "default": 800 },
+    { "type": "range", "id": "card_radius", "label": "Row corner radius", "min": 0, "max": 28, "step": 1, "default": 14 },
+    { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "default": 6 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 120, "step": 4, "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 120, "step": 4, "default": 64 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 120, "step": 4, "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 120, "step": 4, "default": 0 },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID (for in-page links)" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Is this a quick fix?" },
+        { "type": "select", "id": "answer", "label": "Answer", "options": [ { "value": "yes", "label": "Yes" }, { "value": "no", "label": "No" }, { "value": "other", "label": "Other (custom badge)" } ], "default": "no" },
+        { "type": "text", "id": "other_label", "label": "Custom badge text (for Other)" },
+        { "type": "richtext", "id": "text", "label": "Answer text", "default": "<p>No. Most women notice cravings and energy first, within a few weeks. The studies ran for three to six months.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Yes or no",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "Is this a quick fix?", "answer": "no" } },
+        { "type": "qa", "settings": { "question": "Is it risky to try?", "answer": "no", "text": "<p>You have 60 days. If it isn't doing anything for you, email us and we'll refund you.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

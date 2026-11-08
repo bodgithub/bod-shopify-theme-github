@@ -1,0 +1,435 @@
+{%- comment -%}
+  Bodology · Bundle tiers
+  Purchase module: a row of tier cards (image, name, badge, price, per-day),
+  an optional one-time / subscribe toggle, a perks list for the active mode,
+  one add-to-cart button that posts to /cart/add.js (variant + selling plan +
+  optional free-protocol gift) and opens the cart drawer, then a trust row.
+  Every tier is a block so prices, IDs and copy are edited in the theme editor.
+  Mobile first: tiers stack as rows, become cards from 750px.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign uid = section.id
+  assign fallback_img = product.featured_image
+  assign ot_perks = s.ot_perks | newline_to_br | split: '<br />'
+  assign sub_perks = s.sub_perks | newline_to_br | split: '<br />'
+-%}
+
+{% style %}
+  #shopify-section-{{ uid }} .bt {
+    background: {{ s.bg }};
+    color: {{ s.text_color }};
+    padding: {{ s.padding_top | times: 0.7 | round }}px 0 {{ s.padding_bottom | times: 0.7 | round }}px;
+  }
+  #shopify-section-{{ uid }} .bt__pw { max-width: {{ s.max_width }}px; margin: 0 auto; padding: 0 16px; }
+  #shopify-section-{{ uid }} .bt__eyebrow {
+    text-align: center; margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase;
+    color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500);
+  }
+  #shopify-section-{{ uid }} .bt__heading {
+    text-align: center; color: {{ s.heading_color }}; margin: 0; font-weight: 400; line-height: 1.15;
+    {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %}
+  }
+  #shopify-section-{{ uid }} .bt__heading em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .bt__sub { text-align: center; font-size: 15px; line-height: 1.5; margin: 10px auto 0; max-width: 560px; }
+
+  #shopify-section-{{ uid }} .bt__toggle {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 26px auto 0; max-width: 420px;
+    background: {{ s.card_bg }}; border: 1px solid {{ s.card_border }}; border-radius: 999px; padding: 4px;
+  }
+  #shopify-section-{{ uid }} .bt__tog {
+    appearance: none; border: 0; background: transparent; border-radius: 999px; padding: 11px 10px;
+    font: inherit; font-size: 14px; color: {{ s.text_color }}; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    transition: background .15s, color .15s;
+  }
+  #shopify-section-{{ uid }} .bt__tog.is-active { background: {{ s.button_bg }}; color: {{ s.button_text }}; }
+  #shopify-section-{{ uid }} .bt__tog-tag {
+    font-size: 11px; padding: 2px 7px; border-radius: 999px; background: {{ s.badge_bg }}; color: {{ s.badge_text }}; letter-spacing: .02em;
+  }
+  #shopify-section-{{ uid }} .bt__tog.is-active .bt__tog-tag { background: {{ s.button_text }}; color: {{ s.button_bg }}; }
+
+  #shopify-section-{{ uid }} .bt__tiers { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 22px; }
+  #shopify-section-{{ uid }} .bt__tier {
+    position: relative; appearance: none; width: 100%; text-align: left; cursor: pointer; font: inherit; color: inherit;
+    background: {{ s.card_bg }}; border: 1px solid {{ s.card_border }}; border-radius: {{ s.card_radius }}px;
+    padding: 16px 16px 16px 14px; display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 14px; align-items: center;
+    transition: border-color .15s, box-shadow .15s, transform .15s;
+  }
+  #shopify-section-{{ uid }} .bt__tier:hover { border-color: {{ s.selected_border }}; }
+  #shopify-section-{{ uid }} .bt__tier.is-selected { border-color: {{ s.selected_border }}; box-shadow: 0 0 0 1px {{ s.selected_border }} inset; }
+  #shopify-section-{{ uid }} .bt__tier.is-unavailable { opacity: .55; }
+  #shopify-section-{{ uid }} .bt__tier.is-unavailable:hover { opacity: .8; }
+  #shopify-section-{{ uid }} .bt__badge {
+    position: absolute; top: -11px; left: 14px; z-index: 1;
+    background: {{ s.badge_bg }}; color: {{ s.badge_text }}; font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px; font-weight: var(--font-body-bold-weight, 500); white-space: nowrap;
+  }
+  #shopify-section-{{ uid }} .bt__media {
+    width: 64px; height: 64px; border-radius: 12px; overflow: hidden; background: {{ s.bg }}; display: flex; align-items: center; justify-content: center;
+  }
+  #shopify-section-{{ uid }} .bt__media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  #shopify-section-{{ uid }} .bt__body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  #shopify-section-{{ uid }} .bt__name { font-size: 16px; line-height: 1.25; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .bt__subtitle { font-size: 13px; line-height: 1.4; opacity: .85; }
+  #shopify-section-{{ uid }} .bt__tag {
+    display: none; align-self: flex-start; margin-top: 4px; font-size: 11px; letter-spacing: .03em; padding: 2px 8px; border-radius: 999px;
+    border: 1px solid {{ s.card_border }}; color: {{ s.text_color }};
+  }
+  #shopify-section-{{ uid }} .bt__tier.is-unavailable .bt__tag { display: inline-block; }
+  #shopify-section-{{ uid }} .bt__includes { display: none; margin-top: 8px; flex-direction: column; gap: 4px; font-size: 13px; line-height: 1.4; }
+  #shopify-section-{{ uid }} .bt__includes span { display: flex; gap: 7px; align-items: flex-start; }
+  #shopify-section-{{ uid }} .bt__includes svg { width: 14px; height: 14px; flex: 0 0 auto; margin-top: 2px; color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .bt__tier.is-selected .bt__includes { display: flex; }
+  #shopify-section-{{ uid }} .bt__price { text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 1px; white-space: nowrap; }
+  #shopify-section-{{ uid }} .bt__compare { font-size: 13px; color: {{ s.compare_color }}; text-decoration-thickness: 1.5px; }
+  #shopify-section-{{ uid }} .bt__compare:empty { display: none; }
+  #shopify-section-{{ uid }} .bt__num { font-size: 20px; line-height: 1.1; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .bt__per { font-size: 12.5px; opacity: .85; }
+  #shopify-section-{{ uid }} .bt__note { font-size: 11.5px; opacity: .75; }
+  #shopify-section-{{ uid }} .bt__per:empty, #shopify-section-{{ uid }} .bt__note:empty { display: none; }
+  #shopify-section-{{ uid }} .bt__radio {
+    position: absolute; top: 12px; right: 12px; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid {{ s.card_border }}; background: #fff;
+  }
+  #shopify-section-{{ uid }} .bt__tier.is-selected .bt__radio { border-color: {{ s.selected_border }}; background: {{ s.selected_border }}; box-shadow: inset 0 0 0 3px #fff; }
+
+  #shopify-section-{{ uid }} .bt__perks { list-style: none; margin: 18px 0 0; padding: 0; display: none; flex-direction: column; gap: 7px; font-size: 14px; line-height: 1.45; }
+  #shopify-section-{{ uid }} .bt__perks.is-active { display: flex; }
+  #shopify-section-{{ uid }} .bt__perks li { display: flex; gap: 9px; align-items: flex-start; }
+  #shopify-section-{{ uid }} .bt__perks svg { width: 16px; height: 16px; flex: 0 0 auto; margin-top: 2px; color: {{ s.accent_color }}; }
+
+  #shopify-section-{{ uid }} .bt__cta {
+    display: flex; width: 100%; align-items: center; justify-content: center; gap: 10px; margin-top: 20px;
+    padding: 17px 24px; border-radius: {{ s.button_radius }}px; border: 0; cursor: pointer; font: inherit; font-size: 16px;
+    background: {{ s.button_bg }}; color: {{ s.button_text }}; transition: background .15s, transform .14s;
+  }
+  #shopify-section-{{ uid }} .bt__cta:hover { background: {{ s.button_hover }}; transform: translateY(-1px); }
+  #shopify-section-{{ uid }} .bt__cta.is-loading { opacity: .7; pointer-events: none; }
+  #shopify-section-{{ uid }} .bt__cta-price { opacity: .9; }
+  #shopify-section-{{ uid }} .bt__cta-price:empty { display: none; }
+  #shopify-section-{{ uid }} .bt__err { margin: 10px 0 0; font-size: 13px; color: #b3261e; text-align: center; }
+  #shopify-section-{{ uid }} .bt__err[hidden] { display: none; }
+  #shopify-section-{{ uid }} .bt__guar { text-align: center; font-size: 13px; margin: 12px 0 0; opacity: .9; }
+  #shopify-section-{{ uid }} .bt__guar a { color: {{ s.accent_color }}; }
+
+  #shopify-section-{{ uid }} .bt__trust {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid {{ s.card_border }};
+  }
+  #shopify-section-{{ uid }} .bt__trust-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; font-size: 12px; line-height: 1.35; }
+  #shopify-section-{{ uid }} .bt__trust-item svg { width: 22px; height: 22px; color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .bt__fine { margin: 16px 0 0; font-size: 11.5px; line-height: 1.5; opacity: .75; text-align: center; }
+  #shopify-section-{{ uid }} .bt__fine p { margin: 0; }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ uid }} .bt { padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px; }
+    #shopify-section-{{ uid }} .bt__pw { padding: 0 20px; }
+    #shopify-section-{{ uid }} .bt__heading { {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %} }
+    #shopify-section-{{ uid }} .bt__tiers { grid-template-columns: repeat({{ section.blocks.size | at_least: 1 | at_most: 4 }}, minmax(0, 1fr)); gap: 16px; margin-top: 30px; align-items: stretch; }
+    #shopify-section-{{ uid }} .bt__tier { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr auto; gap: 12px; padding: 26px 22px 22px; text-align: center; align-items: start; }
+    #shopify-section-{{ uid }} .bt__badge { left: 50%; transform: translateX(-50%); }
+    #shopify-section-{{ uid }} .bt__media { width: 100%; height: {{ s.image_height }}px; margin: 0 auto; }
+    #shopify-section-{{ uid }} .bt__body { align-items: center; }
+    #shopify-section-{{ uid }} .bt__name { font-size: 18px; }
+    #shopify-section-{{ uid }} .bt__includes { display: flex; text-align: left; align-self: stretch; margin-top: 10px; padding-top: 10px; border-top: 1px dashed {{ s.card_border }}; }
+    #shopify-section-{{ uid }} .bt__price { align-items: center; text-align: center; align-self: end; }
+    #shopify-section-{{ uid }} .bt__num { font-size: 26px; }
+    #shopify-section-{{ uid }} .bt__radio { top: 14px; right: 14px; }
+    #shopify-section-{{ uid }} .bt__perks { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 8px 26px; margin-top: 24px; }
+    #shopify-section-{{ uid }} .bt__cta { max-width: 420px; margin: 24px auto 0; }
+    #shopify-section-{{ uid }} .bt__trust { gap: 20px; margin-top: 30px; max-width: 760px; margin-left: auto; margin-right: auto; }
+    #shopify-section-{{ uid }} .bt__trust-item { font-size: 13px; }
+  }
+{% endstyle %}
+
+<div class="bt" id="bt-{{ uid }}"{% if s.anchor_id != blank %} data-anchor="{{ s.anchor_id }}"{% endif %} data-bt data-default-mode="{{ s.default_mode }}" data-cta-label="{{ s.cta_label | escape }}" data-cta-price="{% if s.cta_price %}1{% else %}0{% endif %}">
+  {% if s.anchor_id != blank %}<span id="{{ s.anchor_id }}" style="position:relative;top:-90px;display:block"></span>{% endif %}
+  <div class="bt__pw">
+    {%- if s.eyebrow != blank -%}<p class="bt__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+    {%- if s.heading != blank -%}<h2 class="bt__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</h2>{%- endif -%}
+    {%- if s.subheading != blank -%}<p class="bt__sub">{{ s.subheading }}</p>{%- endif -%}
+
+    {%- if s.show_toggle -%}
+      <div class="bt__toggle" role="tablist" aria-label="Purchase type">
+        <button type="button" class="bt__tog" role="tab" data-bt-mode="ot">{{ s.ot_label }}</button>
+        <button type="button" class="bt__tog" role="tab" data-bt-mode="sub">{{ s.sub_label }}{% if s.sub_tag != blank %} <span class="bt__tog-tag">{{ s.sub_tag }}</span>{% endif %}</button>
+      </div>
+    {%- endif -%}
+
+    <div class="bt__tiers" role="radiogroup" aria-label="Choose your plan">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'tier' -%}
+          {%- assign b = block.settings -%}
+          {%- assign includes = b.includes | newline_to_br | split: '<br />' -%}
+          <button type="button" class="bt__tier" role="radio" aria-checked="false" data-bt-tier
+            data-name="{{ b.name | escape }}"
+            data-ot-variant="{{ b.ot_variant | strip }}" data-ot-qty="{{ b.ot_qty }}" data-ot-price="{{ b.ot_price | escape }}" data-ot-compare="{{ b.ot_compare | escape }}" data-ot-per="{{ b.ot_per | escape }}" data-ot-note="{{ b.ot_note | escape }}"
+            data-sub-variant="{{ b.sub_variant | strip }}" data-sub-plan="{{ b.sub_plan | strip }}" data-sub-qty="{{ b.sub_qty }}" data-sub-price="{{ b.sub_price | escape }}" data-sub-compare="{{ b.sub_compare | escape }}" data-sub-per="{{ b.sub_per | escape }}" data-sub-note="{{ b.sub_note | escape }}"
+            data-gift="{{ b.gift_variant | strip }}"
+            {% if b.default_selected %}data-default-selected{% endif %}
+            {{ block.shopify_attributes }}>
+            {%- if b.badge != blank -%}<span class="bt__badge">{{ b.badge }}</span>{%- endif -%}
+            <span class="bt__media">
+              {%- if b.image != blank -%}
+                <img src="{{ b.image | image_url: width: 480 }}" alt="{{ b.name | escape }}" loading="lazy" width="240" height="240">
+              {%- elsif fallback_img -%}
+                <img src="{{ fallback_img | image_url: width: 480 }}" alt="{{ b.name | escape }}" loading="lazy" width="240" height="240">
+              {%- endif -%}
+            </span>
+            <span class="bt__body">
+              <span class="bt__name">{{ b.name }}</span>
+              {%- if b.subtitle != blank -%}<span class="bt__subtitle">{{ b.subtitle }}</span>{%- endif -%}
+              <span class="bt__tag" data-bt-tag></span>
+              {%- if b.includes != blank -%}
+                <span class="bt__includes">
+                  {%- for line in includes -%}
+                    {%- assign l = line | strip -%}
+                    {%- if l != blank -%}
+                      <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><polyline points="3 8.5 6.5 12 13 4.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg><span>{{ l }}</span></span>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </span>
+              {%- endif -%}
+            </span>
+            <span class="bt__price">
+              <s class="bt__compare" data-bt-compare></s>
+              <span class="bt__num" data-bt-price></span>
+              <span class="bt__per" data-bt-per></span>
+              <span class="bt__note" data-bt-note></span>
+            </span>
+            <span class="bt__radio" aria-hidden="true"></span>
+          </button>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <ul class="bt__perks" data-bt-perks="ot">
+      {%- for line in ot_perks -%}{%- assign l = line | strip -%}{%- if l != blank -%}
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="7"></circle><polyline points="4.8 8.4 7 10.6 11.2 5.6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg><span>{{ l }}</span></li>
+      {%- endif -%}{%- endfor -%}
+    </ul>
+    <ul class="bt__perks" data-bt-perks="sub">
+      {%- for line in sub_perks -%}{%- assign l = line | strip -%}{%- if l != blank -%}
+        <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="8" cy="8" r="7"></circle><polyline points="4.8 8.4 7 10.6 11.2 5.6" stroke-linecap="round" stroke-linejoin="round"></polyline></svg><span>{{ l }}</span></li>
+      {%- endif -%}{%- endfor -%}
+    </ul>
+
+    <button type="button" class="bt__cta" data-bt-cta>
+      <span data-bt-cta-label>{{ s.cta_label }}</span>
+      <span class="bt__cta-price" data-bt-cta-price></span>
+    </button>
+    <p class="bt__err" data-bt-err hidden></p>
+    {%- if s.guarantee_text != blank -%}
+      <p class="bt__guar">{{ s.guarantee_text }}{% if s.guarantee_link != blank %} <a href="{{ s.guarantee_link }}">Read the policy</a>{% endif %}</p>
+    {%- endif -%}
+
+    {%- if s.trust_1 != blank or s.trust_2 != blank or s.trust_3 != blank -%}
+      <div class="bt__trust">
+        {%- if s.trust_1 != blank -%}
+          <div class="bt__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3z" stroke-linejoin="round"></path><polyline points="8.5 12 11 14.5 15.5 9.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg><span>{{ s.trust_1 }}</span></div>
+        {%- endif -%}
+        {%- if s.trust_2 != blank -%}
+          <div class="bt__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2.5" y="6.5" width="13" height="10" rx="1.5"></rect><path d="M15.5 10h3.2l2.8 3v3.5h-6z" stroke-linejoin="round"></path><circle cx="7" cy="18" r="1.6"></circle><circle cx="18" cy="18" r="1.6"></circle></svg><span>{{ s.trust_2 }}</span></div>
+        {%- endif -%}
+        {%- if s.trust_3 != blank -%}
+          <div class="bt__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="8.5"></circle><polyline points="12 7.5 12 12 15 14" stroke-linecap="round" stroke-linejoin="round"></polyline></svg><span>{{ s.trust_3 }}</span></div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if s.fine_print != blank -%}<div class="bt__fine">{{ s.fine_print }}</div>{%- endif -%}
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('bt-{{ uid }}');
+  if(!root || root.dataset.btReady) return;
+  root.dataset.btReady = '1';
+  var tiers = Array.prototype.slice.call(root.querySelectorAll('[data-bt-tier]'));
+  var togs = Array.prototype.slice.call(root.querySelectorAll('[data-bt-mode]'));
+  var perks = Array.prototype.slice.call(root.querySelectorAll('[data-bt-perks]'));
+  var cta = root.querySelector('[data-bt-cta]');
+  var ctaLabel = root.querySelector('[data-bt-cta-label]');
+  var ctaPrice = root.querySelector('[data-bt-cta-price]');
+  var err = root.querySelector('[data-bt-err]');
+  var showPrice = root.getAttribute('data-cta-price') === '1';
+  var ctaText = root.getAttribute('data-cta-label') || 'Add to cart';
+  var addingText = 'Adding…';
+  var subOnlyLabel = {{ s.sub_only_label | json }};
+  var otOnlyLabel = 'One-time only';
+  var mode = root.getAttribute('data-default-mode') || 'sub';
+  if(!togs.length){ mode = root.getAttribute('data-default-mode') || 'sub'; }
+  var addBase = {{ routes.root_url | json }}; if(addBase.slice(-1) !== '/'){ addBase += '/'; }
+  var cartUrl = {{ routes.cart_url | json }};
+
+  function has(t, m){ return !!(t.getAttribute('data-' + m + '-variant') || '').trim(); }
+  function selected(){ return root.querySelector('[data-bt-tier].is-selected'); }
+  function paint(){
+    togs.forEach(function(b){ b.classList.toggle('is-active', b.getAttribute('data-bt-mode') === mode); b.setAttribute('aria-selected', b.getAttribute('data-bt-mode') === mode ? 'true' : 'false'); });
+    perks.forEach(function(p){ p.classList.toggle('is-active', p.getAttribute('data-bt-perks') === mode); });
+    tiers.forEach(function(t){
+      var ok = has(t, mode);
+      t.classList.toggle('is-unavailable', !ok);
+      var tag = t.querySelector('[data-bt-tag]');
+      if(tag){ tag.textContent = ok ? '' : (mode === 'ot' ? subOnlyLabel : otOnlyLabel); }
+      var m = ok ? mode : (mode === 'ot' ? 'sub' : 'ot');
+      t.querySelector('[data-bt-compare]').textContent = t.getAttribute('data-' + m + '-compare') || '';
+      t.querySelector('[data-bt-price]').textContent = t.getAttribute('data-' + m + '-price') || '';
+      t.querySelector('[data-bt-per]').textContent = t.getAttribute('data-' + m + '-per') || '';
+      t.querySelector('[data-bt-note]').textContent = t.getAttribute('data-' + m + '-note') || '';
+    });
+    var c = selected();
+    if(ctaPrice){ ctaPrice.textContent = (showPrice && c) ? ('— ' + (c.getAttribute('data-' + mode + '-price') || '')) : ''; }
+  }
+  function select(t){
+    tiers.forEach(function(x){ x.classList.toggle('is-selected', x === t); x.setAttribute('aria-checked', x === t ? 'true' : 'false'); });
+    if(err){ err.hidden = true; }
+    paint();
+  }
+  togs.forEach(function(b){ b.addEventListener('click', function(){ mode = b.getAttribute('data-bt-mode'); var c = selected(); paint(); if(c && !has(c, mode)){ var first = tiers.filter(function(t){ return has(t, mode); })[0]; if(first){ select(first); } } }); });
+  tiers.forEach(function(t){ t.addEventListener('click', function(){ if(!has(t, mode)){ mode = (mode === 'ot') ? 'sub' : 'ot'; } select(t); }); });
+
+  var def = tiers.filter(function(t){ return t.hasAttribute('data-default-selected'); })[0] || tiers[0];
+  if(def && !has(def, mode)){ mode = (mode === 'ot') ? 'sub' : 'ot'; }
+  if(def){ select(def); } else { paint(); }
+
+  function showErr(msg){ if(!err) return; err.textContent = msg || 'Choose a plan first.'; err.hidden = false; }
+  function renderAndOpenCart(response){
+    try {
+      [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+        { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+        { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+      ].forEach(function(sc){
+        if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+        var host = document.getElementById(sc.id);
+        var el = host.querySelector(sc.selector) || host;
+        var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+        if(frag) el.innerHTML = frag.innerHTML;
+        if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+        if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+      });
+    } catch(e){}
+    var drawer = document.getElementById('Cart-Drawer');
+    if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+    else { window.location = cartUrl; }
+  }
+  if(cta){
+    cta.addEventListener('click', function(){
+      var c = selected();
+      if(!c){ showErr(); return; }
+      var m = has(c, mode) ? mode : (mode === 'ot' ? 'sub' : 'ot');
+      var variant = (c.getAttribute('data-' + m + '-variant') || '').trim();
+      var plan = m === 'sub' ? (c.getAttribute('data-sub-plan') || '').trim() : '';
+      var qty = parseInt(c.getAttribute('data-' + m + '-qty'), 10) || 1;
+      var gift = (c.getAttribute('data-gift') || '').trim();
+      if(!variant){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
+      if(m === 'sub' && !plan){ showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return; }
+      if(err){ err.hidden = true; }
+      cta.classList.add('is-loading'); ctaLabel.textContent = addingText;
+      var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
+      if(plan){ item.selling_plan = plan; }
+      var items = [item];
+      if(gift && plan){ items.push({ id: gift, quantity: 1, properties: { '_gift': 'Free with ' + (c.getAttribute('data-name') || 'your plan') } }); }
+      fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+      .then(function(r){ return r.json(); })
+      .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); ctaLabel.textContent = ctaText; renderAndOpenCart(response); })
+      .catch(function(e){ cta.classList.remove('is-loading'); ctaLabel.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Bundle tiers",
+  "tag": "section",
+  "class": "section-bundle-tiers",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Choose your supply" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Pick the <em>90 days</em> the studies used", "info": "Italics render in the accent colour." },
+    { "type": "range", "id": "heading_size", "label": "Heading size (px, 0 = theme H1)", "min": 0, "max": 64, "step": 2, "default": 0 },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    { "type": "header", "content": "Purchase type toggle" },
+    { "type": "checkbox", "id": "show_toggle", "label": "Show one-time / subscribe toggle", "default": true },
+    { "type": "select", "id": "default_mode", "label": "Default mode", "options": [ { "value": "sub", "label": "Subscribe & save" }, { "value": "ot", "label": "One-time" } ], "default": "sub" },
+    { "type": "text", "id": "ot_label", "label": "One-time label", "default": "One-time" },
+    { "type": "text", "id": "sub_label", "label": "Subscribe label", "default": "Subscribe & save" },
+    { "type": "text", "id": "sub_tag", "label": "Subscribe tag (e.g. 'Best price')", "default": "Best price" },
+    { "type": "text", "id": "sub_only_label", "label": "Tag on tiers with no one-time option", "default": "Subscription only" },
+    { "type": "textarea", "id": "ot_perks", "label": "One-time perks (one per line)", "default": "Ships within 1 business day\n60-day money-back guarantee" },
+    { "type": "textarea", "id": "sub_perks", "label": "Subscription perks (one per line)", "default": "Lowest price per day\nSkip, pause or cancel anytime in your account\n60-day money-back guarantee" },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Add to cart" },
+    { "type": "checkbox", "id": "cta_price", "label": "Show the selected price on the button", "default": true },
+    { "type": "text", "id": "guarantee_text", "label": "Line under the button", "default": "Covered by our 60-day money-back guarantee." },
+    { "type": "url", "id": "guarantee_link", "label": "Guarantee link" },
+    { "type": "header", "content": "Trust row" },
+    { "type": "text", "id": "trust_1", "label": "Trust item 1", "default": "60-day money-back guarantee" },
+    { "type": "text", "id": "trust_2", "label": "Trust item 2", "default": "Free US delivery" },
+    { "type": "text", "id": "trust_3", "label": "Trust item 3", "default": "Skip or cancel anytime" },
+    { "type": "richtext", "id": "fine_print", "label": "Fine print" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#f2eeea" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Card border", "default": "#d9d2c9" },
+    { "type": "color", "id": "selected_border", "label": "Selected border", "default": "#3447af" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#3447af" },
+    { "type": "color", "id": "accent_color", "label": "Accent (italics, ticks)", "default": "#3447af" },
+    { "type": "color", "id": "compare_color", "label": "Struck price", "default": "#676b79" },
+    { "type": "color", "id": "badge_bg", "label": "Badge background", "default": "#1a2874" },
+    { "type": "color", "id": "badge_text", "label": "Badge text", "default": "#B9C2F5" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#1A2874" },
+    { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#3447af" },
+    { "type": "color", "id": "button_text", "label": "Button text", "default": "#B9C2F5" },
+    { "type": "header", "content": "Shape & spacing" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 600, "max": 1200, "step": 20, "default": 960 },
+    { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 28, "step": 1, "default": 16 },
+    { "type": "range", "id": "image_height", "label": "Image height on desktop", "min": 100, "max": 260, "step": 10, "default": 160 },
+    { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "default": 6 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 120, "step": 4, "default": 56 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 120, "step": 4, "default": 64 },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID (for in-page links)" }
+  ],
+  "blocks": [
+    {
+      "type": "tier",
+      "name": "Tier",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Name", "default": "6-week tub" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "1 tub · 90 scoops" },
+        { "type": "text", "id": "badge", "label": "Badge" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Leave empty to use the product's featured image." },
+        { "type": "textarea", "id": "includes", "label": "What's included (one per line)" },
+        { "type": "checkbox", "id": "default_selected", "label": "Selected by default", "default": false },
+        { "type": "header", "content": "One-time" },
+        { "type": "text", "id": "ot_variant", "label": "Variant ID", "info": "Leave empty if this tier is subscription only." },
+        { "type": "range", "id": "ot_qty", "label": "Quantity", "min": 1, "max": 6, "step": 1, "default": 1 },
+        { "type": "text", "id": "ot_price", "label": "Price shown", "default": "$65" },
+        { "type": "text", "id": "ot_compare", "label": "Struck-through price" },
+        { "type": "text", "id": "ot_per", "label": "Per-day line", "default": "$1.44 a day" },
+        { "type": "text", "id": "ot_note", "label": "Small note" },
+        { "type": "header", "content": "Subscription" },
+        { "type": "text", "id": "sub_variant", "label": "Variant ID" },
+        { "type": "text", "id": "sub_plan", "label": "Selling plan ID" },
+        { "type": "range", "id": "sub_qty", "label": "Quantity", "min": 1, "max": 6, "step": 1, "default": 1 },
+        { "type": "text", "id": "sub_price", "label": "Price shown", "default": "$55.25" },
+        { "type": "text", "id": "sub_compare", "label": "Struck-through price", "default": "$65" },
+        { "type": "text", "id": "sub_per", "label": "Per-day line", "default": "$1.23 a day" },
+        { "type": "text", "id": "sub_note", "label": "Small note", "default": "Renews every 6 weeks" },
+        { "type": "text", "id": "gift_variant", "label": "Free gift variant ID (added with subscriptions)", "info": "The protocol variant freed by the native Buy X Get Y discount." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Bundle tiers",
+      "blocks": [
+        { "type": "tier", "settings": { "name": "4-week tub", "subtitle": "1 tub", "ot_variant": "46444657279195", "ot_price": "$45", "ot_per": "$1.50 a day", "sub_variant": "46444657279195", "sub_plan": "6331924699", "sub_price": "$39.60", "sub_compare": "$45", "sub_per": "$1.32 a day", "sub_note": "Renews every 4 weeks" } },
+        { "type": "tier", "settings": { "name": "6-week tub", "subtitle": "1 tub · 90 scoops", "ot_variant": "46444646269147", "ot_price": "$65", "ot_per": "$1.44 a day", "sub_variant": "46444646269147", "sub_plan": "5755961563", "sub_price": "$55.25", "sub_compare": "$65", "sub_per": "$1.23 a day", "sub_note": "Renews every 6 weeks" } },
+        { "type": "tier", "settings": { "name": "90-day bundle", "subtitle": "2 × 6-week tubs", "badge": "Lowest price per day", "default_selected": true, "sub_variant": "46444646269147", "sub_plan": "7141621979", "sub_qty": 2, "sub_price": "$98", "sub_compare": "$130", "sub_per": "$1.09 a day · $32.67 a month", "sub_note": "Billed every 3 months" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

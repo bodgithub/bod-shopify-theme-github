@@ -1513,59 +1513,6 @@
         "margin_bottom": 0
       }
     },
-    "animated_diagrams_JBYjkn": {
-      "type": "animated-diagrams",
-      "blocks": {
-        "diagram_fe3yGL": {
-          "type": "diagram",
-          "settings": {
-            "diagram": "working",
-            "custom_html": "",
-            "container_bg": "",
-            "caption": "When cells respond to insulin, glucose is transported into the cell and used for energy.",
-            "caption_size": 13,
-            "caption_color": "#1a2874"
-          }
-        },
-        "diagram_XJLRxY": {
-          "type": "diagram",
-          "settings": {
-            "diagram": "blocked",
-            "custom_html": "",
-            "container_bg": "",
-            "caption": "When cells stop responding to insulin, glucose stays in the blood and insulin keeps rising.",
-            "caption_size": 13,
-            "caption_color": "#1a2874"
-          }
-        }
-      },
-      "block_order": [
-        "diagram_fe3yGL",
-        "diagram_XJLRxY"
-      ],
-      "disabled": true,
-      "name": "Animated diagrams",
-      "settings": {
-        "line1": "Waking at 3am, Weight around your middle, Brain fog, Afternoon cravings, \"Normal\" labs, Energy crashes, Hot flashes",
-        "line2": "Tired after eight hours, Food noise, Belly fat, Sugar cravings, Poor focus, Gaining from foods that never used to matter",
-        "marquee_color": "#3447af",
-        "marquee_size": 28,
-        "marquee_speed": 50,
-        "bg": "#e3e7ff",
-        "bg_grad_top": "",
-        "bg_grad_bottom": "",
-        "card_bg": "#edefff",
-        "card_grad_top": "",
-        "card_grad_bottom": "",
-        "diagram_scale": 75,
-        "card_border": "#3447af",
-        "card_pad": 24,
-        "pad_top": 0,
-        "pad_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
     "inositol_science_86gMmR": {
       "type": "inositol-science",
       "blocks": {
@@ -2744,7 +2691,7 @@
           "type": "button",
           "settings": {
             "button_text": "Start with Bodology",
-            "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#shopify-section-main-product",
+            "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
             "button_color": "accent"
           }
         }
@@ -2788,7 +2735,7 @@
         "content": "The 90-day bundle: two 6-week tubs, $98 billed every 3 months. Cancel anytime. 60-day money-back guarantee.",
         "content_size": "medium",
         "button_text": "Get the 90-day bundle",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#shopify-section-main-product",
+        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
         "timer_year": 2026,
         "timer_month": "12",
         "timer_day": "01",
@@ -2854,7 +2801,7 @@
         "price_unit": "/day",
         "price_sub": "$32.67 a month — $98 billed every 3 months as a subscription.",
         "button_label": "Start the 90-day bundle",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#shopify-section-main-product",
+        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
         "bg": "#f2eeea",
         "card_bg": "#ffffff",
         "card_border": "#3447af",
@@ -2871,6 +2818,403 @@
         "margin_top": 0,
         "margin_bottom": 0
       }
+    },
+    "symptom_check_peri": {
+      "type": "symptom-check",
+      "blocks": {
+        "sym_a1": {
+          "type": "symptom",
+          "settings": {
+            "text": "Waking at 3am and lying there",
+            "group": "a"
+          }
+        },
+        "sym_a2": {
+          "type": "symptom",
+          "settings": {
+            "text": "Weight settling around your middle, whatever you eat",
+            "group": "a"
+          }
+        },
+        "sym_a3": {
+          "type": "symptom",
+          "settings": {
+            "text": "Tired an hour after a meal",
+            "group": "a"
+          }
+        },
+        "sym_a4": {
+          "type": "symptom",
+          "settings": {
+            "text": "Afternoon cravings you didn’t have at 30",
+            "group": "a"
+          }
+        },
+        "sym_a5": {
+          "type": "symptom",
+          "settings": {
+            "text": "Hungry again soon after eating",
+            "group": "a"
+          }
+        },
+        "sym_a6": {
+          "type": "symptom",
+          "settings": {
+            "text": "Working harder in the gym for less",
+            "group": "a"
+          }
+        },
+        "sym_b1": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Your labs are normal”",
+            "group": "b"
+          }
+        },
+        "sym_b2": {
+          "type": "symptom",
+          "settings": {
+            "text": "“It’s just your age”",
+            "group": "b"
+          }
+        },
+        "sym_b3": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Eat less, move more”",
+            "group": "b"
+          }
+        },
+        "sym_b4": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Come back in a year”",
+            "group": "b"
+          }
+        }
+      },
+      "block_order": [
+        "sym_a1",
+        "sym_a2",
+        "sym_a3",
+        "sym_a4",
+        "sym_a5",
+        "sym_a6",
+        "sym_b1",
+        "sym_b2",
+        "sym_b3",
+        "sym_b4"
+      ],
+      "settings": {
+        "eyebrow": "Is this you?",
+        "heading": "Tick what you <em>recognise</em>",
+        "heading_size": 0,
+        "subheading": "The signs women over 40 describe to us most. Tap any that sound familiar.",
+        "group_a_title": "How you feel",
+        "group_b_title": "What you've been told",
+        "count_text": "You ticked [count] of [total]",
+        "threshold": 3,
+        "msg_none": "<p>Tap anything that sounds like you.</p>",
+        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin.</strong></p>",
+        "msg_high": "<p>These aren’t six separate problems. They’re one problem showing up in several places: <strong>insulin your cells stopped listening to.</strong> Your blood sugar can still read normal while it happens.</p>",
+        "button_label": "Show me what helps",
+        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
+        "footnote": "<p>A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
+        "anchor_id": "symptoms"
+      }
+    },
+    "age_curve_peri": {
+      "type": "age-curve",
+      "blocks": {
+        "pt_1": {
+          "type": "point",
+          "settings": {
+            "label": "20–29",
+            "value": 6.7
+          }
+        },
+        "pt_2": {
+          "type": "point",
+          "settings": {
+            "label": "60–69",
+            "value": 43.5
+          }
+        },
+        "pt_3": {
+          "type": "point",
+          "settings": {
+            "label": "70+",
+            "value": 42
+          }
+        }
+      },
+      "block_order": [
+        "pt_1",
+        "pt_2",
+        "pt_3"
+      ],
+      "settings": {
+        "eyebrow": "Why it gets harder after 40",
+        "heading": "Normal blood sugar. <em>Rising</em> insulin.",
+        "heading_size": 0,
+        "text": "<p>Your blood sugar can test normal for years while insulin quietly rises to keep it there. Standard labs check the sugar, not the insulin, so the first sign is usually how you feel.</p><p>As estrogen falls through perimenopause, cells respond less to insulin and the body makes more of it. <strong>Metabolic syndrome, the cluster insulin resistance drives, affects about 7% of adults in their 20s and over 40% by their 60s.*</strong></p><p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping.</p>",
+        "body_size": 16,
+        "button_label": "",
+        "button_link": "",
+        "chart_side": "right",
+        "chart_style": "bars",
+        "chart_title": "Metabolic syndrome by age, US adults",
+        "chart_subtitle": "Share of adults meeting the criteria. Insulin resistance is the common thread.",
+        "value_suffix": "%",
+        "y_max": 50,
+        "x_label": "Age",
+        "band_from": "",
+        "band_to": "",
+        "band_label": "",
+        "callout_index": 1,
+        "callout_text": "Over 4 in 10 by their 60s",
+        "source": "<p>Source: Ford ES, Giles WH, Dietz WH. Prevalence of the metabolic syndrome among US adults (NHANES III). <em>JAMA</em> 2002;287:356–359. Metabolic syndrome is the cluster of waist size, triglycerides, HDL, blood pressure and fasting glucose that insulin resistance drives. Figures are for all US adults, men and women. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
+        "anchor_id": "chart"
+      }
+    },
+    "us_vs_them_peri": {
+      "type": "us-vs-them",
+      "blocks": {
+        "row_serving": {
+          "type": "row",
+          "settings": {
+            "label": "Inositol per serving",
+            "info": "One Bodology serving is 2 scoops: 4,000mg myo-inositol + 100mg D-chiro-inositol — the full clinically studied daily dose. Many brands define a serving as half that, so their tub looks like it lasts twice as long as it does at the studied dose.",
+            "us_value": "text",
+            "us_text": "4,100mg",
+            "them1_value": "text",
+            "them1_text": "Often half that",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_ratio": {
+          "type": "row",
+          "settings": {
+            "label": "40:1 myo to D-chiro ratio",
+            "info": "The 40:1 ratio used in clinical research, confirmed in writing on every batch’s lab report. If a label doesn’t state the ratio, you can’t know what you’re taking.",
+            "us_value": "check",
+            "us_text": "",
+            "them1_value": "text",
+            "them1_text": "Not always stated",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_dose": {
+          "type": "row",
+          "settings": {
+            "label": "A full daily dose is",
+            "info": "Two small scoops, once a day. In a capsule product holding about 500mg each, the same 4,100mg means 8 or more capsules every day.",
+            "us_value": "text",
+            "us_text": "2 scoops",
+            "them1_value": "text",
+            "them1_text": "8+ capsules",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_form": {
+          "type": "row",
+          "settings": {
+            "label": "Form",
+            "info": "One ingredient blend and nothing else: no other actives, no fillers, no flavoring. Unflavored, it mixes into water, coffee or smoothies.",
+            "us_value": "text",
+            "us_text": "Pure powder",
+            "them1_value": "text",
+            "them1_text": "Capsules, gummies, blends",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_fillers": {
+          "type": "row",
+          "settings": {
+            "label": "Fillers",
+            "info": "No flow agents, no silica, no capsule shells. The lab report shows what’s in the tub.",
+            "us_value": "text",
+            "us_text": "None",
+            "them1_value": "text",
+            "them1_text": "Often flow agents, silica",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_source": {
+          "type": "row",
+          "settings": {
+            "label": "D-chiro source",
+            "info": "Our D-chiro-inositol is derived from carob grown in Spain, and we say so. Most brands won’t tell you where theirs comes from.",
+            "us_value": "text",
+            "us_text": "Carob, published",
+            "them1_value": "text",
+            "them1_text": "Not disclosed",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_coa": {
+          "type": "row",
+          "settings": {
+            "label": "Batch lab report",
+            "info": "Every batch is third-party tested and the certificate of analysis is published: myo assay, D-chiro assay, 40:1 confirmed, heavy metals, microbials.",
+            "us_value": "text",
+            "us_text": "Published",
+            "them1_value": "text",
+            "them1_text": "Ask for theirs",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_guarantee": {
+          "type": "row",
+          "settings": {
+            "label": "Money-back guarantee",
+            "info": "Try it for 60 days. If it isn’t for you, email us and we’ll refund you.",
+            "us_value": "text",
+            "us_text": "60 days",
+            "them1_value": "text",
+            "them1_text": "Varies",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_serving",
+        "row_ratio",
+        "row_dose",
+        "row_form",
+        "row_fillers",
+        "row_source",
+        "row_coa",
+        "row_guarantee"
+      ],
+      "settings": {
+        "heading": "Not your <em>average</em> inositol",
+        "heading_size": 0,
+        "us_label": "Bodology",
+        "them1_label": "Typical inositol brand",
+        "them2_label": "",
+        "them3_label": "",
+        "bg": "#f2eeea",
+        "card_bg": "#faf7f3",
+        "us_color": "#1A2874",
+        "us_text_color": "#B9C2F5",
+        "text_color": "#1a2874",
+        "heading_color": "#3447af",
+        "accent_color": "#3447af",
+        "line_color": "#e2dbd2",
+        "label_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "yes_no_peri": {
+      "type": "yes-no",
+      "blocks": {
+        "qa_1": {
+          "type": "qa",
+          "settings": {
+            "question": "Does insulin resistance get more common after 40?",
+            "answer": "yes",
+            "text": "<p>Estrogen helps cells respond to insulin. As it falls, more women tip into insulin resistance, often with normal glucose on their labs.</p>"
+          }
+        },
+        "qa_2": {
+          "type": "qa",
+          "settings": {
+            "question": "Can my blood sugar be normal and my insulin high?",
+            "answer": "yes",
+            "text": "<p>Fasting glucose stays in range while insulin climbs to hold it there. If you want the number, ask for fasting insulin or HOMA-IR.</p>"
+          }
+        },
+        "qa_3": {
+          "type": "qa",
+          "settings": {
+            "question": "Is inositol a hormone?",
+            "answer": "no",
+            "text": "<p>It’s a compound your body already makes and uses to pass on insulin’s signal. Two scoops top it up to the 4g used in studies.</p>"
+          }
+        },
+        "qa_4": {
+          "type": "qa",
+          "settings": {
+            "question": "Will two scoops fix everything overnight?",
+            "answer": "no",
+            "text": "<p>Most women notice cravings and energy first, within a few weeks. The postmenopausal study ran six months.</p>"
+          }
+        },
+        "qa_5": {
+          "type": "qa",
+          "settings": {
+            "question": "Do I have to give up coffee or carbs for it to work?",
+            "answer": "no",
+            "text": "<p>Stir it into your morning coffee. It’s unflavored, gently sweet on its own, and dissolves clear.</p>"
+          }
+        },
+        "qa_6": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it risky to try?",
+            "answer": "no",
+            "text": "<p>You have 60 days. If it isn’t doing anything for you, email us and we’ll refund you.</p>"
+          }
+        },
+        "qa_7": {
+          "type": "qa",
+          "settings": {
+            "question": "Is the 90-day bundle a commitment?",
+            "answer": "other",
+            "text": "<p>It’s a subscription billed every 3 months at $98 for two 6-week tubs. Skip or cancel anytime in your account.</p>",
+            "other_label": "Not really"
+          }
+        }
+      },
+      "block_order": [
+        "qa_1",
+        "qa_2",
+        "qa_3",
+        "qa_4",
+        "qa_5",
+        "qa_6",
+        "qa_7"
+      ],
+      "settings": {
+        "eyebrow": "Keep it simple",
+        "heading": "Yes or <em>no?</em>",
+        "heading_size": 0,
+        "subheading": "Straight answers to what women over 40 ask us before they order.",
+        "yes_label": "Yes",
+        "no_label": "No",
+        "other_label": "It depends",
+        "button_label": "",
+        "button_link": "",
+        "anchor_id": "yes-no"
+      }
     }
   },
   "order": [
@@ -2880,10 +3224,12 @@
     "spacer_fcdpRG",
     "main-product",
     "1768505899436dba61",
+    "symptom_check_peri",
     "category_list_grid_NDqtGH",
     "inositol_science_86gMmR",
-    "animated_diagrams_JBYjkn",
+    "age_curve_peri",
     "why_inositol_DgbUrB",
+    "us_vs_them_peri",
     "quote_grid_wLJirf",
     "image_icon_cards_XGzzR4",
     "community_videos_gi9WUU",
@@ -2891,6 +3237,7 @@
     "testimonial_carousel_twHytV",
     "custom_liquid_ax6VDD",
     "bf_bundle",
+    "yes_no_peri",
     "collapsible_content_cGXRUN",
     "video_pdBgr8",
     "rich_text_yXby9z",

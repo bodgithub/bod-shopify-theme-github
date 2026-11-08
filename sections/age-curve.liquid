@@ -1,0 +1,261 @@
+{%- comment -%}
+  Bodology · Age curve
+  Copy on one side, a line chart on the other: one value per age band
+  (each band is a block), a smooth curve with an area fill, a shaded band
+  for a highlighted range (e.g. perimenopause) and a callout on one point.
+  Drawn as inline SVG by a small script from the block data, so the chart
+  scales to any width. Source line under the chart. Mobile first: copy
+  above the chart, side by side from 900px.
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign uid = section.id
+-%}
+
+{% style %}
+  #shopify-section-{{ uid }} .ac {
+    background: {{ s.bg }};
+    color: {{ s.text_color }};
+    padding: {{ s.padding_top | times: 0.7 | round }}px 0 {{ s.padding_bottom | times: 0.7 | round }}px;
+  }
+  #shopify-section-{{ uid }} .ac__pw { max-width: {{ s.max_width }}px; margin: 0 auto; padding: 0 16px; }
+  #shopify-section-{{ uid }} .ac__grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
+  #shopify-section-{{ uid }} .ac__eyebrow { margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .ac__heading { margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
+  #shopify-section-{{ uid }} .ac__heading em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .ac__text { margin: 16px 0 0; font-size: {{ s.body_size }}px; line-height: 1.6; }
+  #shopify-section-{{ uid }} .ac__text p { margin: 0 0 12px; }
+  #shopify-section-{{ uid }} .ac__text p:last-child { margin-bottom: 0; }
+  #shopify-section-{{ uid }} .ac__text strong { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .ac__btn {
+    display: inline-block; margin-top: 22px; padding: 14px 30px; border-radius: {{ s.button_radius }}px;
+    background: {{ s.button_bg }}; color: {{ s.button_text }}; text-decoration: none; font-size: 15px; transition: background .15s, transform .14s;
+  }
+  #shopify-section-{{ uid }} .ac__btn:hover { background: {{ s.button_hover }}; transform: translateY(-1px); }
+
+  #shopify-section-{{ uid }} .ac__card { background: {{ s.card_bg }}; border: 1px solid {{ s.card_border }}; border-radius: {{ s.card_radius }}px; padding: 18px 14px 14px; }
+  #shopify-section-{{ uid }} .ac__title { margin: 0 0 4px; font-size: 15px; font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .ac__subtitle { margin: 0 0 10px; font-size: 12.5px; opacity: .8; }
+  #shopify-section-{{ uid }} .ac__svg { display: block; width: 100%; height: auto; overflow: visible; font-family: inherit; }
+  #shopify-section-{{ uid }} .ac__axis { fill: {{ s.text_color }}; opacity: .7; font-size: 12px; }
+  #shopify-section-{{ uid }} .ac__grid-line { stroke: {{ s.grid_color }}; stroke-width: 1; }
+  #shopify-section-{{ uid }} .ac__band { fill: {{ s.band_color }}; }
+  #shopify-section-{{ uid }} .ac__band-label { fill: {{ s.accent_color }}; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; }
+  #shopify-section-{{ uid }} .ac__area { fill: url(#ac-fill-{{ uid }}); }
+  #shopify-section-{{ uid }} .ac__line { fill: none; stroke: {{ s.line_color }}; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  #shopify-section-{{ uid }} .ac__dot { fill: #fff; stroke: {{ s.line_color }}; stroke-width: 2.5; }
+  #shopify-section-{{ uid }} .ac__dot--hi { fill: {{ s.line_color }}; }
+  #shopify-section-{{ uid }} .ac__bar { fill: {{ s.line_color }}; opacity: .55; }
+  #shopify-section-{{ uid }} .ac__bar--hi { opacity: 1; }
+  #shopify-section-{{ uid }} .ac__val { fill: {{ s.text_color }}; font-size: 12.5px; font-weight: 500; text-anchor: middle; }
+  #shopify-section-{{ uid }} .ac__callout-bg { fill: {{ s.callout_bg }}; stroke: {{ s.callout_bg }}; stroke-width: 1; }
+  #shopify-section-{{ uid }} .ac__callout-text { fill: {{ s.callout_fg }}; font-size: 12px; font-weight: 500; text-anchor: middle; }
+  #shopify-section-{{ uid }} .ac__source { margin: 10px 0 0; font-size: 11px; line-height: 1.5; opacity: .7; }
+  #shopify-section-{{ uid }} .ac__source a { color: inherit; }
+  #shopify-section-{{ uid }} .ac__fallback { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 8px; font-size: 13px; }
+  #shopify-section-{{ uid }} .ac__fallback li { text-align: center; }
+  #shopify-section-{{ uid }} .ac__fallback b { display: block; font-size: 20px; color: {{ s.line_color }}; }
+  #shopify-section-{{ uid }} .ac__card.is-drawn .ac__fallback { display: none; }
+
+  @media screen and (min-width: 900px) {
+    #shopify-section-{{ uid }} .ac { padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px; }
+    #shopify-section-{{ uid }} .ac__pw { padding: 0 20px; }
+    #shopify-section-{{ uid }} .ac__grid { grid-template-columns: {% if s.chart_side == 'left' %}1.15fr 1fr{% else %}1fr 1.15fr{% endif %}; gap: 56px; }
+    #shopify-section-{{ uid }} .ac__copy { {% if s.chart_side == 'left' %}order: 2;{% endif %} }
+    #shopify-section-{{ uid }} .ac__heading { {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %} }
+    #shopify-section-{{ uid }} .ac__card { padding: 24px 22px 18px; }
+  }
+{% endstyle %}
+
+<div class="ac" id="ac-{{ uid }}"{% if s.anchor_id != blank %} data-anchor="{{ s.anchor_id }}"{% endif %}>{% if s.anchor_id != blank %}<span id="{{ s.anchor_id }}" style="position:relative;top:-90px;display:block"></span>{% endif %}
+  <div class="ac__pw">
+    <div class="ac__grid">
+      <div class="ac__copy">
+        {%- if s.eyebrow != blank -%}<p class="ac__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
+        {%- if s.heading != blank -%}<h2 class="ac__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</h2>{%- endif -%}
+        {%- if s.text != blank -%}<div class="ac__text">{{ s.text }}</div>{%- endif -%}
+        {%- if s.button_label != blank -%}<a class="ac__btn" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}</a>{%- endif -%}
+      </div>
+      <div class="ac__chart">
+        <figure class="ac__card" data-ac-card style="margin:0">
+          {%- if s.chart_title != blank -%}<p class="ac__title">{{ s.chart_title }}</p>{%- endif -%}
+          {%- if s.chart_subtitle != blank -%}<p class="ac__subtitle">{{ s.chart_subtitle }}</p>{%- endif -%}
+          <svg class="ac__svg" viewBox="0 0 640 400" role="img" aria-label="{{ s.chart_title | escape }}" data-ac-svg
+            data-suffix="{{ s.value_suffix | escape }}" data-ymax="{{ s.y_max }}" data-band-from="{{ s.band_from | escape }}" data-band-to="{{ s.band_to | escape }}" data-band-label="{{ s.band_label | escape }}"
+            data-callout-index="{{ s.callout_index }}" data-callout-text="{{ s.callout_text | escape }}" data-style="{{ s.chart_style }}" data-x-label="{{ s.x_label | escape }}">
+            <defs>
+              <linearGradient id="ac-fill-{{ uid }}" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="{{ s.line_color }}" stop-opacity="0.28"></stop>
+                <stop offset="100%" stop-color="{{ s.line_color }}" stop-opacity="0.02"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+          <ul class="ac__fallback" data-ac-points>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'point' -%}
+                <li data-label="{{ block.settings.label | escape }}" data-value="{{ block.settings.value }}" {{ block.shopify_attributes }}><b>{{ block.settings.value }}{{ s.value_suffix }}</b>{{ block.settings.label }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+          {%- if s.source != blank -%}<figcaption class="ac__source">{{ s.source }}</figcaption>{%- endif -%}
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var card = document.querySelector('#ac-{{ uid }} [data-ac-card]');
+  if(!card) return;
+  var svg = card.querySelector('[data-ac-svg]');
+  var items = Array.prototype.slice.call(card.querySelectorAll('[data-ac-points] li'));
+  var pts = items.map(function(li){ return { label: li.getAttribute('data-label') || '', value: parseFloat(li.getAttribute('data-value')) || 0 }; });
+  if(!svg || pts.length < 2) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, text){ var e = document.createElementNS(NS, tag); for(var k in attrs){ e.setAttribute(k, attrs[k]); } if(text != null){ e.textContent = text; } return e; }
+  var W = 640, H = 400, padL = 44, padR = 24, padT = 56, padB = 58;
+  var suffix = svg.getAttribute('data-suffix') || '';
+  var ymaxAttr = parseFloat(svg.getAttribute('data-ymax')) || 0;
+  var maxV = Math.max.apply(null, pts.map(function(p){ return p.value; }));
+  var yMax = ymaxAttr > 0 ? ymaxAttr : Math.ceil((maxV * 1.25) / 10) * 10;
+  var innerW = W - padL - padR, innerH = H - padT - padB;
+  function X(i){ return padL + (pts.length === 1 ? innerW / 2 : innerW * i / (pts.length - 1)); }
+  function Y(v){ return padT + innerH - (v / yMax) * innerH; }
+
+  // highlighted band
+  var from = svg.getAttribute('data-band-from'), to = svg.getAttribute('data-band-to');
+  var fi = pts.map(function(p){ return p.label; }).indexOf(from), ti = pts.map(function(p){ return p.label; }).indexOf(to);
+  if(fi > -1 && ti > -1){
+    var half = pts.length > 1 ? innerW / (pts.length - 1) / 2 : 40;
+    var bx = Math.max(padL, X(Math.min(fi, ti)) - half), bx2 = Math.min(W - padR, X(Math.max(fi, ti)) + half);
+    svg.appendChild(el('rect', { x: bx, y: padT - 26, width: bx2 - bx, height: innerH + 26, rx: 10, 'class': 'ac__band' }));
+    var bl = svg.getAttribute('data-band-label');
+    if(bl){ svg.appendChild(el('text', { x: (bx + bx2) / 2, y: padT - 10, 'text-anchor': 'middle', 'class': 'ac__band-label' }, bl)); }
+  }
+  // grid + y axis labels
+  var steps = 4;
+  for(var g = 0; g <= steps; g++){
+    var v = yMax * g / steps, y = Y(v);
+    svg.appendChild(el('line', { x1: padL, x2: W - padR, y1: y, y2: y, 'class': 'ac__grid-line' }));
+    svg.appendChild(el('text', { x: padL - 8, y: y + 4, 'text-anchor': 'end', 'class': 'ac__axis' }, Math.round(v) + suffix));
+  }
+  // x labels
+  pts.forEach(function(p, i){ svg.appendChild(el('text', { x: X(i), y: H - padB + 22, 'text-anchor': 'middle', 'class': 'ac__axis' }, p.label)); });
+  var xl = svg.getAttribute('data-x-label'); if(xl){ svg.appendChild(el('text', { x: padL + innerW / 2, y: H - 8, 'text-anchor': 'middle', 'class': 'ac__axis' }, xl)); }
+
+  var style = svg.getAttribute('data-style') || 'line';
+  var P = pts.map(function(p, i){ return [X(i), Y(p.value)]; });
+  var base = padT + innerH;
+  var ci = parseInt(svg.getAttribute('data-callout-index'), 10);
+  if(isNaN(ci) || ci < 0 || ci >= pts.length){ ci = pts.length - 1; }
+  if(style === 'bars'){
+    var bw = Math.min(110, innerW / pts.length * 0.55);
+    P.forEach(function(pt, i){
+      svg.appendChild(el('rect', { x: pt[0] - bw / 2, y: pt[1], width: bw, height: Math.max(2, base - pt[1]), rx: 10, 'class': 'ac__bar' + (i === ci ? ' ac__bar--hi' : '') }));
+      if(i !== ci){ svg.appendChild(el('text', { x: pt[0], y: pt[1] - 10, 'class': 'ac__val' }, pts[i].value + suffix)); }
+    });
+  } else {
+    // smooth path (Catmull-Rom to cubic Bézier)
+    var d = 'M' + P[0][0] + ',' + P[0][1];
+    for(var i = 0; i < P.length - 1; i++){
+      var p0 = P[i - 1] || P[i], p1 = P[i], p2 = P[i + 1], p3 = P[i + 2] || p2;
+      var c1x = p1[0] + (p2[0] - p0[0]) / 6, c1y = p1[1] + (p2[1] - p0[1]) / 6;
+      var c2x = p2[0] - (p3[0] - p1[0]) / 6, c2y = p2[1] - (p3[1] - p1[1]) / 6;
+      c1y = Math.min(Math.max(c1y, padT), padT + innerH); c2y = Math.min(Math.max(c2y, padT), padT + innerH);
+      d += ' C' + c1x + ',' + c1y + ' ' + c2x + ',' + c2y + ' ' + p2[0] + ',' + p2[1];
+    }
+    svg.appendChild(el('path', { d: d + ' L' + P[P.length - 1][0] + ',' + base + ' L' + P[0][0] + ',' + base + ' Z', 'class': 'ac__area' }));
+    svg.appendChild(el('path', { d: d, 'class': 'ac__line' }));
+    P.forEach(function(pt, i){
+      svg.appendChild(el('circle', { cx: pt[0], cy: pt[1], r: i === ci ? 6 : 5, 'class': 'ac__dot' + (i === ci ? ' ac__dot--hi' : '') }));
+      if(i !== ci){ svg.appendChild(el('text', { x: pt[0], y: pt[1] - 12, 'class': 'ac__val' }, pts[i].value + suffix)); }
+    });
+  }
+  var ct = svg.getAttribute('data-callout-text');
+  if(ct){
+    var cw = Math.min(220, Math.max(96, ct.length * 6.6 + 24)), ch = 28;
+    var cx = Math.min(Math.max(P[ci][0], padL + cw / 2), W - padR - cw / 2), cy = P[ci][1] - 22;
+    svg.appendChild(el('rect', { x: cx - cw / 2, y: cy - ch, width: cw, height: ch, rx: 14, 'class': 'ac__callout-bg' }));
+    svg.appendChild(el('text', { x: cx, y: cy - 9, 'class': 'ac__callout-text' }, ct));
+  } else {
+    svg.appendChild(el('text', { x: P[ci][0], y: P[ci][1] - 12, 'class': 'ac__val' }, pts[ci].value + suffix));
+  }
+  card.classList.add('is-drawn');
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Age curve chart",
+  "tag": "section",
+  "class": "section-age-curve",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why it gets harder after 40" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Insulin resistance <em>climbs</em> with age" },
+    { "type": "range", "id": "heading_size", "label": "Heading size (px, 0 = theme H1)", "min": 0, "max": 64, "step": 2, "default": 0 },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Your blood sugar can test normal for years while insulin quietly rises to keep it there. As estrogen falls through perimenopause, cells respond less to insulin, so the body makes more of it.</p>" },
+    { "type": "range", "id": "body_size", "label": "Text size", "min": 13, "max": 20, "step": 1, "default": 16 },
+    { "type": "text", "id": "button_label", "label": "Button label" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "header", "content": "Chart" },
+    { "type": "select", "id": "chart_side", "label": "Chart position on desktop", "options": [ { "value": "right", "label": "Right" }, { "value": "left", "label": "Left" } ], "default": "right" },
+    { "type": "text", "id": "chart_title", "label": "Chart title", "default": "Metabolic syndrome by age, US adults" },
+    { "type": "text", "id": "chart_subtitle", "label": "Chart subtitle", "default": "Share of adults meeting the criteria (insulin resistance is the common thread)" },
+    { "type": "select", "id": "chart_style", "label": "Chart style", "options": [ { "value": "line", "label": "Smooth line + area" }, { "value": "bars", "label": "Bars (best for a few age bands)" } ], "default": "line" },
+    { "type": "text", "id": "value_suffix", "label": "Value suffix", "default": "%" },
+    { "type": "range", "id": "y_max", "label": "Y-axis max (0 = auto)", "min": 0, "max": 100, "step": 5, "default": 0 },
+    { "type": "text", "id": "x_label", "label": "X-axis label", "default": "Age" },
+    { "type": "text", "id": "band_from", "label": "Shaded band starts at (point label)" },
+    { "type": "text", "id": "band_to", "label": "Shaded band ends at (point label)" },
+    { "type": "text", "id": "band_label", "label": "Shaded band label", "default": "Perimenopause" },
+    { "type": "range", "id": "callout_index", "label": "Callout on point number (0 = first; use the last point if out of range)", "min": 0, "max": 11, "step": 1, "default": 11 },
+    { "type": "text", "id": "callout_text", "label": "Callout text" },
+    { "type": "richtext", "id": "source", "label": "Source line" },
+    { "type": "header", "content": "Colours" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#f2eeea" },
+    { "type": "color", "id": "card_bg", "label": "Chart card", "default": "#ffffff" },
+    { "type": "color", "id": "card_border", "label": "Chart card border", "default": "#d9d2c9" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#1a2874" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#3447af" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#3447af" },
+    { "type": "color", "id": "line_color", "label": "Line", "default": "#3447af" },
+    { "type": "color", "id": "grid_color", "label": "Grid lines", "default": "#ebe6df" },
+    { "type": "color", "id": "band_color", "label": "Shaded band", "default": "#e3e7ff" },
+    { "type": "color", "id": "callout_bg", "label": "Callout background", "default": "#1a2874" },
+    { "type": "color", "id": "callout_fg", "label": "Callout text", "default": "#B9C2F5" },
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#1A2874" },
+    { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#3447af" },
+    { "type": "color", "id": "button_text", "label": "Button text", "default": "#B9C2F5" },
+    { "type": "header", "content": "Shape & spacing" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 800, "max": 1300, "step": 20, "default": 1100 },
+    { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 28, "step": 1, "default": 16 },
+    { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "default": 6 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 120, "step": 4, "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 120, "step": 4, "default": 64 },
+    { "type": "text", "id": "anchor_id", "label": "Anchor ID (for in-page links)" }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Data point",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Age band label", "default": "40s" },
+        { "type": "number", "id": "value", "label": "Value", "default": 20 }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Age curve chart",
+      "blocks": [
+        { "type": "point", "settings": { "label": "20–29", "value": 6.7 } },
+        { "type": "point", "settings": { "label": "60–69", "value": 43.5 } },
+        { "type": "point", "settings": { "label": "70+", "value": 42 } }
+      ]
+    }
+  ]
+}
+{% endschema %}
