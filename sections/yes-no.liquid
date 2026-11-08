@@ -35,6 +35,7 @@
   #shopify-section-{{ uid }} .yn__badge--no { background: transparent; color: {{ s.no_text }}; border: 1.5px solid {{ s.no_text }}; }
   #shopify-section-{{ uid }} .yn__badge--other { background: {{ s.other_bg }}; color: {{ s.other_text }}; }
   #shopify-section-{{ uid }} .yn__a { grid-column: 1 / -1; margin: 0; font-size: 14.5px; line-height: 1.55; opacity: .92; }
+  #shopify-section-{{ uid }} .yn__a p { margin: 0; }
   #shopify-section-{{ uid }} .yn__a strong { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .yn__cta { text-align: center; margin-top: 24px; }
   #shopify-section-{{ uid }} .yn__btn {
@@ -65,7 +66,7 @@
         <li class="yn__row" {{ block.shopify_attributes }}>
           <p class="yn__q">{{ b.question }}</p>
           <span class="yn__badge yn__badge--{{ b.answer }}">{% case b.answer %}{% when 'yes' %}{{ s.yes_label }}{% when 'no' %}{{ s.no_label }}{% else %}{{ b.other_label | default: s.other_label }}{% endcase %}</span>
-          {%- if b.text != blank -%}<p class="yn__a">{{ b.text }}</p>{%- endif -%}
+          {%- if b.text != blank -%}<div class="yn__a">{{ b.text }}</div>{%- endif -%}
         </li>
       {%- endfor -%}
     </ul>

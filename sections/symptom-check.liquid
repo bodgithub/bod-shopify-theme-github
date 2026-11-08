@@ -52,6 +52,7 @@
   }
   #shopify-section-{{ uid }} .sc__count { display: block; font-size: 13px; letter-spacing: .03em; opacity: .8; margin-bottom: 4px; }
   #shopify-section-{{ uid }} .sc__msg { margin: 0; }
+  #shopify-section-{{ uid }} .sc__msg p { margin: 0; }
   #shopify-section-{{ uid }} .sc__msg strong { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__btn {
     display: inline-block; margin-top: 14px; padding: 14px 30px; border-radius: {{ s.button_radius }}px;
@@ -103,7 +104,7 @@
 
     <div class="sc__result" aria-live="polite">
       <span class="sc__count" data-sc-count></span>
-      <p class="sc__msg" data-sc-msg>{{ s.msg_none }}</p>
+      <div class="sc__msg" data-sc-msg>{{ s.msg_none }}</div>
       {%- if s.button_label != blank -%}<a class="sc__btn" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}</a>{%- endif -%}
     </div>
     {%- if s.footnote != blank -%}<div class="sc__foot">{{ s.footnote }}</div>{%- endif -%}
