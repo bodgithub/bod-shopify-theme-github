@@ -13,6 +13,14 @@
   assign uid = section.id
   assign img = s.image
   assign mimg = s.mobile_image | default: s.image
+  assign img_alt = s.heading | strip_html
+  if img.alt != blank
+    assign img_alt = img.alt
+  endif
+  assign mimg_alt = s.heading | strip_html
+  if mimg.alt != blank
+    assign mimg_alt = mimg.alt
+  endif
 -%}
 
 {% style %}
@@ -68,7 +76,7 @@
 <div class="hs">{% if s.anchor_id != blank %}<span id="{{ s.anchor_id }}" style="position:relative;top:-90px;display:block"></span>{% endif %}
   <div class="hs__grid">
     {%- if mimg != blank -%}
-      <div class="hs__media hs__media--mobile">{{ mimg | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '480, 720, 960, 1200', sizes: '100vw', alt: mimg.alt | default: s.heading | strip_html }}</div>
+      <div class="hs__media hs__media--mobile">{{ mimg | image_url: width: 1200 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '480, 720, 960, 1200', sizes: '100vw', alt: mimg_alt }}</div>
     {%- endif -%}
     <div class="hs__panel">
       <div class="hs__copy">
@@ -93,7 +101,7 @@
       </div>
     </div>
     {%- if img != blank -%}
-      <div class="hs__media hs__media--desktop">{{ img | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '800, 1200, 1600, 1800', sizes: '(min-width: 900px) 55vw, 100vw', alt: img.alt | default: s.heading | strip_html }}</div>
+      <div class="hs__media hs__media--desktop">{{ img | image_url: width: 1800 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '800, 1200, 1600, 1800', sizes: '(min-width: 900px) 55vw, 100vw', alt: img_alt }}</div>
     {%- endif -%}
   </div>
 </div>
