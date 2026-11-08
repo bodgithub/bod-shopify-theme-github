@@ -67,6 +67,7 @@
   #shopify-section-{{ section.id }} .uvt__cell--them {
     background: {{ s.card_bg }};
     justify-content: center;
+    text-align: center;
     font-weight: var(--font-body-bold-weight, 500);
     font-size: {{ s.label_size }}px;
   }
@@ -74,6 +75,7 @@
     background: {{ s.us_color }};
     color: {{ s.us_text_color }};
     justify-content: center;
+    text-align: center;
     font-weight: var(--font-body-bold-weight, 500);
     font-size: {{ s.label_size }}px;
   }
@@ -98,10 +100,12 @@
     text-align: center;
   }
   #shopify-section-{{ section.id }} .uvt__head--us img {
-    max-width: 90px;
-    max-height: 34px;
+    width: {{ s.us_logo_width | default: 80 }}px;
+    max-width: 100%;
+    height: auto;
     object-fit: contain;
     display: block;
+    {% if s.us_logo_white %}filter: brightness(0) invert(1);{% endif %}
   }
   #shopify-section-{{ section.id }} .uvt__head--them {
     justify-content: center;
@@ -125,7 +129,7 @@
     flex: 0 0 auto;
   }
   #shopify-section-{{ section.id }} .uvt__icon svg { width: 12px; height: 12px; display: block; }
-  #shopify-section-{{ section.id }} .uvt__icon--check { background: #ffffff; color: {{ s.us_color }}; }
+  #shopify-section-{{ section.id }} .uvt__icon--check { background: transparent; border: 1.5px solid currentColor; color: inherit; }
   #shopify-section-{{ section.id }} .uvt__icon--cross { border: 1px solid currentColor; opacity: .55; }
   #shopify-section-{{ section.id }} .uvt__info {
     width: 16px;
@@ -294,6 +298,23 @@
       "id": "us_logo",
       "label": "Our column logo",
       "info": "Replaces the column name when set."
+    },
+    {
+      "type": "range",
+      "id": "us_logo_width",
+      "label": "Logo width",
+      "min": 40,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "checkbox",
+      "id": "us_logo_white",
+      "label": "Render the logo in white",
+      "info": "Turns a dark or blue logo white so it reads on the navy column.",
+      "default": true
     },
     {
       "type": "text",
