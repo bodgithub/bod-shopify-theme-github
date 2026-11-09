@@ -314,3 +314,7 @@ line-hight:0.9;}
 .image-with-text-overlay--content .rte p { line-height: 1.3; }
 .image-with-text-overlay--content .rte p { margin-bottom: 0.55em; }
 .image-with-text-overlay--content .rte p:last-child { margin-bottom: 0; }
+
+/* Smaller heading tags typed inside the Text block read as body copy too */
+.image-with-text-overlay--content .rte :is(h3, h4, h5, h6) { line-height: 1.3; font-weight: 400; letter-spacing: 0; text-transform: none; margin: 0 0 0.55em; }
+.image-with-text-overlay--content .rte :is(h3, h4, h5, h6):last-child { margin-bottom: 0; }
