@@ -34,7 +34,8 @@
           "type": "heading",
           "settings": {
             "text": "{{ page.metafields.custom.problem_category.value.headline | metafield_tag }}",
-            "heading_size": "h1-xlarge"
+            "heading_size": "h1-xlarge",
+            "heading_color": "#1a2874"
           }
         },
         "customer_reviews_CtBhV3": {

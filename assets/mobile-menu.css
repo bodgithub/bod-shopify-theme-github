@@ -213,3 +213,6 @@
 .mobile-menu-drawer .mobile-menu__account-link:hover svg path,
 .mobile-menu-drawer .mobile-menu__account-link:focus-visible svg path { fill: #b9c2f5; }
 .mobile-menu-drawer .thb-mobile-menu-footer .thb-mobile-account-link { display: none; }
+
+/* Bodology: page links inside the mobile sub-menus use the same mid blue as the desktop dropdown links (app.css .thb-full-menu .sub-menu a) */
+.mobile-menu .sub-menu li > a, .mobile-menu .sub-menu li summary { color: #3447af; }

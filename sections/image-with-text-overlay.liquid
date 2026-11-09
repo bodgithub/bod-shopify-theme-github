@@ -96,7 +96,7 @@
 									{{ block.settings.text | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}
 								</div>
 							{%- when 'heading' -%}
-								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ heading_color }};{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}">{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
+								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.heading_color }};{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}">{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
