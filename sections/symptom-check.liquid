@@ -76,7 +76,13 @@
   #shopify-section-{{ uid }} .sc__bar-text { flex: 1 1 auto; min-width: 0; font-size: 14px; line-height: 1.35; }
   #shopify-section-{{ uid }} .sc__bar-count { display: block; font-size: 12px; letter-spacing: .03em; opacity: .75; }
   #shopify-section-{{ uid }} .sc__bar-count:empty { display: none; }
-  #shopify-section-{{ uid }} .sc__bar-msg { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  #shopify-section-{{ uid }} .sc__bar-msg { display: block; }
+  /* phones: while the section is in view the full message sits on top and the button goes full width underneath */
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ uid }} .sc__bar[data-state="in"] .sc__bar-inner { flex-wrap: wrap; gap: 10px 14px; }
+    #shopify-section-{{ uid }} .sc__bar[data-state="in"] .sc__bar-text { flex-basis: 100%; }
+    #shopify-section-{{ uid }} .sc__bar[data-state="in"]:not([data-count="0"]) .sc__bar-btn--in { width: 100%; }
+  }
   #shopify-section-{{ uid }} .sc__bar-msg p { margin: 0; display: inline; }
   #shopify-section-{{ uid }} .sc__bar-msg strong { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__bar-change { display: none; appearance: none; background: none; border: 0; padding: 0; margin-top: 2px; font: inherit; font-size: 13px; color: {{ s.accent_color }}; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
