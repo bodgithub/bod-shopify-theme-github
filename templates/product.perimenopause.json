@@ -9,6 +9,120 @@
  */
 {
   "sections": {
+    "hero_peri": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_peri": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "<p>INSULIN IN YOUR 40s, 50s AND BEYOND</p>",
+            "text_color": "#1a2874",
+            "pill_match": true
+          }
+        },
+        "heading_peri": {
+          "type": "heading",
+          "settings": {
+            "text": "<h1>Nobody tells you this at 40.&nbsp;</h1><h3>It's not just hormones changing, it's insulin.</h3>",
+            "heading_color": "#1a2874",
+            "heading_size": "h1-large"
+          }
+        },
+        "text_peri": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Same diet and routine, different results. Doctor says everything looks fine. <strong>Start with insulin.</strong></p>",
+            "description_color": "#1a2874",
+            "description_size": "large"
+          }
+        },
+        "benefits_peri": {
+          "type": "benefits",
+          "settings": {
+            "benefits-title": "",
+            "icon_size": 25,
+            "border_size": 1,
+            "text_color": "#1a2874",
+            "border_color": "#3447af",
+            "benefit_1": "Studied in women pre and post menopause",
+            "icon_1": "shopify://shop_images/icon_check-circle.png",
+            "benefit_2": "D-chiro-inositol from carob pods",
+            "icon_2": "shopify://shop_images/icon_check-circle.png",
+            "benefit_3": "60-day money-back guarantee",
+            "icon_3": "shopify://shop_images/icon_check-circle.png",
+            "benefit_4": "",
+            "benefit_5": ""
+          }
+        },
+        "space_bhy9NE": {
+          "type": "space",
+          "settings": {
+            "height": 30
+          }
+        },
+        "button_peri": {
+          "type": "button",
+          "settings": {
+            "button_text": "Start with inositol",
+            "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
+            "button_color": "accent"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_peri",
+        "heading_peri",
+        "text_peri",
+        "benefits_peri",
+        "space_bhy9NE",
+        "button_peri"
+      ],
+      "custom_css": [],
+      "settings": {
+        "image": "shopify://shop_images/Peri_Hero_Banner_Desktop.png",
+        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_2.png",
+        "image_parallax": false,
+        "desktop_height": "desktop-height-750",
+        "mobile_height": "mobile-height-auto",
+        "full_width": true,
+        "content_width": "small",
+        "content_position": "bottom-left",
+        "text_alignment": "left",
+        "text_color": "#1a2874",
+        "overlay_color": "#2c2d2e",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "bf_countdown": {
+      "type": "countdown-banner",
+      "settings": {
+        "full_width": true,
+        "section_layout": "horizontal",
+        "desktop_height": "desktop-height-auto",
+        "mobile_height": "mobile-height-auto",
+        "subheading": "Black Friday",
+        "heading": "90 days of the full clinical dose. $32.67 a month.",
+        "heading_size": "h2",
+        "content": "The 90-day bundle: two 6-week tubs, $98 billed every 3 months. Cancel anytime. 60-day money-back guarantee.",
+        "content_size": "medium",
+        "button_text": "Get the 90-day bundle",
+        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
+        "timer_year": 2026,
+        "timer_month": "12",
+        "timer_day": "01",
+        "timer_hour": "00",
+        "timer_minute": "00",
+        "color_bg": "#e3e7ff",
+        "color_text": "#1a2874",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
     "gpt_product_seo_DWikHm": {
       "type": "gpt-product-seo",
       "name": "GPT PRODUCT SEO",
@@ -1434,6 +1548,263 @@
         "enable_video_looping": true
       }
     },
+    "1768505899436dba61": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_66d84b5_zDxjMN": {
+          "type": "ai_gen_block_66d84b5",
+          "settings": {
+            "text_1": "LESS INSULIN",
+            "text_2": "STEADIER BLOOD SUGAR",
+            "text_3": "FEWER CRAVINGS",
+            "text_4": "LESS INSULIN",
+            "text_5": "STEADIER BLOOD SUGAR",
+            "text_6": "FEWER CRAVINGS",
+            "animation_speed": 30,
+            "pause_on_hover": true,
+            "font_size": 22,
+            "font_weight": "500",
+            "text_transform": "uppercase",
+            "letter_spacing": 0,
+            "text_spacing": 70,
+            "padding_vertical": 15,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "show_separator": true,
+            "separator_size": 20,
+            "separator_color": "#ffffff",
+            "text_color": "#ffffff",
+            "background_color": "#0d70e4",
+            "fade_width": 40,
+            "fade_strength": 50,
+            "fade_color": "#1e3ace"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_23be19a_U47bUD": {
+          "type": "ai_gen_block_23be19a",
+          "disabled": true,
+          "settings": {
+            "avatar_1": "shopify://shop_images/Kylie_Profile_Picture.jpg",
+            "avatar_2": "shopify://shop_images/Keira_Profile_Picture.jpg",
+            "avatar_3": "shopify://shop_images/Leslie-Bodology-Square_d5ff9a1a-2e34-485c-8a41-8099e22be7ea.png",
+            "headline": "Loved by 100,000+ women",
+            "description": "<p>Real stories, real results from women supporting their hormones and metabolism with Bodology® Inositol.</p>",
+            "cta_text": "View customer reviews",
+            "cta_link": "#reviews",
+            "border_radius": 16,
+            "border_width": 1,
+            "background_color": "#f8f9fb",
+            "border_color": "#e0e5f0",
+            "headline_size": 30,
+            "headline_color": "#1b3def",
+            "description_size": 16,
+            "description_color": "#1a2874"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_e5ed95a_KhkA73": {
+          "type": "ai_video_testimonials",
+          "disabled": true,
+          "settings": {
+            "heading": "Real-stories from our community",
+            "subheading": "",
+            "text_alignment": "center",
+            "container_width": 1200,
+            "slides_per_view": 3,
+            "card_gap": 20,
+            "padding_top": 50,
+            "padding_bottom": 50,
+            "autoplay": true,
+            "autoplay_speed": 5000,
+            "card_padding": 10,
+            "card_border_radius": 12,
+            "video_border_radius": 8,
+            "card_shadow": false,
+            "background_color": "#ffffff",
+            "card_background": "#f3eeeb",
+            "heading_color": "#3447af",
+            "text_color": "#1a2874",
+            "star_color": "#1b3def",
+            "button_background": "#eaeaea",
+            "button_color": "#1b3def",
+            "overlay_background": "#f3eeeb",
+            "overlay_text_color": "#1b3def",
+            "overlay_padding": 24,
+            "overlay_border_radius": 12,
+            "heading_size": 42,
+            "subheading_size": 16,
+            "quote_size": 16,
+            "video_1": "shopify://files/videos/Krstina Testimonial 2.mp4",
+            "quote_1": "Supporting my body on my fertility journey",
+            "author_1": "Krstina Perez",
+            "author_title_1": "Verified customer @krstinaperez",
+            "author_image_1": "shopify://shop_images/Screenshot_2026-01-15_at_15.15.24.png",
+            "rating_1": 5,
+            "video_2": "shopify://files/videos/Ashley Testimonial_490c3d0a-49f2-49bd-83d2-5e7e23b973e5.mp4",
+            "quote_2": "Living with endometriosis, supporting my metabolism",
+            "author_2": "Ashley Moya",
+            "author_title_2": "Verified customer @ashleymoya7",
+            "rating_2": 5,
+            "video_3": "shopify://files/videos/Kylie Testimonial - 1.mp4",
+            "quote_3": "More emotional steadiness, less PMDD overwhelm",
+            "author_3": "Kylie Spencer",
+            "author_title_3": "Verified customer @kyliespencerhealth",
+            "author_image_3": "shopify://shop_images/Kylie_Profile_Picture.jpg",
+            "rating_3": 5,
+            "video_4": "shopify://files/videos/Lauren Testimonial.mp4",
+            "quote_4": "It has been life changing for my cycles, skin and mood",
+            "author_4": "Lauren Elam",
+            "author_title_4": "Verified customer @larslavishlife",
+            "author_image_4": "shopify://shop_images/Screenshot_2026-01-15_at_16.30.10.png",
+            "rating_4": 5,
+            "video_5": "shopify://files/videos/Baylee Review_ef1487ba-ac0e-4aee-aef8-6d35d5ae0ebe.mp4",
+            "quote_5": "Supporting cravings and weight through metabolism",
+            "author_5": "Baylee Alisson",
+            "author_title_5": "Verified customer @strongbybayleeallison",
+            "author_image_5": "shopify://shop_images/Baylee_Profile_Picture_91306933-682a-4bee-b216-9576bcc32ab6.webp",
+            "rating_5": 5,
+            "quote_6": "",
+            "author_6": "",
+            "author_title_6": "",
+            "rating_6": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_66d84b5_zDxjMN",
+        "ai_gen_block_23be19a_U47bUD",
+        "ai_gen_block_e5ed95a_KhkA73"
+      ],
+      "settings": {}
+    },
+    "symptom_check_peri": {
+      "type": "symptom-check",
+      "blocks": {
+        "sym_a1": {
+          "type": "symptom",
+          "settings": {
+            "text": "Waking at 3am and lying there",
+            "group": "a"
+          }
+        },
+        "sym_a2": {
+          "type": "symptom",
+          "settings": {
+            "text": "Weight settling around your middle, whatever you eat",
+            "group": "a"
+          }
+        },
+        "sym_a3": {
+          "type": "symptom",
+          "settings": {
+            "text": "Tired an hour after a meal",
+            "group": "a"
+          }
+        },
+        "sym_a4": {
+          "type": "symptom",
+          "settings": {
+            "text": "Afternoon cravings you didn’t have at 30",
+            "group": "a"
+          }
+        },
+        "sym_a5": {
+          "type": "symptom",
+          "settings": {
+            "text": "Hungry again soon after eating",
+            "group": "a"
+          }
+        },
+        "sym_a6": {
+          "type": "symptom",
+          "settings": {
+            "text": "Working harder in the gym for less",
+            "group": "a"
+          }
+        },
+        "sym_b1": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Your labs are normal”",
+            "group": "b"
+          }
+        },
+        "sym_b2": {
+          "type": "symptom",
+          "settings": {
+            "text": "“It’s just your age”",
+            "group": "b"
+          }
+        },
+        "sym_b3": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Eat less, move more”",
+            "group": "b"
+          }
+        },
+        "sym_b4": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Come back in a year”",
+            "group": "b"
+          }
+        }
+      },
+      "block_order": [
+        "sym_a1",
+        "sym_a2",
+        "sym_a3",
+        "sym_a4",
+        "sym_a5",
+        "sym_a6",
+        "sym_b1",
+        "sym_b2",
+        "sym_b3",
+        "sym_b4"
+      ],
+      "settings": {
+        "eyebrow": "Is this you?",
+        "heading": "Tick what you <em>recognise</em>",
+        "heading_size": 0,
+        "subheading": "The signs women over 40 describe to us most. Tap any that sound familiar.",
+        "group_a_title": "How you feel",
+        "group_b_title": "What you've been told",
+        "count_text": "You ticked [count] of [total]",
+        "threshold": 3,
+        "msg_none": "<p>Tap anything that sounds like you.</p>",
+        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin.</strong></p>",
+        "msg_high": "<p>These aren’t six separate problems. They’re one problem showing up in several places: <strong>insulin your cells stopped listening to.</strong> Your blood sugar can still read normal while it happens.</p>",
+        "button_label": "Show me what helps",
+        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
+        "footnote": "<p>A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
+        "bg": "#f2eeea",
+        "card_bg": "#ffffff",
+        "card_border": "#d9d2c9",
+        "checked_bg": "#e3e7ff",
+        "check_bg": "#1a2874",
+        "check_text": "#b9c2f5",
+        "result_bg": "#e3e7ff",
+        "text_color": "#1a2874",
+        "heading_color": "#3447af",
+        "accent_color": "#3447af",
+        "button_bg": "#1a2874",
+        "button_hover": "#3447af",
+        "button_text": "#b9c2f5",
+        "max_width": 960,
+        "item_size": 15,
+        "card_radius": 16,
+        "item_radius": 10,
+        "button_radius": 6,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "anchor_id": "symptoms"
+      }
+    },
     "category_list_grid_NDqtGH": {
       "type": "category-list-grid",
       "blocks": {
@@ -1572,6 +1943,79 @@
         "margin_bottom": 0
       }
     },
+    "age_curve_peri": {
+      "type": "age-curve",
+      "blocks": {
+        "pt_1": {
+          "type": "point",
+          "settings": {
+            "label": "20–29",
+            "value": 6.7
+          }
+        },
+        "pt_2": {
+          "type": "point",
+          "settings": {
+            "label": "60–69",
+            "value": 43.5
+          }
+        },
+        "pt_3": {
+          "type": "point",
+          "settings": {
+            "label": "70+",
+            "value": 42
+          }
+        }
+      },
+      "block_order": [
+        "pt_1",
+        "pt_2",
+        "pt_3"
+      ],
+      "settings": {
+        "eyebrow": "Why it gets harder after 40",
+        "heading": "Normal blood sugar. <em>Rising</em> insulin.",
+        "heading_size": 0,
+        "text": "<p>Your blood sugar can test normal for years while insulin quietly rises to keep it there. Standard labs check the sugar, not the insulin, so the first sign is usually how you feel.</p><p>As estrogen falls through perimenopause, cells respond less to insulin and the body makes more of it. <strong>Metabolic syndrome, the cluster insulin resistance drives, affects about 7% of adults in their 20s and over 40% by their 60s.*</strong></p><p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping.</p>",
+        "body_size": 16,
+        "button_label": "",
+        "button_link": "",
+        "chart_side": "right",
+        "chart_title": "Metabolic syndrome by age, US adults",
+        "chart_subtitle": "Share of adults meeting the criteria. Insulin resistance is the common thread.",
+        "chart_style": "bars",
+        "value_suffix": "%",
+        "y_max": 50,
+        "x_label": "Age",
+        "band_from": "",
+        "band_to": "",
+        "band_label": "",
+        "callout_index": 1,
+        "callout_text": "Over 4 in 10 by their 60s",
+        "source": "<p>Source: Ford ES, Giles WH, Dietz WH. Prevalence of the metabolic syndrome among US adults (NHANES III). <em>JAMA</em> 2002;287:356–359. Metabolic syndrome is the cluster of waist size, triglycerides, HDL, blood pressure and fasting glucose that insulin resistance drives. Figures are for all US adults, men and women. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
+        "bg": "#f2eeea",
+        "card_bg": "#ffffff",
+        "card_border": "#d9d2c9",
+        "text_color": "#1a2874",
+        "heading_color": "#3447af",
+        "accent_color": "#3447af",
+        "line_color": "#3447af",
+        "grid_color": "#ebe6df",
+        "band_color": "#e3e7ff",
+        "callout_bg": "#1a2874",
+        "callout_fg": "#b9c2f5",
+        "button_bg": "#1a2874",
+        "button_hover": "#3447af",
+        "button_text": "#b9c2f5",
+        "max_width": 1100,
+        "card_radius": 16,
+        "button_radius": 6,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "anchor_id": "chart"
+      }
+    },
     "why_inositol_DgbUrB": {
       "type": "why-inositol",
       "blocks": {
@@ -1668,6 +2112,213 @@
         "cta_text_color": "#ffffff",
         "pad_top": 0,
         "pad_bottom": 28,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "us_vs_them_peri": {
+      "type": "us-vs-them",
+      "blocks": {
+        "row_serving": {
+          "type": "row",
+          "settings": {
+            "label": "Inositol in one serving",
+            "info": "Our serving is the full 4,100mg studied dose. Many brands define a serving as half that, so their tub looks like it lasts twice as long as it does at the studied dose.",
+            "us_value": "text",
+            "us_text": "4,100mg",
+            "them1_value": "text",
+            "them1_text": "Often half that",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_ratio": {
+          "type": "row",
+          "settings": {
+            "label": "40:1 myo to D-chiro ratio",
+            "info": "The 40:1 ratio used in the research, confirmed on every batch’s lab report.",
+            "us_value": "check",
+            "us_text": "",
+            "them1_value": "text",
+            "them1_text": "Not always stated",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_dose": {
+          "type": "row",
+          "settings": {
+            "label": "A full daily dose is",
+            "info": "Two scoops a day. In 500mg capsules, the same dose is 8 or more.",
+            "us_value": "text",
+            "us_text": "2 scoops",
+            "them1_value": "text",
+            "them1_text": "8 or more capsules",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_form": {
+          "type": "row",
+          "settings": {
+            "label": "Form",
+            "info": "One ingredient blend. No fillers, no flavoring. Mixes into water or coffee.",
+            "us_value": "text",
+            "us_text": "Pure powder",
+            "them1_value": "text",
+            "them1_text": "Capsules, gummies, blends",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_taste": {
+          "type": "row",
+          "settings": {
+            "label": "Taste",
+            "info": "The gentle sweetness comes naturally from the carob-sourced D-chiro. Nothing is flavoured or sweetened, the powder is light and dissolves cleanly, with no grit or aftertaste.",
+            "us_value": "text",
+            "us_text": "Gently sweet, disappears into coffee",
+            "them1_value": "text",
+            "them1_text": "Often flavoured or gritty",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_fillers": {
+          "type": "row",
+          "settings": {
+            "label": "Fillers",
+            "info": "No flow agents, no silica, no capsule shells.",
+            "us_value": "text",
+            "us_text": "None",
+            "them1_value": "text",
+            "them1_text": "Often flow agents, silica",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_source": {
+          "type": "row",
+          "settings": {
+            "label": "D-chiro source",
+            "info": "D-chiro-inositol from carob grown in Spain. Most brands don’t say where theirs comes from.",
+            "us_value": "text",
+            "us_text": "Carob, published",
+            "them1_value": "text",
+            "them1_text": "Not disclosed",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_myo": {
+          "type": "row",
+          "settings": {
+            "label": "Myo-inositol source",
+            "info": "Our myo-inositol comes from carefully sourced non-GMO corn, the industry standard source, and we publish it. Most brands disclose neither ingredient’s source.",
+            "us_value": "text",
+            "us_text": "Non-GMO corn, published",
+            "them1_value": "text",
+            "them1_text": "Not disclosed",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_coa": {
+          "type": "row",
+          "settings": {
+            "label": "Batch lab report",
+            "info": "Every batch is third-party tested and the lab report is published.",
+            "us_value": "text",
+            "us_text": "Published",
+            "them1_value": "text",
+            "them1_text": "Ask for theirs",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_guarantee": {
+          "type": "row",
+          "settings": {
+            "label": "Money-back guarantee",
+            "info": "60 days. If it isn’t for you, email us for a refund.",
+            "us_value": "text",
+            "us_text": "60 days",
+            "them1_value": "text",
+            "them1_text": "Varies",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_protocol": {
+          "type": "row",
+          "settings": {
+            "label": "Metabolic Health Protocol",
+            "info": "Every subscription includes the expert-written Metabolic Health Protocol for your concern, free. No other inositol brand we checked includes an equivalent.",
+            "us_value": "text",
+            "us_text": "Free with subscription",
+            "them1_value": "text",
+            "them1_text": "Not included",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_serving",
+        "row_ratio",
+        "row_dose",
+        "row_form",
+        "row_taste",
+        "row_fillers",
+        "row_source",
+        "row_myo",
+        "row_coa",
+        "row_guarantee",
+        "row_protocol"
+      ],
+      "settings": {
+        "heading": "Not your <em>average</em> inositol",
+        "heading_size": 0,
+        "us_label": "Bodology",
+        "us_logo": "shopify://shop_images/Bodology_Logo_1080x310_transparent.png",
+        "us_logo_width": 84,
+        "us_logo_white": true,
+        "them1_label": "Typical inositol brand",
+        "them2_label": "",
+        "them3_label": "",
+        "bg": "#f2eeea",
+        "card_bg": "#faf7f3",
+        "us_color": "#1a2874",
+        "us_text_color": "#b9c2f5",
+        "text_color": "#1a2874",
+        "heading_color": "#3447af",
+        "accent_color": "#3447af",
+        "line_color": "#e2dbd2",
+        "label_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 64,
         "margin_top": 0,
         "margin_bottom": 0
       }
@@ -1840,137 +2491,6 @@
         "padding_top_mobile": 36,
         "padding_bottom_mobile": 36
       }
-    },
-    "1768505899436dba61": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_66d84b5_zDxjMN": {
-          "type": "ai_gen_block_66d84b5",
-          "settings": {
-            "text_1": "LESS INSULIN",
-            "text_2": "STEADIER BLOOD SUGAR",
-            "text_3": "FEWER CRAVINGS",
-            "text_4": "LESS INSULIN",
-            "text_5": "STEADIER BLOOD SUGAR",
-            "text_6": "FEWER CRAVINGS",
-            "animation_speed": 30,
-            "pause_on_hover": true,
-            "font_size": 22,
-            "font_weight": "500",
-            "text_transform": "uppercase",
-            "letter_spacing": 0,
-            "text_spacing": 70,
-            "padding_vertical": 15,
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "show_separator": true,
-            "separator_size": 20,
-            "separator_color": "#ffffff",
-            "text_color": "#ffffff",
-            "background_color": "#0d70e4",
-            "fade_width": 40,
-            "fade_strength": 50,
-            "fade_color": "#1e3ace"
-          },
-          "blocks": {}
-        },
-        "ai_gen_block_23be19a_U47bUD": {
-          "type": "ai_gen_block_23be19a",
-          "disabled": true,
-          "settings": {
-            "avatar_1": "shopify://shop_images/Kylie_Profile_Picture.jpg",
-            "avatar_2": "shopify://shop_images/Keira_Profile_Picture.jpg",
-            "avatar_3": "shopify://shop_images/Leslie-Bodology-Square_d5ff9a1a-2e34-485c-8a41-8099e22be7ea.png",
-            "headline": "Loved by 100,000+ women",
-            "description": "<p>Real stories, real results from women supporting their hormones and metabolism with Bodology® Inositol.</p>",
-            "cta_text": "View customer reviews",
-            "cta_link": "#reviews",
-            "border_radius": 16,
-            "border_width": 1,
-            "background_color": "#f8f9fb",
-            "border_color": "#e0e5f0",
-            "headline_size": 30,
-            "headline_color": "#1b3def",
-            "description_size": 16,
-            "description_color": "#1a2874"
-          },
-          "blocks": {}
-        },
-        "ai_gen_block_e5ed95a_KhkA73": {
-          "type": "ai_video_testimonials",
-          "disabled": true,
-          "settings": {
-            "heading": "Real-stories from our community",
-            "subheading": "",
-            "text_alignment": "center",
-            "container_width": 1200,
-            "slides_per_view": 3,
-            "card_gap": 20,
-            "padding_top": 50,
-            "padding_bottom": 50,
-            "autoplay": true,
-            "autoplay_speed": 5000,
-            "card_padding": 10,
-            "card_border_radius": 12,
-            "video_border_radius": 8,
-            "card_shadow": false,
-            "background_color": "#ffffff",
-            "card_background": "#f3eeeb",
-            "heading_color": "#3447af",
-            "text_color": "#1a2874",
-            "star_color": "#1b3def",
-            "button_background": "#eaeaea",
-            "button_color": "#1b3def",
-            "overlay_background": "#f3eeeb",
-            "overlay_text_color": "#1b3def",
-            "overlay_padding": 24,
-            "overlay_border_radius": 12,
-            "heading_size": 42,
-            "subheading_size": 16,
-            "quote_size": 16,
-            "video_1": "shopify://files/videos/Krstina Testimonial 2.mp4",
-            "quote_1": "Supporting my body on my fertility journey",
-            "author_1": "Krstina Perez",
-            "author_title_1": "Verified customer @krstinaperez",
-            "author_image_1": "shopify://shop_images/Screenshot_2026-01-15_at_15.15.24.png",
-            "rating_1": 5,
-            "video_2": "shopify://files/videos/Ashley Testimonial_490c3d0a-49f2-49bd-83d2-5e7e23b973e5.mp4",
-            "quote_2": "Living with endometriosis, supporting my metabolism",
-            "author_2": "Ashley Moya",
-            "author_title_2": "Verified customer @ashleymoya7",
-            "rating_2": 5,
-            "video_3": "shopify://files/videos/Kylie Testimonial - 1.mp4",
-            "quote_3": "More emotional steadiness, less PMDD overwhelm",
-            "author_3": "Kylie Spencer",
-            "author_title_3": "Verified customer @kyliespencerhealth",
-            "author_image_3": "shopify://shop_images/Kylie_Profile_Picture.jpg",
-            "rating_3": 5,
-            "video_4": "shopify://files/videos/Lauren Testimonial.mp4",
-            "quote_4": "It has been life changing for my cycles, skin and mood",
-            "author_4": "Lauren Elam",
-            "author_title_4": "Verified customer @larslavishlife",
-            "author_image_4": "shopify://shop_images/Screenshot_2026-01-15_at_16.30.10.png",
-            "rating_4": 5,
-            "video_5": "shopify://files/videos/Baylee Review_ef1487ba-ac0e-4aee-aef8-6d35d5ae0ebe.mp4",
-            "quote_5": "Supporting cravings and weight through metabolism",
-            "author_5": "Baylee Alisson",
-            "author_title_5": "Verified customer @strongbybayleeallison",
-            "author_image_5": "shopify://shop_images/Baylee_Profile_Picture_91306933-682a-4bee-b216-9576bcc32ab6.webp",
-            "rating_5": 5,
-            "quote_6": "",
-            "author_6": "",
-            "author_title_6": "",
-            "rating_6": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_66d84b5_zDxjMN",
-        "ai_gen_block_23be19a_U47bUD",
-        "ai_gen_block_e5ed95a_KhkA73"
-      ],
-      "settings": {}
     },
     "community_videos_gi9WUU": {
       "type": "community-videos",
@@ -2417,6 +2937,186 @@
         "custom_liquid": "<div id=\"studies\"></div>"
       }
     },
+    "bf_bundle": {
+      "type": "offer-spotlight",
+      "blocks": {
+        "item_dose": {
+          "type": "item",
+          "settings": {
+            "text": "Full 4g clinical daily dose, two scoops"
+          }
+        },
+        "item_tubs": {
+          "type": "item",
+          "settings": {
+            "text": "Two 6-week tubs. 90 days, the length the studies run"
+          }
+        },
+        "item_gift": {
+          "type": "item",
+          "settings": {
+            "text": "FREE Metabolic Health Protocol (digital) with every subscription"
+          }
+        },
+        "item_cancel": {
+          "type": "item",
+          "settings": {
+            "text": "Skip or cancel anytime in your account"
+          }
+        },
+        "testimonial_lisa": {
+          "type": "testimonial",
+          "settings": {
+            "text": "It helps balance out cravings and keeps insulin in check, supports my hormones during perimenopause. — Lisa F., verified buyer",
+            "stars": 5
+          }
+        }
+      },
+      "block_order": [
+        "item_dose",
+        "item_tubs",
+        "item_gift",
+        "item_cancel",
+        "testimonial_lisa"
+      ],
+      "settings": {
+        "heading": "Give it the 90 days the studies gave it. <em>$1.09 a day.</em>",
+        "subheading": "Black Friday: the 90-day bundle is our lowest price per day.",
+        "heading_size": 0,
+        "eyebrow": "60-day money-back guarantee",
+        "title": "The 90-Day Bundle",
+        "price": "$1.09",
+        "price_unit": "/day",
+        "price_sub": "$32.67 a month — $98 billed every 3 months as a subscription.",
+        "button_label": "Start the 90-day bundle",
+        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
+        "bg": "#f2eeea",
+        "card_bg": "#ffffff",
+        "card_border": "#3447af",
+        "text_color": "#1a2874",
+        "heading_color": "#1a2874",
+        "accent_color": "#3447af",
+        "button_bg": "#1a2874",
+        "button_text": "#b9c2f5",
+        "title_size": 30,
+        "price_size": 56,
+        "item_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "yes_no_peri": {
+      "type": "yes-no",
+      "blocks": {
+        "qa_1": {
+          "type": "qa",
+          "settings": {
+            "question": "Does insulin resistance get more common after 40?",
+            "answer": "yes",
+            "other_label": "",
+            "text": "<p>Estrogen helps cells respond to insulin. As it falls, more women tip into insulin resistance, often with normal glucose on their labs.</p>"
+          }
+        },
+        "qa_2": {
+          "type": "qa",
+          "settings": {
+            "question": "Can my blood sugar be normal and my insulin high?",
+            "answer": "yes",
+            "other_label": "",
+            "text": "<p>Fasting glucose stays in range while insulin climbs to hold it there. If you want the number, ask for fasting insulin or HOMA-IR.</p>"
+          }
+        },
+        "qa_3": {
+          "type": "qa",
+          "settings": {
+            "question": "Is inositol a hormone?",
+            "answer": "no",
+            "other_label": "",
+            "text": "<p>It’s a compound your body already makes and uses to pass on insulin’s signal. Two scoops top it up to the 4g used in studies.</p>"
+          }
+        },
+        "qa_4": {
+          "type": "qa",
+          "settings": {
+            "question": "Will two scoops fix everything overnight?",
+            "answer": "no",
+            "other_label": "",
+            "text": "<p>Most women notice cravings and energy first, within a few weeks. The postmenopausal study ran six months.</p>"
+          }
+        },
+        "qa_5": {
+          "type": "qa",
+          "settings": {
+            "question": "Do I have to give up coffee or carbs for it to work?",
+            "answer": "no",
+            "other_label": "",
+            "text": "<p>Stir it into your morning coffee. It’s unflavored, gently sweet on its own, and dissolves clear.</p>"
+          }
+        },
+        "qa_6": {
+          "type": "qa",
+          "settings": {
+            "question": "Is it risky to try?",
+            "answer": "no",
+            "other_label": "",
+            "text": "<p>You have 60 days. If it isn’t doing anything for you, email us and we’ll refund you.</p>"
+          }
+        },
+        "qa_7": {
+          "type": "qa",
+          "settings": {
+            "question": "Is the 90-day bundle a commitment?",
+            "answer": "other",
+            "other_label": "Not really",
+            "text": "<p>It’s a subscription billed every 3 months at $98 for two 6-week tubs. Skip or cancel anytime in your account.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "qa_1",
+        "qa_2",
+        "qa_3",
+        "qa_4",
+        "qa_5",
+        "qa_6",
+        "qa_7"
+      ],
+      "settings": {
+        "eyebrow": "Keep it simple",
+        "heading": "Yes or <em>no?</em>",
+        "heading_size": 0,
+        "subheading": "Straight answers to what women over 40 ask us before they order.",
+        "yes_label": "Yes",
+        "no_label": "No",
+        "other_label": "It depends",
+        "button_label": "",
+        "button_link": "",
+        "bg": "#f2eeea",
+        "card_bg": "#ffffff",
+        "card_border": "#d9d2c9",
+        "text_color": "#1a2874",
+        "heading_color": "#3447af",
+        "accent_color": "#3447af",
+        "yes_bg": "#1a2874",
+        "yes_text": "#b9c2f5",
+        "no_text": "#1a2874",
+        "other_bg": "#e3e7ff",
+        "other_text": "#1a2874",
+        "button_bg": "#1a2874",
+        "button_hover": "#3447af",
+        "button_text": "#b9c2f5",
+        "max_width": 800,
+        "card_radius": 14,
+        "button_radius": 6,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "anchor_id": "yes-no"
+      }
+    },
     "collapsible_content_cGXRUN": {
       "type": "collapsible-content",
       "blocks": {
@@ -2631,641 +3331,6 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
-    },
-    "hero_peri": {
-      "type": "image-with-text-overlay",
-      "blocks": {
-        "badge_bf": {
-          "type": "badge",
-          "settings": {
-            "text": "Black Friday",
-            "color_bg": "#1a2874",
-            "color_text": "#B9C2F5"
-          }
-        },
-        "subheading_peri": {
-          "type": "subheading",
-          "settings": {
-            "text": "<p>INSULIN IN YOUR 40s, 50s AND BEYOND</p>",
-            "text_color": "#1a2874",
-            "pill_match": true
-          }
-        },
-        "heading_peri": {
-          "type": "heading",
-          "settings": {
-            "text": "<h1>Nobody tells you this at 40.</h1>",
-            "heading_color": "#1a2874",
-            "heading_size": "h1-large"
-          }
-        },
-        "text_peri": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Waking at 3am. Weight settling around your middle. A doctor who says everything looks fine. <strong>It could be insulin.</strong></p>",
-            "description_color": "#1a2874",
-            "description_size": "medium"
-          }
-        },
-        "benefits_peri": {
-          "type": "benefits",
-          "settings": {
-            "benefits-title": "",
-            "icon_size": 25,
-            "border_size": 1,
-            "border_color": "#3447af",
-            "text_color": "#1a2874",
-            "benefit_1": "The full 4g clinical dose in two scoops",
-            "icon_1": "shopify://shop_images/icon_check-circle.png",
-            "benefit_2": "D-chiro-inositol from carob pods, not a lab",
-            "icon_2": "shopify://shop_images/icon_check-circle.png",
-            "benefit_3": "60-day money-back guarantee",
-            "icon_3": "shopify://shop_images/icon_check-circle.png",
-            "benefit_4": "",
-            "icon_4": "",
-            "benefit_5": "",
-            "icon_5": ""
-          }
-        },
-        "button_peri": {
-          "type": "button",
-          "settings": {
-            "button_text": "Start with Bodology",
-            "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-            "button_color": "accent"
-          }
-        }
-      },
-      "block_order": [
-        "badge_bf",
-        "subheading_peri",
-        "heading_peri",
-        "text_peri",
-        "benefits_peri",
-        "button_peri"
-      ],
-      "custom_css": [],
-      "settings": {
-        "image": "shopify://shop_images/Bodology-Hormone-Desktop-Banner-7.jpg",
-        "mobile_image": "shopify://shop_images/Bodology-Hormone-Mobile-Banner-7.jpg",
-        "image_parallax": false,
-        "desktop_height": "desktop-height-750",
-        "mobile_height": "mobile-height-auto",
-        "full_width": true,
-        "content_width": "medium",
-        "content_position": "bottom-left",
-        "text_alignment": "left",
-        "text_color": "#1a2874",
-        "overlay_color": "#2c2d2e",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "bf_countdown": {
-      "type": "countdown-banner",
-      "settings": {
-        "full_width": true,
-        "section_layout": "horizontal",
-        "desktop_height": "desktop-height-auto",
-        "mobile_height": "mobile-height-auto",
-        "subheading": "Black Friday",
-        "heading": "90 days of the full clinical dose. $32.67 a month.",
-        "heading_size": "h2",
-        "content": "The 90-day bundle: two 6-week tubs, $98 billed every 3 months. Cancel anytime. 60-day money-back guarantee.",
-        "content_size": "medium",
-        "button_text": "Get the 90-day bundle",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-        "timer_year": 2026,
-        "timer_month": "12",
-        "timer_day": "01",
-        "timer_hour": "00",
-        "timer_minute": "00",
-        "color_bg": "#e3e7ff",
-        "color_text": "#1a2874",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
-      }
-    },
-    "bf_bundle": {
-      "type": "offer-spotlight",
-      "blocks": {
-        "item_dose": {
-          "type": "item",
-          "settings": {
-            "text": "Full 4g clinical daily dose, two scoops"
-          }
-        },
-        "item_tubs": {
-          "type": "item",
-          "settings": {
-            "text": "Two 6-week tubs. 90 days, the length the studies run"
-          }
-        },
-        "item_gift": {
-          "type": "item",
-          "settings": {
-            "text": "FREE Metabolic Health Protocol (digital) with every subscription"
-          }
-        },
-        "item_cancel": {
-          "type": "item",
-          "settings": {
-            "text": "Skip or cancel anytime in your account"
-          }
-        },
-        "testimonial_lisa": {
-          "type": "testimonial",
-          "settings": {
-            "text": "It helps balance out cravings and keeps insulin in check, supports my hormones during perimenopause. — Lisa F., verified buyer",
-            "stars": 5
-          }
-        }
-      },
-      "block_order": [
-        "item_dose",
-        "item_tubs",
-        "item_gift",
-        "item_cancel",
-        "testimonial_lisa"
-      ],
-      "settings": {
-        "heading": "Give it the 90 days the studies gave it. <em>$1.09 a day.</em>",
-        "subheading": "Black Friday: the 90-day bundle is our lowest price per day.",
-        "heading_size": 0,
-        "eyebrow": "60-day money-back guarantee",
-        "title": "The 90-Day Bundle",
-        "price": "$1.09",
-        "price_unit": "/day",
-        "price_sub": "$32.67 a month — $98 billed every 3 months as a subscription.",
-        "button_label": "Start the 90-day bundle",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-        "bg": "#f2eeea",
-        "card_bg": "#ffffff",
-        "card_border": "#3447af",
-        "text_color": "#1a2874",
-        "heading_color": "#1a2874",
-        "accent_color": "#3447af",
-        "button_bg": "#1a2874",
-        "button_text": "#B9C2F5",
-        "title_size": 30,
-        "price_size": 56,
-        "item_size": 14,
-        "padding_top": 56,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
-    "symptom_check_peri": {
-      "type": "symptom-check",
-      "blocks": {
-        "sym_a1": {
-          "type": "symptom",
-          "settings": {
-            "text": "Waking at 3am and lying there",
-            "group": "a"
-          }
-        },
-        "sym_a2": {
-          "type": "symptom",
-          "settings": {
-            "text": "Weight settling around your middle, whatever you eat",
-            "group": "a"
-          }
-        },
-        "sym_a3": {
-          "type": "symptom",
-          "settings": {
-            "text": "Tired an hour after a meal",
-            "group": "a"
-          }
-        },
-        "sym_a4": {
-          "type": "symptom",
-          "settings": {
-            "text": "Afternoon cravings you didn’t have at 30",
-            "group": "a"
-          }
-        },
-        "sym_a5": {
-          "type": "symptom",
-          "settings": {
-            "text": "Hungry again soon after eating",
-            "group": "a"
-          }
-        },
-        "sym_a6": {
-          "type": "symptom",
-          "settings": {
-            "text": "Working harder in the gym for less",
-            "group": "a"
-          }
-        },
-        "sym_b1": {
-          "type": "symptom",
-          "settings": {
-            "text": "“Your labs are normal”",
-            "group": "b"
-          }
-        },
-        "sym_b2": {
-          "type": "symptom",
-          "settings": {
-            "text": "“It’s just your age”",
-            "group": "b"
-          }
-        },
-        "sym_b3": {
-          "type": "symptom",
-          "settings": {
-            "text": "“Eat less, move more”",
-            "group": "b"
-          }
-        },
-        "sym_b4": {
-          "type": "symptom",
-          "settings": {
-            "text": "“Come back in a year”",
-            "group": "b"
-          }
-        }
-      },
-      "block_order": [
-        "sym_a1",
-        "sym_a2",
-        "sym_a3",
-        "sym_a4",
-        "sym_a5",
-        "sym_a6",
-        "sym_b1",
-        "sym_b2",
-        "sym_b3",
-        "sym_b4"
-      ],
-      "settings": {
-        "eyebrow": "Is this you?",
-        "heading": "Tick what you <em>recognise</em>",
-        "heading_size": 0,
-        "subheading": "The signs women over 40 describe to us most. Tap any that sound familiar.",
-        "group_a_title": "How you feel",
-        "group_b_title": "What you've been told",
-        "count_text": "You ticked [count] of [total]",
-        "threshold": 3,
-        "msg_none": "<p>Tap anything that sounds like you.</p>",
-        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin.</strong></p>",
-        "msg_high": "<p>These aren’t six separate problems. They’re one problem showing up in several places: <strong>insulin your cells stopped listening to.</strong> Your blood sugar can still read normal while it happens.</p>",
-        "button_label": "Show me what helps",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-        "footnote": "<p>A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
-        "anchor_id": "symptoms"
-      }
-    },
-    "age_curve_peri": {
-      "type": "age-curve",
-      "blocks": {
-        "pt_1": {
-          "type": "point",
-          "settings": {
-            "label": "20–29",
-            "value": 6.7
-          }
-        },
-        "pt_2": {
-          "type": "point",
-          "settings": {
-            "label": "60–69",
-            "value": 43.5
-          }
-        },
-        "pt_3": {
-          "type": "point",
-          "settings": {
-            "label": "70+",
-            "value": 42
-          }
-        }
-      },
-      "block_order": [
-        "pt_1",
-        "pt_2",
-        "pt_3"
-      ],
-      "settings": {
-        "eyebrow": "Why it gets harder after 40",
-        "heading": "Normal blood sugar. <em>Rising</em> insulin.",
-        "heading_size": 0,
-        "text": "<p>Your blood sugar can test normal for years while insulin quietly rises to keep it there. Standard labs check the sugar, not the insulin, so the first sign is usually how you feel.</p><p>As estrogen falls through perimenopause, cells respond less to insulin and the body makes more of it. <strong>Metabolic syndrome, the cluster insulin resistance drives, affects about 7% of adults in their 20s and over 40% by their 60s.*</strong></p><p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping.</p>",
-        "body_size": 16,
-        "button_label": "",
-        "button_link": "",
-        "chart_side": "right",
-        "chart_style": "bars",
-        "chart_title": "Metabolic syndrome by age, US adults",
-        "chart_subtitle": "Share of adults meeting the criteria. Insulin resistance is the common thread.",
-        "value_suffix": "%",
-        "y_max": 50,
-        "x_label": "Age",
-        "band_from": "",
-        "band_to": "",
-        "band_label": "",
-        "callout_index": 1,
-        "callout_text": "Over 4 in 10 by their 60s",
-        "source": "<p>Source: Ford ES, Giles WH, Dietz WH. Prevalence of the metabolic syndrome among US adults (NHANES III). <em>JAMA</em> 2002;287:356–359. Metabolic syndrome is the cluster of waist size, triglycerides, HDL, blood pressure and fasting glucose that insulin resistance drives. Figures are for all US adults, men and women. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>",
-        "anchor_id": "chart"
-      }
-    },
-    "us_vs_them_peri": {
-      "type": "us-vs-them",
-      "blocks": {
-        "row_serving": {
-          "type": "row",
-          "settings": {
-            "label": "Inositol in one serving",
-            "info": "Our serving is the full 4,100mg studied dose. Many brands define a serving as half that, so their tub looks like it lasts twice as long as it does at the studied dose.",
-            "us_value": "text",
-            "us_text": "4,100mg",
-            "them1_value": "text",
-            "them1_text": "Often half that",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_ratio": {
-          "type": "row",
-          "settings": {
-            "label": "40:1 myo to D-chiro ratio",
-            "info": "The 40:1 ratio used in the research, confirmed on every batch’s lab report.",
-            "us_value": "check",
-            "us_text": "",
-            "them1_value": "text",
-            "them1_text": "Not always stated",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_dose": {
-          "type": "row",
-          "settings": {
-            "label": "A full daily dose is",
-            "info": "Two scoops a day. In 500mg capsules, the same dose is 8 or more.",
-            "us_value": "text",
-            "us_text": "2 scoops",
-            "them1_value": "text",
-            "them1_text": "8 or more capsules",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_form": {
-          "type": "row",
-          "settings": {
-            "label": "Form",
-            "info": "One ingredient blend. No fillers, no flavoring. Mixes into water or coffee.",
-            "us_value": "text",
-            "us_text": "Pure powder",
-            "them1_value": "text",
-            "them1_text": "Capsules, gummies, blends",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_taste": {
-          "type": "row",
-          "settings": {
-            "label": "Taste",
-            "info": "The gentle sweetness comes naturally from the carob-sourced D-chiro. Nothing is flavoured or sweetened, the powder is light and dissolves cleanly, with no grit or aftertaste.",
-            "us_value": "text",
-            "us_text": "Gently sweet, disappears into coffee",
-            "them1_value": "text",
-            "them1_text": "Often flavoured or gritty",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_fillers": {
-          "type": "row",
-          "settings": {
-            "label": "Fillers",
-            "info": "No flow agents, no silica, no capsule shells.",
-            "us_value": "text",
-            "us_text": "None",
-            "them1_value": "text",
-            "them1_text": "Often flow agents, silica",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_source": {
-          "type": "row",
-          "settings": {
-            "label": "D-chiro source",
-            "info": "D-chiro-inositol from carob grown in Spain. Most brands don’t say where theirs comes from.",
-            "us_value": "text",
-            "us_text": "Carob, published",
-            "them1_value": "text",
-            "them1_text": "Not disclosed",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_myo": {
-          "type": "row",
-          "settings": {
-            "label": "Myo-inositol source",
-            "info": "Our myo-inositol comes from carefully sourced non-GMO corn, the industry standard source, and we publish it. Most brands disclose neither ingredient’s source.",
-            "us_value": "text",
-            "us_text": "Non-GMO corn, published",
-            "them1_value": "text",
-            "them1_text": "Not disclosed",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_coa": {
-          "type": "row",
-          "settings": {
-            "label": "Batch lab report",
-            "info": "Every batch is third-party tested and the lab report is published.",
-            "us_value": "text",
-            "us_text": "Published",
-            "them1_value": "text",
-            "them1_text": "Ask for theirs",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_protocol": {
-          "type": "row",
-          "settings": {
-            "label": "Metabolic Health Protocol",
-            "info": "Every subscription includes the expert-written Metabolic Health Protocol for your concern, free. No other inositol brand we checked includes an equivalent.",
-            "us_value": "text",
-            "us_text": "Free with subscription",
-            "them1_value": "text",
-            "them1_text": "Not included",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_guarantee": {
-          "type": "row",
-          "settings": {
-            "label": "Money-back guarantee",
-            "info": "60 days. If it isn’t for you, email us for a refund.",
-            "us_value": "text",
-            "us_text": "60 days",
-            "them1_value": "text",
-            "them1_text": "Varies",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "row_serving",
-        "row_ratio",
-        "row_dose",
-        "row_form",
-        "row_taste",
-        "row_fillers",
-        "row_source",
-        "row_myo",
-        "row_coa",
-        "row_guarantee",
-        "row_protocol"
-      ],
-      "settings": {
-        "heading": "Not your <em>average</em> inositol",
-        "heading_size": 0,
-        "us_label": "Bodology",
-        "them1_label": "Typical inositol brand",
-        "them2_label": "",
-        "them3_label": "",
-        "bg": "#f2eeea",
-        "card_bg": "#faf7f3",
-        "us_color": "#1A2874",
-        "us_text_color": "#B9C2F5",
-        "text_color": "#1a2874",
-        "heading_color": "#3447af",
-        "accent_color": "#3447af",
-        "line_color": "#e2dbd2",
-        "label_size": 14,
-        "padding_top": 56,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "us_logo": "shopify://shop_images/Bodology_Logo_1080x310_transparent.png",
-        "us_logo_width": 84,
-        "us_logo_white": true
-      }
-    },
-    "yes_no_peri": {
-      "type": "yes-no",
-      "blocks": {
-        "qa_1": {
-          "type": "qa",
-          "settings": {
-            "question": "Does insulin resistance get more common after 40?",
-            "answer": "yes",
-            "text": "<p>Estrogen helps cells respond to insulin. As it falls, more women tip into insulin resistance, often with normal glucose on their labs.</p>"
-          }
-        },
-        "qa_2": {
-          "type": "qa",
-          "settings": {
-            "question": "Can my blood sugar be normal and my insulin high?",
-            "answer": "yes",
-            "text": "<p>Fasting glucose stays in range while insulin climbs to hold it there. If you want the number, ask for fasting insulin or HOMA-IR.</p>"
-          }
-        },
-        "qa_3": {
-          "type": "qa",
-          "settings": {
-            "question": "Is inositol a hormone?",
-            "answer": "no",
-            "text": "<p>It’s a compound your body already makes and uses to pass on insulin’s signal. Two scoops top it up to the 4g used in studies.</p>"
-          }
-        },
-        "qa_4": {
-          "type": "qa",
-          "settings": {
-            "question": "Will two scoops fix everything overnight?",
-            "answer": "no",
-            "text": "<p>Most women notice cravings and energy first, within a few weeks. The postmenopausal study ran six months.</p>"
-          }
-        },
-        "qa_5": {
-          "type": "qa",
-          "settings": {
-            "question": "Do I have to give up coffee or carbs for it to work?",
-            "answer": "no",
-            "text": "<p>Stir it into your morning coffee. It’s unflavored, gently sweet on its own, and dissolves clear.</p>"
-          }
-        },
-        "qa_6": {
-          "type": "qa",
-          "settings": {
-            "question": "Is it risky to try?",
-            "answer": "no",
-            "text": "<p>You have 60 days. If it isn’t doing anything for you, email us and we’ll refund you.</p>"
-          }
-        },
-        "qa_7": {
-          "type": "qa",
-          "settings": {
-            "question": "Is the 90-day bundle a commitment?",
-            "answer": "other",
-            "text": "<p>It’s a subscription billed every 3 months at $98 for two 6-week tubs. Skip or cancel anytime in your account.</p>",
-            "other_label": "Not really"
-          }
-        }
-      },
-      "block_order": [
-        "qa_1",
-        "qa_2",
-        "qa_3",
-        "qa_4",
-        "qa_5",
-        "qa_6",
-        "qa_7"
-      ],
-      "settings": {
-        "eyebrow": "Keep it simple",
-        "heading": "Yes or <em>no?</em>",
-        "heading_size": 0,
-        "subheading": "Straight answers to what women over 40 ask us before they order.",
-        "yes_label": "Yes",
-        "no_label": "No",
-        "other_label": "It depends",
-        "button_label": "",
-        "button_link": "",
-        "anchor_id": "yes-no"
-      }
     }
   },
   "order": [
