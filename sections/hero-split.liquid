@@ -38,7 +38,7 @@
   #shopify-section-{{ uid }} .hs__text { margin: 16px 0 0; font-size: {{ s.body_size | times: 0.94 | round }}px; line-height: 1.55; }
   #shopify-section-{{ uid }} .hs__text p { margin: 0 0 10px; }
   #shopify-section-{{ uid }} .hs__text p:last-child { margin-bottom: 0; }
-  #shopify-section-{{ uid }} .hs__text strong { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .hs__heading strong, #shopify-section-{{ uid }} .hs__text strong { color: #4d61cf; } /* site bold colour, same as .rte strong */
   #shopify-section-{{ uid }} .hs__list { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 9px; }
   #shopify-section-{{ uid }} .hs__item { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; line-height: 1.4; }
   #shopify-section-{{ uid }} .hs__check { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 1px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: {{ s.check_bg }}; color: {{ s.check_color }}; }
