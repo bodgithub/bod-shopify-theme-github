@@ -193,6 +193,9 @@
     if(r.bottom <= vh * 0.35){ state = 'after'; }
     else if(r.top < vh * 0.85){ state = 'in'; }
     bar.setAttribute('data-state', state);
+    /* Shopify's theme-preview bar sits over the bottom edge; lift ours above it */
+    var pb = document.getElementById('preview-bar-iframe');
+    bar.style.bottom = pb ? pb.offsetHeight + 'px' : '';
   }
   items.forEach(function(b){ b.addEventListener('click', function(){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); update(); }); });
   if(barChange){ barChange.addEventListener('click', function(){ root.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }
