@@ -294,6 +294,9 @@ line-hight:0.9;}
 @media only screen and (max-width: 767px) {
   .image-with-text-overlay [style*="--hero-h-m"],
   .image-with-text-overlay [style*="--hero-h-m"] h1,
-  .image-with-text-overlay [style*="--hero-h-m"] h2,
-  .image-with-text-overlay [style*="--hero-h-m"] h3 { font-size: var(--hero-h-m) !important; line-height: 1.12 !important; }
+  .image-with-text-overlay [style*="--hero-h-m"] h2 { font-size: var(--hero-h-m) !important; line-height: 1.12 !important; }
 }
+/* Smaller heading tags typed inside a heading block (h3-h6 used as sub-lines or body copy) read with body-like line-height, not the theme's loose heading line-height */
+.image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2) :is(h3, h4, h5, h6) { line-height: 1.3; }
+.image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2) :is(h4, h5, h6) { font-weight: 400; letter-spacing: 0; text-transform: none; }
+.image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2) > * + * { margin-top: 0.4em; }
