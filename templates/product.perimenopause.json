@@ -24,9 +24,15 @@
         "heading_peri": {
           "type": "heading",
           "settings": {
-            "text": "<h1>Nobody tells you this at 40.&nbsp;</h1><h3>It's not just hormones changing, it's insulin.</h3>",
+            "text": "<h1>Nobody tells you this at 40.&nbsp;</h1><h4>It's not just hormones changing.&nbsp;<strong>It's insulin.</strong></h4>",
             "heading_color": "#1a2874",
-            "heading_size": "h1-large"
+            "heading_size": "h1-xlarge"
+          }
+        },
+        "space_bhy9NE": {
+          "type": "space",
+          "settings": {
+            "height": 0
           }
         },
         "text_peri": {
@@ -56,7 +62,7 @@
             "benefit_5": ""
           }
         },
-        "space_bhy9NE": {
+        "space_G8PyxF": {
           "type": "space",
           "settings": {
             "height": 30
@@ -74,9 +80,10 @@
       "block_order": [
         "subheading_peri",
         "heading_peri",
+        "space_bhy9NE",
         "text_peri",
         "benefits_peri",
-        "space_bhy9NE",
+        "space_G8PyxF",
         "button_peri"
       ],
       "custom_css": [],
@@ -87,7 +94,7 @@
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-auto",
         "full_width": true,
-        "content_width": "small",
+        "content_width": "medium",
         "content_position": "bottom-left",
         "text_alignment": "left",
         "text_color": "#1a2874",
@@ -97,57 +104,130 @@
         "disable_bottom_spacing": true
       }
     },
-    "customer_reviews_yVKfXP": {
-      "type": "customer-reviews",
+    "symptom_check_peri": {
+      "type": "symptom-check",
       "blocks": {
-        "review_G3YLfm": {
-          "type": "review",
+        "sym_a1": {
+          "type": "symptom",
           "settings": {
-            "product_handle": "",
-            "stars": "5",
-            "heading": "Helps balance out cravings",
-            "text": "“It helps balance out cravings and keeps insulin in check, supports my PCOS and hormones during perimenopause. I love that it's flavorless.”",
-            "author": "Review author"
+            "text": "Waking at 3am and lying there",
+            "group": "a"
           }
         },
-        "review_HfrPpt": {
-          "type": "review",
+        "sym_a2": {
+          "type": "symptom",
           "settings": {
-            "product_handle": "",
-            "stars": "",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
+            "text": "Weight settling around your middle, whatever you eat",
+            "group": "a"
           }
         },
-        "review_admKRB": {
-          "type": "review",
+        "sym_a3": {
+          "type": "symptom",
           "settings": {
-            "product_handle": "",
-            "stars": "",
-            "heading": "Review heading",
-            "text": "Add your customer review here to showcase them.",
-            "author": "Review author"
+            "text": "Tired an hour after a meal",
+            "group": "a"
+          }
+        },
+        "sym_a4": {
+          "type": "symptom",
+          "settings": {
+            "text": "Afternoon cravings you didn’t have at 30",
+            "group": "a"
+          }
+        },
+        "sym_a5": {
+          "type": "symptom",
+          "settings": {
+            "text": "Hungry again soon after eating",
+            "group": "a"
+          }
+        },
+        "sym_a6": {
+          "type": "symptom",
+          "settings": {
+            "text": "Working harder in the gym for less",
+            "group": "a"
+          }
+        },
+        "sym_b1": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Your labs are normal”",
+            "group": "b"
+          }
+        },
+        "sym_b2": {
+          "type": "symptom",
+          "settings": {
+            "text": "“It’s just your age”",
+            "group": "b"
+          }
+        },
+        "sym_b3": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Eat less, move more”",
+            "group": "b"
+          }
+        },
+        "sym_b4": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Come back in a year”",
+            "group": "b"
           }
         }
       },
       "block_order": [
-        "review_G3YLfm",
-        "review_HfrPpt",
-        "review_admKRB"
+        "sym_a1",
+        "sym_a2",
+        "sym_a3",
+        "sym_a4",
+        "sym_a5",
+        "sym_a6",
+        "sym_b1",
+        "sym_b2",
+        "sym_b3",
+        "sym_b4"
       ],
-      "name": "Customer reviews",
       "settings": {
-        "heading": "Real results with inositol",
-        "description": "<p>Add a short description for this section</p>",
-        "columns": 4,
-        "autoplay": true,
-        "autoplay_length": 5,
-        "color_bg": "#ffffff",
-        "color_heading": "#182769",
-        "color_text": "#182769",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
+        "eyebrow": "Is this you?",
+        "heading": "Tick what you <em>recognise</em>",
+        "heading_size": 0,
+        "subheading": "The signs women over 40 describe to us most. Tap any that sound familiar.",
+        "group_a_title": "How you feel",
+        "group_b_title": "What you've been told",
+        "count_text": "You ticked [count] of [total]",
+        "threshold": 3,
+        "msg_none": "<p>Tap anything that sounds like you.</p>",
+        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin.</strong></p>",
+        "msg_high": "<p>These aren’t six separate problems. They’re one problem showing up in several places: <strong>insulin your cells stopped listening to.</strong> Your blood sugar can still read normal while it happens.</p>",
+        "button_label": "Show me what helps",
+        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
+        "footnote": "<p>A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
+        "bg": "#FFFFFF",
+        "card_bg": "#FFFFFF",
+        "card_border": "#3447AF",
+        "checked_bg": "#e3e7ff",
+        "check_bg": "#1a2874",
+        "check_text": "#b9c2f5",
+        "result_bg": "#e3e7ff",
+        "text_color": "#1a2874",
+        "heading_color": "#3447af",
+        "accent_color": "#3447af",
+        "button_bg": "#1a2874",
+        "button_hover": "#3447af",
+        "button_text": "#b9c2f5",
+        "max_width": 960,
+        "item_size": 15,
+        "card_radius": 16,
+        "item_radius": 10,
+        "button_radius": 6,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "anchor_id": "symptoms"
       }
     },
     "bf_countdown": {
@@ -1734,132 +1814,6 @@
       ],
       "settings": {}
     },
-    "symptom_check_peri": {
-      "type": "symptom-check",
-      "blocks": {
-        "sym_a1": {
-          "type": "symptom",
-          "settings": {
-            "text": "Waking at 3am and lying there",
-            "group": "a"
-          }
-        },
-        "sym_a2": {
-          "type": "symptom",
-          "settings": {
-            "text": "Weight settling around your middle, whatever you eat",
-            "group": "a"
-          }
-        },
-        "sym_a3": {
-          "type": "symptom",
-          "settings": {
-            "text": "Tired an hour after a meal",
-            "group": "a"
-          }
-        },
-        "sym_a4": {
-          "type": "symptom",
-          "settings": {
-            "text": "Afternoon cravings you didn’t have at 30",
-            "group": "a"
-          }
-        },
-        "sym_a5": {
-          "type": "symptom",
-          "settings": {
-            "text": "Hungry again soon after eating",
-            "group": "a"
-          }
-        },
-        "sym_a6": {
-          "type": "symptom",
-          "settings": {
-            "text": "Working harder in the gym for less",
-            "group": "a"
-          }
-        },
-        "sym_b1": {
-          "type": "symptom",
-          "settings": {
-            "text": "“Your labs are normal”",
-            "group": "b"
-          }
-        },
-        "sym_b2": {
-          "type": "symptom",
-          "settings": {
-            "text": "“It’s just your age”",
-            "group": "b"
-          }
-        },
-        "sym_b3": {
-          "type": "symptom",
-          "settings": {
-            "text": "“Eat less, move more”",
-            "group": "b"
-          }
-        },
-        "sym_b4": {
-          "type": "symptom",
-          "settings": {
-            "text": "“Come back in a year”",
-            "group": "b"
-          }
-        }
-      },
-      "block_order": [
-        "sym_a1",
-        "sym_a2",
-        "sym_a3",
-        "sym_a4",
-        "sym_a5",
-        "sym_a6",
-        "sym_b1",
-        "sym_b2",
-        "sym_b3",
-        "sym_b4"
-      ],
-      "settings": {
-        "eyebrow": "Is this you?",
-        "heading": "Tick what you <em>recognise</em>",
-        "heading_size": 0,
-        "subheading": "The signs women over 40 describe to us most. Tap any that sound familiar.",
-        "group_a_title": "How you feel",
-        "group_b_title": "What you've been told",
-        "count_text": "You ticked [count] of [total]",
-        "threshold": 3,
-        "msg_none": "<p>Tap anything that sounds like you.</p>",
-        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin.</strong></p>",
-        "msg_high": "<p>These aren’t six separate problems. They’re one problem showing up in several places: <strong>insulin your cells stopped listening to.</strong> Your blood sugar can still read normal while it happens.</p>",
-        "button_label": "Show me what helps",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-        "footnote": "<p>A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
-        "bg": "#f2eeea",
-        "card_bg": "#ffffff",
-        "card_border": "#d9d2c9",
-        "checked_bg": "#e3e7ff",
-        "check_bg": "#1a2874",
-        "check_text": "#b9c2f5",
-        "result_bg": "#e3e7ff",
-        "text_color": "#1a2874",
-        "heading_color": "#3447af",
-        "accent_color": "#3447af",
-        "button_bg": "#1a2874",
-        "button_hover": "#3447af",
-        "button_text": "#b9c2f5",
-        "max_width": 960,
-        "item_size": 15,
-        "card_radius": 16,
-        "item_radius": 10,
-        "button_radius": 6,
-        "padding_top": 64,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "anchor_id": "symptoms"
-      }
-    },
     "category_list_grid_NDqtGH": {
       "type": "category-list-grid",
       "blocks": {
@@ -3390,13 +3344,12 @@
   },
   "order": [
     "hero_peri",
-    "customer_reviews_yVKfXP",
+    "symptom_check_peri",
     "bf_countdown",
     "gpt_product_seo_DWikHm",
     "spacer_fcdpRG",
     "main-product",
     "1768505899436dba61",
-    "symptom_check_peri",
     "category_list_grid_NDqtGH",
     "inositol_science_86gMmR",
     "age_curve_peri",
