@@ -159,7 +159,7 @@
         "sym_a2": {
           "type": "symptom",
           "settings": {
-            "text": "Weight settling around your middle, whatever you eat",
+            "text": "Weight settling around your middle",
             "group": "a"
           }
         },
@@ -173,14 +173,28 @@
         "sym_a4": {
           "type": "symptom",
           "settings": {
-            "text": "Afternoon cravings you didn’t have at 30",
+            "text": "Sugar cravings you didn’t have at 30",
             "group": "a"
           }
         },
         "sym_a5": {
           "type": "symptom",
           "settings": {
-            "text": "Hungry again soon after eating",
+            "text": "Periods getting closer together, heavier/lighter, or less predictable",
+            "group": "a"
+          }
+        },
+        "symptom_37xA3f": {
+          "type": "symptom",
+          "settings": {
+            "text": "Hair thinning or shedding more",
+            "group": "a"
+          }
+        },
+        "symptom_MYTqjR": {
+          "type": "symptom",
+          "settings": {
+            "text": "Brain fog, losing words mid-sentence",
             "group": "a"
           }
         },
@@ -226,6 +240,8 @@
         "sym_a3",
         "sym_a4",
         "sym_a5",
+        "symptom_37xA3f",
+        "symptom_MYTqjR",
         "sym_a6",
         "sym_b1",
         "sym_b2",
@@ -233,20 +249,20 @@
         "sym_b4"
       ],
       "settings": {
-        "eyebrow": "SOUND FAMILIAR?",
+        "eyebrow": "",
         "heading": "Same food, same walks, same sleep. <strong>Different results. </strong>That isn’t your discipline slipping.",
-        "heading_size": 40,
-        "subheading": "The signs women over 40 describe to us most.",
+        "heading_size": 28,
+        "subheading": "The signs women over 40 describe most.",
         "group_a_title": "How you feel",
         "group_b_title": "What you've been told",
         "count_text": "You ticked [count] of [total]",
         "threshold": 3,
         "msg_none": "<p>Tap anything that sounds like you.</p>",
-        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin.</strong></p>",
-        "msg_high": "<p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping.<br/><br/>These aren’t six separate problems. They’re one problem showing up in several places: <strong>insulin your cells stopped listening to.</strong> Your blood sugar can still read normal while it happens.</p>",
+        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin. </strong>And that shifts a lot after 40. Your blood sugar can still read normal while it happens.</p>",
+        "msg_high": "<p>Several of these together usually point to one place: <strong>how your body is handling insulin. </strong>And that shifts a lot after 40. Your blood sugar can still read normal while it happens.</p>",
         "button_label": "Show me what helps",
         "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-        "footnote": "<p>A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
+        "footnote": "<p>*A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
         "bg": "#fbfaf9",
         "card_bg": "#fbfaf9",
         "card_border": "#3447af",
