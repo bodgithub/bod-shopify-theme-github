@@ -300,3 +300,11 @@ line-hight:0.9;}
 .image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2) :is(h3, h4, h5, h6) { line-height: 1.3; }
 .image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2) :is(h4, h5, h6) { font-weight: 400; letter-spacing: 0; text-transform: none; }
 .image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2) > * + * { margin-top: 0.4em; }
+
+/* Hero buttons never wrap on phones: single line, slightly tighter padding, font scales down on narrow screens */
+@media only screen and (max-width: 767px) {
+  .image-with-text-overlay--content .button {
+    white-space: nowrap; max-width: 100%; padding-left: 20px; padding-right: 20px;
+    font-size: clamp(12px, 4vw, 16px);
+  }
+}
