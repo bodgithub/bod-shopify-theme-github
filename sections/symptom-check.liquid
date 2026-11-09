@@ -35,10 +35,10 @@
   #shopify-section-{{ uid }} .sc__item {
     appearance: none; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
     display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start;
-    background: transparent; border: 1px solid {{ s.card_border }}; border-radius: {{ s.item_radius }}px; padding: 12px 14px;
+    background: #ffffff; border: 1px solid {{ s.card_border }}; border-radius: {{ s.item_radius }}px; padding: 12px 14px;
     font-size: {{ s.item_size }}px; line-height: 1.4; transition: background .15s, border-color .15s;
   }
-  #shopify-section-{{ uid }} .sc__item:hover { border-color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .sc__item:hover { background: {{ s.checked_bg }}; border-color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__box {
     width: 22px; height: 22px; border-radius: 6px; border: 1.5px solid {{ s.accent_color }}; background: #fff; display: flex; align-items: center; justify-content: center; margin-top: 1px;
   }
