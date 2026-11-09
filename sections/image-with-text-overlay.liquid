@@ -96,7 +96,7 @@
 									{{ block.settings.text | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}
 								</div>
 							{%- when 'heading' -%}
-								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ heading_color }};">{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
+								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ heading_color }};{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}">{{ block.settings.text | newline_to_br | replace: '&lt;i&gt;', '<i>' | replace: '&lt;/i&gt;', '</i>' }}</div>
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
@@ -141,6 +141,8 @@
 												<div class="benefit-item" style="{% if benefit != blank %}color: {{ block.settings.text_color | default: block.settings.border_color }}; border-bottom: {{ block.settings.border_size }}px solid {{ block.settings.border_color }};{% else %} height:0px;margin:0px;padding:0px; {% endif %}">
 													{% if icon %}
 														<img src="{{ icon | image_url }}" style="width: {{ block.settings.icon_size }}px;" class="benefit-icon" alt=""/>
+													{% else %}
+														<svg class="benefit-icon benefit-icon--tick" style="width: {{ block.settings.icon_size }}px; height: {{ block.settings.icon_size }}px; color: {{ block.settings.text_color | default: '#1a2874' }};" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>
 													{% endif %}
 													<span>{{ benefit }}</span>
 												</div>
@@ -434,7 +436,7 @@
   "type": "color",
   "id": "heading_color",
   "label": "Heading Color",
-  "default": "#1b3def"
+  "default": "#1a2874"
 },
         {
           "type": "select",
@@ -459,6 +461,16 @@
             }
           ],
           "default": "h1-xlarge"
+        },
+        {
+          "type": "range",
+          "id": "heading_size_mobile",
+          "label": "Mobile size (0 = automatic)",
+          "min": 0,
+          "max": 64,
+          "step": 2,
+          "unit": "px",
+          "default": 0
         }
       ]
     },

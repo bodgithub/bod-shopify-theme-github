@@ -17,7 +17,7 @@
 #rt-{{ uid }} .rt-h{font-family:"tenon", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; font-size:clamp(26px,3.6vw,34px); font-weight:400; letter-spacing:-0.01em; line-height:1.25; color:{{ section.settings.heading_color }}; margin:0 0 28px; text-align:left;}
 #rt-{{ uid }} .rt-h :is(h1,h2,h3,h4,h5,h6,p){margin:0; line-height:inherit; color:{{ section.settings.heading_color }} !important;}
 #rt-{{ uid }} .rt-h p{font-size:inherit;}
-#rt-{{ uid }} .rt-h em{color:{{ section.settings.heading_accent | default: '#1b3def' }} !important;}
+#rt-{{ uid }} .rt-h em{color:{{ section.settings.heading_accent | default: '#4d61cf' }} !important;}
 #rt-{{ uid }} .rt-tabs{display:none;}
 #rt-{{ uid }} .rt-track{display:grid; grid-template-columns:repeat({{ n }},1fr); column-gap:26px;}
 #rt-{{ uid }} .rt-img{aspect-ratio:4/3; border-radius:8px; overflow:hidden; background:{{ section.settings.img_placeholder }}; position:relative;}
@@ -43,7 +43,7 @@
 #rt-{{ uid }} .rt-quote__stars{flex-basis:100%; display:flex;}
 #rt-{{ uid }} .rt-quote__text{flex:1 1 160px; font-size:13px; line-height:1.55; margin:0; color:{{ section.settings.text_color }};}
 #rt-{{ uid }} .rt-quote__text p{margin:0; font-size:inherit; line-height:inherit; color:inherit;}
-#rt-{{ uid }} .rt-quote__text em{color:{{ section.settings.heading_accent | default: '#1b3def' }};}
+#rt-{{ uid }} .rt-quote__text em{color:{{ section.settings.heading_accent | default: '#4d61cf' }};}
 #rt-{{ uid }} .rt-qbub{position:relative; display:inline-flex; align-items:center; gap:8px; margin-top:14px; background:#e3e7ff; border:1px solid #3447af; border-radius:14px 14px 14px 4px; padding:10px 16px 10px 12px; cursor:pointer; font-family:inherit; font-size:12.5px; color:#1a2874; transition:transform .15s, box-shadow .15s;}
 #rt-{{ uid }} .rt-qbub:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(26,40,116,0.18);}
 #rt-{{ uid }} .rt-qbub svg{width:15px; height:15px; flex:0 0 auto; color:#1b3def;}
@@ -440,13 +440,13 @@
       "type": "color",
       "id": "heading_color",
       "label": "Heading",
-      "default": "#1b3def"
+      "default": "#1a2874"
     },
     {
       "type": "color",
       "id": "heading_accent",
       "label": "Heading highlight (italics)",
-      "default": "#1b3def"
+      "default": "#4d61cf"
     },
     {
       "type": "color",

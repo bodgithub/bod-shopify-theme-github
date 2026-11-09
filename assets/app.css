@@ -2071,17 +2071,17 @@ h1, .h1, .h1-large, .h1-xlarge {
 h2, .h2, blockquote p,
 blockquote span {
   font-size: calc(var(--font-heading-scale) * 28px);
-  line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 36px)); }
+  line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 32px)); } /* h2 line-height tightened 2026-11-09: 1.14x like h1 */
   @media only screen and (min-width: 768px) {
     h2, .h2, blockquote p,
     blockquote span {
       font-size: calc(var(--font-heading-scale) * 36px);
-      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 44px)); } }
+      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 41px)); } }
   @media only screen and (min-width: 1068px) {
     h2, .h2, blockquote p,
     blockquote span {
       font-size: calc(var(--font-heading-scale) * 42px);
-      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 50px)); } }
+      line-height: calc( var(--font-heading-line-height-scale) * calc(var(--font-heading-scale) * 48px)); } }
 
 h3, .h3 {
   font-size: calc(var(--font-heading-scale) * 26px);
@@ -4404,8 +4404,16 @@ h2 {
 }
 
 
-/* ===== Bodology palette (2026-10-27) =====
-   Headings #3447af, body #1a2874, bold words and links in body copy #4d61cf. */
+/* ===== Bodology palette (2026-10-27, headings revised 2026-11-09) =====
+   Headings #1a2874 (dark blue; set a lighter blue per section in the editor if wanted), body #1a2874,
+   italic or bold words inside headings #4d61cf, bold words and links in body copy #4d61cf. */
+/* Italic or bold words inside any heading take the lighter blue. Dark-background sections keep their heading colour. */
+h1 em, h2 em, h3 em, h4 em, .h1 em, .h1-large em, .h1-xlarge em, .h2 em, .h3 em,
+h1 strong, h2 strong, h3 strong, h4 strong, .h1 strong, .h1-large strong, .h1-xlarge strong, .h2 strong, .h3 strong,
+h1 b, h2 b, h3 b, h4 b, .h1 b, .h1-large b, .h1-xlarge b, .h2 b, .h3 b { color: #4d61cf; }
+.section-community-videos :is(h1, h2, h3, h4, .h1, .h2, .h3) :is(em, strong, b),
+.collapsible-content--has-bg :is(h1, h2, h3, h4, .h1, .h2, .h3) :is(em, strong, b),
+.footer :is(h1, h2, h3, h4, .h1, .h2, .h3) :is(em, strong, b) { color: inherit; }
 .rte strong, .rte b, .post-content strong, .post-content b { color: #4d61cf; }
 /* Bold words inside the hero banner's heading (H1/H2/H3 at any heading size) and its subheading line
    use the same bold colour as body copy. The .rte rule above only reaches the hero's text block. */
