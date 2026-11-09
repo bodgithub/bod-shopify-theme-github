@@ -211,6 +211,7 @@
     if(r.bottom <= vh * 0.35){ state = 'after'; }
     else if(r.top < vh * 0.85){ state = 'in'; }
     bar.setAttribute('data-state', state);
+    if(state === 'after' && !bar.hasAttribute('data-plan')){ syncPlan(); }
     /* Shopify's theme-preview bar sits over the bottom edge; lift ours above it */
     var pb = document.getElementById('PBarNextFrameWrapper') || document.getElementById('preview-bar-iframe');
     bar.style.bottom = pb && pb.offsetHeight ? pb.offsetHeight + 'px' : '';
@@ -218,21 +219,24 @@
   items.forEach(function(b){ b.addEventListener('click', function(){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); update(); }); });
   if(barChange){ barChange.addEventListener('click', function(){ root.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }
   /* after scrolling past: mirror the buy box's plan selector (name + price) and add that plan through its own button */
-  var ps = document.querySelector('[data-ps1c-root]');
+  var ps = null;
+  function getPs(){ if(!ps){ ps = document.querySelector('[data-ps1c-root]'); } return ps; }
   var planEl = bar && bar.querySelector('[data-sc-bar-plan]');
   var addBtn = bar && bar.querySelector('[data-sc-bar-add]');
   function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
   function syncPlan(){
     if(!bar || !planEl) return;
-    var c = ps && ps.querySelector('[data-ps1c-card].is-selected');
+    var p = getPs(); var c = p && p.querySelector('[data-ps1c-card].is-selected');
     if(!c){ bar.removeAttribute('data-plan'); return; }
     var name = c.getAttribute('data-ps1c-name') || '', price = c.getAttribute('data-ps1c-price') || '';
     planEl.innerHTML = '<strong>' + esc(name) + '</strong>' + (price ? ' <span class="sc__bar-price">' + esc(price) + '</span>' : '');
     bar.setAttribute('data-plan', '1');
   }
   document.addEventListener('ps1c:select', syncPlan);
-  if(addBtn){ addBtn.addEventListener('click', function(){ var b = ps && ps.querySelector('[data-ps1c-submit]'); if(b){ b.click(); } }); }
+  if(addBtn){ addBtn.addEventListener('click', function(){ var p = getPs(); var b = p && p.querySelector('[data-ps1c-submit]'); if(b){ b.click(); } }); }
+  /* the buy box sits further down the page, so look again once the DOM is complete */
   syncPlan();
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', syncPlan); } else { setTimeout(syncPlan, 0); }
   window.addEventListener('scroll', place, { passive: true });
   window.addEventListener('resize', place);
   update();
