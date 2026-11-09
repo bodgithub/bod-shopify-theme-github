@@ -15,8 +15,8 @@
         "heading_peri": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, <strong>it's insulin.</strong></h2>",
-            "heading_color": "#182769",
+            "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, it's insulin.</h2>",
+            "heading_color": "#3447AF",
             "heading_size": "h1-xlarge",
             "heading_size_mobile": 34
           }
@@ -25,11 +25,11 @@
           "type": "text",
           "settings": {
             "text": "<h6>Inositol helps your cells listen to insulin again. The Clinical studies run 3-6 months. Bundle up, ends Nov 31.</h6>",
-            "description_color": "#182769",
+            "description_color": "#3447AF",
             "description_size": "medium",
             "pad_left": 0,
             "pad_right": 96,
-            "pad_bottom": 0
+            "pad_bottom": 24
           }
         },
         "space_bhy9NE": {
@@ -58,7 +58,7 @@
             "border_size": 1,
             "text_color": "#182769",
             "border_color": "#7e87b9",
-            "benefit_1": "Studied in women before and after menopause",
+            "benefit_1": "Studied in women before and after menopause*",
             "benefit_2": "Full 4g daily clinical dose",
             "benefit_3": "60-day money-back guarantee",
             "benefit_4": "",
@@ -180,7 +180,7 @@
         "sym_a5": {
           "type": "symptom",
           "settings": {
-            "text": "Periods getting closer together, heavier/lighter, or less predictable",
+            "text": "Periods getting closer together, heavier, lighter, or less predictable",
             "group": "a"
           }
         },
@@ -251,7 +251,7 @@
       "settings": {
         "eyebrow": "",
         "heading": "Same food, same walks, same sleep. <strong>Different results. </strong>That isn’t your discipline slipping.",
-        "heading_size": 28,
+        "heading_size": 38,
         "subheading": "The signs women over 40 describe most:",
         "group_a_title": "How you feel",
         "group_b_title": "What you've been told",
@@ -263,6 +263,11 @@
         "button_label": "Show me what helps",
         "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
         "footnote": "<p>*A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
+        "sticky_bar": true,
+        "bar_bg": "#ffffff",
+        "bar_shop_label": "Shop now",
+        "bar_shop_link": "#Product-Slider",
+        "bar_change_label": "Change selection",
         "bg": "#fbfaf9",
         "card_bg": "#fbfaf9",
         "card_border": "#3447af",
