@@ -308,3 +308,9 @@ line-hight:0.9;}
     font-size: clamp(12px, 4vw, 16px);
   }
 }
+
+/* Hero text block: tighter body line-height and a smaller gap between paragraphs */
+.image-with-text-overlay--content .rte,
+.image-with-text-overlay--content .rte p { line-height: 1.3; }
+.image-with-text-overlay--content .rte p { margin-bottom: 0.55em; }
+.image-with-text-overlay--content .rte p:last-child { margin-bottom: 0; }
