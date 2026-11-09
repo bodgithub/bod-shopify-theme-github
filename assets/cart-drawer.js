@@ -191,11 +191,13 @@
   }
   /* Code blocks: a code that must never apply while a matching line is in the cart, e.g.
        TRY20 : plan 7141621979
-     Same conditions as code families. The drawer refuses to apply the code, removes it if
+     A line "!CODE" exempts that code from every block. Same conditions as code families. The drawer refuses to apply the code, removes it if
      it arrived attached (ad link), and says why. Checkout's own code field is not covered. */
   function parseBlocks(text) {
     var out = [];
     String(text || '').split(/\n/).forEach(function (line) {
+      var ex = line.match(/^\s*!\s*(\S+)\s*$/); /* "!BUNDLE20": this code is never blocked */
+      if (ex) { out.push({ code: ex[1], allow: true }); return; }
       var m = line.match(/^\s*(\S+)\s*:\s*([a-z\-]+)\s*(\S+)?\s*$/i);
       if (m) { out.push({ code: m[1], kind: m[2].toLowerCase().replace(/[^a-z]/g, ''), id: m[3] ? String(m[3]) : null }); }
     });
@@ -203,7 +205,9 @@
   }
   function blockingLines(blocks, code, lines) {
     var hits = [];
+    if (blocks.some(function (b) { return b.allow && lower(b.code) === lower(code); })) { return hits; }
     blocks.forEach(function (b) {
+      if (b.allow) { return; }
       if (b.code !== '*' && lower(b.code) !== lower(code)) { return; } /* "*" = every code */
       lines.forEach(function (l) { if (ruleMatches(b, l) && hits.indexOf(l) < 0) { hits.push(l); } });
     });
