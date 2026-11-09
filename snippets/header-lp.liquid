@@ -87,11 +87,12 @@
   @media only screen and (min-width: 768px) { .header--lp .lp-cta { display: inline-flex; height: 46px; padding: 0 24px; font-size: 15px; } }
   /* drawer slides in from the left as a side panel instead of a full-width sheet */
   .header--lp .lp-drawer {
-    width: min(380px, 100vw); left: 0; right: auto;
+    width: 100vw; left: 0; right: auto;
     border-top: 0; border-right: 1px solid var(--color-header-border, #dadce0);
     box-shadow: 0 24px 48px rgba(26, 40, 116, 0.14);
     transform: translateX(-24px);
   }
+  @media only screen and (min-width: 768px) { .header--lp .lp-drawer { width: 380px; } }
   .js .header--lp .mobile-toggle-wrapper[open].active .lp-drawer { transform: translateX(0); }
   .header--lp .lp-drawer .mobile-menu { padding: 0 24px; }
   .header--lp .lp-drawer .mobile-menu li:not(.mobile-menu__cta) > a { color: var(--solid-button-background, #1a2874); }

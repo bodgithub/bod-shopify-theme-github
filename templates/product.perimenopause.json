@@ -24,9 +24,12 @@
         "text_czCtJM": {
           "type": "text",
           "settings": {
-            "text": "<h6>Inositol helps your cells listen to insulin again. The Clinical studies run 3-6 months. The Black Friday deal ends Nov 31.</h6>",
+            "text": "<h6>Inositol helps your cells listen to insulin again. The Clinical studies run 3-6 months. Bundle up, ends Nov 31.</h6>",
             "description_color": "#182769",
-            "description_size": "medium"
+            "description_size": "medium",
+            "pad_left": 0,
+            "pad_right": 96,
+            "pad_bottom": 0
           }
         },
         "space_bhy9NE": {
@@ -41,7 +44,10 @@
           "settings": {
             "text": "<p>Same diet and routine, different results. Doctor says everything looks fine. <strong>Start with insulin.</strong></p>",
             "description_color": "#1a2874",
-            "description_size": "large"
+            "description_size": "large",
+            "pad_left": 0,
+            "pad_right": 0,
+            "pad_bottom": 0
           }
         },
         "benefits_peri": {
@@ -51,7 +57,7 @@
             "icon_size": 25,
             "border_size": 1,
             "text_color": "#182769",
-            "border_color": "#7E87B9",
+            "border_color": "#7e87b9",
             "benefit_1": "Studied in women before and after menopause",
             "benefit_2": "Full 4g daily clinical dose",
             "benefit_3": "60-day money-back guarantee",
