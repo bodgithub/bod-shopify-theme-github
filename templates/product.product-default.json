@@ -35,7 +35,7 @@
           "type": "heading",
           "settings": {
             "text": "<h1>Balanced hormones begin with <em>metabolic</em> health</h1>",
-            "heading_color": "#3447af",
+            "heading_color": "#1a2874",
             "heading_size": "h1-large"
           }
         },
@@ -53,8 +53,8 @@
             "benefits-title": "",
             "icon_size": 28,
             "border_size": 1,
-            "text_color": "",
-            "border_color": "#1b3def",
+            "text_color": "#1a2874",
+            "border_color": "#1a2874",
             "benefit_1": "That's where inositol comes in.",
             "icon_1": "shopify://shop_images/icon_check-circle.png",
             "benefit_2": "",
@@ -76,8 +76,8 @@
             "benefits-title": "",
             "icon_size": 28,
             "border_size": 1,
-            "text_color": "",
-            "border_color": "#1b3def",
+            "text_color": "#1a2874",
+            "border_color": "#1a2874",
             "benefit_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.benefit.value }}",
             "icon_1": "{{ product.metafields.custom.problem_category.value.benefit_1.value.icon.value }}",
             "benefit_2": "{{ product.metafields.custom.problem_category.value.benefit_2.value.benefit.value }}",
@@ -1409,7 +1409,7 @@
             "style": "white",
             "center_all": false,
             "frame_flat": true,
-            "title_color": "#3447af",
+            "title_color": "#1a2874",
             "sub_color": "#3447af",
             "max_width": 720,
             "padding_top": 16,
@@ -1960,7 +1960,7 @@
           "type": "row",
           "settings": {
             "label": "Inositol per serving",
-            "info": "One Bodology serving is 2 scoops: 4,000mg myo-inositol + 100mg D-chiro-inositol — the full clinically studied daily dose. Many brands define a serving as half that, so their tub looks like it lasts twice as long as it does at the studied dose.",
+            "info": "Our serving is the full 4,100mg studied dose. Many brands define a serving as half that, so their tub looks like it lasts twice as long as it does at the studied dose.",
             "us_value": "text",
             "us_text": "4,100mg",
             "them1_value": "text",
@@ -1975,11 +1975,11 @@
           "type": "row",
           "settings": {
             "label": "40:1 myo to D-chiro ratio",
-            "info": "The 40:1 ratio used in clinical research, confirmed in writing on every batch’s lab report. If a label doesn’t state the ratio, you can’t know what you’re taking.",
+            "info": "The 40:1 ratio used in the research, confirmed on every batch’s lab report.",
             "us_value": "check",
             "us_text": "",
             "them1_value": "text",
-            "them1_text": "Not always",
+            "them1_text": "Not always stated",
             "them2_value": "cross",
             "them2_text": "",
             "them3_value": "cross",
@@ -1990,7 +1990,7 @@
           "type": "row",
           "settings": {
             "label": "A full daily dose is",
-            "info": "Two small scoops, once a day. In a capsule product holding about 500mg each, the same 4,100mg means 8 or more capsules every day.",
+            "info": "Two scoops a day. In 500mg capsules, the same dose is 8 or more.",
             "us_value": "text",
             "us_text": "2 scoops",
             "them1_value": "text",
@@ -2005,26 +2005,11 @@
           "type": "row",
           "settings": {
             "label": "Form",
-            "info": "One ingredient blend and nothing else: no other actives, no fillers, no flavoring. Unflavored, it mixes into water, coffee or smoothies.",
+            "info": "One ingredient blend. No fillers, no flavoring. Mixes into water or coffee.",
             "us_value": "text",
             "us_text": "Pure powder",
             "them1_value": "text",
-            "them1_text": "Capsules or blends",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_taste": {
-          "type": "row",
-          "settings": {
-            "label": "Taste",
-            "info": "The gentle sweetness comes naturally from the carob-sourced D-chiro. Nothing is flavoured or sweetened, the powder is light and dissolves cleanly, with no grit or aftertaste.",
-            "us_value": "text",
-            "us_text": "Sweet, disappears into coffee",
-            "them1_value": "text",
-            "them1_text": "Flavored, gritty texture",
+            "them1_text": "Capsules, gummies, blends",
             "them2_value": "cross",
             "them2_text": "",
             "them3_value": "cross",
@@ -2035,7 +2020,7 @@
           "type": "row",
           "settings": {
             "label": "Fillers",
-            "info": "No flow agents, no silica, no capsule shells. The lab report shows what’s in the tub.",
+            "info": "No flow agents, no silica, no capsule shells.",
             "us_value": "text",
             "us_text": "None",
             "them1_value": "text",
@@ -2050,9 +2035,9 @@
           "type": "row",
           "settings": {
             "label": "D-chiro source",
-            "info": "Our D-chiro-inositol is derived from carob grown in Spain, and we say so. Most brands won’t tell you where theirs comes from.",
+            "info": "D-chiro-inositol from carob grown in Spain. Most brands don’t say where theirs comes from.",
             "us_value": "text",
-            "us_text": "Carob",
+            "us_text": "Carob, published",
             "them1_value": "text",
             "them1_text": "Not disclosed",
             "them2_value": "cross",
@@ -2065,7 +2050,7 @@
           "type": "row",
           "settings": {
             "label": "Batch lab report",
-            "info": "Every batch is third-party tested and the certificate of analysis is published: myo assay, D-chiro assay, 40:1 confirmed, heavy metals, microbials.",
+            "info": "Every batch is third-party tested and the lab report is published.",
             "us_value": "text",
             "us_text": "Published",
             "them1_value": "text",
@@ -2080,7 +2065,7 @@
           "type": "row",
           "settings": {
             "label": "Money-back guarantee",
-            "info": "Try it for 60 days. If it isn’t for you, email us and we’ll refund you.",
+            "info": "60 days. If it isn’t for you, email us for a refund.",
             "us_value": "text",
             "us_text": "60 days",
             "them1_value": "text",
@@ -2097,7 +2082,6 @@
         "row_ratio",
         "row_dose",
         "row_form",
-        "row_taste",
         "row_fillers",
         "row_source",
         "row_coa",
@@ -2107,24 +2091,25 @@
         "heading": "Not your <em>average</em> inositol",
         "heading_size": 0,
         "us_label": "Bodology",
-        "us_logo_width": 80,
-        "us_logo_white": true,
         "them1_label": "Typical inositol brand",
         "them2_label": "",
         "them3_label": "",
         "bg": "#f2eeea",
         "card_bg": "#faf7f3",
-        "us_color": "#1a2874",
-        "us_text_color": "#b9c2f5",
+        "us_color": "#1A2874",
+        "us_text_color": "#B9C2F5",
         "text_color": "#1a2874",
-        "heading_color": "#3447af",
-        "accent_color": "#3447af",
+        "heading_color": "#1a2874",
+        "accent_color": "#4d61cf",
         "line_color": "#e2dbd2",
         "label_size": 14,
         "padding_top": 56,
         "padding_bottom": 64,
         "margin_top": 0,
-        "margin_bottom": 0
+        "margin_bottom": 0,
+        "us_logo": "shopify://shop_images/Bodology_Logo_1080x310_transparent.png",
+        "us_logo_width": 84,
+        "us_logo_white": true
       }
     },
     "quote_grid_wLJirf": {
@@ -2211,7 +2196,7 @@
         "heading_align": "center",
         "heading_size": 0,
         "heading_color": "#1a2874",
-        "accent_color": "#1b3def",
+        "accent_color": "#4d61cf",
         "columns": 2,
         "grid_gap": 40,
         "side_pad": 0,
@@ -2374,7 +2359,7 @@
             "card_shadow": false,
             "background_color": "#ffffff",
             "card_background": "#f3eeeb",
-            "heading_color": "#3447af",
+            "heading_color": "#1a2874",
             "text_color": "#1a2874",
             "star_color": "#1b3def",
             "button_background": "#eaeaea",
@@ -3338,165 +3323,6 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
-    },
-    "us_vs_them_main": {
-      "type": "us-vs-them",
-      "blocks": {
-        "row_serving": {
-          "type": "row",
-          "settings": {
-            "label": "Inositol per serving",
-            "info": "Our serving is the full 4,100mg studied dose. Many brands define a serving as half that, so their tub looks like it lasts twice as long as it does at the studied dose.",
-            "us_value": "text",
-            "us_text": "4,100mg",
-            "them1_value": "text",
-            "them1_text": "Often half that",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_ratio": {
-          "type": "row",
-          "settings": {
-            "label": "40:1 myo to D-chiro ratio",
-            "info": "The 40:1 ratio used in the research, confirmed on every batch’s lab report.",
-            "us_value": "check",
-            "us_text": "",
-            "them1_value": "text",
-            "them1_text": "Not always stated",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_dose": {
-          "type": "row",
-          "settings": {
-            "label": "A full daily dose is",
-            "info": "Two scoops a day. In 500mg capsules, the same dose is 8 or more.",
-            "us_value": "text",
-            "us_text": "2 scoops",
-            "them1_value": "text",
-            "them1_text": "8+ capsules",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_form": {
-          "type": "row",
-          "settings": {
-            "label": "Form",
-            "info": "One ingredient blend. No fillers, no flavoring. Mixes into water or coffee.",
-            "us_value": "text",
-            "us_text": "Pure powder",
-            "them1_value": "text",
-            "them1_text": "Capsules, gummies, blends",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_fillers": {
-          "type": "row",
-          "settings": {
-            "label": "Fillers",
-            "info": "No flow agents, no silica, no capsule shells.",
-            "us_value": "text",
-            "us_text": "None",
-            "them1_value": "text",
-            "them1_text": "Often flow agents, silica",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_source": {
-          "type": "row",
-          "settings": {
-            "label": "D-chiro source",
-            "info": "D-chiro-inositol from carob grown in Spain. Most brands don’t say where theirs comes from.",
-            "us_value": "text",
-            "us_text": "Carob, published",
-            "them1_value": "text",
-            "them1_text": "Not disclosed",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_coa": {
-          "type": "row",
-          "settings": {
-            "label": "Batch lab report",
-            "info": "Every batch is third-party tested and the lab report is published.",
-            "us_value": "text",
-            "us_text": "Published",
-            "them1_value": "text",
-            "them1_text": "Ask for theirs",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        },
-        "row_guarantee": {
-          "type": "row",
-          "settings": {
-            "label": "Money-back guarantee",
-            "info": "60 days. If it isn’t for you, email us for a refund.",
-            "us_value": "text",
-            "us_text": "60 days",
-            "them1_value": "text",
-            "them1_text": "Varies",
-            "them2_value": "cross",
-            "them2_text": "",
-            "them3_value": "cross",
-            "them3_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "row_serving",
-        "row_ratio",
-        "row_dose",
-        "row_form",
-        "row_fillers",
-        "row_source",
-        "row_coa",
-        "row_guarantee"
-      ],
-      "settings": {
-        "heading": "Not your <em>average</em> inositol",
-        "heading_size": 0,
-        "us_label": "Bodology",
-        "them1_label": "Typical inositol brand",
-        "them2_label": "",
-        "them3_label": "",
-        "bg": "#f2eeea",
-        "card_bg": "#faf7f3",
-        "us_color": "#1A2874",
-        "us_text_color": "#B9C2F5",
-        "text_color": "#1a2874",
-        "heading_color": "#3447af",
-        "accent_color": "#3447af",
-        "line_color": "#e2dbd2",
-        "label_size": 14,
-        "padding_top": 56,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "us_logo": "shopify://shop_images/Bodology_Logo_1080x310_transparent.png",
-        "us_logo_width": 84,
-        "us_logo_white": true
-      }
     }
   },
   "order": [
