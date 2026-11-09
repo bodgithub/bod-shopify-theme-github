@@ -95,6 +95,16 @@
   #shopify-section-{{ uid }} .sc__bar[data-state="after"] .sc__bar-change { display: inline; }
   #shopify-section-{{ uid }} .sc__bar[data-state="after"] .sc__bar-btn--after { display: inline-flex; }
   #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-count="0"] .sc__bar-count { display: none; }
+  /* when the page has a plan selector, the after-bar names the selected plan and adds it to the cart */
+  #shopify-section-{{ uid }} .sc__bar-plan { display: none; font-size: 15px; line-height: 1.3; }
+  #shopify-section-{{ uid }} .sc__bar-plan strong { font-weight: var(--font-body-bold-weight, 500); }
+  #shopify-section-{{ uid }} .sc__bar-price { opacity: .8; margin-left: 6px; }
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-plan { display: block; }
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-count,
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-change,
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-btn--after { display: none; }
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-btn--add { display: inline-flex; }
+  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add { appearance: none; border: 0; cursor: pointer; font: inherit; }
   @media screen and (min-width: 750px) {
     #shopify-section-{{ uid }} .sc { padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px; }
     #shopify-section-{{ uid }} .sc__pw { padding: 0 20px; }
@@ -157,9 +167,11 @@
       <span class="sc__bar-count" data-sc-bar-count></span>
       <span class="sc__bar-msg" data-sc-bar-msg>{{ s.msg_none }}</span>
       <button type="button" class="sc__bar-change" data-sc-bar-change>{{ s.bar_change_label | default: 'Change selection' }}</button>
+      <span class="sc__bar-plan" data-sc-bar-plan></span>
     </div>
     {%- if s.button_label != blank -%}<a class="sc__btn sc__bar-btn sc__bar-btn--in" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}</a>{%- endif -%}
     <a class="sc__btn sc__bar-btn sc__bar-btn--after" href="{{ s.bar_shop_link | default: '#Product-Slider' }}">{{ s.bar_shop_label | default: 'Shop now' }}</a>
+    <button type="button" class="sc__btn sc__bar-btn sc__bar-btn--add" data-sc-bar-add>{{ s.bar_add_label | default: 'Add to cart' }}</button>
   </div>
 </div>
 {%- endif -%}
@@ -205,6 +217,22 @@
   }
   items.forEach(function(b){ b.addEventListener('click', function(){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); update(); }); });
   if(barChange){ barChange.addEventListener('click', function(){ root.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }
+  /* after scrolling past: mirror the buy box's plan selector (name + price) and add that plan through its own button */
+  var ps = document.querySelector('[data-ps1c-root]');
+  var planEl = bar && bar.querySelector('[data-sc-bar-plan]');
+  var addBtn = bar && bar.querySelector('[data-sc-bar-add]');
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function syncPlan(){
+    if(!bar || !planEl) return;
+    var c = ps && ps.querySelector('[data-ps1c-card].is-selected');
+    if(!c){ bar.removeAttribute('data-plan'); return; }
+    var name = c.getAttribute('data-ps1c-name') || '', price = c.getAttribute('data-ps1c-price') || '';
+    planEl.innerHTML = '<strong>' + esc(name) + '</strong>' + (price ? ' <span class="sc__bar-price">' + esc(price) + '</span>' : '');
+    bar.setAttribute('data-plan', '1');
+  }
+  document.addEventListener('ps1c:select', syncPlan);
+  if(addBtn){ addBtn.addEventListener('click', function(){ var b = ps && ps.querySelector('[data-ps1c-submit]'); if(b){ b.click(); } }); }
+  syncPlan();
   window.addEventListener('scroll', place, { passive: true });
   window.addEventListener('resize', place);
   update();
@@ -238,6 +266,7 @@
     { "type": "text", "id": "bar_shop_label", "label": "Shop button (after scrolling past)", "default": "Shop now" },
     { "type": "text", "id": "bar_shop_link", "label": "Shop button link", "default": "#Product-Slider" },
     { "type": "text", "id": "bar_change_label", "label": "Change link text", "default": "Change selection" },
+    { "type": "text", "id": "bar_add_label", "label": "Add to cart button (when the page has a plan selector)", "default": "Add to cart" },
     { "type": "header", "content": "Colours" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#f2eeea" },
     { "type": "color", "id": "card_bg", "label": "Group card", "default": "#ffffff" },
