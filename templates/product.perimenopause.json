@@ -16,7 +16,7 @@
           "type": "subheading",
           "disabled": true,
           "settings": {
-            "text": "<p>INSULIN IN YOUR 40s, 50s AND BEYOND</p>",
+            "text": "<p>BLACK FRIDAY DEAL • UP TO 55% OFF</p>",
             "text_color": "#1a2874",
             "pill_match": true
           }
@@ -31,6 +31,7 @@
         },
         "text_peri": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<p>Same diet and routine, different results. Doctor says everything looks fine. <strong>Start with insulin.</strong></p>",
             "description_color": "#1a2874",
@@ -45,9 +46,9 @@
             "border_size": 1,
             "text_color": "#1a2874",
             "border_color": "#3447af",
-            "benefit_1": "Studied in women pre and post menopause",
+            "benefit_1": "Studied in women before and after menopause",
             "icon_1": "shopify://shop_images/icon_check-circle.png",
-            "benefit_2": "D-chiro-inositol from carob pods",
+            "benefit_2": "Full 4g daily clinical dose",
             "icon_2": "shopify://shop_images/icon_check-circle.png",
             "benefit_3": "60-day money-back guarantee",
             "icon_3": "shopify://shop_images/icon_check-circle.png",
@@ -96,8 +97,62 @@
         "disable_bottom_spacing": true
       }
     },
+    "customer_reviews_yVKfXP": {
+      "type": "customer-reviews",
+      "blocks": {
+        "review_G3YLfm": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "5",
+            "heading": "Helps balance out cravings",
+            "text": "“It helps balance out cravings and keeps insulin in check, supports my PCOS and hormones during perimenopause. I love that it's flavorless.”",
+            "author": "Review author"
+          }
+        },
+        "review_HfrPpt": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "",
+            "heading": "Review heading",
+            "text": "Add your customer review here to showcase them.",
+            "author": "Review author"
+          }
+        },
+        "review_admKRB": {
+          "type": "review",
+          "settings": {
+            "product_handle": "",
+            "stars": "",
+            "heading": "Review heading",
+            "text": "Add your customer review here to showcase them.",
+            "author": "Review author"
+          }
+        }
+      },
+      "block_order": [
+        "review_G3YLfm",
+        "review_HfrPpt",
+        "review_admKRB"
+      ],
+      "name": "Customer reviews",
+      "settings": {
+        "heading": "Real results with inositol",
+        "description": "<p>Add a short description for this section</p>",
+        "columns": 4,
+        "autoplay": true,
+        "autoplay_length": 5,
+        "color_bg": "#ffffff",
+        "color_heading": "#182769",
+        "color_text": "#182769",
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
+      }
+    },
     "bf_countdown": {
       "type": "countdown-banner",
+      "disabled": true,
       "settings": {
         "full_width": true,
         "section_layout": "horizontal",
@@ -3335,6 +3390,7 @@
   },
   "order": [
     "hero_peri",
+    "customer_reviews_yVKfXP",
     "bf_countdown",
     "gpt_product_seo_DWikHm",
     "spacer_fcdpRG",
