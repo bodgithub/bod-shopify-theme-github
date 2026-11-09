@@ -48,7 +48,7 @@
   #shopify-section-{{ uid }} .sc__item[aria-pressed="true"] .sc__box svg { opacity: 1; transform: scale(1); }
   #shopify-section-{{ uid }} .sc__divider { border: 0; border-top: 1px solid {{ s.card_border }}; margin: 28px 0 0; width: 100%; }
   #shopify-section-{{ uid }} .sc__result {
-    margin: 20px auto 0; max-width: 620px; text-align: center; background: transparent; border: 0;
+    margin: 28px auto 0; max-width: 620px; text-align: center; background: transparent; border: 0;
     padding: 0; font-size: 15px; line-height: 1.5;
   }
   #shopify-section-{{ uid }} .sc__count { display: block; font-size: 13px; letter-spacing: .03em; opacity: .8; margin-bottom: 4px; }
@@ -56,10 +56,10 @@
   #shopify-section-{{ uid }} .sc__msg p { margin: 0; }
   #shopify-section-{{ uid }} .sc__msg strong { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__btn {
-    display: inline-block; margin-top: 14px; padding: 14px 30px; border-radius: {{ s.button_radius }}px;
-    background: {{ s.button_bg }}; color: {{ s.button_text }}; text-decoration: none; font-size: 15px; transition: background .15s, transform .14s;
+    display: inline-flex; align-items: center; justify-content: center; margin-top: 16px; padding: 17px 30px; min-height: 50px; border-radius: {{ s.button_radius }}px;
+    background: {{ s.button_bg }}; color: {{ s.button_text }}; text-decoration: none; font-size: inherit; font-weight: 500; letter-spacing: var(--button-letter-spacing, 0.02em); transition: background .15s, transform .14s;
   }
-  #shopify-section-{{ uid }} .sc__btn:hover { background: {{ s.button_hover }}; transform: translateY(-1px); }
+  #shopify-section-{{ uid }} .sc__btn:hover { background: {{ s.button_hover }}; color: {{ s.button_text }}; transform: translateY(-1px); }
   #shopify-section-{{ uid }} .sc__foot { margin: 14px auto 0; max-width: 620px; text-align: center; font-size: 12px; line-height: 1.5; opacity: .75; }
   #shopify-section-{{ uid }} .sc__foot p { margin: 0; }
   @media screen and (min-width: 750px) {
@@ -166,7 +166,7 @@
     { "type": "color", "id": "accent_color", "label": "Accent", "default": "#4d61cf" },
     { "type": "color", "id": "button_bg", "label": "Button background", "default": "#1A2874" },
     { "type": "color", "id": "button_hover", "label": "Button hover", "default": "#3447af" },
-    { "type": "color", "id": "button_text", "label": "Button text", "default": "#B9C2F5" },
+    { "type": "color", "id": "button_text", "label": "Button text", "default": "#ffffff" },
     { "type": "header", "content": "Shape & spacing" },
     { "type": "range", "id": "max_width", "label": "Max width", "min": 600, "max": 1200, "step": 20, "default": 960 },
     { "type": "range", "id": "item_size", "label": "Item text size", "min": 13, "max": 18, "step": 1, "default": 15 },
