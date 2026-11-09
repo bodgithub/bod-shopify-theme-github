@@ -4,13 +4,20 @@
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
+{%- assign gap_above = block.settings.gap_above | default: 0 -%}
 {% style %}
   .ai-text-carousel-{{ ai_gen_id }} {
     display: block;
     width: 100%;
     overflow: hidden;
+    {%- if gap_above > 0 -%}
+    /* space above painted in its own colour so it can continue the previous section's background */
+    background: linear-gradient(to bottom, {{ block.settings.gap_above_color | default: '#f3eeea' }} 0, {{ block.settings.gap_above_color | default: '#f3eeea' }} {{ gap_above }}px, {{ block.settings.background_color }} {{ gap_above }}px, {{ block.settings.background_color }} 100%);
+    padding: {{ gap_above | plus: block.settings.padding_vertical }}px 0 {{ block.settings.padding_vertical }}px;
+    {%- else -%}
     background-color: {{ block.settings.background_color }};
     padding: {{ block.settings.padding_vertical }}px 0;
+    {%- endif -%}
     margin-top: {{ block.settings.margin_top }}px;
     margin-bottom: {{ block.settings.margin_bottom }}px;
     position: relative;
@@ -20,7 +27,7 @@
   .ai-text-carousel-{{ ai_gen_id }}::after {
     content: "";
     position: absolute;
-    top: 0;
+    top: {{ gap_above }}px;
     bottom: 0;
     width: {{ block.settings.fade_width }}%;
     z-index: 2;
@@ -321,6 +328,23 @@
       "unit": "px",
       "label": "Margin bottom",
       "default": 0
+    },
+    {
+      "type": "range",
+      "id": "gap_above",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Space above (coloured)",
+      "info": "Painted in the colour below so it can continue the previous section's background. 0 = none.",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "gap_above_color",
+      "label": "Space above colour",
+      "default": "#f3eeea"
     },
     {
       "type": "header",
