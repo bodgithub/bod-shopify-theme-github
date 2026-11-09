@@ -100,7 +100,7 @@
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
-  style="--description-color: {{ block.settings.description_color }};"
+  style="--description-color: {{ block.settings.description_color }}; padding: 0 {{ block.settings.pad_right | default: 0 }}px {{ block.settings.pad_bottom | default: 0 }}px {{ block.settings.pad_left | default: 0 }}px;"
   {{ block.shopify_attributes }}
 >
   {{ block.settings.text }}
@@ -510,6 +510,36 @@
             }
           ],
           "default": "medium"
+        },
+        {
+          "type": "range",
+          "id": "pad_left",
+          "label": "Padding left",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "pad_right",
+          "label": "Padding right",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "pad_bottom",
+          "label": "Padding bottom",
+          "min": 0,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 0
         }
       ]
     },
