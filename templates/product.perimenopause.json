@@ -193,8 +193,8 @@
       ],
       "settings": {
         "eyebrow": "SOUND FAMILIAR?",
-        "heading": "Same effort,<em> </em><strong>different results?</strong>",
-        "heading_size": 0,
+        "heading": "Same effort,<em> </em>different results?",
+        "heading_size": 40,
         "subheading": "The signs women over 40 describe to us most.",
         "group_a_title": "How you feel",
         "group_b_title": "What you've been told",
@@ -206,8 +206,8 @@
         "button_label": "Show me what helps",
         "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
         "footnote": "<p>A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
-        "bg": "#ffffff",
-        "card_bg": "#ffffff",
+        "bg": "#FBFAF9",
+        "card_bg": "#FBFAF9",
         "card_border": "#3447af",
         "checked_bg": "#e3e7ff",
         "check_bg": "#1a2874",
@@ -217,7 +217,7 @@
         "accent_color": "#4d61cf",
         "button_bg": "#1a2874",
         "button_hover": "#3447af",
-        "button_text": "#ffffff",
+        "button_text": "#b9c2f5",
         "max_width": 960,
         "item_size": 15,
         "card_radius": 16,
@@ -1814,6 +1814,45 @@
       ],
       "settings": {}
     },
+    "blocks_eYfhGR": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_66d84b5_be3nEW": {
+          "type": "ai_gen_block_66d84b5",
+          "settings": {
+            "text_1": "LESS INSULIN",
+            "text_2": "STEADIER BLOOD SUGAR",
+            "text_3": "FEWER CRAVINGS",
+            "text_4": "LESS IRRITABILITY",
+            "text_5": "MORE ENERGY",
+            "text_6": "BETTER YOU",
+            "animation_speed": 30,
+            "pause_on_hover": true,
+            "font_size": 22,
+            "font_weight": "500",
+            "text_transform": "uppercase",
+            "letter_spacing": 0,
+            "text_spacing": 70,
+            "padding_vertical": 15,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "show_separator": true,
+            "separator_size": 20,
+            "separator_color": "#ffffff",
+            "text_color": "#ffffff",
+            "background_color": "#607AE5",
+            "fade_width": 40,
+            "fade_strength": 50,
+            "fade_color": "#3447AF"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_66d84b5_be3nEW"
+      ],
+      "settings": {}
+    },
     "category_list_grid_NDqtGH": {
       "type": "category-list-grid",
       "blocks": {
@@ -3350,6 +3389,7 @@
     "spacer_fcdpRG",
     "main-product",
     "1768505899436dba61",
+    "blocks_eYfhGR",
     "category_list_grid_NDqtGH",
     "inositol_science_86gMmR",
     "age_curve_peri",
