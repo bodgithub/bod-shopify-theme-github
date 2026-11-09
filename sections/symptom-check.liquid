@@ -106,13 +106,19 @@
   #shopify-section-{{ uid }} .sc__bar-prod { grid-area: prod; display: flex; align-items: center; gap: 10px; min-width: 0; }
   #shopify-section-{{ uid }} .sc__bar-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; flex: 0 0 auto; background: {{ s.card_bg }}; }
   #shopify-section-{{ uid }} .sc__bar-prodname { font-size: 14px; line-height: 1.25; font-weight: var(--font-body-bold-weight, 500); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  #shopify-section-{{ uid }} .sc__bar-sel { grid-area: sel; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-  #shopify-section-{{ uid }} .sc__bar-selwrap { position: relative; display: block; }
-  #shopify-section-{{ uid }} .sc__bar-select { appearance: none; -webkit-appearance: none; width: 100%; font: inherit; font-size: 14px; font-weight: 500; color: {{ s.text_color }}; background: #fff; border: 1px solid {{ s.card_border }}; border-radius: 8px; padding: 9px 30px 9px 10px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  #shopify-section-{{ uid }} .sc__bar-chev { position: absolute; right: 10px; top: 50%; width: 14px; height: 14px; transform: translateY(-50%); pointer-events: none; color: {{ s.accent_color }}; }
-  #shopify-section-{{ uid }} .sc__bar-per { font-size: 11.5px; line-height: 1.2; opacity: .75; padding-left: 2px; }
+  #shopify-section-{{ uid }} .sc__bar-sel { grid-area: sel; min-width: 0; }
+  /* dropdown box: plan title with the per-serving line underneath; the real <select> sits invisibly on top so the native picker still opens */
+  #shopify-section-{{ uid }} .sc__bar-selwrap { position: relative; display: flex; align-items: center; min-height: 52px; background: #fff; border: 1px solid {{ s.card_border }}; border-radius: 10px; padding: 6px 34px 6px 12px; }
+  #shopify-section-{{ uid }} .sc__bar-selface { display: flex; flex-direction: column; justify-content: center; gap: 1px; min-width: 0; }
+  #shopify-section-{{ uid }} .sc__bar-seltitle { font-size: 14px; line-height: 1.25; font-weight: var(--font-body-bold-weight, 500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #shopify-section-{{ uid }} .sc__bar-per { font-size: 11.5px; line-height: 1.2; opacity: .75; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   #shopify-section-{{ uid }} .sc__bar-per:empty { display: none; }
-  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add { grid-area: add; display: inline-flex; align-items: center; gap: 7px; appearance: none; border: 0; cursor: pointer; font: inherit; white-space: nowrap; }
+  #shopify-section-{{ uid }} .sc__bar-chev { position: absolute; right: 12px; top: 50%; width: 14px; height: 14px; transform: translateY(-50%); pointer-events: none; color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .sc__bar-select { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; font: inherit; }
+  #shopify-section-{{ uid }} .sc__bar-select:focus-visible + .sc__bar-chev, #shopify-section-{{ uid }} .sc__bar-selwrap:focus-within { outline: 2px solid {{ s.accent_color }}; outline-offset: 2px; }
+  /* add button styled like the buy box CTA (#3447af, hover navy) and the same height as the dropdown box */
+  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add { grid-area: add; display: inline-flex; align-items: center; justify-content: center; gap: 7px; appearance: none; border: 0; cursor: pointer; font: inherit; white-space: nowrap; min-height: 52px; padding: 0 18px; border-radius: 10px; background: #3447af; color: #ffffff; font-weight: 600; }
+  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add:hover, #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add:focus-visible { background: #1a2874; color: #b9c2f5; }
   #shopify-section-{{ uid }} .sc__bar-lock { width: 15px; height: 15px; flex: 0 0 auto; }
   #shopify-section-{{ uid }} .sc__bar-dash { opacity: .7; }
   #shopify-section-{{ uid }} .sc__bar-price:empty, #shopify-section-{{ uid }} .sc__bar-price:empty + .sc__bar-dash { display: none; }
@@ -130,8 +136,9 @@
     #shopify-section-{{ uid }} .sc__bar-prod { flex: 1 1 auto; }
     #shopify-section-{{ uid }} .sc__bar-img { width: 48px; height: 48px; }
     #shopify-section-{{ uid }} .sc__bar-prodname { font-size: 15px; white-space: normal; }
-    #shopify-section-{{ uid }} .sc__bar-sel { flex: 0 0 auto; width: 260px; }
-    #shopify-section-{{ uid }} .sc__bar-select { font-size: 15px; padding: 10px 34px 10px 12px; }
+    #shopify-section-{{ uid }} .sc__bar-sel { flex: 0 0 auto; width: 280px; }
+    #shopify-section-{{ uid }} .sc__bar-seltitle { font-size: 15px; }
+    #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add { padding: 0 24px; font-size: 15px; }
   }
 {% endstyle %}
 
@@ -197,10 +204,13 @@
     </div>
     <div class="sc__bar-sel">
       <span class="sc__bar-selwrap">
-        <select class="sc__bar-select" data-sc-bar-select aria-label="Supply"></select>
+        <span class="sc__bar-selface" aria-hidden="true">
+          <span class="sc__bar-seltitle" data-sc-bar-seltitle></span>
+          <span class="sc__bar-per" data-sc-bar-per></span>
+        </span>
         <svg class="sc__bar-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+        <select class="sc__bar-select" data-sc-bar-select aria-label="Supply"></select>
       </span>
-      <span class="sc__bar-per" data-sc-bar-per></span>
     </div>
     <button type="button" class="sc__btn sc__bar-btn sc__bar-btn--add" data-sc-bar-add>
       <svg class="sc__bar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
@@ -257,6 +267,7 @@
   function getPs(){ if(!ps){ ps = document.querySelector('[data-ps1c-root]'); } return ps; }
   var selEl = bar && bar.querySelector('[data-sc-bar-select]');
   var perEl = bar && bar.querySelector('[data-sc-bar-per]');
+  var titleEl = bar && bar.querySelector('[data-sc-bar-seltitle]');
   var priceEl = bar && bar.querySelector('[data-sc-bar-price]');
   var addBtn = bar && bar.querySelector('[data-sc-bar-add]');
   var optsBuilt = false;
@@ -281,6 +292,7 @@
     buildOptions(p);
     if(selEl){ selEl.value = c.getAttribute('data-ps1c-p') || ''; }
     if(perEl){ perEl.textContent = c.getAttribute('data-ps1c-serving') || ''; }
+    if(titleEl){ var pill = c.getAttribute('data-ps1c-pill') || ''; titleEl.textContent = (c.getAttribute('data-ps1c-name') || '') + (pill ? ' (' + pill + ')' : ''); }
     if(priceEl){ priceEl.textContent = c.getAttribute('data-ps1c-price') || ''; }
     bar.setAttribute('data-plan', '1');
   }
