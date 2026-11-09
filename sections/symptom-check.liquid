@@ -74,13 +74,17 @@
   #shopify-section-{{ uid }} .sc__bar[data-state="in"], #shopify-section-{{ uid }} .sc__bar[data-state="after"] { transform: translateY(0); }
   #shopify-section-{{ uid }} .sc__bar-inner { max-width: {{ s.max_width }}px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
   #shopify-section-{{ uid }} .sc__bar-text { flex: 1 1 auto; min-width: 0; font-size: 14px; line-height: 1.35; }
+  /* tap-hand roundel beside the opening prompt, only before anything is ticked */
+  #shopify-section-{{ uid }} .sc__bar-icon { display: none; flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; background: {{ s.checked_bg }}; color: {{ s.text_color }}; align-items: center; justify-content: center; }
+  #shopify-section-{{ uid }} .sc__bar-icon svg { width: 20px; height: 20px; }
+  #shopify-section-{{ uid }} .sc__bar[data-state="in"][data-count="0"] .sc__bar-icon { display: inline-flex; }
   #shopify-section-{{ uid }} .sc__bar-count { display: block; font-size: 12px; letter-spacing: .03em; opacity: .75; }
   #shopify-section-{{ uid }} .sc__bar-count:empty { display: none; }
   #shopify-section-{{ uid }} .sc__bar-msg { display: block; }
   /* phones: while the section is in view the full message sits on top and the button goes full width underneath */
   @media screen and (max-width: 749px) {
     #shopify-section-{{ uid }} .sc__bar[data-state="in"] .sc__bar-inner { flex-wrap: wrap; gap: 10px 14px; }
-    #shopify-section-{{ uid }} .sc__bar[data-state="in"] .sc__bar-text { flex-basis: 100%; }
+    #shopify-section-{{ uid }} .sc__bar[data-state="in"]:not([data-count="0"]) .sc__bar-text { flex-basis: 100%; }
     #shopify-section-{{ uid }} .sc__bar[data-state="in"]:not([data-count="0"]) .sc__bar-btn--in { width: 100%; }
   }
   #shopify-section-{{ uid }} .sc__bar-msg p { margin: 0; display: inline; }
@@ -95,16 +99,23 @@
   #shopify-section-{{ uid }} .sc__bar[data-state="after"] .sc__bar-change { display: inline; }
   #shopify-section-{{ uid }} .sc__bar[data-state="after"] .sc__bar-btn--after { display: inline-flex; }
   #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-count="0"] .sc__bar-count { display: none; }
-  /* when the page has a plan selector, the after-bar names the selected plan and adds it to the cart */
-  #shopify-section-{{ uid }} .sc__bar-plan { display: none; font-size: 15px; line-height: 1.3; }
-  #shopify-section-{{ uid }} .sc__bar-plan strong { font-weight: var(--font-body-bold-weight, 500); }
-  #shopify-section-{{ uid }} .sc__bar-price { opacity: .8; margin-left: 6px; }
-  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-plan { display: block; }
-  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-count,
-  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-change,
-  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-btn--after { display: none; }
-  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-btn--add { display: inline-flex; }
-  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add { appearance: none; border: 0; cursor: pointer; font: inherit; }
+  /* after scrolling past, with a plan selector on the page: product · supply dropdown · add to cart (price) */
+  #shopify-section-{{ uid }} .sc__bar-inner--plan { display: none; }
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-inner:not(.sc__bar-inner--plan) { display: none; }
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-inner--plan { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "prod prod" "sel add"; gap: 8px 10px; align-items: center; }
+  #shopify-section-{{ uid }} .sc__bar-prod { grid-area: prod; display: flex; align-items: center; gap: 10px; min-width: 0; }
+  #shopify-section-{{ uid }} .sc__bar-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; flex: 0 0 auto; background: {{ s.card_bg }}; }
+  #shopify-section-{{ uid }} .sc__bar-prodname { font-size: 14px; line-height: 1.25; font-weight: var(--font-body-bold-weight, 500); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #shopify-section-{{ uid }} .sc__bar-sel { grid-area: sel; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  #shopify-section-{{ uid }} .sc__bar-selwrap { position: relative; display: block; }
+  #shopify-section-{{ uid }} .sc__bar-select { appearance: none; -webkit-appearance: none; width: 100%; font: inherit; font-size: 14px; font-weight: 500; color: {{ s.text_color }}; background: #fff; border: 1px solid {{ s.card_border }}; border-radius: 8px; padding: 9px 30px 9px 10px; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #shopify-section-{{ uid }} .sc__bar-chev { position: absolute; right: 10px; top: 50%; width: 14px; height: 14px; transform: translateY(-50%); pointer-events: none; color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .sc__bar-per { font-size: 11.5px; line-height: 1.2; opacity: .75; padding-left: 2px; }
+  #shopify-section-{{ uid }} .sc__bar-per:empty { display: none; }
+  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add { grid-area: add; display: inline-flex; align-items: center; gap: 7px; appearance: none; border: 0; cursor: pointer; font: inherit; white-space: nowrap; }
+  #shopify-section-{{ uid }} .sc__bar-lock { width: 15px; height: 15px; flex: 0 0 auto; }
+  #shopify-section-{{ uid }} .sc__bar-dash { opacity: .7; }
+  #shopify-section-{{ uid }} .sc__bar-price:empty, #shopify-section-{{ uid }} .sc__bar-price:empty + .sc__bar-dash { display: none; }
   @media screen and (min-width: 750px) {
     #shopify-section-{{ uid }} .sc { padding: {{ s.padding_top }}px 0 {{ s.padding_bottom }}px; }
     #shopify-section-{{ uid }} .sc__pw { padding: 0 20px; }
@@ -115,6 +126,12 @@
     #shopify-section-{{ uid }} .sc__bar-text { font-size: 15px; }
     #shopify-section-{{ uid }} .sc__bar-count { display: inline; margin-right: 8px; }
     #shopify-section-{{ uid }} .sc__bar .sc__btn { min-height: 48px; padding: 14px 26px; font-size: 15px; }
+    #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-inner--plan { display: flex; justify-content: space-between; gap: 18px; }
+    #shopify-section-{{ uid }} .sc__bar-prod { flex: 1 1 auto; }
+    #shopify-section-{{ uid }} .sc__bar-img { width: 48px; height: 48px; }
+    #shopify-section-{{ uid }} .sc__bar-prodname { font-size: 15px; white-space: normal; }
+    #shopify-section-{{ uid }} .sc__bar-sel { flex: 0 0 auto; width: 260px; }
+    #shopify-section-{{ uid }} .sc__bar-select { font-size: 15px; padding: 10px 34px 10px 12px; }
   }
 {% endstyle %}
 
@@ -163,15 +180,32 @@
 {%- if s.sticky_bar -%}
 <div class="sc__bar" data-sc-bar data-state="hidden" role="status" aria-live="polite">
   <div class="sc__bar-inner">
+    <span class="sc__bar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 12V5.3a1.6 1.6 0 0 1 3.2 0V11"/><path d="M12.7 10.6a1.6 1.6 0 0 1 3.2 0V12"/><path d="M15.9 11.6a1.6 1.6 0 0 1 3.2 0v3.2c0 3.6-2.9 6.4-6.4 6.4h-1c-1.7 0-3.3-.8-4.3-2.2l-3-4.1a1.5 1.5 0 0 1 2.3-1.9l2.8 2.9"/><path d="M6.6 5.2a4.6 4.6 0 0 1 2.1-2.4M14.9 2.6a4.6 4.6 0 0 1 2.3 2.2"/></svg></span>
     <div class="sc__bar-text">
       <span class="sc__bar-count" data-sc-bar-count></span>
       <span class="sc__bar-msg" data-sc-bar-msg>{{ s.msg_none }}</span>
       <button type="button" class="sc__bar-change" data-sc-bar-change>{{ s.bar_change_label | default: 'Change selection' }}</button>
-      <span class="sc__bar-plan" data-sc-bar-plan></span>
     </div>
     {%- if s.button_label != blank -%}<a class="sc__btn sc__bar-btn sc__bar-btn--in" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}</a>{%- endif -%}
     <a class="sc__btn sc__bar-btn sc__bar-btn--after" href="{{ s.bar_shop_link | default: '#Product-Slider' }}">{{ s.bar_shop_label | default: 'Shop now' }}</a>
-    <button type="button" class="sc__btn sc__bar-btn sc__bar-btn--add" data-sc-bar-add>{{ s.bar_add_label | default: 'Add to cart' }}</button>
+  </div>
+  {%- comment -%} after scrolling past, on a page with the plan selector: product · supply dropdown · add to cart {%- endcomment -%}
+  <div class="sc__bar-inner sc__bar-inner--plan">
+    <div class="sc__bar-prod">
+      {%- if product and product.featured_image -%}<img class="sc__bar-img" src="{{ product.featured_image | image_url: width: 120 }}" alt="" width="48" height="48" loading="lazy">{%- endif -%}
+      <span class="sc__bar-prodname">{{ product.title | default: shop.name }}</span>
+    </div>
+    <div class="sc__bar-sel">
+      <span class="sc__bar-selwrap">
+        <select class="sc__bar-select" data-sc-bar-select aria-label="Supply"></select>
+        <svg class="sc__bar-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+      </span>
+      <span class="sc__bar-per" data-sc-bar-per></span>
+    </div>
+    <button type="button" class="sc__btn sc__bar-btn sc__bar-btn--add" data-sc-bar-add>
+      <svg class="sc__bar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+      <span>{{ s.bar_add_label | default: 'Add to cart' }}</span><span class="sc__bar-dash" aria-hidden="true">&mdash;</span><span class="sc__bar-price" data-sc-bar-price></span>
+    </button>
   </div>
 </div>
 {%- endif -%}
@@ -221,16 +255,40 @@
   /* after scrolling past: mirror the buy box's plan selector (name + price) and add that plan through its own button */
   var ps = null;
   function getPs(){ if(!ps){ ps = document.querySelector('[data-ps1c-root]'); } return ps; }
-  var planEl = bar && bar.querySelector('[data-sc-bar-plan]');
+  var selEl = bar && bar.querySelector('[data-sc-bar-select]');
+  var perEl = bar && bar.querySelector('[data-sc-bar-per]');
+  var priceEl = bar && bar.querySelector('[data-sc-bar-price]');
   var addBtn = bar && bar.querySelector('[data-sc-bar-add]');
-  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  var optsBuilt = false;
+  function cardsOf(p){ return p ? [].slice.call(p.querySelectorAll('[data-ps1c-card]')) : []; }
+  function buildOptions(p){
+    if(!selEl || optsBuilt) return;
+    var cs = cardsOf(p); if(!cs.length) return;
+    selEl.innerHTML = '';
+    cs.forEach(function(c){
+      var o = document.createElement('option');
+      o.value = c.getAttribute('data-ps1c-p') || '';
+      var pill = c.getAttribute('data-ps1c-pill') || '';
+      o.textContent = (c.getAttribute('data-ps1c-name') || '') + (pill ? ' (' + pill + ')' : '');
+      selEl.appendChild(o);
+    });
+    optsBuilt = true;
+  }
   function syncPlan(){
-    if(!bar || !planEl) return;
+    if(!bar) return;
     var p = getPs(); var c = p && p.querySelector('[data-ps1c-card].is-selected');
     if(!c){ bar.removeAttribute('data-plan'); return; }
-    var name = c.getAttribute('data-ps1c-name') || '', price = c.getAttribute('data-ps1c-price') || '';
-    planEl.innerHTML = '<strong>' + esc(name) + '</strong>' + (price ? ' <span class="sc__bar-price">' + esc(price) + '</span>' : '');
+    buildOptions(p);
+    if(selEl){ selEl.value = c.getAttribute('data-ps1c-p') || ''; }
+    if(perEl){ perEl.textContent = c.getAttribute('data-ps1c-serving') || ''; }
+    if(priceEl){ priceEl.textContent = c.getAttribute('data-ps1c-price') || ''; }
     bar.setAttribute('data-plan', '1');
+  }
+  if(selEl){
+    selEl.addEventListener('change', function(){
+      var p = getPs(); var target = cardsOf(p).filter(function(c){ return c.getAttribute('data-ps1c-p') === selEl.value; })[0];
+      if(target){ target.click(); }
+    });
   }
   document.addEventListener('ps1c:select', syncPlan);
   if(addBtn){ addBtn.addEventListener('click', function(){ var p = getPs(); var b = p && p.querySelector('[data-ps1c-submit]'); if(b){ b.click(); } }); }
