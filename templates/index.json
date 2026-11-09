@@ -23,7 +23,8 @@
           "settings": {
             "text": "<h1>Your <em>hormones</em> deserve better</h1>",
             "heading_color": "#1a2874",
-            "heading_size": "h1-xlarge"
+            "heading_size": "h1-xlarge",
+            "heading_size_mobile": 0
           }
         },
         "text_ekmz8W": {
@@ -89,7 +90,7 @@
         "content_width": "medium",
         "content_position": "bottom-center",
         "text_alignment": "center",
-        "text_color": "#1a2874",
+        "text_color": "#3447AF",
         "overlay_color": "#000000",
         "overlay_opacity": 0,
         "disable_top_spacing": true,
@@ -225,6 +226,12 @@
         "color_heading": "#1a2874",
         "color_text": "#1a2874",
         "color_links": "#4d61cf",
+        "pad_custom": false,
+        "pad_top": 60,
+        "pad_bottom": 60,
+        "full_bleed": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
@@ -249,6 +256,7 @@
       ],
       "name": "Rich text",
       "settings": {
+        "demote_h1": false,
         "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
@@ -257,6 +265,12 @@
         "color_heading": "#1a2874",
         "color_text": "#1a2874",
         "color_links": "#4d61cf",
+        "pad_custom": false,
+        "pad_top": 60,
+        "pad_bottom": 60,
+        "full_bleed": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": true,
         "disable_bottom_spacing": true
       }
@@ -310,6 +324,7 @@
       ],
       "settings": {
         "heading": "",
+        "heading_pad_top": 0,
         "marker_style": "style1",
         "description": "",
         "bgcolor": "#ffffff",
@@ -407,6 +422,7 @@
         "header_image": "shopify://shop_images/Josie-Square-Bodology-Inositol-2_a3728b0a-9af5-4f61-ad3e-b7fc3319a7bb.jpg",
         "marker_style": "style1",
         "description": "<p></p><p></p>",
+        "title_case": "default",
         "color_bg": "#ffffff",
         "color_heading": "#1a2874",
         "marker_color": "#fd6262",
@@ -441,6 +457,7 @@
       "disabled": true,
       "name": "Rich text",
       "settings": {
+        "demote_h1": false,
         "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
@@ -449,6 +466,12 @@
         "color_heading": "#1a2874",
         "color_text": "#1a2874",
         "color_links": "#4d61cf",
+        "pad_custom": false,
+        "pad_top": 60,
+        "pad_bottom": 60,
+        "full_bleed": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": true,
         "disable_bottom_spacing": false
       }
@@ -574,6 +597,8 @@
         "testimonial_8L49nw"
       ],
       "settings": {
+        "bg_grad_top": "",
+        "bg_grad_bottom": "",
         "testimonial_source": "blocks",
         "heading": "<h1>Trusted by <em>experts </em>& practitioners</h1>",
         "text": "From metabolic health practitioners to fertility clinicians, we work with leading experts who understand the power of inositol.",
@@ -593,7 +618,9 @@
         "columns_mobile": 1,
         "show_button": true,
         "button_text": "Meet Our Experts",
-        "button_url": "shopify://pages/meet-our-experts"
+        "button_url": "shopify://pages/meet-our-experts",
+        "experts_popup": false,
+        "experts_title": "Meet our experts"
       }
     },
     "1741568420b2e69de9": {
@@ -721,6 +748,7 @@
             "deep_color": "#0e2160",
             "cta_label": "Add to Cart",
             "cta_static": true,
+            "cta_price": true,
             "subtick_enable": false,
             "sub_claim": "Save up to 25% by subscribing",
             "shipping_prefix": "Fast FREE shipping — Ships by",
@@ -733,6 +761,22 @@
             "giftban_radius": 10,
             "giftban_border": "rgba(0,0,0,0)",
             "giftban_cust_label": "Customize",
+            "giftban_title_size": 15,
+            "modal_bg": "#e3e7ff",
+            "modal_border": "#3447af",
+            "modal_overlay": "rgba(242, 238, 234, 0.87)",
+            "heading_size": 15,
+            "heading_lh": 2.5,
+            "card_border_color": "#3447af",
+            "card_flat": true,
+            "card_selected_bg": "#e3e7ff",
+            "guar_enable": true,
+            "guar_text": "60-day money-back guarantee",
+            "guar_popup_title": "60-Day Money-Back Guarantee",
+            "guar_popup_text": "<p>If your first order doesn't meet your expectations, email us within 60 days of receiving it and we'll make it right — a refund, an exchange, or another resolution. Questions? Email support@bodology.co.</p>",
+            "guar_policy_label": "Read full policy",
+            "guar_policy_url": "/policies/refund-policy",
+            "heading_tight": true,
             "ot_name": "One-Time Purchase",
             "ot_price": "$65",
             "ot_compare": "",
@@ -791,23 +835,8 @@
             "c4_label": "Weight",
             "c4_desc": "Metabolic & appetite",
             "c4_variant": "48915264209115",
-            "cta_price": true,
-            "giftban_title_size": 15,
-            "modal_bg": "#e3e7ff",
-            "modal_border": "#3447af",
-            "modal_overlay": "rgba(242, 238, 234, 0.87)",
-            "heading_size": 15,
-            "heading_lh": 2.5,
-            "card_border_color": "#3447af",
-            "card_flat": true,
-            "card_selected_bg": "#e3e7ff",
-            "guar_enable": true,
-            "guar_text": "60-day money-back guarantee",
-            "guar_popup_title": "60-Day Money-Back Guarantee",
-            "guar_popup_text": "<p>If your first order doesn't meet your expectations, email us within 60 days of receiving it and we'll make it right — a refund, an exchange, or another resolution. Questions? Email support@bodology.co.</p>",
-            "guar_policy_label": "Read full policy",
-            "guar_policy_url": "/policies/refund-policy",
-            "heading_tight": true
+            "hide_sub": false,
+            "hide_ot": false
           }
         },
         "quote_7QKz6a": {
@@ -1081,6 +1110,8 @@
         "@media only screen and (min-width: 768px) {.product-grid-container {grid-template-columns: minmax(45%, 400px) clamp(240px, 35%, 400px) !important; justify-content: center; } .flickity-viewport {max-height: 500px; }}"
       ],
       "settings": {
+        "media_layout": "carousel",
+        "carousel_arrow_style": "circle",
         "bg_grad_top": "#fbfaf9",
         "bg_grad_bottom": "#f3eeea",
         "reviews_lightbox": true,
@@ -1295,6 +1326,12 @@
         "color_heading": "#1a2874",
         "color_text": "#1a2874",
         "color_links": "#4d61cf",
+        "pad_custom": false,
+        "pad_top": 60,
+        "pad_bottom": 60,
+        "full_bleed": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": true
       }
@@ -1586,6 +1623,7 @@
       ],
       "settings": {
         "heading": "",
+        "heading_pad_top": 0,
         "marker_style": "style1",
         "description": "",
         "bgcolor": "",
@@ -1700,6 +1738,9 @@
         "full_width": true,
         "video": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "video_hosted": "shopify://files/videos/Video 2_V2_Small.mov",
+        "captions": "",
+        "captions_lang": "en",
+        "captions_label": "English",
         "video_autoplay": true,
         "aspect_ratio": "4-3",
         "marker_color": "#ffffff",
@@ -1725,6 +1766,7 @@
       ],
       "disabled": true,
       "settings": {
+        "demote_h1": false,
         "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
@@ -1733,6 +1775,12 @@
         "color_heading": "#1a2874",
         "color_text": "#1a2874",
         "color_links": "#4d61cf",
+        "pad_custom": false,
+        "pad_top": 60,
+        "pad_bottom": 60,
+        "full_bleed": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
