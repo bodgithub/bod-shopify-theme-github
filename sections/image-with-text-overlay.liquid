@@ -139,7 +139,7 @@
 								</div>
 							{%- when 'button' -%}
 								{% if block.settings.button_text != blank %}
-									<a class="button {{ block.settings.button_color }}{% if block.settings.button_icon == 'chevron' %} button--chevron{% endif %}" href="{{ block.settings.button_link }}" role="button" {{ block.shopify_attributes }}>{{ block.settings.button_text }}{% if block.settings.button_icon == 'chevron' %}<svg class="button__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3.5l4.5 4.5L6 12.5"/></svg>{% endif %}</a>
+									<a class="button {{ block.settings.button_color }}{% if block.settings.button_icon == 'chevron' %} button--chevron{% endif %}{% if block.settings.center_mobile %} button--center-m{% endif %}" href="{{ block.settings.button_link }}" role="button" {{ block.shopify_attributes }}>{{ block.settings.button_text }}{% if block.settings.button_icon == 'chevron' %}<svg class="button__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3.5l4.5 4.5L6 12.5"/></svg>{% endif %}</a>
 									{%- if block.settings.show_guarantee or block.settings.show_shipping -%}
 									<div class="hero-notes"{% if block.settings.note_color != blank %} style="color: {{ block.settings.note_color }};"{% endif %}>
 										{%- if block.settings.show_guarantee -%}
@@ -656,6 +656,7 @@
           "default": "none",
           "info": "Use this instead of typing an arrow into the label."
         },
+        { "type": "checkbox", "id": "center_mobile", "label": "Centre the button on phones", "default": false, "info": "The theme gives buttons a 34px side margin on phones, which leaves a left-aligned button off-centre." },
         { "type": "header", "content": "Small notes under the button" },
         { "type": "checkbox", "id": "show_guarantee", "label": "Show guarantee note", "default": false },
         { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "60-day money-back guarantee" },
