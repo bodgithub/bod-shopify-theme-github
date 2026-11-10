@@ -34,35 +34,42 @@
             "margin_bottom": 16
           }
         },
-        "heading_AyEgTw": {
-          "type": "heading",
-          "settings": {
-            "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
-            "heading_color": "#182769",
-            "heading_size": "h1-xlarge",
-            "heading_size_desktop": 22,
-            "heading_size_mobile": 30,
-            "pad_right_desktop": 96,
-            "show_star": false,
-            "star_size": 16,
-            "star_color": "#182769",
-            "ribbon": true,
-            "ribbon_side": "left",
-            "ribbon_color": "#ffffff"
-          }
-        },
         "heading_peri": {
           "type": "heading",
           "settings": {
             "text": "<h1>Nobody tells you this at 40. It's not just your hormones changing, it's insulin.</h1>",
             "heading_color": "#182769",
             "heading_size": "h1-xlarge",
-            "heading_size_desktop": 36,
+            "heading_size_desktop": 46,
             "heading_size_mobile": 20,
+            "margin_top": 0,
+            "margin_bottom": 0,
             "pad_right_desktop": 0,
+            "ribbon": false,
+            "ribbon_side": "left",
+            "ribbon_color": "#ffffff",
             "show_star": false,
             "star_size": 16,
             "star_color": "#4d61cf"
+          }
+        },
+        "heading_AyEgTw": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>Try inositol for 6 months for the price of ~3.&nbsp;</h2><p>Ends Nov 30.</p>",
+            "heading_color": "#182769",
+            "heading_size": "h1-xlarge",
+            "heading_size_desktop": 22,
+            "heading_size_mobile": 30,
+            "margin_top": 0,
+            "margin_bottom": 14,
+            "pad_right_desktop": 96,
+            "ribbon": true,
+            "ribbon_side": "left",
+            "ribbon_color": "#ffffff",
+            "show_star": true,
+            "star_size": 16,
+            "star_color": "#182769"
           }
         },
         "text_czCtJM": {
@@ -86,7 +93,12 @@
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 24,
             "heading_size_mobile": 34,
+            "margin_top": 0,
+            "margin_bottom": 0,
             "pad_right_desktop": 96,
+            "ribbon": false,
+            "ribbon_side": "left",
+            "ribbon_color": "#ffffff",
             "show_star": true,
             "star_size": 16,
             "star_color": "#182769"
@@ -154,7 +166,8 @@
             "popup_title": "What 6 months looked like in the research",
             "popup_text": "<p>80 women past menopause, all with metabolic syndrome, took 4g of myo-inositol a day alongside a diet for six months. That is the same daily amount as two scoops of Bodology.</p><p>Insulin resistance (measured as HOMA-IR) fell by 75% in the myo-inositol group, far more than with diet alone. Blood pressure, triglycerides and HDL cholesterol improved too.</p>",
             "popup_small": "*Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Results in studies may not reflect individual outcomes.",
-            "text_color": "#4D61CF",
+            "text_color": "#182769",
+            "text_color_mobile": "",
             "bg_color": "#ffffff",
             "bg_gradient": "linear-gradient(0deg, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 98%)",
             "text_padding": 0,
@@ -166,7 +179,7 @@
             "size_desktop": 120,
             "text_size_desktop": 15,
             "x_desktop": 0,
-            "x_desktop_px": 740,
+            "x_desktop_px": 780,
             "y_desktop": 10,
             "size_mobile": 90,
             "text_size_mobile": 13,
@@ -188,7 +201,8 @@
             "popup_title": "What 6 months looked like in the research",
             "popup_text": "<p>80 women past menopause, all with metabolic syndrome, took 4g of myo-inositol a day alongside a diet for six months. That is the same daily amount as two scoops of Bodology.</p><p>Insulin resistance (measured as HOMA-IR) fell by 75% in the myo-inositol group, far more than with diet alone. Blood pressure, triglycerides and HDL cholesterol improved too.</p>",
             "popup_small": "*Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Results in studies may not reflect individual outcomes.",
-            "text_color": "#4D61CF",
+            "text_color": "#182769",
+            "text_color_mobile": "",
             "bg_color": "#ffffff",
             "bg_gradient": "linear-gradient(0deg, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 98%)",
             "text_padding": 0,
@@ -200,7 +214,7 @@
             "size_desktop": 120,
             "text_size_desktop": 15,
             "x_desktop": 0,
-            "x_desktop_px": 740,
+            "x_desktop_px": 780,
             "y_desktop": 24,
             "size_mobile": 90,
             "text_size_mobile": 13,
@@ -212,8 +226,8 @@
       },
       "block_order": [
         "stars_peri",
-        "heading_AyEgTw",
         "heading_peri",
+        "heading_AyEgTw",
         "text_czCtJM",
         "heading_44CfCC",
         "space_bhy9NE",
