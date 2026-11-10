@@ -74,9 +74,26 @@
         "button_peri": {
           "type": "button",
           "settings": {
-            "button_text": "Try Bodology® Inositol Risk Free",
+            "button_text": "Get 45% off the 6-month bundle →",
             "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
             "button_color": "accent"
+          }
+        },
+        "space_gGYDgr": {
+          "type": "space",
+          "settings": {
+            "height": 30
+          }
+        },
+        "text_U4tKYV": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>60-day money-back guarantee · Free shipping · Ends Nov 30</strong></p>",
+            "description_color": "#182769",
+            "description_size": "small",
+            "pad_left": 0,
+            "pad_right": 96,
+            "pad_bottom": 24
           }
         }
       },
@@ -87,11 +104,13 @@
         "text_peri",
         "benefits_peri",
         "space_G8PyxF",
-        "button_peri"
+        "button_peri",
+        "space_gGYDgr",
+        "text_U4tKYV"
       ],
       "custom_css": [],
       "settings": {
-        "image": "shopify://shop_images/Peri_Hero_Banner_Desktop.png",
+        "image": "shopify://shop_images/Peri_Hero_Banner_6.png",
         "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_2.png",
         "image_parallax": false,
         "desktop_height": "desktop-height-750",
