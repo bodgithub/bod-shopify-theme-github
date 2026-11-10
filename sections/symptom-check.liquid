@@ -25,7 +25,7 @@
   }
   #shopify-section-{{ uid }} .sc__pw { max-width: {{ s.max_width }}px; margin: 0 auto; padding: 0 16px; }
   #shopify-section-{{ uid }} .sc__eyebrow { text-align: center; margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
-  #shopify-section-{{ uid }} .sc__heading { text-align: center; margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
+  #shopify-section-{{ uid }} .sc__heading { text-align: center; margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size_mobile > 0 %}font-size: {{ s.heading_size_mobile }}px;{% elsif s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
   #shopify-section-{{ uid }} .sc__heading p { margin: 0; font: inherit; color: inherit; }
   #shopify-section-{{ uid }} .sc__heading p + p { margin-top: 0.25em; }
   #shopify-section-{{ uid }} .sc__heading em { color: {{ s.accent_color }}; }
@@ -403,6 +403,7 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Is this you?" },
     { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Tick what you <em>recognise</em></p>" },
     { "type": "range", "id": "heading_size", "label": "Heading size (px, 0 = theme H1)", "min": 0, "max": 64, "step": 2, "default": 0 },
+    { "type": "range", "id": "heading_size_mobile", "label": "Heading size on phones (px, 0 = 80% of the size above)", "min": 0, "max": 64, "step": 2, "default": 0 },
     { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>These are the signs women describe to us most. Tap any that sound familiar.</p>" },
     { "type": "text", "id": "group_a_title", "label": "Group A title", "default": "How you feel" },
     { "type": "text", "id": "group_b_title", "label": "Group B title", "default": "What you've been told" },
