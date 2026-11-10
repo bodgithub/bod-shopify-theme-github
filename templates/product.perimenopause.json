@@ -264,9 +264,283 @@
         "roundel_d6QPzb",
         "roundel_hNX9Uc"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Peri_Hero_Banner_17.png",
+        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_8_905aa7ad-2afe-42e8-a006-369a90b3db55.png",
+        "image_parallax": true,
+        "desktop_height": "desktop-height-650",
+        "mobile_height": "mobile-height-fit",
+        "full_width": true,
+        "content_width": "medium",
+        "content_position": "top-left",
+        "text_alignment": "left",
+        "text_color": "#3447af",
+        "overlay_color": "#2c2d2e",
+        "overlay_opacity": 0,
+        "disable_top_spacing": true,
+        "disable_bottom_spacing": true
+      }
+    },
+    "image_with_text_overlay_E9RBUP": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "bod_stars_GnUDMz": {
+          "type": "bod_stars",
+          "settings": {
+            "star_style": "chunky",
+            "star_size": 15,
+            "star_gap": 2,
+            "star_round": 0,
+            "color_on": "#ddbd6d",
+            "color_off": "#e6e6e6",
+            "show_label": true,
+            "label_text": "Stars",
+            "cta_text": "(Read reviews)",
+            "hide_number": false,
+            "label_color": "#14307c",
+            "label_size": 14,
+            "label_weight": "600",
+            "label_gap": 8,
+            "alignment": "left",
+            "margin_top": 0,
+            "margin_bottom": 16
+          }
+        },
+        "heading_P4TPAj": {
+          "type": "heading",
+          "settings": {
+            "text": "<h1>Nobody tells you this at 40. It's not just your hormones changing, it's insulin.</h1>",
+            "heading_color": "#FFFFFF",
+            "heading_size": "h1-xlarge",
+            "heading_size_desktop": 46,
+            "heading_size_mobile": 28,
+            "body_size_desktop": 16,
+            "body_size_mobile": 16,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "pad_right_desktop": 80,
+            "ribbon": false,
+            "ribbon_side": "left",
+            "ribbon_color": "#ffffff",
+            "ribbon_points": "4",
+            "show_star": false,
+            "star_size": 16,
+            "star_color": "#4d61cf"
+          }
+        },
+        "text_ddgiwk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>BLACK FRIDAY • ENDS NOV 30</p>",
+            "description_color": "#FFFFFF",
+            "description_size": "small",
+            "pad_left": 0,
+            "pad_right": 0,
+            "text_size_desktop": 10,
+            "text_size_mobile": 12,
+            "pad_top": 0,
+            "pad_bottom": 4
+          }
+        },
+        "heading_piQi7H": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
+            "heading_color": "#FFFFFF",
+            "heading_size": "h1-xlarge",
+            "heading_size_desktop": 22,
+            "heading_size_mobile": 16,
+            "body_size_desktop": 12,
+            "body_size_mobile": 12,
+            "margin_top": 0,
+            "margin_bottom": 14,
+            "pad_right_desktop": 96,
+            "ribbon": true,
+            "ribbon_side": "left",
+            "ribbon_color": "#182769",
+            "ribbon_points": "4",
+            "show_star": false,
+            "star_size": 16,
+            "star_color": "#182769"
+          }
+        },
+        "text_nBWEND": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Falling estrogen after 40 makes insulin harder for your cells to use, even when your blood sugar reads normal. Inositol helps your cells use insulin again.</p>",
+            "description_color": "#FFFFFF",
+            "description_size": "small",
+            "pad_left": 0,
+            "pad_right": 96,
+            "text_size_desktop": 0,
+            "text_size_mobile": 15,
+            "pad_top": 0,
+            "pad_bottom": 12
+          }
+        },
+        "heading_FkgMim": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "<h2>Insulin resistance fell 75% in a 6-month trial</h2>",
+            "heading_color": "#3447af",
+            "heading_size": "h1-xlarge",
+            "heading_size_desktop": 24,
+            "heading_size_mobile": 34,
+            "body_size_desktop": 16,
+            "body_size_mobile": 16,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "pad_right_desktop": 96,
+            "ribbon": false,
+            "ribbon_side": "left",
+            "ribbon_color": "#ffffff",
+            "ribbon_points": "4",
+            "show_star": true,
+            "star_size": 16,
+            "star_color": "#182769"
+          }
+        },
+        "space_aLTmef": {
+          "type": "space",
+          "settings": {
+            "height": 10
+          }
+        },
+        "benefits_aJgNxk": {
+          "type": "benefits",
+          "settings": {
+            "benefits-title": "",
+            "icon_size": 25,
+            "border_size": 1,
+            "text_color": "#FFFFFF",
+            "border_color": "#7e87b9",
+            "icon_gap": 5,
+            "text_size_mobile": 15,
+            "item_padding_mobile": 8,
+            "frosted": true,
+            "frosted_tint": 25,
+            "frosted_blur": 10,
+            "frosted_radius": 16,
+            "benefit_1": "Studied in women before and after menopause*",
+            "benefit_2": "The full 4g clinical dose, daily",
+            "benefit_3": "Dissolves in coffee",
+            "benefit_4": "",
+            "benefit_5": ""
+          }
+        },
+        "space_KHieE4": {
+          "type": "space",
+          "settings": {
+            "height": 30
+          }
+        },
+        "button_VT7BT3": {
+          "type": "button",
+          "settings": {
+            "button_text": "Get 45% off the 6-month supply",
+            "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
+            "button_color": "accent",
+            "button_icon": "chevron",
+            "center_mobile": true,
+            "show_guarantee": true,
+            "guarantee_text": "60-day money-back guarantee",
+            "show_shipping": true,
+            "shipping_text": "Free shipping",
+            "note_color": "#FFFFFF"
+          }
+        },
+        "roundel_BkQg8k": {
+          "type": "roundel",
+          "settings": {
+            "style": "text",
+            "text": "Insulin resistance fell 75% in a 6-month trial*",
+            "rotate": 0,
+            "text_width_desktop": 170,
+            "text_width_mobile": 180,
+            "text_align": "left",
+            "link_text": "View study",
+            "popup_title": "What 6 months looked like in the research",
+            "popup_text": "<p>80 women past menopause, all with signs of insulin resistance, took 4g of inositol a day alongside diet. The same daily amount as two scoops of Bodology®.</p><p>After 6 months, insulin resistance fell 75% in the inositol group, far more than placebo. Blood pressure, triglycerides and HDL cholesterol improved too.&nbsp;<br/><br/>Giordano et al., 2011 · <a href=\"https://doi.org/10.1097/gme.0b013e3181e8e1b1\">Read the study</a></p>",
+            "popup_small": "*Giordano et al., 2011. Results in studies may not reflect individual outcomes. Trial did not involve Bodology® products. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+            "text_color": "#FFFFFF",
+            "text_color_mobile": "#FFFFFF",
+            "bg_color": "#ffffff",
+            "bg_gradient": "linear-gradient(0deg, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 98%)",
+            "text_padding": 0,
+            "border_color": "#3446af",
+            "border_width": 1,
+            "shadow_color": "#ffffff",
+            "shadow_offset": 1,
+            "anchor": "left",
+            "size_desktop": 120,
+            "text_size_desktop": 15,
+            "x_desktop": 0,
+            "x_desktop_px": 780,
+            "y_desktop": 10,
+            "size_mobile": 90,
+            "text_size_mobile": 17,
+            "x_mobile": 48,
+            "x_mobile_px": 35,
+            "y_mobile": 96
+          }
+        },
+        "roundel_TbNexW": {
+          "type": "roundel",
+          "disabled": true,
+          "settings": {
+            "style": "text",
+            "text": "1 in 5 no longer had metabolic syndrome after 12-months*",
+            "rotate": 0,
+            "text_width_desktop": 170,
+            "text_width_mobile": 180,
+            "text_align": "left",
+            "link_text": "View study",
+            "popup_title": "What a year looked like in the research",
+            "popup_text": "<p>80 women past menopause, all with signs of insulin resistance, took 4g of inositol a day alongside diet. The same daily amount as two scoops of Bodology®.</p><p>After 12 months, 8 of the 40 women taking inositol no longer met the criteria for metabolic syndrome. In the diet-only group it was only 1 of 40.</p>",
+            "popup_small": "*Santamaria et al. 2012 (Climacteric): Results in studies may not reflect individual outcomes. Trial did not involve Bodology® products. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+            "text_color": "#182769",
+            "text_color_mobile": "",
+            "bg_color": "#ffffff",
+            "bg_gradient": "linear-gradient(0deg, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 98%)",
+            "text_padding": 0,
+            "border_color": "#3446af",
+            "border_width": 1,
+            "shadow_color": "#ffffff",
+            "shadow_offset": 1,
+            "anchor": "left",
+            "size_desktop": 120,
+            "text_size_desktop": 15,
+            "x_desktop": 0,
+            "x_desktop_px": 780,
+            "y_desktop": 24,
+            "size_mobile": 90,
+            "text_size_mobile": 13,
+            "x_mobile": 26,
+            "x_mobile_px": 35,
+            "y_mobile": 98
+          }
+        }
+      },
+      "block_order": [
+        "bod_stars_GnUDMz",
+        "heading_P4TPAj",
+        "text_ddgiwk",
+        "heading_piQi7H",
+        "text_nBWEND",
+        "heading_FkgMim",
+        "space_aLTmef",
+        "benefits_aJgNxk",
+        "space_KHieE4",
+        "button_VT7BT3",
+        "roundel_BkQg8k",
+        "roundel_TbNexW"
+      ],
+      "custom_css": [],
+      "settings": {
+        "image": "shopify://shop_images/Hand_Hero_Banner_Dektop.jpg",
         "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_8_905aa7ad-2afe-42e8-a006-369a90b3db55.png",
         "image_parallax": true,
         "desktop_height": "desktop-height-650",
@@ -2362,76 +2636,6 @@
         "custom_liquid": "<div id=\"studies\"></div>"
       }
     },
-    "bf_bundle": {
-      "type": "offer-spotlight",
-      "blocks": {
-        "item_dose": {
-          "type": "item",
-          "settings": {
-            "text": "Full 4g clinical daily dose, two scoops"
-          }
-        },
-        "item_tubs": {
-          "type": "item",
-          "settings": {
-            "text": "Two 6-week tubs. 90 days, the length the studies run"
-          }
-        },
-        "item_gift": {
-          "type": "item",
-          "settings": {
-            "text": "FREE Metabolic Health Protocol (digital) with every subscription"
-          }
-        },
-        "item_cancel": {
-          "type": "item",
-          "settings": {
-            "text": "Skip or cancel anytime in your account"
-          }
-        },
-        "testimonial_lisa": {
-          "type": "testimonial",
-          "settings": {
-            "text": "It helps balance out cravings and keeps insulin in check, supports my hormones during perimenopause. — Lisa F., verified buyer",
-            "stars": 5
-          }
-        }
-      },
-      "block_order": [
-        "item_dose",
-        "item_tubs",
-        "item_gift",
-        "item_cancel",
-        "testimonial_lisa"
-      ],
-      "settings": {
-        "heading": "Give it the 90 days the studies gave it. <em>$1.09 a day.</em>",
-        "subheading": "Black Friday: the 90-day bundle is our lowest price per day.",
-        "heading_size": 0,
-        "eyebrow": "60-day money-back guarantee",
-        "title": "The 90-Day Bundle",
-        "price": "$1.09",
-        "price_unit": "/day",
-        "price_sub": "$32.67 a month — $98 billed every 3 months as a subscription.",
-        "button_label": "Start the 90-day bundle",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-        "bg": "#f2eeea",
-        "card_bg": "#ffffff",
-        "card_border": "#3447af",
-        "text_color": "#1a2874",
-        "heading_color": "#1a2874",
-        "accent_color": "#4d61cf",
-        "button_bg": "#1a2874",
-        "button_text": "#b9c2f5",
-        "title_size": 30,
-        "price_size": 56,
-        "item_size": 14,
-        "padding_top": 56,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
     "yes_no_peri": {
       "type": "yes-no",
       "blocks": {
@@ -2760,6 +2964,7 @@
   },
   "order": [
     "hero_peri",
+    "image_with_text_overlay_E9RBUP",
     "blocks_zXxmbi",
     "symptom_check_peri",
     "bf_countdown",
@@ -2778,7 +2983,6 @@
     "results_timeline_mqixwX",
     "testimonial_carousel_twHytV",
     "custom_liquid_ax6VDD",
-    "bf_bundle",
     "yes_no_peri",
     "collapsible_content_cGXRUN",
     "video_pdBgr8",
