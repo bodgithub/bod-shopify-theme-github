@@ -35,9 +35,9 @@
           "type": "heading",
           "settings": {
             "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, <strong>it's insulin.</strong></h2>",
-            "heading_color": "#3447af",
+            "heading_color": "#182769",
             "heading_size": "h1-xlarge",
-            "heading_size_mobile": 34
+            "heading_size_mobile": 20
           }
         },
         "text_czCtJM": {
@@ -98,6 +98,12 @@
             "button_color": "accent",
             "button_icon": "chevron"
           }
+        },
+        "space_UNPyXd": {
+          "type": "space",
+          "settings": {
+            "height": 110
+          }
         }
       },
       "block_order": [
@@ -108,12 +114,13 @@
         "text_peri",
         "benefits_peri",
         "space_G8PyxF",
-        "button_peri"
+        "button_peri",
+        "space_UNPyXd"
       ],
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Peri_Hero_Banner_14.png",
-        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_4.png",
+        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_6.jpg",
         "image_parallax": false,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-auto",
@@ -422,7 +429,6 @@
         },
         "custom_liquid_dqLCJY": {
           "type": "feature_chips",
-          "disabled": true,
           "settings": {
             "show_servings": true,
             "servings_default": "45 servings",
