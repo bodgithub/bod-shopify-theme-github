@@ -398,7 +398,7 @@ line-hight:0.9;}
   left: calc(50% + var(--rd-x-m) * 0.5%); top: calc(var(--rd-y-m) * 1%);
   transform: translate(-50%, -50%) rotate(var(--rd-rotate, 0deg));
   display: flex; align-items: center; justify-content: center; text-align: center;
-  color: var(--rd-text); font-size: var(--rd-fs-m); font-weight: 700; line-height: 1.05; letter-spacing: 0.01em;
+  color: var(--rd-text-m, var(--rd-text)); font-size: var(--rd-fs-m); font-weight: 700; line-height: 1.05; letter-spacing: 0.01em;
   border-radius: 50%; background: var(--rd-bg); border: var(--rd-bw) solid var(--rd-border);
 }
 .image-with-text-overlay--content .hero-roundel__text { position: relative; z-index: 1; padding: calc(8% + var(--rd-pad, 0px)); }
@@ -415,7 +415,7 @@ line-hight:0.9;}
 .image-with-text-overlay--content .hero-roundel--starburst::before { content: ""; position: absolute; inset: var(--rd-bw); background: var(--rd-bg); clip-path: polygon(50.0% 0.0%, 55.7% 6.4%, 62.9% 1.7%, 66.8% 9.3%, 75.0% 6.7%, 76.8% 15.1%, 85.4% 14.6%, 84.9% 23.2%, 93.3% 25.0%, 90.7% 33.2%, 98.3% 37.1%, 93.6% 44.3%, 100.0% 50.0%, 93.6% 55.7%, 98.3% 62.9%, 90.7% 66.8%, 93.3% 75.0%, 84.9% 76.8%, 85.4% 85.4%, 76.8% 84.9%, 75.0% 93.3%, 66.8% 90.7%, 62.9% 98.3%, 55.7% 93.6%, 50.0% 100.0%, 44.3% 93.6%, 37.1% 98.3%, 33.2% 90.7%, 25.0% 93.3%, 23.2% 84.9%, 14.6% 85.4%, 15.1% 76.8%, 6.7% 75.0%, 9.3% 66.8%, 1.7% 62.9%, 6.4% 55.7%, 0.0% 50.0%, 6.4% 44.3%, 1.7% 37.1%, 9.3% 33.2%, 6.7% 25.0%, 15.1% 23.2%, 14.6% 14.6%, 23.2% 15.1%, 25.0% 6.7%, 33.2% 9.3%, 37.1% 1.7%, 44.3% 6.4%); }
 @media only screen and (min-width: 768px) {
   .image-with-text-overlay--content .hero-roundel {
-    width: calc(var(--rd-size-d) + 2 * var(--rd-pad, 0px)); height: calc(var(--rd-size-d) + 2 * var(--rd-pad, 0px)); font-size: var(--rd-fs-d);
+    width: calc(var(--rd-size-d) + 2 * var(--rd-pad, 0px)); height: calc(var(--rd-size-d) + 2 * var(--rd-pad, 0px)); font-size: var(--rd-fs-d); color: var(--rd-text);
     left: calc(50% + var(--rd-x-d) * 0.5%); top: calc(var(--rd-y-d) * 1%);
   }
   .image-with-text-overlay--content .hero-roundel--rect { width: auto; height: auto; }
