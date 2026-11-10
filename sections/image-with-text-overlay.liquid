@@ -232,12 +232,43 @@
 							{%- when 'roundel' -%}
 								{%- comment -%} Roundel badge: sits on the right half of the banner, positioned separately for desktop and phones {%- endcomment -%}
 								{%- if block.settings.text != blank -%}
-								<div class="hero-roundel hero-roundel--{{ block.settings.style | default: 'solid' }}" {{ block.shopify_attributes }}
+								{%- liquid
+									assign rd_link = block.settings.link_text | strip
+									assign rd_tag = 'div'
+									if rd_link != blank
+										assign rd_tag = 'button'
+									endif
+								-%}
+								<{{ rd_tag }}{% if rd_tag == 'button' %} type="button" data-hero-roundel-open="hero-modal-{{ block.id }}" aria-haspopup="dialog"{% endif %} class="hero-roundel hero-roundel--{{ block.settings.style | default: 'solid' }}{% if rd_link != blank %} hero-roundel--link{% endif %}" {{ block.shopify_attributes }}
 									style="--rd-text: {{ block.settings.text_color }}; --rd-bg: {{ block.settings.bg_color }}; --rd-border: {{ block.settings.border_color }}; --rd-bw: {{ block.settings.border_width }}px;
 										--rd-size-d: {{ block.settings.size_desktop }}px; --rd-size-m: {{ block.settings.size_mobile }}px; --rd-fs-d: {{ block.settings.text_size_desktop }}px; --rd-fs-m: {{ block.settings.text_size_mobile }}px;
 										--rd-x-d: {{ block.settings.x_desktop }}; --rd-y-d: {{ block.settings.y_desktop }}; --rd-x-m: {{ block.settings.x_mobile }}; --rd-y-m: {{ block.settings.y_mobile }}; --rd-rotate: {{ block.settings.rotate }}deg;">
-									<span class="hero-roundel__text">{{ block.settings.text | newline_to_br }}</span>
+									<span class="hero-roundel__text">{{ block.settings.text | newline_to_br }}{% if rd_link != blank %}<span class="hero-roundel__link">{{ rd_link }}</span>{% endif %}</span>
+								</{{ rd_tag }}>
+								{%- if rd_link != blank -%}
+								{%- comment -%} pop-up (same look as the buy box pop-ups): friendly copy, then the study detail in small print {%- endcomment -%}
+								<div class="hero-modal" id="hero-modal-{{ block.id }}" hidden>
+									<div class="hero-modal__ov" data-hero-modal-close></div>
+									<div class="hero-modal__box" role="dialog" aria-modal="true" aria-label="{{ block.settings.popup_title | default: 'The study' | escape }}">
+										<button type="button" class="hero-modal__x" data-hero-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+										{%- if block.settings.popup_title != blank -%}<h3 class="hero-modal__t">{{ block.settings.popup_title }}</h3>{%- endif -%}
+										<div class="hero-modal__body">{{ block.settings.popup_text }}</div>
+										{%- if block.settings.popup_small != blank -%}<p class="hero-modal__small">{{ block.settings.popup_small | newline_to_br }}</p>{%- endif -%}
+										<div class="hero-modal__links"><button type="button" class="hero-modal__link" data-hero-modal-close>Close</button></div>
+									</div>
 								</div>
+								<script>
+								(function () {
+									var btn = document.querySelector('[data-hero-roundel-open="hero-modal-{{ block.id }}"]'), modal = document.getElementById('hero-modal-{{ block.id }}');
+									if (!btn || !modal || btn.dataset.bound) { return; } btn.dataset.bound = '1';
+									function open() { modal.hidden = false; document.documentElement.style.overflow = 'hidden'; var x = modal.querySelector('.hero-modal__x'); if (x) { x.focus(); } }
+									function close() { modal.hidden = true; document.documentElement.style.overflow = ''; btn.focus(); }
+									btn.addEventListener('click', function (e) { e.preventDefault(); open(); });
+									modal.querySelectorAll('[data-hero-modal-close]').forEach(function (b) { b.addEventListener('click', close); });
+									document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) { close(); } });
+								})();
+								</script>
+								{%- endif -%}
 								{%- endif -%}
 							{% when 'space' %}
 								<div style="height: {{ block.settings.height | append: 'px' }}" {{ block.shopify_attributes }}></div>
@@ -920,6 +951,11 @@
           { "value": "starburst", "label": "Starburst" } ] },
         { "type": "textarea", "id": "text", "label": "Text", "default": "45%\nOFF", "info": "Each line in the box is a line in the roundel." },
         { "type": "range", "id": "rotate", "label": "Rotation", "min": -30, "max": 30, "step": 2, "unit": "deg", "default": -8 },
+        { "type": "header", "content": "Pop-up", "info": "Add link text and the whole roundel becomes a button that opens a pop-up." },
+        { "type": "text", "id": "link_text", "label": "Link text (tiny line under the roundel text)", "info": "Empty = no pop-up. e.g. See the study \u2197" },
+        { "type": "text", "id": "popup_title", "label": "Pop-up title" },
+        { "type": "richtext", "id": "popup_text", "label": "Pop-up text (customer-friendly)" },
+        { "type": "textarea", "id": "popup_small", "label": "Pop-up small print (study detail)", "info": "Approved wording is in brand/product-facts.md." },
         { "type": "header", "content": "Colours" },
         { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
         { "type": "color", "id": "bg_color", "label": "Background", "default": "#1a2874" },

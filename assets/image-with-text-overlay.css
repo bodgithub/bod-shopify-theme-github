@@ -412,3 +412,22 @@ line-hight:0.9;}
     left: calc(50% + var(--rd-x-d) * 0.5%); top: calc(var(--rd-y-d) * 1%);
   }
 }
+
+/* Roundel with a pop-up: the whole badge is a button; a tiny underlined line sits under the text */
+.image-with-text-overlay--content button.hero-roundel { appearance: none; font-family: inherit; cursor: pointer; pointer-events: auto; padding: 0; }
+.image-with-text-overlay--content button.hero-roundel:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.image-with-text-overlay--content .hero-roundel__link { display: block; margin-top: 0.35em; font-size: 0.62em; font-weight: 500; letter-spacing: 0; text-decoration: underline; text-underline-offset: 2px; opacity: .92; }
+/* Pop-up, same look as the buy box's guarantee pop-up */
+.hero-modal { position: fixed; inset: 0; z-index: 2147483000; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.hero-modal[hidden] { display: none; }
+.hero-modal__ov { position: absolute; inset: 0; background: rgba(242, 238, 234, 0.87); }
+.hero-modal__box { position: relative; width: 100%; max-width: 440px; max-height: calc(100dvh - 36px); overflow: auto; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; padding: 32px 24px; box-shadow: 0 24px 64px -18px rgba(0, 0, 0, 0.4); color: #1a2874; text-align: center; }
+.hero-modal__x { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; display: grid; place-items: center; border: 0; background: transparent; color: #1a2874; cursor: pointer; border-radius: 8px; padding: 0; }
+.hero-modal__x svg { width: 16px; height: 16px; }
+.hero-modal__t { font-size: 20px; font-weight: 400; line-height: 1.25; margin: 0 0 16px; color: #1a2874; }
+.hero-modal__body { font-size: 15px; line-height: 1.5; }
+.hero-modal__body p { margin: 0 0 10px; }
+.hero-modal__small { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid rgba(26, 40, 116, 0.18); font-size: 11px; line-height: 1.5; color: #676b79; text-align: left; }
+.hero-modal__links { display: flex; justify-content: center; margin-top: 16px; }
+.hero-modal__link { appearance: none; background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: #1a2874; text-decoration: underline; cursor: pointer; }
+@media only screen and (min-width: 750px) { .hero-modal__t { font-size: 28px; } .hero-modal__body { font-size: 16px; } }
