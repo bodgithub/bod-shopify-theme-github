@@ -289,7 +289,11 @@
         "padding_bottom": 64,
         "margin_top": 0,
         "margin_bottom": 0,
-        "anchor_id": "symptoms"
+        "anchor_id": "symptoms",
+        "bar_bundle_variant": "46444646269147",
+        "bar_bundle_qty": 4,
+        "bar_bundle_text": "6-month bundle · 45% off · Ends Nov 30",
+        "bar_bundle_label": "Get the bundle"
       }
     },
     "bf_countdown": {
@@ -1767,8 +1771,6 @@
             "padding_vertical": 15,
             "margin_top": 0,
             "margin_bottom": 0,
-            "gap_above": 80,
-            "gap_above_color": "#f3eeea",
             "show_separator": true,
             "separator_size": 20,
             "separator_color": "#ffffff",
@@ -1776,7 +1778,9 @@
             "background_color": "#607ae5",
             "fade_width": 40,
             "fade_strength": 50,
-            "fade_color": "#3447af"
+            "fade_color": "#3447af",
+            "gap_above": 80,
+            "gap_above_color": "#f3eeea"
           },
           "blocks": {}
         }
