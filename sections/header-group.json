@@ -40,8 +40,50 @@
         "color_text": "#ffffff",
         "fade_width": 40,
         "fade_strength": 50,
-        "fade_color": "#3447af"
-      }
+        "fade_color": "#3447af",
+        "dhm_label": "Ends in [d]d [h]h [m]m",
+        "hms_label": "Ends in [h]h [m]m [s]s"
+      },
+      "blocks": {
+        "phase_early": {
+          "type": "phase",
+          "settings": {
+            "start_date": "",
+            "end_date": "2026-11-26",
+            "text": "EARLY BLACK FRIDAY · UP TO 55% OFF BUNDLES · OUR LOWEST PRICE OF THE YEAR",
+            "text_mobile": "EARLY BLACK FRIDAY · UP TO 55% OFF BUNDLES",
+            "countdown": "off",
+            "count_date": ""
+          }
+        },
+        "phase_bf": {
+          "type": "phase",
+          "settings": {
+            "start_date": "2026-11-27",
+            "end_date": "2026-11-29",
+            "text": "BLACK FRIDAY · UP TO 55% OFF BUNDLES · ENDS MONDAY",
+            "text_mobile": "BLACK FRIDAY · UP TO 55% OFF BUNDLES",
+            "countdown": "dhm",
+            "count_date": "2026-11-30"
+          }
+        },
+        "phase_last": {
+          "type": "phase",
+          "settings": {
+            "start_date": "2026-11-30",
+            "end_date": "2026-11-30",
+            "text": "LAST DAY · UP TO 55% OFF BUNDLES · ENDS TONIGHT",
+            "text_mobile": "LAST DAY · UP TO 55% OFF BUNDLES",
+            "countdown": "hms",
+            "count_date": ""
+          }
+        }
+      },
+      "block_order": [
+        "phase_early",
+        "phase_bf",
+        "phase_last"
+      ]
     },
     "announcement-bar": {
       "type": "announcement-bar",
@@ -169,10 +211,6 @@
         "lp_cta_text": "Get the bundle",
         "lp_cta_link": "#Product-Slider",
         "lp_show_cart": true,
-        "lp_link_1_label": "Inositol powder",
-        "lp_link_1_url": "",
-        "lp_link_2_label": "90 Day Bundle",
-        "lp_link_2_url": "",
         "mobile_secondary_menu": "",
         "show_social_links": false,
         "show_language_switcher": false,

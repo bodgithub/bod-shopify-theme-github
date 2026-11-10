@@ -12,7 +12,7 @@
 
   comment
     Landing-page header: when the current template suffix is listed in "Landing page templates"
-    the header renders snippets/header-lp (logo in the button colour, burger side drawer, "Get the bundle" CTA).
+    the header renders snippets/header-lp (logo left in the button colour, no menu, "Get the bundle" CTA).
   endcomment
   assign is_lp = false
   if template.suffix != blank and section.settings.lp_templates != blank
@@ -214,7 +214,7 @@
       "type": "text",
       "id": "lp_templates",
       "label": "Landing page templates",
-      "info": "Comma-separated template names (the part after product. or page.). These pages get the landing-page header: logo in the button colour, a burger that opens a side menu with the shop links only, and the CTA below instead of Shop Now.",
+      "info": "Comma-separated template names (the part after product. or page.). These pages get the landing-page header: logo on the left in the button colour (links to the homepage), no menu, and the CTA below instead of Shop Now.",
       "default": "perimenopause, peri-offer, weight"
     },
     {
@@ -235,28 +235,6 @@
       "id": "lp_show_cart",
       "label": "Show cart icon",
       "default": true
-    },
-    {
-      "type": "text",
-      "id": "lp_link_1_label",
-      "label": "Menu link 1 label",
-      "default": "Inositol powder"
-    },
-    {
-      "type": "url",
-      "id": "lp_link_1_url",
-      "label": "Menu link 1"
-    },
-    {
-      "type": "text",
-      "id": "lp_link_2_label",
-      "label": "Menu link 2 label",
-      "default": "90 Day Bundle"
-    },
-    {
-      "type": "url",
-      "id": "lp_link_2_url",
-      "label": "Menu link 2"
     },
     {
       "type": "header",

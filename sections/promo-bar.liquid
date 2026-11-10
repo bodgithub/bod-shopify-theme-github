@@ -1,14 +1,20 @@
 {%- comment -%}
-  Bodology promo bar (header group). One line of campaign text with three live parts:
+  Bodology promo bar (header group). One line of campaign text with live parts:
     - [code] renders as a pill; tapping it copies the code to the clipboard
-    - [countdown] renders a live "Ends in 8 days" / "Ends in 5h 12m" chip (updates every 30s)
+    - [countdown] renders a live countdown chip
     - the whole bar hides itself once the end time has passed, so a stale offer never shows
-  The end time is read in the chosen time zone (default Eastern), so "October 31, 11:59 pm"
-  means 11:59 pm in New York whatever the visitor's clock says. Before JS runs, the chip
-  shows the "Fallback end text" (e.g. "Ends October 31").
+  SCHEDULE (blocks): add "Phase" blocks and the bar shows whichever phase covers today
+  (start date to end date, inclusive, in the chosen time zone). Each phase has its own copy
+  and countdown style: off / days-hours-minutes / hours-minutes-seconds. The countdown counts
+  to the phase's own "count to" date (or its end date when empty) at the section's end time.
+  Nothing shows between phases or after the last one. With no blocks, the single text + end
+  date below behave as one phase (the original behaviour).
+  Times are read in the chosen time zone (default Eastern), so "November 30, 11:59 pm" means
+  11:59 pm in New York whatever the visitor's clock says. Before JS runs, the chip shows the
+  "Fallback end text".
   Tokens use square brackets on purpose: Shopify's GitHub sync rejects Liquid files that
   carry curly-brace tokens inside quoted strings.
-  Nothing here is hardcoded: code, percent, text, dates and colours are all section settings.
+  Nothing here is hardcoded: code, percent, text, dates and colours are all settings.
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
@@ -26,6 +32,11 @@
   assign count_html = '<span class="pbar__count" data-pbar-count>' | append: s.fallback_end_text | append: '</span>'
   assign text = text | replace: '[code]', code_html | replace: '[countdown]', count_html
   assign text_mobile = text_mobile | replace: '[code]', code_html | replace: '[countdown]', count_html
+  assign today = 'now' | date: '%Y-%m-%d'
+  assign has_phases = false
+  if section.blocks.size > 0
+    assign has_phases = true
+  endif
 
   comment
     New customers only: a logged-in customer with an order never sees the bar (Liquid, instant).
@@ -49,6 +60,7 @@
 {%- if s.new_customers_only and returning -%}
 <script>try { localStorage.setItem('bod_returning', '1'); } catch (e) {}</script>
 {%- endif -%}
+{%- if has_phases -%}{%- assign text = 'phases' -%}{%- endif -%}
 {%- if s.enabled and text != blank and show -%}
 <style>
   #shopify-section-{{ sid }} .pbar { background: {{ bg }}; color: {{ fg }}; font-size: {{ s.size }}px; line-height: 1.3; text-align: center; position: relative; z-index: 2; overflow: hidden; }
@@ -66,6 +78,8 @@
   #shopify-section-{{ sid }} a.pbar__text:hover, #shopify-section-{{ sid }} button.pbar__text:hover { text-decoration: underline; }
   #shopify-section-{{ sid }} button.pbar__text { font: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
   #shopify-section-{{ sid }} button.pbar__text:focus-visible { outline: 2px solid {{ fg }}; outline-offset: 3px; border-radius: 4px; }
+  #shopify-section-{{ sid }} .pbar__phase { display: contents; }
+  #shopify-section-{{ sid }} .pbar__phase[hidden] { display: none; }
   #shopify-section-{{ sid }} .pbar__text--mobile { display: none; }
   #shopify-section-{{ sid }} .pbar__code { font: inherit; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: {{ bg }}; background: {{ fg }}; border: 0; border-radius: 999px; padding: 3px 10px; cursor: pointer; position: relative; line-height: 1.2; }
   #shopify-section-{{ sid }} .pbar__code:focus-visible { outline: 2px solid {{ fg }}; outline-offset: 2px; }
@@ -88,41 +102,102 @@
   }
 </style>
 <div class="pbar" data-pbar role="region" aria-label="Current offer"
-     data-end-date="{{ s.end_date | strip }}" data-end-time="{{ s.end_time | strip | default: '23:59' }}" data-tz="{{ s.timezone }}"
-     data-days="{{ s.days_label | escape }}" data-day="{{ s.day_label | escape }}" data-hours="{{ s.hours_label | escape }}" data-dismiss-key="pbar-{{ sid }}-{{ code | downcase }}" data-new-only="{{ s.new_customers_only }}">
+     data-end-time="{{ s.end_time | strip | default: '23:59' }}" data-tz="{{ s.timezone }}"
+     data-days="{{ s.days_label | escape }}" data-day="{{ s.day_label | escape }}" data-hours="{{ s.hours_label | escape }}" data-dhm="{{ s.dhm_label | escape }}" data-hms="{{ s.hms_label | escape }}"
+     data-dismiss-key="pbar-{{ sid }}-{{ code | downcase }}" data-new-only="{{ s.new_customers_only }}">
   <div class="pbar__inner">
+    {%- if has_phases -%}
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign b = block.settings
+          assign ptext = b.text | replace: '[percent]', percent
+          assign pmobile = b.text_mobile | replace: '[percent]', percent
+          if pmobile == blank
+            assign pmobile = ptext
+          endif
+          if b.countdown != 'off'
+            unless ptext contains '[countdown]'
+              assign ptext = ptext | append: ' [countdown]'
+            endunless
+            unless pmobile contains '[countdown]'
+              assign pmobile = pmobile | append: ' [countdown]'
+            endunless
+          else
+            assign ptext = ptext | replace: '[countdown]', ''
+            assign pmobile = pmobile | replace: '[countdown]', ''
+          endif
+          assign ptext = ptext | replace: '[code]', code_html | replace: '[countdown]', count_html
+          assign pmobile = pmobile | replace: '[code]', code_html | replace: '[countdown]', count_html
+          assign pstart = b.start_date | strip
+          assign pend = b.end_date | strip
+          assign pcount = b.count_date | strip | default: pend
+          assign active = false
+          if pend != blank and today <= pend
+            if pstart == blank or today >= pstart
+              assign active = true
+            endif
+          endif
+        -%}
+        <span class="pbar__phase" data-pbar-phase data-start="{{ pstart }}" data-end="{{ pend }}" data-count-to="{{ pcount }}" data-mode="{{ b.countdown }}"{% unless active %} hidden{% endunless %} {{ block.shopify_attributes }}>
+          {%- if s.click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
+            <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ ptext }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ pmobile }}</button>
+          {%- elsif s.click_action == 'link' and s.link != blank -%}
+            <a class="pbar__text pbar__text--desktop" href="{{ s.link }}">{{ ptext }}</a><a class="pbar__text pbar__text--mobile" href="{{ s.link }}">{{ pmobile }}</a>
+          {%- else -%}<span class="pbar__text pbar__text--desktop">{{ ptext }}</span><span class="pbar__text pbar__text--mobile">{{ pmobile }}</span>{%- endif -%}
+        </span>
+      {%- endfor -%}
+    {%- else -%}
+    <span class="pbar__phase" data-pbar-phase data-start="" data-end="{{ s.end_date | strip }}" data-count-to="{{ s.end_date | strip }}" data-mode="legacy">
     {%- if s.click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
       <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ text }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ text_mobile }}</button>
     {%- elsif s.click_action == 'link' and s.link != blank -%}
       <a class="pbar__text pbar__text--desktop" href="{{ s.link }}">{{ text }}</a><a class="pbar__text pbar__text--mobile" href="{{ s.link }}">{{ text_mobile }}</a>
     {%- else -%}<span class="pbar__text pbar__text--desktop">{{ text }}</span><span class="pbar__text pbar__text--mobile">{{ text_mobile }}</span>{%- endif -%}
+    </span>
+    {%- endif -%}
     {%- if s.dismissible -%}<button type="button" class="pbar__close" data-pbar-close aria-label="Hide this offer">&times;</button>{%- endif -%}
   </div>
 </div>
 <script>
 (function () {
   var root = document.querySelector('#shopify-section-{{ sid }} [data-pbar]'); if (!root) { return; }
-  var counts = root.querySelectorAll('[data-pbar-count]');
-  var labels = { days: root.getAttribute('data-days') || 'Ends in [n] days', day: root.getAttribute('data-day') || 'Ends tomorrow', hours: root.getAttribute('data-hours') || 'Ends in [h]h [m]m' };
+  var labels = { days: root.getAttribute('data-days') || 'Ends in [n] days', day: root.getAttribute('data-day') || 'Ends tomorrow', hours: root.getAttribute('data-hours') || 'Ends in [h]h [m]m', dhm: root.getAttribute('data-dhm') || 'Ends in [d]d [h]h [m]m', hms: root.getAttribute('data-hms') || 'Ends in [h]h [m]m [s]s' };
+  var tz = root.getAttribute('data-tz') || 'America/New_York', endTime = root.getAttribute('data-end-time') || '23:59';
 
-  /* the moment the offer ends, as a UTC instant, from a local date + time in the chosen zone */
-  function endInstant() {
-    var d = root.getAttribute('data-end-date'), t = root.getAttribute('data-end-time') || '23:59', tz = root.getAttribute('data-tz') || 'America/New_York';
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(d)) { return null; }
-    var p = d.split('-').map(Number), q = t.split(':').map(Number);
-    var wanted = Date.UTC(p[0], p[1] - 1, p[2], q[0], q[1] || 0, 59, 999);
+  /* a local date + time in the chosen zone, as a UTC instant (two passes settle the zone offset, DST included) */
+  function instant(d, t) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d || '')) { return null; }
+    var p = d.split('-').map(Number), q = (t || '00:00').split(':').map(Number);
+    var endOfMinute = t !== '00:00';
+    var wanted = Date.UTC(p[0], p[1] - 1, p[2], q[0], q[1] || 0, endOfMinute ? 59 : 0, endOfMinute ? 999 : 0);
     var guess = wanted;
     try {
       var fmt = new Intl.DateTimeFormat('en-US', { timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
-      for (var i = 0; i < 2; i++) { /* two passes settle on the zone offset, DST included */
+      for (var i = 0; i < 2; i++) {
         var parts = {}; fmt.formatToParts(new Date(guess)).forEach(function (x) { parts[x.type] = x.value; });
-        var asLocal = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour % 24, +parts.minute, 59, 999);
+        var asLocal = Date.UTC(+parts.year, +parts.month - 1, +parts.day, +parts.hour % 24, +parts.minute, endOfMinute ? 59 : 0, endOfMinute ? 999 : 0);
         guess += wanted - asLocal;
       }
     } catch (e) { /* no Intl zone support: treat the time as UTC */ }
     return guess;
   }
-  var end = endInstant();
+  /* phases: each carries its own window (start 00:00 .. end at the end time) and countdown target */
+  var phases = [].map.call(root.querySelectorAll('[data-pbar-phase]'), function (el) {
+    return { el: el, start: instant(el.getAttribute('data-start'), '00:00'), end: instant(el.getAttribute('data-end'), endTime), countTo: instant(el.getAttribute('data-count-to') || el.getAttribute('data-end'), endTime), mode: el.getAttribute('data-mode') || 'legacy' };
+  });
+  var current = null;
+  function pick() {
+    var now = Date.now(), found = null;
+    phases.forEach(function (ph) {
+      if (found) { return; }
+      var open = ph.start === null || now >= ph.start;
+      var notOver = ph.end === null ? ph.mode === 'legacy' : now <= ph.end; /* legacy with no date never ends; a phase needs an end date */
+      if (open && notOver) { found = ph; }
+    });
+    phases.forEach(function (ph) { ph.el.hidden = ph !== found; });
+    current = found;
+    return found;
+  }
   var key = root.getAttribute('data-dismiss-key');
   function dismissed() {
     try {
@@ -132,20 +207,31 @@
     return false;
   }
   function hide() { root.hidden = true; }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function tick() {
-    if (end === null) { return; }
-    var left = end - Date.now();
-    if (left <= 0) { hide(); return; }
-    var days = Math.floor(left / 86400000), hours = Math.floor(left / 3600000), mins = Math.floor((left % 3600000) / 60000);
+    var ph = pick();
+    if (!ph) { hide(); return; }
+    root.hidden = false;
+    if (ph.mode === 'off' || ph.countTo === null) { return; }
+    var left = ph.countTo - Date.now();
+    if (left < 0) { left = 0; }
+    var days = Math.floor(left / 86400000), hoursTotal = Math.floor(left / 3600000), hours = hoursTotal % 24, mins = Math.floor((left % 3600000) / 60000), secs = Math.floor((left % 60000) / 1000);
     var text, urgent = false;
-    if (days >= 2) { text = labels.days.replace(/\[n\]/g, days); }
-    else if (days === 1) { text = labels.day; }
-    else { text = labels.hours.replace(/\[h\]/g, hours).replace(/\[m\]/g, mins); urgent = true; }
-    counts.forEach(function (c) { c.textContent = text; c.classList.toggle('is-urgent', urgent); });
+    if (ph.mode === 'dhm') {
+      text = labels.dhm.replace(/\[d\]d\s*/g, days > 0 ? days + 'd ' : '').replace(/\[h\]/g, hours).replace(/\[m\]/g, pad(mins)).replace(/\s+/g, ' ').trim();
+    } else if (ph.mode === 'hms') {
+      text = labels.hms.replace(/\[h\]/g, hoursTotal).replace(/\[m\]/g, pad(mins)).replace(/\[s\]/g, pad(secs)); urgent = true;
+    } else {
+      if (days >= 2) { text = labels.days.replace(/\[n\]/g, days); }
+      else if (days === 1) { text = labels.day; }
+      else { text = labels.hours.replace(/\[h\]/g, hoursTotal).replace(/\[m\]/g, mins); urgent = true; }
+    }
+    ph.el.querySelectorAll('[data-pbar-count]').forEach(function (c) { c.textContent = text; c.classList.toggle('is-urgent', urgent); });
   }
   if (dismissed()) { hide(); return; }
   tick();
-  if (end !== null) { setInterval(tick, 30000); }
+  var fast = phases.some(function (ph) { return ph.mode === 'hms'; });
+  setInterval(tick, fast ? 1000 : 30000);
 
   root.querySelectorAll('[data-pbar-copy]').forEach(function (btn) {
     btn.addEventListener('click', function (e) {
@@ -184,7 +270,7 @@
     { "type": "url", "id": "link", "label": "Link", "info": "Used when the click action is \"Go to the link\". Usually the product page." },
     { "type": "text", "id": "klaviyo_form_id", "label": "Klaviyo form ID", "default": "Tmac3m", "info": "Used when the click action is \"Open a Klaviyo form\". The ID from the form's custom trigger snippet, e.g. Tmac3m." },
     { "type": "checkbox", "id": "new_customers_only", "label": "New customers only", "default": true, "info": "Hidden for logged-in customers who have ordered, and for browsers that have visited an account or order page. Pair with a customer-segment restriction on the discount itself; the storefront cannot recognise a logged-out returning customer." },
-    { "type": "header", "content": "End time", "info": "The countdown reads this in the chosen time zone and the bar hides itself once it has passed." },
+    { "type": "header", "content": "End time", "info": "Without phases: the single end date below. With phases: only the end time and time zone are used (each phase has its own dates)." },
     { "type": "text", "id": "end_date", "label": "End date (YYYY-MM-DD)", "default": "2026-10-31" },
     { "type": "text", "id": "end_time", "label": "End time (24h, HH:MM)", "default": "23:59" },
     { "type": "select", "id": "timezone", "label": "Time zone", "default": "America/New_York", "options": [
@@ -193,6 +279,8 @@
     { "type": "text", "id": "days_label", "label": "Countdown, 2+ days left", "default": "Ends in [n] days" },
     { "type": "text", "id": "day_label", "label": "Countdown, 1 day left", "default": "Ends tomorrow" },
     { "type": "text", "id": "hours_label", "label": "Countdown, last day", "default": "Ends in [h]h [m]m" },
+    { "type": "text", "id": "dhm_label", "label": "Phase countdown: days, hours, minutes", "default": "Ends in [d]d [h]h [m]m", "info": "Used by phases set to \"Days, hours, minutes\". The [d]d part drops off on the last day." },
+    { "type": "text", "id": "hms_label", "label": "Phase countdown: hours, minutes, seconds", "default": "Ends in [h]h [m]m [s]s", "info": "Used by phases set to \"Hours, minutes, seconds\"." },
     { "type": "text", "id": "copied_label", "label": "Copied confirmation", "default": "Copied" },
     { "type": "header", "content": "Look" },
     { "type": "checkbox", "id": "uppercase", "label": "Uppercase text", "default": false },
@@ -206,6 +294,23 @@
     { "type": "range", "id": "fade_strength", "label": "Fade strength", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 50, "info": "How much of the fade stays solid before it blends into the background." },
     { "type": "color", "id": "fade_color", "label": "Fade colour", "default": "#3447af" }
   ],
+  "blocks": [
+    {
+      "type": "phase",
+      "name": "Phase",
+      "settings": [
+        { "type": "paragraph", "content": "The bar shows whichever phase covers today (dates inclusive, in the time zone above). Leave the start date empty for \"from now\". Nothing shows between phases or after the last one." },
+        { "type": "text", "id": "start_date", "label": "Start date (YYYY-MM-DD)", "info": "Empty = already running." },
+        { "type": "text", "id": "end_date", "label": "Last day shown (YYYY-MM-DD)" },
+        { "type": "text", "id": "text", "label": "Text", "default": "BLACK FRIDAY · UP TO 55% OFF BUNDLES", "info": "Tokens: [code], [percent]. The countdown chip is added after the text automatically (or put [countdown] where you want it)." },
+        { "type": "text", "id": "text_mobile", "label": "Text on phones (optional)" },
+        { "type": "select", "id": "countdown", "label": "Countdown", "default": "off", "options": [
+          { "value": "off", "label": "Off" }, { "value": "dhm", "label": "Days, hours, minutes" }, { "value": "hms", "label": "Hours, minutes, seconds" } ] },
+        { "type": "text", "id": "count_date", "label": "Count down to (YYYY-MM-DD)", "info": "Empty = this phase's last day. Uses the end time above. Set it later than the last day when the copy changes before the offer ends (e.g. a Black Friday phase that says \"ends Monday\")." }
+      ]
+    }
+  ],
+  "max_blocks": 8,
   "enabled_on": { "groups": ["header"] }
 }
 {% endschema %}

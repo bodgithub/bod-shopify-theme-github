@@ -2,17 +2,13 @@
   Bodology · Landing-page header
   Rendered by sections/header.liquid instead of the normal header style when the
   current template suffix is listed in the header's "Landing page templates" setting.
-  Layout (same 3-column grid as style3): burger (side drawer with shop links only)
-  · logo in the button colour · optional cart icon + "Get the bundle" CTA.
+  Layout: two columns. Logo on the left in the button colour (links to the homepage)
+  · optional cart icon + "Get the bundle" CTA on the right. No menu.
 {%- endcomment -%}
 
 {%- liquid
   assign cta_text = header_settings.lp_cta_text | default: 'Get the bundle'
   assign cta_link = header_settings.lp_cta_link | default: '#Product-Slider'
-  assign link_1_label = header_settings.lp_link_1_label | default: 'Inositol powder'
-  assign link_1_url = header_settings.lp_link_1_url | default: '/products/myo-d-chiro-inositol-powder'
-  assign link_2_label = header_settings.lp_link_2_label | default: '90 Day Bundle'
-  assign link_2_url = header_settings.lp_link_2_url | default: '/pages/90-day-bundle'
   assign logo = header_settings.logo
   assign logo_ratio = 3.48
   if logo and logo.height > 0
@@ -20,36 +16,11 @@
   endif
 -%}
 
-<div class="thb-header-mobile-left lp-header__left">
-  <details class="mobile-toggle-wrapper">
-    <summary class="mobile-toggle" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </summary>
-    <nav id="mobile-menu" class="mobile-menu-drawer lp-drawer" role="dialog" tabindex="-1" aria-label="Shop">
-      <div class="mobile-menu-drawer--inner">
-        <ul class="mobile-menu">
-          <li class="mobile-menu__cta">
-            <a class="button button--primary shop-now-cta" href="{{ cta_link }}" title="{{ cta_text | escape }}" role="menuitem">{{ cta_text }}</a>
-          </li>
-          {%- if link_1_label != blank and link_1_url != blank -%}
-            <li><a href="{{ link_1_url }}" title="{{ link_1_label | escape }}">{{ link_1_label }}</a></li>
-          {%- endif -%}
-          {%- if link_2_label != blank and link_2_url != blank -%}
-            <li><a href="{{ link_2_url }}" title="{{ link_2_label | escape }}">{{ link_2_label }}</a></li>
-          {%- endif -%}
-        </ul>
-      </div>
-    </nav>
-  </details>
-</div>
-
 {%- if logo -%}
   <a class="logolink lp-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}"
      style="--lp-logo: url('{{ logo | image_url: width: 800 }}'); --lp-logo-ratio: {{ logo_ratio }};"></a>
 {%- else -%}
-  <a class="logolink text-logo" href="{{ routes.root_url }}">{{ shop.name }}</a>
+  <a class="logolink lp-logo text-logo" href="{{ routes.root_url }}">{{ shop.name }}</a>
 {%- endif -%}
 
 <div class="thb-secondary-area thb-header-right lp-header__right">
@@ -64,18 +35,16 @@
   <a class="button lp-cta" href="{{ cta_link }}" role="button" title="{{ cta_text | escape }}"><span>{{ cta_text }}</span></a>
 </div>
 
-<link rel="stylesheet" href="{{ 'mobile-menu.css' | asset_url }}" media="print" onload="this.media='all'">
-<noscript>{{- 'mobile-menu.css' | asset_url | stylesheet_tag -}}</noscript>
-
 {% style %}
-  /* burger visible at every width (the theme hides it from 1068px) */
-  .header--lp .thb-header-mobile-left { display: inline-flex !important; }
+  /* two columns: logo left, cart + CTA right */
+  .header--lp .header--inner { grid-template-columns: auto 1fr; }
   /* logo: the PNG used as a mask so it takes the button colour exactly */
   .header--lp .lp-logo {
-    display: block; justify-self: center; height: var(--logo-height-mobile, 35px); aspect-ratio: var(--lp-logo-ratio, 3.48);
+    display: block; justify-self: start; height: var(--logo-height-mobile, 35px); aspect-ratio: var(--lp-logo-ratio, 3.48);
     background: var(--solid-button-background, #1a2874);
-    -webkit-mask: var(--lp-logo) center / contain no-repeat; mask: var(--lp-logo) center / contain no-repeat;
+    -webkit-mask: var(--lp-logo) left center / contain no-repeat; mask: var(--lp-logo) left center / contain no-repeat;
   }
+  .header--lp .lp-logo.text-logo { justify-self: start; }
   @media only screen and (min-width: 768px) { .header--lp .lp-logo { height: var(--logo-height, 55px); } }
   /* right side: cart icon in the button colour + CTA that stays on one line */
   .header--lp .lp-header__right { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
@@ -85,16 +54,4 @@
   .header--lp .lp-cta { display: none; white-space: nowrap; height: 40px; padding: 0 16px; font-size: 14px; }
   .header--lp .lp-cta:hover, .header--lp .lp-cta:focus-visible { background: var(--solid-button-background-hover, #3447af); background-image: none; }
   @media only screen and (min-width: 768px) { .header--lp .lp-cta { display: inline-flex; height: 46px; padding: 0 24px; font-size: 15px; } }
-  /* drawer slides in from the left as a side panel instead of a full-width sheet */
-  .header--lp .lp-drawer {
-    width: 100vw; left: 0; right: auto;
-    border-top: 0; border-right: 1px solid var(--color-header-border, #dadce0);
-    box-shadow: 0 24px 48px rgba(26, 40, 116, 0.14);
-    transform: translateX(-24px);
-  }
-  @media only screen and (min-width: 768px) { .header--lp .lp-drawer { width: 380px; } }
-  .js .header--lp .mobile-toggle-wrapper[open].active .lp-drawer { transform: translateX(0); }
-  .header--lp .lp-drawer .mobile-menu { padding: 0 24px; }
-  .header--lp .lp-drawer .mobile-menu li:not(.mobile-menu__cta) > a { color: var(--solid-button-background, #1a2874); }
-  .header--lp .lp-drawer .mobile-menu__cta .shop-now-cta { color: var(--solid-button-label, #ffffff) !important; background: var(--solid-button-background, #1a2874); }
 {% endstyle %}
