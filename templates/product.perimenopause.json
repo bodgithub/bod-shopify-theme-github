@@ -16,7 +16,7 @@
           "type": "heading",
           "settings": {
             "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, it's insulin.</h2>",
-            "heading_color": "#3447AF",
+            "heading_color": "#3447af",
             "heading_size": "h1-xlarge",
             "heading_size_mobile": 34
           }
@@ -24,8 +24,8 @@
         "text_czCtJM": {
           "type": "text",
           "settings": {
-            "text": "<h6>Inositol helps your cells listen to insulin again. The Clinical studies run 3-6 months. Bundle up, ends Nov 31.</h6>",
-            "description_color": "#3447AF",
+            "text": "<h6>After 40, falling estrogen makes insulin harder for your cells to use, even when your blood sugar reads normal. Two scoops of Bodology gives you the 4g of inositol used in the studies.</h6>",
+            "description_color": "#182769",
             "description_size": "medium",
             "pad_left": 0,
             "pad_right": 96,
@@ -129,6 +129,8 @@
             "padding_vertical": 15,
             "margin_top": 0,
             "margin_bottom": 0,
+            "gap_above": 0,
+            "gap_above_color": "#f3eeea",
             "show_separator": true,
             "separator_size": 20,
             "separator_color": "#ffffff",
@@ -268,6 +270,11 @@
         "bar_shop_label": "Shop now",
         "bar_shop_link": "#Product-Slider",
         "bar_change_label": "Change selection",
+        "bar_add_label": "Add to cart",
+        "bar_bundle_variant": "46444646269147",
+        "bar_bundle_qty": 4,
+        "bar_bundle_text": "6-month bundle · 45% off · Ends Nov 30",
+        "bar_bundle_label": "Get the bundle",
         "bg": "#fbfaf9",
         "card_bg": "#fbfaf9",
         "card_border": "#3447af",
@@ -289,11 +296,7 @@
         "padding_bottom": 64,
         "margin_top": 0,
         "margin_bottom": 0,
-        "anchor_id": "symptoms",
-        "bar_bundle_variant": "46444646269147",
-        "bar_bundle_qty": 4,
-        "bar_bundle_text": "6-month bundle · 45% off · Ends Nov 30",
-        "bar_bundle_label": "Get the bundle"
+        "anchor_id": "symptoms"
       }
     },
     "bf_countdown": {
@@ -1771,6 +1774,8 @@
             "padding_vertical": 15,
             "margin_top": 0,
             "margin_bottom": 0,
+            "gap_above": 80,
+            "gap_above_color": "#f3eeea",
             "show_separator": true,
             "separator_size": 20,
             "separator_color": "#ffffff",
@@ -1778,9 +1783,7 @@
             "background_color": "#607ae5",
             "fade_width": 40,
             "fade_strength": 50,
-            "fade_color": "#3447af",
-            "gap_above": 80,
-            "gap_above_color": "#f3eeea"
+            "fade_color": "#3447af"
           },
           "blocks": {}
         }
