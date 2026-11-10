@@ -111,7 +111,7 @@
       <ul class="bfps__details">
         <li data-bfps-ship-line></li>
         <li><strong>One-time payment, nothing renews</strong></li>
-        {%- if s.bf_end_text != blank -%}<li>Black Friday price, {{ s.bf_end_text | downcase | escape }}</li>{%- endif -%}
+        {%- if s.bf_end_text != blank -%}<li>Black Friday price &middot; {{ s.bf_end_text | escape }}</li>{%- endif -%}
       </ul>
 
       <p class="bfps__free" data-bfps-free></p>
