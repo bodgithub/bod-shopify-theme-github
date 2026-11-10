@@ -416,6 +416,16 @@ line-hight:0.9;}
 /* Roundel with a pop-up: the whole badge is a button; a tiny underlined line sits under the text */
 .image-with-text-overlay--content button.hero-roundel { appearance: none; font-family: inherit; cursor: pointer; pointer-events: auto; padding: 0; }
 .image-with-text-overlay--content button.hero-roundel:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+/* clickable roundel: a slight lift of the background on hover/press, whatever colour it is set to */
+.image-with-text-overlay--content button.hero-roundel { transition: filter .15s ease, transform .15s ease; }
+.image-with-text-overlay--content button.hero-roundel:hover,
+.image-with-text-overlay--content button.hero-roundel:active { filter: brightness(1.12) saturate(1.05); }
+.image-with-text-overlay--content button.hero-roundel:active { transform: translate(-50%, -50%) rotate(var(--rd-rotate, 0deg)) scale(0.97); }
+.image-with-text-overlay--content button.hero-roundel--anchor-left:active,
+.image-with-text-overlay--content button.hero-roundel--anchor-right:active { transform: translate(0, -50%) rotate(var(--rd-rotate, 0deg)) scale(0.97); }
+.image-with-text-overlay--content button.hero-roundel--starburst:hover::before,
+.image-with-text-overlay--content button.hero-roundel--starburst:active::before { filter: brightness(1.12); }
+@media (prefers-reduced-motion: reduce) { .image-with-text-overlay--content button.hero-roundel { transition: none; } }
 .image-with-text-overlay--content .hero-roundel__link { display: block; margin-top: 0.35em; font-size: max(9px, 0.62em); font-weight: 500; letter-spacing: 0; text-decoration: underline; text-underline-offset: 2px; opacity: .92; }
 /* Pop-up, same look as the buy box's guarantee pop-up */
 .hero-modal { position: fixed; inset: 0; z-index: 2147483000; display: flex; align-items: center; justify-content: center; padding: 18px; }
