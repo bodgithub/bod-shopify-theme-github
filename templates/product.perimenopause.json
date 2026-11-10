@@ -63,6 +63,8 @@
             "description_size": "small",
             "pad_left": 0,
             "pad_right": 0,
+            "text_size_desktop": 10,
+            "text_size_mobile": 15,
             "pad_top": 0,
             "pad_bottom": 4
           }
@@ -70,8 +72,8 @@
         "heading_AyEgTw": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Try inositol for 6 months for the price of ~3*&nbsp;</h2>",
-            "heading_color": "#FFFFFF",
+            "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
+            "heading_color": "#ffffff",
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 22,
             "heading_size_mobile": 16,
@@ -96,6 +98,8 @@
             "description_size": "small",
             "pad_left": 0,
             "pad_right": 96,
+            "text_size_desktop": 0,
+            "text_size_mobile": 15,
             "pad_top": 0,
             "pad_bottom": 12
           }
@@ -184,7 +188,7 @@
             "popup_title": "What 6 months looked like in the research",
             "popup_text": "<p>80 women past menopause, all with metabolic syndrome, took 4g of myo-inositol a day alongside a diet for six months. That is the same daily amount as two scoops of Bodology.</p><p>Insulin resistance (measured as HOMA-IR) fell by 75% in the myo-inositol group, far more than with diet alone. Blood pressure, triglycerides and HDL cholesterol improved too.</p>",
             "popup_small": "*Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Results in studies may not reflect individual outcomes.",
-            "text_color": "#182769",
+            "text_color": "#4D61CF",
             "text_color_mobile": "#182769",
             "bg_color": "#ffffff",
             "bg_gradient": "linear-gradient(0deg, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 98%)",
