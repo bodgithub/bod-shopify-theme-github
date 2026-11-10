@@ -416,7 +416,7 @@ line-hight:0.9;}
 /* Roundel with a pop-up: the whole badge is a button; a tiny underlined line sits under the text */
 .image-with-text-overlay--content button.hero-roundel { appearance: none; font-family: inherit; cursor: pointer; pointer-events: auto; padding: 0; }
 .image-with-text-overlay--content button.hero-roundel:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-.image-with-text-overlay--content .hero-roundel__link { display: block; margin-top: 0.35em; font-size: 0.62em; font-weight: 500; letter-spacing: 0; text-decoration: underline; text-underline-offset: 2px; opacity: .92; }
+.image-with-text-overlay--content .hero-roundel__link { display: block; margin-top: 0.35em; font-size: max(9px, 0.62em); font-weight: 500; letter-spacing: 0; text-decoration: underline; text-underline-offset: 2px; opacity: .92; }
 /* Pop-up, same look as the buy box's guarantee pop-up */
 .hero-modal { position: fixed; inset: 0; z-index: 2147483000; display: flex; align-items: center; justify-content: center; padding: 18px; }
 .hero-modal[hidden] { display: none; }
@@ -431,3 +431,11 @@ line-hight:0.9;}
 .hero-modal__links { display: flex; justify-content: center; margin-top: 16px; }
 .hero-modal__link { appearance: none; background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: #1a2874; text-decoration: underline; cursor: pointer; }
 @media only screen and (min-width: 750px) { .hero-modal__t { font-size: 28px; } .hero-modal__body { font-size: 16px; } }
+
+/* Roundel anchors: left/right edge in px (the roundel's own edge sits at that distance); the % right-half anchor is the default */
+.image-with-text-overlay--content .hero-roundel--anchor-left { left: var(--rd-xpx-m); right: auto; transform: translate(0, -50%) rotate(var(--rd-rotate, 0deg)); }
+.image-with-text-overlay--content .hero-roundel--anchor-right { left: auto; right: var(--rd-xpx-m); transform: translate(0, -50%) rotate(var(--rd-rotate, 0deg)); }
+@media only screen and (min-width: 768px) {
+  .image-with-text-overlay--content .hero-roundel--anchor-left { left: var(--rd-xpx-d); right: auto; }
+  .image-with-text-overlay--content .hero-roundel--anchor-right { left: auto; right: var(--rd-xpx-d); }
+}
