@@ -52,7 +52,10 @@
             "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
             "heading_color": "#182769",
             "heading_size": "h1-xlarge",
-            "heading_size_mobile": 30
+            "heading_size_mobile": 30,
+            "show_star": false,
+            "star_size": 16,
+            "star_color": "#4d61cf"
           }
         },
         "text_czCtJM": {
@@ -104,16 +107,16 @@
         "button_peri": {
           "type": "button",
           "settings": {
-            "button_text": "Get 45% off  6-month supply",
+            "button_text": "Get 45% off the 6-month supply",
             "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
             "button_color": "accent",
             "button_icon": "chevron",
+            "center_mobile": true,
             "show_guarantee": true,
             "guarantee_text": "60-day money-back guarantee",
             "show_shipping": true,
             "shipping_text": "Free shipping",
-            "note_color": "#1a2874",
-            "center_mobile": true
+            "note_color": "#1a2874"
           }
         },
         "space_UNPyXd": {
