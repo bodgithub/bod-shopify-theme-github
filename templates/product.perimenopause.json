@@ -35,7 +35,7 @@
           "type": "heading",
           "settings": {
             "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, <strong>it's insulin.</strong></h2>",
-            "heading_color": "#3447af",
+            "heading_color": "#182769",
             "heading_size": "h1-xlarge",
             "heading_size_mobile": 34
           }
@@ -457,6 +457,7 @@
             "cta_label": "Add to Cart",
             "cta_static": true,
             "cta_price": true,
+            "pay_icons": true,
             "subtick_enable": false,
             "sub_claim": "Save up to 25% by subscribing",
             "shipping_prefix": "Fast FREE shipping — Ships by",
@@ -545,8 +546,7 @@
             "c4_desc": "Metabolic & appetite",
             "c4_variant": "48915264209115",
             "hide_sub": false,
-            "hide_ot": false,
-            "pay_icons": true
+            "hide_ot": false
           }
         },
         "quote_7QKz6a": {
