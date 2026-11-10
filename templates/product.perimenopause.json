@@ -40,6 +40,15 @@
             "heading_size_mobile": 20
           }
         },
+        "heading_AyEgTw": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
+            "heading_color": "#182769",
+            "heading_size": "h1-xlarge",
+            "heading_size_mobile": 30
+          }
+        },
         "text_czCtJM": {
           "type": "text",
           "settings": {
@@ -55,18 +64,6 @@
           "type": "space",
           "settings": {
             "height": 0
-          }
-        },
-        "text_peri": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Same diet and routine, different results. Doctor says everything looks fine. <strong>Start with insulin.</strong></p>",
-            "description_color": "#1a2874",
-            "description_size": "large",
-            "pad_left": 0,
-            "pad_right": 0,
-            "pad_bottom": 0
           }
         },
         "benefits_peri": {
@@ -99,6 +96,17 @@
             "button_icon": "chevron"
           }
         },
+        "text_kLfyGj": {
+          "type": "text",
+          "settings": {
+            "text": "<h6>After 40, falling estrogen makes insulin harder for your cells to use, even when your blood sugar reads normal. Two scoops of Bodology gives you the 4g of inositol used in the studies.</h6>",
+            "description_color": "#182769",
+            "description_size": "medium",
+            "pad_left": 0,
+            "pad_right": 96,
+            "pad_bottom": 12
+          }
+        },
         "space_UNPyXd": {
           "type": "space",
           "settings": {
@@ -109,12 +117,13 @@
       "block_order": [
         "stars_peri",
         "heading_peri",
+        "heading_AyEgTw",
         "text_czCtJM",
         "space_bhy9NE",
-        "text_peri",
         "benefits_peri",
         "space_G8PyxF",
         "button_peri",
+        "text_kLfyGj",
         "space_UNPyXd"
       ],
       "custom_css": [],
