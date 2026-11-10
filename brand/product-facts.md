@@ -72,3 +72,17 @@
 ## FDA disclaimer (use verbatim on all claims)
 "*These statements have not been evaluated by the Food and Drug Administration. This product is
 not intended to diagnose, treat, cure, or prevent any disease."
+## Clinical studies — APPROVED CLAIMS (verified on PubMed, Nov 2026)
+Use these exact framings; keep the asterisk and the footnote wherever a number appears.
+All four studies used myo-inositol alone (not the 40:1 blend). Say "myo-inositol" or "inositol", never "Bodology", when quoting results.
+
+| Claim (approved wording) | Study | What it was | Citation |
+|---|---|---|---|
+| "6 months is what the clinical trial used. Insulin resistance fell 75%*" | Giordano et al. 2011, *Menopause* 18(1):102-4 | 80 postmenopausal women with metabolic syndrome, randomised, placebo-controlled; 2g myo-inositol twice daily (4g/day) plus diet for 6 months. HOMA-IR fell 75% in the myo-inositol group, significantly more than diet plus placebo. | https://doi.org/10.1097/gme.0b013e3181e8e1b1 (PMID 20811299) |
+| "In the 12-month trial, 1 in 5 women no longer had metabolic syndrome*" | Santamaria et al. 2012, *Climacteric* 15(5):490-5 | Same design over 12 months, 40 vs 40. 8 of 40 (20%) on myo-inositol no longer met metabolic syndrome criteria vs 1 of 40 on placebo. | https://doi.org/10.3109/13697137.2011.631063 (PMID 22192068) |
+| "In clinical trials, insulin and testosterone fell within 3 months*" | Genazzani et al. 2008, *Gynecol Endocrinol* 24(3):139-44; Artini et al. 2013, *Gynecol Endocrinol* 29(4):375-9 | Overweight women with PCOS (20 and 50 enrolled), 2g myo-inositol plus folic acid daily for 12 weeks; insulin, testosterone, LH and prolactin significantly reduced, HOMA improved. NOTE: PCOS population and 2g/day (half the Bodology serving), not perimenopausal women. | https://doi.org/10.1080/09513590801893232 (PMID 18335328); https://doi.org/10.3109/09513590.2012.743020 (PMID 23336594) |
+
+Approved footnote (use under any page that shows the starred claims):
+*Giordano et al. 2011: 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Santamaria et al. 2012: same design over 12 months; 8 of 40 women no longer met metabolic syndrome criteria vs 1 of 40 on placebo. Genazzani et al. 2008 and Artini et al. 2013: overweight women with PCOS, 2g myo-inositol daily for 12 weeks; insulin and testosterone significantly reduced. Results in studies may not reflect individual outcomes.
+
+Do NOT say: "clinically proven", "improves insulin sensitivity by up to 70%" (not a figure from these papers), or imply the 3-month results were in women over 40.
