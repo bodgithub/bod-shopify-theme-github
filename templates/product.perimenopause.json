@@ -15,7 +15,7 @@
         "heading_peri": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, <strong>it's insulin.</strong></h2>",
+            "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, it's insulin.</h2>",
             "heading_color": "#3447af",
             "heading_size": "h1-xlarge",
             "heading_size_mobile": 34
@@ -74,9 +74,10 @@
         "button_peri": {
           "type": "button",
           "settings": {
-            "button_text": "Get 45% off the 6-month bundle →",
+            "button_text": "Get 45% off the 6-month bundle",
             "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-            "button_color": "accent"
+            "button_color": "accent",
+            "button_icon": "chevron"
           }
         },
         "space_gGYDgr": {
@@ -95,10 +96,30 @@
             "pad_right": 96,
             "pad_bottom": 24
           }
+        },
+        "stars_peri": {
+          "type": "bod_stars",
+          "settings": {
+            "star_style": "chunky",
+            "star_size": 19,
+            "star_gap": 2,
+            "star_round": 0,
+            "color_on": "#ddbd6d",
+            "color_off": "#e6e6e6",
+            "show_label": true,
+            "label_color": "#14307c",
+            "label_size": 14,
+            "label_weight": "600",
+            "label_gap": 8,
+            "alignment": "left",
+            "margin_top": 0,
+            "margin_bottom": 16
+          }
         }
       },
       "block_order": [
         "heading_peri",
+        "stars_peri",
         "text_czCtJM",
         "space_bhy9NE",
         "text_peri",

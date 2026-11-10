@@ -123,8 +123,30 @@
 								</div>
 							{%- when 'button' -%}
 								{% if block.settings.button_text != blank %}
-									<a class="button {{ block.settings.button_color }}" href="{{ block.settings.button_link }}" role="button" {{ block.shopify_attributes }}>{{ block.settings.button_text }}</a>
+									<a class="button {{ block.settings.button_color }}{% if block.settings.button_icon == 'chevron' %} button--chevron{% endif %}" href="{{ block.settings.button_link }}" role="button" {{ block.shopify_attributes }}>{{ block.settings.button_text }}{% if block.settings.button_icon == 'chevron' %}<svg class="button__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3.5l4.5 4.5L6 12.5"/></svg>{% endif %}</a>
 								{% endif %}
+							{%- when 'bod_stars' -%}
+								{%- comment -%} same custom star rating as the buy box (Junip rating + "X.X Stars (Read Reviews)"), reads the page's product {%- endcomment -%}
+								<div class="hero-stars" {{ block.shopify_attributes }}>
+									{% render 'bod-stars',
+										product: product,
+										style: block.settings.star_style,
+										size: block.settings.star_size,
+										gap: block.settings.star_gap,
+										round: block.settings.star_round,
+										color_on: block.settings.color_on,
+										color_off: block.settings.color_off,
+										show_label: block.settings.show_label,
+										label_color: block.settings.label_color,
+										label_size: block.settings.label_size,
+										label_weight: block.settings.label_weight,
+										label_gap: block.settings.label_gap,
+										alignment: block.settings.alignment,
+										margin_top: block.settings.margin_top,
+										margin_bottom: block.settings.margin_bottom,
+										link: true,
+										uid: block.id %}
+								</div>
 							{%- when 'benefits' -%}
 								<div class="benefits-block">
 									
@@ -579,8 +601,196 @@
             }
           ],
           "default": "accent"
+        },
+        {
+          "type": "select",
+          "id": "button_icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "chevron", "label": "Chevron (right)" }
+          ],
+          "default": "none",
+          "info": "Use this instead of typing an arrow into the label."
         }
       ]
+    },
+    {
+          "type": "bod_stars",
+          "name": "Star rating",
+          "limit": 1,
+          "settings": [
+                {
+                      "type": "header",
+                      "content": "Stars"
+                },
+                {
+                      "type": "select",
+                      "id": "star_style",
+                      "label": "Star style",
+                      "default": "chunky",
+                      "info": "Chunky matches the current brand mark.",
+                      "options": [
+                            {
+                                  "value": "bold",
+                                  "label": "Bold"
+                            },
+                            {
+                                  "value": "chunky",
+                                  "label": "Chunky"
+                            },
+                            {
+                                  "value": "balanced",
+                                  "label": "Balanced"
+                            },
+                            {
+                                  "value": "classic",
+                                  "label": "Classic (sharp)"
+                            }
+                      ]
+                },
+                {
+                      "type": "range",
+                      "id": "star_size",
+                      "label": "Star size",
+                      "min": 10,
+                      "max": 40,
+                      "step": 1,
+                      "default": 19,
+                      "unit": "px"
+                },
+                {
+                      "type": "range",
+                      "id": "star_gap",
+                      "label": "Space between stars",
+                      "min": 0,
+                      "max": 14,
+                      "step": 1,
+                      "default": 2,
+                      "unit": "px"
+                },
+                {
+                      "type": "range",
+                      "id": "star_round",
+                      "label": "Corner rounding",
+                      "min": 0,
+                      "max": 3,
+                      "step": 0.5,
+                      "default": 0
+                },
+                {
+                      "type": "color",
+                      "id": "color_on",
+                      "label": "Filled star",
+                      "default": "#ddbd6d"
+                },
+                {
+                      "type": "color",
+                      "id": "color_off",
+                      "label": "Empty star",
+                      "default": "#e6e6e6"
+                },
+                {
+                      "type": "header",
+                      "content": "Label"
+                },
+                {
+                      "type": "checkbox",
+                      "id": "show_label",
+                      "label": "Show \"X.X Stars (Read Reviews)\"",
+                      "default": true
+                },
+                {
+                      "type": "color",
+                      "id": "label_color",
+                      "label": "Text colour",
+                      "default": "#14307c"
+                },
+                {
+                      "type": "range",
+                      "id": "label_size",
+                      "label": "Text size",
+                      "min": 10,
+                      "max": 24,
+                      "step": 1,
+                      "default": 14,
+                      "unit": "px"
+                },
+                {
+                      "type": "select",
+                      "id": "label_weight",
+                      "label": "Text weight",
+                      "default": "600",
+                      "options": [
+                            {
+                                  "value": "400",
+                                  "label": "Regular"
+                            },
+                            {
+                                  "value": "500",
+                                  "label": "Medium"
+                            },
+                            {
+                                  "value": "600",
+                                  "label": "Semibold"
+                            },
+                            {
+                                  "value": "700",
+                                  "label": "Bold"
+                            }
+                      ]
+                },
+                {
+                      "type": "range",
+                      "id": "label_gap",
+                      "label": "Space before text",
+                      "min": 0,
+                      "max": 24,
+                      "step": 1,
+                      "default": 8,
+                      "unit": "px"
+                },
+                {
+                      "type": "header",
+                      "content": "Layout"
+                },
+                {
+                      "type": "select",
+                      "id": "alignment",
+                      "label": "Alignment",
+                      "default": "left",
+                      "options": [
+                            {
+                                  "value": "left",
+                                  "label": "Left"
+                            },
+                            {
+                                  "value": "center",
+                                  "label": "Center"
+                            }
+                      ]
+                },
+                {
+                      "type": "range",
+                      "id": "margin_top",
+                      "label": "Top spacing",
+                      "min": 0,
+                      "max": 40,
+                      "step": 2,
+                      "default": 0,
+                      "unit": "px"
+                },
+                {
+                      "type": "range",
+                      "id": "margin_bottom",
+                      "label": "Bottom spacing",
+                      "min": 0,
+                      "max": 40,
+                      "step": 2,
+                      "default": 16,
+                      "unit": "px"
+                }
+          ]
     },
     {
       "type": "space",
