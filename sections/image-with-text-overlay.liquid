@@ -140,7 +140,7 @@
 										endif
 									endif
 								-%}
-								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.heading_color }};{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}{% if block.settings.heading_size_desktop > 0 %} --hero-h-d: {{ block.settings.heading_size_desktop }}px;{% endif %}">{{ heading_html }}</div>
+								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.heading_color }};{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}{% if block.settings.heading_size_desktop > 0 %} --hero-h-d: {{ block.settings.heading_size_desktop }}px;{% endif %}{% if block.settings.pad_right_desktop > 0 %} --hero-h-pr: {{ block.settings.pad_right_desktop }}px;{% endif %}">{{ heading_html }}</div>
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
@@ -564,6 +564,17 @@
           "step": 2,
           "unit": "px",
           "default": 0
+        },
+        {
+          "type": "range",
+          "id": "pad_right_desktop",
+          "label": "Padding right (desktop only)",
+          "min": 0,
+          "max": 200,
+          "step": 4,
+          "unit": "px",
+          "default": 0,
+          "info": "Shortens the line length on desktop so the heading wraps sooner. Phones ignore it."
         },
         { "type": "header", "content": "Small asterisk" },
         { "type": "checkbox", "id": "show_star", "label": "Show a small asterisk top-right of the text", "default": false, "info": "Stays the same size whatever the heading size." },
