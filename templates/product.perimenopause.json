@@ -52,9 +52,9 @@
           "type": "heading",
           "settings": {
             "text": "<h2>Try it for 6 months for the price of ~3</h2>",
-            "heading_color": "#3447af",
+            "heading_color": "#182769",
             "heading_size": "h1-xlarge",
-            "heading_size_desktop": 30,
+            "heading_size_desktop": 22,
             "heading_size_mobile": 34,
             "pad_right_desktop": 96,
             "show_star": false,
@@ -65,13 +65,28 @@
         "text_czCtJM": {
           "type": "text",
           "settings": {
-            "text": "<p>Falling estrogen after 40 makes insulin harder for your cells to use, even when your blood sugar reads normal. Inositol helps your cells use insulin again.</p>",
+            "text": "<p>Falling estrogen after 40 makes insulin harder for your cells to use, even when your blood sugar reads normal.<strong> Inositol helps your cells use insulin again.</strong></p>",
             "description_color": "#182769",
             "description_size": "medium",
             "pad_left": 0,
             "pad_right": 96,
             "pad_top": 0,
             "pad_bottom": 12
+          }
+        },
+        "heading_44CfCC": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "<h2>Insulin resistance fell 75% in a 6-month trial</h2>",
+            "heading_color": "#3447af",
+            "heading_size": "h1-xlarge",
+            "heading_size_desktop": 24,
+            "heading_size_mobile": 34,
+            "pad_right_desktop": 96,
+            "show_star": true,
+            "star_size": 16,
+            "star_color": "#182769"
           }
         },
         "space_bhy9NE": {
@@ -123,6 +138,40 @@
             "note_color": "#1a2874"
           }
         },
+        "roundel_d6QPzb": {
+          "type": "roundel",
+          "settings": {
+            "style": "text",
+            "text": "Insulin resistance fell 75% in a 6-month trial*",
+            "rotate": 0,
+            "text_width_desktop": 170,
+            "text_width_mobile": 180,
+            "text_align": "left",
+            "link_text": "View study",
+            "popup_title": "What 6 months looked like in the research",
+            "popup_text": "<p>80 women past menopause, all with metabolic syndrome, took 4g of myo-inositol a day alongside a diet for six months. That is the same daily amount as two scoops of Bodology.</p><p>Insulin resistance (measured as HOMA-IR) fell by 75% in the myo-inositol group, far more than with diet alone. Blood pressure, triglycerides and HDL cholesterol improved too.</p>",
+            "popup_small": "*Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Results in studies may not reflect individual outcomes.",
+            "text_color": "#3446AF",
+            "bg_color": "#ffffff",
+            "bg_gradient": "linear-gradient(0deg, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 98%)",
+            "text_padding": 0,
+            "border_color": "#3446af",
+            "border_width": 1,
+            "shadow_color": "#ffffff",
+            "shadow_offset": 1,
+            "anchor": "left",
+            "size_desktop": 120,
+            "text_size_desktop": 16,
+            "x_desktop": 0,
+            "x_desktop_px": 700,
+            "y_desktop": 12,
+            "size_mobile": 90,
+            "text_size_mobile": 11,
+            "x_mobile": 48,
+            "x_mobile_px": 295,
+            "y_mobile": 62
+          }
+        },
         "roundel_hNX9Uc": {
           "type": "roundel",
           "settings": {
@@ -146,15 +195,15 @@
             "shadow_offset": 1,
             "anchor": "left",
             "size_desktop": 120,
-            "text_size_desktop": 14,
+            "text_size_desktop": 16,
             "x_desktop": 0,
-            "x_desktop_px": 60,
-            "y_desktop": 96,
+            "x_desktop_px": 700,
+            "y_desktop": 26,
             "size_mobile": 90,
             "text_size_mobile": 11,
             "x_mobile": 48,
             "x_mobile_px": 295,
-            "y_mobile": 56
+            "y_mobile": 62
           }
         }
       },
@@ -163,10 +212,12 @@
         "heading_peri",
         "heading_AyEgTw",
         "text_czCtJM",
+        "heading_44CfCC",
         "space_bhy9NE",
         "benefits_peri",
         "space_G8PyxF",
         "button_peri",
+        "roundel_d6QPzb",
         "roundel_hNX9Uc"
       ],
       "custom_css": [],
