@@ -144,7 +144,7 @@
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
-  style="--description-color: {{ block.settings.description_color }}; --rte-pad-top: {{ block.settings.pad_top | default: 0 }}px; --rte-pad-right: {{ block.settings.pad_right | default: 0 }}px; --rte-pad-bottom: {{ block.settings.pad_bottom | default: 0 }}px; --rte-pad-left: {{ block.settings.pad_left | default: 0 }}px;"
+  style="--description-color: {{ block.settings.description_color }}; --rte-pad-top: {{ block.settings.pad_top | default: 0 }}px;{% if block.settings.text_size_desktop > 0 %} --rte-fs-d: {{ block.settings.text_size_desktop }}px;{% endif %} --rte-fs-m: {{ block.settings.text_size_mobile | default: 15 }}px; --rte-pad-right: {{ block.settings.pad_right | default: 0 }}px; --rte-pad-bottom: {{ block.settings.pad_bottom | default: 0 }}px; --rte-pad-left: {{ block.settings.pad_left | default: 0 }}px;"
   {{ block.shopify_attributes }}
 >
   {{ block.settings.text }}
@@ -724,6 +724,26 @@
           "step": 4,
           "unit": "px",
           "default": 0
+        },
+        {
+          "type": "range",
+          "id": "text_size_desktop",
+          "label": "Text size (desktop, 0 = use the size preset above)",
+          "min": 0,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "text_size_mobile",
+          "label": "Text size (phones)",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 15
         },
         {
           "type": "range",

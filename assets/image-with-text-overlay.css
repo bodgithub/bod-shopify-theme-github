@@ -341,7 +341,7 @@ line-hight:0.9;}
 @media only screen and (max-width: 767px) {
   .image-with-text-overlay--content .rte,
   .image-with-text-overlay--content .rte p,
-  .image-with-text-overlay--content .rte :is(h3, h4, h5, h6) { font-size: 15px; }
+  .image-with-text-overlay--content .rte :is(h3, h4, h5, h6) { font-size: var(--rte-fs-m, 15px); }
 }
 
 /* Mobile height "Fit the image": the section takes the mobile image's aspect ratio so the photo shows whole, edge to edge, with no crop */
@@ -502,3 +502,10 @@ line-hight:0.9;}
 
 /* pop-up body headings and any bold/italic inside them stay the pop-up ink colour */
 .hero-modal__body :is(h1, h2, h3, h4, h5, h6), .hero-modal__body :is(h1, h2, h3, h4, h5, h6) :is(strong, b, em) { color: #14307c !important; }
+
+/* Hero text block: optional fixed desktop size from the editor (0 = the small/medium/large preset) */
+@media only screen and (min-width: 768px) {
+  .image-with-text-overlay--content .rte[style*="--rte-fs-d"],
+  .image-with-text-overlay--content .rte[style*="--rte-fs-d"] p,
+  .image-with-text-overlay--content .rte[style*="--rte-fs-d"] :is(h3, h4, h5, h6) { font-size: var(--rte-fs-d) !important; }
+}
