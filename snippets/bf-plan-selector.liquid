@@ -57,6 +57,8 @@
     assign k_link_text = k | append: '_link_text'
     assign k_link_tier = k | append: '_link_tier'
     assign k_foot = k | append: '_footnote'
+    assign k_study_title = k | append: '_study_title'
+    assign k_study_text = k | append: '_study_text'
     assign tubs = s[k_tubs] | default: 0
     if s[k_foot] != blank
       assign has_tier_foot = true
@@ -68,7 +70,7 @@
   -%}
   {%- if tubs > 0 and tub_cents > 0 -%}
     {%- if printed > 0 -%},{%- endif -%}
-    { "quantity": {{ tubs }}, "price": {{ price }}, "compare": {{ compare }}, "pct": {{ pct }}, "label": {{ s[k_label] | json }}, "months": {{ s[k_months] | default: 1 }}, "freeText": {{ s[k_free] | json }}, "tubsFreeText": {{ s[k_tubs_free] | json }}, "title": {{ s[k_title] | json }}, "badge": {{ s[k_badge] | json }}, "badgeStyle": {{ s[k_badge_style] | default: 'navy' | json }}, "note": {{ s[k_note] | json }}, "linkText": {{ s[k_link_text] | json }}, "linkTier": {{ s[k_link_tier] | default: 0 | json }}, "footnote": {{ s[k_foot] | json }} }
+    { "quantity": {{ tubs }}, "price": {{ price }}, "compare": {{ compare }}, "pct": {{ pct }}, "label": {{ s[k_label] | json }}, "months": {{ s[k_months] | default: 1 }}, "freeText": {{ s[k_free] | json }}, "tubsFreeText": {{ s[k_tubs_free] | json }}, "title": {{ s[k_title] | json }}, "badge": {{ s[k_badge] | json }}, "badgeStyle": {{ s[k_badge_style] | default: 'navy' | json }}, "note": {{ s[k_note] | json }}, "linkText": {{ s[k_link_text] | json }}, "linkTier": {{ s[k_link_tier] | default: 0 | json }}, "footnote": {{ s[k_foot] | json }}, "studyTitle": {{ s[k_study_title] | json }}, "studyBody": {{ s[k_study_text] | json }} }
     {%- assign printed = printed | plus: 1 -%}
   {%- endif -%}
 {%- endfor -%}
@@ -169,13 +171,21 @@
   </div>
   {%- endif -%}
   {%- if s.bf_footnote != blank or has_tier_foot -%}
-  <details class="bfps__foot" data-bfps-foot>
-    <summary class="bfps__foot-sum"><span>*See the studies</span><svg class="bfps__foot-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>
-    <div class="bfps__foot-body">
-      <p class="bfps__foot-tier" data-bfps-foot-tier hidden></p>
-      <div class="bfps__foot-general" data-bfps-foot-general>{{ s.bf_footnote }}</div>
+  <div class="bfps__foot" data-bfps-foot>
+    <button type="button" class="bfps__foot-btn" data-bfps-study-open><span>*See the studies</span><svg class="bfps__foot-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l4 4-4 4"/></svg></button>
+  </div>
+  {%- comment -%} pop-up in the same style as the guarantee pop-up: friendly summary, then the study detail in small print {%- endcomment -%}
+  <div class="ps-modal" data-bfps-study hidden>
+    <div class="ps-modal__ov" data-bfps-study-close></div>
+    <div class="ps-modal__box" role="dialog" aria-modal="true" aria-label="The studies behind this bundle">
+      <button type="button" class="ps-modal__x" data-bfps-study-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h3 class="ps-modal__t" data-bfps-study-title></h3>
+      <div class="ps-modal__body" data-bfps-study-body></div>
+      <div class="bfps__study-small" data-bfps-study-small></div>
+      <div class="bfps__study-general" data-bfps-foot-general>{{ s.bf_footnote }}</div>
+      <div class="ps-modal__links"><button type="button" class="ps-modal__link" data-bfps-study-close>Close</button></div>
     </div>
-  </details>
+  </div>
   {%- endif -%}
 </div>
 
@@ -233,18 +243,18 @@
   /* the per-month line follows the free-months text on the same line (wraps naturally on narrow screens) */
   #ps1c-{{ uid }} .bfps__free-main,#ps1c-{{ uid }} .bfps__free-line{display:inline}
   #ps1c-{{ uid }} .bfps__free-line:not(:empty)::before{content:"\00b7";font-weight:800;margin:0 .4em 0 .25em}
-  /* study footnote under the selector: collapsed <details>, bundles tab only, shows the study behind the selected bundle */
+  /* "*See the studies" line under the selector (bundles tab only) opens a pop-up with the study behind the selected bundle */
   #ps1c-{{ uid }} .bfps__foot{margin:10px 0 0;color:#676b79}
   #ps1c-{{ uid }} .bfps__foot[hidden]{display:none}
-  #ps1c-{{ uid }} .bfps__foot-sum{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-size:12px;line-height:1.3;color:#676b79;font-weight:500}
-  #ps1c-{{ uid }} .bfps__foot-sum::-webkit-details-marker{display:none}
-  #ps1c-{{ uid }} .bfps__foot-sum::marker{content:""}
-  #ps1c-{{ uid }} .bfps__foot-sum:focus-visible{outline:2px solid var(--bf-blue);outline-offset:2px;border-radius:2px}
-  #ps1c-{{ uid }} .bfps__foot-chev{width:10px;height:10px;transition:transform .15s}
-  #ps1c-{{ uid }} .bfps__foot[open] .bfps__foot-chev{transform:rotate(180deg)}
-  #ps1c-{{ uid }} .bfps__foot-body{margin-top:6px;font-size:11px;line-height:1.5;color:#676b79}
-  #ps1c-{{ uid }} .bfps__foot-body p{margin:0;font-size:inherit;line-height:inherit;color:inherit}
-  #ps1c-{{ uid }} .bfps__foot-body [hidden]{display:none}
+  #ps1c-{{ uid }} .bfps__foot-btn{appearance:none;background:none;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:12px;line-height:1.3;color:#676b79;font-weight:500}
+  #ps1c-{{ uid }} .bfps__foot-btn:hover{color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfps__foot-btn:focus-visible{outline:2px solid var(--bf-blue);outline-offset:2px;border-radius:2px}
+  #ps1c-{{ uid }} .bfps__foot-chev{width:10px;height:10px}
+  #ps1c-{{ uid }} .bfps__study-small{margin-top:14px;padding-top:12px;border-top:1px solid rgba(26,40,116,.18);font-size:11px;line-height:1.5;color:#676b79;text-align:left}
+  #ps1c-{{ uid }} .bfps__study-small:empty{display:none}
+  #ps1c-{{ uid }} .bfps__study-general{margin-top:8px;font-size:11px;line-height:1.5;color:#676b79;text-align:left}
+  #ps1c-{{ uid }} .bfps__study-general p{margin:0;font-size:inherit;line-height:inherit;color:inherit}
+  #ps1c-{{ uid }} .bfps__study-general[hidden],#ps1c-{{ uid }} .bfps__study-general:empty{display:none}
   /* ---- cards layout ---- */
   #ps1c-{{ uid }} .bfc__tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 14px}
   #ps1c-{{ uid }} .bfc__tier{position:relative;appearance:none;text-align:left;cursor:pointer;background:#fafafa;border:1px solid #c9d0f0;border-radius:5px;padding:30px 14px 18px;color:var(--bf-navy);font-family:inherit;transition:border-color .15s,background .15s}
@@ -335,12 +345,24 @@
     var maxSavingEl = $('[data-bfps-max-saving]'); /* absent when the tabs are switched off */
     if (maxSavingEl) { maxSavingEl.textContent = 'Save up to ' + maxPct + '%'; }
 
+    /* study pop-up: friendly copy for the selected bundle, then the study detail in small print */
+    var studyModal = root.querySelector('[data-bfps-study]');
     function syncFoot() {
+      if (!studyModal) return;
       var t = tiers[index];
-      var tierEl = root.querySelector('[data-bfps-foot-tier]'), genEl = root.querySelector('[data-bfps-foot-general]');
-      if (!tierEl || !genEl) return;
-      if (t.footnote) { tierEl.textContent = t.footnote; tierEl.hidden = false; genEl.hidden = true; }
-      else { tierEl.hidden = true; genEl.hidden = false; }
+      var titleEl = studyModal.querySelector('[data-bfps-study-title]'), bodyEl = studyModal.querySelector('[data-bfps-study-body]');
+      var smallEl = studyModal.querySelector('[data-bfps-study-small]'), genEl = studyModal.querySelector('[data-bfps-foot-general]');
+      titleEl.textContent = t.studyTitle || ('The research behind ' + (t.label || 'this bundle'));
+      bodyEl.innerHTML = fill(t.studyBody || '', t);
+      smallEl.textContent = t.footnote || '';
+      if (genEl) { genEl.hidden = !!t.footnote; }
+    }
+    function openStudy() { syncFoot(); studyModal.hidden = false; document.documentElement.style.overflow = 'hidden'; var x = studyModal.querySelector('.ps-modal__x'); if (x) { x.focus(); } }
+    function closeStudy() { studyModal.hidden = true; document.documentElement.style.overflow = ''; }
+    if (studyModal) {
+      root.querySelectorAll('[data-bfps-study-open]').forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); openStudy(); }); });
+      studyModal.querySelectorAll('[data-bfps-study-close]').forEach(function (b) { b.addEventListener('click', function (e) { e.stopPropagation(); closeStudy(); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !studyModal.hidden) { closeStudy(); } });
     }
     function announce() {
       syncFoot();
