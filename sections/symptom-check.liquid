@@ -78,12 +78,14 @@
   }
   #shopify-section-{{ uid }} .sc__bar[data-state="in"], #shopify-section-{{ uid }} .sc__bar[data-state="after"] { transform: translateY(0); }
   #shopify-section-{{ uid }} .sc__bar-inner { max-width: {{ s.max_width }}px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-  #shopify-section-{{ uid }} .sc__bar-text { flex: 1 1 auto; min-width: 0; font-size: 14px; line-height: 1.35; }
+  #shopify-section-{{ uid }} .sc__bar-text { flex: 1 1 auto; min-width: 0; font-size: 15px; line-height: 1.35; }
   /* tap-hand roundel beside the opening prompt, only before anything is ticked */
   #shopify-section-{{ uid }} .sc__bar-icon { display: none; flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; background: {{ s.checked_bg }}; color: {{ s.text_color }}; align-items: center; justify-content: center; }
   #shopify-section-{{ uid }} .sc__bar-icon svg { width: 20px; height: 20px; }
   #shopify-section-{{ uid }} .sc__bar[data-state="in"][data-count="0"] .sc__bar-icon { display: inline-flex; }
-  #shopify-section-{{ uid }} .sc__bar-count { display: block; font-size: 12px; letter-spacing: .03em; opacity: .75; }
+  #shopify-section-{{ uid }} .sc__bar-count { display: block; font-size: 15px; font-weight: 700; color: #1a2874; letter-spacing: 0; }
+  /* before anything is ticked ("Tap anything that sounds like you.") the prompt is bold navy too */
+  #shopify-section-{{ uid }} .sc__bar[data-count="0"] .sc__bar-msg { font-weight: 700; color: #1a2874; }
   #shopify-section-{{ uid }} .sc__bar-count:empty { display: none; }
   #shopify-section-{{ uid }} .sc__bar-msg { display: block; }
   /* phones: while the section is in view the full message sits on top and the button goes full width underneath */
