@@ -140,6 +140,16 @@
 							{%- when 'button' -%}
 								{% if block.settings.button_text != blank %}
 									<a class="button {{ block.settings.button_color }}{% if block.settings.button_icon == 'chevron' %} button--chevron{% endif %}" href="{{ block.settings.button_link }}" role="button" {{ block.shopify_attributes }}>{{ block.settings.button_text }}{% if block.settings.button_icon == 'chevron' %}<svg class="button__chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 3.5l4.5 4.5L6 12.5"/></svg>{% endif %}</a>
+									{%- if block.settings.show_guarantee or block.settings.show_shipping -%}
+									<div class="hero-notes"{% if block.settings.note_color != blank %} style="color: {{ block.settings.note_color }};"{% endif %}>
+										{%- if block.settings.show_guarantee -%}
+										<span class="hero-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><span>{{ block.settings.guarantee_text | default: '60-day money-back guarantee' }}</span></span>
+										{%- endif -%}
+										{%- if block.settings.show_shipping -%}
+										<span class="hero-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span>{{ block.settings.shipping_text | default: 'Free shipping' }}</span></span>
+										{%- endif -%}
+									</div>
+									{%- endif -%}
 								{% endif %}
 							{%- when 'bod_stars' -%}
 								{%- comment -%} same custom star rating as the buy box (Junip rating + "X.X Stars (Read Reviews)"), reads the page's product {%- endcomment -%}
@@ -645,7 +655,13 @@
           ],
           "default": "none",
           "info": "Use this instead of typing an arrow into the label."
-        }
+        },
+        { "type": "header", "content": "Small notes under the button" },
+        { "type": "checkbox", "id": "show_guarantee", "label": "Show guarantee note", "default": false },
+        { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "60-day money-back guarantee" },
+        { "type": "checkbox", "id": "show_shipping", "label": "Show shipping note", "default": false },
+        { "type": "text", "id": "shipping_text", "label": "Shipping text", "default": "Free shipping" },
+        { "type": "color", "id": "note_color", "label": "Note colour", "info": "Empty = the section's text colour." }
       ]
     },
     {
