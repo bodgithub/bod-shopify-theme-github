@@ -140,7 +140,7 @@
 										endif
 									endif
 								-%}
-								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.heading_color }};{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}">{{ heading_html }}</div>
+								<div class="{{ block.settings.heading_size }}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.heading_color }};{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}{% if block.settings.heading_size_desktop > 0 %} --hero-h-d: {{ block.settings.heading_size_desktop }}px;{% endif %}">{{ heading_html }}</div>
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
@@ -544,6 +544,16 @@
             }
           ],
           "default": "h1-xlarge"
+        },
+        {
+          "type": "range",
+          "id": "heading_size_desktop",
+          "label": "Desktop size (0 = automatic, from the size above)",
+          "min": 0,
+          "max": 96,
+          "step": 2,
+          "unit": "px",
+          "default": 0
         },
         {
           "type": "range",

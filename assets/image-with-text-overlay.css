@@ -290,6 +290,12 @@ line-hight:0.9;}
 .button .regular {color:#fff; !important;}
 /* Benefits block: vector tick shown when no icon image is uploaded (colour follows the benefit text colour) */
 .benefit-icon--tick { display: block; }
+/* Heading block: optional desktop font size from the editor (0 = automatic) */
+@media only screen and (min-width: 768px) {
+  .image-with-text-overlay [style*="--hero-h-d"],
+  .image-with-text-overlay [style*="--hero-h-d"] h1,
+  .image-with-text-overlay [style*="--hero-h-d"] h2 { font-size: var(--hero-h-d) !important; line-height: 1.12 !important; }
+}
 /* Heading block: optional mobile font size from the editor (0 = automatic) */
 @media only screen and (max-width: 767px) {
   .image-with-text-overlay [style*="--hero-h-m"],
