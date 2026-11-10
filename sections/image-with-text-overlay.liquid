@@ -21,7 +21,23 @@
 	assign disable_top_spacing = section.settings.disable_top_spacing
 	assign disable_bottom_spacing = section.settings.disable_bottom_spacing
 
+	comment
+		"Fit the image": on phones the section takes the mobile image's own aspect ratio, so the whole
+		photo shows at full width with no crop (the section only grows beyond that if the text needs it).
+	endcomment
+	assign hero_m_ratio = 0
+	if mobile_image
+		assign hero_m_ratio = mobile_image.aspect_ratio
+	elsif image
+		assign hero_m_ratio = image.aspect_ratio
+	endif
 	case mobile_height
+		when 'mobile-height-fit'
+			if hero_m_ratio > 0
+				assign mobile_image_height = 900 | divided_by: hero_m_ratio | round
+			else
+				assign mobile_image_height = 900
+			endif
 		when 'mobile-height-350'
 			assign mobile_image_height = 350
 		when 'mobile-height-400'
@@ -43,7 +59,7 @@
 
 <div class="row {% if full_width %}full-width-row-full{% endif %}">
 	<div class="small-12 columns">
-		<div class="image-with-text-overlay image-with-text-overlay--full-width-{{ full_width }} text-{{ text_alignment }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style=" --overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }}">
+		<div class="image-with-text-overlay image-with-text-overlay--full-width-{{ full_width }} text-{{ text_alignment }} {{ mobile_height }} {{ desktop_height }} section-spacing{% if disable_top_spacing %} section-spacing--disable-top{% endif %}{% if disable_bottom_spacing %} section-spacing--disable-bottom{% endif %}" style=" --overlay-color-rgb: {{ overlay_color.rgb | replace: ' ' , ',' }}; --overlay-opacity: {{ overlay_opacity | divided_by: 100.0 }};{% if hero_m_ratio > 0 %} --hero-m-ratio: {{ hero_m_ratio }};{% endif %}">
 			<div class="image-with-text-overlay--bg parallax--{{ image_parallax }}" >
 				{% if image %}
 					{%- liquid
@@ -244,6 +260,10 @@
         {
           "value": "mobile-height-auto",
           "label": "Adapt to content"
+        },
+        {
+          "value": "mobile-height-fit",
+          "label": "Fit the image (no crop)"
         },
         {
           "value": "mobile-height-350",

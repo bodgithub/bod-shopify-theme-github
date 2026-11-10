@@ -337,3 +337,8 @@ line-hight:0.9;}
   .image-with-text-overlay--content .rte p,
   .image-with-text-overlay--content .rte :is(h3, h4, h5, h6) { font-size: 15px; }
 }
+
+/* Mobile height "Fit the image": the section takes the mobile image's aspect ratio so the photo shows whole, edge to edge, with no crop */
+@media only screen and (max-width: 767px) {
+  .image-with-text-overlay.mobile-height-fit { box-sizing: border-box; min-height: 0; aspect-ratio: var(--hero-m-ratio, auto); }
+}
