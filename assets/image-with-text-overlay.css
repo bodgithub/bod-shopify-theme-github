@@ -480,3 +480,7 @@ line-hight:0.9;}
   .image-with-text-overlay--content div.hero-ribbon--left { padding-left: calc(100vw + 16px); padding-right: 28px; }
   .image-with-text-overlay--content div.hero-ribbon--right { padding-right: calc(100vw + 16px); padding-left: 28px; }
 }
+
+/* Bold inside hero text blocks and headings: a touch heavier than the theme's 500/600 */
+.image-with-text-overlay--content .rte strong, .image-with-text-overlay--content .rte b,
+.image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2, .h3) strong, .image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2, .h3) b { font-weight: 700; }
