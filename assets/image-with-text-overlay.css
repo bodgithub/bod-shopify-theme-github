@@ -513,3 +513,7 @@ line-hight:0.9;}
 /* Ribbon: two-point zigzag option */
 .image-with-text-overlay--content div.hero-ribbon--left.hero-ribbon--zig2 { clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 25%, 100% 50%, calc(100% - 14px) 75%, 100% 100%, 0 100%); }
 .image-with-text-overlay--content div.hero-ribbon--right.hero-ribbon--zig2 { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 75%, 0 50%, 14px 25%); }
+
+/* Ribbon: single-point (arrow) end */
+.image-with-text-overlay--content div.hero-ribbon--left.hero-ribbon--zig1 { clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%); }
+.image-with-text-overlay--content div.hero-ribbon--right.hero-ribbon--zig1 { clip-path: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 50%); }
