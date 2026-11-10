@@ -182,7 +182,8 @@
 #ps1c-{{ uid }} .ps-pay__icon{height:26px; width:auto; display:block; border-radius:4px;}
 #ps1c-{{ uid }} .ps-guar{display:flex; align-items:center; justify-content:center; gap:7px; font-size:12.5px; color:var(--ps-ink); margin-top:-2px;}
 #ps1c-{{ uid }} .ps-guar__t{font-weight:600;}
-#ps1c-{{ uid }} .ps-guar__i{width:16px; height:16px; border-radius:50%; border:1px solid var(--ps-ink); color:var(--ps-ink); background:transparent; font-size:10px; font-weight:600; line-height:1; display:grid; place-items:center; cursor:pointer; padding:0; font-family:inherit;}
+#ps1c-{{ uid }} .ps-guar__icon{width:17px; height:17px; flex:0 0 auto; color:var(--ps-ink);}
+#ps1c-{{ uid }} .ps-guar__i{width:14px; height:14px; border-radius:50%; border:1px solid var(--ps-ink); color:var(--ps-ink); background:transparent; font-size:9px; font-weight:600; line-height:1; display:grid; place-items:center; cursor:pointer; padding:0; font-family:inherit;}
 #ps1c-{{ uid }} .ps-guar__i:hover{background:var(--ps-ink); color:#fff;}
 #ps1c-{{ uid }} .ps-modal__body{font-size:15px; line-height:1.6; color:var(--ps-ink); margin:0 0 4px;}
 #ps1c-{{ uid }} .ps-modal__body p{margin:0 0 10px;}
@@ -392,6 +393,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   {%- endif -%}
   {%- if s.guar_enable -%}
   <div class="ps-guar">
+    <svg class="ps-guar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
     <span class="ps-guar__t">{{ s.guar_text | default: '60-day risk-free guarantee' }}</span>
     <button type="button" class="ps-guar__i" data-ps1c-guar-open aria-label="About our guarantee">i</button>
   </div>
