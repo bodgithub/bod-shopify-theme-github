@@ -44,7 +44,7 @@
             "heading_size_mobile": 20,
             "margin_top": 0,
             "margin_bottom": 0,
-            "pad_right_desktop": 0,
+            "pad_right_desktop": 80,
             "ribbon": false,
             "ribbon_side": "left",
             "ribbon_color": "#ffffff",
@@ -56,8 +56,8 @@
         "heading_AyEgTw": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Try inositol for 6 months for the price of ~3.&nbsp;</h2><p>Ends Nov 30.</p>",
-            "heading_color": "#182769",
+            "text": "<h2>Try inositol for 6 months for the price of ~3**</h2><p>Ends Nov 30</p>",
+            "heading_color": "#FFFFFF",
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 22,
             "heading_size_mobile": 30,
@@ -66,8 +66,8 @@
             "pad_right_desktop": 96,
             "ribbon": true,
             "ribbon_side": "left",
-            "ribbon_color": "#ffffff",
-            "show_star": true,
+            "ribbon_color": "#182769",
+            "show_star": false,
             "star_size": 16,
             "star_color": "#182769"
           }
