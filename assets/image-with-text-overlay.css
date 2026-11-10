@@ -424,8 +424,9 @@ line-hight:0.9;}
 .hero-modal__box { position: relative; width: 100%; max-width: 440px; max-height: calc(100dvh - 36px); overflow: auto; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; padding: 32px 24px; box-shadow: 0 24px 64px -18px rgba(0, 0, 0, 0.4); color: #1a2874; text-align: center; }
 .hero-modal__x { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; display: grid; place-items: center; border: 0; background: transparent; color: #1a2874; cursor: pointer; border-radius: 8px; padding: 0; }
 .hero-modal__x svg { width: 16px; height: 16px; }
-.hero-modal__t { font-size: 20px; font-weight: 400; line-height: 1.25; margin: 0 0 16px; color: #1a2874; }
-.hero-modal__body { font-size: 15px; line-height: 1.5; }
+/* the hero forces its heading/text colours (often white) on everything inside the banner; the pop-up keeps the guarantee pop-up's ink colour */
+.image-with-text-overlay--content .hero-modal__t, .hero-modal__t { font-size: 20px; font-weight: 400; line-height: 1.25; margin: 0 0 16px; color: #14307c !important; letter-spacing: 0; text-transform: none; }
+.image-with-text-overlay--content .hero-modal__body, .hero-modal__body, .hero-modal__body p { font-size: 15px; line-height: 1.5; color: #14307c !important; }
 .hero-modal__body p { margin: 0 0 10px; }
 .hero-modal__small { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid rgba(26, 40, 116, 0.18); font-size: 11px; line-height: 1.5; color: #676b79; text-align: left; }
 .hero-modal__links { display: flex; justify-content: center; margin-top: 16px; }
