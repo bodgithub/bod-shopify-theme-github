@@ -423,7 +423,18 @@ line-hight:0.9;}
 
 /* Roundel with a pop-up: the whole badge is a button; a tiny underlined line sits under the text */
 .image-with-text-overlay--content button.hero-roundel { appearance: none; font-family: inherit; cursor: pointer; pointer-events: auto; }
-.image-with-text-overlay--content button.hero-roundel:not(.hero-roundel--rect) { padding: 0; }
+.image-with-text-overlay--content button.hero-roundel:not(.hero-roundel--rect):not(.hero-roundel--text) { padding: 0; }
+/* plain text: no shape at all, a set width, aligned as chosen; the position sliders still place it */
+.image-with-text-overlay--content .hero-roundel--text,
+.image-with-text-overlay--content button.hero-roundel--text { background: none; border: 0; border-radius: 0; box-shadow: none; filter: none; display: block; width: var(--rd-tw-m); max-width: calc(100% - 32px); height: auto; padding: var(--rd-pad, 0px); text-align: var(--rd-ta, left); }
+.image-with-text-overlay--content .hero-roundel--text .hero-roundel__text { padding: 0; }
+.image-with-text-overlay--content .hero-roundel--text .hero-roundel__link { text-align: inherit; }
+.image-with-text-overlay--content button.hero-roundel--text:hover,
+.image-with-text-overlay--content button.hero-roundel--text:active { filter: none; opacity: .85; }
+@media only screen and (min-width: 768px) {
+  .image-with-text-overlay--content .hero-roundel--text,
+  .image-with-text-overlay--content button.hero-roundel--text { width: var(--rd-tw-d); height: auto; }
+}
 .image-with-text-overlay--content button.hero-roundel:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 /* clickable roundel: a slight lift of the background on hover/press, whatever colour it is set to */
 .image-with-text-overlay--content button.hero-roundel { transition: filter .15s ease, transform .15s ease; }
