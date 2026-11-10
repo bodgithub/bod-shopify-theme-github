@@ -19,6 +19,7 @@
 {%- liquid
   assign servings_per_tub = s.bf_servings_per_tub | default: 45
   assign price_line = s.bf_price_line | default: 'monthly'
+  assign layout = s.bf_layout | default: 'cards'
   assign tub_cents = 0
   if base_variant
     assign tub_cents = base_variant.price
@@ -44,6 +45,12 @@
     assign k_pct = k | append: '_pct'
     assign k_free = k | append: '_free_text'
     assign k_tubs_free = k | append: '_tubs_free_text'
+    assign k_title = k | append: '_title'
+    assign k_badge = k | append: '_badge'
+    assign k_badge_style = k | append: '_badge_style'
+    assign k_note = k | append: '_note'
+    assign k_link_text = k | append: '_link_text'
+    assign k_link_tier = k | append: '_link_tier'
     assign tubs = s[k_tubs] | default: 0
     assign pct = s[k_pct] | default: 0
     assign compare = tub_cents | times: tubs
@@ -52,7 +59,7 @@
   -%}
   {%- if tubs > 0 and tub_cents > 0 -%}
     {%- if printed > 0 -%},{%- endif -%}
-    { "quantity": {{ tubs }}, "price": {{ price }}, "compare": {{ compare }}, "pct": {{ pct }}, "label": {{ s[k_label] | json }}, "months": {{ s[k_months] | default: 1 }}, "freeText": {{ s[k_free] | json }}, "tubsFreeText": {{ s[k_tubs_free] | json }} }
+    { "quantity": {{ tubs }}, "price": {{ price }}, "compare": {{ compare }}, "pct": {{ pct }}, "label": {{ s[k_label] | json }}, "months": {{ s[k_months] | default: 1 }}, "freeText": {{ s[k_free] | json }}, "tubsFreeText": {{ s[k_tubs_free] | json }}, "title": {{ s[k_title] | json }}, "badge": {{ s[k_badge] | json }}, "badgeStyle": {{ s[k_badge_style] | default: 'navy' | json }}, "note": {{ s[k_note] | json }}, "linkText": {{ s[k_link_text] | json }}, "linkTier": {{ s[k_link_tier] | default: 0 | json }} }
     {%- assign printed = printed | plus: 1 -%}
   {%- endif -%}
 {%- endfor -%}
@@ -67,6 +74,7 @@
   data-price-line="{{ price_line | escape }}"
   data-servings-per-tub="{{ servings_per_tub }}"
   data-default-tier="{{ s.bf_default_tier | default: 2 }}"
+  data-layout="{{ layout }}"
   {%- if tub_img != blank %} data-tub-image="{{ tub_img }}"{% endif -%}
 >
   <script type="application/json" data-bfps-tiers>{{ tiers_json | strip }}</script>
@@ -88,6 +96,33 @@
   </div>
 
   <div class="bfps__panel" data-bfps-panel="bundles" role="tabpanel">
+    {%- if layout == 'cards' -%}
+    {%- comment -%} Cards layout: three tier cards, then a detail panel for the chosen tier {%- endcomment -%}
+    <div class="bfc">
+      <div class="bfc__tiers" role="radiogroup" aria-label="Bundle" data-bfc-tiers></div>
+      <div class="bfc__panel">
+        <div class="bfc__head">
+          <span class="bfc__check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"/></svg></span>
+          <span class="bfc__title" data-bfc-title></span>
+          <span class="bfc__price"><s data-bfps-compare></s><strong data-bfps-price></strong></span>
+        </div>
+        <div class="bfc__note" data-bfc-note-wrap>
+          <svg class="bfc__flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6.5L4.8 18.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9.5V3"/><path d="M7.5 15h9"/></svg>
+          <span data-bfc-note></span>
+        </div>
+        <ul class="bfc__list">
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span data-bfps-ship-line></span></li>
+          <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>One-time payment, nothing renews</span></li>
+          {%- if s.bf_end_text != blank -%}<li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>Black Friday price &middot; {{ s.bf_end_text | escape }}</span></li>{%- endif -%}
+        </ul>
+        <p class="bfc__line" data-bfc-line></p>
+        <button type="button" class="bfc__swap" data-bfc-swap hidden></button>
+      </div>
+      <p class="bfps__free bfc__free-hidden" hidden><span data-bfps-free></span><span data-bfps-price-line></span></p>
+      <span data-bfps-months hidden></span><span data-bfps-tubs hidden></span><span data-bfps-shelf hidden></span><span data-bfps-ladder hidden></span>
+      <button type="button" data-bfps-minus hidden tabindex="-1"></button><button type="button" data-bfps-plus hidden tabindex="-1"></button>
+    </div>
+    {%- else -%}
     <div class="bfps__box">
       <div class="bfps__stepper">
         <button type="button" class="bfps__step bfps__step--minus" data-bfps-minus aria-label="Smaller bundle">&minus;</button>
@@ -114,6 +149,7 @@
 
       <div class="bfps__free"><p class="bfps__free-main" data-bfps-free></p><p class="bfps__free-line" data-bfps-price-line></p></div>
     </div>
+    {%- endif -%}
   </div>
 
   <div class="bfps__panel" data-bfps-panel="subscribe" role="tabpanel" hidden>
@@ -175,6 +211,53 @@
   /* the per-month line follows the free-months text on the same line (wraps naturally on narrow screens) */
   #ps1c-{{ uid }} .bfps__free-main,#ps1c-{{ uid }} .bfps__free-line{display:inline}
   #ps1c-{{ uid }} .bfps__free-line:not(:empty)::before{content:"\00b7";font-weight:800;margin:0 .4em 0 .25em}
+  /* ---- cards layout ---- */
+  #ps1c-{{ uid }} .bfc__tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 14px}
+  #ps1c-{{ uid }} .bfc__tier{position:relative;appearance:none;text-align:left;cursor:pointer;background:#fafafa;border:1px solid #c9d0f0;border-radius:5px;padding:30px 14px 18px;color:var(--bf-navy);font-family:inherit;transition:border-color .15s,background .15s}
+  #ps1c-{{ uid }} .bfc__tier.is-on{background:#fff;border:2px solid var(--bf-blue);padding:29px 13px 17px}
+  #ps1c-{{ uid }} .bfc__tier:hover{border-color:var(--bf-blue)}
+  #ps1c-{{ uid }} .bfc__badge{position:absolute;top:-13px;left:10px;font-size:12px;font-weight:700;padding:5px 10px;border-radius:6px;white-space:nowrap;line-height:1.1}
+  #ps1c-{{ uid }} .bfc__badge--navy{background:var(--bf-navy);color:#fff}
+  #ps1c-{{ uid }} .bfc__badge--lavender{background:var(--bf-light);color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfc__tier-label{display:block;font-size:22px;font-weight:800;line-height:1.1;letter-spacing:-0.02em;margin:0 0 10px}
+  #ps1c-{{ uid }} .bfc__pct{display:inline-block;background:var(--bf-light);color:var(--bf-navy);font-size:14px;font-weight:700;padding:7px 10px;border-radius:5px;margin:0 0 10px}
+  #ps1c-{{ uid }} .bfc__tier.is-on .bfc__pct{background:var(--bf-blue);color:#fff}
+  #ps1c-{{ uid }} .bfc__tier-free{display:block;font-size:14px;font-weight:500;line-height:1.3}
+  #ps1c-{{ uid }} .bfc__panel{background:#fff;border:2px solid var(--bf-blue);border-radius:5px;padding:18px 18px 16px}
+  #ps1c-{{ uid }} .bfc__head{display:flex;align-items:center;gap:12px}
+  #ps1c-{{ uid }} .bfc__check{flex:0 0 auto;width:28px;height:28px;border-radius:6px;background:var(--bf-blue);color:#fff;display:inline-grid;place-items:center}
+  #ps1c-{{ uid }} .bfc__check svg{width:16px;height:16px}
+  #ps1c-{{ uid }} .bfc__title{flex:1 1 auto;min-width:0;font-size:24px;font-weight:800;letter-spacing:-0.02em;line-height:1.1}
+  #ps1c-{{ uid }} .bfc__price{flex:0 0 auto;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+  #ps1c-{{ uid }} .bfc__price s{font-size:16px;font-weight:500;color:#6b7280}
+  #ps1c-{{ uid }} .bfc__price strong{font-size:24px;font-weight:800;letter-spacing:-0.02em}
+  #ps1c-{{ uid }} .bfc__note{display:flex;align-items:flex-start;gap:10px;background:var(--bf-light);border-radius:5px;padding:12px 14px;margin:14px 0 0;font-size:15px;font-weight:600;line-height:1.35}
+  #ps1c-{{ uid }} .bfc__note[hidden]{display:none}
+  #ps1c-{{ uid }} .bfc__flask{flex:0 0 auto;width:20px;height:20px;margin-top:1px;color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfc__list{list-style:none;margin:14px 0 0;padding:0}
+  #ps1c-{{ uid }} .bfc__list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:500;line-height:1.35;margin:0 0 8px}
+  #ps1c-{{ uid }} .bfc__list svg{flex:0 0 auto;width:16px;height:16px;margin-top:3px;color:var(--bf-blue)}
+  #ps1c-{{ uid }} .bfc__line{margin:12px 0 0;font-size:15px;font-weight:500;line-height:1.35}
+  #ps1c-{{ uid }} .bfc__line strong{font-weight:800}
+  #ps1c-{{ uid }} .bfc__line:empty{display:none}
+  #ps1c-{{ uid }} .bfc__swap{appearance:none;background:none;border:0;padding:0;margin:12px 0 0;font-family:inherit;font-size:15px;font-weight:600;color:var(--bf-blue);text-decoration:underline;text-underline-offset:4px;cursor:pointer;text-align:left}
+  #ps1c-{{ uid }} .bfc__swap[hidden]{display:none}
+  #ps1c-{{ uid }} .bfc__swap:hover{color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfc__free-hidden{display:none}
+  @media (max-width:749px){
+    #ps1c-{{ uid }} .bfc__tiers{gap:6px}
+    #ps1c-{{ uid }} .bfc__tier{padding:24px 8px 12px}
+    #ps1c-{{ uid }} .bfc__tier.is-on{padding:23px 7px 11px}
+    #ps1c-{{ uid }} .bfc__badge{left:6px;font-size:10.5px;padding:4px 7px}
+    #ps1c-{{ uid }} .bfc__tier-label{font-size:16px;margin-bottom:7px}
+    #ps1c-{{ uid }} .bfc__pct{font-size:12px;padding:5px 7px;margin-bottom:7px}
+    #ps1c-{{ uid }} .bfc__tier-free{font-size:12px}
+    #ps1c-{{ uid }} .bfc__panel{padding:14px 14px 12px}
+    #ps1c-{{ uid }} .bfc__title{font-size:19px}
+    #ps1c-{{ uid }} .bfc__price strong{font-size:20px}
+    #ps1c-{{ uid }} .bfc__price s{font-size:14px}
+    #ps1c-{{ uid }} .bfc__note,#ps1c-{{ uid }} .bfc__list li,#ps1c-{{ uid }} .bfc__line,#ps1c-{{ uid }} .bfc__swap{font-size:14px}
+  }
   @media (max-width:749px){
     #ps1c-{{ uid }} .bfps__months{font-size:26px}
     #ps1c-{{ uid }} .bfps__shelf img{height:44px}
@@ -207,6 +290,7 @@
     var servingsPerTub = parseInt(root.dataset.servingsPerTub, 10) || 45;
     var priceLine = root.dataset.priceLine || 'monthly';
     var tubImage = root.dataset.tubImage || '';
+    var layout = root.dataset.layout || 'stepper';
     var index = Math.min(Math.max((parseInt(root.dataset.defaultTier, 10) || 1) - 1, 0), tiers.length - 1);
     var shownTubs = 0;
     var mode = 'bundles';
@@ -225,7 +309,60 @@
       root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));
     }
 
+    /* tokens usable in the note and swap-link text, resolved against a tier */
+    function fill(str, tier) {
+      return String(str || '')
+        .replace(/\[price\]/g, money(tier.price)).replace(/\[compare\]/g, money(tier.compare))
+        .replace(/\[save\]/g, money(tier.compare - tier.price)).replace(/\[pct\]/g, tier.pct + '%').replace(/\[label\]/g, tier.label || '');
+    }
+    function renderCards() {
+      var t = tiers[index];
+      var wrap = $('[data-bfc-tiers]');
+      if (!wrap.children.length) {
+        tiers.forEach(function (tier, i) {
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'bfc__tier'; b.setAttribute('role', 'radio');
+          var html = '';
+          if (tier.badge) { html += '<span class="bfc__badge bfc__badge--' + (tier.badgeStyle === 'lavender' ? 'lavender' : 'navy') + '">' + esc(tier.badge) + '</span>'; }
+          html += '<span class="bfc__tier-label">' + esc(tier.label) + '</span>';
+          html += '<span class="bfc__pct">' + tier.pct + '% off</span>';
+          if (tier.freeText) { html += '<span class="bfc__tier-free">' + esc(tier.freeText) + '</span>'; }
+          b.innerHTML = html;
+          b.addEventListener('click', function () { go(i); });
+          wrap.appendChild(b);
+        });
+      }
+      [].forEach.call(wrap.children, function (b, i) { b.classList.toggle('is-on', i === index); b.setAttribute('aria-checked', i === index ? 'true' : 'false'); });
+      $('[data-bfc-title]').textContent = t.title || (t.label + ' supply');
+      $('[data-bfps-compare]').textContent = t.compare > t.price ? money(t.compare) : '';
+      $('[data-bfps-price]').textContent = money(t.price);
+      var noteWrap = $('[data-bfc-note-wrap]');
+      if (t.note) { $('[data-bfc-note]').textContent = fill(t.note, t); noteWrap.hidden = false; } else { noteWrap.hidden = true; }
+      $('[data-bfps-ship-line]').textContent = (t.quantity === 2 ? 'Both' : 'All ' + t.quantity) + ' tubs ship together, free';
+      var saving = t.compare - t.price;
+      var line = $('[data-bfc-line]'); line.innerHTML = '';
+      if (priceLine === 'daily') {
+        var sd = document.createElement('strong'); sd.textContent = money(Math.round(t.price / (t.quantity * servingsPerTub))) + ' a day';
+        line.appendChild(sd);
+      } else {
+        line.appendChild(document.createTextNode('Works out at '));
+        var sm = document.createElement('strong'); sm.textContent = money(Math.round(t.price / t.months)) + ' a month';
+        line.appendChild(sm);
+      }
+      if (saving > 0) { line.appendChild(document.createTextNode(' \u00b7 you save ' + money(saving))); }
+      var swap = $('[data-bfc-swap]');
+      var target = tiers[(parseInt(t.linkTier, 10) || 0) - 1];
+      if (t.linkText && target && target !== t) {
+        swap.textContent = fill(t.linkText, target);
+        swap.hidden = false;
+        swap.onclick = function () { go(tiers.indexOf(target)); };
+      } else { swap.hidden = true; swap.onclick = null; }
+      announce();
+    }
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
     function render() {
+      if (layout === 'cards') { renderCards(); return; }
       var t = tiers[index];
       var next = tiers[index + 1];
 
