@@ -16,14 +16,14 @@
           "type": "bod_stars",
           "settings": {
             "star_style": "chunky",
-            "star_size": 19,
-            "star_gap": 10,
+            "star_size": 15,
+            "star_gap": 2,
             "star_round": 0,
             "color_on": "#ddbd6d",
             "color_off": "#e6e6e6",
             "show_label": true,
-            "label_text": "Trusted by 1,200 women",
-            "cta_text": "",
+            "label_text": "Stars",
+            "cta_text": "(Real results)",
             "hide_number": false,
             "label_color": "#14307c",
             "label_size": 14,
@@ -87,7 +87,7 @@
             "frosted_radius": 16,
             "benefit_1": "Studied in women before and after menopause*",
             "benefit_2": "The full 4g clinical dose, daily",
-            "benefit_3": "Third-party tested (ISO 17025)",
+            "benefit_3": "Dissolves in coffee",
             "benefit_4": "",
             "benefit_5": ""
           }
@@ -109,8 +109,9 @@
         },
         "space_UNPyXd": {
           "type": "space",
+          "disabled": true,
           "settings": {
-            "height": 110
+            "height": 30
           }
         }
       },
@@ -128,13 +129,13 @@
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Peri_Hero_Banner_14.png",
-        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_6.jpg",
+        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_8_905aa7ad-2afe-42e8-a006-369a90b3db55.png",
         "image_parallax": false,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-fit",
         "full_width": true,
         "content_width": "medium",
-        "content_position": "bottom-left",
+        "content_position": "top-left",
         "text_alignment": "left",
         "text_color": "#3447af",
         "overlay_color": "#2c2d2e",
