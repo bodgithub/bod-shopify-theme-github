@@ -167,7 +167,7 @@
 										uid: block.id %}
 								</div>
 							{%- when 'benefits' -%}
-								<div class="benefits-block">
+								<div class="benefits-block{% if block.settings.frosted %} benefits-block--frosted{% endif %}" style="--bn-icon-gap: {{ block.settings.icon_gap | default: 10 }}px; --bn-fs-m: {{ block.settings.text_size_mobile | default: 15 }}px; --bn-pad-m: {{ block.settings.item_padding_mobile | default: 8 }}px; --bn-tint: {{ block.settings.frosted_tint | default: 25 | divided_by: 100.0 }}; --bn-blur: {{ block.settings.frosted_blur | default: 10 }}px; --bn-radius: {{ block.settings.frosted_radius | default: 16 }}px;" {{ block.shopify_attributes }}>
 									
 									<div class="benefits-list">
 										{% if block.settings.benefits-title != blank %}
@@ -959,6 +959,81 @@
           "id": "border_color",
           "label": "Border + text color",
           "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "icon_gap",
+          "label": "Space right of the icon",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 10
+        },
+        {
+          "type": "header",
+          "content": "Phones"
+        },
+        {
+          "type": "range",
+          "id": "text_size_mobile",
+          "label": "Text size on phones",
+          "min": 12,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "range",
+          "id": "item_padding_mobile",
+          "label": "Space above and below each line on phones",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 8
+        },
+        {
+          "type": "header",
+          "content": "Frosted glass"
+        },
+        {
+          "type": "checkbox",
+          "id": "frosted",
+          "label": "Frosted glass background",
+          "default": false,
+          "info": "A translucent, blurred panel behind the benefits."
+        },
+        {
+          "type": "range",
+          "id": "frosted_tint",
+          "label": "White tint",
+          "min": 0,
+          "max": 80,
+          "step": 5,
+          "unit": "%",
+          "default": 25
+        },
+        {
+          "type": "range",
+          "id": "frosted_blur",
+          "label": "Blur",
+          "min": 0,
+          "max": 24,
+          "step": 2,
+          "unit": "px",
+          "default": 10
+        },
+        {
+          "type": "range",
+          "id": "frosted_radius",
+          "label": "Corner radius",
+          "min": 0,
+          "max": 32,
+          "step": 2,
+          "unit": "px",
+          "default": 16
         },
         {
           "type": "text",
