@@ -128,7 +128,8 @@
 #ps1c-{{ uid }} .ps-modal__x{position:absolute; top:12px; right:12px; width:28px; height:28px; display:grid; place-items:center; border:none; background:transparent; color:var(--ps-ink-2); cursor:pointer; border-radius:8px;}
 #ps1c-{{ uid }} .ps-modal__x:hover{color:var(--ps-ink); background:rgba(0,0,0,0.05);}
 #ps1c-{{ uid }} .ps-modal__x svg{width:16px; height:16px;}
-#ps1c-{{ uid }} .ps-modal__t{font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--ps-ink); margin:0 28px 3px 0;}
+#ps1c-{{ uid }} .ps-modal__t{font-size:20px; font-weight:400; letter-spacing:0; line-height:1.25; text-align:center; color:var(--ps-ink); margin:0 0 20px;}
+@media (min-width:750px){#ps1c-{{ uid }} .ps-modal__t{font-size:36px;}}
 {%- if s.modal_border != blank -%}
 #ps1c-{{ uid }} .ps-modal__box{padding:32px 24px;}
 #ps1c-{{ uid }} .ps-modal__t{font-size:20px; font-weight:400; letter-spacing:0; line-height:1.25; text-align:center; margin:0 0 20px;}
