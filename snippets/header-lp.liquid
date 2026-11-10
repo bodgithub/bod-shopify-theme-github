@@ -3,11 +3,11 @@
   Rendered by sections/header.liquid instead of the normal header style when the
   current template suffix is listed in the header's "Landing page templates" setting.
   Layout (same 3-column grid as style3): burger (side drawer with shop links only)
-  · logo in the button colour · optional cart icon + "Try risk-free" CTA.
+  · logo in the button colour · optional cart icon + "Get the bundle" CTA.
 {%- endcomment -%}
 
 {%- liquid
-  assign cta_text = header_settings.lp_cta_text | default: 'Try risk-free'
+  assign cta_text = header_settings.lp_cta_text | default: 'Get the bundle'
   assign cta_link = header_settings.lp_cta_link | default: '#Product-Slider'
   assign link_1_label = header_settings.lp_link_1_label | default: 'Inositol powder'
   assign link_1_url = header_settings.lp_link_1_url | default: '/products/myo-d-chiro-inositol-powder'

@@ -100,7 +100,18 @@
   #shopify-section-{{ uid }} .sc__bar[data-state="after"] .sc__bar-btn--after { display: inline-flex; }
   #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-count="0"] .sc__bar-count { display: none; }
   /* after scrolling past, with a plan selector on the page: product · supply dropdown · add to cart (price) */
-  #shopify-section-{{ uid }} .sc__bar-inner--plan { display: none; }
+  #shopify-section-{{ uid }} .sc__bar-inner--plan, #shopify-section-{{ uid }} .sc__bar-inner--bundle { display: none; }
+  /* after scrolling past, on a page set up for the bundle: product image · bundle line · Get the bundle */
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-bundle] .sc__bar-inner:not(.sc__bar-inner--bundle) { display: none; }
+  #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-bundle] .sc__bar-inner--bundle { display: flex; justify-content: space-between; gap: 12px; }
+  #shopify-section-{{ uid }} .sc__bar-bundle { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1 1 auto; }
+  #shopify-section-{{ uid }} .sc__bar-bundle-text { font-size: 14px; line-height: 1.3; font-weight: var(--font-body-bold-weight, 500); min-width: 0; }
+  #shopify-section-{{ uid }} .sc__bar-bundle-text strong { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .sc__bar-err { display: none; flex-basis: 100%; margin: 0; font-size: 12.5px; color: #b42318; }
+  #shopify-section-{{ uid }} .sc__bar-err.is-shown { display: block; }
+  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--bundle { display: inline-flex; align-items: center; justify-content: center; gap: 7px; appearance: none; border: 0; cursor: pointer; font: inherit; white-space: nowrap; min-height: 48px; padding: 0 18px; border-radius: 10px; background: #3447af; color: #ffffff; font-weight: 600; }
+  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--bundle:hover, #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--bundle:focus-visible { background: #1a2874; color: #b9c2f5; }
+  #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--bundle.is-loading { opacity: .7; pointer-events: none; }
   #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-inner:not(.sc__bar-inner--plan) { display: none; }
   #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-plan] .sc__bar-inner--plan { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "prod prod" "sel add"; gap: 8px 10px; align-items: center; }
   #shopify-section-{{ uid }} .sc__bar-prod { grid-area: prod; display: flex; align-items: center; gap: 10px; min-width: 0; }
@@ -137,6 +148,8 @@
     #shopify-section-{{ uid }} .sc__bar-img { width: 48px; height: 48px; }
     #shopify-section-{{ uid }} .sc__bar-prodname { font-size: 15px; white-space: normal; }
     #shopify-section-{{ uid }} .sc__bar-sel { flex: 0 0 auto; width: 280px; }
+    #shopify-section-{{ uid }} .sc__bar-bundle-text { font-size: 15px; }
+    #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--bundle { min-height: 52px; padding: 0 24px; font-size: 15px; }
     #shopify-section-{{ uid }} .sc__bar-seltitle { font-size: 15px; }
     #shopify-section-{{ uid }} .sc__bar .sc__bar-btn--add { padding: 0 24px; font-size: 15px; }
   }
@@ -185,7 +198,8 @@
   </div>
 </div>
 {%- if s.sticky_bar -%}
-<div class="sc__bar" data-sc-bar data-state="hidden" role="status" aria-live="polite">
+{%- assign bundle_variant = s.bar_bundle_variant | strip -%}
+<div class="sc__bar" data-sc-bar data-state="hidden" role="status" aria-live="polite"{% if bundle_variant != blank %} data-bundle="{{ bundle_variant }}" data-bundle-qty="{{ s.bar_bundle_qty | default: 4 }}"{% endif %}>
   <div class="sc__bar-inner">
     <span class="sc__bar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 12V5.3a1.6 1.6 0 0 1 3.2 0V11"/><path d="M12.7 10.6a1.6 1.6 0 0 1 3.2 0V12"/><path d="M15.9 11.6a1.6 1.6 0 0 1 3.2 0v3.2c0 3.6-2.9 6.4-6.4 6.4h-1c-1.7 0-3.3-.8-4.3-2.2l-3-4.1a1.5 1.5 0 0 1 2.3-1.9l2.8 2.9"/><path d="M6.6 5.2a4.6 4.6 0 0 1 2.1-2.4M14.9 2.6a4.6 4.6 0 0 1 2.3 2.2"/></svg></span>
     <div class="sc__bar-text">
@@ -217,6 +231,20 @@
       <span>{{ s.bar_add_label | default: 'Add to cart' }}</span><span class="sc__bar-dash" aria-hidden="true">&mdash;</span><span class="sc__bar-price" data-sc-bar-price></span>
     </button>
   </div>
+  {%- if bundle_variant != blank -%}
+  {%- comment -%} after scrolling past, bundle mode: adds the bundle variant x quantity straight to the cart (no discount logic here yet) {%- endcomment -%}
+  <div class="sc__bar-inner sc__bar-inner--bundle">
+    <div class="sc__bar-bundle">
+      {%- if product and product.featured_image -%}<img class="sc__bar-img" src="{{ product.featured_image | image_url: width: 120 }}" alt="" width="48" height="48" loading="lazy">{%- endif -%}
+      <span class="sc__bar-bundle-text">{{ s.bar_bundle_text }}</span>
+    </div>
+    <button type="button" class="sc__btn sc__bar-btn sc__bar-btn--bundle" data-sc-bar-bundle>
+      <svg class="sc__bar-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+      <span data-sc-bar-bundle-label>{{ s.bar_bundle_label | default: 'Get the bundle' }}</span>
+    </button>
+    <p class="sc__bar-err" data-sc-bar-err role="alert"></p>
+  </div>
+  {%- endif -%}
 </div>
 {%- endif -%}
 
@@ -255,7 +283,7 @@
     if(r.bottom <= vh * 0.35){ state = 'after'; }
     else if(r.top < vh * 0.85){ state = 'in'; }
     bar.setAttribute('data-state', state);
-    if(state === 'after' && !bar.hasAttribute('data-plan')){ syncPlan(); }
+    if(state === 'after' && !bar.hasAttribute('data-bundle') && !bar.hasAttribute('data-plan')){ syncPlan(); }
     /* Shopify's theme-preview bar sits over the bottom edge; lift ours above it */
     var pb = document.getElementById('PBarNextFrameWrapper') || document.getElementById('preview-bar-iframe');
     bar.style.bottom = pb && pb.offsetHeight ? pb.offsetHeight + 'px' : '';
@@ -286,7 +314,7 @@
     optsBuilt = true;
   }
   function syncPlan(){
-    if(!bar) return;
+    if(!bar || bar.hasAttribute('data-bundle')) return;
     var p = getPs(); var c = p && p.querySelector('[data-ps1c-card].is-selected');
     if(!c){ bar.removeAttribute('data-plan'); return; }
     buildOptions(p);
@@ -304,6 +332,44 @@
   }
   document.addEventListener('ps1c:select', syncPlan);
   if(addBtn){ addBtn.addEventListener('click', function(){ var p = getPs(); var b = p && p.querySelector('[data-ps1c-submit]'); if(b){ b.click(); } }); }
+  /* bundle mode: add the configured variant x quantity to the cart and open the drawer (same calls the plan selector makes) */
+  var bundleBtn = bar && bar.querySelector('[data-sc-bar-bundle]');
+  if(bundleBtn){
+    var bundleLabel = bundleBtn.querySelector('[data-sc-bar-bundle-label]'), bundleErr = bar.querySelector('[data-sc-bar-err]');
+    var bundleText = bundleLabel ? bundleLabel.textContent : '';
+    var rootUrl = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
+    function bundleFail(m){ if(bundleErr){ bundleErr.textContent = m; bundleErr.classList.add('is-shown'); } }
+    function openCart(response){
+      try {
+        [ { id:'Cart', section:'main-cart', selector:'.thb-cart-form' },
+          { id:'Cart-Drawer', section:'cart-drawer', selector:'.cart-drawer' },
+          { id:'cart-drawer-toggle', section:'cart-bubble', selector:'.thb-item-count' }
+        ].forEach(function(sc){
+          if(!document.getElementById(sc.id) || !response.sections || !response.sections[sc.section]) return;
+          var host = document.getElementById(sc.id);
+          var el = host.querySelector(sc.selector) || host;
+          var frag = new DOMParser().parseFromString(response.sections[sc.section], 'text/html').querySelector(sc.selector);
+          if(frag) el.innerHTML = frag.innerHTML;
+          if(typeof CartDrawer !== 'undefined'){ try{ new CartDrawer(); }catch(e){} }
+          if(typeof Cart !== 'undefined'){ try{ new Cart().renderContents(response); }catch(e){} }
+        });
+      } catch(e){}
+      var drawer = document.getElementById('Cart-Drawer');
+      if(drawer){ document.body.classList.add('open-cc'); drawer.classList.add('active'); document.dispatchEvent(new CustomEvent('cart-drawer:open')); }
+      else { window.location = rootUrl + 'cart'; }
+    }
+    bundleBtn.addEventListener('click', function(){
+      var id = bar.getAttribute('data-bundle'), qty = parseInt(bar.getAttribute('data-bundle-qty'), 10) || 1;
+      if(!id){ bundleFail('This bundle needs a variant ID — set it in the theme editor.'); return; }
+      if(bundleErr){ bundleErr.classList.remove('is-shown'); }
+      bundleBtn.classList.add('is-loading'); if(bundleLabel){ bundleLabel.textContent = 'Adding…'; }
+      var items = [{ id: id, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } }];
+      fetch(rootUrl + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+      .then(function(r){ return r.json(); })
+      .then(function(response){ if(response && response.status){ throw response; } bundleBtn.classList.remove('is-loading'); if(bundleLabel){ bundleLabel.textContent = bundleText; } openCart(response); })
+      .catch(function(e){ bundleBtn.classList.remove('is-loading'); if(bundleLabel){ bundleLabel.textContent = bundleText; } bundleFail((e && (e.description || e.message)) || 'Could not add to cart'); });
+    });
+  }
   /* the buy box sits further down the page, so look again once the DOM is complete */
   syncPlan();
   if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', syncPlan); } else { setTimeout(syncPlan, 0); }
@@ -341,6 +407,11 @@
     { "type": "text", "id": "bar_shop_link", "label": "Shop button link", "default": "#Product-Slider" },
     { "type": "text", "id": "bar_change_label", "label": "Change link text", "default": "Change selection" },
     { "type": "text", "id": "bar_add_label", "label": "Add to cart button (when the page has a plan selector)", "default": "Add to cart" },
+    { "type": "header", "content": "Bundle mode (after scrolling past)", "info": "Set a variant ID and the bar shows the line below with a button that adds that variant x quantity straight to the cart, instead of the plan dropdown. Leave the ID empty to keep the plan dropdown. No discount is applied here." },
+    { "type": "text", "id": "bar_bundle_variant", "label": "Bundle variant ID", "info": "Shopify variant ID of the tub to add (numbers only)." },
+    { "type": "range", "id": "bar_bundle_qty", "label": "Quantity to add", "min": 1, "max": 8, "step": 1, "default": 4 },
+    { "type": "inline_richtext", "id": "bar_bundle_text", "label": "Bundle line", "default": "6-month bundle · 45% off · Ends Nov 30" },
+    { "type": "text", "id": "bar_bundle_label", "label": "Bundle button", "default": "Get the bundle" },
     { "type": "header", "content": "Colours" },
     { "type": "color", "id": "bg", "label": "Background", "default": "#f2eeea" },
     { "type": "color", "id": "card_bg", "label": "Group card", "default": "#ffffff" },
