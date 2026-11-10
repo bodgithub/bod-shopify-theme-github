@@ -325,3 +325,15 @@ line-hight:0.9;}
 /* Hero star rating block (same component as the buy box) */
 .image-with-text-overlay--content .hero-stars { display: block; }
 .image-with-text-overlay--content .hero-stars .bod-stars { margin-top: var(--bod-margin-top, 0); }
+
+/* Hero text block padding from the editor: right padding is desktop-only (phones keep the full width); left and bottom apply everywhere */
+.image-with-text-overlay--content .rte { padding: 0 0 var(--rte-pad-bottom, 0) var(--rte-pad-left, 0); }
+@media only screen and (min-width: 768px) {
+  .image-with-text-overlay--content .rte { padding-right: var(--rte-pad-right, 0); }
+}
+/* Hero body text on phones matches the body copy in the sections below (15px) */
+@media only screen and (max-width: 767px) {
+  .image-with-text-overlay--content .rte,
+  .image-with-text-overlay--content .rte p,
+  .image-with-text-overlay--content .rte :is(h3, h4, h5, h6) { font-size: 15px; }
+}

@@ -100,7 +100,7 @@
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
-  style="--description-color: {{ block.settings.description_color }}; padding: 0 {{ block.settings.pad_right | default: 0 }}px {{ block.settings.pad_bottom | default: 0 }}px {{ block.settings.pad_left | default: 0 }}px;"
+  style="--description-color: {{ block.settings.description_color }}; --rte-pad-right: {{ block.settings.pad_right | default: 0 }}px; --rte-pad-bottom: {{ block.settings.pad_bottom | default: 0 }}px; --rte-pad-left: {{ block.settings.pad_left | default: 0 }}px;"
   {{ block.shopify_attributes }}
 >
   {{ block.settings.text }}
