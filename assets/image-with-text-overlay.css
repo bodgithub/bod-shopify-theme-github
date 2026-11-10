@@ -470,3 +470,13 @@ line-hight:0.9;}
   .image-with-text-overlay--content .hero-roundel--anchor-left { left: var(--rd-xpx-d); right: auto; }
   .image-with-text-overlay--content .hero-roundel--anchor-right { left: auto; right: var(--rd-xpx-d); }
 }
+
+/* Heading ribbon: the box is pushed 100vw past one edge (the banner clips it), so the ribbon always touches the screen edge; the free end gets a zigzag */
+.image-with-text-overlay--content div.hero-ribbon { display: inline-block; width: auto; max-width: none; box-sizing: border-box; background: var(--ribbon-bg, #fff); padding-top: 0.28em; padding-bottom: 0.28em; margin-top: 0.3em; margin-bottom: 0.3em; }
+.image-with-text-overlay--content div.hero-ribbon :is(h1, h2, h3, h4, h5, h6, p) { margin: 0; }
+.image-with-text-overlay--content div.hero-ribbon--left { margin-left: -100vw; padding-left: calc(100vw + 20px); padding-right: 34px; clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 12.5%, 100% 25%, calc(100% - 12px) 37.5%, 100% 50%, calc(100% - 12px) 62.5%, 100% 75%, calc(100% - 12px) 87.5%, 100% 100%, 0 100%); }
+.image-with-text-overlay--content div.hero-ribbon--right { margin-right: -100vw; padding-right: calc(100vw + 20px); padding-left: 34px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 12px 87.5%, 0 75%, 12px 62.5%, 0 50%, 12px 37.5%, 0 25%, 12px 12.5%); }
+@media only screen and (max-width: 767px) {
+  .image-with-text-overlay--content div.hero-ribbon--left { padding-left: calc(100vw + 16px); padding-right: 28px; }
+  .image-with-text-overlay--content div.hero-ribbon--right { padding-right: calc(100vw + 16px); padding-left: 28px; }
+}
