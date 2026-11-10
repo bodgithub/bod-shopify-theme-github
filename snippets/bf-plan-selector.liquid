@@ -21,6 +21,10 @@
   assign price_line = s.bf_price_line | default: 'monthly'
   assign layout = s.bf_layout | default: 'cards'
   assign has_tier_foot = false
+  assign show_tabs = true
+  if s.bf_show_tabs == false
+    assign show_tabs = false
+  endif
   assign tub_cents = 0
   if base_variant
     assign tub_cents = base_variant.price
@@ -91,6 +95,7 @@
     </div>
   {%- endif -%}
 
+  {%- if show_tabs -%}
   <div class="bfps__tabs" role="tablist">
     <button type="button" class="bfps__tab is-active" role="tab" aria-selected="true" data-bfps-tab="bundles">
       Black Friday bundles<small data-bfps-max-saving></small>
@@ -99,6 +104,7 @@
       Subscribe<small>{{ s.bf_subscribe_tab_note | default: 'Save up to 15%' | escape }}</small>
     </button>
   </div>
+  {%- endif -%}
 
   <div class="bfps__panel" data-bfps-panel="bundles" role="tabpanel">
     {%- if layout == 'cards' -%}
@@ -157,9 +163,11 @@
     {%- endif -%}
   </div>
 
+  {%- if show_tabs -%}
   <div class="bfps__panel" data-bfps-panel="subscribe" role="tabpanel" hidden>
     {{ subscribe_html }}
   </div>
+  {%- endif -%}
   {%- if s.bf_footnote != blank or has_tier_foot -%}
   <details class="bfps__foot" data-bfps-foot>
     <summary class="bfps__foot-sum"><span>*See the studies</span><svg class="bfps__foot-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></summary>

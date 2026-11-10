@@ -3553,8 +3553,9 @@
         },
         { "type": "text", "id": "bf_banner_text", "label": "Banner text", "default": "Black Friday: up to 55% off" },
         { "type": "text", "id": "bf_end_text", "label": "Offer end text", "default": "Ends Sun, Nov 30" },
+        { "type": "checkbox", "id": "bf_show_tabs", "label": "Show the Black Friday / Subscribe tabs", "default": true, "info": "Off = bundles only; the subscription cards are not shown while Black Friday is on." },
         { "type": "text", "id": "bf_subscribe_tab_note", "label": "Subscribe tab note", "default": "Save up to 15%" },
-        { "type": "richtext", "id": "bf_footnote", "label": "Study footnote", "info": "Shown in small print under the bundles. Required whenever a bundle note carries an asterisk; the approved wording is in brand/product-facts.md." },
+        { "type": "richtext", "id": "bf_footnote", "label": "Study footnote (fallback)", "info": "Inside the collapsed \"*See the studies\" line under the bundles. Used when the selected bundle has no footnote of its own. Approved wording is in brand/product-facts.md." },
         { "type": "image_picker", "id": "bf_tub_image", "label": "Tub thumbnail (transparent PNG)", "info": "Empty = the product image." },
         { "type": "number", "id": "bf_servings_per_tub", "label": "Servings per tub", "default": 45 },
         {
@@ -3581,6 +3582,7 @@
         { "type": "text", "id": "bf_tier_1_note", "label": "Highlighted note (cards layout)", "info": "Tokens: [price], [compare], [save], [pct], [label]." },
         { "type": "text", "id": "bf_tier_1_link_text", "label": "Swap link text (cards layout)", "default": "Most women choose 6 months \u2192 save [save]", "info": "Tokens are filled from the bundle the link points to." },
         { "type": "select", "id": "bf_tier_1_link_tier", "label": "Swap link points to", "default": "2", "options": [ { "value": "0", "label": "No link" }, { "value": "1", "label": "Bundle 1" }, { "value": "2", "label": "Bundle 2" }, { "value": "3", "label": "Bundle 3" } ] },
+        { "type": "textarea", "id": "bf_tier_1_footnote", "label": "Study footnote for this bundle", "info": "Shown under \"*See the studies\" while this bundle is selected." },
         { "type": "header", "content": "Bundle 2" },
         { "type": "text", "id": "bf_tier_2_label", "label": "Label", "default": "6 months" },
         { "type": "number", "id": "bf_tier_2_tubs", "label": "Tubs", "default": 4 },
@@ -3594,6 +3596,7 @@
         { "type": "text", "id": "bf_tier_2_note", "label": "Highlighted note (cards layout)", "info": "Tokens: [price], [compare], [save], [pct], [label]." },
         { "type": "text", "id": "bf_tier_2_link_text", "label": "Swap link text (cards layout)", "default": "Already on inositol? 12 months at [pct] \u2192", "info": "Tokens are filled from the bundle the link points to." },
         { "type": "select", "id": "bf_tier_2_link_tier", "label": "Swap link points to", "default": "3", "options": [ { "value": "0", "label": "No link" }, { "value": "1", "label": "Bundle 1" }, { "value": "2", "label": "Bundle 2" }, { "value": "3", "label": "Bundle 3" } ] },
+        { "type": "textarea", "id": "bf_tier_2_footnote", "label": "Study footnote for this bundle", "info": "Shown under \"*See the studies\" while this bundle is selected." },
         { "type": "header", "content": "Bundle 3" },
         { "type": "text", "id": "bf_tier_3_label", "label": "Label", "default": "12 months" },
         { "type": "number", "id": "bf_tier_3_tubs", "label": "Tubs", "default": 8 },
@@ -3607,6 +3610,7 @@
         { "type": "text", "id": "bf_tier_3_note", "label": "Highlighted note (cards layout)", "info": "Tokens: [price], [compare], [save], [pct], [label]." },
         { "type": "text", "id": "bf_tier_3_link_text", "label": "Swap link text (cards layout)", "info": "Tokens are filled from the bundle the link points to." },
         { "type": "select", "id": "bf_tier_3_link_tier", "label": "Swap link points to", "default": "0", "options": [ { "value": "0", "label": "No link" }, { "value": "1", "label": "Bundle 1" }, { "value": "2", "label": "Bundle 2" }, { "value": "3", "label": "Bundle 3" } ] },
+        { "type": "textarea", "id": "bf_tier_3_footnote", "label": "Study footnote for this bundle", "info": "Shown under \"*See the studies\" while this bundle is selected." },
         {
           "type": "header",
           "content": "Subscribe toggle & shipping"
