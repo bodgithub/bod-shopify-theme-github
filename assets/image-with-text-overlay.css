@@ -517,3 +517,10 @@ line-hight:0.9;}
 /* Ribbon: single-point (arrow) end */
 .image-with-text-overlay--content div.hero-ribbon--left.hero-ribbon--zig1 { clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%); }
 .image-with-text-overlay--content div.hero-ribbon--right.hero-ribbon--zig1 { clip-path: polygon(16px 0, 100% 0, 100% 100%, 16px 100%, 0 50%); }
+
+/* Hero white button: same box as the other hero buttons (the theme's global .button.white rule pads it to 35px) and the current button blue for the label */
+.image-with-text-overlay--content .button.white { padding: 17px 30px !important; height: 50px; background: #fff !important; color: var(--solid-button-background, #3447af) !important; }
+.image-with-text-overlay--content .button.white:hover, .image-with-text-overlay--content .button.white:focus-visible { background: #f0f0f0 !important; color: #1a2874 !important; }
+@media only screen and (max-width: 767px) {
+  .image-with-text-overlay--content .button.white { padding-left: 20px !important; padding-right: 20px !important; height: auto; }
+}
