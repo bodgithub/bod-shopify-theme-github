@@ -140,21 +140,21 @@
             "popup_title": "What 6 months looked like in the research",
             "popup_text": "<p>80 women past menopause, all with metabolic syndrome, took 4g of myo-inositol a day alongside a diet for six months. That is the same daily amount as two scoops of Bodology.</p><p>Insulin resistance (measured as HOMA-IR) fell by 75% in the myo-inositol group, far more than with diet alone. Blood pressure, triglycerides and HDL cholesterol improved too.</p>",
             "popup_small": "*Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Results in studies may not reflect individual outcomes.",
-            "text_color": "#FFFFFF",
-            "bg_color": "#3447AF",
-            "border_color": "#FFFFFF",
+            "text_color": "#ffffff",
+            "bg_color": "#3447af",
+            "border_color": "#ffffff",
             "border_width": 1,
+            "anchor": "left",
             "size_desktop": 110,
             "text_size_desktop": 14,
             "x_desktop": 38,
+            "x_desktop_px": 820,
             "y_desktop": 20,
             "size_mobile": 85,
             "text_size_mobile": 11,
             "x_mobile": 48,
-            "y_mobile": 92,
-            "anchor": "left",
-            "x_desktop_px": 820,
-            "x_mobile_px": 245
+            "x_mobile_px": 245,
+            "y_mobile": 92
           }
         }
       },
@@ -783,6 +783,7 @@
         },
         "bundle_upsell_main": {
           "type": "bundle_upsell",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Bundle-14_c8f2e761-3a41-4162-a424-61484e071f67.png",
             "title": "Bundle + Save 25%",
@@ -816,13 +817,13 @@
           "settings": {
             "pill_text": "",
             "pill_style": "outline",
-            "pill_color": "#3447af",
+            "pill_color": "#182769",
             "title": "Recommended by experts",
             "headline_style": "sans",
             "heading_size": 17,
             "heading_align": "center",
             "subtitle": "The dietitians and clinicians who use myo + D-chiro inositol with the women they care for.",
-            "title_color": "#4d61cf",
+            "title_color": "#182769",
             "text_color": "#1a2874",
             "accent_color": "#3447af",
             "background": "white",
@@ -857,7 +858,7 @@
         "trust_circles_Ln9WVk": {
           "type": "trust_circles",
           "settings": {
-            "headline": "Every batch, independently verified",
+            "headline": "Quality verified",
             "headline_size": 16,
             "coa_enable": true,
             "coa_link_text": "Read our COA",
