@@ -55,10 +55,22 @@
             "star_color": "#4d61cf"
           }
         },
+        "text_QrMzJX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>BLACK FRIDAY • ENDS NOV 30</p>",
+            "description_color": "#182769",
+            "description_size": "small",
+            "pad_left": 0,
+            "pad_right": 0,
+            "pad_top": 0,
+            "pad_bottom": 4
+          }
+        },
         "heading_AyEgTw": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Try inositol for 6 months for the price of ~3*&nbsp;</h2><p>(Ends Nov 30)</p>",
+            "text": "<h2>Try inositol for 6 months for the price of ~3*&nbsp;</h2>",
             "heading_color": "#FFFFFF",
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 22,
@@ -66,7 +78,7 @@
             "body_size_desktop": 12,
             "body_size_mobile": 12,
             "margin_top": 0,
-            "margin_bottom": 14,
+            "margin_bottom": 6,
             "pad_right_desktop": 96,
             "ribbon": true,
             "ribbon_side": "left",
@@ -234,6 +246,7 @@
       "block_order": [
         "stars_peri",
         "heading_peri",
+        "text_QrMzJX",
         "heading_AyEgTw",
         "text_czCtJM",
         "heading_44CfCC",
