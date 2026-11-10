@@ -408,7 +408,8 @@ line-hight:0.9;}
 .image-with-text-overlay--content .hero-roundel--double { box-shadow: 0 0 0 3px var(--rd-bg-solid, #fff), 0 0 0 calc(3px + var(--rd-bw)) var(--rd-border), var(--rd-drop, 0 0 0 0 transparent); }
 .image-with-text-overlay--content .hero-roundel--starburst { box-shadow: none; filter: drop-shadow(var(--rd-drop, 0 0 0 transparent)); }
 /* rounded rectangle: sized by its text instead of a fixed circle */
-.image-with-text-overlay--content .hero-roundel--rect { border-radius: 6px; width: auto; height: auto; max-width: calc(50% - 16px); padding: calc(6px + var(--rd-pad, 0px)) calc(10px + var(--rd-pad, 0px)); }
+.image-with-text-overlay--content .hero-roundel--rect,
+.image-with-text-overlay--content button.hero-roundel--rect { border-radius: 6px; width: auto; height: auto; max-width: calc(50% - 16px); padding: calc(6px + var(--rd-pad, 0px)) calc(10px + var(--rd-pad, 0px)); }
 .image-with-text-overlay--content .hero-roundel--rect .hero-roundel__text { padding: 0; }
 .image-with-text-overlay--content .hero-roundel--starburst { border: 0; border-radius: 0; background: var(--rd-border); clip-path: polygon(50.0% 0.0%, 55.7% 6.4%, 62.9% 1.7%, 66.8% 9.3%, 75.0% 6.7%, 76.8% 15.1%, 85.4% 14.6%, 84.9% 23.2%, 93.3% 25.0%, 90.7% 33.2%, 98.3% 37.1%, 93.6% 44.3%, 100.0% 50.0%, 93.6% 55.7%, 98.3% 62.9%, 90.7% 66.8%, 93.3% 75.0%, 84.9% 76.8%, 85.4% 85.4%, 76.8% 84.9%, 75.0% 93.3%, 66.8% 90.7%, 62.9% 98.3%, 55.7% 93.6%, 50.0% 100.0%, 44.3% 93.6%, 37.1% 98.3%, 33.2% 90.7%, 25.0% 93.3%, 23.2% 84.9%, 14.6% 85.4%, 15.1% 76.8%, 6.7% 75.0%, 9.3% 66.8%, 1.7% 62.9%, 6.4% 55.7%, 0.0% 50.0%, 6.4% 44.3%, 1.7% 37.1%, 9.3% 33.2%, 6.7% 25.0%, 15.1% 23.2%, 14.6% 14.6%, 23.2% 15.1%, 25.0% 6.7%, 33.2% 9.3%, 37.1% 1.7%, 44.3% 6.4%); }
 .image-with-text-overlay--content .hero-roundel--starburst::before { content: ""; position: absolute; inset: var(--rd-bw); background: var(--rd-bg); clip-path: polygon(50.0% 0.0%, 55.7% 6.4%, 62.9% 1.7%, 66.8% 9.3%, 75.0% 6.7%, 76.8% 15.1%, 85.4% 14.6%, 84.9% 23.2%, 93.3% 25.0%, 90.7% 33.2%, 98.3% 37.1%, 93.6% 44.3%, 100.0% 50.0%, 93.6% 55.7%, 98.3% 62.9%, 90.7% 66.8%, 93.3% 75.0%, 84.9% 76.8%, 85.4% 85.4%, 76.8% 84.9%, 75.0% 93.3%, 66.8% 90.7%, 62.9% 98.3%, 55.7% 93.6%, 50.0% 100.0%, 44.3% 93.6%, 37.1% 98.3%, 33.2% 90.7%, 25.0% 93.3%, 23.2% 84.9%, 14.6% 85.4%, 15.1% 76.8%, 6.7% 75.0%, 9.3% 66.8%, 1.7% 62.9%, 6.4% 55.7%, 0.0% 50.0%, 6.4% 44.3%, 1.7% 37.1%, 9.3% 33.2%, 6.7% 25.0%, 15.1% 23.2%, 14.6% 14.6%, 23.2% 15.1%, 25.0% 6.7%, 33.2% 9.3%, 37.1% 1.7%, 44.3% 6.4%); }
@@ -421,7 +422,8 @@ line-hight:0.9;}
 }
 
 /* Roundel with a pop-up: the whole badge is a button; a tiny underlined line sits under the text */
-.image-with-text-overlay--content button.hero-roundel { appearance: none; font-family: inherit; cursor: pointer; pointer-events: auto; padding: 0; }
+.image-with-text-overlay--content button.hero-roundel { appearance: none; font-family: inherit; cursor: pointer; pointer-events: auto; }
+.image-with-text-overlay--content button.hero-roundel:not(.hero-roundel--rect) { padding: 0; }
 .image-with-text-overlay--content button.hero-roundel:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 /* clickable roundel: a slight lift of the background on hover/press, whatever colour it is set to */
 .image-with-text-overlay--content button.hero-roundel { transition: filter .15s ease, transform .15s ease; }
