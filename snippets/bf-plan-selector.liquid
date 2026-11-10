@@ -368,7 +368,7 @@
       syncFoot();
       var t = tiers[index];
       var detail = mode === 'bundles'
-        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label }
+        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label }
         : { mode: 'subscribe' };
       root._bfpsState = detail;
       root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));

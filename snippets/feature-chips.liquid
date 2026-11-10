@@ -2,7 +2,8 @@
   Bodology · Feature chips block (product information)
   Row of small rounded chips under the plan selector. The first chip can
   show the serving count and follows the selected plan via the ps1c:select
-  event (30 servings on 1-Month, otherwise the default). On mobile all
+  event (30 servings on 1-Month, otherwise the default), or the selected
+  Black Friday bundle via bfps:change (tubs x servings). On mobile all
   chips fit on one row.
 {%- endcomment -%}
 
@@ -49,9 +50,17 @@
 (function(){
   var el = document.querySelector('#fchips-{{ uid }} [data-bod-servings]');
   if(!el) return;
+  var bundles = false; /* true while the Black Friday bundles are driving the count */
   document.addEventListener('ps1c:select', function(e){
+    if(bundles) return;
     var n = (e.detail && e.detail.name) || '';
     el.textContent = n.indexOf('1-Month') > -1 ? el.dataset.alt : el.dataset.base;
+  });
+  /* Black Friday bundles: the count follows the selected bundle (tubs x servings per tub), e.g. "180 servings" */
+  document.addEventListener('bfps:change', function(e){
+    var d = e.detail || {};
+    if(d.mode === 'bundles' && d.servings){ bundles = true; el.textContent = el.dataset.base.replace(/\d[\d,]*/, d.servings); }
+    else { bundles = false; el.textContent = el.dataset.base; }
   });
 })();
 </script>
