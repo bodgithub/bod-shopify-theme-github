@@ -42,6 +42,7 @@
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 36,
             "heading_size_mobile": 18,
+            "pad_right_desktop": 0,
             "show_star": false,
             "star_size": 16,
             "star_color": "#4d61cf"
@@ -55,6 +56,7 @@
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 48,
             "heading_size_mobile": 30,
+            "pad_right_desktop": 96,
             "show_star": true,
             "star_size": 16,
             "star_color": "#182769"
@@ -315,7 +317,7 @@
       ],
       "settings": {
         "eyebrow": "",
-        "heading": "<p>What changed after 40?</p>",
+        "heading": "<h3>What changed after 40?</h3>",
         "heading_size": 38,
         "heading_size_mobile": 0,
         "subheading": "<p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping. Here's what women describe most:</p>",
