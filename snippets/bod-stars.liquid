@@ -12,6 +12,7 @@
     color_on      filled star colour (default #FFCD53)
     color_off     empty star colour (default #E1E1E1)
     show_label    show "X.X Stars (Read Reviews)" (default true)
+    label_text    word(s) after the number (default "Stars"); cta_text the lighter link text (default "(Read Reviews)", blank hides it); hide_number true drops the X.X
     label_color / label_size / label_weight / label_gap
     alignment     'left' (default) | 'center'
     margin_top / margin_bottom   px spacing (defaults 0 / 12)
@@ -132,7 +133,9 @@
       {%- endfor -%}
     </svg>
     {%- unless show_label == false -%}
-      <span class="bod-stars__label">{{ rating_display }} Stars <span class="bod-stars__cta">(Read Reviews)</span></span>
+      {%- assign lbl_word = label_text | default: 'Stars' -%}
+      {%- assign lbl_cta = cta_text | default: '(Read Reviews)' -%}
+      <span class="bod-stars__label">{% unless hide_number %}{{ rating_display }} {% endunless %}{{ lbl_word }}{% if lbl_cta != blank %} <span class="bod-stars__cta">{{ lbl_cta }}</span>{% endif %}</span>
     {%- endunless -%}
   {%- endcapture -%}
   {%- if link == false -%}
