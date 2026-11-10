@@ -133,8 +133,9 @@
       {%- endfor -%}
     </svg>
     {%- unless show_label == false -%}
-      {%- assign lbl_word = label_text | default: 'Stars' -%}
-      {%- assign lbl_cta = cta_text | default: '(Read Reviews)' -%}
+      {%- comment -%} nil = caller didn't pass it (use the default); an empty string = the field was cleared on purpose (show nothing) {%- endcomment -%}
+      {%- if label_text == nil -%}{%- assign lbl_word = 'Stars' -%}{%- else -%}{%- assign lbl_word = label_text -%}{%- endif -%}
+      {%- if cta_text == nil -%}{%- assign lbl_cta = '(Read Reviews)' -%}{%- else -%}{%- assign lbl_cta = cta_text -%}{%- endif -%}
       <span class="bod-stars__label">{% unless hide_number %}{{ rating_display }} {% endunless %}{{ lbl_word }}{% if lbl_cta != blank %} <span class="bod-stars__cta">{{ lbl_cta }}</span>{% endif %}</span>
     {%- endunless -%}
   {%- endcapture -%}
