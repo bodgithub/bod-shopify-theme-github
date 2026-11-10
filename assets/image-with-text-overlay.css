@@ -327,7 +327,7 @@ line-hight:0.9;}
 .image-with-text-overlay--content .hero-stars .bod-stars { margin-top: var(--bod-margin-top, 0); }
 
 /* Hero text block padding from the editor: right padding is desktop-only (phones keep the full width); left and bottom apply everywhere */
-.image-with-text-overlay--content .rte { padding: 0 0 var(--rte-pad-bottom, 0) var(--rte-pad-left, 0); }
+.image-with-text-overlay--content .rte { padding: var(--rte-pad-top, 0) 0 var(--rte-pad-bottom, 0) var(--rte-pad-left, 0); }
 @media only screen and (min-width: 768px) {
   .image-with-text-overlay--content .rte { padding-right: var(--rte-pad-right, 0); }
 }
