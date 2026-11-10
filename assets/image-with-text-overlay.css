@@ -294,13 +294,13 @@ line-hight:0.9;}
 @media only screen and (min-width: 768px) {
   .image-with-text-overlay [style*="--hero-h-d"],
   .image-with-text-overlay [style*="--hero-h-d"] h1,
-  .image-with-text-overlay [style*="--hero-h-d"] h2 { font-size: var(--hero-h-d) !important; line-height: 1.12 !important; }
+  .image-with-text-overlay [style*="--hero-h-d"] h2 { font-size: var(--hero-h-d) !important; line-height: 1.12 !important; letter-spacing: -0.02em !important; } /* the theme's fixed -1px on H1 is too tight at custom sizes; -0.02em scales with the size */
 }
 /* Heading block: optional mobile font size from the editor (0 = automatic) */
 @media only screen and (max-width: 767px) {
   .image-with-text-overlay [style*="--hero-h-m"],
   .image-with-text-overlay [style*="--hero-h-m"] h1,
-  .image-with-text-overlay [style*="--hero-h-m"] h2 { font-size: var(--hero-h-m) !important; line-height: 1.12 !important; }
+  .image-with-text-overlay [style*="--hero-h-m"] h2 { font-size: var(--hero-h-m) !important; line-height: 1.12 !important; letter-spacing: -0.02em !important; }
 }
 /* Smaller heading tags typed inside a heading block (h3-h6 used as sub-lines or body copy) read with body-like line-height, not the theme's loose heading line-height */
 .image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2) :is(h3, h4, h5, h6) { line-height: 1.3; }
