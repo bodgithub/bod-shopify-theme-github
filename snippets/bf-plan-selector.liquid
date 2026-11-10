@@ -155,6 +155,7 @@
   <div class="bfps__panel" data-bfps-panel="subscribe" role="tabpanel" hidden>
     {{ subscribe_html }}
   </div>
+  {%- if s.bf_footnote != blank -%}<div class="bfps__foot" data-bfps-foot>{{ s.bf_footnote }}</div>{%- endif -%}
 </div>
 
 <style>
@@ -211,6 +212,10 @@
   /* the per-month line follows the free-months text on the same line (wraps naturally on narrow screens) */
   #ps1c-{{ uid }} .bfps__free-main,#ps1c-{{ uid }} .bfps__free-line{display:inline}
   #ps1c-{{ uid }} .bfps__free-line:not(:empty)::before{content:"\00b7";font-weight:800;margin:0 .4em 0 .25em}
+  /* study footnote under the selector (shown on the bundles tab only) */
+  #ps1c-{{ uid }} .bfps__foot{margin:10px 0 0;font-size:11.5px;line-height:1.45;color:var(--bf-navy);opacity:.8}
+  #ps1c-{{ uid }} .bfps__foot p{margin:0;font-size:inherit;line-height:inherit}
+  #ps1c-{{ uid }} .bfps__foot[hidden]{display:none}
   /* ---- cards layout ---- */
   #ps1c-{{ uid }} .bfc__tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 14px}
   #ps1c-{{ uid }} .bfc__tier{position:relative;appearance:none;text-align:left;cursor:pointer;background:#fafafa;border:1px solid #c9d0f0;border-radius:5px;padding:30px 14px 18px;color:var(--bf-navy);font-family:inherit;transition:border-color .15s,background .15s}
@@ -448,6 +453,7 @@
         root.querySelectorAll('[data-bfps-panel]').forEach(function (p) {
           p.hidden = p.dataset.bfpsPanel !== mode;
         });
+        var foot = root.querySelector('[data-bfps-foot]'); if (foot) { foot.hidden = mode !== 'bundles'; }
         announce();
       });
     });
