@@ -34,7 +34,7 @@
         "heading_peri": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, it's insulin.</h2>",
+            "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, <strong>it's insulin.</strong></h2>",
             "heading_color": "#3447af",
             "heading_size": "h1-xlarge",
             "heading_size_mobile": 34
@@ -48,7 +48,7 @@
             "description_size": "medium",
             "pad_left": 0,
             "pad_right": 96,
-            "pad_bottom": 24
+            "pad_bottom": 12
           }
         },
         "space_bhy9NE": {
@@ -98,23 +98,6 @@
             "button_color": "accent",
             "button_icon": "chevron"
           }
-        },
-        "space_gGYDgr": {
-          "type": "space",
-          "settings": {
-            "height": 30
-          }
-        },
-        "text_U4tKYV": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>60-day money-back guarantee · Free shipping · Ends Nov 30</strong></p>",
-            "description_color": "#182769",
-            "description_size": "small",
-            "pad_left": 0,
-            "pad_right": 96,
-            "pad_bottom": 24
-          }
         }
       },
       "block_order": [
@@ -125,14 +108,12 @@
         "text_peri",
         "benefits_peri",
         "space_G8PyxF",
-        "button_peri",
-        "space_gGYDgr",
-        "text_U4tKYV"
+        "button_peri"
       ],
       "custom_css": [],
       "settings": {
         "image": "shopify://shop_images/Peri_Hero_Banner_8.png",
-        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_3.png",
+        "mobile_image": "shopify://shop_images/Peri_Hero_Banner_Mobile_4.png",
         "image_parallax": false,
         "desktop_height": "desktop-height-750",
         "mobile_height": "mobile-height-auto",
