@@ -26,8 +26,9 @@
   #shopify-section-{{ uid }} .sc__pw { max-width: {{ s.max_width }}px; margin: 0 auto; padding: 0 16px; }
   #shopify-section-{{ uid }} .sc__eyebrow { text-align: center; margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
   #shopify-section-{{ uid }} .sc__heading { text-align: center; margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size_mobile > 0 %}font-size: {{ s.heading_size_mobile }}px;{% elsif s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
-  #shopify-section-{{ uid }} .sc__heading p { margin: 0; font: inherit; color: inherit; }
-  #shopify-section-{{ uid }} .sc__heading p + p { margin-top: 0.25em; }
+  /* whatever tag the rich text editor wraps the heading in (p, h2, h3...) takes the slider sizes above, not the theme's own heading sizes */
+  #shopify-section-{{ uid }} .sc__heading :is(p, h1, h2, h3, h4, h5, h6) { margin: 0; font-family: inherit; font-size: inherit; font-weight: inherit; line-height: inherit; letter-spacing: inherit; text-transform: none; color: inherit; }
+  #shopify-section-{{ uid }} .sc__heading > * + * { margin-top: 0.25em; }
   #shopify-section-{{ uid }} .sc__heading em { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__sub p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
   #shopify-section-{{ uid }} .sc__sub p + p { margin-top: 8px; }
