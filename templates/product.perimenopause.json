@@ -17,11 +17,14 @@
           "settings": {
             "star_style": "chunky",
             "star_size": 19,
-            "star_gap": 2,
+            "star_gap": 10,
             "star_round": 0,
             "color_on": "#ddbd6d",
             "color_off": "#e6e6e6",
             "show_label": true,
+            "label_text": "Trusted by 1,200 women",
+            "cta_text": "",
+            "hide_number": false,
             "label_color": "#14307c",
             "label_size": 14,
             "label_weight": "600",
@@ -34,10 +37,10 @@
         "heading_peri": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Nobody tells you this at 40. It's not just hormones changing, <strong>it's insulin.</strong></h2>",
+            "text": "<h2>Nobody tells you this at 40. It's not just your hormones changing, <strong>it's insulin.</strong></h2>",
             "heading_color": "#182769",
             "heading_size": "h1-xlarge",
-            "heading_size_mobile": 20
+            "heading_size_mobile": 18
           }
         },
         "heading_AyEgTw": {
@@ -75,18 +78,18 @@
             "border_size": 1,
             "text_color": "#182769",
             "border_color": "#7e87b9",
-            "benefit_1": "Studied in women before and after menopause*",
-            "benefit_2": "The full 4g clinical dose, daily",
-            "benefit_3": "60-day money-back guarantee",
-            "benefit_4": "",
-            "benefit_5": "",
             "icon_gap": 5,
             "text_size_mobile": 15,
             "item_padding_mobile": 8,
             "frosted": true,
             "frosted_tint": 25,
             "frosted_blur": 10,
-            "frosted_radius": 16
+            "frosted_radius": 16,
+            "benefit_1": "Studied in women before and after menopause*",
+            "benefit_2": "The full 4g clinical dose, daily",
+            "benefit_3": "Third-party tested (ISO 17025)",
+            "benefit_4": "",
+            "benefit_5": ""
           }
         },
         "space_G8PyxF": {
