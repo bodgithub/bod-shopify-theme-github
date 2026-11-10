@@ -332,7 +332,8 @@
     var $ = function (sel) { return root.querySelector(sel); };
 
     var maxPct = Math.max.apply(null, tiers.map(function (t) { return t.pct; }));
-    $('[data-bfps-max-saving]').textContent = 'Save up to ' + maxPct + '%';
+    var maxSavingEl = $('[data-bfps-max-saving]'); /* absent when the tabs are switched off */
+    if (maxSavingEl) { maxSavingEl.textContent = 'Save up to ' + maxPct + '%'; }
 
     function syncFoot() {
       var t = tiers[index];
