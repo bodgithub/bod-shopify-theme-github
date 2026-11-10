@@ -27,6 +27,9 @@
   #shopify-section-{{ uid }} .sc__eyebrow { text-align: center; margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
   #shopify-section-{{ uid }} .sc__heading { text-align: center; margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
   #shopify-section-{{ uid }} .sc__heading em { color: {{ s.accent_color }}; }
+  #shopify-section-{{ uid }} .sc__sub p { margin: 0; }
+  #shopify-section-{{ uid }} .sc__sub p + p { margin-top: 8px; }
+  #shopify-section-{{ uid }} .sc__sub strong { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__sub { text-align: center; margin: 10px auto 0; max-width: 560px; font-size: 15px; line-height: 1.5; }
   #shopify-section-{{ uid }} .sc__groups { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 15px; }
   #shopify-section-{{ uid }} .sc__group { background: {{ s.card_bg }}; border: 0; border-radius: {{ s.card_radius }}px; padding: 18px 16px; }
@@ -160,7 +163,7 @@
   <div class="sc__pw">
     {%- if s.eyebrow != blank -%}<p class="sc__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
     {%- if s.heading != blank -%}<h2 class="sc__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</h2>{%- endif -%}
-    {%- if s.subheading != blank -%}<p class="sc__sub">{{ s.subheading }}</p>{%- endif -%}
+    {%- if s.subheading != blank -%}<div class="sc__sub">{{ s.subheading }}</div>{%- endif -%}
 
     <div class="sc__groups">
       <div class="sc__group">
@@ -388,7 +391,7 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Is this you?" },
     { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Tick what you <em>recognise</em>" },
     { "type": "range", "id": "heading_size", "label": "Heading size (px, 0 = theme H1)", "min": 0, "max": 64, "step": 2, "default": 0 },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "These are the signs women describe to us most. Tap any that sound familiar." },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>These are the signs women describe to us most. Tap any that sound familiar.</p>" },
     { "type": "text", "id": "group_a_title", "label": "Group A title", "default": "How you feel" },
     { "type": "text", "id": "group_b_title", "label": "Group B title", "default": "What you've been told" },
     { "type": "header", "content": "Result" },
