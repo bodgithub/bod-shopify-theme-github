@@ -27,7 +27,7 @@
   #shopify-section-{{ uid }} .sc__eyebrow { text-align: center; margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
   #shopify-section-{{ uid }} .sc__heading { text-align: center; margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
   #shopify-section-{{ uid }} .sc__heading em { color: {{ s.accent_color }}; }
-  #shopify-section-{{ uid }} .sc__sub p { margin: 0; }
+  #shopify-section-{{ uid }} .sc__sub p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
   #shopify-section-{{ uid }} .sc__sub p + p { margin-top: 8px; }
   #shopify-section-{{ uid }} .sc__sub strong { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__sub { text-align: center; margin: 10px auto 0; max-width: 560px; font-size: 15px; line-height: 1.5; }
