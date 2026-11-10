@@ -292,6 +292,9 @@
     var state = 'hidden';
     if(r.bottom <= vh * 0.35){ state = 'after'; }
     else if(r.top < vh * 0.85){ state = 'in'; }
+    /* no bar while the buy box itself is on screen: they can already see the product */
+    var buy = document.querySelector('[data-ps1c-root]') || document.getElementById('Product-Slider');
+    if(buy){ var br = buy.getBoundingClientRect(); if(br.top < vh && br.bottom > 0){ state = 'hidden'; } }
     bar.setAttribute('data-state', state);
     if(state === 'after' && !bar.hasAttribute('data-bundle') && !bar.hasAttribute('data-plan')){ syncPlan(); }
     /* Shopify's theme-preview bar sits over the bottom edge; lift ours above it */
