@@ -37,9 +37,10 @@
         "heading_peri": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Nobody tells you this at 40. It's not just your hormones changing, <strong>it's insulin.</strong></h2>",
+            "text": "<h1>Nobody tells you this at 40. It's not just your hormones changing, <strong>it's insulin.</strong></h1>",
             "heading_color": "#182769",
             "heading_size": "h1-xlarge",
+            "heading_size_desktop": 36,
             "heading_size_mobile": 18,
             "show_star": false,
             "star_size": 16,
@@ -52,6 +53,7 @@
             "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
             "heading_color": "#182769",
             "heading_size": "h1-xlarge",
+            "heading_size_desktop": 0,
             "heading_size_mobile": 30,
             "show_star": true,
             "star_size": 16,
@@ -204,56 +206,64 @@
           "type": "symptom",
           "settings": {
             "text": "Waking at 3am and lying there",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "sym_a2": {
           "type": "symptom",
           "settings": {
             "text": "Weight settling around your middle",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "sym_a3": {
           "type": "symptom",
           "settings": {
             "text": "Tired an hour after a meal",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "sym_a4": {
           "type": "symptom",
           "settings": {
             "text": "Sugar cravings you didn’t have at 30",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "sym_a5": {
           "type": "symptom",
           "settings": {
             "text": "Periods getting closer together, heavier, lighter, or less predictable",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "symptom_37xA3f": {
           "type": "symptom",
           "settings": {
             "text": "Hair thinning or shedding more",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "symptom_MYTqjR": {
           "type": "symptom",
           "settings": {
             "text": "Brain fog, losing words mid-sentence",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "sym_a6": {
           "type": "symptom",
           "settings": {
             "text": "Working harder in the gym for less",
-            "group": "a"
+            "group": "a",
+            "response": ""
           }
         },
         "sym_b1": {
@@ -284,7 +294,8 @@
           "type": "symptom",
           "settings": {
             "text": "“Come back in a year”",
-            "group": "b"
+            "group": "b",
+            "response": ""
           }
         }
       },
@@ -306,6 +317,7 @@
         "eyebrow": "",
         "heading": "<p>What changed after 40?</p>",
         "heading_size": 38,
+        "heading_size_mobile": 0,
         "subheading": "<p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping. Here's what women describe most:</p>",
         "group_a_title": "How you feel",
         "group_b_title": "What you've been told",
