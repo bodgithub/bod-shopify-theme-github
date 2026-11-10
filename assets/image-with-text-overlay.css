@@ -484,3 +484,9 @@ line-hight:0.9;}
 /* Bold inside hero text blocks and headings: a touch heavier than the theme's 500/600 */
 .image-with-text-overlay--content .rte strong, .image-with-text-overlay--content .rte b,
 .image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2, .h3) strong, .image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2, .h3) b { font-weight: 700; }
+
+/* A paragraph typed inside a heading block reads as body copy: 16px, regular weight, normal spacing */
+.image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2, .h3) p,
+.image-with-text-overlay [style*="--hero-h-m"] p,
+.image-with-text-overlay [style*="--hero-h-d"] p { font-size: 16px !important; line-height: 1.4 !important; font-weight: 400; letter-spacing: 0; text-transform: none; margin: 0; }
+.image-with-text-overlay--content :is(.h1, .h1-large, .h1-xlarge, .h2, .h3) p + p { margin-top: 0.5em; }
