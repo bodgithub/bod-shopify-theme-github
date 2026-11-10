@@ -237,6 +237,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 <div id="ps1c-{{ uid }}">
 <div class="bod-pc1c{% if ps1c_default != 'ot' %} is-sub{% endif %}" role="radiogroup" data-ps1c-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
+  {%- capture ps1c_cards -%}
   {%- for spec in ps1c_specs -%}
     {%- liquid
       assign sp = spec | split: '|'
@@ -249,6 +250,9 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
         continue
       endif
       if P == 'ot' and s.hide_ot
+        continue
+      endif
+      if P == 'ot' and s.bf_enabled
         continue
       endif
       if card_name == blank and P == 'sub'
@@ -338,6 +342,16 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     </div>
     {%- endunless -%}
   {%- endfor -%}
+  {%- endcapture -%}
+  {%- if s.bf_enabled -%}
+    {%- comment -%} Black Friday: bundles tab (one-time tub x quantity, no plan) + the cards above as the Subscribe tab {%- endcomment -%}
+    {%- assign ps1c_base_variant = nil -%}
+    {%- assign ps1c_ot_id = s.ot_variant | strip -%}
+    {%- for v in product.variants -%}{%- assign vid = v.id | append: '' -%}{%- if vid == ps1c_ot_id -%}{%- assign ps1c_base_variant = v -%}{%- endif -%}{%- endfor -%}
+    {%- render 'bf-plan-selector', s: s, uid: uid, product: product, base_variant: ps1c_base_variant, subscribe_html: ps1c_cards -%}
+  {%- else -%}
+    {{- ps1c_cards -}}
+  {%- endif -%}
   {%- if s.subtick_enable -%}
   <button type="button" class="ps-subtick" role="switch" aria-checked="{% if ps1c_default != 'ot' %}true{% else %}false{% endif %}" data-ps1c-subtick>
     <span class="ps-subtick__switch" aria-hidden="true"><span class="ps-subtick__knob"></span></span>
@@ -364,7 +378,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <span class="spin"></span>
     <svg class="ps-cta__lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
     <span class="ps-cta__label">{{ s.cta_label | default: 'Add to cart' }}</span>
-    {% unless s.cta_static %}<span class="ps-cta__sub" data-ps1c-sub></span>{% endunless %}
+    {% if s.bf_enabled or s.cta_static != true %}<span class="ps-cta__sub" data-ps1c-sub></span>{% endif %}
   </button>
   <div class="ps-error" data-ps1c-error>
     <svg viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
@@ -437,6 +451,10 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var sub = root.querySelector('[data-ps1c-sub]'), err = root.querySelector('[data-ps1c-error]');
   var cta = root.querySelector('[data-ps1c-submit]'), label = cta.querySelector('.ps-cta__label');
   var ctaText = label.textContent;
+  // Black Friday selector (snippets/bf-plan-selector): bundles tab = one-time tub x quantity, no selling plan, no gift
+  var bfEl = root.querySelector('[data-bfps]');
+  var bfState = (bfEl && bfEl._bfpsState) || null;
+  function bundlesMode(){ return !!(bfState && bfState.mode === 'bundles'); }
   var cartUrl = {{ routes.cart_url | json }};
   var addBase = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) ? window.Shopify.routes.root : '/';
   function renderAndOpenCart(response){
@@ -460,7 +478,14 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   }
   function selected(){ return root.querySelector('[data-ps1c-card].is-selected'); }
   var ctaPrice = {% if s.cta_price %}true{% else %}false{% endif %};
-  function syncSub(){ if(!sub) return; var c = selected(); if(!c){ sub.textContent = ''; return; } sub.textContent = ctaPrice ? ('— ' + (c.getAttribute('data-ps1c-price') || '')) : ('· ' + c.getAttribute('data-ps1c-name')); }
+  function syncSub(){
+    if(!sub) return;
+    if(bfEl){ // Black Friday: "Add to Cart · $143" on the bundles tab, "· $55.25" for the chosen subscription
+      if(bundlesMode()){ sub.textContent = '· ' + (bfState.formatted || ''); return; }
+      var cs = selected(); sub.textContent = cs ? ('· ' + (cs.getAttribute('data-ps1c-price') || '')) : ''; return;
+    }
+    var c = selected(); if(!c){ sub.textContent = ''; return; } sub.textContent = ctaPrice ? ('— ' + (c.getAttribute('data-ps1c-price') || '')) : ('· ' + c.getAttribute('data-ps1c-name'));
+  }
   // ship date: today if before 2pm ET, else tomorrow — always rolled to a business day.
   // After the Fri cutoff and all day Sat that lands on Monday, which reads as a long wait,
   // so show a delivery window instead. Fri before the cutoff still ships same day.
@@ -487,7 +512,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var tick = root.querySelector('[data-ps1c-subtick]');
   function syncTick(){
     var c = selected();
-    var on = !!(c && c.hasAttribute('data-ps1c-requires-plan'));
+    var on = !bundlesMode() && !!(c && c.hasAttribute('data-ps1c-requires-plan'));
     root.classList.toggle('is-sub', on);
     if(tick){ tick.setAttribute('aria-checked', on ? 'true' : 'false'); }
   }
@@ -502,6 +527,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var gbX = gb ? gb.querySelector('[data-ps1c-giftban-cross]') : null;
   function syncGiftBan(){
     if(!gb) return;
+    if(bundlesMode()){ gb.hidden = true; return; } // the free protocol needs a subscription line; bundles are one-time
     var c = selected();
     var t = c ? (c.getAttribute('data-ps1c-gift-title') || '') : '';
     if(!t){ gb.hidden = true; return; }
@@ -588,9 +614,23 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     [].slice.call(guar.querySelectorAll('[data-ps1c-guar-close]')).forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); closeG(); }); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !guar.hidden){ closeG(); } });
   }
+  if(bfEl){ root.addEventListener('bfps:change', function(e){ bfState = e.detail; syncSub(); syncTick(); syncGiftBan(); }); }
   syncSub(); syncTick(); syncGiftBan();
   var c0 = selected(); if(c0){ announce(c0); }
+  function postItems(items){
+    err.classList.remove('is-shown');
+    cta.classList.add('is-loading'); label.textContent = 'Adding…';
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    .then(function(r){ return r.json(); })
+    .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
+    .catch(function(e){ cta.classList.remove('is-loading'); label.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+  }
   cta.addEventListener('click', function(){
+    if(bundlesMode()){
+      if(!bfState.variantId){ showErr('This bundle needs the one-time variant ID — set it in the theme editor.'); return; }
+      postItems([{ id: bfState.variantId, quantity: bfState.quantity || 1, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } }]);
+      return;
+    }
     var c = selected();
     if(!c){ showErr(); return; }
     var variant = (c.getAttribute('data-ps1c-variant') || '').trim();
@@ -599,8 +639,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     var gift = (c.getAttribute('data-ps1c-gift') || '').trim();
     if(!variant){ showErr('This plan needs a variant ID — add it in the theme editor.'); return; }
     if(c.hasAttribute('data-ps1c-requires-plan') && !plan){ showErr('This subscription needs its selling plan ID — set it in the theme editor.'); return; }
-    err.classList.remove('is-shown');
-    cta.classList.add('is-loading'); label.textContent = 'Adding…';
     var item = { id: variant, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } };
     if(plan){ item.selling_plan = plan; }
     var items = [item];
@@ -610,10 +648,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; }
       items.push({ id: g, quantity: 1, properties: gprops });
     }
-    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
-    .then(function(r){ return r.json(); })
-    .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
-    .catch(function(e){ cta.classList.remove('is-loading'); label.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
+    postItems(items);
   });
 })();
 </script>

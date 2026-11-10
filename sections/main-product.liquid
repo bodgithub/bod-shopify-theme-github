@@ -3583,6 +3583,59 @@
         },
         {
           "type": "header",
+          "content": "Black Friday plan selector",
+          "info": "Bundles are this block's one-time tub added at quantity 2 / 4 / 8 with NO selling plan. The saving is applied by automatic discounts in Shopify admin (minimum quantity 2 / 4 / 8); the % entered below is for display and must match them."
+        },
+        { "type": "checkbox", "id": "bf_enabled", "label": "Show Black Friday bundles", "default": false },
+        {
+          "type": "select",
+          "id": "bf_price_line",
+          "label": "Price line under the bundle price",
+          "options": [
+            { "value": "monthly", "label": "Option 1: Works out at $X a month" },
+            { "value": "daily", "label": "Option 2: $X a day" }
+          ],
+          "default": "monthly"
+        },
+        { "type": "text", "id": "bf_banner_text", "label": "Banner text", "default": "Black Friday: up to 55% off" },
+        { "type": "text", "id": "bf_end_text", "label": "Offer end text", "default": "Ends Sun, Nov 30" },
+        { "type": "text", "id": "bf_subscribe_tab_note", "label": "Subscribe tab note", "default": "Save up to 15%" },
+        { "type": "image_picker", "id": "bf_tub_image", "label": "Tub thumbnail (transparent PNG)", "info": "Empty = the product image." },
+        { "type": "number", "id": "bf_servings_per_tub", "label": "Servings per tub", "default": 45 },
+        {
+          "type": "select",
+          "id": "bf_default_tier",
+          "label": "Bundle selected on page load",
+          "options": [
+            { "value": "1", "label": "Bundle 1" },
+            { "value": "2", "label": "Bundle 2" },
+            { "value": "3", "label": "Bundle 3" }
+          ],
+          "default": "2"
+        },
+        { "type": "header", "content": "Bundle 1" },
+        { "type": "text", "id": "bf_tier_1_label", "label": "Label", "default": "3 months" },
+        { "type": "number", "id": "bf_tier_1_tubs", "label": "Tubs", "default": 2 },
+        { "type": "number", "id": "bf_tier_1_months", "label": "Months", "default": 3 },
+        { "type": "number", "id": "bf_tier_1_pct", "label": "% off (must match the automatic discount)", "default": 35 },
+        { "type": "text", "id": "bf_tier_1_free_text", "label": "Free months line", "default": "~1 month free." },
+        { "type": "text", "id": "bf_tier_1_tubs_free_text", "label": "Free tubs line", "default": "That's ~¾ of a tub on us." },
+        { "type": "header", "content": "Bundle 2" },
+        { "type": "text", "id": "bf_tier_2_label", "label": "Label", "default": "6 months" },
+        { "type": "number", "id": "bf_tier_2_tubs", "label": "Tubs", "default": 4 },
+        { "type": "number", "id": "bf_tier_2_months", "label": "Months", "default": 6 },
+        { "type": "number", "id": "bf_tier_2_pct", "label": "% off (must match the automatic discount)", "default": 45 },
+        { "type": "text", "id": "bf_tier_2_free_text", "label": "Free months line", "default": "~3 months free." },
+        { "type": "text", "id": "bf_tier_2_tubs_free_text", "label": "Free tubs line", "default": "That's ~2 of your 4 tubs on us." },
+        { "type": "header", "content": "Bundle 3" },
+        { "type": "text", "id": "bf_tier_3_label", "label": "Label", "default": "12 months" },
+        { "type": "number", "id": "bf_tier_3_tubs", "label": "Tubs", "default": 8 },
+        { "type": "number", "id": "bf_tier_3_months", "label": "Months", "default": 12 },
+        { "type": "number", "id": "bf_tier_3_pct", "label": "% off (must match the automatic discount)", "default": 55 },
+        { "type": "text", "id": "bf_tier_3_free_text", "label": "Free months line", "default": "~6½ months free." },
+        { "type": "text", "id": "bf_tier_3_tubs_free_text", "label": "Free tubs line", "default": "That's ~4½ of your 8 tubs on us." },
+        {
+          "type": "header",
           "content": "Subscribe toggle & shipping"
         },
         {

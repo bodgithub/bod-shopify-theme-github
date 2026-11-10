@@ -1,0 +1,327 @@
+{%- comment -%}
+  Bodology · Black Friday plan selector (cart-based bundles)
+  Rendered by snippets/plan-selector-1c.liquid when the block's "Show Black Friday bundles"
+  setting is on. Two tabs:
+    - Black Friday bundles (default): a stepper over up to three bundles. Each bundle is the
+      ONE-TIME tub (the 1c block's one-time variant) added to the cart at quantity 2 / 4 / 8
+      with NO selling plan. The saving itself comes from automatic discounts in Shopify admin
+      (minimum quantity 2 / 4 / 8); the "% off" entered on each bundle here is display only and
+      must match those discounts. Prices shown = live variant price x tubs x (100 - %) / 100.
+    - Subscribe: the block's existing subscription cards, passed in unchanged as subscribe_html.
+  Params: s (block settings), uid (block id), product, base_variant (variant object of the
+  one-time tub), subscribe_html (captured card markup).
+  Fires "bfps:change" (bubbles) on its root on every change:
+    detail = { mode: 'bundles', variantId, quantity, price, compare, pct, formatted, label }
+           | { mode: 'subscribe' }
+  The latest detail is also kept on the root element as _bfpsState for scripts that bind later.
+{%- endcomment -%}
+
+{%- liquid
+  assign servings_per_tub = s.bf_servings_per_tub | default: 45
+  assign price_line = s.bf_price_line | default: 'monthly'
+  assign tub_cents = 0
+  if base_variant
+    assign tub_cents = base_variant.price
+  endif
+  assign tub_img = ''
+  if s.bf_tub_image
+    assign tub_img = s.bf_tub_image | image_url: width: 120
+  elsif base_variant and base_variant.featured_image
+    assign tub_img = base_variant.featured_image | image_url: width: 120
+  elsif product.featured_image
+    assign tub_img = product.featured_image | image_url: width: 120
+  endif
+-%}
+
+{%- capture tiers_json -%}
+[
+{%- assign printed = 0 -%}
+{%- for i in (1..3) -%}
+  {%- liquid
+    assign k = 'bf_tier_' | append: i
+    assign k_label = k | append: '_label'
+    assign k_tubs = k | append: '_tubs'
+    assign k_months = k | append: '_months'
+    assign k_pct = k | append: '_pct'
+    assign k_free = k | append: '_free_text'
+    assign k_tubs_free = k | append: '_tubs_free_text'
+    assign tubs = s[k_tubs] | default: 0
+    assign pct = s[k_pct] | default: 0
+    assign compare = tub_cents | times: tubs
+    assign keep = 100 | minus: pct
+    assign price = compare | times: keep | divided_by: 100.0 | round
+  -%}
+  {%- if tubs > 0 and tub_cents > 0 -%}
+    {%- if printed > 0 -%},{%- endif -%}
+    { "quantity": {{ tubs }}, "price": {{ price }}, "compare": {{ compare }}, "pct": {{ pct }}, "label": {{ s[k_label] | json }}, "months": {{ s[k_months] | default: 1 }}, "freeText": {{ s[k_free] | json }}, "tubsFreeText": {{ s[k_tubs_free] | json }} }
+    {%- assign printed = printed | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+]
+{%- endcapture -%}
+
+{%- if printed > 0 -%}
+<div
+  class="bfps"
+  data-bfps
+  data-variant="{{ base_variant.id }}"
+  data-price-line="{{ price_line | escape }}"
+  data-servings-per-tub="{{ servings_per_tub }}"
+  data-default-tier="{{ s.bf_default_tier | default: 2 }}"
+  {%- if tub_img != blank %} data-tub-image="{{ tub_img }}"{% endif -%}
+>
+  <script type="application/json" data-bfps-tiers>{{ tiers_json | strip }}</script>
+
+  {%- if s.bf_banner_text != blank -%}
+    <div class="bfps__banner">
+      <span>{{ s.bf_banner_text | escape }}</span>
+      {%- if s.bf_end_text != blank -%}<span class="bfps__banner-end">{{ s.bf_end_text | escape }}</span>{%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="bfps__tabs" role="tablist">
+    <button type="button" class="bfps__tab is-active" role="tab" aria-selected="true" data-bfps-tab="bundles">
+      Black Friday bundles<small data-bfps-max-saving></small>
+    </button>
+    <button type="button" class="bfps__tab" role="tab" aria-selected="false" data-bfps-tab="subscribe">
+      Subscribe<small>{{ s.bf_subscribe_tab_note | default: 'Save up to 15%' | escape }}</small>
+    </button>
+  </div>
+
+  <div class="bfps__panel" data-bfps-panel="bundles" role="tabpanel">
+    <div class="bfps__box">
+      <div class="bfps__stepper">
+        <button type="button" class="bfps__step bfps__step--minus" data-bfps-minus aria-label="Smaller bundle">&minus;</button>
+        <div class="bfps__current">
+          <div class="bfps__months" data-bfps-months></div>
+          <div class="bfps__tubs" data-bfps-tubs></div>
+        </div>
+        <button type="button" class="bfps__step" data-bfps-plus aria-label="Bigger bundle">+</button>
+      </div>
+
+      <div class="bfps__shelf" data-bfps-shelf></div>
+
+      <div class="bfps__ladder" data-bfps-ladder></div>
+
+      <div class="bfps__price">
+        <s data-bfps-compare></s><strong data-bfps-price></strong>
+      </div>
+      <p class="bfps__price-line" data-bfps-price-line></p>
+
+      <ul class="bfps__details">
+        <li data-bfps-ship-line></li>
+        <li><strong>One-time payment, nothing renews</strong></li>
+        {%- if s.bf_end_text != blank -%}<li>Black Friday price, {{ s.bf_end_text | downcase | escape }}</li>{%- endif -%}
+      </ul>
+
+      <p class="bfps__free" data-bfps-free></p>
+    </div>
+  </div>
+
+  <div class="bfps__panel" data-bfps-panel="subscribe" role="tabpanel" hidden>
+    {{ subscribe_html }}
+  </div>
+</div>
+
+<style>
+  /* colours are the brand palette; type inherits the plan selector's font; corners match the flat cards */
+  #ps1c-{{ uid }} .bfps{--bf-navy:#1a2874;--bf-blue:#3447af;--bf-light:#e3e7ff;--bf-peri:#b9c2f5;--bf-cream:#f3eeea;color:var(--bf-navy);font-family:inherit}
+  #ps1c-{{ uid }} .bfps *{box-sizing:border-box}
+  #ps1c-{{ uid }} .bfps button{font-family:inherit}
+  #ps1c-{{ uid }} .bfps button:focus-visible{outline:2px solid var(--bf-blue);outline-offset:2px}
+  #ps1c-{{ uid }} .bfps__banner{display:flex;justify-content:space-between;gap:12px;background:var(--bf-navy);color:#fff;padding:10px 12px;font-size:14px;font-weight:700;border-radius:0;margin:0 0 12px}
+  #ps1c-{{ uid }} .bfps__banner-end{font-weight:500;color:var(--bf-peri);white-space:nowrap}
+  #ps1c-{{ uid }} .bfps__tabs{display:flex;border:1px solid var(--bf-blue);border-radius:0;overflow:hidden;margin:0 0 12px}
+  #ps1c-{{ uid }} .bfps__tab{flex:1;appearance:none;border:0;border-radius:0;background:#fff;color:var(--bf-navy);padding:11px 8px;font-size:14px;font-weight:700;line-height:1.2;cursor:pointer;text-align:center}
+  #ps1c-{{ uid }} .bfps__tab + .bfps__tab{border-left:1px solid var(--bf-blue)}
+  #ps1c-{{ uid }} .bfps__tab small{display:block;font-size:11px;font-weight:500;color:var(--bf-blue);margin-top:2px}
+  #ps1c-{{ uid }} .bfps__tab.is-active{background:var(--bf-navy);color:#fff}
+  #ps1c-{{ uid }} .bfps__tab.is-active small{color:var(--bf-peri)}
+  #ps1c-{{ uid }} .bfps__tab:focus-visible{outline-offset:-3px}
+  #ps1c-{{ uid }} .bfps__panel[hidden]{display:none}
+  #ps1c-{{ uid }} .bfps__box{background:#fff;border:1px solid var(--bf-blue);border-radius:0;padding:16px;box-shadow:inset 0 0 0 2px var(--bf-blue)}
+  #ps1c-{{ uid }} .bfps__stepper{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 8px}
+  #ps1c-{{ uid }} .bfps__step{appearance:none;flex:0 0 auto;width:44px;height:44px;border:0;border-radius:0;background:var(--bf-blue);color:#fff;font-size:22px;font-weight:700;line-height:1;cursor:pointer;transition:background .15s}
+  #ps1c-{{ uid }} .bfps__step:hover{background:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfps__step--minus{background:#fff;color:var(--bf-navy);border:1px solid var(--bf-navy)}
+  #ps1c-{{ uid }} .bfps__step--minus:hover{background:var(--bf-light)}
+  #ps1c-{{ uid }} .bfps__step[disabled]{opacity:.35;cursor:default;pointer-events:none}
+  #ps1c-{{ uid }} .bfps__current{flex:1 1 auto;min-width:0}
+  #ps1c-{{ uid }} .bfps__months{font-size:30px;font-weight:800;line-height:1;text-align:center;letter-spacing:-0.02em;min-height:30px}
+  #ps1c-{{ uid }} .bfps__tubs{font-size:13px;font-weight:500;color:var(--bf-blue);text-align:center;margin-top:4px;min-height:16px}
+  /* 8 thumbnails + nothing else must fit on a 375px phone: width capped to an eighth of the row */
+  #ps1c-{{ uid }} .bfps__shelf{display:flex;justify-content:center;align-items:flex-end;gap:6px;padding:8px 0 12px;min-height:70px}
+  #ps1c-{{ uid }} .bfps__shelf img{height:50px;width:auto;max-width:calc(12.5% - 6px);object-fit:contain;display:block}
+  #ps1c-{{ uid }} .bfps__shelf img.is-new{animation:bfps-pop-{{ uid }} .3s ease-out}
+  #ps1c-{{ uid }} .bfps__more{appearance:none;height:50px;width:44px;flex:0 0 auto;border:1.5px dashed var(--bf-blue);border-radius:0;background:#fff;color:var(--bf-blue);font-size:16px;font-weight:800;cursor:pointer;padding:0}
+  #ps1c-{{ uid }} .bfps__more:hover{background:var(--bf-light)}
+  @keyframes bfps-pop-{{ uid }}{from{transform:translateY(8px) scale(.8);opacity:0}to{transform:none;opacity:1}}
+  @media (prefers-reduced-motion:reduce){#ps1c-{{ uid }} .bfps__shelf img.is-new{animation:none}}
+  #ps1c-{{ uid }} .bfps__ladder{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin:0 0 14px}
+  #ps1c-{{ uid }} .bfps__rung{appearance:none;border:0;border-radius:0;background:var(--bf-light);color:var(--bf-blue);font-size:13px;font-weight:700;padding:9px 0;cursor:pointer;transition:background .15s,color .15s}
+  #ps1c-{{ uid }} .bfps__rung:hover{background:var(--bf-peri);color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfps__rung.is-on{background:var(--bf-blue);color:#fff}
+  #ps1c-{{ uid }} .bfps__price{padding-top:12px;border-top:1px solid var(--bf-light);line-height:1;min-height:37px}
+  #ps1c-{{ uid }} .bfps__price s{font-size:18px;font-weight:500;color:var(--bf-blue);margin-right:8px}
+  #ps1c-{{ uid }} .bfps__price s:empty{display:none}
+  #ps1c-{{ uid }} .bfps__price strong{font-size:24px;font-weight:800;letter-spacing:-0.02em}
+  #ps1c-{{ uid }} .bfps__price-line{font-size:13px;font-weight:500;margin:6px 0 0;min-height:17px}
+  #ps1c-{{ uid }} .bfps__details{list-style:none;margin:12px 0 0;padding:0}
+  #ps1c-{{ uid }} .bfps__details li{font-size:13px;font-weight:500;margin:0 0 4px;padding-left:14px;position:relative;line-height:1.4}
+  #ps1c-{{ uid }} .bfps__details li::before{content:"\2022";color:var(--bf-blue);position:absolute;left:0}
+  #ps1c-{{ uid }} .bfps__free{font-size:14px;font-weight:500;background:var(--bf-light);padding:10px 12px;border-radius:0;margin:12px 0 0;line-height:1.4}
+  #ps1c-{{ uid }} .bfps__free strong{font-size:16px;font-weight:800}
+  #ps1c-{{ uid }} .bfps__free:empty{display:none}
+  @media (max-width:749px){
+    #ps1c-{{ uid }} .bfps__months{font-size:26px}
+    #ps1c-{{ uid }} .bfps__shelf img{height:44px}
+    #ps1c-{{ uid }} .bfps__more{height:44px;width:40px}
+  }
+</style>
+
+<script>
+(function () {
+  /* theme money formatter when present (vendor.min.js formatMoney + theme.settings), else a plain USD fallback; whole dollars drop the .00 */
+  function money(cents) {
+    var out = null;
+    try {
+      if (typeof formatMoney === 'function' && window.theme && theme.settings && theme.settings.money_with_currency_format) {
+        out = formatMoney(cents, theme.settings.money_with_currency_format);
+      }
+    } catch (e) { out = null; }
+    if (!out) { var v = cents / 100; out = '$' + (v % 1 === 0 ? v.toFixed(0) : v.toFixed(2)); }
+    return String(out).replace(/\.00(?=\D|$)/, '').replace(/\s*USD$/, '');
+  }
+
+  function init(root) {
+    if (root.dataset.bfpsReady) return;
+    root.dataset.bfpsReady = '1';
+
+    var tiers = JSON.parse(root.querySelector('[data-bfps-tiers]').textContent);
+    if (!tiers.length) return;
+
+    var variantId = root.dataset.variant || '';
+    var servingsPerTub = parseInt(root.dataset.servingsPerTub, 10) || 45;
+    var priceLine = root.dataset.priceLine || 'monthly';
+    var tubImage = root.dataset.tubImage || '';
+    var index = Math.min(Math.max((parseInt(root.dataset.defaultTier, 10) || 1) - 1, 0), tiers.length - 1);
+    var shownTubs = 0;
+    var mode = 'bundles';
+
+    var $ = function (sel) { return root.querySelector(sel); };
+
+    var maxPct = Math.max.apply(null, tiers.map(function (t) { return t.pct; }));
+    $('[data-bfps-max-saving]').textContent = 'Save up to ' + maxPct + '%';
+
+    function announce() {
+      var t = tiers[index];
+      var detail = mode === 'bundles'
+        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label }
+        : { mode: 'subscribe' };
+      root._bfpsState = detail;
+      root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));
+    }
+
+    function render() {
+      var t = tiers[index];
+      var next = tiers[index + 1];
+
+      $('[data-bfps-months]').textContent = t.label;
+      $('[data-bfps-tubs]').textContent = t.quantity + (t.quantity === 1 ? ' tub' : ' tubs') + ' · ' + (t.quantity * servingsPerTub) + ' servings';
+
+      var shelf = $('[data-bfps-shelf]');
+      shelf.innerHTML = '';
+      if (tubImage) {
+        for (var i = 0; i < t.quantity; i++) {
+          var img = document.createElement('img');
+          img.src = tubImage; img.alt = ''; img.loading = 'lazy'; img.width = 40; img.height = 50;
+          if (i >= shownTubs) img.className = 'is-new';
+          shelf.appendChild(img);
+        }
+      }
+      if (next) {
+        var more = document.createElement('button');
+        more.type = 'button';
+        more.className = 'bfps__more';
+        more.textContent = '+' + (next.quantity - t.quantity);
+        more.setAttribute('aria-label', 'Add ' + (next.quantity - t.quantity) + ' more tubs');
+        more.addEventListener('click', function () { go(index + 1); });
+        shelf.appendChild(more);
+      }
+      shownTubs = t.quantity;
+
+      var ladder = $('[data-bfps-ladder]');
+      ladder.innerHTML = '';
+      tiers.forEach(function (tier, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'bfps__rung' + (i <= index ? ' is-on' : '');
+        b.textContent = tier.pct + '% off';
+        b.setAttribute('aria-label', tier.label + ', ' + tier.pct + '% off');
+        b.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+        b.addEventListener('click', function () { go(i); });
+        ladder.appendChild(b);
+      });
+
+      $('[data-bfps-compare]').textContent = t.compare > t.price ? money(t.compare) : '';
+      $('[data-bfps-price]').textContent = money(t.price);
+
+      var saving = t.compare - t.price;
+      var unit = priceLine === 'daily'
+        ? money(Math.round(t.price / (t.quantity * servingsPerTub))) + ' a day'
+        : 'Works out at ' + money(Math.round(t.price / t.months)) + ' a month';
+      $('[data-bfps-price-line]').textContent = unit + (saving > 0 ? ' · you save ' + money(saving) : '');
+
+      $('[data-bfps-ship-line]').textContent = (t.quantity === 2 ? 'Both' : 'All ' + t.quantity) + ' tubs ship together, free';
+
+      var free = $('[data-bfps-free]');
+      free.innerHTML = '';
+      if (t.freeText) {
+        var strong = document.createElement('strong');
+        strong.textContent = t.freeText;
+        free.appendChild(strong);
+        if (t.tubsFreeText) free.appendChild(document.createTextNode(' ' + t.tubsFreeText));
+      }
+
+      $('[data-bfps-minus]').disabled = index === 0;
+      $('[data-bfps-plus]').disabled = index === tiers.length - 1;
+
+      announce();
+    }
+
+    function go(i) {
+      if (i < 0 || i > tiers.length - 1) return;
+      index = i;
+      render();
+    }
+
+    $('[data-bfps-minus]').addEventListener('click', function () { go(index - 1); });
+    $('[data-bfps-plus]').addEventListener('click', function () { go(index + 1); });
+
+    root.querySelectorAll('[data-bfps-tab]').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        mode = tab.dataset.bfpsTab;
+        root.querySelectorAll('[data-bfps-tab]').forEach(function (x) {
+          var on = x === tab;
+          x.classList.toggle('is-active', on);
+          x.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        root.querySelectorAll('[data-bfps-panel]').forEach(function (p) {
+          p.hidden = p.dataset.bfpsPanel !== mode;
+        });
+        announce();
+      });
+    });
+
+    render();
+  }
+
+  function boot() { document.querySelectorAll('[data-bfps]').forEach(init); }
+  boot();
+  document.addEventListener('shopify:section:load', boot);
+})();
+</script>
+{%- else -%}
+  {{ subscribe_html }}
+  {%- if request.design_mode -%}<p style="font-size:12px;color:#b42318;margin:8px 0 0">Black Friday bundles: set the one-time variant ID on this block and at least one bundle with tubs &gt; 0.</p>{%- endif -%}
+{%- endif -%}
