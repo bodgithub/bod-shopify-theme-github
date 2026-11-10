@@ -120,7 +120,7 @@
 											(so it hugs the final word instead of dropping onto its own line), vertical-align top.
 										endcomment
 										capture star_html
-											echo '<span class="hero-star" style="--star-size: ' | append: block.settings.star_size | append: 'px; --star-color: ' | append: block.settings.star_color | append: ';" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6L2.5 9.4l6.6-.8z"/></svg></span>'
+											echo '<span class="hero-star" style="--star-size: ' | append: block.settings.star_size | append: 'px; --star-color: ' | append: block.settings.star_color | append: ';" aria-hidden="true">*</span>'
 										endcapture
 										assign star_parts = heading_html | split: '</'
 										if star_parts.size > 1
@@ -555,10 +555,10 @@
           "unit": "px",
           "default": 0
         },
-        { "type": "header", "content": "Small star" },
-        { "type": "checkbox", "id": "show_star", "label": "Show a small star top-right of the text", "default": false, "info": "Stays the same size whatever the heading size." },
-        { "type": "range", "id": "star_size", "label": "Star size", "min": 8, "max": 24, "step": 1, "unit": "px", "default": 12 },
-        { "type": "color", "id": "star_color", "label": "Star colour", "default": "#4d61cf" }
+        { "type": "header", "content": "Small asterisk" },
+        { "type": "checkbox", "id": "show_star", "label": "Show a small asterisk top-right of the text", "default": false, "info": "Stays the same size whatever the heading size." },
+        { "type": "range", "id": "star_size", "label": "Asterisk size", "min": 8, "max": 32, "step": 1, "unit": "px", "default": 16 },
+        { "type": "color", "id": "star_color", "label": "Asterisk colour", "default": "#4d61cf" }
       ]
     },
     {

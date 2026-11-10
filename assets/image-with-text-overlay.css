@@ -376,5 +376,5 @@ line-hight:0.9;}
 }
 
 /* Heading block: small fixed-size star hugging the top right of the last word */
-.image-with-text-overlay--content .hero-star { display: inline-block; width: var(--star-size, 12px); height: var(--star-size, 12px); vertical-align: top; margin-left: 0.12em; position: relative; top: 0.08em; color: var(--star-color, #4d61cf); line-height: 0; font-size: 0; }
-.image-with-text-overlay--content .hero-star svg { display: block; width: 100%; height: 100%; }
+/* a typographic asterisk at a fixed px size, raised to the top of the line like a footnote mark */
+.image-with-text-overlay--content .hero-star { display: inline-block; vertical-align: top; margin-left: 0.05em; position: relative; top: 0.1em; color: var(--star-color, #4d61cf); font-size: var(--star-size, 16px); line-height: 1; font-weight: 600; font-style: normal; }
