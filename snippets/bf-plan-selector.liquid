@@ -174,7 +174,7 @@
   #ps1c-{{ uid }} .bfps__free-main strong{font-size:inherit;font-weight:800}
   /* the per-month line follows the free-months text on the same line (wraps naturally on narrow screens) */
   #ps1c-{{ uid }} .bfps__free-main,#ps1c-{{ uid }} .bfps__free-line{display:inline}
-  #ps1c-{{ uid }} .bfps__free-line:not(:empty)::before{content:" \00b7 ";font-weight:800}
+  #ps1c-{{ uid }} .bfps__free-line:not(:empty)::before{content:"\00b7";font-weight:800;margin:0 .4em 0 .25em}
   @media (max-width:749px){
     #ps1c-{{ uid }} .bfps__months{font-size:26px}
     #ps1c-{{ uid }} .bfps__shelf img{height:44px}
