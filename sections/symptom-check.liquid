@@ -26,6 +26,8 @@
   #shopify-section-{{ uid }} .sc__pw { max-width: {{ s.max_width }}px; margin: 0 auto; padding: 0 16px; }
   #shopify-section-{{ uid }} .sc__eyebrow { text-align: center; margin: 0 0 10px; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
   #shopify-section-{{ uid }} .sc__heading { text-align: center; margin: 0; color: {{ s.heading_color }}; font-weight: 400; line-height: 1.15; {% if s.heading_size > 0 %}font-size: {{ s.heading_size | times: 0.8 | round }}px;{% endif %} }
+  #shopify-section-{{ uid }} .sc__heading p { margin: 0; font: inherit; color: inherit; }
+  #shopify-section-{{ uid }} .sc__heading p + p { margin-top: 0.25em; }
   #shopify-section-{{ uid }} .sc__heading em { color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__sub p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
   #shopify-section-{{ uid }} .sc__sub p + p { margin-top: 8px; }
@@ -162,7 +164,7 @@
 <div class="sc" id="sc-{{ uid }}" data-sc data-threshold="{{ s.threshold }}">
   <div class="sc__pw">
     {%- if s.eyebrow != blank -%}<p class="sc__eyebrow">{{ s.eyebrow }}</p>{%- endif -%}
-    {%- if s.heading != blank -%}<h2 class="sc__heading{% if s.heading_size == 0 %} h1{% endif %}">{{ s.heading }}</h2>{%- endif -%}
+    {%- if s.heading != blank -%}<div class="sc__heading{% if s.heading_size == 0 %} h1{% endif %}" role="heading" aria-level="2">{{ s.heading }}</div>{%- endif -%}
     {%- if s.subheading != blank -%}<div class="sc__sub">{{ s.subheading }}</div>{%- endif -%}
 
     <div class="sc__groups">
@@ -389,7 +391,7 @@
   "class": "section-symptom-check",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Is this you?" },
-    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Tick what you <em>recognise</em>" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Tick what you <em>recognise</em></p>" },
     { "type": "range", "id": "heading_size", "label": "Heading size (px, 0 = theme H1)", "min": 0, "max": 64, "step": 2, "default": 0 },
     { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>These are the signs women describe to us most. Tap any that sound familiar.</p>" },
     { "type": "text", "id": "group_a_title", "label": "Group A title", "default": "How you feel" },
