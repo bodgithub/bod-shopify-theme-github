@@ -509,3 +509,7 @@ line-hight:0.9;}
   .image-with-text-overlay--content .rte[style*="--rte-fs-d"] p,
   .image-with-text-overlay--content .rte[style*="--rte-fs-d"] :is(h3, h4, h5, h6) { font-size: var(--rte-fs-d) !important; }
 }
+
+/* Ribbon: two-point zigzag option */
+.image-with-text-overlay--content div.hero-ribbon--left.hero-ribbon--zig2 { clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 25%, 100% 50%, calc(100% - 14px) 75%, 100% 100%, 0 100%); }
+.image-with-text-overlay--content div.hero-ribbon--right.hero-ribbon--zig2 { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 14px 75%, 0 50%, 14px 25%); }
