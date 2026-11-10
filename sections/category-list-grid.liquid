@@ -172,6 +172,8 @@
   #shopify-section-{{ section.id }} .clg-overlay.is-open, #shopify-section-{{ section.id }} .clg-popup.is-open { display: block; }
   #shopify-section-{{ section.id }} .clg-popup__b { color: {{ s.text_color }}; font-size: 12px; line-height: 1.6; text-align: center; }
   #shopify-section-{{ section.id }} .clg-popup__b :is(h1, h2, h3, h4, h5, h6) { color: {{ s.text_color }}; font-family: "tenon", sans-serif; margin: 0 0 10px; }
+  /* bold/italic inside a pop-up heading stays the heading colour (the site-wide rule would turn it the lighter blue) */
+  #shopify-section-{{ section.id }} .clg-popup__b :is(h1, h2, h3, h4, h5, h6) :is(strong, b, em) { color: inherit; }
   #shopify-section-{{ section.id }} .clg-popup__b p, #shopify-section-{{ section.id }} .clg-popup__b li { color: {{ s.text_color }}; }
   #shopify-section-{{ section.id }} .clg-popup__b p { margin: 0; padding-bottom: 26px; }
   @media screen and (min-width: 750px) {
