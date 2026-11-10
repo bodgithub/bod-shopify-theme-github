@@ -175,7 +175,7 @@
         <ul class="sc__list">
           {%- for block in section.blocks -%}
             {%- if block.settings.group != 'b' -%}
-              <li {{ block.shopify_attributes }}><button type="button" class="sc__item" aria-pressed="false" data-sc-item><span class="sc__box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="3 8.5 6.5 12 13 4.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></span><span>{{ block.settings.text }}</span></button></li>
+              <li {{ block.shopify_attributes }}><button type="button" class="sc__item" aria-pressed="false" data-sc-item{% if block.settings.response != blank %} data-sc-response="{{ block.settings.response | escape }}"{% endif %}><span class="sc__box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="3 8.5 6.5 12 13 4.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></span><span>{{ block.settings.text }}</span></button></li>
             {%- endif -%}
           {%- endfor -%}
         </ul>
@@ -186,7 +186,7 @@
           <ul class="sc__list">
             {%- for block in section.blocks -%}
               {%- if block.settings.group == 'b' -%}
-                <li {{ block.shopify_attributes }}><button type="button" class="sc__item" aria-pressed="false" data-sc-item><span class="sc__box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="3 8.5 6.5 12 13 4.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></span><span>{{ block.settings.text }}</span></button></li>
+                <li {{ block.shopify_attributes }}><button type="button" class="sc__item" aria-pressed="false" data-sc-item{% if block.settings.response != blank %} data-sc-response="{{ block.settings.response | escape }}"{% endif %}><span class="sc__box"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><polyline points="3 8.5 6.5 12 13 4.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg></span><span>{{ block.settings.text }}</span></button></li>
               {%- endif -%}
             {%- endfor -%}
           </ul>
@@ -270,11 +270,13 @@
   var barMsg = bar && bar.querySelector('[data-sc-bar-msg]');
   var barChange = bar && bar.querySelector('[data-sc-bar-change]');
   var count = 0;
+  var respItem = null; /* the last item tapped ON that carries its own message */
   function update(){
     var n = items.filter(function(b){ return b.getAttribute('aria-pressed') === 'true'; }).length;
     count = n;
     var countText = n ? tpl.replace('[count]', n).replace('[total]', items.length) : '';
     var msg = n === 0 ? msgs.none : (n >= threshold ? msgs.high : msgs.low);
+    if(respItem && respItem.getAttribute('aria-pressed') === 'true'){ msg = respItem.getAttribute('data-sc-response'); }
     if(countEl){ countEl.textContent = countText; }
     if(msgEl){ msgEl.innerHTML = msg; }
     if(barCount){ barCount.textContent = countText; }
@@ -295,7 +297,13 @@
     var pb = document.getElementById('PBarNextFrameWrapper') || document.getElementById('preview-bar-iframe');
     bar.style.bottom = pb && pb.offsetHeight ? pb.offsetHeight + 'px' : '';
   }
-  items.forEach(function(b){ b.addEventListener('click', function(){ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true'); update(); }); });
+  items.forEach(function(b){ b.addEventListener('click', function(){
+    var on = b.getAttribute('aria-pressed') !== 'true';
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if(on && b.hasAttribute('data-sc-response')){ respItem = b; }
+    else if(!on && respItem === b){ respItem = null; }
+    update();
+  }); });
   if(barChange){ barChange.addEventListener('click', function(){ root.scrollIntoView({ behavior: 'smooth', block: 'start' }); }); }
   /* after scrolling past: mirror the buy box's plan selector (name + price) and add that plan through its own button */
   var ps = null;
@@ -450,7 +458,8 @@
       "name": "Symptom",
       "settings": [
         { "type": "text", "id": "text", "label": "Text", "default": "Waking at 3am and lying there" },
-        { "type": "select", "id": "group", "label": "Group", "options": [ { "value": "a", "label": "Group A" }, { "value": "b", "label": "Group B" } ], "default": "a" }
+        { "type": "select", "id": "group", "label": "Group", "options": [ { "value": "a", "label": "Group A" }, { "value": "b", "label": "Group B" } ], "default": "a" },
+        { "type": "richtext", "id": "response", "label": "Message when this is ticked (optional)", "info": "Shown in place of the count message while this is the last thing tapped. Unticking it brings the normal message back." }
       ]
     }
   ],

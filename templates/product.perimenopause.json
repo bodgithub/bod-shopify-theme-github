@@ -260,26 +260,28 @@
           "type": "symptom",
           "settings": {
             "text": "“Your labs are normal”",
-            "group": "b"
+            "group": "b",
+            "response": "<p>Most doctors test glucose, not insulin. Glucose can look normal while your body pumps out extra insulin to keep it there.</p>"
           }
         },
         "sym_b2": {
           "type": "symptom",
           "settings": {
             "text": "“It’s just your age”",
-            "group": "b"
+            "group": "b",
+            "response": "<p>Insulin resistance is more common as we get older. That doesn’t make it normal. Inositol is clinically studied to improve insulin sensitivity by up to 70%*.</p>"
           }
         },
         "sym_b3": {
           "type": "symptom",
           "settings": {
             "text": "“Eat less, move more”",
-            "group": "b"
+            "group": "b",
+            "response": "<p>Insulin is a fat-storing hormone. When your cells stop responding to it, eating less and moving more stops working the way it used to.</p>"
           }
         },
         "sym_b4": {
           "type": "symptom",
-          "disabled": true,
           "settings": {
             "text": "“Come back in a year”",
             "group": "b"
@@ -310,8 +312,8 @@
         "count_text": "You ticked [count] of [total]",
         "threshold": 3,
         "msg_none": "<p>Tap anything that sounds like you.</p>",
-        "msg_low": "<p>One or two can mean a lot of things. Several together usually point to <strong>how your body handles insulin. </strong>And that shifts a lot after 40.</p>",
-        "msg_high": "<p>Several of these together usually point to <strong>how your body handles insulin. </strong>And that shifts a lot after 40.</p>",
+        "msg_low": "<p>One or two of these on their own can mean a lot of things. Several together usually point at the same place: <strong>how your body is handling insulin. </strong>And that shifts a lot after 40. Your blood sugar can still read normal while it happens.</p>",
+        "msg_high": "<p>Several of these together usually point to one place: <strong>how your body is handling insulin. </strong>And that shifts a lot after 40. Your blood sugar can still read normal while it happens.</p>",
         "button_label": "Show me what helps",
         "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
         "footnote": "<p>*A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.</p>",
