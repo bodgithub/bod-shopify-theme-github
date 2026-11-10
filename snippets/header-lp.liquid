@@ -23,7 +23,7 @@
   <a class="logolink lp-logo text-logo" href="{{ routes.root_url }}">{{ shop.name }}</a>
 {%- endif -%}
 
-<div class="thb-secondary-area thb-header-right lp-header__right">
+<div class="thb-secondary-area thb-header-right lp-header__right{% if header_settings.lp_reveal_on_scroll != false %} lp-header__right--reveal{% endif %}">
   {%- if header_settings.lp_show_cart -%}
     <a class="thb-secondary-area-item thb-secondary-cart lp-cart" href="{{ routes.cart_url }}" id="cart-drawer-toggle" title="{{ 'sections.header.cart' | t | default: 'Cart' }}">
       <div class="thb-secondary-item-icon">
@@ -48,6 +48,9 @@
   @media only screen and (min-width: 768px) { .header--lp .lp-logo { height: var(--logo-height, 55px); } }
   /* right side: cart icon in the button colour + CTA that stays on one line */
   .header--lp .lp-header__right { display: flex; align-items: center; justify-content: flex-end; gap: 6px; }
+  /* cart icon + CTA stay hidden at the top of the page and fade in once the visitor scrolls */
+  .header--lp .lp-header__right--reveal { opacity: 0; visibility: hidden; transform: translateY(-4px); transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s; }
+  .header--lp.lp-scrolled .lp-header__right--reveal { opacity: 1; visibility: visible; transform: none; transition: opacity .2s ease, transform .2s ease; }
   .header--lp .lp-cart { color: var(--solid-button-background, #1a2874); text-decoration: none; }
   .header--lp .lp-cart .thb-secondary-item-icon { position: relative; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; }
   .header--lp .lp-cart .thb-item-count:empty { display: none; }
@@ -55,3 +58,10 @@
   .header--lp .lp-cta:hover, .header--lp .lp-cta:focus-visible { background: var(--solid-button-background-hover, #3447af); background-image: none; }
   @media only screen and (min-width: 768px) { .header--lp .lp-cta { display: inline-flex; height: 46px; padding: 0 24px; font-size: 15px; } }
 {% endstyle %}
+<script>
+(function () {
+  var h = document.getElementById('header'); if (!h || !h.querySelector('.lp-header__right--reveal')) { return; }
+  function sync() { h.classList.toggle('lp-scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', sync, { passive: true }); window.addEventListener('resize', sync); sync();
+})();
+</script>
