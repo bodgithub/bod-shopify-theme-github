@@ -57,6 +57,7 @@
             "description_size": "medium",
             "pad_left": 0,
             "pad_right": 96,
+            "pad_top": 0,
             "pad_bottom": 12
           }
         },
@@ -96,17 +97,6 @@
             "button_icon": "chevron"
           }
         },
-        "text_kLfyGj": {
-          "type": "text",
-          "settings": {
-            "text": "<h6>After 40, falling estrogen makes insulin harder for your cells to use, even when your blood sugar reads normal. Two scoops of Bodology gives you the 4g of inositol used in the studies.</h6>",
-            "description_color": "#182769",
-            "description_size": "medium",
-            "pad_left": 0,
-            "pad_right": 96,
-            "pad_bottom": 12
-          }
-        },
         "space_UNPyXd": {
           "type": "space",
           "settings": {
@@ -123,7 +113,6 @@
         "benefits_peri",
         "space_G8PyxF",
         "button_peri",
-        "text_kLfyGj",
         "space_UNPyXd"
       ],
       "custom_css": [],
