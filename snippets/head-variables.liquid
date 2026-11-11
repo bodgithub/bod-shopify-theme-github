@@ -154,6 +154,7 @@
 		--bod-body-d: {% if settings.body_copy_size_desktop > 0 %}{{ settings.body_copy_size_desktop }}px{% else %}calc(var(--font-body-scale) * 18px){% endif %};
 		--bod-body-m: {% if settings.body_copy_size_mobile > 0 %}{{ settings.body_copy_size_mobile }}px{% else %}calc(var(--font-body-scale) * 18px){% endif %};
 		--bod-body: var(--bod-body-d);
+		--bod-body-lh: {{ settings.body_copy_line_height | default: 1.3 }};
 
 		--block-border-radius: {{ block_border_radius | default: '16' | append: 'px' }};
 		--button-border-radius: {{ button_border_radius | default: '6' | append: 'px' }};

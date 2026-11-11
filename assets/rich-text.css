@@ -67,3 +67,5 @@
 
 /* Headings in the Rich text section (Heading block and headings typed in a Text block): tighter line height */
 .rich-text :is(h2, h3, h4, h5, .h2, .h3, .h4, .h5) { line-height: 1.12; }
+/* Paragraphs and list items in a Text block share the theme-wide body copy line height */
+.rich-text .rte :is(p, li) { line-height: var(--bod-body-lh, 1.3); }
