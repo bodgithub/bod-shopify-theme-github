@@ -9,6 +9,10 @@
 {%- endcapture -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}">
 <head>
+{%- if template.name == 'product' and template.suffix == blank -%}
+  {%- comment -%} An empty or unknown ?view= lands on the bare product template; send it to the product's real page instead {%- endcomment -%}
+  <script>(function(){try{var u=new URL(location.href);if(u.searchParams.has('view')){u.searchParams.delete('view');location.replace(u.pathname+u.search+u.hash);}}catch(e){}})();</script>
+{%- endif -%}
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
