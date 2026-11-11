@@ -48,6 +48,11 @@
   }
   #qb-{{ uid }} .qb__name { font-size: {{ s.quote_size | default: 13 }}px; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
   #qb-{{ uid }} .qb__role { font-size: {{ s.quote_size | default: 13 | times: 0.95 | round }}px; margin: 0; opacity: .85; }
+  @media screen and (max-width: 749px) {
+    /* when the reviewer wraps under the quote on phones, keep it left-aligned with the text */
+    #qb-{{ uid }} { justify-content: flex-start; }
+    #qb-{{ uid }} .qb__who { flex-basis: 100%; }
+  }
 </style>
 
 <div id="qb-{{ uid }}">
