@@ -130,7 +130,6 @@
           {%- if s.bf_end_text != blank -%}<li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>Black Friday price &middot; {{ s.bf_end_text | escape }}</span></li>{%- endif -%}
         </ul>
         <p class="bfc__line" data-bfc-line></p>
-        <button type="button" class="bfc__swap" data-bfc-swap hidden></button>
         {%- if s.bf_panel_chips -%}
         <div class="bfc__chips" style="--bf-chip-bg:{{ s.bf_chip_bg | default: '#e3eaff' }};--bf-chip-border:{{ s.bf_chip_border | default: '#3447af' }};--bf-chip-fg:{{ s.bf_chip_text | default: '#1a2874' }}">
           {%- if s.bf_chip_servings_text != blank -%}<span class="bfc__chip" data-bfc-chip-servings data-tpl="{{ s.bf_chip_servings_text | escape }}">{{ s.bf_chip_servings_text | replace: '[n]', servings_per_tub }}</span>{%- endif -%}
@@ -139,6 +138,7 @@
           {%- if s.bf_chip_3 != blank -%}<span class="bfc__chip">{{ s.bf_chip_3 }}</span>{%- endif -%}
         </div>
         {%- endif -%}
+        <button type="button" class="bfc__swap" data-bfc-swap hidden></button>
       </div>
       <p class="bfps__free bfc__free-hidden" hidden><span data-bfps-free></span><span data-bfps-price-line></span></p>
       <span data-bfps-months hidden></span><span data-bfps-tubs hidden></span><span data-bfps-shelf hidden></span><span data-bfps-ladder hidden></span>
