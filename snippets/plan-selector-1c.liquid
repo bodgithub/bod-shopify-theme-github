@@ -29,6 +29,7 @@
 {%- assign gift_pos = s.gift_position | default: 'below' -%}
 {%- if gift_display != 'banner' -%}{%- assign gift_pos = 'below' -%}{%- endif -%}
 {%- assign card_rad = s.card_radius | default: 0 -%}
+{%- assign ribbon_pos = s.ribbon_position | default: 'corner' -%}
 {%- assign gb_icon = gb_tc -%}
 {%- assign gb_tc_lightness = gb_tc | color_extract: 'lightness' -%}
 {%- if gb_tc_lightness > 70 -%}{%- assign gb_icon = gb_bg -%}{%- endif -%}
@@ -228,6 +229,13 @@
 {%- if s.card_flat -%}
 #ps1c-{{ uid }} .pc-ribbon{top:auto; bottom:0; right:0; border-bottom:0; border-top:1px solid {{ s.card_border_color | default: acc }}; border-left:1px solid {{ s.card_border_color | default: acc }}; border-radius:{{ card_rad }}px 0 0 0; padding:4px 11px; background:{{ s.card_border_color | default: acc }}; color:#fff;}
 #ps1c-{{ uid }} .ps-giftban{margin-bottom:0;}
+{%- endif -%}
+{%- if ribbon_pos == 'price' -%}
+/* ribbon as a pill in the price column, under the per-serving line */
+#ps1c-{{ uid }} .pc-ribbon{position:static; top:auto; bottom:auto; right:auto; display:none; margin-top:8px; border:0; border-radius:{{ card_rad | default: 5 }}px; padding:5px 11px; line-height:1.2; background:{{ s.card_border_color | default: acc }}; color:#fff; white-space:nowrap;}
+#ps1c-{{ uid }} .pc-card.is-selected .pc-ribbon{display:inline-block;}
+{%- endif -%}
+{%- if s.card_flat -%}
 #ps1c-{{ uid }} .ps-modal__s{font-size:15px; line-height:1.5; color:#14307C;}
 #ps1c-{{ uid }} .ps-concern__t{font-size:15px; line-height:1.35; color:#14307C;}
 #ps1c-{{ uid }} .ps-concern__d{font-size:15px; line-height:1.35; color:#14307C;}
@@ -331,7 +339,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     <div class="pc-card{% if P == ps1c_default %} is-selected{% endif %}" role="radio" aria-checked="{% if P == ps1c_default %}true{% else %}false{% endif %}" tabindex="{% if P == ps1c_default %}0{% else %}-1{% endif %}"
          data-ps1c-card data-ps1c-p="{{ P }}" data-ps1c-name="{{ card_name | escape }}" data-ps1c-price="{{ card_price | escape }}" data-ps1c-pill="{{ card_pill | escape }}" data-ps1c-serving="{{ card_serving | escape }}" data-ps1c-variant="{{ card_variant }}" data-ps1c-plan="{{ card_plan }}"{% if requires_plan %} data-ps1c-requires-plan="1"{% endif %} data-ps1c-qty="{{ card_qty }}" data-ps1c-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1c-gift-title="{{ gift_name | escape }}" data-ps1c-gift-sub="{{ gift_bsub | escape }}" data-ps1c-gift-cross="{{ gift_crossout | escape }}" data-ps1c-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
-        {%- if card_ribbon != blank -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
+        {%- if card_ribbon != blank and ribbon_pos != 'price' -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
         <div class="pc-pad">
           <div class="pc-grid">
             <div class="pc-left">
@@ -347,6 +355,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
             <div class="pc-right">
               <div class="pc-price">{%- if card_compare != blank -%}<span class="pc-price__was">{{ card_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ card_price }}</span>{%- if card_per != blank -%}<span class="pc-price__per">{{ card_per }}</span>{%- endif -%}</div>
               {%- if card_serving != blank -%}<span class="pc-serving">{{ card_serving }}</span>{%- endif -%}
+              {%- if card_ribbon != blank and ribbon_pos == 'price' -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
             </div>
           </div>
           <div class="pc-expand">
