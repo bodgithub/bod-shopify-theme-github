@@ -168,7 +168,7 @@
   }
   {%- if s.enable_lightbox -%}
   #shopify-section-{{ section.id }} .clg-overlay { display: none; position: fixed; inset: 0; z-index: 2147482998; background: rgba(242, 238, 234, 0.87); }
-  #shopify-section-{{ section.id }} .clg-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2147483000; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px; max-height: 85dvh; overflow-y: auto; font-family: "tenon", sans-serif; }
+  #shopify-section-{{ section.id }} .clg-popup { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2147483000; background: #e3eaff; border: 1px solid #3447af; border-radius: 16px; overflow: hidden; padding: 32px 24px; width: 96%; max-width: 700px; max-height: 85dvh; overflow-y: auto; font-family: "tenon", sans-serif; }
   #shopify-section-{{ section.id }} .clg-overlay.is-open, #shopify-section-{{ section.id }} .clg-popup.is-open { display: block; }
   #shopify-section-{{ section.id }} .clg-popup__b { color: {{ s.text_color }}; font-size: 12px; line-height: 1.6; text-align: center; }
   #shopify-section-{{ section.id }} .clg-popup__b :is(h1, h2, h3, h4, h5, h6) { color: {{ s.text_color }}; font-family: "tenon", sans-serif; margin: 0 0 10px; }
@@ -634,7 +634,7 @@
           "type": "color",
           "id": "bg",
           "label": "Cell background",
-          "default": "#e3e7ff"
+          "default": "#e3eaff"
         }
       ]
     }
