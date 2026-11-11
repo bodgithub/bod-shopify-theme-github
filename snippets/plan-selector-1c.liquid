@@ -122,6 +122,8 @@
 #ps1c-{{ uid }} .ps-giftban--card .ps-giftban__icon{width:22px; height:22px; border-radius:0; background:transparent; margin-top:1px;}
 #ps1c-{{ uid }} .ps-giftban--card .ps-giftban__icon img{border-radius:4px;}
 #ps1c-{{ uid }} .ps-giftban--card .ps-giftban__txt{flex:1 1 0; min-width:0;}
+#ps1c-{{ uid }} .ps-giftban--card .ps-giftban__s{display:flex; flex-wrap:wrap; gap:0 4px; align-items:baseline;}
+#ps1c-{{ uid }} .ps-giftban--card .ps-giftban__x{font-size:inherit; color:inherit; opacity:.8;}
 #ps1c-{{ uid }} .ps-giftban__cta{appearance:none; background:none; border:0; padding:0; margin-left:auto; align-self:center; flex:0 0 auto; cursor:pointer; display:inline-flex; align-items:center; gap:3px; font-family:inherit; font-size:12px; font-weight:500; line-height:1.3; color:{{ gb_sc }}; text-decoration:underline; text-underline-offset:2px; opacity:.85; white-space:nowrap;}
 #ps1c-{{ uid }} .ps-giftban__cta:hover{opacity:1;}
 #ps1c-{{ uid }} .ps-giftban__cta:focus-visible{outline:2px solid {{ gb_tc }}; outline-offset:2px; border-radius:2px;}
@@ -389,8 +391,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       <img data-ps1c-giftban-img alt="" hidden>
     </span>
     <span class="ps-giftban__txt">
-      <span class="ps-giftban__trow"><strong class="ps-giftban__t" data-ps1c-giftban-title></strong><span class="ps-giftban__x" data-ps1c-giftban-cross hidden></span></span>
-      <span class="ps-giftban__s" data-ps1c-giftban-line><span data-ps1c-giftban-sub></span>{% if s.proto_enable and gift_pos != 'card' %}<span data-ps1c-giftban-sep> · </span><button type="button" class="ps-giftban__cust" data-ps1c-proto-open>{{ s.giftban_cust_label | default: 'Customize' }}</button>{% endif %}</span>
+      <span class="ps-giftban__trow"><strong class="ps-giftban__t" data-ps1c-giftban-title></strong>{% if gift_pos != 'card' %}<span class="ps-giftban__x" data-ps1c-giftban-cross hidden></span>{% endif %}</span>
+      <span class="ps-giftban__s" data-ps1c-giftban-line>{% if gift_pos == 'card' %}<span class="ps-giftban__x" data-ps1c-giftban-cross hidden></span><span data-ps1c-giftban-xsep hidden> · </span>{% endif %}<span data-ps1c-giftban-sub></span>{% if s.proto_enable and gift_pos != 'card' %}<span data-ps1c-giftban-sep> · </span><button type="button" class="ps-giftban__cust" data-ps1c-proto-open>{{ s.giftban_cust_label | default: 'Customize' }}</button>{% endif %}</span>
       {% if s.proto_enable %}<span class="ps-giftban__focus" data-ps1c-giftban-focus hidden><strong>{{ s.giftban_focus_label | default: 'Personalized for:' }}</strong> <span data-ps1c-giftban-focus-list></span></span>{% endif %}
     </span>
     {% if s.proto_enable and gift_pos == 'card' %}<button type="button" class="ps-giftban__cta" data-ps1c-proto-open><span>{{ s.giftban_cust_label | default: 'Customize' }}</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l4 4-4 4"/></svg></button>{% endif %}
@@ -551,6 +553,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var gbSep = gb ? gb.querySelector('[data-ps1c-giftban-sep]') : null;
   var gbCust = gb ? gb.querySelector('.ps-giftban__cust') : null;
   var gbX = gb ? gb.querySelector('[data-ps1c-giftban-cross]') : null;
+  var gbXsep = gb ? gb.querySelector('[data-ps1c-giftban-xsep]') : null;
   function syncGiftBan(){
     if(!gb) return;
     if(bundlesMode()){ gb.hidden = true; return; } // the free protocol needs a subscription line; bundles are one-time
@@ -560,9 +563,11 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     gb.hidden = false;
     var slot = c.querySelector('[data-ps1c-giftslot]'); if(slot && gb.parentNode !== slot){ slot.appendChild(gb); }
     gbT.textContent = t;
-    if(gbX){ var cx = c.getAttribute('data-ps1c-gift-cross') || ''; gbX.textContent = cx; gbX.hidden = !cx; }
+    var cx = c.getAttribute('data-ps1c-gift-cross') || '';
+    if(gbX){ gbX.textContent = cx; gbX.hidden = !cx; }
     var st = c.getAttribute('data-ps1c-gift-sub') || '';
     gbS.textContent = st; gbS.hidden = !st;
+    if(gbXsep){ gbXsep.hidden = !(cx && st); }
     if(gbSep){ gbSep.hidden = !st; }
     var gi = c.getAttribute('data-ps1c-gift-img') || '';
     if(gi){ gbImg.src = gi; gbImg.hidden = false; if(gbSvg){ gbSvg.style.display = 'none'; } }
