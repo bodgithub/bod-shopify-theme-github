@@ -136,6 +136,7 @@
 }
 {%- endif -%}
 #ps1c-{{ uid }} .ps-ship{font-size:12.5px; display:flex; align-items:center; justify-content:center; gap:7px; color:var(--ps-ink); margin-top:-8px;}
+#ps1c-{{ uid }} .ps-ship[hidden]{display:none;}
 #ps1c-{{ uid }} .ps-ship__dot{width:7px; height:7px; border-radius:50%; background:var(--ps-blue); display:inline-block; animation:ps1cpulse-{{ uid }} 1.8s ease-out infinite;}
 @keyframes ps1cpulse-{{ uid }}{
   0%{box-shadow:0 0 0 0 {{ acc | color_modify: 'alpha', 0.4 }};}
@@ -531,6 +532,13 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var shipPreEl = root.querySelector('[data-ps1c-shipprefix]');
   var shipWeekendText = {{ s.shipping_weekend_text | json }};
   var shipWeekendHighlight = {{ s.shipping_weekend_highlight | json }};
+  var shipRow = root.querySelector('.ps-ship');
+  function publishShip(text, weekend){
+    if(!bfEl) return;
+    bfEl._bfpsShip = { date: text, weekend: !!weekend };
+    [].forEach.call(root.querySelectorAll('[data-bfps-ship-date]'), function(el){ el.textContent = text; });
+    if(typeof bfEl._bfpsRefreshShip === 'function'){ bfEl._bfpsRefreshShip(); }
+  }
   if(shipEl){
     var sd;
     try { sd = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })); }
@@ -539,11 +547,26 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     if(shipPreEl && shipWeekendText && ((sdDay === 5 && sd.getHours() >= 14) || sdDay === 6)){
       shipPreEl.textContent = shipWeekendText;
       shipEl.textContent = shipWeekendHighlight || '';
+      publishShip(shipWeekendHighlight || '', true);
     } else {
       if(sd.getHours() >= 14){ sd.setDate(sd.getDate() + 1); }
       while(sd.getDay() === 0 || sd.getDay() === 6){ sd.setDate(sd.getDate() + 1); }
       try { shipEl.textContent = sd.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }); }
       catch(e){ shipEl.textContent = sd.toDateString(); }
+      publishShip(shipEl.textContent, false);
+    }
+  }
+  // Black Friday: with the shipping line inside the bundle list, the row above the button only shows in the subscription view;
+  // the subscription view can also hide the one-time card, so never leave it selected there
+  function syncBf(){
+    if(!bfEl) return;
+    if(shipRow && bfEl.getAttribute('data-bfps-ship-in-list') === 'true'){ shipRow.hidden = bundlesMode(); }
+    if(!bundlesMode() && bfEl.getAttribute('data-bfps-hide-ot') === 'true'){
+      var cur = selected();
+      if(cur && cur.getAttribute('data-ps1c-p') === 'ot'){
+        var alt = cards.filter(function(x){ return x.getAttribute('data-ps1c-p') !== 'ot'; })[0];
+        if(alt){ select(alt); }
+      }
     }
   }
   // subscribe toggle mirrors card selection: on = subscribe & save card, off = one-time card
@@ -656,8 +679,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     [].slice.call(guar.querySelectorAll('[data-ps1c-guar-close]')).forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); closeG(); }); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !guar.hidden){ closeG(); } });
   }
-  if(bfEl){ root.addEventListener('bfps:change', function(e){ bfState = e.detail; syncSub(); syncTick(); syncGiftBan(); }); }
-  syncSub(); syncTick(); syncGiftBan();
+  if(bfEl){ root.addEventListener('bfps:change', function(e){ bfState = e.detail; syncSub(); syncTick(); syncGiftBan(); syncBf(); }); }
+  syncSub(); syncTick(); syncGiftBan(); syncBf();
   var c0 = selected(); if(c0){ announce(c0); }
   function postItems(items){
     err.classList.remove('is-shown');

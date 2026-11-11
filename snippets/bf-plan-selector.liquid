@@ -25,6 +25,24 @@
   if s.bf_show_tabs == false
     assign show_tabs = false
   endif
+  comment
+    Shipping line inside the bundle list (pulsing bullet, live ship-by date filled by plan-selector-1c),
+    and the "Prefer a subscription?" link that opens the subscription cards without the tabs.
+  endcomment
+  assign ship_in_list = false
+  if s.bf_ship_in_list
+    assign ship_in_list = true
+  endif
+  assign sub_link = false
+  if s.bf_sub_link
+    assign sub_link = true
+  endif
+  assign hide_ot = true
+  if s.bf_sub_hide_ot == false
+    assign hide_ot = false
+  endif
+  assign ship_tpl = s.bf_ship_list_text | default: 'Fast, free shipping · [tubs] ship by [date]'
+  assign ship_tpl_weekend = s.bf_ship_list_weekend_text | default: 'Fast, free shipping · [tubs] arrive in [date]'
   assign tub_cents = 0
   if base_variant
     assign tub_cents = base_variant.price
@@ -86,6 +104,8 @@
   data-servings-per-tub="{{ servings_per_tub }}"
   data-default-tier="{{ s.bf_default_tier | default: 2 }}"
   data-layout="{{ layout }}"
+  data-bfps-ship-in-list="{{ ship_in_list }}"
+  data-bfps-hide-ot="{{ hide_ot }}"
   {%- if tub_img != blank %} data-tub-image="{{ tub_img }}"{% endif -%}
 >
   <script type="application/json" data-bfps-tiers>{{ tiers_json | strip }}</script>
@@ -125,7 +145,11 @@
           {%- if s.bf_studies_in_note and has_tier_foot -%}<button type="button" class="bfc__note-studies" data-bfps-study-open><span>{{ s.bf_studies_label | default: '*See the studies' }}</span><svg class="bfps__foot-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l4 4-4 4"/></svg></button>{%- endif -%}
         </div>
         <ul class="bfc__list">
+          {%- if ship_in_list -%}
+          <li class="bfc__li-ship"><span class="ps-ship__dot bfc__dot" aria-hidden="true"></span><span data-bfps-ship-line data-tpl="{{ ship_tpl | escape }}" data-tpl-weekend="{{ ship_tpl_weekend | escape }}"></span></li>
+          {%- else -%}
           <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span data-bfps-ship-line></span></li>
+          {%- endif -%}
           <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>One-time payment, nothing renews</span></li>
           {%- if s.bf_end_text != blank -%}<li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>Black Friday price &middot; {{ s.bf_end_text | escape }}</span></li>{%- endif -%}
         </ul>
@@ -164,7 +188,7 @@
       </div>
 
       <ul class="bfps__details">
-        <li data-bfps-ship-line></li>
+        <li data-bfps-ship-line{% if ship_in_list %} data-tpl="{{ ship_tpl | escape }}" data-tpl-weekend="{{ ship_tpl_weekend | escape }}"{% endif %}></li>
         <li><strong>One-time payment, nothing renews</strong></li>
         {%- if s.bf_end_text != blank -%}<li>Black Friday price &middot; {{ s.bf_end_text | escape }}</li>{%- endif -%}
       </ul>
@@ -172,11 +196,17 @@
       <div class="bfps__free"><p class="bfps__free-main" data-bfps-free></p><p class="bfps__free-line" data-bfps-price-line></p></div>
     </div>
     {%- endif -%}
+    {%- if sub_link -%}
+    <p class="bfps__sublink">{{ s.bf_sub_link_text | default: 'Prefer a subscription?' | escape }} <button type="button" class="bfps__sublink-btn" data-bfps-tab="subscribe">{{ s.bf_sub_link_cta | default: 'Subscribe and save 15%' | escape }}</button></p>
+    {%- endif -%}
   </div>
 
-  {%- if show_tabs -%}
+  {%- if show_tabs or sub_link -%}
   <div class="bfps__panel" data-bfps-panel="subscribe" role="tabpanel" hidden>
     {{ subscribe_html }}
+    {%- if sub_link and show_tabs == false -%}
+    <p class="bfps__sublink bfps__sublink--back"><button type="button" class="bfps__sublink-btn" data-bfps-tab="bundles">{{ s.bf_bundles_link_cta | default: 'Back to the Black Friday bundles' | escape }}</button></p>
+    {%- endif -%}
   </div>
   {%- endif -%}
   {%- if s.bf_footnote != blank or has_tier_foot -%}
@@ -303,6 +333,17 @@
   #ps1c-{{ uid }} .bfc__line:empty{display:none}
   #ps1c-{{ uid }} .bfc__swap{appearance:none;background:none;border:0;padding:0;margin:12px 0 0;font-family:inherit;font-size:15px;font-weight:600;color:var(--bf-blue);text-decoration:underline;text-underline-offset:4px;cursor:pointer;text-align:left}
   #ps1c-{{ uid }} .bfc__swap[hidden]{display:none}
+  /* shipping line as the first point: pulsing dot in place of the tick, live date bold in navy */
+  #ps1c-{{ uid }} .bfc__list .bfc__dot{flex:0 0 auto;width:9px;height:9px;margin:6px 3.5px 0;box-shadow:0 0 0 3px rgba(52,71,175,.18)}
+  #ps1c-{{ uid }} .bfc__ship-date{font-weight:700;color:var(--bf-navy);text-decoration:underline;text-underline-offset:2px}
+  /* "Prefer a subscription?" link under the bundle card, and the way back */
+  #ps1c-{{ uid }} .bfps__sublink{margin:14px 0 0;text-align:center;font-size:15px;line-height:1.35;color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfps__sublink-btn{appearance:none;background:none;border:0;padding:0;font-family:inherit;font-size:inherit;font-weight:700;color:var(--bf-blue);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+  #ps1c-{{ uid }} .bfps__sublink-btn:hover{color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfps__sublink--back{margin-top:12px}
+  {%- if hide_ot -%}
+  #ps1c-{{ uid }} [data-bfps-panel="subscribe"] [data-ps1c-card][data-ps1c-p="ot"]{display:none}
+  {%- endif -%}
   #ps1c-{{ uid }} .bfc__swap:hover{color:var(--bf-navy)}
   #ps1c-{{ uid }} .bfc__free-hidden{display:none}
   @media (max-width:749px){
@@ -317,7 +358,7 @@
     #ps1c-{{ uid }} .bfc__title{font-size:19px}
     #ps1c-{{ uid }} .bfc__price strong{font-size:20px}
     #ps1c-{{ uid }} .bfc__price s{font-size:14px}
-    #ps1c-{{ uid }} .bfc__note,#ps1c-{{ uid }} .bfc__list li,#ps1c-{{ uid }} .bfc__line,#ps1c-{{ uid }} .bfc__swap{font-size:14px}
+    #ps1c-{{ uid }} .bfc__note,#ps1c-{{ uid }} .bfc__list li,#ps1c-{{ uid }} .bfc__line,#ps1c-{{ uid }} .bfc__swap,#ps1c-{{ uid }} .bfps__sublink{font-size:14px}
     /* phones: the studies link drops under the note text, right-aligned, so the text keeps its full width */
     #ps1c-{{ uid }} .bfc__note--studies{flex-wrap:wrap;row-gap:0}
     #ps1c-{{ uid }} .bfc__note--studies [data-bfc-note]{flex:1 1 0}
@@ -397,6 +438,22 @@
       root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));
     }
 
+    /* first list point: "[tubs] ship by [date]" when a template is set (date comes from plan-selector-1c), else the plain line */
+    function shipLine(t) {
+      var el = $('[data-bfps-ship-line]'); if (!el) return;
+      var tpl = el.getAttribute('data-tpl');
+      if (!tpl) { el.textContent = (t.quantity === 2 ? 'Both' : 'All ' + t.quantity) + ' tubs ship together, free'; return; }
+      var ship = root._bfpsShip || {};
+      if (ship.weekend && el.getAttribute('data-tpl-weekend')) { tpl = el.getAttribute('data-tpl-weekend'); }
+      var tubs = t.quantity === 2 ? 'both tubs' : 'all ' + t.quantity + ' tubs';
+      el.innerHTML = '';
+      tpl.replace(/\[tubs\]/g, tubs).replace(/\[n\]/g, t.quantity).split('[date]').forEach(function (part, i) {
+        if (i > 0) { var d = document.createElement('strong'); d.className = 'bfc__ship-date'; d.setAttribute('data-bfps-ship-date', ''); d.textContent = ship.date || ''; el.appendChild(d); }
+        if (part) { el.appendChild(document.createTextNode(part)); }
+      });
+    }
+    root._bfpsRefreshShip = function () { shipLine(tiers[index]); };
+
     /* tokens usable in the note and swap-link text, resolved against a tier */
     function fill(str, tier) {
       return String(str || '')
@@ -427,7 +484,7 @@
       $('[data-bfps-price]').textContent = money(t.price);
       var noteWrap = $('[data-bfc-note-wrap]');
       if (t.note) { $('[data-bfc-note]').textContent = fill(t.note, t); noteWrap.hidden = false; } else { noteWrap.hidden = true; }
-      $('[data-bfps-ship-line]').textContent = (t.quantity === 2 ? 'Both' : 'All ' + t.quantity) + ' tubs ship together, free';
+      shipLine(t);
       var saving = t.compare - t.price;
       var line = $('[data-bfc-line]'); line.innerHTML = '';
       if (priceLine === 'daily') {
@@ -500,7 +557,7 @@
         : 'Works out at ' + money(Math.round(t.price / t.months)) + ' a month';
       $('[data-bfps-price-line]').textContent = unit;
 
-      $('[data-bfps-ship-line]').textContent = (t.quantity === 2 ? 'Both' : 'All ' + t.quantity) + ' tubs ship together, free';
+      shipLine(t);
 
       var free = $('[data-bfps-free]');
       free.innerHTML = '';

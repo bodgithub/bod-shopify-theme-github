@@ -3587,6 +3587,9 @@
           "info": "Bundles are this block's one-time tub added at quantity 2 / 4 / 8 with NO selling plan. The saving is applied by automatic discounts in Shopify admin (minimum quantity 2 / 4 / 8); the % entered below is for display and must match them."
         },
         { "type": "checkbox", "id": "bf_enabled", "label": "Show Black Friday bundles", "default": false },
+        { "type": "checkbox", "id": "bf_ship_in_list", "label": "Shipping line as the first bundle point", "default": false, "info": "On: the live ship-by date moves into the bundle list with a pulsing bullet. Off: it stays above the button as now." },
+        { "type": "text", "id": "bf_ship_list_text", "label": "Shipping point text", "default": "Fast, free shipping \u00b7 [tubs] ship by [date]", "info": "[tubs] = both tubs / all 4 tubs, [n] = tub count, [date] = the live ship-by date." },
+        { "type": "text", "id": "bf_ship_list_weekend_text", "label": "Shipping point text (Fri after 2pm ET and Sat)", "default": "Fast, free shipping \u00b7 [tubs] arrive in [date]", "info": "[date] = the delivery window from the Shipping settings." },
         { "type": "select", "id": "bf_layout", "label": "Bundles layout", "default": "cards", "options": [ { "value": "cards", "label": "Cards (three tiers + detail panel)" }, { "value": "stepper", "label": "Stepper (minus / plus)" } ] },
         {
           "type": "select",
@@ -3602,6 +3605,11 @@
         { "type": "text", "id": "bf_end_text", "label": "Offer end text", "default": "Ends Sun, Nov 30" },
         { "type": "checkbox", "id": "bf_show_tabs", "label": "Show the Black Friday / Subscribe tabs", "default": true, "info": "Off = bundles only; the subscription cards are not shown while Black Friday is on." },
         { "type": "text", "id": "bf_subscribe_tab_note", "label": "Subscribe tab note", "default": "Save up to 15%" },
+        { "type": "checkbox", "id": "bf_sub_link", "label": "\"Prefer a subscription?\" link under the bundle card", "default": false, "info": "Opens the subscription cards without showing the tabs." },
+        { "type": "text", "id": "bf_sub_link_text", "label": "Link lead-in", "default": "Prefer a subscription?" },
+        { "type": "text", "id": "bf_sub_link_cta", "label": "Link text", "default": "Subscribe and save 15%" },
+        { "type": "text", "id": "bf_bundles_link_cta", "label": "Back link text (subscription view)", "default": "Back to the Black Friday bundles" },
+        { "type": "checkbox", "id": "bf_sub_hide_ot", "label": "Hide the one-time option in the subscription view", "default": true },
         { "type": "header", "content": "Detail panel (cards layout)" },
         { "type": "color", "id": "bf_panel_bg", "label": "Panel background", "default": "#ffffff" },
         { "type": "color", "id": "bf_panel_border", "label": "Panel border", "default": "#3447af" },
