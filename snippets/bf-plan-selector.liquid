@@ -307,6 +307,10 @@
     #ps1c-{{ uid }} .bfc__price strong{font-size:20px}
     #ps1c-{{ uid }} .bfc__price s{font-size:14px}
     #ps1c-{{ uid }} .bfc__note,#ps1c-{{ uid }} .bfc__list li,#ps1c-{{ uid }} .bfc__line,#ps1c-{{ uid }} .bfc__swap{font-size:14px}
+    /* phones: the studies link drops under the note text, right-aligned, so the text keeps its full width */
+    #ps1c-{{ uid }} .bfc__note--studies{flex-wrap:wrap}
+    #ps1c-{{ uid }} .bfc__note--studies [data-bfc-note]{flex:1 1 0}
+    #ps1c-{{ uid }} .bfc__note-studies{flex:0 0 100%;justify-content:flex-end;margin:4px 0 0}
   }
   @media (max-width:749px){
     #ps1c-{{ uid }} .bfps__months{font-size:26px}
