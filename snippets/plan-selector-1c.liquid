@@ -95,7 +95,7 @@
 #ps1c-{{ uid }} .pc-benes{gap:0;}
 #ps1c-{{ uid }} .pc-benes li{display:flex; align-items:flex-start; gap:10px; font-size:15px; font-weight:400; line-height:1.35; color:var(--ps-ink); margin:0 0 8px;}
 #ps1c-{{ uid }} .pc-benes li:last-child{margin-bottom:0;}
-#ps1c-{{ uid }} .pc-benes__tick{flex:0 0 auto; width:16px; height:16px; margin-top:3px; color:var(--ps-blue);}
+#ps1c-{{ uid }} .pc-benes__tick{flex:0 0 auto; width:16px; height:16px; margin-top:3px; color:#1a2874;}
 /* shipping bullet: pulsing dot in place of the tick, live date bold */
 #ps1c-{{ uid }} .pc-benes__dot{flex:0 0 auto; width:9px; height:9px; margin:6px 3.5px 0; box-shadow:0 0 0 3px rgba(52,71,175,.18);}
 #ps1c-{{ uid }} .pc-benes__date{font-weight:700; color:var(--ps-ink); text-decoration:underline; text-underline-offset:2px; white-space:nowrap;}
@@ -131,7 +131,7 @@
 #ps1c-{{ uid }} .ps-giftban__cust{background:none; border:0; padding:0; margin:0; font:inherit; color:inherit; text-decoration:underline; cursor:pointer;}
 {%- if gift_pos == 'card' -%}
 /* banner inside the selected plan card, laid out like the Black Friday note: icon, text, then the Customize link on the right */
-#ps1c-{{ uid }} .ps-giftban--card{margin:12px 0 0; padding:10px 12px; gap:10px; align-items:flex-start;}
+#ps1c-{{ uid }} .ps-giftban--card{margin:12px 0 20px; padding:10px 12px; gap:10px; align-items:flex-start;} /* a line of space under the banner before the card edge */
 #ps1c-{{ uid }} .ps-giftban--card .ps-giftban__icon{width:22px; height:22px; border-radius:0; background:transparent; margin-top:1px;}
 #ps1c-{{ uid }} .ps-giftban--card .ps-giftban__icon img{border-radius:4px;}
 #ps1c-{{ uid }} .ps-giftban--card .ps-giftban__txt{flex:1 1 0; min-width:0;}
@@ -141,7 +141,7 @@
 #ps1c-{{ uid }} .ps-giftban__cta:hover{opacity:1;}
 #ps1c-{{ uid }} .ps-giftban__cta:focus-visible{outline:2px solid {{ gb_tc }}; outline-offset:2px; border-radius:2px;}
 #ps1c-{{ uid }} .ps-giftban__cta svg{width:12px; height:12px; flex:0 0 auto;}
-#ps1c-{{ uid }} .pc-ribbon ~ .pc-pad .ps-giftban--card{margin-bottom:10px;} /* keeps clear of the ribbon in the card's bottom corner */
+#ps1c-{{ uid }} .pc-ribbon ~ .pc-pad .ps-giftban--card{margin-bottom:24px;} /* keeps clear of the ribbon in the card's bottom corner */
 @media (max-width:749px){
 #ps1c-{{ uid }} .ps-giftban--card{flex-wrap:wrap; row-gap:0;}
 #ps1c-{{ uid }} .ps-giftban__cta{flex:0 0 100%; justify-content:flex-start; margin:4px 0 0; padding-left:32px;}
