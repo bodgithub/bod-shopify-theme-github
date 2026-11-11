@@ -786,10 +786,20 @@
           "type": "text",
           "settings": {
             "text": "<h3><strong>2 in 5</strong> adults in the US have <strong>insulin resistance.</strong></h3>",
-            "custom_liquid": "The chances of metabolic syndrome double after 40, as estrogen drops. Most have no idea, because nobody measured insulin. That's where inositol comes in.",
+            "custom_liquid": "",
             "size": "text-size-regular",
-            "text_size_desktop": 24,
-            "text_size_mobile": 19
+            "text_size_desktop": 40,
+            "text_size_mobile": 26
+          }
+        },
+        "text_H7NVdC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The chances of metabolic syndrome double as we age, as estrogen drops.&nbsp;Most people have no idea, because nobody measured insulin. That's where inositol comes in.&nbsp;</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular",
+            "text_size_desktop": 0,
+            "text_size_mobile": 15
           }
         },
         "text_4ck9nm": {
@@ -806,6 +816,7 @@
       },
       "block_order": [
         "text_X6kiNj",
+        "text_H7NVdC",
         "text_4ck9nm"
       ],
       "name": "Rich text",
@@ -813,7 +824,7 @@
         "demote_h1": false,
         "text_width": "medium",
         "text_position": "center",
-        "text_alignment": "left",
+        "text_alignment": "center",
         "color_bg": "#fbfaf9",
         "bgcolor": "#fbfaf9",
         "color_heading": "#1A2874",
