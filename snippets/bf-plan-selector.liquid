@@ -119,9 +119,10 @@
           <span class="bfc__title" data-bfc-title></span>
           <span class="bfc__price"><s data-bfps-compare></s><strong data-bfps-price></strong></span>
         </div>
-        <div class="bfc__note" data-bfc-note-wrap>
+        <div class="bfc__note{% if s.bf_studies_in_note %} bfc__note--studies{% endif %}" data-bfc-note-wrap style="--bf-note-bg:{{ s.bf_note_bg | default: '#e3eaff' }};--bf-note-fg:{{ s.bf_note_color | default: '#1a2874' }}">
           <svg class="bfc__flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6.5L4.8 18.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9.5V3"/><path d="M7.5 15h9"/></svg>
           <span data-bfc-note></span>
+          {%- if s.bf_studies_in_note and has_tier_foot -%}<button type="button" class="bfc__note-studies" data-bfps-study-open><span>{{ s.bf_studies_label | default: '*See the studies' }}</span><svg class="bfps__foot-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l4 4-4 4"/></svg></button>{%- endif -%}
         </div>
         <ul class="bfc__list">
           <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span data-bfps-ship-line></span></li>
@@ -171,7 +172,7 @@
   </div>
   {%- endif -%}
   {%- if s.bf_footnote != blank or has_tier_foot -%}
-  <div class="bfps__foot" data-bfps-foot>
+  <div class="bfps__foot" data-bfps-foot{% if s.bf_studies_in_note and layout == 'cards' %} data-bfps-foot-in-note{% endif %}>
     <button type="button" class="bfps__foot-btn" data-bfps-study-open><span>*See the studies</span><svg class="bfps__foot-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l4 4-4 4"/></svg></button>
   </div>
   {%- comment -%} pop-up in the same style as the guarantee pop-up: friendly summary, then the study detail in small print {%- endcomment -%}
@@ -275,9 +276,14 @@
   #ps1c-{{ uid }} .bfc__price{flex:0 0 auto;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
   #ps1c-{{ uid }} .bfc__price s{font-size:16px;font-weight:500;color:#6b7280}
   #ps1c-{{ uid }} .bfc__price strong{font-size:24px;font-weight:800;letter-spacing:-0.02em}
-  #ps1c-{{ uid }} .bfc__note{display:flex;align-items:flex-start;gap:10px;background:var(--bf-light);border-radius:5px;padding:12px 14px;margin:14px 0 0;font-size:15px;font-weight:600;line-height:1.35}
+  #ps1c-{{ uid }} .bfc__note{display:flex;align-items:flex-start;gap:10px;background:var(--bf-note-bg,var(--bf-light));color:var(--bf-note-fg,var(--bf-navy));border-radius:5px;padding:12px 14px;margin:14px 0 0;font-size:15px;font-weight:600;line-height:1.35}
   #ps1c-{{ uid }} .bfc__note[hidden]{display:none}
-  #ps1c-{{ uid }} .bfc__flask{flex:0 0 auto;width:20px;height:20px;margin-top:1px;color:var(--bf-navy)}
+  #ps1c-{{ uid }} .bfc__flask{flex:0 0 auto;width:20px;height:20px;margin-top:1px;color:var(--bf-note-fg,var(--bf-navy))}
+  /* "*See the studies" inside the note, to the right of the text (smaller, underlined); the standalone line under the selector is hidden then */
+  #ps1c-{{ uid }} .bfc__note-studies{appearance:none;background:none;border:0;padding:0;margin-left:auto;align-self:center;flex:0 0 auto;cursor:pointer;display:inline-flex;align-items:center;gap:3px;font-family:inherit;font-size:12px;font-weight:500;line-height:1.3;color:inherit;opacity:.8;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+  #ps1c-{{ uid }} .bfc__note-studies:hover{opacity:1}
+  #ps1c-{{ uid }} .bfc__note-studies:focus-visible{outline:2px solid var(--bf-blue);outline-offset:2px;border-radius:2px}
+  #ps1c-{{ uid }} .bfps__foot[data-bfps-foot-in-note]{display:none}
   #ps1c-{{ uid }} .bfc__list{list-style:none;margin:14px 0 0;padding:0}
   #ps1c-{{ uid }} .bfc__list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:400;line-height:1.35;margin:0 0 8px}
   #ps1c-{{ uid }} .bfc__list svg{flex:0 0 auto;width:16px;height:16px;margin-top:3px;color:var(--bf-blue)}
