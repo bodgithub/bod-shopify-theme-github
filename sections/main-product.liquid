@@ -48,10 +48,32 @@
 			    <div class="product-gallery-container thumbnails-{{ thumbnail_position }}" id="MediaGallery-{{ section.id }}">
 						<div class="product-image-container">
 			        <product-slider id="Product-Slider" class="product-images static-dots{% if section.settings.carousel_arrow_style == 'semicircle' %} product-images--semicircle-arrows{% endif %}" data-captions="{{ display_captions }}" data-hide-variants="{{ hide_variants }}">
+								{%- if section.settings.lead_image -%}
+									{%- comment -%} Lead image: a template-level picture shown ahead of the product's own media (e.g. a Black Friday pack shot) {%- endcomment -%}
+									{%- liquid
+										assign image_index = image_index | default: 0 | plus: 1
+										assign first_image = section.settings.lead_image
+										assign lead_ratio = 1
+										if media_aspect_ratio == 'adapt'
+											assign lead_ratio = section.settings.lead_image.aspect_ratio
+										elsif media_aspect_ratio == 'portrait'
+											assign lead_ratio = 1 | divided_by: 1.25
+										elsif media_aspect_ratio == 'landscape'
+											assign lead_ratio = 1 | divided_by: 0.75
+										endif
+									-%}
+									<div id="Slide-{{ section.id }}-lead" class="product-images__slide is-active" data-media-id="{{ section.id }}-lead">
+										<div class="product-single__media product-single__media-image aspect-ratio aspect-ratio--{{ media_aspect_ratio }}" id="Media-Thumbnails-{{ section.id }}-lead" style="--padding-bottom: {{ 1 | divided_by: lead_ratio | times: 100 }}%;">
+											{%- render 'responsive-image', image: section.settings.lead_image, sizes: sizes, priority: 'high' -%}
+										</div>
+									</div>
+								{%- endif -%}
 								{%- if featured_media != null -%}
 		              {%- liquid
 										assign image_index = image_index | plus: 1
-										assign first_image = featured_media.preview_image
+										if section.settings.lead_image == blank
+											assign first_image = featured_media.preview_image
+										endif
 									-%}
 		              {%- render 'product-media', product: product, section: section, forloop: false, media: featured_media, sizes: sizes, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants, priority: 'high', display_captions: display_captions -%}
 		            {%- endif -%}
@@ -71,13 +93,31 @@
                     {%- render 'product-media', product: product, section: section, forloop: forloop, media: media, sizes: sizes, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants, priority: priority, display_captions: display_captions -%}
 									{%- endunless -%}
 			          {%- endfor -%}
-								{%- if product.media.size > 1 -%}
+								{%- if product.media.size > 1 or section.settings.lead_image -%}
 								<div class="flickity-nav flickity-prev" tabindex="0" role="button" aria-label="Previous slide" data-bod-key-click>{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-prev' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-prev' -%}{%- endif -%}</div>
 								<div class="flickity-nav flickity-next" tabindex="0" role="button" aria-label="Next slide" data-bod-key-click>{%- if section.settings.carousel_arrow_style == 'semicircle' -%}{%- render 'svg-icons' with 'carousel-chevron-next' -%}{%- else -%}{%- render 'svg-icons' with 'carousel-next' -%}{%- endif -%}</div>
 								{%- endif -%}
 			        </product-slider>
 							<scroll-shadow>
 								<div id="Product-Thumbnails" class="product-thumbnail-container" data-hide-variants="{{ hide_variants }}">
+									{%- if section.settings.lead_image -%}
+										{%- liquid
+											assign lead_thumb_sizes = '160x160'
+											if media_aspect_ratio == 'adapt'
+												assign lead_thumb_sizes = '160x0'
+											elsif media_aspect_ratio == 'portrait'
+												assign lead_thumb_sizes = '160x200'
+											elsif media_aspect_ratio == 'landscape'
+												assign lead_thumb_sizes = '160x95'
+											endif
+											if section.settings.media_layout == 'stacked'
+												assign lead_thumb_sizes = '300x300,600x600'
+											endif
+										-%}
+										<div id="Thumb-{{ section.id }}-lead" class="product-thumbnail is-active is-initial-selected" role="button" tabindex="0" data-bod-key-click aria-label="Show {{ product.title | escape }} image">
+											{%- render 'responsive-image', image: section.settings.lead_image, sizes: lead_thumb_sizes -%}
+										</div>
+									{%- endif -%}
 									{%- if featured_media != null -%}
 										{%- render 'product-thumbnail', product: product, media: featured_media, forloop: false, variant_images: variant_images, media_aspect_ratio: media_aspect_ratio, hide_variants: hide_variants, media_layout: section.settings.media_layout -%}
 									{%- endif -%}
@@ -486,6 +526,12 @@
           "label": "Stacked (large image + grid)"
         }
       ]
+    },
+    {
+      "type": "image_picker",
+      "id": "lead_image",
+      "label": "Lead image (this template only)",
+      "info": "Shown as the first gallery image on this template, ahead of the product's own images. Leave empty to use the product images as they are."
     },
     {
       "type": "select",
