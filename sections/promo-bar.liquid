@@ -98,6 +98,11 @@
   #shopify-section-{{ sid }} .pbar__close { position: absolute; }
   {%- endif -%}
   #shopify-section-{{ sid }} .pbar[hidden] { display: none; }
+  {%- if s.sticky -%}
+  /* sticky: the section wrapper pins to the top and the sticky header stacks under it (height kept in --pbar-h by the script) */
+  #shopify-section-{{ sid }} { position: sticky; top: 0; z-index: 51; }
+  .header.header-sticky--active { top: var(--pbar-h, 0px); }
+  {%- endif -%}
   #shopify-section-{{ sid }} .pbar__inner { max-width: 1300px; margin: 0 auto; padding: 9px {% if s.dismissible %}44px{% else %}16px{% endif %} 9px 16px; display: flex; align-items: center; justify-content: center; gap: 8px 10px; flex-wrap: wrap; min-height: 40px; }
   #shopify-section-{{ sid }} .pbar__text { font-weight: 600; letter-spacing: {% if s.uppercase %}0.06em{% else %}0.01em{% endif %}; {% if s.uppercase %}text-transform: uppercase;{% endif %} display: inline-flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 6px 8px; color: inherit; text-decoration: none; }
   #shopify-section-{{ sid }} a.pbar__text:hover, #shopify-section-{{ sid }} button.pbar__text:hover { text-decoration: underline; }
@@ -129,7 +134,7 @@
 <div class="pbar" data-pbar role="region" aria-label="Current offer"
      data-end-time="{{ s.end_time | strip | default: '23:59' }}" data-tz="{{ s.timezone }}"
      data-days="{{ s.days_label | escape }}" data-day="{{ s.day_label | escape }}" data-hours="{{ s.hours_label | escape }}" data-dhm="{{ s.dhm_label | escape }}" data-hms="{{ s.hms_label | escape }}"
-     data-dismiss-key="pbar-{{ sid }}-{{ code | downcase }}" data-new-only="{{ s.new_customers_only }}">
+     data-dismiss-key="pbar-{{ sid }}-{{ code | downcase }}" data-new-only="{{ s.new_customers_only }}" data-sticky="{{ s.sticky }}">
   <div class="pbar__inner">
     {%- if has_phases -%}
       {%- for block in section.blocks -%}
@@ -231,7 +236,11 @@
     } catch (e) {}
     return false;
   }
-  function hide() { root.hidden = true; }
+  /* sticky bar: publish its height so the sticky header can sit below it (0 once hidden or dismissed) */
+  var sticky = root.getAttribute('data-sticky') === 'true';
+  function syncHeight() { if (!sticky) { return; } document.documentElement.style.setProperty('--pbar-h', (root.hidden ? 0 : root.offsetHeight) + 'px'); }
+  if (sticky) { window.addEventListener('resize', syncHeight); }
+  function hide() { root.hidden = true; syncHeight(); }
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
   function tick() {
     var ph = pick();
@@ -254,7 +263,7 @@
     ph.el.querySelectorAll('[data-pbar-count]').forEach(function (c) { c.textContent = text; c.classList.toggle('is-urgent', urgent); });
   }
   if (dismissed()) { hide(); return; }
-  tick();
+  tick(); syncHeight();
   var fast = phases.some(function (ph) { return ph.mode === 'hms'; });
   setInterval(tick, fast ? 1000 : 30000);
 
@@ -313,6 +322,7 @@
     { "type": "header", "content": "Look" },
     { "type": "checkbox", "id": "uppercase", "label": "Uppercase text", "default": false },
     { "type": "checkbox", "id": "dismissible", "label": "Show a close button", "default": false, "info": "Hidden for the rest of the visit once closed." },
+    { "type": "checkbox", "id": "sticky", "label": "Keep the bar on screen while scrolling", "default": false, "info": "The bar stays pinned above the sticky header." },
     { "type": "range", "id": "size", "min": 11, "max": 18, "step": 1, "unit": "px", "label": "Text size (desktop)", "default": 14 },
     { "type": "range", "id": "size_mobile", "min": 10, "max": 16, "step": 1, "unit": "px", "label": "Text size (phones)", "default": 12 },
     { "type": "color", "id": "color_bg", "label": "Background", "info": "Empty = the theme's announcement bar background." },
