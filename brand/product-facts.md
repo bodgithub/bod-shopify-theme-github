@@ -91,3 +91,7 @@ Per-bundle footnotes (approved; each bundle shows only the study behind its own 
 - 3 months: *Genazzani et al. 2008 and Artini et al. 2013 (Gynecol Endocrinol): overweight women with PCOS, 2g myo-inositol daily for 12 weeks; insulin and testosterone significantly reduced. Results in studies may not reflect individual outcomes.
 - 6 months: *Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Results in studies may not reflect individual outcomes.
 - 12 months: *Santamaria et al. 2012 (Climacteric): 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 12 months; 8 of 40 women no longer met metabolic syndrome criteria vs 1 of 40 on placebo. Results in studies may not reflect individual outcomes.
+
+Also approved from the same abstracts (verified on PubMed, Nov 2026):
+- Giordano et al. 2011 (6 months, 4g/day plus diet): HDL cholesterol +22%, triglycerides −20%, diastolic blood pressure −11%, HOMA index −75%, all in the myo-inositol group. Wording: "+22% HDL ('good') cholesterol after 6 months*", "−20% triglycerides after 6 months*".
+- Santamaria et al. 2012 (12 months): "1 in 5 women no longer had metabolic syndrome after 12 months on inositol. On diet alone, 1 in 40*".
