@@ -131,6 +131,14 @@
         </ul>
         <p class="bfc__line" data-bfc-line></p>
         <button type="button" class="bfc__swap" data-bfc-swap hidden></button>
+        {%- if s.bf_panel_chips -%}
+        <div class="bfc__chips" style="--bf-chip-bg:{{ s.bf_chip_bg | default: '#e3eaff' }};--bf-chip-border:{{ s.bf_chip_border | default: '#3447af' }};--bf-chip-fg:{{ s.bf_chip_text | default: '#1a2874' }}">
+          {%- if s.bf_chip_servings_text != blank -%}<span class="bfc__chip" data-bfc-chip-servings data-tpl="{{ s.bf_chip_servings_text | escape }}">{{ s.bf_chip_servings_text | replace: '[n]', servings_per_tub }}</span>{%- endif -%}
+          {%- if s.bf_chip_1 != blank -%}<span class="bfc__chip">{{ s.bf_chip_1 }}</span>{%- endif -%}
+          {%- if s.bf_chip_2 != blank -%}<span class="bfc__chip">{{ s.bf_chip_2 }}</span>{%- endif -%}
+          {%- if s.bf_chip_3 != blank -%}<span class="bfc__chip">{{ s.bf_chip_3 }}</span>{%- endif -%}
+        </div>
+        {%- endif -%}
       </div>
       <p class="bfps__free bfc__free-hidden" hidden><span data-bfps-free></span><span data-bfps-price-line></span></p>
       <span data-bfps-months hidden></span><span data-bfps-tubs hidden></span><span data-bfps-shelf hidden></span><span data-bfps-ladder hidden></span>
@@ -284,6 +292,9 @@
   #ps1c-{{ uid }} .bfc__note-studies:hover{opacity:1}
   #ps1c-{{ uid }} .bfc__note-studies:focus-visible{outline:2px solid var(--bf-blue);outline-offset:2px;border-radius:2px}
   #ps1c-{{ uid }} .bfps__foot[data-bfps-foot-in-note]{display:none}
+  /* feature chips at the bottom of the panel (same look as the chips block under the buy box) */
+  #ps1c-{{ uid }} .bfc__chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0}
+  #ps1c-{{ uid }} .bfc__chip{padding:10px;background:var(--bf-chip-bg);border:1px solid var(--bf-chip-border);color:var(--bf-chip-fg);border-radius:10px;font-size:14px;font-weight:500;line-height:1.2}
   #ps1c-{{ uid }} .bfc__list{list-style:none;margin:14px 0 0;padding:0}
   #ps1c-{{ uid }} .bfc__list li{display:flex;align-items:flex-start;gap:10px;font-size:15px;font-weight:400;line-height:1.35;margin:0 0 8px}
   #ps1c-{{ uid }} .bfc__list svg{flex:0 0 auto;width:16px;height:16px;margin-top:3px;color:var(--bf-blue)}
@@ -311,6 +322,8 @@
     #ps1c-{{ uid }} .bfc__note--studies{flex-wrap:wrap}
     #ps1c-{{ uid }} .bfc__note--studies [data-bfc-note]{flex:1 1 0}
     #ps1c-{{ uid }} .bfc__note-studies{flex:0 0 100%;justify-content:flex-end;margin:4px 0 0}
+    #ps1c-{{ uid }} .bfc__chips{flex-wrap:nowrap}
+    #ps1c-{{ uid }} .bfc__chip{flex:1 1 0;min-width:0;text-align:center;padding:9px 4px;font-size:clamp(10.5px,3.3vw,14px);white-space:nowrap}
   }
   @media (max-width:749px){
     #ps1c-{{ uid }} .bfps__months{font-size:26px}
@@ -409,6 +422,7 @@
       }
       [].forEach.call(wrap.children, function (b, i) { b.classList.toggle('is-on', i === index); b.setAttribute('aria-checked', i === index ? 'true' : 'false'); });
       $('[data-bfc-title]').textContent = t.title || (t.label + ' supply');
+      var chipS = $('[data-bfc-chip-servings]'); if (chipS) { chipS.textContent = (chipS.dataset.tpl || '[n] servings').replace('[n]', t.quantity * servingsPerTub); }
       $('[data-bfps-compare]').textContent = t.compare > t.price ? money(t.compare) : '';
       $('[data-bfps-price]').textContent = money(t.price);
       var noteWrap = $('[data-bfc-note-wrap]');
