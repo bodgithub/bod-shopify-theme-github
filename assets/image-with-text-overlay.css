@@ -471,6 +471,7 @@ line-hight:0.9;}
 .image-with-text-overlay--content .hero-modal__t, .hero-modal__t { font-size: 20px; font-weight: 400; line-height: 1.25; margin: 0 0 16px; color: #14307c !important; letter-spacing: 0; text-transform: none; }
 .image-with-text-overlay--content .hero-modal__body, .hero-modal__body, .hero-modal__body p { font-size: 15px; line-height: 1.5; color: #14307c !important; }
 .hero-modal__body p { margin: 0 0 10px; }
+.hero-modal__body a { color: #3447af !important; text-decoration: underline; }
 .hero-modal__small { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid rgba(26, 40, 116, 0.18); font-size: 11px; line-height: 1.5; color: #676b79; text-align: left; }
 .hero-modal__links { display: flex; justify-content: center; margin-top: 16px; }
 .hero-modal__link { appearance: none; background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: #1a2874; text-decoration: underline; cursor: pointer; }
