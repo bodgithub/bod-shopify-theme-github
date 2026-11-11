@@ -289,7 +289,8 @@
   }
   /* over the section that follows (e.g. the "what you've tried" grid) the bar goes back to the plain tap prompt */
   var extendNext = {{ s.bar_extend_next | json }};
-  var nextSec = (function(){ var sec = root.closest('.shopify-section'); return sec ? sec.nextElementSibling : null; })();
+  var nextSec = null; /* resolved lazily: the section after this one is not in the DOM yet when this script first runs */
+  function getNext(){ if(!nextSec){ var sec = root.closest('.shopify-section'); nextSec = sec ? sec.nextElementSibling : null; } return nextSec; }
   var zoneNext = false;
   function setZone(on){
     if(on === zoneNext) return;
@@ -305,8 +306,8 @@
     if(r.bottom <= vh * 0.35){ state = 'after'; }
     else if(r.top < vh * 0.85){ state = 'in'; }
     var inNext = false;
-    if(extendNext && nextSec && state === 'after'){
-      var nr = nextSec.getBoundingClientRect();
+    if(extendNext && getNext() && state === 'after'){
+      var nr = getNext().getBoundingClientRect();
       if(nr.top < vh * 0.85 && nr.bottom > vh * 0.35){ state = 'in'; inNext = true; }
     }
     setZone(inNext);
