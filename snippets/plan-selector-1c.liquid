@@ -165,8 +165,9 @@
 }
 {%- endif -%}
 #ps1c-{{ uid }} .ps-modal__s{font-size:12.5px; color:var(--ps-ink-2); margin:0 0 14px;}
-#ps1c-{{ uid }} .ps-modal__done{width:100%; border:none; border-radius:12px; padding:12px 18px; background:var(--ps-grad-banner); color:#fff; font-family:inherit; font-size:13.5px; font-weight:600; cursor:pointer; margin-top:14px; transition:filter .16s;}
-#ps1c-{{ uid }} .ps-modal__done:hover{filter:brightness(1.06);}
+/* same recipe as the Add to Cart button: solid #3447af, 56px, bold 18px, 10px radius, hovers to navy */
+#ps1c-{{ uid }} .ps-modal__done{width:100%; min-height:56px; border:0; border-radius:10px; padding:0 22px; background:#3447af; color:#fff; font-family:var(--ps-sans); font-size:18px; font-weight:800; letter-spacing:0; line-height:1; cursor:pointer; margin-top:14px; display:flex; align-items:center; justify-content:center; box-shadow:none; transform:none; transition:background .15s ease, color .15s ease;}
+#ps1c-{{ uid }} .ps-modal__done:hover, #ps1c-{{ uid }} .ps-modal__done:focus-visible{background:#1A2874; color:#B9C2F5; filter:none; outline:none;}
 #ps1c-{{ uid }} .ps-cgrid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
 @media (max-width:480px){#ps1c-{{ uid }} .ps-cgrid{grid-template-columns:1fr;}}
 #ps1c-{{ uid }} .ps-concern{position:relative; text-align:left; cursor:pointer; padding:9px 10px; border-radius:10px; border:1.5px solid #E2E2E2; background:#fff; transition:all .15s; font-family:inherit;}
