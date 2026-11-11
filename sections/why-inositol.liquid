@@ -102,6 +102,25 @@
   #shopify-section-{{ section.id }} .wi__acc-text p:last-child { margin-bottom: 0; }
   #shopify-section-{{ section.id }} .wi__foot { font-size: {{ s.body_size | times: 0.82 | round }}px; line-height: 1.55; opacity: .75; }
   #shopify-section-{{ section.id }} .wi__foot p { margin: 0; font-size: inherit; color: inherit; }
+  /* "See the studies" link inside the footer + its pop-up (same look as the buy-box pop-ups) */
+  #shopify-section-{{ section.id }} .wi__studies { appearance: none; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+  #shopify-section-{{ section.id }} .wi__studies:hover { opacity: .8; }
+  #shopify-section-{{ section.id }} .wi-modal { position: fixed; inset: 0; z-index: 2147483000; display: flex; align-items: center; justify-content: center; padding: 18px; opacity: 1; }
+  #shopify-section-{{ section.id }} .wi-modal[hidden] { display: none; }
+  #shopify-section-{{ section.id }} .wi-modal__ov { position: absolute; inset: 0; background: rgba(242, 238, 234, 0.87); }
+  #shopify-section-{{ section.id }} .wi-modal__box { position: relative; width: 100%; max-width: 480px; max-height: calc(100dvh - 36px); overflow: auto; background: #e3e7ff; border: 1px solid #3447af; border-radius: 16px; padding: 32px 24px; box-shadow: 0 24px 64px -18px rgba(0, 0, 0, 0.4); color: #14307c; text-align: center; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ section.id }} .wi-modal__x { position: absolute; top: 12px; right: 12px; width: 28px; height: 28px; display: grid; place-items: center; border: 0; background: transparent; color: #14307c; cursor: pointer; border-radius: 8px; padding: 0; }
+  #shopify-section-{{ section.id }} .wi-modal__x svg { width: 16px; height: 16px; }
+  #shopify-section-{{ section.id }} .wi-modal__t { font-size: 20px; font-weight: 400; line-height: 1.25; margin: 0 0 16px; color: #14307c; }
+  #shopify-section-{{ section.id }} .wi-modal__body { color: #14307c; }
+  #shopify-section-{{ section.id }} .wi-modal__body p { margin: 0 0 10px; font-size: inherit; color: inherit; }
+  #shopify-section-{{ section.id }} .wi-modal__body :is(h2, h3, h4, h5, h6) { font-size: 17px; font-weight: 600; line-height: 1.3; margin: 18px 0 6px; color: #14307c; }
+  #shopify-section-{{ section.id }} .wi-modal__body :is(h2, h3, h4, h5, h6) :is(strong, b, em) { color: inherit; }
+  #shopify-section-{{ section.id }} .wi-modal__body :is(h2, h3, h4, h5, h6):first-child { margin-top: 0; }
+  #shopify-section-{{ section.id }} .wi-modal__small { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid rgba(26, 40, 116, 0.18); font-size: 11px; line-height: 1.5; color: #676b79; text-align: left; opacity: 1; }
+  #shopify-section-{{ section.id }} .wi-modal__links { display: flex; justify-content: center; margin-top: 16px; }
+  #shopify-section-{{ section.id }} .wi-modal__link { appearance: none; background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: #14307c; text-decoration: underline; cursor: pointer; }
+  @media (min-width: 750px) { #shopify-section-{{ section.id }} .wi-modal__t { font-size: 36px; } #shopify-section-{{ section.id }} .wi-modal__box { font-size: 16px; } }
   #shopify-section-{{ section.id }} .wi__foot--right { margin-top: 22px; text-align: center; }
   #shopify-section-{{ section.id }} .wi__foot--full { grid-column: 1 / -1; text-align: center; }
   #shopify-section-{{ section.id }} .wi__stats-title {
@@ -179,7 +198,7 @@
             {%- when 'footer' -%}
               {%- assign fpos = block.settings.position | default: 'left' -%}
               {%- if fpos == 'left' -%}
-              <div class="wi__block wi__foot" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+              {%- capture wi_link -%}{%- if block.settings.studies_link_text != blank -%}<button type="button" class="wi__studies" data-wi-studies-open="wi-modal-{{ block.id }}">{{ block.settings.studies_link_text }}</button>{%- endif -%}{%- endcapture -%}<div class="wi__block wi__foot" {{ block.shopify_attributes }}>{{ block.settings.text | replace: '[studies]', wi_link }}</div>{%- if block.settings.studies_link_text != blank -%}<div class="wi-modal" id="wi-modal-{{ block.id }}" hidden><div class="wi-modal__ov" data-wi-modal-close></div><div class="wi-modal__box" role="dialog" aria-modal="true" aria-label="{{ block.settings.popup_title | default: 'The studies' | escape }}"><button type="button" class="wi-modal__x" data-wi-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>{%- if block.settings.popup_title != blank -%}<h3 class="wi-modal__t">{{ block.settings.popup_title }}</h3>{%- endif -%}<div class="wi-modal__body">{{ block.settings.popup_text }}</div>{%- if block.settings.popup_small != blank -%}<p class="wi-modal__small">{{ block.settings.popup_small | newline_to_br }}</p>{%- endif -%}<div class="wi-modal__links"><button type="button" class="wi-modal__link" data-wi-modal-close>Close</button></div></div></div>{%- endif -%}
               {%- endif -%}
           {%- endcase -%}
         {%- endfor -%}
@@ -209,19 +228,33 @@
         {%- endif -%}
         {%- for block in section.blocks -%}
           {%- if block.type == 'footer' and block.settings.position == 'right' -%}
-            <div class="wi__foot wi__foot--right" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {%- capture wi_link -%}{%- if block.settings.studies_link_text != blank -%}<button type="button" class="wi__studies" data-wi-studies-open="wi-modal-{{ block.id }}">{{ block.settings.studies_link_text }}</button>{%- endif -%}{%- endcapture -%}<div class="wi__foot wi__foot--right" {{ block.shopify_attributes }}>{{ block.settings.text | replace: '[studies]', wi_link }}</div>{%- if block.settings.studies_link_text != blank -%}<div class="wi-modal" id="wi-modal-{{ block.id }}" hidden><div class="wi-modal__ov" data-wi-modal-close></div><div class="wi-modal__box" role="dialog" aria-modal="true" aria-label="{{ block.settings.popup_title | default: 'The studies' | escape }}"><button type="button" class="wi-modal__x" data-wi-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>{%- if block.settings.popup_title != blank -%}<h3 class="wi-modal__t">{{ block.settings.popup_title }}</h3>{%- endif -%}<div class="wi-modal__body">{{ block.settings.popup_text }}</div>{%- if block.settings.popup_small != blank -%}<p class="wi-modal__small">{{ block.settings.popup_small | newline_to_br }}</p>{%- endif -%}<div class="wi-modal__links"><button type="button" class="wi-modal__link" data-wi-modal-close>Close</button></div></div></div>{%- endif -%}
           {%- endif -%}
         {%- endfor -%}
       </div>
       {%- for block in section.blocks -%}
         {%- if block.type == 'footer' and block.settings.position == 'full' -%}
-          <div class="wi__foot wi__foot--full" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+          {%- capture wi_link -%}{%- if block.settings.studies_link_text != blank -%}<button type="button" class="wi__studies" data-wi-studies-open="wi-modal-{{ block.id }}">{{ block.settings.studies_link_text }}</button>{%- endif -%}{%- endcapture -%}<div class="wi__foot wi__foot--full" {{ block.shopify_attributes }}>{{ block.settings.text | replace: '[studies]', wi_link }}</div>{%- if block.settings.studies_link_text != blank -%}<div class="wi-modal" id="wi-modal-{{ block.id }}" hidden><div class="wi-modal__ov" data-wi-modal-close></div><div class="wi-modal__box" role="dialog" aria-modal="true" aria-label="{{ block.settings.popup_title | default: 'The studies' | escape }}"><button type="button" class="wi-modal__x" data-wi-modal-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>{%- if block.settings.popup_title != blank -%}<h3 class="wi-modal__t">{{ block.settings.popup_title }}</h3>{%- endif -%}<div class="wi-modal__body">{{ block.settings.popup_text }}</div>{%- if block.settings.popup_small != blank -%}<p class="wi-modal__small">{{ block.settings.popup_small | newline_to_br }}</p>{%- endif -%}<div class="wi-modal__links"><button type="button" class="wi-modal__link" data-wi-modal-close>Close</button></div></div></div>{%- endif -%}
         {%- endif -%}
       {%- endfor -%}
     </div>
   </div>
 </div>
 
+<script>
+(function () {
+  var sec = document.getElementById('shopify-section-{{ section.id }}'); if (!sec) { return; }
+  sec.querySelectorAll('[data-wi-studies-open]').forEach(function (btn) {
+    if (btn.dataset.bound) { return; } btn.dataset.bound = '1';
+    var modal = document.getElementById(btn.getAttribute('data-wi-studies-open')); if (!modal) { return; }
+    function open() { modal.hidden = false; document.documentElement.style.overflow = 'hidden'; var x = modal.querySelector('.wi-modal__x'); if (x) { x.focus(); } }
+    function close() { modal.hidden = true; document.documentElement.style.overflow = ''; btn.focus(); }
+    btn.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    modal.querySelectorAll('[data-wi-modal-close]').forEach(function (b) { b.addEventListener('click', close); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) { close(); } });
+  });
+})();
+</script>
 {% schema %}
 {
   "name": "Why Inositol",
@@ -517,6 +550,15 @@
           ],
           "default": "left"
         },
+        {
+          "type": "text",
+          "id": "studies_link_text",
+          "label": "\"See the studies\" link text",
+          "info": "Write [studies] in the footer text where the link should sit. Empty = no link, no pop-up."
+        },
+        { "type": "text", "id": "popup_title", "label": "Pop-up title" },
+        { "type": "richtext", "id": "popup_text", "label": "Pop-up text (customer-friendly, one heading per study)" },
+        { "type": "textarea", "id": "popup_small", "label": "Pop-up small print (study details)", "info": "Approved wording is in brand/product-facts.md." },
         {
           "type": "richtext",
           "id": "text",
