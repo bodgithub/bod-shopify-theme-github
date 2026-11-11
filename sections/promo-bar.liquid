@@ -56,6 +56,31 @@
   if s.new_customers_only and customer and customer.orders_count > 0
     assign show = false
   endif
+
+  comment
+    Where it shows: every page, or only the templates listed in "Templates" (the ?view= name,
+    matched the same way as the header's landing-page list; a page type such as index or cart,
+    or product.black-friday, also matches).
+  endcomment
+  if s.show_on == 'listed'
+    assign on_listed = false
+    if s.show_templates != blank
+      assign tpl_list = s.show_templates | downcase | replace: ' ', '' | split: ','
+      assign tpl_suffix = template.suffix | downcase
+      assign tpl_name = template.name | downcase
+      assign tpl_full = tpl_name | append: '.' | append: tpl_suffix
+      if tpl_suffix != blank and tpl_list contains tpl_suffix
+        assign on_listed = true
+      elsif tpl_list contains tpl_name
+        assign on_listed = true
+      elsif tpl_list contains tpl_full
+        assign on_listed = true
+      endif
+    endif
+    unless on_listed
+      assign show = false
+    endunless
+  endif
 -%}
 {%- if s.new_customers_only and returning -%}
 <script>try { localStorage.setItem('bod_returning', '1'); } catch (e) {}</script>
@@ -260,6 +285,9 @@
   "class": "announcement-bar-section",
   "settings": [
     { "type": "checkbox", "id": "enabled", "label": "Show the promo bar", "default": true },
+    { "type": "select", "id": "show_on", "label": "Show on", "default": "all", "options": [
+      { "value": "all", "label": "Every page" }, { "value": "listed", "label": "Listed templates only" } ] },
+    { "type": "text", "id": "show_templates", "label": "Templates", "info": "For \"Listed templates only\": comma-separated template names, the part after ?view= (e.g. black-friday, over-40-black-friday). A page type such as index or cart also works. In the editor the bar only appears while you are viewing one of these templates." },
     { "type": "header", "content": "Offer" },
     { "type": "text", "id": "code", "label": "Discount code", "default": "TRY20", "info": "Rendered as a pill wherever [code] appears in the text. Tapping it copies the code." },
     { "type": "text", "id": "percent", "label": "Percent off", "default": "20", "info": "Fills [percent] in the text. Check the live discount before changing." },
