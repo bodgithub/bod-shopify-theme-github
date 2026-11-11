@@ -299,7 +299,7 @@
             "label_text": "Stars",
             "cta_text": "(Read reviews)",
             "hide_number": false,
-            "label_color": "#FFFFFF",
+            "label_color": "#ffffff",
             "label_size": 14,
             "label_weight": "600",
             "label_gap": 8,
@@ -312,7 +312,7 @@
           "type": "heading",
           "settings": {
             "text": "<h1>Nobody tells you this at 40. It's not just your hormones changing, it's insulin.</h1>",
-            "heading_color": "#FFFFFF",
+            "heading_color": "#ffffff",
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 46,
             "heading_size_mobile": 28,
@@ -334,7 +334,7 @@
           "type": "text",
           "settings": {
             "text": "<p>ENDS NOV 30</p>",
-            "description_color": "#D5BC82",
+            "description_color": "#d5bc82",
             "description_size": "small",
             "pad_left": 0,
             "pad_right": 0,
@@ -348,7 +348,7 @@
           "type": "heading",
           "settings": {
             "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
-            "heading_color": "#FFE2A0",
+            "heading_color": "#ffe2a0",
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 22,
             "heading_size_mobile": 18,
@@ -359,7 +359,7 @@
             "pad_right_desktop": 96,
             "ribbon": false,
             "ribbon_side": "left",
-            "ribbon_color": "#FFFFFF",
+            "ribbon_color": "#ffffff",
             "ribbon_points": "4",
             "show_star": false,
             "star_size": 16,
@@ -370,7 +370,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Falling estrogen after 40 makes insulin harder for your cells to use, even when your blood sugar reads normal. Inositol helps your cells use insulin again.</p>",
-            "description_color": "#FFFFFF",
+            "description_color": "#ffffff",
             "description_size": "small",
             "pad_left": 0,
             "pad_right": 96,
@@ -415,7 +415,7 @@
             "benefits-title": "",
             "icon_size": 25,
             "border_size": 1,
-            "text_color": "#FFFFFF",
+            "text_color": "#ffffff",
             "border_color": "#7e87b9",
             "icon_gap": 5,
             "text_size_mobile": 15,
@@ -449,7 +449,7 @@
             "guarantee_text": "60-day money-back guarantee",
             "show_shipping": true,
             "shipping_text": "Free shipping",
-            "note_color": "#FFE2A0"
+            "note_color": "#ffe2a0"
           }
         },
         "roundel_BkQg8k": {
@@ -465,8 +465,8 @@
             "popup_title": "What 6 months looked like in the research",
             "popup_text": "<p>80 women past menopause, all with signs of insulin resistance, took 4g of inositol a day alongside diet. The same daily amount as two scoops of Bodology®.</p><p>After 6 months, insulin resistance fell 75% in the inositol group, far more than placebo. Blood pressure, triglycerides and HDL cholesterol improved too.&nbsp;<br/><br/>Giordano et al., 2011 · <a href=\"https://doi.org/10.1097/gme.0b013e3181e8e1b1\">Read the study</a></p>",
             "popup_small": "*Giordano et al., 2011. Results in studies may not reflect individual outcomes. Trial did not involve Bodology® products. This product is not intended to diagnose, treat, cure, or prevent any disease.",
-            "text_color": "#FFFFFF",
-            "text_color_mobile": "#FFFFFF",
+            "text_color": "#ffffff",
+            "text_color_mobile": "#ffffff",
             "bg_color": "#ffffff",
             "bg_gradient": "linear-gradient(0deg, rgba(255, 255, 255, 1) 3%, rgba(255, 255, 255, 1) 98%)",
             "text_padding": 0,
@@ -2181,18 +2181,18 @@
         "star_color": "#ddbd6d",
         "text_color": "#ffffff",
         "quote_size": 15,
-        "page_bg": "#FFFEFE",
-        "card_bg": "#FFFEFE",
+        "page_bg": "#fffefe",
+        "gradient_enable": true,
+        "gradient_1": "#1a2874",
+        "gradient_2": "#4f63d4",
+        "card_bg": "#fffefe",
         "bg_blur": 0,
         "overlay_color": "#f2eeea",
         "overlay_opacity": 40,
         "pad_top": 0,
         "pad_bottom": 36,
         "margin_top": 0,
-        "margin_bottom": 0,
-        "gradient_enable": true,
-        "gradient_1": "#1a2874",
-        "gradient_2": "#4f63d4"
+        "margin_bottom": 0
       }
     },
     "community_videos_gi9WUU": {
@@ -2281,6 +2281,7 @@
         "video_aJcXiq",
         "video_kMBERG"
       ],
+      "disabled": true,
       "name": "Community Videos",
       "settings": {
         "eyebrow": "",
