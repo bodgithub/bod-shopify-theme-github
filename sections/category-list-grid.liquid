@@ -26,8 +26,8 @@
   #shopify-section-{{ section.id }} .clg__heading {
     text-align: center;
     color: {{ s.heading_color }};
-    margin: 0;
-    {% if s.heading_size > 0 % font-weight: 500; }font-size: {{ s.heading_size }}px;{% endif %}
+    margin: 0; font-weight: 500;
+    {% if s.heading_size > 0 %}font-size: {{ s.heading_size }}px;{% endif %}
     line-height: 1.15;
     font-weight: 400;
   }
