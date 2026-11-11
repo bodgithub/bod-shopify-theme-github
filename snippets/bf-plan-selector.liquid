@@ -341,6 +341,10 @@
   #ps1c-{{ uid }} .bfps__sublink-btn{appearance:none;background:none;border:0;padding:0;font-family:inherit;font-size:inherit;font-weight:700;color:var(--bf-blue);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
   #ps1c-{{ uid }} .bfps__sublink-btn:hover{color:var(--bf-navy)}
   #ps1c-{{ uid }} .bfps__sublink--back{margin-top:12px}
+  /* subscription view: space the plan cards like the normal selector does */
+  #ps1c-{{ uid }} [data-bfps-panel="subscribe"]{display:flex;flex-direction:column;gap:14px}
+  #ps1c-{{ uid }} [data-bfps-panel="subscribe"][hidden]{display:none}
+  #ps1c-{{ uid }} [data-bfps-panel="subscribe"] .bfps__sublink--back{margin-top:0}
   {%- if hide_ot -%}
   #ps1c-{{ uid }} [data-bfps-panel="subscribe"] [data-ps1c-card][data-ps1c-p="ot"]{display:none}
   {%- endif -%}
