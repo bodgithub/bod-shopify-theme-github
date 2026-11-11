@@ -252,7 +252,7 @@
 {%- endif -%}
 {%- if ribbon_pos == 'price' -%}
 /* ribbon as a pill in the price column, under the per-serving line */
-#ps1c-{{ uid }} .pc-ribbon{position:static; top:auto; bottom:auto; right:auto; display:none; margin-top:8px; border:0; border-radius:{{ card_rad | default: 5 }}px; padding:5px 11px; line-height:1.2; background:{{ s.card_border_color | default: acc }}; color:#fff; white-space:nowrap;}
+#ps1c-{{ uid }} .pc-ribbon{position:static; top:auto; bottom:auto; right:auto; display:none; margin-top:8px; border:0; border-radius:6px; padding:5px 10px; font-size:12px; font-weight:700; line-height:1.1; letter-spacing:0; text-transform:none; background:#1a2874; color:#fff; white-space:nowrap;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-ribbon{display:inline-block;}
 {%- endif -%}
 {%- if s.card_flat -%}

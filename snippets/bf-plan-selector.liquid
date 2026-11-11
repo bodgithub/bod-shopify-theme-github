@@ -445,7 +445,7 @@
       syncFoot();
       var t = tiers[index];
       var detail = mode === 'bundles'
-        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label, cartTitle: String(root.dataset.bfpsCartTitle || 'Black Friday [months]-Month Bundle').replace(/\[months\]/g, t.months).replace(/\[label\]/g, t.label || ''), code: String(root.dataset.bfpsCode || '').replace(/\[pct\]/g, t.pct).replace(/\[months\]/g, t.months).trim() }
+        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: moneyCents(t.price), label: t.label, cartTitle: String(root.dataset.bfpsCartTitle || 'Black Friday [months]-Month Bundle').replace(/\[months\]/g, t.months).replace(/\[label\]/g, t.label || ''), code: String(root.dataset.bfpsCode || '').replace(/\[pct\]/g, t.pct).replace(/\[months\]/g, t.months).trim() }
         : { mode: 'subscribe' };
       root._bfpsState = detail;
       root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));
@@ -494,7 +494,7 @@
       $('[data-bfc-title]').textContent = t.title || (t.label + ' supply');
       var chipS = $('[data-bfc-chip-servings]'); if (chipS) { chipS.textContent = (chipS.dataset.tpl || '[n] servings').replace('[n]', t.quantity * servingsPerTub); }
       $('[data-bfps-compare]').textContent = t.compare > t.price ? moneyCents(t.compare) : '';
-      $('[data-bfps-price]').textContent = money(t.price);
+      $('[data-bfps-price]').textContent = moneyCents(t.price);
       var noteWrap = $('[data-bfc-note-wrap]');
       if (t.note) { $('[data-bfc-note]').textContent = fill(t.note, t); noteWrap.hidden = false; } else { noteWrap.hidden = true; }
       shipLine(t);
@@ -508,7 +508,7 @@
         var sm = document.createElement('strong'); sm.textContent = money(Math.round(t.price / t.months)) + ' a month';
         line.appendChild(sm);
       }
-      if (saving > 0) { line.appendChild(document.createTextNode(' \u00b7 you save ' + money(saving))); }
+      if (saving > 0) { line.appendChild(document.createTextNode(' \u00b7 you save ' + moneyCents(saving))); }
       var swap = $('[data-bfc-swap]');
       var target = tiers[(parseInt(t.linkTier, 10) || 0) - 1];
       if (t.linkText && target && target !== t) {
@@ -563,7 +563,7 @@
       });
 
       $('[data-bfps-compare]').textContent = t.compare > t.price ? moneyCents(t.compare) : '';
-      $('[data-bfps-price]').textContent = money(t.price);
+      $('[data-bfps-price]').textContent = moneyCents(t.price);
 
       var unit = priceLine === 'daily'
         ? money(Math.round(t.price / (t.quantity * servingsPerTub))) + ' a day'
