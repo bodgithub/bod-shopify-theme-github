@@ -1217,6 +1217,13 @@
       },
       {
         "type": "text",
+        "id": "bcd_bundle_code_banner",
+        "label": "Applied-code banner text (Black Friday bundles only in the cart)",
+        "default": "{code} applied: {percent}% off your bundle",
+        "info": "Tokens: {code}, {percent} = the bundle's % off."
+      },
+      {
+        "type": "text",
         "id": "bcd_code_label",
         "label": "Code field label",
         "default": "Discount code"

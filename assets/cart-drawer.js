@@ -35,6 +35,7 @@
     code_field: "collapsed",
     code_banner: "{code} applied: {percent}% off your first order",
     code_banner_mixed: "{code} applied",
+    bundle_code_banner: "{code} applied: {percent}% off your bundle",
     code_label: "Discount code",
     code_other_label: "Have a different code?",
     code_another_label: "Got another code? Enter it here",
@@ -467,6 +468,12 @@
   }
   function bannerText(st) {
     if (!st.hasCode) { return ''; }
+    /* a cart that is only Black Friday bundles gets the bundle wording (the generic one says "first order") */
+    var real = st.lines.filter(function (l) { return l.type !== 'protocol'; });
+    if (st.S.bundle_code_banner && real.length && real.every(function (l) { return l.isBf; })) {
+      var pct = Math.max.apply(null, real.map(function (l) { return l.bfPct || l.pct || 0; }));
+      return tpl(st.S.bundle_code_banner, { code: st.codeName, percent: pct });
+    }
     return st.bannerPct === null
       ? tpl(st.S.code_banner_mixed, { code: st.codeName })
       : tpl(st.S.code_banner, { code: st.codeName, percent: st.bannerPct });
