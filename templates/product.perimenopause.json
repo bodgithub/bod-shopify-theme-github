@@ -350,8 +350,8 @@
             "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
             "heading_color": "#FFE2A0",
             "heading_size": "h1-xlarge",
-            "heading_size_desktop": 28,
-            "heading_size_mobile": 22,
+            "heading_size_desktop": 22,
+            "heading_size_mobile": 18,
             "body_size_desktop": 12,
             "body_size_mobile": 12,
             "margin_top": 0,
@@ -420,7 +420,7 @@
             "icon_gap": 5,
             "text_size_mobile": 15,
             "item_padding_mobile": 8,
-            "frosted": false,
+            "frosted": true,
             "frosted_tint": 15,
             "frosted_blur": 6,
             "frosted_radius": 16,
@@ -714,7 +714,7 @@
       ],
       "settings": {
         "eyebrow": "",
-        "heading": "<h3>What <em>changed</em> after 40?</h3>",
+        "heading": "<h3>What changed <strong>after 40?</strong></h3>",
         "heading_size": 38,
         "heading_size_mobile": 42,
         "subheading": "<p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping. Here's what women describe most:</p>",
@@ -1613,6 +1613,7 @@
         "column_fawpQF",
         "column_zkF9gA"
       ],
+      "disabled": true,
       "name": "Inositol science",
       "settings": {
         "contained": true,
@@ -1672,6 +1673,7 @@
         "pt_2",
         "pt_3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Why it gets harder after 40",
         "heading": "Normal blood sugar. <em>Rising</em> insulin.",
@@ -2100,7 +2102,7 @@
       "settings": {
         "contained": false,
         "max_width": 1160,
-        "heading": "<h2>What women over 40 <em>tell us</em></h2>",
+        "heading": "<h2>What women tell us</h2>",
         "heading_align": "center",
         "heading_size": 0,
         "heading_color": "#1a2874",
@@ -2123,72 +2125,6 @@
         "pad_bottom": 36,
         "margin_top": 0,
         "margin_bottom": 0
-      }
-    },
-    "image_icon_cards_XGzzR4": {
-      "type": "image-icon-cards",
-      "blocks": {
-        "item_fPYzwj": {
-          "type": "item",
-          "settings": {
-            "text": "stir into your morning coffee"
-          }
-        },
-        "item_ME6qVT": {
-          "type": "item",
-          "settings": {
-            "text": "mix into plain water"
-          }
-        },
-        "item_rAtBbT": {
-          "type": "item",
-          "settings": {
-            "text": "blend into a smoothie"
-          }
-        },
-        "item_z3K9jq": {
-          "type": "item",
-          "settings": {
-            "text": "straight off the scoop, if you'd rather"
-          }
-        }
-      },
-      "block_order": [
-        "item_fPYzwj",
-        "item_ME6qVT",
-        "item_rAtBbT",
-        "item_z3K9jq"
-      ],
-      "name": "Image + icon cards",
-      "settings": {
-        "heading": "how to start:",
-        "subheading": "2 scoops <em>every day</em>, any time.",
-        "desktop_image": "shopify://shop_images/Stir-in.jpg",
-        "image_radius": 16,
-        "image_as_background": false,
-        "bg_content_position": "right",
-        "bg_min_height": 480,
-        "background": "linear-gradient(180deg, rgba(215, 221, 245, 1), rgba(227, 231, 255, 1) 100%)",
-        "heading_color": "#1a2874",
-        "sub_color": "#1a2874",
-        "card_bg": "#ffffff",
-        "card_border": "#3447af",
-        "card_text_color": "#1a2874",
-        "footnote_color": "#1a2874",
-        "heading_size": 44,
-        "sub_size": 20,
-        "card_text_size": 15,
-        "footnote_size": 14,
-        "icon_size": 34,
-        "card_radius": 14,
-        "footnote": "<p><strong>*unflavored</strong> and slightly sweet on its own. No aftertaste, nothing to mask. It disappears into whatever you already drink.</p>",
-        "page_width": 1300,
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top_desktop": 64,
-        "padding_bottom_desktop": 64,
-        "padding_top_mobile": 36,
-        "padding_bottom_mobile": 36
       }
     },
     "community_videos_gi9WUU": {
@@ -2712,6 +2648,7 @@
         "qa_6",
         "qa_7"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Keep it simple",
         "heading": "Yes or <em>no?</em>",
@@ -2977,11 +2914,10 @@
     "age_curve_peri",
     "why_inositol_DgbUrB",
     "us_vs_them_peri",
+    "testimonial_carousel_twHytV",
     "quote_grid_wLJirf",
-    "image_icon_cards_XGzzR4",
     "community_videos_gi9WUU",
     "results_timeline_mqixwX",
-    "testimonial_carousel_twHytV",
     "custom_liquid_ax6VDD",
     "yes_no_peri",
     "collapsible_content_cGXRUN",
