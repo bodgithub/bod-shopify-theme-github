@@ -67,6 +67,7 @@
   #shopify-section-{{ uid }} .sc__btn:hover { background: {{ s.button_hover }}; color: {{ s.button_text }}; transform: translateY(-1px); }
   #shopify-section-{{ uid }} .sc__foot { margin: 14px auto 0; max-width: 620px; text-align: center; font-size: 12px; line-height: 1.5; opacity: .75; }
   #shopify-section-{{ uid }} .sc__foot p { margin: 0; }
+  #shopify-section-{{ uid }} .sc__foot--col { margin: 12px 0 0; max-width: none; text-align: left; }
   @media screen and (max-width: 749px) {
     /* a little more side room for the eyebrow, heading and subheading on phones (groups below keep the 16px gutter) */
     #shopify-section-{{ uid }} .sc__eyebrow, #shopify-section-{{ uid }} .sc__heading, #shopify-section-{{ uid }} .sc__sub { padding-left: 14px; padding-right: 14px; }
@@ -191,6 +192,7 @@
               {%- endif -%}
             {%- endfor -%}
           </ul>
+          {%- if s.footnote != blank and s.footnote_position == 'column_b' -%}<div class="sc__foot sc__foot--col">{{ s.footnote }}</div>{%- endif -%}
         </div>
       {%- endif -%}
     </div>
@@ -202,7 +204,7 @@
       {%- if s.button_label != blank -%}<a class="sc__btn" href="{{ s.button_link | default: '#' }}">{{ s.button_label }}</a>{%- endif -%}
     </div>
     {%- endunless -%}
-    {%- if s.footnote != blank -%}<div class="sc__foot">{{ s.footnote }}</div>{%- endif -%}
+    {%- if s.footnote != blank -%}{%- unless s.footnote_position == 'column_b' and has_b -%}<div class="sc__foot">{{ s.footnote }}</div>{%- endunless -%}{%- endif -%}
   </div>
 </div>
 {%- if s.sticky_bar -%}
@@ -439,6 +441,7 @@
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Show me what helps" },
     { "type": "url", "id": "button_link", "label": "Button link" },
     { "type": "richtext", "id": "footnote", "label": "Footnote" },
+    { "type": "select", "id": "footnote_position", "label": "Footnote position", "default": "below", "options": [ { "value": "below", "label": "Below the checklist, centred" }, { "value": "column_b", "label": "In the second column, under its options" } ] },
     { "type": "header", "content": "Sticky bottom bar" },
     { "type": "checkbox", "id": "sticky_bar", "label": "Show the message in a bar that slides up from the bottom", "info": "Appears when this section scrolls into view, with the button once something is ticked. After scrolling past, it turns into a small bar with the count, a change link and the shop button. Turn off to show the message inside the section instead.", "default": true },
     { "type": "color", "id": "bar_bg", "label": "Bar background", "default": "#ffffff" },
