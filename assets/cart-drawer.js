@@ -492,6 +492,10 @@
     if (l.type === 'protocol' || l.hideBadge || l.pct <= 0) { return ''; }
     return '<span class="bod-cart__badge">' + esc(tpl(st.S.badge_text, { percent: l.pct })) + '</span>';
   }
+  /* Black Friday bundle lines carry the bundle name as the title, so the product name goes on its own line under it */
+  function productLine(l) {
+    return l.isBf && l.productTitle && l.productTitle !== l.title ? '<div class="bod-cart__line-product">' + esc(l.productTitle) + '</div>' : '';
+  }
   function qtyLabel(st, l) {
     if (l.isBundle && st.S.bundle_qty_text) { return ''; }
     return l.qty > 1 ? '<span class="bod-cart__qty">' + esc(tpl(st.S.qty_text, { qty: l.qty })) + '</span>' : '';
@@ -659,7 +663,7 @@
     out += '<div class="bod-cart__body">';
     st.lines.forEach(function (l) {
       out += '<div class="bod-cart__line bod-cart__line--' + l.type + '" data-key="' + esc(l.key) + '">' + image(l, 84) +
-        '<div class="bod-cart__line-main"><div class="bod-cart__line-top"><div class="bod-cart__line-title">' + esc(l.title) + '</div>' + removeBtn(l) + '</div>' +
+        '<div class="bod-cart__line-main"><div class="bod-cart__line-top"><div class="bod-cart__line-title">' + esc(l.title) + '</div>' + removeBtn(l) + '</div>' + productLine(l) +
         '<div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' +
         '<div class="bod-cart__line-price">' + priceCells(st, l) + badge(st, l) + qtyLabel(st, l) + '</div>' +
         (l.type === 'subscription' ? '<div class="bod-cart__renewal">' + esc(renewalText(st, l)) + '</div>' : '') +
@@ -693,7 +697,7 @@
     out += '</div><div class="bod-cart__body">';
     st.lines.forEach(function (l) {
       out += '<div class="bod-cart__line bod-cart__line--' + l.type + '" data-key="' + esc(l.key) + '">' + image(l, 72) +
-        '<div class="bod-cart__line-main"><div class="bod-cart__line-title">' + esc(l.title) + '</div><div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' +
+        '<div class="bod-cart__line-main"><div class="bod-cart__line-title">' + esc(l.title) + '</div>' + productLine(l) + '<div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' +
         (l.type === 'subscription' ? '<div class="bod-cart__renewal">' + esc(renewalText(st, l)) + '</div>' : '') + qtyLabel(st, l) + upsellRow(st, l) + '</div>' +
         '<div class="bod-cart__line-right">' + priceCells(st, l) + badge(st, l) + removeBtn(l) + '</div></div>';
     });
@@ -713,7 +717,7 @@
     st.lines.forEach(function (l) {
       var title = l.type === 'subscription' ? l.title + ' · ' + l.plan.short : l.title;
       out += '<div class="bod-cart__line bod-cart__line--' + l.type + '" data-key="' + esc(l.key) + '">' + image(l, 64) +
-        '<div class="bod-cart__line-main"><div class="bod-cart__line-title">' + esc(title) + '</div><div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' + qtyLabel(st, l) + upsellRow(st, l) + '</div>' +
+        '<div class="bod-cart__line-main"><div class="bod-cart__line-title">' + esc(title) + '</div>' + productLine(l) + '<div class="bod-cart__line-sub">' + esc(subtitle(st, l)) + '</div>' + qtyLabel(st, l) + upsellRow(st, l) + '</div>' +
         '<div class="bod-cart__line-right"><span class="bod-cart__price bod-cart__price--list">' + esc(st.money(l.list)) + '</span>' + removeBtn(l) + '</div></div>';
     });
     out += protocolNudge(st);

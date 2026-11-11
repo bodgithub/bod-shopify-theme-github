@@ -80,6 +80,7 @@ body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
 #Cart-Drawer .bod-cart__line-top { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
 #Cart-Drawer .bod-cart__line-title { font-size: 16px; font-weight: 700; line-height: 1.25; }
 #Cart-Drawer .bod-cart__line-sub { font-size: 13px; color: var(--bcd-muted); line-height: 1.35; }
+#Cart-Drawer .bod-cart__line-product { font-size: 13px; line-height: 1.35; margin-top: 1px; } /* product name under a Black Friday bundle title */
 #Cart-Drawer .bod-cart__line-price { display: flex; align-items: baseline; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
 #Cart-Drawer .bod-cart__price { font-size: 18px; font-weight: 800; }
 #Cart-Drawer .bod-cart__price--free { color: var(--bcd-primary); }

@@ -718,8 +718,23 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var c0 = selected(); if(c0){ announce(c0); }
   var SECTIONS = ['main-cart','cart-drawer','cart-bubble'];
   // Black Friday bundles carry their own code (e.g. BLACKFRIDAY45): attach it right after the add, then render the cart from that response
+  // With two bundles in the cart (e.g. 2 + 4 tubs) Shopify applies ONE code to every tub, so attach the best tier the whole cart qualifies for
+  function bestBfCode(fallback){
+    var pattern = bfEl ? (bfEl.dataset.bfpsCode || '') : '';
+    var tiersEl = bfEl ? bfEl.querySelector('[data-bfps-tiers]') : null;
+    if(!pattern || !tiersEl){ return Promise.resolve(fallback); }
+    var tiers = []; try { tiers = JSON.parse(tiersEl.textContent); } catch(e){ return Promise.resolve(fallback); }
+    return fetch(addBase + 'cart.js', { headers:{'Accept':'application/json'} }).then(function(r){ return r.json(); }).then(function(cart){
+      var total = 0; (cart.items || []).forEach(function(i){ if(i.properties && i.properties._bf_bundle){ total += i.quantity; } });
+      var best = null; tiers.forEach(function(tr){ if(tr.quantity <= total && (!best || tr.pct > best.pct)){ best = tr; } });
+      return best ? pattern.replace(/\[pct\]/g, best.pct).replace(/\[months\]/g, best.months).trim() : fallback;
+    }).catch(function(){ return fallback; });
+  }
   function applyCodeThenRender(response, code){
     if(!code){ renderAndOpenCart(response); return; }
+    bestBfCode(code).then(function(best){ applyCode(response, best || code); });
+  }
+  function applyCode(response, code){
     fetch(addBase + 'cart/update.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ discount: code, sections: SECTIONS, sections_url: window.location.pathname }) })
       .then(function(r){ return r.json(); })
       .then(function(res){ renderAndOpenCart(res && res.sections ? res : response); })
