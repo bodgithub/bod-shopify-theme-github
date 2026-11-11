@@ -94,7 +94,7 @@
   #shopify-section-{{ section.id }} .qg__qtitle { font-size: 15px; font-weight: 600; margin: 0; max-width: 100%; }
   #shopify-section-{{ section.id }} .qg__quote-text {
     max-width: 100%;
-    font-size: {{ s.quote_size }}px;
+    font-size: {% if s.quote_size > 0 %}{{ s.quote_size }}px{% else %}var(--bod-body){% endif %};
     line-height: 1.55;
     margin: 0;
   }
@@ -115,8 +115,8 @@
     object-fit: cover;
     display: block;
   }
-  #shopify-section-{{ section.id }} .qg__name { font-size: {{ s.quote_size | times: 1.0 | round }}px; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
-  #shopify-section-{{ section.id }} .qg__role { font-size: {{ s.quote_size | times: 0.95 | round }}px; margin: 0; opacity: .85; }
+  #shopify-section-{{ section.id }} .qg__name { font-size: {% if s.quote_size > 0 %}{{ s.quote_size }}px{% else %}var(--bod-body){% endif %}; font-weight: var(--font-body-bold-weight, 500); margin: 0; }
+  #shopify-section-{{ section.id }} .qg__role { font-size: {% if s.quote_size > 0 %}{{ s.quote_size | times: 0.95 | round }}px{% else %}calc(var(--bod-body) * 0.95){% endif %}; margin: 0; opacity: .85; }
   #shopify-section-{{ section.id }} .qg__stars { display: flex; justify-content: flex-start; }
   {%- if s.card_mode -%}
   #shopify-section-{{ section.id }} .qg__quote {
@@ -330,8 +330,8 @@
     {
       "type": "range",
       "id": "quote_size",
-      "label": "Quote text size",
-      "min": 11,
+      "label": "Quote text size (0 = theme body copy size)",
+      "min": 0,
       "max": 22,
       "step": 1,
       "unit": "px",

@@ -53,6 +53,8 @@
   .rich-text.text-width-grid .rich-text__inner {
     max-width: 1380px; }
 
+/* Text block: paragraphs follow the theme-wide body copy size (theme settings > Typography), unless a custom size is set below */
+.rich-text .rte.text-size-regular, .rich-text .rte.text-size-regular p, .rich-text .rte.text-size-regular li { font-size: var(--bod-body); }
 /* Text block: custom sizes from the editor (desktop and phones separately); 0 keeps the size preset */
 @media only screen and (min-width: 768px) {
   .rich-text .rte.rte--custom-size[style*="--rt-fs-d"],

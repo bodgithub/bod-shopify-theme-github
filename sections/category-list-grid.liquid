@@ -97,7 +97,7 @@
     list-style: none;
     margin: 26px 0 0;
     padding: 0;
-    font-size: {{ s.item_size }}px;
+    font-size: {% if s.item_size > 0 %}{{ s.item_size }}px{% else %}var(--bod-body){% endif %};
     line-height: 1.6;
   }
   #shopify-section-{{ section.id }} .clg__items li { padding: 3px 0; }
@@ -534,8 +534,8 @@
     {
       "type": "range",
       "id": "item_size",
-      "label": "List text size",
-      "min": 11,
+      "label": "List text size (0 = theme body copy size)",
+      "min": 0,
       "max": 20,
       "step": 1,
       "unit": "px",

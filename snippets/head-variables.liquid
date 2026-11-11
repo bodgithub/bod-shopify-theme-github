@@ -150,6 +150,10 @@
 		--font-product-title-scale: {{ settings.product_title_font_scale | divided_by: 100.0 }};
 		--font-product-title-line-height-scale: {{ settings.product_title_line_height_scale | divided_by: 100.0 }};
 		--button-letter-spacing: {{ settings.button_letter_spacing | divided_by: 1000.0 }}em;
+		/* Bodology body copy size: one value for paragraph text across the custom sections (theme settings > Typography > Body copy size) */
+		--bod-body-d: {% if settings.body_copy_size_desktop > 0 %}{{ settings.body_copy_size_desktop }}px{% else %}calc(var(--font-body-scale) * 18px){% endif %};
+		--bod-body-m: {% if settings.body_copy_size_mobile > 0 %}{{ settings.body_copy_size_mobile }}px{% else %}calc(var(--font-body-scale) * 18px){% endif %};
+		--bod-body: var(--bod-body-d);
 
 		--block-border-radius: {{ block_border_radius | default: '16' | append: 'px' }};
 		--button-border-radius: {{ button_border_radius | default: '6' | append: 'px' }};
@@ -291,4 +295,5 @@
 			--color-footer-bg: {{ color_footer_bg }};
 		{%- endif -%}
 	}
+	@media only screen and (max-width: 767px) { :root { --bod-body: var(--bod-body-m); } }
 {% endstyle %}

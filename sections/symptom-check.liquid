@@ -33,7 +33,7 @@
   #shopify-section-{{ uid }} .sc__sub p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
   #shopify-section-{{ uid }} .sc__sub p + p { margin-top: 8px; }
   #shopify-section-{{ uid }} .sc__sub strong { color: {{ s.accent_color }}; }
-  #shopify-section-{{ uid }} .sc__sub { text-align: center; margin: 10px auto 0; max-width: 560px; font-size: 15px; line-height: 1.5; }
+  #shopify-section-{{ uid }} .sc__sub { text-align: center; margin: 10px auto 0; max-width: 560px; font-size: var(--bod-body); line-height: 1.5; }
   #shopify-section-{{ uid }} .sc__groups { display: grid; grid-template-columns: 1fr; gap: 0; margin-top: 15px; }
   #shopify-section-{{ uid }} .sc__group { background: {{ s.card_bg }}; border: 0; border-radius: {{ s.card_radius }}px; padding: 18px 16px; }
   #shopify-section-{{ uid }} .sc__group-title { margin: 0 0 10px; text-align: center; font-size: 13px; letter-spacing: .05em; text-transform: uppercase; color: {{ s.accent_color }}; font-weight: var(--font-body-bold-weight, 500); }
@@ -42,7 +42,7 @@
     appearance: none; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer;
     display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start;
     background: #ffffff; border: 1px solid {{ s.card_border }}; border-radius: {{ s.item_radius }}px; padding: 12px 14px;
-    font-size: {{ s.item_size }}px; line-height: 1.4; transition: background .15s, border-color .15s;
+    font-size: {% if s.item_size > 0 %}{{ s.item_size }}px{% else %}var(--bod-body){% endif %}; line-height: 1.4; transition: background .15s, border-color .15s;
   }
   #shopify-section-{{ uid }} .sc__item:hover { background: {{ s.checked_bg }}; border-color: {{ s.accent_color }}; }
   #shopify-section-{{ uid }} .sc__box {
@@ -54,7 +54,7 @@
   #shopify-section-{{ uid }} .sc__item[aria-pressed="true"] .sc__box svg { opacity: 1; transform: scale(1); }
   #shopify-section-{{ uid }} .sc__result {
     margin: 28px auto 0; max-width: 620px; text-align: center; background: transparent; border: 0;
-    padding: 0; font-size: 15px; line-height: 1.5;
+    padding: 0; font-size: var(--bod-body); line-height: 1.5;
   }
   #shopify-section-{{ uid }} .sc__count { display: block; font-size: 13px; letter-spacing: .03em; opacity: .8; margin-bottom: 4px; }
   #shopify-section-{{ uid }} .sc__msg { margin: 0; }
@@ -467,7 +467,7 @@
     { "type": "color", "id": "button_text", "label": "Button text", "default": "#ffffff" },
     { "type": "header", "content": "Shape & spacing" },
     { "type": "range", "id": "max_width", "label": "Max width", "min": 600, "max": 1200, "step": 20, "default": 960 },
-    { "type": "range", "id": "item_size", "label": "Item text size", "min": 13, "max": 18, "step": 1, "default": 15 },
+    { "type": "range", "id": "item_size", "label": "Item text size (0 = theme body copy size)", "min": 0, "max": 18, "step": 1, "default": 15 },
     { "type": "range", "id": "card_radius", "label": "Card corner radius", "min": 0, "max": 28, "step": 1, "default": 16 },
     { "type": "range", "id": "item_radius", "label": "Item corner radius", "min": 0, "max": 20, "step": 1, "default": 10 },
     { "type": "range", "id": "button_radius", "label": "Button corner radius", "min": 0, "max": 40, "step": 2, "default": 6 },

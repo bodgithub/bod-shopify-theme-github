@@ -140,11 +140,11 @@
 										endif
 									endif
 								-%}
-								<div class="{{ block.settings.heading_size }}{% if block.settings.ribbon %} hero-ribbon hero-ribbon--{{ block.settings.ribbon_side | default: 'left' }} hero-ribbon--zig{{ block.settings.ribbon_points | default: '4' }}{% endif %}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.heading_color }};{% if block.settings.ribbon %} --ribbon-bg: {{ block.settings.ribbon_color | default: '#ffffff' }};{% endif %}{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}{% if block.settings.heading_size_desktop > 0 %} --hero-h-d: {{ block.settings.heading_size_desktop }}px;{% endif %}{% if block.settings.pad_right_desktop > 0 %} --hero-h-pr: {{ block.settings.pad_right_desktop }}px;{% endif %} margin-top: {{ block.settings.margin_top | default: 0 }}px; margin-bottom: {{ block.settings.margin_bottom | default: 0 }}px; --hero-p-d: {{ block.settings.body_size_desktop | default: 16 }}px; --hero-p-m: {{ block.settings.body_size_mobile | default: 16 }}px;">{{ heading_html }}</div>
+								<div class="{{ block.settings.heading_size }}{% if block.settings.ribbon %} hero-ribbon hero-ribbon--{{ block.settings.ribbon_side | default: 'left' }} hero-ribbon--zig{{ block.settings.ribbon_points | default: '4' }}{% endif %}" {{ block.shopify_attributes }} style="--text-color: {{ block.settings.heading_color }};{% if block.settings.ribbon %} --ribbon-bg: {{ block.settings.ribbon_color | default: '#ffffff' }};{% endif %}{% if block.settings.heading_size_mobile > 0 %} --hero-h-m: {{ block.settings.heading_size_mobile }}px;{% endif %}{% if block.settings.heading_size_desktop > 0 %} --hero-h-d: {{ block.settings.heading_size_desktop }}px;{% endif %}{% if block.settings.pad_right_desktop > 0 %} --hero-h-pr: {{ block.settings.pad_right_desktop }}px;{% endif %} margin-top: {{ block.settings.margin_top | default: 0 }}px; margin-bottom: {{ block.settings.margin_bottom | default: 0 }}px; {% if block.settings.body_size_desktop > 0 %}--hero-p-d: {{ block.settings.body_size_desktop }}px;{% endif %}{% if block.settings.body_size_mobile > 0 %} --hero-p-m: {{ block.settings.body_size_mobile }}px;{% endif %}">{{ heading_html }}</div>
 							{%- when 'text' -%}
   <div
   class="rte description-size--{{ block.settings.description_size }}"
-  style="--description-color: {{ block.settings.description_color }}; --rte-pad-top: {{ block.settings.pad_top | default: 0 }}px;{% if block.settings.text_size_desktop > 0 %} --rte-fs-d: {{ block.settings.text_size_desktop }}px;{% endif %} --rte-fs-m: {{ block.settings.text_size_mobile | default: 15 }}px; --rte-pad-right: {{ block.settings.pad_right | default: 0 }}px; --rte-pad-bottom: {{ block.settings.pad_bottom | default: 0 }}px; --rte-pad-left: {{ block.settings.pad_left | default: 0 }}px;{% if block.settings.font_weight != blank and block.settings.font_weight != 'inherit' %} --rte-fw: {{ block.settings.font_weight }};{% endif %}{% if block.settings.line_height != blank %} --rte-lh: {{ block.settings.line_height }};{% endif %}{% if block.settings.align_desktop != blank and block.settings.align_desktop != 'inherit' %} --rte-ta-d: {{ block.settings.align_desktop }};{% endif %}{% if block.settings.align_mobile != blank and block.settings.align_mobile != 'inherit' %} --rte-ta-m: {{ block.settings.align_mobile }};{% endif %}"
+  style="--description-color: {{ block.settings.description_color }}; --rte-pad-top: {{ block.settings.pad_top | default: 0 }}px;{% if block.settings.text_size_desktop > 0 %} --rte-fs-d: {{ block.settings.text_size_desktop }}px;{% endif %}{% if block.settings.text_size_mobile > 0 %} --rte-fs-m: {{ block.settings.text_size_mobile }}px;{% endif %} --rte-pad-right: {{ block.settings.pad_right | default: 0 }}px; --rte-pad-bottom: {{ block.settings.pad_bottom | default: 0 }}px; --rte-pad-left: {{ block.settings.pad_left | default: 0 }}px;{% if block.settings.font_weight != blank and block.settings.font_weight != 'inherit' %} --rte-fw: {{ block.settings.font_weight }};{% endif %}{% if block.settings.line_height != blank %} --rte-lh: {{ block.settings.line_height }};{% endif %}{% if block.settings.align_desktop != blank and block.settings.align_desktop != 'inherit' %} --rte-ta-d: {{ block.settings.align_desktop }};{% endif %}{% if block.settings.align_mobile != blank and block.settings.align_mobile != 'inherit' %} --rte-ta-m: {{ block.settings.align_mobile }};{% endif %}"
   {{ block.shopify_attributes }}
 >
   {{ block.settings.text }}
@@ -205,7 +205,7 @@
 										uid: block.id %}
 								</div>
 							{%- when 'benefits' -%}
-								<div class="benefits-block{% if block.settings.frosted %} benefits-block--frosted{% endif %}" style="--bn-icon-gap: {{ block.settings.icon_gap | default: 10 }}px; --bn-fs-m: {{ block.settings.text_size_mobile | default: 15 }}px; --bn-pad-m: {{ block.settings.item_padding_mobile | default: 8 }}px; --bn-tint: {{ block.settings.frosted_tint | default: 25 | divided_by: 100.0 }}; --bn-blur: {{ block.settings.frosted_blur | default: 10 }}px; --bn-radius: {{ block.settings.frosted_radius | default: 16 }}px;" {{ block.shopify_attributes }}>
+								<div class="benefits-block{% if block.settings.frosted %} benefits-block--frosted{% endif %}" style="--bn-icon-gap: {{ block.settings.icon_gap | default: 10 }}px; {% if block.settings.text_size_mobile > 0 %}--bn-fs-m: {{ block.settings.text_size_mobile }}px;{% endif %} --bn-pad-m: {{ block.settings.item_padding_mobile | default: 8 }}px; --bn-tint: {{ block.settings.frosted_tint | default: 25 | divided_by: 100.0 }}; --bn-blur: {{ block.settings.frosted_blur | default: 10 }}px; --bn-radius: {{ block.settings.frosted_radius | default: 16 }}px;" {{ block.shopify_attributes }}>
 									
 									<div class="benefits-list">
 										{% if block.settings.benefits-title != blank %}
@@ -609,8 +609,8 @@
         {
           "type": "range",
           "id": "body_size_desktop",
-          "label": "Paragraph text size (desktop)",
-          "min": 12,
+          "label": "Paragraph text size (desktop) (0 = theme body copy size)",
+          "min": 0,
           "max": 28,
           "step": 1,
           "unit": "px",
@@ -620,8 +620,8 @@
         {
           "type": "range",
           "id": "body_size_mobile",
-          "label": "Paragraph text size (phones)",
-          "min": 12,
+          "label": "Paragraph text size (phones) (0 = theme body copy size)",
+          "min": 0,
           "max": 24,
           "step": 1,
           "unit": "px",
@@ -739,8 +739,8 @@
         {
           "type": "range",
           "id": "text_size_mobile",
-          "label": "Text size (phones)",
-          "min": 12,
+          "label": "Text size (phones, 0 = theme body copy size)",
+          "min": 0,
           "max": 24,
           "step": 1,
           "unit": "px",
@@ -1255,7 +1255,7 @@
           "type": "range",
           "id": "text_size_mobile",
           "label": "Text size on phones",
-          "min": 12,
+          "min": 0,
           "max": 20,
           "step": 1,
           "unit": "px",

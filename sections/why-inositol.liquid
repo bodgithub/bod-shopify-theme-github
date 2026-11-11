@@ -64,7 +64,7 @@
     margin: 0 auto;
     {% endunless %}
   }
-  #shopify-section-{{ section.id }} .wi__text { font-size: {{ s.body_size }}px; line-height: 1.55; }
+  #shopify-section-{{ section.id }} .wi__text { font-size: {% if s.body_size > 0 %}{{ s.body_size }}px{% else %}var(--bod-body){% endif %}; line-height: 1.55; }
   #shopify-section-{{ section.id }} .wi__text p { margin: 0 0 10px; font-size: inherit; line-height: inherit; color: inherit; }
   #shopify-section-{{ section.id }} .wi__text p:last-child { margin-bottom: 0; }
   #shopify-section-{{ section.id }} .wi__block { margin-bottom: 26px; }
@@ -379,8 +379,8 @@
     {
       "type": "range",
       "id": "body_size",
-      "label": "Body text size",
-      "min": 12,
+      "label": "Body text size (0 = theme body copy size)",
+      "min": 0,
       "max": 20,
       "step": 1,
       "unit": "px",
