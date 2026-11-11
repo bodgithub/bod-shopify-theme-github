@@ -81,8 +81,9 @@
 #ps1c-{{ uid }} .pc-check svg{width:11px; height:11px; display:none;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-check{background:{{ check_c }};}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-check svg{display:block;}
-#ps1c-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:#e3eaff; color:{{ ink | color_modify: 'alpha', 0.75 }}; font-weight:700; font-size:11px; padding:4px 11px; border-radius:999px; border:0.4px solid {{ ink | color_modify: 'alpha', 0.25 }}; white-space:nowrap;}
-#ps1c-{{ uid }} .pc-card.is-selected .pc-pill{color:var(--ps-ink); border-color:var(--ps-ink);}
+/* same pill as the Black Friday bundle cards: lavender with a navy border, solid blue when the card is selected */
+#ps1c-{{ uid }} .pc-pill{display:inline-flex; align-items:center; background:#e3eaff; color:#1a2874; font-weight:700; font-size:14px; line-height:1.2; padding:7px 12px; border-radius:999px; border:1px solid #1a2874; white-space:nowrap;}
+#ps1c-{{ uid }} .pc-card.is-selected .pc-pill{background:#3447af; color:#fff; border-color:#1a2874;}
 #ps1c-{{ uid }} .pc-price{display:flex; align-items:baseline; justify-content:flex-end; gap:7px; margin:0;}
 #ps1c-{{ uid }} .pc-price__was{font-size:13px; color:#676b79; text-decoration:line-through;}
 #ps1c-{{ uid }} .pc-price__now{font-weight:600; font-size:19px; line-height:1.25; letter-spacing:-0.02em; color:var(--ps-ink);}
@@ -243,7 +244,7 @@
 #ps1c-{{ uid }} .ps-concern__tick{width:16px; height:16px;}
 #ps1c-{{ uid }} .ps-concern__tick svg{width:10px; height:10px;}
 #ps1c-{{ uid }} .pc-check svg{width:10px; height:10px;}
-#ps1c-{{ uid }} .pc-pill{font-size:9.5px; padding:2px 6px; letter-spacing:0;}
+#ps1c-{{ uid }} .pc-pill{font-size:12px; padding:5px 9px; letter-spacing:0;}
 }
 {%- if s.card_flat -%}
 #ps1c-{{ uid }} .pc-ribbon{top:auto; bottom:0; right:0; border-bottom:0; border-top:1px solid {{ s.card_border_color | default: acc }}; border-left:1px solid {{ s.card_border_color | default: acc }}; border-radius:{{ card_rad }}px 0 0 0; padding:4px 11px; background:{{ s.card_border_color | default: acc }}; color:#fff;}
