@@ -23,8 +23,29 @@
   assign fg = s.color_text | default: settings.color_announcement_bar_text | default: '#ffffff'
   assign code = s.code | strip
   assign percent = s.percent | strip
+  comment
+    Alternate wording on listed templates (e.g. the Black Friday B view): same tokens, same phases/countdown, different line.
+  endcomment
+  assign on_alt = false
+  if s.alt_templates != blank and s.alt_text != blank
+    assign alt_list = s.alt_templates | downcase | replace: ' ', '' | split: ','
+    assign alt_suffix = template.suffix | downcase
+    assign alt_name = template.name | downcase
+    assign alt_full = alt_name | append: '.' | append: alt_suffix
+    if alt_suffix != blank and alt_list contains alt_suffix
+      assign on_alt = true
+    elsif alt_list contains alt_name
+      assign on_alt = true
+    elsif alt_list contains alt_full
+      assign on_alt = true
+    endif
+  endif
   assign text = s.text | replace: '[percent]', percent
   assign text_mobile = s.text_mobile | replace: '[percent]', percent
+  if on_alt
+    assign text = s.alt_text | replace: '[percent]', percent
+    assign text_mobile = s.alt_text_mobile | replace: '[percent]', percent
+  endif
   if text_mobile == blank
     assign text_mobile = text
   endif
@@ -142,6 +163,10 @@
           assign b = block.settings
           assign ptext = b.text | replace: '[percent]', percent
           assign pmobile = b.text_mobile | replace: '[percent]', percent
+          if on_alt
+            assign ptext = s.alt_text | replace: '[percent]', percent
+            assign pmobile = s.alt_text_mobile | replace: '[percent]', percent
+          endif
           if pmobile == blank
             assign pmobile = ptext
           endif
@@ -301,6 +326,9 @@
     { "type": "text", "id": "code", "label": "Discount code", "default": "TRY20", "info": "Rendered as a pill wherever [code] appears in the text. Tapping it copies the code." },
     { "type": "text", "id": "percent", "label": "Percent off", "default": "20", "info": "Fills [percent] in the text. Check the live discount before changing." },
     { "type": "text", "id": "text", "label": "Text", "default": "[percent]% off your first order with code [code] [countdown]", "info": "Tokens: [code], [percent], [countdown]." },
+    { "type": "text", "id": "alt_templates", "label": "Alternate text: templates", "info": "Comma-separated ?view= names (e.g. black-friday-b). On these templates the two lines below replace the bar text in every phase; countdown and code tokens still work." },
+    { "type": "text", "id": "alt_text", "label": "Alternate text" },
+    { "type": "text", "id": "alt_text_mobile", "label": "Alternate text on phones (optional)" },
     { "type": "text", "id": "text_mobile", "label": "Text on phones (optional)", "default": "[percent]% off with [code] [countdown]", "info": "Leave empty to use the text above." },
     { "type": "select", "id": "click_action", "label": "When the bar is clicked", "default": "klaviyo", "options": [
       { "value": "link", "label": "Go to the link" }, { "value": "klaviyo", "label": "Open a Klaviyo form" }, { "value": "none", "label": "Nothing" } ] },

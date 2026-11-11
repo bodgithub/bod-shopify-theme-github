@@ -9,6 +9,35 @@
 {%- endcapture -%}
 <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}">
 <head>
+{%- if settings.bf_ab_mode != blank and settings.bf_ab_mode != 'off' and request.design_mode == false and template.name == 'product' -%}
+{%- assign bf_ab_b = settings.bf_ab_b_view | default: 'black-friday-b' | strip -%}
+{%- if template.suffix == 'black-friday' or template.suffix == bf_ab_b -%}
+  {%- comment -%} Black Friday A/B test: one ad link (?view=black-friday); a share of first-time visitors is sent to the B view before paint and remembered in a cookie. ?ab=a / ?ab=b forces a version. Every BF page view tags the cart (bf_variant) and publishes bf_ab_view for the custom pixel. {%- endcomment -%}
+  <script>(function(){try{
+    var mode='{{ settings.bf_ab_mode }}',split={{ settings.bf_ab_split | default: 50 }},days={{ settings.bf_ab_days | default: 30 }},A='black-friday',B='{{ bf_ab_b }}',here='{{ template.suffix }}',KEY='bod_bf_ab';
+    var u=new URL(location.href),forced=(u.searchParams.get('ab')||'').toLowerCase();
+    function get(){var m=document.cookie.match(/(?:^|; )bod_bf_ab=([ab])/);if(m){return m[1];}try{return localStorage.getItem(KEY);}catch(e){return null;}}
+    function set(v){document.cookie=KEY+'='+v+'; path=/; max-age='+(days*86400)+'; SameSite=Lax';try{localStorage.setItem(KEY,v);}catch(e){}}
+    var v=(forced==='a'||forced==='b')?forced:get();
+    if(forced!=='a'&&forced!=='b'){
+      if(mode==='a'){v='a';}else if(mode==='b'){v='b';}
+      else if(v!=='a'&&v!=='b'){v=(here===B)?'b':((Math.random()*100<split)?'b':'a');}
+    }
+    set(v);window.bodBfAb=v;document.documentElement.setAttribute('data-bf-ab',v);
+    var want=(v==='b')?B:A;
+    if(here!==want){u.searchParams.set('view',want);location.replace(u.pathname+u.search+u.hash);return;}
+    var V=v.toUpperCase();
+    function pub(n){if(window.Shopify&&Shopify.analytics&&typeof Shopify.analytics.publish==='function'){try{Shopify.analytics.publish('bf_ab_view',{variant:V,template:here});}catch(e){}}else if(n>0){setTimeout(function(){pub(n-1);},500);}}
+    document.addEventListener('DOMContentLoaded',function(){
+      pub(20);
+      fetch('/cart.js',{headers:{'Accept':'application/json'}}).then(function(r){return r.json();}).then(function(c){
+        if(c&&c.attributes&&c.attributes.bf_variant===V){return;}
+        return fetch('/cart/update.js',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({attributes:{bf_variant:V}})});
+      }).catch(function(){});
+    });
+  }catch(e){}})();</script>
+{%- endif -%}
+{%- endif -%}
 {%- if template.name == 'product' and template.suffix == blank -%}
   {%- comment -%} An empty or unknown ?view= lands on the bare product template; send it to the product's real page instead {%- endcomment -%}
   <script>(function(){try{var u=new URL(location.href);if(u.searchParams.has('view')){u.searchParams.delete('view');location.replace(u.pathname+u.search+u.hash);}}catch(e){}})();</script>

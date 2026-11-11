@@ -36,6 +36,7 @@
     code_banner: "{code} applied: {percent}% off your first order",
     code_banner_mixed: "{code} applied",
     bundle_code_banner: "{code} applied: {percent}% off your bundle",
+    code_banner_by_code: "BF35 : BF35 applied: 35% off your first subscription order",
     code_label: "Discount code",
     code_other_label: "Have a different code?",
     code_another_label: "Got another code? Enter it here",
@@ -468,6 +469,15 @@
   }
   function bannerText(st) {
     if (!st.hasCode) { return ''; }
+    /* per-code override ("CODE : text", one per line) so a code's banner can say what the customer was promised */
+    var byCode = String(st.S.code_banner_by_code || '');
+    if (byCode && st.codeName) {
+      var lines = byCode.split(/\r?\n/), want = String(st.codeName).trim().toUpperCase();
+      for (var bi = 0; bi < lines.length; bi++) {
+        var m = lines[bi].match(/^\s*([^:]+?)\s*:\s*(.+?)\s*$/);
+        if (m && m[1].toUpperCase() === want) { return m[2]; }
+      }
+    }
     /* a cart that is only Black Friday bundles gets the bundle wording (the generic one says "first order") */
     var real = st.lines.filter(function (l) { return l.type !== 'protocol'; });
     if (st.S.bundle_code_banner && real.length && real.every(function (l) { return l.isBf; })) {
