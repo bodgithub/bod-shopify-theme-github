@@ -52,3 +52,15 @@
     max-width: 1000px; }
   .rich-text.text-width-grid .rich-text__inner {
     max-width: 1380px; }
+
+/* Text block: custom sizes from the editor (desktop and phones separately); 0 keeps the size preset */
+@media only screen and (min-width: 768px) {
+  .rich-text .rte.rte--custom-size[style*="--rt-fs-d"],
+  .rich-text .rte.rte--custom-size[style*="--rt-fs-d"] p,
+  .rich-text .rte.rte--custom-size[style*="--rt-fs-d"] li { font-size: var(--rt-fs-d) !important; }
+}
+@media only screen and (max-width: 767px) {
+  .rich-text .rte.rte--custom-size[style*="--rt-fs-m"],
+  .rich-text .rte.rte--custom-size[style*="--rt-fs-m"] p,
+  .rich-text .rte.rte--custom-size[style*="--rt-fs-m"] li { font-size: var(--rt-fs-m) !important; }
+}

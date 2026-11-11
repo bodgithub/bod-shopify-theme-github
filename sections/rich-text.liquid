@@ -60,7 +60,7 @@
 									assign rt_text = rt_text | replace: '<h1>', '<h2 class="h1">' | replace: '<h1 ', '<h2 class="h1" ' | replace: '</h1>', '</h2>'
 								endif
 							-%}
-							<div class="rte {{ block.settings.size }}" {{ block.shopify_attributes }}>
+							<div class="rte {{ block.settings.size }}{% if block.settings.text_size_desktop > 0 or block.settings.text_size_mobile > 0 %} rte--custom-size{% endif %}" style="{% if block.settings.text_size_desktop > 0 %}--rt-fs-d: {{ block.settings.text_size_desktop }}px;{% endif %}{% if block.settings.text_size_mobile > 0 %}--rt-fs-m: {{ block.settings.text_size_mobile }}px;{% endif %}" {{ block.shopify_attributes }}>
 								{{ rt_text }}
 								{{ block.settings.custom_liquid }}
 							</div>
@@ -448,6 +448,26 @@
             }
           ],
           "default": "text-size-regular"
+        },
+        {
+          "type": "range",
+          "id": "text_size_desktop",
+          "label": "Text size (desktop, 0 = use the size preset)",
+          "min": 0,
+          "max": 40,
+          "step": 1,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "text_size_mobile",
+          "label": "Text size (phones, 0 = use the size preset)",
+          "min": 0,
+          "max": 32,
+          "step": 1,
+          "unit": "px",
+          "default": 0
         }
       ]
     },
