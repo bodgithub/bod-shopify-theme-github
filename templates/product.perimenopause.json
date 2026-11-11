@@ -763,90 +763,20 @@
         "anchor_id": "symptoms"
       }
     },
-    "category_list_grid_NDqtGH": {
-      "type": "category-list-grid",
-      "blocks": {
-        "column_FWqteC": {
-          "type": "column",
-          "settings": {
-            "title": "Discipline",
-            "count_text": "THE PROBLEM",
-            "items": "Cutting carbs\nIntense exercise\n~Dieting",
-            "lightbox_text": "<h4></h4><h4><strong>Cutting carbs </strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken.</p><h4><strong>Intense exercise</strong></h4><p>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem.</p><h4><strong>Dieting</strong></h4><p>High insulin tells your body to store fat, and can make you hungry when you shouldn't be. You had to work twice as hard for half the result — that's a hormone problem, not a discipline problem.</p>"
-          }
-        },
-        "column_JqccRw": {
-          "type": "column",
-          "settings": {
-            "title": "Tracking",
-            "count_text": "THE PROBLEM",
-            "items": "Cycle tracking apps\nWearables & CGMs\n~Calorie counting",
-            "lightbox_text": "<h4><strong>Cycle tracking apps</strong></h4><p>Logging, charting, waiting for a pattern. After 40 the pattern itself is changing, and the app can't tell you why you feel the way you do between the dates.</p><h4><strong>Wearables &amp; CGMs</strong></h4><p>It's genuinely useful information. But watching your glucose spike in real time doesn't fix why it's spiking.</p><h4><strong>Calorie counting</strong></h4><p>It tells you what went in. It can't see what insulin told your body to do with it.</p>"
-          }
-        },
-        "column_8jAMWU": {
-          "type": "column",
-          "settings": {
-            "title": "Supplements",
-            "count_text": "THE PROBLEM",
-            "items": "Berberine\nAll-in-one hormone elixirs\n~Magnesium for sleep",
-            "lightbox_text": "<h4><strong>Berberine</strong></h4><p>Works through AMPK, a completely different pathway. If three months gave you modest results, that's why. It doesn't touch insulin, the real issue.</p><h4><strong>All-in-one hormone elixirs</strong></h4><p>Chasteberry, black cohosh, a dusting of six other things, and rarely a meaningful dose of any of them. Most are aimed at hot flashes or ‘balance’. None of them act on insulin.</p><h4><strong>Magnesium for sleep</strong></h4><p>Helps you fall asleep. It doesn't address the 3am wake-up if blood sugar is what's waking you.</p>"
-          }
-        },
-        "column_dTWyQ3": {
-          "type": "column",
-          "settings": {
-            "title": "What they said",
-            "count_text": "THE PROBLEM",
-            "items": "\"Your labs are normal\"\n\"It's just your age\"\n~\"Come back in a year\"",
-            "lightbox_text": "<h4></h4><h4><strong>\"Your labs are normal\"</strong></h4><p>A fasting glucose test measures sugar, not insulin. Your body can hold glucose in range for years by making more insulin. The number they check stays fine. The insulin behind it is never measured.</p><h4><strong>\"It's just your age\"</strong></h4><p>Estrogen helps your cells respond to insulin. As it drops, insulin resistance becomes more common. That's a mechanism, not a life sentence.</p><h4><strong>\"Come back in a year\"</strong></h4><p>Waiting for a lab to turn red means waiting for prediabetes. 2 in 5 US adults already have insulin resistance.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "column_FWqteC",
-        "column_JqccRw",
-        "column_8jAMWU",
-        "column_dTWyQ3"
-      ],
-      "name": "Category list grid",
-      "settings": {
-        "heading": "You've done everything <em>right</em>",
-        "heading_size": 42,
-        "quote_text": "",
-        "quote_name": "",
-        "quote_role": "",
-        "columns_desktop": 4,
-        "mobile_two_col": true,
-        "count_icon": "arrow",
-        "hover_bg": "#ebeeff",
-        "hover_text_color": "#1a2874",
-        "enable_lightbox": true,
-        "footer_text": "",
-        "footer_size": 15,
-        "footer_pad_top": 14,
-        "footer_pad": 15,
-        "footer_star": true,
-        "bg": "#f2eeea",
-        "bg_grad_top": "#fbfaf9",
-        "bg_grad_bottom": "#ffffff",
-        "text_color": "#1a2874",
-        "heading_color": "#1a2874",
-        "accent_color": "#4d61cf",
-        "line_color": "#1a2874",
-        "title_size": 28,
-        "item_size": 15,
-        "padding_top": 32,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
     "rich_text_4x7k8g": {
       "type": "rich-text",
       "blocks": {
         "text_X6kiNj": {
           "type": "text",
+          "settings": {
+            "text": "<h4><strong>2 in 5</strong> adults in the US have <strong>insulin resistance.</strong></h4><p>The chances of metabolic syndrome double after 40, as estrogen drops. Most have no idea, because nobody measured insulin. That's where inositol comes in.</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        },
+        "text_4ck9nm": {
+          "type": "text",
+          "disabled": true,
           "settings": {
             "text": "<h4>It wasn't that they didn't work. They weren't working on the problem: <strong>insulin resistance.</strong></h4><p><strong>2 in 5 </strong>adults have it. More after 40, as estrogen drops. Most have no idea, because nobody measured insulin.*</p>",
             "custom_liquid": "",
@@ -855,7 +785,8 @@
         }
       },
       "block_order": [
-        "text_X6kiNj"
+        "text_X6kiNj",
+        "text_4ck9nm"
       ],
       "name": "Rich text",
       "settings": {
@@ -863,14 +794,14 @@
         "text_width": "medium",
         "text_position": "center",
         "text_alignment": "center",
-        "color_bg": "#ffffff",
-        "bgcolor": "#ffffff",
+        "color_bg": "#FBFAF9",
+        "bgcolor": "#FBFAF9",
         "color_heading": "#1A2874",
         "color_text": "#1a2874",
         "color_links": "#1a2874",
         "pad_custom": true,
         "pad_top": 0,
-        "pad_bottom": 28,
+        "pad_bottom": 8,
         "full_bleed": false,
         "margin_top": 0,
         "margin_bottom": 0,
@@ -1592,6 +1523,85 @@
         "ai_gen_block_66d84b5_be3nEW"
       ],
       "settings": {}
+    },
+    "category_list_grid_NDqtGH": {
+      "type": "category-list-grid",
+      "blocks": {
+        "column_FWqteC": {
+          "type": "column",
+          "settings": {
+            "title": "Discipline",
+            "count_text": "THE PROBLEM",
+            "items": "Cutting carbs\nIntense exercise\n~Dieting",
+            "lightbox_text": "<h4></h4><h4><strong>Cutting carbs </strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. But it doesn't repair the step that's broken.</p><h4><strong>Intense exercise</strong></h4><p>Exercise genuinely improves insulin sensitivity, and you should keep doing it. It also can't override a signalling problem.</p><h4><strong>Dieting</strong></h4><p>High insulin tells your body to store fat, and can make you hungry when you shouldn't be. You had to work twice as hard for half the result — that's a hormone problem, not a discipline problem.</p>"
+          }
+        },
+        "column_JqccRw": {
+          "type": "column",
+          "settings": {
+            "title": "Tracking",
+            "count_text": "THE PROBLEM",
+            "items": "Cycle tracking apps\nWearables & CGMs\n~Calorie counting",
+            "lightbox_text": "<h4><strong>Cycle tracking apps</strong></h4><p>Logging, charting, waiting for a pattern. After 40 the pattern itself is changing, and the app can't tell you why you feel the way you do between the dates.</p><h4><strong>Wearables &amp; CGMs</strong></h4><p>It's genuinely useful information. But watching your glucose spike in real time doesn't fix why it's spiking.</p><h4><strong>Calorie counting</strong></h4><p>It tells you what went in. It can't see what insulin told your body to do with it.</p>"
+          }
+        },
+        "column_8jAMWU": {
+          "type": "column",
+          "settings": {
+            "title": "Supplements",
+            "count_text": "THE PROBLEM",
+            "items": "Berberine\nAll-in-one hormone elixirs\n~Magnesium for sleep",
+            "lightbox_text": "<h4><strong>Berberine</strong></h4><p>Works through AMPK, a completely different pathway. If three months gave you modest results, that's why. It doesn't touch insulin, the real issue.</p><h4><strong>All-in-one hormone elixirs</strong></h4><p>Chasteberry, black cohosh, a dusting of six other things, and rarely a meaningful dose of any of them. Most are aimed at hot flashes or ‘balance’. None of them act on insulin.</p><h4><strong>Magnesium for sleep</strong></h4><p>Helps you fall asleep. It doesn't address the 3am wake-up if blood sugar is what's waking you.</p>"
+          }
+        },
+        "column_dTWyQ3": {
+          "type": "column",
+          "settings": {
+            "title": "What they said",
+            "count_text": "THE PROBLEM",
+            "items": "\"Your labs are normal\"\n\"It's just your age\"\n~\"Come back in a year\"",
+            "lightbox_text": "<h4></h4><h4><strong>\"Your labs are normal\"</strong></h4><p>A fasting glucose test measures sugar, not insulin. Your body can hold glucose in range for years by making more insulin. The number they check stays fine. The insulin behind it is never measured.</p><h4><strong>\"It's just your age\"</strong></h4><p>Estrogen helps your cells respond to insulin. As it drops, insulin resistance becomes more common. That's a mechanism, not a life sentence.</p><h4><strong>\"Come back in a year\"</strong></h4><p>Waiting for a lab to turn red means waiting for prediabetes. 2 in 5 US adults already have insulin resistance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_FWqteC",
+        "column_JqccRw",
+        "column_8jAMWU",
+        "column_dTWyQ3"
+      ],
+      "name": "Category list grid",
+      "settings": {
+        "heading": "You've done everything <em>right</em>",
+        "heading_size": 42,
+        "quote_text": "",
+        "quote_name": "",
+        "quote_role": "",
+        "columns_desktop": 4,
+        "mobile_two_col": true,
+        "count_icon": "arrow",
+        "hover_bg": "#ebeeff",
+        "hover_text_color": "#1a2874",
+        "enable_lightbox": true,
+        "footer_text": "",
+        "footer_size": 15,
+        "footer_pad_top": 14,
+        "footer_pad": 15,
+        "footer_star": true,
+        "bg": "#f2eeea",
+        "bg_grad_top": "#fbfaf9",
+        "bg_grad_bottom": "#F2EEEA",
+        "text_color": "#1a2874",
+        "heading_color": "#1a2874",
+        "accent_color": "#4d61cf",
+        "line_color": "#1a2874",
+        "title_size": 28,
+        "item_size": 15,
+        "padding_top": 32,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
     },
     "inositol_science_86gMmR": {
       "type": "inositol-science",
@@ -2874,12 +2884,12 @@
     "image_with_text_overlay_E9RBUP",
     "blocks_zXxmbi",
     "symptom_check_peri",
-    "category_list_grid_NDqtGH",
     "rich_text_4x7k8g",
     "gpt_product_seo_DWikHm",
     "spacer_fcdpRG",
     "main-product",
     "blocks_eYfhGR",
+    "category_list_grid_NDqtGH",
     "inositol_science_86gMmR",
     "age_curve_peri",
     "why_inositol_DgbUrB",
