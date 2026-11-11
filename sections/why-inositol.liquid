@@ -94,13 +94,13 @@
     border: 1px solid {{ s.line_color }};
     border-radius: 8px;
     padding: 9px 14px;
-    font-size: {{ s.body_size | times: 0.95 | round }}px;
+    font-size: {% if s.body_size > 0 %}{{ s.body_size | times: 0.95 | round }}px{% else %}calc(var(--bod-body) * 0.95){% endif %};
     line-height: 1.3;
   }
-  #shopify-section-{{ section.id }} .wi__acc-text { margin-top: 14px; font-size: {{ s.body_size }}px; line-height: 1.55; }
+  #shopify-section-{{ section.id }} .wi__acc-text { margin-top: 14px; font-size: {% if s.body_size > 0 %}{{ s.body_size }}px{% else %}var(--bod-body){% endif %}; line-height: var(--bod-body-lh, 1.3); }
   #shopify-section-{{ section.id }} .wi__acc-text p { margin: 0 0 8px; font-size: inherit; color: inherit; }
   #shopify-section-{{ section.id }} .wi__acc-text p:last-child { margin-bottom: 0; }
-  #shopify-section-{{ section.id }} .wi__foot { font-size: {{ s.body_size | times: 0.82 | round }}px; line-height: 1.55; opacity: .75; }
+  #shopify-section-{{ section.id }} .wi__foot { font-size: {% if s.body_size > 0 %}{{ s.body_size | times: 0.82 | round }}px{% else %}calc(var(--bod-body) * 0.82){% endif %}; line-height: 1.55; opacity: .75; }
   #shopify-section-{{ section.id }} .wi__foot p { margin: 0; font-size: inherit; color: inherit; }
   /* "See the studies" link inside the footer + its pop-up (same look as the buy-box pop-ups) */
   #shopify-section-{{ section.id }} .wi__studies { appearance: none; background: none; border: 0; padding: 0; margin: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
@@ -141,7 +141,7 @@
   #shopify-section-{{ section.id }} .wi__stat:nth-child(n+3) { padding-top: 26px; padding-bottom: 8px; }
   {% endif %}
   #shopify-section-{{ section.id }} .wi__stat-v { font-size: {{ s.stat_size }}px; line-height: 1.1; font-weight: 400; margin: 0 0 10px; color: {{ s.stat_color }}; }
-  #shopify-section-{{ section.id }} .wi__stat-t { font-size: {{ s.body_size | times: 0.95 | round }}px; line-height: 1.5; margin: 0; }
+  #shopify-section-{{ section.id }} .wi__stat-t { font-size: {% if s.body_size > 0 %}{{ s.body_size | times: 0.95 | round }}px{% else %}calc(var(--bod-body) * 0.95){% endif %}; line-height: 1.5; margin: 0; }
   #shopify-section-{{ section.id }} .wi__stat-t p { margin: 0; font-size: inherit; color: inherit; }
   #shopify-section-{{ section.id }} .wi__right-img { width: 100%; height: auto; border-radius: 16px; display: block; }
   #shopify-section-{{ section.id }} .wi__cta-row { text-align: center; margin-top: 34px; }
