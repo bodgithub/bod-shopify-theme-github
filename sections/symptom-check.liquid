@@ -280,10 +280,22 @@
     if(respItem && respItem.getAttribute('aria-pressed') === 'true'){ msg = respItem.getAttribute('data-sc-response'); }
     if(countEl){ countEl.textContent = countText; }
     if(msgEl){ msgEl.innerHTML = msg; }
-    if(barCount){ barCount.textContent = countText; }
-    if(barMsg){ barMsg.innerHTML = msg; }
-    if(bar){ bar.setAttribute('data-count', n); }
+    if(!zoneNext){
+      if(barCount){ barCount.textContent = countText; }
+      if(barMsg){ barMsg.innerHTML = msg; }
+      if(bar){ bar.setAttribute('data-count', n); }
+    }
     place();
+  }
+  /* over the section that follows (e.g. the "what you've tried" grid) the bar goes back to the plain tap prompt */
+  var extendNext = {{ s.bar_extend_next | json }};
+  var nextSec = (function(){ var sec = root.closest('.shopify-section'); return sec ? sec.nextElementSibling : null; })();
+  var zoneNext = false;
+  function setZone(on){
+    if(on === zoneNext) return;
+    zoneNext = on;
+    if(on){ if(barMsg){ barMsg.innerHTML = msgs.none; } if(barCount){ barCount.textContent = ''; } if(bar){ bar.setAttribute('data-count', 0); } }
+    else { update(); }
   }
   /* bar states: hidden (section not reached) -> in (section on screen) -> after (scrolled past) */
   function place(){
@@ -292,6 +304,12 @@
     var state = 'hidden';
     if(r.bottom <= vh * 0.35){ state = 'after'; }
     else if(r.top < vh * 0.85){ state = 'in'; }
+    var inNext = false;
+    if(extendNext && nextSec && state === 'after'){
+      var nr = nextSec.getBoundingClientRect();
+      if(nr.top < vh * 0.85 && nr.bottom > vh * 0.35){ state = 'in'; inNext = true; }
+    }
+    setZone(inNext);
     /* no bar while the buy box itself is on screen: they can already see the product */
     var buy = document.querySelector('[data-ps1c-root]') || document.getElementById('Product-Slider');
     if(buy){ var br = buy.getBoundingClientRect(); if(br.top < vh && br.bottom > 0){ state = 'hidden'; } }
@@ -423,6 +441,7 @@
     { "type": "header", "content": "Sticky bottom bar" },
     { "type": "checkbox", "id": "sticky_bar", "label": "Show the message in a bar that slides up from the bottom", "info": "Appears when this section scrolls into view, with the button once something is ticked. After scrolling past, it turns into a small bar with the count, a change link and the shop button. Turn off to show the message inside the section instead.", "default": true },
     { "type": "color", "id": "bar_bg", "label": "Bar background", "default": "#ffffff" },
+    { "type": "checkbox", "id": "bar_extend_next", "label": "Show the tap prompt over the section below too", "default": false, "info": "While the next section is on screen the bar shows the \"nothing ticked\" message again (useful when that section is another tappable grid)." },
     { "type": "text", "id": "bar_shop_label", "label": "Shop button (after scrolling past)", "default": "Shop now" },
     { "type": "text", "id": "bar_shop_link", "label": "Shop button link", "default": "#Product-Slider" },
     { "type": "text", "id": "bar_change_label", "label": "Change link text", "default": "Change selection" },
