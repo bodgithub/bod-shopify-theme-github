@@ -84,7 +84,7 @@ body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
 #Cart-Drawer .bod-cart__price { font-size: 18px; font-weight: 800; }
 #Cart-Drawer .bod-cart__price--free { color: var(--bcd-primary); }
 #Cart-Drawer .bod-cart__strike { font-size: 14px; color: var(--bcd-strike); text-decoration: line-through; }
-#Cart-Drawer .bod-cart__badge { font-size: 12px; font-weight: 800; color: #fff; background: var(--bcd-primary); padding: 3px 8px; border-radius: 20px; line-height: 1.2; white-space: nowrap; }
+#Cart-Drawer .bod-cart__badge { font-size: 12px; font-weight: 700; color: #fff; background: #3447af; border: 1px solid #1a2874; padding: 4px 10px; border-radius: 999px; line-height: 1.2; white-space: nowrap; } /* same pill as the selected plan card */
 #Cart-Drawer .bod-cart__qty { font-size: 12px; color: var(--bcd-muted); }
 #Cart-Drawer .bod-cart__renewal { font-size: 12px; color: var(--bcd-muted); line-height: 1.4; }
 #Cart-Drawer .bod-cart__renewal--right { text-align: right; margin-top: -4px; }
@@ -200,4 +200,4 @@ body.open-cc #wrapper .click-capture { z-index: 10000 !important; }
 #Cart-Drawer .bod-cart__code-apply { background: #3447af; color: #ffffff; font-weight: 500; border-color: #3447af; }
 #Cart-Drawer .bod-cart__code-apply:hover, #Cart-Drawer .bod-cart__code-apply:focus-visible { background: #1a2874; border-color: #1a2874; color: #b9c2f5; }
 /* Discount roundel matches the plan selector pills: lavender fill, navy text and hairline */
-#Cart-Drawer .bod-cart__badge { background: #e3eaff; color: #14307c; border: 0.4px solid #14307c; font-weight: 700; font-size: 11px; padding: 4px 11px; border-radius: 999px; }
+#Cart-Drawer .bod-cart__badge { font-size: 12px; font-weight: 700; color: #fff; background: #3447af; border: 1px solid #1a2874; padding: 4px 10px; border-radius: 999px; line-height: 1.2; white-space: nowrap; } /* same pill as the selected plan card */
