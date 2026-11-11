@@ -133,9 +133,10 @@
     #shopify-section-{{ section.id }} .clg__title { font-size: {{ s.title_size | times: 0.82 | round }}px; }
   }
   {%- if s.hover_bg != blank -%}
+  {%- assign hover_alpha = s.hover_opacity | default: 100 | times: 1.0 | divided_by: 100 -%}
   #shopify-section-{{ section.id }} .clg__cell--col { transition: background .18s, transform .15s; }
   #shopify-section-{{ section.id }} .clg__cell--col:hover,
-  #shopify-section-{{ section.id }} .clg__grid:not(:hover) .clg__cell--first { background: {{ s.hover_bg }}; }
+  #shopify-section-{{ section.id }} .clg__grid:not(:hover) .clg__cell--first { background: {{ s.hover_bg | color_modify: 'alpha', hover_alpha }}; }
   {%- if s.hover_text_color != blank -%}
   #shopify-section-{{ section.id }} .clg__cell--col:hover,
   #shopify-section-{{ section.id }} .clg__cell--col:hover .clg__title,
@@ -399,7 +400,17 @@
       "type": "color",
       "id": "hover_bg",
       "label": "Column hover",
-      "info": "Applied at 50% opacity. Leave empty for no hover effect."
+      "info": "Leave empty for no hover effect."
+    },
+    {
+      "type": "range",
+      "id": "hover_opacity",
+      "label": "Column hover opacity",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
     },
     {
       "type": "color",
