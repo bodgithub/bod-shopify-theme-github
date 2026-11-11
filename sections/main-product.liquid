@@ -3741,6 +3741,23 @@
           ]
         },
         {
+          "type": "select",
+          "id": "gift_position",
+          "label": "Banner position",
+          "default": "below",
+          "info": "Banner display only. Inside the card: icon, text, then the Customize link on the right, like the Black Friday note.",
+          "options": [
+            {
+              "value": "below",
+              "label": "Below the plan cards"
+            },
+            {
+              "value": "card",
+              "label": "Inside the selected plan card"
+            }
+          ]
+        },
+        {
           "type": "color",
           "id": "giftban_bg",
           "label": "Banner background",
@@ -3860,6 +3877,16 @@
           "step": 1,
           "unit": "px",
           "default": 1
+        },
+        {
+          "type": "range",
+          "id": "card_radius",
+          "label": "Card corner radius (flat style)",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 0
         },
         {
           "type": "color",
