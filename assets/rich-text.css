@@ -64,3 +64,6 @@
   .rich-text .rte.rte--custom-size[style*="--rt-fs-m"],
   .rich-text .rte.rte--custom-size[style*="--rt-fs-m"] :is(p, li, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) { font-size: var(--rt-fs-m) !important; }
 }
+
+/* Headings in the Rich text section (Heading block and headings typed in a Text block): tighter line height */
+.rich-text :is(h2, h3, h4, h5, .h2, .h3, .h4, .h5) { line-height: 1.12; }
