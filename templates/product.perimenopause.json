@@ -66,10 +66,6 @@
             "pad_right": 0,
             "text_size_desktop": 10,
             "text_size_mobile": 12,
-            "font_weight": "inherit",
-            "line_height": 1.3,
-            "align_desktop": "inherit",
-            "align_mobile": "inherit",
             "pad_top": 0,
             "pad_bottom": 4
           }
@@ -106,10 +102,6 @@
             "pad_right": 96,
             "text_size_desktop": 0,
             "text_size_mobile": 15,
-            "font_weight": "inherit",
-            "line_height": 1.3,
-            "align_desktop": "inherit",
-            "align_mobile": "inherit",
             "pad_top": 0,
             "pad_bottom": 12
           }
@@ -324,8 +316,8 @@
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 46,
             "heading_size_mobile": 28,
-            "body_size_desktop": 16,
-            "body_size_mobile": 16,
+            "body_size_desktop": 0,
+            "body_size_mobile": 0,
             "margin_top": 0,
             "margin_bottom": 0,
             "pad_right_desktop": 80,
@@ -348,10 +340,6 @@
             "pad_right": 0,
             "text_size_desktop": 10,
             "text_size_mobile": 12,
-            "font_weight": "inherit",
-            "line_height": 1.3,
-            "align_desktop": "inherit",
-            "align_mobile": "inherit",
             "pad_top": 0,
             "pad_bottom": 4
           }
@@ -387,11 +375,7 @@
             "pad_left": 0,
             "pad_right": 96,
             "text_size_desktop": 0,
-            "text_size_mobile": 15,
-            "font_weight": "inherit",
-            "line_height": 1.3,
-            "align_desktop": "inherit",
-            "align_mobile": "inherit",
+            "text_size_mobile": 0,
             "pad_top": 0,
             "pad_bottom": 12
           }
@@ -405,8 +389,8 @@
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 24,
             "heading_size_mobile": 34,
-            "body_size_desktop": 16,
-            "body_size_mobile": 16,
+            "body_size_desktop": 0,
+            "body_size_mobile": 0,
             "margin_top": 0,
             "margin_bottom": 0,
             "pad_right_desktop": 96,
@@ -434,7 +418,7 @@
             "text_color": "#ffffff",
             "border_color": "#7e87b9",
             "icon_gap": 5,
-            "text_size_mobile": 15,
+            "text_size_mobile": 0,
             "item_padding_mobile": 8,
             "frosted": true,
             "frosted_tint": 15,
@@ -768,7 +752,7 @@
         "button_hover": "#3447af",
         "button_text": "#ffffff",
         "max_width": 960,
-        "item_size": 15,
+        "item_size": 0,
         "card_radius": 16,
         "item_radius": 10,
         "button_radius": 6,
@@ -787,9 +771,7 @@
           "settings": {
             "text": "<h4><strong>2 in 5</strong> adults in the US have <strong>insulin resistance.</strong></h4><p>The chances of metabolic syndrome double after 40, as estrogen drops. Most have no idea, because nobody measured insulin. That's where inositol comes in.</p>",
             "custom_liquid": "",
-            "size": "text-size-regular",
-            "text_size_desktop": 0,
-            "text_size_mobile": 0
+            "size": "text-size-regular"
           }
         },
         "text_4ck9nm": {
@@ -798,9 +780,7 @@
           "settings": {
             "text": "<h4>It wasn't that they didn't work. They weren't working on the problem: <strong>insulin resistance.</strong></h4><p><strong>2 in 5 </strong>adults have it. More after 40, as estrogen drops. Most have no idea, because nobody measured insulin.*</p>",
             "custom_liquid": "",
-            "size": "text-size-regular",
-            "text_size_desktop": 0,
-            "text_size_mobile": 0
+            "size": "text-size-regular"
           }
         }
       },
@@ -903,7 +883,6 @@
         },
         "custom_liquid_dqLCJY": {
           "type": "feature_chips",
-          "disabled": true,
           "settings": {
             "show_servings": true,
             "servings_default": "45 servings",
@@ -946,21 +925,9 @@
             "bf_banner_text": "",
             "bf_end_text": "Ends Sun, Nov 30",
             "bf_show_tabs": false,
-            "bf_subscribe_tab_note": "Save up to 15%",
-            "bf_panel_bg": "#F1F4FF",
-            "bf_panel_border": "#3447af",
-            "bf_panel_chips": true,
-            "bf_chip_servings_text": "[n] servings",
-            "bf_chip_1": "Full clinical dose*",
-            "bf_chip_2": "Dissolves clear",
-            "bf_chip_3": "",
-            "bf_chip_bg": "#FCFDFF",
-            "bf_chip_border": "#3447af",
-            "bf_chip_text": "#1a2874",
-            "bf_note_bg": "#FCFDFF",
-            "bf_note_color": "#1a2874",
             "bf_studies_in_note": true,
-            "bf_studies_label": "*See the studies",
+            "bf_panel_chips": true,
+            "bf_subscribe_tab_note": "Save up to 15%",
             "bf_footnote": "<p>*Giordano et al. 2011: 80 postmenopausal women with metabolic syndrome, 4g myo-inositol daily plus diet for 6 months; HOMA-IR fell 75% in the myo-inositol group, significantly more than with diet alone. Santamaria et al. 2012: same design over 12 months; 8 of 40 women no longer met metabolic syndrome criteria vs 1 of 40 on placebo. Genazzani et al. 2008 and Artini et al. 2013: overweight women with PCOS, 2g myo-inositol daily for 12 weeks; insulin and testosterone significantly reduced. Results in studies may not reflect individual outcomes.</p>",
             "bf_servings_per_tub": 45,
             "bf_default_tier": "2",
@@ -1289,7 +1256,7 @@
             "headline_color": "#1a2874",
             "outer_bg": "rgba(0,0,0,0)",
             "outer_border": "rgba(0,0,0,0)",
-            "circle_bg": "#e3eaff",
+            "circle_bg": "#E3EAFF",
             "circle_border": "#3447af",
             "icon_color": "#3447af",
             "title_color": "#1a2874",
@@ -1480,7 +1447,7 @@
       ],
       "settings": {
         "bg_grad_top": "#fbfaf9",
-        "bg_grad_bottom": "#FFFFFF",
+        "bg_grad_bottom": "#f3eeea",
         "enable_sticky_add_to_cart": false,
         "reviews_lightbox": true,
         "rl_title": "Customer reviews",
@@ -1541,7 +1508,7 @@
             "margin_top": 0,
             "margin_bottom": 0,
             "gap_above": 80,
-            "gap_above_color": "#FFFFFF",
+            "gap_above_color": "#f3eeea",
             "show_separator": true,
             "separator_size": 20,
             "separator_color": "#ffffff",
@@ -1632,7 +1599,7 @@
         "accent_color": "#4d61cf",
         "line_color": "#1a2874",
         "title_size": 28,
-        "item_size": 15,
+        "item_size": 0,
         "padding_top": 32,
         "padding_bottom": 64,
         "margin_top": 0,
@@ -1865,7 +1832,7 @@
         "text_color": "#ffffff",
         "line_color": "#ffffff73",
         "stat_color": "#ffffff",
-        "body_size": 15,
+        "body_size": 0,
         "stat_size": 42,
         "cta_label": "",
         "cta_link": "",
@@ -2240,7 +2207,7 @@
         "quote_card_border": "#3447af",
         "star_color": "#ddbd6d",
         "text_color": "#ffffff",
-        "quote_size": 15,
+        "quote_size": 0,
         "page_bg": "#fffefe",
         "gradient_enable": true,
         "gradient_1": "#1a2874",
