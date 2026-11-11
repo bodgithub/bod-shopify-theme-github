@@ -715,7 +715,7 @@
       "settings": {
         "eyebrow": "",
         "heading": "<h3>What changed <strong>after 40?</strong></h3>",
-        "heading_size": 38,
+        "heading_size": 42,
         "heading_size_mobile": 42,
         "subheading": "<p>Same food, same walks, same sleep. Different results. That isn’t your discipline slipping. Here's what women describe most:</p>",
         "group_a_title": "How you feel",
@@ -760,6 +760,85 @@
         "margin_top": 0,
         "margin_bottom": 0,
         "anchor_id": "symptoms"
+      }
+    },
+    "category_list_grid_NDqtGH": {
+      "type": "category-list-grid",
+      "blocks": {
+        "column_FWqteC": {
+          "type": "column",
+          "settings": {
+            "title": "Eating less",
+            "count_text": "THE PROBLEM",
+            "items": "Cutting carbs\nSkipping breakfast\nIntermittent fasting\n~\"Just eat less\"",
+            "lightbox_text": "<h4></h4><h4><strong>Cutting carbs</strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. It doesn't change how your cells respond to insulin. The weight comes back the moment you eat normally.</p><h4><strong>Skipping breakfast / intermittent fasting</strong></h4><p>Long gaps can lower insulin for a while. They also leave you hungrier at night, and a day of under-eating is one reason blood sugar swings overnight.</p><h4><strong>\"Just eat less\"</strong></h4><p>High insulin is a storage signal. Eating less on top of it is why you're tired and foggy, and still not losing from your middle.</p>"
+          }
+        },
+        "column_JqccRw": {
+          "type": "column",
+          "settings": {
+            "title": "Moving more",
+            "count_text": "THE PROBLEM",
+            "items": "10,000 steps\nHIIT classes\nMore cardio\n~Lifting heavier",
+            "lightbox_text": "<h4></h4><h4><strong>Walking, HIIT, cardio</strong></h4><p>Exercise genuinely improves insulin sensitivity. Keep doing it. On its own it can't override a signalling problem, and more cardio on four hours of sleep mostly makes you hungrier.</p><h4><strong>Lifting heavier</strong></h4><p>The best thing you can do for your metabolism after 40. It builds the muscle that takes glucose up. It still works better when your cells can hear insulin in the first place.</p>"
+          }
+        },
+        "column_8jAMWU": {
+          "type": "column",
+          "settings": {
+            "title": "Supplements",
+            "count_text": "THE PROBLEM",
+            "items": "Berberine\nMenopause gummies\nMagnesium for sleep\n~Collagen",
+            "lightbox_text": "<h4></h4><h4><strong>Berberine</strong></h4><p>Works through AMPK, a different pathway. If three months gave you modest results, that's why. It doesn't act on insulin signalling itself.</p><h4><strong>Menopause gummies</strong></h4><p>Black cohosh, a dusting of six other things, and rarely a meaningful dose of any of them. Most are aimed at hot flashes. None of them touch insulin.</p><h4><strong>Magnesium for sleep</strong></h4><p>Helps you fall asleep. It doesn't address the 3am wake-up if blood sugar is what's waking you.</p><h4><strong>Collagen</strong></h4><p>Skin and joints. Nothing to do with insulin.</p>"
+          }
+        },
+        "column_dTWyQ3": {
+          "type": "column",
+          "settings": {
+            "title": "What they said",
+            "count_text": "THE PROBLEM",
+            "items": "\"Your labs are normal\"\n\"It's just your age\"\n~\"Come back in a year\"",
+            "lightbox_text": "<h4></h4><h4><strong>\"Your labs are normal\"</strong></h4><p>A fasting glucose test measures sugar, not insulin. Your body can hold glucose in range for years by making more insulin. The number they check stays fine. The insulin behind it is never measured.</p><h4><strong>\"It's just your age\"</strong></h4><p>Estrogen helps your cells respond to insulin. As it drops, insulin resistance becomes more common. That's a mechanism, not a life sentence.</p><h4><strong>\"Come back in a year\"</strong></h4><p>Waiting for a lab to turn red means waiting for prediabetes. 2 in 5 US adults already have insulin resistance.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_FWqteC",
+        "column_JqccRw",
+        "column_8jAMWU",
+        "column_dTWyQ3"
+      ],
+      "name": "Category list grid",
+      "settings": {
+        "heading": "You've done everything <em>right</em>",
+        "heading_size": 42,
+        "quote_text": "",
+        "quote_name": "",
+        "quote_role": "",
+        "columns_desktop": 4,
+        "mobile_two_col": true,
+        "count_icon": "arrow",
+        "hover_bg": "#ebeeff",
+        "hover_text_color": "#1a2874",
+        "enable_lightbox": true,
+        "footer_text": "<p>It wasn't that they didn't work. They weren't working on the problem: <strong>insulin resistance.</strong></p><p><strong>2 in 5</strong> adults in the US have it. It gets more common in your forties and fifties as estrogen drops. Most have no idea, because nobody measured their insulin.</p>",
+        "footer_size": 15,
+        "footer_pad_top": 14,
+        "footer_pad": 15,
+        "footer_star": true,
+        "bg": "#f2eeea",
+        "bg_grad_top": "#FBFAF9",
+        "bg_grad_bottom": "#FFFFFF",
+        "text_color": "#1a2874",
+        "heading_color": "#1a2874",
+        "accent_color": "#4d61cf",
+        "line_color": "#1a2874",
+        "title_size": 28,
+        "item_size": 15,
+        "padding_top": 32,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "bf_countdown": {
@@ -1182,6 +1261,7 @@
         },
         "experts_LiL7KV": {
           "type": "experts",
+          "disabled": true,
           "settings": {
             "pill_text": "",
             "pill_style": "outline",
@@ -1504,85 +1584,6 @@
       ],
       "settings": {}
     },
-    "category_list_grid_NDqtGH": {
-      "type": "category-list-grid",
-      "blocks": {
-        "column_FWqteC": {
-          "type": "column",
-          "settings": {
-            "title": "Eating less",
-            "count_text": "THE PROBLEM",
-            "items": "Cutting carbs\nSkipping breakfast\nIntermittent fasting\n~\"Just eat less\"",
-            "lightbox_text": "<h4></h4><h4><strong>Cutting carbs</strong></h4><p>It lowers how much insulin you need, which is why the first few weeks felt like progress. It doesn't change how your cells respond to insulin. The weight comes back the moment you eat normally.</p><h4><strong>Skipping breakfast / intermittent fasting</strong></h4><p>Long gaps can lower insulin for a while. They also leave you hungrier at night, and a day of under-eating is one reason blood sugar swings overnight.</p><h4><strong>\"Just eat less\"</strong></h4><p>High insulin is a storage signal. Eating less on top of it is why you're tired and foggy, and still not losing from your middle.</p>"
-          }
-        },
-        "column_JqccRw": {
-          "type": "column",
-          "settings": {
-            "title": "Moving more",
-            "count_text": "THE PROBLEM",
-            "items": "10,000 steps\nHIIT classes\nMore cardio\n~Lifting heavier",
-            "lightbox_text": "<h4></h4><h4><strong>Walking, HIIT, cardio</strong></h4><p>Exercise genuinely improves insulin sensitivity. Keep doing it. On its own it can't override a signalling problem, and more cardio on four hours of sleep mostly makes you hungrier.</p><h4><strong>Lifting heavier</strong></h4><p>The best thing you can do for your metabolism after 40. It builds the muscle that takes glucose up. It still works better when your cells can hear insulin in the first place.</p>"
-          }
-        },
-        "column_8jAMWU": {
-          "type": "column",
-          "settings": {
-            "title": "Supplements",
-            "count_text": "THE PROBLEM",
-            "items": "Berberine\nMenopause gummies\nMagnesium for sleep\n~Collagen",
-            "lightbox_text": "<h4></h4><h4><strong>Berberine</strong></h4><p>Works through AMPK, a different pathway. If three months gave you modest results, that's why. It doesn't act on insulin signalling itself.</p><h4><strong>Menopause gummies</strong></h4><p>Black cohosh, a dusting of six other things, and rarely a meaningful dose of any of them. Most are aimed at hot flashes. None of them touch insulin.</p><h4><strong>Magnesium for sleep</strong></h4><p>Helps you fall asleep. It doesn't address the 3am wake-up if blood sugar is what's waking you.</p><h4><strong>Collagen</strong></h4><p>Skin and joints. Nothing to do with insulin.</p>"
-          }
-        },
-        "column_dTWyQ3": {
-          "type": "column",
-          "settings": {
-            "title": "What they said",
-            "count_text": "THE PROBLEM",
-            "items": "\"Your labs are normal\"\n\"It's just your age\"\n~\"Come back in a year\"",
-            "lightbox_text": "<h4></h4><h4><strong>\"Your labs are normal\"</strong></h4><p>A fasting glucose test measures sugar, not insulin. Your body can hold glucose in range for years by making more insulin. The number they check stays fine. The insulin behind it is never measured.</p><h4><strong>\"It's just your age\"</strong></h4><p>Estrogen helps your cells respond to insulin. As it drops, insulin resistance becomes more common. That's a mechanism, not a life sentence.</p><h4><strong>\"Come back in a year\"</strong></h4><p>Waiting for a lab to turn red means waiting for prediabetes. 2 in 5 US adults already have insulin resistance.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "column_FWqteC",
-        "column_JqccRw",
-        "column_8jAMWU",
-        "column_dTWyQ3"
-      ],
-      "name": "Category list grid",
-      "settings": {
-        "heading": "You've done everything <em>right</em>",
-        "heading_size": 0,
-        "quote_text": "",
-        "quote_name": "",
-        "quote_role": "",
-        "columns_desktop": 4,
-        "mobile_two_col": true,
-        "count_icon": "arrow",
-        "hover_bg": "#ebeeff",
-        "hover_text_color": "#1a2874",
-        "enable_lightbox": true,
-        "footer_text": "<p>It wasn't that they didn't work. They weren't working on the problem: <strong>insulin resistance.</strong></p><p><strong>2 in 5</strong> adults in the US have it. It gets more common in your forties and fifties as estrogen drops. Most have no idea, because nobody measured their insulin.</p>",
-        "footer_size": 15,
-        "footer_pad_top": 14,
-        "footer_pad": 15,
-        "footer_star": true,
-        "bg": "#f2eeea",
-        "bg_grad_top": "#f3eeea",
-        "bg_grad_bottom": "#f2eeea",
-        "text_color": "#1a2874",
-        "heading_color": "#1a2874",
-        "accent_color": "#4d61cf",
-        "line_color": "#1a2874",
-        "title_size": 28,
-        "item_size": 15,
-        "padding_top": 80,
-        "padding_bottom": 64,
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
-    },
     "inositol_science_86gMmR": {
       "type": "inositol-science",
       "blocks": {
@@ -1811,7 +1812,7 @@
         "cta_link": "",
         "cta_bg": "#1b3def",
         "cta_text_color": "#ffffff",
-        "pad_top": 0,
+        "pad_top": 28,
         "pad_bottom": 28,
         "margin_top": 0,
         "margin_bottom": 0
@@ -2860,12 +2861,12 @@
     "image_with_text_overlay_E9RBUP",
     "blocks_zXxmbi",
     "symptom_check_peri",
+    "category_list_grid_NDqtGH",
     "bf_countdown",
     "gpt_product_seo_DWikHm",
     "spacer_fcdpRG",
     "main-product",
     "blocks_eYfhGR",
-    "category_list_grid_NDqtGH",
     "inositol_science_86gMmR",
     "age_curve_peri",
     "why_inositol_DgbUrB",
