@@ -524,7 +524,7 @@
         "plan_selector_1c_kJbRfd": {
           "type": "plan_selector_1c",
           "settings": {
-            "border_width": 3,
+            "border_width": 2,
             "max_width": 560,
             "sub_first": true,
             "bundle_position": "first",
@@ -545,7 +545,7 @@
             "giftban_bg": "#e7f5ec",
             "giftban_title_color": "#0b7a45",
             "giftban_text_color": "#0b7a45",
-            "giftban_radius": 10,
+            "giftban_radius": 5,
             "giftban_border": "#0b7a45",
             "giftban_cust_label": "Customize",
             "giftban_title_size": 15,
@@ -625,7 +625,9 @@
             "c4_variant": "48915264209115",
             "hide_sub": false,
             "hide_ot": false,
-            "pay_icons": true
+            "pay_icons": true,
+            "card_radius": 5,
+            "gift_position": "card"
           }
         },
         "facts_table_main": {

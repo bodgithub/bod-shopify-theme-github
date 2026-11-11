@@ -524,7 +524,7 @@
         "plan_selector_1c_kJbRfd": {
           "type": "plan_selector_1c",
           "settings": {
-            "border_width": 3,
+            "border_width": 2,
             "max_width": 560,
             "sub_first": true,
             "bundle_position": "first",
@@ -545,7 +545,7 @@
             "giftban_bg": "#e7f5ec",
             "giftban_title_color": "#0b7a45",
             "giftban_text_color": "#0b7a45",
-            "giftban_radius": 10,
+            "giftban_radius": 5,
             "giftban_border": "#0b7a45",
             "giftban_cust_label": "Customize",
             "giftban_title_size": 15,
@@ -694,7 +694,9 @@
             "bf_tier_3_link_tier": "0",
             "bf_tier_3_study_title": "What a year looked like in the research",
             "bf_tier_3_study_text": "<p>80 women past menopause, all with signs of insulin resistance, took 4g of inositol a day alongside diet. The same daily amount as two scoops of Bodology®.</p><p>After 12 months, 8 of the 40 women taking inositol no longer met the criteria for metabolic syndrome. In the diet-only group it was only 1 of 40.</p>",
-            "bf_tier_3_footnote": "*Santamaria et al. 2012 (Climacteric): Results in studies may not reflect individual outcomes. Trial did not involve Bodology® products. This product is not intended to diagnose, treat, cure, or prevent any disease."
+            "bf_tier_3_footnote": "*Santamaria et al. 2012 (Climacteric): Results in studies may not reflect individual outcomes. Trial did not involve Bodology® products. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+            "card_radius": 5,
+            "gift_position": "card"
           }
         },
         "facts_table_main": {
