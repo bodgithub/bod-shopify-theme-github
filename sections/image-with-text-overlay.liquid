@@ -261,7 +261,7 @@
 								(function () {
 									var btn = document.querySelector('[data-hero-roundel-open="hero-modal-{{ block.id }}"]'), modal = document.getElementById('hero-modal-{{ block.id }}');
 									if (!btn || !modal || btn.dataset.bound) { return; } btn.dataset.bound = '1';
-									function open() { modal.hidden = false; document.documentElement.style.overflow = 'hidden'; var x = modal.querySelector('.hero-modal__x'); if (x) { x.focus(); } }
+									function open() { if (modal.parentNode !== document.body) { document.body.appendChild(modal); } modal.hidden = false; document.documentElement.style.overflow = 'hidden'; var x = modal.querySelector('.hero-modal__x'); if (x) { x.focus(); } }
 									function close() { modal.hidden = true; document.documentElement.style.overflow = ''; btn.focus(); }
 									btn.addEventListener('click', function (e) { e.preventDefault(); open(); });
 									modal.querySelectorAll('[data-hero-modal-close]').forEach(function (b) { b.addEventListener('click', close); });
