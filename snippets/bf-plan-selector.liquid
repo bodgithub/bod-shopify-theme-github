@@ -455,10 +455,10 @@
     function shipLine(t) {
       var el = $('[data-bfps-ship-line]'); if (!el) return;
       var tpl = el.getAttribute('data-tpl');
-      if (!tpl) { el.textContent = (t.quantity === 2 ? 'Both' : 'All ' + t.quantity) + ' tubs ship together, free'; return; }
+      if (!tpl) { el.textContent = (t.quantity === 2 ? '2' : 'All ' + t.quantity) + ' tubs ship together, free'; return; }
       var ship = root._bfpsShip || {};
       if (ship.weekend && el.getAttribute('data-tpl-weekend')) { tpl = el.getAttribute('data-tpl-weekend'); }
-      var tubs = t.quantity === 2 ? 'both tubs' : 'all ' + t.quantity + ' tubs';
+      var tubs = t.quantity === 2 ? '2 tubs' : 'all ' + t.quantity + ' tubs';
       el.innerHTML = '';
       tpl.replace(/\[tubs\]/g, tubs).replace(/\[n\]/g, t.quantity).split('[date]').forEach(function (part, i) {
         if (i > 0) { var d = document.createElement('strong'); d.className = 'bfc__ship-date'; d.setAttribute('data-bfps-ship-date', ''); d.textContent = ship.date || ''; el.appendChild(d); }
