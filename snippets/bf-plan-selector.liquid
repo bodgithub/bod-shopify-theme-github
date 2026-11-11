@@ -107,6 +107,7 @@
   data-bfps-ship-in-list="{{ ship_in_list }}"
   data-bfps-hide-ot="{{ hide_ot }}"
   data-bfps-sub-heading="{{ s.bf_sub_heading | escape }}"
+  data-bfps-cart-title="{{ s.bf_cart_title | default: 'Black Friday [months]-Month Bundle' | escape }}"
   {%- if tub_img != blank %} data-tub-image="{{ tub_img }}"{% endif -%}
 >
   <script type="application/json" data-bfps-tiers>{{ tiers_json | strip }}</script>
@@ -313,7 +314,7 @@
   #ps1c-{{ uid }} .bfc__check svg{width:13px;height:13px}
   #ps1c-{{ uid }} .bfc__title{flex:1 1 auto;min-width:0;font-size:19px;font-weight:800;letter-spacing:-0.02em;line-height:1.1}
   #ps1c-{{ uid }} .bfc__price{flex:0 0 auto;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
-  #ps1c-{{ uid }} .bfc__price s{font-size:13px;font-weight:400;color:#676b79;text-decoration:line-through}
+  #ps1c-{{ uid }} .bfc__price s{font-size:15px;font-weight:400;color:#676b79;text-decoration:line-through}
   #ps1c-{{ uid }} .bfc__price strong{font-size:19px;font-weight:800;letter-spacing:-0.02em}
   #ps1c-{{ uid }} .bfc__note{display:flex;align-items:flex-start;gap:10px;background:var(--bf-note-bg,var(--bf-light));color:var(--bf-note-fg,var(--bf-navy));border-radius:5px;padding:12px 14px;margin:14px 0 0;font-size:15px;font-weight:600;line-height:1.35}
   #ps1c-{{ uid }} .bfc__note[hidden]{display:none}
@@ -362,7 +363,7 @@
     #ps1c-{{ uid }} .bfc__panel{padding:14px 14px 12px}
     #ps1c-{{ uid }} .bfc__title{font-size:19px}
     #ps1c-{{ uid }} .bfc__price strong{font-size:19px}
-    #ps1c-{{ uid }} .bfc__price s{font-size:13px}
+    #ps1c-{{ uid }} .bfc__price s{font-size:15px}
     #ps1c-{{ uid }} .bfc__note,#ps1c-{{ uid }} .bfc__list li,#ps1c-{{ uid }} .bfc__line,#ps1c-{{ uid }} .bfc__swap,#ps1c-{{ uid }} .bfps__sublink{font-size:14px}
     /* phones: the studies link drops under the note text, right-aligned, so the text keeps its full width */
     #ps1c-{{ uid }} .bfc__note--studies{flex-wrap:wrap;row-gap:0}
@@ -381,6 +382,12 @@
 <script>
 (function () {
   /* theme money formatter when present (vendor.min.js formatMoney + theme.settings), else a plain USD fallback; whole dollars drop the .00 */
+  /* crossed-out prices always show cents ($260.00), like the plan cards */
+  function moneyCents(cents) {
+    var n = (Number(cents) || 0) / 100;
+    var s = n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return '$' + s;
+  }
   function money(cents) {
     var out = null;
     try {
@@ -437,7 +444,7 @@
       syncFoot();
       var t = tiers[index];
       var detail = mode === 'bundles'
-        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label }
+        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label, cartTitle: String(root.dataset.bfpsCartTitle || 'Black Friday [months]-Month Bundle').replace(/\[months\]/g, t.months).replace(/\[label\]/g, t.label || '') }
         : { mode: 'subscribe' };
       root._bfpsState = detail;
       root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));
@@ -485,7 +492,7 @@
       [].forEach.call(wrap.children, function (b, i) { b.classList.toggle('is-on', i === index); b.setAttribute('aria-checked', i === index ? 'true' : 'false'); });
       $('[data-bfc-title]').textContent = t.title || (t.label + ' supply');
       var chipS = $('[data-bfc-chip-servings]'); if (chipS) { chipS.textContent = (chipS.dataset.tpl || '[n] servings').replace('[n]', t.quantity * servingsPerTub); }
-      $('[data-bfps-compare]').textContent = t.compare > t.price ? money(t.compare) : '';
+      $('[data-bfps-compare]').textContent = t.compare > t.price ? moneyCents(t.compare) : '';
       $('[data-bfps-price]').textContent = money(t.price);
       var noteWrap = $('[data-bfc-note-wrap]');
       if (t.note) { $('[data-bfc-note]').textContent = fill(t.note, t); noteWrap.hidden = false; } else { noteWrap.hidden = true; }
@@ -554,7 +561,7 @@
         ladder.appendChild(b);
       });
 
-      $('[data-bfps-compare]').textContent = t.compare > t.price ? money(t.compare) : '';
+      $('[data-bfps-compare]').textContent = t.compare > t.price ? moneyCents(t.compare) : '';
       $('[data-bfps-price]').textContent = money(t.price);
 
       var unit = priceLine === 'daily'

@@ -48,7 +48,7 @@
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
     sub_only_codes: "",
     code_sub_only_text: "{code} only works on subscriptions. Switch to Subscribe & Save and it will be applied automatically.",
-    code_blocks: "* : plan 7141621979",
+    code_blocks: "* : plan 7141621979\n* : bf",
     code_blocked_text: "{code} doesn't apply to the bundle, which is already {percent}% off.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
     renewal_text: "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
@@ -179,6 +179,7 @@
     if (r.kind === 'plan') { return l.type === 'subscription' && String(l.plan.id) === r.id; }
     if (r.kind === 'subscription') { return l.type === 'subscription'; }
     if (r.kind === 'onetime') { return l.type === 'oneoff' && (!r.id || String(l.variantId) === r.id); }
+    if (r.kind === 'bf') { return !!l.isBf; } /* a Black Friday bundle line (added with the _bf_bundle property) */
     return false;
   }
   function desiredCodes(rules, alias, lines) {
@@ -205,16 +206,17 @@
   }
   function blockingLines(blocks, code, lines) {
     var hits = [];
-    if (blocks.some(function (b) { return b.allow && lower(b.code) === lower(code); })) { return hits; }
+    var exempt = blocks.some(function (b) { return b.allow && lower(b.code) === lower(code); });
     blocks.forEach(function (b) {
       if (b.allow) { return; }
+      if (exempt && b.kind !== 'bf') { return; } /* "!CODE" exemptions never reach the Black Friday bundle blocks */
       if (b.code !== '*' && lower(b.code) !== lower(code)) { return; } /* "*" = every code */
       lines.forEach(function (l) { if (ruleMatches(b, l) && hits.indexOf(l) < 0) { hits.push(l); } });
     });
     return hits;
   }
   function blockedPercent(hits) {
-    var pcts = hits.map(function (l) { return l.plan ? l.plan.pct : l.pct; }).filter(function (n) { return n > 0; });
+    var pcts = hits.map(function (l) { return l.isBf && l.bfPct ? l.bfPct : (l.plan ? l.plan.pct : l.pct); }).filter(function (n) { return n > 0; });
     return pcts.length ? Math.max.apply(null, pcts) : 0;
   }
   function sameCodes(a, b) {
@@ -346,8 +348,12 @@
           pct: listUnit > 0 ? Math.round((1 - sp.price / listUnit) * 100) : 0
         };
       }
+      /* Black Friday bundle: the product page adds the one-time tub at bundle quantity with these hidden properties */
+      var props = item.properties || {};
+      var bfTitle = props._bf_bundle ? String(props._bf_bundle) : '';
+      var bfPct = parseInt(props._bf_pct, 10) || 0;
       var upsell = null;
-      if (type === 'oneoff' && S.upsell) {
+      if (type === 'oneoff' && S.upsell && !bfTitle) {
         var tid = String(meta.upsell_plan_id || upsellMap[String(meta.variant_id)] || '');
         var opt = (meta.plan_options || []).filter(function (o) { return String(o.id) === tid; })[0];
         if (opt) {
@@ -360,7 +366,8 @@
       }
       lines.push({
         key: item.key, keys: [item.key], qty: qty, type: type,
-        title: meta.display_name || meta.title, productTitle: meta.title,
+        title: bfTitle || meta.display_name || meta.title, productTitle: meta.title,
+        isBf: !!bfTitle, bfPct: bfPct,
         image: meta.image, imageAlt: meta.image_alt, url: meta.url,
         variantId: String(meta.variant_id),
         listUnit: listUnit, list: list, orig: orig, disc: disc, first: first,
