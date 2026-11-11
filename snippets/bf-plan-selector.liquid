@@ -106,6 +106,7 @@
   data-layout="{{ layout }}"
   data-bfps-ship-in-list="{{ ship_in_list }}"
   data-bfps-hide-ot="{{ hide_ot }}"
+  data-bfps-sub-heading="{{ s.bf_sub_heading | escape }}"
   {%- if tub_img != blank %} data-tub-image="{{ tub_img }}"{% endif -%}
 >
   <script type="application/json" data-bfps-tiers>{{ tiers_json | strip }}</script>
@@ -312,8 +313,8 @@
   #ps1c-{{ uid }} .bfc__check svg{width:13px;height:13px}
   #ps1c-{{ uid }} .bfc__title{flex:1 1 auto;min-width:0;font-size:19px;font-weight:800;letter-spacing:-0.02em;line-height:1.1}
   #ps1c-{{ uid }} .bfc__price{flex:0 0 auto;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
-  #ps1c-{{ uid }} .bfc__price s{font-size:19px;font-weight:500;color:#6b7280}
-  #ps1c-{{ uid }} .bfc__price strong{font-size:24px;font-weight:800;letter-spacing:-0.02em}
+  #ps1c-{{ uid }} .bfc__price s{font-size:13px;font-weight:400;color:#676b79;text-decoration:line-through}
+  #ps1c-{{ uid }} .bfc__price strong{font-size:19px;font-weight:800;letter-spacing:-0.02em}
   #ps1c-{{ uid }} .bfc__note{display:flex;align-items:flex-start;gap:10px;background:var(--bf-note-bg,var(--bf-light));color:var(--bf-note-fg,var(--bf-navy));border-radius:5px;padding:12px 14px;margin:14px 0 0;font-size:15px;font-weight:600;line-height:1.35}
   #ps1c-{{ uid }} .bfc__note[hidden]{display:none}
   #ps1c-{{ uid }} .bfc__flask{flex:0 0 auto;width:20px;height:20px;margin-top:1px;color:var(--bf-note-fg,var(--bf-navy))}
@@ -360,8 +361,8 @@
     #ps1c-{{ uid }} .bfc__tier-free{font-size:12px}
     #ps1c-{{ uid }} .bfc__panel{padding:14px 14px 12px}
     #ps1c-{{ uid }} .bfc__title{font-size:19px}
-    #ps1c-{{ uid }} .bfc__price strong{font-size:20px}
-    #ps1c-{{ uid }} .bfc__price s{font-size:19px}
+    #ps1c-{{ uid }} .bfc__price strong{font-size:19px}
+    #ps1c-{{ uid }} .bfc__price s{font-size:13px}
     #ps1c-{{ uid }} .bfc__note,#ps1c-{{ uid }} .bfc__list li,#ps1c-{{ uid }} .bfc__line,#ps1c-{{ uid }} .bfc__swap,#ps1c-{{ uid }} .bfps__sublink{font-size:14px}
     /* phones: the studies link drops under the note text, right-aligned, so the text keeps its full width */
     #ps1c-{{ uid }} .bfc__note--studies{flex-wrap:wrap;row-gap:0}
@@ -599,6 +600,12 @@
           p.hidden = p.dataset.bfpsPanel !== mode;
         });
         var foot = root.querySelector('[data-bfps-foot]'); if (foot) { foot.hidden = mode !== 'bundles'; }
+        /* the block heading reads differently in the subscription view */
+        var heading = document.querySelector('#ps1c-{{ uid }} .ps-h');
+        if (heading && root.dataset.bfpsSubHeading) {
+          if (!heading.dataset.bfpsOrig) { heading.dataset.bfpsOrig = heading.textContent; }
+          heading.textContent = mode === 'subscribe' ? root.dataset.bfpsSubHeading : heading.dataset.bfpsOrig;
+        }
         announce();
       });
     });
