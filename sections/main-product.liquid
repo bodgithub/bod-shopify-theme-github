@@ -3706,6 +3706,27 @@
           "default": "Save up to 25% by subscribing"
         },
         {
+          "type": "checkbox",
+          "id": "ship_in_benefits",
+          "label": "Shipping line as the first plan-card bullet",
+          "default": false,
+          "info": "On: the live ship-by date moves into the selected plan card as its first bullet (pulsing dot) and the row above the button is hidden. Needs the shipping prefix below to be set."
+        },
+        {
+          "type": "text",
+          "id": "ship_bullet_text",
+          "label": "Shipping bullet text",
+          "default": "Fast, free shipping \u00b7 ships by [date]",
+          "info": "[date] = the live ship-by date."
+        },
+        {
+          "type": "text",
+          "id": "ship_bullet_weekend_text",
+          "label": "Shipping bullet text (Fri after 2pm ET and Sat)",
+          "default": "Fast, free shipping \u00b7 arrives in [date]",
+          "info": "[date] = the delivery window below."
+        },
+        {
           "type": "text",
           "id": "shipping_prefix",
           "label": "Shipping line prefix (ship date auto-appends; blank = hidden)",

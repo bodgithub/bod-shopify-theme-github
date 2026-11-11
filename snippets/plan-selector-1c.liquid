@@ -30,6 +30,11 @@
 {%- if gift_display != 'banner' -%}{%- assign gift_pos = 'below' -%}{%- endif -%}
 {%- assign card_rad = s.card_radius | default: 0 -%}
 {%- assign ribbon_pos = s.ribbon_position | default: 'corner' -%}
+{%- comment -%} Shipping line as the first bullet of the plan cards (pulsing dot, live date); the row above the button is then hidden {%- endcomment -%}
+{%- assign ship_in_benes = false -%}
+{%- if s.ship_in_benefits and s.shipping_prefix != blank -%}{%- assign ship_in_benes = true -%}{%- endif -%}
+{%- assign ship_bullet = s.ship_bullet_text | default: 'Fast, free shipping · ships by [date]' -%}
+{%- assign ship_bullet_weekend = s.ship_bullet_weekend_text | default: 'Fast, free shipping · arrives in [date]' -%}
 {%- assign gb_icon = gb_tc -%}
 {%- assign gb_tc_lightness = gb_tc | color_extract: 'lightness' -%}
 {%- if gb_tc_lightness > 70 -%}{%- assign gb_icon = gb_bg -%}{%- endif -%}
@@ -85,8 +90,14 @@
 #ps1c-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:9px; white-space:nowrap;}
 #ps1c-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
-#ps1c-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:13px; line-height:1.5; color:var(--ps-ink);}
+#ps1c-{{ uid }} .pc-benes{gap:6px;}
+#ps1c-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:15px; line-height:1.35; color:var(--ps-ink);}
 #ps1c-{{ uid }} .pc-benes li::before{content:''; position:absolute; left:2px; top:0.55em; width:4px; height:4px; border-radius:50%; background:var(--ps-ink);}
+/* shipping bullet: pulsing dot in place of the plain bullet, live date bold */
+#ps1c-{{ uid }} .pc-benes__ship{display:flex; align-items:flex-start; padding-left:0;}
+#ps1c-{{ uid }} .pc-benes__ship::before{display:none;}
+#ps1c-{{ uid }} .pc-benes__dot{flex:0 0 auto; width:9px; height:9px; margin:6px 5px 0 0; box-shadow:0 0 0 3px rgba(52,71,175,.18);}
+#ps1c-{{ uid }} .pc-benes__date{font-weight:700; color:var(--ps-ink); text-decoration:underline; text-underline-offset:2px; white-space:nowrap;}
 #ps1c-{{ uid }} .pc-expand{display:none;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
 #ps1c-{{ uid }} .pc-kit__lab{font-size:12px; font-weight:700; color:var(--ps-ink); margin:14px 0 11px;}
@@ -228,6 +239,7 @@
 /* keep the save pill on the title line on phones: smaller pill, tighter gaps, 16px checkbox; pricing column untouched */
 #ps1c-{{ uid }} .pc-titlerow{gap:6px;}
 #ps1c-{{ uid }} .pc-check{width:16px; height:16px;}
+#ps1c-{{ uid }} .pc-benes li{font-size:14px;}
 #ps1c-{{ uid }} .ps-concern__tick{width:16px; height:16px;}
 #ps1c-{{ uid }} .ps-concern__tick svg{width:10px; height:10px;}
 #ps1c-{{ uid }} .pc-check svg{width:10px; height:10px;}
@@ -357,7 +369,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
               </div>
               {%- assign benes = card_benefits | newline_to_br | split: '<br />' -%}
               {%- assign has_benes = false -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign has_benes = true -%}{%- endif -%}{%- endfor -%}
-              {%- if has_benes -%}<ul class="pc-benes">{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
+              {%- if has_benes or ship_in_benes -%}<ul class="pc-benes">{%- if ship_in_benes -%}<li class="pc-benes__ship"><span class="ps-ship__dot pc-benes__dot" aria-hidden="true"></span><span data-ps1c-ship-bullet data-tpl="{{ ship_bullet | escape }}" data-tpl-weekend="{{ ship_bullet_weekend | escape }}"></span></li>{%- endif -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
             </div>
             <div class="pc-right">
               <div class="pc-price">{%- if card_compare != blank -%}<span class="pc-price__was">{{ card_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ card_price }}</span>{%- if card_per != blank -%}<span class="pc-price__per">{{ card_per }}</span>{%- endif -%}</div>
@@ -538,7 +550,24 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   var shipWeekendText = {{ s.shipping_weekend_text | json }};
   var shipWeekendHighlight = {{ s.shipping_weekend_highlight | json }};
   var shipRow = root.querySelector('.ps-ship');
+  var shipInBenes = {{ ship_in_benes | json }};
+  function fillShipBullets(text, weekend){
+    [].forEach.call(root.querySelectorAll('[data-ps1c-ship-bullet]'), function(el){
+      var tpl = (weekend && el.getAttribute('data-tpl-weekend')) || el.getAttribute('data-tpl') || '';
+      el.innerHTML = '';
+      tpl.split('[date]').forEach(function(part, i){
+        if(i > 0){ var d = document.createElement('strong'); d.className = 'pc-benes__date'; d.textContent = text; el.appendChild(d); }
+        if(part){ el.appendChild(document.createTextNode(part)); }
+      });
+    });
+  }
+  function syncShipRow(){
+    if(!shipRow) return;
+    var hide = bundlesMode() ? !!(bfEl && bfEl.getAttribute('data-bfps-ship-in-list') === 'true') : shipInBenes;
+    shipRow.hidden = hide;
+  }
   function publishShip(text, weekend){
+    fillShipBullets(text, weekend);
     if(!bfEl) return;
     bfEl._bfpsShip = { date: text, weekend: !!weekend };
     [].forEach.call(root.querySelectorAll('[data-bfps-ship-date]'), function(el){ el.textContent = text; });
@@ -564,8 +593,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   // Black Friday: with the shipping line inside the bundle list, the row above the button only shows in the subscription view;
   // the subscription view can also hide the one-time card, so never leave it selected there
   function syncBf(){
+    syncShipRow();
     if(!bfEl) return;
-    if(shipRow && bfEl.getAttribute('data-bfps-ship-in-list') === 'true'){ shipRow.hidden = bundlesMode(); }
     if(!bundlesMode() && bfEl.getAttribute('data-bfps-hide-ot') === 'true'){
       var cur = selected();
       if(cur && cur.getAttribute('data-ps1c-p') === 'ot'){
