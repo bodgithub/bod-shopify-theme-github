@@ -175,7 +175,9 @@
 #ps1c-{{ uid }} .ps-concern.is-checked{border-color:{{ check_c }}; background:{{ acc | color_modify: 'alpha', 0.06 }};}
 /* same look as the plan-card checkbox: square, card-border colour, filled when checked */
 #ps1c-{{ uid }} .ps-concern__tick{position:absolute; top:9px; right:9px; width:18px; height:18px; border-radius:0; border:1.5px solid {{ check_c }}; background:#fff; display:grid; place-items:center; color:#fff; font-size:11px; line-height:1; font-weight:700;}
+#ps1c-{{ uid }} .ps-concern__tick svg{width:11px; height:11px; display:none;}
 #ps1c-{{ uid }} .ps-concern.is-checked .ps-concern__tick{background:{{ check_c }}; border-color:{{ check_c }};}
+#ps1c-{{ uid }} .ps-concern.is-checked .ps-concern__tick svg{display:block;}
 #ps1c-{{ uid }} .ps-concern__icon{display:grid; place-items:center; width:28px; height:28px; border-radius:8px; background:{{ acc | color_modify: 'alpha', 0.08 }};}
 #ps1c-{{ uid }} .ps-concern__icon svg{width:16px; height:16px;}
 #ps1c-{{ uid }} .ps-concern__icon img{width:100%; height:100%; object-fit:cover; border-radius:inherit; display:block;}
@@ -226,7 +228,8 @@
 /* keep the save pill on the title line on phones: smaller pill, tighter gaps, 16px checkbox; pricing column untouched */
 #ps1c-{{ uid }} .pc-titlerow{gap:6px;}
 #ps1c-{{ uid }} .pc-check{width:16px; height:16px;}
-#ps1c-{{ uid }} .ps-concern__tick{width:16px; height:16px; font-size:10px;}
+#ps1c-{{ uid }} .ps-concern__tick{width:16px; height:16px;}
+#ps1c-{{ uid }} .ps-concern__tick svg{width:10px; height:10px;}
 #ps1c-{{ uid }} .pc-check svg{width:10px; height:10px;}
 #ps1c-{{ uid }} .pc-pill{font-size:9.5px; padding:2px 6px; letter-spacing:0;}
 }
@@ -465,7 +468,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
           {%- if s[cl_k] != blank -%}
           {%- assign icon_row = icon_rows[forloop.index0] | split: '|' -%}
           <button type="button" class="ps-concern" data-ps1c-concern data-variant="{{ s[cv_k] }}" data-label="{{ s[cl_k] | escape }}" aria-pressed="false">
-            <span class="ps-concern__tick" aria-hidden="true"></span>
+            <span class="ps-concern__tick" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span>
             <span class="ps-concern__icon">{%- if s[cimg_k] -%}<img src="{{ s[cimg_k] | image_url: width: 112 }}" alt="" loading="lazy">{%- else -%}<svg viewBox="0 0 16 16" aria-hidden="true">{{ icon_row[1] }}</svg>{%- endif -%}</span>
             <div class="ps-concern__txt">
               <div class="ps-concern__t">{{ s[cl_k] }}</div>
@@ -666,7 +669,6 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
         e.stopPropagation();
         b.classList.toggle('is-checked');
         b.setAttribute('aria-pressed', b.classList.contains('is-checked') ? 'true' : 'false');
-        var t = b.querySelector('.ps-concern__tick'); if(t){ t.textContent = b.classList.contains('is-checked') ? '✓' : ''; }
         if(sup){ var f = protoFocus(); sup.textContent = f || {{ s.proto_supporting_default | default: 'None selected' | json }}; }
         updateOpenBtns();
       });
