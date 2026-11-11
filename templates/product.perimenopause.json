@@ -821,7 +821,7 @@
         "hover_bg": "#ebeeff",
         "hover_text_color": "#1a2874",
         "enable_lightbox": true,
-        "footer_text": "<p>It wasn't that they didn't work. They weren't working on the problem: <strong>insulin resistance.</strong></p><p><strong>2 in 5</strong> adults in the US have it. It gets more common in your forties and fifties as estrogen drops. Most have no idea, because nobody measured their insulin.</p>",
+        "footer_text": "",
         "footer_size": 15,
         "footer_pad_top": 14,
         "footer_pad": 15,
@@ -841,32 +841,40 @@
         "margin_bottom": 0
       }
     },
-    "bf_countdown": {
-      "type": "countdown-banner",
-      "disabled": true,
+    "rich_text_4x7k8g": {
+      "type": "rich-text",
+      "blocks": {
+        "text_X6kiNj": {
+          "type": "text",
+          "settings": {
+            "text": "<h4>It wasn't that they didn't work. They weren't working on the problem: <strong>insulin resistance.</strong></h4><p><strong>2 in 5 </strong>adults have it. More after 40, as estrogen drops. Most have no idea, because nobody measured insulin.*</p>",
+            "custom_liquid": "",
+            "size": "text-size-regular"
+          }
+        }
+      },
+      "block_order": [
+        "text_X6kiNj"
+      ],
+      "name": "Rich text",
       "settings": {
-        "full_width": true,
-        "section_layout": "horizontal",
-        "desktop_height": "desktop-height-auto",
-        "mobile_height": "mobile-height-auto",
-        "subheading": "Black Friday",
-        "heading": "90 days of the full clinical dose. $32.67 a month.",
-        "heading_size": "h2",
-        "content": "The 90-day bundle: two 6-week tubs, $98 billed every 3 months. Cancel anytime. 60-day money-back guarantee.",
-        "content_size": "medium",
-        "button_text": "Get the 90-day bundle",
-        "button_link": "/products/myo-d-chiro-inositol-powder?view=perimenopause#Product-Slider",
-        "timer_year": 2026,
-        "timer_month": "12",
-        "timer_day": "01",
-        "timer_hour": "00",
-        "timer_minute": "00",
-        "color_bg": "#e3e7ff",
-        "color_text": "#1a2874",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "disable_top_spacing": true,
-        "disable_bottom_spacing": true
+        "demote_h1": false,
+        "text_width": "medium",
+        "text_position": "center",
+        "text_alignment": "center",
+        "color_bg": "#FFFFFF",
+        "bgcolor": "#FFFFFF",
+        "color_heading": "#1A2874",
+        "color_text": "#2c2d2e",
+        "color_links": "#2c2d2e",
+        "pad_custom": true,
+        "pad_top": 0,
+        "pad_bottom": 28,
+        "full_bleed": false,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "disable_top_spacing": false,
+        "disable_bottom_spacing": false
       }
     },
     "gpt_product_seo_DWikHm": {
@@ -1754,29 +1762,29 @@
         "stat_t4fBEx": {
           "type": "stat",
           "settings": {
-            "value": "1 in 5",
-            "text": "<p>women no longer had metabolic syndrome after 12 months on inositol. On diet alone, 1 in 40*</p>"
+            "value": "+80%",
+            "text": "<p>improvement in whole-body insulin sensitivity*</p>"
           }
         },
         "stat_8HwQip": {
           "type": "stat",
           "settings": {
-            "value": "+22%",
-            "text": "<p>HDL ('good') cholesterol after 6 months*</p>"
+            "value": "2 in 5",
+            "text": "<p>US adults have insulin resistance. Most don't know it*</p>"
           }
         },
         "stat_Aqd3H4": {
           "type": "stat",
           "settings": {
-            "value": "−20%",
-            "text": "<p>triglycerides after 6 months*</p>"
+            "value": "4g",
+            "text": "<p>the daily dose used in the studies. Two scoops of Bodology.</p>"
           }
         },
         "footer_Dk8jFD": {
           "type": "footer",
           "settings": {
             "position": "right",
-            "text": "<p>*These statements have not been evaluated by the FDA. These studies did not use Bodology® Inositol specifically (6-month study: Giordano et al., Menopause, 2011; 12-month study: Santamaria et al., Climacteric, 2012). This product is not intended to diagnose, treat, cure, or prevent any disease.</p>"
+            "text": "<p>*These statements have not been evaluated by the FDA. These studies did not use Bodology® Inositol specifically (postmenopausal study: Giordano et al., Menopause, 2011). This product is not intended to diagnose, treat, cure, or prevent any disease.</p>"
           }
         }
       },
@@ -2862,7 +2870,7 @@
     "blocks_zXxmbi",
     "symptom_check_peri",
     "category_list_grid_NDqtGH",
-    "bf_countdown",
+    "rich_text_4x7k8g",
     "gpt_product_seo_DWikHm",
     "spacer_fcdpRG",
     "main-product",
