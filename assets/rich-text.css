@@ -27,7 +27,7 @@
       .rich-text--transparent-false .rich-text__inner {
         padding: 45px; } }*/
   .rich-text .rte {
-    margin-bottom: 35px; }
+    margin-bottom: var(--rt-gap, 35px); }
     .rich-text .rte p:last-child {
       margin-bottom: 0; }
   .rich-text h3.heading-has-gradient {
