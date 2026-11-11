@@ -91,13 +91,13 @@
 #ps1c-{{ uid }} .pc-serving{display:block; font-size:12px; font-weight:600; color:var(--ps-ink); margin-top:9px; white-space:nowrap;}
 #ps1c-{{ uid }} .pc-benes{list-style:none; margin:8px 0 0; padding:0; display:none; flex-direction:column; gap:4px;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-benes{display:flex;}
-#ps1c-{{ uid }} .pc-benes{gap:6px;}
-#ps1c-{{ uid }} .pc-benes li{position:relative; padding-left:14px; font-size:15px; line-height:1.35; color:var(--ps-ink);}
-#ps1c-{{ uid }} .pc-benes li::before{content:''; position:absolute; left:2px; top:0.55em; width:4px; height:4px; border-radius:50%; background:var(--ps-ink);}
-/* shipping bullet: pulsing dot in place of the plain bullet, live date bold */
-#ps1c-{{ uid }} .pc-benes li.pc-benes__ship{display:flex; align-items:flex-start; padding-left:0;}
-#ps1c-{{ uid }} .pc-benes li.pc-benes__ship::before{display:none;}
-#ps1c-{{ uid }} .pc-benes__dot{flex:0 0 auto; width:9px; height:9px; margin:6px 5px 0 0; box-shadow:0 0 0 3px rgba(52,71,175,.18);}
+/* same list recipe as the Black Friday bundle panel: tick icons, 10px gap, 8px between items */
+#ps1c-{{ uid }} .pc-benes{gap:0;}
+#ps1c-{{ uid }} .pc-benes li{display:flex; align-items:flex-start; gap:10px; font-size:15px; font-weight:400; line-height:1.35; color:var(--ps-ink); margin:0 0 8px;}
+#ps1c-{{ uid }} .pc-benes li:last-child{margin-bottom:0;}
+#ps1c-{{ uid }} .pc-benes__tick{flex:0 0 auto; width:16px; height:16px; margin-top:3px; color:var(--ps-blue);}
+/* shipping bullet: pulsing dot in place of the tick, live date bold */
+#ps1c-{{ uid }} .pc-benes__dot{flex:0 0 auto; width:9px; height:9px; margin:6px 3.5px 0; box-shadow:0 0 0 3px rgba(52,71,175,.18);}
 #ps1c-{{ uid }} .pc-benes__date{font-weight:700; color:var(--ps-ink); text-decoration:underline; text-underline-offset:2px; white-space:nowrap;}
 #ps1c-{{ uid }} .pc-expand{display:none;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-expand{display:block;}
@@ -370,7 +370,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
               </div>
               {%- assign benes = card_benefits | newline_to_br | split: '<br />' -%}
               {%- assign has_benes = false -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign has_benes = true -%}{%- endif -%}{%- endfor -%}
-              {%- if has_benes or ship_in_benes -%}<ul class="pc-benes">{%- if ship_in_benes -%}<li class="pc-benes__ship"><span class="ps-ship__dot pc-benes__dot" aria-hidden="true"></span><span data-ps1c-ship-bullet data-tpl="{{ ship_bullet | escape }}" data-tpl-weekend="{{ ship_bullet_weekend | escape }}"></span></li>{%- endif -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
+              {%- if has_benes or ship_in_benes -%}<ul class="pc-benes">{%- if ship_in_benes -%}<li class="pc-benes__ship"><span class="ps-ship__dot pc-benes__dot" aria-hidden="true"></span><span data-ps1c-ship-bullet data-tpl="{{ ship_bullet | escape }}" data-tpl-weekend="{{ ship_bullet_weekend | escape }}"></span></li>{%- endif -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li><svg class="pc-benes__tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>{{ t }}</span></li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}
             </div>
             <div class="pc-right">
               <div class="pc-price">{%- if card_compare != blank -%}<span class="pc-price__was">{{ card_compare }}</span>{%- endif -%}<span class="pc-price__now">{{ card_price }}</span>{%- if card_per != blank -%}<span class="pc-price__per">{{ card_per }}</span>{%- endif -%}</div>

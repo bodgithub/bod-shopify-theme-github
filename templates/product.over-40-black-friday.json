@@ -928,7 +928,7 @@
         "plan_selector_1c_kJbRfd": {
           "type": "plan_selector_1c",
           "settings": {
-            "border_width": 3,
+            "border_width": 2,
             "max_width": 560,
             "sub_first": true,
             "bundle_position": "first",
@@ -1109,7 +1109,9 @@
             "bf_sub_hide_ot": true,
             "ship_in_benefits": true,
             "ship_bullet_text": "Fast, free shipping · ships by [date]",
-            "ship_bullet_weekend_text": "Fast, free shipping · arrives in [date]"
+            "ship_bullet_weekend_text": "Fast, free shipping · arrives in [date]",
+            "ribbon_position": "price",
+            "card_radius": 5
           }
         },
         "quote_7QKz6a": {
