@@ -88,6 +88,31 @@
       },
       {
         "type": "header",
+        "content": "Body copy size",
+        "info": "One size for paragraph copy in the Bodology sections (hero text, symptom check, category grid, why inositol, quote grid, results timeline, rich text). 0 = follow the body font scale above."
+      },
+      {
+        "type": "range",
+        "id": "body_copy_size_desktop",
+        "label": "Desktop",
+        "min": 0,
+        "max": 22,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "body_copy_size_mobile",
+        "label": "Phones",
+        "min": 0,
+        "max": 22,
+        "step": 1,
+        "unit": "px",
+        "default": 15
+      },
+      {
+        "type": "header",
         "content": "Announcement bar"
       },
       {
@@ -1233,7 +1258,6 @@
         "type": "textarea",
         "id": "bcd_code_rules",
         "label": "Code families (one typed code = several real codes)",
-        "default": "",
         "info": "One rule per line: TYPED -> REAL : condition. Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any. The drawer applies the real codes the cart qualifies for and shows only the typed code. Lines with no rule (e.g. the bundle plan) get nothing."
       },
       {
@@ -1254,7 +1278,6 @@
         "type": "textarea",
         "id": "bcd_sub_only_codes",
         "label": "Subscription-only codes",
-        "default": "",
         "info": "One code per line. When one of these is entered while the cart has no subscription, the drawer holds it, shows the message below, and applies it automatically once a line is switched to a subscription."
       },
       {
