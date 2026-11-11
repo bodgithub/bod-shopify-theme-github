@@ -45,6 +45,11 @@
     opacity: {{ s.overlay_opacity | divided_by: 100.0 }};
   }
   {% endif %}
+  {% if s.gradient_enable %}
+  /* same radial gradient as the "Real stories, real results" video section */
+  #shopify-section-{{ section.id }} .qg { background: radial-gradient(140% 130% at 18% 8%, {{ s.gradient_1 }} 0%, {{ s.gradient_2 }} 100%); }
+  #shopify-section-{{ section.id }} .qg__card { background: transparent; }
+  {% endif %}
   #shopify-section-{{ section.id }} .qg__in {
     position: relative;
     z-index: 1;
@@ -341,6 +346,25 @@
       "id": "page_bg",
       "label": "Section background",
       "default": "#f2eeea"
+    },
+    {
+      "type": "checkbox",
+      "id": "gradient_enable",
+      "label": "Use a gradient background",
+      "default": false,
+      "info": "Same radial gradient as the Real stories video section. Replaces the section and card backgrounds."
+    },
+    {
+      "type": "color",
+      "id": "gradient_1",
+      "label": "Gradient start",
+      "default": "#1a2874"
+    },
+    {
+      "type": "color",
+      "id": "gradient_2",
+      "label": "Gradient end",
+      "default": "#4f63d4"
     },
     {
       "type": "color",
