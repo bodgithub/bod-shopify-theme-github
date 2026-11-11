@@ -13,6 +13,11 @@
   {%- comment -%} An empty or unknown ?view= lands on the bare product template; send it to the product's real page instead {%- endcomment -%}
   <script>(function(){try{var u=new URL(location.href);if(u.searchParams.has('view')){u.searchParams.delete('view');location.replace(u.pathname+u.search+u.hash);}}catch(e){}})();</script>
 {%- endif -%}
+{%- if request.path == '/products' or request.path == '/products/' -%}
+  {%- comment -%} Bare /products is Shopify's all-products listing; there is one product, so send it straight to the product page (added 2026-11-11) {%- endcomment -%}
+  <meta http-equiv="refresh" content="0; url=/products/myo-d-chiro-inositol-powder">
+  <script>(function(){try{location.replace('/products/myo-d-chiro-inositol-powder'+location.search+location.hash);}catch(e){}})();</script>
+{%- endif -%}
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
