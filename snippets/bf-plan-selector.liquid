@@ -108,6 +108,7 @@
   data-bfps-hide-ot="{{ hide_ot }}"
   data-bfps-sub-heading="{{ s.bf_sub_heading | escape }}"
   data-bfps-cart-title="{{ s.bf_cart_title | default: 'Black Friday [months]-Month Bundle' | escape }}"
+  data-bfps-code="{{ s.bf_code_pattern | escape }}"
   {%- if tub_img != blank %} data-tub-image="{{ tub_img }}"{% endif -%}
 >
   <script type="application/json" data-bfps-tiers>{{ tiers_json | strip }}</script>
@@ -444,7 +445,7 @@
       syncFoot();
       var t = tiers[index];
       var detail = mode === 'bundles'
-        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label, cartTitle: String(root.dataset.bfpsCartTitle || 'Black Friday [months]-Month Bundle').replace(/\[months\]/g, t.months).replace(/\[label\]/g, t.label || '') }
+        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: money(t.price), label: t.label, cartTitle: String(root.dataset.bfpsCartTitle || 'Black Friday [months]-Month Bundle').replace(/\[months\]/g, t.months).replace(/\[label\]/g, t.label || ''), code: String(root.dataset.bfpsCode || '').replace(/\[pct\]/g, t.pct).replace(/\[months\]/g, t.months).trim() }
         : { mode: 'subscribe' };
       root._bfpsState = detail;
       root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));

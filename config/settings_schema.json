@@ -1301,8 +1301,8 @@
         "type": "textarea",
         "id": "bcd_code_blocks",
         "label": "Code blocks (a code that must not apply with certain items)",
-        "default": "* : plan 7141621979\n* : bf",
-        "info": "One per line: CODE : condition (CODE can be * for every code). A line !CODE exempts that code from every block (e.g. !BUNDLE20). Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any, bf (a Black Friday bundle line; !CODE exemptions do not apply to bf blocks). The drawer refuses the code, removes it if it arrived through a link, and explains why. The checkout page's own code field is not covered."
+        "default": "* : plan 7141621979\n* : bf\n!BLACKFRIDAY35\n!BLACKFRIDAY45\n!BLACKFRIDAY55",
+        "info": "One per line: CODE : condition (CODE can be * for every code). A line !CODE exempts that code from every block (e.g. !BUNDLE20). Conditions: plan <selling plan id>, subscription, one-time <variant id>, one-time, any, bf (a Black Friday bundle line). The drawer refuses the code, removes it if it arrived through a link, and explains why. The checkout page's own code field is not covered."
       },
       {
         "type": "text",
@@ -1354,6 +1354,13 @@
         "id": "bcd_qty_text",
         "label": "Quantity label (shown when quantity is above 1)",
         "default": "Qty {qty}"
+      },
+      {
+        "type": "text",
+        "id": "bcd_bundle_qty_text",
+        "label": "Bundle tubs text (replaces the quantity label on bundles)",
+        "default": "{qty}\u00d7 6-week tubs",
+        "info": "Shown after the line subtitle on Black Friday bundles and the 3-Month Plan bundle, e.g. One-time purchase \u00b7 4\u00d7 6-week tubs."
       },
       {
         "type": "text",

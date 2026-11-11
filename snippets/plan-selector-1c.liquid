@@ -716,19 +716,28 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   if(bfEl){ root.addEventListener('bfps:change', function(e){ bfState = e.detail; syncSub(); syncTick(); syncGiftBan(); syncBf(); }); }
   syncSub(); syncTick(); syncGiftBan(); syncBf();
   var c0 = selected(); if(c0){ announce(c0); }
-  function postItems(items){
+  var SECTIONS = ['main-cart','cart-drawer','cart-bubble'];
+  // Black Friday bundles carry their own code (e.g. BLACKFRIDAY45): attach it right after the add, then render the cart from that response
+  function applyCodeThenRender(response, code){
+    if(!code){ renderAndOpenCart(response); return; }
+    fetch(addBase + 'cart/update.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ discount: code, sections: SECTIONS, sections_url: window.location.pathname }) })
+      .then(function(r){ return r.json(); })
+      .then(function(res){ renderAndOpenCart(res && res.sections ? res : response); })
+      .catch(function(){ renderAndOpenCart(response); });
+  }
+  function postItems(items, code){
     err.classList.remove('is-shown');
     cta.classList.add('is-loading'); label.textContent = 'Adding…';
-    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
+    fetch(addBase + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: SECTIONS, sections_url: window.location.pathname }) })
     .then(function(r){ return r.json(); })
-    .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; renderAndOpenCart(response); })
+    .then(function(response){ if(response && response.status){ throw response; } cta.classList.remove('is-loading'); label.textContent = ctaText; applyCodeThenRender(response, code); })
     .catch(function(e){ cta.classList.remove('is-loading'); label.textContent = ctaText; showErr((e && (e.description || e.message)) || 'Could not add to cart'); });
   }
   cta.addEventListener('click', function(){
     if(bundlesMode()){
       if(!bfState.variantId){ showErr('This bundle needs the one-time variant ID — set it in the theme editor.'); return; }
       // Black Friday bundle line: hidden properties name it in the cart drawer, which also drops the plan upsell and refuses codes on it
-      postItems([{ id: bfState.variantId, quantity: bfState.quantity || 1, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)), '_bf_bundle': bfState.cartTitle || ('Black Friday ' + bfState.months + '-Month Bundle'), '_bf_pct': String(bfState.pct || '') } }]);
+      postItems([{ id: bfState.variantId, quantity: bfState.quantity || 1, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)), '_bf_bundle': bfState.cartTitle || ('Black Friday ' + bfState.months + '-Month Bundle'), '_bf_pct': String(bfState.pct || '') } }], bfState.code || '');
       return;
     }
     var c = selected();

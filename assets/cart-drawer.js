@@ -48,7 +48,7 @@
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
     sub_only_codes: "",
     code_sub_only_text: "{code} only works on subscriptions. Switch to Subscribe & Save and it will be applied automatically.",
-    code_blocks: "* : plan 7141621979\n* : bf",
+    code_blocks: "* : plan 7141621979\n* : bf\n!BLACKFRIDAY35\n!BLACKFRIDAY45\n!BLACKFRIDAY55",
     code_blocked_text: "{code} doesn't apply to the bundle, which is already {percent}% off.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
     renewal_text: "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
@@ -56,6 +56,7 @@
     oneoff_subtitle: "One-time purchase",
     badge_text: "{percent}% OFF",
     qty_text: "Qty {qty}",
+    bundle_qty_text: "{qty}\u00d7 6-week tubs",
     free_label: "FREE",
     protocol_value: "49.00",
     protocol_line_free: "Included with your subscription \u00b7 emailed after purchase",
@@ -209,7 +210,7 @@
     var exempt = blocks.some(function (b) { return b.allow && lower(b.code) === lower(code); });
     blocks.forEach(function (b) {
       if (b.allow) { return; }
-      if (exempt && b.kind !== 'bf') { return; } /* "!CODE" exemptions never reach the Black Friday bundle blocks */
+      if (exempt) { return; } /* "!CODE" exempts that code from every block, incl. the Black Friday bundles' own codes */
       if (b.code !== '*' && lower(b.code) !== lower(code)) { return; } /* "*" = every code */
       lines.forEach(function (l) { if (ruleMatches(b, l) && hits.indexOf(l) < 0) { hits.push(l); } });
     });
@@ -287,6 +288,7 @@
     var fmt = data.money_format;
     var intervals = parseMap(S.plan_intervals);
     var upsellMap = parseMap(S.upsell_map);
+    var bundleSizes = parseMap(S.bundle_plans);
     var cartLevel = cart.cart_level_discount_applications || [];
     /* Applied codes. /cart.js has discount_codes[]; Liquid's cart | json does not, so
        collect every discount application of type discount_code, order-level
@@ -367,7 +369,7 @@
       lines.push({
         key: item.key, keys: [item.key], qty: qty, type: type,
         title: bfTitle || meta.display_name || meta.title, productTitle: meta.title,
-        isBf: !!bfTitle, bfPct: bfPct,
+        isBf: !!bfTitle, bfPct: bfPct, isBundle: !!bfTitle || !!(plan && bundleSizes[String(plan.id)]),
         image: meta.image, imageAlt: meta.image_alt, url: meta.url,
         variantId: String(meta.variant_id),
         listUnit: listUnit, list: list, orig: orig, disc: disc, first: first,
@@ -471,8 +473,10 @@
   }
   function subtitle(st, l) {
     if (l.type === 'protocol') { return l.isFree ? st.S.protocol_line_free : st.S.protocol_line_locked; }
-    if (l.type === 'subscription') { return tpl(st.S.plan_subtitle, { interval: l.plan.interval, plan: l.plan.short }); }
-    return st.S.oneoff_subtitle;
+    var base = l.type === 'subscription' ? tpl(st.S.plan_subtitle, { interval: l.plan.interval, plan: l.plan.short }) : st.S.oneoff_subtitle;
+    /* bundles say how many tubs they are instead of a quantity label */
+    if (l.isBundle && l.qty > 1 && st.S.bundle_qty_text) { base += ' \u00b7 ' + tpl(st.S.bundle_qty_text, { qty: l.qty }); }
+    return base;
   }
   function renewalText(st, l) {
     return tpl(st.S.renewal_text, { interval: l.plan.interval, renewal_price: st.money(l.plan.renewal), plan: l.plan.short });
@@ -482,6 +486,7 @@
     return '<span class="bod-cart__badge">' + esc(tpl(st.S.badge_text, { percent: l.pct })) + '</span>';
   }
   function qtyLabel(st, l) {
+    if (l.isBundle && st.S.bundle_qty_text) { return ''; }
     return l.qty > 1 ? '<span class="bod-cart__qty">' + esc(tpl(st.S.qty_text, { qty: l.qty })) + '</span>' : '';
   }
   function removeBtn(l) {
