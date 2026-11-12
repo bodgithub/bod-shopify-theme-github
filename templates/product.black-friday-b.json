@@ -593,6 +593,9 @@
             "bf_code_pattern": "BLACKFRIDAY[pct]",
             "bf_cart_title": "Black Friday [months]-Month Bundle",
             "bf_sub_heading": "Choose your subscription:",
+            "bf_sub_first": true,
+            "bf_sub_callout": "BLACKFRIDAY: 35% off your first subscription • Ends Nov 30",
+            "bf_sub_code": "BLACKFRIDAY",
             "bf_panel_bg": "#ffffff",
             "bf_panel_border": "#3447af",
             "bf_panel_chips": false,
@@ -749,10 +752,7 @@
             "c4_desc": "Metabolic & appetite",
             "c4_variant": "48915264209115",
             "hide_sub": false,
-            "hide_ot": false,
-            "bf_sub_first": true,
-            "bf_sub_code": "BLACKFRIDAY",
-            "bf_sub_callout": "BLACKFRIDAY applied at checkout: 35% off your first subscription order"
+            "hide_ot": false
           }
         },
         "facts_table_main": {
@@ -835,6 +835,9 @@
             "bf_code_pattern": "BLACKFRIDAY[pct]",
             "bf_cart_title": "Black Friday [months]-Month Bundle",
             "bf_sub_heading": "Choose your subscription:",
+            "bf_sub_first": false,
+            "bf_sub_callout": "",
+            "bf_sub_code": "",
             "bf_panel_bg": "#ffffff",
             "bf_panel_border": "#3447af",
             "bf_panel_chips": false,
@@ -1034,6 +1037,9 @@
             "bf_code_pattern": "BLACKFRIDAY[pct]",
             "bf_cart_title": "Black Friday [months]-Month Bundle",
             "bf_sub_heading": "Choose your subscription:",
+            "bf_sub_first": false,
+            "bf_sub_callout": "",
+            "bf_sub_code": "",
             "bf_panel_bg": "#ffffff",
             "bf_panel_border": "#3447af",
             "bf_panel_chips": false,
