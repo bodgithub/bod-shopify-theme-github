@@ -1144,7 +1144,7 @@
   {
     "name": "Black Friday A/B test",
     "settings": [
-      { "type": "paragraph", "content": "One ad link (?view=black-friday). In Split mode a share of first-time visitors is sent to the B view before the page paints and remembered for the cookie length. Add ?ab=a or ?ab=b to any BF link to force a version. Every BF page view tags the cart with bf_variant (A or B), which lands on the order, and publishes a bf_ab_view event for the Meta custom pixel." },
+      { "type": "paragraph", "content": "One ad link (?view=black-friday-a). The plain ?view=black-friday page is outside the test (influencers). In Split mode a share of first-time visitors is sent to the B view before the page paints and remembered for the cookie length. Add ?ab=a or ?ab=b to any BF link to force a version. Every BF page view tags the cart with bf_variant (A or B), which lands on the order, and publishes a bf_ab_view event for the Meta custom pixel." },
       { "type": "select", "id": "bf_ab_mode", "label": "Mode", "default": "off", "options": [
         { "value": "off", "label": "Off (no redirects, no tagging)" },
         { "value": "split", "label": "Split test" },
@@ -1152,6 +1152,7 @@
         { "value": "b", "label": "B only (everyone sees the subscription-first page)" }
       ] },
       { "type": "range", "id": "bf_ab_split", "label": "Share sent to B", "min": 10, "max": 90, "step": 5, "unit": "%", "default": 50 },
+      { "type": "text", "id": "bf_ab_a_view", "label": "A view name", "default": "black-friday-a", "info": "The ?view= name of the A template. This is the ad link." },
       { "type": "text", "id": "bf_ab_b_view", "label": "B view name", "default": "black-friday-b", "info": "The ?view= name of the B template." },
       { "type": "range", "id": "bf_ab_days", "label": "Remember the version for", "min": 7, "max": 90, "step": 1, "unit": "d", "default": 30 }
     ]
