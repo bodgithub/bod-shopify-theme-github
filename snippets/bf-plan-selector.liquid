@@ -218,8 +218,8 @@
   <div class="bfps__panel" data-bfps-panel="subscribe" role="tabpanel" hidden>
     {%- if s.bf_sub_callout != blank -%}<p class="bfps__callout" data-bfps-callout>{{ s.bf_sub_callout | escape }}</p>{%- endif -%}
     {{ subscribe_html }}
-    {%- if sub_link and show_tabs == false -%}
-    <p class="bfps__sublink bfps__sublink--back"><button type="button" class="bfps__sublink-btn" data-bfps-tab="bundles">{{ s.bf_bundles_link_cta | default: 'Back to the Black Friday bundles' | escape }}</button></p>
+    {%- if sub_link and show_tabs == false and s.bf_bundles_link_cta != blank -%}
+    <p class="bfps__sublink bfps__sublink--back"><button type="button" class="bfps__sublink-btn" data-bfps-tab="bundles">{{ s.bf_bundles_link_cta | escape }}</button></p>
     {%- endif -%}
   </div>
   {%- endif -%}
