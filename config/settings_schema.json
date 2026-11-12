@@ -1235,8 +1235,8 @@
         "type": "textarea",
         "id": "bcd_code_banner_by_code",
         "label": "Code banner overrides",
-        "info": "One per line: CODE : text. Replaces the applied-code banner for that code, e.g. BF35 : BF35 applied: 35% off your first subscription order",
-        "default": "BF35 : BF35 applied: 35% off your first subscription order"
+        "info": "One per line: CODE : text. Replaces the applied-code banner for that code, e.g. BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first subscription order",
+        "default": "BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first subscription order"
       },
       {
         "type": "text",
