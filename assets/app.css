@@ -4438,3 +4438,5 @@ h1 b, h2 b, h3 b, h4 b, .h1 b, .h1-large b, .h1-xlarge b, .h2 b, .h3 b { color: 
 /* Junip "Leave a review" button (injected by the app) follows the site buttons */
 .junip-review-btn, a.junip-review-btn { background: #3447af !important; background-image: none !important; color: #ffffff !important; border: 0 !important; border-radius: var(--button-border-radius, 40px) !important; font-weight: 500 !important; }
 .junip-review-btn:hover, .junip-review-btn:focus-visible { background: #1a2874 !important; color: #b9c2f5 !important; }
+/* TEMP (2026-11-12): "Leave a review" button hidden on every page that shows the Junip reviews widget. Delete this one line to bring it back. */
+.junip-review-btn, a.junip-review-btn { display: none !important; }
