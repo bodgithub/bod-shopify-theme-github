@@ -532,7 +532,7 @@
   }
   function priceCells(st, l) {
     if (l.type === 'protocol' && l.isFree) {
-      return '<span class="bod-cart__price bod-cart__price--free">' + esc(st.S.free_label) + '</span><span class="bod-cart__strike">' + esc(st.money(l.list)) + '</span>';
+      return '<span class="bod-cart__strike">' + esc(st.money(l.list)) + '</span><span class="bod-cart__badge bod-cart__badge--free">' + esc(st.free_label_upper || st.S.free_label) + '</span>';
     }
     var out = '<span class="bod-cart__price">' + esc(st.money(l.first)) + '</span>';
     if (l.first < l.list) { out += '<span class="bod-cart__strike">' + esc(st.money(l.list)) + '</span>'; }
