@@ -2035,8 +2035,8 @@
       "name": "When to expect results",
       "settings": {
         "bg_color": "#f2eeea",
-        "bg_grad_top": "#3447af",
-        "bg_grad_bottom": "",
+        "bg_grad_top": "#F2EEEA",
+        "bg_grad_bottom": "#FBFAF9",
         "max_width": 1240,
         "pad_top": 64,
         "pad_bottom": 120,
@@ -2190,7 +2190,7 @@
         "color_text": "#ffffff",
         "color_links": "#4d61cf",
         "color_border": "#b9c2f5",
-        "disable_top_spacing": true,
+        "disable_top_spacing": false,
         "disable_bottom_spacing": false
       }
     },
