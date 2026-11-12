@@ -42,9 +42,13 @@
   endif
   assign text = s.text | replace: '[percent]', percent
   assign text_mobile = s.text_mobile | replace: '[percent]', percent
+  assign click_action = s.click_action
+  assign click_link = s.link
   if on_alt
     assign text = s.alt_text | replace: '[percent]', percent
     assign text_mobile = s.alt_text_mobile | replace: '[percent]', percent
+    assign click_action = s.alt_click_action | default: 'none'
+    assign click_link = s.alt_link
   endif
   if text_mobile == blank
     assign text_mobile = text
@@ -194,19 +198,19 @@
           endif
         -%}
         <span class="pbar__phase" data-pbar-phase data-start="{{ pstart }}" data-end="{{ pend }}" data-count-to="{{ pcount }}" data-mode="{{ b.countdown }}"{% unless active %} hidden{% endunless %} {{ block.shopify_attributes }}>
-          {%- if s.click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
+          {%- if click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
             <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ ptext }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ pmobile }}</button>
-          {%- elsif s.click_action == 'link' and s.link != blank -%}
-            <a class="pbar__text pbar__text--desktop" href="{{ s.link }}">{{ ptext }}</a><a class="pbar__text pbar__text--mobile" href="{{ s.link }}">{{ pmobile }}</a>
+          {%- elsif click_action == 'link' and click_link != blank -%}
+            <a class="pbar__text pbar__text--desktop" href="{{ click_link }}">{{ ptext }}</a><a class="pbar__text pbar__text--mobile" href="{{ click_link }}">{{ pmobile }}</a>
           {%- else -%}<span class="pbar__text pbar__text--desktop">{{ ptext }}</span><span class="pbar__text pbar__text--mobile">{{ pmobile }}</span>{%- endif -%}
         </span>
       {%- endfor -%}
     {%- else -%}
     <span class="pbar__phase" data-pbar-phase data-start="" data-end="{{ s.end_date | strip }}" data-count-to="{{ s.end_date | strip }}" data-mode="legacy">
-    {%- if s.click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
+    {%- if click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
       <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ text }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ text_mobile }}</button>
-    {%- elsif s.click_action == 'link' and s.link != blank -%}
-      <a class="pbar__text pbar__text--desktop" href="{{ s.link }}">{{ text }}</a><a class="pbar__text pbar__text--mobile" href="{{ s.link }}">{{ text_mobile }}</a>
+    {%- elsif click_action == 'link' and click_link != blank -%}
+      <a class="pbar__text pbar__text--desktop" href="{{ click_link }}">{{ text }}</a><a class="pbar__text pbar__text--mobile" href="{{ click_link }}">{{ text_mobile }}</a>
     {%- else -%}<span class="pbar__text pbar__text--desktop">{{ text }}</span><span class="pbar__text pbar__text--mobile">{{ text_mobile }}</span>{%- endif -%}
     </span>
     {%- endif -%}
@@ -329,6 +333,12 @@
     { "type": "text", "id": "alt_templates", "label": "Alternate text: templates", "info": "Comma-separated ?view= names (e.g. black-friday-b). On these templates the two lines below replace the bar text in every phase; countdown and code tokens still work." },
     { "type": "text", "id": "alt_text", "label": "Alternate text" },
     { "type": "text", "id": "alt_text_mobile", "label": "Alternate text on phones (optional)" },
+    { "type": "select", "id": "alt_click_action", "label": "Alternate text: when the bar is clicked", "default": "none", "options": [
+      { "value": "none", "label": "Nothing (plain banner)" },
+      { "value": "link", "label": "Go to the alternate link" },
+      { "value": "klaviyo", "label": "Open the Klaviyo form" }
+    ] },
+    { "type": "url", "id": "alt_link", "label": "Alternate link", "info": "Used when the alternate click action is \"Go to the alternate link\"." },
     { "type": "text", "id": "text_mobile", "label": "Text on phones (optional)", "default": "[percent]% off with [code] [countdown]", "info": "Leave empty to use the text above." },
     { "type": "select", "id": "click_action", "label": "When the bar is clicked", "default": "klaviyo", "options": [
       { "value": "link", "label": "Go to the link" }, { "value": "klaviyo", "label": "Open a Klaviyo form" }, { "value": "none", "label": "Nothing" } ] },
