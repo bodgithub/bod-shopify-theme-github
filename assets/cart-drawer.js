@@ -36,7 +36,7 @@
     code_banner: "{code} applied: {percent}% off your first order",
     code_banner_mixed: "{code} applied",
     bundle_code_banner: "{code} applied: {percent}% off your bundle",
-    code_banner_by_code: "BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first subscription order",
+    code_banner_by_code: "BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first subscription order\nBLACK-FRIDAY : BLACK-FRIDAY applied: 35% off your first subscription order",
     code_label: "Discount code",
     code_other_label: "Have a different code?",
     code_another_label: "Got another code? Enter it here",

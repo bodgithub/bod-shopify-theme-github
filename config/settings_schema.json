@@ -1236,7 +1236,7 @@
         "id": "bcd_code_banner_by_code",
         "label": "Code banner overrides",
         "info": "One per line: CODE : text. Replaces the applied-code banner for that code, e.g. BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first subscription order",
-        "default": "BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first subscription order"
+        "default": "BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first subscription order\nBLACK-FRIDAY : BLACK-FRIDAY applied: 35% off your first subscription order"
       },
       {
         "type": "text",

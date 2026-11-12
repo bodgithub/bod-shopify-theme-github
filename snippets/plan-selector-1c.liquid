@@ -775,8 +775,12 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; }
       items.push({ id: g, quantity: 1, properties: gprops });
     }
-    // B test: a code attached with a subscription (bf_sub_code); never for one-time tubs or bundles
-    var subCode = (plan && bfEl && !bundlesMode()) ? (bfEl.getAttribute('data-bfps-sub-code') || '').trim() : '';
+    // B test: a code attached with a subscription (bf_sub_code; bf_bd_sub_code for the 1-month 'bd' card); never for one-time tubs or bundles
+    var subCode = '';
+    if(plan && bfEl && !bundlesMode()){
+      var bdCode = (bfEl.getAttribute('data-bfps-bd-code') || '').trim();
+      subCode = (c.getAttribute('data-ps1c-p') === 'bd' && bdCode) ? bdCode : (bfEl.getAttribute('data-bfps-sub-code') || '').trim();
+    }
     postItems(items, subCode);
   });
 })();
