@@ -364,9 +364,9 @@
   #ps1c-{{ uid }} .bfps__sublink-btn:hover{color:var(--bf-navy)}
   #ps1c-{{ uid }} .bfps__sublink--back{margin-top:12px}
   /* B test callout under the subscription heading */
-  /* callout mirrors the promo bar: blue with dark-navy fades at the sides, white text, code as a white pill */
+  /* callout mirrors the promo bar: blue with dark-navy fades at the sides, white text, the code in bold white (no pill) */
   #ps1c-{{ uid }} .bfps__callout{margin:0;padding:11px 14px;border-radius:5px;background:#3446af;background:linear-gradient(90deg,#182769 0%,#3446af 32%,#3446af 68%,#182769 100%);color:#fff;font-size:14px;font-weight:600;line-height:1.35;text-align:center;letter-spacing:0.01em}
-  #ps1c-{{ uid }} .bfps__callout-code{display:inline-block;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#3446af;background:#fff;border-radius:999px;padding:3px 10px;line-height:1.2;margin-right:2px;vertical-align:baseline}
+  #ps1c-{{ uid }} .bfps__callout-code{display:inline;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#fff;background:none;border-radius:0;padding:0;line-height:inherit;margin-right:2px;vertical-align:baseline}
   /* subscription view: space the plan cards like the normal selector does */
   #ps1c-{{ uid }} [data-bfps-panel="subscribe"]{display:flex;flex-direction:column;gap:14px}
   #ps1c-{{ uid }} [data-bfps-panel="subscribe"][hidden]{display:none}

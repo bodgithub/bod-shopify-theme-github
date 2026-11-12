@@ -20,11 +20,18 @@
     function get(){var m=document.cookie.match(/(?:^|; )bod_bf_ab=([ab])/);if(m){return m[1];}try{return localStorage.getItem(KEY);}catch(e){return null;}}
     function set(v){document.cookie=KEY+'='+v+'; path=/; max-age='+(days*86400)+'; SameSite=Lax';try{localStorage.setItem(KEY,v);}catch(e){}}
     var v=(forced==='a'||forced==='b')?forced:get();
-    if(forced!=='a'&&forced!=='b'){
-      if(mode==='a'){v='a';}else if(mode==='b'){v='b';}
-      else if(v!=='a'&&v!=='b'){v=(here===B)?'b':((Math.random()*100<split)?'b':'a');}
+    var direct=(forced!=='a'&&forced!=='b'&&here===B);
+    if(direct){
+      /* Typed or linked straight to the B page: show B. Only the A (ad) link splits visitors. A remembered choice is left alone. */
+      if(v!=='a'&&v!=='b'){set('b');}v='b';
+    }else{
+      if(forced!=='a'&&forced!=='b'){
+        if(mode==='a'){v='a';}else if(mode==='b'){v='b';}
+        else if(v!=='a'&&v!=='b'){v=(Math.random()*100<split)?'b':'a';}
+      }
+      set(v);
     }
-    set(v);window.bodBfAb=v;document.documentElement.setAttribute('data-bf-ab',v);
+    window.bodBfAb=v;document.documentElement.setAttribute('data-bf-ab',v);
     var want=(v==='b')?B:A;
     if(here!==want){u.searchParams.set('view',want);location.replace(u.pathname+u.search+u.hash);return;}
     var V=v.toUpperCase();
