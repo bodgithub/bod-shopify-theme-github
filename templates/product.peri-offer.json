@@ -1411,7 +1411,8 @@
             "max_width": 560,
             "margin_top": 14,
             "margin_bottom": 22
-          }
+          },
+          "disabled": true
         },
         "experts_LiL7KV": {
           "type": "experts",
@@ -1630,6 +1631,12 @@
             "b8_sub": "Processed in our American facility",
             "b8_tip": "<p>Bodology is <strong>blended, filled, and packaged in the United States</strong>.</p>"
           }
+        },
+        "bf_bundles_card_nov11": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n#bfc-card{font-family:\"tenon\",\"Helvetica Neue\",Arial,sans-serif;display:flex;align-items:center;gap:14px;border:1px solid #3447af;border-radius:14px;background:#ebeeff;max-width:560px;margin:14px auto 22px;padding:14px;box-sizing:border-box;}\n#bfc-card *{box-sizing:border-box;}\n#bfc-card .bfc-img{flex:0 0 76px;width:76px;height:76px;border-radius:10px;overflow:hidden;}\n#bfc-card .bfc-img img{width:100%;height:100%;object-fit:cover;display:block;}\n#bfc-card .bfc-body{flex:1 1 auto;min-width:0;}\n#bfc-card .bfc-title{font-size:15px;font-weight:700;color:#1a2874;margin:0 0 3px;line-height:1.3;}\n#bfc-card .bfc-text{font-size:13px;color:#1a2874;line-height:1.45;margin:0;}\n#bfc-card .bfc-btn{flex:0 0 auto;font-size:14px;font-weight:600;color:#3447af;text-decoration:none;border:1px solid #3447af;border-radius:999px;padding:7px 20px;transition:background .18s,color .18s;}\n#bfc-card .bfc-btn:hover{background:#3447af;color:#fff;}\n</style>\n<div id=\"bfc-card\">\n  <div class=\"bfc-img\"><img src=\"{{ 'Bundle-14_c8f2e761-3a41-4162-a424-61484e071f67.png' | file_url }}\" alt=\"Black Friday bundles\" loading=\"lazy\"></div>\n  <div class=\"bfc-body\">\n    <p class=\"bfc-title\">Black Friday bundles &mdash; up to 55% off</p>\n    <p class=\"bfc-text\">3, 6 and 12 month bundles at our lowest prices of the year. Your saving is applied automatically when you add a bundle.</p>\n  </div>\n  <a class=\"bfc-btn\" href=\"/products/myo-d-chiro-inositol-powder?view=black-friday-bundles\">Shop bundles</a>\n</div>"
+          }
         }
       },
       "block_order": [
@@ -1663,6 +1670,7 @@
         "collapsible_tab_LHBcDr",
         "collapsible_tab_w8UWx4",
         "bundle_upsell_main",
+        "bf_bundles_card_nov11",
         "experts_LiL7KV",
         "trust_circles_Ln9WVk",
         "experts_8AwtYf",
