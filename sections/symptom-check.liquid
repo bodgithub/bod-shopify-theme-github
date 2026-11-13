@@ -406,6 +406,8 @@
          bundle properties and the bundle code, so the cart shows it as a bundle (no "switch to a plan" upsell) */
       var bfRoot = document.querySelector('[data-bfps]'), psRoot = bfRoot && bfRoot.closest('[data-ps1c-root]'), psCta = psRoot && psRoot.querySelector('[data-ps1c-submit]');
       if(bfRoot && psCta && typeof bfRoot._bfpsPickQuantity === 'function' && bfRoot._bfpsPickQuantity(qty)){ psCta.click(); return; }
+      /* a page whose selector is subscription-only (B pages) has no bundle to add: take them to the selector instead of adding full-price tubs */
+      if(bfRoot && psRoot){ psRoot.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
       bundleBtn.classList.add('is-loading'); if(bundleLabel){ bundleLabel.textContent = 'Adding…'; }
       var items = [{ id: id, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)), '_bf_bundle': 'Black Friday bundle', 'Bundle': 'Black Friday bundle \u00b7 ' + qty + '\u00d7 6-week tubs' } }];
       fetch(rootUrl + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
