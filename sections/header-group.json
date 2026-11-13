@@ -19,8 +19,8 @@
           "settings": {
             "start_date": "",
             "end_date": "2026-11-26",
-            "text": "EARLY BLACK FRIDAY · UP TO 55% OFF BUNDLES · OUR LOWEST PRICE OF THE YEAR",
-            "text_mobile": "EARLY BLACK FRIDAY · UP TO 55% OFF BUNDLES",
+            "text": "EARLY BLACK FRIDAY · UP TO 45% OFF 6 MONTHS · OUR LOWEST PRICE OF THE YEAR",
+            "text_mobile": "EARLY BLACK FRIDAY · 45% OFF 6 MONTHS",
             "countdown": "off",
             "count_date": ""
           }
@@ -58,12 +58,14 @@
         "enabled": true,
         "show_on": "listed",
         "show_templates": "black-friday, black-friday-a, black-friday-b, over-40-black-friday, over-40-black-friday-b, pcos-black-friday",
-        "alt_templates": "black-friday-b, over-40-black-friday-b",
-        "alt_text": "BLACK FRIDAY • 35% OFF YOUR FIRST SUBSCRIPTION ORDER WITH CODE BLACKFRIDAY [countdown]",
-        "alt_text_mobile": "BLACK FRIDAY • 35% OFF SUBSCRIPTIONS WITH BLACKFRIDAY [countdown]",
         "code": "",
         "percent": "",
         "text": "BLACK FRIDAY • BUNDLE & SAVE • UP TO 55% OFF [countdown]",
+        "alt_templates": "black-friday-b, over-40-black-friday-b",
+        "alt_text": "BLACK FRIDAY • 35% OFF YOUR FIRST SUBSCRIPTION ORDER WITH CODE BLACKFRIDAY [countdown]",
+        "alt_text_mobile": "BLACK FRIDAY • 35% OFF SUBSCRIPTIONS WITH BLACKFRIDAY [countdown]",
+        "alt_click_action": "none",
+        "alt_link": "",
         "text_mobile": "BLACK FRIDAY • UP TO 55% OFF [countdown]",
         "click_action": "klaviyo",
         "link": "shopify://products/myo-d-chiro-inositol-powder",
