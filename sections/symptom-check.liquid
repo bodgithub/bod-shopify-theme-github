@@ -402,8 +402,12 @@
       var id = bar.getAttribute('data-bundle'), qty = parseInt(bar.getAttribute('data-bundle-qty'), 10) || 1;
       if(!id){ bundleFail('This bundle needs a variant ID — set it in the theme editor.'); return; }
       if(bundleErr){ bundleErr.classList.remove('is-shown'); }
+      /* hand off to the page's Black Friday selector when it has a bundle of this size: the add then carries the
+         bundle properties and the bundle code, so the cart shows it as a bundle (no "switch to a plan" upsell) */
+      var bfRoot = document.querySelector('[data-bfps]'), psRoot = bfRoot && bfRoot.closest('[data-ps1c-root]'), psCta = psRoot && psRoot.querySelector('[data-ps1c-submit]');
+      if(bfRoot && psCta && typeof bfRoot._bfpsPickQuantity === 'function' && bfRoot._bfpsPickQuantity(qty)){ psCta.click(); return; }
       bundleBtn.classList.add('is-loading'); if(bundleLabel){ bundleLabel.textContent = 'Adding…'; }
-      var items = [{ id: id, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)) } }];
+      var items = [{ id: id, quantity: qty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)), '_bf_bundle': 'Black Friday bundle', 'Bundle': 'Black Friday bundle \u00b7 ' + qty + '\u00d7 6-week tubs' } }];
       fetch(rootUrl + 'cart/add.js', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'}, body: JSON.stringify({ items: items, sections: ['main-cart','cart-drawer','cart-bubble'], sections_url: window.location.pathname }) })
       .then(function(r){ return r.json(); })
       .then(function(response){ if(response && response.status){ throw response; } bundleBtn.classList.remove('is-loading'); if(bundleLabel){ bundleLabel.textContent = bundleText; } openCart(response); })

@@ -615,6 +615,14 @@
       index = i;
       render();
     }
+    /* lets other page scripts (the symptom-check sticky bar) pick a bundle by tub count and switch to the bundles tab,
+       so the add goes through this selector and carries the bundle properties + code like a normal bundle add */
+    root._bfpsPickQuantity = function (qty) {
+      var i = -1; tiers.forEach(function (t, k) { if (i < 0 && Number(t.quantity) === Number(qty)) { i = k; } });
+      if (i < 0) return false;
+      if (mode !== 'bundles') { var bTab = root.querySelector('[data-bfps-tab="bundles"]'); if (!bTab) return false; bTab.click(); }
+      go(i); return true;
+    };
 
     $('[data-bfps-minus]').addEventListener('click', function () { go(index - 1); });
     $('[data-bfps-plus]').addEventListener('click', function () { go(index + 1); });
