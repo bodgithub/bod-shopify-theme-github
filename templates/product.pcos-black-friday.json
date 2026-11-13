@@ -77,7 +77,7 @@
         "heading_piQi7H": {
           "type": "heading",
           "settings": {
-            "text": "<h2>Try inositol for 6 months for the price of ~3</h2>",
+            "text": "<h2>6 months for the price of ~3</h2>",
             "heading_color": "#ffe2a0",
             "heading_size": "h1-xlarge",
             "heading_size_desktop": 22,
@@ -158,7 +158,7 @@
             "frosted_tint": 15,
             "frosted_blur": 6,
             "frosted_radius": 16,
-            "benefit_1": "Studied in women with PCOS/PMOS*",
+            "benefit_1": "Studied in women with and without PCOS*",
             "benefit_2": "The full 4g clinical dose, daily",
             "benefit_3": "Dissolves in coffee",
             "benefit_4": "",
@@ -514,7 +514,7 @@
         "text_H7NVdC": {
           "type": "text",
           "settings": {
-            "text": "<p>In PCOS it's higher still: up to 80% of women with PCOS have insulin resistance.* Most never find out, because nobody measured insulin. That's where inositol comes in.</p>",
+            "text": "<p>In PCOS it's higher: up to 80% of women with PCOS have insulin resistance.* Most never find out, because nobody measured insulin. That's where inositol comes in.</p>",
             "custom_liquid": "",
             "size": "text-size-regular",
             "text_size_desktop": 0,
@@ -1410,28 +1410,28 @@
           "type": "stat",
           "settings": {
             "value": "+80%",
-            "text": "<p>insulin sensitivity on 4g of myo-inositol a day. No improvement on placebo*</p>"
+            "text": "<p>insulin sensitivity*</p>"
           }
         },
         "stat_t4fBEx": {
           "type": "stat",
           "settings": {
             "value": "−65%",
-            "text": "<p>total testosterone on 4g a day. Placebo barely moved*</p>"
+            "text": "<p>total testosterone*</p>"
           }
         },
         "stat_8HwQip": {
           "type": "stat",
           "settings": {
             "value": "−51%",
-            "text": "<p>triglycerides on 4g a day*</p>"
+            "text": "<p>triglycerides*</p>"
           }
         },
         "stat_Aqd3H4": {
           "type": "stat",
           "settings": {
             "value": "−47%",
-            "text": "<p>fasting insulin after 6 months on the 40:1 ratio*</p>"
+            "text": "<p>fasting insulin*</p>"
           }
         },
         "footer_Dk8jFD": {
@@ -2035,8 +2035,8 @@
       "name": "When to expect results",
       "settings": {
         "bg_color": "#f2eeea",
-        "bg_grad_top": "#F2EEEA",
-        "bg_grad_bottom": "#FBFAF9",
+        "bg_grad_top": "#f2eeea",
+        "bg_grad_bottom": "#fbfaf9",
         "max_width": 1240,
         "pad_top": 64,
         "pad_bottom": 120,
@@ -2286,6 +2286,129 @@
         ".junip-product-review-count {display: none !important;}"
       ],
       "settings": {}
+    },
+    "community_videos_gi9WUU": {
+      "type": "community-videos",
+      "blocks": {
+        "video_J6967X": {
+          "type": "video",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-01-15_at_16.30.10.png",
+            "name": "Lauren Elam",
+            "role": "Verified Customer",
+            "quote": "It has been life changing for my cycles, skin and mood.",
+            "tag": "CYCLES, FERTILITY",
+            "video": "shopify://files/videos/Lauren Testimonial.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
+            "video_url": ""
+          }
+        },
+        "video_zqHtcD": {
+          "type": "video",
+          "settings": {
+            "image": "shopify://shop_images/Ashley_Moya_Profile_Pic.png",
+            "name": "Ashley Moya",
+            "role": "Verified Customer",
+            "quote": "Living with endometriosis, supporting my metabolism.",
+            "tag": "ENDOMETRIOSIS, FERTILITY",
+            "video": "shopify://files/videos/Ashley Testimonial_490c3d0a-49f2-49bd-83d2-5e7e23b973e5.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
+            "video_url": ""
+          }
+        },
+        "video_reUBBf": {
+          "type": "video",
+          "settings": {
+            "image": "shopify://shop_images/Baylee_Profile_Picture_91306933-682a-4bee-b216-9576bcc32ab6.webp",
+            "name": "Baylee Alisson",
+            "role": "Verified Customer",
+            "quote": "Supporting cravings and weight through metabolism.",
+            "tag": "METABOLISM, PCOS",
+            "video": "shopify://files/videos/Baylee Review_ef1487ba-ac0e-4aee-aef8-6d35d5ae0ebe.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
+            "video_url": ""
+          }
+        },
+        "video_aJcXiq": {
+          "type": "video",
+          "settings": {
+            "image": "shopify://shop_images/Kylie_Profile_Picture.jpg",
+            "name": "Kylie Spencer",
+            "role": "Verified Customer",
+            "quote": "More emotional steadiness, less PMDD overwhelm.",
+            "tag": "PMDD, CYCLES",
+            "video": "shopify://files/videos/Kylie Testimonial - 1.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
+            "video_url": ""
+          }
+        },
+        "video_kMBERG": {
+          "type": "video",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-01-15_at_15.15.24.png",
+            "name": "Krstina Perez",
+            "role": "Verified Customer",
+            "quote": "Supporting my body on my fertility journey.",
+            "tag": "FERTILITY, PCOS",
+            "video": "shopify://files/videos/Krstina Testimonial 2.mp4",
+            "captions": "",
+            "captions_lang": "en",
+            "captions_label": "English",
+            "video_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_J6967X",
+        "video_zqHtcD",
+        "video_reUBBf",
+        "video_aJcXiq",
+        "video_kMBERG"
+      ],
+      "name": "Community Videos",
+      "settings": {
+        "eyebrow": "",
+        "title": "Real stories, <em>real results.</em>",
+        "heading_style": "h2",
+        "headline_width": 740,
+        "card_style": "gradient",
+        "show_quote": false,
+        "use_video_still": true,
+        "show_tags": true,
+        "full_bleed": true,
+        "scroll_pin": false,
+        "all_label": "All",
+        "default_tag": "",
+        "card_width": 272,
+        "gradient_coverage": 75,
+        "pad_top": 120,
+        "pad_bottom": 120,
+        "section_bg_solid": false,
+        "section_bg": "#191f82",
+        "panel_bg": "#0b1067",
+        "overlay": "#0b1067",
+        "font_color": "#fbfbfb",
+        "accent": "#1b3def",
+        "heading_color": "#ffffff",
+        "tag_color": "#1b3def",
+        "gradient_1": "#1a2874",
+        "gradient_2": "#4f63d4",
+        "no_shadows": true,
+        "title_weight": "500",
+        "name_weight": "600",
+        "fs_title": 44,
+        "fs_name": 19,
+        "fs_role": 12,
+        "fs_quote": 13
+      }
     }
   },
   "order": [
@@ -2301,6 +2424,7 @@
     "why_inositol_DgbUrB",
     "us_vs_them_peri",
     "testimonial_carousel_twHytV",
+    "community_videos_gi9WUU",
     "quote_grid_wLJirf",
     "results_timeline_mqixwX",
     "custom_liquid_ax6VDD",
