@@ -13,7 +13,7 @@
 {%- assign bf_ab_a = settings.bf_ab_a_view | default: 'black-friday-a' | strip -%}
 {%- assign bf_ab_b = settings.bf_ab_b_view | default: 'black-friday-b' | strip -%}
 {%- if template.suffix == bf_ab_a or template.suffix == bf_ab_b -%}
-  {%- comment -%} Black Friday A/B test: one ad link (?view=black-friday-a); a share of first-time visitors is sent to the B view before paint and remembered in a cookie. ?ab=a / ?ab=b forces a version. Every BF page view tags the cart (bf_variant) and publishes bf_ab_view for the custom pixel. {%- endcomment -%}
+  {%- comment -%} Black Friday A/B test: one ad link (?view=black-friday-a); a share of first-time visitors is sent to the B view before paint and remembered in a cookie. ?ab=a / ?ab=b forces a version. Independent mode never redirects: each page shows itself and tags its own letter. Every BF page view tags the cart (bf_variant) and publishes bf_ab_view for the custom pixel. {%- endcomment -%}
   <script>(function(){try{
     var mode='{{ settings.bf_ab_mode }}',split={{ settings.bf_ab_split | default: 50 }},days={{ settings.bf_ab_days | default: 30 }},A='{{ bf_ab_a }}',B='{{ bf_ab_b }}',here='{{ template.suffix }}',KEY='bod_bf_ab';
     var u=new URL(location.href),forced=(u.searchParams.get('ab')||'').toLowerCase();
@@ -21,7 +21,10 @@
     function set(v){document.cookie=KEY+'='+v+'; path=/; max-age='+(days*86400)+'; SameSite=Lax';try{localStorage.setItem(KEY,v);}catch(e){}}
     var v=(forced==='a'||forced==='b')?forced:get();
     var direct=(forced!=='a'&&forced!=='b'&&here===B);
-    if(direct){
+    if(mode==='none'){
+      /* Independent: A and B are two separate pages. Nobody is moved either way; the page just tags the letter it is. */
+      v=(here===B)?'b':'a';
+    }else if(direct){
       /* Typed or linked straight to the B page: show B. Only the A (ad) link splits visitors. A remembered choice is left alone. */
       if(v!=='a'&&v!=='b'){set('b');}v='b';
     }else{
@@ -32,7 +35,7 @@
       set(v);
     }
     window.bodBfAb=v;document.documentElement.setAttribute('data-bf-ab',v);
-    var want=(v==='b')?B:A;
+    var want=(mode==='none')?here:((v==='b')?B:A);
     if(here!==want){u.searchParams.set('view',want);location.replace(u.pathname+u.search+u.hash);return;}
     var V=v.toUpperCase();
     function pub(n){if(window.Shopify&&Shopify.analytics&&typeof Shopify.analytics.publish==='function'){try{Shopify.analytics.publish('bf_ab_view',{variant:V,template:here});}catch(e){}}else if(n>0){setTimeout(function(){pub(n-1);},500);}}
