@@ -57,11 +57,11 @@
       "settings": {
         "enabled": true,
         "show_on": "listed",
-        "show_templates": "black-friday, black-friday-a, black-friday-b, over-40-black-friday, over-40-black-friday-b, pcos-black-friday",
+        "show_templates": "black-friday, black-friday-a, black-friday-b, over-40-black-friday, over-40-black-friday-b, pcos-black-friday, pcos-black-friday-b",
         "code": "",
         "percent": "",
         "text": "BLACK FRIDAY • BUNDLE & SAVE • UP TO 55% OFF [countdown]",
-        "alt_templates": "black-friday-b, over-40-black-friday-b",
+        "alt_templates": "black-friday-b, over-40-black-friday-b, pcos-black-friday-b",
         "alt_text": "BLACK FRIDAY • 35% OFF YOUR FIRST SUBSCRIPTION ORDER WITH CODE BLACKFRIDAY [countdown]",
         "alt_text_mobile": "BLACK FRIDAY • 35% OFF SUBSCRIPTIONS WITH BLACKFRIDAY [countdown]",
         "alt_click_action": "none",
@@ -215,7 +215,7 @@
         "header_shadow": "header--shadow-none",
         "menu": "main-menu",
         "transparent_header": false,
-        "lp_templates": "black-friday, black-friday-a, black-friday-b, over-40-black-friday, over-40-black-friday-b, peri-offer, weight, pcos-black-friday",
+        "lp_templates": "black-friday, black-friday-a, black-friday-b, over-40-black-friday, over-40-black-friday-b, peri-offer, weight, pcos-black-friday, pcos-black-friday-b",
         "lp_cta_text": "Get the bundle",
         "lp_cta_link": "#Product-Slider",
         "lp_show_cart": true,
@@ -223,7 +223,9 @@
         "mobile_secondary_menu": "",
         "show_social_links": false,
         "show_language_switcher": false,
-        "show_currency_switcher": false
+        "show_currency_switcher": false,
+        "lp_alt_templates": "black-friday-b, over-40-black-friday-b, pcos-black-friday-b",
+        "lp_cta_text_alt": "Get 35% off"
       }
     },
     "scrolling_content_6aU9GY": {

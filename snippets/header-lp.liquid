@@ -8,6 +8,13 @@
 
 {%- liquid
   assign cta_text = header_settings.lp_cta_text | default: 'Get the bundle'
+  if template.suffix != blank and header_settings.lp_alt_templates != blank and header_settings.lp_cta_text_alt != blank
+    assign lp_alt_list = header_settings.lp_alt_templates | downcase | replace: ' ', '' | split: ','
+    assign lp_cur = template.suffix | downcase
+    if lp_alt_list contains lp_cur
+      assign cta_text = header_settings.lp_cta_text_alt
+    endif
+  endif
   assign cta_link = header_settings.lp_cta_link | default: '#Product-Slider'
   assign logo = header_settings.logo
   assign logo_ratio = 3.48
