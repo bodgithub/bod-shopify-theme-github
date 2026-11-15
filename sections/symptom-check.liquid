@@ -340,37 +340,68 @@
   var addBtn = bar && bar.querySelector('[data-sc-bar-add]');
   var optsBuilt = false;
   function cardsOf(p){ return p ? [].slice.call(p.querySelectorAll('[data-ps1c-card]')) : []; }
+  /* Black Friday selector on the page: the dropdown also lists the bundles it offers (all tiers, or just the bundle tier of the tiers layout) */
+  function bfRootEl(){ return document.querySelector('[data-bfps]'); }
+  function bfTiers(bf){
+    try {
+      var all = JSON.parse(bf.querySelector('[data-bfps-tiers]').textContent);
+      if(bf.getAttribute('data-bfps-sub-layout') === 'tiers'){ var m = (bf.getAttribute('data-bfps-tier-bundle') || '').trim(); return m ? all.filter(function(t){ return String(t.months) === m; }) : []; }
+      return all;
+    } catch(e){ return []; }
+  }
+  function bundleTitle(t){ return (t.title || (t.label + ' supply')) + ' (' + t.pct + '% off)'; }
   function buildOptions(p){
     if(!selEl || optsBuilt) return;
     var cs = cardsOf(p); if(!cs.length) return;
+    var bf = bfRootEl(), tiers = bf ? bfTiers(bf) : [];
     selEl.innerHTML = '';
-    cs.forEach(function(c){
+    function planOpts(){ cs.forEach(function(c){
       var o = document.createElement('option');
       o.value = c.getAttribute('data-ps1c-p') || '';
       var pill = c.getAttribute('data-ps1c-pill') || '';
       o.textContent = (c.getAttribute('data-ps1c-name') || '') + (pill ? ' (' + pill + ')' : '');
       selEl.appendChild(o);
-    });
+    }); }
+    function bundleOpts(){ tiers.forEach(function(t){
+      var o = document.createElement('option'); o.value = 'bundle:' + t.quantity; o.textContent = bundleTitle(t); selEl.appendChild(o);
+    }); }
+    /* same order as the selector: bundles first on the bundle pages, plans first on the subscription-first pages */
+    if(bf && bf.getAttribute('data-bfps-sub-first') === 'true'){ planOpts(); bundleOpts(); } else { bundleOpts(); planOpts(); }
     optsBuilt = true;
   }
   function syncPlan(){
-    if(!bar || bar.hasAttribute('data-bundle')) return;
+    if(!bar) return;
+    var bf = bfRootEl();
+    /* a page with the Black Friday selector always gets the dropdown bar; the fixed bundle line is only for pages without it */
+    if(bf && bar.hasAttribute('data-bundle')){ bar.removeAttribute('data-bundle'); }
+    if(bar.hasAttribute('data-bundle')) return;
     var p = getPs(); var c = p && p.querySelector('[data-ps1c-card].is-selected');
-    if(!c){ bar.removeAttribute('data-plan'); return; }
+    var st = bf && bf._bfpsState, inBundle = !!(st && st.mode === 'bundles');
+    if(!c && !inBundle){ bar.removeAttribute('data-plan'); return; }
     buildOptions(p);
-    if(selEl){ selEl.value = c.getAttribute('data-ps1c-p') || ''; }
-    if(perEl){ perEl.textContent = c.getAttribute('data-ps1c-serving') || ''; }
-    if(titleEl){ var pill = c.getAttribute('data-ps1c-pill') || ''; titleEl.textContent = (c.getAttribute('data-ps1c-name') || '') + (pill ? ' (' + pill + ')' : ''); }
-    if(priceEl){ priceEl.textContent = c.getAttribute('data-ps1c-price') || ''; }
+    if(inBundle){
+      if(selEl){ selEl.value = 'bundle:' + st.quantity; }
+      if(perEl){ perEl.textContent = st.quantity + ' tubs · ' + st.servings + ' servings'; }
+      if(titleEl){ titleEl.textContent = bundleTitle(st); }
+      if(priceEl){ priceEl.textContent = st.formatted || ''; }
+    } else {
+      if(selEl){ selEl.value = c.getAttribute('data-ps1c-p') || ''; }
+      if(perEl){ perEl.textContent = c.getAttribute('data-ps1c-serving') || ''; }
+      if(titleEl){ var pill = c.getAttribute('data-ps1c-pill') || ''; titleEl.textContent = (c.getAttribute('data-ps1c-name') || '') + (pill ? ' (' + pill + ')' : ''); }
+      if(priceEl){ priceEl.textContent = c.getAttribute('data-ps1c-price') || ''; }
+    }
     bar.setAttribute('data-plan', '1');
   }
   if(selEl){
     selEl.addEventListener('change', function(){
+      var bf = bfRootEl();
+      if(/^bundle:/.test(selEl.value)){ if(bf && typeof bf._bfpsPickQuantity === 'function'){ bf._bfpsPickQuantity(parseInt(selEl.value.slice(7), 10)); } return; }
       var p = getPs(); var target = cardsOf(p).filter(function(c){ return c.getAttribute('data-ps1c-p') === selEl.value; })[0];
-      if(target){ target.click(); }
+      if(target){ if(bf && typeof bf._bfpsPickPlan === 'function'){ bf._bfpsPickPlan(); } target.click(); syncPlan(); }
     });
   }
   document.addEventListener('ps1c:select', syncPlan);
+  document.addEventListener('bfps:change', syncPlan);
   if(addBtn){ addBtn.addEventListener('click', function(){ var p = getPs(); var b = p && p.querySelector('[data-ps1c-submit]'); if(b){ b.click(); } }); }
   /* bundle mode: add the configured variant x quantity to the cart and open the drawer (same calls the plan selector makes) */
   var bundleBtn = bar && bar.querySelector('[data-sc-bar-bundle]');
