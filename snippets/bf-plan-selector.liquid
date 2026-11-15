@@ -122,7 +122,7 @@
   data-bfps-sub-first="{{ sub_first }}"
   data-bfps-sub-layout="{{ sub_layout }}"
   data-bfps-tier-bundle="{{ s.bf_sub_bundle_months | strip | escape }}"
-  data-bfps-bundle-callout="{{ s.bf_bundle_callout | escape }}"
+  data-bfps-bundle-callout-text="{{ s.bf_bundle_callout | escape }}"
   data-bfps-sub-code="{{ s.bf_sub_code | strip | escape }}"
   data-bfps-bd-code="{{ s.bf_bd_sub_code | strip | escape }}"
   data-bfps-cart-title="{{ s.bf_cart_title | default: 'Black Friday [months]-Month Bundle' | escape }}"
@@ -694,7 +694,7 @@
         var calloutFor = (root.dataset.bfpsSubCode || '').trim() ? 'sub' : '';
         var bMonths = (root.dataset.bfpsTierBundle || '').trim(), bIndex = -1;
         /* Black Friday bar for the bundle tier, like the subscription callout: [code] [pct] [months] [label] placeholders */
-        var bCallout = root.querySelector('[data-bfps-bundle-callout]'), bTpl = root.dataset.bfpsBundleCallout || '';
+        var bCallout = root.querySelector('[data-bfps-bundle-callout]'), bTpl = root.dataset.bfpsBundleCalloutText || '';
         function renderBundleCallout() {
           var t = tiers[index]; if (!t) return;
           var code = String(root.dataset.bfpsCode || '').replace(/\[pct\]/g, t.pct).trim().toUpperCase();
