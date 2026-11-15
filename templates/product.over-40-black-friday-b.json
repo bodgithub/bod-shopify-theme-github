@@ -1106,13 +1106,13 @@
             "bf_sub_link_text": "Prefer a subscription?",
             "bf_sub_link_cta": "Subscribe and save 15%",
             "bf_bundles_link_cta": "",
-            "bf_sub_hide_ot": false,
+            "bf_sub_hide_ot": true,
             "ship_in_benefits": true,
             "ship_bullet_text": "Fast, free shipping · ships by [date]",
             "ship_bullet_weekend_text": "Fast, free shipping · arrives in [date]",
             "ribbon_position": "price",
             "card_radius": 5,
-            "bf_sub_heading": "Choose your subscription:",
+            "bf_sub_heading": "Choose your plan:",
             "gift_position": "card",
             "bf_code_pattern": "BLACKFRIDAY[pct]",
             "bf_sub_first": true,
@@ -1122,7 +1122,8 @@
             "bf_sub_layout": "tiers",
             "sub_tier_badge": "Black Friday deal",
             "bd_tier_badge": "",
-            "ot_tier_badge": ""
+            "ot_tier_badge": "",
+            "bf_sub_bundle_months": "6"
           }
         },
         "quote_7QKz6a": {
@@ -2804,7 +2805,7 @@
           "settings": {
             "heading": "How does the Black Friday 35% offer work?",
             "open": false,
-            "content": "<p>Choose the 6-Week Plan as a subscription. The code BLACKFRIDAY is added to your cart for you and takes 35% off your first order, so the first 6-week tub is $42.27 instead of $65. After that you pay the normal subscription price, 15% off every 6-week delivery ($55.25).</p><p>The 1-Month Plan stays at its usual 12% off ($39.60 every 4 weeks) and the one-time tub is full price. Every subscription comes with the free Metabolic Health Protocol (digital). You can skip or cancel anytime in your account. Offer ends Nov 30.</p>",
+            "content": "<p>Choose the 6-Week Plan as a subscription. The code BLACKFRIDAY is added to your cart for you and takes 35% off your first order, so the first 6-week tub is $42.27 instead of $65. After that you pay the normal subscription price, 15% off every 6-week delivery ($55.25).</p><p>The 1-Month Plan stays at its usual 12% off ($39.60 every 4 weeks) and if you'd rather pay once, the 6-month bundle (4 tubs) is 45% off as a one-time payment. Every subscription comes with the free Metabolic Health Protocol (digital). You can skip or cancel anytime in your account. Offer ends Nov 30.</p>",
             "page": ""
           }
         },

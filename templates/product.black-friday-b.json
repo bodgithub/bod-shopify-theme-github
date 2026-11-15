@@ -589,10 +589,10 @@
             "bf_sub_link_text": "Prefer a subscription?",
             "bf_sub_link_cta": "Subscribe and save 15%",
             "bf_bundles_link_cta": "",
-            "bf_sub_hide_ot": false,
+            "bf_sub_hide_ot": true,
             "bf_code_pattern": "BLACKFRIDAY[pct]",
             "bf_cart_title": "Black Friday [months]-Month Bundle",
-            "bf_sub_heading": "Choose your subscription:",
+            "bf_sub_heading": "Choose your plan:",
             "bf_sub_first": true,
             "bf_sub_callout": "BLACKFRIDAY: 35% off your first 6-week order • Ends Nov 30",
             "bf_sub_code": "BLACKFRIDAY",
@@ -757,7 +757,8 @@
             "bf_sub_layout": "tiers",
             "sub_tier_badge": "Black Friday deal",
             "bd_tier_badge": "",
-            "ot_tier_badge": ""
+            "ot_tier_badge": "",
+            "bf_sub_bundle_months": "6"
           }
         },
         "facts_table_main": {
