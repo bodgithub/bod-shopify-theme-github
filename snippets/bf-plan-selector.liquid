@@ -703,7 +703,7 @@
           var b = document.createElement('button'); b.type = 'button'; b.className = 'bfc__tier'; b.setAttribute('role', 'radio');
           var h = '';
           if (c.dataset.ps1cBadge) { h += '<span class="bfc__badge bfc__badge--navy">' + esc(c.dataset.ps1cBadge) + '</span>'; }
-          h += '<span class="bfc__tier-label">' + esc(c.dataset.ps1cName || '') + '</span>';
+          h += '<span class="bfc__tier-label">' + esc(c.dataset.ps1cTierLabel || c.dataset.ps1cName || '') + '</span>';
           if (c.dataset.ps1cPill) { h += '<span class="bfc__pct">' + esc(c.dataset.ps1cPill) + '</span>'; }
           if (c.dataset.ps1cPrice) { h += '<span class="bfc__tier-free">' + esc(c.dataset.ps1cPrice) + '</span>'; }
           b.innerHTML = h;
