@@ -1144,9 +1144,10 @@
   {
     "name": "Black Friday A/B test",
     "settings": [
-      { "type": "paragraph", "content": "One ad link (?view=black-friday-a). The plain ?view=black-friday page is outside the test (influencers). In Split mode a share of first-time visitors is sent to the B view before the page paints and remembered for the cookie length. Add ?ab=a or ?ab=b to any BF link to force a version. Every BF page view tags the cart with bf_variant (A or B), which lands on the order, and publishes a bf_ab_view event for the Meta custom pixel." },
+      { "type": "paragraph", "content": "One ad link (?view=black-friday-a). The plain ?view=black-friday page is outside the test (influencers). In Split mode a share of first-time visitors is sent to the B view before the page paints and remembered for the cookie length. Add ?ab=a or ?ab=b to any BF link to force a version. Independent keeps both pages usable on their own: nobody is moved from A to B or B to A, and each page tags the letter it is. Every BF page view tags the cart with bf_variant (A or B), which lands on the order, and publishes a bf_ab_view event for the Meta custom pixel." },
       { "type": "select", "id": "bf_ab_mode", "label": "Mode", "default": "off", "options": [
         { "value": "off", "label": "Off (no redirects, no tagging)" },
+        { "value": "none", "label": "Independent (no redirects; each page tags its own letter)" },
         { "value": "split", "label": "Split test" },
         { "value": "a", "label": "A only (everyone sees the bundles-first page)" },
         { "value": "b", "label": "B only (everyone sees the subscription-first page)" }
