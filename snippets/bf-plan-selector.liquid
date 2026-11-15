@@ -158,7 +158,7 @@
         <div class="bfc__head">
           <span class="bfc__check" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 5"/></svg></span>
           <span class="bfc__title" data-bfc-title></span>
-          <span class="bfc__price"><s data-bfps-compare></s><strong data-bfps-price></strong></span>
+          <span class="bfc__pricecol"><span class="bfc__price"><s data-bfps-compare></s><strong data-bfps-price></strong></span><span class="bfc__serving" data-bfps-serving></span></span>
         </div>
         <div class="bfc__note{% if s.bf_studies_in_note %} bfc__note--studies{% endif %}" data-bfc-note-wrap style="--bf-note-bg:{{ s.bf_note_bg | default: '#e3eaff' }};--bf-note-fg:{{ s.bf_note_color | default: '#1a2874' }}">
           <svg class="bfc__flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6.5L4.8 18.2A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-2.8L14 9.5V3"/><path d="M7.5 15h9"/></svg>
@@ -340,6 +340,8 @@
   #ps1c-{{ uid }} .bfc__check{flex:0 0 auto;width:22px;height:22px;border-radius:0;background:var(--bf-blue);color:#fff;display:inline-grid;place-items:center}
   #ps1c-{{ uid }} .bfc__check svg{width:13px;height:13px}
   #ps1c-{{ uid }} .bfc__title{flex:1 1 auto;min-width:0;font-size:19px;font-weight:800;letter-spacing:-0.02em;line-height:1.1}
+  #ps1c-{{ uid }} .bfc__pricecol{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
+  #ps1c-{{ uid }} .bfc__serving{font-size:12px;font-weight:600;color:var(--bf-navy);white-space:nowrap}
   #ps1c-{{ uid }} .bfc__price{flex:0 0 auto;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
   #ps1c-{{ uid }} .bfc__price s{font-size:15px;font-weight:400;color:#676b79;text-decoration:line-through}
   #ps1c-{{ uid }} .bfc__price strong{font-size:19px;font-weight:800;letter-spacing:-0.02em}
@@ -535,6 +537,7 @@
       var chipS = $('[data-bfc-chip-servings]'); if (chipS) { chipS.textContent = (chipS.dataset.tpl || '[n] servings').replace('[n]', t.quantity * servingsPerTub); }
       $('[data-bfps-compare]').textContent = t.compare > t.price ? moneyCents(t.compare) : '';
       $('[data-bfps-price]').textContent = moneyCents(t.price);
+      var sv = $('[data-bfps-serving]'); if (sv) { var servings = t.quantity * servingsPerTub; sv.textContent = servings > 0 ? moneyCents(Math.round(t.price / servings)) + ' / serving' : ''; }
       var noteWrap = $('[data-bfc-note-wrap]');
       if (t.note) { $('[data-bfc-note]').textContent = fill(t.note, t); noteWrap.hidden = false; } else { noteWrap.hidden = true; }
       shipLine(t);
