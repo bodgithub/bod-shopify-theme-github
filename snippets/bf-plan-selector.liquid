@@ -121,6 +121,7 @@
   data-bfps-sub-heading="{{ s.bf_sub_heading | escape }}"
   data-bfps-sub-first="{{ sub_first }}"
   data-bfps-sub-layout="{{ sub_layout }}"
+  data-bfps-tier-bundle="{{ s.bf_sub_bundle_months | strip | escape }}"
   data-bfps-sub-code="{{ s.bf_sub_code | strip | escape }}"
   data-bfps-bd-code="{{ s.bf_bd_sub_code | strip | escape }}"
   data-bfps-cart-title="{{ s.bf_cart_title | default: 'Black Friday [months]-Month Bundle' | escape }}"
@@ -147,6 +148,7 @@
   </div>
   {%- endif -%}
 
+  {%- if sub_layout == 'tiers' -%}<div class="bfc__tiers bfps__subtiers" role="radiogroup" aria-label="Plan" data-bfps-subtiers hidden></div>{%- endif -%}
   <div class="bfps__panel" data-bfps-panel="bundles" role="tabpanel">
     {%- if layout == 'cards' -%}
     {%- comment -%} Cards layout: three tier cards, then a detail panel for the chosen tier {%- endcomment -%}
@@ -222,7 +224,6 @@
 
   {%- if show_tabs or sub_link -%}
   <div class="bfps__panel{% if sub_layout == 'tiers' %} bfps__panel--tiers{% endif %}" data-bfps-panel="subscribe" role="tabpanel" hidden>
-    {%- if sub_layout == 'tiers' -%}<div class="bfc__tiers bfps__subtiers" role="radiogroup" aria-label="Plan" data-bfps-subtiers></div>{%- endif -%}
     {%- if s.bf_sub_callout != blank -%}
     {%- assign callout_html = s.bf_sub_callout | escape -%}
     {%- assign callout_code = s.bf_sub_code | strip | upcase -%}
@@ -381,9 +382,13 @@
   #ps1c-{{ uid }} [data-bfps-panel="subscribe"] [data-ps1c-card][data-ps1c-p="ot"]{display:none}
   {%- endif -%}
   /* tiers layout: the tier buttons sit on top, only the chosen plan's card shows under them, the callout only with the plan it belongs to */
-  #ps1c-{{ uid }} .bfps__panel--tiers .bfps__subtiers{margin:0}
+  #ps1c-{{ uid }} .bfps__subtiers{margin:0 0 14px}
+  #ps1c-{{ uid }} .bfps__subtiers[hidden]{display:none}
   #ps1c-{{ uid }} .bfps__panel--tiers [data-ps1c-card]:not(.is-selected){display:none}
   #ps1c-{{ uid }} .bfps__panel--tiers .bfps__callout[hidden]{display:none}
+  /* bundle tier chosen: the plan cards and callout go, the bundles panel shows only its detail (its own tier row and 'Prefer a subscription?' line are hidden) */
+  #ps1c-{{ uid }} .bfps--tier-bundle .bfps__panel--tiers [data-ps1c-card]{display:none}
+  #ps1c-{{ uid }} .bfps--tier-bundle [data-bfps-panel="bundles"] .bfc__tiers,#ps1c-{{ uid }} .bfps--tier-bundle [data-bfps-panel="bundles"] .bfps__sublink{display:none}
   #ps1c-{{ uid }} .bfps__subtiers .bfc__tier{display:flex;flex-direction:column;align-items:flex-start}
   #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-free{font-weight:700;margin-top:auto}
   #ps1c-{{ uid }} .bfc__swap:hover{color:var(--bf-navy)}
@@ -639,45 +644,55 @@
     $('[data-bfps-minus]').addEventListener('click', function () { go(index - 1); });
     $('[data-bfps-plus]').addEventListener('click', function () { go(index + 1); });
 
-    root.querySelectorAll('[data-bfps-tab]').forEach(function (tab) {
-      tab.addEventListener('click', function () {
-        mode = tab.dataset.bfpsTab;
-        root.querySelectorAll('[data-bfps-tab]').forEach(function (x) {
-          var on = x === tab;
-          x.classList.toggle('is-active', on);
-          x.setAttribute('aria-selected', on ? 'true' : 'false');
-        });
-        root.querySelectorAll('[data-bfps-panel]').forEach(function (p) {
-          p.hidden = p.dataset.bfpsPanel !== mode;
-        });
-        var foot = root.querySelector('[data-bfps-foot]'); if (foot) { foot.hidden = mode !== 'bundles'; }
-        /* the block heading reads differently in the subscription view */
-        var heading = document.querySelector('#ps1c-{{ uid }} .ps-h');
-        if (heading && root.dataset.bfpsSubHeading) {
-          if (!heading.dataset.bfpsOrig) { heading.dataset.bfpsOrig = heading.textContent; }
-          heading.textContent = mode === 'subscribe' ? root.dataset.bfpsSubHeading : heading.dataset.bfpsOrig;
-        }
-        announce();
+    var tiersLayout = root.dataset.bfpsSubLayout === 'tiers';
+    var tierBundle = false; /* tiers layout: the bundle tier button is the chosen option (bundles mode, but the tier row stays on top) */
+    function setMode(m) {
+      mode = m;
+      root.querySelectorAll('[data-bfps-tab]').forEach(function (x) {
+        var on = x.dataset.bfpsTab === m;
+        x.classList.toggle('is-active', on);
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
       });
+      root.querySelectorAll('[data-bfps-panel]').forEach(function (p) {
+        p.hidden = tierBundle ? false : (p.dataset.bfpsPanel !== m);
+      });
+      var st = root.querySelector('[data-bfps-subtiers]'); if (st) { st.hidden = (m === 'bundles' && !tierBundle); }
+      root.classList.toggle('bfps--tier-bundle', tierBundle);
+      var foot = root.querySelector('[data-bfps-foot]'); if (foot) { foot.hidden = m !== 'bundles'; }
+      /* the block heading reads differently in the subscription view (and stays that way in the tiers layout) */
+      var heading = document.querySelector('#ps1c-{{ uid }} .ps-h');
+      if (heading && root.dataset.bfpsSubHeading) {
+        if (!heading.dataset.bfpsOrig) { heading.dataset.bfpsOrig = heading.textContent; }
+        heading.textContent = (m === 'subscribe' || tiersLayout) ? root.dataset.bfpsSubHeading : heading.dataset.bfpsOrig;
+      }
+      announce();
+    }
+    root.querySelectorAll('[data-bfps-tab]').forEach(function (tab) {
+      tab.addEventListener('click', function () { tierBundle = false; setMode(tab.dataset.bfpsTab); });
     });
 
-    /* subscription view, tiers layout: one button per plan card (1-month / 6-week / one-time), built from the cards' own data attributes;
-       clicking a tier selects that card in the plan selector, the other cards are hidden by CSS, the callout shows only with the 6-week plan */
-    if (root.dataset.bfpsSubLayout === 'tiers') {
+    /* subscription view, tiers layout: one button per plan card (1-month / 6-week / one-time), built from the cards' own data attributes,
+       plus an optional bundle tier (bf_sub_bundle_months) that shows that bundle's detail exactly as the bundles view does.
+       Clicking a plan tier selects that card in the plan selector (the other cards are hidden by CSS); the callout shows only with the 6-week plan. */
+    if (tiersLayout) {
       var stWrap = root.querySelector('[data-bfps-subtiers]'), psRoot = root.closest('[data-ps1c-root]');
       if (stWrap && psRoot) {
         var hideOt = root.dataset.bfpsHideOt === 'true';
         var pcards = [].slice.call(psRoot.querySelectorAll('[data-ps1c-card]')).filter(function (c) { return !(hideOt && c.dataset.ps1cP === 'ot'); });
         var callout = root.querySelector('[data-bfps-callout]');
         var calloutFor = (root.dataset.bfpsSubCode || '').trim() ? 'sub' : '';
+        var bMonths = (root.dataset.bfpsTierBundle || '').trim(), bIndex = -1;
+        if (bMonths) { tiers.forEach(function (t, k) { if (bIndex < 0 && String(t.months) === bMonths) { bIndex = k; } }); }
         function syncTiers() {
           var sel = null;
           pcards.forEach(function (c, i) {
             var b = stWrap.children[i]; if (!b) return;
-            var on = c.classList.contains('is-selected'); if (on) { sel = c; }
+            var on = !tierBundle && c.classList.contains('is-selected'); if (on) { sel = c; }
             b.classList.toggle('is-on', on); b.setAttribute('aria-checked', on ? 'true' : 'false');
           });
-          if (callout && calloutFor) { callout.hidden = !(sel && sel.dataset.ps1cP === calloutFor); }
+          var bb = stWrap.querySelector('[data-bfps-tier-bundle]');
+          if (bb) { bb.classList.toggle('is-on', tierBundle); bb.setAttribute('aria-checked', tierBundle ? 'true' : 'false'); }
+          if (callout && calloutFor) { callout.hidden = tierBundle || !(sel && sel.dataset.ps1cP === calloutFor); }
         }
         pcards.forEach(function (c) {
           var b = document.createElement('button'); b.type = 'button'; b.className = 'bfc__tier'; b.setAttribute('role', 'radio');
@@ -687,10 +702,23 @@
           if (c.dataset.ps1cPill) { h += '<span class="bfc__pct">' + esc(c.dataset.ps1cPill) + '</span>'; }
           if (c.dataset.ps1cPrice) { h += '<span class="bfc__tier-free">' + esc(c.dataset.ps1cPrice) + '</span>'; }
           b.innerHTML = h;
-          b.addEventListener('click', function () { c.click(); syncTiers(); });
+          b.addEventListener('click', function () { if (tierBundle) { tierBundle = false; setMode('subscribe'); } c.click(); syncTiers(); });
           stWrap.appendChild(b);
         });
+        if (bIndex >= 0) {
+          var tb = tiers[bIndex], bbtn = document.createElement('button');
+          bbtn.type = 'button'; bbtn.className = 'bfc__tier'; bbtn.setAttribute('role', 'radio'); bbtn.setAttribute('data-bfps-tier-bundle', '');
+          var bh = '';
+          if (tb.badge) { bh += '<span class="bfc__badge bfc__badge--' + (tb.badgeStyle === 'lavender' ? 'lavender' : 'navy') + '">' + esc(tb.badge) + '</span>'; }
+          bh += '<span class="bfc__tier-label">' + esc(tb.label) + '</span>';
+          bh += '<span class="bfc__pct">' + tb.pct + '% off</span>';
+          if (tb.freeText) { bh += '<span class="bfc__tier-free">' + esc(tb.freeText) + '</span>'; }
+          bbtn.innerHTML = bh;
+          bbtn.addEventListener('click', function () { tierBundle = true; go(bIndex); setMode('bundles'); syncTiers(); });
+          stWrap.appendChild(bbtn);
+        }
         new MutationObserver(syncTiers).observe(psRoot, { attributes: true, subtree: true, attributeFilter: ['class'] });
+        stWrap.hidden = false;
         syncTiers();
       }
     }
