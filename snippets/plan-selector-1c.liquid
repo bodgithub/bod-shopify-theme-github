@@ -305,7 +305,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       if P == 'ot' and s.hide_ot
         continue
       endif
-      if P == 'ot' and s.bf_enabled
+      if P == 'ot' and s.bf_enabled and s.bf_sub_hide_ot != false
         continue
       endif
       if card_name == blank and P == 'sub'
@@ -318,6 +318,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign card_ribbon = s[k]
       assign k = P | append: '_pill'
       assign card_pill = s[k]
+      assign k = P | append: '_tier_badge'
+      assign card_badge = s[k]
       assign k = P | append: '_price'
       assign card_price = s[k]
       assign k = P | append: '_compare'
@@ -357,7 +359,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     -%}
     {%- unless P == 'bd' and card_name == blank -%}
     <div class="pc-card{% if P == ps1c_default %} is-selected{% endif %}" role="radio" aria-checked="{% if P == ps1c_default %}true{% else %}false{% endif %}" tabindex="{% if P == ps1c_default %}0{% else %}-1{% endif %}"
-         data-ps1c-card data-ps1c-p="{{ P }}" data-ps1c-name="{{ card_name | escape }}" data-ps1c-price="{{ card_price | escape }}" data-ps1c-pill="{{ card_pill | escape }}" data-ps1c-serving="{{ card_serving | escape }}" data-ps1c-variant="{{ card_variant }}" data-ps1c-plan="{{ card_plan }}"{% if requires_plan %} data-ps1c-requires-plan="1"{% endif %} data-ps1c-qty="{{ card_qty }}" data-ps1c-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1c-gift-title="{{ gift_name | escape }}" data-ps1c-gift-sub="{{ gift_bsub | escape }}" data-ps1c-gift-cross="{{ gift_crossout | escape }}" data-ps1c-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
+         data-ps1c-card data-ps1c-p="{{ P }}" data-ps1c-name="{{ card_name | escape }}" data-ps1c-price="{{ card_price | escape }}" data-ps1c-pill="{{ card_pill | escape }}" data-ps1c-badge="{{ card_badge | escape }}" data-ps1c-serving="{{ card_serving | escape }}" data-ps1c-variant="{{ card_variant }}" data-ps1c-plan="{{ card_plan }}"{% if requires_plan %} data-ps1c-requires-plan="1"{% endif %} data-ps1c-qty="{{ card_qty }}" data-ps1c-gift="{{ gift_variant }}"{% if gift_name != blank %} data-ps1c-gift-title="{{ gift_name | escape }}" data-ps1c-gift-sub="{{ gift_bsub | escape }}" data-ps1c-gift-cross="{{ gift_crossout | escape }}" data-ps1c-gift-img="{% if gift_image != blank %}{{ gift_image | image_url: width: 96 }}{% endif %}"{% endif %}>
       <div class="pc-card__in">
         {%- if card_ribbon != blank and ribbon_pos != 'price' -%}<span class="pc-ribbon">{{ card_ribbon }}</span>{%- endif -%}
         <div class="pc-pad">
@@ -775,11 +777,11 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       var fz = protoFocus(); if(fz){ gprops['_focus'] = fz; }
       items.push({ id: g, quantity: 1, properties: gprops });
     }
-    // B test: a code attached with a subscription (bf_sub_code; bf_bd_sub_code for the 1-month 'bd' card); never for one-time tubs or bundles
+    // B test: a code attached with a subscription (bf_sub_code for the 6-week 'sub' card; bf_bd_sub_code for the 1-month 'bd' card, blank = no code); never for one-time tubs or bundles
     var subCode = '';
     if(plan && bfEl && !bundlesMode()){
       var bdCode = (bfEl.getAttribute('data-bfps-bd-code') || '').trim();
-      subCode = (c.getAttribute('data-ps1c-p') === 'bd' && bdCode) ? bdCode : (bfEl.getAttribute('data-bfps-sub-code') || '').trim();
+      subCode = (c.getAttribute('data-ps1c-p') === 'bd') ? bdCode : (bfEl.getAttribute('data-bfps-sub-code') || '').trim();
     }
     postItems(items, subCode);
   });
