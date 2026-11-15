@@ -485,7 +485,7 @@
       syncFoot();
       var t = tiers[index];
       var detail = mode === 'bundles'
-        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: moneyCents(t.price), label: t.label, cartTitle: String(root.dataset.bfpsCartTitle || 'Black Friday [months]-Month Bundle').replace(/\[months\]/g, t.months).replace(/\[label\]/g, t.label || ''), code: String(root.dataset.bfpsCode || '').replace(/\[pct\]/g, t.pct).replace(/\[months\]/g, t.months).trim() }
+        ? { mode: 'bundles', variantId: variantId, quantity: t.quantity, servings: t.quantity * servingsPerTub, months: t.months, price: t.price, compare: t.compare, pct: t.pct, formatted: moneyCents(t.price), label: t.label, title: t.title || '', cartTitle: String(root.dataset.bfpsCartTitle || 'Black Friday [months]-Month Bundle').replace(/\[months\]/g, t.months).replace(/\[label\]/g, t.label || ''), code: String(root.dataset.bfpsCode || '').replace(/\[pct\]/g, t.pct).replace(/\[months\]/g, t.months).trim() }
         : { mode: 'subscribe' };
       root._bfpsState = detail;
       root.dispatchEvent(new CustomEvent('bfps:change', { bubbles: true, detail: detail }));
@@ -670,6 +670,11 @@
     root.querySelectorAll('[data-bfps-tab]').forEach(function (tab) {
       tab.addEventListener('click', function () { tierBundle = false; setMode(tab.dataset.bfpsTab); });
     });
+    /* lets the sticky bar pick a plan card: leave the bundles view first so the card's add goes through as a plan */
+    root._bfpsPickPlan = function () {
+      if (mode !== 'bundles') return;
+      var st = root.querySelector('[data-bfps-tab="subscribe"]'); if (st) { st.click(); }
+    };
 
     /* subscription view, tiers layout: one button per plan card (1-month / 6-week / one-time), built from the cards' own data attributes,
        plus an optional bundle tier (bf_sub_bundle_months) that shows that bundle's detail exactly as the bundles view does.
@@ -702,9 +707,12 @@
           if (c.dataset.ps1cPill) { h += '<span class="bfc__pct">' + esc(c.dataset.ps1cPill) + '</span>'; }
           if (c.dataset.ps1cPrice) { h += '<span class="bfc__tier-free">' + esc(c.dataset.ps1cPrice) + '</span>'; }
           b.innerHTML = h;
-          b.addEventListener('click', function () { if (tierBundle) { tierBundle = false; setMode('subscribe'); } c.click(); syncTiers(); });
+          b.addEventListener('click', function () { c.click(); });
+          /* any click on a plan card (tier button, the card itself, the sticky bar) leaves the bundle tier */
+          c.addEventListener('click', function () { if (tierBundle) { tierBundle = false; setMode('subscribe'); } syncTiers(); });
           stWrap.appendChild(b);
         });
+        root._bfpsPickPlan = function () { if (tierBundle) { tierBundle = false; setMode('subscribe'); syncTiers(); } };
         if (bIndex >= 0) {
           var tb = tiers[bIndex], bbtn = document.createElement('button');
           bbtn.type = 'button'; bbtn.className = 'bfc__tier'; bbtn.setAttribute('role', 'radio'); bbtn.setAttribute('data-bfps-tier-bundle', '');
@@ -716,6 +724,8 @@
           bbtn.innerHTML = bh;
           bbtn.addEventListener('click', function () { tierBundle = true; go(bIndex); setMode('bundles'); syncTiers(); });
           stWrap.appendChild(bbtn);
+          /* the sticky bar picks the bundle by tub count: in this layout that is the bundle tier button */
+          root._bfpsPickQuantity = function (qty) { if (Number(tb.quantity) !== Number(qty)) return false; bbtn.click(); return true; };
         }
         new MutationObserver(syncTiers).observe(psRoot, { attributes: true, subtree: true, attributeFilter: ['class'] });
         stWrap.hidden = false;
