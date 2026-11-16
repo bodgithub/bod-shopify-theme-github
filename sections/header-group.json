@@ -64,7 +64,7 @@
         "alt_templates": "black-friday-b, over-40-black-friday-b, pcos-black-friday-b, switch-black-friday-b, product-default, index",
         "alt_text": "BLACK FRIDAY • 35% OFF YOUR FIRST ORDER [countdown]",
         "alt_text_mobile": "BLACK FRIDAY • 35% OFF YOUR FIRST ORDER [countdown]",
-        "alt_click_action": "none",
+        "alt_click_action": "klaviyo",
         "alt_link": "",
         "text_mobile": "BLACK FRIDAY • UP TO 55% OFF [countdown]",
         "click_action": "klaviyo",
@@ -90,7 +90,8 @@
         "color_text": "#ffffff",
         "fade_width": 40,
         "fade_strength": 50,
-        "fade_color": "#182769"
+        "fade_color": "#182769",
+        "alt_klaviyo_form_id": "WeDJTX"
       }
     },
     "announcement-bar": {

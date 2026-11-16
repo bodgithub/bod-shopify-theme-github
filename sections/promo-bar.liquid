@@ -44,11 +44,15 @@
   assign text_mobile = s.text_mobile | replace: '[percent]', percent
   assign click_action = s.click_action
   assign click_link = s.link
+  assign kl_form = s.klaviyo_form_id
   if on_alt
     assign text = s.alt_text | replace: '[percent]', percent
     assign text_mobile = s.alt_text_mobile | replace: '[percent]', percent
     assign click_action = s.alt_click_action | default: 'none'
     assign click_link = s.alt_link
+    if s.alt_klaviyo_form_id != blank
+      assign kl_form = s.alt_klaviyo_form_id
+    endif
   endif
   if text_mobile == blank
     assign text_mobile = text
@@ -198,8 +202,8 @@
           endif
         -%}
         <span class="pbar__phase" data-pbar-phase data-start="{{ pstart }}" data-end="{{ pend }}" data-count-to="{{ pcount }}" data-mode="{{ b.countdown }}"{% unless active %} hidden{% endunless %} {{ block.shopify_attributes }}>
-          {%- if click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
-            <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ ptext }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ pmobile }}</button>
+          {%- if click_action == 'klaviyo' and kl_form != blank -%}
+            <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ kl_form | strip | escape }}">{{ ptext }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ kl_form | strip | escape }}">{{ pmobile }}</button>
           {%- elsif click_action == 'link' and click_link != blank -%}
             <a class="pbar__text pbar__text--desktop" href="{{ click_link }}">{{ ptext }}</a><a class="pbar__text pbar__text--mobile" href="{{ click_link }}">{{ pmobile }}</a>
           {%- else -%}<span class="pbar__text pbar__text--desktop">{{ ptext }}</span><span class="pbar__text pbar__text--mobile">{{ pmobile }}</span>{%- endif -%}
@@ -207,8 +211,8 @@
       {%- endfor -%}
     {%- else -%}
     <span class="pbar__phase" data-pbar-phase data-start="" data-end="{{ s.end_date | strip }}" data-count-to="{{ s.end_date | strip }}" data-mode="legacy">
-    {%- if click_action == 'klaviyo' and s.klaviyo_form_id != blank -%}
-      <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ text }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ s.klaviyo_form_id | strip | escape }}">{{ text_mobile }}</button>
+    {%- if click_action == 'klaviyo' and kl_form != blank -%}
+      <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ kl_form | strip | escape }}">{{ text }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ kl_form | strip | escape }}">{{ text_mobile }}</button>
     {%- elsif click_action == 'link' and click_link != blank -%}
       <a class="pbar__text pbar__text--desktop" href="{{ click_link }}">{{ text }}</a><a class="pbar__text pbar__text--mobile" href="{{ click_link }}">{{ text_mobile }}</a>
     {%- else -%}<span class="pbar__text pbar__text--desktop">{{ text }}</span><span class="pbar__text pbar__text--mobile">{{ text_mobile }}</span>{%- endif -%}
@@ -339,6 +343,7 @@
       { "value": "klaviyo", "label": "Open the Klaviyo form" }
     ] },
     { "type": "url", "id": "alt_link", "label": "Alternate link", "info": "Used when the alternate click action is \"Go to the alternate link\"." },
+    { "type": "text", "id": "alt_klaviyo_form_id", "label": "Alternate text: Klaviyo form ID", "info": "Used when the alternate click action is \"Open the Klaviyo form\". Leave empty to use the main Klaviyo form ID below." },
     { "type": "text", "id": "text_mobile", "label": "Text on phones (optional)", "default": "[percent]% off with [code] [countdown]", "info": "Leave empty to use the text above." },
     { "type": "select", "id": "click_action", "label": "When the bar is clicked", "default": "klaviyo", "options": [
       { "value": "link", "label": "Go to the link" }, { "value": "klaviyo", "label": "Open a Klaviyo form" }, { "value": "none", "label": "Nothing" } ] },
