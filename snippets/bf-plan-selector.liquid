@@ -337,15 +337,15 @@
   #ps1c-{{ uid }} .bfc__tier.is-on .bfc__pct{background:var(--bf-blue);color:#fff;border-color:var(--bf-navy)}
   #ps1c-{{ uid }} .bfc__tier-free{display:block;font-size:14px;font-weight:500;line-height:1.3}
   #ps1c-{{ uid }} .bfc__panel{background:var(--bf-panel-bg,#fff);border:2px solid var(--bf-panel-border,var(--bf-blue));border-radius:5px;padding:18px 18px 16px}
-  #ps1c-{{ uid }} .bfc__head{display:flex;align-items:center;gap:12px}
-  #ps1c-{{ uid }} .bfc__check{flex:0 0 auto;width:22px;height:22px;border-radius:0;background:var(--bf-blue);color:#fff;display:inline-grid;place-items:center}
-  #ps1c-{{ uid }} .bfc__check svg{width:13px;height:13px}
-  #ps1c-{{ uid }} .bfc__title{flex:1 1 auto;min-width:0;font-size:19px;font-weight:800;letter-spacing:-0.02em;line-height:1.1}
+  #ps1c-{{ uid }} .bfc__head{display:flex;align-items:center;gap:9px}
+  #ps1c-{{ uid }} .bfc__check{flex:0 0 auto;width:18px;height:18px;border:1.5px solid var(--bf-blue);border-radius:0;background:var(--bf-blue);color:#fff;display:inline-grid;place-items:center}
+  #ps1c-{{ uid }} .bfc__check svg{width:11px;height:11px}
+  #ps1c-{{ uid }} .bfc__title{flex:1 1 auto;min-width:0;font-size:19px;font-weight:600;letter-spacing:-0.02em;line-height:1.25}
   #ps1c-{{ uid }} .bfc__pricecol{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
   #ps1c-{{ uid }} .bfc__serving{font-size:12px;font-weight:600;color:var(--bf-navy);white-space:nowrap}
   #ps1c-{{ uid }} .bfc__price{flex:0 0 auto;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
   #ps1c-{{ uid }} .bfc__price s{font-size:15px;font-weight:400;color:#676b79;text-decoration:line-through}
-  #ps1c-{{ uid }} .bfc__price strong{font-size:19px;font-weight:800;letter-spacing:-0.02em}
+  #ps1c-{{ uid }} .bfc__price strong{font-size:19px;font-weight:600;letter-spacing:-0.02em}
   #ps1c-{{ uid }} .bfc__note{display:flex;align-items:flex-start;gap:10px;background:var(--bf-note-bg,var(--bf-light));color:var(--bf-note-fg,var(--bf-navy));border-radius:5px;padding:12px 14px;margin:14px 0 0;font-size:15px;font-weight:600;line-height:1.35}
   #ps1c-{{ uid }} .bfc__note[hidden]{display:none}
   #ps1c-{{ uid }} .bfc__flask{flex:0 0 auto;width:20px;height:20px;margin-top:1px;color:var(--bf-note-fg,var(--bf-navy))}
@@ -386,6 +386,8 @@
   {%- endif -%}
   /* tiers layout: the tier buttons sit on top, only the chosen plan's card shows under them, the callout only with the plan it belongs to */
   #ps1c-{{ uid }} .bfps__subtiers{margin:0 0 14px}
+  /* tiers layout: the tier buttons already carry the % pill, so the pill under the plan name is dropped */
+  #ps1c-{{ uid }} [data-bfps-sub-layout="tiers"] .pc-pill{display:none}
   #ps1c-{{ uid }} .bfps__subtiers[hidden]{display:none}
   #ps1c-{{ uid }} .bfps__callout--bundle{margin:0 0 14px}
   #ps1c-{{ uid }} .bfps__callout--bundle[hidden]{display:none}
@@ -407,8 +409,11 @@
     #ps1c-{{ uid }} .bfc__pct{font-size:12px;padding:5px 9px;margin-bottom:7px}
     #ps1c-{{ uid }} .bfc__tier-free{font-size:12px}
     #ps1c-{{ uid }} .bfc__panel{padding:14px 14px 12px}
-    #ps1c-{{ uid }} .bfc__title{font-size:19px}
-    #ps1c-{{ uid }} .bfc__price strong{font-size:19px}
+    #ps1c-{{ uid }} .bfc__title{font-size:17px}
+    #ps1c-{{ uid }} .bfc__price strong{font-size:17px}
+    #ps1c-{{ uid }} .bfc__head{gap:6px}
+    #ps1c-{{ uid }} .bfc__check{width:16px;height:16px}
+    #ps1c-{{ uid }} .bfc__check svg{width:10px;height:10px}
     #ps1c-{{ uid }} .bfc__price s{font-size:15px}
     #ps1c-{{ uid }} .bfc__note,#ps1c-{{ uid }} .bfc__list li,#ps1c-{{ uid }} .bfc__line,#ps1c-{{ uid }} .bfc__swap,#ps1c-{{ uid }} .bfps__sublink{font-size:14px}
     /* phones: the studies link drops under the note text, right-aligned, so the text keeps its full width */
