@@ -389,6 +389,8 @@
   #ps1c-{{ uid }} .bfps__subtiers{margin:0 0 14px}
   /* tiers layout: the tier buttons already carry the % pill, so the pill under the plan name is dropped */
   #ps1c-{{ uid }} [data-bfps-sub-layout="tiers"] .pc-pill{display:none}
+  /* tiers layout: the bundle box sits where the plan card sits, so it takes the plan card's text inset from the card edge (1px border + 15px 16px 14px padding, vs this box's 2px border) */
+  #ps1c-{{ uid }} [data-bfps-sub-layout="tiers"] .bfc__panel{padding:14px 15px 13px}
   #ps1c-{{ uid }} .bfps__subtiers[hidden]{display:none}
   #ps1c-{{ uid }} .bfps__callout--bundle{margin:0 0 14px}
   #ps1c-{{ uid }} .bfps__callout--bundle[hidden]{display:none}
