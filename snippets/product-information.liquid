@@ -125,7 +125,7 @@
   {%- when 'plan_selector_1b' -%}
     <div {{ block.shopify_attributes }}>{%- render 'plan-selector-1b', s: block.settings, uid: block.id -%}</div>
   {%- when 'plan_selector_1c' -%}
-    <div {{ block.shopify_attributes }}>{%- render 'plan-selector-1c', s: block.settings, uid: block.id -%}</div>
+    <div {{ block.shopify_attributes }}>{%- render 'plan-selector-1c', s: block.settings, uid: block.id, product: product -%}</div>
   {%- when 'facts_table' -%}
     <div {{ block.shopify_attributes }}>{%- render 'facts-table', s: block.settings, uid: block.id -%}</div>
   {%- when 'feature_chips' -%}
