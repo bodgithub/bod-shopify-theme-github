@@ -328,8 +328,10 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign card_tier_label = s[k]
       assign k = P | append: '_price'
       assign card_price = s[k]
+      assign card_price = card_price | replace: '.00', ''
       assign k = P | append: '_compare'
       assign card_compare = s[k]
+      assign card_compare = card_compare | replace: '.00', ''
       assign k = P | append: '_price_per'
       assign card_per = s[k]
       assign k = P | append: '_serving'
