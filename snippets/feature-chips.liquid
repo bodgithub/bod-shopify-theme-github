@@ -5,26 +5,123 @@
   event (30 servings on 1-Month, otherwise the default), or the selected
   Black Friday bundle via bfps:change (tubs x servings). On mobile all
   chips fit on one row.
+
+  Chips with a tip (the "Tip" settings) are buttons: on desktop they show
+  the tip on hover, on touch screens a tap opens it as a small panel under
+  the row. Click/tap again, tap outside or press Escape to close. The
+  servings tip can use [n] (servings shown) and [scoops] (2 x servings).
 {%- endcomment -%}
+
+{%- liquid
+  assign tip_servings = s.tip_servings
+  assign tip_1 = s.tip_1
+  assign tip_2 = s.tip_2
+  assign tip_3 = s.tip_3
+  assign tip_bg = s.border_color | default: '#3447af'
+-%}
 
 <style>
   #fchips-{{ uid }} {
+    position: relative;
+    margin-top: {{ s.margin_top | default: 20 }}px;
+  }
+  #fchips-{{ uid }} .fc__row {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-top: {{ s.margin_top | default: 20 }}px;
   }
   #fchips-{{ uid }} .fc__chip {
+    margin: 0;
     padding: 10px;
     background: {{ s.bg | default: '#e3eaff' }};
     border: 1px solid {{ s.border_color | default: '#3447af' }};
     border-radius: 10px;
+    font-family: inherit;
     font-size: 0.95em;
+    line-height: inherit;
     font-weight: var(--font-body-bold-weight, 500);
-    {% if s.text_color != blank %}color: {{ s.text_color }};{% endif %}
+    {% if s.text_color != blank %}color: {{ s.text_color }};{% else %}color: inherit;{% endif %}
+  }
+  #fchips-{{ uid }} button.fc__chip {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: box-shadow .15s ease, transform .15s ease, filter .15s ease;
+  }
+  #fchips-{{ uid }} button.fc__chip::after {
+    content: "i";
+    flex: 0 0 auto;
+    width: 14px;
+    height: 14px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 12px;
+    text-align: center;
+    opacity: .7;
+  }
+  @media (hover: hover) {
+    #fchips-{{ uid }} button.fc__chip:hover {
+      filter: brightness(.96);
+      box-shadow: 0 2px 8px rgba(26, 40, 116, .18);
+      transform: translateY(-1px);
+    }
+  }
+  #fchips-{{ uid }} button.fc__chip[aria-expanded="true"] {
+    filter: brightness(.94);
+    box-shadow: 0 2px 8px rgba(26, 40, 116, .22);
+  }
+  #fchips-{{ uid }} button.fc__chip:focus-visible {
+    outline: 2px solid {{ tip_bg }};
+    outline-offset: 2px;
+  }
+  #fchips-{{ uid }} .fc__tip {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 10px);
+    z-index: 30;
+    max-width: 380px;
+    padding: 10px 34px 10px 14px;
+    background: {{ tip_bg }};
+    color: #fff;
+    border-radius: 10px;
+    font-size: 0.9em;
+    line-height: 1.4;
+    box-shadow: 0 6px 20px rgba(26, 40, 116, .25);
+  }
+  #fchips-{{ uid }} .fc__tip[hidden] { display: none; }
+  #fchips-{{ uid }} .fc__tip-caret {
+    position: absolute;
+    top: -5px;
+    left: var(--fc-caret, 20px);
+    width: 10px;
+    height: 10px;
+    background: {{ tip_bg }};
+    transform: rotate(45deg);
+  }
+  #fchips-{{ uid }} .fc__tip-close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+    line-height: 24px;
+    cursor: pointer;
+    opacity: .8;
   }
   @media screen and (max-width: 749px) {
-    #fchips-{{ uid }} { flex-wrap: nowrap; }
+    #fchips-{{ uid }} .fc__row { flex-wrap: nowrap; }
     #fchips-{{ uid }} .fc__chip {
       flex: 1 1 0;
       min-width: 0;
@@ -33,35 +130,114 @@
       font-size: clamp(10.5px, 3.3vw, 14px);
       white-space: nowrap;
     }
+    #fchips-{{ uid }} button.fc__chip { gap: 3px; }
+    #fchips-{{ uid }} button.fc__chip::after { width: 12px; height: 12px; font-size: 9px; line-height: 10px; }
+    /* On phones the tip sits in the flow under the chips, so it never covers the buy button */
+    #fchips-{{ uid }} .fc__tip {
+      position: static;
+      max-width: none;
+      margin-top: 10px;
+    }
   }
 </style>
 
 <div id="fchips-{{ uid }}">
-  {%- if s.show_servings -%}
-    <div class="fc__chip" data-bod-servings data-base="{{ s.servings_default | default: '45 servings' | escape }}" data-alt="{{ s.servings_alt | default: '30 servings' | escape }}">{{ s.servings_default | default: '45 servings' }}</div>
-  {%- endif -%}
-  {%- if s.chip_1 != blank -%}<div class="fc__chip">{{ s.chip_1 }}</div>{%- endif -%}
-  {%- if s.chip_2 != blank -%}<div class="fc__chip">{{ s.chip_2 }}</div>{%- endif -%}
-  {%- if s.chip_3 != blank -%}<div class="fc__chip">{{ s.chip_3 }}</div>{%- endif -%}
+  <div class="fc__row">
+    {%- if s.show_servings -%}
+      {%- if tip_servings != blank -%}
+        <button type="button" class="fc__chip" data-bod-servings data-base="{{ s.servings_default | default: '45 servings' | escape }}" data-alt="{{ s.servings_alt | default: '30 servings' | escape }}" data-tip="{{ tip_servings | escape }}" aria-expanded="false" aria-describedby="fctip-{{ uid }}">{{ s.servings_default | default: '45 servings' }}</button>
+      {%- else -%}
+        <div class="fc__chip" data-bod-servings data-base="{{ s.servings_default | default: '45 servings' | escape }}" data-alt="{{ s.servings_alt | default: '30 servings' | escape }}">{{ s.servings_default | default: '45 servings' }}</div>
+      {%- endif -%}
+    {%- endif -%}
+    {%- if s.chip_1 != blank -%}
+      {%- if tip_1 != blank -%}<button type="button" class="fc__chip" data-tip="{{ tip_1 | escape }}" aria-expanded="false" aria-describedby="fctip-{{ uid }}">{{ s.chip_1 }}</button>{%- else -%}<div class="fc__chip">{{ s.chip_1 }}</div>{%- endif -%}
+    {%- endif -%}
+    {%- if s.chip_2 != blank -%}
+      {%- if tip_2 != blank -%}<button type="button" class="fc__chip" data-tip="{{ tip_2 | escape }}" aria-expanded="false" aria-describedby="fctip-{{ uid }}">{{ s.chip_2 }}</button>{%- else -%}<div class="fc__chip">{{ s.chip_2 }}</div>{%- endif -%}
+    {%- endif -%}
+    {%- if s.chip_3 != blank -%}
+      {%- if tip_3 != blank -%}<button type="button" class="fc__chip" data-tip="{{ tip_3 | escape }}" aria-expanded="false" aria-describedby="fctip-{{ uid }}">{{ s.chip_3 }}</button>{%- else -%}<div class="fc__chip">{{ s.chip_3 }}</div>{%- endif -%}
+    {%- endif -%}
+  </div>
+  <div class="fc__tip" id="fctip-{{ uid }}" role="tooltip" hidden>
+    <span class="fc__tip-caret" aria-hidden="true"></span>
+    <span class="fc__tip-text"></span>
+    <button type="button" class="fc__tip-close" aria-label="Close">&times;</button>
+  </div>
 </div>
 
-{%- if s.show_servings -%}
 <script>
 (function(){
-  var el = document.querySelector('#fchips-{{ uid }} [data-bod-servings]');
-  if(!el) return;
+  var root = document.getElementById('fchips-{{ uid }}');
+  if(!root) return;
+  var servings = root.querySelector('[data-bod-servings]');
+  var tip = root.querySelector('.fc__tip');
+  var txt = tip.querySelector('.fc__tip-text');
+  var chips = Array.prototype.slice.call(root.querySelectorAll('button.fc__chip[data-tip]'));
+  var pinned = null;   /* chip whose tip was opened by click/tap */
+  var open = null;     /* chip whose tip is showing right now */
+  var hoverable = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+
+  function fmt(n){ return n.toLocaleString ? n.toLocaleString('en-US') : String(n); }
+  function tipFor(chip){
+    var t = chip.getAttribute('data-tip') || '';
+    if(chip === servings){
+      var m = (chip.textContent || '').match(/\d[\d,]*/);
+      var n = m ? parseInt(m[0].replace(/,/g, ''), 10) : 0;
+      t = t.replace(/\[n\]/g, fmt(n)).replace(/\[scoops\]/g, fmt(n * 2));
+    }
+    return t;
+  }
+  function show(chip){
+    txt.textContent = tipFor(chip);
+    tip.hidden = false;
+    open = chip;
+    var r = root.getBoundingClientRect(), c = chip.getBoundingClientRect();
+    tip.style.setProperty('--fc-caret', Math.max(12, Math.round(c.left - r.left + c.width / 2 - 5)) + 'px');
+    chips.forEach(function(x){ x.setAttribute('aria-expanded', x === chip ? 'true' : 'false'); });
+  }
+  function hide(){
+    tip.hidden = true;
+    open = null;
+    pinned = null;
+    chips.forEach(function(x){ x.setAttribute('aria-expanded', 'false'); });
+  }
+
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(e){
+      e.preventDefault();
+      if(pinned === chip){ hide(); } else { pinned = chip; show(chip); }
+    });
+    if(hoverable){
+      chip.addEventListener('mouseenter', function(){ if(!pinned) show(chip); });
+      chip.addEventListener('mouseleave', function(){ if(!pinned) hide(); });
+    }
+    chip.addEventListener('focus', function(){ if(!pinned) show(chip); });
+    chip.addEventListener('blur', function(){ if(!pinned) hide(); });
+  });
+  tip.querySelector('.fc__tip-close').addEventListener('click', hide);
+  document.addEventListener('click', function(e){ if(pinned && !root.contains(e.target)) hide(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && open) hide(); });
+
+  {%- if s.show_servings %}
+  /* Serving count follows the selected plan / bundle; refresh the tip if it is showing */
   var bundles = false; /* true while the Black Friday bundles are driving the count */
+  function refresh(){ if(open === servings) show(servings); }
   document.addEventListener('ps1c:select', function(e){
-    if(bundles) return;
+    if(bundles || !servings) return;
     var n = (e.detail && e.detail.name) || '';
-    el.textContent = n.indexOf('1-Month') > -1 ? el.dataset.alt : el.dataset.base;
+    servings.textContent = n.indexOf('1-Month') > -1 ? servings.dataset.alt : servings.dataset.base;
+    refresh();
   });
   /* Black Friday bundles: the count follows the selected bundle (tubs x servings per tub), e.g. "180 servings" */
   document.addEventListener('bfps:change', function(e){
+    if(!servings) return;
     var d = e.detail || {};
-    if(d.mode === 'bundles' && d.servings){ bundles = true; el.textContent = el.dataset.base.replace(/\d[\d,]*/, d.servings); }
-    else { bundles = false; el.textContent = el.dataset.base; }
+    if(d.mode === 'bundles' && d.servings){ bundles = true; servings.textContent = servings.dataset.base.replace(/\d[\d,]*/, d.servings); }
+    else { bundles = false; servings.textContent = servings.dataset.base; }
+    refresh();
   });
+  {%- endif %}
 })();
 </script>
-{%- endif -%}
