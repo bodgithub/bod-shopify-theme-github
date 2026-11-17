@@ -523,7 +523,6 @@
         },
         "custom_liquid_dqLCJY": {
           "type": "feature_chips",
-          "disabled": false,
           "settings": {
             "show_servings": true,
             "servings_default": "45 servings",
@@ -1063,17 +1062,7 @@
             "c4_desc": "Metabolic & appetite",
             "c4_variant": "48915264209115",
             "hide_sub": false,
-            "hide_ot": false,
-            "bf_sub_layout": "tiers",
-            "sub_tier_badge": "Black Friday deal",
-            "bd_tier_badge": "",
-            "ot_tier_badge": "",
-            "bf_sub_bundle_months": "6",
-            "bd_tier_label": "1 month",
-            "sub_tier_label": "Subscription",
-            "ot_tier_label": "One-time purchase",
-            "bf_bundle_callout": "[code]: [pct]% off the [months]-month bundle • Ends Nov 30",
-            "sub_line": "Works out at **$28.18 a month** · you save $22.73"
+            "hide_ot": false
           }
         },
         "facts_table_main": {
