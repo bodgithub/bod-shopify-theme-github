@@ -1513,6 +1513,18 @@
         "info": "One per line: one-off variant ID, a colon, then the selling plan ID to switch it to. The variant metafield bodology.upsell_selling_plan_id overrides this when set."
       },
       {
+        "type": "text",
+        "id": "bcd_upsell_code",
+        "label": "Code applied when switching from the cart",
+        "info": "A subscription-only code (e.g. BLACKFRIDAY) the drawer attaches as soon as the upsell row switches a one-off line to a subscription. Leave empty for none."
+      },
+      {
+        "type": "textarea",
+        "id": "bcd_upsell_pct",
+        "label": "Saving shown on the upsell row",
+        "info": "One 'variant id: percent' per line, e.g. 46444646269147: 35. Overrides {percent} for that variant while the code above is on. Empty = the plan's own %."
+      },
+      {
         "type": "textarea",
         "id": "bcd_bundle_plans",
         "label": "Bundle plans (units per plan)",
