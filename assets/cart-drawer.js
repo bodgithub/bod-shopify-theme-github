@@ -72,6 +72,8 @@
     upsell_text: "Switch to {target}: save {percent}%{protocol_text}",
     upsell_protocol_text: " and get the protocol free",
     upsell_map: "46444657279195: 6331924699\n46444646269147: 5755961563",
+    upsell_code: "", /* a code the drawer holds and applies when a line is switched to a subscription from the upsell row (e.g. BLACKFRIDAY) */
+    upsell_pct: "", /* "variant id: percent" lines: the saving the upsell row shows for that variant instead of the plan's own % */
     bundle_plans: "7141621979: 2",
     label_subtotal: "Subtotal",
     label_subscribe_save: "Subscribe & save",
@@ -290,6 +292,7 @@
     var fmt = data.money_format;
     var intervals = parseMap(S.plan_intervals);
     var upsellMap = parseMap(S.upsell_map);
+    var upsellPct = parseMap(S.upsell_pct);
     var bundleSizes = parseMap(S.bundle_plans);
     var cartLevel = cart.cart_level_discount_applications || [];
     /* Applied codes. /cart.js has discount_codes[]; Liquid's cart | json does not, so
@@ -310,7 +313,7 @@
     var codeSet = {};
     codes.forEach(function (c) { codeSet[String(c).toLowerCase()] = true; });
     /* what the customer sees: a family member shows as its alias (MY20-, -MY20 -> MY20) */
-    var rules = parseRules(S.code_rules).concat(subOnlyRules(S.sub_only_codes));
+    var rules = parseRules(S.code_rules).concat(subOnlyRules(S.sub_only_codes)).concat(subOnlyRules(S.upsell_code));
     var blocks = parseBlocks(S.code_blocks);
     var codeNames = uniq(codes.map(function (c) { return aliasFor(rules, c) || c; }));
     var codeTotal = sum(codeApps, function (d) { return d.total_allocated_amount; });
@@ -363,7 +366,7 @@
         if (opt) {
           upsell = {
             planId: tid, name: shortPlan(opt.name),
-            pct: listUnit > 0 ? Math.round((1 - opt.price / listUnit) * 100) : 0,
+            pct: upsellPct[String(meta.variant_id)] ? parseInt(upsellPct[String(meta.variant_id)], 10) : (listUnit > 0 ? Math.round((1 - opt.price / listUnit) * 100) : 0),
             variantId: meta.upsell_variant_id ? String(meta.upsell_variant_id) : null
           };
         }
@@ -879,6 +882,9 @@
     var variant = btn.getAttribute('data-variant'), lineVariant = btn.getAttribute('data-line-variant');
     if (!key || !plan) { return; }
     setBusy(btn, true);
+    /* the upsell's code (e.g. BLACKFRIDAY) is held so the reconcile applies it once the line is a subscription */
+    var sd = readData(); var upCode = String(withDefaults((sd && sd.settings) || {}).upsell_code || '').trim();
+    if (upCode) { ls.set(LS_CODE, upCode); }
     var flow;
     if (!variant || variant === lineVariant) {
       flow = post('cart/change.js', withSections({ id: key, selling_plan: plan }))

@@ -96,6 +96,8 @@
 #ps1c-{{ uid }} .pc-benes{gap:0;}
 #ps1c-{{ uid }} .pc-benes li{display:flex; align-items:flex-start; gap:10px; font-size:15px; font-weight:400; line-height:1.35; color:var(--ps-ink); margin:0 0 8px;}
 #ps1c-{{ uid }} .pc-benes li:last-child{margin-bottom:0;}
+#ps1c-{{ uid }} .pc-line{margin:12px 0 0; font-size:15px; font-weight:400; line-height:1.35; color:var(--ps-ink);} /* mirrors the bundle box's 'Works out at' line */
+#ps1c-{{ uid }} .pc-line strong{font-weight:600;}
 #ps1c-{{ uid }} .pc-benes__tick{flex:0 0 auto; width:16px; height:16px; margin-top:3px; color:#1a2874;}
 /* shipping bullet: pulsing dot in place of the tick, live date bold */
 #ps1c-{{ uid }} .pc-benes__dot{flex:0 0 auto; width:9px; height:9px; margin:6px 3.5px 0; box-shadow:0 0 0 3px rgba(52,71,175,.18);}
@@ -245,6 +247,7 @@
 #ps1c-{{ uid }} .pc-titlerow{gap:6px;}
 #ps1c-{{ uid }} .pc-check{width:16px; height:16px;}
 #ps1c-{{ uid }} .pc-benes li{font-size:14px;}
+#ps1c-{{ uid }} .pc-line{font-size:14px;}
 #ps1c-{{ uid }} .ps-concern__tick{width:16px; height:16px;}
 #ps1c-{{ uid }} .ps-concern__tick svg{width:10px; height:10px;}
 #ps1c-{{ uid }} .pc-check svg{width:10px; height:10px;}
@@ -338,6 +341,9 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       assign card_serving = s[k]
       assign k = P | append: '_benefits'
       assign card_benefits = s[k]
+      assign k = P | append: '_line'
+      assign card_line = s[k] | default: '' | strip | escape
+      assign card_line = card_line | replace_first: '**', '<strong>' | replace_first: '**', '</strong>'
       assign k = P | append: '_variant'
       assign card_variant = s[k]
       assign k = P | append: '_plan'
@@ -380,7 +386,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
               </div>
               {%- assign benes = card_benefits | newline_to_br | split: '<br />' -%}
               {%- assign has_benes = false -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}{%- assign has_benes = true -%}{%- endif -%}{%- endfor -%}
-              {%- capture card_benes_html -%}{%- if has_benes or ship_in_benes -%}<ul class="pc-benes">{%- if ship_in_benes -%}<li class="pc-benes__ship"><span class="ps-ship__dot pc-benes__dot" aria-hidden="true"></span><span data-ps1c-ship-bullet data-tpl="{{ ship_bullet | escape }}" data-tpl-weekend="{{ ship_bullet_weekend | escape }}"></span></li>{%- endif -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li><svg class="pc-benes__tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>{{ t }}</span></li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}{%- endcapture -%}
+              {%- capture card_benes_html -%}{%- if has_benes or ship_in_benes -%}<ul class="pc-benes">{%- if ship_in_benes -%}<li class="pc-benes__ship"><span class="ps-ship__dot pc-benes__dot" aria-hidden="true"></span><span data-ps1c-ship-bullet data-tpl="{{ ship_bullet | escape }}" data-tpl-weekend="{{ ship_bullet_weekend | escape }}"></span></li>{%- endif -%}{%- for b in benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li><svg class="pc-benes__tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>{{ t }}</span></li>{%- endif -%}{%- endfor -%}</ul>{%- endif -%}{%- if card_line != blank -%}<p class="pc-line">{{ card_line }}</p>{%- endif -%}{%- endcapture -%}
               {%- if gift_pos != 'card_top' -%}{{ card_benes_html }}{%- endif -%}
             </div>
             <div class="pc-right">

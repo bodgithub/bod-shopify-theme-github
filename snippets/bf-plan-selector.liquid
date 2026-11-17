@@ -400,7 +400,10 @@
   #ps1c-{{ uid }} .bfps--tier-bundle .bfps__panel--tiers [data-ps1c-card]{display:none}
   #ps1c-{{ uid }} .bfps--tier-bundle [data-bfps-panel="bundles"] .bfc__tiers,#ps1c-{{ uid }} .bfps--tier-bundle [data-bfps-panel="bundles"] .bfps__sublink{display:none}
   #ps1c-{{ uid }} .bfps__subtiers .bfc__tier{display:flex;flex-direction:column;align-items:flex-start}
-  #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-free{font-weight:700;margin-top:auto}
+  #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-label{margin-bottom:0}
+  #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-foot{display:flex;flex-direction:column;align-items:flex-start;margin-top:auto;padding-top:14px}
+  #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-foot .bfc__pct{margin:0 0 10px}
+  #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-price{display:block;font-size:17px;font-weight:800;line-height:1.1;letter-spacing:-0.02em}
   #ps1c-{{ uid }} .bfc__swap:hover{color:var(--bf-navy)}
   #ps1c-{{ uid }} .bfc__free-hidden{display:none}
   @media (max-width:749px){
@@ -410,6 +413,9 @@
     #ps1c-{{ uid }} .bfc__badge{left:6px;font-size:10.5px;padding:4px 7px}
     #ps1c-{{ uid }} .bfc__tier-label{font-size:19px;margin-bottom:7px}
     #ps1c-{{ uid }} .bfc__pct{font-size:12px;padding:5px 9px;margin-bottom:7px}
+    #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-foot{padding-top:10px}
+    #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-foot .bfc__pct{margin-bottom:7px}
+    #ps1c-{{ uid }} .bfps__subtiers .bfc__tier-price{font-size:15px}
     #ps1c-{{ uid }} .bfc__tier-free{font-size:12px}
     #ps1c-{{ uid }} .bfc__panel{padding:14px 14px 12px}
     #ps1c-{{ uid }} .bfc__title{font-size:17px}
@@ -730,8 +736,11 @@
           var h = '';
           if (c.dataset.ps1cBadge) { h += '<span class="bfc__badge bfc__badge--navy">' + esc(c.dataset.ps1cBadge) + '</span>'; }
           h += '<span class="bfc__tier-label">' + esc(c.dataset.ps1cTierLabel || c.dataset.ps1cName || '') + '</span>';
+          /* the % pill and the price sit together, anchored to the bottom of the button */
+          h += '<span class="bfc__tier-foot">';
           if (c.dataset.ps1cPill) { h += '<span class="bfc__pct">' + esc(c.dataset.ps1cPill) + '</span>'; }
-          if (c.dataset.ps1cPrice) { h += '<span class="bfc__tier-free">' + esc(c.dataset.ps1cPrice) + '</span>'; }
+          if (c.dataset.ps1cPrice) { h += '<span class="bfc__tier-price">' + esc(c.dataset.ps1cPrice) + '</span>'; }
+          h += '</span>';
           b.innerHTML = h;
           b.addEventListener('click', function () { c.click(); });
           /* any click on a plan card (tier button, the card itself, the sticky bar) leaves the bundle tier */
@@ -745,8 +754,8 @@
           var bh = '';
           if (tb.badge) { bh += '<span class="bfc__badge bfc__badge--' + (tb.badgeStyle === 'lavender' ? 'lavender' : 'navy') + '">' + esc(tb.badge) + '</span>'; }
           bh += '<span class="bfc__tier-label">' + esc(tb.label) + '</span>';
-          bh += '<span class="bfc__pct">' + tb.pct + '% off</span>';
-          if (tb.freeText) { bh += '<span class="bfc__tier-free">' + esc(tb.freeText) + '</span>'; }
+          /* like the plan buttons: % pill and the bundle price, anchored to the bottom */
+          bh += '<span class="bfc__tier-foot"><span class="bfc__pct">' + tb.pct + '% off</span><span class="bfc__tier-price">' + esc(moneyCents(tb.price)) + '</span></span>';
           bbtn.innerHTML = bh;
           bbtn.addEventListener('click', function () { tierBundle = true; go(bIndex); setMode('bundles'); syncTiers(); });
           stWrap.appendChild(bbtn);
