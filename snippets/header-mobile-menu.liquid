@@ -4,12 +4,28 @@
     <ul class="mobile-menu">
 		 <!-- SHOP NOW CTA (mobile drawer) -->
   <li class="mobile-menu__cta">
+    {%- liquid
+  comment
+    Landing page button (header settings lp_btn_*): on the listed templates the Shop Now button reads and links differently
+  endcomment
+  assign nav_cta_text = 'Shop Now'
+  assign nav_cta_link = '/products/myo-d-chiro-inositol-powder'
+  if template.suffix != blank and header_settings.lp_btn_templates != blank
+    assign lpb_list = header_settings.lp_btn_templates | downcase | replace: ' ', '' | split: ','
+    assign lpb_cur = template.suffix | downcase
+    if lpb_list contains lpb_cur
+      assign nav_cta_text = header_settings.lp_btn_text | default: 'Shop Black Friday'
+      assign nav_cta_link = header_settings.lp_btn_link | default: '#Product-Slider'
+    endif
+  endif
+-%}
     <a
       class="button button--primary shop-now-cta"
-      href="/products/myo-d-chiro-inositol-powder"
-      title="Shop Now"
+      href="{{ nav_cta_link }}"
+      title="{{ nav_cta_text | escape }}"
       role="menuitem"
-    >Shop Now</a>
+      {%- if nav_cta_link contains '#' %} onclick="var d=this.closest('details');if(d){d.removeAttribute('open');}document.body.classList.remove('overflow-hidden');"{% endif %}
+    >{{ nav_cta_text }}</a>
   </li>
 			{%- for link in header_settings.menu.links -%}
 				{%- liquid
