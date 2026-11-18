@@ -68,6 +68,8 @@
 {%- assign card_rad_in = card_rad | minus: cbw | at_least: 0 -%}
 #ps1c-{{ uid }} .pc-card{border:{{ cbw }}px solid {{ cbc }}; border-radius:{{ card_rad }}px; background:#fff;}
 #ps1c-{{ uid }} .pc-card:hover{border-color:{{ cbc }};}
+/* hover: an unselected card's border goes to the selected weight (inset shadow, so nothing shifts); pointer devices only */
+@media (hover:hover){#ps1c-{{ uid }} .pc-card:not(.is-selected):hover .pc-card__in{% if sel_extra > 0 %}{box-shadow:inset 0 0 0 {{ sel_extra }}px {{ cbc }};}{% else %}{box-shadow:inset 0 0 0 1px {{ cbc }};}{% endif %}}
 #ps1c-{{ uid }} .pc-card .pc-card__in,#ps1c-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:{{ card_rad_in }}px; background:#fff;}
 #ps1c-{{ uid }} .pc-card.is-selected{border:{{ cbw }}px solid {{ cbc }}; background:#fff; padding:0; overflow:hidden;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-card__in{background:#fff; border-radius:{{ card_rad_in }}px;{% if sel_extra > 0 %} box-shadow:inset 0 0 0 {{ sel_extra }}px {{ cbc }};{% endif %}}
