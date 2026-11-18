@@ -284,6 +284,12 @@
 /* callout above the cards: same gradient bar as the Black Friday subscription view */
 #ps1c-{{ uid }} .ps-callout{margin:0 0 4px;padding:11px 14px;border-radius:5px;background:#3446af;background:linear-gradient(90deg,#182769 0%,#3446af 32%,#3446af 68%,#182769 100%);color:#fff;font-size:14px;font-weight:600;line-height:1.35;text-align:center;letter-spacing:0.01em;}
 #ps1c-{{ uid }} .ps-callout-code{display:inline;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#fff;margin-right:2px;}
+#ps1c-{{ uid }} .ps-callout{text-transform:uppercase;letter-spacing:0.02em;}
+/* inline countdown: numbers at the sentence's size, units a touch smaller */
+#ps1c-{{ uid }} .ps-callout__count[hidden]{display:none;}
+#ps1c-{{ uid }} .ps-callout__n{font-variant-numeric:tabular-nums;}
+#ps1c-{{ uid }} .ps-callout__u{font-size:0.72em;margin:0 3px 0 1px;}
+#ps1c-{{ uid }} .ps-callout__u:last-child{margin-right:0;}
 /* "Bundle and save" button under the plan cards; the bundle card it reveals is hidden until then */
 #ps1c-{{ uid }} .pc-card[hidden]{display:none;}
 #ps1c-{{ uid }} .ps-bundlebtn{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:48px; border:1px solid #3447af; border-radius:10px; background:#e3eaff; color:#1a2874; font-family:var(--ps-sans); font-size:15px; font-weight:700; letter-spacing:-0.01em; line-height:1; cursor:pointer; padding:0 18px; transition:background .15s ease, color .15s ease;}
@@ -323,7 +329,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       {%- assign callout_pill = '<span class="ps-callout-code">' | append: callout_code | append: '</span>' -%}
       {%- assign callout_html = callout_html | replace_first: callout_code, callout_pill -%}
     {%- endif -%}
-    <p class="ps-callout">{{ callout_html }}</p>
+    <p class="ps-callout">{{ callout_html }}{%- if s.bf_callout_end != blank -%}<span class="ps-callout__count" data-ps1c-count data-end="{{ s.bf_callout_end | strip | escape }}" hidden> • {{ s.bf_callout_count_label | default: 'Ends in' | escape }} <span data-ps1c-count-parts></span></span>{%- endif -%}</p>
   {%- endif -%}
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
   {%- capture ps1c_cards -%}
@@ -824,6 +830,23 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     if(gOpen){ gOpen.addEventListener('click', function(e){ e.stopPropagation(); openG(); }); }
     [].slice.call(guar.querySelectorAll('[data-ps1c-guar-close]')).forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); closeG(); }); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !guar.hidden){ closeG(); } });
+  }
+  // callout countdown (bf_callout_end): d/h/m while a day or more is left, then h/m/s; hidden once it has passed
+  var countEl = root.querySelector('[data-ps1c-count]');
+  if(countEl){
+    var countEnd = Date.parse(countEl.getAttribute('data-end') || '');
+    var countParts = countEl.querySelector('[data-ps1c-count-parts]');
+    var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+    var tick = function(){
+      if(isNaN(countEnd)){ countEl.hidden = true; return; }
+      var left = Math.floor((countEnd - Date.now()) / 1000);
+      if(left <= 0){ countEl.hidden = true; return; }
+      var d = Math.floor(left / 86400), h = Math.floor((left % 86400) / 3600), m = Math.floor((left % 3600) / 60), sec = left % 60;
+      var parts = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m']] : [[h,'h'],[pad(m),'m'],[pad(sec),'s']];
+      countParts.innerHTML = parts.map(function(x){ return '<span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span>'; }).join('');
+      countEl.hidden = false;
+    };
+    tick(); setInterval(tick, 1000);
   }
   // "Bundle and save": reveal + select the bundle card, the button goes away
   var bunBtn = root.querySelector('[data-ps1c-bundle-open]');
