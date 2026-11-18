@@ -3629,6 +3629,14 @@
         },
         {
           "type": "header",
+          "content": "Bundle and save button",
+          "info": "Cards layout only (Black Friday bundles off). A button under the plan cards reveals Bundle 2 below (its tubs, months, % and title) as a one-time card of this block's one-time tub; the Bundle 2 code (code pattern below) is applied in the cart."
+        },
+        { "type": "text", "id": "bundle_btn_label", "label": "Button text", "info": "Blank = no button and no bundle card." },
+        { "type": "textarea", "id": "bundle_benefits", "label": "Bundle card benefits (one per line)" },
+        { "type": "text", "id": "bundle_line", "label": "Line under the bundle benefits", "info": "e.g. Works out at **$23.83 a month** · you save $117 (** marks bold)." },
+        {
+          "type": "header",
           "content": "Black Friday plan selector",
           "info": "Bundles are this block's one-time tub added at quantity 2 / 4 / 8 with NO selling plan. The saving is applied by automatic discounts in Shopify admin (minimum quantity 2 / 4 / 8); the % entered below is for display and must match them."
         },
@@ -4244,6 +4252,12 @@
           "type": "textarea",
           "id": "bd_benefits",
           "label": "Benefits (one per line)"
+        },
+        {
+          "type": "text",
+          "id": "bd_line",
+          "label": "Line under the benefits",
+          "info": "Shown at the bottom of the card, e.g. Works out at **$1.04 a day** · you save $15.75 (** marks bold)."
         },
         {
           "type": "text",
