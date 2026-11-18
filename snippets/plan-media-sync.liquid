@@ -1,0 +1,58 @@
+{%- comment -%}
+  Bodology · plan selector → product gallery
+  The plan selector (plan-selector-1c) is not Shopify's variant picker, so the gallery never hears about the
+  chosen variant. This listens for its ps1c:select event and shows the chosen variant's own image (e.g. the
+  4-week tub for the 1-Month Plan) the same way the theme's variant picker does (product.js setActiveMedia):
+  with "Hide other variants' images" on, the variant slide/thumb is switched on, the slider rebuilt and the
+  slide selected. A plan whose variant has no image goes back to the product's lead image, with the variant
+  images hidden again. Params: section, product.
+{%- endcomment -%}
+{%- liquid
+  assign pms_lead = product.selected_or_first_available_variant.featured_media
+  if pms_lead == null
+    assign pms_lead = product.media.first
+  endif
+-%}
+<style>
+/* stacked grid forces every thumbnail to display; keep other variants' tiles hidden until their plan is chosen */
+.product-media-layout--stacked .product-thumbnail-container[data-hide-variants="true"] .product-thumbnail.product-images__slide-item--variant:not(.is-active){display:none !important;}
+</style>
+<script>
+(function(){
+  var gallery = document.getElementById('MediaGallery-{{ section.id }}');
+  if(!gallery) return;
+  var slider = gallery.querySelector('product-slider');
+  var thumbs = gallery.querySelector('.product-thumbnail-container');
+  if(!slider) return;
+  var media = { {% for v in product.variants %}"{{ v.id }}":{% if v.featured_media %}"{{ v.featured_media.id }}"{% else %}null{% endif %}{% unless forloop.last %},{% endunless %}{% endfor %} };
+  var leadId = "{{ pms_lead.id }}";
+  var current = null;
+  function mark(host, prefix, id){
+    if(!host) return null;
+    var target = host.querySelector('#' + prefix + '-{{ section.id }}-' + id);
+    if(!target) return null;
+    [].forEach.call(host.querySelectorAll('.is-initial-selected'), function(el){ el.classList.remove('is-initial-selected'); });
+    [].forEach.call(host.querySelectorAll('.product-images__slide-item--variant'), function(el){ el.classList.remove('is-active'); });
+    target.classList.add('is-active'); target.classList.add('is-initial-selected');
+    return target;
+  }
+  function show(id){
+    if(id === current) return;
+    var slide = mark(slider, 'Slide', id);
+    if(!slide) return;
+    mark(thumbs, 'Thumb', id);
+    current = id;
+    try {
+      if(slider.dataset.hideVariants === 'true' && typeof slider.reInit === 'function'){ slider.reInit(); }
+      if(typeof slider.selectCell === 'function'){ slider.selectCell(slide); }
+    } catch(e){}
+  }
+  document.addEventListener('ps1c:select', function(e){
+    var d = e.detail || {};
+    if(!d.variant) return;
+    var id = media[String(d.variant)] || leadId;
+    if(!window.Flickity || !window.Flickity.data(slider)){ current = (id === leadId) ? current : null; return; }
+    show(id);
+  });
+})();
+</script>
