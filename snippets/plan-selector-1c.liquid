@@ -275,6 +275,9 @@
 #ps1c-{{ uid }} .ps-ship{margin-top:0; font-size:14px;}
 #ps1c-{{ uid }} .ps-guar{font-size:15px;}
 {%- endif -%}
+/* callout above the cards: same gradient bar as the Black Friday subscription view */
+#ps1c-{{ uid }} .ps-callout{margin:0 0 4px;padding:11px 14px;border-radius:5px;background:#3446af;background:linear-gradient(90deg,#182769 0%,#3446af 32%,#3446af 68%,#182769 100%);color:#fff;font-size:14px;font-weight:600;line-height:1.35;text-align:center;letter-spacing:0.01em;}
+#ps1c-{{ uid }} .ps-callout-code{display:inline;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;color:#fff;margin-right:2px;}
 /* "Bundle and save" button under the plan cards; the bundle card it reveals is hidden until then */
 #ps1c-{{ uid }} .pc-card[hidden]{display:none;}
 #ps1c-{{ uid }} .ps-bundlebtn{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:48px; border:1px solid #3447af; border-radius:10px; background:#e3eaff; color:#1a2874; font-family:var(--ps-sans); font-size:15px; font-weight:700; letter-spacing:-0.01em; line-height:1; cursor:pointer; padding:0 18px; transition:background .15s ease, color .15s ease;}
@@ -306,6 +309,16 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 
 <div id="ps1c-{{ uid }}">
 <div class="bod-pc1c{% if ps1c_default != 'ot' %} is-sub{% endif %}" role="radiogroup" data-ps1c-root data-ps1c-sub-code="{{ s.bf_sub_code | strip | escape }}" data-ps1c-bd-code="{{ s.bf_bd_sub_code | strip | escape }}" aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+  {%- if s.bf_enabled != true and s.bf_sub_callout != blank -%}
+    {%- comment -%} same callout as the Black Friday subscription view, above the cards: the code is picked out as the bold pill {%- endcomment -%}
+    {%- assign callout_html = s.bf_sub_callout | escape -%}
+    {%- assign callout_code = s.bf_sub_code | strip | upcase -%}
+    {%- if callout_code != blank and callout_html contains callout_code -%}
+      {%- assign callout_pill = '<span class="ps-callout-code">' | append: callout_code | append: '</span>' -%}
+      {%- assign callout_html = callout_html | replace_first: callout_code, callout_pill -%}
+    {%- endif -%}
+    <p class="ps-callout">{{ callout_html }}</p>
+  {%- endif -%}
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
   {%- capture ps1c_cards -%}
   {%- for spec in ps1c_specs -%}
