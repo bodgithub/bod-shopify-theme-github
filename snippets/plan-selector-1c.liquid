@@ -271,6 +271,12 @@
 #ps1c-{{ uid }} .ps-ship{margin-top:0; font-size:14px;}
 #ps1c-{{ uid }} .ps-guar{font-size:15px;}
 {%- endif -%}
+/* "Bundle and save" button under the plan cards; the bundle card it reveals is hidden until then */
+#ps1c-{{ uid }} .pc-card[hidden]{display:none;}
+#ps1c-{{ uid }} .ps-bundlebtn{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:48px; border:1px solid #3447af; border-radius:10px; background:#e3eaff; color:#1a2874; font-family:var(--ps-sans); font-size:15px; font-weight:700; letter-spacing:-0.01em; line-height:1; cursor:pointer; padding:0 18px; transition:background .15s ease, color .15s ease;}
+#ps1c-{{ uid }} .ps-bundlebtn:hover, #ps1c-{{ uid }} .ps-bundlebtn:focus-visible{background:#3447af; color:#fff; outline:none;}
+#ps1c-{{ uid }} .ps-bundlebtn[hidden]{display:none;}
+#ps1c-{{ uid }} .ps-bundlebtn svg{width:14px; height:14px; flex:0 0 auto;}
 </style>
 
 {%- capture proto_icons -%}
@@ -295,7 +301,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 {%- endif -%}
 
 <div id="ps1c-{{ uid }}">
-<div class="bod-pc1c{% if ps1c_default != 'ot' %} is-sub{% endif %}" role="radiogroup" data-ps1c-root aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
+<div class="bod-pc1c{% if ps1c_default != 'ot' %} is-sub{% endif %}" role="radiogroup" data-ps1c-root data-ps1c-sub-code="{{ s.bf_sub_code | strip | escape }}" data-ps1c-bd-code="{{ s.bf_bd_sub_code | strip | escape }}" aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
   {%- capture ps1c_cards -%}
   {%- for spec in ps1c_specs -%}
@@ -424,6 +430,71 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     {%- render 'bf-plan-selector', s: s, uid: uid, product: product, base_variant: ps1c_base_variant, subscribe_html: ps1c_cards -%}
   {%- else -%}
     {{- ps1c_cards -}}
+    {%- if s.bundle_btn_label != blank -%}
+    {%- comment -%}
+      "Bundle and save": a button under the plan cards reveals the 6-month bundle (Bundle 2 settings) as a one-time card —
+      this block's one-time tub x tubs, no selling plan, no gift. Its code (bf_code_pattern, e.g. BLACKFRIDAY45) is attached
+      after the add and the hidden _bf_bundle properties name the line in the cart drawer, exactly like the Black Friday bundles tab.
+    {%- endcomment -%}
+    {%- liquid
+      assign bun_tubs = s.bf_tier_2_tubs | default: 0
+      assign bun_pct = s.bf_tier_2_pct | default: 0
+      assign bun_pct_s = bun_pct | append: ''
+      assign bun_months_s = s.bf_tier_2_months | default: 6 | append: ''
+      assign bun_vid = s.ot_variant | strip
+      assign bun_cents = 0
+      for v in product.variants
+        assign vid = v.id | append: ''
+        if vid == bun_vid
+          assign bun_cents = v.price
+        endif
+      endfor
+      assign bun_compare = bun_cents | times: bun_tubs
+      assign bun_keep = 100 | minus: bun_pct
+      assign bun_price = bun_compare | times: bun_keep | divided_by: 100.0 | round
+      assign bun_servings = s.bf_servings_per_tub | default: 45 | times: bun_tubs
+      assign bun_serving_txt = ''
+      if bun_servings > 0
+        assign bun_serving_txt = bun_price | divided_by: bun_servings | round | money | append: ' / serving'
+      endif
+      assign bun_title = s.bf_tier_2_title | default: '6-Month Bundle'
+      assign bun_cart_title = s.bf_cart_title | default: 'Black Friday [months]-Month Bundle' | replace: '[months]', bun_months_s | replace: '[label]', s.bf_tier_2_label
+      assign bun_code = s.bf_code_pattern | default: '' | replace: '[pct]', bun_pct_s | replace: '[months]', bun_months_s | strip
+      assign bun_line = s.bundle_line | default: '' | strip | escape
+      assign bun_line = bun_line | replace_first: '**', '<strong>' | replace_first: '**', '</strong>'
+      assign bun_price_txt = bun_price | money | replace: '.00', ''
+      assign bun_compare_txt = bun_compare | money | replace: '.00', ''
+      assign bun_benes = s.bundle_benefits | newline_to_br | split: '<br />'
+    -%}
+    {%- if bun_tubs > 0 and bun_cents > 0 -%}
+    <div class="pc-card pc-card--bundle" role="radio" aria-checked="false" tabindex="-1" hidden
+         data-ps1c-card data-ps1c-p="bundle" data-ps1c-name="{{ bun_title | escape }}" data-ps1c-price="{{ bun_price_txt | escape }}" data-ps1c-pill="{{ bun_pct }}% off" data-ps1c-serving="{{ bun_serving_txt | escape }}" data-ps1c-variant="{{ bun_vid }}" data-ps1c-plan="" data-ps1c-qty="{{ bun_tubs }}" data-ps1c-gift="" data-ps1c-bundle-title="{{ bun_cart_title | escape }}" data-ps1c-bundle-pct="{{ bun_pct }}" data-ps1c-bundle-code="{{ bun_code | escape }}">
+      <div class="pc-card__in">
+        <div class="pc-pad">
+          <div class="pc-grid">
+            <div class="pc-left">
+              <div class="pc-titlerow">
+                <span class="pc-check" aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6.5l2.6 2.6L10 3.5"/></svg></span>
+                <h3 class="pc-title">{{ bun_title }}</h3>
+                <span class="pc-pill">{{ bun_pct }}% off</span>
+              </div>
+              {%- if gift_pos != 'card_top' -%}<ul class="pc-benes">{%- if ship_in_benes -%}<li class="pc-benes__ship"><span class="ps-ship__dot pc-benes__dot" aria-hidden="true"></span><span data-ps1c-ship-bullet data-tpl="{{ ship_bullet | escape }}" data-tpl-weekend="{{ ship_bullet_weekend | escape }}"></span></li>{%- endif -%}{%- for b in bun_benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li><svg class="pc-benes__tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>{{ t }}</span></li>{%- endif -%}{%- endfor -%}</ul>{%- if bun_line != blank -%}<p class="pc-line">{{ bun_line }}</p>{%- endif -%}{%- endif -%}
+            </div>
+            <div class="pc-right">
+              <div class="pc-price">{%- if bun_compare > bun_price -%}<span class="pc-price__was">{{ bun_compare_txt }}</span>{%- endif -%}<span class="pc-price__now">{{ bun_price_txt }}</span></div>
+              {%- if bun_serving_txt != blank -%}<span class="pc-serving">{{ bun_serving_txt }}</span>{%- endif -%}
+            </div>
+          </div>
+          {%- if gift_pos == 'card_top' -%}<div class="pc-full"><ul class="pc-benes">{%- if ship_in_benes -%}<li class="pc-benes__ship"><span class="ps-ship__dot pc-benes__dot" aria-hidden="true"></span><span data-ps1c-ship-bullet data-tpl="{{ ship_bullet | escape }}" data-tpl-weekend="{{ ship_bullet_weekend | escape }}"></span></li>{%- endif -%}{%- for b in bun_benes -%}{%- assign t = b | strip -%}{%- if t != blank -%}<li><svg class="pc-benes__tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 5"/></svg><span>{{ t }}</span></li>{%- endif -%}{%- endfor -%}</ul>{%- if bun_line != blank -%}<p class="pc-line">{{ bun_line }}</p>{%- endif -%}</div>{%- endif -%}
+        </div>
+      </div>
+    </div>
+    <button type="button" class="ps-bundlebtn" data-ps1c-bundle-open>
+      <span>{{ s.bundle_btn_label }}</span>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+    </button>
+    {%- endif -%}
+    {%- endif -%}
   {%- endif -%}
   {%- if s.subtick_enable -%}
   <button type="button" class="ps-subtick" role="switch" aria-checked="{% if ps1c_default != 'ot' %}true{% else %}false{% endif %}" data-ps1c-subtick>
@@ -731,6 +802,14 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     [].slice.call(guar.querySelectorAll('[data-ps1c-guar-close]')).forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); closeG(); }); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !guar.hidden){ closeG(); } });
   }
+  // "Bundle and save": reveal + select the bundle card, the button goes away
+  var bunBtn = root.querySelector('[data-ps1c-bundle-open]');
+  var bunCard = cards.filter(function(x){ return x.getAttribute('data-ps1c-p') === 'bundle'; })[0];
+  if(bunBtn && bunCard){
+    bunBtn.addEventListener('click', function(){
+      bunCard.hidden = false; bunCard.setAttribute('tabindex', '0'); bunBtn.hidden = true; select(bunCard);
+    });
+  }
   if(bfEl){ root.addEventListener('bfps:change', function(e){ bfState = e.detail; syncSub(); syncTick(); syncGiftBan(); syncBf(); }); }
   syncSub(); syncTick(); syncGiftBan(); syncBf();
   var c0 = selected(); if(c0){ announce(c0); }
@@ -778,6 +857,15 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     }
     var c = selected();
     if(!c){ showErr(); return; }
+    if(c.getAttribute('data-ps1c-p') === 'bundle'){
+      // "Bundle and save" card: one-time tub x tubs, no plan, no gift; hidden _bf_bundle properties + the visible 'Bundle' line as the bundles tab
+      var bVar = (c.getAttribute('data-ps1c-variant') || '').trim();
+      var bQty = parseInt(c.getAttribute('data-ps1c-qty'), 10) || 1;
+      var bTitle = c.getAttribute('data-ps1c-bundle-title') || c.getAttribute('data-ps1c-name') || 'Bundle';
+      if(!bVar){ showErr('This bundle needs the one-time variant ID — set it in the theme editor.'); return; }
+      postItems([{ id: bVar, quantity: bQty, properties: { '_li': (Date.now().toString(36) + Math.random().toString(36).slice(2, 8)), '_bf_bundle': bTitle, '_bf_pct': String(c.getAttribute('data-ps1c-bundle-pct') || ''), 'Bundle': bTitle + ' \u00b7 ' + bQty + '\u00d7 6-week tubs' } }], (c.getAttribute('data-ps1c-bundle-code') || '').trim());
+      return;
+    }
     var variant = (c.getAttribute('data-ps1c-variant') || '').trim();
     var plan = (c.getAttribute('data-ps1c-plan') || '').trim();
     var qty = parseInt(c.getAttribute('data-ps1c-qty'), 10) || 1;
@@ -794,10 +882,13 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       items.push({ id: g, quantity: 1, properties: gprops });
     }
     // B test: a code attached with a subscription (bf_sub_code for the 6-week 'sub' card; bf_bd_sub_code for the 1-month 'bd' card, blank = no code); never for one-time tubs or bundles
+    // Without the wrapper (cards layout) the same two settings are read from the root (data-ps1c-sub-code / data-ps1c-bd-code)
     var subCode = '';
-    if(plan && bfEl && !bundlesMode()){
-      var bdCode = (bfEl.getAttribute('data-bfps-bd-code') || '').trim();
-      subCode = (c.getAttribute('data-ps1c-p') === 'bd') ? bdCode : (bfEl.getAttribute('data-bfps-sub-code') || '').trim();
+    if(plan && !bundlesMode()){
+      var codeHost = bfEl || root;
+      var bdCode = (codeHost.getAttribute(bfEl ? 'data-bfps-bd-code' : 'data-ps1c-bd-code') || '').trim();
+      var mainCode = (codeHost.getAttribute(bfEl ? 'data-bfps-sub-code' : 'data-ps1c-sub-code') || '').trim();
+      subCode = (c.getAttribute('data-ps1c-p') === 'bd') ? bdCode : mainCode;
     }
     postItems(items, subCode);
   });
