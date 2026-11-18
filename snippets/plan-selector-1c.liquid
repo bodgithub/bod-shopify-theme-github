@@ -68,6 +68,8 @@
 {%- assign card_rad_in = card_rad | minus: cbw | at_least: 0 -%}
 #ps1c-{{ uid }} .pc-card{border:{{ cbw }}px solid {{ cbc }}; border-radius:{{ card_rad }}px; background:#fff;}
 #ps1c-{{ uid }} .pc-card:hover{border-color:{{ cbc }};}
+/* hover: an unselected card's border goes to the selected weight (inset shadow, so nothing shifts); pointer devices only */
+@media (hover:hover){#ps1c-{{ uid }} .pc-card:not(.is-selected):hover .pc-card__in{% if sel_extra > 0 %}{box-shadow:inset 0 0 0 {{ sel_extra }}px {{ cbc }};}{% else %}{box-shadow:inset 0 0 0 1px {{ cbc }};}{% endif %}}
 #ps1c-{{ uid }} .pc-card .pc-card__in,#ps1c-{{ uid }} .pc-card:not(.is-selected) .pc-card__in{border-radius:{{ card_rad_in }}px; background:#fff;}
 #ps1c-{{ uid }} .pc-card.is-selected{border:{{ cbw }}px solid {{ cbc }}; background:#fff; padding:0; overflow:hidden;}
 #ps1c-{{ uid }} .pc-card.is-selected .pc-card__in{background:#fff; border-radius:{{ card_rad_in }}px;{% if sel_extra > 0 %} box-shadow:inset 0 0 0 {{ sel_extra }}px {{ cbc }};{% endif %}}
@@ -831,7 +833,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     [].slice.call(guar.querySelectorAll('[data-ps1c-guar-close]')).forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); closeG(); }); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !guar.hidden){ closeG(); } });
   }
-  // callout countdown (bf_callout_end): d/h/m while a day or more is left, then h/m/s; hidden once it has passed
+  // callout countdown (bf_callout_end): d/h/m/s while a day or more is left, then h/m/s; hidden once it has passed
   var countEl = root.querySelector('[data-ps1c-count]');
   if(countEl){
     var countEnd = Date.parse(countEl.getAttribute('data-end') || '');
@@ -842,7 +844,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       var left = Math.floor((countEnd - Date.now()) / 1000);
       if(left <= 0){ countEl.hidden = true; return; }
       var d = Math.floor(left / 86400), h = Math.floor((left % 86400) / 3600), m = Math.floor((left % 3600) / 60), sec = left % 60;
-      var parts = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m']] : [[h,'h'],[pad(m),'m'],[pad(sec),'s']];
+      var parts = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']] : [[h,'h'],[pad(m),'m'],[pad(sec),'s']];
       countParts.innerHTML = parts.map(function(x){ return '<span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span>'; }).join('');
       countEl.hidden = false;
     };
