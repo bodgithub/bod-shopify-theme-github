@@ -755,7 +755,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
   }
   function showErr(msg){ var sp=err.querySelector('span'); if(sp && msg) sp.textContent=msg; err.classList.add('is-shown'); }
   function announce(c){
-    try{ document.dispatchEvent(new CustomEvent('ps1c:select',{detail:{uid:'{{ uid }}',p:c.getAttribute('data-ps1c-p'),name:c.getAttribute('data-ps1c-name')||''}})); }catch(e){}
+    try{ document.dispatchEvent(new CustomEvent('ps1c:select',{detail:{uid:'{{ uid }}',p:c.getAttribute('data-ps1c-p'),name:c.getAttribute('data-ps1c-name')||'',variant:(c.getAttribute('data-ps1c-variant')||'').trim()}})); }catch(e){}
   }
   function select(c){
     cards.forEach(function(x){ x.classList.remove('is-selected'); x.setAttribute('aria-checked','false'); });
