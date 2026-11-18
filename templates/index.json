@@ -1050,6 +1050,7 @@
         },
         "bundle_upsell_main": {
           "type": "bundle_upsell",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Bundle-14_c8f2e761-3a41-4162-a424-61484e071f67.png",
             "title": "Bundle + Save 25%",
@@ -1075,8 +1076,7 @@
             "max_width": 560,
             "margin_top": 14,
             "margin_bottom": 22
-          },
-          "disabled": true
+          }
         },
         "experts_LiL7KV": {
           "type": "experts",
