@@ -304,7 +304,9 @@
 #ps1c-{{ uid }} .ps-callout__timer[hidden]{display:none;}
 #ps1c-{{ uid }} .ps-callout__timer-label{font-size:11px; font-weight:600; color:#dfe4fb;}
 #ps1c-{{ uid }} .ps-callout__timer-val{font-size:17px; font-weight:800; letter-spacing:-0.01em; line-height:1.1; color:#fff; white-space:nowrap; font-variant-numeric:tabular-nums;}
-#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__u{font-size:0.82em; margin:0 6px 0 1px;}
+#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg{display:inline-block; margin-right:5px;}
+#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg:last-child{margin-right:0;}
+#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__u{font-size:0.62em; font-weight:700; text-transform:uppercase; margin:0 0 0 1px;}
 @media (max-width:749px){
 #ps1c-{{ uid }} .ps-callout--card{flex-direction:column; align-items:stretch; gap:12px; padding:18px;}
 #ps1c-{{ uid }} .ps-callout__title{font-size:18px;}
@@ -879,7 +881,9 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       if(left <= 0){ countEl.hidden = true; return; }
       var d = Math.floor(left / 86400), h = Math.floor((left % 86400) / 3600), m = Math.floor((left % 3600) / 60), sec = left % 60;
       if(countEl.hasAttribute('data-ps1c-count-clock')){
-        countParts.innerHTML = (d > 0 ? '<span class="ps-callout__n">' + d + '</span><span class="ps-callout__u">d</span>' : '') + '<span class="ps-callout__n">' + pad(h) + ':' + pad(m) + ':' + pad(sec) + '</span>';
+        // card: 12D 06H 41M 12S, units smaller (uppercase via CSS)
+        var cp = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']] : [[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']];
+        countParts.innerHTML = cp.map(function(x){ return '<span class="ps-callout__seg"><span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span></span>'; }).join(' ');
       } else {
         var parts = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']] : [[h,'h'],[pad(m),'m'],[pad(sec),'s']];
         countParts.innerHTML = parts.map(function(x){ return '<span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span>'; }).join('');
