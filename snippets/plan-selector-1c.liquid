@@ -298,13 +298,14 @@
 #ps1c-{{ uid }} .ps-callout__eyebrow{font-size:10.5px; font-weight:800; letter-spacing:0.2em; text-transform:uppercase; color:#b9c2f5; line-height:1.2;}
 #ps1c-{{ uid }} .ps-callout__title{display:block; font-size:18px; font-weight:800; letter-spacing:-0.02em; line-height:1.15; color:#fff;}
 #ps1c-{{ uid }} .ps-callout__sub{font-size:13px; color:#dfe4fb;}
-#ps1c-{{ uid }} .ps-callout__link{font-size:13px; color:#fff; text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px;}
+#ps1c-{{ uid }} .ps-callout__linkline{font-size:13px; color:#fff;}
+#ps1c-{{ uid }} .ps-callout__link{color:#fff; text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:1px;}
 #ps1c-{{ uid }} .ps-callout__link:hover{color:#dfe4fb;}
 #ps1c-{{ uid }} .ps-callout__timer{flex:0 0 auto; display:flex; flex-direction:column; align-items:center; gap:2px; background:rgba(255,255,255,0.14); border-radius:12px; padding:9px 13px; text-align:center;}
 #ps1c-{{ uid }} .ps-callout__timer[hidden]{display:none;}
 #ps1c-{{ uid }} .ps-callout__timer-label{font-size:11px; font-weight:600; color:#dfe4fb;}
 #ps1c-{{ uid }} .ps-callout__timer-val{font-size:17px; font-weight:800; letter-spacing:-0.01em; line-height:1.1; color:#fff; white-space:nowrap; font-variant-numeric:tabular-nums;}
-#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg{display:inline-block; margin-right:5px;}
+#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg{display:inline-block; margin-right:3px;}
 #ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg:last-child{margin-right:0;}
 #ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__u{font-size:0.62em; font-weight:700; text-transform:uppercase; margin:0 0 0 1px;}
 @media (max-width:749px){
@@ -350,7 +351,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
         {%- if s.callout_eyebrow != blank -%}<span class="ps-callout__eyebrow">{{ s.callout_eyebrow | escape }}</span>{%- endif -%}
         <strong class="ps-callout__title">{{ s.callout_title | escape }}</strong>
         {%- if s.callout_sub != blank -%}<span class="ps-callout__sub">{{ s.callout_sub | escape }}</span>{%- endif -%}
-        {%- if s.callout_link_text != blank -%}<a class="ps-callout__link" href="{{ s.callout_link | default: '#' }}">{{ s.callout_link_text | escape }} <span class="ps-callout__arrow" aria-hidden="true">&rarr;</span></a>{%- endif -%}
+        {%- if s.callout_link_text != blank -%}<span class="ps-callout__linkline">{%- if s.callout_link_prefix != blank -%}{{ s.callout_link_prefix | escape }} {% endif -%}<a class="ps-callout__link" href="{{ s.callout_link | default: '#' }}">{{ s.callout_link_text | escape }}</a> <span class="ps-callout__arrow" aria-hidden="true">&rarr;</span></span>{%- endif -%}
       </div>
       {%- if s.bf_callout_end != blank -%}
       <div class="ps-callout__timer" data-ps1c-count data-ps1c-count-clock data-end="{{ s.bf_callout_end | strip | escape }}" hidden>
@@ -883,7 +884,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       if(countEl.hasAttribute('data-ps1c-count-clock')){
         // card: 12D 06H 41M 12S, units smaller (uppercase via CSS)
         var cp = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']] : [[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']];
-        countParts.innerHTML = cp.map(function(x){ return '<span class="ps-callout__seg"><span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span></span>'; }).join(' ');
+        countParts.innerHTML = cp.map(function(x){ return '<span class="ps-callout__seg"><span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span></span>'; }).join('');
       } else {
         var parts = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']] : [[h,'h'],[pad(m),'m'],[pad(sec),'s']];
         countParts.innerHTML = parts.map(function(x){ return '<span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span>'; }).join('');
