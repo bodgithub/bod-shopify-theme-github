@@ -873,7 +873,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
     var countEnd = Date.parse(countEl.getAttribute('data-end') || '');
     var countParts = countEl.querySelector('[data-ps1c-count-parts]');
     var pad = function(n){ return (n < 10 ? '0' : '') + n; };
-    var tick = function(){
+    var countTick = function(){
       if(isNaN(countEnd)){ countEl.hidden = true; return; }
       var left = Math.floor((countEnd - Date.now()) / 1000);
       if(left <= 0){ countEl.hidden = true; return; }
@@ -886,7 +886,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       }
       countEl.hidden = false;
     };
-    tick(); setInterval(tick, 1000);
+    countTick(); setInterval(countTick, 1000);
   }
   // "Bundle and save": reveal + select the bundle card, the button goes away
   var bunBtn = root.querySelector('[data-ps1c-bundle-open]');
