@@ -305,7 +305,7 @@
 #ps1c-{{ uid }} .ps-callout__timer[hidden]{display:none;}
 #ps1c-{{ uid }} .ps-callout__timer-label{font-size:11px; font-weight:600; color:#dfe4fb;}
 #ps1c-{{ uid }} .ps-callout__timer-val{font-size:17px; font-weight:800; letter-spacing:-0.01em; line-height:1.1; color:#fff; white-space:nowrap; font-variant-numeric:tabular-nums;}
-#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg{display:inline-block; margin-right:5px;}
+#ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg{display:inline-block; margin-right:3px;}
 #ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg:last-child{margin-right:0;}
 #ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__u{font-size:0.62em; font-weight:700; text-transform:uppercase; margin:0 0 0 1px;}
 @media (max-width:749px){
@@ -884,7 +884,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       if(countEl.hasAttribute('data-ps1c-count-clock')){
         // card: 12D 06H 41M 12S, units smaller (uppercase via CSS)
         var cp = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']] : [[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']];
-        countParts.innerHTML = cp.map(function(x){ return '<span class="ps-callout__seg"><span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span></span>'; }).join(' ');
+        countParts.innerHTML = cp.map(function(x){ return '<span class="ps-callout__seg"><span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span></span>'; }).join('');
       } else {
         var parts = d > 0 ? [[d,'d'],[pad(h),'h'],[pad(m),'m'],[pad(sec),'s']] : [[h,'h'],[pad(m),'m'],[pad(sec),'s']];
         countParts.innerHTML = parts.map(function(x){ return '<span class="ps-callout__n">' + x[0] + '</span><span class="ps-callout__u">' + x[1] + '</span>'; }).join('');
