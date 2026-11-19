@@ -79,6 +79,8 @@
     transform: translateY(105%); transition: transform .32s cubic-bezier(.2,.7,.2,1);
   }
   #shopify-section-{{ uid }} .sc__bar[data-state="in"], #shopify-section-{{ uid }} .sc__bar[data-state="after"] { transform: translateY(0); }
+  /* phones: once scrolled past the section the bar slides away after a second without scrolling and comes back on the next scroll; inside the section it stays */
+  @media screen and (max-width: 749px) { #shopify-section-{{ uid }} .sc__bar[data-state="after"][data-idle] { transform: translateY(105%); } }
   #shopify-section-{{ uid }} .sc__bar-inner { max-width: {{ s.max_width }}px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
   #shopify-section-{{ uid }} .sc__bar-text { flex: 1 1 auto; min-width: 0; font-size: 15px; line-height: 1.35; }
   /* tap-hand roundel beside the opening prompt, only before anything is ticked */
@@ -300,6 +302,14 @@
     if(on){ if(barMsg){ barMsg.innerHTML = msgs.none; } if(barCount){ barCount.textContent = ''; } if(bar){ bar.setAttribute('data-count', 0); } }
     else { update(); }
   }
+  /* phones: in the 'after' state the bar hides after 1s without scrolling (data-idle) and shows again on the next scroll */
+  var idleTimer = null, phone = window.matchMedia ? window.matchMedia('(max-width: 749px)') : null;
+  function idle(state){
+    if(!bar) return;
+    bar.removeAttribute('data-idle');
+    if(idleTimer){ clearTimeout(idleTimer); idleTimer = null; }
+    if(state === 'after' && phone && phone.matches){ idleTimer = setTimeout(function(){ bar.setAttribute('data-idle', '1'); }, 1000); }
+  }
   /* bar states: hidden (section not reached) -> in (section on screen) -> after (scrolled past) */
   function place(){
     if(!bar) return;
@@ -317,6 +327,7 @@
     var buy = document.querySelector('[data-ps1c-root]') || document.getElementById('Product-Slider');
     if(buy){ var br = buy.getBoundingClientRect(); if(br.top < vh && br.bottom > 0){ state = 'hidden'; } }
     bar.setAttribute('data-state', state);
+    idle(state);
     if(state === 'after' && !bar.hasAttribute('data-bundle') && !bar.hasAttribute('data-plan')){ syncPlan(); }
     /* Shopify's theme-preview bar sits over the bottom edge; lift ours above it */
     var pb = document.getElementById('PBarNextFrameWrapper') || document.getElementById('preview-bar-iframe');

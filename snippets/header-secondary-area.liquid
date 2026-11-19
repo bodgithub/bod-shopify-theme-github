@@ -79,10 +79,25 @@
 .image-with-text-overlay .button:hover,.image-with-text-overlay .button:focus-visible,
 a.bod-nav-cta:hover,a.bod-nav-cta:focus-visible{background:#1a2874 !important;background-image:none !important;border-color:#1a2874 !important;color:#b9c2f5 !important;}
 </style>
-<a class="button desktop-only bod-nav-cta" href="{{ section.settings.button_url | default: '/products/myo-d-chiro-inositol-powder' }}"
+{%- liquid
+  comment
+    Landing page button (header settings lp_btn_*): on the listed templates the Shop Now button reads and links differently
+  endcomment
+  assign nav_cta_text = 'Shop Now'
+  assign nav_cta_link = '/products/myo-d-chiro-inositol-powder'
+  if template.suffix != blank and header_settings.lp_btn_templates != blank
+    assign lpb_list = header_settings.lp_btn_templates | downcase | replace: ' ', '' | split: ','
+    assign lpb_cur = template.suffix | downcase
+    if lpb_list contains lpb_cur
+      assign nav_cta_text = header_settings.lp_btn_text | default: 'Shop Black Friday'
+      assign nav_cta_link = header_settings.lp_btn_link | default: '#Product-Slider'
+    endif
+  endif
+-%}
+<a class="button desktop-only bod-nav-cta" href="{{ nav_cta_link }}"
    role="button"
-   title="{{ section.settings.button_text | default: 'Shop Now' }}">
-  <span>{{ section.settings.button_text | default: 'Shop Now' }}</span>
+   title="{{ nav_cta_text | escape }}">
+  <span>{{ nav_cta_text }}</span>
 </a>
 
 
