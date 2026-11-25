@@ -344,8 +344,8 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
 
 <div id="ps1c-{{ uid }}">
 <div class="bod-pc1c{% if ps1c_default != 'ot' %} is-sub{% endif %}" role="radiogroup" data-ps1c-root data-ps1c-sub-code="{{ s.bf_sub_code | strip | escape }}" data-ps1c-bd-code="{{ s.bf_bd_sub_code | strip | escape }}" aria-label="{{ s.heading | default: 'Choose your plan' | escape }}">
-  {%- if s.bf_enabled != true and s.callout_title != blank -%}
-    {%- comment -%} Callout card above the plan cards: eyebrow / title / sub / link on the left, the countdown panel (Ends in 12d 07:45:13) on the right {%- endcomment -%}
+  {%- if s.callout_title != blank -%}
+    {%- comment -%} Callout card above the plan cards (also above the Black Friday bundle selector when a title is set): eyebrow / title / sub / link on the left, the countdown panel (Ends in 12d 07:45:13) on the right {%- endcomment -%}
     <div class="ps-callout ps-callout--card">
       <div class="ps-callout__body">
         {%- if s.callout_eyebrow != blank -%}<span class="ps-callout__eyebrow">{{ s.callout_eyebrow | escape }}</span>{%- endif -%}
