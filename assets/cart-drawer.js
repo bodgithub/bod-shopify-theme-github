@@ -50,7 +50,7 @@
     code_beaten_text: "Your bundle is already {percent}% off, which beats {code}.",
     sub_only_codes: "",
     code_sub_only_text: "{code} only works on subscriptions. Switch to Subscribe & Save and it will be applied automatically.",
-    code_blocks: "* : plan 7141621979\n* : bf\n!BLACKFRIDAY35\n!BLACKFRIDAY45\n!BLACKFRIDAY55",
+    code_blocks: "* : plan 7141621979\n* : bf\n!BLACKFRIDAY35\n!BLACKFRIDAY40\n!BLACKFRIDAY45\n!BLACKFRIDAY55",
     code_blocked_text: "{code} doesn't apply to the bundle, which is already {percent}% off.",
     plan_subtitle: "Ships every {interval} \u00b7 cancel anytime",
     renewal_text: "Renews every {interval} at {renewal_price} until you cancel. Skip or cancel anytime in your account.",
