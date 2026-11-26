@@ -122,8 +122,9 @@
   }
   @media screen and (max-width: 749px) {
     #fchips-{{ uid }} .fc__row { flex-wrap: nowrap; }
+    /* each pill is as wide as its own text plus an equal share of the spare room, so the longer pill is not squeezed */
     #fchips-{{ uid }} .fc__chip {
-      flex: 1 1 0;
+      flex: 1 1 auto;
       min-width: 0;
       text-align: center;
       padding: 9px 4px;
