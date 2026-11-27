@@ -46,12 +46,25 @@
             "countdown": "hms",
             "count_date": ""
           }
+        },
+        "phase_cyber": {
+          "type": "phase",
+          "settings": {
+            "start_date": "2026-12-01",
+            "end_date": "2026-12-03",
+            "text": "CYBER WEEK · ENDS THURSDAY",
+            "text_mobile": "CYBER WEEK · ENDS THURSDAY",
+            "templates": "black-friday, black-friday-a, black-friday-b, pcos-black-friday, pcos-black-friday-b, over-40-black-friday, over-40-black-friday-b, switch-black-friday-b",
+            "countdown": "off",
+            "count_date": ""
+          }
         }
       },
       "block_order": [
         "phase_early",
         "phase_bf",
-        "phase_last"
+        "phase_last",
+        "phase_cyber"
       ],
       "custom_css": [],
       "settings": {

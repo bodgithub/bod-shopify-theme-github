@@ -92,7 +92,7 @@
     "free_shipping_minimum": "30",
     "bcd_code_rules": "",
     "bcd_code_blocks": "* : plan 7141621979\n* : bf\n!BUNDLE20\n!BLACKFRIDAY35\n!BLACKFRIDAY40\n!BLACKFRIDAY45\n!BLACKFRIDAY55",
-    "bcd_code_banner_by_code": "BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first 6-week plan order\nBLACK-FRIDAY : BLACK-FRIDAY applied: 30% off your first 4-week plan order",
+    "bcd_code_banner_by_code": "BLACKFRIDAY : BLACKFRIDAY applied: 35% off your first 6-week plan order\nBLACK-FRIDAY : BLACK-FRIDAY applied: 30% off your first 4-week plan order\nCYBERWEEK : CYBERWEEK applied: 35% off your first 6-week plan order\nCYBER-WEEK : CYBER-WEEK applied: 30% off your first 4-week plan order",
     "bf_ab_mode": "none",
     "bf_ab_split": 50,
     "bf_ab_a_view": "black-friday-a",
@@ -160,7 +160,12 @@
       }
     },
     "bcd_upsell_code": "BLACKFRIDAY",
-    "bcd_upsell_pct": "46444646269147: 35"
+    "bcd_upsell_pct": "46444646269147: 35",
+    "bcd_upsell_until": "2026-12-01T00:00:00-08:00",
+    "swap_templates": "black-friday, black-friday-a, black-friday-b, pcos-black-friday, pcos-black-friday-b, over-40-black-friday, over-40-black-friday-b, switch-black-friday-b",
+    "swap_start": "2026-12-01T00:00:00-08:00",
+    "swap_end": "2026-12-04T00:00:00-08:00",
+    "swap_pairs": "Ends Mon, Nov 30 => Ends Thu, Dec 3\nENDS NOV 30 => ENDS THU, DEC 3\nEnds Nov 30 => Ends Thu, Dec 3\nends Nov 30 => ends Thu, Dec 3\ncode BLACKFRIDAY => code CYBERWEEK\nBLACK FRIDAY => CYBER WEEK\nBlack Friday => Cyber Week"
   },
   "presets": {
     "Default": {
