@@ -303,6 +303,8 @@
 #ps1c-{{ uid }} .ps-callout__link:hover{color:#dfe4fb;}
 #ps1c-{{ uid }} .ps-callout__timer{flex:0 0 auto; display:flex; flex-direction:column; align-items:center; gap:2px; background:rgba(255,255,255,0.14); border-radius:12px; padding:9px 13px; text-align:center;}
 #ps1c-{{ uid }} .ps-callout__timer[hidden]{display:none;}
+#ps1c-{{ uid }} [data-ps1c-end-open]{cursor:pointer;}
+#ps1c-{{ uid }} [data-ps1c-end-open]:focus-visible{outline:2px solid #fff; outline-offset:2px;}
 #ps1c-{{ uid }} .ps-callout__timer-label{font-size:11px; font-weight:600; color:#dfe4fb;}
 #ps1c-{{ uid }} .ps-callout__timer-val{font-size:17px; font-weight:800; letter-spacing:-0.01em; line-height:1.1; color:#fff; white-space:nowrap; font-variant-numeric:tabular-nums;}
 #ps1c-{{ uid }} .ps-callout__timer-val .ps-callout__seg{display:inline-block; margin-right:3px;}
@@ -354,7 +356,7 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
         {%- if s.callout_link_text != blank -%}<span class="ps-callout__linkline">{%- if s.callout_link_prefix != blank -%}{{ s.callout_link_prefix | escape }} {% endif -%}<a class="ps-callout__link" href="{{ s.callout_link | default: '#' }}">{{ s.callout_link_text | escape }}</a> <span class="ps-callout__arrow" aria-hidden="true">&rarr;</span></span>{%- endif -%}
       </div>
       {%- if s.bf_callout_end != blank -%}
-      <div class="ps-callout__timer" data-ps1c-count data-ps1c-count-clock data-end="{{ s.bf_callout_end | strip | escape }}" hidden>
+      <div class="ps-callout__timer" data-ps1c-count data-ps1c-count-clock data-ps1c-end-open role="button" tabindex="0" aria-haspopup="dialog" aria-label="When does this offer end?" data-end="{{ s.bf_callout_end | strip | escape }}" hidden>
         <span class="ps-callout__timer-label">{{ s.bf_callout_count_label | default: 'Ends in' | escape }}</span>
         <span class="ps-callout__timer-val" data-ps1c-count-parts></span>
       </div>
@@ -368,7 +370,19 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       {%- assign callout_pill = '<span class="ps-callout-code">' | append: callout_code | append: '</span>' -%}
       {%- assign callout_html = callout_html | replace_first: callout_code, callout_pill -%}
     {%- endif -%}
-    <p class="ps-callout">{{ callout_html }}{%- if s.bf_callout_end != blank -%}<span class="ps-callout__count" data-ps1c-count data-end="{{ s.bf_callout_end | strip | escape }}" hidden> • {{ s.bf_callout_count_label | default: 'Ends in' | escape }} <span data-ps1c-count-parts></span></span>{%- endif -%}</p>
+    <p class="ps-callout">{{ callout_html }}{%- if s.bf_callout_end != blank -%}<span class="ps-callout__count" data-ps1c-count data-ps1c-end-open role="button" tabindex="0" aria-haspopup="dialog" aria-label="When does this offer end?" data-end="{{ s.bf_callout_end | strip | escape }}" hidden> • {{ s.bf_callout_count_label | default: 'Ends in' | escape }} <span data-ps1c-count-parts></span></span>{%- endif -%}</p>
+  {%- endif -%}
+  {%- if s.bf_callout_end != blank -%}
+  {%- comment -%} Countdown pop-up: tapping the countdown says when the offer ends. [day] [date] [time] are filled from the countdown's end time, read in Pacific time. {%- endcomment -%}
+  <div class="ps-modal" data-ps1c-end hidden>
+    <div class="ps-modal__ov" data-ps1c-end-close></div>
+    <div class="ps-modal__box" role="dialog" aria-modal="true" aria-label="{{ s.callout_popup_title | default: 'When does this offer end?' | escape }}">
+      <button type="button" class="ps-modal__x" data-ps1c-end-close aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h3 class="ps-modal__t">{{ s.callout_popup_title | default: 'When does this offer end?' | escape }}</h3>
+      <div class="ps-modal__body"><p data-ps1c-end-text data-tpl="{{ s.callout_popup_text | default: 'This offer ends [day], [date] at [time] Pacific Time. After that, prices go back to normal.' | escape }}"></p></div>
+      <div class="ps-modal__links"><button type="button" class="ps-modal__link" data-ps1c-end-close>Close</button></div>
+    </div>
+  </div>
   {%- endif -%}
   {%- if s.heading != blank -%}<h2 class="ps-h">{{ s.heading }}</h2>{%- endif -%}
   {%- capture ps1c_cards -%}
@@ -892,6 +906,22 @@ gauge|<path d="M2.5 11.5 A5.5 5.5 0 0 1 13.5 11.5" fill="none" stroke="{{ acc }}
       countEl.hidden = false;
     };
     countTick(); setInterval(countTick, 1000);
+    // tapping the countdown opens a pop-up that says when the offer ends (the end time, read in Pacific time)
+    var endModal = root.querySelector('[data-ps1c-end]');
+    if(endModal && !isNaN(countEnd)){
+      var endText = endModal.querySelector('[data-ps1c-end-text]');
+      if(endText){
+        var endDate = new Date(countEnd), fmtPart = function(o){ o.timeZone = 'America/Los_Angeles'; try { return new Intl.DateTimeFormat('en-US', o).format(endDate); } catch(e){ return ''; } };
+        var endTime = fmtPart({ hour: 'numeric', minute: '2-digit' }).replace(/\s?(AM|PM)$/, function(m, ap){ return ap.toLowerCase(); });
+        endText.textContent = (endText.getAttribute('data-tpl') || '').replace('[day]', fmtPart({ weekday: 'long' })).replace('[date]', fmtPart({ month: 'long', day: 'numeric' })).replace('[time]', endTime);
+      }
+      var openEnd = function(){ endModal.hidden = false; document.documentElement.style.overflow = 'hidden'; };
+      var closeEnd = function(){ endModal.hidden = true; document.documentElement.style.overflow = ''; countEl.focus && countEl.focus(); };
+      countEl.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openEnd(); });
+      countEl.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openEnd(); } });
+      [].slice.call(endModal.querySelectorAll('[data-ps1c-end-close]')).forEach(function(b){ b.addEventListener('click', function(e){ e.stopPropagation(); closeEnd(); }); });
+      document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !endModal.hidden){ closeEnd(); } });
+    }
   }
   // "Bundle and save": reveal + select the bundle card, the button goes away
   var bunBtn = root.querySelector('[data-ps1c-bundle-open]');
