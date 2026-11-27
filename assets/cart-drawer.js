@@ -468,7 +468,9 @@
       '<side-panel-close class="side-panel-close"><button type="button" class="side-panel-close__button bod-cart__close" aria-label="Close cart">' + ICON.close + '</button></side-panel-close></div>';
   }
   function emptyState(st) {
-    return '<div class="bod-cart__empty"><p>' + esc(st.S.empty_text) + '</p><a class="bod-cart__btn bod-cart__btn--primary" href="' + esc(st.S.empty_url || '/') + '">' + esc(st.S.empty_cta) + '</a></div>';
+    /* empty cart button: on a product page it just closes the drawer (the shopper is already where they can buy); elsewhere it links to the product page */
+    var onProduct = /\/products\/[^\/]+/.test(location.pathname);
+    return '<div class="bod-cart__empty"><p>' + esc(st.S.empty_text) + '</p><a class="bod-cart__btn bod-cart__btn--primary" href="' + esc(st.S.empty_url || '/') + '"' + (onProduct ? ' data-bod-action="close-drawer"' : '') + '>' + esc(st.S.empty_cta) + '</a></div>';
   }
   function bannerText(st) {
     if (!st.hasCode) { return ''; }
@@ -1053,7 +1055,8 @@
     var el = e.target.closest('[data-bod-action]'); if (!el) { return; }
     var action = el.getAttribute('data-bod-action');
     e.preventDefault();
-    if (action === 'remove') { removeLine(el.getAttribute('data-key')); }
+    if (action === 'close-drawer') { var closeBtn = h.querySelector('.bod-cart__close'); if (closeBtn) { closeBtn.click(); } else { location.href = el.getAttribute('href') || '/'; } }
+    else if (action === 'remove') { removeLine(el.getAttribute('data-key')); }
     else if (action === 'swap') { swapLine(el); }
     else if (action === 'add-protocol') { addProtocol(); }
     else if (action === 'toggle-code') {
