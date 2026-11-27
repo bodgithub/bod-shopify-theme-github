@@ -218,7 +218,7 @@
           "type": "custom_liquid",
           "name": "Product Title",
           "settings": {
-            "custom_liquid": "<div style=\"margin-top:-5px;\"><h1 style=\"font-weight:500 !important; color:#1a2874;\">Myo + D-Chiro Inositol Powder<\/h1><\/div>"
+            "custom_liquid": "<div style=\"margin-top:-5px;\"><h2 class=\"h1\" style=\"font-weight:500 !important; color:#1a2874;\">Myo + D-Chiro Inositol Powder<\/h2><\/div>"
           }
         },
         "bod_stars_TkJMcg": {
@@ -608,7 +608,7 @@
         "plan_selector_1c_kJbRfd": {
           "type": "plan_selector_1c",
           "settings": {
-            "border_width": 3,
+            "border_width": 2,
             "max_width": 560,
             "sub_first": true,
             "bundle_position": "first",
@@ -620,17 +620,88 @@
             "cta_label": "Add to Cart",
             "cta_static": true,
             "cta_price": true,
+            "pay_icons": true,
+            "bf_enabled": false,
+            "bf_layout": "cards",
+            "bf_price_line": "monthly",
+            "bf_banner_text": "",
+            "bf_end_text": "",
+            "bf_show_tabs": false,
+            "bf_subscribe_tab_note": "Save up to 15%",
+            "bf_panel_bg": "#ffffff",
+            "bf_panel_border": "#3447af",
+            "bf_panel_chips": false,
+            "bf_chip_servings_text": "[n] servings",
+            "bf_chip_1": "Full clinical dose*",
+            "bf_chip_2": "Dissolves clear",
+            "bf_chip_3": "",
+            "bf_chip_bg": "#e1eafa",
+            "bf_chip_border": "#1a2874",
+            "bf_chip_text": "#1a2874",
+            "bf_note_bg": "#ebeef4",
+            "bf_note_color": "#1a2874",
+            "bf_studies_in_note": true,
+            "bf_studies_label": "*See the studies",
+            "bf_footnote": "<p>*Studies of myo-inositol, not of Bodology. Genazzani et al. 2008 and Artini et al. 2013 (Gynecological Endocrinology): overweight women with PCOS (20 and 50 enrolled) took 2g of myo-inositol with folic acid daily for 12 weeks, half the amount in a daily serving of Bodology. The researchers reported significantly lower insulin and testosterone.<\/p><p>Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome followed a diet with either 4g of myo-inositol a day or placebo for 6 months. The researchers reported that HOMA-IR, a measure of how the body responds to insulin, fell 75% in the myo-inositol group, significantly more than with diet and placebo.<\/p><p>Results in studies may not reflect individual outcomes. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.<\/p>",
+            "bf_servings_per_tub": 45,
+            "bf_default_tier": "2",
+            "bf_tier_1_label": "3 months",
+            "bf_tier_1_tubs": 2,
+            "bf_tier_1_months": 3,
+            "bf_tier_1_pct": 35,
+            "bf_tier_1_free_text": "1 month free",
+            "bf_tier_1_tubs_free_text": "",
+            "bf_tier_1_title": "3-month supply",
+            "bf_tier_1_badge": "3-month trial",
+            "bf_tier_1_badge_style": "navy",
+            "bf_tier_1_note": "Studied for 3 months to support healthy insulin and hormone balance*",
+            "bf_tier_1_link_text": "",
+            "bf_tier_1_link_tier": "2",
+            "bf_tier_1_study_title": "What 3 months looked like in the research",
+            "bf_tier_1_study_text": "<p>Women with PCOS took myo-inositol daily for 12 weeks. Insulin and testosterone both fell significantly. The control group saw no change.<br\/><br\/>Genazzani et al., 2008 · <a href=\"https:\/\/doi.org\/10.1080\/09513590801893232\">Read the study<\/a><br\/>Artini et al., 2013 · <a href=\"https:\/\/doi.org\/10.3109\/09513590.2012.743020\">Read the study<\/a><\/p>",
+            "bf_tier_1_footnote": "*Studies of myo-inositol, not of Bodology. Genazzani et al. 2008 and Artini et al. 2013 (Gynecological Endocrinology): overweight women with PCOS (20 and 50 enrolled) took 2g of myo-inositol with folic acid daily for 12 weeks, half the amount in a daily serving of Bodology. The researchers reported significantly lower insulin and testosterone. Results in studies may not reflect individual outcomes. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+            "bf_tier_2_label": "6 month bundle",
+            "bf_tier_2_tubs": 4,
+            "bf_tier_2_months": 6,
+            "bf_tier_2_pct": 45,
+            "bf_tier_2_free_text": "~3 months free",
+            "bf_tier_2_tubs_free_text": "",
+            "bf_tier_2_title": "6-Month Bundle",
+            "bf_tier_2_badge": "6-month trial",
+            "bf_tier_2_badge_style": "navy",
+            "bf_tier_2_note": "Give it the full 6 months the clinical research used*",
+            "bf_tier_2_link_text": "",
+            "bf_tier_2_link_tier": "3",
+            "bf_tier_2_study_title": "What 6 months looked like in the research",
+            "bf_tier_2_study_text": "<p>In a 6-month study, 80 postmenopausal women with metabolic syndrome followed a diet with 4g of myo-inositol a day or placebo. That is the same daily myo-inositol as two scoops of Bodology®, though the study did not use Bodology. HOMA-IR, a standard marker of insulin resistance, fell 75% in the myo-inositol group, significantly more than with placebo. The researchers also reported changes in blood pressure, triglycerides and HDL cholesterol.<br\/><br\/>Giordano et al., 2011 · <a href=\"https:\/\/doi.org\/10.1097\/gme.0b013e3181e8e1b1\">Read the study<\/a><\/p>",
+            "bf_tier_2_footnote": "*Study of myo-inositol, not of Bodology. Giordano et al. 2011 (Menopause): 80 postmenopausal women with metabolic syndrome followed a diet with either 4g of myo-inositol a day or placebo for 6 months. The researchers reported that HOMA-IR, a measure of how the body responds to insulin, fell 75% in the myo-inositol group, significantly more than with diet and placebo. Results in studies may not reflect individual outcomes. These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.",
+            "bf_tier_3_label": "12 months",
+            "bf_tier_3_tubs": 8,
+            "bf_tier_3_months": 12,
+            "bf_tier_3_pct": 55,
+            "bf_tier_3_free_text": "~7 months free",
+            "bf_tier_3_tubs_free_text": "",
+            "bf_tier_3_title": "12-month supply",
+            "bf_tier_3_badge": "Best value",
+            "bf_tier_3_badge_style": "lavender",
+            "bf_tier_3_note": "In the 12-month trial, 1 in 5 women no longer had metabolic syndrome*",
+            "bf_tier_3_link_text": "",
+            "bf_tier_3_link_tier": "0",
+            "bf_tier_3_study_title": "What a year looked like in the research",
+            "bf_tier_3_study_text": "<p>80 women with metabolic syndrome, all showing insulin resistance, took 4g of inositol a day alongside diet. The same daily amount as two scoops of Bodology®.<\/p><p>After 12 months, 8 of the 40 women taking inositol no longer met the criteria for metabolic syndrome. In the diet-only group it was only 1 of 40.<br\/><br\/>Santamaria et al., 2012 · <a href=\"https:\/\/doi.org\/10.3109\/13697137.2011.631063\">Read the study<\/a><\/p>",
+            "bf_tier_3_footnote": "*Santamaria et al. 2012 (Climacteric): 80 postmenopausal women with metabolic syndrome. Results in studies may not reflect individual outcomes. Trial did not involve Bodology® products. This product is not intended to diagnose, treat, cure, or prevent any disease.",
             "subtick_enable": false,
             "sub_claim": "Save up to 25% by subscribing",
             "shipping_prefix": "Fast FREE shipping — Ships by",
             "shipping_weekend_text": "Fast FREE shipping — Arrives in",
             "shipping_weekend_highlight": "3-5 days",
             "gift_display": "banner",
-            "giftban_bg": "#e7f5ec",
-            "giftban_title_color": "#0b7a45",
-            "giftban_text_color": "#0b7a45",
-            "giftban_radius": 10,
-            "giftban_border": "#0b7a45",
+            "gift_position": "card_bottom",
+            "giftban_bg": "#ebeef4",
+            "giftban_title_color": "#1a2874",
+            "giftban_text_color": "#1a2874",
+            "giftban_radius": 5,
+            "giftban_border": "",
             "giftban_cust_label": "Customize",
             "giftban_title_size": 15,
             "modal_bg": "#e3eaff",
@@ -641,6 +712,8 @@
             "card_border_color": "#3447af",
             "card_flat": true,
             "card_border_width": 1,
+            "card_radius": 5,
+            "ribbon_position": "price",
             "card_selected_bg": "#e3eaff",
             "guar_enable": true,
             "guar_text": "60-day money-back guarantee",
@@ -658,35 +731,35 @@
             "ot_qty": 1,
             "sub_name": "6-Week Plan",
             "sub_ribbon": "Best value",
-            "sub_pill": "Save 15%",
+            "sub_pill": "15% off",
             "sub_price": "$55.25",
             "sub_compare": "$65.00",
             "sub_serving": "$1.22 \/ serving",
-            "sub_benefits": "Subscribe & Save — 15% off every order\n6-week supply tub\nDelivered every 6 weeks\nEasy cancel or skip, anytime",
+            "sub_benefits": "15% off every order\nA 6-week tub, delivered every 6 weeks\nEasy cancel or skip, anytime",
             "sub_variant": "46444646269147",
             "sub_plan": "5755961563",
             "sub_qty": 1,
-            "gift_name": "FREE Metabolic Health Protocol (Digital)",
+            "gift_name": "Plus, a FREE metabolic protocol, written by a practitioner (worth $49)",
             "gift_roundel": "FREE",
-            "gift_crossout": "$49.00",
+            "gift_crossout": "",
             "gift_variant": "48915264143579",
-            "gift_ban_sub": "Dosing, timing and what to track",
+            "gift_ban_sub": "",
             "bd_name": "1-Month Plan",
             "bd_ribbon": "",
-            "bd_pill": "Save 12%",
+            "bd_pill": "12% off",
             "bd_price": "$39.60",
             "bd_compare": "$45.00",
             "bd_price_per": "",
             "bd_serving": "$1.32 \/ serving",
-            "bd_benefits": "Subscribe & Save — 12% off every order\n4-week supply tub\nDelivered every month\nEasy cancel or skip, anytime",
+            "bd_benefits": "12% off every order\nA 4-week tub, delivered every 4 weeks\nEasy cancel or skip, anytime",
             "bd_variant": "46444657279195",
             "bd_plan": "6331924699",
             "bd_qty": 1,
-            "bd_gift_name": "FREE Metabolic Health Protocol (Digital)",
+            "bd_gift_name": "Plus, a FREE metabolic protocol, written by a practitioner (worth $49)",
             "bd_gift_roundel": "",
-            "bd_gift_crossout": "$49.00",
+            "bd_gift_crossout": "",
             "bd_gift_variant": "48915264143579",
-            "bd_gift_ban_sub": "Dosing, timing and what to track",
+            "bd_gift_ban_sub": "",
             "gifts_label": "FREE gift with purchase:",
             "gift_width": 95,
             "proto_enable": true,
@@ -709,7 +782,45 @@
             "c4_variant": "48915264209115",
             "hide_sub": false,
             "hide_ot": false,
-            "pay_icons": true
+            "ship_in_benefits": false,
+            "ship_bullet_text": "Fast, free shipping · ships by [date]",
+            "ship_bullet_weekend_text": "Fast, free shipping · arrives in [date]",
+            "bf_ship_in_list": true,
+            "bf_ship_list_text": "Fast, free shipping · [tubs] ship by [date]",
+            "bf_ship_list_weekend_text": "Fast, free shipping · [tubs] arrive in [date]",
+            "bf_sub_link": true,
+            "bf_sub_link_text": "Prefer a subscription?",
+            "bf_sub_link_cta": "Subscribe and save 15%",
+            "bf_bundles_link_cta": "",
+            "bf_sub_hide_ot": false,
+            "bf_code_pattern": "BLACKFRIDAY[pct]",
+            "bf_cart_title": "Black Friday [months]-Month Bundle",
+            "bf_sub_heading": "Choose your plan:",
+            "bf_sub_first": true,
+            "bf_sub_callout": "",
+            "bf_callout_end": "",
+            "callout_eyebrow": "",
+            "callout_title": "",
+            "callout_sub": "",
+            "callout_link_prefix": "",
+            "callout_link_text": "",
+            "callout_link": "",
+            "bf_sub_code": "",
+            "bf_bd_sub_code": "",
+            "bf_sub_layout": "tiers",
+            "sub_tier_badge": "",
+            "bd_tier_badge": "",
+            "ot_tier_badge": "",
+            "bf_sub_bundle_months": "6",
+            "bd_tier_label": "1 month",
+            "sub_tier_label": "Subscription",
+            "ot_tier_label": "One-time purchase",
+            "bf_bundle_callout": "[code]: [pct]% off the [months]-month bundle • Ends Nov 30",
+            "sub_line": "Works out at **$36.83 a month** · you save $9.75",
+            "bd_line": "",
+            "bundle_btn_label": "",
+            "bundle_benefits": "4 × 6-week tubs (180 servings) in one order\n45% off with BLACKFRIDAY45, applied in your cart\nOne-time purchase, no subscription",
+            "bundle_line": "Works out at **$23.83 a month** · you save $117"
           }
         },
         "facts_table_main": {
@@ -2650,7 +2761,7 @@
         "max_width": 1240,
         "pad_top": 64,
         "pad_bottom": 120,
-        "heading": "<h2>Your inositol <em>journey<\/em><\/h2>",
+        "heading": "<h2>What to expect, <em>week by week<\/em><\/h2>",
         "overlay_mode": false,
         "quotes_display": "avatars",
         "reviews_link_label": "Read reviews",
@@ -2911,89 +3022,6 @@
       "type": "custom-liquid",
       "settings": {
         "custom_liquid": "<div id=\"studies\"><\/div>"
-      }
-    },
-    "multicolumn_hTVh9C": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_jpiXR8": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/POWDER_1.gif",
-            "image_full_width": true,
-            "image_link": "",
-            "title": "",
-            "text": "<p><strong>Mix 1-2 scoops (4g) into water, coffee, smoothie or any drink<\/strong><\/p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_FT4bTV": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/POWDER_2.gif",
-            "image_full_width": true,
-            "image_link": "",
-            "title": "",
-            "text": "<p><strong>Take daily, ideally with your first meal<\/strong><\/p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        },
-        "column_86pe8K": {
-          "type": "column",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/POWDER_3.gif",
-            "image_full_width": true,
-            "image_link": "",
-            "title": "",
-            "text": "<p><strong>For best results, take consistently at the same time each day<\/strong><\/p>",
-            "link_label": "",
-            "link": "",
-            "eli_desktop_cols": "45% 18% 18% 18%",
-            "eli_gap": "28px",
-            "eli_card_padding": "22px",
-            "eli_card_radius": "12px",
-            "eli_card_border": "1px solid rgba(0,0,0,.08)",
-            "eli_card_bg": "#ffffff"
-          }
-        }
-      },
-      "block_order": [
-        "column_jpiXR8",
-        "column_FT4bTV",
-        "column_86pe8K"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_pad_top": 0,
-        "marker_style": "style1",
-        "description": "<h1><em>2 scoops<\/em> of inositol<em> <\/em><br\/>daily for best results<\/h1>",
-        "bgcolor": "",
-        "columns_desktop": 3,
-        "mobile_swipe": false,
-        "image_ratio": "adapt",
-        "text_alignment": "center",
-        "heading_size": "h4",
-        "color_heading": "#1a2874",
-        "marker_color": "#1b3def",
-        "color_text": "#1a2874",
-        "color_links": "#4d61cf",
-        "disable_top_spacing": false,
-        "disable_bottom_spacing": false
       }
     },
     "collapsible_content_cGXRUN": {
@@ -3258,6 +3286,332 @@
         ".shopify-app-block {padding-top: 32px;}"
       ],
       "settings": {}
+    },
+    "us_vs_them_main": {
+      "type": "us-vs-them",
+      "blocks": {
+        "row_serving": {
+          "type": "row",
+          "settings": {
+            "label": "Inositol per serving",
+            "info": "Our serving is the full 4,100mg studied dose. Many brands define a serving as half that, so their tub looks like it lasts twice as long as it does at the studied dose.",
+            "us_value": "text",
+            "us_text": "4,100mg",
+            "them1_value": "text",
+            "them1_text": "Often half that",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_ratio": {
+          "type": "row",
+          "settings": {
+            "label": "40:1 myo to D-chiro ratio",
+            "info": "The 40:1 ratio used in the research, confirmed on every batch’s lab report.",
+            "us_value": "check",
+            "us_text": "",
+            "them1_value": "text",
+            "them1_text": "Not always stated",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_dose": {
+          "type": "row",
+          "settings": {
+            "label": "A full daily dose is",
+            "info": "Two scoops a day. In 500mg capsules, the same dose is 8 or more.",
+            "us_value": "text",
+            "us_text": "2 scoops",
+            "them1_value": "text",
+            "them1_text": "8+ capsules",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_form": {
+          "type": "row",
+          "settings": {
+            "label": "Form",
+            "info": "One ingredient blend. No fillers, no flavoring. Mixes into water or coffee.",
+            "us_value": "text",
+            "us_text": "Pure powder",
+            "them1_value": "text",
+            "them1_text": "Capsules, gummies, blends",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_fillers": {
+          "type": "row",
+          "settings": {
+            "label": "Fillers",
+            "info": "No flow agents, no silica, no capsule shells.",
+            "us_value": "text",
+            "us_text": "None",
+            "them1_value": "text",
+            "them1_text": "Often flow agents, silica",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_source": {
+          "type": "row",
+          "settings": {
+            "label": "D-chiro source",
+            "info": "D-chiro-inositol from carob grown in Spain. Most brands don’t say where theirs comes from.",
+            "us_value": "text",
+            "us_text": "Carob, published",
+            "them1_value": "text",
+            "them1_text": "Not disclosed",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_coa": {
+          "type": "row",
+          "settings": {
+            "label": "Batch lab report",
+            "info": "Every batch is third-party tested and the lab report is published.",
+            "us_value": "text",
+            "us_text": "Published",
+            "them1_value": "text",
+            "them1_text": "Ask for theirs",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        },
+        "row_guarantee": {
+          "type": "row",
+          "settings": {
+            "label": "Money-back guarantee",
+            "info": "60 days. If it isn’t for you, email us for a refund.",
+            "us_value": "text",
+            "us_text": "60 days",
+            "them1_value": "text",
+            "them1_text": "Varies",
+            "them2_value": "cross",
+            "them2_text": "",
+            "them3_value": "cross",
+            "them3_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_serving",
+        "row_ratio",
+        "row_dose",
+        "row_form",
+        "row_fillers",
+        "row_source",
+        "row_coa",
+        "row_guarantee"
+      ],
+      "settings": {
+        "heading": "Not your <em>average<\/em> inositol",
+        "heading_size": 0,
+        "us_label": "Bodology",
+        "us_logo": "shopify:\/\/shop_images\/Bodology_Logo_1080x310_transparent.png",
+        "us_logo_width": 84,
+        "us_logo_white": true,
+        "them1_label": "Typical inositol brand",
+        "them2_label": "",
+        "them3_label": "",
+        "bg": "#f2eeea",
+        "card_bg": "#faf7f3",
+        "us_color": "#1a2874",
+        "us_text_color": "#b9c2f5",
+        "text_color": "#1a2874",
+        "heading_color": "#1a2874",
+        "accent_color": "#4d61cf",
+        "line_color": "#e2dbd2",
+        "label_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "symptom_check_lens": {
+      "type": "symptom-check",
+      "blocks": {
+        "sym_a1": {
+          "type": "symptom",
+          "settings": {
+            "text": "Sugar cravings that hit mid-afternoon",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "sym_a2": {
+          "type": "symptom",
+          "settings": {
+            "text": "Weight that won't move, especially around your middle",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "sym_a3": {
+          "type": "symptom",
+          "settings": {
+            "text": "Irregular, missing or unpredictable periods",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "sym_a4": {
+          "type": "symptom",
+          "settings": {
+            "text": "Tired an hour after a meal",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "sym_a5": {
+          "type": "symptom",
+          "settings": {
+            "text": "Acne along your jaw and chin",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "symptom_37xA3f": {
+          "type": "symptom",
+          "settings": {
+            "text": "Hair thinning on your head, or growing where you don't want it",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "symptom_MYTqjR": {
+          "type": "symptom",
+          "settings": {
+            "text": "Mood dips and irritability before your period",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "sym_a6": {
+          "type": "symptom",
+          "settings": {
+            "text": "Working harder in the gym for less",
+            "group": "a",
+            "response": ""
+          }
+        },
+        "sym_b1": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Your labs are normal”",
+            "group": "b",
+            "response": "<p>Most doctors test glucose, not insulin. Glucose can look normal while your body pumps out extra insulin to keep it there.<\/p>"
+          }
+        },
+        "sym_b2": {
+          "type": "symptom",
+          "settings": {
+            "text": "“It’s just PCOS”",
+            "group": "b",
+            "response": "<p>PCOS isn't only a hormone condition. Up to 80% of women with PCOS have insulin resistance, and insulin is the part you can act on.*<\/p>"
+          }
+        },
+        "sym_b3": {
+          "type": "symptom",
+          "settings": {
+            "text": "“Eat less, move more”",
+            "group": "b",
+            "response": "<p>Insulin is a fat-storing hormone. When your cells stop responding to it, eating less and moving more stops working the way it used to.<\/p>"
+          }
+        },
+        "sym_b4": {
+          "type": "symptom",
+          "disabled": true,
+          "settings": {
+            "text": "“Go on the pill”",
+            "group": "b",
+            "response": "<p>The pill regulates bleeding. It doesn't change how your cells respond to insulin, so the cravings, the weight and the mood pattern carry on underneath.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "sym_a1",
+        "sym_a2",
+        "sym_a3",
+        "sym_a4",
+        "sym_a5",
+        "symptom_37xA3f",
+        "symptom_MYTqjR",
+        "sym_a6",
+        "sym_b1",
+        "sym_b2",
+        "sym_b3",
+        "sym_b4"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "<h3>Does this sound like <em><strong>you?<\/strong><\/em><\/h3>",
+        "heading_size": 42,
+        "heading_size_mobile": 42,
+        "subheading": "<p>Different symptoms, same root. None of this is random, and none of it is a willpower problem. Here's what women tell us most:<\/p>",
+        "group_a_title": "How you feel",
+        "group_b_title": "What you've been told",
+        "count_text": "You ticked [count] of [total]",
+        "threshold": 3,
+        "msg_none": "<p>Tap anything that sounds like you.<\/p>",
+        "msg_low": "<p>One or two of these can mean a lot of things. Several together usually point to <strong>how your body handles insulin. <\/strong>That's the part inositol works on.<\/p>",
+        "msg_high": "<p>Several together usually point to <strong>how your body handles insulin. <\/strong>That's the part inositol works on.<\/p>",
+        "button_label": "Show me what helps",
+        "button_link": "\/products\/myo-d-chiro-inositol-powder?view=hormones#Product-Slider",
+        "footnote": "<p>*A checklist is not a diagnosis. If you want the number, ask your doctor for fasting insulin alongside fasting glucose.<\/p>",
+        "footnote_position": "column_b",
+        "sticky_bar": false,
+        "bar_bg": "#ffffff",
+        "bar_extend_next": true,
+        "bar_shop_label": "Shop now",
+        "bar_shop_link": "#Product-Slider",
+        "bar_change_label": "Change selection",
+        "bar_add_label": "Add to cart",
+        "bar_bundle_variant": "",
+        "bar_bundle_qty": 4,
+        "bar_bundle_text": "",
+        "bar_bundle_label": "",
+        "bg": "#fbfaf9",
+        "card_bg": "#fbfaf9",
+        "card_border": "#3447af",
+        "checked_bg": "#e3eaff",
+        "check_bg": "#1a2874",
+        "check_text": "#b9c2f5",
+        "text_color": "#1a2874",
+        "heading_color": "#1a2874",
+        "accent_color": "#4d61cf",
+        "button_bg": "#1a2874",
+        "button_hover": "#3447af",
+        "button_text": "#ffffff",
+        "max_width": 960,
+        "item_size": 0,
+        "card_radius": 16,
+        "item_radius": 10,
+        "button_radius": 6,
+        "padding_top": 64,
+        "padding_bottom": 64,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "anchor_id": "symptoms"
+      }
     }
   },
   "order": [
@@ -3266,11 +3620,13 @@
     "image_with_text_overlay_T3rmDc",
     "spacer_fcdpRG",
     "main-product",
+    "symptom_check_lens",
     "clinical_columns_TMq9hH",
     "category_list_grid_NDqtGH",
     "animated_diagrams_JBYjkn",
     "inositol_science_86gMmR",
     "why_inositol_DgbUrB",
+    "us_vs_them_main",
     "quote_grid_wLJirf",
     "image_icon_cards_XGzzR4",
     "1768505899436dba61",
@@ -3279,7 +3635,6 @@
     "testimonial_carousel_twHytV",
     "scrolling_images_qqa6dt",
     "custom_liquid_ax6VDD",
-    "multicolumn_hTVh9C",
     "collapsible_content_cGXRUN",
     "featured_blog_GjYBE8",
     "video_pdBgr8",

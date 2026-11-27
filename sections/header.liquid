@@ -67,17 +67,10 @@
     {% if section.settings.logo %}
       "logo": {{ section.settings.logo | image_url: width: section.settings.logo.width | prepend: "https:" | json }},
     {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }},
-      {{ settings.social_linkedin_link | json }},
-      {{ settings.social_wechat_link | json }}
-    ],
+    {%- comment -%} only the social profiles that are filled in (empty strings are invalid here) {%- endcomment -%}
+    {%- assign same_as_links = settings.social_twitter_link | append: '|' | append: settings.social_facebook_link | append: '|' | append: settings.social_pinterest_link | append: '|' | append: settings.social_instagram_link | append: '|' | append: settings.social_tiktok_link | append: '|' | append: settings.social_youtube_link | append: '|' | append: settings.social_vimeo_link | append: '|' | append: settings.social_linkedin_link | append: '|' | append: settings.social_wechat_link | split: '|' -%}
+    {%- assign same_as_first = true -%}
+    "sameAs": [{%- for same_as_link in same_as_links -%}{%- assign same_as_url = same_as_link | strip -%}{%- if same_as_url != blank -%}{%- unless same_as_first -%},{%- endunless -%}{{ same_as_url | json }}{%- assign same_as_first = false -%}{%- endif -%}{%- endfor -%}],
     "url": {{ shop.url | append: page.url | json }}
   }
 </script>
