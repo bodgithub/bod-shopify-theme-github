@@ -18,7 +18,7 @@
           "type": "phase",
           "settings": {
             "start_date": "",
-            "end_date": "2026-11-20",
+            "end_date": "2026-11-26",
             "text": "EARLY BLACK FRIDAY · UP TO 45% OFF 6 MONTHS · OUR LOWEST PRICE OF THE YEAR",
             "text_mobile": "EARLY BLACK FRIDAY · 45% OFF 6 MONTHS",
             "countdown": "off",
@@ -28,8 +28,8 @@
         "phase_bf": {
           "type": "phase",
           "settings": {
-            "start_date": "2026-12-10",
-            "end_date": "2026-12-11",
+            "start_date": "2026-11-27",
+            "end_date": "2026-11-29",
             "text": "BLACK FRIDAY · UP TO 45% OFF BUNDLES · ENDS MONDAY",
             "text_mobile": "BLACK FRIDAY · UP TO 45% OFF BUNDLES",
             "countdown": "dhm",
@@ -39,8 +39,8 @@
         "phase_last": {
           "type": "phase",
           "settings": {
-            "start_date": "2026-12-12",
-            "end_date": "2026-12-12",
+            "start_date": "2026-11-30",
+            "end_date": "2026-11-30",
             "text": "LAST DAY · UP TO 45% OFF BUNDLES · ENDS TONIGHT",
             "text_mobile": "LAST DAY · UP TO 45% OFF BUNDLES",
             "countdown": "hms",
@@ -50,11 +50,11 @@
         "phase_cyber": {
           "type": "phase",
           "settings": {
-            "start_date": "2026-11-20",
+            "start_date": "2026-12-01",
             "end_date": "2026-12-03",
             "text": "CYBER WEEK · ENDS THURSDAY",
             "text_mobile": "CYBER WEEK · ENDS THURSDAY",
-            "templates": "black-friday, black-friday-a, black-friday-b, pcos-black-friday, pcos-black-friday-b, over-40-black-friday, over-40-black-friday-b, switch-black-friday-b, cw-test",
+            "templates": "black-friday, black-friday-a, black-friday-b, pcos-black-friday, pcos-black-friday-b, over-40-black-friday, over-40-black-friday-b, switch-black-friday-b",
             "countdown": "off",
             "count_date": ""
           }
@@ -70,7 +70,7 @@
       "settings": {
         "enabled": true,
         "show_on": "listed",
-        "show_templates": "cw-test, cw-test2, black-friday, black-friday-a, black-friday-b, over-40-black-friday, over-40-black-friday-b, pcos-black-friday, pcos-black-friday-b, switch-black-friday-b, black-friday-bundles, index, product-default",
+        "show_templates": "black-friday, black-friday-a, black-friday-b, over-40-black-friday, over-40-black-friday-b, pcos-black-friday, pcos-black-friday-b, switch-black-friday-b, black-friday-bundles, index, product-default",
         "code": "",
         "percent": "",
         "text": "BLACK FRIDAY • BUNDLE & SAVE • UP TO 45% OFF [countdown]",
