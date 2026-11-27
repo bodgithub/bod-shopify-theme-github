@@ -1525,6 +1525,12 @@
         "info": "One 'variant id: percent' per line, e.g. 46444646269147: 35. Overrides {percent} for that variant while the code above is on. Empty = the plan's own %."
       },
       {
+        "type": "text",
+        "id": "bcd_upsell_until",
+        "label": "Code and saving above end at",
+        "info": "Date and time with offset, e.g. 2026-12-01T00:00:00-08:00 (Pacific). From then on the drawer ignores the code and the saving above. Blank = no end."
+      },
+      {
         "type": "textarea",
         "id": "bcd_bundle_plans",
         "label": "Bundle plans (units per plan)",
@@ -1890,6 +1896,39 @@
         "id": "favicon",
         "label": "Select favicon image",
         "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Scheduled wording swap",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "For a short promotion on landing pages: inside the window, on the listed templates only, each 'old => new' pair is replaced in the page content. Outside the window nothing changes."
+      },
+      {
+        "type": "text",
+        "id": "swap_templates",
+        "label": "Templates",
+        "info": "Comma-separated ?view= names, e.g. black-friday, pcos-black-friday."
+      },
+      {
+        "type": "text",
+        "id": "swap_start",
+        "label": "From",
+        "info": "Date and time with offset, e.g. 2026-12-01T00:00:00-08:00 (Pacific)."
+      },
+      {
+        "type": "text",
+        "id": "swap_end",
+        "label": "Until",
+        "info": "Date and time with offset, e.g. 2026-12-04T00:00:00-08:00."
+      },
+      {
+        "type": "textarea",
+        "id": "swap_pairs",
+        "label": "Replacements",
+        "info": "One per line, written as: old text => new text. Applied top to bottom, exact match (capitals matter)."
       }
     ]
   }

@@ -169,9 +169,34 @@
       {%- for block in section.blocks -%}
         {%- liquid
           assign b = block.settings
+          comment
+            A phase with its own "Only on templates" list shows only there, with its own wording (the alternate line is ignored) as plain text.
+          endcomment
+          assign p_scoped = false
+          assign p_click = click_action
+          assign p_tpls = b.templates | downcase | replace: ' ', ''
+          if p_tpls != blank
+            assign p_scoped = true
+            assign p_click = 'none'
+            assign p_list = p_tpls | split: ','
+            assign p_suffix = template.suffix | downcase
+            assign p_name = template.name | downcase
+            assign p_full = p_name | append: '.' | append: p_suffix
+            assign p_here = false
+            if p_suffix != blank and p_list contains p_suffix
+              assign p_here = true
+            elsif p_list contains p_name
+              assign p_here = true
+            elsif p_list contains p_full
+              assign p_here = true
+            endif
+            unless p_here
+              continue
+            endunless
+          endif
           assign ptext = b.text | replace: '[percent]', percent
           assign pmobile = b.text_mobile | replace: '[percent]', percent
-          if on_alt
+          if on_alt and p_scoped == false
             assign ptext = s.alt_text | replace: '[percent]', percent
             assign pmobile = s.alt_text_mobile | replace: '[percent]', percent
           endif
@@ -202,9 +227,9 @@
           endif
         -%}
         <span class="pbar__phase" data-pbar-phase data-start="{{ pstart }}" data-end="{{ pend }}" data-count-to="{{ pcount }}" data-mode="{{ b.countdown }}"{% unless active %} hidden{% endunless %} {{ block.shopify_attributes }}>
-          {%- if click_action == 'klaviyo' and kl_form != blank -%}
+          {%- if p_click == 'klaviyo' and kl_form != blank -%}
             <button type="button" class="pbar__text pbar__text--desktop" data-pbar-klaviyo="{{ kl_form | strip | escape }}">{{ ptext }}</button><button type="button" class="pbar__text pbar__text--mobile" data-pbar-klaviyo="{{ kl_form | strip | escape }}">{{ pmobile }}</button>
-          {%- elsif click_action == 'link' and click_link != blank -%}
+          {%- elsif p_click == 'link' and click_link != blank -%}
             <a class="pbar__text pbar__text--desktop" href="{{ click_link }}">{{ ptext }}</a><a class="pbar__text pbar__text--mobile" href="{{ click_link }}">{{ pmobile }}</a>
           {%- else -%}<span class="pbar__text pbar__text--desktop">{{ ptext }}</span><span class="pbar__text pbar__text--mobile">{{ pmobile }}</span>{%- endif -%}
         </span>
@@ -385,6 +410,7 @@
         { "type": "text", "id": "end_date", "label": "Last day shown (YYYY-MM-DD)" },
         { "type": "text", "id": "text", "label": "Text", "default": "BLACK FRIDAY · UP TO 45% OFF BUNDLES", "info": "Tokens: [code], [percent]. The countdown chip is added after the text automatically (or put [countdown] where you want it)." },
         { "type": "text", "id": "text_mobile", "label": "Text on phones (optional)" },
+        { "type": "text", "id": "templates", "label": "Only on templates (optional)", "info": "Comma-separated ?view= names, e.g. black-friday, pcos-black-friday. With a list, this phase shows only on those pages, always with its own text (the alternate wording is ignored) and without a click action. Blank = wherever the bar shows." },
         { "type": "select", "id": "countdown", "label": "Countdown", "default": "off", "options": [
           { "value": "off", "label": "Off" }, { "value": "dhm", "label": "Days, hours, minutes" }, { "value": "hms", "label": "Hours, minutes, seconds" } ] },
         { "type": "text", "id": "count_date", "label": "Count down to (YYYY-MM-DD)", "info": "Empty = this phase's last day. Uses the end time above. Set it later than the last day when the copy changes before the offer ends (e.g. a Black Friday phase that says \"ends Monday\")." }

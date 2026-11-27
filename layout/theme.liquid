@@ -198,7 +198,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="header--sticky"></div>
 		{% sections 'header-group' %}
 		<div role="main" id="main-content">
-			{{ content_for_layout }}
+			{%- comment -%} Scheduled wording swap (Theme settings): on the listed templates, inside the window, each "old => new" pair is replaced in the page content. Outside the window the page is output untouched. {%- endcomment -%}
+			{%- liquid
+				assign swap_on = false
+				if settings.swap_pairs != blank and settings.swap_start != blank and settings.swap_end != blank and settings.swap_templates != blank and template.suffix != blank
+					assign swap_list = settings.swap_templates | downcase | replace: ' ', '' | split: ','
+					assign swap_suffix = template.suffix | downcase
+					if swap_list contains swap_suffix
+						assign swap_now = 'now' | date: '%s' | plus: 0
+						assign swap_from = settings.swap_start | strip | date: '%s' | plus: 0
+						assign swap_to = settings.swap_end | strip | date: '%s' | plus: 0
+						if swap_now >= swap_from and swap_now < swap_to
+							assign swap_on = true
+						endif
+					endif
+				endif
+			-%}
+			{%- if swap_on -%}
+				{%- capture swap_html -%}{{ content_for_layout }}{%- endcapture -%}
+				{%- assign swap_lines = settings.swap_pairs | newline_to_br | split: '<br />' -%}
+				{%- for swap_line in swap_lines -%}
+					{%- assign swap_pair = swap_line | strip_newlines | split: ' => ' -%}
+					{%- if swap_pair.size == 2 and swap_pair[0] != blank -%}
+						{%- assign swap_html = swap_html | replace: swap_pair[0], swap_pair[1] -%}
+					{%- endif -%}
+				{%- endfor -%}
+				{{ swap_html }}
+			{%- else -%}
+				{{ content_for_layout }}
+			{%- endif -%}
 		</div>
 		{% sections 'footer-group' %}
 		{% render 'cart-drawer' %}

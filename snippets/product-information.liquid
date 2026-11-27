@@ -86,6 +86,9 @@
 {%- endif %}
 </style>
 {%- endif -%}
+{%- comment -%} Plan selector 1C schedule: a block with "Show from" / "Show until" renders only inside that window, and only the first eligible selector in the section renders (so a lost date can never produce two selectors). {%- endcomment -%}
+{%- assign ps1c_now = 'now' | date: '%s' | plus: 0 -%}
+{%- assign ps1c_done = false -%}
 {% for block in section.blocks %}
   {%- case block.type -%}
   {%- when '@app' -%}
@@ -125,7 +128,40 @@
   {%- when 'plan_selector_1b' -%}
     <div {{ block.shopify_attributes }}>{%- render 'plan-selector-1b', s: block.settings, uid: block.id -%}</div>
   {%- when 'plan_selector_1c' -%}
-    <div {{ block.shopify_attributes }}>{%- render 'plan-selector-1c', s: block.settings, uid: block.id, product: product -%}</div>
+    {%- liquid
+      assign ps1c_ok = true
+      assign ps1c_from = block.settings.show_from | strip
+      assign ps1c_until = block.settings.show_until | strip
+      assign ps1c_until_s = 0
+      if ps1c_done
+        assign ps1c_ok = false
+      endif
+      if ps1c_from != blank
+        assign ps1c_from_s = ps1c_from | date: '%s' | plus: 0
+        if ps1c_now < ps1c_from_s
+          assign ps1c_ok = false
+        endif
+      endif
+      if ps1c_until != blank
+        assign ps1c_until_s = ps1c_until | date: '%s' | plus: 0
+        if ps1c_now >= ps1c_until_s
+          assign ps1c_ok = false
+        endif
+      endif
+    -%}
+    {%- if request.design_mode and ps1c_ok == false -%}
+      {%- comment -%} theme editor: scheduled selectors stay visible (and editable) with a note {%- endcomment -%}
+      <div {{ block.shopify_attributes }}><p style="margin:12px 0 4px;padding:6px 10px;background:#fff4d6;border:1px dashed #b98900;font-size:12px;color:#5c4400;">Scheduled selector, not live now{% if ps1c_from != blank %} · from {{ ps1c_from }}{% endif %}{% if ps1c_until != blank %} · until {{ ps1c_until }}{% endif %} (shown in the editor only)</p>{%- render 'plan-selector-1c', s: block.settings, uid: block.id, product: product -%}</div>
+    {%- elsif ps1c_ok -%}
+      {%- assign ps1c_done = true -%}
+      <div {{ block.shopify_attributes }}>{%- render 'plan-selector-1c', s: block.settings, uid: block.id, product: product -%}</div>
+      {%- if ps1c_until_s > 0 -%}
+      <script>
+      /* scheduled selector: when its window closes, load the page fresh once so the next selector (and its prices/code) takes over, even from a cached or long-open page */
+      (function(){var u={{ ps1c_until_s }}*1000,k='ps1c-rl-'+u;function go(){try{if(sessionStorage.getItem(k)){return;}sessionStorage.setItem(k,'1');}catch(e){return;}var l=new URL(location.href);l.searchParams.set('_o',String(u/1000));location.replace(l.toString());}var d=u-Date.now();if(d<=0){go();}else if(d<864e5){setTimeout(go,d+1500);}})();
+      </script>
+      {%- endif -%}
+    {%- endif -%}
   {%- when 'facts_table' -%}
     <div {{ block.shopify_attributes }}>{%- render 'facts-table', s: block.settings, uid: block.id -%}</div>
   {%- when 'feature_chips' -%}

@@ -130,8 +130,20 @@
     "upsell_text": {{ settings.bcd_upsell_text | json }},
     "upsell_protocol_text": {{ settings.bcd_upsell_protocol_text | json }},
     "upsell_map": {{ settings.bcd_upsell_map | json }},
-    "upsell_code": {{ settings.bcd_upsell_code | json }},
-    "upsell_pct": {{ settings.bcd_upsell_pct | json }},
+    {%- liquid
+      assign bcd_up_code = settings.bcd_upsell_code
+      assign bcd_up_pct = settings.bcd_upsell_pct
+      if settings.bcd_upsell_until != blank
+        assign bcd_up_now = 'now' | date: '%s' | plus: 0
+        assign bcd_up_end = settings.bcd_upsell_until | strip | date: '%s' | plus: 0
+        if bcd_up_now >= bcd_up_end
+          assign bcd_up_code = ''
+          assign bcd_up_pct = ''
+        endif
+      endif
+    -%}
+    "upsell_code": {{ bcd_up_code | json }},
+    "upsell_pct": {{ bcd_up_pct | json }},
     "bundle_plans": {{ settings.bcd_bundle_plans | json }},
     "label_subtotal": {{ settings.bcd_label_subtotal | json }},
     "label_subscribe_save": {{ settings.bcd_label_subscribe_save | json }},

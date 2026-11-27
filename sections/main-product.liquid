@@ -3509,6 +3509,9 @@
       "type": "plan_selector_1c",
       "name": "Plan selector 1C",
       "settings": [
+        { "type": "header", "content": "Schedule", "info": "Optional. With dates set, this selector only shows inside the window; add another Plan selector 1C block for the next period. Only the first selector whose window covers now is shown." },
+        { "type": "text", "id": "show_from", "label": "Show from", "info": "Date and time with offset, e.g. 2026-12-01T00:00:00-08:00 (Pacific). Blank = already showing." },
+        { "type": "text", "id": "show_until", "label": "Show until", "info": "Date and time with offset, e.g. 2026-12-04T00:00:00-08:00. Blank = no end." },
         {
           "type": "header",
           "content": "Layout"
